@@ -1,0 +1,451 @@
+<!-- Ann Merry トップページ構成案 -->
+<!-- LightningテーマのカスタムHTMLブロックに貼り付けて使用 -->
+
+<style>
+/* Ann Merry トップページ用スタイル */
+.ann-merry-top {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif;
+  color: #333;
+  line-height: 1.8;
+}
+
+.ann-merry-top .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ヒーローセクション */
+.hero-section {
+  background: linear-gradient(135deg, #f8f6f3 0%, #ffffff 100%);
+  padding: 80px 20px;
+  text-align: center;
+  border-radius: 30px;
+  margin: 40px 0;
+  box-shadow: 0 4px 20px rgba(139, 111, 71, 0.08);
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #8B6F47;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: #A0826D;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+.hero-catch {
+  background: #8B6F47;
+  color: #ffffff;
+  padding: 25px 40px;
+  border-radius: 25px;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(139, 111, 71, 0.3);
+  line-height: 1.6;
+}
+
+.hero-catch strong {
+  font-size: 1.2em;
+  display: block;
+  margin-top: 10px;
+}
+
+/* 由来セクション */
+.origin-section {
+  background: #ffffff;
+  padding: 60px 30px;
+  border-radius: 25px;
+  margin: 50px 0;
+  box-shadow: 0 2px 15px rgba(139, 111, 71, 0.1);
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #8B6F47;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #8B6F47;
+  border-radius: 2px;
+}
+
+.origin-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #555;
+}
+
+.origin-content .highlight {
+  color: #8B6F47;
+  font-weight: 600;
+}
+
+/* 代表挨拶セクション */
+.greeting-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f6f3 100%);
+  padding: 60px 30px;
+  border-radius: 25px;
+  margin: 50px 0;
+  box-shadow: 0 2px 15px rgba(139, 111, 71, 0.1);
+}
+
+.greeting-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.greeting-box {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  border-left: 5px solid #8B6F47;
+  box-shadow: 0 2px 10px rgba(139, 111, 71, 0.1);
+  margin-bottom: 30px;
+}
+
+.greeting-box p {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.greeting-box .signature {
+  text-align: right;
+  margin-top: 30px;
+  color: #8B6F47;
+  font-weight: 600;
+}
+
+.expertise-badge {
+  background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%);
+  color: #ffffff;
+  padding: 15px 30px;
+  border-radius: 50px;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px rgba(139, 111, 71, 0.3);
+}
+
+/* サービス紹介セクション */
+.service-section {
+  background: #ffffff;
+  padding: 60px 30px;
+  border-radius: 25px;
+  margin: 50px 0;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background: linear-gradient(135deg, #f8f6f3 0%, #ffffff 100%);
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(139, 111, 71, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(139, 111, 71, 0.2);
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+  background: #8B6F47;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #ffffff;
+}
+
+.service-title {
+  font-size: 1.5rem;
+  color: #8B6F47;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.service-description {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* CTAセクション */
+.cta-section {
+  background: linear-gradient(135deg, #8B6F47 0%, #A0826D 100%);
+  padding: 60px 30px;
+  border-radius: 25px;
+  margin: 50px 0;
+  text-align: center;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(139, 111, 71, 0.3);
+}
+
+.cta-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cta-text {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  background: #ffffff;
+  color: #8B6F47;
+  padding: 18px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: #f8f6f3;
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.cta-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .hero-catch {
+    font-size: 1rem;
+    padding: 20px 25px;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .greeting-box {
+    padding: 25px 20px;
+  }
+  
+  .origin-content,
+  .greeting-content {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 50px 15px;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+  }
+  
+  .origin-section,
+  .greeting-section,
+  .service-section,
+  .cta-section {
+    padding: 40px 20px;
+  }
+}
+</style>
+
+<div class="ann-merry-top">
+  <div class="container">
+    
+    <!-- ヒーローセクション -->
+    <section class="hero-section">
+      <h1 class="hero-title">Ann Merry</h1>
+      <p class="hero-subtitle">仙台市青葉区のプロフェッショナルペットサロン</p>
+      <div class="hero-catch">
+        元動物病院トリマーが<br>
+        <strong>ワンちゃんの健康と美しさをサポート</strong>
+      </div>
+      <p style="margin-top: 30px; color: #666; font-size: 1rem;">
+        皆様の大切な家族を、豊富な経験と確かな技術でお預かりします
+      </p>
+    </section>
+
+    <!-- 店名の由来セクション -->
+    <section class="origin-section">
+      <h2 class="section-title">Ann Merryについて</h2>
+      <div class="origin-content">
+        <p>
+          「Ann Merry（アン・メリー）」という店名は、<br>
+          代表の愛犬<span class="highlight">「アン」</span>と、<br>
+          実家の犬<span class="highlight">「メリー」</span>を合体させて名付けました。
+        </p>
+        <p style="margin-top: 25px;">
+          大切な家族の一員であるワンちゃんたちへの想いを込めて、<br>
+          皆様の大切なワンちゃんも、家族同様に愛情を込めてお世話させていただきます。
+        </p>
+      </div>
+    </section>
+
+    <!-- 代表挨拶セクション -->
+    <section class="greeting-section">
+      <h2 class="section-title">代表挨拶</h2>
+      <div class="greeting-content">
+        <div class="greeting-box">
+          <div class="expertise-badge">
+            ✨ 元動物病院トリマー ✨
+          </div>
+          <p>
+            はじめまして、Ann Merry代表の星 崇華と申します。
+          </p>
+          <p>
+            私は長年、動物病院でトリマーとして多くのワンちゃんたちと向き合ってまいりました。
+            その経験を通じて、ワンちゃんの健康状態を理解し、適切なケアを提供することの大切さを学びました。
+          </p>
+          <p>
+            Ann Merryでは、単なるトリミングやシャンプーではなく、<br>
+            <strong style="color: #8B6F47;">ワンちゃんの健康と美しさをトータルでサポート</strong>することを心がけています。
+          </p>
+          <p>
+            トリマー歴が長いからこそ、皆様に安心してお預けいただける技術と知識があります。
+            ワンちゃんの個性や体調に合わせた丁寧なケアで、皆様とワンちゃんの笑顔をサポートいたします。
+          </p>
+          <p class="signature">
+            代表 星 崇華
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- サービス紹介セクション -->
+    <section class="service-section">
+      <h2 class="section-title">サービス内容</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-icon">✂️</div>
+          <h3 class="service-title">トリミング</h3>
+          <p class="service-description">
+            ワンちゃんの体型や毛質に合わせた、<br>
+            プロフェッショナルなトリミングサービス。<br>
+            元動物病院トリマーの経験を活かし、<br>
+            健康状態にも配慮したケアを行います。
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🛁</div>
+          <h3 class="service-title">シャンプー</h3>
+          <p class="service-description">
+            ワンちゃんの肌に優しいシャンプーで、<br>
+            清潔感と美しさを保ちます。<br>
+            トリミングと合わせてご利用いただくことで、<br>
+            より美しい仕上がりをお約束します。
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🐕</div>
+          <h3 class="service-title">ペットサロン</h3>
+          <p class="service-description">
+            通常のペットサロンサービスも<br>
+            ご提供しております。<br>
+            ワンちゃんがリラックスできる<br>
+            清潔で快適な空間でお迎えします。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTAセクション -->
+    <section class="cta-section">
+      <h2 class="cta-title">お気軽にお問い合わせください</h2>
+      <p class="cta-text">
+        初めての方も、元動物病院トリマーの経験と技術で<br>
+        安心してお預けいただけます。<br>
+        ワンちゃんのケアについて、お気軽にご相談ください。
+      </p>
+      <div class="cta-buttons">
+        <a href="/contact" class="cta-button">お問い合わせフォーム</a>
+        <a href="tel:022-343-0753" class="cta-button secondary">📞 022-343-0753</a>
+      </div>
+      <p style="margin-top: 30px; font-size: 0.95rem; opacity: 0.9;">
+        ※お電話の際は、希望架電先: 090-9425-7040 までお願いいたします
+      </p>
+    </section>
+
+  </div>
+</div>
