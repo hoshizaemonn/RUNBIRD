@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bizクラウド WEBサイト制作 - スタートアップガイド</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', Meiryo, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            color: #333;
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 4px solid #2563eb;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .company-name {
+            color: #2563eb;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        /* セクション */
+        .section {
+            margin: 50px 0;
+            padding: 40px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 2px solid #e2e8f0;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #1e40af;
+        }
+
+        .section-icon {
+            font-size: 2rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid #2563eb;
+        }
+
+        /* カテゴリボックス */
+        .category-box {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #2563eb;
+            margin-bottom: 20px;
+        }
+
+        .category-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #1e40af;
+        }
+
+        .category-icon {
+            font-size: 1.5rem;
+        }
+
+        .item-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .item-list li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .item-list li:last-child {
+            border-bottom: none;
+        }
+
+        .item-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #2563eb;
+        }
+
+        .sub-item {
+            margin-top: 8px;
+            padding-left: 20px;
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .sub-item::before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: #999;
+        }
+
+        /* テーブル */
+        .demo-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: #ffffff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .demo-table th {
+            background: #2563eb;
+            color: #ffffff;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .demo-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .demo-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .demo-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .demo-table a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .demo-table a:hover {
+            text-decoration: underline;
+        }
+
+        /* チェックリスト */
+        .checklist {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #10b981;
+            margin: 25px 0;
+        }
+
+        .checklist-item {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        .checklist-item::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.3rem;
+            color: #10b981;
+        }
+
+        /* 強調ボックス */
+        .highlight-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box strong {
+            color: #d97706;
+            font-size: 1.1rem;
+        }
+
+        .warning-box {
+            background: #fee2e2;
+            border-left: 5px solid #ef4444;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .warning-box strong {
+            color: #dc2626;
+            font-size: 1.1rem;
+        }
+
+        .info-box {
+            background: #dbeafe;
+            border-left: 5px solid #3b82f6;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .info-box strong {
+            color: #1e40af;
+            font-size: 1.1rem;
+        }
+
+        /* 連絡先テーブル */
+        .contact-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: #ffffff;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .contact-table th {
+            background: #1e40af;
+            color: #ffffff;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .contact-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .contact-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .contact-table tr:hover {
+            background: #f8fafc;
+        }
+
+        /* コードブロック */
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        code {
+            background: #f1f5f9;
+            color: #1e40af;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        /* ステップ番号 */
+        .step-number {
+            display: inline-block;
+            background: #2563eb;
+            color: #ffffff;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        /* 次のステップ */
+        .next-step {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 3px solid #2563eb;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .next-step h3 {
+            color: #1e40af;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* フローボックス */
+        .flow-box {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .demo-table, .contact-table {
+                font-size: 0.9rem;
+            }
+
+            .demo-table th,
+            .demo-table td,
+            .contact-table th,
+            .contact-table td {
+                padding: 10px;
+            }
+
+            .flow-box {
+                min-width: 100px;
+                padding: 10px;
+                font-size: 0.85rem;
+            }
+
+            .category-box {
+                padding: 15px;
+            }
+
+            /* フローチャートのレスポンシブ対応 */
+            .category-box > div[style*="display: flex"] {
+                flex-direction: column !important;
+            }
+
+            .category-box > div[style*="display: flex"] > div:first-child {
+                margin-bottom: 10px !important;
+            }
+        }
+
+        /* フッター */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ヘッダー -->
+        <div class="header">
+            <h1>🚀 bizクラウド WEBサイト制作</h1>
+            <p class="subtitle">スタートアップガイド</p>
+            <div class="company-name">RUNBIRD（ランバード）</div>
+        </div>
+
+        <!-- イントロダクション -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-icon">📌</span>
+                最初のステップ：発注依頼&情報共有
+            </h2>
+            <div class="section-description">
+                <strong>このステップで何をするか？</strong><br>
+                RUNBIRD（ランバード事務）からLINEで発注依頼とお客様情報が届いたら、すぐに始める最初の準備作業です。
+            </div>
+        </div>
+
+        <!-- ステップ1 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">1</span>
+                受け取る情報を確認する
+            </h2>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">📦</span>
+                    A. 受け取るもの（LINEで送られてくる）
+                </h3>
+                <ul class="item-list">
+                    <li><strong>発注依頼の通知</strong>
+                        <div class="sub-item">「○○様の案件、お願いします」などの依頼メッセージ</div>
+                    </li>
+                    <li><strong>お客様情報（PDF）</strong>
+                        <div class="sub-item">ヒアリングシート、お客様の連絡先情報、制作に関する要件</div>
+                    </li>
+                    <li><strong>制作に必要なデータ（別途送付される場合あり）</strong>
+                        <div class="sub-item">デモサイトのバックアップデータ（All-in-One WP Migration形式）</div>
+                        <div class="sub-item">Lightningのシリアルキー（textデータ）</div>
+                        <div class="sub-item">制作用デモサイトのURL・ID・PASS（textデータ）</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">✅</span>
+                    B. 確認すべきポイント
+                </h3>
+                <div class="info-box">
+                    <strong>✅ お客様情報PDFに記載されている内容</strong>
+                    <ul class="item-list" style="margin-top: 15px;">
+                        <li>お客様の名前・連絡先</li>
+                        <li>業種・業態（ジム、飲食店、エステ、歯医者など）</li>
+                        <li>デザインの希望</li>
+                        <li>使用したい写真・素材の有無</li>
+                        <li>その他の要望</li>
+                    </ul>
+                </div>
+                <div class="info-box" style="margin-top: 20px;">
+                    <strong>✅ お打ち合わせ日時の確認</strong>
+                    <ul class="item-list" style="margin-top: 15px;">
+                        <li>打ち合わせの日時が決まっているか</li>
+                        <li>決まっていない場合は、この段階で調整が必要</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ステップ2 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">2</span>
+                お打ち合わせの準備をする
+            </h2>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">🌐</span>
+                    A. デモサイトを確認する
+                </h3>
+                <p style="margin-bottom: 20px; color: #555;">
+                    <strong>どのデザインテンプレートを使うか決めるため、デモサイトを確認します。</strong>
+                </p>
+
+                <table class="demo-table">
+                    <thead>
+                        <tr>
+                            <th>業種</th>
+                            <th>URL</th>
+                            <th>ログインID</th>
+                            <th>パスワード</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ジム</td>
+                            <td><a href="https://demogym.rb-demo.net/" target="_blank">demogym.rb-demo.net</a></td>
+                            <td>demogym</td>
+                            <td>bizcloud0531</td>
+                        </tr>
+                        <tr>
+                            <td>小売り</td>
+                            <td><a href="https://demozakka.rb-demo.net" target="_blank">demozakka.rb-demo.net</a></td>
+                            <td>demozakka</td>
+                            <td>bizcloud0531</td>
+                        </tr>
+                        <tr>
+                            <td>飲食店</td>
+                            <td><a href="https://demorestaurant.rb-demo.net" target="_blank">demorestaurant.rb-demo.net</a></td>
+                            <td>demorestaurant</td>
+                            <td>bizcloud0531</td>
+                        </tr>
+                        <tr>
+                            <td>エステ</td>
+                            <td><a href="https://demospa.rb-demo.net" target="_blank">demospa.rb-demo.net</a></td>
+                            <td>demospa</td>
+                            <td>bizcloud0531</td>
+                        </tr>
+                        <tr>
+                            <td>歯医者</td>
+                            <td><a href="https://demodentalclinic.rb-demo.net" target="_blank">demodentalclinic.rb-demo.net</a></td>
+                            <td>demodentalclinic</td>
+                            <td>bizcloud0531</td>
+                        </tr>
+                        <tr>
+                            <td>企業</td>
+                            <td><a href="https://democooperate.rb-demo.net" target="_blank">democooperate.rb-demo.net</a></td>
+                            <td>democooperate</td>
+                            <td>bizcloud0531</td>
+                        </tr>
+                        <tr>
+                            <td>整体</td>
+                            <td><a href="https://demoseitai.rb-demo.net" target="_blank">demoseitai.rb-demo.net</a></td>
+                            <td>demoseitai</td>
+                            <td>bizcloud0531</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box" style="margin-top: 20px;">
+                    <strong>📝 ログイン方法：</strong>
+                    <ul class="item-list" style="margin-top: 10px;">
+                        <li>URLの赤文字部分（例：<code>demogym</code>）がID</li>
+                        <li>パスワードは共通で <code>bizcloud0531</code></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">🛠️</span>
+                    B. 制作用デモサイトの準備
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>制作を始める前に、制作用デモサイトを確認します。</strong>
+                </p>
+                <ul class="item-list">
+                    <li>制作用デモサイトは12個用意されている</li>
+                    <li>URL・ID・PASSは別途送付されるtextデータで確認</li>
+                    <li>先行制作や仮環境として使用可能</li>
+                </ul>
+                <div class="info-box" style="margin-top: 20px;">
+                    <strong>💡 重要：</strong>
+                    <p style="margin-top: 10px; color: #555;">
+                        制作デモサイトにデモサイトをインポートすると、既存データが上書きされます。<br>
+                        <strong>推奨：</strong> 案件ごとに別の制作デモサイトを使い分けるか、使用前にバックアップを取っておきましょう。<br>
+                        詳細は「ステップ7：制作開始」を参照してください。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ステップ3 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">3</span>
+                お客様とのLINEグループを作成する
+            </h2>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">👥</span>
+                    A. RUNBIRDがLINEグループを作成
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>RUNBIRD（ランバード事務）が、あなたとお客様を繋ぐLINEグループを作成します。</strong>
+                </p>
+                <ul class="item-list">
+                    <li>グループが作成されたら、すぐにご挨拶を送る</li>
+                    <li>自己紹介と、今後の進め方を簡潔に伝える</li>
+                </ul>
+            </div>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">📹</span>
+                    B. ZOOMのURLを送付する
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>お打ち合わせ用のZOOM URLを送付します。</strong>
+                </p>
+                <div class="code-block">
+【送付例】
+お世話になっております。
+○○様のWEBサイト制作を担当させていただく、○○と申します。
+
+お打ち合わせのZOOM URLをお送りいたします。
+[ZOOM URLを貼り付け]
+
+よろしくお願いいたします。
+                </div>
+            </div>
+        </div>
+
+        <!-- ステップ4 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">4</span>
+                お打ち合わせ前のチェックリスト
+            </h2>
+
+            <div class="checklist">
+                <div class="checklist-item">お客様情報PDFを確認した</div>
+                <div class="checklist-item">デモサイトを確認し、どのテンプレートを使うかイメージできた</div>
+                <div class="checklist-item">制作用デモサイトのURL・ID・PASSを確認した</div>
+                <div class="checklist-item">お打ち合わせ日時が確定した</div>
+                <div class="checklist-item">LINEグループでご挨拶とZOOM URLを送付した</div>
+                <div class="checklist-item">お打ち合わせで確認したい質問事項をリストアップした</div>
+            </div>
+        </div>
+
+        <!-- ステップ5 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">5</span>
+                お打ち合わせで確認すること
+            </h2>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">📋</span>
+                    必ず確認すべき項目
+                </h3>
+                <ul class="item-list">
+                    <li><strong>ドメインの確定</strong>
+                        <div class="sub-item">使用するドメイン名を決める。確定したらRUNBIRDに共有する必要がある</div>
+                    </li>
+                    <li><strong>デザインの方向性</strong>
+                        <div class="sub-item">どのデザインテンプレートをベースにするか、カラーやフォントの希望</div>
+                    </li>
+                    <li><strong>コンテンツの素材</strong>
+                        <div class="sub-item">使用する写真・ロゴの有無、文章の提供方法</div>
+                    </li>
+                    <li><strong>制作スケジュール</strong>
+                        <div class="sub-item">納品希望日（約1ヶ月半で想定）</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 注意事項 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-icon">⚠️</span>
+                注意事項
+            </h2>
+
+            <div class="warning-box">
+                <strong>📝 コミュニケーションの記録</strong>
+                <ul class="item-list" style="margin-top: 15px;">
+                    <li><strong>お客様とのやり取りは必ずログを残す</strong>
+                        <div class="sub-item">LINEのやり取り、ZOOMの録画（可能であれば）、電話の場合は内容をメモ</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="warning-box" style="margin-top: 20px;">
+                <strong>📞 連絡がつかない場合</strong>
+                <p style="margin-top: 10px; color: #555;">
+                    <strong>2-3日返信がない、既読がつかない、電話に出ない場合：</strong>
+                </p>
+                <ul class="item-list" style="margin-top: 15px;">
+                    <li>すぐにRUNBIRD（ランバード事務）に共有</li>
+                    <li>営業がバックアップ対応する</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 連絡先まとめ -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-icon">📞</span>
+                連絡先まとめ
+            </h2>
+
+            <table class="contact-table">
+                <thead>
+                    <tr>
+                        <th>用途</th>
+                        <th>連絡先</th>
+                        <th>方法</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>発注依頼・情報共有</td>
+                        <td>ランバード事務</td>
+                        <td>LINE</td>
+                    </tr>
+                    <tr>
+                        <td>お客様とのやり取り</td>
+                        <td>各お客様</td>
+                        <td>LINE（ログ必須）</td>
+                    </tr>
+                    <tr>
+                        <td>納品完了・請求書送付</td>
+                        <td>seisaku@runbird.net</td>
+                        <td>メール</td>
+                    </tr>
+                    <tr>
+                        <td>本番環境の管理者設定</td>
+                        <td>info@rb-demo.net<br>ID: rbweb<br>PASS: bizcloud0531</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- お打ち合わせ後の流れ -->
+        <!-- ============================================ -->
+
+        <!-- 区切り線 -->
+        <div style="margin: 60px 0; text-align: center; border-top: 3px dashed #2563eb; padding-top: 40px;">
+            <h2 style="color: #1e40af; font-size: 2rem; margin-bottom: 20px;">
+                ✨ お打ち合わせ後の流れ
+            </h2>
+            <p style="color: #666; font-size: 1.1rem;">
+                お打ち合わせが完了したら、以下のステップで制作を進めます
+            </p>
+        </div>
+
+        <!-- ステップ6：取得ドメインの共有 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">6</span>
+                取得ドメインの共有
+            </h2>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">🌐</span>
+                    ドメインが確定した場合
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>お打ち合わせでドメインが確定したら、RUNBIRD（ランバード事務）に共有します。</strong>
+                </p>
+                <ul class="item-list">
+                    <li>確定したドメイン名をLINEで共有</li>
+                    <li>RUNBIRDがドメインを取得し、ログインのID・PASSと一緒に送付してくれる</li>
+                    <li>送付された情報を確認し、本番環境の準備を進める</li>
+                </ul>
+            </div>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">⏳</span>
+                    ドメインが未確定の場合（よくあるケース）
+                </h3>
+                <p style="margin-bottom: 20px; color: #555; line-height: 1.8;">
+                    <strong>お打ち合わせ時点でドメインがまだ決まっていない場合でも、制作を進めることができます。</strong><br>
+                    以下の流れで進めます：
+                </p>
+
+                <!-- フローチャート風の説明 -->
+                <div style="background: #f8fafc; padding: 25px; border-radius: 10px; border-left: 4px solid #3b82f6; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                        <div style="background: #3b82f6; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-right: 15px;">
+                            1
+                        </div>
+                        <div>
+                            <h4 style="color: #1e40af; margin-bottom: 8px; font-size: 1.1rem;">
+                                <strong>制作用デモサイトで制作を開始</strong>
+                            </h4>
+                            <p style="color: #555; line-height: 1.8;">
+                                ドメインが決まるのを待たずに、制作用デモサイト（12個用意されている）を使って制作を始めます。<br>
+                                例：<code>demo-site-01.rb-demo.net</code> のようなURLで制作を進めます。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin: 15px 0; color: #3b82f6; font-size: 1.5rem;">↓</div>
+
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                        <div style="background: #3b82f6; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-right: 15px;">
+                            2
+                        </div>
+                        <div>
+                            <h4 style="color: #1e40af; margin-bottom: 8px; font-size: 1.1rem;">
+                                <strong>お客様がドメインを決める</strong>
+                            </h4>
+                            <p style="color: #555; line-height: 1.8;">
+                                お客様が「このドメインにしたい」と決めたら、そのドメイン名をRUNBIRD（ランバード事務）にLINEで共有します。<br>
+                                例：「ドメインは <code>example-shop.com</code> でお願いします」
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin: 15px 0; color: #3b82f6; font-size: 1.5rem;">↓</div>
+
+                    <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+                        <div style="background: #3b82f6; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-right: 15px;">
+                            3
+                        </div>
+                        <div>
+                            <h4 style="color: #1e40af; margin-bottom: 8px; font-size: 1.1rem;">
+                                <strong>RUNBIRDがドメインを取得・設定</strong>
+                            </h4>
+                            <p style="color: #555; line-height: 1.8;">
+                                RUNBIRDがドメインを取得し、サーバーに設定します。<br>
+                                その後、以下の情報をLINEで送付してくれます：
+                            </p>
+                            <ul style="margin-top: 10px; padding-left: 20px; color: #555;">
+                                <li>ドメイン名（例：<code>example-shop.com</code>）</li>
+                                <li>WordPressのログインURL</li>
+                                <li>ログインID</li>
+                                <li>ログインパスワード</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin: 15px 0; color: #3b82f6; font-size: 1.5rem;">↓</div>
+
+                    <div style="display: flex; align-items: flex-start;">
+                        <div style="background: #10b981; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-right: 15px;">
+                            4
+                        </div>
+                        <div>
+                            <h4 style="color: #059669; margin-bottom: 8px; font-size: 1.1rem;">
+                                <strong>本番環境に制作したサイトを移行</strong>
+                            </h4>
+                            <p style="color: #555; line-height: 1.8;">
+                                RUNBIRDから送付されたログイン情報で本番環境にアクセスし、<br>
+                                制作用デモサイトで制作したサイトをAll-in-One WP Migrationで本番環境に移行します。<br>
+                                <strong>これで、お客様のドメイン（例：<code>example-shop.com</code>）でサイトが公開されます。</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight-box" style="margin-top: 20px;">
+                    <strong>💡 わかりやすく言うと：</strong>
+                    <p style="margin-top: 10px; color: #555; line-height: 1.8;">
+                        <strong>1. まず仮の場所（制作用デモサイト）でサイトを作る</strong><br>
+                        <strong>2. お客様が「このドメインにしたい」と決める</strong><br>
+                        <strong>3. RUNBIRDがそのドメインを取得して、本番用のサーバーを準備する</strong><br>
+                        <strong>4. 作ったサイトを本番環境に移す</strong><br>
+                        <br>
+                        つまり、<strong>ドメインが決まる前から制作を始められる</strong>ので、スピーディーに進められます！
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>📌 まとめ：</strong>
+                <ul class="item-list" style="margin-top: 15px;">
+                    <li>ドメインが未確定でも、制作用デモサイトで制作を開始できる</li>
+                    <li>ドメインが決まったら、RUNBIRDに共有する</li>
+                    <li>RUNBIRDがドメインを取得し、ログイン情報を送付してくれる</li>
+                    <li>そのログイン情報で本番環境にアクセスし、制作したサイトを移行する</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ステップ7：制作開始 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">7</span>
+                制作開始
+            </h2>
+
+            <div class="warning-box" style="margin-bottom: 30px;">
+                <strong>⚠️ 重要：制作デモサイトの使い方</strong>
+                <p style="margin-top: 15px; color: #555; line-height: 1.8;">
+                    <strong>All-in-One WP Migrationでデモサイトをインポートすると、制作デモサイトの既存データが上書きされてしまいます。</strong><br>
+                    元の制作デモサイトを残したい場合は、以下のいずれかの方法を取ってください。
+                </p>
+            </div>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">💾</span>
+                    方法1：制作デモサイトをバックアップしてから使用
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>インポート前に、制作デモサイトのバックアップを取ります。</strong>
+                </p>
+                <ol style="padding-left: 20px; line-height: 2;">
+                    <li style="margin-bottom: 10px;">
+                        <strong>All-in-One WP Migrationを有効化</strong>
+                        <div class="sub-item">WordPress管理画面 → プラグイン → All-in-One WP Migrationを有効化</div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <strong>バックアップをエクスポート</strong>
+                        <div class="sub-item">All-in-One WP Migration → エクスポート → ファイルをダウンロード</div>
+                        <div class="sub-item">ファイル名に「制作デモサイト_元データ_日付」などと記載しておく</div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <strong>デモサイトをインポート</strong>
+                        <div class="sub-item">All-in-One WP Migration → インポート → デモサイトのバックアップファイルを選択</div>
+                    </li>
+                    <li style="margin-bottom: 10px;">
+                        <strong>制作完了後、必要に応じて元のデータを復元</strong>
+                        <div class="sub-item">別の制作デモサイトを使う場合は、元のデータを復元して再利用可能</div>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">🔄</span>
+                    方法2：別の制作デモサイトを使用（推奨）
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>制作デモサイトは12個用意されているので、案件ごとに別のサイトを使い分けます。</strong>
+                </p>
+                <ul class="item-list">
+                    <li><strong>案件ごとに専用の制作デモサイトを割り当てる</strong>
+                        <div class="sub-item">例：案件A → 制作デモサイト1、案件B → 制作デモサイト2</div>
+                    </li>
+                    <li><strong>使用済みの制作デモサイトは記録しておく</strong>
+                        <div class="sub-item">どのサイトをどの案件で使ったか管理しておくと便利</div>
+                    </li>
+                    <li><strong>制作完了後もそのまま残しておく</strong>
+                        <div class="sub-item">後から確認や修正が必要な場合に便利</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">🎨</span>
+                    制作の進め方
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>サイトの制作を開始します。</strong>
+                </p>
+                <ul class="item-list">
+                    <li><strong>デモサイトのインポート</strong>
+                        <div class="sub-item">All-in-One WP Migrationを使用して、ベースとなるデモサイトをインポート</div>
+                        <div class="sub-item">※通常時はAll-in-One WP Migrationを無効化しておく</div>
+                        <div class="sub-item">※インポート前に上記の方法1または方法2で準備をしておく</div>
+                    </li>
+                    <li><strong>デザインのカスタマイズ</strong>
+                        <div class="sub-item">Lightningテーマを使用し、VK Block Patternsからテンプレートをコピー＆ペースト</div>
+                        <div class="sub-item">お客様の要望に合わせてカラー・フォント・レイアウトを調整</div>
+                    </li>
+                    <li><strong>コンテンツの追加</strong>
+                        <div class="sub-item">お客様から提供された写真・ロゴ・文章を使用してコンテンツを作成</div>
+                        <div class="sub-item">既存サイトやInstagramから素材を取得する場合もある</div>
+                    </li>
+                    <li><strong>プラグインの設定</strong>
+                        <div class="sub-item">必要なプラグインを有効化・設定（Yoast SEO、Contact Form 7など）</div>
+                        <div class="sub-item">BackWPupの設定確認（週1回、10個までバックアップを残す設定）</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <strong>📌 制作時の注意点：</strong>
+                <ul class="item-list" style="margin-top: 15px;">
+                    <li>Lightningのシリアルキーを入力して有効化する</li>
+                    <li>VK Block Patterns（https://patterns.vektor-inc.co.jp/）からブロックをコピー＆ペーストして使用できる</li>
+                    <li>プラグインは必要に応じて追加・削除可能</li>
+                    <li>制作中は定期的にバックアップを取る</li>
+                    <li><strong>制作デモサイトを使う前に、必ずバックアップを取るか、別のサイトを使う</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ステップ8：ユーザー設定の追加 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">8</span>
+                ユーザー設定の追加
+            </h2>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">👤</span>
+                    本番環境でのユーザー設定
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>本番環境では、必ず2つのユーザー設定を行います。</strong>
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                    <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; border-left: 4px solid #0ea5e9;">
+                        <h4 style="color: #0284c7; margin-bottom: 15px; font-size: 1.1rem;">
+                            <strong>1. お客様のユーザー設定</strong>
+                        </h4>
+                        <ul class="item-list">
+                            <li>お客様のメールアドレスを使用</li>
+                            <li>ID・PASSはお客様から希望をいただくか、覚えやすいものを設定</li>
+                            <li>管理者権限を付与</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #fef3c7; padding: 20px; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                        <h4 style="color: #d97706; margin-bottom: 15px; font-size: 1.1rem;">
+                            <strong>2. RUNBIRDの管理者設定</strong>
+                        </h4>
+                        <ul class="item-list">
+                            <li>メール: info@rb-demo.net</li>
+                            <li>ID: rbweb</li>
+                            <li>PASS: bizcloud0531</li>
+                            <li>管理者権限を付与</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ 重要：</strong>
+                <p style="margin-top: 10px; color: #555;">
+                    デモサイトをインポートすると、ユーザー設定も置き換わってしまうため、必ず上記の2つのユーザー設定を行ってください。
+                    仮環境の場合には御社のアドレスでユーザー設定を行っていただいても構いません。
+                </p>
+            </div>
+        </div>
+
+        <!-- ステップ9：お客様確認 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">9</span>
+                お客様確認
+            </h2>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">👀</span>
+                    確認依頼の送付
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>制作したサイトは必ずお客様確認をお願いします。</strong>
+                </p>
+                <ul class="item-list">
+                    <li>制作が完了したら、お客様に確認依頼を送付</li>
+                    <li>サイトのURLとログイン情報を共有</li>
+                    <li>確認していただきたいポイントを明確に伝える</li>
+                    <li>修正依頼があれば対応し、再度確認を依頼</li>
+                </ul>
+            </div>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">📝</span>
+                    確認依頼メッセージ例
+                </h3>
+                <div class="code-block">
+【確認依頼例】
+お世話になっております。
+
+WEBサイトの制作が完了いたしましたので、
+ご確認をお願いいたします。
+
+【確認URL】
+[サイトのURL]
+
+【ログイン情報】
+ID: [お客様のID]
+PASS: [お客様のPASS]
+
+ご確認いただき、修正点などございましたら
+お知らせください。
+
+よろしくお願いいたします。
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 ポイント：</strong>
+                お客様確認は必ず行い、OKをもらってから納品に進みます。修正依頼がある場合は、丁寧に対応しましょう。
+            </div>
+        </div>
+
+        <!-- ステップ10：納品 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">10</span>
+                納品
+            </h2>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">📦</span>
+                    納品時の共有事項
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>お客様確認がOKになりましたら、RUNBIRD（ランバード事務）に納品完了を共有します。</strong>
+                </p>
+                <ul class="item-list">
+                    <li><strong>納品完了の報告</strong>
+                        <div class="sub-item">LINEで「○○様のサイト、納品完了しました」と報告</div>
+                    </li>
+                    <li><strong>お客様へのログイン情報の共有</strong>
+                        <div class="sub-item">お客様に共有しているログインのID・PASSも合わせてRUNBIRDに送付</div>
+                    </li>
+                    <li><strong>制作完了の確認</strong>
+                        <div class="sub-item">サイトのURL、制作内容の概要を共有</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">📋</span>
+                    納品時に共有する情報
+                </h3>
+                <div class="checklist">
+                    <div class="checklist-item">サイトのURL</div>
+                    <div class="checklist-item">お客様のログインID・PASS</div>
+                    <div class="checklist-item">制作内容の概要</div>
+                    <div class="checklist-item">特記事項（あれば）</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>💡 次のステップ：</strong>
+                納品後、RUNBIRDがbizクラウドの設定を行います。お客様からbizクラウドの設定について聞かれたら、
+                「WEBサイトの制作が完了し納品後に行います」とお伝えください。
+            </div>
+        </div>
+
+        <!-- ステップ11：請求書の送付 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="step-number">11</span>
+                請求書の送付
+            </h2>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">💰</span>
+                    請求書送付のタイミング
+                </h3>
+                <p style="margin-bottom: 15px; color: #555;">
+                    <strong>納品完了後、請求書を送付します。</strong>
+                </p>
+                <ul class="item-list">
+                    <li><strong>送付先</strong>
+                        <div class="sub-item">seisaku@runbird.net</div>
+                    </li>
+                    <li><strong>送付方法</strong>
+                        <div class="sub-item">メールでPDFを送付</div>
+                    </li>
+                    <li><strong>記載事項</strong>
+                        <div class="sub-item">事業者登録番号が記載された請求書</div>
+                    </li>
+                    <li><strong>複数案件の場合</strong>
+                        <div class="sub-item">複数の案件分をまとめて送付していただけると大変助かります</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>📌 請求書送付のチェックリスト：</strong>
+                <ul class="item-list" style="margin-top: 15px;">
+                    <li>事業者登録番号が記載されているか</li>
+                    <li>案件名・金額が正しいか</li>
+                    <li>PDF形式で送付しているか</li>
+                    <li>送付先メールアドレス（seisaku@runbird.net）が正しいか</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- よくある質問 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-icon">❓</span>
+                よくある質問・対応方法
+            </h2>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">🤔</span>
+                    bizクラウドについて聞かれたら
+                </h3>
+                <div class="info-box">
+                    <strong>Q: bizクラウドの設定はいつ行うのか？</strong>
+                    <p style="margin-top: 10px; color: #555;">
+                        <strong>A:</strong> WEBサイトの制作が完了し納品後とお伝えください。<br>
+                        対応が必要な場合にはRUNBIRD（ランバード事務）に共有してください。
+                    </p>
+                </div>
+            </div>
+
+            <div class="category-box">
+                <h3 class="category-title">
+                    <span class="category-icon">📞</span>
+                    お客様と連絡がつかなくなったら
+                </h3>
+                <div class="warning-box">
+                    <strong>状況：</strong>
+                    <ul class="item-list" style="margin-top: 15px;">
+                        <li>2-3日返信がない</li>
+                        <li>追いでLINEを送っているが既読がつかない</li>
+                        <li>電話に出てくれずコミュニケーションがとれない</li>
+                    </ul>
+                    <p style="margin-top: 15px; color: #555;">
+                        <strong>対応：</strong> すぐにRUNBIRD（ランバード事務）に共有してください。<br>
+                        担当の営業よりご連絡いたします。<br>
+                        営業からのバックの前にお客様からの返信がありましたら共有をお願いします。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 制作の流れまとめ -->
+        <div class="section" style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); border: 3px solid #6366f1;">
+            <h2 class="section-title" style="color: #4338ca;">
+                <span class="section-icon">🔄</span>
+                制作の流れまとめ（全体像）
+            </h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin: 30px 0; gap: 15px;">
+                <div class="flow-box" style="border-color: #6366f1; min-width: 120px;">
+                    <h4 style="color: #4338ca; margin-bottom: 10px; font-size: 1rem;">1. 発注依頼</h4>
+                </div>
+                <div style="font-size: 1.5rem; color: #6366f1;">→</div>
+                <div class="flow-box" style="border-color: #6366f1; min-width: 120px;">
+                    <h4 style="color: #4338ca; margin-bottom: 10px; font-size: 1rem;">2. ZOOM送付</h4>
+                </div>
+                <div style="font-size: 1.5rem; color: #6366f1;">→</div>
+                <div class="flow-box" style="border-color: #6366f1; min-width: 120px;">
+                    <h4 style="color: #4338ca; margin-bottom: 10px; font-size: 1rem;">3. 打ち合わせ</h4>
+                </div>
+                <div style="font-size: 1.5rem; color: #6366f1;">→</div>
+                <div class="flow-box" style="border-color: #6366f1; min-width: 120px;">
+                    <h4 style="color: #4338ca; margin-bottom: 10px; font-size: 1rem;">4. ドメイン共有</h4>
+                </div>
+                <div style="font-size: 1.5rem; color: #6366f1;">→</div>
+                <div class="flow-box" style="border-color: #6366f1; min-width: 120px;">
+                    <h4 style="color: #4338ca; margin-bottom: 10px; font-size: 1rem;">5. 制作開始</h4>
+                </div>
+                <div style="font-size: 1.5rem; color: #6366f1;">→</div>
+                <div class="flow-box" style="border-color: #6366f1; min-width: 120px;">
+                    <h4 style="color: #4338ca; margin-bottom: 10px; font-size: 1rem;">6. ユーザー設定</h4>
+                </div>
+                <div style="font-size: 1.5rem; color: #6366f1;">→</div>
+                <div class="flow-box" style="border-color: #6366f1; min-width: 120px;">
+                    <h4 style="color: #4338ca; margin-bottom: 10px; font-size: 1rem;">7. お客様確認</h4>
+                </div>
+                <div style="font-size: 1.5rem; color: #6366f1;">→</div>
+                <div class="flow-box" style="border-color: #6366f1; min-width: 120px;">
+                    <h4 style="color: #4338ca; margin-bottom: 10px; font-size: 1rem;">8. 納品</h4>
+                </div>
+                <div style="font-size: 1.5rem; color: #6366f1;">→</div>
+                <div class="flow-box" style="border-color: #6366f1; min-width: 120px;">
+                    <h4 style="color: #4338ca; margin-bottom: 10px; font-size: 1rem;">9. 請求書送付</h4>
+                </div>
+            </div>
+            <div class="info-box" style="margin-top: 30px;">
+                <strong>⏱️ 制作期間の目安：</strong>
+                お打ち合わせから納品まで約1ヶ月半を想定しています。
+            </div>
+        </div>
+
+        <!-- 次のステップ -->
+        <div class="next-step">
+            <h3>🎯 制作完了まで</h3>
+            <p style="font-size: 1.1rem; color: #1e40af; margin-top: 10px;">
+                <strong>お打ち合わせが完了したら：</strong><br>
+                → <strong>ステップ6：取得ドメインの共有</strong> から制作を開始します
+            </p>
+        </div>
+
+        <!-- フッター -->
+        <div class="footer">
+            <p style="font-size: 0.95rem; color: #999;">
+                <strong>作成日</strong>: 2026年1月<br>
+                <strong>参照元</strong>: 協力会社様向けWEBサイト制作資料.pdf
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
