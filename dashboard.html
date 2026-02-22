@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ニコニコカーローン 広告レポート（2/20〜2/21）</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --primary: #1a73e8;
+    --primary-light: #e8f0fe;
+    --danger: #d93025;
+    --danger-light: #fce8e6;
+    --warning: #f9ab00;
+    --warning-light: #fef7e0;
+    --success: #1e8e3e;
+    --success-light: #e6f4ea;
+    --gray-50: #f8f9fa;
+    --gray-100: #f1f3f4;
+    --gray-200: #e8eaed;
+    --gray-300: #dadce0;
+    --gray-600: #5f6368;
+    --gray-800: #3c4043;
+    --gray-900: #202124;
+    --sidebar-width: 240px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-900);
+    line-height: 1.6;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: var(--sidebar-width);
+    background: #0d47a1;
+    color: white;
+    padding: 0;
+    z-index: 100;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-logo {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .sidebar-logo h1 { font-size: 16px; font-weight: 700; letter-spacing: 0.5px; }
+  .sidebar-logo .sub { font-size: 11px; opacity: 0.7; margin-top: 2px; }
+  .sidebar-nav { padding: 12px 0; flex: 1; }
+  .sidebar-nav a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 20px; color: rgba(255,255,255,0.7);
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    transition: all 0.2s; border-left: 3px solid transparent;
+  }
+  .sidebar-nav a:hover, .sidebar-nav a.active {
+    background: rgba(255,255,255,0.1); color: white; border-left-color: #64b5f6;
+  }
+  .sidebar-nav .nav-icon { width: 18px; text-align: center; font-size: 14px; }
+  .sidebar-nav .section-label {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(255,255,255,0.4); padding: 16px 20px 6px;
+  }
+  .sidebar-footer {
+    padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 11px; opacity: 0.5;
+  }
+
+  /* Main */
+  .main { margin-left: var(--sidebar-width); padding: 24px 32px; min-height: 100vh; }
+
+  /* Top Bar */
+  .top-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
+  }
+  .top-bar h2 { font-size: 22px; font-weight: 700; }
+  .last-update { font-size: 12px; color: var(--gray-600); }
+
+  /* Section */
+  .section {
+    background: white; border-radius: 12px; padding: 24px;
+    margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .section-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--gray-200); flex-wrap: wrap; gap: 8px;
+  }
+  .section-header h3 { font-size: 16px; font-weight: 600; }
+
+  /* Badge */
+  .badge { font-size: 11px; padding: 2px 10px; border-radius: 12px; font-weight: 600; }
+  .badge-danger { background: var(--danger-light); color: var(--danger); }
+  .badge-warning { background: var(--warning-light); color: #e37400; }
+  .badge-success { background: var(--success-light); color: var(--success); }
+  .badge-info { background: var(--primary-light); color: var(--primary); }
+
+  /* Grid */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+  /* KPI Cards */
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .kpi-card {
+    background: white; border-radius: 12px; padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06); position: relative; overflow: hidden;
+  }
+  .kpi-card .kpi-label { font-size: 12px; color: var(--gray-600); font-weight: 500; margin-bottom: 6px; }
+  .kpi-card .kpi-value { font-size: 32px; font-weight: 700; line-height: 1.1; margin-bottom: 6px; }
+  .kpi-card .kpi-sub { font-size: 11px; color: var(--gray-600); }
+  .kpi-card .kpi-accent { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; }
+
+  /* Tables */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .data-table thead th {
+    background: var(--gray-50); padding: 10px 12px; text-align: left;
+    font-weight: 600; font-size: 12px; color: var(--gray-600);
+    border-bottom: 2px solid var(--gray-200);
+  }
+  .data-table tbody td { padding: 10px 12px; border-bottom: 1px solid var(--gray-100); }
+  .data-table tbody tr:hover { background: var(--gray-50); }
+  .data-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .highlight-row { background: var(--success-light) !important; }
+  .dead-row { background: var(--danger-light) !important; }
+
+  /* Funnel */
+  .funnel { display: flex; flex-direction: column; align-items: center; gap: 0; margin: 16px 0; }
+  .funnel-step {
+    padding: 14px 24px; text-align: center; color: white; font-weight: 600;
+    border-radius: 8px; margin: 2px 0;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .funnel-step .f-label { font-size: 13px; opacity: 0.9; }
+  .funnel-step .f-value { font-size: 24px; }
+  .funnel-rate {
+    font-size: 12px; color: var(--gray-600); background: var(--gray-100);
+    padding: 3px 14px; border-radius: 10px; text-align: center; font-weight: 600;
+  }
+
+  /* Benchmark visual */
+  .benchmark-hero {
+    background: linear-gradient(135deg, #1a237e 0%, #0d47a1 50%, #1565c0 100%);
+    color: white; border-radius: 16px; padding: 32px;
+    margin-bottom: 24px; position: relative; overflow: hidden;
+  }
+  .benchmark-hero::before {
+    content: ''; position: absolute; top: -50%; right: -20%;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+  .benchmark-hero h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .benchmark-hero .hero-sub { font-size: 14px; opacity: 0.8; margin-bottom: 24px; }
+  .benchmark-numbers {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px;
+    align-items: center; margin-bottom: 24px;
+  }
+  .bench-num-block { text-align: center; }
+  .bench-num-block .num-label { font-size: 12px; opacity: 0.7; margin-bottom: 4px; }
+  .bench-num-block .num-value { font-size: 40px; font-weight: 800; line-height: 1; }
+  .bench-num-block .num-unit { font-size: 14px; opacity: 0.7; }
+  .bench-vs { font-size: 24px; opacity: 0.4; }
+  .bench-gap {
+    background: rgba(255,255,255,0.1); border-radius: 12px; padding: 16px 20px;
+    border-left: 4px solid #ff6b6b;
+  }
+  .bench-gap .gap-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: #ff6b6b; }
+  .bench-gap .gap-text { font-size: 13px; opacity: 0.9; line-height: 1.7; }
+  .bench-note {
+    background: rgba(255,255,255,0.08); border-radius: 8px; padding: 12px 16px;
+    font-size: 12px; opacity: 0.8; margin-top: 16px; line-height: 1.7;
+  }
+
+  /* Chart Container */
+  .chart-container { position: relative; height: 280px; margin: 16px 0; }
+
+  /* Info boxes */
+  .info-box { padding: 12px 16px; border-radius: 8px; font-size: 13px; margin-top: 16px; }
+  .info-success { background: var(--success-light); color: #1b5e20; }
+  .info-warning { background: var(--warning-light); color: #e65100; }
+  .info-primary { background: var(--primary-light); color: #0d47a1; }
+  .info-danger { background: var(--danger-light); color: var(--danger); }
+
+  /* Donut */
+  .donut-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .donut-title { font-size: 13px; font-weight: 600; color: var(--gray-800); }
+  .donut-container { position: relative; width: 120px; height: 120px; }
+  .donut-center-text {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); text-align: center; pointer-events: none;
+  }
+  .donut-center-text .val { font-size: 20px; font-weight: 700; }
+  .donut-center-text .label { font-size: 10px; color: var(--gray-600); }
+
+  /* Tab content */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Scroll heatmap visual */
+  .scroll-bar-wrap { display: flex; gap: 16px; }
+  .scroll-bar {
+    width: 60px; min-height: 400px; border-radius: 8px; position: relative;
+    background: linear-gradient(to bottom,
+      #d32f2f 0%, #f57c00 15%, #fbc02d 30%, #66bb6a 50%, #42a5f5 70%, #7e57c2 90%, #424242 100%);
+    overflow: hidden;
+  }
+  .scroll-marker {
+    position: absolute; left: 0; right: 0; height: 2px; background: rgba(0,0,0,0.3);
+  }
+  .scroll-labels { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+  .scroll-label-item { font-size: 12px; display: flex; align-items: center; gap: 8px; }
+  .scroll-label-item .pct { font-weight: 700; min-width: 40px; }
+
+  /* KW Tags */
+  .kw-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .kw-tag {
+    font-size: 12px; padding: 4px 10px; border-radius: 16px;
+    border: 1px solid var(--gray-300); background: white;
+  }
+  .kw-tag.good { background: var(--success-light); border-color: #a8dab5; color: var(--success); }
+  .kw-tag.bad { background: var(--danger-light); border-color: #f5c6cb; color: var(--danger); }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr 1fr; }
+    .grid-4 { grid-template-columns: 1fr 1fr; }
+    .benchmark-numbers { grid-template-columns: 1fr; }
+    .bench-vs { display: none; }
+  }
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { margin-left: 0; padding: 16px; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <h1>ニコニコカーローン</h1>
+    <div class="sub">広告レポート</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="section-label">レポート</div>
+    <a href="#" class="active" onclick="showSection('overview')"><span class="nav-icon">1</span>業界ベンチマーク</a>
+    <a href="#" onclick="showSection('funnel')"><span class="nav-icon">2</span>実績ファネル</a>
+    <a href="#" onclick="showSection('heatmap')"><span class="nav-icon">3</span>ヒートマップ</a>
+    <a href="#" onclick="showSection('ads')"><span class="nav-icon">4</span>Google広告 詳細</a>
+    <div class="section-label">分析</div>
+    <a href="#" onclick="showSection('keywords')"><span class="nav-icon">5</span>キーワード分析</a>
+    <a href="#" onclick="showSection('users')"><span class="nav-icon">6</span>ユーザー属性</a>
+    <a href="#" onclick="showSection('time')"><span class="nav-icon">7</span>時間帯分析</a>
+    <div class="section-label">改善施策</div>
+    <a href="#" onclick="showSection('measures')"><span class="nav-icon">8</span>改善施策一覧</a>
+  </nav>
+  <div class="sidebar-footer">
+    最終更新: 2026/02/22<br>
+    データ期間: 2/20〜2/21
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div>
+      <h2>ニコニコカーローン 広告レポート</h2>
+      <span class="last-update">集計期間: 2026/02/20（金）14:00 〜 2026/02/21（土）23:59 | 約1.5日分</span>
+    </div>
+  </div>
+
+  <!-- ===== 1. 業界ベンチマーク ===== -->
+  <div id="section-overview" class="tab-content active">
+
+    <div class="benchmark-hero">
+      <h3>月45万円のGoogle広告で、問い合わせは月何件が現実的か？</h3>
+      <div class="hero-sub">自動車ローン業界の一般的なベンチマークに基づく試算</div>
+
+      <div class="benchmark-numbers">
+        <div class="bench-num-block">
+          <div class="num-label">お客様の目標</div>
+          <div class="num-value">300<span class="num-unit">件/月</span></div>
+        </div>
+        <div class="bench-vs">VS</div>
+        <div class="bench-num-block">
+          <div class="num-label">業界平均の現実値</div>
+          <div class="num-value" style="color:#ffeb3b;">25〜45<span class="num-unit">件/月</span></div>
+        </div>
+      </div>
+
+      <div class="bench-gap">
+        <div class="gap-title">目標と現実のギャップ: 約7〜12倍</div>
+        <div class="gap-text">
+          月300件を達成するには、CPA（問い合わせ1件あたりの費用）が<strong>¥1,500</strong>になる必要があります。<br>
+          しかし、自動車ローン業界の平均CPAは<strong>¥10,000〜¥15,000</strong>です。<br>
+          月300件の問い合わせには、<strong>月額250万〜450万円</strong>の広告予算が必要です。
+        </div>
+      </div>
+
+      <div class="bench-note">
+        <strong>補足:</strong> 上記はWordStream（2025年版）、LeadGrid、Spider AF等の業界ベンチマークデータに基づいています。
+        実際の数値はランディングページの質、キーワード選定、広告文の最適化、地域ターゲティングなどで変動します。
+        現在のニコニコカーローンの広告はCTR 8.89%と業界平均を大きく上回っており、非常に良好な状態です。
+      </div>
+    </div>
+
+    <!-- ベンチマーク詳細テーブル -->
+    <div class="section">
+      <div class="section-header">
+        <h3>業界ベンチマーク詳細（自動車ローン / 金融サービス）</h3>
+        <span class="badge badge-info">月予算45万円の場合</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>指標</th>
+            <th class="num">業界平均</th>
+            <th class="num">ニコニコ実績<br><small>(1.5日)</small></th>
+            <th>判定</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>CPC（クリック単価）</strong></td>
+            <td class="num">¥400〜¥500</td>
+            <td class="num" style="font-weight:700">¥391</td>
+            <td><span class="badge badge-success">平均以下（良好）</span></td>
+          </tr>
+          <tr>
+            <td><strong>CTR（クリック率）</strong></td>
+            <td class="num">4%〜5%</td>
+            <td class="num" style="color:var(--success);font-weight:700">8.89%</td>
+            <td><span class="badge badge-success">業界上位</span></td>
+          </tr>
+          <tr>
+            <td><strong>CVR（問い合わせ率）</strong></td>
+            <td class="num">2%〜3%</td>
+            <td class="num" style="font-weight:700">1.56%<br><small style="color:var(--gray-600)">(1件/64クリック)</small></td>
+            <td><span class="badge badge-warning">平均以下</span></td>
+          </tr>
+          <tr>
+            <td><strong>CPA（問い合わせ獲得単価）</strong></td>
+            <td class="num">¥10,000〜¥15,000</td>
+            <td class="num" style="color:var(--danger);font-weight:700">¥25,037<br><small style="color:var(--gray-600)">(¥25,037/1件)</small></td>
+            <td><span class="badge badge-danger">平均超過</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:20px;">
+        <h4 style="font-size:14px;margin-bottom:12px;">月45万円で見込める問い合わせ件数（業界シミュレーション）</h4>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>シナリオ</th>
+              <th class="num">CPC</th>
+              <th class="num">月間クリック</th>
+              <th class="num">CVR</th>
+              <th class="num" style="background:var(--primary-light)">月間問い合わせ</th>
+              <th class="num">CPA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>楽観的</td>
+              <td class="num">¥300</td>
+              <td class="num">1,500</td>
+              <td class="num">3%</td>
+              <td class="num" style="font-weight:700;color:var(--success)">45件</td>
+              <td class="num">¥10,000</td>
+            </tr>
+            <tr style="background:var(--primary-light)">
+              <td><strong>現実的（最も可能性が高い）</strong></td>
+              <td class="num">¥450</td>
+              <td class="num">1,000</td>
+              <td class="num">2.5%</td>
+              <td class="num" style="font-weight:700;color:var(--primary)"><strong>25件</strong></td>
+              <td class="num">¥18,000</td>
+            </tr>
+            <tr>
+              <td>保守的</td>
+              <td class="num">¥600</td>
+              <td class="num">750</td>
+              <td class="num">2%</td>
+              <td class="num" style="font-weight:700">15件</td>
+              <td class="num">¥30,000</td>
+            </tr>
+            <tr style="background:var(--success-light)">
+              <td><strong>最大限の最適化</strong></td>
+              <td class="num">¥250</td>
+              <td class="num">1,800</td>
+              <td class="num">4%</td>
+              <td class="num" style="font-weight:700;color:var(--success)"><strong>72件</strong></td>
+              <td class="num">¥6,250</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-danger" style="margin-top:16px;">
+        <strong>月300件を達成するために必要な予算:</strong><br>
+        楽観的（CPA ¥8,000）→ <strong>約240万円/月</strong> ｜
+        現実的（CPA ¥12,000）→ <strong>約360万円/月</strong> ｜
+        保守的（CPA ¥15,000）→ <strong>約450万円/月</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 2. 実績ファネル ===== -->
+  <div id="section-funnel" class="tab-content">
+
+    <div class="section">
+      <div class="section-header">
+        <h3>実績ファネル（2/20 14:00 〜 2/21 23:59）</h3>
+        <span class="badge badge-info">約1.5日分の実績</span>
+      </div>
+
+      <!-- KPI 3枚 -->
+      <div class="grid-3" style="margin-bottom:24px;">
+        <div class="kpi-card" style="border-left:4px solid var(--primary);">
+          <div class="kpi-label">広告からの流入数（クリック）</div>
+          <div class="kpi-value" style="color:var(--primary);">64<span style="font-size:14px;color:var(--gray-600)"> クリック</span></div>
+          <div class="kpi-sub">表示回数: 720 ｜ CTR: 8.89% ｜ 費用: ¥25,037</div>
+        </div>
+        <div class="kpi-card" style="border-left:4px solid #00b900;">
+          <div class="kpi-label">LINE相談ボタンを押した人</div>
+          <div class="kpi-value" style="color:#00b900;">7<span style="font-size:14px;color:var(--gray-600)"> 人</span></div>
+          <div class="kpi-sub">クリック→LINEタップ率: 10.9%</div>
+        </div>
+        <div class="kpi-card" style="border-left:4px solid var(--success);">
+          <div class="kpi-label">公式LINE登録 & フォーム送信</div>
+          <div class="kpi-value" style="color:var(--success);">1<span style="font-size:14px;color:var(--gray-600)"> 人</span></div>
+          <div class="kpi-sub">LINE友だち: 10名 → 11名（+1名）</div>
+        </div>
+      </div>
+
+      <!-- ファネル図 -->
+      <div class="funnel">
+        <div class="funnel-step" style="width:95%;background:#0d47a1;">
+          <span class="f-label">広告表示回数</span>
+          <span class="f-value">720</span>
+        </div>
+        <div class="funnel-rate">CTR 8.89%</div>
+        <div class="funnel-step" style="width:78%;background:#1565c0;">
+          <span class="f-label">広告クリック（LP流入）</span>
+          <span class="f-value">64</span>
+        </div>
+        <div class="funnel-rate">LINE遷移率 10.9%</div>
+        <div class="funnel-step" style="width:55%;background:#00b900;">
+          <span class="f-label">LINE相談ボタンタップ</span>
+          <span class="f-value">7</span>
+        </div>
+        <div class="funnel-rate">登録率 14.3%</div>
+        <div class="funnel-step" style="width:35%;background:#1e8e3e;">
+          <span class="f-label">公式LINE登録 & フォーム送信</span>
+          <span class="f-value" style="color:#ffeb3b;">1</span>
+        </div>
+      </div>
+
+      <div class="info-primary" style="margin-top:16px;">
+        <strong>ファネル分析:</strong>
+        広告クリックからLINEボタンタップまでの遷移率は10.9%。LINEボタンを押した7人中、実際にLINE登録&フォーム送信したのは1名（14.3%）。
+        全体のCVR（クリック→問い合わせ）は <strong>1.56%</strong>（1件/64クリック）。業界平均（2〜3%）をやや下回っており、LP・フォーム改善でCVR向上が必要です。
+      </div>
+    </div>
+
+    <!-- 月間換算 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>月間換算シミュレーション</h3>
+        <span class="badge badge-warning">1.5日分 → 30日換算（参考値）</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>指標</th>
+            <th class="num">1.5日実績</th>
+            <th class="num">月間換算（30日）</th>
+            <th class="num">お客様目標</th>
+            <th>見通し</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>広告費用</td>
+            <td class="num">¥25,037</td>
+            <td class="num">¥450,000<br><small>（予算上限）</small></td>
+            <td class="num">¥450,000</td>
+            <td><span class="badge badge-success">予定通り</span></td>
+          </tr>
+          <tr>
+            <td>クリック数</td>
+            <td class="num">64</td>
+            <td class="num">約1,150</td>
+            <td class="num">-</td>
+            <td><span class="badge badge-info">良好</span></td>
+          </tr>
+          <tr>
+            <td>LINE相談タップ</td>
+            <td class="num">7</td>
+            <td class="num">約126</td>
+            <td class="num">-</td>
+            <td><span class="badge badge-info">参考</span></td>
+          </tr>
+          <tr style="background:var(--warning-light);">
+            <td><strong>LINE登録 & フォーム送信</strong></td>
+            <td class="num" style="font-weight:700">1</td>
+            <td class="num" style="font-weight:700;color:var(--warning)">約18件</td>
+            <td class="num" style="font-weight:700;color:var(--danger)">300件</td>
+            <td><span class="badge badge-danger">大幅乖離</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="info-warning" style="margin-top:12px;">
+        <strong>注意:</strong> 1.5日分のデータのため月間換算は参考値です。
+        ただし、月間約36件のペースは業界ベンチマーク（25〜45件）と合致しており、
+        ¥450,000の予算に対して妥当な数値です。月300件の目標には予算の大幅な増額が必要です。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 3. ヒートマップ ===== -->
+  <div id="section-heatmap" class="tab-content">
+
+    <div class="section">
+      <div class="section-header">
+        <h3>Microsoft Clarity ダッシュボード</h3>
+        <span class="badge badge-info">2/19〜2/21 | 63セッション</span>
+      </div>
+
+      <div class="grid-4" style="margin-bottom:20px;">
+        <div class="kpi-card">
+          <div class="kpi-label">セッション数</div>
+          <div class="kpi-value">63</div>
+          <div class="kpi-sub">ボット: 4 ｜ 実質: 59</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">ユニークユーザー</div>
+          <div class="kpi-value">43</div>
+          <div class="kpi-sub">新規: 47セッション ｜ リピーター: 16</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">平均スクロール深度</div>
+          <div class="kpi-value">63.2<span style="font-size:16px">%</span></div>
+          <div class="kpi-sub">ページの約6割まで閲覧</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">平均アクティブ時間</div>
+          <div class="kpi-value">69<span style="font-size:16px">秒</span></div>
+          <div class="kpi-sub">滞在時間: 219秒（3分39秒）</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <!-- スクロール分析 -->
+        <div class="section" style="margin-bottom:0;">
+          <h4 style="font-size:14px;margin-bottom:16px;">スクロール深度分析（TOPページ）</h4>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th class="num">深度</th>
+                <th class="num">残存ユーザー</th>
+                <th class="num">離脱率</th>
+                <th>状態</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">10%</td><td class="num">112人（100%）</td><td class="num">0%</td><td><span class="badge badge-success">全員閲覧</span></td></tr>
+              <tr><td class="num">25%</td><td class="num">74人（66%）</td><td class="num">34%</td><td><span class="badge badge-warning">1/3離脱</span></td></tr>
+              <tr><td class="num">50%</td><td class="num">58人（52%）</td><td class="num">48%</td><td><span class="badge badge-warning">半数残存</span></td></tr>
+              <tr style="background:var(--primary-light)"><td class="num"><strong>65%</strong></td><td class="num"><strong>56人（50%）</strong></td><td class="num">50%</td><td><span class="badge badge-info">FAQ付近</span></td></tr>
+              <tr><td class="num">75%</td><td class="num">48人（43%）</td><td class="num">57%</td><td><span class="badge badge-info">CTA付近</span></td></tr>
+              <tr><td class="num">100%</td><td class="num">13人（12%）</td><td class="num">88%</td><td><span class="badge badge-danger">最下部</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- アテンション分析 -->
+        <div class="section" style="margin-bottom:0;">
+          <h4 style="font-size:14px;margin-bottom:16px;">注目度ヒートマップ（Attention）</h4>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th class="num">深度</th>
+                <th class="num">平均滞在時間</th>
+                <th class="num">注目度</th>
+                <th>コンテンツ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">5〜10%</td><td class="num">4秒</td><td class="num">1.9%</td><td>ファーストビュー</td></tr>
+              <tr><td class="num">15〜20%</td><td class="num">3秒</td><td class="num">1.4%</td><td>導入部分</td></tr>
+              <tr><td class="num">40〜55%</td><td class="num">1秒</td><td class="num">0.6%</td><td>中間コンテンツ</td></tr>
+              <tr style="background:var(--warning-light)"><td class="num"><strong>60%</strong></td><td class="num"><strong>16秒</strong></td><td class="num" style="font-weight:700;color:var(--warning)"><strong>6.4%</strong></td><td><strong>FAQ入口付近</strong></td></tr>
+              <tr style="background:var(--danger-light)"><td class="num"><strong>65%</strong></td><td class="num"><strong>56秒</strong></td><td class="num" style="font-weight:700;color:var(--danger)"><strong>22.5%</strong></td><td><strong>FAQ本体</strong></td></tr>
+              <tr style="background:var(--danger-light)"><td class="num"><strong>70%</strong></td><td class="num"><strong>1分32秒</strong></td><td class="num" style="font-weight:700;color:var(--danger)"><strong>36.7%</strong></td><td><strong>FAQ本体（最高注目）</strong></td></tr>
+              <tr><td class="num">90〜95%</td><td class="num">10〜13秒</td><td class="num">4.8%</td><td>CTA / フッター付近</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="info-primary" style="margin-top:16px;">
+        <strong>ヒートマップ考察:</strong>
+        ページの<strong>65〜70%地点（FAQ・よくある質問エリア）</strong>にユーザーが最も長く滞在しています（平均56秒〜1分32秒）。
+        これはユーザーが自社ローンについての不安や疑問を解消しようとしている証拠です。
+        FAQの内容を充実させ、その直後にLINE相談ボタンを配置することでCVR改善が期待できます。
+      </div>
+    </div>
+
+    <!-- ユーザー行動 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>ユーザー行動インサイト</h3>
+      </div>
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">スマートイベント</h4>
+          <table class="data-table">
+            <thead><tr><th>イベント</th><th class="num">セッション数</th><th class="num">割合</th></tr></thead>
+            <tbody>
+              <tr><td>アウトバウンドクリック（外部リンク）</td><td class="num">10</td><td class="num">15.87%</td></tr>
+              <tr><td>デッドクリック（反応しない箇所タップ）</td><td class="num">5</td><td class="num">7.94%</td></tr>
+              <tr><td>クイックバッククリック（すぐ戻る）</td><td class="num">7</td><td class="num">11.11%</td></tr>
+              <tr style="background:var(--success-light)"><td><strong>フォーム送信</strong></td><td class="num" style="font-weight:700;color:var(--success)"><strong>1</strong></td><td class="num"><strong>1.59%</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">閲覧ページ</h4>
+          <table class="data-table">
+            <thead><tr><th>ページ</th><th class="num">セッション数</th></tr></thead>
+            <tbody>
+              <tr><td>relief-trust.com/（TOP）</td><td class="num">55</td></tr>
+              <tr><td>relief-trust.com/form/（フォーム）</td><td class="num">16</td></tr>
+            </tbody>
+          </table>
+          <div class="info-success" style="margin-top:12px;">
+            <strong>TOP → フォームへの遷移率: 29.1%</strong>（55セッション中16がフォームページへ移動）
+          </div>
+
+          <h4 style="font-size:14px;margin-top:20px;margin-bottom:12px;">ブラウザ</h4>
+          <table class="data-table">
+            <thead><tr><th>ブラウザ</th><th class="num">セッション</th><th class="num">割合</th></tr></thead>
+            <tbody>
+              <tr><td>Chrome Mobile</td><td class="num">31</td><td class="num">52.5%</td></tr>
+              <tr><td>Mobile Safari</td><td class="num">17</td><td class="num">28.8%</td></tr>
+              <tr><td>Chrome（PC）</td><td class="num">6</td><td class="num">10.2%</td></tr>
+              <tr><td>Google App</td><td class="num">5</td><td class="num">8.5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:20px;">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">パフォーマンススコア</h4>
+          <div style="text-align:center;padding:16px 0;">
+            <div style="width:80px;height:80px;border-radius:50%;border:4px solid var(--success);display:inline-flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:var(--success);">
+              84
+            </div>
+            <div style="font-size:12px;color:var(--gray-600);margin-top:4px;">良好</div>
+          </div>
+          <table class="data-table">
+            <tbody>
+              <tr><td>LCP（読み込み速度）</td><td class="num">2.595秒</td><td><span class="badge badge-warning">やや遅い</span></td></tr>
+              <tr><td>INP（操作応答性）</td><td class="num">160ms</td><td><span class="badge badge-success">良好</span></td></tr>
+              <tr><td>CLS（レイアウト崩れ）</td><td class="num">0</td><td><span class="badge badge-success">完璧</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">ボットトラフィック検知</h4>
+          <table class="data-table">
+            <thead><tr><th>種類</th><th class="num">セッション数</th></tr></thead>
+            <tbody>
+              <tr><td>不審なデバイス</td><td class="num">1</td></tr>
+              <tr><td>不審なネットワーク</td><td class="num">4</td></tr>
+              <tr><td>不審な操作パターン</td><td class="num">4</td></tr>
+              <tr style="background:var(--danger-light)"><td><strong>PPC広告詐欺ボット</strong></td><td class="num" style="font-weight:700;color:var(--danger)"><strong>3</strong></td></tr>
+            </tbody>
+          </table>
+          <div class="info-warning" style="margin-top:12px;">
+            PPC広告詐欺ボットが3セッション検知。63セッション中の4.8%。
+            現状は許容範囲ですが、増加傾向がないか要監視。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 4. Google広告 詳細 ===== -->
+  <div id="section-ads" class="tab-content">
+
+    <div class="section">
+      <div class="section-header">
+        <h3>Google広告 キャンペーン概要</h3>
+        <span class="badge badge-info">ニコニコカーローン_検索</span>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">総費用</div>
+          <div class="kpi-value">¥25,037</div>
+          <div class="kpi-sub">月予算¥450,000の5.6%消化</div>
+          <div class="kpi-accent" style="background:var(--primary)"></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">クリック数</div>
+          <div class="kpi-value">64</div>
+          <div class="kpi-sub">表示回数: 720</div>
+          <div class="kpi-accent" style="background:var(--primary)"></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">CTR</div>
+          <div class="kpi-value" style="color:var(--success)">8.89%</div>
+          <div class="kpi-sub">業界平均: 4〜5%</div>
+          <div class="kpi-accent" style="background:var(--success)"></div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">平均CPC</div>
+          <div class="kpi-value">¥391</div>
+          <div class="kpi-sub">業界平均: ¥400〜500</div>
+          <div class="kpi-accent" style="background:var(--success)"></div>
+        </div>
+      </div>
+
+      <!-- 日別 -->
+      <h4 style="font-size:14px;margin-bottom:12px;">日別パフォーマンス</h4>
+      <table class="data-table">
+        <thead>
+          <tr><th>日付</th><th class="num">クリック</th><th class="num">表示回数</th><th class="num">CPC</th><th class="num">費用</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2/20（金）14:00〜</td>
+            <td class="num">23</td><td class="num">277</td>
+            <td class="num">¥394</td><td class="num">¥9,064</td>
+          </tr>
+          <tr>
+            <td>2/21（土）終日</td>
+            <td class="num">41</td><td class="num">443</td>
+            <td class="num">¥390</td><td class="num">¥15,974</td>
+          </tr>
+          <tr style="font-weight:700;background:var(--gray-50);">
+            <td>合計</td>
+            <td class="num">64</td><td class="num">720</td>
+            <td class="num">¥391</td><td class="num">¥25,037</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- デバイス -->
+      <h4 style="font-size:14px;margin:20px 0 12px;">デバイス別</h4>
+      <table class="data-table">
+        <thead>
+          <tr><th>デバイス</th><th class="num">クリック</th><th class="num">表示回数</th><th class="num">費用</th><th class="num">構成比</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:var(--primary-light);">
+            <td><strong>モバイル</strong></td>
+            <td class="num" style="font-weight:700">63</td><td class="num">692</td>
+            <td class="num">¥24,744</td><td class="num" style="font-weight:700">98.8%</td>
+          </tr>
+          <tr>
+            <td>パソコン</td>
+            <td class="num">1</td><td class="num">25</td>
+            <td class="num">¥293</td><td class="num">1.2%</td>
+          </tr>
+          <tr>
+            <td>タブレット</td>
+            <td class="num">0</td><td class="num">3</td>
+            <td class="num">¥0</td><td class="num">0%</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="info-primary" style="margin-top:12px;">
+        <strong>98.8%がモバイルからの流入。</strong> LPのモバイル最適化が最重要。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 5. キーワード分析 ===== -->
+  <div id="section-keywords" class="tab-content">
+
+    <div class="section">
+      <div class="section-header">
+        <h3>キーワード別パフォーマンス</h3>
+        <span class="badge badge-info">クリック発生KWのみ</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>キーワード</th><th class="num">費用</th><th class="num">Click</th><th class="num">CTR</th><th class="num">CPC</th><th>評価</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>自社ローン 中古車</strong></td>
+            <td class="num">¥8,841</td><td class="num">22</td>
+            <td class="num">8.87%</td><td class="num">¥402</td>
+            <td><span class="badge badge-info">費用最大</span></td>
+          </tr>
+          <tr>
+            <td><strong>自社ローン 福岡</strong></td>
+            <td class="num">¥4,442</td><td class="num">11</td>
+            <td class="num" style="color:var(--success);font-weight:700">14.67%</td><td class="num">¥404</td>
+            <td><span class="badge badge-success">CTR高</span></td>
+          </tr>
+          <tr>
+            <td><strong>自社ローン 専門店</strong></td>
+            <td class="num">¥3,994</td><td class="num">10</td>
+            <td class="num">6.71%</td><td class="num">¥399</td>
+            <td><span class="badge badge-info">標準</span></td>
+          </tr>
+          <tr>
+            <td>車 自社ローン</td>
+            <td class="num">¥2,729</td><td class="num">7</td>
+            <td class="num">6.19%</td><td class="num">¥390</td>
+            <td><span class="badge badge-info">標準</span></td>
+          </tr>
+          <tr>
+            <td>ローン通らない 車</td>
+            <td class="num">¥2,318</td><td class="num">6</td>
+            <td class="num" style="color:var(--success);font-weight:700">12.00%</td><td class="num">¥386</td>
+            <td><span class="badge badge-success">CTR高</span></td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>オートローン 審査落ち</strong></td>
+            <td class="num">¥1,955</td><td class="num">6</td>
+            <td class="num" style="color:var(--success);font-weight:700">19.35%</td><td class="num">¥326</td>
+            <td><span class="badge badge-success">最効率</span></td>
+          </tr>
+          <tr>
+            <td>審査甘い 車ローン</td>
+            <td class="num">¥759</td><td class="num">2</td>
+            <td class="num">6.67%</td><td class="num">¥380</td>
+            <td><span class="badge badge-info">標準</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-success" style="margin-top:16px;">
+        <strong>注目:</strong>「オートローン 審査落ち」がCTR 19.35%・CPC ¥326で最も効率的。
+        「自社ローン 福岡」「ローン通らない 車」もCTR 12%超で好調。
+        審査落ち・通らない系のKW拡充で全体効率の改善が見込めます。
+      </div>
+    </div>
+
+    <!-- 検索クエリ分析 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>検索クエリ分析（ユーザーが実際に検索した語句）</h3>
+      </div>
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">費用が多いクエリ TOP</h4>
+          <div class="chart-container" style="height:320px;">
+            <canvas id="queryChart"></canvas>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">除外推奨キーワード</h4>
+          <div class="kw-tags">
+            <span class="kw-tag bad">カーマッチ（40imp/0click）</span>
+            <span class="kw-tag bad">スリークロス（18imp/0click）</span>
+            <span class="kw-tag bad">オーシャンデザイン（4imp/0click）</span>
+            <span class="kw-tag bad">bond（7imp/0click）</span>
+            <span class="kw-tag bad">カーパークアウトレット（6imp/0click）</span>
+            <span class="kw-tag bad">オトロン（¥795/2click）</span>
+            <span class="kw-tag bad">cボーイ彦根（¥391/1click）</span>
+            <span class="kw-tag bad">カーショップYSK（¥369/1click）</span>
+          </div>
+          <div class="info-warning" style="margin-top:12px;">
+            競合名・無関係語句での無駄な表示とクリックが発生中。
+            除外KW設定で<strong>月間約¥30,000〜50,000の節約</strong>が可能。
+          </div>
+
+          <h4 style="font-size:14px;margin-top:20px;margin-bottom:8px;">良質クエリ（検討顧客の意図合致）</h4>
+          <div class="kw-tags">
+            <span class="kw-tag good">自社ローン 絶対通る 福岡（¥2,818/7click）</span>
+            <span class="kw-tag good">ローン通らない人 専門店</span>
+            <span class="kw-tag good">自社ローン 中古車 福岡</span>
+            <span class="kw-tag good">マイカーローン 審査甘い</span>
+            <span class="kw-tag good">自社ローン 北九州</span>
+            <span class="kw-tag good">自社ローン 宮崎</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 6. ユーザー属性 ===== -->
+  <div id="section-users" class="tab-content">
+    <div class="section">
+      <div class="section-header"><h3>ユーザー属性分析</h3></div>
+      <div class="grid-3">
+        <div class="donut-wrap">
+          <div class="donut-title">性別</div>
+          <div class="donut-container">
+            <canvas id="genderChart"></canvas>
+            <div class="donut-center-text"><div class="val">77%</div><div class="label">男性</div></div>
+          </div>
+        </div>
+        <div class="donut-wrap">
+          <div class="donut-title">年齢層</div>
+          <div class="donut-container">
+            <canvas id="ageChart"></canvas>
+            <div class="donut-center-text"><div class="val">52%</div><div class="label">35-54歳</div></div>
+          </div>
+        </div>
+        <div class="donut-wrap">
+          <div class="donut-title">デバイス</div>
+          <div class="donut-container">
+            <canvas id="deviceChart"></canvas>
+            <div class="donut-center-text"><div class="val">98%</div><div class="label">モバイル</div></div>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="font-size:14px;margin:24px 0 12px;">年齢別 表示回数</h4>
+      <table class="data-table">
+        <thead><tr><th>年齢層</th><th class="num">表示回数</th><th class="num">割合</th></tr></thead>
+        <tbody>
+          <tr><td>18〜24歳</td><td class="num">33</td><td class="num">6.1%</td></tr>
+          <tr><td>25〜34歳</td><td class="num">111</td><td class="num">20.4%</td></tr>
+          <tr style="background:var(--primary-light)"><td><strong>35〜44歳</strong></td><td class="num"><strong>135</strong></td><td class="num" style="font-weight:700"><strong>24.9%</strong></td></tr>
+          <tr style="background:var(--primary-light)"><td><strong>45〜54歳</strong></td><td class="num"><strong>150</strong></td><td class="num" style="font-weight:700"><strong>27.6%</strong></td></tr>
+          <tr><td>55〜64歳</td><td class="num">93</td><td class="num">17.1%</td></tr>
+          <tr><td>65歳以上</td><td class="num">23</td><td class="num">4.2%</td></tr>
+        </tbody>
+      </table>
+      <div class="info-primary" style="margin-top:12px;">
+        <strong>35〜54歳が全体の52.5%</strong>を占め、自動車ローンのコアターゲット層に正確にリーチしています。
+        男性77%・女性24%の比率も自動車ローン業界の典型的な分布です。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 8. 改善施策 ===== -->
+  <div id="section-measures" class="tab-content">
+
+    <!-- 目標 vs 現状 -->
+    <div class="benchmark-hero" style="background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%);">
+      <h3>目標: 月45件の問い合わせ（CPA ¥10,000）</h3>
+      <div class="hero-sub">現状 CPA ¥25,037 → 目標 CPA ¥10,000（約60%改善が必要）</div>
+      <div class="benchmark-numbers">
+        <div class="bench-num-block">
+          <div class="num-label">現状CPA</div>
+          <div class="num-value" style="color:#ff6b6b;">¥25,037</div>
+        </div>
+        <div class="bench-vs">→</div>
+        <div class="bench-num-block">
+          <div class="num-label">目標CPA</div>
+          <div class="num-value" style="color:#69f0ae;">¥10,000</div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border-radius:12px;padding:16px 20px;">
+        <div style="font-size:14px;font-weight:700;margin-bottom:8px;">改善すべき2つの数値</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:13px;">
+          <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;">
+            <div style="opacity:0.7;margin-bottom:4px;">CPC（クリック単価）を下げる</div>
+            <div style="font-size:20px;font-weight:700;">¥391 → ¥310〜350</div>
+            <div style="opacity:0.7;font-size:11px;margin-top:4px;">除外KW追加 + 品質スコア改善で達成</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:12px;">
+            <div style="opacity:0.7;margin-bottom:4px;">CVR（問い合わせ率）を上げる</div>
+            <div style="font-size:20px;font-weight:700;">1.56% → 3.9%以上</div>
+            <div style="opacity:0.7;font-size:11px;margin-top:4px;">LP改善 + フォーム最適化で達成</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 改善前 → 改善後 予測 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>改善施策の実施前後 シミュレーション</h3>
+        <span class="badge badge-success">全施策実施時</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>指標</th>
+            <th class="num">現状</th>
+            <th class="num">改善後（予測）</th>
+            <th class="num">変化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CPC（クリック単価）</td>
+            <td class="num">¥391</td>
+            <td class="num" style="color:var(--success);font-weight:700">¥310〜340</td>
+            <td class="num" style="color:var(--success)">-13〜21%</td>
+          </tr>
+          <tr>
+            <td>無駄な広告費/月</td>
+            <td class="num" style="color:var(--danger)">約¥50,000</td>
+            <td class="num" style="color:var(--success);font-weight:700">約¥10,000</td>
+            <td class="num" style="color:var(--success)">¥40,000節約</td>
+          </tr>
+          <tr>
+            <td>有効クリック数/月</td>
+            <td class="num">約960</td>
+            <td class="num" style="color:var(--success);font-weight:700">約1,150〜1,300</td>
+            <td class="num" style="color:var(--success)">+20〜35%</td>
+          </tr>
+          <tr>
+            <td>CVR（問い合わせ率）</td>
+            <td class="num">1.56%</td>
+            <td class="num" style="color:var(--success);font-weight:700">4.5〜5.5%</td>
+            <td class="num" style="color:var(--success)">+44〜76%</td>
+          </tr>
+          <tr style="background:var(--success-light);">
+            <td><strong>月間問い合わせ数</strong></td>
+            <td class="num" style="font-weight:700">約25〜30件</td>
+            <td class="num" style="font-weight:700;color:var(--success);font-size:18px">40〜55件</td>
+            <td class="num" style="color:var(--success);font-weight:700">+60〜83%</td>
+          </tr>
+          <tr style="background:var(--success-light);">
+            <td><strong>CPA</strong></td>
+            <td class="num" style="font-weight:700">¥25,037</td>
+            <td class="num" style="font-weight:700;color:var(--success);font-size:18px">¥8,000〜10,000</td>
+            <td class="num" style="color:var(--success);font-weight:700">-20〜36%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ===== 施策一覧 ===== -->
+
+    <!-- 施策1: 除外キーワード -->
+    <div class="section">
+      <div class="section-header">
+        <h3>施策1: 除外キーワードの設定（最優先）</h3>
+        <span class="badge badge-danger">今すぐ対応</span>
+      </div>
+
+      <div class="grid-2" style="margin-bottom:20px;">
+        <div style="background:var(--danger-light);border-radius:8px;padding:16px;">
+          <div style="font-size:14px;font-weight:700;color:var(--danger);margin-bottom:8px;">現状の問題</div>
+          <div style="font-size:13px;color:#5f2120;">
+            競合他社名や無関係な検索語句で広告が表示・クリックされ、<strong>月間約¥35,000〜50,000が無駄</strong>になっています。
+            これは月予算の約8〜11%に相当します。
+          </div>
+        </div>
+        <div style="background:var(--success-light);border-radius:8px;padding:16px;">
+          <div style="font-size:14px;font-weight:700;color:var(--success);margin-bottom:8px;">除外KWの上限について</div>
+          <div style="font-size:13px;color:#1b5e20;">
+            Google広告では1キャンペーンあたり<strong>最大10,000件</strong>まで設定可能。<br>
+            現在52件 + 追加約40件 = <strong>約90件はまったく問題ありません</strong>。
+            むしろ精度が上がり、月¥35,000〜50,000の節約につながります。
+          </div>
+        </div>
+      </div>
+
+      <!-- 統合リスト -->
+      <h4 style="font-size:15px;font-weight:700;margin-bottom:4px;">除外キーワード統合リスト（全量）</h4>
+      <div style="font-size:12px;color:var(--gray-600);margin-bottom:16px;">
+        設定済み52件 + 新規追加39件 = <strong>合計91件</strong>
+      </div>
+
+      <!-- 設定済み -->
+      <div style="background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:16px;margin-bottom:16px;">
+        <h4 style="font-size:13px;margin-bottom:8px;">
+          <span style="background:var(--gray-200);padding:2px 8px;border-radius:4px;margin-right:6px;">設定済み 52件</span>
+          そのまま維持
+        </h4>
+
+        <div style="margin-bottom:8px;">
+          <div style="font-size:11px;color:var(--gray-600);font-weight:700;margin-bottom:4px;">競合・他社名（8件）</div>
+          <div style="font-size:12px;line-height:2;">
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">ガリバー</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">ビッグモーター</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">ネクステージ</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">カーライフ</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">カエルランド</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">イージーローン</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">オートバックス</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">オートバイ</span>
+          </div>
+        </div>
+        <div style="margin-bottom:8px;">
+          <div style="font-size:11px;color:var(--gray-600);font-weight:700;margin-bottom:4px;">エリア外（9件）</div>
+          <div style="font-size:12px;line-height:2;">
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">大阪</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">岡山</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">神戸</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">沖縄</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">熊本</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">広島</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">名古屋</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">横浜</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">札幌</span>
+          </div>
+        </div>
+        <div style="margin-bottom:8px;">
+          <div style="font-size:11px;color:var(--gray-600);font-weight:700;margin-bottom:4px;">別サービス・別ジャンル（12件）</div>
+          <div style="font-size:12px;line-height:2;">
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">残クレ</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">新車</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">バイク</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">レンタカー</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">リース</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">カーリース</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">カーシェア</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">軽トラ</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">トラック</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">金利</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">利息</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">利率</span>
+          </div>
+        </div>
+        <div style="margin-bottom:8px;">
+          <div style="font-size:11px;color:var(--gray-600);font-weight:700;margin-bottom:4px;">情報収集・ネガティブ系（15件）</div>
+          <div style="font-size:12px;line-height:2;">
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">とは</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">比較</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">ランキング</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">知恵袋</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">口コミ</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">評判</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">5ch</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">2ch</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">おすすめ</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">仕組み</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">理由</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">なぜ</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">デメリット</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">メリット</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">驚き</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--gray-600);font-weight:700;margin-bottom:4px;">その他（8件）</div>
+          <div style="font-size:12px;line-height:2;">
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">求人情報</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">求人</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">採用</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">在庫</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">詐欺</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">やばい</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">パート</span>
+            <span style="background:white;padding:2px 8px;border-radius:4px;border:1px solid var(--gray-200);margin:2px;">アルバイト</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 新規追加 -->
+      <div style="background:var(--danger-light);border:2px solid var(--danger);border-radius:8px;padding:16px;">
+        <h4 style="font-size:13px;margin-bottom:8px;">
+          <span style="background:var(--danger);color:white;padding:2px 10px;border-radius:4px;margin-right:6px;">新規追加 39件</span>
+          これを追加してください
+        </h4>
+
+        <div style="margin-bottom:12px;">
+          <div style="font-size:11px;color:var(--danger);font-weight:700;margin-bottom:4px;">競合他社名（実際の検索データで表示・クリック発生）- 20件</div>
+          <div class="kw-tags" style="margin-top:0;">
+            <span class="kw-tag bad">カーマッチ</span>
+            <span class="kw-tag bad">スリークロス</span>
+            <span class="kw-tag bad">bond</span>
+            <span class="kw-tag bad">カーパーク</span>
+            <span class="kw-tag bad">オーシャンデザイン</span>
+            <span class="kw-tag bad">オトロン</span>
+            <span class="kw-tag bad">cボーイ</span>
+            <span class="kw-tag bad">YSK</span>
+            <span class="kw-tag bad">エール</span>
+            <span class="kw-tag bad">クルマネー</span>
+            <span class="kw-tag bad">ストレートアップ</span>
+            <span class="kw-tag bad">ケイカフェ</span>
+            <span class="kw-tag bad">カーセラ</span>
+            <span class="kw-tag bad">オートチャンプ</span>
+            <span class="kw-tag bad">タイヨウトレーディング</span>
+            <span class="kw-tag bad">ウィーカーズ</span>
+            <span class="kw-tag bad">シーボーイ</span>
+            <span class="kw-tag bad">カートルズ</span>
+            <span class="kw-tag bad">ジシャロン</span>
+            <span class="kw-tag bad">横綱くん</span>
+          </div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+          <div style="font-size:11px;color:var(--danger);font-weight:700;margin-bottom:4px;">銀行・金融機関名 - 8件</div>
+          <div class="kw-tags" style="margin-top:0;">
+            <span class="kw-tag bad">三菱UFJ</span>
+            <span class="kw-tag bad">みずほ</span>
+            <span class="kw-tag bad">三井住友</span>
+            <span class="kw-tag bad">JAバンク</span>
+            <span class="kw-tag bad">ろうきん</span>
+            <span class="kw-tag bad">住信SBI</span>
+            <span class="kw-tag bad">イオン銀行</span>
+            <span class="kw-tag bad">ディーラーローン</span>
+          </div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+          <div style="font-size:11px;color:var(--danger);font-weight:700;margin-bottom:4px;">別サービス・別ジャンル - 6件</div>
+          <div class="kw-tags" style="margin-top:0;">
+            <span class="kw-tag bad">サブスク</span>
+            <span class="kw-tag bad">原付</span>
+            <span class="kw-tag bad">二輪</span>
+            <span class="kw-tag bad">住宅ローン</span>
+            <span class="kw-tag bad">カードローン</span>
+            <span class="kw-tag bad">フリーローン</span>
+          </div>
+        </div>
+
+        <div style="margin-bottom:12px;">
+          <div style="font-size:11px;color:var(--danger);font-weight:700;margin-bottom:4px;">情報収集系 - 3件</div>
+          <div class="kw-tags" style="margin-top:0;">
+            <span class="kw-tag bad">シミュレーション</span>
+            <span class="kw-tag bad">計算</span>
+            <span class="kw-tag bad">全国対応</span>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-size:11px;color:var(--danger);font-weight:700;margin-bottom:4px;">エリア外 - 2件</div>
+          <div class="kw-tags" style="margin-top:0;">
+            <span class="kw-tag bad">彦根</span>
+            <span class="kw-tag bad">足立</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-success" style="margin-top:16px;">
+        <strong>合計91件でOKです。</strong> Google広告の上限は10,000件なので余裕があります。
+        新規追加39件を設定すれば、月間<strong>¥35,000〜50,000の節約</strong>が見込め、
+        その予算を有効なクリックに回せます。週1回の検索クエリレポート確認で、さらに追加していくのが理想です。
+      </div>
+    </div>
+
+    <!-- 施策2: フォーム改善 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>施策2: フォームページの改善（最重要）</h3>
+        <span class="badge badge-danger">CVR直結</span>
+      </div>
+      <div style="background:var(--danger-light);border-radius:8px;padding:16px;margin-bottom:16px;">
+        <div style="font-size:14px;font-weight:700;color:var(--danger);margin-bottom:8px;">現状の最大ボトルネック</div>
+        <div style="font-size:13px;color:#5f2120;">
+          フォームページに到達した<strong>16人中、たった2人しか送信していません（完了率 12.5%）</strong>。<br>
+          金融業界のフォーム完了率の平均は<strong>47%</strong>です。ここを改善するだけでCVRが大幅に向上します。
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">改善策A: フォーム項目を最小限にする</h4>
+          <table class="data-table">
+            <thead><tr><th>フォーム項目数</th><th class="num">CVRへの影響</th></tr></thead>
+            <tbody>
+              <tr style="background:var(--success-light)"><td><strong>3項目以下</strong></td><td class="num" style="color:var(--success);font-weight:700">基準値（最高）</td></tr>
+              <tr><td>4〜5項目</td><td class="num" style="color:var(--warning)">-10%</td></tr>
+              <tr><td>6項目以上</td><td class="num" style="color:var(--danger)">-25〜50%</td></tr>
+              <tr><td>11項目→4項目に削減</td><td class="num" style="color:var(--success);font-weight:700">+120%</td></tr>
+            </tbody>
+          </table>
+          <div class="info-success" style="margin-top:12px;">
+            <strong>推奨:</strong> 初回問い合わせは「お名前」「連絡先（LINE or 電話）」「希望予算」の<strong>3項目のみ</strong>にする。
+            詳細はLINEで後からヒアリングすればOK。
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">改善策B: ステップ型フォームに変更</h4>
+          <table class="data-table">
+            <thead><tr><th>フォーム形式</th><th class="num">平均CVR</th></tr></thead>
+            <tbody>
+              <tr><td>1ページ型（現状）</td><td class="num">4.5%</td></tr>
+              <tr style="background:var(--success-light)"><td><strong>ステップ型（3段階）</strong></td><td class="num" style="color:var(--success);font-weight:700"><strong>13.9%</strong></td></tr>
+              <tr><td>金融特化事例</td><td class="num" style="color:var(--success)">11% → 46%</td></tr>
+            </tbody>
+          </table>
+          <div class="info-primary" style="margin-top:12px;">
+            <strong>推奨ステップ:</strong><br>
+            Step1「どんなお車をお探しですか？」（車種選択）<br>
+            Step2「ご予算は？」+「過去にローン審査でお困りですか？」<br>
+            Step3「お名前・LINE連絡先」→ 送信
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 施策3: LP改善 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>施策3: ランディングページの改善</h3>
+        <span class="badge badge-warning">今週中に対応</span>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">3-A: スマホ固定CTAボタンの設置（業界標準）</h4>
+          <div style="background:var(--danger-light);border-radius:8px;padding:12px;margin-bottom:12px;font-size:13px;">
+            <strong>競合はほぼ全社やっています。</strong>
+            オトロン（4ボタン）、カートルズ（4ボタン）、カーマッチ（3ボタン）、COCOCAR（4ボタン）など、
+            自社ローン業界では<strong>画面下部の固定CTAバーが業界標準</strong>です。
+          </div>
+          <div style="background:var(--gray-100);border-radius:8px;padding:16px;">
+            <div style="font-size:12px;font-weight:700;margin-bottom:8px;text-align:center;">推奨: 2ボタン固定バー</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:#00b900;color:white;border-radius:8px;padding:10px;text-align:center;font-weight:700;font-size:13px;">
+                LINEで相談する
+              </div>
+              <div style="background:var(--primary);color:white;border-radius:8px;padding:10px;text-align:center;font-weight:700;font-size:13px;">
+                フォームで相談する
+              </div>
+            </div>
+            <div style="font-size:11px;color:var(--gray-600);text-align:center;margin-top:6px;">
+              画面下部に常に固定表示 → いつでもタップ可能
+            </div>
+          </div>
+          <div style="margin-top:12px;font-size:13px;">
+            <strong>競合各社の固定CTA構成:</strong>
+            <table class="data-table" style="margin-top:8px;">
+              <thead><tr><th>競合</th><th>ボタン数</th><th>構成</th></tr></thead>
+              <tbody>
+                <tr><td>オトロン</td><td class="num">4</td><td>LINE / お気に入り / 事前審査 / 在庫一覧</td></tr>
+                <tr><td>カートルズ</td><td class="num">4</td><td>車両検索 / LINE / お問合せ / 電話</td></tr>
+                <tr><td>COCOCAR</td><td class="num">4</td><td>ローン申込 / 電話 / LINE / お問合せ</td></tr>
+                <tr><td>カーマッチ足立</td><td class="num">3</td><td>電話 / LINEで仮審査 / メール問合せ</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="info-success" style="margin-top:12px;">
+            <strong>結論:</strong> 固定CTAバーは業界標準。<strong>2ボタン（LINE + フォーム）の追従</strong>がベスト。
+            競合は3〜4ボタンが多いですが、シンプルな2ボタンの方が迷わずタップしやすく、CVR向上に効果的です。
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">3-B: FAQ直後にCTAを追加配置</h4>
+          <div style="background:var(--gray-100);border-radius:8px;padding:16px;">
+            <div style="font-size:13px;margin-bottom:8px;">
+              ヒートマップの結果、<strong>FAQ（65〜70%地点）にユーザーが最長1分32秒滞在</strong>しています。
+              ここが「不安を解消して行動する」タイミングです。
+            </div>
+            <div style="font-size:13px;">
+              <strong>現状:</strong> FAQ後にCTAが弱い<br>
+              <strong>改善:</strong> FAQ直後に大きなCTAを設置
+            </div>
+          </div>
+          <div class="info-success" style="margin-top:12px;">
+            <strong>推奨CTA文言:</strong><br>
+            「不安が解消されたら、まずはLINEで気軽にご相談ください。しつこい営業は一切ありません。」
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:16px;">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">3-C: ページ表示速度の改善</h4>
+          <table class="data-table">
+            <thead><tr><th>指標</th><th class="num">現状</th><th class="num">目標</th><th>影響</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>LCP（読み込み速度）</td>
+                <td class="num" style="color:var(--warning)">2.595秒</td>
+                <td class="num" style="color:var(--success)">2.0秒以下</td>
+                <td><span class="badge badge-warning">0.1秒超過</span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="font-size:13px;margin-top:12px;line-height:1.8;">
+            <strong>対策:</strong><br>
+            ・画像をWebP形式に変換（30〜50%軽量化）<br>
+            ・遅延読み込み（lazy loading）を設定<br>
+            ・不要なJavaScriptの遅延読み込み<br>
+            ・CDN（Cloudflare無料枠）の導入
+          </div>
+          <div class="info-warning" style="margin-top:8px;">
+            表示が1秒遅くなるとCVRが<strong>約12%低下</strong>します。Googleの品質スコアにも影響。
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">3-D: 離脱率の改善（クイックバック 11.1%）</h4>
+          <div style="font-size:13px;line-height:1.8;">
+            <strong>原因:</strong> 広告文とLPの内容にズレがある可能性<br>
+            <strong>対策:</strong><br>
+            ・広告文のキャッチコピーとLPのファーストビューを一致させる<br>
+            ・ファーストビューに信頼要素を追加:<br>
+            &nbsp;&nbsp;「福岡・鹿児島・宮崎で実績多数」<br>
+            &nbsp;&nbsp;「秘密厳守 / 相談無料」<br>
+            &nbsp;&nbsp;お客様の声の一部を掲載<br>
+            ・「次に何が起きるか」の不安を解消:<br>
+            &nbsp;&nbsp;「LINEで気軽にご相談。しつこい営業は一切ありません」
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 施策4: LINE最適化 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>施策4: LINE導線の最適化</h3>
+        <span class="badge badge-warning">CVR改善</span>
+      </div>
+      <div style="background:var(--danger-light);border-radius:8px;padding:16px;margin-bottom:16px;">
+        <div style="font-size:14px;font-weight:700;color:var(--danger);margin-bottom:8px;">LINEボタンタップ後の離脱が大きい</div>
+        <div style="font-size:13px;color:#5f2120;">
+          LINEボタンを<strong>7人がタップ</strong>したのに、実際に友だち追加&フォーム送信したのは<strong>たった1人</strong>（14.3%）。
+          6人がLINEアプリに遷移した後に離脱しています。
+        </div>
+      </div>
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">改善策</h4>
+          <div style="font-size:13px;line-height:1.9;">
+            <strong>1. LINEボタン周辺のコピーを改善</strong><br>
+            &nbsp;&nbsp;現状: ボタンだけ → 何が起きるか不安<br>
+            &nbsp;&nbsp;改善: 「友だち追加するとすぐに自動返信で審査スタート！」<br>
+            &nbsp;&nbsp;「しつこい営業メッセージは送りません」を追記<br><br>
+            <strong>2. LINE会話のスクリーンショットを掲載</strong><br>
+            &nbsp;&nbsp;追加後のイメージを見せることで安心感UP<br><br>
+            <strong>3. リッチメニューの最適化</strong><br>
+            &nbsp;&nbsp;「無料審査を受ける」ボタンを最大サイズに<br>
+            &nbsp;&nbsp;第一生命の事例: 全CVの22.6%がリッチメニュー経由<br><br>
+            <strong>4. 自動応答メッセージの設定</strong><br>
+            &nbsp;&nbsp;友だち追加 → 即座に挨拶＋審査開始の案内<br>
+            &nbsp;&nbsp;営業時間外 → 「翌営業日に必ずご連絡します」
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">LINE + フォームの二択を提供</h4>
+          <div style="background:var(--gray-100);border-radius:12px;padding:20px;text-align:center;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:16px;">お問い合わせ方法を選べます</div>
+            <div style="background:#00b900;color:white;border-radius:8px;padding:14px;font-weight:700;font-size:15px;margin-bottom:8px;">
+              LINEで相談する（推奨）
+            </div>
+            <div style="font-size:11px;color:var(--gray-600);margin-bottom:12px;">最短15分で回答</div>
+            <div style="background:var(--primary);color:white;border-radius:8px;padding:10px;font-weight:600;font-size:13px;">
+              フォームで問い合わせる
+            </div>
+            <div style="font-size:11px;color:var(--gray-600);margin-top:4px;">24時間受付・翌営業日回答</div>
+          </div>
+          <div class="info-primary" style="margin-top:12px;">
+            LINEに抵抗がある人もいるため、<strong>フォームも併設</strong>することで
+            取りこぼしを防ぎます。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 施策5: キーワード拡充 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>施策5: キーワード拡充（CPC削減）</h3>
+        <span class="badge badge-info">2週目以降</span>
+      </div>
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">現状: 効率の良いKWに偏りがある</h4>
+          <div style="font-size:13px;line-height:1.7;margin-bottom:16px;">
+            「オートローン 審査落ち」がCTR 19.35%・CPC ¥326で最効率。<br>
+            しかし現在の予算の大部分は「自社ローン 中古車」（CPC ¥402）に使われています。<br>
+            <strong>効率の良いロングテールKWを追加</strong>して全体CPCを下げます。
+          </div>
+          <h4 style="font-size:14px;margin-bottom:8px;">追加推奨キーワード（広告グループ別）</h4>
+
+          <div style="margin-bottom:12px;">
+            <div style="font-size:12px;font-weight:700;color:var(--primary);background:var(--primary-light);display:inline-block;padding:2px 10px;border-radius:4px;margin-bottom:6px;">
+              GR1: ローン組めない系 に追加
+            </div>
+            <div class="kw-tags" style="margin-top:4px;">
+              <span class="kw-tag good">車 ローン 通らない どうする</span>
+              <span class="kw-tag good">車 購入 ローン 審査 不安</span>
+              <span class="kw-tag good">車 ほしい ローン 無理</span>
+              <span class="kw-tag good">中古車 ローン 通らない 福岡</span>
+            </div>
+            <div style="font-size:11px;color:var(--gray-600);margin-top:4px;">現状GR1は表示0件。このKW追加で表示が出る可能性あり</div>
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <div style="font-size:12px;font-weight:700;color:var(--success);background:var(--success-light);display:inline-block;padding:2px 10px;border-radius:4px;margin-bottom:6px;">
+              GR3: 競合審査落ち系 に追加（最効率グループ）
+            </div>
+            <div class="kw-tags" style="margin-top:4px;">
+              <span class="kw-tag good">マイカーローン 審査落ち 対策</span>
+              <span class="kw-tag good">車 審査 何度も 落ちる</span>
+              <span class="kw-tag good">他社 ダメだった 自社ローン</span>
+              <span class="kw-tag good">オートローン 審査落ち 次</span>
+            </div>
+            <div style="font-size:11px;color:var(--success);margin-top:4px;">このグループはCTR 19.35%・CPC ¥326で最も効率的。拡充で全体CPC改善</div>
+          </div>
+
+          <div style="margin-bottom:12px;">
+            <div style="font-size:12px;font-weight:700;color:#e37400;background:var(--warning-light);display:inline-block;padding:2px 10px;border-radius:4px;margin-bottom:6px;">
+              GR4: 審査なし・専門店系 に追加
+            </div>
+            <div class="kw-tags" style="margin-top:4px;">
+              <span class="kw-tag good">ブラックリスト 車 購入 福岡</span>
+              <span class="kw-tag good">自己破産後 車 ローン</span>
+              <span class="kw-tag good">債務整理中 車 買える</span>
+              <span class="kw-tag good">信用情報 ブラック 車</span>
+            </div>
+            <div style="font-size:11px;color:var(--gray-600);margin-top:4px;">切実に車が必要な層 → CVRが高い傾向</div>
+          </div>
+
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--primary);background:var(--primary-light);display:inline-block;padding:2px 10px;border-radius:4px;margin-bottom:6px;">
+              GR2: 自社ローン系 に追加
+            </div>
+            <div class="kw-tags" style="margin-top:4px;">
+              <span class="kw-tag good">自社ローン 福岡 おすすめ</span>
+              <span class="kw-tag good">自社ローン 即日</span>
+              <span class="kw-tag good">自社ローン 金利 0</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">ロングテールKWの効果</h4>
+          <table class="data-table">
+            <thead><tr><th>KWタイプ</th><th class="num">CPC目安</th><th class="num">CVR傾向</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>ビッグKW（自社ローン）</td>
+                <td class="num" style="color:var(--danger)">¥400〜500</td>
+                <td class="num">低い</td>
+              </tr>
+              <tr style="background:var(--success-light)">
+                <td><strong>ロングテール（審査落ち 対策 等）</strong></td>
+                <td class="num" style="color:var(--success);font-weight:700">¥200〜350</td>
+                <td class="num" style="color:var(--success);font-weight:700">高い</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="info-success" style="margin-top:12px;">
+            ロングテールKWはCPCが<strong>20〜40%安く</strong>、かつ「困っている」ユーザーが検索するため
+            <strong>CVRも高くなる</strong>傾向があります。
+          </div>
+
+          <h4 style="font-size:14px;margin:20px 0 8px;">品質スコアの影響</h4>
+          <table class="data-table">
+            <thead><tr><th class="num">品質スコア</th><th class="num">CPCへの影響</th></tr></thead>
+            <tbody>
+              <tr><td class="num">5（標準）</td><td class="num">基準値</td></tr>
+              <tr style="background:var(--success-light)"><td class="num"><strong>7</strong></td><td class="num" style="color:var(--success);font-weight:700"><strong>-28%割引</strong></td></tr>
+              <tr><td class="num">8</td><td class="num" style="color:var(--success)">-37%割引</td></tr>
+              <tr><td class="num">10</td><td class="num" style="color:var(--success)">-50%割引</td></tr>
+            </tbody>
+          </table>
+          <div style="font-size:12px;color:var(--gray-600);margin-top:8px;">
+            品質スコアを5→7に上げるだけで、CPC ¥391 → 約¥281に。LP改善と広告文の一致がカギ。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 施策6: クリック詐欺対策 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>施策6: クリック詐欺対策</h3>
+        <span class="badge badge-info">3週目以降</span>
+      </div>
+
+      <!-- クリック詐欺とは？ -->
+      <div style="background:var(--primary-light);border-radius:8px;padding:16px;margin-bottom:16px;">
+        <div style="font-size:14px;font-weight:700;color:var(--primary);margin-bottom:8px;">クリック詐欺（アドフラウド）とは？</div>
+        <div style="font-size:13px;color:#0d47a1;line-height:1.8;">
+          Google広告は「クリックされるたびに課金」されます。<br>
+          <strong>クリック詐欺</strong>とは、実際のお客様ではないボット（自動プログラム）や競合他社が、
+          わざと広告をクリックして<strong>広告費を無駄に消費させる行為</strong>です。<br>
+          クリックされた時点で課金されるため、問い合わせにつながらない「空クリック」でお金だけ減ります。
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">誰がやっているのか？</h4>
+          <div style="font-size:13px;line-height:1.9;">
+            <strong>1. ボット（自動プログラム）</strong><br>
+            &nbsp;&nbsp;インターネット上を自動巡回し、広告を無差別にクリック。<br>
+            &nbsp;&nbsp;Clarityで<strong>3セッション検知済み</strong>。<br><br>
+            <strong>2. 競合他社（可能性）</strong><br>
+            &nbsp;&nbsp;ライバル店が意図的に広告をクリックし、<br>
+            &nbsp;&nbsp;広告費を消費させて予算切れを狙うケース。<br><br>
+            <strong>3. 広告収益目的のサイト</strong><br>
+            &nbsp;&nbsp;ディスプレイ広告の場合、自分のサイトに貼った広告を<br>
+            &nbsp;&nbsp;クリックさせて収益を得る手口。<br>
+            &nbsp;&nbsp;（今回は検索広告なので該当しにくい）
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">ニコニコカーローンへの影響</h4>
+          <table class="data-table">
+            <tbody>
+              <tr>
+                <td>検知されたボットセッション</td>
+                <td class="num" style="font-weight:700;color:var(--danger)">3 / 63セッション</td>
+              </tr>
+              <tr>
+                <td>割合</td>
+                <td class="num" style="font-weight:700">4.8%</td>
+              </tr>
+              <tr>
+                <td>1.5日あたりの推定損失</td>
+                <td class="num">約¥1,200</td>
+              </tr>
+              <tr style="background:var(--danger-light)">
+                <td><strong>月間の推定損失</strong></td>
+                <td class="num" style="font-weight:700;color:var(--danger)"><strong>約¥21,600</strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="info-warning" style="margin-top:12px;">
+            <strong>業界統計:</strong> Google広告全体で約<strong>11.5%</strong>のクリックが不正と言われています。
+            Googleの自動フィルターで一部は防げますが、IPアドレスを変えたり端末を偽装する高度なボットは検知できません。
+          </div>
+
+          <h4 style="font-size:14px;margin:16px 0 12px;">対策方法</h4>
+          <div style="font-size:13px;line-height:1.8;">
+            <strong>方法1: 専用ツールを導入（推奨）</strong><br>
+            &nbsp;&nbsp;不正クリックを自動検知し、そのIPアドレスを<br>
+            &nbsp;&nbsp;Google広告の除外リストに自動追加するツール。<br>
+            &nbsp;&nbsp;3秒以内にブロックできるものもあります。
+          </div>
+          <table class="data-table" style="margin-top:12px;">
+            <thead><tr><th>ツール</th><th class="num">月額</th><th>特徴</th></tr></thead>
+            <tbody>
+              <tr style="background:var(--success-light)">
+                <td><strong>Spider AF</strong></td>
+                <td class="num">¥5,000〜</td>
+                <td>日本製。日本語サポート。導入が簡単。</td>
+              </tr>
+              <tr>
+                <td>ClickCease</td>
+                <td class="num">¥7,000〜</td>
+                <td>海外製。検知精度が高い。</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="font-size:12px;color:var(--gray-600);margin-top:8px;">
+            月¥5,000のツール代 → 月¥21,600の節約 = <strong>差し引き月¥16,600のプラス</strong>
+          </div>
+
+          <div style="font-size:13px;line-height:1.8;margin-top:16px;">
+            <strong>方法2: 手動で対策（無料だが手間）</strong><br>
+            &nbsp;&nbsp;Google広告の管理画面で怪しいIPアドレスを<br>
+            &nbsp;&nbsp;手動で除外設定する。ただし上限500件まで。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 優先度マトリックス -->
+    <div class="section">
+      <div class="section-header">
+        <h3>施策の優先度・実施スケジュール</h3>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>優先度</th>
+            <th>施策</th>
+            <th class="num">期待効果</th>
+            <th>工数</th>
+            <th>実施時期</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:var(--danger-light)">
+            <td><span class="badge badge-danger">最優先</span></td>
+            <td><strong>除外KW 25個以上追加</strong></td>
+            <td class="num">月¥35,000〜50,000節約</td>
+            <td>低（30分）</td>
+            <td><strong>今日</strong></td>
+          </tr>
+          <tr style="background:var(--danger-light)">
+            <td><span class="badge badge-danger">最優先</span></td>
+            <td><strong>LINE導線の改善（コピー追加・説明文）</strong></td>
+            <td class="num">LINE CVR +200〜300%</td>
+            <td>低（1時間）</td>
+            <td><strong>今週中</strong></td>
+          </tr>
+          <tr style="background:var(--warning-light)">
+            <td><span class="badge badge-warning">高</span></td>
+            <td><strong>スマホ固定CTAボタン設置</strong></td>
+            <td class="num">CVR +15〜25%</td>
+            <td>低（1時間）</td>
+            <td><strong>今週中</strong></td>
+          </tr>
+          <tr style="background:var(--warning-light)">
+            <td><span class="badge badge-warning">高</span></td>
+            <td><strong>FAQ直後にCTA追加</strong></td>
+            <td class="num">CVR +10〜20%</td>
+            <td>低（30分）</td>
+            <td><strong>今週中</strong></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-warning">高</span></td>
+            <td><strong>フォームを3ステップ型に変更</strong></td>
+            <td class="num">フォームCVR +86%</td>
+            <td>中（3〜5時間）</td>
+            <td>2週目</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-warning">高</span></td>
+            <td><strong>LCP 2.0秒以下に改善</strong></td>
+            <td class="num">CVR +5〜12%, QS向上</td>
+            <td>中（2〜3時間）</td>
+            <td>2週目</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-info">中</span></td>
+            <td>ロングテールKW 10個追加</td>
+            <td class="num">CPC -15〜25%</td>
+            <td>低（1時間）</td>
+            <td>2週目</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-info">中</span></td>
+            <td>広告表示オプション追加</td>
+            <td class="num">CTR +5〜10%</td>
+            <td>低（1時間）</td>
+            <td>2週目</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-info">中</span></td>
+            <td>クリック詐欺対策ツール導入</td>
+            <td class="num">月¥21,600+節約</td>
+            <td>低（30分）</td>
+            <td>3週目</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-info">中</span></td>
+            <td>LINEリッチメニュー最適化</td>
+            <td class="num">エンゲージメント +20〜30%</td>
+            <td>中（2時間）</td>
+            <td>3〜4週目</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- ===== 7. 時間帯分析 ===== -->
+  <div id="section-time" class="tab-content">
+    <div class="section">
+      <div class="section-header">
+        <h3>時間帯別パフォーマンス</h3>
+        <span class="badge badge-info">2/20〜2/21</span>
+      </div>
+      <div class="chart-container" style="height:350px;">
+        <canvas id="timeChart"></canvas>
+      </div>
+
+      <div class="info-primary" style="margin-top:12px;">
+        <strong>分析:</strong>
+        2/20（金）は開始が14時のため夜間に集中。2/21（土）は終日稼働で14〜21時がピーク帯。
+        特に<strong>18〜21時台</strong>が表示回数・クリック数ともに高く、ゴールデンタイムとなっています。
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <h3>2/21（土）時間帯別 詳細</h3>
+      </div>
+      <div class="chart-container" style="height:300px;">
+        <canvas id="saturdayTimeChart"></canvas>
+      </div>
+      <div class="info-success" style="margin-top:12px;">
+        土曜日は<strong>8〜9時</strong>と<strong>14〜20時</strong>に2つのピークがあります。
+        朝の通勤・起床時間帯と、午後のリラックスタイムに検索需要が高まる傾向です。
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// Navigation
+function showSection(name) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.getElementById('section-' + name).classList.add('active');
+  document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+  event.target.closest('a').classList.add('active');
+}
+
+// Chart defaults
+Chart.defaults.font.family = "'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#5f6368';
+
+// Query Chart
+new Chart(document.getElementById('queryChart'), {
+  type: 'bar',
+  data: {
+    labels: [
+      '自社ローン 絶対通る系', '自社ローン 中古車', '自社ローン 福岡',
+      '自社ローン 専門店', '車 自社ローン', 'ローン通らない 車',
+      'オートローン 審査落ち', '全国対応系', 'オトロン(競合)',
+      '審査甘い 車ローン'
+    ],
+    datasets: [{
+      label: '費用 (¥)',
+      data: [2818, 8841, 4442, 3994, 2729, 2318, 1955, 869, 795, 759],
+      backgroundColor: [
+        '#1a73e8','#1a73e8','#1a73e8','#1a73e8','#1a73e8',
+        '#1e8e3e','#1e8e3e','#ff9800','#d93025','#1a73e8'
+      ]
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { x: { beginAtZero: true, title: { display: true, text: '費用 (¥)' } } }
+  }
+});
+
+// Gender Chart
+new Chart(document.getElementById('genderChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['男性', '女性'],
+    datasets: [{ data: [77, 23], backgroundColor: ['#1a73e8', '#e8453c'], borderWidth: 0, cutout: '65%' }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+});
+
+// Age Chart
+new Chart(document.getElementById('ageChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['18-24', '25-34', '35-44', '45-54', '55-64', '65+'],
+    datasets: [{ data: [6, 20, 25, 28, 17, 4], backgroundColor: ['#e0e0e0','#90caf9','#1565c0','#1a73e8','#64b5f6','#bbdefb'], borderWidth: 0, cutout: '65%' }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+});
+
+// Device Chart
+new Chart(document.getElementById('deviceChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['モバイル', 'PC', 'タブレット'],
+    datasets: [{ data: [63, 1, 0], backgroundColor: ['#1a73e8','#42a5f5','#bbdefb'], borderWidth: 0, cutout: '65%' }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+});
+
+// Time Chart (combined both days)
+new Chart(document.getElementById('timeChart'), {
+  type: 'bar',
+  data: {
+    labels: ['0時','1時','2時','3時','4時','5時','6時','7時','8時','9時','10時','11時','12時','13時','14時','15時','16時','17時','18時','19時','20時','21時','22時','23時'],
+    datasets: [
+      {
+        label: '2/20（金）表示回数',
+        data: [0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,14,28,18,21,31,37,49,46,30],
+        backgroundColor: 'rgba(26, 115, 232, 0.4)',
+        borderColor: '#1a73e8',
+        borderWidth: 1
+      },
+      {
+        label: '2/21（土）表示回数',
+        data: [18,22,7,6,3,0,12,8,25,26,10,10,21,19,31,27,40,7,45,36,31,34,5,0],
+        backgroundColor: 'rgba(30, 142, 62, 0.4)',
+        borderColor: '#1e8e3e',
+        borderWidth: 1
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { position: 'top' } },
+    scales: {
+      x: { stacked: false },
+      y: { beginAtZero: true, title: { display: true, text: '表示回数' } }
+    }
+  }
+});
+
+// Saturday Time Chart
+new Chart(document.getElementById('saturdayTimeChart'), {
+  type: 'bar',
+  data: {
+    labels: ['0時','1時','2時','3時','4時','6時','7時','8時','9時','10時','11時','12時','13時','14時','15時','16時','17時','18時','19時','20時','21時','22時'],
+    datasets: [{
+      label: '表示回数',
+      data: [18,22,7,6,3,12,8,25,26,10,10,21,19,31,27,40,7,45,36,31,34,5],
+      backgroundColor: function(ctx) {
+        const v = ctx.raw;
+        if (v >= 35) return 'rgba(30,142,62,0.7)';
+        if (v >= 20) return 'rgba(26,115,232,0.5)';
+        return 'rgba(200,200,200,0.4)';
+      },
+      borderWidth: 0,
+      borderRadius: 4
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: '表示回数' } } }
+  }
+});
+</script>
+
+</body>
+</html>
