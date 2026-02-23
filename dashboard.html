@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ニコニコカーローン 広告レポート（2/22）</title>
+<title>ニコニコカーローン 広告レポート</title>
 <style>
   :root {
     --primary: #1a73e8;
@@ -159,7 +159,27 @@
   .kw-tag.good { background: var(--success-light); border-color: #a8dab5; color: var(--success); }
   .kw-tag.bad { background: var(--danger-light); border-color: #f5c6cb; color: var(--danger); }
 
-  /* Tab content */
+  /* Date Tabs */
+  .date-tabs {
+    display: flex; gap: 8px; margin-bottom: 24px;
+    border-bottom: 2px solid var(--gray-200); padding-bottom: 0;
+  }
+  .date-tab {
+    padding: 10px 24px; font-size: 14px; font-weight: 600;
+    border: none; background: none; color: var(--gray-600);
+    cursor: pointer; border-bottom: 3px solid transparent;
+    margin-bottom: -2px; transition: all 0.2s;
+    border-radius: 8px 8px 0 0;
+  }
+  .date-tab:hover { background: var(--gray-100); color: var(--gray-800); }
+  .date-tab.active {
+    color: var(--primary); border-bottom-color: var(--primary);
+    background: var(--primary-light);
+  }
+  .date-data { display: none; }
+  .date-data.active { display: block; }
+
+  /* Tab content (sections within date) */
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
@@ -197,10 +217,13 @@
     <a href="#" onclick="showSection('users')"><span class="nav-icon">6</span>ユーザー属性</a>
     <a href="#" onclick="showSection('time')"><span class="nav-icon">7</span>時間帯分析</a>
     <a href="#" onclick="showSection('ga4')"><span class="nav-icon">8</span>GA4イベント</a>
+    <div class="section-label">共通</div>
+    <a href="#" onclick="showSection('benchmark')"><span class="nav-icon">9</span>業界ベンチマーク</a>
+    <a href="#" onclick="showSection('measures')"><span class="nav-icon">10</span>改善施策</a>
   </nav>
   <div class="sidebar-footer">
     最終更新: 2026/02/23<br>
-    データ期間: 2/22（日）
+    データ期間: 2/20〜2/22
   </div>
 </aside>
 
@@ -211,12 +234,21 @@
   <div class="top-bar">
     <div>
       <h2>ニコニコカーローン 広告レポート</h2>
-      <span class="last-update">集計期間: 2026/02/22（日）終日 | 最適化スコア: 96.7%</span>
+      <span class="last-update">日付タブで切り替え | 最適化スコア: 96.7%</span>
     </div>
   </div>
 
+  <!-- DATE TABS -->
+  <div class="date-tabs">
+    <button class="date-tab" onclick="switchDate('20-21')">2/20-21</button>
+    <button class="date-tab active" onclick="switchDate('22')">2/22</button>
+  </div>
+
+  <!-- ========== 2/22 DATA ========== -->
+  <div class="date-data active" data-date="22">
+
   <!-- ===== 1. キャンペーン概要 ===== -->
-  <div id="section-overview" class="tab-content active">
+  <div id="section-overview-22" class="tab-content active">
 
     <div class="kpi-grid">
       <div class="kpi-card">
@@ -383,7 +415,7 @@
   </div>
 
   <!-- ===== 2. 実績ファネル ===== -->
-  <div id="section-funnel" class="tab-content">
+  <div id="section-funnel-22" class="tab-content">
 
     <div class="section">
       <div class="section-header">
@@ -468,7 +500,7 @@
   </div>
 
   <!-- ===== 3. ヒートマップ ===== -->
-  <div id="section-heatmap" class="tab-content">
+  <div id="section-heatmap-22" class="tab-content">
 
     <div class="section">
       <div class="section-header">
@@ -690,7 +722,7 @@
   </div>
 
   <!-- ===== 4. Google広告 詳細 ===== -->
-  <div id="section-ads" class="tab-content">
+  <div id="section-ads-22" class="tab-content">
 
     <div class="section">
       <div class="section-header">
@@ -799,7 +831,7 @@
   </div>
 
   <!-- ===== 5. キーワード分析（検索クエリ） ===== -->
-  <div id="section-keywords" class="tab-content">
+  <div id="section-keywords-22" class="tab-content">
 
     <div class="section">
       <div class="section-header">
@@ -871,7 +903,7 @@
   </div>
 
   <!-- ===== 6. ユーザー属性 ===== -->
-  <div id="section-users" class="tab-content">
+  <div id="section-users-22" class="tab-content">
     <div class="section">
       <div class="section-header"><h3>ユーザー属性分析（2/22）</h3></div>
 
@@ -927,7 +959,7 @@
   </div>
 
   <!-- ===== 7. 時間帯分析 ===== -->
-  <div id="section-time" class="tab-content">
+  <div id="section-time-22" class="tab-content">
     <div class="section">
       <div class="section-header">
         <h3>時間帯別パフォーマンス（2/22 日曜日）</h3>
@@ -995,7 +1027,7 @@
   </div>
 
   <!-- ===== 8. GA4イベント詳細 ===== -->
-  <div id="section-ga4" class="tab-content">
+  <div id="section-ga4-22" class="tab-content">
     <div class="section">
       <div class="section-header">
         <h3>GA4 全イベントデータ（2/22）</h3>
@@ -1067,15 +1099,724 @@
     </div>
   </div>
 
+  </div><!-- /date-data 22 -->
+
+  <!-- ========== 2/20-21 DATA ========== -->
+  <div class="date-data" data-date="20-21">
+
+  <!-- ===== 1. キャンペーン概要 ===== -->
+  <div id="section-overview-20-21" class="tab-content active">
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">総費用</div>
+        <div class="kpi-value">&#165;25,037</div>
+        <div class="kpi-sub">月予算&#165;450,000の5.6%消化</div>
+        <div class="kpi-accent" style="background:var(--primary)"></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">クリック数</div>
+        <div class="kpi-value">64</div>
+        <div class="kpi-sub">表示回数: 720</div>
+        <div class="kpi-accent" style="background:var(--primary)"></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">CTR</div>
+        <div class="kpi-value" style="color:var(--success)">8.89%</div>
+        <div class="kpi-sub">業界平均: 4〜5%</div>
+        <div class="kpi-accent" style="background:var(--success)"></div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">平均CPC</div>
+        <div class="kpi-value">&#165;391</div>
+        <div class="kpi-sub">業界平均: &#165;400〜500</div>
+        <div class="kpi-accent" style="background:var(--success)"></div>
+      </div>
+    </div>
+
+    <!-- 日別パフォーマンス -->
+    <div class="section">
+      <div class="section-header">
+        <h3>日別パフォーマンス</h3>
+        <span class="badge badge-info">2/20〜2/21</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>日付</th><th class="num">クリック</th><th class="num">表示回数</th><th class="num">CPC</th><th class="num">費用</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2/20（金）14:00〜</td>
+            <td class="num">23</td><td class="num">277</td>
+            <td class="num">&#165;394</td><td class="num">&#165;9,064</td>
+          </tr>
+          <tr>
+            <td>2/21（土）終日</td>
+            <td class="num">41</td><td class="num">443</td>
+            <td class="num">&#165;390</td><td class="num">&#165;15,974</td>
+          </tr>
+          <tr style="font-weight:700;background:var(--gray-50);">
+            <td>合計</td>
+            <td class="num">64</td><td class="num">720</td>
+            <td class="num">&#165;391</td><td class="num">&#165;25,037</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- デバイス別 -->
+    <div class="section">
+      <div class="section-header"><h3>デバイス別</h3></div>
+      <table class="data-table">
+        <thead>
+          <tr><th>デバイス</th><th class="num">クリック</th><th class="num">表示回数</th><th class="num">費用</th><th class="num">構成比</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:var(--primary-light);">
+            <td><strong>モバイル</strong></td>
+            <td class="num" style="font-weight:700">63</td><td class="num">692</td>
+            <td class="num">&#165;24,744</td><td class="num" style="font-weight:700">98.8%</td>
+          </tr>
+          <tr>
+            <td>パソコン</td>
+            <td class="num">1</td><td class="num">25</td>
+            <td class="num">&#165;293</td><td class="num">1.2%</td>
+          </tr>
+          <tr>
+            <td>タブレット</td>
+            <td class="num">0</td><td class="num">3</td>
+            <td class="num">&#165;0</td><td class="num">0%</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="info-primary" style="margin-top:12px;">
+        <strong>98.8%がモバイルからの流入。</strong> LPのモバイル最適化が最重要。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 2. 実績ファネル ===== -->
+  <div id="section-funnel-20-21" class="tab-content">
+    <div class="section">
+      <div class="section-header">
+        <h3>実績ファネル（2/20 14:00 〜 2/21 23:59）</h3>
+        <span class="badge badge-info">約1.5日分の実績</span>
+      </div>
+      <div class="grid-3" style="margin-bottom:24px;">
+        <div class="kpi-card" style="border-left:4px solid var(--primary);">
+          <div class="kpi-label">広告からの流入数（クリック）</div>
+          <div class="kpi-value" style="color:var(--primary);">64<span style="font-size:14px;color:var(--gray-600)"> クリック</span></div>
+          <div class="kpi-sub">表示回数: 720 ｜ CTR: 8.89% ｜ 費用: &#165;25,037</div>
+        </div>
+        <div class="kpi-card" style="border-left:4px solid #00b900;">
+          <div class="kpi-label">LINE相談ボタンを押した人</div>
+          <div class="kpi-value" style="color:#00b900;">7<span style="font-size:14px;color:var(--gray-600)"> 人</span></div>
+          <div class="kpi-sub">クリック→LINEタップ率: 10.9%</div>
+        </div>
+        <div class="kpi-card" style="border-left:4px solid var(--success);">
+          <div class="kpi-label">公式LINE登録 & フォーム送信</div>
+          <div class="kpi-value" style="color:var(--success);">1<span style="font-size:14px;color:var(--gray-600)"> 人</span></div>
+          <div class="kpi-sub">LINE友だち: 10名 → 11名（+1名）</div>
+        </div>
+      </div>
+      <div class="funnel">
+        <div class="funnel-step" style="width:95%;background:#0d47a1;">
+          <span class="f-label">広告表示回数</span>
+          <span class="f-value">720</span>
+        </div>
+        <div class="funnel-rate">CTR 8.89%</div>
+        <div class="funnel-step" style="width:78%;background:#1565c0;">
+          <span class="f-label">広告クリック（LP流入）</span>
+          <span class="f-value">64</span>
+        </div>
+        <div class="funnel-rate">LINE遷移率 10.9%</div>
+        <div class="funnel-step" style="width:55%;background:#00b900;">
+          <span class="f-label">LINE相談ボタンタップ</span>
+          <span class="f-value">7</span>
+        </div>
+        <div class="funnel-rate">登録率 14.3%</div>
+        <div class="funnel-step" style="width:35%;background:#1e8e3e;">
+          <span class="f-label">公式LINE登録 & フォーム送信</span>
+          <span class="f-value" style="color:#ffeb3b;">1</span>
+        </div>
+      </div>
+      <div class="info-primary" style="margin-top:16px;">
+        <strong>ファネル分析:</strong>
+        広告クリックからLINEボタンタップまでの遷移率は10.9%。LINEボタンを押した7人中、実際にLINE登録&フォーム送信したのは1名（14.3%）。
+        全体のCVR（クリック→問い合わせ）は <strong>1.56%</strong>（1件/64クリック）。
+      </div>
+    </div>
+
+    <!-- 月間換算 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>月間換算シミュレーション</h3>
+        <span class="badge badge-warning">1.5日分 → 30日換算（参考値）</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>指標</th><th class="num">1.5日実績</th><th class="num">月間換算（30日）</th><th class="num">お客様目標</th><th>見通し</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>広告費用</td>
+            <td class="num">&#165;25,037</td>
+            <td class="num">&#165;450,000<br><small>（予算上限）</small></td>
+            <td class="num">&#165;450,000</td>
+            <td><span class="badge badge-success">予定通り</span></td>
+          </tr>
+          <tr>
+            <td>クリック数</td>
+            <td class="num">64</td>
+            <td class="num">約1,150</td>
+            <td class="num">-</td>
+            <td><span class="badge badge-info">良好</span></td>
+          </tr>
+          <tr>
+            <td>LINE相談タップ</td>
+            <td class="num">7</td>
+            <td class="num">約126</td>
+            <td class="num">-</td>
+            <td><span class="badge badge-info">参考</span></td>
+          </tr>
+          <tr style="background:var(--warning-light);">
+            <td><strong>LINE登録 & フォーム送信</strong></td>
+            <td class="num" style="font-weight:700">1</td>
+            <td class="num" style="font-weight:700;color:var(--warning)">約18件</td>
+            <td class="num" style="font-weight:700;color:var(--danger)">300件</td>
+            <td><span class="badge badge-danger">大幅乖離</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== 3. ヒートマップ ===== -->
+  <div id="section-heatmap-20-21" class="tab-content">
+    <div class="section">
+      <div class="section-header">
+        <h3>Microsoft Clarity ダッシュボード</h3>
+        <span class="badge badge-info">2/19〜2/21 | 63セッション</span>
+      </div>
+      <div class="grid-4" style="margin-bottom:20px;">
+        <div class="kpi-card">
+          <div class="kpi-label">セッション数</div>
+          <div class="kpi-value">63</div>
+          <div class="kpi-sub">ボット: 4 ｜ 実質: 59</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">ユニークユーザー</div>
+          <div class="kpi-value">43</div>
+          <div class="kpi-sub">新規: 47セッション ｜ リピーター: 16</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">平均スクロール深度</div>
+          <div class="kpi-value">63.2<span style="font-size:16px">%</span></div>
+          <div class="kpi-sub">ページの約6割まで閲覧</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">平均アクティブ時間</div>
+          <div class="kpi-value">69<span style="font-size:16px">秒</span></div>
+          <div class="kpi-sub">滞在時間: 219秒（3分39秒）</div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="section" style="margin-bottom:0;">
+          <h4 style="font-size:14px;margin-bottom:16px;">スクロール深度分析（TOPページ）</h4>
+          <table class="data-table">
+            <thead><tr><th class="num">深度</th><th class="num">残存ユーザー</th><th class="num">離脱率</th><th>状態</th></tr></thead>
+            <tbody>
+              <tr><td class="num">10%</td><td class="num">112人（100%）</td><td class="num">0%</td><td><span class="badge badge-success">全員閲覧</span></td></tr>
+              <tr><td class="num">25%</td><td class="num">74人（66%）</td><td class="num">34%</td><td><span class="badge badge-warning">1/3離脱</span></td></tr>
+              <tr><td class="num">50%</td><td class="num">58人（52%）</td><td class="num">48%</td><td><span class="badge badge-warning">半数残存</span></td></tr>
+              <tr style="background:var(--primary-light)"><td class="num"><strong>65%</strong></td><td class="num"><strong>56人（50%）</strong></td><td class="num">50%</td><td><span class="badge badge-info">FAQ付近</span></td></tr>
+              <tr><td class="num">75%</td><td class="num">48人（43%）</td><td class="num">57%</td><td><span class="badge badge-info">CTA付近</span></td></tr>
+              <tr><td class="num">100%</td><td class="num">13人（12%）</td><td class="num">88%</td><td><span class="badge badge-danger">最下部</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="section" style="margin-bottom:0;">
+          <h4 style="font-size:14px;margin-bottom:16px;">注目度ヒートマップ（Attention）</h4>
+          <table class="data-table">
+            <thead><tr><th class="num">深度</th><th class="num">平均滞在時間</th><th class="num">注目度</th><th>コンテンツ</th></tr></thead>
+            <tbody>
+              <tr><td class="num">5〜10%</td><td class="num">4秒</td><td class="num">1.9%</td><td>ファーストビュー</td></tr>
+              <tr><td class="num">15〜20%</td><td class="num">3秒</td><td class="num">1.4%</td><td>導入部分</td></tr>
+              <tr><td class="num">40〜55%</td><td class="num">1秒</td><td class="num">0.6%</td><td>中間コンテンツ</td></tr>
+              <tr style="background:var(--warning-light)"><td class="num"><strong>60%</strong></td><td class="num"><strong>16秒</strong></td><td class="num" style="font-weight:700;color:var(--warning)"><strong>6.4%</strong></td><td><strong>FAQ入口付近</strong></td></tr>
+              <tr style="background:var(--danger-light)"><td class="num"><strong>65%</strong></td><td class="num"><strong>56秒</strong></td><td class="num" style="font-weight:700;color:var(--danger)"><strong>22.5%</strong></td><td><strong>FAQ本体</strong></td></tr>
+              <tr style="background:var(--danger-light)"><td class="num"><strong>70%</strong></td><td class="num"><strong>1分32秒</strong></td><td class="num" style="font-weight:700;color:var(--danger)"><strong>36.7%</strong></td><td><strong>FAQ本体（最高注目）</strong></td></tr>
+              <tr><td class="num">90〜95%</td><td class="num">10〜13秒</td><td class="num">4.8%</td><td>CTA / フッター付近</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="info-primary" style="margin-top:16px;">
+        <strong>ヒートマップ考察:</strong>
+        ページの<strong>65〜70%地点（FAQ・よくある質問エリア）</strong>にユーザーが最も長く滞在しています（平均56秒〜1分32秒）。
+      </div>
+    </div>
+
+    <!-- ユーザー行動 -->
+    <div class="section">
+      <div class="section-header"><h3>ユーザー行動インサイト</h3></div>
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">スマートイベント</h4>
+          <table class="data-table">
+            <thead><tr><th>イベント</th><th class="num">セッション数</th><th class="num">割合</th></tr></thead>
+            <tbody>
+              <tr><td>アウトバウンドクリック（外部リンク）</td><td class="num">10</td><td class="num">15.87%</td></tr>
+              <tr><td>デッドクリック（反応しない箇所タップ）</td><td class="num">5</td><td class="num">7.94%</td></tr>
+              <tr><td>クイックバッククリック（すぐ戻る）</td><td class="num">7</td><td class="num">11.11%</td></tr>
+              <tr style="background:var(--success-light)"><td><strong>フォーム送信</strong></td><td class="num" style="font-weight:700;color:var(--success)"><strong>1</strong></td><td class="num"><strong>1.59%</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">閲覧ページ</h4>
+          <table class="data-table">
+            <thead><tr><th>ページ</th><th class="num">セッション数</th></tr></thead>
+            <tbody>
+              <tr><td>relief-trust.com/（TOP）</td><td class="num">55</td></tr>
+              <tr><td>relief-trust.com/form/（フォーム）</td><td class="num">16</td></tr>
+            </tbody>
+          </table>
+          <div class="info-success" style="margin-top:12px;">
+            <strong>TOP → フォームへの遷移率: 29.1%</strong>（55セッション中16がフォームページへ移動）
+          </div>
+
+          <h4 style="font-size:14px;margin-top:20px;margin-bottom:12px;">ブラウザ</h4>
+          <table class="data-table">
+            <thead><tr><th>ブラウザ</th><th class="num">セッション</th><th class="num">割合</th></tr></thead>
+            <tbody>
+              <tr><td>Chrome Mobile</td><td class="num">31</td><td class="num">52.5%</td></tr>
+              <tr><td>Mobile Safari</td><td class="num">17</td><td class="num">28.8%</td></tr>
+              <tr><td>Chrome（PC）</td><td class="num">6</td><td class="num">10.2%</td></tr>
+              <tr><td>Google App</td><td class="num">5</td><td class="num">8.5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid-2" style="margin-top:20px;">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">パフォーマンススコア</h4>
+          <div style="text-align:center;padding:16px 0;">
+            <div style="width:80px;height:80px;border-radius:50%;border:4px solid var(--success);display:inline-flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:var(--success);">
+              84
+            </div>
+            <div style="font-size:12px;color:var(--gray-600);margin-top:4px;">良好</div>
+          </div>
+          <table class="data-table">
+            <tbody>
+              <tr><td>LCP（読み込み速度）</td><td class="num">2.595秒</td><td><span class="badge badge-warning">やや遅い</span></td></tr>
+              <tr><td>INP（操作応答性）</td><td class="num">160ms</td><td><span class="badge badge-success">良好</span></td></tr>
+              <tr><td>CLS（レイアウト崩れ）</td><td class="num">0</td><td><span class="badge badge-success">完璧</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">ボットトラフィック検知</h4>
+          <table class="data-table">
+            <thead><tr><th>種類</th><th class="num">セッション数</th></tr></thead>
+            <tbody>
+              <tr><td>不審なデバイス</td><td class="num">1</td></tr>
+              <tr><td>不審なネットワーク</td><td class="num">4</td></tr>
+              <tr><td>不審な操作パターン</td><td class="num">4</td></tr>
+              <tr style="background:var(--danger-light)"><td><strong>PPC広告詐欺ボット</strong></td><td class="num" style="font-weight:700;color:var(--danger)"><strong>3</strong></td></tr>
+            </tbody>
+          </table>
+          <div class="info-warning" style="margin-top:12px;">
+            PPC広告詐欺ボットが3セッション検知。63セッション中の4.8%。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 4. Google広告 詳細 ===== -->
+  <div id="section-ads-20-21" class="tab-content">
+    <div class="section">
+      <div class="section-header">
+        <h3>キーワード別パフォーマンス</h3>
+        <span class="badge badge-info">クリック発生KWのみ</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>キーワード</th><th class="num">費用</th><th class="num">Click</th><th class="num">CTR</th><th class="num">CPC</th><th>評価</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>自社ローン 中古車</strong></td>
+            <td class="num">&#165;8,841</td><td class="num">22</td>
+            <td class="num">8.87%</td><td class="num">&#165;402</td>
+            <td><span class="badge badge-info">費用最大</span></td>
+          </tr>
+          <tr>
+            <td><strong>自社ローン 福岡</strong></td>
+            <td class="num">&#165;4,442</td><td class="num">11</td>
+            <td class="num" style="color:var(--success);font-weight:700">14.67%</td><td class="num">&#165;404</td>
+            <td><span class="badge badge-success">CTR高</span></td>
+          </tr>
+          <tr>
+            <td><strong>自社ローン 専門店</strong></td>
+            <td class="num">&#165;3,994</td><td class="num">10</td>
+            <td class="num">6.71%</td><td class="num">&#165;399</td>
+            <td><span class="badge badge-info">標準</span></td>
+          </tr>
+          <tr>
+            <td>車 自社ローン</td>
+            <td class="num">&#165;2,729</td><td class="num">7</td>
+            <td class="num">6.19%</td><td class="num">&#165;390</td>
+            <td><span class="badge badge-info">標準</span></td>
+          </tr>
+          <tr>
+            <td>ローン通らない 車</td>
+            <td class="num">&#165;2,318</td><td class="num">6</td>
+            <td class="num" style="color:var(--success);font-weight:700">12.00%</td><td class="num">&#165;386</td>
+            <td><span class="badge badge-success">CTR高</span></td>
+          </tr>
+          <tr class="highlight-row">
+            <td><strong>オートローン 審査落ち</strong></td>
+            <td class="num">&#165;1,955</td><td class="num">6</td>
+            <td class="num" style="color:var(--success);font-weight:700">19.35%</td><td class="num">&#165;326</td>
+            <td><span class="badge badge-success">最効率</span></td>
+          </tr>
+          <tr>
+            <td>審査甘い 車ローン</td>
+            <td class="num">&#165;759</td><td class="num">2</td>
+            <td class="num">6.67%</td><td class="num">&#165;380</td>
+            <td><span class="badge badge-info">標準</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="info-success" style="margin-top:16px;">
+        <strong>注目:</strong>「オートローン 審査落ち」がCTR 19.35%・CPC &#165;326で最も効率的。「自社ローン 福岡」「ローン通らない 車」もCTR 12%超で好調。
+      </div>
+    </div>
+
+    <!-- 除外推奨 -->
+    <div class="section">
+      <div class="section-header">
+        <h3>検索クエリ分析</h3>
+      </div>
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">除外推奨キーワード</h4>
+          <div class="kw-tags">
+            <span class="kw-tag bad">カーマッチ（40imp/0click）</span>
+            <span class="kw-tag bad">スリークロス（18imp/0click）</span>
+            <span class="kw-tag bad">オーシャンデザイン（4imp/0click）</span>
+            <span class="kw-tag bad">bond（7imp/0click）</span>
+            <span class="kw-tag bad">カーパークアウトレット（6imp/0click）</span>
+            <span class="kw-tag bad">オトロン（&#165;795/2click）</span>
+            <span class="kw-tag bad">cボーイ彦根（&#165;391/1click）</span>
+            <span class="kw-tag bad">カーショップYSK（&#165;369/1click）</span>
+          </div>
+          <div class="info-warning" style="margin-top:12px;">
+            競合名・無関係語句での無駄な表示とクリックが発生中。除外KW設定で<strong>月間約&#165;30,000〜50,000の節約</strong>が可能。
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:8px;">良質クエリ（検討顧客の意図合致）</h4>
+          <div class="kw-tags">
+            <span class="kw-tag good">自社ローン 絶対通る 福岡（&#165;2,818/7click）</span>
+            <span class="kw-tag good">ローン通らない人 専門店</span>
+            <span class="kw-tag good">自社ローン 中古車 福岡</span>
+            <span class="kw-tag good">マイカーローン 審査甘い</span>
+            <span class="kw-tag good">自社ローン 北九州</span>
+            <span class="kw-tag good">自社ローン 宮崎</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 5. キーワード分析 ===== -->
+  <div id="section-keywords-20-21" class="tab-content">
+    <div class="section">
+      <div class="section-header"><h3>キーワード別パフォーマンス（2/20-21）</h3></div>
+      <div class="info-primary">
+        2/20-21のキーワード分析はGoogle広告詳細セクションに統合しています。「4. Google広告 詳細」をご確認ください。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 6. ユーザー属性 ===== -->
+  <div id="section-users-20-21" class="tab-content">
+    <div class="section">
+      <div class="section-header"><h3>ユーザー属性分析（2/20-21）</h3></div>
+      <div class="grid-2">
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">性別</h4>
+          <table class="data-table">
+            <thead><tr><th>性別</th><th class="num">割合</th></tr></thead>
+            <tbody>
+              <tr style="background:var(--primary-light)"><td><strong>男性</strong></td><td class="num" style="font-weight:700">77%</td></tr>
+              <tr><td>女性</td><td class="num">24%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h4 style="font-size:14px;margin-bottom:12px;">年齢別 表示回数</h4>
+          <table class="data-table">
+            <thead><tr><th>年齢層</th><th class="num">表示回数</th><th class="num">割合</th></tr></thead>
+            <tbody>
+              <tr><td>18〜24歳</td><td class="num">33</td><td class="num">6.1%</td></tr>
+              <tr><td>25〜34歳</td><td class="num">111</td><td class="num">20.4%</td></tr>
+              <tr style="background:var(--primary-light)"><td><strong>35〜44歳</strong></td><td class="num"><strong>135</strong></td><td class="num" style="font-weight:700"><strong>24.9%</strong></td></tr>
+              <tr style="background:var(--primary-light)"><td><strong>45〜54歳</strong></td><td class="num"><strong>150</strong></td><td class="num" style="font-weight:700"><strong>27.6%</strong></td></tr>
+              <tr><td>55〜64歳</td><td class="num">93</td><td class="num">17.1%</td></tr>
+              <tr><td>65歳以上</td><td class="num">23</td><td class="num">4.2%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="info-primary" style="margin-top:12px;">
+        <strong>35〜54歳が全体の52.5%</strong>を占め、自動車ローンのコアターゲット層に正確にリーチしています。男性77%・女性24%。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 7. 時間帯分析 ===== -->
+  <div id="section-time-20-21" class="tab-content">
+    <div class="section">
+      <div class="section-header">
+        <h3>時間帯別パフォーマンス（2/20-21）</h3>
+        <span class="badge badge-info">2/20〜2/21</span>
+      </div>
+      <div class="info-primary" style="margin-top:12px;">
+        <strong>分析:</strong>
+        2/20（金）は開始が14時のため夜間に集中。2/21（土）は終日稼働で14〜21時がピーク帯。
+        特に<strong>18〜21時台</strong>が表示回数・クリック数ともに高く、ゴールデンタイムとなっています。
+        土曜日は<strong>8〜9時</strong>と<strong>14〜20時</strong>に2つのピークがあります。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 8. GA4イベント ===== -->
+  <div id="section-ga4-20-21" class="tab-content">
+    <div class="section">
+      <div class="section-header"><h3>GA4イベントデータ（2/20-21）</h3></div>
+      <div class="info-primary">
+        2/20-21のGA4イベントデータは未集計です。2/22以降のデータをご確認ください。
+      </div>
+    </div>
+  </div>
+
+  </div><!-- /date-data 20-21 -->
+
+  <!-- ========== 共通セクション ========== -->
+
+  <!-- ===== 9. 業界ベンチマーク ===== -->
+  <div id="section-benchmark" class="tab-content">
+    <div class="section">
+      <div class="section-header">
+        <h3>業界ベンチマーク詳細（自動車ローン / 金融サービス）</h3>
+        <span class="badge badge-info">月予算45万円の場合</span>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>指標</th><th class="num">業界平均</th><th class="num">ニコニコ実績<br><small>(2/20-21)</small></th><th class="num">ニコニコ実績<br><small>(2/22)</small></th><th>判定</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>CPC（クリック単価）</strong></td>
+            <td class="num">&#165;400〜&#165;500</td>
+            <td class="num" style="font-weight:700">&#165;391</td>
+            <td class="num" style="font-weight:700;color:var(--success)">&#165;241</td>
+            <td><span class="badge badge-success">大幅改善</span></td>
+          </tr>
+          <tr>
+            <td><strong>CTR（クリック率）</strong></td>
+            <td class="num">4%〜5%</td>
+            <td class="num" style="color:var(--success);font-weight:700">8.89%</td>
+            <td class="num" style="font-weight:700">4.96%</td>
+            <td><span class="badge badge-success">業界平均以上</span></td>
+          </tr>
+          <tr>
+            <td><strong>CVR（問い合わせ率）</strong></td>
+            <td class="num">2%〜3%</td>
+            <td class="num">1.56%</td>
+            <td class="num">計測確認中</td>
+            <td><span class="badge badge-warning">要改善</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:20px;">
+        <h4 style="font-size:14px;margin-bottom:12px;">月45万円で見込める問い合わせ件数（業界シミュレーション）</h4>
+        <table class="data-table">
+          <thead>
+            <tr><th>シナリオ</th><th class="num">CPC</th><th class="num">月間クリック</th><th class="num">CVR</th><th class="num" style="background:var(--primary-light)">月間問い合わせ</th><th class="num">CPA</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>楽観的</td>
+              <td class="num">&#165;300</td><td class="num">1,500</td><td class="num">3%</td>
+              <td class="num" style="font-weight:700;color:var(--success)">45件</td>
+              <td class="num">&#165;10,000</td>
+            </tr>
+            <tr style="background:var(--primary-light)">
+              <td><strong>現実的（最も可能性が高い）</strong></td>
+              <td class="num">&#165;450</td><td class="num">1,000</td><td class="num">2.5%</td>
+              <td class="num" style="font-weight:700;color:var(--primary)"><strong>25件</strong></td>
+              <td class="num">&#165;18,000</td>
+            </tr>
+            <tr>
+              <td>保守的</td>
+              <td class="num">&#165;600</td><td class="num">750</td><td class="num">2%</td>
+              <td class="num" style="font-weight:700">15件</td>
+              <td class="num">&#165;30,000</td>
+            </tr>
+            <tr style="background:var(--success-light)">
+              <td><strong>最大限の最適化</strong></td>
+              <td class="num">&#165;250</td><td class="num">1,800</td><td class="num">4%</td>
+              <td class="num" style="font-weight:700;color:var(--success)"><strong>72件</strong></td>
+              <td class="num">&#165;6,250</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 10. 改善施策 ===== -->
+  <div id="section-measures" class="tab-content">
+    <div class="section">
+      <div class="section-header">
+        <h3>施策の優先度・実施スケジュール</h3>
+      </div>
+      <table class="data-table">
+        <thead>
+          <tr><th>優先度</th><th>施策</th><th class="num">期待効果</th><th>工数</th><th>実施時期</th></tr>
+        </thead>
+        <tbody>
+          <tr style="background:var(--danger-light)">
+            <td><span class="badge badge-danger">最優先</span></td>
+            <td><strong>除外KW 25個以上追加</strong></td>
+            <td class="num">月&#165;35,000〜50,000節約</td>
+            <td>低（30分）</td>
+            <td><strong>今日</strong></td>
+          </tr>
+          <tr style="background:var(--danger-light)">
+            <td><span class="badge badge-danger">最優先</span></td>
+            <td><strong>LINE導線の改善（コピー追加・説明文）</strong></td>
+            <td class="num">LINE CVR +200〜300%</td>
+            <td>低（1時間）</td>
+            <td><strong>今週中</strong></td>
+          </tr>
+          <tr style="background:var(--warning-light)">
+            <td><span class="badge badge-warning">高</span></td>
+            <td><strong>スマホ固定CTAボタン設置</strong></td>
+            <td class="num">CVR +15〜25%</td>
+            <td>低（1時間）</td>
+            <td><strong>今週中</strong></td>
+          </tr>
+          <tr style="background:var(--warning-light)">
+            <td><span class="badge badge-warning">高</span></td>
+            <td><strong>FAQ直後にCTA追加</strong></td>
+            <td class="num">CVR +10〜20%</td>
+            <td>低（30分）</td>
+            <td><strong>今週中</strong></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-warning">高</span></td>
+            <td><strong>フォームを3ステップ型に変更</strong></td>
+            <td class="num">フォームCVR +86%</td>
+            <td>中（3〜5時間）</td>
+            <td>2週目</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-warning">高</span></td>
+            <td><strong>LCP 2.0秒以下に改善</strong></td>
+            <td class="num">CVR +5〜12%, QS向上</td>
+            <td>中（2〜3時間）</td>
+            <td>2週目</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-info">中</span></td>
+            <td>ロングテールKW 10個追加</td>
+            <td class="num">CPC -15〜25%</td>
+            <td>低（1時間）</td>
+            <td>2週目</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-info">中</span></td>
+            <td>クリック詐欺対策ツール導入</td>
+            <td class="num">月&#165;21,600+節約</td>
+            <td>低（30分）</td>
+            <td>3週目</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
 <script>
-// Navigation
+// Current state
+let currentDate = '22';
+let currentSection = 'overview';
+
+// Switch date tab
+function switchDate(date) {
+  currentDate = date;
+
+  // Update tab buttons
+  document.querySelectorAll('.date-tab').forEach(btn => btn.classList.remove('active'));
+  document.querySelector('.date-tab[onclick*="' + date + '"]').classList.add('active');
+
+  // Show/hide date data blocks
+  document.querySelectorAll('.date-data').forEach(el => el.classList.remove('active'));
+  const target = document.querySelector('.date-data[data-date="' + date + '"]');
+  if (target) target.classList.add('active');
+
+  // Show the current section within the new date
+  showSectionInDate(currentSection, date);
+}
+
+// Show section within current date
 function showSection(name) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.getElementById('section-' + name).classList.add('active');
+  // For shared sections (benchmark, measures), hide date-specific content and show shared
+  if (name === 'benchmark' || name === 'measures') {
+    // Hide all date-data blocks' tab-contents
+    document.querySelectorAll('.date-data .tab-content').forEach(el => el.classList.remove('active'));
+    // Hide date-data containers (shared sections are outside)
+    document.querySelectorAll('.date-data').forEach(el => el.classList.remove('active'));
+    // Show the shared section
+    document.querySelectorAll('#section-benchmark, #section-measures').forEach(el => el.classList.remove('active'));
+    document.getElementById('section-' + name).classList.add('active');
+    currentSection = name;
+  } else {
+    // Hide shared sections
+    document.querySelectorAll('#section-benchmark, #section-measures').forEach(el => el.classList.remove('active'));
+    // Make sure current date-data is visible
+    document.querySelectorAll('.date-data').forEach(el => el.classList.remove('active'));
+    const dateBlock = document.querySelector('.date-data[data-date="' + currentDate + '"]');
+    if (dateBlock) dateBlock.classList.add('active');
+
+    currentSection = name;
+    showSectionInDate(name, currentDate);
+  }
+
+  // Update sidebar active state
   document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
-  event.target.closest('a').classList.add('active');
+  if (event && event.target) event.target.closest('a').classList.add('active');
+}
+
+function showSectionInDate(name, date) {
+  // Hide all tab-contents within the active date-data
+  const dateBlock = document.querySelector('.date-data[data-date="' + date + '"]');
+  if (!dateBlock) return;
+  dateBlock.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+
+  // Show target section
+  const sectionId = 'section-' + name + '-' + date;
+  const section = document.getElementById(sectionId);
+  if (section) section.classList.add('active');
 }
 </script>
 
