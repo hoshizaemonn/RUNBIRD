@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告サポート 業務フローまとめ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 28px;
+            border-bottom: 3px solid #cc0000;
+            padding-bottom: 15px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+
+        /* --- Overview Section --- */
+        .overview-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .overview-title {
+            color: #ff6b6b;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .overview-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .overview-card .label {
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .overview-card .value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .overview-card .note {
+            font-size: 12px;
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        /* --- Flow Section --- */
+        .flow-section {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .flow-title {
+            color: #cc0000;
+            font-size: 20px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .flow-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .flow-step {
+            flex: 1;
+            min-width: 200px;
+            background-color: #ffffff;
+            border: 2px solid #cc0000;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .step-number {
+            background-color: #cc0000;
+            color: #ffffff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .step-title {
+            color: #1a1a1a;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .step-content {
+            color: #4a4a4a;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .step-who {
+            display: inline-block;
+            background: #fff0f0;
+            color: #cc0000;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+
+        .arrow {
+            color: #cc0000;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        /* --- Detail Section --- */
+        .detail-section {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .detail-title {
+            color: #cc0000;
+            font-size: 22px;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 2px solid #cc0000;
+            padding-bottom: 15px;
+        }
+
+        .detail-box {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 5px solid #cc0000;
+        }
+
+        .detail-box-title {
+            color: #cc0000;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-box-content {
+            color: #1a1a1a;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .detail-box-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .detail-box-content li {
+            margin-bottom: 10px;
+        }
+
+        .detail-box-content strong {
+            color: #cc0000;
+        }
+
+        /* --- Email Template Section --- */
+        .email-template {
+            background: #fffaf0;
+            border: 2px solid #ff8800;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .email-template-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ffe0b2;
+        }
+
+        .email-template-header .badge {
+            background: #ff8800;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        .email-template-header .subject {
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .email-template-body {
+            font-size: 13px;
+            color: #444;
+            line-height: 1.8;
+            white-space: pre-line;
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+
+        /* --- Settings Table --- */
+        .settings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background-color: #ffffff;
+        }
+
+        .settings-table th {
+            background-color: #cc0000;
+            color: #ffffff;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #aa0000;
+            font-size: 14px;
+        }
+
+        .settings-table td {
+            padding: 10px 15px;
+            border: 1px solid #e0e0e0;
+            color: #1a1a1a;
+            font-size: 14px;
+        }
+
+        .settings-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* --- Checklist Section --- */
+        .checklist-section {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 2px solid #4caf50;
+        }
+
+        .checklist-title {
+            color: #2e7d32;
+            font-size: 22px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .checklist-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #c8e6c9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .checklist-card-title {
+            color: #2e7d32;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e8f5e9;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .checklist-item .check {
+            color: #4caf50;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* --- Notes Section --- */
+        .notes-section {
+            background: #fff3e0;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 2px solid #ff8800;
+        }
+
+        .notes-title {
+            color: #e65100;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .notes-content {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .notes-content li {
+            margin-bottom: 8px;
+        }
+
+        .notes-content ul {
+            margin-left: 20px;
+        }
+
+        .highlight-box {
+            background: #fff;
+            border-left: 4px solid #cc0000;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .highlight-box strong {
+            color: #cc0000;
+        }
+
+        /* --- KPI Section --- */
+        .kpi-section {
+            background: #e3f2fd;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 2px solid #1976d2;
+        }
+
+        .kpi-title {
+            color: #1565c0;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .kpi-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 18px;
+            text-align: center;
+            border: 1px solid #bbdefb;
+        }
+
+        .kpi-card .kpi-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .kpi-card .kpi-value {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1565c0;
+        }
+
+        @media (max-width: 768px) {
+            .flow-container {
+                flex-direction: column;
+            }
+            .arrow {
+                transform: rotate(90deg);
+                justify-content: center;
+            }
+            .flow-step {
+                width: 100%;
+            }
+            .overview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube広告サポート 業務フロー</h1>
+        <p class="subtitle">株式会社ランバード｜業務マニュアル</p>
+
+        <!-- 案件概要 -->
+        <div class="overview-section">
+            <div class="overview-title">案件概要</div>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="label">クライアント月額</div>
+                    <div class="value">12,000<span style="font-size:14px">円</span></div>
+                    <div class="note">1日あたり約70円の制作費</div>
+                </div>
+                <div class="overview-card">
+                    <div class="label">累計契約数（3年間）</div>
+                    <div class="value">約280<span style="font-size:14px">件</span></div>
+                    <div class="note">安定した契約実績</div>
+                </div>
+                <div class="overview-card">
+                    <div class="label">鈴木の報酬単価</div>
+                    <div class="value">3,025<span style="font-size:14px">円</span></div>
+                    <div class="note">税込（税抜 2,750円）/ 1件</div>
+                </div>
+                <div class="overview-card">
+                    <div class="label">初期想定件数</div>
+                    <div class="value">約100<span style="font-size:14px">件</span></div>
+                    <div class="note">段階的に担当開始</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 担当範囲 -->
+        <div class="detail-section" style="border-color:#cc0000;">
+            <div class="detail-title">担当範囲の整理</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                <div style="background:#e8f5e9; padding:20px; border-radius:8px; border-left:5px solid #4caf50;">
+                    <div style="color:#2e7d32; font-size:16px; font-weight:bold; margin-bottom:12px;">やること</div>
+                    <ul style="margin-left:18px; font-size:14px; line-height:2;">
+                        <li><strong>メール送信</strong>（3種類の定型メール）</li>
+                        <li><strong>電話対応</strong>（チャンネルサポート / ヒアリング20-30分 / 定例会30分-1時間）</li>
+                        <li><strong>MCC上で広告設定</strong>（アカウント作成・動画広告の入稿・各種設定）</li>
+                        <li><strong>スプレッドシート更新</strong>（月次データの記録）</li>
+                        <li><strong>アカウント監視</strong>（停止等の問題があれば対応）</li>
+                    </ul>
+                </div>
+                <div style="background:#ffebee; padding:20px; border-radius:8px; border-left:5px solid #cc0000;">
+                    <div style="color:#cc0000; font-size:16px; font-weight:bold; margin-bottom:12px;">やらないこと（他の人の担当）</div>
+                    <ul style="margin-left:18px; font-size:14px; line-height:2;">
+                        <li><strong>動画の制作・納品</strong>→ ランバード制作チーム</li>
+                        <li><strong>営業・契約の話</strong>→ 河合（営業）</li>
+                        <li><strong>金銭的な要望への対応</strong>→ 河合（営業）</li>
+                        <li><strong>案件管理シート全体の管理</strong>→ 阿部（現担当）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 全体フロー -->
+        <div class="flow-section">
+            <div class="flow-title">全体業務フロー</div>
+            <p style="text-align:center; color:#666; font-size:13px; margin-bottom:20px;">※ランバード営業側が契約・動画制作・納品を完了した後、ここからが担当業務</p>
+            <div class="flow-container">
+                <div class="flow-step" style="border-color:#cc0000;">
+                    <div class="step-number">1</div>
+                    <div class="step-title">チャンネル開設・動画UP</div>
+                    <div class="step-content">
+                        チャンネルの有無を確認<br>
+                        必要なら電話でサポート<br>
+                        動画URLを受け取る
+                    </div>
+                    <div class="step-who" style="background:#fff0f0; color:#cc0000;">初回のみ</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="flow-step" style="border-color:#cc0000;">
+                    <div class="step-number">2</div>
+                    <div class="step-title">ヒアリング・広告設定</div>
+                    <div class="step-content">
+                        電話で設定内容を相談<br>
+                        MCC内にアカウント作成<br>
+                        動画広告を入稿・配信開始
+                    </div>
+                    <div class="step-who" style="background:#fff0f0; color:#cc0000;">初回のみ</div>
+                </div>
+                <div class="arrow">→</div>
+                <div class="flow-step" style="border-color:#1976d2; background:#f0f7ff;">
+                    <div class="step-number" style="background:#1976d2;">3</div>
+                    <div class="step-title">定例会（成果報告）</div>
+                    <div class="step-content">
+                        BCCメールで日程調整<br>
+                        電話で数値を報告<br>
+                        表示回数・視聴回数・視聴率
+                    </div>
+                    <div class="step-who" style="background:#e3f2fd; color:#1976d2;">2ヶ月に1回ずっと繰り返し</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 1 詳細 -->
+        <div class="detail-section">
+            <div class="detail-title">STEP 1：チャンネル開設と動画アップロード</div>
+
+            <div class="detail-box">
+                <div class="detail-box-title">具体的な手順</div>
+                <div class="detail-box-content">
+                    <p style="margin-bottom:12px;"><strong>前提：</strong>ランバード側で制作した動画がクライアントに納品済みの状態からスタート</p>
+                    <ul>
+                        <li><strong>1. 案内メールを送信する</strong><br>下記の定型メールをお客様に送り、「YouTubeチャンネルを持っているかどうか？」を確認する</li>
+                        <li><strong>2-A. チャンネルを持っている場合</strong><br>お客様自身で納品動画をチャンネルにアップロードしてもらい、<strong>動画のURLをメールで返信してもらう</strong>。そのURLをSTEP2の広告設定で使う</li>
+                        <li><strong>2-B. チャンネルを持っていない場合</strong><br>電話の日程を調整し、<strong>電話をしながら一緒にチャンネル開設と動画アップロードを行う</strong>。年配の方はこのパターンが多い</li>
+                        <li><strong>3. 動画URLを受け取る</strong><br>アップロード完了後、動画URLを確認。これでSTEP2に進める</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="email-template">
+                <div class="email-template-header">
+                    <span class="badge">定型メール</span>
+                    <span class="subject">件名：Youtube広告開始に向けてのご案内【株式会社ランバード】</span>
+                </div>
+                <div class="email-template-body">お世話になっております。
+株式会社ランバード　広告運用サポート窓口です。
+
+Youtube広告開始に向けて
+ご連絡させていただきました。
+
+店舗様でYoutubeチャンネルをお持ちでしょうか？
+お持ちでしたら、納品させていただいた動画を
+チャンネルにアップロードいただき、
+動画のURLをこちらのメールにお送りください。
+
+お持ちでないようでしたら、
+Youtubeチャンネルの作成、
+アップロードを行っていただくか、
+弊社でチャンネル作成とアップロードを
+サポートさせていただくこともできます。
+その場合お電話をしながらになりますので、
+日程を調整させていただきたく存じます。
+
+ご確認のほど、よろしくお願い致します。</div>
+            </div>
+        </div>
+
+        <!-- STEP 2 詳細 -->
+        <div class="detail-section">
+            <div class="detail-title">STEP 2：ヒアリングと広告設定</div>
+
+            <div class="detail-box">
+                <div class="detail-box-title">具体的な手順</div>
+                <div class="detail-box-content">
+                    <ul>
+                        <li><strong>1. ヒアリングメールを送信する</strong><br>下記の定型メールをお客様に送る。メール内にスプレッドシートURL（月次報告書）、広告設定の提案内容（性別・年齢・地域等）を記載。お客様に事前確認してもらう</li>
+                        <li><strong>2. 電話でヒアリングする（20〜30分）</strong><br>メールの内容をもとに電話で相談。「どの地域に出したいか」「ターゲットの年齢層は？」「関連キーワードは？」など、下記の設定項目を一緒に決めていく</li>
+                        <li><strong>3. MCC内に顧客のアカウントを作成する</strong><br>Google広告のMCC（マイクライアントセンター＝複数アカウントを一括管理する画面）内に、そのお客様用の広告アカウントを新規作成する</li>
+                        <li><strong>4. 動画広告を入稿する</strong><br>ヒアリングで決めた設定（年齢・性別・地域・キーワード・フリークエンシーキャップ・デバイス・URL等）をMCC上で入力し、STEP1で受け取った動画URLを指定して広告を作成。審査に提出して、通過次第で配信開始</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="detail-box" style="background:#e3f2fd; border-left-color:#1976d2;">
+                <div class="detail-box-title" style="color:#1565c0;">MCCとは？（YouTube広告を設定する場所）</div>
+                <div class="detail-box-content">
+                    <p>YouTube広告には専用の管理画面はありません。<strong>Google広告の中の機能の一つ</strong>としてYouTube動画広告を設定します。</p>
+                    <p style="margin-top:10px;"><strong>MCC（マイクライアントセンター）</strong>とは、複数のお客様の広告アカウントを<strong>1つのログインでまとめて管理できる「管理者用アカウント」</strong>です。</p>
+                    <div style="background:#fff; border-radius:8px; padding:20px; margin:15px 0; font-family:monospace; font-size:14px; line-height:2;">
+                        <strong style="color:#1565c0;">MCC（1つのログインで全部見れる）</strong><br>
+                        ├── お客様A の広告アカウント<br>
+                        ├── お客様B の広告アカウント<br>
+                        ├── お客様C の広告アカウント<br>
+                        │　　 ：<br>
+                        └── お客様100 の広告アカウント
+                    </div>
+                    <p>ランバードのMCCにログイン → お客様を選ぶ → そのお客様のYouTube動画広告を設定・確認、という流れです。</p>
+                </div>
+            </div>
+
+            <div class="detail-box">
+                <div class="detail-box-title">広告設定項目一覧</div>
+                <div class="detail-box-content">
+                    <table class="settings-table">
+                        <thead>
+                            <tr>
+                                <th>設定項目</th>
+                                <th>内容</th>
+                                <th>備考</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>性別</strong></td>
+                                <td>男性・女性</td>
+                                <td>業種によりターゲットを絞る</td>
+                            </tr>
+                            <tr>
+                                <td><strong>年齢</strong></td>
+                                <td>18-24 / 25-34 / 35-44 / 45-54 / 55-64 / 65歳以上</td>
+                                <td>ヒアリングで相談して決定</td>
+                            </tr>
+                            <tr>
+                                <td><strong>配信地域</strong></td>
+                                <td>店舗の商圏に合わせて設定</td>
+                                <td>ヒアリングで相談して決定</td>
+                            </tr>
+                            <tr>
+                                <td><strong>配信時間</strong></td>
+                                <td>7時〜24時（デフォルト）</td>
+                                <td>業種により調整可能</td>
+                            </tr>
+                            <tr>
+                                <td><strong>関連キーワード</strong></td>
+                                <td>業種・サービスに関連するキーワード</td>
+                                <td>ヒアリングで相談して決定</td>
+                            </tr>
+                            <tr>
+                                <td><strong>フリークエンシーキャップ</strong></td>
+                                <td>同一ユーザーへの表示回数制限</td>
+                                <td>過度な表示を防ぐ</td>
+                            </tr>
+                            <tr>
+                                <td><strong>デバイス</strong></td>
+                                <td>PC / モバイル / タブレット</td>
+                                <td>配信デバイスの選択</td>
+                            </tr>
+                            <tr>
+                                <td><strong>リンク先URL</strong></td>
+                                <td>広告クリック時の遷移先</td>
+                                <td>店舗HP等</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="email-template">
+                <div class="email-template-header">
+                    <span class="badge">定型メール</span>
+                    <span class="subject">件名：広告運用開始のご連絡【株式会社ランバード】</span>
+                </div>
+                <div class="email-template-body">お世話になっております。
+株式会社ランバード　広告運用サポート窓口です。
+
+下記に運用にあたってのご提案内容を記載しております。
+ご確認のほど、よろしくお願い致します。
+
+【ご連絡シート】
+クライアントごとのスプレッドシートURLを送付
+※こちらのシートは月次の報告書となり、毎月更新いたします。
+　必ずブックマークに登録ください。
+
+【広告運用開始予定日】
+20XX/XX/XX 以降、媒体審査通過次第
+
+【広告のリンク先】
+（店舗HP等のURL）
+
+【広告を流すユーザー属性】
+性別（男性・女性）
+年齢（18-24・25-34・35-44・45-54・55-64・65歳以上）
+※ご相談させてください
+
+【広告を流す地域】
+※ご相談させてください
+
+【広告を流す時間】
+7時〜24時
+※ご相談させてください
+
+【広告の関連キーワード】
+※ご相談させてください</div>
+            </div>
+        </div>
+
+        <!-- STEP 3 詳細 -->
+        <div class="detail-section">
+            <div class="detail-title">STEP 3：定例会の実施</div>
+
+            <div class="detail-box">
+                <div class="detail-box-title">具体的な手順</div>
+                <div class="detail-box-content">
+                    <ul>
+                        <li><strong>1. 毎月初めにBCCメールを一斉送信する</strong><br>下記の定型メールを全クライアントにBCC（受信者同士が見えない形）で送る。候補日時をいくつか記載し、お客様に3つほど都合の良い日を返信してもらう</li>
+                        <li><strong>2. 返信をもとに日程を確定する</strong><br>お客様からの返信を確認し、定例会のスケジュールを確定。定例会は<strong>2ヶ月に1回</strong>の頻度で実施する</li>
+                        <li><strong>3. スプレッドシートのデータを事前に更新する</strong><br>定例会の前に、各クライアントのスプレッドシートに最新の広告データ（表示回数・視聴回数・視聴率）を入力しておく</li>
+                        <li><strong>4. 電話で成果報告する（30分〜1時間）</strong><br>スプレッドシートを見ながら電話で報告。「先月は表示回数が○回、視聴回数が○回、視聴率が○%でした」と数値をもとに説明する</li>
+                        <li><strong>5. 契約や金銭の話が出たら河合に引き継ぐ</strong><br>「広告費を変えたい」「契約内容を変更したい」等の話が出た場合は、自分で判断せず営業担当の河合に連絡してもらうよう案内する</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="email-template">
+                <div class="email-template-header">
+                    <span class="badge">定型メール（BCC一斉送信）</span>
+                    <span class="subject">定例会 日程調整メール</span>
+                </div>
+                <div class="email-template-body">平素より大変お世話になっております。
+株式会社ランバード　広告運用サポート窓口です。
+
+本メールは皆様へのお知らせのためBCCで送信しております。
+
+月次の報告をさせていただきたく思い、日程調整のご連絡をいたしました。
+下記日程より、3つほどご都合の良いお日にちを挙げて頂ければ幸いでございます。
+
+【候補日時】
+・○月○日(○) ○○:○○〜○○:○○
+・○月○日(○) ○○:○○〜○○:○○
+
+※所要時間は30分〜1時間を想定しております。
+
+ご確認のほど何卒よろしくお願い致します。</div>
+            </div>
+        </div>
+
+        <!-- 定例会 KPI -->
+        <div class="kpi-section">
+            <div class="kpi-title">定例会で報告するKPI指標</div>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-label">表示回数</div>
+                    <div class="kpi-value">Impressions</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">視聴回数</div>
+                    <div class="kpi-value">Views</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">視聴率</div>
+                    <div class="kpi-value">View Rate</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">報告頻度</div>
+                    <div class="kpi-value">2ヶ月に1回</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">データ管理</div>
+                    <div class="kpi-value">スプレッドシート</div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: 20px;">
+                <strong>目標数値の目安：</strong>動画の視聴回数は30,000回以上が一つの基準。クリック数よりも再生数（認知拡大）が重要。
+            </div>
+        </div>
+
+        <!-- こっちがやるべきことチェックリスト -->
+        <div class="checklist-section">
+            <div class="checklist-title">やるべきことチェックリスト</div>
+            <div class="checklist-grid">
+                <div class="checklist-card">
+                    <div class="checklist-card-title">事前準備（開始前）</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 案件管理シートの確認・理解（阿部から引き継ぎ）</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 各クライアントのスプレッドシートの確認</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> MCC（マイクライアントセンター）のアクセス権取得</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 3つのメールテンプレートの準備</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> YouTube動画広告の入稿操作を習得（※Google広告のMCC内で設定する）</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 電話対応用トークスクリプトの準備</div>
+                </div>
+                <div class="checklist-card">
+                    <div class="checklist-card-title">STEP 1 対応時</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 案内メール送信</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> チャンネル有無の返信を確認</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 必要に応じて電話日程を調整</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> チャンネル開設・動画アップロードサポート</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 動画URLの受領確認</div>
+                </div>
+                <div class="checklist-card">
+                    <div class="checklist-card-title">STEP 2 対応時</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> ヒアリングメール送信</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 電話ヒアリング実施（20〜30分）</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> MCC内にアカウント作成</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 広告設定（年齢・性別・地域・KW等）入力</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 動画広告の入稿・審査提出</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> スプレッドシートにクライアント情報を記録</div>
+                </div>
+                <div class="checklist-card">
+                    <div class="checklist-card-title">STEP 3 定例会</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 毎月初めにBCC日程調整メール送信</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 返信確認・スケジュール確定</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> スプレッドシートのデータ更新</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 電話で成果報告（30分〜1時間）</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 契約・金銭的要望は河合に引き継ぎ</div>
+                </div>
+                <div class="checklist-card">
+                    <div class="checklist-card-title">継続業務</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> 毎月アカウントの稼働状況を監視</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> アカウント停止等の問題があれば即対応</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> スプレッドシートの月次データ更新</div>
+                    <div class="checklist-item"><span class="check">[ ]</span> スプレッドシート自動入力の仕組み構築（API/Python）</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 注意事項 -->
+        <div class="notes-section">
+            <div class="notes-title">対応時の注意事項</div>
+            <div class="notes-content">
+                <ul>
+                    <li><strong>金銭的な話や契約変更の要望</strong>が出た場合は、自分で対応せず営業担当（河合）に連絡してもらう</li>
+                    <li><strong>無理な要求</strong>に対しては保守的な運用スタンスを取る。広告費の詳細は営業側が対応する領域</li>
+                    <li><strong>若い顧客</strong>は比較的電話での対応がスムーズだが、態度が横柄な場合もあるので注意</li>
+                    <li><strong>年配の顧客</strong>はYouTubeチャンネル開設から丁寧なサポートが必要</li>
+                    <li><strong>YouTube検索への配信</strong>は設定次第で可能。配信面（YouTube内検索 vs インストリーム）は確認が必要</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 関連ドキュメント -->
+        <div class="detail-section">
+            <div class="detail-title">参考ドキュメント</div>
+            <div class="detail-box">
+                <div class="detail-box-title">業務フロー詳細ドキュメント（Google Docs）</div>
+                <div class="detail-box-content">
+                    <ul>
+                        <li><strong>STEP 1</strong> チャンネル開設・動画アップロード手順<br>
+                            <a href="https://docs.google.com/document/d/1IW6PqQi_GqNOd_fmCHxPIaKHBO5IibMqYUieS5rXJdU/edit?usp=sharing" target="_blank" style="color:#cc0000;">Google Docs - チャンネル開設ガイド</a></li>
+                        <li><strong>STEP 2</strong> ヒアリング手順<br>
+                            <a href="https://docs.google.com/document/d/1WekewJmLKKvJG-Y7bJN04yV_WFwD_Sxio7rbKHWqODY/edit?usp=sharing" target="_blank" style="color:#cc0000;">Google Docs - ヒアリングガイド</a></li>
+                        <li><strong>STEP 3</strong> 定例会手順<br>
+                            <a href="https://docs.google.com/document/d/10bydLFEz-u6xamYcvL8l1begQSjFWJEyxIGJf2nFWow/edit?tab=t.0#heading=h.dqnjgftrvu9n" target="_blank" style="color:#cc0000;">Google Docs - 定例会ガイド</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
