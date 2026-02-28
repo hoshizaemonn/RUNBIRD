@@ -304,317 +304,191 @@ td:first-child{text-align:left;font-weight:700;white-space:nowrap}
 <div class="sec">
   <div class="sec-head">
     <div class="sec-num" style="background:linear-gradient(135deg,#dc2626,#7f1d1d)">!</div>
-    <h2>なぜ問い合わせが来ないのか？ ─ 累計ヒートマップ徹底分析</h2>
+    <h2>なぜ問い合わせが来ないのか？ ─ ヒートマップが語る真実</h2>
   </div>
   <div class="sec-body">
 
-    <p style="font-size:.9em;color:#64748b;margin-bottom:12px">Clarity 累計データ（2/21〜2/28 広告開始後全期間 / <strong>959セッション・1,001ページビュー・761タップ</strong>）から、問い合わせ（仮審査フォーム送信）を阻んでいる<strong>5つの構造的な原因</strong>を特定しました。</p>
+    <p style="font-size:.9em;color:#64748b;margin-bottom:16px">Clarity 累計データ（2/21〜2/28 / <strong>959セッション・761タップ</strong>）。実際のスクロールヒートマップを見れば、問題は一目瞭然です。</p>
 
-    <div class="callout danger" style="margin-bottom:20px">
-      <strong>結論:</strong> 広告開始後8日間で959セッション（うちフォーム送信はわずか<strong>9件＝0.94%</strong>）。原因は「LPの構成順序」と「CTAの不足」にあります。ユーザーが最も求めている情報（FAQ）が最も見られない位置に置かれ、行動を促すCTAが本文中にほぼ存在しません。
-    </div>
+    <!-- ===== メインビジュアル: ヒートマップ + 注釈 ===== -->
+    <div style="display:flex;gap:0;flex-wrap:wrap;align-items:stretch;margin:0 auto;max-width:900px">
 
-    <!-- ===== 全体ファネル ===== -->
-    <h3 style="font-size:1.05em;margin:24px 0 14px;color:#0d1b4a">問い合わせまでのファネル（累計 2/21-2/28）</h3>
+      <!-- ヒートマップ画像 -->
+      <div style="flex:0 0 320px;min-width:280px;position:relative;background:#111;border-radius:16px 0 0 16px;overflow:hidden;display:flex;align-items:stretch">
+        <img src="heatmap-scroll.png" alt="Clarity スクロールヒートマップ" style="width:100%;height:100%;object-fit:cover;object-position:top;opacity:.92">
+        <!-- オーバーレイラベル -->
+        <div style="position:absolute;top:8px;left:8px;background:rgba(0,0,0,.7);color:#fff;padding:4px 12px;border-radius:8px;font-size:.7em;font-weight:700">Clarity スクロールヒートマップ（実データ）</div>
+      </div>
 
-    <div style="max-width:600px;margin:0 auto 24px">
-      <!-- Funnel bars -->
-      <div style="position:relative;margin:8px 0">
-        <div style="background:linear-gradient(90deg,#2563eb,#3b82f6);height:44px;border-radius:8px;display:flex;align-items:center;padding:0 16px;color:#fff;font-weight:700;font-size:.88em;width:100%">
-          LP流入: 959セッション（100%）
+      <!-- 注釈カラム -->
+      <div style="flex:1;min-width:300px;display:flex;flex-direction:column;gap:0">
+
+        <!-- 注釈1: FV -->
+        <div style="flex:1;padding:18px 20px;background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-top:1px solid #bbf7d0;display:flex;align-items:center;gap:14px">
+          <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.4em">OK</div>
+          <div>
+            <div style="font-weight:900;color:#15803d;font-size:.95em">FV: 1,001人（100%）</div>
+            <div style="font-size:.78em;color:#555;margin-top:2px">広告からの流入は好調。赤色=多くのユーザーが閲覧中</div>
+          </div>
         </div>
-      </div>
-      <div style="position:relative;margin:8px 0">
-        <div style="background:linear-gradient(90deg,#f59e0b,#fbbf24);height:44px;border-radius:8px;display:flex;align-items:center;padding:0 16px;color:#333;font-weight:700;font-size:.88em;width:57%">
-          15%地点 通過: 574人（57%）
-          <span style="position:absolute;right:12px;font-size:.75em;color:#dc2626;font-weight:900">-43% 離脱</span>
-        </div>
-      </div>
-      <div style="position:relative;margin:8px 0">
-        <div style="background:linear-gradient(90deg,#ea580c,#f97316);height:44px;border-radius:8px;display:flex;align-items:center;padding:0 16px;color:#fff;font-weight:700;font-size:.88em;width:34%">
-          FAQ到達（60%地点）: 338人
-          <span style="position:absolute;right:12px;font-size:.75em;font-weight:900">34%</span>
-        </div>
-      </div>
-      <div style="position:relative;margin:8px 0">
-        <div style="background:linear-gradient(90deg,#dc2626,#ef4444);height:44px;border-radius:8px;display:flex;align-items:center;padding:0 16px;color:#fff;font-weight:700;font-size:.88em;width:7.6%">
-          <span style="white-space:nowrap">フォーム到達: 73</span>
-        </div>
-        <span style="position:absolute;left:calc(7.6% + 12px);top:50%;transform:translateY(-50%);font-size:.82em;color:#dc2626;font-weight:900">7.85%</span>
-      </div>
-      <div style="position:relative;margin:8px 0">
-        <div style="background:linear-gradient(90deg,#7f1d1d,#991b1b);height:44px;border-radius:8px;display:flex;align-items:center;padding:0 16px;color:#fff;font-weight:700;font-size:.88em;width:3%">
-          <span style="white-space:nowrap">送信: 9</span>
-        </div>
-        <span style="position:absolute;left:calc(3% + 12px);top:50%;transform:translateY(-50%);font-size:.82em;color:#7f1d1d;font-weight:900">0.94% ← ゴール</span>
-      </div>
-    </div>
 
-    <!-- ===== 原因1: 15%地点の壁 ===== -->
-    <div class="priority-card p1" style="margin-top:28px">
-      <div class="priority-num">01</div>
-      <div class="priority-title" style="color:#dc2626;font-size:1.1em">原因1: 15%地点の「崖」─ 42.66%が一瞬で消える</div>
-      <div class="priority-desc" style="font-size:.88em">
-        <strong>10%地点（922人/92%）→ 15%地点（574人/57%）の間で、348人が一気に離脱。</strong><br><br>
-        この位置には<strong>車種画像の一覧</strong>が配置されています。広告で「審査落ちOK」「金利0%」に惹かれて来たユーザーは、<strong>「自分でもローンが組めるか」を知りたい</strong>のに、いきなり車の写真を見せられても判断材料がありません。<br><br>
-        「ここは自分向けのサイトじゃないかも」と感じて離脱しています。
-      </div>
-    </div>
+        <!-- 注釈2: 15%の崖 -->
+        <div style="flex:1.2;padding:18px 20px;background:linear-gradient(135deg,#fef2f2,#fecaca);border-left:6px solid #dc2626;display:flex;align-items:center;gap:14px">
+          <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:#dc2626;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.8em;text-align:center;line-height:1.1">-43%</div>
+          <div>
+            <div style="font-weight:900;color:#dc2626;font-size:.95em">15%地点: 574人（-43%離脱）</div>
+            <div style="font-size:.78em;color:#555;margin-top:2px">赤→黄に急変する「崖」。車種画像で<br><strong>「自分には関係ない」</strong>と判断して離脱</div>
+          </div>
+        </div>
 
-    <!-- スクロール離脱チャート -->
-    <h3 style="font-size:1em;margin:24px 0 12px;color:#0d1b4a">スクロール離脱の全容（累計1,001PV）</h3>
-    <table>
-      <tr><th>スクロール深度</th><th>残存人数</th><th>残存率</th><th>離脱率</th><th>該当エリア</th></tr>
-      <tr><td>5%</td><td>1,001</td><td>100%</td><td>-</td><td>ファーストビュー</td></tr>
-      <tr><td>10%</td><td>922</td><td>92.1%</td><td style="color:#f59e0b">7.89%</td><td>LINEバナー付近</td></tr>
-      <tr style="background:#fef2f2"><td style="font-weight:900;color:#dc2626">15%</td><td style="font-weight:900;color:#dc2626">574</td><td style="font-weight:900;color:#dc2626">57.3%</td><td style="font-weight:900;color:#dc2626">42.66%</td><td style="color:#dc2626;font-weight:700">車種画像一覧 ← 最大の崖</td></tr>
-      <tr><td>20%</td><td>533</td><td>53.2%</td><td>46.75%</td><td>サービス説明上部</td></tr>
-      <tr><td>25%</td><td>488</td><td>48.8%</td><td>51.25%</td><td>サービス説明下部</td></tr>
-      <tr><td>30%</td><td>454</td><td>45.4%</td><td>54.65%</td><td>特徴ポイント</td></tr>
-      <tr><td>40%</td><td>386</td><td>38.6%</td><td>61.44%</td><td>中間コンテンツ</td></tr>
-      <tr><td>50%</td><td>359</td><td>35.9%</td><td>64.14%</td><td>中間コンテンツ</td></tr>
-      <tr style="background:#faf5ff"><td style="color:#7c3aed;font-weight:700">60%</td><td style="color:#7c3aed;font-weight:700">338</td><td style="color:#7c3aed;font-weight:700">33.8%</td><td>66.23%</td><td style="color:#7c3aed;font-weight:700">FAQ開始位置</td></tr>
-      <tr style="background:#faf5ff"><td style="color:#7c3aed">70%</td><td>313</td><td>31.3%</td><td>68.73%</td><td style="color:#7c3aed">FAQ終了位置</td></tr>
-      <tr><td>75%</td><td>281</td><td>28.1%</td><td>71.93%</td><td>CTA付近</td></tr>
-      <tr><td>90%</td><td>246</td><td>24.6%</td><td>75.42%</td><td>フッター付近</td></tr>
-      <tr><td>100%</td><td>133</td><td>13.3%</td><td style="color:#dc2626">86.71%</td><td>ページ最下部</td></tr>
-    </table>
+        <!-- 注釈3: 中間（黄〜緑） -->
+        <div style="flex:1.5;padding:18px 20px;background:linear-gradient(180deg,#fffbeb,#fff7ed);border-left:6px solid #f59e0b;display:flex;align-items:center;gap:14px">
+          <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:#f59e0b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.1em;text-align:center;line-height:1.1">...</div>
+          <div>
+            <div style="font-weight:900;color:#92400e;font-size:.95em">20-55%: じわじわ離脱が続く</div>
+            <div style="font-size:.78em;color:#555;margin-top:2px">不安を解消する情報がないまま、<br>サービス説明・特徴が続き、興味が持続しない</div>
+          </div>
+        </div>
 
-    <!-- ===== 原因2: FAQ問題 ===== -->
-    <div class="priority-card p1" style="margin-top:28px">
-      <div class="priority-num">02</div>
-      <div class="priority-title" style="color:#dc2626;font-size:1.1em">原因2: 最も求められている情報（FAQ）が最も見られない位置にある</div>
-      <div class="priority-desc" style="font-size:.88em">
-        <strong>全761タップのうち485タップ（63.7%）がFAQアコーディオンに集中。</strong>ユーザーが最もアクティブに操作するコンテンツです。<br><br>
-        しかしFAQはページの60-70%地点にあり、到達できるのは全体の<strong>33.8%（338人/1,001人）のみ</strong>。<br><br>
-        つまり<strong>662人（66.2%）のユーザーはFAQを見ることなく離脱</strong>しています。最も「知りたい答え」があるコンテンツを、3分の2のユーザーが目にできない構成は致命的です。
+        <!-- 注釈4: FAQ（緑なのに人気） -->
+        <div style="flex:1.3;padding:18px 20px;background:linear-gradient(135deg,#faf5ff,#e9d5ff);border-left:6px solid #7c3aed;display:flex;align-items:center;gap:14px">
+          <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:#7c3aed;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.65em;text-align:center;line-height:1.2">485<br>tap</div>
+          <div>
+            <div style="font-weight:900;color:#5b21b6;font-size:.95em">60-70%: FAQ ← 最も操作される場所</div>
+            <div style="font-size:.78em;color:#555;margin-top:2px">全タップの<strong>63.7%</strong>がここに集中。<br>だが到達者は<strong>34%のみ</strong>。<span style="color:#dc2626;font-weight:700">66%が見れない</span></div>
+          </div>
+        </div>
+
+        <!-- 注釈5: CTA・フッター（緑=ほぼ誰もいない） -->
+        <div style="flex:1;padding:18px 20px;background:linear-gradient(135deg,#f1f5f9,#e2e8f0);border-left:6px solid #64748b;border-radius:0 0 16px 0;display:flex;align-items:center;gap:14px">
+          <div style="flex-shrink:0;width:52px;height:52px;border-radius:50%;background:#64748b;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.8em;text-align:center;line-height:1.1">13%</div>
+          <div>
+            <div style="font-weight:900;color:#334155;font-size:.95em">75-100%: CTA・フッター</div>
+            <div style="font-size:.78em;color:#555;margin-top:2px">ほぼ誰もここまで見ていない。<br>フォーム到達は<strong>7.85%</strong>、送信は<strong>わずか9件</strong></div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <!-- FAQタップ詳細 -->
-    <h3 style="font-size:1em;margin:24px 0 12px;color:#0d1b4a">FAQ 各質問のタップ数ランキング（2/21-2/28 累計）</h3>
-    <table>
-      <tr><th>順位</th><th>FAQ質問内容（推定）</th><th>タップ数</th><th>全体比</th><th>ユーザーの本音</th></tr>
-      <tr class="highlight-row"><td style="font-weight:900">1</td><td>Q8: 最大何回払いまで可能か?</td><td style="font-weight:900;color:#7c3aed">55</td><td>7.2%</td><td style="font-size:.78em;color:#555">月々の負担が心配</td></tr>
-      <tr class="highlight-row"><td style="font-weight:900">2</td><td>Q2: 審査基準はどうなっているか?</td><td style="font-weight:900;color:#7c3aed">51</td><td>6.7%</td><td style="font-size:.78em;color:#555">自分でも審査に通るか不安</td></tr>
-      <tr class="highlight-row"><td style="font-weight:900">3</td><td>Q3: 車の名義はどうなるか?</td><td style="font-weight:900;color:#7c3aed">48</td><td>6.3%</td><td style="font-size:.78em;color:#555">リスクを知りたい</td></tr>
-      <tr><td>4</td><td>Q1: 納車までの期間は?</td><td>45</td><td>5.9%</td><td style="font-size:.78em;color:#555">いつ乗れるか気になる</td></tr>
-      <tr><td>5</td><td>Q4: 金利は本当に0%?</td><td>42</td><td>5.5%</td><td style="font-size:.78em;color:#555">うまい話には裏がある?</td></tr>
-      <tr><td>6</td><td>Q6: 審査にかかる時間は?</td><td>35</td><td>4.6%</td><td style="font-size:.78em;color:#555">面倒じゃないか確認</td></tr>
-      <tr><td>7</td><td>Q7: 車探しもしてくれるか?</td><td>34</td><td>4.5%</td><td style="font-size:.78em;color:#555">自分で探すのは大変</td></tr>
-      <tr><td>8</td><td>Q9: 頭金は必要か?</td><td>33</td><td>4.3%</td><td style="font-size:.78em;color:#555">まとまったお金がない</td></tr>
-      <tr><td>9</td><td>Q13: 販売エリアは?</td><td>33</td><td>4.3%</td><td style="font-size:.78em;color:#555">自分の地域で買えるか</td></tr>
-      <tr><td>10</td><td>Q5: オプションも組み込めるか?</td><td>32</td><td>4.2%</td><td style="font-size:.78em;color:#555">追加費用が心配</td></tr>
-      <tr><td>11</td><td>Q11: 他社審査落ちでも対応?</td><td>31</td><td>4.1%</td><td style="font-size:.78em;color:#555">これが最大の不安</td></tr>
-      <tr><td>12</td><td>Q12: 必要書類は?</td><td>29</td><td>3.8%</td><td style="font-size:.78em;color:#555">手続きが面倒でないか</td></tr>
-      <tr><td>13</td><td>Q10: 外国籍でも可能か?</td><td>17</td><td>2.2%</td><td style="font-size:.78em;color:#555">特定ターゲットの需要</td></tr>
-      <tr style="background:#faf5ff"><td colspan="2" style="font-weight:900;color:#7c3aed;text-align:right">FAQ合計タップ数</td><td style="font-weight:900;color:#7c3aed;font-size:1.2em">485</td><td style="font-weight:900;color:#7c3aed">63.7%</td><td style="font-size:.78em;font-weight:700">全タップの6割以上がFAQ</td></tr>
-    </table>
+    <div style="text-align:center;margin:8px 0 24px;font-size:.72em;color:#94a3b8">Clarity スクロールヒートマップ 2/21-2/28（左: 実際のLP / 右: 各地点の分析）</div>
 
-    <div class="callout insight">
-      <strong>FAQ タップから見えるユーザー心理:</strong> 上位3質問（支払い回数・審査基準・名義）で全FAQタップの31.7%を占め、ユーザーの関心は<strong>「自分でも本当に大丈夫か」「リスクはないか」「いくら払うのか」</strong>の3つに集約されます。これらの答えをFV直後に提示すれば、離脱を大幅に減らせます。
-    </div>
+    <!-- ===== 3つの致命的問題 ===== -->
+    <h3 style="font-size:1.05em;margin:28px 0 16px;color:#0d1b4a;text-align:center">ヒートマップが示す 3つの致命的問題</h3>
 
-    <!-- ===== 原因3: CTA不足 ===== -->
-    <div class="priority-card p1" style="margin-top:28px">
-      <div class="priority-num">03</div>
-      <div class="priority-title" style="color:#dc2626;font-size:1.1em">原因3: CTAタップが全体のわずか4.86% ─ 行動の導線がない</div>
-      <div class="priority-desc" style="font-size:.88em">
-        全761タップのうち、<strong>実際に問い合わせ行動につながるタップはわずか37回（4.86%）</strong>。<br><br>
-        <strong>内訳:</strong><br>
-        ・固定フッターバー「フォームで相談する」ボタン: 25タップ（3.29%）<br>
-        ・固定フッターバー「LINEで相談する」ボタン: 12タップ（1.58%）<br><br>
-        <strong>本文中にCTAボタンがほぼ存在しない</strong>ため、ユーザーはFAQを読んで「なるほど」と思っても、次に何をすればいいかわからない。固定バーの存在に気づいたユーザーだけが行動できている状態です。
-      </div>
-    </div>
-
-    <!-- タップ分布 円グラフ的な図 -->
-    <h3 style="font-size:1em;margin:24px 0 12px;color:#0d1b4a">全761タップの内訳 ─ 何がタップされているか</h3>
-    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px">
-      <div style="flex:1;min-width:200px;text-align:center;padding:20px;background:#faf5ff;border-radius:14px;border:3px solid #7c3aed">
-        <div style="font-size:2.4em;font-weight:900;color:#7c3aed">63.7%</div>
-        <div style="font-size:1em;font-weight:800;color:#3b0764;margin-top:4px">FAQアコーディオン</div>
-        <div style="font-size:.82em;color:#64748b;margin-top:4px">485タップ（13項目のQ&A）</div>
-        <div style="font-size:.75em;color:#7c3aed;margin-top:6px;font-weight:700">ユーザーが最も知りたい情報</div>
-      </div>
-      <div style="flex:1;min-width:200px;text-align:center;padding:20px;background:#fff7ed;border-radius:14px;border:3px solid #f59e0b">
-        <div style="font-size:2.4em;font-weight:900;color:#f59e0b">19.3%</div>
-        <div style="font-size:1em;font-weight:800;color:#78350f;margin-top:4px">画像タップ（Dead Click含む）</div>
-        <div style="font-size:.82em;color:#64748b;margin-top:4px">147タップ（クリックしても反応なし多数）</div>
-        <div style="font-size:.75em;color:#f59e0b;margin-top:6px;font-weight:700">ユーザーのフラストレーション</div>
-      </div>
-      <div style="flex:1;min-width:200px;text-align:center;padding:20px;background:#fef2f2;border-radius:14px;border:3px solid #dc2626">
-        <div style="font-size:2.4em;font-weight:900;color:#dc2626">4.86%</div>
-        <div style="font-size:1em;font-weight:800;color:#7f1d1d;margin-top:4px">CTAボタン</div>
-        <div style="font-size:.82em;color:#64748b;margin-top:4px">37タップ（フォーム25 + LINE12）</div>
-        <div style="font-size:.75em;color:#dc2626;margin-top:6px;font-weight:700">本来100%ここに集めたい</div>
-      </div>
-    </div>
-
-    <!-- ===== 原因4: Dead Click ===== -->
-    <div class="priority-card p2" style="margin-top:20px">
-      <div class="priority-num">04</div>
-      <div class="priority-title" style="color:#ea580c;font-size:1.05em">原因4: 画像への「空タップ」が多発 ─ ユーザーの期待を裏切っている</div>
-      <div class="priority-desc" style="font-size:.88em">
-        <strong>Dead Click率 4.38%（42セッション）</strong>。クリックできない画像への不要なタップが多数発生しています。<br><br>
-        <strong>主なDead Click箇所:</strong><br>
-        ・セクション5の画像: 39タップ（5.12%）— タップしても何も起きない<br>
-        ・セクション16の画像: 30タップ（3.94%）— タップしても何も起きない<br>
-        ・セクション4の画像: 22タップ（2.89%）— タップしても何も起きない<br><br>
-        画像をタップしたユーザーは「詳細を見たい」と期待していたのに何も起きず、不信感や不満を感じて離脱しています。
-      </div>
-    </div>
-
-    <!-- ===== 原因5: フォーム到達率 ===== -->
-    <div class="priority-card p2" style="margin-top:20px">
-      <div class="priority-num">05</div>
-      <div class="priority-title" style="color:#ea580c;font-size:1.05em">原因5: フォーム到達率7.85%、送信率0.94% ─ 導線断絶</div>
-      <div class="priority-desc" style="font-size:.88em">
-        <strong>930 LP訪問 → 73名フォーム到達（7.85%）→ 9名送信（0.94%）</strong><br><br>
-        注目すべきは、フォームに到達した人の送信率は<strong>12.3%（9/73）</strong>と決して悪くないこと。フォーム自体に大きな問題はなく、<strong>「フォームにたどり着けない」ことが最大のボトルネック</strong>です。<br><br>
-        フォームへの導線が固定バーのみに依存しており、本文中の「今すぐ仮審査」のようなCTAが不在です。
-      </div>
-    </div>
-
-    <!-- ===== サマリーKPI ===== -->
-    <h3 style="font-size:1.05em;margin:28px 0 14px;color:#0d1b4a">累計KPI サマリー（2/21-2/28）</h3>
-    <div class="kpi-row">
-      <div class="kpi red">
-        <div class="k-num">959</div>
-        <div class="k-label">総セッション数</div>
-        <div class="k-sub">ユニークユーザー: 726</div>
-      </div>
-      <div class="kpi red">
-        <div class="k-num">42.66%</div>
-        <div class="k-label">15%地点 離脱率</div>
-        <div class="k-sub">10%→15%で348人が消滅</div>
-      </div>
-      <div class="kpi orange">
-        <div class="k-num">43.95%</div>
-        <div class="k-label">平均スクロール深度</div>
-        <div class="k-sub">半分も見られていない</div>
-      </div>
-      <div class="kpi purple">
-        <div class="k-num">485</div>
-        <div class="k-label">FAQタップ数</div>
-        <div class="k-sub">全タップの63.7%がFAQに集中</div>
-      </div>
-      <div class="kpi red">
-        <div class="k-num">37</div>
-        <div class="k-label">CTAタップ数</div>
-        <div class="k-sub">全タップのわずか4.86%</div>
-      </div>
-      <div class="kpi red">
-        <div class="k-num">0.94%</div>
-        <div class="k-label">フォーム送信率</div>
-        <div class="k-sub">959セッション中わずか9件</div>
-      </div>
-    </div>
-
-    <!-- 追加指標 -->
-    <div class="kpi-row">
-      <div class="kpi gray">
-        <div class="k-num">33秒</div>
-        <div class="k-label">アクティブ時間</div>
-        <div class="k-sub">滞在時間72秒中の実操作時間</div>
-      </div>
-      <div class="kpi orange">
-        <div class="k-num">5.11%</div>
-        <div class="k-label">Quick Back率</div>
-        <div class="k-sub">49セッション / 959</div>
-      </div>
-      <div class="kpi orange">
-        <div class="k-num">4.38%</div>
-        <div class="k-label">Dead Click率</div>
-        <div class="k-sub">42セッション / 959</div>
-      </div>
-      <div class="kpi blue">
-        <div class="k-num">7.85%</div>
-        <div class="k-label">フォームページ到達率</div>
-        <div class="k-sub">73 / 930 LP訪問</div>
-      </div>
-      <div class="kpi green">
-        <div class="k-num">12.3%</div>
-        <div class="k-label">フォーム到達→送信率</div>
-        <div class="k-sub">9 / 73（フォーム自体は問題なし）</div>
-      </div>
-      <div class="kpi blue">
-        <div class="k-num">84.8</div>
-        <div class="k-label">パフォーマンススコア</div>
-        <div class="k-sub">LCP 2.83s / CLS 0s</div>
-      </div>
-    </div>
-
-    <!-- ===== 根本原因まとめ ===== -->
-    <h3 style="font-size:1.05em;margin:28px 0 14px;color:#0d1b4a">根本原因の構造図 ─ なぜ問い合わせが来ないのか</h3>
-
-    <div style="max-width:700px;margin:0 auto">
-      <!-- Step 1 -->
-      <div style="display:flex;align-items:stretch;gap:12px;margin:10px 0">
-        <div style="width:50px;display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <div style="width:36px;height:36px;border-radius:50%;background:#16a34a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.9em">OK</div>
-          <div style="flex:1;width:3px;background:#e2e8f0;margin-top:4px"></div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px">
+      <!-- 問題1 -->
+      <div style="flex:1;min-width:260px;border-radius:16px;overflow:hidden;border:3px solid #dc2626">
+        <div style="background:#dc2626;color:#fff;padding:12px 16px;text-align:center">
+          <div style="font-size:.7em;opacity:.7;letter-spacing:2px">PROBLEM 1</div>
+          <div style="font-size:1.15em;font-weight:900">15%地点で43%が消える</div>
         </div>
-        <div style="flex:1;background:#f0fdf4;border-radius:12px;padding:14px 18px;border:2px solid #bbf7d0">
-          <div style="font-weight:800;color:#16a34a;font-size:.92em">広告→LP流入は順調</div>
-          <div style="font-size:.82em;color:#555;margin-top:4px">8日間で959セッション / モバイル94% / CTR良好</div>
+        <div style="padding:16px;background:#fef2f2">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <div style="font-size:2em;font-weight:900;color:#dc2626">922</div>
+            <div style="font-size:1.5em;color:#dc2626">→</div>
+            <div style="font-size:2em;font-weight:900;color:#dc2626">574</div>
+          </div>
+          <div style="font-size:.82em;color:#555;line-height:1.6">
+            ユーザーは<strong>「審査に通るか」</strong>を知りたいのに、車の写真が出てくる。<strong>「ここじゃない」</strong>と判断して離脱。
+          </div>
         </div>
       </div>
-      <!-- Step 2 -->
-      <div style="display:flex;align-items:stretch;gap:12px;margin:10px 0">
-        <div style="width:50px;display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <div style="width:36px;height:36px;border-radius:50%;background:#dc2626;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.7em">NG</div>
-          <div style="flex:1;width:3px;background:#e2e8f0;margin-top:4px"></div>
+
+      <!-- 問題2 -->
+      <div style="flex:1;min-width:260px;border-radius:16px;overflow:hidden;border:3px solid #7c3aed">
+        <div style="background:#7c3aed;color:#fff;padding:12px 16px;text-align:center">
+          <div style="font-size:.7em;opacity:.7;letter-spacing:2px">PROBLEM 2</div>
+          <div style="font-size:1.15em;font-weight:900">FAQ=最人気なのに下すぎる</div>
         </div>
-        <div style="flex:1;background:#fef2f2;border-radius:12px;padding:14px 18px;border:2px solid #fecaca">
-          <div style="font-weight:800;color:#dc2626;font-size:.92em">FV直後で42.66%が離脱（15%地点の壁）</div>
-          <div style="font-size:.82em;color:#555;margin-top:4px">車種画像が「自分には関係ない」と思わせる。審査の不安を解消する情報が来ない</div>
-        </div>
-      </div>
-      <!-- Step 3 -->
-      <div style="display:flex;align-items:stretch;gap:12px;margin:10px 0">
-        <div style="width:50px;display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <div style="width:36px;height:36px;border-radius:50%;background:#dc2626;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.7em">NG</div>
-          <div style="flex:1;width:3px;background:#e2e8f0;margin-top:4px"></div>
-        </div>
-        <div style="flex:1;background:#fef2f2;border-radius:12px;padding:14px 18px;border:2px solid #fecaca">
-          <div style="font-weight:800;color:#dc2626;font-size:.92em">FAQ（最重要コンテンツ）に66%が到達できない</div>
-          <div style="font-size:.82em;color:#555;margin-top:4px">FAQは60-70%位置 / 到達は33.8%のみ / でもタップの63.7%がFAQに集中</div>
-        </div>
-      </div>
-      <!-- Step 4 -->
-      <div style="display:flex;align-items:stretch;gap:12px;margin:10px 0">
-        <div style="width:50px;display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <div style="width:36px;height:36px;border-radius:50%;background:#dc2626;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.7em">NG</div>
-          <div style="flex:1;width:3px;background:#e2e8f0;margin-top:4px"></div>
-        </div>
-        <div style="flex:1;background:#fef2f2;border-radius:12px;padding:14px 18px;border:2px solid #fecaca">
-          <div style="font-weight:800;color:#dc2626;font-size:.92em">FAQを読んでも「次の行動」がわからない</div>
-          <div style="font-size:.82em;color:#555;margin-top:4px">FAQ直後にCTAがない。本文中のCTAがほぼゼロ。行動の出口がない</div>
+        <div style="padding:16px;background:#faf5ff">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <div style="text-align:center">
+              <div style="font-size:2em;font-weight:900;color:#7c3aed">63.7%</div>
+              <div style="font-size:.65em;color:#64748b">全タップ中</div>
+            </div>
+            <div style="font-size:.85em;color:#64748b">なのに</div>
+            <div style="text-align:center">
+              <div style="font-size:2em;font-weight:900;color:#dc2626">66%</div>
+              <div style="font-size:.65em;color:#64748b">が見れない</div>
+            </div>
+          </div>
+          <div style="font-size:.82em;color:#555;line-height:1.6">
+            FAQ（60-70%位置）は最も操作されるコンテンツ。しかし<strong>3分の2のユーザーは到達前に離脱</strong>している。
+          </div>
         </div>
       </div>
-      <!-- Step 5 -->
-      <div style="display:flex;align-items:stretch;gap:12px;margin:10px 0">
-        <div style="width:50px;display:flex;flex-direction:column;align-items:center;justify-content:center">
-          <div style="width:36px;height:36px;border-radius:50%;background:#dc2626;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.7em">NG</div>
+
+      <!-- 問題3 -->
+      <div style="flex:1;min-width:260px;border-radius:16px;overflow:hidden;border:3px solid #0d1b4a">
+        <div style="background:#0d1b4a;color:#fff;padding:12px 16px;text-align:center">
+          <div style="font-size:.7em;opacity:.7;letter-spacing:2px">PROBLEM 3</div>
+          <div style="font-size:1.15em;font-weight:900">CTAが機能していない</div>
         </div>
-        <div style="flex:1;background:#fef2f2;border-radius:12px;padding:14px 18px;border:2px solid #fecaca">
-          <div style="font-weight:800;color:#dc2626;font-size:.92em">結果: フォーム到達7.85% / 送信0.94%</div>
-          <div style="font-size:.82em;color:#555;margin-top:4px">959セッション → 9件の問い合わせ。フォーム自体は悪くない（到達者の12.3%が送信）。「フォームへの導線」が問題</div>
+        <div style="padding:16px;background:#eff6ff">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+            <div style="text-align:center">
+              <div style="font-size:2em;font-weight:900;color:#0d1b4a">37</div>
+              <div style="font-size:.65em;color:#64748b">CTAタップ</div>
+            </div>
+            <div style="font-size:1.2em;color:#64748b">/</div>
+            <div style="text-align:center">
+              <div style="font-size:2em;font-weight:900;color:#64748b">761</div>
+              <div style="font-size:.65em;color:#64748b">全タップ</div>
+            </div>
+            <div style="text-align:center;margin-left:auto">
+              <div style="font-size:2em;font-weight:900;color:#dc2626">4.9%</div>
+            </div>
+          </div>
+          <div style="font-size:.82em;color:#555;line-height:1.6">
+            本文中にCTAがほぼゼロ。FAQで納得しても<strong>「次に何をすればいいか」がわからない</strong>。
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="callout action" style="margin-top:24px">
-      <strong>結論: 問い合わせを増やすために必要なこと（3つ）</strong>
+    <!-- ===== 結果のファネル（コンパクト版） ===== -->
+    <div style="background:#f8fafc;border-radius:16px;padding:24px;border:2px solid #e2e8f0;margin-bottom:20px">
+      <div style="text-align:center;font-weight:900;color:#0d1b4a;font-size:1em;margin-bottom:16px">結果: 959セッションの行方</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap">
+        <div style="text-align:center;padding:10px 14px;background:#2563eb;color:#fff;border-radius:12px;font-weight:800">
+          <div style="font-size:1.4em">959</div>
+          <div style="font-size:.65em;opacity:.8">LP流入</div>
+        </div>
+        <div style="font-size:1.4em;color:#cbd5e1">→</div>
+        <div style="text-align:center;padding:10px 14px;background:#f59e0b;color:#fff;border-radius:12px;font-weight:800">
+          <div style="font-size:1.4em">574</div>
+          <div style="font-size:.65em;opacity:.8">15%通過</div>
+        </div>
+        <div style="font-size:1.4em;color:#cbd5e1">→</div>
+        <div style="text-align:center;padding:10px 14px;background:#ea580c;color:#fff;border-radius:12px;font-weight:800">
+          <div style="font-size:1.4em">338</div>
+          <div style="font-size:.65em;opacity:.8">FAQ到達</div>
+        </div>
+        <div style="font-size:1.4em;color:#cbd5e1">→</div>
+        <div style="text-align:center;padding:10px 14px;background:#dc2626;color:#fff;border-radius:12px;font-weight:800">
+          <div style="font-size:1.4em">73</div>
+          <div style="font-size:.65em;opacity:.8">フォーム到達</div>
+        </div>
+        <div style="font-size:1.4em;color:#cbd5e1">→</div>
+        <div style="text-align:center;padding:10px 14px;background:#7f1d1d;color:#fff;border-radius:12px;font-weight:800;border:3px solid #dc2626">
+          <div style="font-size:1.4em">9件</div>
+          <div style="font-size:.65em;opacity:.8">問い合わせ</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:12px;font-size:.82em;color:#64748b">フォーム到達者の送信率は<strong style="color:#16a34a">12.3%</strong>と悪くない。<strong style="color:#dc2626">「フォームにたどり着けない」</strong>ことが最大の問題。</div>
+    </div>
+
+    <!-- ===== 結論 ===== -->
+    <div class="callout action">
+      <strong>結論: 問い合わせを増やすために必要な3つの施策</strong>
       <ol style="margin:10px 0 0;padding-left:20px;font-size:.92em;line-height:1.8">
-        <li><strong>FV直後に「不安解消」を配置</strong> → 15%地点の42.66%離脱を防ぐ</li>
-        <li><strong>FAQをページ前半（15-25%）に移動</strong> → 到達率33.8%→100%に改善し、全員の不安を解消する</li>
-        <li><strong>FAQ直後・各セクション末にCTAを配置</strong> → 不安が解消された瞬間に行動できるようにする</li>
+        <li><strong>FV直後に「不安解消」を配置</strong> → 15%地点の43%離脱を防ぐ</li>
+        <li><strong>FAQをページ前半に移動</strong> → 到達率34%→100%に改善</li>
+        <li><strong>FAQ直後・各セクション末にCTAを配置</strong> → 不安解消の瞬間に行動させる</li>
       </ol>
       <div style="margin-top:12px;font-size:.88em;opacity:.85">
-        この3つの施策により、フォーム到達率を7.85%→15%以上に、フォーム送信率を0.94%→3%以上に改善できると見込まれます。<br>
-        同じ959セッション規模で<strong>問い合わせ数は9件→約30件（3倍以上）</strong>が期待できます。
+        この3施策で、問い合わせ数は<strong>9件→約30件（3倍以上）</strong>が見込めます。
       </div>
     </div>
 
