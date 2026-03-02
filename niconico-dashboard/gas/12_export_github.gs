@@ -169,10 +169,10 @@ function buildDashboardJSON(dateStr) {
     const cr = clarityRows[0];
     clarity = {
       sessions: Number(cr[1]) || 0,
-      scroll_depth: Number(cr[5]) || 0,
+      scroll_depth: Math.round((Number(cr[5]) || 0) * 10) / 10,
       unique_users: Number(cr[1]) || 0,
-      rage_clicks: { count: 0, pct: Number(cr[3]) || 0 },
-      dead_clicks: { count: 0, pct: Number(cr[4]) || 0 },
+      rage_clicks: { count: 0, pct: Math.round((Number(cr[3]) || 0) * 100) / 100 },
+      dead_clicks: { count: 0, pct: Math.round((Number(cr[4]) || 0) * 100) / 100 },
     };
   }
 
@@ -203,7 +203,7 @@ function buildDashboardJSON(dateStr) {
       }
     });
     ga4_pages = Object.values(pathMap).map(pt => {
-      pt.avg_engagement = pt.active_users > 0 ? pt.total_engagement / pt.active_users : 0;
+      pt.avg_engagement = pt.active_users > 0 ? Math.round(pt.total_engagement / pt.active_users * 10) / 10 : 0;
       delete pt.total_engagement;
       pt.sources.sort((a, b) => b.views - a.views);
       return pt;
