@@ -4,12 +4,15 @@
 
 使い方:
   python3 update_dashboard.py /path/to/csv/folder
+  python3 update_dashboard.py --from-json data/2026-03-01.json
 
-例:
-  python3 update_dashboard.py ~/Downloads/概要カード_csv(2026-02-25_10_22_53)
+CSVモード:
+  Google広告管理画面から「概要カード」のCSVをエクスポートしたフォルダを指定してください。
+  スクリプトが自動的にCSVを解析し、dashboard.html に新しい日付タブを追加します。
 
-Google広告管理画面から「概要カード」のCSVをエクスポートしたフォルダを指定してください。
-スクリプトが自動的にCSVを解析し、dashboard.html に新しい日付タブを追加します。
+JSONモード (--from-json):
+  GAS/GitHub Actions 経由で生成された data/*.json ファイルを直接読み込み、
+  CSV解析をスキップしてダッシュボードHTMLを生成します。
 """
 
 import sys
@@ -1433,13 +1436,105 @@ def insert_into_dashboard(date, tab_key, tab_label, section_html):
 # Main
 # ============================================================
 
+def run_from_json(json_path):
+    """Run dashboard update from a pre-built JSON file (no CSV needed)"""
+    if not os.path.exists(json_path):
+        print(f'エラー: JSONファイルが見つかりません: {json_path}')
+        sys.exit(1)
+
+    print(f'=== ニコニコカーローン ダッシュボード更新（JSONモード） ===')
+    print(f'  JSONファイル: {json_path}')
+    print()
+
+    # Load JSON data
+    print('[1/4] JSONファイルを読み込み中...')
+    with open(json_path, encoding='utf-8') as fp:
+        data = json.load(fp)
+
+    date = datetime.strptime(data['date'], '%Y-%m-%d')
+    m = date.month
+    d = date.day
+    tab_key = data.get('tab_key', str(d))
+    tab_label = f'{m}/{d}'
+
+    print(f'  日付: {date.strftime("%Y/%m/%d")} ({tab_label})')
+    c = data['campaign']
+    print(f'  費用: ¥{c["cost"]:,} | クリック: {c["clicks"]} | 表示: {c["impressions"]}')
+    print(f'  CTR: {c["ctr"]:.2f}% | CPC: ¥{c["cpc"]} | CV: {c["cv"]:.0f}')
+    print()
+
+    # Save to data/ dir if not already there
+    expected_path = os.path.join(DATA_DIR, f'{data["date"]}.json')
+    if os.path.abspath(json_path) != os.path.abspath(expected_path):
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(expected_path, 'w', encoding='utf-8') as fp:
+            json.dump(data, fp, ensure_ascii=False, indent=2)
+        print(f'  データコピー先: {expected_path}')
+
+    # Load previous day data
+    print('[2/4] 前日データを読み込み中...')
+    prev_data = find_previous_day(date)
+    if prev_data:
+        print(f'  前日: {prev_data["date"]}')
+    else:
+        print('  前日データなし（比較テーブルはスキップ）')
+    print()
+
+    # Calculate cumulative
+    print('[3/4] 累計データを計算中...')
+    all_data = load_all_daily_data()
+    if all_data:
+        cum_cost = sum(d['campaign']['cost'] for d in all_data)
+        cum_clicks = sum(d['campaign']['clicks'] for d in all_data)
+        cum_imp = sum(d['campaign']['impressions'] for d in all_data)
+        cum_cv = sum(d['campaign']['cv'] for d in all_data)
+        first_date = all_data[0]['date']
+        last_date = all_data[-1]['date']
+        cumulative = {
+            'days': len(all_data),
+            'period': f'{first_date[5:7]}/{first_date[8:10]}〜{last_date[5:7]}/{last_date[8:10]}',
+            'cost': cum_cost,
+            'clicks': cum_clicks,
+            'impressions': cum_imp,
+            'ctr': (cum_clicks / cum_imp * 100) if cum_imp > 0 else 0,
+            'cpc': (cum_cost // cum_clicks) if cum_clicks > 0 else 0,
+            'cv': cum_cv,
+            'cvr': (cum_cv / cum_clicks * 100) if cum_clicks > 0 else 0,
+            'cpa': (cum_cost // cum_cv) if cum_cv > 0 else 0,
+        }
+        print(f'  {cumulative["days"]}日間: ¥{cum_cost:,} | {cum_clicks}クリック | CV {cum_cv:.0f}件')
+    else:
+        cumulative = None
+        print('  累計データなし')
+    print()
+
+    # Generate HTML
+    print('[4/4] HTMLを生成してダッシュボードに挿入中...')
+    section_html = generate_full_section(data, prev_data, cumulative, date)
+    insert_into_dashboard(date, tab_key, tab_label, section_html)
+
+    print()
+    print('=== 完了! ===')
+    print(f'  dashboard.html に {tab_label} のタブを追加しました。')
+
+
 def main():
     if len(sys.argv) < 2:
         print('使い方: python3 update_dashboard.py /path/to/csv/folder')
+        print('        python3 update_dashboard.py --from-json data/2026-03-01.json')
         print()
         print('例:')
         print('  python3 update_dashboard.py ~/Downloads/概要カード_csv(2026-02-25_10_22_53)')
+        print('  python3 update_dashboard.py --from-json data/2026-02-28.json')
         sys.exit(1)
+
+    # --from-json mode
+    if sys.argv[1] == '--from-json':
+        if len(sys.argv) < 3:
+            print('エラー: --from-json にはJSONファイルパスが必要です')
+            sys.exit(1)
+        run_from_json(sys.argv[2])
+        return
 
     csv_dir = sys.argv[1]
     if not os.path.isdir(csv_dir):
