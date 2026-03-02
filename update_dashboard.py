@@ -1380,9 +1380,7 @@ def insert_into_dashboard(date, tab_key, tab_label, section_html):
     html = html.replace('class="date-tab active"', 'class="date-tab"')
     html = html.replace('class="date-data active"', 'class="date-data"')
 
-    # 3. Add new tab button at the END of the date-tabs div (as the newest/rightmost tab)
-    tab_button = f'    <button class="date-tab active" onclick="switchDate(\'{tab_key}\')">{tab_label}</button>\n  '
-    # Find the closing </div> of date-tabs
+    # 3. Add new tab button and sort all tabs by date
     tabs_div_start = html.find('<div class="date-tabs">')
     if tabs_div_start < 0:
         print('  [ERROR] date-tabs が見つかりません')
@@ -1391,7 +1389,33 @@ def insert_into_dashboard(date, tab_key, tab_label, section_html):
     if tabs_div_end < 0:
         print('  [ERROR] date-tabs の閉じタグが見つかりません')
         return
-    html = html[:tabs_div_end] + tab_button + html[tabs_div_end:]
+    # Extract existing tab buttons and add the new one
+    tabs_block = html[tabs_div_start:tabs_div_end]
+    existing_tabs = re.findall(r'<button class="date-tab[^"]*" onclick="switchDate\(\'([^\']+)\'\)">([^<]+)</button>', tabs_block)
+    # Add new tab
+    all_tabs = [(k, l) for k, l in existing_tabs if k != tab_key]
+    all_tabs.append((tab_key, tab_label))
+    # Sort: "20-21" → (2,20), "22" → (2,22), "1" → (3,1), etc.
+    def tab_sort_key(t):
+        key = t[0]
+        if '-' in key:  # "20-21" → use first number
+            num = int(key.split('-')[0])
+        else:
+            num = int(key)
+        # Determine month from label
+        label = t[1]
+        if '/' in label:
+            month = int(label.split('/')[0])
+        else:
+            month = m if num <= 31 else m
+        return (month, num)
+    all_tabs.sort(key=tab_sort_key)
+    # Rebuild tabs HTML
+    tabs_html = '\n'.join(
+        f'    <button class="date-tab{" active" if k == tab_key else ""}" onclick="switchDate(\'{k}\')">{l}</button>'
+        for k, l in all_tabs
+    )
+    html = html[:tabs_div_start] + '<div class="date-tabs">\n' + tabs_html + '\n  ' + html[tabs_div_end:]
 
     # 4. Add the date section data BEFORE the first existing date-data block
     new_section = f'''  <!-- ========== {tab_label} DATA ========== -->
