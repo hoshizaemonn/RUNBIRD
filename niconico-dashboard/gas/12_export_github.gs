@@ -211,6 +211,14 @@ function buildDashboardJSON(dateStr) {
     ga4_pages.sort((a, b) => b.views - a.views);
   }
 
+  // ---- 問い合わせ ----
+  let inquiries = null;
+  try {
+    inquiries = getInquiryCountForDate(dateStr);
+  } catch (e) {
+    Logger.log('問い合わせJSON構築エラー: ' + e.message);
+  }
+
   return {
     date: dateStr,
     tab_key: String(day),
@@ -226,6 +234,7 @@ function buildDashboardJSON(dateStr) {
     clarity: clarity,
     clarity_scroll: null,
     ga4_pages: ga4_pages,
+    inquiries: inquiries,
   };
 }
 

@@ -44,6 +44,15 @@ const CONFIG = {
     // PropertiesService.getScriptProperties().setProperty('LINE_CHANNEL_TOKEN', 'your-token')
   },
 
+  // ==================== 問い合わせ（送客管理）====================
+  INQUIRY: {
+    SPREADSHEET_ID: '1ljthaoBW-FfVV6QQy6NRpbvKHI5rm8BIM7wGbarcwS0',
+    SHEET_NAME: null,  // null = 最初のシートを使用
+    DATE_COLUMN: 0,    // A列: 申込日時
+    NAME_COLUMN: 1,    // B列: 氏名
+    REMARKS_COLUMN: 19, // T列: 備考
+  },
+
   // ==================== 通知設定 ====================
   NOTIFICATION: {
     EMAIL: 'andan.39.2106@gmail.com',  // アラート通知先メール
@@ -74,6 +83,7 @@ const CONFIG = {
     SEARCH_CONSOLE: 'Search Console',
     CLARITY: 'Clarity',
     LINE_FRIENDS: 'LINE友だち',
+    INQUIRY: '問い合わせ',
     BENCHMARK: 'ベンチマーク',
     ALERT_LOG: 'アラートログ',
   },

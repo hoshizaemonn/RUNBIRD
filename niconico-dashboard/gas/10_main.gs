@@ -69,6 +69,16 @@ function fetchAllData() {
     Logger.log('Clarityエラー: ' + e.message);
   }
 
+  // 5b. 問い合わせデータ
+  try {
+    Logger.log('\n--- 問い合わせデータ取得 ---');
+    fetchInquiryData();
+    results.inquiry = true;
+  } catch (e) {
+    Logger.log('問い合わせエラー: ' + e.message);
+    results.inquiry = false;
+  }
+
   // 6. アラート判定
   try {
     Logger.log('\n--- アラート判定 ---');
@@ -95,6 +105,7 @@ function fetchAllData() {
   Logger.log('Search Console: ' + (results.searchConsole ? '成功' : '失敗'));
   Logger.log('LINE: ' + (results.line ? '成功' : '失敗'));
   Logger.log('Clarity: ' + (results.clarity ? '成功' : '失敗'));
+  Logger.log('問い合わせ: ' + (results.inquiry ? '成功' : '失敗'));
   Logger.log('アラート判定: ' + (results.alerts ? '成功' : '失敗'));
   Logger.log('GitHub Export: ' + (results.export ? '成功' : '失敗'));
   Logger.log('========== 完了 ==========');
