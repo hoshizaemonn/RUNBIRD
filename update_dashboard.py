@@ -668,6 +668,52 @@ def pt_change(old, new):
 # HTML Generation
 # ============================================================
 
+def gen_line_kpi(data):
+    """Generate LINE registration KPI card from JSON line/inquiries fields"""
+    line = data.get('line')
+    inq = data.get('inquiries')
+    if not line and not inq:
+        return ''
+
+    parts = []
+    value_str = '—'
+    sub_parts = []
+
+    if line:
+        new = line.get('new_friends', 0)
+        total = line.get('total_friends', 0)
+        prev_total = line.get('prev_total', total - new)
+        value_str = f'+{new}'
+        sub_parts.append(f'累計: {prev_total}名 → {total}名')
+
+    if inq and inq.get('count', 0) > 0:
+        sub_parts.append(f'問い合わせ: {inq["count"]}件')
+
+    sub_text = ' ｜ '.join(sub_parts)
+
+    return f'''<div class="kpi-card">
+        <div class="kpi-label">LINE登録（実績）</div>
+        <div class="kpi-value" style="color:#00b900;">{value_str}<span style="font-size:14px;color:var(--gray-600)"> 名</span></div>
+        <div class="kpi-sub">{sub_text}</div>
+        <div class="kpi-accent" style="background:#00b900"></div>
+      </div>
+'''
+
+
+def gen_line_summary_text(data):
+    """Generate LINE summary text for info-success bar"""
+    line = data.get('line')
+    inq = data.get('inquiries')
+    parts = []
+    if line and line.get('new_friends', 0) > 0:
+        parts.append(f'LINE登録+{line["new_friends"]}名（累計{line["total_friends"]}名）')
+    if inq and inq.get('count', 0) > 0:
+        parts.append(f'問い合わせ{inq["count"]}件')
+    if not parts:
+        return ''
+    return ''.join(p + '。' for p in parts)
+
+
 def gen_overview(data, prev, cumulative, date):
     """Generate overview section HTML"""
     c = data['campaign']
@@ -727,6 +773,7 @@ def gen_overview(data, prev, cumulative, date):
         <div class="kpi-sub">CVR: {fmt_pct(c['cvr'])} ｜ CPA: {fmt_yen(c['cpa']) if c['cpa'] > 0 else '—'}</div>
         <div class="kpi-accent" style="background:{'var(--success)' if c['cv'] > 0 else 'var(--gray-300)'}"></div>
       </div>
+      {gen_line_kpi(data)}
       <div class="kpi-card">
         <div class="kpi-label">Clarityセッション</div>
         <div class="kpi-value" style="color:{'var(--primary)' if data.get('clarity') else 'var(--gray-600)'}">{data['clarity']['sessions'] if data.get('clarity') else '—'}</div>
@@ -748,7 +795,7 @@ def gen_overview(data, prev, cumulative, date):
     </div>
 
     <div class="info-success" style="margin-top:16px;">
-      <strong>{m}/{d} 終日データ確定済み。</strong>CPC {fmt_yen(c['cpc'])}、CTR {fmt_pct(c['ctr'])}、CV {c['cv']:.0f}件。
+      <strong>{m}/{d} 終日データ確定済み。</strong>CPC {fmt_yen(c['cpc'])}、CTR {fmt_pct(c['ctr'])}、CV {c['cv']:.0f}件。{gen_line_summary_text(data)}
     </div>
 '''
 
@@ -812,6 +859,73 @@ def gen_overview(data, prev, cumulative, date):
     return html
 
 
+def gen_funnel_line_kpi(data):
+    """Generate LINE KPI card for funnel section"""
+    line = data.get('line')
+    inq = data.get('inquiries')
+    if not line and not inq:
+        return ''
+    new = line.get('new_friends', 0) if line else 0
+    total = line.get('total_friends', 0) if line else 0
+    prev_total = line.get('prev_total', total - new) if line else 0
+    inq_count = inq.get('count', 0) if inq else 0
+    sub = f'LINE: {prev_total}名→{total}名'
+    if inq_count > 0:
+        sub += f' ｜ 問い合わせ: {inq_count}件'
+    return f'''<div class="kpi-card" style="border-left:4px solid #00b900;">
+          <div class="kpi-label">公式LINE登録 &amp; 問い合わせ</div>
+          <div class="kpi-value" style="color:#00b900;">+{new}<span style="font-size:14px;color:var(--gray-600)"> 名</span></div>
+          <div class="kpi-sub">{sub}</div>
+        </div>'''
+
+
+def gen_funnel_line_steps(data):
+    """Generate LINE/inquiry steps in the funnel visualization"""
+    line = data.get('line')
+    inq = data.get('inquiries')
+    if not line:
+        return ''
+    c = data['campaign']
+    new = line.get('new_friends', 0)
+    cv = c.get('cv', 0)
+    rate = f'{new / cv * 100:.1f}' if cv > 0 else '—'
+    html = f'''
+        <div class="funnel-rate">LINE登録率 {rate}%（{new}/{cv:.0f}）</div>
+        <div class="funnel-step" style="width:15%;background:#00b900;">
+          <span class="f-label">公式LINE登録</span>
+          <span class="f-value" style="color:#ffeb3b;">+{new}</span>
+        </div>'''
+    if inq and inq.get('count', 0) > 0:
+        inq_count = inq['count']
+        inq_rate = f'{inq_count / new * 100:.0f}' if new > 0 else '—'
+        html += f'''
+        <div class="funnel-rate">問い合わせ率 {inq_rate}%（{inq_count}/{new}）</div>
+        <div class="funnel-step" style="width:10%;background:#1e8e3e;">
+          <span class="f-label">問い合わせ</span>
+          <span class="f-value" style="color:#ffeb3b;">{inq_count}</span>
+        </div>'''
+    return html
+
+
+def gen_funnel_analysis_text(data):
+    """Generate funnel analysis text"""
+    c = data['campaign']
+    line = data.get('line')
+    inq = data.get('inquiries')
+    if line and line.get('new_friends', 0) > 0:
+        new = line['new_friends']
+        cv = c.get('cv', 0)
+        rate = f'{new / cv * 100:.1f}' if cv > 0 else '—'
+        inq_count = inq.get('count', 0) if inq else 0
+        inq_rate = f'{inq_count / new * 100:.0f}' if new > 0 and inq_count > 0 else '—'
+        text = f'\n        広告クリック{c["clicks"]}回→Google広告CV {cv:.0f}件→LINE登録+{new}名→問い合わせ{inq_count}件。'
+        text += f'\n        LINE登録率{rate}%（{cv:.0f}件中{new}名が実際に登録）。'
+        if inq_count > 0:
+            text += f'登録者のうち{inq_rate}%が問い合わせに至った。'
+        return text
+    return ' Clarity・GA4の詳細データが未取得のため、簡易ファネルで表示。'
+
+
 def gen_funnel(data):
     """Generate funnel section HTML"""
     c = data['campaign']
@@ -844,6 +958,7 @@ def gen_funnel(data):
           <div class="kpi-value" style="color:var(--success);">{c['cv']:.0f}<span style="font-size:14px;color:var(--gray-600)"> 件</span></div>
           <div class="kpi-sub">CVR: {fmt_pct(c['cvr'])} ｜ CPA: {fmt_yen(c['cpa']) if c['cpa'] > 0 else '—'}</div>
         </div>
+      {gen_funnel_line_kpi(data)}
       </div>
       <div class="funnel">
         <div class="funnel-step" style="width:100%;background:#0d47a1;">
@@ -855,14 +970,15 @@ def gen_funnel(data):
           <span class="f-label">広告クリック（サイト訪問）</span>
           <span class="f-value">{fmt_num(c['clicks'])}</span>
         </div>
-        <div class="funnel-rate">Google広告CV</div>
+        <div class="funnel-rate">Google広告CV率 {fmt_pct(c['cvr'])}</div>
         <div class="funnel-step" style="width:30%;background:var(--success);">
           <span class="f-label">Google広告コンバージョン（LINE問い合わせ）</span>
           <span class="f-value" style="color:#ffeb3b;">{c['cv']:.0f}</span>
         </div>
+        {gen_funnel_line_steps(data)}
       </div>
       <div class="info-primary" style="margin-top:16px;">
-        <strong>ファネル分析:</strong> Clarity・GA4の詳細データが未取得のため、簡易ファネルで表示。
+        <strong>ファネル分析:</strong>{gen_funnel_analysis_text(data)}
       </div>
     </div>
   </div>
