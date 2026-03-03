@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告 3月タスク図解 - うちの子本舗 / フジサワオート</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f5f5f5;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #cc0000;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 32px;
+        }
+
+        /* ===== ゴール帯 ===== */
+        .goal-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .goal-banner .left { font-size: 15px; }
+        .goal-banner .left strong { color: #ff6b6b; font-size: 22px; }
+        .goal-banner .clients {
+            display: flex;
+            gap: 12px;
+        }
+        .goal-banner .client-chip {
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 8px;
+            padding: 12px 20px;
+            text-align: center;
+        }
+        .goal-banner .client-chip .name { font-weight: 700; font-size: 16px; }
+        .goal-banner .client-chip .note { font-size: 11px; color: #aaa; margin-top: 2px; }
+
+        /* ===== タイムライン ===== */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #cc0000 0%, #cc0000 60%, #1976d2 60%, #1976d2 100%);
+            border-radius: 2px;
+        }
+
+        .tl-phase {
+            position: relative;
+            margin-bottom: 36px;
+        }
+        .tl-phase::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 6px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid #cc0000;
+            background: #fff;
+            z-index: 1;
+        }
+        .tl-phase.blue::before { border-color: #1976d2; }
+        .tl-phase.green::before { border-color: #2e7d32; background: #2e7d32; }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .phase-week {
+            background: #cc0000;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .tl-phase.blue .phase-week { background: #1976d2; }
+        .tl-phase.green .phase-week { background: #2e7d32; }
+        .phase-title {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        /* ===== タスクカード ===== */
+        .task-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .task-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 18px 20px;
+            border-left: 5px solid #cc0000;
+            box-shadow: 0 2px 6px rgba(0,0,0,.06);
+            position: relative;
+        }
+        .tl-phase.blue .task-card { border-left-color: #1976d2; }
+        .tl-phase.green .task-card { border-left-color: #2e7d32; }
+
+        .task-card.full { grid-column: 1 / -1; }
+        .task-card .task-num {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #cc0000;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .tl-phase.blue .task-num { background: #1976d2; }
+        .tl-phase.green .task-num { background: #2e7d32; }
+
+        .task-card h4 {
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #1a1a1a;
+        }
+        .task-card p {
+            font-size: 12.5px;
+            color: #555;
+            line-height: 1.7;
+        }
+        .task-card .who {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        .who.you { background: #fff0f0; color: #cc0000; }
+        .who.client { background: #e3f2fd; color: #1565c0; }
+        .who.kawai { background: #f3e5f5; color: #7b1fa2; }
+
+        .branch-box {
+            background: #fffaf0;
+            border: 1px dashed #ff8800;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-top: 10px;
+            font-size: 12.5px;
+            color: #555;
+            line-height: 1.7;
+        }
+        .branch-box strong { color: #e65100; }
+
+        /* ===== メールテンプレ表示 ===== */
+        .mail-badge {
+            display: inline-block;
+            background: #ff8800;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 3px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        /* ===== フロー図（STEP 1→2→3） ===== */
+        .flow-visual {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+            border: 2px solid #e0e0e0;
+        }
+        .flow-visual h3 {
+            text-align: center;
+            color: #cc0000;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+        .flow-row {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .flow-box {
+            flex: 1;
+            min-width: 180px;
+            max-width: 280px;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            position: relative;
+        }
+        .flow-box.step1 { background: #fff0f0; border: 2px solid #cc0000; }
+        .flow-box.step2 { background: #fff8e1; border: 2px solid #f9a825; }
+        .flow-box.step3 { background: #e3f2fd; border: 2px solid #1976d2; }
+        .flow-box .step-badge {
+            display: inline-block;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .step1 .step-badge { background: #cc0000; }
+        .step2 .step-badge { background: #f9a825; color: #333; }
+        .step3 .step-badge { background: #1976d2; }
+        .flow-box .flow-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .flow-box .flow-desc { font-size: 12px; color: #555; }
+        .flow-box .flow-period {
+            font-size: 11px;
+            color: #888;
+            margin-top: 8px;
+            font-weight: 700;
+        }
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            color: #bbb;
+            padding: 0 8px;
+            font-weight: 700;
+        }
+
+        /* ===== 注意帯 ===== */
+        .caution-bar {
+            background: #fff3e0;
+            border: 2px solid #ff8800;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+        }
+        .caution-bar h3 {
+            color: #e65100;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .caution-bar ul {
+            margin-left: 20px;
+            font-size: 13px;
+            color: #444;
+        }
+        .caution-bar li { margin-bottom: 6px; }
+        .caution-bar li strong { color: #cc0000; }
+
+        /* ===== 完了チェック ===== */
+        .checklist-section {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .checklist-section h3 {
+            color: #2e7d32;
+            font-size: 17px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .check-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .check-item {
+            background: #fff;
+            border-radius: 6px;
+            padding: 10px 14px;
+            font-size: 13px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+        .check-item .box {
+            flex-shrink: 0;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #4caf50;
+            border-radius: 3px;
+            margin-top: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .task-cards { grid-template-columns: 1fr; }
+            .goal-banner { flex-direction: column; }
+            .flow-row { flex-direction: column; align-items: center; }
+            .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+            .check-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 3月タスク図解</h1>
+    <p class="subtitle">うちの子本舗 / フジサワオート｜4月1日 運用開始に向けて</p>
+
+    <!-- ===== ゴール ===== -->
+    <div class="goal-banner">
+        <div class="left">
+            ゴール: <strong>4/1 広告配信開始</strong><br>
+            <span style="font-size:13px;color:#ccc;">3月中にSTEP 1〜2を完了させる（2社分）</span>
+        </div>
+        <div class="clients">
+            <div class="client-chip">
+                <div class="name">うちの子本舗</div>
+                <div class="note">新規YouTube広告</div>
+            </div>
+            <div class="client-chip">
+                <div class="name">フジサワオート</div>
+                <div class="note">新規YouTube広告</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 全体フロー概要 ===== -->
+    <div class="flow-visual">
+        <h3>全体フロー（1社あたり）</h3>
+        <div class="flow-row">
+            <div class="flow-box step1">
+                <div class="step-badge">STEP 1</div>
+                <div class="flow-title">チャンネル開設・動画UP</div>
+                <div class="flow-desc">案内メール送信<br>チャンネル確認<br>動画URLを受け取る</div>
+                <div class="flow-period">3月第1〜2週</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box step2">
+                <div class="step-badge">STEP 2</div>
+                <div class="flow-title">ヒアリング・広告設定</div>
+                <div class="flow-desc">電話で設定内容を相談<br>MCC内にアカウント作成<br>動画広告を入稿・審査提出</div>
+                <div class="flow-period">3月第2〜3週</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box step3">
+                <div class="step-badge">4/1〜</div>
+                <div class="flow-title">配信開始 &amp; 定例会</div>
+                <div class="flow-desc">審査通過 → 配信スタート<br>2ヶ月に1回 成果報告<br>アカウント監視（継続）</div>
+                <div class="flow-period">4月以降ずっと</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== タイムライン ===== -->
+    <h2 style="font-size:20px;margin-bottom:20px;color:#cc0000;text-align:center;">3月スケジュール（タイムライン）</h2>
+
+    <div class="timeline">
+
+        <!-- Phase 0: 今すぐ -->
+        <div class="tl-phase green">
+            <div class="phase-header">
+                <span class="phase-week">今すぐ</span>
+                <span class="phase-title">初動対応</span>
+            </div>
+            <div class="task-cards">
+                <div class="task-card">
+                    <div class="task-num">1</div>
+                    <h4>対応可能と返信する</h4>
+                    <p>「2件とも対応可能です」と返信。<br>スプシに顧客情報を入力してもらうよう依頼。</p>
+                    <span class="who you">自分</span>
+                </div>
+                <div class="task-card">
+                    <div class="task-num">2</div>
+                    <h4>MCCアクセス権を確認</h4>
+                    <p>ランバードのGoogle広告MCCにログインできるか確認。<br>権限がなければ阿部さんに依頼。</p>
+                    <span class="who you">自分</span>
+                    <div style="background:#e3f2fd;border-radius:8px;padding:14px 16px;margin-top:12px;border:1px solid #bbdefb;">
+                        <div style="font-size:13px;font-weight:700;color:#1565c0;margin-bottom:8px;">MCC（マイクライアントセンター）とは？</div>
+                        <p style="font-size:12px;color:#444;margin-bottom:10px;">
+                            複数のお客様のGoogle広告アカウントを<strong>1つのログインでまとめて管理できる「管理者用アカウント」</strong>。<br>
+                            YouTube広告の専用画面はなく、<strong>Google広告の中の機能の一つ</strong>としてYouTube動画広告を設定する。
+                        </p>
+                        <div style="background:#fff;border-radius:6px;padding:12px 16px;font-family:monospace;font-size:12.5px;line-height:2;color:#333;">
+                            <strong style="color:#1565c0;">ランバードのMCC（1つのログインで全部見れる）</strong><br>
+                            ├── うちの子本舗 の広告アカウント<br>
+                            ├── フジサワオート の広告アカウント<br>
+                            ├── 既存クライアントA<br>
+                            ├── 既存クライアントB<br>
+                            │&emsp;&emsp; ：<br>
+                            └── 約100件のアカウント
+                        </div>
+                        <p style="font-size:11.5px;color:#666;margin-top:8px;">
+                            MCCにログイン → お客様を選ぶ → そのお客様のYouTube動画広告を設定・確認、という流れ。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 1: 第1週 -->
+        <div class="tl-phase">
+            <div class="phase-header">
+                <span class="phase-week">3月 第1〜2週</span>
+                <span class="phase-title">STEP 1: チャンネル開設・動画UP</span>
+            </div>
+            <div class="task-cards">
+                <div class="task-card full">
+                    <div class="task-num">3</div>
+                    <h4><span class="mail-badge">メール</span> 案内メール送信（2社分）</h4>
+                    <p>テンプレ「Youtube広告開始に向けてのご案内」を各クライアントに送信。<br>YouTubeチャンネルを持っているかどうか確認する。</p>
+                    <span class="who you">自分</span>
+
+                    <div class="branch-box">
+                        <strong>返信パターンで分岐:</strong><br>
+                        <strong>A. チャンネル持ってる</strong> → お客様に動画をUPしてもらい、<strong>動画URLを返信してもらう</strong><br>
+                        <strong>B. チャンネル持ってない</strong> → <strong>電話日程を調整</strong>して、一緒にチャンネル開設 &amp; 動画UP（年配の方に多い）
+                    </div>
+                </div>
+                <div class="task-card">
+                    <div class="task-num">4</div>
+                    <h4>電話サポート（必要な場合）</h4>
+                    <p>チャンネル未開設のお客様と電話しながらチャンネル作成・動画アップロードを一緒にやる。</p>
+                    <span class="who you">自分</span>
+                    <span class="who client">お客様</span>
+                </div>
+                <div class="task-card">
+                    <div class="task-num">5</div>
+                    <h4>動画URLを受け取る</h4>
+                    <p>各社から動画URLをメールで受領。<br>これが揃えばSTEP 2に進める。</p>
+                    <span class="who client">お客様</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 2: 第2〜3週 -->
+        <div class="tl-phase blue">
+            <div class="phase-header">
+                <span class="phase-week">3月 第2〜3週</span>
+                <span class="phase-title">STEP 2: ヒアリング・広告設定</span>
+            </div>
+            <div class="task-cards">
+                <div class="task-card">
+                    <div class="task-num">6</div>
+                    <h4><span class="mail-badge">メール</span> ヒアリングメール送信（2社分）</h4>
+                    <p>テンプレ「広告運用開始のご連絡」を送信。<br>スプシURL・設定提案（性別・年齢・地域等）を記載。</p>
+                    <span class="who you">自分</span>
+                </div>
+                <div class="task-card">
+                    <div class="task-num">7</div>
+                    <h4>電話ヒアリング（20〜30分 x 2社）</h4>
+                    <p>配信地域・ターゲット年齢・性別・関連キーワードなどを相談して決める。</p>
+                    <span class="who you">自分</span>
+                    <span class="who client">お客様</span>
+                </div>
+                <div class="task-card">
+                    <div class="task-num">8</div>
+                    <h4>MCC内にアカウント作成（2つ）</h4>
+                    <p>Google広告MCCにログインし、「うちの子本舗」「フジサワオート」の広告アカウントを新規作成。</p>
+                    <span class="who you">自分</span>
+                </div>
+                <div class="task-card">
+                    <div class="task-num">9</div>
+                    <h4>動画広告を入稿・審査提出</h4>
+                    <p>ヒアリングで決めた設定を入力し、動画URLを指定して広告を作成。審査に提出。</p>
+                    <span class="who you">自分</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase 3: 第4週 -->
+        <div class="tl-phase blue">
+            <div class="phase-header">
+                <span class="phase-week">3月 第4週（月末）</span>
+                <span class="phase-title">最終確認・配信準備</span>
+            </div>
+            <div class="task-cards">
+                <div class="task-card">
+                    <div class="task-num">10</div>
+                    <h4>審査通過を確認</h4>
+                    <p>2社分の広告が審査に通過しているか確認。<br>却下された場合は修正して再提出。</p>
+                    <span class="who you">自分</span>
+                </div>
+                <div class="task-card">
+                    <div class="task-num">11</div>
+                    <h4>スプシにクライアント情報を記録</h4>
+                    <p>各クライアントのスプレッドシートに広告設定内容・開始日・動画URLなどを記録。</p>
+                    <span class="who you">自分</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== 設定項目リマインダー ===== -->
+    <div style="background:#fff;border-radius:12px;padding:24px;margin:32px 0;border:2px solid #e0e0e0;">
+        <h3 style="text-align:center;color:#1565c0;font-size:16px;margin-bottom:16px;">ヒアリングで決める広告設定（リマインダー）</h3>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;text-align:center;">
+            <div style="background:#e3f2fd;border-radius:8px;padding:12px;">
+                <div style="font-size:12px;color:#888;">性別</div>
+                <div style="font-weight:700;font-size:14px;">男性/女性</div>
+            </div>
+            <div style="background:#e3f2fd;border-radius:8px;padding:12px;">
+                <div style="font-size:12px;color:#888;">年齢</div>
+                <div style="font-weight:700;font-size:14px;">18〜65歳+</div>
+            </div>
+            <div style="background:#e3f2fd;border-radius:8px;padding:12px;">
+                <div style="font-size:12px;color:#888;">配信地域</div>
+                <div style="font-weight:700;font-size:14px;">商圏に合わせる</div>
+            </div>
+            <div style="background:#e3f2fd;border-radius:8px;padding:12px;">
+                <div style="font-size:12px;color:#888;">配信時間</div>
+                <div style="font-weight:700;font-size:14px;">7時〜24時</div>
+            </div>
+            <div style="background:#e3f2fd;border-radius:8px;padding:12px;">
+                <div style="font-size:12px;color:#888;">関連キーワード</div>
+                <div style="font-weight:700;font-size:14px;">業種に合わせて</div>
+            </div>
+            <div style="background:#e3f2fd;border-radius:8px;padding:12px;">
+                <div style="font-size:12px;color:#888;">フリークエンシーキャップ</div>
+                <div style="font-weight:700;font-size:14px;">表示回数制限</div>
+            </div>
+            <div style="background:#e3f2fd;border-radius:8px;padding:12px;">
+                <div style="font-size:12px;color:#888;">デバイス</div>
+                <div style="font-weight:700;font-size:14px;">PC/モバイル/タブ</div>
+            </div>
+            <div style="background:#e3f2fd;border-radius:8px;padding:12px;">
+                <div style="font-size:12px;color:#888;">リンク先URL</div>
+                <div style="font-weight:700;font-size:14px;">店舗HPなど</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== 注意事項 ===== -->
+    <div class="caution-bar">
+        <h3>対応時の注意事項</h3>
+        <ul>
+            <li><strong>金銭・契約の話</strong>が出たら → 自分で判断せず <strong>河合さん（営業）に引き継ぐ</strong></li>
+            <li><strong>年配のお客様</strong> → チャンネル開設から丁寧に電話サポート（一緒にやる前提で）</li>
+            <li><strong>動画の制作・納品</strong>はランバード制作チームの担当。自分の範囲外</li>
+            <li><strong>審査が却下</strong>された場合 → 理由を確認して修正・再提出（よくあること）</li>
+        </ul>
+    </div>
+
+    <!-- ===== チェックリスト ===== -->
+    <div class="checklist-section">
+        <h3>3月末までの完了チェックリスト</h3>
+        <div class="check-grid">
+            <div class="check-item"><div class="box"></div>対応可能と返信した</div>
+            <div class="check-item"><div class="box"></div>MCCアクセス権を確認した</div>
+            <div class="check-item"><div class="box"></div>【うちの子本舗】案内メール送信済み</div>
+            <div class="check-item"><div class="box"></div>【フジサワオート】案内メール送信済み</div>
+            <div class="check-item"><div class="box"></div>【うちの子本舗】動画URL受領済み</div>
+            <div class="check-item"><div class="box"></div>【フジサワオート】動画URL受領済み</div>
+            <div class="check-item"><div class="box"></div>【うちの子本舗】ヒアリング完了</div>
+            <div class="check-item"><div class="box"></div>【フジサワオート】ヒアリング完了</div>
+            <div class="check-item"><div class="box"></div>【うちの子本舗】MCCアカウント作成済み</div>
+            <div class="check-item"><div class="box"></div>【フジサワオート】MCCアカウント作成済み</div>
+            <div class="check-item"><div class="box"></div>【うちの子本舗】広告入稿・審査提出済み</div>
+            <div class="check-item"><div class="box"></div>【フジサワオート】広告入稿・審査提出済み</div>
+            <div class="check-item"><div class="box"></div>【うちの子本舗】審査通過確認</div>
+            <div class="check-item"><div class="box"></div>【フジサワオート】審査通過確認</div>
+            <div class="check-item"><div class="box"></div>スプシにクライアント情報を記録した</div>
+            <div class="check-item"><div class="box"></div>4/1 配信開始 準備完了</div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
