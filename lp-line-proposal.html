@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP・LINE改善提案書 - ニコニコカーローン - 2026-03-19</title>
+<style>
+  :root {
+    --primary: #1e40af;
+    --red: #dc2626;
+    --orange: #d97706;
+    --green: #16a34a;
+    --dark: #1e293b;
+    --gray: #64748b;
+    --light: #f8fafc;
+    --border: #e2e8f0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; background: var(--light); color: var(--dark); line-height: 1.8; }
+  .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+
+  /* Header */
+  .header { background: linear-gradient(135deg, var(--primary), #1e3a8a); color: white; padding: 48px 40px; border-radius: 16px; margin-bottom: 32px; }
+  .header h1 { font-size: 26px; margin-bottom: 8px; }
+  .header .subtitle { color: #93c5fd; font-size: 15px; }
+  .header .date { color: #bfdbfe; font-size: 13px; margin-top: 16px; }
+  .header .logo { font-size: 12px; color: #93c5fd; margin-top: 8px; }
+
+  /* Summary Box */
+  .summary { background: #eff6ff; border: 2px solid var(--primary); border-radius: 12px; padding: 28px; margin-bottom: 32px; }
+  .summary h2 { color: var(--primary); font-size: 18px; margin-bottom: 16px; }
+  .summary ul { padding-left: 20px; }
+  .summary li { margin-bottom: 8px; font-size: 14px; }
+  .summary .highlight { background: #dbeafe; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+
+  /* Stats Grid */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 20px 0; }
+  .stat { text-align: center; padding: 20px 12px; background: white; border-radius: 12px; border: 1px solid var(--border); }
+  .stat .num { font-size: 28px; font-weight: 700; }
+  .stat .label { font-size: 11px; color: var(--gray); margin-top: 4px; }
+  .stat.danger .num { color: var(--red); }
+  .stat.warning .num { color: var(--orange); }
+  .stat.success .num { color: var(--green); }
+  .stat.primary .num { color: var(--primary); }
+
+  /* Sections */
+  .section { background: white; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border: 1px solid var(--border); }
+  .section h2 { font-size: 20px; color: var(--dark); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid var(--primary); }
+  .section h3 { font-size: 16px; color: var(--dark); margin: 24px 0 12px; }
+  .section h4 { font-size: 14px; color: var(--primary); margin: 16px 0 8px; }
+  .section p { font-size: 14px; margin-bottom: 12px; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+  th { background: #f1f5f9; padding: 10px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+
+  /* Problem/Solution Cards */
+  .problem-card { background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 20px; margin: 16px 0; }
+  .problem-card h4 { color: var(--red); margin-bottom: 8px; }
+  .solution-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 20px; margin: 16px 0; }
+  .solution-card h4 { color: var(--green); margin-bottom: 8px; }
+
+  /* Funnel */
+  .funnel { display: flex; flex-direction: column; gap: 4px; margin: 20px 0; }
+  .funnel-step { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: 8px; font-size: 14px; }
+  .funnel-step .num { font-weight: 700; font-size: 20px; min-width: 80px; text-align: right; }
+  .funnel-step .arrow { color: var(--gray); font-size: 12px; min-width: 60px; text-align: center; }
+  .funnel-step.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .funnel-step.bad { background: #fef2f2; border: 1px solid #fecaca; }
+  .funnel-step.neutral { background: #f8fafc; border: 1px solid var(--border); }
+
+  /* Action Items */
+  .action-list { counter-reset: action; }
+  .action-item { display: flex; gap: 16px; padding: 20px; margin: 12px 0; background: #f8fafc; border-radius: 10px; border: 1px solid var(--border); }
+  .action-item .number { background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+  .action-item .content h4 { font-size: 15px; margin-bottom: 4px; }
+  .action-item .content p { font-size: 13px; color: var(--gray); }
+
+  /* Priority Badge */
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .badge-s { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+  .badge-a { background: #fffbeb; color: #d97706; border: 1px solid #fed7aa; }
+  .badge-b { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+
+  /* Mockup */
+  .mockup { background: #1e293b; border-radius: 12px; padding: 24px; margin: 16px 0; color: #e2e8f0; font-family: monospace; font-size: 12px; white-space: pre-wrap; }
+  .mockup .label { color: #94a3b8; }
+  .mockup .good { color: #4ade80; }
+  .mockup .highlight { color: #fbbf24; }
+
+  /* Timeline */
+  .timeline { border-left: 3px solid var(--primary); padding-left: 24px; margin: 20px 0; }
+  .timeline-item { margin-bottom: 20px; position: relative; }
+  .timeline-item::before { content: ''; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; position: absolute; left: -30px; top: 4px; }
+  .timeline-item h4 { font-size: 14px; color: var(--primary); }
+  .timeline-item p { font-size: 13px; color: var(--gray); }
+
+  .footer { text-align: center; padding: 32px; color: var(--gray); font-size: 12px; }
+
+  @media (max-width: 768px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .container { padding: 16px; }
+    .header { padding: 32px 24px; }
+    .section { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Header -->
+<div class="header">
+  <h1>LP・公式LINE 改善提案書</h1>
+  <div class="subtitle">ニコニコカーローン様（リリーフトラスト株式会社）</div>
+  <div class="date">2026年3月19日</div>
+  <div class="logo">作成: 株式会社斗（hishaku）</div>
+</div>
+
+<!-- 現状サマリー -->
+<div class="summary">
+  <h2>本提案の目的</h2>
+  <p>現在、Google広告は十分な集客ができていますが、<span class="highlight">LPに来た人が問い合わせまで到達していない</span>のが最大の課題です。</p>
+  <p>3つの改善ポイントを特定しました:</p>
+  <ul>
+    <li><strong>施策①</strong> LINE登録済みだが問い合わせていない方への再アプローチ</li>
+    <li><strong>施策②</strong> 新規LINE登録者が仮審査に進みやすい自動応答の改善</li>
+    <li><strong>施策③</strong> LP自体の改善（訪問者→LINE登録→仮審査の導線最適化）</li>
+  </ul>
+</div>
+
+<!-- 現状データ -->
+<div class="section">
+  <h2>現状データ（2026年3月1日〜18日）</h2>
+
+  <div class="stats">
+    <div class="stat primary">
+      <div class="num">¥281,594</div>
+      <div class="label">広告費（18日間）</div>
+    </div>
+    <div class="stat primary">
+      <div class="num">2,758</div>
+      <div class="label">LP訪問者（クリック数）</div>
+    </div>
+    <div class="stat warning">
+      <div class="num">162</div>
+      <div class="label">LINEボタンクリック</div>
+    </div>
+    <div class="stat danger">
+      <div class="num">8件</div>
+      <div class="label">実問い合わせ</div>
+    </div>
+  </div>
+
+  <h3>現在のファネル（数字で見る離脱ポイント）</h3>
+
+  <div class="funnel">
+    <div class="funnel-step good">
+      <div class="num">2,758人</div>
+      <div class="label">LP訪問者（Google広告からの流入）</div>
+    </div>
+    <div class="funnel-step neutral">
+      <div class="arrow">↓ 5.9%がクリック</div>
+    </div>
+    <div class="funnel-step bad">
+      <div class="num">162回</div>
+      <div class="label">LINEボタンクリック ※誤タップ含む</div>
+    </div>
+    <div class="funnel-step neutral">
+      <div class="arrow">↓ 4.9%が問い合わせ</div>
+    </div>
+    <div class="funnel-step bad">
+      <div class="num">8件</div>
+      <div class="label">実問い合わせ（仮審査申込）</div>
+    </div>
+  </div>
+
+  <div class="problem-card">
+    <h4>最大の問題: LINEボタンクリック162回 → 実問い合わせ8件（変換率 4.9%）</h4>
+    <p style="font-size:13px;">業界平均の変換率は20〜30%です。つまり<strong>同じ広告費のまま、変換率を20%に改善するだけで問い合わせが32件/月に増える</strong>計算になります。広告を増やす必要はなく、「来た人を逃さない」仕組みを作ることが最優先です。</p>
+  </div>
+
+  <h3>実問い合わせの推移</h3>
+  <table>
+    <tr><th>日付</th><th>件数</th><th>備考</th></tr>
+    <tr><td>3/2</td><td><strong>3件</strong></td><td>月間最多日</td></tr>
+    <tr><td>3/3</td><td><strong>2件</strong></td><td></td></tr>
+    <tr><td>3/5</td><td><strong>1件</strong></td><td></td></tr>
+    <tr><td>3/6〜3/12</td><td style="color:var(--red);">0件（7日連続）</td><td>検索パートナーOFFテストの影響含む</td></tr>
+    <tr><td>3/13</td><td><strong>1件</strong></td><td></td></tr>
+    <tr><td>3/14〜3/15</td><td style="color:var(--red);">0件</td><td></td></tr>
+    <tr><td>3/16</td><td><strong>1件</strong></td><td>宮田様（鹿児島・自営業）</td></tr>
+    <tr><td>3/17〜3/18</td><td style="color:var(--red);">0件</td><td></td></tr>
+    <tr><td><strong>月合計</strong></td><td><strong>8件</strong></td><td>目標30件に対して27%の達成率</td></tr>
+  </table>
+</div>
+
+<!-- 施策① -->
+<div class="section">
+  <h2>施策① LINE登録済み・未問い合わせの方への再アプローチ</h2>
+
+  <p><span class="badge badge-s">優先度S</span> 即効性が最も高い施策です。</p>
+
+  <h3>なぜこれが重要か</h3>
+  <p>LINEボタンは18日間で162回クリックされていますが、実問い合わせは8件です。つまり<strong>「興味を持ってLINEに来たのに問い合わせていない人」が大量にいます。</strong></p>
+  <p>この方々は一度は車のローンに関心を持った「見込み客」です。もう一度声をかけるだけで問い合わせに繋がる可能性が高いです。</p>
+
+  <div class="solution-card">
+    <h4>具体的なアクション</h4>
+
+    <h4>A. 一斉配信メッセージ（すぐに実施可能）</h4>
+    <p>LINE公式アカウントの管理画面から、友だち登録済みの方に一斉メッセージを送信します。</p>
+
+    <div class="mockup"><span class="label">【メッセージ例①：お気軽相談型】</span>
+
+<span class="good">ニコニコカーローンです🚗</span>
+
+以前ご登録ありがとうございました。
+
+「車が必要だけど、ローンの審査が不安…」
+そんなお悩みをお持ちではありませんか？
+
+当店は<span class="highlight">審査通過率90%以上</span>、
+<span class="highlight">金利0%・頭金なし・保証人不要</span>です。
+
+<span class="good">まずは30秒で仮審査 ▼</span>
+[仮審査フォームへのリンク]
+
+※お電話でもご相談いただけます
+📞 0120-XXX-XXXX</div>
+
+    <div class="mockup"><span class="label">【メッセージ例②：緊急性・限定型】</span>
+
+<span class="good">【3月限定】春の特別キャンペーン🌸</span>
+
+今月中に仮審査を申し込まれた方限定で、
+<span class="highlight">初回オイル交換を無料サービス</span>いたします。
+
+✅ 審査最短15分
+✅ 金利0%
+✅ 他社NGでも大歓迎
+
+<span class="good">▼ 仮審査はこちら（30秒で完了）</span>
+[仮審査フォームへのリンク]</div>
+
+    <h4>B. セグメント配信（効果を高める）</h4>
+    <p>LINE公式の「チャットタグ」機能で以下のようにセグメントを分けると効果が上がります:</p>
+    <table>
+      <tr><th>セグメント</th><th>状態</th><th>送るメッセージ</th></tr>
+      <tr><td>登録のみ</td><td>友だち追加後、何もアクションなし</td><td>お気軽相談型（メッセージ①）</td></tr>
+      <tr><td>やり取りあり</td><td>過去にチャットしたが申込なし</td><td>「その後いかがですか？」型</td></tr>
+      <tr><td>仮審査済み</td><td>フォーム送信済み</td><td>来店促進メッセージ</td></tr>
+    </table>
+
+    <h4>C. 定期配信の仕組み化</h4>
+    <p>月2回（月初と月中）の定期メッセージで、未問い合わせ者に継続的にアプローチします。配信コストはLINE公式の無料枠（月200通）で十分カバーできます。</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat success" style="grid-column: span 2;">
+      <div class="num">+5〜10件/月</div>
+      <div class="label">期待される追加問い合わせ数</div>
+    </div>
+    <div class="stat success" style="grid-column: span 2;">
+      <div class="num">広告費追加なし</div>
+      <div class="label">既存の登録者へのアプローチなので無料</div>
+    </div>
+  </div>
+</div>
+
+<!-- 施策② -->
+<div class="section">
+  <h2>施策② 新規LINE登録者への自動応答改善</h2>
+
+  <p><span class="badge badge-s">優先度S</span> LINE登録直後の「初回自動応答メッセージ」が仮審査への導線のカギです。</p>
+
+  <h3>現在の問題</h3>
+  <div class="problem-card">
+    <h4>問題1: 友だち追加後に何が起きるか不明</h4>
+    <p style="font-size:13px;">現在の自動応答メッセージの内容が不明です。もし「ご登録ありがとうございます」だけの場合、ユーザーは次に何をすればいいかわからず離脱します。</p>
+  </div>
+  <div class="problem-card">
+    <h4>問題2: ボトムバーと本体でLINE URLが異なる</h4>
+    <p style="font-size:13px;">
+      LP本体の4箇所: <code>lin.ee/enjq2UW</code><br>
+      固定ボトムバー: <code>lin.ee/1beCUlg</code>（別のURL）<br>
+      → ボトムバー経由の登録者が正しいアカウントに繋がっていない可能性があります。<strong>これは即確認が必要です。</strong>
+    </p>
+  </div>
+
+  <div class="solution-card">
+    <h4>改善案: 友だち追加直後の自動応答を「仮審査誘導型」に変更</h4>
+
+    <p>友だち追加した瞬間に、以下のようなメッセージを自動送信します。ポイントは<strong>「30秒で仮審査ができる」ことを即座に伝え、リンクを提示する</strong>ことです。</p>
+
+    <div class="mockup"><span class="label">【友だち追加時の自動応答メッセージ（推奨案）】</span>
+
+<span class="good">ご登録ありがとうございます！</span>
+ニコニコカーローンです🚗
+
+<span class="highlight">━━ まずは30秒で仮審査 ━━</span>
+
+当店は<span class="highlight">審査通過率90%以上</span>。
+他社で断られた方も大歓迎です。
+
+✅ 金利0%
+✅ 頭金なし・保証人不要
+✅ 最短15分で結果をお伝え
+
+<span class="good">▼ 仮審査はこちら（30秒で入力完了）</span>
+[仮審査フォームへのリンク]
+
+━━━━━━━━━━━━━━
+
+💬 ご質問がありましたら、
+　 このままチャットでお気軽にどうぞ！
+　 スタッフが直接お答えします。</div>
+
+    <h4>リッチメニューの設置（推奨）</h4>
+    <p>LINE公式アカウントの画面下部に常時表示される「リッチメニュー」を設定します。ボタン1つで仮審査フォームに飛べるようにします。</p>
+
+    <table>
+      <tr><th>ボタン</th><th>文言</th><th>リンク先</th></tr>
+      <tr><td style="background:#22c55e; color:white; text-align:center; font-weight:bold;">大ボタン（左半分）</td><td>30秒で仮審査する</td><td>仮審査フォームURL</td></tr>
+      <tr><td style="background:#3b82f6; color:white; text-align:center; font-weight:bold;">中ボタン（右上）</td><td>在庫車を見る</td><td>車種一覧ページ</td></tr>
+      <tr><td style="background:#64748b; color:white; text-align:center; font-weight:bold;">小ボタン（右下）</td><td>よくある質問</td><td>FAQ or チャット</td></tr>
+    </table>
+
+    <h4>ステップ配信の設定（友だち追加後の自動フォローアップ）</h4>
+    <table>
+      <tr><th>タイミング</th><th>メッセージ内容</th><th>目的</th></tr>
+      <tr><td>追加直後</td><td>上記の仮審査誘導メッセージ</td><td>即座にアクション促進</td></tr>
+      <tr><td>1日後</td><td>「お客様の声」紹介（実際に車を買った方の事例）</td><td>信頼性・安心感の醸成</td></tr>
+      <tr><td>3日後</td><td>「ローンの仕組み」簡単解説 + 仮審査リンク</td><td>不安の払拭 + 再誘導</td></tr>
+      <tr><td>7日後</td><td>「今月の入荷情報」+ 仮審査リンク</td><td>具体的な車を見せて行動促進</td></tr>
+    </table>
+  </div>
+
+  <div class="stats">
+    <div class="stat success" style="grid-column: span 2;">
+      <div class="num">変換率 5% → 20%</div>
+      <div class="label">LINE登録→問い合わせの変換率目標</div>
+    </div>
+    <div class="stat success" style="grid-column: span 2;">
+      <div class="num">+10〜15件/月</div>
+      <div class="label">期待される追加問い合わせ数</div>
+    </div>
+  </div>
+</div>
+
+<!-- 施策③ -->
+<div class="section">
+  <h2>施策③ LP（ランディングページ）の改善</h2>
+
+  <p><span class="badge badge-a">優先度A</span> 訪問者がLINE登録・仮審査に進む導線を改善します。</p>
+
+  <h3>現在のLP上の問題点</h3>
+
+  <div class="problem-card">
+    <h4>問題1: スクロール深度 22%（ページの1/5しか見られていない）</h4>
+    <p style="font-size:13px;">Microsoft Clarityのデータによると、訪問者の約77%がファーストビュー付近で離脱しています。サービスの詳細やFAQ、フォームまで到達する人がほとんどいません。</p>
+  </div>
+
+  <div class="problem-card">
+    <h4>問題2: 固定ボトムバーのLINEボタンで誤タップが多発</h4>
+    <p style="font-size:13px;">モバイルユーザー（全体の93%）が画面下部のLINEボタンをスクロール中に誤ってタップしています。Google広告のCV数（162回）の多くはこの誤タップです。本当にLINEを開きたい人だけがクリックする設計に変更すべきです。</p>
+  </div>
+
+  <div class="problem-card">
+    <h4>問題3: お客様の声・体験談がゼロ</h4>
+    <p style="font-size:13px;">ターゲット層（信用情報に不安がある方）にとって、「実際に購入できた人の声」は最も安心につながる要素です。現在のLPにはこれが一切ありません。</p>
+  </div>
+
+  <div class="problem-card">
+    <h4>問題4: 申し込みから納車までの流れが不明</h4>
+    <p style="font-size:13px;">「仮審査後にどうなるのか」がわからないと、ユーザーは不安で行動できません。ステップ図解が必要です。</p>
+  </div>
+
+  <div class="solution-card">
+    <h4>改善案（優先順）</h4>
+
+    <h4>改善A: ファーストビューの強化 <span class="badge badge-s">最優先</span></h4>
+    <p>現在のFVは「自社ローンならニコニコカーローン」という自社名訴求がメイン。これを<strong>ユーザーの悩みに直接応える構成</strong>に変更します。</p>
+
+    <table>
+      <tr><th></th><th>現在</th><th>改善案</th></tr>
+      <tr>
+        <td>メインコピー</td>
+        <td>自社ローンならニコニコカーローン</td>
+        <td><strong>「ローン審査に落ちた方も<br>金利0%で車が買えます」</strong></td>
+      </tr>
+      <tr>
+        <td>サブコピー</td>
+        <td>審査に不安な方もOK！他社NG歓迎</td>
+        <td><strong>審査通過率90%以上｜頭金なし｜月々1万円台〜</strong></td>
+      </tr>
+      <tr>
+        <td>CTA</td>
+        <td>LINEで相談する</td>
+        <td><strong>「まずは30秒で仮審査する（無料）」</strong></td>
+      </tr>
+    </table>
+
+    <h4>改善B: お客様の声セクションの追加 <span class="badge badge-s">最優先</span></h4>
+    <p>ファーストビューのすぐ下に、実際に車を購入されたお客様の声を3〜5件掲載します。</p>
+    <div class="mockup"><span class="label">【掲載イメージ】</span>
+
+<span class="good">★★★★★ 福岡市 30代男性</span>
+「他社で2回断られて諦めていましたが、
+ニコニコさんは15分で審査OKが出ました。
+金利もかからず、月々の支払いも安心です。」
+<span class="highlight">→ 購入車両: プリウス / 月々25,000円</span>
+
+<span class="good">★★★★★ 鹿児島市 40代女性</span>
+「自己破産の経験があり不安でしたが、
+丁寧に対応していただけました。
+子どもの送り迎えに車は必須だったので助かりました。」
+<span class="highlight">→ 購入車両: タント / 月々18,000円</span></div>
+    <p><strong>※ お客様の了承を得た上で掲載。実名不要、イニシャル+地域+年代でOKです。</strong></p>
+
+    <h4>改善C: 申し込みステップ図解の追加 <span class="badge badge-a">重要</span></h4>
+    <div class="mockup"><span class="label">【ステップ図解】</span>
+
+<span class="good">STEP 1</span> LINEで仮審査申込（30秒）
+   ↓
+<span class="good">STEP 2</span> 最短15分で審査結果をご連絡
+   ↓
+<span class="good">STEP 3</span> 300台以上の在庫からお車選び
+   ↓
+<span class="good">STEP 4</span> ご契約・納車（最短1週間）
+
+<span class="highlight">※ 仮審査は「信用情報の照会」ではありません。</span>
+<span class="highlight">　 お気軽にお申し込みください。</span></div>
+
+    <h4>改善D: 固定ボトムバーの改善 <span class="badge badge-a">重要</span></h4>
+    <table>
+      <tr><th></th><th>現在</th><th>改善案</th></tr>
+      <tr><td>ボタンサイズ</td><td>大きい（誤タップしやすい）</td><td>やや小さくし、上部に余白を追加</td></tr>
+      <tr><td>表示タイミング</td><td>常時表示</td><td>スクロール20%以上で表示</td></tr>
+      <tr><td>LINE URL</td><td>本体と異なるURL<br>(lin.ee/1beCUlg)</td><td><strong>本体と同じURL<br>(lin.ee/enjq2UW)に統一</strong></td></tr>
+      <tr><td>CTA文言</td><td>「LINEで相談する」</td><td>「30秒で仮審査する」</td></tr>
+    </table>
+    <p style="font-size:13px; color:var(--red); font-weight:bold;">※ ボトムバーのLINE URLが本体と異なっている問題は即修正が必要です。正しいアカウントに繋がっていない可能性があります。</p>
+
+    <h4>改善E: 電話番号の追加 <span class="badge badge-b">中期</span></h4>
+    <p>現在LPに電話番号の掲載がありません。LINEを使わない層（高齢者や緊急性が高い方）を逃しています。ヘッダーまたは固定ボトムバーに電話番号を追加します。</p>
+  </div>
+</div>
+
+<!-- 期待効果 -->
+<div class="section">
+  <h2>3つの施策による期待効果</h2>
+
+  <table>
+    <tr><th>施策</th><th>内容</th><th>期待効果</th><th>実施難易度</th><th>所要時間</th></tr>
+    <tr>
+      <td><span class="badge badge-s">S</span> ①</td>
+      <td>既存LINE登録者への再アプローチ</td>
+      <td><strong>+5〜10件/月</strong></td>
+      <td>低（LINE管理画面のみ）</td>
+      <td>即日</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-s">S</span> ②</td>
+      <td>LINE自動応答+リッチメニュー改善</td>
+      <td><strong>+10〜15件/月</strong></td>
+      <td>低（LINE管理画面のみ）</td>
+      <td>1〜2日</td>
+    </tr>
+    <tr>
+      <td><span class="badge badge-a">A</span> ③</td>
+      <td>LP改善（FV・お客様の声・ステップ・ボトムバー）</td>
+      <td><strong>+5〜10件/月</strong></td>
+      <td>中（WordPress編集）</td>
+      <td>1〜2週間</td>
+    </tr>
+    <tr style="background:#f0fdf4;">
+      <td colspan="2"><strong>合計</strong></td>
+      <td><strong>+20〜35件/月</strong></td>
+      <td colspan="2">現在の月8件ペース → <strong>月28〜43件</strong></td>
+    </tr>
+  </table>
+
+  <div class="stats">
+    <div class="stat danger">
+      <div class="num">8件/月</div>
+      <div class="label">現在のペース</div>
+    </div>
+    <div class="stat primary">
+      <div class="num">→</div>
+      <div class="label"></div>
+    </div>
+    <div class="stat success">
+      <div class="num">30件/月</div>
+      <div class="label">目標</div>
+    </div>
+    <div class="stat success">
+      <div class="num">追加広告費なし</div>
+      <div class="label">既存の流入を活かす</div>
+    </div>
+  </div>
+
+  <p><strong>ポイント: 広告費を増やすのではなく、今来ている人を逃さない仕組みを作ることで目標達成を目指します。</strong></p>
+</div>
+
+<!-- 実行スケジュール -->
+<div class="section">
+  <h2>実行スケジュール</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h4>今週中（3/19〜3/21）</h4>
+      <p>・ボトムバーのLINE URLを統一（lin.ee/enjq2UW に修正）</p>
+      <p>・LINE自動応答メッセージを仮審査誘導型に変更</p>
+      <p>・既存LINE登録者への一斉配信を1回実施</p>
+    </div>
+    <div class="timeline-item">
+      <h4>来週（3/24〜3/28）</h4>
+      <p>・リッチメニューの設定</p>
+      <p>・ステップ配信（1日後・3日後・7日後）の設定</p>
+      <p>・お客様の声の収集・掲載準備</p>
+    </div>
+    <div class="timeline-item">
+      <h4>4月第1週（3/31〜4/4）</h4>
+      <p>・LP改善（ファーストビュー変更・お客様の声追加・ステップ図解追加）</p>
+      <p>・固定ボトムバーのデザイン・動作改善</p>
+    </div>
+    <div class="timeline-item">
+      <h4>4月第2週（4/7〜4/11）</h4>
+      <p>・効果測定（施策①②の問い合わせ数確認）</p>
+      <p>・LP改善の効果検証（スクロール深度・CVR確認）</p>
+      <p>・必要に応じて調整</p>
+    </div>
+  </div>
+</div>
+
+<!-- 補足 -->
+<div class="section">
+  <h2>補足: 現在のCV計測について</h2>
+  <p>現在Google広告で計測されている「コンバージョン」は<strong>LINEボタンのクリック数</strong>であり、実際の問い合わせ数ではありません。</p>
+  <p>3/15にGTMの設定修復（Autoptimizeがブロックしていた問題の解消）を行いましたが、フォーム送信のCV計測は引き続き0件です。</p>
+  <p>フォーム送信をCVとして正しく計測できるようになれば、Google広告の自動入札が「本当に問い合わせにつながるクリック」に最適化されるようになり、さらなる改善が期待できます。</p>
+</div>
+
+<div class="footer">
+  <p>ニコニコカーローン LP・LINE改善提案書 | 2026年3月19日</p>
+  <p>作成: 株式会社斗（hishaku）</p>
+</div>
+
+</div>
+</body>
+</html>
