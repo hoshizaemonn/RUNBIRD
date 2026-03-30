@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告とは？ — 株式会社ランバード</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.8;
+            padding: 24px;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+
+        /* ヘッダー */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            border-radius: 16px;
+            padding: 36px 32px;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 4px 16px;
+            font-size: 12px;
+            color: #ccc;
+            margin-bottom: 14px;
+        }
+        .hero h1 { font-size: 26px; font-weight: 800; margin-bottom: 6px; }
+        .hero h1 span { color: #ff4444; }
+        .hero .hero-sub { font-size: 14px; color: #aab; }
+
+        /* セクション共通 */
+        .section {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 800;
+            margin-right: 10px;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .section-lead {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 16px;
+        }
+
+        /* ① 特徴 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .feature-card {
+            border-radius: 10px;
+            padding: 18px 16px;
+            text-align: center;
+            border: 2px solid;
+        }
+        .feature-card .f-icon { font-size: 28px; margin-bottom: 8px; }
+        .feature-card h4 { font-size: 14px; margin-bottom: 6px; }
+        .feature-card p { font-size: 12px; color: #555; line-height: 1.6; }
+        .fc-reach { background: #f0f7ff; border-color: #bbdefb; }
+        .fc-target { background: #fff5f5; border-color: #ffcdd2; }
+        .fc-cost { background: #e8f5e9; border-color: #c8e6c9; }
+
+        /* ② 広告の種類 */
+        .type-card {
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            border-left: 5px solid;
+            position: relative;
+        }
+        .type-card.recommend {
+            background: #fff0f0;
+            border-left-color: #cc0000;
+        }
+        .type-card.recommend::after {
+            content: 'おすすめ';
+            position: absolute;
+            top: 8px; right: 12px;
+            background: #cc0000;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 10px;
+        }
+        .type-card.normal { background: #f8f9fa; border-left-color: #bbb; }
+        .type-card .type-name { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+        .type-card .type-desc { font-size: 13px; color: #555; margin-bottom: 8px; }
+        .type-card .type-where {
+            display: inline-block;
+            background: #fff3e0;
+            color: #e65100;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        .type-card .type-link {
+            display: inline-block;
+            background: #e3f2fd;
+            color: #1565c0;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .type-card .type-link:hover { background: #bbdefb; }
+
+        /* スマホモック */
+        .phone-mock {
+            width: 160px;
+            background: #111;
+            border-radius: 18px;
+            padding: 6px;
+            display: inline-block;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+            flex-shrink: 0;
+        }
+        .phone-screen {
+            background: #222;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+        .phone-notch {
+            width: 50px; height: 6px;
+            background: #111;
+            border-radius: 3px;
+            margin: 4px auto 0;
+        }
+        .phone-video {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: #aaa;
+            text-align: center;
+            line-height: 1.4;
+            position: relative;
+        }
+        .phone-video .ad-badge {
+            position: absolute;
+            top: 4px; left: 4px;
+            background: rgba(255,204,0,0.9);
+            color: #333;
+            font-size: 8px;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 2px;
+        }
+        .phone-video .skip-btn {
+            position: absolute;
+            bottom: 4px; right: 4px;
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 8px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .phone-video .timer-bar {
+            position: absolute;
+            bottom: 0; left: 0;
+            height: 3px;
+            background: #cc0000;
+            border-radius: 0 0 0 0;
+        }
+        .phone-below {
+            padding: 8px 6px;
+        }
+        .phone-below .pb-title {
+            font-size: 9px;
+            color: #fff;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        .phone-below .pb-ch {
+            font-size: 8px;
+            color: #888;
+            margin-top: 2px;
+        }
+        /* フィード型 */
+        .phone-feed-item {
+            display: flex;
+            gap: 6px;
+            padding: 6px;
+            border-bottom: 1px solid #333;
+        }
+        .phone-feed-thumb {
+            width: 56px; height: 32px;
+            background: #444;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: #888;
+            flex-shrink: 0;
+        }
+        .phone-feed-info {
+            flex: 1;
+        }
+        .phone-feed-info .pf-title { font-size: 8px; color: #fff; line-height: 1.3; }
+        .phone-feed-info .pf-ch { font-size: 7px; color: #888; }
+        .phone-feed-ad {
+            background: #2a2a2a;
+            border: 1px solid #cc0000;
+            border-radius: 4px;
+        }
+        .phone-feed-ad .pf-badge {
+            font-size: 7px;
+            color: #ffcc00;
+            font-weight: 700;
+        }
+        /* 種類の図解コンテナ */
+        .type-visual {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .type-visual-desc {
+            flex: 1;
+            font-size: 12px;
+            color: #555;
+            line-height: 1.7;
+        }
+        .type-visual-desc strong { color: #1a1a1a; }
+
+        /* ③ 具体例 */
+        .example-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .ex-step {
+            padding: 18px 0;
+        }
+        .ex-step + .ex-step {
+            border-top: 1px dashed #e0e0e0;
+        }
+        .ex-step-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .ex-num {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        .ex-step-title {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ex-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .ex-tag {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 2px 10px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        /* 図解：エリアマップ */
+        .area-map {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
+        }
+        .area-outer {
+            position: absolute;
+            top: 0; left: 0;
+            width: 280px; height: 280px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .area-outer-label {
+            position: absolute;
+            top: 8px; right: 20px;
+            font-size: 11px;
+            color: #999;
+            font-weight: 600;
+        }
+        .area-inner {
+            width: 160px; height: 160px;
+            border-radius: 50%;
+            background: rgba(76,175,80,0.12);
+            border: 3px solid #4caf50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+        }
+        .area-inner-label {
+            position: absolute;
+            bottom: -22px;
+            font-size: 11px;
+            color: #2e7d32;
+            font-weight: 700;
+        }
+        .area-store {
+            font-size: 28px;
+            margin-bottom: 2px;
+        }
+        .area-store-text {
+            font-size: 11px;
+            font-weight: 700;
+            color: #333;
+        }
+        /* 圏内の人アイコン */
+        .area-person {
+            position: absolute;
+            font-size: 18px;
+        }
+        .area-person-ok { }
+        .area-person-ok::after {
+            content: '✓';
+            position: absolute;
+            bottom: -8px; right: -6px;
+            font-size: 10px;
+            background: #4caf50;
+            color: #fff;
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .area-person-ng {
+            opacity: 0.35;
+        }
+        .area-person-ng::after {
+            content: '✗';
+            position: absolute;
+            bottom: -8px; right: -6px;
+            font-size: 10px;
+            background: #e53935;
+            color: #fff;
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 図解：ターゲット比較 */
+        .target-compare {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 12px;
+            align-items: center;
+        }
+        .target-box {
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .target-ok {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+        }
+        .target-ng {
+            background: #fafafa;
+            border: 2px solid #e0e0e0;
+            opacity: 0.5;
+        }
+        .target-icon { font-size: 32px; margin-bottom: 4px; }
+        .target-label { font-size: 13px; font-weight: 700; }
+        .target-sub { font-size: 11px; color: #888; margin-top: 2px; }
+        .target-vs {
+            font-size: 14px;
+            font-weight: 800;
+            color: #ccc;
+        }
+
+        /* 図解：キーワードフロー */
+        .kw-flow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .kw-person {
+            text-align: center;
+            padding: 14px;
+            background: #f3e5f5;
+            border-radius: 12px;
+            border: 2px solid #ce93d8;
+            min-width: 120px;
+        }
+        .kw-person-icon { font-size: 32px; }
+        .kw-person-text { font-size: 11px; color: #6a1b9a; font-weight: 600; margin-top: 4px; }
+        .kw-arrow { font-size: 22px; color: #ce93d8; font-weight: 800; }
+        .kw-result {
+            text-align: center;
+            padding: 14px;
+            background: #fff0f0;
+            border-radius: 12px;
+            border: 2px solid #ef9a9a;
+            min-width: 120px;
+        }
+        .kw-result-icon { font-size: 32px; }
+        .kw-result-text { font-size: 11px; color: #c62828; font-weight: 600; margin-top: 4px; }
+
+        /* 図解：条件アイコングリッド */
+        .cond-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .cond-item {
+            text-align: center;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 14px 8px;
+            border: 1px solid #e0e0e0;
+        }
+        .cond-icon { font-size: 28px; margin-bottom: 4px; }
+        .cond-label { font-size: 11px; color: #888; }
+        .cond-value { font-size: 13px; font-weight: 700; margin-top: 2px; }
+        .cond-why { font-size: 10px; color: #e65100; margin-top: 4px; }
+
+        /* 図解：フィルターファネル */
+        .funnel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+        .funnel-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 0;
+        }
+        .funnel-bar {
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 0 16px;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+        .funnel-arrow-down {
+            font-size: 16px;
+            color: #bbb;
+        }
+
+        /* ゴール結果 */
+        .ex-result {
+            background: #e8f5e9;
+            border: 2px solid #a5d6a7;
+            border-radius: 10px;
+            padding: 14px 18px;
+            text-align: center;
+        }
+        .ex-result .er-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .er-box {
+            background: #fff;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            border: 1px solid #c8e6c9;
+        }
+        .er-arrow { color: #2e7d32; font-weight: 700; }
+
+        /* 図解：スキップ比較 */
+        .skip-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 10px;
+        }
+        .skip-box {
+            border-radius: 10px;
+            padding: 14px;
+            text-align: center;
+        }
+        .skip-good {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+        }
+        .skip-free {
+            background: #f5f5f5;
+            border: 2px solid #e0e0e0;
+        }
+        .skip-icon { font-size: 28px; margin-bottom: 4px; }
+        .skip-label { font-size: 13px; font-weight: 700; }
+        .skip-desc { font-size: 11px; color: #666; margin-top: 4px; }
+        .skip-cost {
+            display: inline-block;
+            margin-top: 6px;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* ④ 流れ */
+        .flow-steps {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+        }
+        .flow-step {
+            flex: 1;
+            border-radius: 10px;
+            padding: 16px 12px;
+            text-align: center;
+        }
+        .flow-step .fs-num {
+            display: inline-block;
+            width: 26px; height: 26px;
+            line-height: 26px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .flow-step .fs-title { font-size: 13px; font-weight: 700; }
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            color: #ccc;
+            font-weight: 700;
+            padding: 0 2px;
+        }
+        .fs1 { background: #fff0f0; border: 2px solid #ef9a9a; }
+        .fs1 .fs-num { background: #cc0000; }
+        .fs2 { background: #fff8e1; border: 2px solid #ffe082; }
+        .fs2 .fs-num { background: #f9a825; }
+        .fs3 { background: #e8f5e9; border: 2px solid #a5d6a7; }
+        .fs3 .fs-num { background: #2e7d32; }
+        .fs4 { background: #e3f2fd; border: 2px solid #90caf9; }
+        .fs4 .fs-num { background: #1976d2; }
+        .fs5 { background: #f3e5f5; border: 2px solid #ce93d8; }
+        .fs5 .fs-num { background: #7b1fa2; }
+
+        /* まとめ */
+        .summary-box {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            border-radius: 14px;
+            padding: 28px;
+            text-align: center;
+        }
+        .summary-box h3 { font-size: 18px; margin-bottom: 12px; color: #ff6b6b; }
+        .summary-points {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .sp-item {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 12px 18px;
+        }
+        .sp-item .sp-check { color: #4caf50; font-size: 16px; margin-bottom: 2px; }
+        .sp-item .sp-text { font-size: 13px; font-weight: 600; }
+        .summary-box .summary-note { font-size: 12px; color: #aab; }
+
+        .footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 12px;
+            padding: 16px 0;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .hero { padding: 24px 18px; }
+            .hero h1 { font-size: 22px; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .flow-steps { flex-direction: column; }
+            .flow-arrow { justify-content: center; transform: rotate(90deg); padding: 4px 0; }
+            .summary-points { flex-direction: column; align-items: center; }
+            .er-flow { flex-direction: column; }
+            .target-compare { grid-template-columns: 1fr; }
+            .target-vs { transform: rotate(90deg); }
+            .cond-grid { grid-template-columns: repeat(2, 1fr); }
+            .kw-flow { flex-direction: column; }
+            .kw-arrow { transform: rotate(90deg); }
+            .skip-compare { grid-template-columns: 1fr; }
+            .area-map { transform: scale(0.85); }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- ヘッダー -->
+    <div class="hero">
+        <div class="hero-badge">株式会社ランバード — YouTube広告のご案内</div>
+        <h1><span>YouTube広告</span>とは？</h1>
+        <p class="hero-sub">YouTubeで流れる動画の広告です。テレビCMのネット版とお考えください。</p>
+    </div>
+
+    <!-- ① 3つの特徴 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="section-num" style="background:#cc0000;">1</span>
+            3つの特徴
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card fc-reach">
+                <div class="f-icon">📺</div>
+                <h4>日本人の2人に1人が利用</h4>
+                <p>月間7,120万人が利用。<br>テレビを見ない層にも届きます。</p>
+            </div>
+            <div class="feature-card fc-target">
+                <div class="f-icon">🎯</div>
+                <h4>届けたい人だけに届く</h4>
+                <p>年齢・地域・興味関心で絞れるので、<br>商圏内の人だけに配信できます。</p>
+            </div>
+            <div class="feature-card fc-cost">
+                <div class="f-icon">👆</div>
+                <h4>見た人にだけ課金</h4>
+                <p>スキップされたら費用ゼロ。<br>興味を持った人だけに課金されます。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ② 広告の種類 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="section-num" style="background:#1976d2;">2</span>
+            広告の種類
+        </div>
+        <p class="section-lead">主に3つの形式があります。多くの店舗様には<strong style="color:#cc0000;">「スキップ可能インストリーム」</strong>をおすすめしています。</p>
+
+        <div class="type-card recommend">
+            <div class="type-name">スキップ可能インストリーム広告</div>
+            <div class="type-desc">普段YouTubeで動画を見るときに流れてくる、あの広告です。5秒後にスキップできます。</div>
+            <div class="type-visual">
+                <div class="phone-mock">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <div class="phone-video" style="background:linear-gradient(135deg,#2d1b4e,#1a3a5c);">
+                            <div class="ad-badge">広告</div>
+                            お店のPR動画が<br>ここに流れます
+                            <div class="skip-btn">広告をスキップ ▶</div>
+                            <div class="timer-bar" style="width:33%;"></div>
+                        </div>
+                        <div class="phone-below">
+                            <div class="pb-title">【プロ直伝】簡単ヘアアレンジ...</div>
+                            <div class="pb-ch">人気美容師チャンネル</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="type-visual-desc">
+                    <strong>動画の再生前</strong>に流れます。<br><br>
+                    視聴者が見たい動画の前に、お店の広告が表示されます。<br><br>
+                    <span style="color:#2e7d32;font-weight:700;">✓ 5秒以内にスキップ → 費用ゼロ</span><br>
+                    <span style="color:#c62828;font-weight:700;">✓ 30秒以上視聴 or クリック → 課金</span><br><br>
+                    <span style="font-size:11px;color:#888;">つまり、興味がない人にはお金がかかりません。</span>
+                </div>
+            </div>
+            <div style="margin-top:10px;">
+                <a href="スキップ可能インストリーム広告.mp4" class="type-link">動画で見る</a>
+            </div>
+        </div>
+
+        <div class="type-card normal">
+            <div class="type-name">バンパー広告</div>
+            <div class="type-desc">6秒以内のスキップできない短い広告。テレビCMのように短く印象に残します。</div>
+            <div class="type-visual">
+                <div class="phone-mock">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <div class="phone-video" style="background:linear-gradient(135deg,#4a1a2e,#1a3a2e);">
+                            <div class="ad-badge">広告</div>
+                            6秒間の<br>ショートCM
+                            <div class="timer-bar" style="width:60%;background:#f9a825;"></div>
+                        </div>
+                        <div class="phone-below">
+                            <div class="pb-title">【2026年】おすすめカラー特集...</div>
+                            <div class="pb-ch">ビューティーまとめ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="type-visual-desc">
+                    <strong>動画の再生前に6秒間</strong>流れます。<br>スキップはできません。<br><br>
+                    短いので最後まで見てもらえます。<br>
+                    「お店の名前だけでも覚えてほしい」<br>という場合に効果的です。
+                </div>
+            </div>
+            <div style="margin-top:10px;">
+                <a href="バンパー広告.mp4" class="type-link">動画で見る</a>
+            </div>
+        </div>
+
+        <div class="type-card normal">
+            <div class="type-name">インフィード動画広告</div>
+            <div class="type-desc">検索結果や関連動画の一覧に表示。クリックした人だけ再生されます。</div>
+            <div class="type-visual">
+                <div class="phone-mock">
+                    <div class="phone-screen">
+                        <div class="phone-notch"></div>
+                        <div class="phone-feed-item">
+                            <div class="phone-feed-thumb">動画A</div>
+                            <div class="phone-feed-info">
+                                <div class="pf-title">人気のボブヘア特集</div>
+                                <div class="pf-ch">ヘアチャンネル</div>
+                            </div>
+                        </div>
+                        <div class="phone-feed-item phone-feed-ad">
+                            <div class="phone-feed-thumb" style="background:#5c2d2d;color:#ffcc00;font-weight:700;">広告</div>
+                            <div class="phone-feed-info">
+                                <div class="pf-badge">広告</div>
+                                <div class="pf-title" style="color:#ffcc00;">お店のPR動画</div>
+                                <div class="pf-ch">お店のチャンネル</div>
+                            </div>
+                        </div>
+                        <div class="phone-feed-item">
+                            <div class="phone-feed-thumb">動画B</div>
+                            <div class="phone-feed-info">
+                                <div class="pf-title">初心者向けヘアケア</div>
+                                <div class="pf-ch">美容マガジン</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="type-visual-desc">
+                    <strong>関連動画や検索結果の一覧</strong>に<br>他の動画と並んで表示されます。<br><br>
+                    クリックした人だけが動画を再生します。<br><br>
+                    <span style="font-size:11px;color:#888;">自分から興味を持ってクリックした人なので、<br>関心度の高いお客様にリーチできます。</span>
+                </div>
+            </div>
+            <div style="margin-top:10px;">
+                <a href="インフィード広告.mp4" class="type-link">動画で見る</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ③ 具体例：美容室の場合 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="section-num" style="background:#2e7d32;">3</span>
+            具体例：美容室の場合
+        </div>
+        <p class="section-lead">実際にYouTube広告を出す場合の流れを、図で見てみましょう。</p>
+
+        <div class="example-flow">
+
+            <!-- STEP 1: ゴール -->
+            <div class="ex-step">
+                <div class="ex-step-header">
+                    <div class="ex-num" style="background:#cc0000;">1</div>
+                    <div class="ex-step-title">まずゴールを決める</div>
+                </div>
+
+                <div style="text-align:center;background:#fff0f0;border-radius:12px;padding:20px;border:2px solid #ef9a9a;">
+                    <div style="font-size:28px;margin-bottom:6px;">🎯</div>
+                    <div style="font-size:16px;font-weight:800;color:#c62828;">「近隣の新規のお客様に来店してもらう」</div>
+                </div>
+
+                <!-- 図解：ゴールで配信が変わる -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
+                    <div style="background:#e8f5e9;border:2px solid #4caf50;border-radius:12px;padding:16px;text-align:center;">
+                        <div style="font-size:24px;">🏪 → 👥</div>
+                        <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-top:6px;">来店が目的</div>
+                        <div style="font-size:12px;color:#555;margin-top:4px;">近くの人だけに配信</div>
+                        <div style="font-size:10px;background:#4caf50;color:#fff;display:inline-block;padding:2px 10px;border-radius:10px;margin-top:6px;">← 今回はこっち</div>
+                    </div>
+                    <div style="background:#f5f5f5;border:2px solid #e0e0e0;border-radius:12px;padding:16px;text-align:center;opacity:0.6;">
+                        <div style="font-size:24px;">📢 → 🌍</div>
+                        <div style="font-size:13px;font-weight:700;color:#666;margin-top:6px;">認知が目的</div>
+                        <div style="font-size:12px;color:#888;margin-top:4px;">広いエリアに配信</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2: ターゲット — エリア図解 -->
+            <div class="ex-step">
+                <div class="ex-step-header">
+                    <div class="ex-num" style="background:#f9a825;">2</div>
+                    <div class="ex-step-title">届けたい人を決める（ターゲット）</div>
+                </div>
+
+                <!-- エリアの図解 -->
+                <div style="background:#f8faf8;border-radius:12px;padding:20px;border:1px solid #e0e0e0;margin-bottom:14px;">
+                    <div style="text-align:center;font-size:13px;font-weight:700;color:#333;margin-bottom:12px;">📍 配信エリアの設定</div>
+                    <div class="area-map">
+                        <div class="area-outer">
+                            <div class="area-outer-label">圏外 = 配信しない</div>
+                            <div class="area-inner">
+                                <div class="area-store">🏠</div>
+                                <div class="area-store-text">お店</div>
+                                <div class="area-inner-label">半径10km = 配信する</div>
+                            </div>
+                        </div>
+                        <!-- 圏内の人（緑チェック） -->
+                        <div class="area-person area-person-ok" style="top:75px;left:70px;">👩</div>
+                        <div class="area-person area-person-ok" style="top:105px;left:185px;">👩‍🦰</div>
+                        <div class="area-person area-person-ok" style="top:170px;left:80px;">💇‍♀️</div>
+                        <!-- 圏外の人（グレー×） -->
+                        <div class="area-person area-person-ng" style="top:15px;left:15px;">🧑</div>
+                        <div class="area-person area-person-ng" style="top:240px;left:230px;">👨</div>
+                        <div class="area-person area-person-ng" style="top:10px;left:210px;">👴</div>
+                    </div>
+                    <div style="display:flex;justify-content:center;gap:20px;margin-top:14px;font-size:12px;">
+                        <div><span style="color:#4caf50;font-weight:700;">✓ 緑</span> = 広告が届く</div>
+                        <div><span style="color:#999;font-weight:700;">✗ グレー</span> = 届かない</div>
+                    </div>
+                    <div style="text-align:center;margin-top:10px;font-size:12px;color:#e65100;font-weight:600;">
+                        💡 遠い人に広告を出しても来店につながらない → だからエリアを絞る！
+                    </div>
+                </div>
+
+                <!-- ターゲットの人物比較 -->
+                <div style="background:#fff8e1;border-radius:12px;padding:16px;border:1px solid #ffe082;">
+                    <div style="text-align:center;font-size:13px;font-weight:700;color:#333;margin-bottom:12px;">👤 ターゲット像</div>
+                    <div class="target-compare">
+                        <div class="target-box target-ok">
+                            <div class="target-icon">👩</div>
+                            <div class="target-label">女性 25〜45歳</div>
+                            <div class="target-sub">美容に興味あり</div>
+                            <div style="margin-top:6px;font-size:11px;color:#2e7d32;font-weight:700;">✓ 広告が届く</div>
+                        </div>
+                        <div class="target-vs">VS</div>
+                        <div class="target-box target-ng">
+                            <div class="target-icon">👨</div>
+                            <div class="target-label">対象外の属性</div>
+                            <div class="target-sub">関心なし</div>
+                            <div style="margin-top:6px;font-size:11px;color:#999;font-weight:700;">✗ 届かない</div>
+                        </div>
+                    </div>
+                    <div style="text-align:center;margin-top:10px;font-size:12px;color:#e65100;font-weight:600;">
+                        💡 お客様になりそうな人だけに絞る → 無駄な費用をかけない！
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 3: キーワード -->
+            <div class="ex-step">
+                <div class="ex-step-header">
+                    <div class="ex-num" style="background:#1976d2;">3</div>
+                    <div class="ex-step-title">関連キーワードを設定</div>
+                </div>
+
+                <!-- キーワード → 広告が届くフロー図 -->
+                <div class="kw-flow">
+                    <div class="kw-person">
+                        <div class="kw-person-icon">👩‍💻</div>
+                        <div class="kw-person-text">「ヘアカラー」の<br>動画を見ている人</div>
+                    </div>
+                    <div class="kw-arrow">→</div>
+                    <div class="kw-result">
+                        <div class="kw-result-icon">📺</div>
+                        <div class="kw-result-text">お店の広告が<br>表示される！</div>
+                    </div>
+                </div>
+
+                <div class="ex-tags" style="justify-content:center;margin-top:14px;">
+                    <span class="ex-tag">ヘアカラー</span>
+                    <span class="ex-tag">美容室 おすすめ</span>
+                    <span class="ex-tag">髪型 トレンド</span>
+                    <span class="ex-tag">カット 上手い</span>
+                    <span class="ex-tag">縮毛矯正</span>
+                </div>
+
+                <div style="text-align:center;margin-top:10px;font-size:12px;color:#1565c0;font-weight:600;">
+                    💡 美容の動画を見ている人 = 美容に興味がある人 → お店のお客様になりやすい！
+                </div>
+
+                <!-- キーワード設定のコツ -->
+                <div style="background:#e3f2fd;border-radius:12px;padding:16px 20px;margin-top:14px;border:1px solid #bbdefb;">
+                    <div style="font-size:13px;font-weight:700;color:#1565c0;margin-bottom:10px;">🔑 キーワード設定のポイント</div>
+                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+                        <div style="background:#fff;border-radius:8px;padding:12px;text-align:center;border:1px solid #e0e0e0;">
+                            <div style="font-size:22px;margin-bottom:4px;">🎯</div>
+                            <div style="font-size:11px;font-weight:700;color:#333;">直接ニーズ</div>
+                            <div style="font-size:10px;color:#888;margin-top:4px;">「美容室 おすすめ」<br>「カット 上手い」</div>
+                            <div style="font-size:10px;color:#1565c0;margin-top:4px;font-weight:600;">今すぐ探している人</div>
+                        </div>
+                        <div style="background:#fff;border-radius:8px;padding:12px;text-align:center;border:1px solid #e0e0e0;">
+                            <div style="font-size:22px;margin-bottom:4px;">💭</div>
+                            <div style="font-size:11px;font-weight:700;color:#333;">悩み・検討中</div>
+                            <div style="font-size:10px;color:#888;margin-top:4px;">「髪 パサつき」<br>「くせ毛 直し方」</div>
+                            <div style="font-size:10px;color:#1565c0;margin-top:4px;font-weight:600;">悩みがある = お客様候補</div>
+                        </div>
+                        <div style="background:#fff;border-radius:8px;padding:12px;text-align:center;border:1px solid #e0e0e0;">
+                            <div style="font-size:22px;margin-bottom:4px;">👀</div>
+                            <div style="font-size:11px;font-weight:700;color:#333;">興味関心</div>
+                            <div style="font-size:10px;color:#888;margin-top:4px;">「ヘアアレンジ」<br>「髪型 トレンド」</div>
+                            <div style="font-size:10px;color:#1565c0;margin-top:4px;font-weight:600;">美容に関心が高い人</div>
+                        </div>
+                    </div>
+                    <div style="text-align:center;margin-top:10px;font-size:11px;color:#555;">
+                        ※ キーワードは<strong>弊社で業種に合わせて設定</strong>します。お客様にお考えいただく必要はありません。
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 4: 配信条件 -->
+            <div class="ex-step">
+                <div class="ex-step-header">
+                    <div class="ex-num" style="background:#455a64;">4</div>
+                    <div class="ex-step-title">配信の条件を決める</div>
+                </div>
+
+                <div class="cond-grid">
+                    <div class="cond-item">
+                        <div class="cond-icon">🕐</div>
+                        <div class="cond-label">配信時間</div>
+                        <div class="cond-value">7:00〜23:00</div>
+                        <div class="cond-why">→ スマホを見る時間帯</div>
+                    </div>
+                    <div class="cond-item">
+                        <div class="cond-icon">📱</div>
+                        <div class="cond-label">デバイス</div>
+                        <div class="cond-value">スマホ・PC・TV</div>
+                        <div class="cond-why">→ 絞ることも可能</div>
+                    </div>
+                    <div class="cond-item">
+                        <div class="cond-icon">🔄</div>
+                        <div class="cond-label">表示上限</div>
+                        <div class="cond-value">週3回まで</div>
+                        <div class="cond-why">→ 出しすぎると逆効果</div>
+                    </div>
+                    <div class="cond-item">
+                        <div class="cond-icon">📅</div>
+                        <div class="cond-label">曜日</div>
+                        <div class="cond-value">毎日 or 土日のみ</div>
+                        <div class="cond-why">→ 予約につなげやすい日</div>
+                    </div>
+                </div>
+
+                <div style="text-align:center;margin-top:10px;font-size:12px;color:#455a64;font-weight:600;">
+                    💡 深夜に出しても見てもらえない → 効果的な時間・回数に絞る！
+                </div>
+            </div>
+
+            <!-- STEP 5: フィルターファネル → 広告配信 -->
+            <div class="ex-step">
+                <div class="ex-step-header">
+                    <div class="ex-num" style="background:#7b1fa2;">5</div>
+                    <div class="ex-step-title">すべての条件を満たした人にだけ、広告が届く</div>
+                </div>
+
+                <!-- ファネル図 -->
+                <div class="funnel" style="margin-bottom:16px;">
+                    <div class="funnel-row">
+                        <div class="funnel-bar" style="width:420px;background:#90caf9;">🌏 YouTube利用者 全体</div>
+                    </div>
+                    <div class="funnel-arrow-down">▼</div>
+                    <div class="funnel-row">
+                        <div class="funnel-bar" style="width:340px;background:#f9a825;">📍 半径10km以内の人</div>
+                    </div>
+                    <div class="funnel-arrow-down">▼</div>
+                    <div class="funnel-row">
+                        <div class="funnel-bar" style="width:280px;background:#ef5350;color:#fff;">👩 女性 25〜45歳</div>
+                    </div>
+                    <div class="funnel-arrow-down">▼</div>
+                    <div class="funnel-row">
+                        <div class="funnel-bar" style="width:230px;background:#7b1fa2;color:#fff;">💇 美容に興味がある人</div>
+                    </div>
+                    <div class="funnel-arrow-down">▼</div>
+                    <div class="funnel-row">
+                        <div class="funnel-bar" style="width:200px;background:#2e7d32;color:#fff;font-weight:800;">✨ この人に広告が届く！</div>
+                    </div>
+                </div>
+
+                <div style="text-align:center;font-size:13px;color:#7b1fa2;font-weight:700;margin-bottom:16px;">
+                    条件を重ねるから、「お客様になりそうな人」だけに届く
+                </div>
+
+                <!-- スキップ図解 -->
+                <div class="skip-compare">
+                    <div class="skip-box skip-good">
+                        <div class="skip-icon">👀</div>
+                        <div class="skip-label">興味ある人</div>
+                        <div class="skip-desc">30秒以上視聴 or クリック</div>
+                        <div class="skip-cost" style="background:#fff3e0;color:#e65100;">課金される</div>
+                        <div style="font-size:10px;color:#2e7d32;margin-top:4px;">→ 来店につながるので価値あり</div>
+                    </div>
+                    <div class="skip-box skip-free">
+                        <div class="skip-icon">⏭️</div>
+                        <div class="skip-label">興味ない人</div>
+                        <div class="skip-desc">5秒でスキップ</div>
+                        <div class="skip-cost" style="background:#e8f5e9;color:#2e7d32;">費用ゼロ</div>
+                        <div style="font-size:10px;color:#888;margin-top:4px;">→ お金がかからない</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 6: ゴールへ -->
+            <div class="ex-step">
+                <div class="ex-step-header">
+                    <div class="ex-num" style="background:#2e7d32;">6</div>
+                    <div class="ex-step-title">広告を見た人がゴールへ</div>
+                </div>
+
+                <div class="ex-result">
+                    <div class="er-flow">
+                        <div class="er-box" style="font-size:18px;">📺</div>
+                        <div class="er-arrow">→</div>
+                        <div class="er-box">「いいかも」</div>
+                        <div class="er-arrow">→</div>
+                        <div class="er-box" style="font-size:18px;">🔍</div>
+                        <div class="er-arrow">→</div>
+                        <div class="er-box" style="background:#e8f5e9;border-color:#2e7d32;color:#2e7d32;font-size:15px;">🎉 来店予約</div>
+                    </div>
+                    <div style="display:flex;justify-content:center;gap:30px;margin-top:8px;font-size:11px;color:#888;">
+                        <span>広告を見る</span>
+                        <span>興味が湧く</span>
+                        <span>HPを見る</span>
+                        <span>予約する</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ④ 配信までの流れ -->
+    <div class="section">
+        <div class="section-title">
+            <span class="section-num" style="background:#7b1fa2;">4</span>
+            配信までの流れ
+        </div>
+        <p class="section-lead">動画があれば最短1週間で配信開始できます。設定はすべて弊社で行います。</p>
+
+        <div class="flow-steps">
+            <div class="flow-step fs1">
+                <div class="fs-num">1</div>
+                <div class="fs-title">チャンネル開設</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step fs2">
+                <div class="fs-num">2</div>
+                <div class="fs-title">動画アップロード</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step fs3">
+                <div class="fs-num">3</div>
+                <div class="fs-title">権限付与</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step fs4">
+                <div class="fs-num">4</div>
+                <div class="fs-title">広告設定</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step fs5">
+                <div class="fs-num">5</div>
+                <div class="fs-title">配信開始</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- まとめ -->
+    <div class="summary-box">
+        <h3>YouTube広告で "知ってもらう" を始めませんか？</h3>
+        <div class="summary-points">
+            <div class="sp-item">
+                <div class="sp-check">✓</div>
+                <div class="sp-text">商圏内の人だけに配信</div>
+            </div>
+            <div class="sp-item">
+                <div class="sp-check">✓</div>
+                <div class="sp-text">見た人にだけ課金</div>
+            </div>
+            <div class="sp-item">
+                <div class="sp-check">✓</div>
+                <div class="sp-text">設定・運用はすべてお任せ</div>
+            </div>
+        </div>
+        <p class="summary-note">ご不明な点がございましたら、お気軽にお問い合わせください。</p>
+    </div>
+
+    <div class="footer">
+        株式会社ランバード｜広告運用サポート窓口
+    </div>
+
+</div>
+</body>
+</html>
