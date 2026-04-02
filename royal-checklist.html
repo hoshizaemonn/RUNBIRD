@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4/10 公庫面談 持参資料チェックリスト — 中村様</title>
+<style>
+  :root {
+    --blue: #1a3a5c;
+    --light-blue: #e8f0f8;
+    --green: #28a745;
+    --orange: #e67e22;
+    --red: #dc3545;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 800px; margin: 0 auto; }
+
+  .header {
+    background: linear-gradient(135deg, var(--blue), #2c5f8a);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .header h1 { font-size: 1.5em; margin-bottom: 6px; }
+  .header .date {
+    font-size: 1.8em;
+    font-weight: bold;
+    background: rgba(255,255,255,0.15);
+    display: inline-block;
+    padding: 4px 24px;
+    border-radius: 8px;
+    margin: 8px 0;
+  }
+  .header .info { opacity: 0.85; font-size: 0.9em; }
+
+  /* Item card */
+  .item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    margin-bottom: 14px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+  }
+  .item-num {
+    background: var(--blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    min-height: 100%;
+  }
+  .item-body {
+    padding: 16px 20px;
+  }
+  .item-title {
+    font-size: 1.05em;
+    font-weight: bold;
+    color: var(--blue);
+    margin-bottom: 4px;
+  }
+  .item-detail {
+    font-size: 0.9em;
+    color: #555;
+  }
+  .item-detail b { color: #333; }
+
+  /* Where to get */
+  .where {
+    display: inline-block;
+    font-size: 0.8em;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 6px;
+  }
+  .where-city {
+    background: #e3f2fd;
+    color: #1565c0;
+  }
+  .where-home {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  .where-toyota {
+    background: #fff3e0;
+    color: #e65100;
+  }
+  .where-bank {
+    background: #f3e5f5;
+    color: #7b1fa2;
+  }
+  .where-dl {
+    background: #fce4ec;
+    color: #c62828;
+  }
+  .where-suzuki {
+    background: #e0f2f1;
+    color: #00695c;
+  }
+  .where-done {
+    background: #e8f5e9;
+    color: var(--green);
+    border: 1px solid var(--green);
+  }
+
+  .tip {
+    background: #fffde7;
+    border-left: 4px solid #ffc107;
+    padding: 10px 14px;
+    font-size: 0.85em;
+    margin-top: 6px;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .section-label {
+    font-size: 0.85em;
+    font-weight: bold;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 24px 0 10px;
+    padding-left: 4px;
+    border-left: 4px solid var(--blue);
+    padding-left: 10px;
+  }
+
+  .footer {
+    text-align: center;
+    color: #999;
+    font-size: 0.8em;
+    padding: 20px;
+    margin-top: 12px;
+  }
+
+  .summary-box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+  }
+  .summary-box h3 {
+    color: var(--blue);
+    margin-bottom: 10px;
+    font-size: 0.95em;
+  }
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  @media print {
+    body { background: white; padding: 10px; font-size: 13px; }
+    .item { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>日本政策金融公庫 面談 持参資料チェックリスト</h1>
+  <div class="date">4月10日（金）14:00</div>
+  <div class="info">
+    合同会社Royal 代表社員 中村様 ｜ 八幡支店 田代様 ｜ お客様番号 56-116344
+  </div>
+</div>
+
+<!-- Legend -->
+<div class="summary-box">
+  <h3>入手先の見方</h3>
+  <div class="legend">
+    <span class="where where-city">市役所</span>
+    <span class="where where-home">自宅にある</span>
+    <span class="where where-toyota">トヨタさん経由</span>
+    <span class="where where-bank">銀行・証券</span>
+    <span class="where where-dl">公庫HPからDL</span>
+    <span class="where where-suzuki">鈴木さんから受取済</span>
+  </div>
+</div>
+
+<!-- ===== 1 ===== -->
+<div class="section-label">契約・事業関連</div>
+
+<div class="item">
+  <div class="item-num">1</div>
+  <div class="item-body">
+    <div class="item-title">フランチャイズ先との契約内容がわかるもの</div>
+    <div class="item-detail">
+      ランバード社（OWL障がい者グループホーム）との<b>契約書・パンフレット・冊子</b>など。<br>
+      サポート内容がわかるものがベスト。<b>原本を持参</b>。メールや冊子でもOK。
+    </div>
+    <span class="where where-toyota">トヨタさんに相談して入手</span>
+  </div>
+</div>
+
+<!-- ===== 8 ===== -->
+<div class="item">
+  <div class="item-num">8</div>
+  <div class="item-body">
+    <div class="item-title">代表者様が取得済みの資格を証明するもの</div>
+    <div class="item-detail">
+      お持ちの<b>資格証</b>をすべて<b>印刷</b>して持参してください。<br>
+      福祉系に限らず、運転免許なども含めて全部。
+    </div>
+    <span class="where where-home">自宅で印刷</span>
+  </div>
+</div>
+
+<!-- ===== 7 ===== -->
+<div class="item">
+  <div class="item-num">7</div>
+  <div class="item-body">
+    <div class="item-title">不動産の賃貸借契約書（営業所）</div>
+    <div class="item-detail">
+      船越物件（北九州市八幡西区船越二丁目27-38）の<b>契約書原本</b>。
+    </div>
+    <span class="where where-home">自宅にあるはず</span>
+    <div class="tip">賃貸計算書で家賃¥80,300/月、初期費用¥263,450は確認済み</div>
+  </div>
+</div>
+
+<!-- ===== 税金・所得関連 ===== -->
+<div class="section-label">税金・所得の証明</div>
+
+<!-- ===== 2 ===== -->
+<div class="item">
+  <div class="item-num">2</div>
+  <div class="item-body">
+    <div class="item-title">確定申告に伴う所得税の領収書（令和6年分）又は令和6年の所得額証明書</div>
+    <div class="item-detail">
+      <b>市役所で「令和6年度分 所得証明書」を取得</b>してください。<br>
+      口座振替の場合は、引き落としが確認できる通帳でもOK。
+    </div>
+    <span class="where where-city">市役所で取得</span>
+    <div class="tip">
+      録音メモ：9/30に¥23,400、12/2に¥53,400が国税として自動引落。4/14に¥139,738が還付済み。<br>
+      通帳の摘要欄に「国税」の記載あり。
+    </div>
+  </div>
+</div>
+
+<!-- ===== 6 ===== -->
+<div class="item">
+  <div class="item-num">6</div>
+  <div class="item-body">
+    <div class="item-title">所有不動産について固定資産税額がわかるもの</div>
+    <div class="item-detail">
+      <b>固定資産税納税通知書・課税明細書（令和7年分）</b><br>
+      1〜3月頃に自宅に届いているはず。なければ市役所で取得。
+    </div>
+    <span class="where where-home">自宅に届出済みのもの</span>
+    <span class="where where-city">なければ市役所</span>
+  </div>
+</div>
+
+<!-- ===== お金関連 ===== -->
+<div class="section-label">お金の証明（通帳・借入・領収書）</div>
+
+<!-- ===== 3 ===== -->
+<div class="item">
+  <div class="item-num">3</div>
+  <div class="item-body">
+    <div class="item-title">預金通帳原本（代表者名義・最近6ヶ月分以上）</div>
+    <div class="item-detail">
+      以下の<b>3つ</b>を準備してください：<br>
+      <b>1. 福岡銀行</b> — 通帳原本（事前に記帳しておく）<br>
+      <b>2. SBI証券（ネット銀行）</b> — ログイン画面を見せられるように準備<br>
+      <b>3. 公共料金引落の通帳</b> — ガス・電気などが落ちている通帳
+    </div>
+    <span class="where where-bank">福岡銀行で記帳 + SBIログイン準備</span>
+    <div class="tip">
+      確認済み残高：SBI証券 ¥4,617,079 ＋ 福岡銀行 ¥484,380<br>
+      資本金500万のうちFC加盟金220万支払済み → 残り約330万。<br>
+      「残りはSBIと福銀から移します」と説明できるよう準備。
+    </div>
+  </div>
+</div>
+
+<!-- ===== 4 ===== -->
+<div class="item">
+  <div class="item-num">4</div>
+  <div class="item-body">
+    <div class="item-title">創業のために使った資金の領収書</div>
+    <div class="item-detail">
+      <b>1. ランバード社への220万円</b>（FC加盟金）の領収書<br>
+      → なければトヨタさんに再発行依頼 or 振込履歴を用意<br>
+      <b>2. 事務所の賃貸初期費用</b>などの領収書<br>
+      <b>3. 法人として払ったもの全部</b>（数千円の細かいものは不要）
+    </div>
+    <span class="where where-home">自宅を探す</span>
+    <span class="where where-toyota">なければトヨタさんに再発行依頼</span>
+  </div>
+</div>
+
+<!-- ===== 5 ===== -->
+<div class="item">
+  <div class="item-num">5</div>
+  <div class="item-body">
+    <div class="item-title">借入金（住宅ローン・車ローンなど）の支払明細</div>
+    <div class="item-detail">
+      住宅ローンの<b>返済予定表（3ヶ月分）の写し</b>。
+    </div>
+    <span class="where where-suzuki">鈴木さんから受取済み</span>
+    <div class="tip">
+      ひびき信用金庫 住宅ローン｜残高 ¥14,075,517｜月額返済 ¥50,693｜利率 0.6%｜遅延なし
+    </div>
+  </div>
+</div>
+
+<!-- ===== 本人確認 ===== -->
+<div class="section-label">本人確認</div>
+
+<!-- ===== 9 ===== -->
+<div class="item">
+  <div class="item-num">9</div>
+  <div class="item-body">
+    <div class="item-title">マイナンバーカード原本</div>
+    <div class="item-detail">
+      <b>原本</b>を当日持参してください。
+    </div>
+    <span class="where where-home">自宅にある</span>
+  </div>
+</div>
+
+<!-- ===== 書類作成 ===== -->
+<div class="section-label">作成して持参するもの</div>
+
+<!-- ===== 10 ===== -->
+<div class="item">
+  <div class="item-num">10</div>
+  <div class="item-body">
+    <div class="item-title">月別収支計画書</div>
+    <div class="item-detail">
+      公庫HPからフォーマットをダウンロードして、12ヶ月分を記入。<br>
+      <b>公庫HP → オンラインサービス → 各種書式ダウンロード</b> → 電子ファイルあり。<br>
+      ※「創業計画書記入ガイド」に数字を入れてあるので、それを転記すればOK。
+    </div>
+    <span class="where where-dl">公庫HPからDL → 記入</span>
+  </div>
+</div>
+
+<!-- ===== 11 ===== -->
+<div class="item">
+  <div class="item-num">11</div>
+  <div class="item-body">
+    <div class="item-title">創業計画書の補記 → 面談前にメール送信</div>
+    <div class="item-detail">
+      提出済みの創業計画書に記載内容が確認できない箇所があったため、<b>補記が必要</b>。<br>
+      鈴木さんが言う内容を<b>鉛筆で下書き</b> → 確認後、メールで送信。<br><br>
+      <b>送信先：tashiro-y@jfc.go.jp（田代様）</b><br>
+      ※補記箇所の詳細は「創業計画書記入ガイド」を参照。
+    </div>
+    <span class="where where-suzuki">鈴木さんと一緒に作成 → メール送信</span>
+  </div>
+</div>
+
+<!-- ===== やること順序 ===== -->
+<div class="summary-box" style="margin-top:24px;border-left:5px solid var(--blue);">
+  <h3>中村さんの動き方（優先順）</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:0.9em;">
+    <tr style="background:var(--light-blue);">
+      <th style="padding:8px 12px;text-align:left;border-bottom:1px solid #ddd;">いつ</th>
+      <th style="padding:8px 12px;text-align:left;border-bottom:1px solid #ddd;">やること</th>
+      <th style="padding:8px 12px;text-align:center;border-bottom:1px solid #ddd;">対象</th>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;white-space:nowrap;font-weight:bold;color:var(--red);">今すぐ</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;">トヨタさんにFC契約書類 + 220万円の領収書再発行を依頼</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;">1, 4</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;white-space:nowrap;font-weight:bold;color:var(--red);">今すぐ</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;">鈴木さんと一緒に創業計画書の補記を作成 → メール送信</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;">11</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;white-space:nowrap;font-weight:bold;color:var(--orange);">今週中</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;">市役所へ行く（所得証明書 + 固定資産税通知書）</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;">2, 6</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;white-space:nowrap;font-weight:bold;color:var(--orange);">今週中</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;">福岡銀行で通帳記帳 + SBI証券のログイン確認</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;">3</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;white-space:nowrap;">4/9まで</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;">月別収支計画書をDL・記入（数字は記入ガイド参照）</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;">10</td>
+    </tr>
+    <tr>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;white-space:nowrap;">4/9まで</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;">自宅で準備（資格証の印刷、領収書の整理、マイナンバーカード確認）</td>
+      <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:center;">4, 8, 9</td>
+    </tr>
+    <tr style="background:#e8f5e9;">
+      <td style="padding:8px 12px;white-space:nowrap;font-weight:bold;">受取済み</td>
+      <td style="padding:8px 12px;">住宅ローン返済予定表 + 賃貸借契約書</td>
+      <td style="padding:8px 12px;text-align:center;">5, 7</td>
+    </tr>
+  </table>
+</div>
+
+<div class="footer">
+  作成日: 2026年4月2日 ｜ 合同会社Royal 融資支援 ｜ 面談日まであと8日
+</div>
+
+</div>
+</body>
+</html>

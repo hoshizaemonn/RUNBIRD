@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>創業計画書 記入シート v2 — 中村様向け</title>
+<style>
+  :root {
+    --blue: #1a3a5c;
+    --pink: #ff69b4;
+    --pink-bg: #fff0f6;
+    --green: #28a745;
+    --green-bg: #e6f9ed;
+    --orange: #e67e22;
+    --red: #dc3545;
+    --form-bg: #fffff5;
+    --pencil: #1565c0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    background: #f0f0f0;
+    color: #333;
+    line-height: 1.7;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  .header {
+    background: linear-gradient(135deg, var(--blue), #2c5f8a);
+    color: white;
+    padding: 24px 32px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .header h1 { font-size: 1.4em; }
+  .header .sub { opacity: 0.85; font-size: 0.9em; margin-top: 4px; }
+  .instruction-banner {
+    background: var(--pink-bg);
+    border: 2px solid var(--pink);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 0.95em;
+  }
+  .instruction-banner b { color: var(--red); }
+  .page-label {
+    background: var(--blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.05em;
+    margin: 28px 0 14px;
+    text-align: center;
+  }
+  .form-section {
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .form-section.pink-border {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 3px rgba(255,105,180,0.15);
+  }
+  .form-header {
+    background: #e8e8e8;
+    padding: 10px 16px;
+    font-weight: bold;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #ccc;
+  }
+  .form-section.pink-border .form-header {
+    background: var(--pink-bg);
+    border-bottom-color: var(--pink);
+  }
+  .pink-tag {
+    background: var(--pink);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.75em;
+  }
+  .correction-tag {
+    background: var(--red);
+    color: white;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 0.75em;
+  }
+  .form-body { padding: 16px 20px; }
+  .answer {
+    background: var(--form-bg);
+    border: 2px solid var(--pencil);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 8px 0;
+    font-size: 0.95em;
+    white-space: pre-wrap;
+    line-height: 2;
+    color: var(--pencil);
+    font-weight: 500;
+    position: relative;
+  }
+  .answer::before {
+    content: "このまま書いてください";
+    position: absolute;
+    top: -10px;
+    left: 12px;
+    background: var(--pencil);
+    color: white;
+    font-size: 0.7em;
+    padding: 1px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+  .form-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 0.9em;
+  }
+  .form-table th, .form-table td {
+    border: 1px solid #aaa;
+    padding: 8px 12px;
+  }
+  .form-table th {
+    background: #f0f0f0;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.85em;
+    white-space: nowrap;
+  }
+  .form-table td.fill {
+    background: var(--form-bg);
+    color: var(--pencil);
+    font-weight: 500;
+  }
+  .form-table td.right { text-align: right; }
+  .form-table tr.total-row { background: #e3f2fd; }
+  .form-table tr.total-row td { font-weight: bold; border-top: 2px solid var(--blue); }
+  .note { color: #888; font-size: 0.82em; margin-top: 6px; }
+  .arrow-note {
+    background: #e8f5e9;
+    border-left: 4px solid var(--green);
+    padding: 8px 14px;
+    margin: 10px 0;
+    font-size: 0.88em;
+    border-radius: 0 6px 6px 0;
+  }
+  .warning-note {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 8px 14px;
+    margin: 10px 0;
+    font-size: 0.88em;
+    font-weight: bold;
+    border-radius: 0 6px 6px 0;
+  }
+  .field-label {
+    font-size: 0.82em;
+    color: #666;
+    font-weight: bold;
+    margin: 10px 0 4px;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .col-box {
+    border: 2px solid #aaa;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .col-box h4 {
+    background: #f0f0f0;
+    padding: 8px 12px;
+    font-size: 0.9em;
+    text-align: center;
+    border-bottom: 2px solid #aaa;
+  }
+  .col-box .inner { padding: 12px; }
+  .match-box {
+    background: #ffebee;
+    border: 3px solid var(--red);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin: 14px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--red);
+  }
+  hr.divider {
+    border: none;
+    border-top: 2px dashed #ccc;
+    margin: 16px 0;
+  }
+  .source-tag {
+    display: inline-block;
+    background: #e3f2fd;
+    color: var(--blue);
+    font-size: 0.72em;
+    padding: 1px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-left: 6px;
+  }
+  @media print {
+    body { background: white; padding: 10px; font-size: 12px; }
+    .form-section { break-inside: avoid; box-shadow: none; }
+    .answer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>創業計画書 記入シート（確定版）</h1>
+  <div class="sub">中村さん — この通りに鉛筆で書き写してください<br>
+  ※銀行提出済み事業計画書（2026/3/31版）の数字に完全準拠</div>
+</div>
+
+<div class="instruction-banner">
+  <b>ピンクの枠</b> = 公庫から「補記してください」と指摘された箇所。<br>
+  <b>青い枠の中身</b>をそのまま鉛筆で書いてください。全て事業計画書PDFの数字と一致しています。
+</div>
+
+<!-- ================================ -->
+<!-- 表面（公庫2.pdf対応） -->
+<!-- ================================ -->
+<div class="page-label">創業計画書【表面】</div>
+
+<!-- ===== セクション2: 経歴等 ===== -->
+<div class="form-section pink-border">
+  <div class="form-header">
+    <span>2</span> 経歴等
+    <span class="pink-tag">補記必要</span>
+    <span class="source-tag">事業計画書 p.2</span>
+  </div>
+  <div class="form-body">
+
+    <!-- 過去の事業の経験 -->
+    <div class="field-label">過去の事業の経験</div>
+    <div style="background:var(--form-bg);border:2px solid var(--pencil);border-radius:6px;padding:16px 20px;margin:8px 0;">
+      <table style="border:none;font-size:0.95em;color:var(--pencil);font-weight:500;">
+        <tr>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:var(--pencil);">☑</td>
+          <td style="border:none;padding:6px 8px;"><b>事業を経営していたことはない。</b></td>
+        </tr>
+        <tr>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:#ccc;">☐</td>
+          <td style="border:none;padding:6px 8px;color:#999;">事業を経営していたことがあり、現在もその事業を続けている。</td>
+        </tr>
+        <tr>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:#ccc;">☐</td>
+          <td style="border:none;padding:6px 8px;color:#999;">事業を経営していたことがある。既にその事業をやめている。</td>
+        </tr>
+      </table>
+    </div>
+    <div class="arrow-note">
+      GH「和音」「陽だまり」は副業で<b>スタッフとして</b>入っていたもの。経営者ではないので一番上にチェック。
+    </div>
+
+    <!-- 取得資格 -->
+    <div class="field-label">取得資格</div>
+    <div style="background:var(--form-bg);border:2px solid var(--pencil);border-radius:6px;padding:16px 20px;margin:8px 0;">
+      <table style="border:none;font-size:0.95em;color:var(--pencil);font-weight:500;">
+        <tr>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:#ccc;">☐</td>
+          <td style="border:none;padding:6px 8px;color:#999;">特になし</td>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:var(--pencil);">☑</td>
+          <td style="border:none;padding:6px 8px;"><b>有</b></td>
+        </tr>
+      </table>
+      <div style="margin-top:8px;padding-top:8px;border-top:1px dashed #ccc;color:var(--pencil);font-weight:500;">
+        介護福祉士、介護支援専門員、社会福祉主事
+      </div>
+    </div>
+    <div class="arrow-note">
+      事業に直結する<b>福祉系3つだけ</b>でOK。電気工事士・運転免許は書かなくてよい。
+    </div>
+
+    <!-- 許認可・届出等 -->
+    <div class="field-label">許認可・届出等（許可、届出、届出市・届出県 等）</div>
+    <div style="background:var(--form-bg);border:2px solid var(--pencil);border-radius:6px;padding:16px 20px;margin:8px 0;">
+      <table style="border:none;font-size:0.95em;color:var(--pencil);font-weight:500;">
+        <tr>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:#ccc;">☐</td>
+          <td style="border:none;padding:6px 8px;color:#999;">特になし</td>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:#ccc;">☐</td>
+          <td style="border:none;padding:6px 8px;color:#999;">許可</td>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:var(--pencil);">☑</td>
+          <td style="border:none;padding:6px 8px;"><b>申請中</b></td>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:#ccc;">☐</td>
+          <td style="border:none;padding:6px 8px;color:#999;">登録済</td>
+        </tr>
+      </table>
+    </div>
+    <div class="arrow-note">
+      障がい者GH（共同生活援助）は北九州市への<b>事業者指定</b>が必要。5〜6月に指定申請予定・7月開設目標のため「申請中」にチェック。<br>
+      ※面談で聞かれたら「5〜6月に指定申請書類を提出予定です」と答えればOK。<b>鈴木さんにも念のため確認してください。</b>
+    </div>
+
+    <!-- 知的財産権等 -->
+    <div class="field-label">知的財産権等</div>
+    <div style="background:var(--form-bg);border:2px solid var(--pencil);border-radius:6px;padding:16px 20px;margin:8px 0;">
+      <table style="border:none;font-size:0.95em;color:var(--pencil);font-weight:500;">
+        <tr>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:var(--pencil);">☑</td>
+          <td style="border:none;padding:6px 8px;"><b>特になし</b></td>
+          <td style="border:none;padding:6px 0;font-size:1.3em;color:#ccc;">☐</td>
+          <td style="border:none;padding:6px 8px;color:#999;">有</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== セクション3: 取扱商品・サービス ===== -->
+<div class="form-section pink-border">
+  <div class="form-header">
+    <span>3</span> 取扱商品・サービス
+    <span class="pink-tag">補記必要</span>
+    <span class="source-tag">事業計画書 p.6, p.11, p.16</span>
+  </div>
+  <div class="form-body">
+
+    <!-- 事業内容 -->
+    <div class="field-label">事業内容</div>
+    <div class="answer">障害者総合支援法に基づく共同生活援助（障がい者グループホーム）の運営。18〜64歳の精神・知的・身体障がいのある方を対象に、定員5名の施設で食事の提供（朝・夕）、日常生活支援、服薬管理、金銭管理支援、病院や役所との連携等を行う。株式会社ランバードのフランチャイズ「OWL障がい者グループホーム」に加盟し、北九州市八幡西区船越にて開設予定。</div>
+
+    <!-- セールスポイント -->
+    <div class="field-label">セールスポイント（自社の強み）</div>
+    <div class="answer">・代表者が介護歴22年、介護福祉士・ケアマネ資格を保有し
+　現場シフトにも入れる即戦力
+・FC本部（ランバード社）の研修・運営マニュアル・
+　行政同行サポートにより安定した施設運営が可能
+・売上の約70%が国の給付費で景気に左右されない
+・消費税が非課税（社会福祉事業）</div>
+
+    <!-- 販売ターゲット・販売戦略 -->
+    <div class="field-label">販売ターゲット・販売戦略（方法）</div>
+    <div class="answer">対象：北九州市八幡西区の障がい福祉サービス利用者（18〜64歳）
+方法：開設前から近隣の相談支援事業所6ヶ所以上・
+　精神科クリニック8ヶ所以上への訪問で紹介関係を構築
+　＋FC本部の入居者紹介ネットワークを活用</div>
+
+    <!-- 競合・市場 -->
+    <div class="field-label">競合・市場など日頃を取り巻く状況</div>
+    <div class="answer">・北九州市の障がい者手帳所持者は約68,300人（市人口の7.4%）
+・八幡西区内のGH事業者はわずか4社で、需給ギャップが大きい
+・市の第7期障害福祉計画でもGH充実が重点施策
+・競合が少なく、早期の満室稼働が見込める</div>
+
+  </div>
+</div>
+
+<!-- ===== セクション4: 従業員 ===== -->
+<div class="form-section pink-border">
+  <div class="form-header">
+    <span>4</span> 従業員
+    <span class="pink-tag">補記必要</span>
+    <span class="source-tag">事業計画書 p.12</span>
+  </div>
+  <div class="form-body">
+
+    <div style="background:var(--form-bg);border:2px solid var(--pencil);border-radius:6px;padding:16px 20px;margin:8px 0;">
+      <table style="width:100%;border-collapse:collapse;font-size:0.95em;color:var(--pencil);font-weight:500;">
+        <tr style="border-bottom:2px solid #ccc;">
+          <td style="padding:10px 4px;width:55%;">常勤役員の人数（法人の方のみ）</td>
+          <td style="padding:10px 4px;text-align:right;font-size:1.3em;"><b>1</b> 人</td>
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+          <td style="padding:10px 4px;">従業員数（3ヶ月以上継続雇用者）</td>
+          <td style="padding:10px 4px;text-align:right;font-size:1.3em;"><b>4</b> 人</td>
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+          <td style="padding:10px 4px;padding-left:24px;">うち家族従業員</td>
+          <td style="padding:10px 4px;text-align:right;font-size:1.3em;"><b>0</b> 人</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 4px;padding-left:24px;">うちパート従業員</td>
+          <td style="padding:10px 4px;text-align:right;font-size:1.3em;"><b>3</b> 人</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="arrow-note">
+      <b>内訳：</b><br>
+      ・管理者 1名（常勤・外部雇用 ¥230,000/月）<br>
+      ・世話人 1名（パート ¥176,000/月）<br>
+      ・生活支援員 1名（パート ¥78,000/月）<br>
+      ・夜間支援員 1名（パート ¥88,000/月）<br>
+      <b>※中村さん</b>は常勤役員（1人）。生活支援員・夜間支援員のシフトにも入る。<br>
+      <b>※サビ管</b>は外部委託（非常勤¥60,000/月）→ 2027年4月に代表が資格取得し内製化予定。<br>
+      <small>※「3ヶ月以上継続雇用を予定している従業員数を記入してください」の注書きに従い記入</small>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== セクション5: 人件費の支払 ===== -->
+<div class="form-section pink-border">
+  <div class="form-header">
+    <span>5</span> 人件費の支払
+    <span class="pink-tag">補記必要</span>
+  </div>
+  <div class="form-body">
+    <div class="arrow-note">
+      <b>一般的な記入例：</b><br>
+      ・支払日 → <b>25日</b> or <b>末日</b>（よくあるパターン）<br>
+      ・ボーナス → <b>なし</b>（創業初期は支給しないのが一般的）<br><br>
+      中村さんが決めている支払日があればそれを記入。決まっていなければ鈴木さんに相談してください。
+    </div>
+  </div>
+</div>
+
+<!-- ================================ -->
+<!-- 裏面（公庫3.pdf対応） -->
+<!-- ================================ -->
+<div class="page-label">創業計画書【裏面】</div>
+
+<!-- ===== セクション8: 必要な資金と調達方法 ===== -->
+<div class="form-section pink-border">
+  <div class="form-header">
+    <span>8</span> 必要な資金と調達方法
+    <span class="correction-tag">合計不一致 → 修正</span>
+    <span class="source-tag">事業計画書 p.14-15</span>
+  </div>
+  <div class="form-body">
+    <div class="match-box">
+      左右の合計を <b>1,214万円</b> で一致させてください！
+    </div>
+
+    <div class="two-col">
+      <!-- 左：必要な資金 -->
+      <div class="col-box">
+        <h4>必要な資金</h4>
+        <div class="inner">
+          <div class="field-label">設備資金（内訳）</div>
+          <table class="form-table" style="font-size:0.85em;">
+            <tr><th>内訳</th><th>見積先</th><th class="right">金額</th></tr>
+            <tr>
+              <td class="fill">FC加盟金</td>
+              <td class="fill">㈱ランバード</td>
+              <td class="fill right"><b>440万円</b></td>
+            </tr>
+            <tr>
+              <td class="fill">家具・家電・備品<br><small>（5部屋分）</small></td>
+              <td class="fill">ランバード経由</td>
+              <td class="fill right"><b>70万円</b></td>
+            </tr>
+            <tr>
+              <td class="fill">消防設備工事</td>
+              <td class="fill">(有)丸山防災</td>
+              <td class="fill right"><b>39万円</b></td>
+            </tr>
+            <tr>
+              <td class="fill">内装工事</td>
+              <td class="fill">ランバード経由</td>
+              <td class="fill right"><b>31万円</b></td>
+            </tr>
+            <tr>
+              <td class="fill">物件初期費用<br><small>（支払済み）</small></td>
+              <td class="fill">賃貸計算書</td>
+              <td class="fill right"><b>26万円</b></td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2"><b>設備資金 計</b></td>
+              <td class="fill right"><b>606万円</b></td>
+            </tr>
+          </table>
+
+          <div class="field-label">運転資金</div>
+          <table class="form-table" style="font-size:0.85em;">
+            <tr>
+              <td class="fill" colspan="2">人件費・家賃・経費等の<br><b>6ヶ月分</b></td>
+              <td class="fill right"><b>608万円</b></td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2"><b>運転資金 計</b></td>
+              <td class="fill right"><b>608万円</b></td>
+            </tr>
+          </table>
+
+          <div style="text-align:center;padding:12px;background:#e3f2fd;border-radius:6px;margin-top:10px;">
+            <b style="font-size:1.3em;color:var(--blue);">合計 1,214万円</b>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右：調達の方法 -->
+      <div class="col-box">
+        <h4>調達の方法</h4>
+        <div class="inner">
+          <div class="field-label">自己資金</div>
+          <table class="form-table" style="font-size:0.85em;">
+            <tr>
+              <td class="fill">FC加盟金 既払い分</td>
+              <td class="fill right"><b>114万円</b></td>
+            </tr>
+          </table>
+          <p class="note">※FC加盟金¥4,400,000のうち¥1,138,250を契約時に支払済み</p>
+
+          <div class="field-label">日本政策金融公庫 国民生活事業からの借入</div>
+          <table class="form-table" style="font-size:0.85em;">
+            <tr>
+              <td class="fill">フルローン申請</td>
+              <td class="fill right"><b>1,100万円</b></td>
+            </tr>
+          </table>
+          <p class="note">返済7年 / 年利3.0% / 据置6ヶ月<br>据置中: ¥25,000/月（利息のみ）<br>据置後: ¥158,000/月（元利均等）</p>
+
+          <div class="field-label">親・知人等からの借入</div>
+          <table class="form-table" style="font-size:0.85em;">
+            <tr><td>なし</td><td class="right">—</td></tr>
+          </table>
+
+          <div class="field-label">他の金融機関等からの借入</div>
+          <table class="form-table" style="font-size:0.85em;">
+            <tr><td>なし</td><td class="right">—</td></tr>
+          </table>
+
+          <div style="text-align:center;padding:12px;background:#e3f2fd;border-radius:6px;margin-top:10px;">
+            <b style="font-size:1.3em;color:var(--blue);">合計 1,214万円</b><br>
+            <small>（114万 + 1,100万 = 1,214万 ← 左と一致！）</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow-note" style="margin-top:14px;">
+      <b>返済余力の根拠：</b>配偶者年収約500万円＋娘2名アルバイト可能。世帯全体での返済余力は十分に確保。<br>
+      代表者資産: SBI証券 ¥4,617,079 + 福岡銀行 ¥484,380 = 資産合計 ¥5,101,459
+    </div>
+  </div>
+</div>
+
+<!-- ===== セクション10: 月別収支計画書 ===== -->
+<div class="form-section pink-border">
+  <div class="form-header">
+    <span>10</span> 月別収支計画書
+    <span class="pink-tag">別紙で提出</span>
+    <span class="source-tag">事業計画書 p.16-17</span>
+  </div>
+  <div class="form-body">
+    <div class="arrow-note">
+      公庫HPからExcelフォームをダウンロード済み → <b>月別収支計画書_公庫フォーム.xlsx</b><br>
+      以下の数字をExcelに転記してください。単位は<b>万円</b>。
+    </div>
+
+    <div class="field-label">お名前：中村哲英　／　作成日：令和8年4月○日</div>
+
+    <div style="overflow-x:auto;">
+      <table class="form-table" style="font-size:0.78em;min-width:900px;">
+        <tr>
+          <th style="width:12%;"></th>
+          <th class="right">7月</th>
+          <th class="right">8月</th>
+          <th class="right">9月</th>
+          <th class="right">10月</th>
+          <th class="right">11月</th>
+          <th class="right">12月</th>
+          <th class="right">1月</th>
+          <th class="right">2月</th>
+          <th class="right">3月</th>
+          <th class="right">4月</th>
+          <th class="right">5月</th>
+          <th class="right">6月</th>
+          <th class="right" style="background:#e3f2fd;"><b>合計</b></th>
+        </tr>
+        <tr style="background:#e3f2fd;font-size:0.9em;">
+          <td><i>入居者数</i></td>
+          <td class="right">1</td>
+          <td class="right">2</td>
+          <td class="right">3</td>
+          <td class="right">4</td>
+          <td class="right">5</td>
+          <td class="right">5</td>
+          <td class="right">5</td>
+          <td class="right">5</td>
+          <td class="right">5</td>
+          <td class="right">5</td>
+          <td class="right">5</td>
+          <td class="right">5</td>
+          <td class="right">—</td>
+        </tr>
+        <tr style="background:#e8f5e9;">
+          <td><b>売上高 ①</b></td>
+          <td class="fill right">6</td>
+          <td class="fill right">11</td>
+          <td class="fill right">41</td>
+          <td class="fill right">66</td>
+          <td class="fill right">97</td>
+          <td class="fill right">119</td>
+          <td class="fill right">141</td>
+          <td class="fill right">152</td>
+          <td class="fill right">152</td>
+          <td class="fill right">152</td>
+          <td class="fill right">152</td>
+          <td class="fill right">152</td>
+          <td class="fill right" style="background:#e3f2fd;"><b>1,241</b></td>
+        </tr>
+        <tr>
+          <td>売上原価 ②<br><small>（仕入高）</small></td>
+          <td class="fill right">4</td>
+          <td class="fill right">7</td>
+          <td class="fill right">10</td>
+          <td class="fill right">14</td>
+          <td class="fill right">21</td>
+          <td class="fill right">21</td>
+          <td class="fill right">21</td>
+          <td class="fill right">21</td>
+          <td class="fill right">21</td>
+          <td class="fill right">21</td>
+          <td class="fill right">21</td>
+          <td class="fill right">21</td>
+          <td class="fill right" style="background:#e3f2fd;"><b>203</b></td>
+        </tr>
+        <tr>
+          <td>　人件費(注)</td>
+          <td class="fill right">75</td>
+          <td class="fill right">75</td>
+          <td class="fill right">75</td>
+          <td class="fill right">75</td>
+          <td class="fill right">75</td>
+          <td class="fill right">75</td>
+          <td class="fill right">75</td>
+          <td class="fill right">75</td>
+          <td class="fill right">75</td>
+          <td class="fill right">69</td>
+          <td class="fill right">69</td>
+          <td class="fill right">69</td>
+          <td class="fill right" style="background:#e3f2fd;"><b>882</b></td>
+        </tr>
+        <tr>
+          <td>　家　賃</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right">8</td>
+          <td class="fill right" style="background:#e3f2fd;"><b>96</b></td>
+        </tr>
+        <tr>
+          <td>　支払利息</td>
+          <td class="fill right">3</td>
+          <td class="fill right">3</td>
+          <td class="fill right">3</td>
+          <td class="fill right">3</td>
+          <td class="fill right">3</td>
+          <td class="fill right">3</td>
+          <td class="fill right">2</td>
+          <td class="fill right">2</td>
+          <td class="fill right">2</td>
+          <td class="fill right">2</td>
+          <td class="fill right">2</td>
+          <td class="fill right">2</td>
+          <td class="fill right" style="background:#e3f2fd;"><b>30</b></td>
+        </tr>
+        <tr>
+          <td>　その他</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right">4</td>
+          <td class="fill right" style="background:#e3f2fd;"><b>48</b></td>
+        </tr>
+        <tr class="total-row">
+          <td><b>経費合計 ③</b></td>
+          <td class="fill right">90</td>
+          <td class="fill right">90</td>
+          <td class="fill right">90</td>
+          <td class="fill right">90</td>
+          <td class="fill right">90</td>
+          <td class="fill right">90</td>
+          <td class="fill right">89</td>
+          <td class="fill right">89</td>
+          <td class="fill right">89</td>
+          <td class="fill right">83</td>
+          <td class="fill right">83</td>
+          <td class="fill right">83</td>
+          <td class="fill right" style="background:#e3f2fd;"><b>1,056</b></td>
+        </tr>
+        <tr style="background:#e8f5e9;">
+          <td><b>利益<br>①−②−③</b></td>
+          <td class="fill right" style="color:var(--red);">▲88</td>
+          <td class="fill right" style="color:var(--red);">▲86</td>
+          <td class="fill right" style="color:var(--red);">▲59</td>
+          <td class="fill right" style="color:var(--red);">▲38</td>
+          <td class="fill right" style="color:var(--red);">▲14</td>
+          <td class="fill right" style="color:var(--green);">+8</td>
+          <td class="fill right" style="color:var(--green);">+31</td>
+          <td class="fill right" style="color:var(--green);">+42</td>
+          <td class="fill right" style="color:var(--green);">+42</td>
+          <td class="fill right" style="color:var(--green);">+48</td>
+          <td class="fill right" style="color:var(--green);">+48</td>
+          <td class="fill right" style="color:var(--green);">+48</td>
+          <td class="fill right" style="color:var(--red);background:#e3f2fd;"><b>▲18</b></td>
+        </tr>
+      </table>
+    </div>
+
+    <p class="note" style="margin-top:8px;">
+      ※入居ペース：毎月1名ずつ増加し、11月に満室5名達成（事業計画書p.17準拠）<br>
+      ※訓練等給付費は提供月の翌々月入金（7月分→9月入金）<br>
+      ※据置期間6ヶ月（7〜12月）は利息のみ¥25,000/月、1月から元利均等¥158,000/月<br>
+      ※4月〜人件費が6万円減：サビ管費用¥60,000が不要に（中村さん資格取得のため）<br>
+      ※（注）個人営業の場合、事業主分は含めません
+    </p>
+
+    <hr class="divider">
+
+    <div class="field-label">借入金返済額</div>
+    <div class="answer">据置期間（7〜12月）：元金返済なし、利息のみ 約3万円/月
+据置終了後（1月〜）：元利均等 約16万円/月</div>
+
+    <div class="field-label">売上高、売上原価、経費の算出根拠</div>
+    <div class="answer">売上：訓練等給付費（区分3×5名、基本報酬661単位×10.48円/単位、処遇改善加算16.8%含む）＋利用者負担金（¥55,000/人/月）。給付費は翌々月入金のため、7〜8月は利用者負担のみ。
+
+原価：食費・日用品費（¥32,000/名）＋水道光熱費（¥25,000〜50,000、入居者数に連動）。
+
+人件費：管理者¥230,000＋サビ管¥60,000＋生活支援員¥78,000＋夜間支援員¥88,000＋世話人¥176,000＋法定福利費¥92,000＋システム¥10,000＋税理士¥20,000＝月額¥754,000。2027年4月以降サビ管費不要で¥694,000に削減。</div>
+
+    <hr class="divider">
+
+    <div class="field-label">売上高達成に向けた具体的な取組み</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0;">
+      <div>
+        <div class="field-label">どのようにして（手段、取組方法）</div>
+        <div class="answer">・開設前から八幡西区の相談支援事業所
+　6ヶ所以上へ訪問し紹介関係を構築
+・精神科クリニック8ヶ所以上との連携
+・FC本部の入居者紹介ネットワーク活用
+・完成後に内覧会を実施し入居を促進</div>
+      </div>
+      <div>
+        <div class="field-label">いつまでに（実行時期）</div>
+        <div class="answer">・2026年5〜6月：
+　相談支援事業所・医療機関への挨拶回り
+・2026年7月：1名入居でスタート
+・2026年11月：満室5名達成目標</div>
+      </div>
+    </div>
+
+    <div class="field-label">計画した売上高を下回った場合の資金繰り・資金調達方法</div>
+    <div class="answer">・自己資産（SBI証券¥461万＋福銀¥48万）を運転資金に充当
+・入居者数に合わせてパートスタッフのシフトを調整し人件費を変動費化
+・FC本部の入居者紹介サポートを強化依頼
+・配偶者年収（約500万円）で世帯の生活費を確保</div>
+
+  </div>
+</div>
+
+<!-- ===== まとめ ===== -->
+<div style="background:white;border-radius:10px;padding:20px 24px;margin-top:24px;box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+  <h3 style="color:var(--blue);margin-bottom:12px;text-align:center;">記入が終わったら</h3>
+  <table style="width:100%;border-collapse:collapse;font-size:0.92em;">
+    <tr>
+      <td style="padding:10px;border-bottom:1px solid #eee;font-weight:bold;color:var(--blue);width:30px;">1</td>
+      <td style="padding:10px;border-bottom:1px solid #eee;">鉛筆の下書きを<b>鈴木さんに見せて</b>確認</td>
+    </tr>
+    <tr>
+      <td style="padding:10px;border-bottom:1px solid #eee;font-weight:bold;color:var(--blue);">2</td>
+      <td style="padding:10px;border-bottom:1px solid #eee;">OKが出たら <b>tashiro-y@jfc.go.jp</b>（田代様）宛にメール送信</td>
+    </tr>
+    <tr>
+      <td style="padding:10px;font-weight:bold;color:var(--blue);">3</td>
+      <td style="padding:10px;">4/10 14:00 面談に<b>原本持参</b></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ===== 数字の出典対照表 ===== -->
+<div style="background:white;border-radius:10px;padding:20px 24px;margin-top:16px;box-shadow:0 2px 6px rgba(0,0,0,0.07);">
+  <h3 style="color:var(--blue);margin-bottom:12px;">数字の出典（銀行提出済み事業計画書との対照）</h3>
+  <table class="form-table" style="font-size:0.82em;">
+    <tr><th>公庫フォームの項目</th><th>記入した数字</th><th>出典ページ</th></tr>
+    <tr><td>定員</td><td>5名</td><td>p.7</td></tr>
+    <tr><td>経歴・資格</td><td>介護22年・6資格</td><td>p.2</td></tr>
+    <tr><td>人員体制・人件費</td><td>月額754,000円</td><td>p.12</td></tr>
+    <tr><td>利用者負担</td><td>¥55,000/人</td><td>p.11</td></tr>
+    <tr><td>必要資金合計</td><td>1,213.8万円 ≒ 1,214万円</td><td>p.14</td></tr>
+    <tr><td>自己資金</td><td>113.8万円 ≒ 114万円</td><td>p.15</td></tr>
+    <tr><td>借入額</td><td>1,100万円（フルローン）</td><td>p.15</td></tr>
+    <tr><td>借入条件</td><td>7年/3.0%/据置6ヶ月</td><td>p.15</td></tr>
+    <tr><td>満室時月間売上</td><td>1,520,000円</td><td>p.16</td></tr>
+    <tr><td>満室時月間利益</td><td>+274,700円</td><td>p.16</td></tr>
+    <tr><td>住宅ローン残高</td><td>1,407万円</td><td>p.15</td></tr>
+    <tr><td>黒字転換</td><td>開設9ヶ月目（3月）</td><td>p.17</td></tr>
+    <tr><td>3パターン比較</td><td>A:+6.2万/B:+31万/C:+45万</td><td>p.18</td></tr>
+  </table>
+</div>
+
+<div style="text-align:center;color:#999;font-size:0.8em;padding:20px;margin-top:12px;">
+  作成日: 2026年4月2日（v2 — 事業計画書PDF準拠版）｜ 面談日: 4月10日(金) 14:00
+</div>
+
+</div>
+</body>
+</html>
