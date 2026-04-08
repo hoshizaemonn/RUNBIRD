@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ランバト様 AI導入提案</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: #fff;
+    color: #222;
+  }
+  .header {
+    text-align: center;
+    padding: 60px 20px 40px;
+  }
+  .header h1 { font-size: 2rem; font-weight: 900; margin-bottom: 12px; }
+  .header p { font-size: 1.1rem; color: #888; }
+  section {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #999;
+    margin-bottom: 28px;
+  }
+
+  /* ===== Before / After ===== */
+  .ba {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    align-items: center;
+  }
+  .ba-card {
+    border-radius: 20px;
+    padding: 36px 32px;
+  }
+  .ba-before { background: #fef2f2; border: 2px solid #fca5a5; }
+  .ba-after { background: #eff6ff; border: 2px solid #93c5fd; }
+  .ba-label {
+    font-size: 0.75rem; font-weight: 800; letter-spacing: 0.15em;
+    border-radius: 6px; display: inline-block; padding: 4px 12px; margin-bottom: 18px;
+  }
+  .ba-before .ba-label { background: #dc2626; color: #fff; }
+  .ba-after .ba-label { background: #2563eb; color: #fff; }
+  .ba-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 14px; font-size: 1rem; line-height: 1.6;
+  }
+  .ba-item .icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .ba-arrow { text-align: center; font-size: 2.5rem; color: #cbd5e1; font-weight: 900; }
+
+  /* ===== 全体像 ===== */
+  .overview-box {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 48px 36px;
+  }
+  .overview-main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 36px;
+  }
+  .ov-block {
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    flex: 1;
+    max-width: 260px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .ov-block .ov-icon { font-size: 2.4rem; margin-bottom: 10px; }
+  .ov-block h4 { font-size: 1.05rem; margin-bottom: 8px; }
+  .ov-block p { font-size: 0.88rem; color: #555; line-height: 1.7; }
+  .ov-staff { background: #fef9c3; border: 2px solid #facc15; }
+  .ov-cursor { background: #dbeafe; border: 2px solid #60a5fa; }
+  .ov-knowledge { background: #d1fae5; border: 2px solid #34d399; }
+  .ov-connector {
+    display: flex; align-items: center; font-size: 2rem; color: #94a3b8;
+    padding-top: 24px;
+  }
+  .overview-caption {
+    text-align: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 28px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+    border: 1px dashed #cbd5e1;
+  }
+  .overview-caption strong { color: #2563eb; }
+
+  /* ===== 仕組みの裏側 ===== */
+  .mechanism {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 48px 36px;
+  }
+  .mech-diagram {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  .mech-col {
+    flex: 1;
+    max-width: 280px;
+  }
+  .mech-card {
+    border-radius: 16px;
+    padding: 24px;
+    height: 100%;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .mech-card.files { background: #d1fae5; border: 2px solid #34d399; }
+  .mech-card.rules { background: #dbeafe; border: 2px solid #60a5fa; }
+  .mech-card.output { background: #fef9c3; border: 2px solid #facc15; }
+  .mech-card .mech-icon { font-size: 2rem; margin-bottom: 10px; text-align: center; }
+  .mech-card h4 { font-size: 1rem; margin-bottom: 10px; text-align: center; }
+  .mech-card p { font-size: 0.88rem; color: #444; line-height: 1.7; }
+  .mech-card .file-tree {
+    background: rgba(255,255,255,0.7);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-family: monospace;
+    font-size: 0.82rem;
+    line-height: 1.9;
+    color: #333;
+    margin-top: 10px;
+  }
+  .mech-connector {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    color: #94a3b8;
+  }
+  .mech-explain {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 28px;
+    border: 1px dashed #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: #444;
+  }
+  .mech-explain strong { color: #2563eb; }
+  .mech-explain .point {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .mech-explain .point:last-child { margin-bottom: 0; }
+  .mech-explain .point-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 3px; }
+
+  /* ===== 運用ガード ===== */
+  .guards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  .guard-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border-top: 4px solid #f59e0b;
+  }
+  .guard-card h4 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .guard-card p {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.8;
+  }
+  .guard-card .guard-detail {
+    background: #fffbeb;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: #555;
+  }
+  .guard-summary {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 28px;
+    border: 2px solid #f59e0b;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #444;
+  }
+  .guard-summary strong { color: #d97706; }
+
+  /* ===== ナレッジ中身 ===== */
+  .knowledge-types {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .kt-card {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  }
+  .kt-head {
+    padding: 16px 24px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .kt-head.reply { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+  .kt-head.law { background: linear-gradient(135deg, #059669, #10b981); }
+  .kt-body { padding: 24px; background: #fff; }
+  .kt-rule {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    font-size: 0.92rem;
+    line-height: 1.8;
+    border-left: 4px solid #6366f1;
+  }
+  .kt-rule.law { border-left-color: #059669; }
+  .kt-note {
+    font-size: 0.85rem;
+    color: #888;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  /* ===== GitHub更新フロー ===== */
+  .update-flow {
+    background: #f8fafc;
+    border-radius: 24px;
+    padding: 48px 36px;
+  }
+  .update-steps {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+  }
+  .us-step {
+    flex: 1;
+    max-width: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 12px;
+  }
+  .us-icon {
+    width: 80px; height: 80px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; margin-bottom: 14px;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+  }
+  .us-step:nth-child(1) .us-icon { background: #fef3c7; }
+  .us-step:nth-child(3) .us-icon { background: #e0e7ff; }
+  .us-step:nth-child(5) .us-icon { background: #d1fae5; }
+  .us-step:nth-child(7) .us-icon { background: #dbeafe; }
+  .us-step h4 { font-size: 0.95rem; margin-bottom: 6px; }
+  .us-step p { font-size: 0.82rem; color: #777; line-height: 1.6; }
+  .us-arrow {
+    display: flex; align-items: center;
+    font-size: 1.6rem; color: #94a3b8; padding-top: 16px;
+  }
+  .update-note {
+    text-align: center;
+    margin-top: 28px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 24px;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #444;
+    border: 1px dashed #cbd5e1;
+  }
+  .update-note strong { color: #8b5cf6; }
+
+  /* ===== 権限テーブル ===== */
+  .perm-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    font-size: 0.95rem;
+  }
+  .perm-table thead th {
+    background: #1e293b;
+    color: #fff;
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .perm-table tbody td {
+    padding: 14px 18px;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .perm-table tbody tr:last-child td { border-bottom: none; }
+  .perm-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .perm-badge.admin { background: #dc2626; color: #fff; }
+  .perm-badge.editor { background: #2563eb; color: #fff; }
+  .perm-badge.viewer { background: #e2e8f0; color: #475569; }
+
+  /* ===== 利用シーン ===== */
+  .scenes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .scene-card {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  }
+  .scene-head {
+    padding: 16px 24px;
+    color: #fff;
+    font-weight: 700;
+  }
+  .scene-head.s1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+  .scene-head.s2 { background: linear-gradient(135deg, #059669, #10b981); }
+  .scene-body { padding: 24px; background: #fff; }
+  .scene-q {
+    background: #f1f5f9; border-radius: 10px; padding: 14px 18px;
+    margin-bottom: 12px; font-size: 0.92rem; line-height: 1.8;
+  }
+  .scene-a {
+    background: #eff6ff; border-radius: 10px; padding: 14px 18px;
+    font-size: 0.92rem; line-height: 1.8; border-left: 4px solid #3b82f6;
+  }
+  .scene-a::before {
+    content: "AI:"; font-weight: 700; color: #3b82f6; margin-right: 6px;
+  }
+
+  /* ===== TODO ===== */
+  .todos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .todo-item {
+    display: flex; align-items: center; gap: 12px;
+    background: #f8fafc; border-radius: 12px; padding: 16px 20px; font-size: 0.95rem;
+  }
+
+  /* ===== 導入ステップ ===== */
+  .timeline {
+    display: flex; justify-content: center; position: relative;
+  }
+  .timeline::before {
+    content: ""; position: absolute; top: 40px; left: 15%; right: 15%;
+    height: 4px; background: #e2e8f0; border-radius: 2px; z-index: 0;
+  }
+  .tl-item { text-align: center; flex: 1; max-width: 200px; position: relative; z-index: 1; }
+  .tl-dot {
+    width: 80px; height: 80px; border-radius: 50%; margin: 0 auto 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem; font-weight: 900; color: #fff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  .tl-item:nth-child(1) .tl-dot { background: #3b82f6; }
+  .tl-item:nth-child(2) .tl-dot { background: #8b5cf6; }
+  .tl-item:nth-child(3) .tl-dot { background: #059669; }
+  .tl-item h4 { font-size: 1rem; margin-bottom: 6px; }
+  .tl-item p { font-size: 0.85rem; color: #888; line-height: 1.5; }
+  .tl-date { font-size: 0.8rem; color: #3b82f6; font-weight: 700; margin-top: 6px; }
+
+  .footer { text-align: center; padding: 40px 20px; color: #bbb; font-size: 0.8rem; }
+
+  @media (max-width: 700px) {
+    .ba { grid-template-columns: 1fr; gap: 16px; }
+    .ba-arrow { transform: rotate(90deg); }
+    .overview-main { flex-direction: column; align-items: center; }
+    .ov-connector { transform: rotate(90deg); padding: 8px 0; }
+    .mech-diagram { flex-direction: column; align-items: center; }
+    .mech-connector { transform: rotate(90deg); padding: 8px 0; }
+    .guards { grid-template-columns: 1fr; }
+    .knowledge-types, .scenes, .todos { grid-template-columns: 1fr; }
+    .update-steps { flex-direction: column; align-items: center; gap: 8px; }
+    .us-arrow { transform: rotate(90deg); padding: 0; }
+    .timeline { flex-direction: column; align-items: center; gap: 24px; }
+    .timeline::before { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>ランバト様 AI導入のご提案</h1>
+  <p>福祉事業の業務をAIで自動化する</p>
+</div>
+
+<!-- ===== 1. Before / After ===== -->
+<section>
+  <div class="section-title">01 ― BEFORE → AFTER</div>
+  <div class="ba">
+    <div class="ba-card ba-before">
+      <span class="ba-label">今の状態</span>
+      <div class="ba-item"><span class="icon">😟</span><span>返信の質が<strong>担当者によってバラバラ</strong></span></div>
+      <div class="ba-item"><span class="icon">🔍</span><span>法令・制度が<strong>県ごとに違い、随時更新される</strong></span></div>
+      <div class="ba-item"><span class="icon">💭</span><span>上手い人のノウハウが<strong>共有されていない</strong></span></div>
+      <div class="ba-item"><span class="icon">⏰</span><span>毎回ゼロから考えるので<strong>時間がかかる</strong></span></div>
+    </div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-card ba-after">
+      <span class="ba-label">導入後</span>
+      <div class="ba-item"><span class="icon">✨</span><span>AIが返信文を自動生成 →<strong>送るだけ</strong></span></div>
+      <div class="ba-item"><span class="icon">⚡</span><span>法令・制度の違いもAIが<strong>自動で判断</strong></span></div>
+      <div class="ba-item"><span class="icon">📚</span><span>ノウハウが<strong>ナレッジとして貯まり続ける</strong></span></div>
+      <div class="ba-item"><span class="icon">👤</span><span><strong>誰がやっても同じ品質</strong>で対応できる</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. 全体の仕組み ===== -->
+<section>
+  <div class="section-title">02 ― 全体の仕組み</div>
+  <div class="overview-box">
+    <div class="overview-main">
+      <div class="ov-block ov-staff">
+        <div class="ov-icon">👤</div>
+        <h4>スタッフ</h4>
+        <p>「こんな問い合わせが来た」<br>と入力するだけ</p>
+      </div>
+      <div class="ov-connector">→</div>
+      <div class="ov-block ov-cursor">
+        <div class="ov-icon">🤖</div>
+        <h4>Cursor（AI）</h4>
+        <p>ナレッジを自動参照して<br>返信文・回答を生成</p>
+      </div>
+      <div class="ov-connector">←</div>
+      <div class="ov-block ov-knowledge">
+        <div class="ov-icon">📂</div>
+        <h4>ナレッジベース</h4>
+        <p>返信パターン / 法令・制度<br>/ 事業所ごとのルール</p>
+      </div>
+    </div>
+    <div class="overview-caption">
+      問い合わせが来たら → AIが<strong>ナレッジを自動参照</strong>して返信文を生成 → スタッフは<strong>送るだけ</strong><br>
+      法令が変わったら → ナレッジを更新 → 次からAIが<strong>最新の内容で自動対応</strong><br>
+      ナレッジは<strong>GitHub</strong>で管理。誰が・いつ・何を変えたか全て記録が残る
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. 仕組みの裏側 ===== -->
+<section>
+  <div class="section-title">03 ― Cursorでどうやってナレッジを貯めるか（仕組み）</div>
+  <div class="mechanism">
+    <div class="mech-diagram">
+      <div class="mech-col">
+        <div class="mech-card files">
+          <div class="mech-icon">📂</div>
+          <h4>ナレッジファイル</h4>
+          <p>返信パターンや法令情報を<strong>普通のテキストファイル</strong>として保存する</p>
+          <div class="file-tree">
+            📁 ナレッジ/<br>
+            ├── 📁 返信/<br>
+            │   ├── クレーム対応.md<br>
+            │   ├── 受入れ打診.md<br>
+            │   └── 行政への報告.md<br>
+            ├── 📁 法令/<br>
+            │   ├── 福岡市.md<br>
+            │   ├── 北九州市.md<br>
+            │   └── 共通ルール.md<br>
+            └── 📁 事業所/<br>
+                ├── A事業所.md<br>
+                └── B事業所.md
+          </div>
+        </div>
+      </div>
+      <div class="mech-connector">→</div>
+      <div class="mech-col">
+        <div class="mech-card rules">
+          <div class="mech-icon">📋</div>
+          <h4>Cursor Rules（設定ファイル）</h4>
+          <p>AIへの指示書。<br>「ナレッジフォルダの中身を<strong>常に参照して回答しなさい</strong>」というルールを書いておく</p>
+          <div class="file-tree">
+            .cursorrules の中身（例）:<br><br>
+            あなたは福祉事業の<br>
+            業務アシスタントです。<br>
+            返信を求められたら<br>
+            「ナレッジ/返信/」を参照し、<br>
+            同じ品質の文章を生成<br>
+            してください。<br>
+            法令の質問には<br>
+            「ナレッジ/法令/」を参照。
+          </div>
+        </div>
+      </div>
+      <div class="mech-connector">→</div>
+      <div class="mech-col">
+        <div class="mech-card output">
+          <div class="mech-icon">✨</div>
+          <h4>AIの出力</h4>
+          <p>スタッフが質問すると、AIがナレッジを自動で読み込んで<strong>回答を生成</strong>する</p>
+          <div class="file-tree">
+            スタッフ:<br>
+            「クレームが来た。対応して」<br><br>
+            AI:<br>
+            ナレッジ/返信/クレーム対応<br>
+            を参照して返信文を生成<br><br>
+            → スタッフは<strong>送るだけ</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mech-explain">
+      <div class="point">
+        <span class="point-icon">1️⃣</span>
+        <span><strong>ナレッジファイル</strong> = 上手い人の返信パターンや法令情報をテキストで保存したもの。普通のファイルなので誰でも読める・編集できる</span>
+      </div>
+      <div class="point">
+        <span class="point-icon">2️⃣</span>
+        <span><strong>Cursor Rules</strong> = AIへの「常にこのファイルを見て回答しなさい」という指示。一度設定すれば、AIは毎回自動でナレッジを参照する</span>
+      </div>
+      <div class="point">
+        <span class="point-icon">3️⃣</span>
+        <span><strong>ファイルを追加・編集するだけ</strong>でAIの知識が増える。特別な操作は不要。ナレッジが増えれば増えるほどAIの回答精度が上がる</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. 崩れずに運用するルール ===== -->
+<section>
+  <div class="section-title">04 ― 全員がうまく使い続けるための仕組み</div>
+  <div class="guards">
+    <div class="guard-card">
+      <h4>🗂️ フォルダ構成を固定する</h4>
+      <p>「返信/」「法令/」「事業所/」のフォルダ分けを最初に決めて、全員がそのルールで保存する</p>
+      <div class="guard-detail">
+        ファイルの置き場所がバラバラになると、AIが見つけられなくなる。<br>
+        → <strong>フォルダ名と分類ルールを最初に決めて固定</strong>
+      </div>
+    </div>
+    <div class="guard-card">
+      <h4>✅ レビューしてから反映</h4>
+      <p>ナレッジの変更は「プルリクエスト」で管理者が確認してから反映する</p>
+      <div class="guard-detail">
+        誰でも勝手に書き換えられると、間違った情報がAIに入る。<br>
+        → <strong>変更はまず提案 → 管理者がチェック → OKなら反映</strong>
+      </div>
+    </div>
+    <div class="guard-card">
+      <h4>📝 書き方のテンプレを用意</h4>
+      <p>ナレッジの書き方を統一する。「こう来たら → こう返す」の形式で全員が同じフォーマットで書く</p>
+      <div class="guard-detail">
+        書き方がバラバラだとAIの理解精度が落ちる。<br>
+        → <strong>テンプレートに沿って書くだけにする</strong>
+      </div>
+    </div>
+    <div class="guard-card">
+      <h4>🔄 定期的に棚卸しする</h4>
+      <p>月1回、ナレッジの中身を確認。古い情報の更新、不足の追加を行う</p>
+      <div class="guard-detail">
+        法令は更新される。放置すると古い情報でAIが回答してしまう。<br>
+        → <strong>定期的にチェックする仕組みをセットで入れる</strong>
+      </div>
+    </div>
+  </div>
+  <div class="guard-summary">
+    フォルダ構成固定 + レビュー制 + テンプレ統一 + 定期棚卸し<br>
+    この<strong>4つのルール</strong>で、誰が触っても崩れないナレッジ基盤になる
+  </div>
+</section>
+
+<!-- ===== 5. ナレッジの中身 ===== -->
+<section>
+  <div class="section-title">05 ― ナレッジに何を入れるか</div>
+  <div class="knowledge-types">
+    <div class="kt-card">
+      <div class="kt-head reply">返信ナレッジ ― こう来たらAIがこう返す</div>
+      <div class="kt-body">
+        <div class="kt-rule">
+          <strong>こう来たら →</strong> 利用者家族からのクレーム<br>
+          <strong>AIが生成 →</strong> 上手い人と同じ品質の謝罪・事実確認・再発防止の返信文
+        </div>
+        <div class="kt-rule">
+          <strong>こう来たら →</strong> 他施設からの受入れ打診<br>
+          <strong>AIが生成 →</strong> 空き状況・条件・見学案内まで含めた返信文
+        </div>
+        <p class="kt-note">上手い人の返信パターンをナレッジとして蓄積。AIが参照して自動生成するから、<strong>スタッフは送るだけ。</strong></p>
+      </div>
+    </div>
+    <div class="kt-card">
+      <div class="kt-head law">法令・制度ナレッジ ― 県や担当者で変わる情報</div>
+      <div class="kt-body">
+        <div class="kt-rule law">
+          <strong>県・市ごとの違い →</strong> 福岡市と北九州市で制度の運用が異なる場合も、それぞれのルールをナレッジに蓄積
+        </div>
+        <div class="kt-rule law">
+          <strong>法令の更新 →</strong> 法改正があればナレッジを更新。次からAIが最新の法令に基づいて自動で回答
+        </div>
+        <div class="kt-rule law">
+          <strong>事業所・契約の違い →</strong> 担当者や事業所ごとに異なる契約条件・対応パターンもナレッジとして管理
+        </div>
+        <p class="kt-note">県ごと・担当者ごと・法改正のタイミングで変わる情報が全て<strong>ナレッジに貯まっていく</strong>。AIはそれを参照して回答するから、常に最新かつ正確。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. GitHubで更新していく仕組み ===== -->
+<section>
+  <div class="section-title">06 ― ナレッジの更新フロー（GitHub）</div>
+  <div class="update-flow">
+    <div class="update-steps">
+      <div class="us-step">
+        <div class="us-icon">💡</div>
+        <h4>気づく</h4>
+        <p>「この返し方いいな」<br>「法令変わったな」</p>
+      </div>
+      <div class="us-arrow">→</div>
+      <div class="us-step">
+        <div class="us-icon">✏️</div>
+        <h4>ファイルを編集</h4>
+        <p>Cursorで該当の<br>ナレッジファイルを修正</p>
+      </div>
+      <div class="us-arrow">→</div>
+      <div class="us-step">
+        <div class="us-icon">📤</div>
+        <h4>GitHubに反映</h4>
+        <p>変更をプッシュ<br>（履歴が自動で残る）</p>
+      </div>
+      <div class="us-arrow">→</div>
+      <div class="us-step">
+        <div class="us-icon">🤖</div>
+        <h4>AIに即反映</h4>
+        <p>次からAIが<br>最新ナレッジで回答</p>
+      </div>
+    </div>
+    <div class="update-note">
+      <strong>GitHubを使う理由:</strong><br>
+      誰が・いつ・何を変えたか全て記録が残る。間違った変更があっても元に戻せる。<br>
+      ナレッジは「使いながら育てる」もの。更新し続けることで組織の資産になっていく。
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. 権限設計 ===== -->
+<section>
+  <div class="section-title">07 ― GitHub 権限の考え方（要検討）</div>
+  <table class="perm-table">
+    <thead>
+      <tr><th>役割</th><th>権限</th><th>できること</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>管理者（斗 or 社内IT担当）</td>
+        <td><span class="perm-badge admin">Admin</span></td>
+        <td>全ての編集・メンバー管理・設定変更</td>
+      </tr>
+      <tr>
+        <td>ナレッジ編集者</td>
+        <td><span class="perm-badge editor">Write</span></td>
+        <td>ナレッジの追加・修正・プッシュ</td>
+      </tr>
+      <tr>
+        <td>閲覧のみ</td>
+        <td><span class="perm-badge viewer">Read</span></td>
+        <td>ナレッジの閲覧のみ（編集不可）</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===== 6. 利用シーン ===== -->
+<section>
+  <div class="section-title">08 ― 実際の利用シーン</div>
+  <div class="scenes">
+    <div class="scene-card">
+      <div class="scene-head s1">返信ナレッジの活用</div>
+      <div class="scene-body">
+        <div class="scene-q">スタッフ:「利用者のご家族からクレームが来た」</div>
+        <div class="scene-a">ナレッジを参照して、上手い人と同じトーンの返信文を自動生成。スタッフは確認して送るだけ。</div>
+      </div>
+    </div>
+    <div class="scene-card">
+      <div class="scene-head s2">法令ナレッジの活用</div>
+      <div class="scene-body">
+        <div class="scene-q">スタッフ:「福岡市の住所地特例ってどうなってる？」</div>
+        <div class="scene-a">ナレッジに貯まっている福岡市の法令情報を自動で参照して回答。法改正後もナレッジ更新済みなら最新で返せる。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. 導入ステップ ===== -->
+<section>
+  <div class="section-title">09 ― 導入の流れ</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot">1</div>
+      <h4>説明・合意</h4>
+      <p>仕組みと活用イメージを共有</p>
+      <div class="tl-date">4/11（金）</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">2</div>
+      <h4>環境セットアップ</h4>
+      <p>Cursor・GitHubの<br>インストール・設定</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">3</div>
+      <h4>ナレッジ投入 → 運用</h4>
+      <p>返信パターン・法令情報を<br>整理して実務スタート</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 8. TODO ===== -->
+<section>
+  <div class="section-title">10 ― 決めておくこと</div>
+  <div class="todos">
+    <div class="todo-item"><span>✅</span> CursorはWindows対応 → 問題なし</div>
+    <div class="todo-item"><span>🔲</span> GitHubの編集権限を誰に持たせるか</div>
+    <div class="todo-item"><span>🔲</span> 返信ナレッジの収集方法（上手い人へのヒアリング等）</div>
+    <div class="todo-item"><span>🔲</span> 対象の自治体・法令の範囲</div>
+  </div>
+</section>
+
+<div class="footer">株式会社斗 — 2026.04</div>
+
+</body>
+</html>
