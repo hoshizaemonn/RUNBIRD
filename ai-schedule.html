@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ランバト様 AI導入スケジュール</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    padding: 48px 24px;
+  }
+  .page { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #94a3b8; font-size: 0.95rem; margin-bottom: 48px; }
+
+  /* ===== フェーズ ===== */
+  .phase {
+    position: relative;
+    padding-left: 48px;
+    margin-bottom: 48px;
+  }
+  .phase::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: -48px;
+    width: 3px;
+    background: #e2e8f0;
+  }
+  .phase:last-of-type::before { bottom: 0; }
+
+  .phase-dot {
+    position: absolute;
+    left: 6px;
+    top: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 900;
+    color: #fff;
+    z-index: 1;
+  }
+  .phase:nth-child(1) .phase-dot { background: #3b82f6; }
+  .phase:nth-child(2) .phase-dot { background: #8b5cf6; }
+  .phase:nth-child(3) .phase-dot { background: #059669; }
+  .phase:nth-child(4) .phase-dot { background: #f59e0b; }
+
+  .phase-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .phase-title { font-size: 1.3rem; font-weight: 800; }
+  .phase-period {
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 6px;
+    background: #e2e8f0;
+    color: #475569;
+  }
+  .phase-who {
+    font-size: 0.8rem;
+    color: #94a3b8;
+  }
+
+  /* ===== タスクカード ===== */
+  .tasks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .task {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    border-left: 4px solid #e2e8f0;
+  }
+  .task h4 {
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .task p {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.7;
+  }
+  .task.blue { border-left-color: #3b82f6; }
+  .task.purple { border-left-color: #8b5cf6; }
+  .task.green { border-left-color: #059669; }
+  .task.yellow { border-left-color: #f59e0b; }
+
+  .task-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #fff;
+  }
+  .badge-hishaku { background: #3b82f6; }
+  .badge-client { background: #059669; }
+  .badge-both { background: #8b5cf6; }
+
+  /* ===== ガントチャート風 ===== */
+  .gantt {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    margin-top: 48px;
+    overflow-x: auto;
+  }
+  .gantt h2 {
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+    text-align: center;
+    color: #475569;
+  }
+  .gantt-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    min-width: 700px;
+  }
+  .gantt-table th {
+    padding: 8px 6px;
+    text-align: center;
+    font-weight: 600;
+    color: #94a3b8;
+    border-bottom: 2px solid #e2e8f0;
+    font-size: 0.8rem;
+  }
+  .gantt-table th:first-child { text-align: left; width: 200px; }
+  .gantt-table td {
+    padding: 10px 4px;
+    border-bottom: 1px solid #f1f5f9;
+    text-align: center;
+    position: relative;
+  }
+  .gantt-table td:first-child {
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #334155;
+  }
+  .gantt-bar {
+    height: 24px;
+    border-radius: 6px;
+    display: inline-block;
+    width: 80%;
+  }
+  .gantt-bar.blue { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+  .gantt-bar.purple { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+  .gantt-bar.green { background: linear-gradient(135deg, #059669, #34d399); }
+  .gantt-bar.yellow { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+
+  .gantt-table .today-col {
+    background: rgba(59,130,246,0.06);
+  }
+  .gantt-table th.today-col {
+    color: #3b82f6;
+    font-weight: 800;
+  }
+
+  /* ===== 備考 ===== */
+  .notes {
+    margin-top: 36px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 28px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+  }
+  .notes h3 {
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+    color: #475569;
+  }
+  .notes ul {
+    list-style: none;
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 2;
+  }
+  .notes ul li::before { content: "• "; color: #94a3b8; }
+
+  .footer { text-align: center; padding: 36px 0; color: #bbb; font-size: 0.8rem; }
+
+  @media (max-width: 700px) {
+    .tasks { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>AI導入スケジュール</h1>
+<p class="subtitle">ランバト様 福祉事業部門 — 2026年4月〜</p>
+
+<!-- ===== Phase 1 ===== -->
+<div class="phase">
+  <div class="phase-dot">1</div>
+  <div class="phase-header">
+    <span class="phase-title">説明・合意</span>
+    <span class="phase-period">Week 1（4/11）</span>
+  </div>
+  <div class="tasks">
+    <div class="task blue">
+      <h4>📊 提案プレゼン <span class="task-badge badge-hishaku">斗</span></h4>
+      <p>仕組み・活用イメージ・ツール説明をスライドで共有</p>
+    </div>
+    <div class="task blue">
+      <h4>🤝 合意・方針決定 <span class="task-badge badge-both">共同</span></h4>
+      <p>導入範囲・対象事業所・対象業務を決定</p>
+    </div>
+    <div class="task blue">
+      <h4>👥 担当者アサイン <span class="task-badge badge-client">ランバト様</span></h4>
+      <p>ナレッジ編集者・管理者・利用者を決める</p>
+    </div>
+    <div class="task blue">
+      <h4>📋 過去ログ提供 <span class="task-badge badge-client">ランバト様</span></h4>
+      <p>チャットワークの過去ログ（ベテランの返信例）を共有</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Phase 2 ===== -->
+<div class="phase">
+  <div class="phase-dot">2</div>
+  <div class="phase-header">
+    <span class="phase-title">環境構築 + ナレッジ設計</span>
+    <span class="phase-period">Week 2〜3（4/14〜4/25）</span>
+  </div>
+  <div class="tasks">
+    <div class="task purple">
+      <h4>🖥️ Cursorインストール <span class="task-badge badge-hishaku">斗</span></h4>
+      <p>対象PCにCursorをインストール。基本設定を完了</p>
+    </div>
+    <div class="task purple">
+      <h4>🗄️ GitHubセットアップ <span class="task-badge badge-hishaku">斗</span></h4>
+      <p>リポジトリ作成・アカウント発行・権限設定</p>
+    </div>
+    <div class="task purple">
+      <h4>📂 フォルダ構成の策定 <span class="task-badge badge-hishaku">斗</span></h4>
+      <p>返信例/法令/事業所 のフォルダ構成・テンプレートを設計</p>
+    </div>
+    <div class="task purple">
+      <h4>📋 Cursor Rules作成 <span class="task-badge badge-hishaku">斗</span></h4>
+      <p>「常にナレッジを参照せよ」「NGラインを守れ」等のAI指示書を作成</p>
+    </div>
+    <div class="task purple">
+      <h4>📝 ナレッジ初期投入 <span class="task-badge badge-hishaku">斗</span></h4>
+      <p>過去ログからベテランの返信パターンを抽出・ナレッジ化。法令・NGラインも整理</p>
+    </div>
+    <div class="task purple">
+      <h4>🔍 法令情報の確認 <span class="task-badge badge-both">共同</span></h4>
+      <p>対象県の法令・制度情報を確認。ナレッジの正確性をベテランと検証</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Phase 3 ===== -->
+<div class="phase">
+  <div class="phase-dot">3</div>
+  <div class="phase-header">
+    <span class="phase-title">テスト運用 + 研修</span>
+    <span class="phase-period">Week 4〜5（4/28〜5/9）</span>
+  </div>
+  <div class="tasks">
+    <div class="task green">
+      <h4>🧪 テスト運用 <span class="task-badge badge-both">共同</span></h4>
+      <p>実際の問い合わせでAIの返信を試す。精度を確認・調整</p>
+    </div>
+    <div class="task green">
+      <h4>🎓 スタッフ研修 <span class="task-badge badge-hishaku">斗</span></h4>
+      <p>Cursorの基本操作・AIへの質問の仕方・ナレッジの編集方法を研修</p>
+    </div>
+    <div class="task green">
+      <h4>🔧 Cursor Rules調整 <span class="task-badge badge-hishaku">斗</span></h4>
+      <p>テスト結果に基づいてAIの指示書を微調整。精度を向上</p>
+    </div>
+    <div class="task green">
+      <h4>📚 ナレッジ追加 <span class="task-badge badge-both">共同</span></h4>
+      <p>テスト中に気づいた不足分を追加投入</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Phase 4 ===== -->
+<div class="phase">
+  <div class="phase-dot">4</div>
+  <div class="phase-header">
+    <span class="phase-title">本番運用 + 継続改善</span>
+    <span class="phase-period">Week 6〜（5/12〜）</span>
+  </div>
+  <div class="tasks">
+    <div class="task yellow">
+      <h4>🚀 本番運用開始 <span class="task-badge badge-client">ランバト様</span></h4>
+      <p>実務でAI返信を本格活用。担当者が確認→送信のフローで運用</p>
+    </div>
+    <div class="task yellow">
+      <h4>🔄 月次棚卸し <span class="task-badge badge-both">共同</span></h4>
+      <p>月1回、ナレッジの過不足・法改正の反映漏れをチェック</p>
+    </div>
+    <div class="task yellow">
+      <h4>📈 効果測定 <span class="task-badge badge-hishaku">斗</span></h4>
+      <p>返信にかかる時間・ベテランのチェック工数の変化を測定</p>
+    </div>
+    <div class="task yellow">
+      <h4>🔧 継続サポート <span class="task-badge badge-hishaku">斗</span></h4>
+      <p>問題対応・Cursor Rules の改善・ナレッジ更新のサポート</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ガントチャート ===== -->
+<div class="gantt">
+  <h2>全体タイムライン</h2>
+  <table class="gantt-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="today-col">4/11<br><span style="font-size:0.7rem;">W1</span></th>
+        <th>4/14-18<br><span style="font-size:0.7rem;">W2</span></th>
+        <th>4/21-25<br><span style="font-size:0.7rem;">W3</span></th>
+        <th>4/28-5/2<br><span style="font-size:0.7rem;">W4</span></th>
+        <th>5/5-9<br><span style="font-size:0.7rem;">W5</span></th>
+        <th>5/12〜<br><span style="font-size:0.7rem;">W6</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>① 説明・合意</td>
+        <td class="today-col"><div class="gantt-bar blue"></div></td>
+        <td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>② 環境構築</td>
+        <td class="today-col"></td>
+        <td><div class="gantt-bar purple"></div></td>
+        <td><div class="gantt-bar purple"></div></td>
+        <td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>③ テスト運用・研修</td>
+        <td class="today-col"></td>
+        <td></td><td></td>
+        <td><div class="gantt-bar green"></div></td>
+        <td><div class="gantt-bar green"></div></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>④ 本番運用</td>
+        <td class="today-col"></td>
+        <td></td><td></td><td></td><td></td>
+        <td><div class="gantt-bar yellow"></div></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== 備考 ===== -->
+<div class="notes">
+  <h3>補足事項</h3>
+  <ul>
+    <li>スケジュールは目安です。ランバト様の業務状況に合わせて調整可能</li>
+    <li>Phase 2 の「ナレッジ初期投入」は斗が主導で実施。ベテランの方に内容の確認をお願いします</li>
+    <li>Phase 3 のテスト運用中は、実際に送信する前にベテランの最終確認を入れます</li>
+    <li>Phase 4 以降、月次棚卸し + 継続サポートで法改正への追従をカバー</li>
+  </ul>
+</div>
+
+<div class="footer">株式会社斗 — 2026.04</div>
+
+</div>
+</body>
+</html>

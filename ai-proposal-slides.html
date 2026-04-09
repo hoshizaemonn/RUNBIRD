@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ランバト様 福祉事業AI導入提案</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    overflow: hidden;
+  }
+  .slide {
+    width: 100vw; height: 100vh;
+    display: none; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 60px 80px; position: relative;
+  }
+  .slide.active { display: flex; }
+  .slide-num { position: absolute; bottom: 24px; right: 36px; font-size: 0.8rem; color: #475569; }
+  .nav { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 100; }
+  .nav-dot { width: 10px; height: 10px; border-radius: 50%; background: #334155; cursor: pointer; transition: all 0.3s; }
+  .nav-dot.active { background: #60a5fa; transform: scale(1.3); }
+  .nav-btn {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.08); border: none; color: #94a3b8;
+    font-size: 2rem; padding: 16px 12px; cursor: pointer; border-radius: 8px; z-index: 100; transition: all 0.2s;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  .nav-btn.prev { left: 16px; }
+  .nav-btn.next { right: 16px; }
+
+  h1 { font-size: 2.8rem; font-weight: 900; line-height: 1.4; margin-bottom: 20px; }
+  h2 { font-size: 2.2rem; font-weight: 800; line-height: 1.4; margin-bottom: 24px; }
+  h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; }
+  .subtitle { font-size: 1.2rem; color: #94a3b8; margin-bottom: 40px; }
+  .accent { color: #60a5fa; }
+  .accent-green { color: #34d399; }
+  .accent-yellow { color: #fbbf24; }
+  .accent-red { color: #f87171; }
+  .accent-purple { color: #a78bfa; }
+  .small-note { font-size: 0.85rem; color: #64748b; margin-top: 16px; }
+  .center { text-align: center; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; max-width: 1000px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; width: 100%; max-width: 1000px; }
+  .four-col { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; width: 100%; max-width: 1000px; }
+  .full-w { width: 100%; max-width: 1000px; }
+
+  .card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 28px 24px;
+  }
+  .card-icon { font-size: 2.2rem; margin-bottom: 12px; }
+  .card p { font-size: 0.95rem; color: #cbd5e1; line-height: 1.8; }
+  .card-red { border-color: rgba(248,113,113,0.3); background: rgba(248,113,113,0.08); }
+  .card-blue { border-color: rgba(96,165,250,0.3); background: rgba(96,165,250,0.08); }
+  .card-green { border-color: rgba(52,211,153,0.3); background: rgba(52,211,153,0.08); }
+  .card-yellow { border-color: rgba(251,191,36,0.3); background: rgba(251,191,36,0.08); }
+  .card-purple { border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.08); }
+
+  .list { list-style: none; font-size: 1.1rem; line-height: 2.2; }
+  .list li { display: flex; align-items: flex-start; gap: 12px; }
+  .list .li-icon { flex-shrink: 0; margin-top: 4px; }
+
+  .flow { display: flex; align-items: center; justify-content: center; gap: 0; width: 100%; max-width: 1050px; }
+  .flow-step { text-align: center; flex: 1; }
+  .flow-circle {
+    width: 90px; height: 90px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.2rem; margin: 0 auto 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+  .flow-circle.blue { background: #1e3a5f; border: 2px solid #60a5fa; }
+  .flow-circle.green { background: #0d3320; border: 2px solid #34d399; }
+  .flow-circle.yellow { background: #3d2e05; border: 2px solid #fbbf24; }
+  .flow-circle.purple { background: #2e1a47; border: 2px solid #a78bfa; }
+  .flow-circle.red { background: #3b1318; border: 2px solid #f87171; }
+  .flow-step h4 { font-size: 0.95rem; margin-bottom: 4px; }
+  .flow-step p { font-size: 0.8rem; color: #94a3b8; line-height: 1.5; }
+  .flow-arrow { font-size: 1.4rem; color: #475569; padding: 0 2px; margin-top: -16px; }
+
+  .highlight-box {
+    background: rgba(96,165,250,0.1); border: 2px solid rgba(96,165,250,0.3);
+    border-radius: 16px; padding: 28px 32px; max-width: 800px; text-align: center;
+    font-size: 1.15rem; line-height: 2;
+  }
+
+  .demo-box {
+    background: #1e293b; border-radius: 12px; padding: 24px 28px;
+    font-family: "SF Mono", "Fira Code", monospace; font-size: 0.9rem; line-height: 2;
+    color: #94a3b8; max-width: 650px; width: 100%; border: 1px solid #334155;
+  }
+  .demo-box .prompt { color: #60a5fa; }
+  .demo-box .ai { color: #34d399; }
+  .demo-box .file { color: #fbbf24; }
+  .demo-box .comment { color: #64748b; font-style: italic; }
+  .demo-box .ng { color: #f87171; }
+
+  .compare-table {
+    width: 100%; max-width: 960px; border-collapse: separate; border-spacing: 0;
+    border-radius: 12px; overflow: hidden; font-size: 0.9rem;
+  }
+  .compare-table thead th {
+    background: #1e293b; padding: 12px 14px; text-align: center; font-weight: 700; border-bottom: 2px solid #334155;
+  }
+  .compare-table thead th:first-child { text-align: left; }
+  .compare-table tbody td {
+    padding: 10px 14px; background: rgba(255,255,255,0.03); border-bottom: 1px solid #1e293b; text-align: center; color: #cbd5e1;
+  }
+  .compare-table tbody td:first-child { text-align: left; font-weight: 600; }
+  .compare-table tbody tr:last-child td { border-bottom: none; }
+  .compare-best { background: rgba(96,165,250,0.12) !important; font-weight: 700; color: #60a5fa; }
+
+  .file-tree {
+    background: rgba(255,255,255,0.05); border-radius: 10px; padding: 16px 20px;
+    font-family: "SF Mono", "Fira Code", monospace; font-size: 0.82rem; line-height: 1.9; color: #94a3b8;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 1. 表紙 ===== -->
+<div class="slide active center" id="s1">
+  <h1>福祉事業の業務を<br><span class="accent">AIで自動化</span>する</h1>
+  <p class="subtitle">ランバト様 ご提案</p>
+  <p style="color:#64748b; font-size:0.9rem;">株式会社斗 ― 2026.04.11</p>
+  <div class="slide-num">1 / 18</div>
+</div>
+
+<!-- ===== 2. 今の課題 ===== -->
+<div class="slide center" id="s2">
+  <h2>今、<span class="accent-red">こうなっていませんか？</span></h2>
+  <div class="two-col" style="margin-top:12px;">
+    <div class="card card-red">
+      <div class="card-icon">⏰</div>
+      <h3>返信のたびに法令を確認</h3>
+      <p>触れていい/いけないラインを毎回調べてから返信。担当者によって品質に差が出る</p>
+    </div>
+    <div class="card card-red">
+      <div class="card-icon">👤</div>
+      <h3>ベテランが全件チェック</h3>
+      <p>ベテラン（定石）が全ての返信を確認してから送信。<strong>チェック負荷が大きい</strong></p>
+    </div>
+    <div class="card card-red">
+      <div class="card-icon">🔍</div>
+      <h3>法令が県ごとに違う</h3>
+      <p>同じ制度でも県・市で運用が異なる。法改正のたびに最新情報を追わないといけない</p>
+    </div>
+    <div class="card card-red">
+      <div class="card-icon">💭</div>
+      <h3>ノウハウが共有されない</h3>
+      <p>上手い人の返信パターンが頭の中にしかない。新人は毎回ゼロから考える</p>
+    </div>
+  </div>
+  <div class="slide-num">2 / 18</div>
+</div>
+
+<!-- ===== 3. 導入するとこうなる ===== -->
+<div class="slide center" id="s3">
+  <h2>AIを導入すると<span class="accent-green">こうなる</span></h2>
+  <div class="two-col" style="margin-top:12px;">
+    <div class="card card-green">
+      <div class="card-icon">🤖</div>
+      <h3>AIが返信文を自動生成</h3>
+      <p>ナレッジを参照して、上手い人と同じ品質の返信文を自動で作る。<strong>スタッフは送るだけ</strong></p>
+    </div>
+    <div class="card card-green">
+      <div class="card-icon">🛡️</div>
+      <h3>NGラインを自動ガード</h3>
+      <p>触れてはいけない表現をAIが自動で避ける。ベテランのチェック負荷が大幅に減る</p>
+    </div>
+    <div class="card card-green">
+      <div class="card-icon">⚡</div>
+      <h3>法令の違いもAIが判断</h3>
+      <p>県ごとの法令情報がナレッジに貯まっている。AIが自動で参照して正しく回答</p>
+    </div>
+    <div class="card card-green">
+      <div class="card-icon">📚</div>
+      <h3>ナレッジが貯まり続ける</h3>
+      <p>使うほどナレッジが増え、AIの精度が上がる。<strong>誰がやっても同じ品質</strong></p>
+    </div>
+  </div>
+  <div class="slide-num">3 / 18</div>
+</div>
+
+<!-- ===== 4. 業務フロー:今 ===== -->
+<div class="slide center" id="s4">
+  <h2>今の業務フロー</h2>
+  <div class="flow" style="margin-top:20px;">
+    <div class="flow-step">
+      <div class="flow-circle yellow">💬</div>
+      <h4>問い合わせが来る</h4>
+      <p>チャットワークで<br>連絡が入る</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle red">🔍</div>
+      <h4>担当者が調べる</h4>
+      <p>法令を確認し<br>NGラインを判断</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle blue">✍️</div>
+      <h4>返信を書く</h4>
+      <p>自分なりに<br>返信文を作成</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle purple">👁️</div>
+      <h4>ベテランがチェック</h4>
+      <p>法令的に問題ないか<br><strong style="color:#f87171;">全件確認（負荷大）</strong></p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle green">📤</div>
+      <h4>送信</h4>
+    </div>
+  </div>
+  <p class="small-note">「調べる」「書く」「チェック」に毎回時間がかかっている</p>
+  <div class="slide-num">4 / 18</div>
+</div>
+
+<!-- ===== 5. 業務フロー:導入後 ===== -->
+<div class="slide center" id="s5">
+  <h2>導入後の業務フロー</h2>
+  <div class="flow" style="margin-top:20px; max-width:700px;">
+    <div class="flow-step">
+      <div class="flow-circle yellow">💬</div>
+      <h4>問い合わせが来る</h4>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle blue">🤖</div>
+      <h4>AIが返信を自動生成</h4>
+      <p>ナレッジ＋法令＋<br>NGラインを全て参照</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle green">✅</div>
+      <h4>確認して送信</h4>
+      <p>担当者が確認して<br>送るだけ</p>
+    </div>
+  </div>
+  <div class="highlight-box" style="margin-top:36px;">
+    「調べる」「書く」をAIが代行 → <strong>ベテランのチェック工程がなくなる</strong><br>
+    <span style="color:#94a3b8; font-size:0.95rem;">※完全自動送信ではなく、人が確認してから送信する承認フロー</span>
+  </div>
+  <div class="slide-num">5 / 18</div>
+</div>
+
+<!-- ===== 6. デモ ===== -->
+<div class="slide center" id="s6">
+  <h2 style="margin-bottom:28px;">実際の<span class="accent">使い方</span>イメージ</h2>
+  <div class="demo-box" style="text-align:left;">
+    <span class="comment">── 担当者がCursorに入力 ──</span><br>
+    <span class="prompt">👤 担当者:</span><br>
+    利用者のご家族から、サービス利用条件について<br>
+    問い合わせが来ました。返信を作成してください。<br><br>
+    <span class="comment">── AIがナレッジを自動参照 ──</span><br>
+    <span class="ai">🤖 AI:</span><br>
+    <span class="file">📂 返信例/利用者家族への連絡.md を参照</span><br>
+    <span class="file">📂 法令/埼玉県.md を参照</span><br>
+    <span class="ng">🚫 触れてはいけないライン.md でNGチェック済み</span><br><br>
+    ご家族様への回答文を作成しました。<br>
+    法令上の制約も踏まえた内容です。<br><br>
+    <span class="comment">── 担当者は確認して送るだけ ──</span>
+  </div>
+  <div class="slide-num">6 / 18</div>
+</div>
+
+<!-- ===== 7. なぜCursor+GitHubか ===== -->
+<div class="slide center" id="s7">
+  <h2 style="margin-bottom:28px;">なぜ <span class="accent">Cursor + GitHub</span> なのか</h2>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>評価軸</th>
+        <th>Cursor<br>+GitHub</th>
+        <th>ChatGPT<br>Team</th>
+        <th>Notion<br>AI</th>
+        <th>Microsoft<br>Copilot</th>
+        <th>Dify</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>AIが毎回ナレッジを読むか</td><td class="compare-best">◎ 必ず</td><td>△</td><td>○</td><td>○</td><td>◎</td></tr>
+      <tr><td>変更履歴の完全性</td><td class="compare-best">◎ 永久</td><td>✕</td><td>○ 90日</td><td>○</td><td>△</td></tr>
+      <tr><td>誤った変更を元に戻せるか</td><td class="compare-best">◎</td><td>✕</td><td>○</td><td>○</td><td>△</td></tr>
+      <tr><td>県別の法規制を分けて管理</td><td class="compare-best">◎</td><td>△</td><td>○</td><td>○</td><td>○</td></tr>
+      <tr><td>返信文の自動生成品質</td><td class="compare-best">◎</td><td>○</td><td>○</td><td>○</td><td>◎</td></tr>
+      <tr><td>コスト（5人/月）</td><td class="compare-best">約1.5万円</td><td>約2万円</td><td>約1.8万円</td><td>約2.8万円</td><td>API代のみ</td></tr>
+    </tbody>
+  </table>
+  <div class="slide-num">7 / 18</div>
+</div>
+
+<!-- ===== 8. Cursorを選ぶ決定的理由 ===== -->
+<div class="slide" id="s8">
+  <h2 class="center" style="margin-bottom:32px;">Cursor + GitHub を選ぶ<span class="accent">決定的理由</span></h2>
+  <div class="three-col">
+    <div class="card card-blue center">
+      <div class="card-icon">🔒</div>
+      <h3>AIが毎回<br>必ず全文読む</h3>
+      <p>他ツールはAI検索で「探す」方式 → 見落としが起きる。<br><br>福祉の法規制は<strong>見落とし＝事故</strong>。確実性が最重要</p>
+    </div>
+    <div class="card card-purple center">
+      <div class="card-icon">📝</div>
+      <h3>変更履歴が<br>永久に残る</h3>
+      <p>誰が・いつ・どのルールを変えたか完全追跡。<br><br><strong>行政監査</strong>で「当時のルール」を証明できる</p>
+    </div>
+    <div class="card card-green center">
+      <div class="card-icon">⏪</div>
+      <h3>誤った変更を<br>即座に戻せる</h3>
+      <p>間違った法令情報が入っても1クリックで元に戻せる。<br><br><strong>法令を扱うからこそ必須</strong>の安全装置</p>
+    </div>
+  </div>
+  <div class="slide-num">8 / 18</div>
+</div>
+
+<!-- ===== 9. ナレッジを貯める仕組み ===== -->
+<div class="slide center" id="s9">
+  <h2 style="margin-bottom:28px;">ナレッジを<span class="accent">貯める仕組み</span></h2>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-circle green" style="width:100px;height:100px;font-size:2.4rem;">📂</div>
+      <h4>ナレッジファイル</h4>
+      <p>返信例・法令・NGラインを<br>テキストで保存</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle blue" style="width:100px;height:100px;font-size:2.4rem;">📋</div>
+      <h4>Cursor Rules</h4>
+      <p>「常にナレッジを読め」<br>というAIへの指示書</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle yellow" style="width:100px;height:100px;font-size:2.4rem;">✨</div>
+      <h4>AIが自動生成</h4>
+      <p>ナレッジに基づいた<br>返信文が出てくる</p>
+    </div>
+  </div>
+  <p class="small-note" style="margin-top:32px;">ファイルを追加・編集するだけでAIの知識が増える。特別な操作は不要。</p>
+  <div class="slide-num">9 / 18</div>
+</div>
+
+<!-- ===== 10. フォルダ構成 ===== -->
+<div class="slide center" id="s10">
+  <h2 style="margin-bottom:28px;">ナレッジの<span class="accent">フォルダ構成</span></h2>
+  <div class="file-tree" style="max-width:550px; text-align:left; font-size:0.95rem; line-height:2.2;">
+    📁 ナレッジ/<br>
+    ├── 📁 <span style="color:#60a5fa;">返信例/</span><br>
+    │   ├── 利用者家族への連絡.md<br>
+    │   ├── 行政への報告.md<br>
+    │   ├── 他施設との連携.md<br>
+    │   └── 苦情対応.md<br>
+    ├── 📁 <span style="color:#34d399;">法令/</span><br>
+    │   ├── 共通ルール.md<br>
+    │   ├── 埼玉県.md<br>
+    │   └── <span style="color:#f87171;">触れてはいけないライン.md</span><br>
+    └── 📁 <span style="color:#fbbf24;">事業所/</span><br>
+        └── Royal.md
+  </div>
+  <p class="small-note">普通のフォルダとファイル。誰でも読める・編集できる。</p>
+  <div class="slide-num">10 / 18</div>
+</div>
+
+<!-- ===== 11. ナレッジの中身:返信例 ===== -->
+<div class="slide" id="s11">
+  <h2 class="center" style="margin-bottom:28px;">ナレッジに<span class="accent">何を入れるか</span> ①</h2>
+  <div class="two-col">
+    <div class="card card-blue">
+      <h3>💬 返信例（ベテランのパターン）</h3>
+      <ul class="list" style="font-size:0.95rem; margin-top:12px;">
+        <li><span class="li-icon">•</span>利用者家族への日常連絡・スケジュール調整</li>
+        <li><span class="li-icon">•</span>苦情・相談への対応</li>
+        <li><span class="li-icon">•</span>他施設への紹介・受入れ打診</li>
+        <li><span class="li-icon">•</span>行政への報告書</li>
+        <li><span class="li-icon">•</span>サービス担当者会議の招集・議事録</li>
+      </ul>
+      <p style="margin-top:14px; font-size:0.85rem; color:#94a3b8;">チャットワークの過去ログからベテランの返信例をナレッジ化</p>
+    </div>
+    <div class="card card-red">
+      <h3>🚫 触れてはいけないライン</h3>
+      <ul class="list" style="font-size:0.95rem; margin-top:12px;">
+        <li><span class="li-icon">✕</span>職員が医学的判断・診断名を伝える</li>
+        <li><span class="li-icon">✕</span>支給決定の可否を断言する</li>
+        <li><span class="li-icon">✕</span>他の利用者の状況を引き合いに出す</li>
+        <li><span class="li-icon">✕</span>本人同意なく第三者に個人情報開示</li>
+        <li><span class="li-icon">✕</span>虐待の疑い「様子見」</li>
+      </ul>
+      <p style="margin-top:14px; font-size:0.85rem; color:#94a3b8;">AIがこれらの表現を使おうとした場合、自動でブロック</p>
+    </div>
+  </div>
+  <div class="slide-num">11 / 18</div>
+</div>
+
+<!-- ===== 12. ナレッジの中身:法令・事業所 ===== -->
+<div class="slide" id="s12">
+  <h2 class="center" style="margin-bottom:28px;">ナレッジに<span class="accent">何を入れるか</span> ②</h2>
+  <div class="two-col">
+    <div class="card card-green">
+      <h3>📜 法令・制度（県ごとに異なるもの）</h3>
+      <ul class="list" style="font-size:0.95rem; margin-top:12px;">
+        <li><span class="li-icon">•</span>人員配置基準の解釈</li>
+        <li><span class="li-icon">•</span>事故報告書の様式・報告基準</li>
+        <li><span class="li-icon">•</span>加算届の提出期限・添付書類</li>
+        <li><span class="li-icon">•</span>送迎範囲・設備基準の上乗せ規制</li>
+        <li><span class="li-icon">•</span>支給量の基準（自治体で異なる）</li>
+      </ul>
+      <p style="margin-top:14px; font-size:0.85rem; color:#94a3b8;">県・市ごとにファイルを分けて管理。法改正時はファイルを更新するだけ</p>
+    </div>
+    <div class="card card-yellow">
+      <h3>🏢 事業所・契約ごとのルール</h3>
+      <ul class="list" style="font-size:0.95rem; margin-top:12px;">
+        <li><span class="li-icon">•</span>各事業所の契約条件・サービス内容</li>
+        <li><span class="li-icon">•</span>報酬算定の地域区分</li>
+        <li><span class="li-icon">•</span>処遇改善加算の計画内容</li>
+        <li><span class="li-icon">•</span>BCP（業務継続計画）の内容</li>
+        <li><span class="li-icon">•</span>第三者評価の受審状況</li>
+      </ul>
+      <p style="margin-top:14px; font-size:0.85rem; color:#94a3b8;">事業所が増えたらファイルを追加するだけでAIが対応可能に</p>
+    </div>
+  </div>
+  <div class="slide-num">12 / 18</div>
+</div>
+
+<!-- ===== 13. 崩れない運用ルール ===== -->
+<div class="slide center" id="s13">
+  <h2 style="margin-bottom:28px;">全員がうまく使い続ける<span class="accent-yellow">4つのルール</span></h2>
+  <div class="four-col">
+    <div class="card center" style="border-top: 3px solid #fbbf24;">
+      <div class="card-icon">🗂️</div>
+      <h3 style="font-size:1rem;">フォルダ構成<br>を固定</h3>
+      <p style="font-size:0.85rem;">分類ルールを最初に決めて統一。AIが確実に見つけられる</p>
+    </div>
+    <div class="card center" style="border-top: 3px solid #fbbf24;">
+      <div class="card-icon">✅</div>
+      <h3 style="font-size:1rem;">レビューして<br>から反映</h3>
+      <p style="font-size:0.85rem;">変更は管理者が確認してから反映。間違った情報を防ぐ</p>
+    </div>
+    <div class="card center" style="border-top: 3px solid #fbbf24;">
+      <div class="card-icon">📝</div>
+      <h3 style="font-size:1rem;">書き方の<br>テンプレ統一</h3>
+      <p style="font-size:0.85rem;">全員が同じフォーマットで書く。AIの理解精度が上がる</p>
+    </div>
+    <div class="card center" style="border-top: 3px solid #fbbf24;">
+      <div class="card-icon">🔄</div>
+      <h3 style="font-size:1rem;">月1回の<br>棚卸し</h3>
+      <p style="font-size:0.85rem;">法改正の反映漏れを定期チェック。古い情報を放置しない</p>
+    </div>
+  </div>
+  <div class="highlight-box" style="margin-top:28px; border-color:rgba(251,191,36,0.3); background:rgba(251,191,36,0.08);">
+    この<strong style="color:#fbbf24;">4つのルール</strong>で、誰が触っても崩れないナレッジ基盤になる
+  </div>
+  <div class="slide-num">13 / 18</div>
+</div>
+
+<!-- ===== 14. ナレッジの更新サイクル ===== -->
+<div class="slide center" id="s14">
+  <h2 style="margin-bottom:28px;">ナレッジの<span class="accent-purple">更新サイクル</span></h2>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-circle yellow">💡</div>
+      <h4>気づく</h4>
+      <p>「法令変わった」<br>「この返し方いいな」</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle blue">✏️</div>
+      <h4>ファイルを編集</h4>
+      <p>Cursorでナレッジを修正</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle purple">👁️</div>
+      <h4>管理者がレビュー</h4>
+      <p>確認してOKなら反映</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle green">🤖</div>
+      <h4>AIに即反映</h4>
+      <p>次から最新ナレッジで回答</p>
+    </div>
+  </div>
+  <p class="small-note" style="margin-top:28px;">行政監査時に「当時のナレッジ状態」を証拠として提示できる</p>
+  <div class="slide-num">14 / 18</div>
+</div>
+
+<!-- ===== 15. 権限設計 ===== -->
+<div class="slide center" id="s15">
+  <h2 style="margin-bottom:28px;">GitHub <span class="accent-purple">権限設計</span></h2>
+  <table class="compare-table" style="max-width:700px;">
+    <thead><tr><th>役割</th><th>権限</th><th>できること</th></tr></thead>
+    <tbody>
+      <tr><td>管理者（斗 & 社内IT担当）</td><td><strong style="color:#f87171;">Admin</strong></td><td>全ての編集・設定・承認</td></tr>
+      <tr><td>ベテラン（定石）</td><td><strong style="color:#60a5fa;">Write</strong></td><td>ナレッジ追加・修正・レビュー</td></tr>
+      <tr><td>福祉担当者</td><td><strong style="color:#60a5fa;">Write</strong></td><td>ナレッジ追加・修正（レビュー後反映）</td></tr>
+      <tr><td>その他スタッフ</td><td><strong style="color:#94a3b8;">Read</strong></td><td>閲覧・AIの利用のみ</td></tr>
+    </tbody>
+  </table>
+  <div class="slide-num">15 / 18</div>
+</div>
+
+<!-- ===== 16. なぜ斗がやるのか ===== -->
+<div class="slide center" id="s16">
+  <h2 style="margin-bottom:32px;">なぜ<span class="accent">斗（HISHAKU）</span>がこれをやるのか</h2>
+  <div class="three-col">
+    <div class="card center">
+      <div class="card-icon">🤖</div>
+      <h3>AI × 業務自動化の実績</h3>
+      <p>複数クライアントでAIナレッジ基盤を構築・運用中。Cursor + GitHubの運用ノウハウが豊富</p>
+    </div>
+    <div class="card center">
+      <div class="card-icon">🔧</div>
+      <h3>構築から運用まで一気通貫</h3>
+      <p>設計 → 構築 → 研修 → 運用サポートまでワンストップ対応</p>
+    </div>
+    <div class="card center">
+      <div class="card-icon">🤝</div>
+      <h3>ランバト様の事業理解</h3>
+      <p>IT事業・融資支援まで包括サポート中。業務文脈を理解した上で設計できる</p>
+    </div>
+  </div>
+  <div class="slide-num">16 / 18</div>
+</div>
+
+<!-- ===== 17. 導入の流れ ===== -->
+<div class="slide center" id="s17">
+  <h2 style="margin-bottom:32px;">導入の<span class="accent">流れ</span></h2>
+  <div class="flow" style="max-width:800px;">
+    <div class="flow-step">
+      <div class="flow-circle blue" style="font-size:1.8rem; font-weight:900;">1</div>
+      <h4>説明・合意</h4>
+      <p>仕組みと活用イメージを共有</p>
+      <p style="color:#60a5fa; font-weight:700; margin-top:6px; font-size:0.8rem;">4/11（金）</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle purple" style="font-size:1.8rem; font-weight:900;">2</div>
+      <h4>環境セットアップ</h4>
+      <p>Cursor・GitHub<br>インストール・設定</p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-circle green" style="font-size:1.8rem; font-weight:900;">3</div>
+      <h4>ナレッジ投入→運用</h4>
+      <p>過去ログからナレッジ化<br>実務で活用スタート</p>
+    </div>
+  </div>
+  <p class="small-note">→ 詳細スケジュールは別資料にてご説明</p>
+  <div class="slide-num">17 / 18</div>
+</div>
+
+<!-- ===== 18. まとめ ===== -->
+<div class="slide center" id="s18">
+  <h2 style="margin-bottom:36px;">まとめ</h2>
+  <div class="full-w" style="max-width:750px;">
+    <ul class="list" style="font-size: 1.15rem; line-height:2.5;">
+      <li><span class="li-icon accent">✦</span>問い合わせが来たら → AIが返信文を<strong>自動生成</strong> → <strong>送るだけ</strong></li>
+      <li><span class="li-icon accent-red">✦</span>触れてはいけないラインをAIが<strong>自動でガード</strong></li>
+      <li><span class="li-icon accent-green">✦</span>法令・制度の県ごとの違いもナレッジで<strong>管理・自動反映</strong></li>
+      <li><span class="li-icon accent-purple">✦</span>GitHubで変更履歴が残り、<strong>行政監査にも対応</strong></li>
+      <li><span class="li-icon accent-yellow">✦</span>使うほどナレッジが貯まり、<strong>AIの精度が上がり続ける</strong></li>
+    </ul>
+  </div>
+  <div class="slide-num">18 / 18</div>
+</div>
+
+<button class="nav-btn prev" onclick="go(-1)">‹</button>
+<button class="nav-btn next" onclick="go(1)">›</button>
+<div class="nav" id="nav"></div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let cur = 0;
+  const nav = document.getElementById('nav');
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => show(i);
+    nav.appendChild(d);
+  });
+  function show(n) {
+    slides[cur].classList.remove('active');
+    nav.children[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    nav.children[cur].classList.add('active');
+  }
+  function go(d) { show(cur + d); }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1); }
+  });
+  let tx = 0;
+  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+  });
+</script>
+</body>
+</html>
