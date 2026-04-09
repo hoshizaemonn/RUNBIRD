@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ナレッジ投入・編集マニュアル</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+    background: #f8fafc; color: #1e293b; padding: 48px 24px; line-height: 1.8;
+  }
+  .page { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #94a3b8; font-size: 0.95rem; margin-bottom: 48px; }
+  h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; padding-top: 8px; }
+  h3 { font-size: 1.05rem; font-weight: 700; margin: 20px 0 10px; color: #334155; }
+  p { font-size: 0.95rem; color: #475569; margin-bottom: 12px; }
+
+  .section {
+    background: #fff; border-radius: 16px; padding: 32px 28px;
+    margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .section.green { border-left: 5px solid #059669; }
+  .section.blue { border-left: 5px solid #3b82f6; }
+  .section.purple { border-left: 5px solid #8b5cf6; }
+  .section.yellow { border-left: 5px solid #f59e0b; }
+  .section.red { border-left: 5px solid #ef4444; }
+
+  .cmd {
+    background: #1e293b; color: #e2e8f0; border-radius: 10px;
+    padding: 16px 20px; font-family: "Consolas", "SF Mono", monospace;
+    font-size: 0.9rem; line-height: 2; margin: 12px 0; overflow-x: auto;
+  }
+  .cmd .comment { color: #64748b; }
+  .cmd .highlight { color: #60a5fa; }
+  .cmd .file { color: #fbbf24; }
+  .cmd .folder { color: #34d399; }
+
+  .tip {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px;
+    padding: 14px 18px; font-size: 0.88rem; color: #1e40af; margin: 12px 0;
+  }
+  .tip::before { content: "💡 "; }
+
+  .warn-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 14px 18px; font-size: 0.88rem; color: #991b1b; margin: 12px 0;
+  }
+  .warn-box::before { content: "⚠️ "; }
+
+  .rule-box {
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 14px 18px; font-size: 0.88rem; color: #92400e; margin: 12px 0;
+  }
+  .rule-box::before { content: "📋 "; }
+
+  .steps { list-style: none; margin: 12px 0; font-size: 0.95rem; }
+  .steps li {
+    padding: 10px 0 10px 28px; position: relative; border-bottom: 1px solid #f1f5f9;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: attr(data-num); position: absolute; left: 0; font-weight: 700; color: #059669;
+  }
+
+  .template {
+    background: #f0fdf4; border: 2px solid #bbf7d0; border-radius: 12px;
+    padding: 20px 24px; margin: 16px 0;
+  }
+  .template h4 { font-size: 0.95rem; color: #047857; margin-bottom: 12px; }
+  .template pre {
+    background: #fff; border-radius: 8px; padding: 16px;
+    font-family: "Consolas", "SF Mono", monospace; font-size: 0.85rem;
+    line-height: 1.9; color: #333; overflow-x: auto; white-space: pre-wrap;
+  }
+
+  .folder-tree {
+    background: #f8fafc; border-radius: 10px; padding: 16px 20px;
+    font-family: "Consolas", "SF Mono", monospace; font-size: 0.88rem;
+    line-height: 2; margin: 12px 0;
+  }
+
+  .shortcut-table {
+    width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 12px 0;
+  }
+  .shortcut-table th {
+    background: #f1f5f9; padding: 10px 14px; text-align: left;
+    font-weight: 600; border-bottom: 2px solid #e2e8f0;
+  }
+  .shortcut-table td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; }
+
+  .footer { text-align: center; padding: 36px 0; color: #bbb; font-size: 0.8rem; }
+  @media print { body { padding: 20px; } .section { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>ナレッジ投入・編集マニュアル</h1>
+<p class="subtitle">ランバード様 福祉事業ナレッジAI環境</p>
+
+<!-- ===== フォルダ構成 ===== -->
+<div class="section green">
+  <h2>1. フォルダ構成（これを崩さないこと）</h2>
+  <div class="folder-tree">
+    📁 ナレッジ/<br>
+    ├── 📁 <span style="color:#3b82f6;">返信例/</span> ← ベテランの返信パターンを入れる<br>
+    │   ├── 利用者家族への連絡.md<br>
+    │   ├── 行政への報告.md<br>
+    │   ├── 他施設との連携.md<br>
+    │   ├── 苦情対応.md<br>
+    │   └── <strong style="color:#059669;">（ここに新しいファイルを追加）</strong><br>
+    ├── 📁 <span style="color:#059669;">法令/</span> ← 法令・制度情報を入れる<br>
+    │   ├── 共通ルール.md<br>
+    │   ├── 埼玉県.md<br>
+    │   ├── 触れてはいけないライン.md<br>
+    │   └── <strong style="color:#059669;">（県が増えたらファイルを追加）</strong><br>
+    └── 📁 <span style="color:#f59e0b;">事業所/</span> ← 事業所固有の情報を入れる<br>
+        ├── Royal.md<br>
+        └── <strong style="color:#059669;">（事業所が増えたらファイルを追加）</strong>
+  </div>
+  <div class="rule-box">フォルダの名前を変えたり、新しいフォルダを勝手に作ったりしないでください。AIが参照できなくなります。</div>
+</div>
+
+<!-- ===== 新しいナレッジを追加する ===== -->
+<div class="section green">
+  <h2>2. 新しいナレッジファイルを追加する</h2>
+
+  <h3>例：新しい返信パターンを追加したい</h3>
+  <ol class="steps">
+    <li data-num="①">左のサイドバーで「ナレッジ → 返信例」フォルダを右クリック</li>
+    <li data-num="②">「New File」をクリック</li>
+    <li data-num="③">ファイル名を入力（例：<strong>契約更新の案内.md</strong>）<br>※必ず <strong>.md</strong> をつけること</li>
+    <li data-num="④">下のテンプレートに沿って中身を書く</li>
+    <li data-num="⑤"><code>Ctrl + S</code> で保存</li>
+    <li data-num="⑥">GitHubに反映する（→ GitHubマニュアル参照）</li>
+  </ol>
+</div>
+
+<!-- ===== 返信例のテンプレート ===== -->
+<div class="section blue">
+  <h2>3. 返信例の書き方テンプレート</h2>
+  <p>全ての返信例は同じフォーマットで書いてください。AIの理解精度が上がります。</p>
+
+  <div class="template">
+    <h4>テンプレート（コピーして使ってください）</h4>
+    <pre># ○○○○（ファイルのテーマ）
+
+## ○○の場合
+
+### パターン
+どんな状況で使うか（例：家族から○○について聞かれた場合）
+
+### 返信例
+```
+○○様
+
+いつもお世話になっております。
+（返信文をここに書く）
+```
+
+### ポイント
+- この返信で気をつけること1
+- この返信で気をつけること2
+- この返信で気をつけること3
+
+---
+
+## △△の場合
+
+### パターン
+（別のパターンを同じ形式で追加）
+
+### 返信例
+```
+（返信文）
+```
+
+### ポイント
+- ポイント1
+- ポイント2</pre>
+  </div>
+
+  <div class="rule-box">必ず「パターン → 返信例 → ポイント」の3点セットで書いてください。この形式が統一されていることがAIの精度に直結します。</div>
+</div>
+
+<!-- ===== 法令ナレッジのテンプレート ===== -->
+<div class="section blue">
+  <h2>4. 法令・制度の書き方テンプレート</h2>
+
+  <div class="template">
+    <h4>テンプレート（新しい県を追加する場合）</h4>
+    <pre># ○○県の法令・制度情報
+
+> **最終更新:** 2026年○月
+> **注意:** 法改正があった場合はこのファイルを更新してください。
+
+---
+
+## ○○県独自の運用ルール
+
+### 事故報告
+- 報告先：○○県○○課
+- 報告期限：発生から○日以内
+- 様式：（様式名 or 自由書式）
+
+### 加算届
+- 提出先：○○
+- 提出期限：○○
+- 必要書類：○○
+
+### その他の独自ルール
+- （県固有のルールを記載）
+
+---
+
+## 更新履歴
+
+| 日付 | 更新者 | 内容 |
+|------|--------|------|
+| 2026-○○-○○ | ○○ | ○○を追加 |</pre>
+  </div>
+
+  <div class="warn-box">法令情報を変更した場合は、必ず「更新履歴」テーブルに記録を残してください。いつ・誰が・何を変えたかの証跡になります。</div>
+</div>
+
+<!-- ===== 事業所ナレッジのテンプレート ===== -->
+<div class="section blue">
+  <h2>5. 事業所情報の書き方テンプレート</h2>
+
+  <div class="template">
+    <h4>テンプレート（新しい事業所を追加する場合）</h4>
+    <pre># ○○事業所 情報
+
+> **最終更新:** 2026年○月
+
+---
+
+## 基本情報
+- **事業所名:** （正式名称）
+- **所在地:** （住所）
+- **サービス種別:** （例：生活介護、就労継続支援A型 等）
+- **定員:** （定員数）
+- **営業日:** （曜日）
+- **営業時間:** （時間）
+
+## 契約条件・サービス内容
+（この事業所固有の条件を記載）
+
+## 報酬算定
+- **地域区分:** （1級地〜7級地）
+- **主な加算:** （取得している加算を記載）
+
+## 更新履歴
+
+| 日付 | 更新者 | 内容 |
+|------|--------|------|
+| 2026-○○-○○ | ○○ | 初期作成 |</pre>
+  </div>
+</div>
+
+<!-- ===== 既存ファイルの編集 ===== -->
+<div class="section purple">
+  <h2>6. 既存のナレッジを編集する</h2>
+  <ol class="steps">
+    <li data-num="①">左のサイドバーで編集したいファイルをクリックして開く</li>
+    <li data-num="②">中身を直接書き換える（普通のメモ帳と同じ）</li>
+    <li data-num="③"><code>Ctrl + S</code> で保存</li>
+    <li data-num="④">GitHubに反映する（→ GitHubマニュアル参照）</li>
+  </ol>
+
+  <h3>よくある編集パターン</h3>
+  <table class="shortcut-table">
+    <tr><th>やりたいこと</th><th>やり方</th></tr>
+    <tr><td>新しい返信パターンを追加</td><td>既存ファイルの末尾に <code>---</code> を入れて、同じ形式で追加</td></tr>
+    <tr><td>返信例を修正</td><td>該当の返信例の部分を直接書き換え</td></tr>
+    <tr><td>法令が改正された</td><td>該当県のファイルを更新 + 更新履歴に記録</td></tr>
+    <tr><td>NGラインを追加</td><td>触れてはいけないライン.md に同じ形式で追加</td></tr>
+  </table>
+</div>
+
+<!-- ===== やってはいけないこと ===== -->
+<div class="section red">
+  <h2>7. やってはいけないこと</h2>
+  <table class="shortcut-table">
+    <tr><th>NG</th><th>理由</th></tr>
+    <tr><td>フォルダ名を変える</td><td>AIが参照できなくなる</td></tr>
+    <tr><td>フォルダの外にファイルを置く</td><td>AIが見つけられない</td></tr>
+    <tr><td>.cursorrules を編集する</td><td>AIの動作が変わってしまう。変更は斗に相談</td></tr>
+    <tr><td>テンプレートと違う形式で書く</td><td>AIの理解精度が下がる</td></tr>
+    <tr><td>法令を変更して更新履歴に書かない</td><td>いつ変わったか追跡できなくなる</td></tr>
+  </table>
+</div>
+
+<!-- ===== 全体の流れまとめ ===== -->
+<div class="section yellow">
+  <h2>8. まとめ：ナレッジ投入の全体の流れ</h2>
+  <ol class="steps">
+    <li data-num="①"><code>git pull</code> で最新の状態にする</li>
+    <li data-num="②">ファイルを新規作成 or 既存ファイルを編集</li>
+    <li data-num="③">テンプレートに沿って内容を記入</li>
+    <li data-num="④"><code>Ctrl + S</code> で保存</li>
+    <li data-num="⑤"><code>git add -A && git commit -m "変更内容" && git push</code></li>
+    <li data-num="⑥">完了。次からAIが最新ナレッジで回答する</li>
+  </ol>
+</div>
+
+<div class="footer">株式会社斗 — 2026.04</div>
+</div>
+</body>
+</html>

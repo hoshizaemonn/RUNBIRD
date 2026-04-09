@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHubの使い方マニュアル</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+    background: #f8fafc; color: #1e293b; padding: 48px 24px; line-height: 1.8;
+  }
+  .page { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #94a3b8; font-size: 0.95rem; margin-bottom: 48px; }
+  h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; padding-top: 8px; }
+  h3 { font-size: 1.05rem; font-weight: 700; margin: 20px 0 10px; color: #334155; }
+  p { font-size: 0.95rem; color: #475569; margin-bottom: 12px; }
+
+  .section {
+    background: #fff; border-radius: 16px; padding: 32px 28px;
+    margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .section.purple { border-left: 5px solid #8b5cf6; }
+  .section.blue { border-left: 5px solid #3b82f6; }
+  .section.green { border-left: 5px solid #059669; }
+  .section.yellow { border-left: 5px solid #f59e0b; }
+  .section.red { border-left: 5px solid #ef4444; }
+
+  .cmd {
+    background: #1e293b; color: #e2e8f0; border-radius: 10px;
+    padding: 16px 20px; font-family: "Consolas", "SF Mono", monospace;
+    font-size: 0.9rem; line-height: 2; margin: 12px 0; overflow-x: auto;
+  }
+  .cmd .comment { color: #64748b; }
+  .cmd .highlight { color: #60a5fa; }
+  .cmd .success { color: #34d399; }
+  .cmd .warn { color: #fbbf24; }
+
+  .tip {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px;
+    padding: 14px 18px; font-size: 0.88rem; color: #1e40af; margin: 12px 0;
+  }
+  .tip::before { content: "💡 "; }
+
+  .warn-box {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 14px 18px; font-size: 0.88rem; color: #991b1b; margin: 12px 0;
+  }
+  .warn-box::before { content: "⚠️ "; }
+
+  .steps { list-style: none; margin: 12px 0; font-size: 0.95rem; }
+  .steps li {
+    padding: 10px 0 10px 28px; position: relative; border-bottom: 1px solid #f1f5f9;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: attr(data-num); position: absolute; left: 0; font-weight: 700; color: #8b5cf6;
+  }
+
+  .flow-box {
+    background: #f1f5f9; border-radius: 12px; padding: 20px 24px;
+    text-align: center; font-size: 1.1rem; margin: 16px 0; line-height: 2.2;
+  }
+  .flow-box strong { color: #8b5cf6; }
+
+  .shortcut-table {
+    width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 12px 0;
+  }
+  .shortcut-table th {
+    background: #f1f5f9; padding: 10px 14px; text-align: left;
+    font-weight: 600; border-bottom: 2px solid #e2e8f0;
+  }
+  .shortcut-table td { padding: 10px 14px; border-bottom: 1px solid #f1f5f9; }
+  .shortcut-table code {
+    background: #1e293b; color: #e2e8f0; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;
+  }
+
+  .footer { text-align: center; padding: 36px 0; color: #bbb; font-size: 0.8rem; }
+  @media print { body { padding: 20px; } .section { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>GitHubの使い方マニュアル</h1>
+<p class="subtitle">ランバード様 福祉事業ナレッジAI環境</p>
+
+<!-- ===== そもそもGitHubとは ===== -->
+<div class="section purple">
+  <h2>0. そもそもGitHubで何をするのか</h2>
+  <p>ナレッジファイルを編集したら、その変更を<strong>全員で共有</strong>するためにGitHubに反映します。</p>
+  <div class="flow-box">
+    ファイルを編集 → <strong>add</strong>（まとめる）→ <strong>commit</strong>（記録する）→ <strong>push</strong>（共有する）
+  </div>
+  <p>逆に、他の人が変更した内容を取り込むには <strong>pull</strong>（取得する）を使います。</p>
+  <div class="tip">覚えるコマンドは <strong>add, commit, push, pull</strong> の4つだけです。</div>
+</div>
+
+<!-- ===== 変更をGitHubに反映する ===== -->
+<div class="section purple">
+  <h2>1. 自分の変更をGitHubに反映する</h2>
+  <p>ファイルを編集・保存した後、ターミナル（<code>Ctrl + `</code>）で以下を順番に実行します。</p>
+
+  <h3>ステップ1：変更をまとめる</h3>
+  <div class="cmd">
+    git add -A
+  </div>
+  <p>「変更したファイルを全部まとめる」という意味です。</p>
+
+  <h3>ステップ2：変更を記録する</h3>
+  <div class="cmd">
+    git commit -m <span class="highlight">"埼玉県の法令情報を更新"</span>
+  </div>
+  <p>「何を変えたか」をメッセージとして記録します。<strong>日本語でOK</strong>。後から見返せるように、何を変えたか書いてください。</p>
+
+  <h3>ステップ3：GitHubに反映する</h3>
+  <div class="cmd">
+    git push
+  </div>
+  <p>これで全員が最新のナレッジを使えるようになります。</p>
+
+  <div class="tip">3つまとめて実行する場合はこう打てます：<br>
+  <code style="background:#1e293b;color:#e2e8f0;padding:4px 10px;border-radius:4px;">git add -A && git commit -m "変更内容" && git push</code></div>
+</div>
+
+<!-- ===== 他の人の変更を取り込む ===== -->
+<div class="section blue">
+  <h2>2. 他の人の変更を取り込む</h2>
+  <p>他の人がナレッジを更新した場合、自分のPCにも反映する必要があります。</p>
+  <div class="cmd">
+    git pull
+  </div>
+  <p>これだけです。最新のナレッジがダウンロードされます。</p>
+  <div class="tip"><strong>作業を始める前に毎回 <code>git pull</code> を実行する</strong>のがおすすめです。常に最新の状態で作業できます。</div>
+</div>
+
+<!-- ===== 変更内容を確認する ===== -->
+<div class="section blue">
+  <h2>3. 今何が変わっているか確認する</h2>
+
+  <h3>変更されたファイルを見る</h3>
+  <div class="cmd">
+    git status
+  </div>
+  <p>赤い文字で表示されたファイル = まだGitHubに反映されていない変更があるファイルです。</p>
+
+  <h3>何がどう変わったか見る</h3>
+  <div class="cmd">
+    git diff
+  </div>
+  <p>追加した行は<span style="color:#34d399;">緑</span>、削除した行は<span style="color:#ef4444;">赤</span>で表示されます。</p>
+</div>
+
+<!-- ===== 変更履歴を見る ===== -->
+<div class="section green">
+  <h2>4. 過去の変更履歴を見る</h2>
+  <div class="cmd">
+    git log --oneline -10
+  </div>
+  <p>直近10件の変更が「いつ・誰が・何を変えたか」のリストで表示されます。</p>
+  <div class="cmd">
+    <span class="comment"># 表示例</span><br>
+    <span class="success">7cbaf2f</span> 埼玉県の法令情報を更新<br>
+    <span class="success">a1b2c3d</span> 苦情対応の返信例を追加<br>
+    <span class="success">e4f5g6h</span> ナレッジベース初期構築
+  </div>
+</div>
+
+<!-- ===== 間違えたときの対処 ===== -->
+<div class="section red">
+  <h2>5. 間違えたときの対処</h2>
+
+  <h3>まだ push していない場合</h3>
+  <table class="shortcut-table">
+    <tr><th>状況</th><th>コマンド</th></tr>
+    <tr><td>編集を元に戻したい（保存前）</td><td><code>Ctrl + Z</code>（Cursorで何度でも戻せる）</td></tr>
+    <tr><td>add を取り消したい</td><td><code>git reset</code></td></tr>
+    <tr><td>commit を取り消したい</td><td><code>git reset --soft HEAD~1</code></td></tr>
+  </table>
+
+  <h3>既に push してしまった場合</h3>
+  <p>自分で対処せず、<strong>斗（星崎）に連絡</strong>してください。安全に元に戻します。</p>
+  <div class="warn-box">push した後に無理に戻そうとすると、他の人の変更も消えてしまう可能性があります。必ず相談してください。</div>
+</div>
+
+<!-- ===== コマンド一覧 ===== -->
+<div class="section yellow">
+  <h2>6. コマンド一覧（これだけ覚えればOK）</h2>
+  <table class="shortcut-table">
+    <tr><th>やりたいこと</th><th>コマンド</th><th>いつ使う</th></tr>
+    <tr><td>最新を取得</td><td><code>git pull</code></td><td>作業を始める前に毎回</td></tr>
+    <tr><td>変更をまとめる</td><td><code>git add -A</code></td><td>ファイルを編集した後</td></tr>
+    <tr><td>変更を記録</td><td><code>git commit -m "内容"</code></td><td>addの後</td></tr>
+    <tr><td>GitHubに反映</td><td><code>git push</code></td><td>commitの後</td></tr>
+    <tr><td>状況を確認</td><td><code>git status</code></td><td>今どうなってるか知りたいとき</td></tr>
+    <tr><td>履歴を見る</td><td><code>git log --oneline -10</code></td><td>過去の変更を確認したいとき</td></tr>
+  </table>
+</div>
+
+<div class="footer">株式会社斗 — 2026.04</div>
+</div>
+</body>
+</html>

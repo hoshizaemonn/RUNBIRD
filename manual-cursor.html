@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cursorの使い方マニュアル</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+    background: #f8fafc; color: #1e293b; padding: 48px 24px; line-height: 1.8;
+  }
+  .page { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #94a3b8; font-size: 0.95rem; margin-bottom: 48px; }
+  h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; padding-top: 8px; color: #1e293b; }
+  h3 { font-size: 1.05rem; font-weight: 700; margin: 20px 0 10px; color: #334155; }
+
+  .section {
+    background: #fff; border-radius: 16px; padding: 32px 28px;
+    margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .section.blue { border-left: 5px solid #3b82f6; }
+  .section.green { border-left: 5px solid #059669; }
+  .section.purple { border-left: 5px solid #8b5cf6; }
+  .section.yellow { border-left: 5px solid #f59e0b; }
+
+  p { font-size: 0.95rem; color: #475569; margin-bottom: 12px; }
+
+  .cmd {
+    background: #1e293b; color: #e2e8f0; border-radius: 10px;
+    padding: 16px 20px; font-family: "Consolas", "SF Mono", monospace;
+    font-size: 0.9rem; line-height: 2; margin: 12px 0; overflow-x: auto;
+  }
+  .cmd .comment { color: #64748b; }
+  .cmd .user { color: #60a5fa; }
+  .cmd .ai { color: #34d399; }
+  .cmd .key { color: #fbbf24; }
+  .cmd .file { color: #f59e0b; }
+
+  .tip {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px;
+    padding: 14px 18px; font-size: 0.88rem; color: #1e40af; margin: 12px 0;
+  }
+  .tip::before { content: "💡 "; }
+
+  .warn {
+    background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+    padding: 14px 18px; font-size: 0.88rem; color: #991b1b; margin: 12px 0;
+  }
+  .warn::before { content: "⚠️ "; }
+
+  .steps {
+    list-style: none; margin: 12px 0; font-size: 0.95rem;
+  }
+  .steps li {
+    padding: 10px 0 10px 28px; position: relative;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: attr(data-num); position: absolute; left: 0;
+    font-weight: 700; color: #3b82f6;
+  }
+
+  .shortcut-table {
+    width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 12px 0;
+  }
+  .shortcut-table th {
+    background: #f1f5f9; padding: 10px 14px; text-align: left;
+    font-weight: 600; border-bottom: 2px solid #e2e8f0;
+  }
+  .shortcut-table td {
+    padding: 10px 14px; border-bottom: 1px solid #f1f5f9;
+  }
+  .shortcut-table code {
+    background: #1e293b; color: #e2e8f0; padding: 2px 8px;
+    border-radius: 4px; font-size: 0.85rem;
+  }
+
+  .example-box {
+    background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px;
+    padding: 16px 20px; margin: 12px 0;
+  }
+  .example-box h4 { font-size: 0.9rem; color: #047857; margin-bottom: 8px; }
+  .example-box p { font-size: 0.88rem; color: #065f46; margin-bottom: 4px; }
+
+  .footer { text-align: center; padding: 36px 0; color: #bbb; font-size: 0.8rem; }
+  @media print { body { padding: 20px; } .section { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>Cursorの使い方マニュアル</h1>
+<p class="subtitle">ランバード様 福祉事業ナレッジAI環境</p>
+
+<!-- ===== 画面の見方 ===== -->
+<div class="section blue">
+  <h2>1. Cursorの画面の見方</h2>
+  <p>Cursorを開くと、主に3つのエリアがあります。</p>
+  <table class="shortcut-table">
+    <tr><th>エリア</th><th>場所</th><th>何があるか</th></tr>
+    <tr><td><strong>サイドバー</strong></td><td>左側</td><td>フォルダとファイルの一覧（ナレッジ/返信例/ 等）</td></tr>
+    <tr><td><strong>エディタ</strong></td><td>中央</td><td>ファイルの中身を見る・編集する場所</td></tr>
+    <tr><td><strong>AIチャット</strong></td><td>右側 or パネル</td><td>AIに質問する場所</td></tr>
+  </table>
+  <div class="tip">サイドバーが見えない場合は <code>Ctrl + B</code> で表示/非表示を切り替えられます。</div>
+</div>
+
+<!-- ===== AIチャットの開き方 ===== -->
+<div class="section blue">
+  <h2>2. AIチャットの開き方</h2>
+  <p>AIに質問するには、チャットパネルを開きます。</p>
+  <table class="shortcut-table">
+    <tr><th>操作</th><th>ショートカット</th><th>説明</th></tr>
+    <tr><td>AIチャットを開く</td><td><code>Ctrl + L</code></td><td>右側にチャットパネルが開く</td></tr>
+    <tr><td>インラインで質問</td><td><code>Ctrl + K</code></td><td>エディタ上で直接AIに指示できる</td></tr>
+    <tr><td>新しいチャットを始める</td><td><code>Ctrl + Shift + L</code></td><td>過去の会話をリセットして新規開始</td></tr>
+  </table>
+  <div class="tip">基本は <code>Ctrl + L</code> でチャットを開いて質問するだけでOKです。</div>
+</div>
+
+<!-- ===== AIへの質問の仕方 ===== -->
+<div class="section green">
+  <h2>3. AIへの質問の仕方</h2>
+  <p>チャット欄に日本語で質問を入力するだけです。AIが自動でナレッジを参照して回答します。</p>
+
+  <div class="example-box">
+    <h4>例1：返信文を作ってもらう</h4>
+    <p><strong>入力：</strong>「利用者のご家族から、通所日の変更について問い合わせが来ました。返信を作成してください。」</p>
+    <p><strong>AI：</strong>ナレッジ/返信例/利用者家族への連絡.md を参照して、スケジュール調整の返信文を生成</p>
+  </div>
+
+  <div class="example-box">
+    <h4>例2：法令について確認する</h4>
+    <p><strong>入力：</strong>「事故報告は発生から何日以内に提出する必要がありますか？」</p>
+    <p><strong>AI：</strong>ナレッジ/法令/ のファイルを参照して回答</p>
+  </div>
+
+  <div class="example-box">
+    <h4>例3：NGラインを確認する</h4>
+    <p><strong>入力：</strong>「この返信文に法令上問題がないかチェックしてください」</p>
+    <p><strong>AI：</strong>触れてはいけないライン.md と照合して、問題があれば指摘</p>
+  </div>
+
+  <h3>質問のコツ</h3>
+  <ul class="steps">
+    <li data-num="✓">何をしてほしいか具体的に書く（「返信して」「チェックして」「教えて」）</li>
+    <li data-num="✓">状況を伝える（「家族から○○の問い合わせが来た」）</li>
+    <li data-num="✓">対象を明確にする（「埼玉県の」「Royal事業所の」）</li>
+  </ul>
+</div>
+
+<!-- ===== ファイルの参照指定 ===== -->
+<div class="section green">
+  <h2>4. 特定のファイルをAIに読ませる</h2>
+  <p>AIに特定のナレッジファイルを確実に参照させたい場合は、チャット欄で <code>@</code> を使います。</p>
+
+  <div class="cmd">
+    <span class="comment"># チャット欄に入力する例</span><br><br>
+    <span class="user">@ナレッジ/法令/埼玉県.md</span><br>
+    この県の事故報告の期限を教えてください
+  </div>
+
+  <p><code>@</code> を打つとファイル名の候補が出てくるので、選択するだけです。</p>
+  <div class="tip">通常は .cursorrules の設定で自動的にナレッジを参照しますが、確実に特定ファイルを読ませたい場合に使います。</div>
+</div>
+
+<!-- ===== ファイルの見方・編集 ===== -->
+<div class="section purple">
+  <h2>5. ファイルの見方と編集</h2>
+
+  <h3>ファイルを開く</h3>
+  <ul class="steps">
+    <li data-num="①">左のサイドバーで「ナレッジ」フォルダをクリックして展開</li>
+    <li data-num="②">見たいファイル（例：「利用者家族への連絡.md」）をクリック</li>
+    <li data-num="③">中央のエディタにファイルの中身が表示される</li>
+  </ul>
+
+  <h3>ファイルを編集する</h3>
+  <ul class="steps">
+    <li data-num="①">開いたファイルの中身を直接書き換える（普通のメモ帳と同じ）</li>
+    <li data-num="②"><code>Ctrl + S</code> で保存</li>
+    <li data-num="③">GitHubに反映する（→ GitHubマニュアル参照）</li>
+  </ul>
+
+  <div class="warn">ファイルを編集したら、必ず <code>Ctrl + S</code> で保存してください。保存しないとAIが最新の内容を読めません。</div>
+</div>
+
+<!-- ===== ターミナルの使い方 ===== -->
+<div class="section purple">
+  <h2>6. ターミナルの開き方</h2>
+  <p>Gitコマンド（プッシュ・プル等）を実行する場所です。</p>
+
+  <table class="shortcut-table">
+    <tr><th>操作</th><th>ショートカット</th></tr>
+    <tr><td>ターミナルを開く/閉じる</td><td><code>Ctrl + `</code>（バッククォート）</td></tr>
+  </table>
+
+  <p>画面の下部に黒い画面（ターミナル）が表示されます。ここにGitコマンドを入力します。</p>
+  <div class="tip">ターミナルが怖く感じても大丈夫。使うコマンドは数個だけです（→ GitHubマニュアル参照）。</div>
+</div>
+
+<!-- ===== よく使うショートカット一覧 ===== -->
+<div class="section yellow">
+  <h2>7. よく使うショートカットまとめ</h2>
+  <table class="shortcut-table">
+    <tr><th>やりたいこと</th><th>ショートカット</th></tr>
+    <tr><td>AIチャットを開く</td><td><code>Ctrl + L</code></td></tr>
+    <tr><td>新しいチャットを開始</td><td><code>Ctrl + Shift + L</code></td></tr>
+    <tr><td>インラインでAIに指示</td><td><code>Ctrl + K</code></td></tr>
+    <tr><td>ファイルを保存</td><td><code>Ctrl + S</code></td></tr>
+    <tr><td>サイドバーの表示/非表示</td><td><code>Ctrl + B</code></td></tr>
+    <tr><td>ターミナルを開く</td><td><code>Ctrl + `</code></td></tr>
+    <tr><td>ファイルを素早く開く</td><td><code>Ctrl + P</code></td></tr>
+  </table>
+</div>
+
+<!-- ===== 困ったとき ===== -->
+<div class="section yellow">
+  <h2>8. 困ったとき</h2>
+  <table class="shortcut-table">
+    <tr><th>症状</th><th>対処法</th></tr>
+    <tr><td>AIが返事しない</td><td>Cursorにログインしているか確認。右下のアカウントアイコンをクリック</td></tr>
+    <tr><td>ナレッジを参照してくれない</td><td>フォルダが正しく開かれているか確認。File → Open Folder でやり直す</td></tr>
+    <tr><td>ファイルが見つからない</td><td><code>Ctrl + P</code> でファイル名を検索</td></tr>
+    <tr><td>間違って編集してしまった</td><td><code>Ctrl + Z</code> で元に戻す。保存前なら何度でも戻せる</td></tr>
+    <tr><td>上記で解決しない</td><td>斗（星崎）に連絡してください</td></tr>
+  </table>
+</div>
+
+<div class="footer">株式会社斗 — 2026.04</div>
+</div>
+</body>
+</html>
