@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>セットアップ手順書 — ランバード様</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    padding: 48px 24px;
+    line-height: 1.8;
+  }
+  .page { max-width: 800px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #94a3b8; font-size: 0.95rem; margin-bottom: 48px; }
+
+  /* ステップ */
+  .step {
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    position: relative;
+    border-left: 5px solid #e2e8f0;
+  }
+  .step.blue { border-left-color: #3b82f6; }
+  .step.purple { border-left-color: #8b5cf6; }
+  .step.green { border-left-color: #059669; }
+  .step.yellow { border-left-color: #f59e0b; }
+
+  .step-num {
+    position: absolute;
+    top: -14px;
+    left: 20px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 900; color: #fff;
+  }
+  .step.blue .step-num { background: #3b82f6; }
+  .step.purple .step-num { background: #8b5cf6; }
+  .step.green .step-num { background: #059669; }
+  .step.yellow .step-num { background: #f59e0b; }
+
+  .step h2 {
+    font-size: 1.2rem;
+    margin-bottom: 16px;
+    padding-top: 8px;
+  }
+  .step p {
+    font-size: 0.95rem;
+    color: #475569;
+    margin-bottom: 12px;
+  }
+
+  /* コマンドボックス */
+  .cmd {
+    background: #1e293b;
+    color: #e2e8f0;
+    border-radius: 10px;
+    padding: 16px 20px;
+    font-family: "Consolas", "SF Mono", "Fira Code", monospace;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin: 12px 0;
+    overflow-x: auto;
+    position: relative;
+  }
+  .cmd .comment { color: #64748b; }
+  .cmd .highlight { color: #60a5fa; }
+  .cmd .url { color: #34d399; }
+
+  /* 画像風のプレースホルダ */
+  .screenshot {
+    background: #e2e8f0;
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    margin: 12px 0;
+    border: 2px dashed #cbd5e1;
+  }
+
+  /* 注意ボックス */
+  .note {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 0.88rem;
+    color: #92400e;
+    margin: 12px 0;
+  }
+  .note::before { content: "⚠️ "; }
+
+  .tip {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 0.88rem;
+    color: #1e40af;
+    margin: 12px 0;
+  }
+  .tip::before { content: "💡 "; }
+
+  /* サブステップ */
+  .sub-steps {
+    list-style: none;
+    margin: 12px 0;
+    font-size: 0.95rem;
+  }
+  .sub-steps li {
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .sub-steps li:last-child { border-bottom: none; }
+  .sub-steps li::before {
+    content: attr(data-num);
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: #3b82f6;
+  }
+
+  /* チェックリスト */
+  .checklist {
+    background: #fff;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    margin-top: 36px;
+  }
+  .checklist h2 { font-size: 1.1rem; margin-bottom: 16px; }
+  .check-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0; border-bottom: 1px solid #f1f5f9;
+    font-size: 0.95rem;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 22px; height: 22px; border: 2px solid #cbd5e1;
+    border-radius: 4px; flex-shrink: 0;
+  }
+
+  .footer { text-align: center; padding: 36px 0; color: #bbb; font-size: 0.8rem; }
+
+  @media print {
+    body { padding: 20px; }
+    .step { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>セットアップ手順書</h1>
+<p class="subtitle">ランバード様 Windows PC にナレッジAI環境を構築する手順</p>
+
+<!-- ===== STEP 1: GitHubアカウント作成 ===== -->
+<div class="step blue">
+  <div class="step-num">1</div>
+  <h2>GitHubアカウントを作成する</h2>
+  <p>まだGitHubアカウントを持っていない場合は作成します。</p>
+  <ol class="sub-steps">
+    <li data-num="①">ブラウザで <strong>https://github.com/signup</strong> を開く</li>
+    <li data-num="②">メールアドレスを入力 → パスワードを設定 → ユーザー名を決める</li>
+    <li data-num="③">メールに届く確認コードを入力して完了</li>
+  </ol>
+  <div class="tip">ユーザー名は「名前-runbird」など、誰かわかるものにしておくと管理しやすいです（例：tanaka-runbird）</div>
+</div>
+
+<!-- ===== STEP 2: Gitをインストール ===== -->
+<div class="step blue">
+  <div class="step-num">2</div>
+  <h2>Git をインストールする（Windows）</h2>
+  <p>Cursorからナレッジを更新するために必要です。</p>
+  <ol class="sub-steps">
+    <li data-num="①">ブラウザで <strong>https://git-scm.com/download/win</strong> を開く</li>
+    <li data-num="②">「Click here to download」をクリックしてインストーラーをダウンロード</li>
+    <li data-num="③">ダウンロードしたファイルを実行。<strong>全てデフォルト設定のまま「Next」を押し続けて</strong>インストール</li>
+  </ol>
+  <div class="note">途中でいろいろ選択肢が出ますが、全て初期設定のままでOKです。何も変えずにNextを押し続けてください。</div>
+
+  <p>インストール後、Cursorのターミナルで動作確認：</p>
+  <div class="cmd">
+    <span class="comment"># Gitが入ったか確認（バージョンが表示されればOK）</span><br>
+    git --version
+  </div>
+</div>
+
+<!-- ===== STEP 3: Gitの初期設定 ===== -->
+<div class="step purple">
+  <div class="step-num">3</div>
+  <h2>Git の初期設定をする</h2>
+  <p>Cursorの下のほうにある「ターミナル」を開いて、以下を1行ずつ実行します。</p>
+  <div class="cmd">
+    <span class="comment"># 自分の名前を設定（GitHubに記録される名前）</span><br>
+    git config --global user.name <span class="highlight">"自分の名前"</span><br><br>
+    <span class="comment"># 自分のメールアドレスを設定（GitHubアカウントと同じもの）</span><br>
+    git config --global user.email <span class="highlight">"自分のメールアドレス"</span>
+  </div>
+  <div class="tip">「自分の名前」と「自分のメールアドレス」は、Step 1で作ったGitHubアカウントの情報に合わせてください。</div>
+</div>
+
+<!-- ===== STEP 4: リポジトリをクローン ===== -->
+<div class="step purple">
+  <div class="step-num">4</div>
+  <h2>ナレッジベースをダウンロード（クローン）する</h2>
+  <p>Cursorのターミナルで以下を実行します。</p>
+  <div class="cmd">
+    <span class="comment"># デスクトップに移動</span><br>
+    cd Desktop<br><br>
+    <span class="comment"># ナレッジベースをダウンロード</span><br>
+    git clone <span class="url">https://github.com/hoshizaemonn/runbird-welfare-knowledge.git</span>
+  </div>
+  <p>デスクトップに「runbird-welfare-knowledge」というフォルダができます。</p>
+  <div class="note">初回のクローン時にGitHubのログインを求められます。Step 1で作ったアカウントでログインしてください。</div>
+</div>
+
+<!-- ===== STEP 5: Cursorで開く ===== -->
+<div class="step green">
+  <div class="step-num">5</div>
+  <h2>Cursor でナレッジフォルダを開く</h2>
+  <ol class="sub-steps">
+    <li data-num="①">Cursorを起動</li>
+    <li data-num="②">メニューから <strong>File → Open Folder</strong> をクリック</li>
+    <li data-num="③">デスクトップの <strong>「runbird-welfare-knowledge」</strong> フォルダを選択して「フォルダーの選択」</li>
+  </ol>
+  <p>左のサイドバーに以下のフォルダが見えたら成功です：</p>
+  <div class="cmd">
+    <span class="comment"># こう見えていればOK</span><br>
+    📂 ナレッジ/<br>
+    &nbsp;&nbsp;├── 📂 返信例/<br>
+    &nbsp;&nbsp;├── 📂 法令/<br>
+    &nbsp;&nbsp;└── 📂 事業所/
+  </div>
+</div>
+
+<!-- ===== STEP 6: 動作確認 ===== -->
+<div class="step green">
+  <div class="step-num">6</div>
+  <h2>AIが動くか確認する</h2>
+  <p>Cursorのチャット欄（右サイドバー or Ctrl+L）に以下を入力してみてください。</p>
+  <div class="cmd">
+    利用者のご家族から、サービスの利用条件について問い合わせが来ました。<br>
+    返信文を作成してください。
+  </div>
+  <p>AIがナレッジを参照して返信文を生成すれば、セットアップ完了です。</p>
+  <div class="tip">AIの回答の最後に「参照: ナレッジ/返信例/利用者家族への連絡.md」のようにファイル名が出ていれば、ナレッジが正しく参照されています。</div>
+</div>
+
+<!-- ===== STEP 7: 権限追加 ===== -->
+<div class="step yellow">
+  <div class="step-num">7</div>
+  <h2>GitHubの権限を設定する（斗が実施）</h2>
+  <p>この作業は斗側で行います。先方はStep 1で作ったGitHubのユーザー名を教えてもらうだけでOKです。</p>
+  <ol class="sub-steps">
+    <li data-num="①">ランバード様のGitHubユーザー名を聞く</li>
+    <li data-num="②">https://github.com/hoshizaemonn/runbird-welfare-knowledge/settings/access で招待</li>
+    <li data-num="③">権限レベルを設定（Write or Read）</li>
+    <li data-num="④">招待された側はメールの「Accept invitation」をクリック</li>
+  </ol>
+</div>
+
+<!-- ===== 日常の使い方 ===== -->
+<div class="step blue">
+  <div class="step-num">+</div>
+  <h2>日常の使い方（セットアップ後）</h2>
+
+  <h3 style="margin-top:16px; font-size:1rem;">AIに質問する</h3>
+  <p>Cursorのチャット欄に質問を入力するだけ。AIがナレッジを自動で参照して回答します。</p>
+
+  <h3 style="margin-top:20px; font-size:1rem;">ナレッジを編集した後にGitHubへ反映する</h3>
+  <p>ファイルを編集したら、ターミナルで以下を実行します：</p>
+  <div class="cmd">
+    <span class="comment"># 変更をまとめる</span><br>
+    git add -A<br><br>
+    <span class="comment"># 変更内容を記録する（メッセージは何を変えたか書く）</span><br>
+    git commit -m <span class="highlight">"埼玉県の法令情報を更新"</span><br><br>
+    <span class="comment"># GitHubに反映する</span><br>
+    git push
+  </div>
+  <div class="tip">コマンドが難しい場合は、CursorのAIに「この変更をGitHubにプッシュして」と頼むこともできます。</div>
+
+  <h3 style="margin-top:20px; font-size:1rem;">他の人の変更を取り込む</h3>
+  <div class="cmd">
+    <span class="comment"># 最新のナレッジをダウンロード</span><br>
+    git pull
+  </div>
+</div>
+
+<!-- ===== チェックリスト ===== -->
+<div class="checklist">
+  <h2>セットアップチェックリスト</h2>
+  <div class="check-item"><div class="check-box"></div> GitHubアカウントを作成した</div>
+  <div class="check-item"><div class="check-box"></div> Git をインストールした</div>
+  <div class="check-item"><div class="check-box"></div> Git の初期設定（名前・メール）を行った</div>
+  <div class="check-item"><div class="check-box"></div> ナレッジベースをクローンした</div>
+  <div class="check-item"><div class="check-box"></div> Cursorでフォルダを開いた</div>
+  <div class="check-item"><div class="check-box"></div> AIに質問して返信が生成されることを確認した</div>
+  <div class="check-item"><div class="check-box"></div> GitHubの権限を設定した（招待を受理した）</div>
+</div>
+
+<div class="footer">株式会社斗 — 2026.04</div>
+
+</div>
+</body>
+</html>
