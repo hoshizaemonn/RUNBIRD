@@ -259,6 +259,120 @@
     margin: 0;
   }
 
+  /* AI生成パイプライン */
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    align-items: stretch;
+    margin: 24px 0;
+  }
+  .pipeline-step {
+    background: #fff;
+    border: 2px solid var(--brand-light);
+    border-radius: 12px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .pipeline-step .stage {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .pipeline-step .stage-name {
+    font-weight: 700;
+    color: var(--brand);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .pipeline-step .tools {
+    font-size: 11px;
+    color: var(--text);
+    background: #fafbfd;
+    border-radius: 6px;
+    padding: 8px;
+    line-height: 1.6;
+  }
+  .pipeline-arrow {
+    text-align: center;
+    color: var(--brand-light);
+    font-size: 20px;
+    align-self: center;
+  }
+
+  /* ツール一覧 */
+  .tool-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+  }
+  .tool-table th, .tool-table td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .tool-table th {
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .tool-table tr:nth-child(even) td { background: #fafbfd; }
+  .tool-table .role { font-weight: 700; color: var(--brand); white-space: nowrap; }
+  .tool-table .price { color: var(--p2); font-weight: 700; white-space: nowrap; }
+
+  /* コスト表 */
+  .cost-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .cost-card {
+    border: 3px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 20px;
+    background: #fff;
+  }
+  .cost-card.p1 { border-color: var(--p1); }
+  .cost-card.p2 { border-color: var(--p2); }
+  .cost-card.p3 { border-color: var(--p3); }
+  .cost-card h4 {
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .cost-card .total {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 12px 0;
+  }
+  .cost-card.p1 .total { color: var(--p1); }
+  .cost-card.p2 .total { color: var(--p2); }
+  .cost-card.p3 .total { color: var(--p3); }
+  .cost-card .breakdown {
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px dashed var(--border);
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+  .cost-card .breakdown div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+  .disclaimer {
+    background: #fff8e1;
+    border-left: 4px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #6b4d00;
+    margin: 16px 0;
+  }
+
   /* 自動化ロードマップ */
   .roadmap {
     margin: 24px 0;
@@ -352,9 +466,9 @@
   @media (max-width: 768px) {
     .container { padding: 30px 16px; }
     section { padding: 24px; }
-    .patterns, .flow, .keypoints { grid-template-columns: 1fr; }
+    .patterns, .flow, .keypoints, .pipeline, .cost-cards { grid-template-columns: 1fr; }
     .sheet-structure { grid-template-columns: 1fr; }
-    .flow-arrow { display: none; }
+    .flow-arrow, .pipeline-arrow { display: none; }
   }
 </style>
 </head>
@@ -531,9 +645,193 @@
     </div>
   </section>
 
-  <!-- ============ 5. 自動化ロードマップ ============ -->
+  <!-- ============ 5. AI生成パイプラインの中身 ============ -->
   <section>
-    <h2>5. 自動化のロードマップ</h2>
+    <h2>5. AI生成パイプラインの中身</h2>
+    <p>ヒアリングシートで集めたデータを、どのAIツールに渡して動画にするかを整理しました。台本生成→画像/映像生成→ナレーション合成→組み立て、の4ステージで構成されます。</p>
+
+    <div class="pipeline">
+      <div class="pipeline-step">
+        <div class="stage">Stage 1</div>
+        <div class="stage-name">台本生成</div>
+        <div class="tools">Claude / ChatGPT<br>シートの構成・要望から<br>ナレーション原稿を生成</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="stage">Stage 2</div>
+        <div class="stage-name">画像・映像生成</div>
+        <div class="tools">Gemini Imagen<br>Veo 3 Fast<br>Pixverse / Kling<br>HeyGen（タレント時）</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="stage">Stage 3</div>
+        <div class="stage-name">ナレーション合成</div>
+        <div class="tools">Google Cloud TTS<br>ElevenLabs<br>（声質・読み仮名対応）</div>
+      </div>
+      <div class="pipeline-step">
+        <div class="stage">Stage 4</div>
+        <div class="stage-name">組み立て・仕上げ</div>
+        <div class="tools">Python（自動合成）<br>Premiere Pro<br>テロップ・BGM・微調整</div>
+      </div>
+    </div>
+
+    <h3>使用するAIツール一覧</h3>
+    <table class="tool-table">
+      <thead>
+        <tr>
+          <th>役割</th>
+          <th>ツール</th>
+          <th>用途</th>
+          <th>料金目安</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="role">台本生成</td>
+          <td>Claude / ChatGPT</td>
+          <td>シート内容からナレーション原稿を作成</td>
+          <td class="price">月$20〜</td>
+        </tr>
+        <tr>
+          <td class="role">画像生成</td>
+          <td>Gemini Imagen 3</td>
+          <td>アニメ・人物・背景の静止画</td>
+          <td class="price">1枚 約5円</td>
+        </tr>
+        <tr>
+          <td class="role">画像→動画</td>
+          <td>Veo 3 Fast</td>
+          <td>静止画から数秒の動画クリップ生成</td>
+          <td class="price">8秒 約100〜200円</td>
+        </tr>
+        <tr>
+          <td class="role">画像→動画</td>
+          <td>Pixverse / Kling</td>
+          <td>写真ベースの動き付け（補助）</td>
+          <td class="price">月$10〜30</td>
+        </tr>
+        <tr>
+          <td class="role">AIタレント</td>
+          <td>HeyGen</td>
+          <td>AIナレーターによる説明動画</td>
+          <td class="price">月$24〜（1分あたり）</td>
+        </tr>
+        <tr>
+          <td class="role">ナレーション</td>
+          <td>Google Cloud TTS</td>
+          <td>日本語ナレーション合成（自然・低価格）</td>
+          <td class="price">100万文字で約$16</td>
+        </tr>
+        <tr>
+          <td class="role">ナレーション</td>
+          <td>ElevenLabs</td>
+          <td>感情豊かな音声合成（高品質）</td>
+          <td class="price">月$5〜22</td>
+        </tr>
+        <tr>
+          <td class="role">組み立て</td>
+          <td>Python（自社）</td>
+          <td>素材の自動結合・テロップ・Ken Burns</td>
+          <td class="price">無料</td>
+        </tr>
+        <tr>
+          <td class="role">最終仕上げ</td>
+          <td>Adobe Premiere Pro</td>
+          <td>テロップ調整・BGM・色補正</td>
+          <td class="price">月¥2,728</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="disclaimer">
+      ※料金は2026年4月時点の参考値です。為替・プラン変更により変動します。実運用時に最新料金を再確認します。
+    </div>
+  </section>
+
+  <!-- ============ 6. 1本あたりのコスト目安 ============ -->
+  <section>
+    <h2>6. 動画1本あたりのコスト目安</h2>
+    <p>3パターンそれぞれで、動画1本（30〜60秒想定）を作る際にかかるAIツール原価の目安です。サブスク系は月額を想定本数で割って案分しています。</p>
+
+    <div class="cost-cards">
+      <div class="cost-card p1">
+        <h4>パターン1<br>写真ベース動画</h4>
+        <div class="total">約 500〜1,500円</div>
+        <p style="font-size:12px; color:var(--muted); margin:0;">お客さんの写真が主素材なので原価は最も低い</p>
+        <div class="breakdown">
+          <div><span>台本生成（Claude）</span><span>約50円</span></div>
+          <div><span>ナレーション（TTS）</span><span>約30円</span></div>
+          <div><span>画像→動画（Pixverse等）</span><span>約300〜800円</span></div>
+          <div><span>BGM（フリー素材）</span><span>0円</span></div>
+          <div><span>Premiere（案分）</span><span>約100円</span></div>
+        </div>
+      </div>
+
+      <div class="cost-card p2">
+        <h4>パターン2<br>アニメ動画</h4>
+        <div class="total">約 1,500〜3,500円</div>
+        <p style="font-size:12px; color:var(--muted); margin:0;">画像生成と動画化を多用するため原価は中〜高</p>
+        <div class="breakdown">
+          <div><span>台本生成（Claude）</span><span>約50円</span></div>
+          <div><span>ナレーション（TTS）</span><span>約30円</span></div>
+          <div><span>画像生成（Imagen）</span><span>約100〜200円</span></div>
+          <div><span>画像→動画（Veo 3 Fast）</span><span>約1,000〜2,500円</span></div>
+          <div><span>BGM（フリー素材）</span><span>0円</span></div>
+          <div><span>Premiere（案分）</span><span>約100円</span></div>
+        </div>
+      </div>
+
+      <div class="cost-card p3">
+        <h4>パターン3<br>AIタレント動画</h4>
+        <div class="total">約 1,000〜2,500円</div>
+        <p style="font-size:12px; color:var(--muted); margin:0;">HeyGenの月額を案分。本数が増えるほど割安に</p>
+        <div class="breakdown">
+          <div><span>台本生成（Claude）</span><span>約50円</span></div>
+          <div><span>HeyGen（案分）</span><span>約800〜2,000円</span></div>
+          <div><span>背景画像（Imagen）</span><span>約20円</span></div>
+          <div><span>BGM（フリー素材）</span><span>0円</span></div>
+          <div><span>Premiere（案分）</span><span>約100円</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      ※上記は<strong>AIツールの原価</strong>のみで、ディレクション・修正対応などの人件費は含みません。打ち合わせで確認した「1案件あたり1万円以上の利益確保」を満たすためには、原価＋人件費＋利益で価格設定する必要があります。
+    </div>
+
+    <h3>月間50本制作した場合の原価試算</h3>
+    <table class="tool-table">
+      <thead>
+        <tr>
+          <th>パターン</th>
+          <th>1本あたり原価</th>
+          <th>月50本の原価</th>
+          <th>備考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="role">写真ベース</td>
+          <td>約1,000円</td>
+          <td class="price">約 50,000円</td>
+          <td>素材次第で半減可能</td>
+        </tr>
+        <tr>
+          <td class="role">アニメ</td>
+          <td>約2,500円</td>
+          <td class="price">約 125,000円</td>
+          <td>Veo 3 Fastの本数で大きく変動</td>
+        </tr>
+        <tr>
+          <td class="role">AIタレント</td>
+          <td>約1,800円</td>
+          <td class="price">約 90,000円</td>
+          <td>HeyGen月額の案分効率次第</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ 7. 自動化ロードマップ ============ -->
+  <section>
+    <h2>7. 自動化のロードマップ</h2>
     <p>最終ゴールは「お客さんがシートを提出したら、ほぼ自動で動画が完成する」状態です。ただし一気には到達できないので、3段階で段階的に自動化を進めます。</p>
 
     <div class="roadmap">
@@ -561,9 +859,9 @@
     </div>
   </section>
 
-  <!-- ============ 6. 価値・期待効果 ============ -->
+  <!-- ============ 8. 価値・期待効果 ============ -->
   <section>
-    <h2>6. 期待される効果</h2>
+    <h2>8. 期待される効果</h2>
     <p>ヒアリングシートを導入することで、以下のような変化を見込んでいます。</p>
 
     <table class="value-table">
@@ -604,9 +902,9 @@
     </table>
   </section>
 
-  <!-- ============ 7. 次のアクション ============ -->
+  <!-- ============ 9. 次のアクション ============ -->
   <section>
-    <h2>7. 次のアクション</h2>
+    <h2>9. 次のアクション</h2>
     <ol style="padding-left: 24px; line-height: 2;">
       <li><strong>シートの最終確認</strong>：上司・ランバードさんに項目の妥当性をご確認いただく</li>
       <li><strong>OWL案件で逆検証</strong>：過去のOWL動画を、このシートだけで再現できるかをチェック</li>
