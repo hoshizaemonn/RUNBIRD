@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube広告 5月スタート 配信の流れ｜株式会社ランバード</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background: #f0f2f5;
+    color: #1a1a1a;
+    line-height: 1.7;
+    padding: 24px;
+}
+.container { max-width: 1000px; margin: 0 auto; }
+
+h1 {
+    text-align: center;
+    font-size: 26px;
+    border-bottom: 3px solid #cc0000;
+    padding-bottom: 12px;
+    margin-bottom: 6px;
+}
+.subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 36px;
+}
+
+.section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+    border: 2px solid #e0e0e0;
+}
+.section-title {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.section-title .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* ヒーローバナー */
+.hero {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+.hero .label {
+    display: inline-block;
+    background: #ff6b6b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+}
+.hero h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.hero .sub {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* タイムライン */
+.timeline {
+    position: relative;
+    padding-left: 40px;
+}
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    background: #cc0000;
+}
+.timeline-item {
+    position: relative;
+    padding-bottom: 28px;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-item .dot {
+    position: absolute;
+    left: -33px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    background: #cc0000;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 2px #cc0000;
+}
+.timeline-item .date {
+    display: inline-block;
+    background: #fff0f0;
+    color: #cc0000;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+}
+.timeline-item .title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.timeline-item .desc {
+    font-size: 13px;
+    color: #555;
+}
+.timeline-item .who {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+}
+.timeline-item .who.client {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+/* 配信後のサポート */
+.support-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+}
+.support-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px 18px;
+    border: 2px solid #e0e0e0;
+    text-align: center;
+}
+.support-card .num {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: #cc0000;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 36px;
+    margin-bottom: 10px;
+}
+.support-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.support-card p {
+    font-size: 12px;
+    color: #555;
+}
+
+/* FAQ */
+.faq-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-left: 5px solid #1976d2;
+}
+.faq-item .q {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1565c0;
+    margin-bottom: 8px;
+}
+.faq-item .q::before {
+    content: "Q. ";
+    color: #cc0000;
+}
+.faq-item .a {
+    font-size: 13px;
+    color: #333;
+}
+.faq-item .a::before {
+    content: "A. ";
+    color: #2e7d32;
+    font-weight: 700;
+}
+
+/* 連絡先 */
+.contact-box {
+    background: #fff3e0;
+    border: 2px solid #ff8800;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+}
+.contact-box h3 {
+    color: #e65100;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.contact-box p {
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 4px;
+}
+.contact-box strong { color: #cc0000; }
+
+@media (max-width: 768px) {
+    .support-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>YouTube広告 5月スタート 配信の流れ</h1>
+<p class="subtitle">配信準備から運用開始後のサポートまで｜株式会社ランバード</p>
+
+<!-- ヒーロー -->
+<div class="hero">
+    <span class="label">5月1日 配信スタート</span>
+    <h2>5月1日から広告配信を開始いたします</h2>
+    <p class="sub">配信準備から運用開始後のサポートまで、全体の流れをご案内いたします。</p>
+</div>
+
+<!-- ① スケジュール -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon" style="background:#cc0000;">1</span>
+        配信準備スケジュール
+    </div>
+    <div class="timeline">
+
+        <div class="timeline-item">
+            <div class="dot"></div>
+            <div class="date">〜4/7</div>
+            <div class="title">チャンネル開設＋動画アップロード＋オーナー権限付与 <span class="who client">お客様対応</span></div>
+            <div class="desc">お客様側でYouTubeチャンネルの準備と、弊社への管理者権限の付与をお願いしております。</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="dot"></div>
+            <div class="date">4/8〜4/14</div>
+            <div class="title">配信設定のご提案＋ご意向のヒアリング <span class="who">弊社対応</span></div>
+            <div class="desc">配信エリア・ターゲット年齢・キーワードなどの設定内容をご提案し、お電話またはメールでご意向を伺います。</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="dot"></div>
+            <div class="date">4/15〜4/30</div>
+            <div class="title">Google広告の設定＋審査対応 <span class="who">弊社対応</span></div>
+            <div class="desc">ご意向をもとにGoogle広告のキャンペーンを作成し、動画・広告文の審査を完了させます。</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="dot"></div>
+            <div class="date">5/1 〜</div>
+            <div class="title">配信開始 <span class="who">弊社対応</span></div>
+            <div class="desc">審査通過後、予定通り5月1日より広告の配信をスタートいたします。</div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ② 配信開始後のサポート -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon" style="background:#2e7d32;">2</span>
+        配信開始後のサポート
+    </div>
+
+    <div class="support-grid">
+        <div class="support-card">
+            <div class="num">1</div>
+            <h4>定例報告（2ヶ月に1回）</h4>
+            <p>配信開始から当初は2ヶ月に1回のペースで、運用状況・改善提案をご報告いたします。</p>
+        </div>
+        <div class="support-card">
+            <div class="num">2</div>
+            <h4>安定後は随時対応</h4>
+            <p>配信状況が安定した後は、オーナー様からのご要望に応じて随時ご報告・調整を行います。</p>
+        </div>
+        <div class="support-card">
+            <div class="num">3</div>
+            <h4>柔軟な最適化</h4>
+            <p>ターゲット・キーワード・配信地域はご希望に合わせて柔軟に調整可能です。</p>
+        </div>
+    </div>
+
+    <div style="margin-top:20px;background:#f0f7ff;border-radius:10px;padding:18px;border-left:5px solid #1976d2;">
+        <h4 style="font-size:14px;color:#1565c0;margin-bottom:8px;">■ 契約の更新について</h4>
+        <p style="font-size:13px;color:#555;">本契約はご契約満了の際にお客様からご連絡がない限り、1年ごとの自動更新となります。契約期間内に目標再生数を達成した後も、引き続き継続サポートへと移行いたします。</p>
+    </div>
+</div>
+
+<!-- ③ よくあるご質問 -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon" style="background:#1976d2;">3</span>
+        よくあるご質問
+    </div>
+
+    <div class="faq-item">
+        <div class="q">お電話やメールでの連絡窓口はどちらですか？</div>
+        <div class="a">広告運用に関するご連絡は、弊社「広告運用サポート窓口」までお願いいたします。現在メール・お電話でやり取りしているアドレス・電話番号で問題ございません。</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="q">配信エリアやターゲットは後から変更できますか？</div>
+        <div class="a">はい、可能です。配信状況を見ながらご希望に合わせて柔軟に調整いたしますので、お気軽にご相談ください。</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="q">運用中に追加で知りたい情報があった場合は？</div>
+        <div class="a">メール・お電話にてお気軽にお問い合わせください。次回の定例報告を待たずにご回答・ご共有いたします。</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="q">報告会はどのような形式ですか？</div>
+        <div class="a">お電話またはメールにて、運用状況と改善提案をご報告いたします。お客様のご都合のよい方法でお伝えいたします。</div>
+    </div>
+
+    <div class="faq-item">
+        <div class="q">5月1日の配信開始時に、こちらで準備が必要なことはありますか？</div>
+        <div class="a">オーナー権限の付与と動画のアップロードが完了していれば、お客様側で追加のご対応は特にございません。弊社にて審査対応まで進めさせていただきます。</div>
+    </div>
+</div>
+
+<!-- 連絡先 -->
+<div class="contact-box">
+    <h3>■ お問い合わせ窓口</h3>
+    <p><strong>株式会社ランバード 広告運用サポート窓口</strong></p>
+    <p>Mail: creative.yt@runbird.net</p>
+    <p>TEL: 0120-949-851</p>
+    <p style="margin-top:8px;font-size:12px;color:#888;">ご不明点・ご要望は、いつでもお気軽にご連絡ください。</p>
+</div>
+
+<div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
+    株式会社ランバード｜広告運用サポート窓口
+</div>
+
+</div>
+</body>
+</html>
