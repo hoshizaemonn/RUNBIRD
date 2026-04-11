@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI動画制作 ヒアリングシート | 株式会社ランバード</title>
+<style>
+  :root {
+    --brand: #0b3d91;
+    --brand-light: #2a64c8;
+    --bg: #f5f7fb;
+    --text: #1a1a1a;
+    --muted: #666;
+    --border: #d8dde6;
+    --error: #c0392b;
+    --ok: #1f8a5b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  header h1 {
+    color: var(--brand);
+    font-size: 28px;
+    margin: 0 0 8px;
+  }
+  header p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 15px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+  .card h2 {
+    font-size: 18px;
+    color: var(--brand);
+    margin: 0 0 4px;
+    border-left: 4px solid var(--brand);
+    padding-left: 12px;
+  }
+  .card .section-desc {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0 0 20px;
+    padding-left: 16px;
+  }
+  .field {
+    margin-bottom: 20px;
+  }
+  .field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+  .field .required {
+    color: var(--error);
+    font-size: 12px;
+    margin-left: 4px;
+  }
+  .field .help {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+  }
+  textarea { min-height: 90px; resize: vertical; }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--brand-light);
+    box-shadow: 0 0 0 3px rgba(42,100,200,0.15);
+  }
+  .pattern-select {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .pattern-card {
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: #fff;
+  }
+  .pattern-card:hover { border-color: var(--brand-light); }
+  .pattern-card.selected {
+    border-color: var(--brand);
+    background: #eaf1ff;
+  }
+  .pattern-card .num {
+    display: inline-block;
+    width: 28px; height: 28px;
+    line-height: 28px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .pattern-card .name { font-weight: 700; font-size: 14px; }
+  .pattern-card .desc { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .checkbox-group label,
+  .radio-group label {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 400;
+    margin-right: 16px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .checkbox-group input,
+  .radio-group input {
+    margin-right: 6px;
+  }
+  .pattern-block { display: none; }
+  .pattern-block.active { display: block; }
+  .requires-pattern { display: none; }
+  body.pattern-selected .requires-pattern { display: block; }
+  .submit-area {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  button {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--brand);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--brand-light); }
+  .btn-secondary {
+    background: #fff;
+    color: var(--brand);
+    border: 2px solid var(--brand);
+  }
+  .notice {
+    background: #fff8e1;
+    border-left: 4px solid #f5b400;
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+  .notice strong { color: #b67800; }
+  .scene-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 8px;
+    margin-bottom: 6px;
+    align-items: center;
+  }
+  .scene-row .scene-num {
+    font-weight: 700;
+    color: var(--brand);
+    font-size: 13px;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .pattern-select { grid-template-columns: 1fr; }
+    .row-2, .row-3 { grid-template-columns: 1fr; }
+    .card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>AI動画制作 ヒアリングシート</h1>
+    <p>株式会社ランバード｜AI動画事業</p>
+  </header>
+
+  <form id="hearing-form">
+
+    <!-- ============ 1. パターン選択 ============ -->
+    <div class="card">
+      <h2>1. 制作する動画のパターンを選択</h2>
+      <p class="section-desc">最初にどのタイプの動画を作りたいか1つ選んでください。以降の質問が変わります。</p>
+      <div class="pattern-select">
+        <div class="pattern-card" data-pattern="1">
+          <div class="num">1</div>
+          <div class="name">写真ベース動画</div>
+          <div class="desc">いただいた写真を素材に実写ベースで制作</div>
+        </div>
+        <div class="pattern-card" data-pattern="2">
+          <div class="num">2</div>
+          <div class="name">アニメ動画</div>
+          <div class="desc">写真や情報をもとにアニメ風に制作</div>
+        </div>
+        <div class="pattern-card" data-pattern="3">
+          <div class="num">3</div>
+          <div class="name">AIタレント動画</div>
+          <div class="desc">AIナレーターが内容を説明する動画</div>
+        </div>
+      </div>
+      <input type="hidden" id="pattern" name="pattern" required>
+    </div>
+
+    <!-- ============ 2. 基本情報 ============ -->
+    <div class="card requires-pattern">
+      <h2>2. 基本情報</h2>
+      <p class="section-desc">ご担当者と納品先の確認です。</p>
+
+      <div class="row-2">
+        <div class="field">
+          <label>会社名<span class="required">必須</span></label>
+          <input type="text" name="company" required>
+        </div>
+        <div class="field">
+          <label>ご担当者名<span class="required">必須</span></label>
+          <input type="text" name="contact_name" required>
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>メールアドレス<span class="required">必須</span></label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="field">
+          <label>電話番号</label>
+          <input type="tel" name="phone">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>事業・サービスの概要<span class="required">必須</span></label>
+        <textarea name="business_description" placeholder="どんな事業か、どんなサービスを提供しているかを簡単に教えてください。" required></textarea>
+      </div>
+
+      <div class="field">
+        <label>ホームページURL</label>
+        <input type="url" name="website" placeholder="https://">
+      </div>
+    </div>
+
+    <!-- ============ 3. 動画の目的 ============ -->
+    <div class="card requires-pattern">
+      <h2>3. 動画の目的</h2>
+      <p class="section-desc">「誰に・何を伝えたいか」を整理します。</p>
+
+      <div class="field">
+        <label>動画のゴール<span class="required">必須</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="goal" value="認知拡大" required>認知拡大</label>
+          <label><input type="radio" name="goal" value="問い合わせ獲得">問い合わせ獲得</label>
+          <label><input type="radio" name="goal" value="採用">採用</label>
+          <label><input type="radio" name="goal" value="商品購入">商品購入</label>
+          <label><input type="radio" name="goal" value="説明会集客">説明会・セミナー集客</label>
+          <label><input type="radio" name="goal" value="その他">その他</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>ターゲット視聴者<span class="required">必須</span></label>
+        <textarea name="target" placeholder="例：40-60代の経営者、これから福祉事業に参入を検討している方" required></textarea>
+        <span class="help">1人の人物像を具体的に書くほど刺さる動画になります。</span>
+      </div>
+    </div>
+
+    <!-- ============ 4. 仕様 ============ -->
+    <div class="card requires-pattern">
+      <h2>4. 動画の仕様</h2>
+      <p class="section-desc">尺・配信先・縦横比を決めます。</p>
+
+      <div class="row-2">
+        <div class="field">
+          <label>動画の長さ<span class="required">必須</span></label>
+          <select name="duration" required>
+            <option value="">選択してください</option>
+            <option value="6秒（バンパー広告）">6秒（バンパー広告）</option>
+            <option value="15秒">15秒</option>
+            <option value="30秒">30秒</option>
+            <option value="45秒">45秒</option>
+            <option value="60秒">60秒</option>
+            <option value="90秒以上">90秒以上</option>
+            <option value="おまかせ">おまかせ</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>動画の縦横比</label>
+          <div class="radio-group">
+            <label><input type="radio" name="aspect" value="16:9">横（16:9）</label>
+            <label><input type="radio" name="aspect" value="9:16">縦（9:16）</label>
+            <label><input type="radio" name="aspect" value="1:1">正方形（1:1）</label>
+            <label><input type="radio" name="aspect" value="おまかせ">おまかせ</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>配信先<span class="required">必須</span></label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="platform" value="YouTube">YouTube広告</label>
+          <label><input type="checkbox" name="platform" value="Instagram">Instagram</label>
+          <label><input type="checkbox" name="platform" value="TikTok">TikTok</label>
+          <label><input type="checkbox" name="platform" value="ホームページ">自社HP</label>
+          <label><input type="checkbox" name="platform" value="営業資料">営業資料・展示会</label>
+          <label><input type="checkbox" name="platform" value="その他">その他</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>CTA（視聴後にしてほしい行動）</label>
+        <input type="text" name="cta_text" placeholder="例：無料オンライン説明会のお申込みはこちら">
+        <input type="url" name="cta_url" placeholder="リンク先URL（https://）" style="margin-top:8px;">
+        <span class="help">特になければ空欄でOKです。</span>
+      </div>
+    </div>
+
+    <!-- ============ 5-1. パターン1：写真ベース動画 ============ -->
+    <div class="card pattern-block" id="block-1">
+      <h2>5. 写真ベース動画 専用項目</h2>
+      <p class="section-desc">動画の構成・ご要望を教えてください。</p>
+
+      <div class="field">
+        <label>動画の構成・ご要望<span class="required">必須</span></label>
+        <textarea name="p1_storyline" placeholder="例：問題提起 → サービス紹介 → 実績 → 説明会案内、という流れにしたい。&#10;冒頭で『福祉事業に興味ありませんか？』と問いかけて、最後にCTAで締めたい。&#10;明るく安心感のある雰囲気で。" rows="6" required></textarea>
+        <span class="help">「こういう感じにしてほしい」というご要望をご自由にお書きください。お任せの場合は「おまかせ」とご記入ください。</span>
+      </div>
+
+      <div class="field">
+        <label>ナレーション原稿・キーメッセージ</label>
+        <textarea name="p1_script" placeholder="動画内で読み上げてほしいナレーション原稿があれば全文を貼ってください。&#10;原稿が無い場合は、「これだけは伝えたい」というキーメッセージを箇条書きでお書きください。" rows="6"></textarea>
+        <span class="help">台本が動画の質を一番左右します。原稿または伝えたい要点を必ずお書きください。</span>
+      </div>
+    </div>
+
+    <!-- ============ 5-2. パターン2：アニメ動画 ============ -->
+    <div class="card pattern-block" id="block-2">
+      <h2>5. アニメ動画 専用項目</h2>
+      <p class="section-desc">世界観と構成のイメージを教えてください。</p>
+
+      <div class="field">
+        <label>テイスト・タッチ</label>
+        <div class="radio-group">
+          <label><input type="radio" name="p2_tone" value="ジブリ風">ジブリ風</label>
+          <label><input type="radio" name="p2_tone" value="フラット・ポップ">フラット・ポップ</label>
+          <label><input type="radio" name="p2_tone" value="水彩・手書き">水彩・手書き</label>
+          <label><input type="radio" name="p2_tone" value="3DCG">3DCG</label>
+          <label><input type="radio" name="p2_tone" value="リアル寄り">リアル寄り</label>
+          <label><input type="radio" name="p2_tone" value="おまかせ">おまかせ</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>参考にしたい動画・イラストのURL</label>
+        <textarea name="p2_reference_urls" placeholder="YouTube、Instagram、PinterestなどのURLがあれば貼ってください。1行1URLでOKです。" rows="3"></textarea>
+        <span class="help">「こういう雰囲気にしたい」が伝わる参考があると一気に質が上がります。</span>
+      </div>
+
+      <div class="field">
+        <label>動画の構成・ご要望<span class="required">必須</span></label>
+        <textarea name="p2_storyline" placeholder="例：朝の街並み → 店主が仕込み → お客さんが楽しむ様子 → ロゴで締め。&#10;ノスタルジックで温かみのある雰囲気にしたい。" rows="5" required></textarea>
+        <span class="help">大まかな流れと雰囲気をご自由にお書きください。お任せの場合は「おまかせ」とご記入ください。</span>
+      </div>
+
+      <div class="field">
+        <label>ナレーション原稿・キーメッセージ</label>
+        <textarea name="p2_script" placeholder="動画内で読み上げてほしいナレーション原稿があれば全文を貼ってください。&#10;原稿が無い場合は、「これだけは伝えたい」というキーメッセージを箇条書きでお書きください。" rows="5"></textarea>
+        <span class="help">台本が動画の質を一番左右します。原稿または伝えたい要点を必ずお書きください。</span>
+      </div>
+    </div>
+
+    <!-- ============ 5-3. パターン3：AIタレント動画 ============ -->
+    <div class="card pattern-block" id="block-3">
+      <h2>5. AIタレント動画 専用項目</h2>
+      <p class="section-desc">原稿と話し方で動画の質が決まります。原稿が無くてもOKです（こちらで作成します）。</p>
+
+      <div class="field">
+        <label>原稿（既にあれば全文）</label>
+        <textarea name="p3_script" placeholder="話してほしい原稿があれば全文を貼ってください。" rows="8"></textarea>
+      </div>
+
+      <div class="field">
+        <label>原稿が無い場合：話してほしい内容のメモ<span class="required">原稿が無い場合は必須</span></label>
+        <textarea name="p3_script_notes" placeholder="例：・福祉事業の参入が今アツい理由を3つ&#10;・ランバードの強み（異業種参入率95%、最短4ヶ月黒字化）&#10;・無料説明会の案内" rows="6"></textarea>
+        <span class="help">箇条書きで伝えたい内容を書いてください。こちらで自然な原稿に整えます。</span>
+      </div>
+
+      <div class="field">
+        <label>ナレーターの性別<span class="required">必須</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="p3_gender" value="男性" required>男性</label>
+          <label><input type="radio" name="p3_gender" value="女性">女性</label>
+          <label><input type="radio" name="p3_gender" value="どちらでも">どちらでも</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>ナレーターの年齢層</label>
+        <div class="radio-group">
+          <label><input type="radio" name="p3_age" value="20代">20代</label>
+          <label><input type="radio" name="p3_age" value="30代">30代</label>
+          <label><input type="radio" name="p3_age" value="40代">40代</label>
+          <label><input type="radio" name="p3_age" value="50代以上">50代以上</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>服装・雰囲気</label>
+        <div class="radio-group">
+          <label><input type="radio" name="p3_outfit" value="スーツ・きちっと">スーツ・きちっと</label>
+          <label><input type="radio" name="p3_outfit" value="オフィスカジュアル">オフィスカジュアル</label>
+          <label><input type="radio" name="p3_outfit" value="カジュアル">カジュアル</label>
+          <label><input type="radio" name="p3_outfit" value="制服・ユニフォーム">制服・ユニフォーム</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>話し方のトーン</label>
+        <div class="radio-group">
+          <label><input type="radio" name="p3_tone" value="丁寧・フォーマル">丁寧・フォーマル</label>
+          <label><input type="radio" name="p3_tone" value="親しみやすい">親しみやすい</label>
+          <label><input type="radio" name="p3_tone" value="情熱的">情熱的</label>
+          <label><input type="radio" name="p3_tone" value="ニュース風">ニュース風</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>背景</label>
+        <div class="radio-group">
+          <label><input type="radio" name="p3_background" value="オフィス">オフィス</label>
+          <label><input type="radio" name="p3_background" value="スタジオ">スタジオ</label>
+          <label><input type="radio" name="p3_background" value="白背景">白背景</label>
+          <label><input type="radio" name="p3_background" value="持ち込み画像">持ち込み画像</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>背景画像の共有リンク（持ち込みの場合）</label>
+        <input type="url" name="p3_background_link" placeholder="Google Drive の共有URL">
+      </div>
+
+      <div class="field">
+        <label>固有名詞の読み仮名</label>
+        <textarea name="p3_reading" placeholder="例：OWL→オウル / 株式会社ランバード→かぶしきがいしゃらんばーど"></textarea>
+        <span class="help">AIが間違えて読みやすい言葉は事前に教えてください。</span>
+      </div>
+
+      <div class="field">
+        <label>使ってはいけない言葉・表現</label>
+        <textarea name="p3_ng_words" placeholder="例：「絶対」「必ず」「日本一」など薬機法・景表法に抵触する可能性のある表現"></textarea>
+      </div>
+
+      <div class="field">
+        <label>参考にしたい話し方の動画URL</label>
+        <input type="url" name="p3_reference_url" placeholder="YouTubeなど">
+      </div>
+    </div>
+
+    <!-- ============ 6. 素材一式 ============ -->
+    <div class="card requires-pattern">
+      <h2>6. 素材一式（写真・ロゴ・BGM）</h2>
+      <p class="section-desc">動画制作に使う素材をまとめてご共有ください。シート送信後に Google Drive または LINE WORKS でお送りいただいてもOKです。</p>
+
+      <div class="notice">
+        <strong>送付方法：</strong>下記のいずれかでお送りください。<br>
+        ・Google Drive 共有リンクを下記欄に貼付（推奨）<br>
+        ・LINE WORKS でランバード担当者宛に送付<br>
+        <strong>写真の目安：</strong>横向き写真15〜20枚程度。スマホ撮影でOK、明るくピントが合っているものを。<br>
+        <strong>アニメ動画の場合：</strong>店舗・商品・人物の参考写真があると、AIの再現精度が大きく上がります（任意）。
+      </div>
+
+      <div class="field">
+        <label>ご提供いただける写真・素材の量<span class="required">必須</span></label>
+        <select name="assets_volume" required>
+          <option value="">選択してください</option>
+          <option value="0枚（素材なし）">0枚（素材なし・全てAI生成でお任せ）</option>
+          <option value="1〜10枚">1〜10枚</option>
+          <option value="10〜30枚">10〜30枚</option>
+          <option value="30枚以上">30枚以上</option>
+          <option value="動画素材もあり">写真に加えて動画素材もあり</option>
+        </select>
+        <span class="help">素材の量によって制作工数とお見積もりが変わります。</span>
+      </div>
+
+      <div class="field">
+        <label>素材一式の共有リンク</label>
+        <input type="url" name="assets_link" placeholder="Google Drive の共有URL（写真・ロゴ・BGM等まとめて）">
+        <span class="help">後日送付の場合は空欄でOKです。</span>
+      </div>
+
+      <div class="field">
+        <label>BGMの雰囲気</label>
+        <div class="radio-group">
+          <label><input type="radio" name="bgm_mood" value="明るい・元気">明るい・元気</label>
+          <label><input type="radio" name="bgm_mood" value="落ち着き・信頼感">落ち着き・信頼感</label>
+          <label><input type="radio" name="bgm_mood" value="感動・エモーショナル">感動・エモーショナル</label>
+          <label><input type="radio" name="bgm_mood" value="スタイリッシュ">スタイリッシュ</label>
+          <label><input type="radio" name="bgm_mood" value="おまかせ">おまかせ</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>ブランドカラー</label>
+        <input type="text" name="brand_color" placeholder="例：紺色（#0b3d91）/ 山吹色（#f5b400）">
+      </div>
+    </div>
+
+    <!-- ============ 7. 納期・その他 ============ -->
+    <div class="card requires-pattern">
+      <h2>7. 納期・その他</h2>
+
+      <div class="field">
+        <label>希望納期</label>
+        <input type="text" name="deadline" placeholder="例：4月25日まで／なるべく早く">
+        <span class="help">通常は提出から営業日5日が目安です。</span>
+      </div>
+
+      <div class="field">
+        <label>その他ご要望・補足</label>
+        <textarea name="notes" placeholder="参考動画のURL、避けたい表現、過去の動画の感想など、何でもご記入ください。" rows="4"></textarea>
+      </div>
+    </div>
+
+    <div class="submit-area requires-pattern">
+      <button type="button" class="btn-secondary" onclick="downloadJSON()">JSONをダウンロード</button>
+      <button type="submit" class="btn-primary">送信する</button>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  // パターン選択
+  const patternCards = document.querySelectorAll('.pattern-card');
+  const patternInput = document.getElementById('pattern');
+  patternCards.forEach(card => {
+    card.addEventListener('click', () => {
+      patternCards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      const p = card.dataset.pattern;
+      patternInput.value = p;
+      document.querySelectorAll('.pattern-block').forEach(b => b.classList.remove('active'));
+      document.getElementById('block-' + p).classList.add('active');
+      document.body.classList.add('pattern-selected');
+    });
+  });
+
+  // フォームデータをJSON化
+  function collectFormData() {
+    const form = document.getElementById('hearing-form');
+    const fd = new FormData(form);
+    const data = {};
+    for (const [key, value] of fd.entries()) {
+      if (data[key]) {
+        if (Array.isArray(data[key])) data[key].push(value);
+        else data[key] = [data[key], value];
+      } else {
+        data[key] = value;
+      }
+    }
+    data._submitted_at = new Date().toISOString();
+    return data;
+  }
+
+  function downloadJSON() {
+    const data = collectFormData();
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'hearing_' + (data.company || 'untitled') + '_' + Date.now() + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // 送信処理
+  // TODO: B案実装後、ここで fetch POST してサーバーにJSONを保存＋Chatwork通知
+  // TODO: C案実装後、サーバー側で台本・動画生成パイプラインを自動起動
+  document.getElementById('hearing-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!patternInput.value) {
+      alert('動画のパターンを選択してください。');
+      return;
+    }
+    const data = collectFormData();
+    // await fetch('/api/hearing', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)});
+    console.log('送信データ:', data);
+    downloadJSON();
+    alert('シートを保存しました。担当者よりご連絡いたします。');
+  });
+</script>
+</body>
+</html>
