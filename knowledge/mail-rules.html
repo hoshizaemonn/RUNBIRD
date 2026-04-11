@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube広告 メール対応ルール集｜株式会社ランバード</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background: #f0f2f5;
+    color: #1a1a1a;
+    line-height: 1.7;
+    padding: 24px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+
+h1 {
+    text-align: center;
+    font-size: 26px;
+    border-bottom: 3px solid #cc0000;
+    padding-bottom: 12px;
+    margin-bottom: 6px;
+}
+.subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 36px;
+}
+
+.section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+    border: 2px solid #e0e0e0;
+}
+.section-title {
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.section-title .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* スコープ図 */
+.scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.scope-card {
+    border-radius: 10px;
+    padding: 20px;
+    border: 2px solid;
+}
+.scope-card.ok { background: #e8f5e9; border-color: #2e7d32; }
+.scope-card.ng { background: #ffebee; border-color: #cc0000; }
+.scope-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.scope-card.ok h3 { color: #2e7d32; }
+.scope-card.ng h3 { color: #cc0000; }
+.scope-card ul {
+    list-style: none;
+    padding: 0;
+}
+.scope-card li {
+    font-size: 13px;
+    padding: 6px 0 6px 24px;
+    position: relative;
+    color: #333;
+}
+.scope-card.ok li::before {
+    content: "●";
+    color: #2e7d32;
+    position: absolute;
+    left: 4px;
+    font-size: 12px;
+}
+.scope-card.ng li::before {
+    content: "✕";
+    color: #cc0000;
+    position: absolute;
+    left: 4px;
+    font-weight: 700;
+}
+
+/* NG一覧 */
+.ng-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+.ng-card {
+    background: #fff5f5;
+    border: 2px solid #cc0000;
+    border-radius: 10px;
+    padding: 18px;
+}
+.ng-card .ng-label {
+    display: inline-block;
+    background: #cc0000;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+.ng-card h4 {
+    font-size: 15px;
+    color: #c62828;
+    margin-bottom: 8px;
+}
+.ng-card p {
+    font-size: 13px;
+    color: #555;
+}
+.ng-card .good {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #e0e0e0;
+    font-size: 12px;
+}
+.ng-card .good strong { color: #2e7d32; }
+
+/* フロー */
+.flow-steps {
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+.flow-step {
+    flex: 1;
+    min-width: 180px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 18px;
+    border: 2px solid #e0e0e0;
+    text-align: center;
+}
+.flow-step .step-num {
+    display: inline-block;
+    background: #cc0000;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 12px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+}
+.flow-step .step-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+.flow-step .step-desc {
+    font-size: 12px;
+    color: #555;
+}
+.flow-arrow {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    color: #cc0000;
+    padding: 0 6px;
+    font-weight: 700;
+}
+
+/* パターン対応 */
+.pattern-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.pattern {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 18px 20px;
+    border-left: 5px solid #1976d2;
+}
+.pattern-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1565c0;
+    margin-bottom: 8px;
+}
+.pattern-example {
+    background: #fff;
+    border: 1px dashed #bbdefb;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #555;
+    font-style: italic;
+}
+.pattern-response {
+    font-size: 13px;
+    color: #333;
+}
+.pattern-response strong {
+    color: #cc0000;
+}
+
+/* トーン */
+.tone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.tone-card {
+    border-radius: 10px;
+    padding: 18px;
+    border: 2px solid;
+}
+.tone-card.good { background: #e8f5e9; border-color: #2e7d32; }
+.tone-card.bad { background: #ffebee; border-color: #cc0000; }
+.tone-card h4 {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.tone-card.good h4 { color: #2e7d32; }
+.tone-card.bad h4 { color: #cc0000; }
+.tone-card ul {
+    list-style: none;
+    padding: 0;
+}
+.tone-card li {
+    font-size: 13px;
+    padding: 4px 0 4px 20px;
+    position: relative;
+    color: #333;
+}
+.tone-card.good li::before {
+    content: "✓";
+    color: #2e7d32;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+.tone-card.bad li::before {
+    content: "✕";
+    color: #cc0000;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+}
+
+/* 大原則バナー */
+.principle-banner {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    color: #fff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+.principle-banner h2 {
+    color: #ff6b6b;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.principle-banner .big-rule {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 16px 0;
+}
+.principle-banner .rule-desc {
+    font-size: 13px;
+    color: #ccc;
+}
+
+/* 更新情報 */
+.update-bar {
+    background: #fff3e0;
+    border: 2px solid #ff8800;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: #e65100;
+}
+
+@media (max-width: 768px) {
+    .scope-grid, .ng-grid, .tone-grid { grid-template-columns: 1fr; }
+    .flow-steps { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>YouTube広告 メール対応ルール集</h1>
+<p class="subtitle">運用チーム（広告運用サポート窓口）向けガイド｜株式会社ランバード</p>
+
+<div class="update-bar">
+    <strong>更新日：2026年4月11日</strong>　初版作成（鈴木さんとのやり取りから抽出）
+</div>
+
+<!-- 大原則バナー -->
+<div class="principle-banner">
+    <h2>運用チームの大原則</h2>
+    <div class="big-rule">メール・電話のみで対応</div>
+    <div class="rule-desc">
+        Zoomでの打ち合わせ・報告会は原則NG。<br>
+        理由：制作時の打ち合わせと混同されたり、話が広がって炎上コースに入るリスクがあるため。
+    </div>
+</div>
+
+<!-- ① 対応範囲 -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon" style="background:#1976d2;">1</span>
+        運用チームの対応範囲
+    </div>
+    <div class="scope-grid">
+        <div class="scope-card ok">
+            <h3>✓ 運用チームが対応すること</h3>
+            <ul>
+                <li>YouTube広告の配信設定・運用</li>
+                <li>ターゲティング、キーワード、配信地域の調整</li>
+                <li>広告配信後の運用状況の報告</li>
+                <li>メール・電話での運用に関する問い合わせ</li>
+            </ul>
+        </div>
+        <div class="scope-card ng">
+            <h3>✕ 運用チームが対応しないこと</h3>
+            <ul>
+                <li>契約・お金まわりの話</li>
+                <li>契約範囲の拡大・新規提案</li>
+                <li>再生数保証・成果保証の具体条件</li>
+                <li>「営業から聞いていない」系のクレーム</li>
+            </ul>
+            <p style="margin-top:10px;font-size:12px;color:#c62828;font-weight:700;">→ 営業マンに戻す / 担当部署で確認</p>
+        </div>
+    </div>
+</div>
+
+<!-- ② 絶対NG -->
+<div class="section" style="border-color:#cc0000;">
+    <div class="section-title">
+        <span class="icon" style="background:#cc0000;">2</span>
+        絶対に言ってはいけないこと
+    </div>
+    <div class="ng-grid">
+        <div class="ng-card">
+            <span class="ng-label">NG #1</span>
+            <h4>「予算」というワード</h4>
+            <p>予算を削る／上げる系の話に発展し、炎上コースに入るリスクが高い。</p>
+            <div class="good"><strong>対処：</strong>予算の話題は出さない。触れずに逃げる。</div>
+        </div>
+        <div class="ng-card">
+            <span class="ng-label">NG #2</span>
+            <h4>「3万再生 保証」</h4>
+            <p>3万再生はあくまで<strong>運用目標</strong>であり、契約ベースの保証ではない。</p>
+            <div class="good"><strong>正：</strong>「運用目標として3万再生を目指しサポートする」</div>
+        </div>
+        <div class="ng-card">
+            <span class="ng-label">NG #3</span>
+            <h4>契約・更新・解約の独断回答</h4>
+            <p>契約満了時の更新/解約の具体条件を独自判断で回答しない。</p>
+            <div class="good"><strong>対処：</strong>担当部署で確認してから正確な数字を提示する。</div>
+        </div>
+        <div class="ng-card">
+            <span class="ng-label">NG #4</span>
+            <h4>営業マンの発言を推測で代弁</h4>
+            <p>「営業からこう聞いた」系の話題には絶対に推測で答えない。</p>
+            <div class="good"><strong>対処：</strong>営業マンに戻す／担当部署で確認。</div>
+        </div>
+    </div>
+</div>
+
+<!-- ③ 定例報告・運用フロー -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon" style="background:#2e7d32;">3</span>
+        定例報告・運用フロー
+    </div>
+    <div class="flow-steps">
+        <div class="flow-step">
+            <div class="step-num">初期</div>
+            <div class="step-title">2ヶ月に1回</div>
+            <div class="step-desc">当初は2ヶ月に1回のペースで定例報告を実施</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+            <div class="step-num">安定後</div>
+            <div class="step-title">随時開催</div>
+            <div class="step-desc">配信が安定したらオーナー様のご要望に応じて随時開催</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+            <div class="step-num">調整</div>
+            <div class="step-title">柔軟に対応</div>
+            <div class="step-desc">ターゲット・キーワード・配信地域はご希望に合わせて柔軟に</div>
+        </div>
+    </div>
+
+    <div style="margin-top:24px;background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #1976d2;">
+        <h4 style="font-size:14px;margin-bottom:8px;color:#1565c0;">契約の更新について</h4>
+        <p style="font-size:13px;color:#555;">本契約は契約満了の際にお客様から解約のご連絡がない限り、1年ごとの自動更新となる仕組み。3万再生を達成し期間を満了した後も、お客様からお申し出がなければ継続サポートへと移行。</p>
+        <p style="font-size:12px;color:#e65100;margin-top:8px;">※ 更新時の具体的なプランについては、担当部署へ確認のうえで正確な数字を提示する流れにする。運用チーム独断で数字を出さない。</p>
+    </div>
+</div>
+
+<!-- ④ パターン対応 -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon" style="background:#f9a825;">4</span>
+        典型パターン別の対応例
+    </div>
+    <div class="pattern-list">
+
+        <div class="pattern">
+            <div class="pattern-title">パターン 1：お客様が不安になって連絡してきた</div>
+            <div class="pattern-example">
+                「5月からの流れでこちらからも何の意向も伝えていないので不安です。電話連絡はいつ来るのでしょうか？」
+            </div>
+            <div class="pattern-response">
+                <strong>対応：</strong> すぐお詫び＋具体的な電話日程（複数候補）を提示。24時間以内に返信。運用チーム側の準備状況を簡潔に共有。
+            </div>
+        </div>
+
+        <div class="pattern">
+            <div class="pattern-title">パターン 2：営業時の話と食い違っている</div>
+            <div class="pattern-example">
+                「営業から補助でアカウント作成やってもらえると聞いた」
+            </div>
+            <div class="pattern-response">
+                <strong>対応：</strong> 運用チームは触れない。営業マンに戻す。ぐちゃぐちゃ言い出したら営業に戻す。
+            </div>
+        </div>
+
+        <div class="pattern">
+            <div class="pattern-title">パターン 3：Zoomでの打ち合わせを希望された</div>
+            <div class="pattern-response">
+                <strong>対応：</strong> 「運用チームはメール・電話のみでのご対応とさせていただいております」と丁寧にお断り。どうしても必要な場合は営業マン経由で調整。
+            </div>
+        </div>
+
+        <div class="pattern">
+            <div class="pattern-title">パターン 4：BGM・素材の著作権で質問された</div>
+            <div class="pattern-example">
+                「なんで著作権問題が出たのか」
+            </div>
+            <div class="pattern-response">
+                <strong>回答例：</strong> 以前は問題なかったが、近年の動画需要が増えた兼ね合いで、制作しているアーティストが自分の著作物としてYouTubeに申請する人が増えていて、今年の余波で出てしまった。<br><br>
+                <strong>音楽変更で運用が遅れた場合：</strong>
+                <ul style="margin-left:20px;margin-top:6px;">
+                    <li>止まった分は後ろ倒しで動かす</li>
+                    <li>止まった分も含めて月内で動画の視聴ブースト設定を入れる</li>
+                    <li>BGMに合わせてカット割やテロップを作っているので、BGM変更時はそこが崩れないよう特にケア</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pattern">
+            <div class="pattern-title">パターン 5：クレーム・納得できないと言われた</div>
+            <div class="pattern-example">
+                「営業時の報告会のzoomの話はあやふやだから勘違いかも。運用担当には電話かzoomで対応しますと言われた」
+            </div>
+            <div class="pattern-response">
+                <strong>対応：</strong> 運用担当からは電話とメール対応になる旨をご説明。ご納得いただけない場合はいったん様子見、または営業に戻す。資料の不備があった場合は素直にお詫びする。
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ⑤ 文面のトーン -->
+<div class="section">
+    <div class="section-title">
+        <span class="icon" style="background:#1976d2;">5</span>
+        文面のトーン
+    </div>
+    <div class="tone-grid">
+        <div class="tone-card good">
+            <h4>推奨される書き方</h4>
+            <ul>
+                <li>丁寧だが過度に謝りすぎない</li>
+                <li>具体的な日程・期限を入れる</li>
+                <li>箇条書きで読みやすく</li>
+                <li>運用チームとしてできること／できないことを明確に</li>
+            </ul>
+        </div>
+        <div class="tone-card bad">
+            <h4>避けるべき書き方</h4>
+            <ul>
+                <li>保証・約束の言葉（必ず・絶対・保証します）</li>
+                <li>曖昧な回答（おそらく・たぶん だけで終わる）</li>
+                <li>営業マンの発言を推測で代弁</li>
+                <li>予算の話題に触れる</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- 窓口名 -->
+<div class="section" style="border-color:#cc0000;">
+    <div class="section-title">
+        <span class="icon" style="background:#cc0000;">6</span>
+        運用チームの窓口名
+    </div>
+    <div style="background:#f8f9fa;border-radius:10px;padding:20px;">
+        <p style="font-size:15px;font-weight:700;margin-bottom:8px;">株式会社ランバード 広告運用サポート窓口</p>
+        <ul style="margin-left:20px;font-size:13px;color:#555;">
+            <li>担当者の個人名は出さない</li>
+            <li>運用メンバー個別の連絡先は使わず、窓口メールで統一</li>
+            <li>Mail: creative.yt@runbird.net / TEL: 0120-949-851</li>
+        </ul>
+    </div>
+</div>
+
+<div style="text-align:center;color:#aaa;font-size:12px;padding:30px 0 10px;">
+    株式会社ランバード｜広告運用サポート窓口<br>
+    社内ナレッジ資料 / 随時更新
+</div>
+
+</div>
+</body>
+</html>
