@@ -648,28 +648,28 @@
   <!-- ============ 5. AI生成パイプラインの中身 ============ -->
   <section>
     <h2>5. AI生成パイプラインの中身</h2>
-    <p>ヒアリングシートで集めたデータを、どのAIツールに渡して動画にするかを整理しました。台本生成→画像/映像生成→ナレーション合成→組み立て、の4ステージで構成されます。</p>
+    <p>ヒアリングシートで集めたデータを、どのAIツールに渡して動画にするかを整理しました。シート解析→画像・映像生成→ナレーション合成→組み立て、の4ステージで構成されます。台本（構成・原稿）の生成は<strong>自社で構築する動画制作システムに内蔵</strong>されており、シートの内容が直接そこに流し込まれます。</p>
 
     <div class="pipeline">
       <div class="pipeline-step">
         <div class="stage">Stage 1</div>
-        <div class="stage-name">台本生成</div>
-        <div class="tools">Claude / ChatGPT<br>シートの構成・要望から<br>ナレーション原稿を生成</div>
+        <div class="stage-name">シート解析・構成生成</div>
+        <div class="tools">自社システム<br>シートのデータを読み込み<br>構成・台本を自動生成<br>（システム内蔵）</div>
       </div>
       <div class="pipeline-step">
         <div class="stage">Stage 2</div>
         <div class="stage-name">画像・映像生成</div>
-        <div class="tools">Gemini Imagen<br>Veo 3 Fast<br>Pixverse / Kling<br>HeyGen（タレント時）</div>
+        <div class="tools">Gemini Imagen<br>Veo 3 Fast<br>HeyGen（タレント時）</div>
       </div>
       <div class="pipeline-step">
         <div class="stage">Stage 3</div>
         <div class="stage-name">ナレーション合成</div>
-        <div class="tools">Google Cloud TTS<br>ElevenLabs<br>（声質・読み仮名対応）</div>
+        <div class="tools">ElevenLabs<br>声質・読み仮名対応<br>自然な日本語音声</div>
       </div>
       <div class="pipeline-step">
         <div class="stage">Stage 4</div>
         <div class="stage-name">組み立て・仕上げ</div>
-        <div class="tools">Python（自動合成）<br>Premiere Pro<br>テロップ・BGM・微調整</div>
+        <div class="tools">Python（自社）<br>素材の自動結合<br>テロップ・BGM・微調整</div>
       </div>
     </div>
 
@@ -685,12 +685,6 @@
       </thead>
       <tbody>
         <tr>
-          <td class="role">台本生成</td>
-          <td>Claude / ChatGPT</td>
-          <td>シート内容からナレーション原稿を作成</td>
-          <td class="price">月$20〜</td>
-        </tr>
-        <tr>
           <td class="role">画像生成</td>
           <td>Gemini Imagen 3</td>
           <td>アニメ・人物・背景の静止画</td>
@@ -703,27 +697,15 @@
           <td class="price">8秒 約100〜200円</td>
         </tr>
         <tr>
-          <td class="role">画像→動画</td>
-          <td>Pixverse / Kling</td>
-          <td>写真ベースの動き付け（補助）</td>
-          <td class="price">月$10〜30</td>
-        </tr>
-        <tr>
           <td class="role">AIタレント</td>
           <td>HeyGen</td>
           <td>AIナレーターによる説明動画</td>
-          <td class="price">月$24〜（1分あたり）</td>
-        </tr>
-        <tr>
-          <td class="role">ナレーション</td>
-          <td>Google Cloud TTS</td>
-          <td>日本語ナレーション合成（自然・低価格）</td>
-          <td class="price">100万文字で約$16</td>
+          <td class="price">月$24〜</td>
         </tr>
         <tr>
           <td class="role">ナレーション</td>
           <td>ElevenLabs</td>
-          <td>感情豊かな音声合成（高品質）</td>
+          <td>感情豊かな日本語音声合成</td>
           <td class="price">月$5〜22</td>
         </tr>
         <tr>
@@ -731,12 +713,6 @@
           <td>Python（自社）</td>
           <td>素材の自動結合・テロップ・Ken Burns</td>
           <td class="price">無料</td>
-        </tr>
-        <tr>
-          <td class="role">最終仕上げ</td>
-          <td>Adobe Premiere Pro</td>
-          <td>テロップ調整・BGM・色補正</td>
-          <td class="price">月¥2,728</td>
         </tr>
       </tbody>
     </table>
@@ -753,41 +729,35 @@
     <div class="cost-cards">
       <div class="cost-card p1">
         <h4>パターン1<br>写真ベース動画</h4>
-        <div class="total">約 500〜1,500円</div>
+        <div class="total">約 400〜900円</div>
         <p style="font-size:12px; color:var(--muted); margin:0;">お客さんの写真が主素材なので原価は最も低い</p>
         <div class="breakdown">
-          <div><span>台本生成（Claude）</span><span>約50円</span></div>
-          <div><span>ナレーション（TTS）</span><span>約30円</span></div>
-          <div><span>画像→動画（Pixverse等）</span><span>約300〜800円</span></div>
+          <div><span>画像→動画（Veo 3 Fast）</span><span>約300〜800円</span></div>
+          <div><span>ナレーション（ElevenLabs案分）</span><span>約100円</span></div>
           <div><span>BGM（フリー素材）</span><span>0円</span></div>
-          <div><span>Premiere（案分）</span><span>約100円</span></div>
         </div>
       </div>
 
       <div class="cost-card p2">
         <h4>パターン2<br>アニメ動画</h4>
-        <div class="total">約 1,500〜3,500円</div>
+        <div class="total">約 1,200〜2,800円</div>
         <p style="font-size:12px; color:var(--muted); margin:0;">画像生成と動画化を多用するため原価は中〜高</p>
         <div class="breakdown">
-          <div><span>台本生成（Claude）</span><span>約50円</span></div>
-          <div><span>ナレーション（TTS）</span><span>約30円</span></div>
           <div><span>画像生成（Imagen）</span><span>約100〜200円</span></div>
           <div><span>画像→動画（Veo 3 Fast）</span><span>約1,000〜2,500円</span></div>
+          <div><span>ナレーション（ElevenLabs案分）</span><span>約100円</span></div>
           <div><span>BGM（フリー素材）</span><span>0円</span></div>
-          <div><span>Premiere（案分）</span><span>約100円</span></div>
         </div>
       </div>
 
       <div class="cost-card p3">
         <h4>パターン3<br>AIタレント動画</h4>
-        <div class="total">約 1,000〜2,500円</div>
+        <div class="total">約 900〜2,100円</div>
         <p style="font-size:12px; color:var(--muted); margin:0;">HeyGenの月額を案分。本数が増えるほど割安に</p>
         <div class="breakdown">
-          <div><span>台本生成（Claude）</span><span>約50円</span></div>
           <div><span>HeyGen（案分）</span><span>約800〜2,000円</span></div>
           <div><span>背景画像（Imagen）</span><span>約20円</span></div>
           <div><span>BGM（フリー素材）</span><span>0円</span></div>
-          <div><span>Premiere（案分）</span><span>約100円</span></div>
         </div>
       </div>
     </div>
@@ -809,20 +779,20 @@
       <tbody>
         <tr>
           <td class="role">写真ベース</td>
-          <td>約1,000円</td>
-          <td class="price">約 50,000円</td>
+          <td>約700円</td>
+          <td class="price">約 35,000円</td>
           <td>素材次第で半減可能</td>
         </tr>
         <tr>
           <td class="role">アニメ</td>
-          <td>約2,500円</td>
-          <td class="price">約 125,000円</td>
+          <td>約2,000円</td>
+          <td class="price">約 100,000円</td>
           <td>Veo 3 Fastの本数で大きく変動</td>
         </tr>
         <tr>
           <td class="role">AIタレント</td>
-          <td>約1,800円</td>
-          <td class="price">約 90,000円</td>
+          <td>約1,500円</td>
+          <td class="price">約 75,000円</td>
           <td>HeyGen月額の案分効率次第</td>
         </tr>
       </tbody>
