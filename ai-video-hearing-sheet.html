@@ -128,7 +128,7 @@
   .notice strong { color: #b67800; }
   .pattern-select {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     margin-top: 8px;
   }
@@ -212,19 +212,14 @@
       <p class="section-desc">制作する動画のタイプを選んでください。</p>
       <div class="pattern-select">
         <div class="pattern-card" data-pattern="photo">
-          <div class="num">1</div>
+          <div class="num">A</div>
           <div class="name">写真ベース動画</div>
-          <div class="desc">お客さまの写真をもとに制作</div>
-        </div>
-        <div class="pattern-card" data-pattern="anime">
-          <div class="num">2</div>
-          <div class="name">アニメ動画</div>
-          <div class="desc">新海誠風のアニメで制作</div>
+          <div class="desc">お客さまの写真をもとに<br>実写風 or アニメ風で制作</div>
         </div>
         <div class="pattern-card" data-pattern="talent">
-          <div class="num">3</div>
+          <div class="num">B</div>
           <div class="name">AIタレント動画</div>
-          <div class="desc">AIナレーターが説明する動画</div>
+          <div class="desc">AIナレーターが<br>事業内容を説明する動画</div>
         </div>
       </div>
       <input type="hidden" id="pattern" name="pattern">
@@ -315,10 +310,19 @@
       </div>
     </div>
 
-    <!-- ============ 5-A. 写真ベース ============ -->
+    <!-- ============ 5-A. 写真ベース動画 ============ -->
     <div class="card pattern-block" id="block-photo">
-      <h2>5. 写真のご準備</h2>
-      <p class="section-desc">動画に使用する写真をご用意ください。</p>
+      <h2>5. 動画スタイルと写真のご準備</h2>
+      <p class="section-desc">スタイルを選んで、必要な写真をご用意ください。</p>
+
+      <div class="field">
+        <label>動画のスタイル<span class="required">必須</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="style" value="実写風" required>実写風（写真をそのまま活かす）</label>
+          <label><input type="radio" name="style" value="アニメ風（新海誠風）">アニメ風（新海誠風）</label>
+        </div>
+        <span class="help" id="anime-note" style="display:none;">写真をもとにアニメーション化します。他のテイストをご希望であれば「その他」欄にご記入ください。</span>
+      </div>
 
       <div class="notice" id="photo-guide">
         <strong>ご用意いただきたい写真：</strong><br>
@@ -332,28 +336,13 @@
       </div>
     </div>
 
-    <!-- ============ 5-B. アニメ ============ -->
-    <div class="card pattern-block" id="block-anime">
-      <h2>5. アニメ動画について</h2>
-      <p class="section-desc">基本的に新海誠風のアニメーションで制作いたします。</p>
-
-      <div class="notice">
-        <strong>制作スタイル：</strong>新海誠（「君の名は。」等）風のアニメーションをベースに、お客さまの事業内容に合わせた動画を制作します。写真をもとにアニメ化しますので、上記「業種」に合った写真もご用意いただけると仕上がりの精度が上がります。
-      </div>
-
-      <div class="field">
-        <label>他にご希望のテイストがあれば</label>
-        <textarea name="anime_preference" placeholder="例：もう少しポップなタッチにしてほしい / 水彩画っぽい感じがいい / 参考動画URL など&#10;特になければ空欄でOKです。新海誠風で制作します。" rows="3"></textarea>
-      </div>
-    </div>
-
-    <!-- ============ 5-C. AIタレント ============ -->
+    <!-- ============ 5-B. AIタレント動画 ============ -->
     <div class="card pattern-block" id="block-talent">
       <h2>5. AIタレント動画について</h2>
-      <p class="section-desc">上記の事業内容をもとに、ナレーション・構成はこちらで制作します。</p>
+      <p class="section-desc">事業内容をもとに、ナレーション・構成はこちらで制作します。</p>
 
       <div class="notice">
-        <strong>制作方法：</strong>ご記入いただいた事業概要・強み・ゴールの情報をもとに、最適なナレーション原稿と構成をこちらで作成します。AIナレーターが直接説明する動画を制作します。
+        <strong>写真について：</strong>写真素材があれば動画の背景やカット素材として活用します。必須ではありませんが、あるとクオリティが上がります。お持ちであれば業種に合った写真をお送りください。
       </div>
 
       <div class="field">
@@ -399,6 +388,14 @@
       document.querySelectorAll('.pattern-block').forEach(b => b.classList.remove('active'));
       document.getElementById('block-' + p).classList.add('active');
       document.body.classList.add('pattern-selected');
+    });
+  });
+
+  // アニメ風選択時のノート表示
+  document.querySelectorAll('input[name="style"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('anime-note').style.display =
+        r.value === 'アニメ風（新海誠風）' ? 'block' : 'none';
     });
   });
 
@@ -501,7 +498,6 @@
     ],
   };
 
-  // 業種選択時に写真ガイドを切替
   document.getElementById('industry-select').addEventListener('change', function() {
     const v = this.value;
     const defaultEl = document.getElementById('photo-guide-default');
