@@ -318,10 +318,16 @@
       <div class="field">
         <label>動画のスタイル<span class="required">必須</span></label>
         <div class="radio-group">
-          <label><input type="radio" name="style" value="実写風" required>実写風（写真をそのまま活かす）</label>
+          <label><input type="radio" name="style" value="実写風" required>実写風</label>
           <label><input type="radio" name="style" value="アニメ風（新海誠風）">アニメ風（新海誠風）</label>
         </div>
-        <span class="help" id="anime-note" style="display:none;">写真をもとにアニメーション化します。他のテイストをご希望であれば「その他」欄にご記入ください。</span>
+      </div>
+
+      <div id="anime-option" style="display:none;">
+        <div class="field">
+          <label>他のアニメテイストをご希望であれば</label>
+          <textarea name="anime_preference" placeholder="例：ジブリ風にしたい / 水彩画っぽい感じがいい / もう少しポップなタッチで&#10;特になければ空欄でOKです。新海誠風で制作します。" rows="3"></textarea>
+        </div>
       </div>
 
       <div class="notice" id="photo-guide">
@@ -391,10 +397,10 @@
     });
   });
 
-  // アニメ風選択時のノート表示
+  // アニメ風選択時にテイスト入力欄を表示
   document.querySelectorAll('input[name="style"]').forEach(r => {
     r.addEventListener('change', () => {
-      document.getElementById('anime-note').style.display =
+      document.getElementById('anime-option').style.display =
         r.value === 'アニメ風（新海誠風）' ? 'block' : 'none';
     });
   });
