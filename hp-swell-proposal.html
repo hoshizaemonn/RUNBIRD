@@ -262,40 +262,35 @@
           <td class="ok">テンプレ埋め込みで可能</td>
         </tr>
         <tr>
-          <td>クライアントの自走更新</td>
-          <td class="ok">直感的に可能</td>
-          <td>可能だがやや難しい</td>
-          <td class="warn">できない（都度依頼）</td>
-        </tr>
-        <tr>
           <td>テーマ費用</td>
           <td>¥17,600/案件（買い切り）</td>
           <td class="ok">無料</td>
           <td class="ok">無料</td>
         </tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-size:16px; color:var(--brand-light); margin:28px 0 12px;">それぞれのAI自動生成の仕組み</h3>
+
+    <table>
+      <thead>
         <tr>
-          <td>レスポンシブ対応</td>
-          <td class="ok">自動</td>
-          <td class="ok">自動</td>
-          <td class="warn">毎回手書き</td>
+          <th>方式</th>
+          <th>AI自動生成のやり方</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">SWELL</td>
+          <td>ヒアリングデータからSWELLのブロック構成（JSON）を自動生成し、WordPress REST APIでページを丸ごと自動投稿。画像もAI生成してブロック内に配置。管理画面上でそのまま微調整できる。</td>
         </tr>
         <tr>
-          <td>ブログ・問い合わせ機能</td>
-          <td class="ok">WordPress標準で対応</td>
-          <td class="ok">WordPress標準で対応</td>
-          <td class="warn">別途構築が必要</td>
+          <td class="highlight">Lightning</td>
+          <td>VK Blocksのブロック構成をAPIで投稿するが、デザイン調整用のカスタムCSSを別途生成・適用する必要がある。ブロック投稿＋CSS生成の二重管理になり、自動化の仕組みが複雑になる。</td>
         </tr>
         <tr>
-          <td>品質のバラつき</td>
-          <td class="ok">誰が作っても一定品質</td>
-          <td class="warn">担当者の技量に依存</td>
-          <td class="warn">担当者の技量に依存</td>
-        </tr>
-        <tr>
-          <td>国内シェア・実績</td>
-          <td class="ok">No.1</td>
-          <td>上位</td>
-          <td>—</td>
+          <td class="highlight">フルコーディング</td>
+          <td>HTML/CSSのテンプレートにヒアリングデータを埋め込んで静的ページを自動生成。仕組みはシンプルだが、WordPress上での管理ができず、修正のたびにコードを書き直す必要がある。</td>
         </tr>
       </tbody>
     </table>
