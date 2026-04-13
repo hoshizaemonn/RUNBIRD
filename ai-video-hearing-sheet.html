@@ -107,8 +107,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 16px;
   }
-  .radio-group label,
-  .checkbox-group label {
+  .radio-group label {
     display: inline-flex;
     align-items: center;
     font-weight: 400;
@@ -117,10 +116,7 @@
     cursor: pointer;
     font-size: 14px;
   }
-  .radio-group input,
-  .checkbox-group input {
-    margin-right: 6px;
-  }
+  .radio-group input { margin-right: 6px; }
   .notice {
     background: #fff8e1;
     border-left: 4px solid #f5b400;
@@ -130,12 +126,50 @@
     margin-bottom: 20px;
   }
   .notice strong { color: #b67800; }
+  .pattern-select {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .pattern-card {
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: #fff;
+  }
+  .pattern-card:hover { border-color: var(--brand-light); }
+  .pattern-card.selected {
+    border-color: var(--brand);
+    background: #eaf1ff;
+  }
+  .pattern-card .num {
+    display: inline-block;
+    width: 28px; height: 28px;
+    line-height: 28px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .pattern-card .name { font-weight: 700; font-size: 14px; }
+  .pattern-card .desc { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .requires-pattern { display: none; }
+  body.pattern-selected .requires-pattern { display: block; }
+  .pattern-block { display: none; }
+  .pattern-block.active { display: block; }
   .submit-area {
     display: flex;
     gap: 12px;
     justify-content: center;
     margin-top: 32px;
   }
+  .submit-area.requires-pattern { display: none; }
+  body.pattern-selected .submit-area.requires-pattern { display: flex; }
   button {
     padding: 14px 32px;
     border: none;
@@ -157,6 +191,7 @@
   }
   @media (max-width: 640px) {
     .row-2 { grid-template-columns: 1fr; }
+    .pattern-select { grid-template-columns: 1fr; }
     .card { padding: 20px; }
   }
 </style>
@@ -169,12 +204,35 @@
     <p>株式会社ランバード｜AI動画事業</p>
   </header>
 
-
   <form id="hearing-form">
 
-    <!-- ============ 1. 基本情報 ============ -->
+    <!-- ============ 1. パターン選択 ============ -->
     <div class="card">
-      <h2>1. 基本情報</h2>
+      <h2>1. 動画のタイプ</h2>
+      <p class="section-desc">制作する動画のタイプを選んでください。</p>
+      <div class="pattern-select">
+        <div class="pattern-card" data-pattern="photo">
+          <div class="num">1</div>
+          <div class="name">写真ベース動画</div>
+          <div class="desc">お客さまの写真をもとに制作</div>
+        </div>
+        <div class="pattern-card" data-pattern="anime">
+          <div class="num">2</div>
+          <div class="name">アニメ動画</div>
+          <div class="desc">新海誠風のアニメで制作</div>
+        </div>
+        <div class="pattern-card" data-pattern="talent">
+          <div class="num">3</div>
+          <div class="name">AIタレント動画</div>
+          <div class="desc">AIナレーターが説明する動画</div>
+        </div>
+      </div>
+      <input type="hidden" id="pattern" name="pattern">
+    </div>
+
+    <!-- ============ 2. 基本情報 ============ -->
+    <div class="card requires-pattern">
+      <h2>2. 基本情報</h2>
       <p class="section-desc">お客さま情報の確認です。</p>
 
       <div class="row-2">
@@ -205,14 +263,14 @@
       </div>
     </div>
 
-    <!-- ============ 2. 事業内容 ============ -->
-    <div class="card">
-      <h2>2. 事業について</h2>
-      <p class="section-desc">お客さまの事業に合った動画を制作するための情報です。</p>
+    <!-- ============ 3. 事業内容 ============ -->
+    <div class="card requires-pattern">
+      <h2>3. 事業について</h2>
+      <p class="section-desc">事業に合った動画を制作するための情報です。</p>
 
       <div class="field">
         <label>業種<span class="required">必須</span></label>
-        <select name="industry" required>
+        <select name="industry" id="industry-select" required>
           <option value="">選択してください</option>
           <option value="飲食">飲食（居酒屋・レストラン・カフェ等）</option>
           <option value="ジム・フィットネス">ジム・フィットネス</option>
@@ -239,9 +297,9 @@
       </div>
     </div>
 
-    <!-- ============ 3. 動画のゴール ============ -->
-    <div class="card">
-      <h2>3. 動画のゴール</h2>
+    <!-- ============ 4. 動画のゴール ============ -->
+    <div class="card requires-pattern">
+      <h2>4. 動画のゴール</h2>
       <p class="section-desc">動画で達成したいことを教えてください。</p>
 
       <div class="field">
@@ -257,10 +315,10 @@
       </div>
     </div>
 
-    <!-- ============ 4. 素材 ============ -->
-    <div class="card">
-      <h2>4. 写真・素材のご提供</h2>
-      <p class="section-desc">動画に使用する写真をご用意ください。業種に合わせて必要な写真リストを表示しています。</p>
+    <!-- ============ 5-A. 写真ベース ============ -->
+    <div class="card pattern-block" id="block-photo">
+      <h2>5. 写真のご準備</h2>
+      <p class="section-desc">動画に使用する写真をご用意ください。</p>
 
       <div class="notice" id="photo-guide">
         <strong>ご用意いただきたい写真：</strong><br>
@@ -268,16 +326,45 @@
           ・横向きの写真を<strong>15〜20枚</strong>程度<br>
           ・スマホ撮影でOK。明るく、ピントが合っているものを選んでください<br>
           ・ロゴ画像（あれば）も一緒にお送りください<br>
-          <em style="color:var(--muted);">※上の「業種」を選択すると、業種別の推奨写真リストが表示されます。</em>
+          <em style="color:var(--muted);">※「業種」を選択すると、業種別の推奨写真リストが表示されます。</em>
         </span>
         <span id="photo-guide-industry" style="display:none;"></span>
       </div>
-
     </div>
 
-    <!-- ============ 5. その他 ============ -->
-    <div class="card">
-      <h2>5. その他</h2>
+    <!-- ============ 5-B. アニメ ============ -->
+    <div class="card pattern-block" id="block-anime">
+      <h2>5. アニメ動画について</h2>
+      <p class="section-desc">基本的に新海誠風のアニメーションで制作いたします。</p>
+
+      <div class="notice">
+        <strong>制作スタイル：</strong>新海誠（「君の名は。」等）風のアニメーションをベースに、お客さまの事業内容に合わせた動画を制作します。写真をもとにアニメ化しますので、上記「業種」に合った写真もご用意いただけると仕上がりの精度が上がります。
+      </div>
+
+      <div class="field">
+        <label>他にご希望のテイストがあれば</label>
+        <textarea name="anime_preference" placeholder="例：もう少しポップなタッチにしてほしい / 水彩画っぽい感じがいい / 参考動画URL など&#10;特になければ空欄でOKです。新海誠風で制作します。" rows="3"></textarea>
+      </div>
+    </div>
+
+    <!-- ============ 5-C. AIタレント ============ -->
+    <div class="card pattern-block" id="block-talent">
+      <h2>5. AIタレント動画について</h2>
+      <p class="section-desc">上記の事業内容をもとに、ナレーション・構成はこちらで制作します。</p>
+
+      <div class="notice">
+        <strong>制作方法：</strong>ご記入いただいた事業概要・強み・ゴールの情報をもとに、最適なナレーション原稿と構成をこちらで作成します。AIナレーターが直接説明する動画を制作します。
+      </div>
+
+      <div class="field">
+        <label>動画内で特に伝えたいことがあれば</label>
+        <textarea name="talent_emphasis" placeholder="例：創業の想いを入れてほしい / 最近始めた新サービスを推したい / この数字は必ず使ってほしい など&#10;特になければ空欄でOKです。事業内容をもとにこちらで構成します。" rows="3"></textarea>
+      </div>
+    </div>
+
+    <!-- ============ 6. その他 ============ -->
+    <div class="card requires-pattern">
+      <h2>6. その他</h2>
 
       <div class="field">
         <label>参考にしたい動画があれば</label>
@@ -291,7 +378,7 @@
       </div>
     </div>
 
-    <div class="submit-area">
+    <div class="submit-area requires-pattern">
       <button type="button" class="btn-secondary" onclick="downloadJSON()">JSONをダウンロード</button>
       <button type="submit" class="btn-primary">送信する</button>
     </div>
@@ -300,6 +387,21 @@
 </div>
 
 <script>
+  // パターン選択
+  const patternCards = document.querySelectorAll('.pattern-card');
+  const patternInput = document.getElementById('pattern');
+  patternCards.forEach(card => {
+    card.addEventListener('click', () => {
+      patternCards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      const p = card.dataset.pattern;
+      patternInput.value = p;
+      document.querySelectorAll('.pattern-block').forEach(b => b.classList.remove('active'));
+      document.getElementById('block-' + p).classList.add('active');
+      document.body.classList.add('pattern-selected');
+    });
+  });
+
   // 業種別の推奨写真リスト
   const photoGuides = {
     '飲食': [
@@ -384,7 +486,7 @@
       '相談室・オフィス内装',
       '代表のポートレート（正面・デスクワーク中）',
       'スタッフのポートレート',
-      '相談中の様子（顔出しNGならイメージで）',
+      '相談中の様子',
       '書籍・資格証書などの信頼感が伝わるもの',
       'ロゴ',
     ],
@@ -400,9 +502,8 @@
   };
 
   // 業種選択時に写真ガイドを切替
-  const industrySelect = document.querySelector('select[name="industry"]');
-  industrySelect.addEventListener('change', () => {
-    const v = industrySelect.value;
+  document.getElementById('industry-select').addEventListener('change', function() {
+    const v = this.value;
     const defaultEl = document.getElementById('photo-guide-default');
     const industryEl = document.getElementById('photo-guide-industry');
     if (photoGuides[v]) {
@@ -444,14 +545,18 @@
     URL.revokeObjectURL(url);
   }
 
-  // TODO: B案実装後、ここで fetch POST してサーバーにJSONを保存＋Chatwork通知
-  // TODO: C案実装後、サーバー側で業種テンプレ選択→動画生成パイプラインを自動起動
+  // TODO: B案実装後、fetch POST でサーバーにJSON保存＋Chatwork通知
+  // TODO: C案実装後、業種テンプレ選択→動画生成パイプライン自動起動
   document.getElementById('hearing-form').addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (!patternInput.value) {
+      alert('動画のタイプを選択してください。');
+      return;
+    }
     const data = collectFormData();
     console.log('送信データ:', data);
     downloadJSON();
-    alert('シートを送信しました。ランバードより動画の構成案をご連絡いたします。');
+    alert('シートを送信しました。');
   });
 </script>
 </body>
