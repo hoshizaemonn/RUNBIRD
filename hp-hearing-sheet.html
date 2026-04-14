@@ -272,16 +272,12 @@
     <!-- ============ 3. メニュー・料金 ============ -->
     <div class="card">
       <h2>3. メニュー・料金</h2>
-      <p class="section-desc">サイトの料金表に使います。主要なものだけでOKです。</p>
+      <p class="section-desc">サイトの料金表に使います。</p>
 
       <div class="field">
-        <label>主要メニューと料金<span class="required">必須</span></label>
-        <div class="menu-row"><input type="text" name="menu_1_name" placeholder="メニュー名"><input type="text" name="menu_1_price" placeholder="料金"></div>
-        <div class="menu-row"><input type="text" name="menu_2_name" placeholder="メニュー名"><input type="text" name="menu_2_price" placeholder="料金"></div>
-        <div class="menu-row"><input type="text" name="menu_3_name" placeholder="メニュー名"><input type="text" name="menu_3_price" placeholder="料金"></div>
-        <div class="menu-row"><input type="text" name="menu_4_name" placeholder="メニュー名"><input type="text" name="menu_4_price" placeholder="料金"></div>
-        <div class="menu-row"><input type="text" name="menu_5_name" placeholder="メニュー名"><input type="text" name="menu_5_price" placeholder="料金"></div>
-        <span class="help">足りない場合は「その他」欄にまとめて記入してください。</span>
+        <label>メニュー・料金の情報<span class="required">必須</span></label>
+        <textarea name="menu_info" placeholder="例：ホットペッパーに掲載しているものと同じ内容で&#10;例：添付のメニュー表の通り&#10;例：カット ¥4,500 / カラー ¥6,000 / パーマ ¥8,000" rows="5" required></textarea>
+        <span class="help">既存のメニュー表（ぐるなび・ホットペッパー・写真等）があればそのまま共有いただいてもOKです。</span>
       </div>
 
       <div class="field">
@@ -348,19 +344,13 @@
     <!-- ============ 7. 写真・素材 ============ -->
     <div class="card">
       <h2>7. 写真・素材</h2>
-      <p class="section-desc">写真がなくても大丈夫です。サイトの構成に合わせてAIで画像を生成します。</p>
-
-      <div class="notice">
-        <strong>写真について：</strong>お客さまの実写写真がなくても、事業内容に合わせた画像をAIで生成してサイトに配置します。後から実写写真に差し替えることも可能です。<br>
-        お手持ちの写真やロゴがあれば、より実態に近いサイトに仕上がりますのでお送りください。
-      </div>
+      <p class="section-desc">サイトの画像はAIで生成します。実写写真やロゴをお持ちであれば後から差し替えます。</p>
 
       <div class="field">
-        <label>写真・ロゴの有無</label>
+        <label>ロゴの有無</label>
         <div class="radio-group">
-          <label><input type="radio" name="photo_status" value="なし（AI生成でOK）">なし（AI生成でお任せ）</label>
-          <label><input type="radio" name="photo_status" value="あり（後日送付）">あり（後日送付します）</label>
-          <label><input type="radio" name="photo_status" value="ロゴのみあり">ロゴのみあり</label>
+          <label><input type="radio" name="logo_status" value="あり">あり</label>
+          <label><input type="radio" name="logo_status" value="なし">なし</label>
         </div>
       </div>
     </div>
