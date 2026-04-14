@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HP制作フロー図解 | 株式会社ランバード</title>
+<style>
+  :root {
+    --brand: #0b3d91;
+    --brand-light: #2a64c8;
+    --accent: #f5b400;
+    --bg: #f5f7fb;
+    --text: #1a1a1a;
+    --muted: #5a6477;
+    --border: #d8dde6;
+    --ok: #1f8a5b;
+    --s1: #4a90e2;
+    --s2: #e67e22;
+    --s3: #27ae60;
+    --s4: #8e44ad;
+    --s5: #c0392b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 32px 100px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 36px;
+    border-bottom: 4px solid var(--brand);
+  }
+  header .label {
+    display: inline-block;
+    background: var(--brand);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-size: 28px;
+    color: var(--brand);
+    margin-bottom: 8px;
+  }
+  header .subtitle {
+    color: var(--muted);
+    font-size: 15px;
+  }
+  section {
+    background: #fff;
+    border-radius: 16px;
+    padding: 36px 44px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  }
+  section h2 {
+    font-size: 20px;
+    color: var(--brand);
+    margin-bottom: 18px;
+    padding-left: 14px;
+    border-left: 5px solid var(--brand);
+  }
+  p { margin-bottom: 14px; font-size: 15px; }
+
+  /* 全体フロー */
+  .main-flow {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 0;
+    align-items: center;
+    margin: 32px 0;
+  }
+  .main-step {
+    background: #fff;
+    border: 3px solid var(--brand);
+    border-radius: 14px;
+    padding: 18px 10px;
+    text-align: center;
+  }
+  .main-step .num {
+    display: inline-block;
+    background: var(--brand);
+    color: #fff;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    line-height: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .main-step .title {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--brand);
+    margin-bottom: 4px;
+  }
+  .main-step .desc {
+    font-size: 10px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .main-step .tag {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+  .tag-auto { background: #e8f5e9; color: var(--ok); }
+  .tag-human { background: #fff3e0; color: #e65100; }
+  .main-arrow {
+    text-align: center;
+    color: var(--brand);
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  /* 詳細ステップ */
+  .detail-step {
+    border-left: 5px solid var(--border);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    background: #fafbfd;
+    border-radius: 0 12px 12px 0;
+    position: relative;
+  }
+  .detail-step.s1 { border-left-color: var(--s1); }
+  .detail-step.s2 { border-left-color: var(--s2); }
+  .detail-step.s3 { border-left-color: var(--s3); }
+  .detail-step.s4 { border-left-color: var(--s4); }
+  .detail-step.s5 { border-left-color: var(--s5); }
+  .detail-step h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+  .detail-step .step-num {
+    display: inline-block;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    line-height: 28px;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    margin-right: 8px;
+  }
+  .s1 .step-num { background: var(--s1); }
+  .s2 .step-num { background: var(--s2); }
+  .s3 .step-num { background: var(--s3); }
+  .s4 .step-num { background: var(--s4); }
+  .s5 .step-num { background: var(--s5); }
+
+  /* 変換マップ */
+  .transform-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 16px 0;
+  }
+  .transform-table th, .transform-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    vertical-align: top;
+  }
+  .transform-table th {
+    font-weight: 700;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  .transform-table .from { background: #eaf1ff; color: var(--brand); font-weight: 700; }
+  .transform-table .arrow { text-align: center; color: var(--brand); font-weight: 700; width: 40px; }
+  .transform-table .to { background: #e8f5e9; }
+  .transform-table .tool { color: var(--muted); font-size: 11px; }
+
+  /* 画像生成フロー */
+  .img-flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+    align-items: center;
+    margin: 20px 0;
+  }
+  .img-step {
+    background: #fff;
+    border: 2px solid var(--s3);
+    border-radius: 10px;
+    padding: 14px 8px;
+    text-align: center;
+    font-size: 12px;
+  }
+  .img-step .label { font-weight: 700; color: var(--s3); font-size: 11px; margin-bottom: 4px; }
+  .img-step .content { color: var(--text); font-size: 11px; }
+  .img-arrow { text-align: center; color: var(--s3); font-size: 18px; font-weight: 700; }
+
+  .notice {
+    background: #fff8e1;
+    border-left: 4px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin: 16px 0;
+  }
+  .notice strong { color: #b67800; }
+
+  .example-box {
+    background: #f0f4ff;
+    border: 2px solid var(--brand-light);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    font-size: 13px;
+  }
+  .example-box h4 {
+    color: var(--brand);
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .example-box .input { color: var(--muted); margin-bottom: 12px; }
+  .example-box .output { color: var(--text); }
+  .example-box .output strong { color: var(--ok); }
+
+  @media (max-width: 768px) {
+    .container { padding: 24px 16px; }
+    section { padding: 24px; }
+    .main-flow, .img-flow { grid-template-columns: 1fr; }
+    .main-arrow, .img-arrow { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <span class="label">社内資料｜松貫さん・星崎用</span>
+    <h1>HP制作フロー図解</h1>
+    <p class="subtitle">ヒアリングシートからホームページ完成までの全工程</p>
+  </header>
+
+  <!-- ============ 全体フロー ============ -->
+  <section>
+    <h2>全体の流れ</h2>
+    <p>ヒアリングから納品まで5ステップ。自動化できる部分と人が仕上げる部分を分けています。</p>
+
+    <div class="main-flow">
+      <div class="main-step">
+        <div class="num">1</div>
+        <div class="title">ヒアリング</div>
+        <div class="desc">シートに記入<br>業種・事業・強み・ゴール</div>
+        <div class="tag tag-human">人</div>
+      </div>
+      <div class="main-arrow">→</div>
+      <div class="main-step">
+        <div class="num">2</div>
+        <div class="title">構成・テキスト生成</div>
+        <div class="desc">ページ構成決定<br>各セクションの文章生成</div>
+        <div class="tag tag-auto">AI自動</div>
+      </div>
+      <div class="main-arrow">→</div>
+      <div class="main-step">
+        <div class="num">3</div>
+        <div class="title">画像・ロゴ生成</div>
+        <div class="desc">セクションに合った<br>画像をAI生成</div>
+        <div class="tag tag-auto">AI自動</div>
+      </div>
+      <div class="main-arrow">→</div>
+      <div class="main-step">
+        <div class="num">4</div>
+        <div class="title">SWELL構築</div>
+        <div class="desc">ブロック配置<br>デザイン適用</div>
+        <div class="tag tag-auto">AI＋人</div>
+      </div>
+      <div class="main-arrow">→</div>
+      <div class="main-step">
+        <div class="num">5</div>
+        <div class="title">微調整・納品</div>
+        <div class="desc">写真差替え・文言修正<br>クライアント確認</div>
+        <div class="tag tag-human">人</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 1 ============ -->
+  <section>
+    <h2>各ステップの詳細</h2>
+
+    <div class="detail-step s1">
+      <h3><span class="step-num">1</span>ヒアリング（シート記入）</h3>
+      <p>お客さんと一緒にシートを埋める。聞くのは以下だけ。</p>
+      <table class="transform-table">
+        <tr>
+          <th>必須で聞くこと</th>
+          <th>何に使うか</th>
+        </tr>
+        <tr>
+          <td>基本情報（店舗名・住所・電話・営業時間）</td>
+          <td>アクセスページ・フッター・Googleマップ埋め込み</td>
+        </tr>
+        <tr>
+          <td>業種</td>
+          <td>ページ構成のテンプレ選択・お悩みセクション・FAQ仮作成・画像の方向性</td>
+        </tr>
+        <tr>
+          <td>事業概要</td>
+          <td>サービス紹介セクション・FVのサブコピー</td>
+        </tr>
+        <tr>
+          <td>強み</td>
+          <td>「選ばれる理由」セクション（3カード型）</td>
+        </tr>
+        <tr>
+          <td>ゴール</td>
+          <td>CTAの種類と文言（電話予約 / LINE / フォーム等）</td>
+        </tr>
+        <tr>
+          <td>サイトの雰囲気</td>
+          <td>配色・フォント・レイアウトの方向性</td>
+        </tr>
+      </table>
+      <p style="font-size:13px; color:var(--muted);">メニュー・お客さまの声・FAQ・写真は任意。なければ業種テンプレで仮作成。後から差し替え可能。</p>
+    </div>
+
+    <!-- ============ STEP 2 ============ -->
+    <div class="detail-step s2">
+      <h3><span class="step-num">2</span>構成・テキスト生成（AI自動）</h3>
+      <p>ヒアリングのJSONデータをもとに、ページ構成と各セクションのテキストを自動生成します。</p>
+
+      <div class="example-box">
+        <h4>例：訪問理美容サロン「さるる」の場合</h4>
+        <div class="input">
+          <strong>入力データ：</strong><br>
+          事業概要：「高齢者施設や自宅に出張してカット・カラー・パーマを行う」<br>
+          強み：「国家資格保有 / 施設との提携実績50件以上 / 土日祝も対応」
+        </div>
+        <div class="output">
+          <strong>↓ AIが各セクション用にリライト・膨らませる</strong><br><br>
+          <strong>FVキャッチコピー：</strong>「美容室に行けない」をなくしたい。ご自宅・施設に、プロの技術をお届けします。<br><br>
+          <strong>お悩みセクション：</strong>「足腰が弱くて美容室に行けない」「施設の散髪は希望の髪型にならない」「家族がカットしているが限界」<br><br>
+          <strong>選ばれる理由：</strong>①国家資格を持つスタイリストが担当 ②施設との提携実績50件以上 ③土日祝も対応<br><br>
+          <strong>サービス紹介：</strong>高齢者施設やご自宅に訪問し、カット・カラー・パーマを行います。サロンと同じ技術を、お好きな場所で。<br><br>
+          <strong>メニュー：</strong>（記入があればそのまま使用、なければ訪問理美容の相場で仮作成）<br><br>
+          <strong>FAQ：</strong>（記入があればそのまま使用、なければ「出張費は？」「車椅子でも大丈夫？」等を仮作成）<br><br>
+          <strong>CTA：</strong>「まずはお電話でご相談ください」（ゴール＝予約を増やしたい）
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>ポイント：</strong>ゼロから文章を創作するのではなく、お客さんが書いた事実（事業概要・強み）をベースに、各セクションに合った文体・長さに整形する仕組みです。動画の台本生成と同じ考え方です。
+      </div>
+    </div>
+
+    <!-- ============ STEP 3 ============ -->
+    <div class="detail-step s3">
+      <h3><span class="step-num">3</span>画像・ロゴ生成（AI自動）</h3>
+      <p>ページ構成が決まったら、各セクションに合った画像をAIで自動生成します。</p>
+
+      <div class="img-flow">
+        <div class="img-step">
+          <div class="label">入力</div>
+          <div class="content">業種＋雰囲気<br>＋セクション名</div>
+        </div>
+        <div class="img-arrow">→</div>
+        <div class="img-step">
+          <div class="label">プロンプト生成</div>
+          <div class="content">「美容サロン、ナチュラル、<br>施術中の様子」</div>
+        </div>
+        <div class="img-arrow">→</div>
+        <div class="img-step">
+          <div class="label">画像生成</div>
+          <div class="content">Gemini Imagen<br>で画像出力</div>
+        </div>
+      </div>
+
+      <table class="transform-table">
+        <tr>
+          <th>セクション</th>
+          <th>生成する画像</th>
+          <th>生成ツール</th>
+        </tr>
+        <tr>
+          <td>FV（メインビジュアル）</td>
+          <td>業種×雰囲気に合ったヒーロー画像</td>
+          <td class="tool">Gemini Imagen</td>
+        </tr>
+        <tr>
+          <td>お悩み</td>
+          <td>悩んでいる人のイメージ</td>
+          <td class="tool">Gemini Imagen</td>
+        </tr>
+        <tr>
+          <td>サービス紹介</td>
+          <td>サービス提供中のイメージ</td>
+          <td class="tool">Gemini Imagen</td>
+        </tr>
+        <tr>
+          <td>選ばれる理由</td>
+          <td>強みを象徴するアイコン的画像 ×3</td>
+          <td class="tool">Gemini Imagen</td>
+        </tr>
+        <tr>
+          <td>代表挨拶</td>
+          <td>代表者のイメージ（実写があれば差替え）</td>
+          <td class="tool">Gemini Imagen</td>
+        </tr>
+        <tr>
+          <td>ロゴ</td>
+          <td>店舗名＋業種からロゴを仮生成（実物があれば差替え）</td>
+          <td class="tool">Gemini Imagen</td>
+        </tr>
+        <tr>
+          <td>OGP画像</td>
+          <td>SNSシェア用のサムネイル</td>
+          <td class="tool">Gemini Imagen</td>
+        </tr>
+      </table>
+
+      <div class="notice">
+        <strong>すべて仮画像です。</strong>お客さんの実写写真やロゴが届いたら差し替えます。差し替えはSWELLの管理画面から画像を選び直すだけなので数分で完了します。
+      </div>
+    </div>
+
+    <!-- ============ STEP 4 ============ -->
+    <div class="detail-step s4">
+      <h3><span class="step-num">4</span>SWELL構築（AI＋人）</h3>
+      <p>生成されたテキスト・画像をSWELLのブロックに配置してページを組み立てます。</p>
+
+      <table class="transform-table">
+        <tr>
+          <th>やること</th>
+          <th>方法</th>
+          <th>担当</th>
+        </tr>
+        <tr>
+          <td>ブロック配置</td>
+          <td>セクションごとにSWELLブロック（フルワイド・カラム・FAQ等）を配置</td>
+          <td class="tool">AI → REST API で自動投稿</td>
+        </tr>
+        <tr>
+          <td>テキスト流し込み</td>
+          <td>Step 2で生成したテキストを各ブロックに挿入</td>
+          <td class="tool">AI → 自動</td>
+        </tr>
+        <tr>
+          <td>画像配置</td>
+          <td>Step 3で生成した画像を各ブロックに挿入</td>
+          <td class="tool">AI → 自動</td>
+        </tr>
+        <tr>
+          <td>配色・フォント設定</td>
+          <td>雰囲気の選択に合わせてSWELLカスタマイザーで設定</td>
+          <td class="tool">人が確認・微調整</td>
+        </tr>
+        <tr>
+          <td>参考サイトへの寄せ</td>
+          <td>レイアウトや余白感を参考サイトに合わせる</td>
+          <td class="tool">人が調整</td>
+        </tr>
+        <tr>
+          <td>ブログページ</td>
+          <td>SWELLの投稿一覧ブロックで自動配置（全案件共通）</td>
+          <td class="tool">自動</td>
+        </tr>
+        <tr>
+          <td>問い合わせフォーム</td>
+          <td>ゴール＋問い合わせ方法に応じて設置</td>
+          <td class="tool">人が設定</td>
+        </tr>
+        <tr>
+          <td>Googleマップ埋め込み</td>
+          <td>住所からアクセスページに自動配置</td>
+          <td class="tool">自動</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- ============ STEP 5 ============ -->
+    <div class="detail-step s5">
+      <h3><span class="step-num">5</span>微調整・納品（人）</h3>
+      <p>自動生成されたサイトを確認し、最終調整を行って納品します。</p>
+      <table class="transform-table">
+        <tr>
+          <th>やること</th>
+          <th>内容</th>
+        </tr>
+        <tr>
+          <td>実写写真の差替え</td>
+          <td>お客さんから届いた写真があれば、AI生成画像と入れ替え</td>
+        </tr>
+        <tr>
+          <td>ロゴの差替え</td>
+          <td>実物のロゴがあれば仮ロゴと入れ替え</td>
+        </tr>
+        <tr>
+          <td>テキストの修正</td>
+          <td>お客さんに確認してもらい、事実と異なる部分を修正</td>
+        </tr>
+        <tr>
+          <td>メニュー・料金の確定</td>
+          <td>仮で入れていた場合、実際の料金に差替え</td>
+        </tr>
+        <tr>
+          <td>FAQ・お客さまの声</td>
+          <td>仮で入れていた場合、実際の内容に差替え</td>
+        </tr>
+        <tr>
+          <td>スマホ表示確認</td>
+          <td>レスポンシブの崩れがないか確認</td>
+        </tr>
+        <tr>
+          <td>SEO基本設定</td>
+          <td>タイトル・ディスクリプション・OGP設定</td>
+        </tr>
+        <tr>
+          <td>公開・納品</td>
+          <td>クライアント最終確認→公開</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ まとめ ============ -->
+  <section>
+    <h2>まとめ：何が自動で、何が人の仕事か</h2>
+
+    <table class="transform-table">
+      <thead>
+        <tr>
+          <th style="background:var(--brand); color:#fff;">工程</th>
+          <th style="background:var(--ok); color:#fff;">AI自動</th>
+          <th style="background:#e65100; color:#fff;">人の仕事</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ヒアリング</td>
+          <td>—</td>
+          <td>お客さんと一緒にシート記入</td>
+        </tr>
+        <tr>
+          <td>ページ構成</td>
+          <td>業種×ゴールで自動決定</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>テキスト生成</td>
+          <td>事業概要・強みから全セクション自動生成</td>
+          <td>事実確認・微修正</td>
+        </tr>
+        <tr>
+          <td>画像生成</td>
+          <td>業種×雰囲気×セクションで自動生成</td>
+          <td>実写が届いたら差替え</td>
+        </tr>
+        <tr>
+          <td>ロゴ</td>
+          <td>店舗名から仮ロゴ自動生成</td>
+          <td>実物があれば差替え</td>
+        </tr>
+        <tr>
+          <td>SWELL構築</td>
+          <td>ブロック・テキスト・画像の自動配置</td>
+          <td>配色・レイアウトの微調整</td>
+        </tr>
+        <tr>
+          <td>FAQ・メニュー</td>
+          <td>業種テンプレで仮作成</td>
+          <td>実際の内容に差替え</td>
+        </tr>
+        <tr>
+          <td>公開</td>
+          <td>—</td>
+          <td>最終確認・SEO設定・公開</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="notice">
+      <strong>結果：</strong>AIが全体の70〜80%を自動生成し、人は「確認・差替え・微調整」に集中。ヒアリングから初稿完成まで大幅に時間を短縮できます。
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
