@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HP制作 ヒアリングシート | 株式会社ランバード</title>
+<style>
+  :root {
+    --brand: #0b3d91;
+    --brand-light: #2a64c8;
+    --bg: #f5f7fb;
+    --text: #1a1a1a;
+    --muted: #666;
+    --border: #d8dde6;
+    --error: #c0392b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  header h1 {
+    color: var(--brand);
+    font-size: 28px;
+    margin: 0 0 8px;
+  }
+  header p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 15px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+  .card h2 {
+    font-size: 18px;
+    color: var(--brand);
+    margin: 0 0 4px;
+    border-left: 4px solid var(--brand);
+    padding-left: 12px;
+  }
+  .card .section-desc {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0 0 20px;
+    padding-left: 16px;
+  }
+  .field {
+    margin-bottom: 20px;
+  }
+  .field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+  .field .required {
+    color: var(--error);
+    font-size: 12px;
+    margin-left: 4px;
+  }
+  .field .help {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+  }
+  textarea { min-height: 80px; resize: vertical; }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--brand-light);
+    box-shadow: 0 0 0 3px rgba(42,100,200,0.15);
+  }
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+  .radio-group label,
+  .checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 400;
+    margin-right: 16px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .radio-group input,
+  .checkbox-group input { margin-right: 6px; }
+  .notice {
+    background: #fff8e1;
+    border-left: 4px solid #f5b400;
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .notice strong { color: #b67800; }
+  .submit-area {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  button {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-primary { background: var(--brand); color: #fff; }
+  .btn-primary:hover { background: var(--brand-light); }
+  .btn-secondary { background: #fff; color: var(--brand); border: 2px solid var(--brand); }
+  .menu-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  @media (max-width: 640px) {
+    .row-2, .row-3, .menu-row { grid-template-columns: 1fr; }
+    .card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>HP制作 ヒアリングシート</h1>
+    <p>株式会社ランバード｜SWELL制作</p>
+  </header>
+
+  <form id="hearing-form">
+
+    <!-- ============ 1. 基本情報 ============ -->
+    <div class="card">
+      <h2>1. 基本情報</h2>
+      <p class="section-desc">サイトに掲載する基本情報です。</p>
+
+      <div class="field">
+        <label>店舗名・屋号<span class="required">必須</span></label>
+        <input type="text" name="company" required>
+        <span class="help">正式名称とフリガナを記入してください。</span>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>代表者名<span class="required">必須</span></label>
+          <input type="text" name="representative" required>
+        </div>
+        <div class="field">
+          <label>電話番号<span class="required">必須</span></label>
+          <input type="tel" name="phone" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>住所<span class="required">必須</span></label>
+        <input type="text" name="address" required>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>営業時間<span class="required">必須</span></label>
+          <input type="text" name="business_hours" placeholder="例：10:00〜20:00" required>
+        </div>
+        <div class="field">
+          <label>定休日<span class="required">必須</span></label>
+          <input type="text" name="holidays" placeholder="例：毎週水曜・第3木曜" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>メールアドレス</label>
+        <input type="email" name="email">
+      </div>
+
+      <div class="field">
+        <label>希望ドメイン</label>
+        <input type="text" name="domain_1" placeholder="第1候補：例 saruru-beauty.com" style="margin-bottom:6px;">
+        <input type="text" name="domain_2" placeholder="第2候補" style="margin-bottom:6px;">
+        <input type="text" name="domain_3" placeholder="第3候補">
+        <span class="help">短くて覚えやすいものがおすすめです。既にお持ちの場合はそのURLを記入してください。</span>
+      </div>
+
+      <div class="field">
+        <label>現在のWEBサイト・SNS</label>
+        <textarea name="existing_sites" placeholder="例：Instagram @saruru_beauty / ホットペッパー掲載中" rows="2"></textarea>
+      </div>
+    </div>
+
+    <!-- ============ 2. 事業について ============ -->
+    <div class="card">
+      <h2>2. 事業について</h2>
+      <p class="section-desc">事業に合ったサイト構成を自動で組み立てるための情報です。</p>
+
+      <div class="field">
+        <label>業種<span class="required">必須</span></label>
+        <select name="industry" id="industry-select" required>
+          <option value="">選択してください</option>
+          <option value="飲食">飲食（居酒屋・レストラン・カフェ等）</option>
+          <option value="ジム・フィットネス">ジム・フィットネス</option>
+          <option value="美容・サロン">美容・サロン</option>
+          <option value="医療・クリニック">医療・クリニック</option>
+          <option value="不動産">不動産</option>
+          <option value="建設・工務店">建設・工務店</option>
+          <option value="福祉・介護">福祉・介護</option>
+          <option value="教育・スクール">教育・スクール</option>
+          <option value="士業（税理士・弁護士等）">士業（税理士・弁護士等）</option>
+          <option value="EC・通販">EC・通販</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>事業・サービスの概要<span class="required">必須</span></label>
+        <textarea name="business_description" placeholder="お客さまに説明するように、何をしている事業かを教えてください。" required></textarea>
+      </div>
+
+      <div class="field">
+        <label>他社と比べた強み・選ばれる理由<span class="required">必須</span></label>
+        <textarea name="strengths" placeholder="例：完全個室 / 国家資格保有 / 地域最安値 / 駅徒歩1分 / リピート率90%&#10;3つ以上あるとサイトの説得力が上がります。" required></textarea>
+      </div>
+
+      <div class="field">
+        <label>開業のきっかけ・想い</label>
+        <textarea name="story" placeholder="なぜこの事業を始めたか、お客さまにどうなってほしいかを教えてください。代表挨拶ページに使います。" rows="4"></textarea>
+      </div>
+    </div>
+
+    <!-- ============ 3. メニュー・料金 ============ -->
+    <div class="card">
+      <h2>3. メニュー・料金</h2>
+      <p class="section-desc">今わかる範囲でOKです。後から差し替えもできます。</p>
+
+      <div class="field">
+        <label>メニュー・料金の情報</label>
+        <textarea name="menu_info" placeholder="例：ホットペッパーに掲載しているものと同じ内容で&#10;例：添付のメニュー表の通り&#10;例：カット ¥4,500 / カラー ¥6,000 / パーマ ¥8,000&#10;&#10;わからなければ空欄でOKです。業種の相場で仮の料金表を作成します。" rows="5"></textarea>
+        <span class="help">既存のメニュー表（ぐるなび・ホットペッパー・写真等）があればそのまま共有いただいてもOKです。なければ仮で作成します。</span>
+      </div>
+    </div>
+
+    <!-- ============ 4. ゴール ============ -->
+    <div class="card">
+      <h2>4. ホームページのゴール</h2>
+      <p class="section-desc">サイトで一番達成したいことを教えてください。</p>
+
+      <div class="field">
+        <label>ホームページで何を達成したいですか？<span class="required">必須</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="goal" value="問い合わせ・予約を増やしたい" required>問い合わせ・予約を増やしたい</label>
+          <label><input type="radio" name="goal" value="来店・集客を増やしたい">来店・集客を増やしたい</label>
+          <label><input type="radio" name="goal" value="信頼感・ブランドイメージを作りたい">信頼感・ブランドイメージを作りたい</label>
+          <label><input type="radio" name="goal" value="採用したい">採用したい</label>
+          <label><input type="radio" name="goal" value="商品を売りたい">商品を売りたい</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>お問い合わせ方法</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="contact_method" value="電話">電話</label>
+          <label><input type="checkbox" name="contact_method" value="フォーム">お問い合わせフォーム</label>
+          <label><input type="checkbox" name="contact_method" value="LINE">公式LINE</label>
+          <label><input type="checkbox" name="contact_method" value="外部サイト">外部サイト（ホットペッパー等）</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 5. サイトの雰囲気 ============ -->
+    <div class="card">
+      <h2>5. サイトの雰囲気</h2>
+      <p class="section-desc">お好みの雰囲気を選ぶと、業種に合った参考サイトが表示されます。</p>
+
+      <div class="field">
+        <label>サイトの雰囲気<span class="required">必須</span></label>
+        <div class="radio-group" id="mood-group">
+          <label><input type="radio" name="mood" value="シンプル・清潔感" required>シンプル・清潔感</label>
+          <label><input type="radio" name="mood" value="ナチュラル・やさしい">ナチュラル・やさしい</label>
+          <label><input type="radio" name="mood" value="高級感・上品">高級感・上品</label>
+          <label><input type="radio" name="mood" value="ポップ・カジュアル">ポップ・カジュアル</label>
+          <label><input type="radio" name="mood" value="スタイリッシュ・モダン">スタイリッシュ・モダン</label>
+          <label><input type="radio" name="mood" value="力強い・信頼感">力強い・信頼感</label>
+        </div>
+      </div>
+
+      <div id="reference-sites" style="display:none;">
+        <div class="notice" id="reference-sites-content"></div>
+      </div>
+    </div>
+
+    <!-- ============ 6. お客さまの声・実績・FAQ ============ -->
+    <div class="card">
+      <h2>6. お客さまの声・実績・よくある質問</h2>
+      <p class="section-desc">あればサイトの説得力が上がります。なければ業種に合った内容を仮で作成します。</p>
+
+      <div class="field">
+        <label>お客さまの声・実績</label>
+        <textarea name="testimonials" placeholder="例：「ここに来てから腰痛が楽になりました」/ 施術実績3,000人以上 / 口コミ評価4.8&#10;&#10;エピソード・数字など、何でもまとめてお書きください。なければ空欄でOKです。" rows="4"></textarea>
+      </div>
+
+      <div class="field">
+        <label>よくある質問</label>
+        <textarea name="faq" placeholder="例：&#10;Q：予約なしでも大丈夫ですか？&#10;A：予約優先ですが、空きがあれば当日も対応可能です。&#10;&#10;なければ空欄でOKです。業種でよくある質問を仮で作成します。" rows="5"></textarea>
+      </div>
+    </div>
+
+    <!-- ============ 7. 写真・素材 ============ -->
+    <div class="card">
+      <h2>7. 写真・素材</h2>
+      <p class="section-desc">サイトの画像はAIで生成します。実写写真やロゴをお持ちであれば、先にいただけるとより実態に近いサイトに仕上がります。</p>
+
+      <div class="field">
+        <label>ロゴの有無</label>
+        <div class="radio-group">
+          <label><input type="radio" name="logo_status" value="あり">あり</label>
+          <label><input type="radio" name="logo_status" value="なし">なし</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>写真・ロゴのアップロード</label>
+        <div style="border:2px dashed var(--border); border-radius:8px; padding:20px; text-align:center; background:#fafbfd; cursor:pointer;" onclick="document.getElementById('photo-upload').click()">
+          <p style="margin:4px 0; color:var(--muted); font-size:13px;">クリックして写真・ロゴを選択（複数選択可）</p>
+          <p style="margin:4px 0; color:var(--muted); font-size:11px;">店舗外観・内装・スタッフ・商品・ロゴなど、お持ちのものをまとめてどうぞ</p>
+          <input type="file" id="photo-upload" accept="image/*" multiple hidden>
+        </div>
+        <div id="photo-upload-list" style="margin-top:8px; font-size:12px; color:var(--muted);"></div>
+        <span class="help">なくてもAIで生成しますので大丈夫です。後から差し替えもできます。</span>
+      </div>
+    </div>
+
+    <!-- ============ 8. その他 ============ -->
+    <div class="card">
+      <h2>8. その他</h2>
+
+      <div class="field">
+        <label>参考にしたいサイト</label>
+        <textarea name="reference_sites" placeholder="「こんな雰囲気にしたい」というサイトのURLがあれば貼ってください。&#10;複数あれば1行1URLでOKです。" rows="3"></textarea>
+      </div>
+
+      <div class="field">
+        <label>その他ご要望</label>
+        <textarea name="notes" placeholder="何かあればご自由にお書きください。" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="submit-area">
+      <button type="button" class="btn-secondary" onclick="downloadJSON()">JSONをダウンロード</button>
+      <button type="submit" class="btn-primary">送信する</button>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  // ============================================================
+  // 業種×雰囲気 参考サイトストック
+  // 新しい参考サイトを見つけたらここに追加するだけでOK
+  // ============================================================
+  const referenceSites = {
+    '美容・サロン': {
+      'シンプル・清潔感': [
+        { name: '（参考サイト準備中）', url: '', note: '白基調・余白多め・写真大きめ' },
+      ],
+      'ナチュラル・やさしい': [
+        { name: '（参考サイト準備中）', url: '', note: 'ベージュ系・手書き風フォント' },
+      ],
+      '高級感・上品': [
+        { name: '（参考サイト準備中）', url: '', note: 'ダーク系・セリフ体・高画質写真' },
+      ],
+      'ポップ・カジュアル': [
+        { name: '（参考サイト準備中）', url: '', note: 'カラフル・丸み・イラスト' },
+      ],
+      'スタイリッシュ・モダン': [
+        { name: '（参考サイト準備中）', url: '', note: 'モノトーン・グリッド・動き' },
+      ],
+      '力強い・信頼感': [
+        { name: '（参考サイト準備中）', url: '', note: '濃紺/黒基調・太字・実績強調' },
+      ],
+    },
+    '飲食': {
+      'シンプル・清潔感': [
+        { name: '（参考サイト準備中）', url: '', note: '料理写真中心・白背景' },
+      ],
+      'ナチュラル・やさしい': [
+        { name: '（参考サイト準備中）', url: '', note: '木目調・温かみのある配色' },
+      ],
+      '高級感・上品': [
+        { name: '（参考サイト準備中）', url: '', note: '暗めの背景・料理写真が映える' },
+      ],
+      'ポップ・カジュアル': [
+        { name: '（参考サイト準備中）', url: '', note: '明るい色・親しみやすい' },
+      ],
+      'スタイリッシュ・モダン': [
+        { name: '（参考サイト準備中）', url: '', note: 'おしゃれなカフェ風' },
+      ],
+      '力強い・信頼感': [
+        { name: '（参考サイト準備中）', url: '', note: '老舗感・歴史・重厚感' },
+      ],
+    },
+    '福祉・介護': {
+      'シンプル・清潔感': [
+        { name: '（参考サイト準備中）', url: '', note: '明るい・安心感' },
+      ],
+      'ナチュラル・やさしい': [
+        { name: '（参考サイト準備中）', url: '', note: 'パステル系・やわらかい' },
+      ],
+      '高級感・上品': [
+        { name: '（参考サイト準備中）', url: '', note: '上質な介護施設向け' },
+      ],
+      '力強い・信頼感': [
+        { name: '（参考サイト準備中）', url: '', note: '実績・数字を前面に' },
+      ],
+    },
+  };
+
+  // 業種×雰囲気で参考サイトを表示
+  function updateReferenceSites() {
+    const industry = document.getElementById('industry-select').value;
+    const moodEl = document.querySelector('input[name="mood"]:checked');
+    const container = document.getElementById('reference-sites');
+    const content = document.getElementById('reference-sites-content');
+
+    if (!industry || !moodEl) {
+      container.style.display = 'none';
+      return;
+    }
+
+    const mood = moodEl.value;
+    const sites = (referenceSites[industry] && referenceSites[industry][mood]) || null;
+
+    if (sites && sites.length > 0) {
+      container.style.display = 'block';
+      let html = '<strong>【' + industry + ' × ' + mood + '】の参考サイト：</strong><br><br>';
+      sites.forEach((s, i) => {
+        if (s.url) {
+          html += (i + 1) + '. <a href="' + s.url + '" target="_blank" style="color:var(--brand);">' + s.name + '</a>';
+        } else {
+          html += (i + 1) + '. ' + s.name;
+        }
+        if (s.note) html += ' <span style="color:#888;">— ' + s.note + '</span>';
+        html += '<br>';
+      });
+      html += '<br><em style="color:#666;">参考サイトは随時追加されます。「この雰囲気がいい」というサイトがあれば「その他」欄にURLをお書きください。</em>';
+      content.innerHTML = html;
+    } else {
+      container.style.display = 'block';
+      content.innerHTML = '<strong>【' + industry + ' × ' + mood + '】</strong><br>この組み合わせの参考サイトは準備中です。<br><em style="color:#666;">「この雰囲気がいい」というサイトがあれば「その他」欄にURLをお書きください。</em>';
+    }
+  }
+
+  document.getElementById('industry-select').addEventListener('change', updateReferenceSites);
+  document.querySelectorAll('input[name="mood"]').forEach(r => {
+    r.addEventListener('change', updateReferenceSites);
+  });
+
+  // 写真アップロードのファイルリスト表示
+  document.getElementById('photo-upload').addEventListener('change', function() {
+    const files = Array.from(this.files);
+    const list = document.getElementById('photo-upload-list');
+    if (files.length === 0) { list.textContent = ''; return; }
+    const totalMB = (files.reduce((s, f) => s + f.size, 0) / 1024 / 1024).toFixed(1);
+    list.innerHTML = files.length + 'ファイル選択中（合計 ' + totalMB + 'MB）<br>' +
+      files.slice(0, 5).map(f => '・' + f.name).join('<br>') +
+      (files.length > 5 ? '<br>...他' + (files.length - 5) + 'ファイル' : '');
+  });
+
+  function collectFormData() {
+    const form = document.getElementById('hearing-form');
+    const fd = new FormData(form);
+    const data = {};
+    for (const [key, value] of fd.entries()) {
+      if (data[key]) {
+        if (Array.isArray(data[key])) data[key].push(value);
+        else data[key] = [data[key], value];
+      } else {
+        data[key] = value;
+      }
+    }
+    data._submitted_at = new Date().toISOString();
+    return data;
+  }
+
+  function downloadJSON() {
+    const data = collectFormData();
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'hearing_hp_' + (data.company || 'untitled') + '_' + Date.now() + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  document.getElementById('hearing-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = collectFormData();
+    console.log('送信データ:', data);
+    downloadJSON();
+    alert('シートを送信しました。');
+  });
+
+  // デモ用：斗のテストデータをプリセット
+  window.addEventListener('DOMContentLoaded', () => {
+    const preset = {
+      company: "株式会社 斗（Hishaku）",
+      representative: "鈴木 北斗",
+      phone: "03-4400-0278",
+      address: "東京都中央区京橋1丁目1番5号セントラルビル2F",
+      business_hours: "10:00〜19:00",
+      holidays: "土日祝",
+      email: "h.suzuki@hishaku.co.jp",
+      domain_1: "hishaku.co.jp",
+      business_description: "「全ての人の道標に」をコンセプトに、企業のデジタル化・売上拡大をトータルサポートする会社です。WEB制作、SNS運用代行、マーケティング、YouTube運用の4事業を展開。IT導入補助金の申請支援にも対応しており、補助金を活用してコストを抑えたデジタル化を実現します。",
+      strengths: "IT導入補助金の申請支援に対応、補助金活用でコストを大幅削減 / WEB制作・SNS運用・マーケティング・YouTubeをワンストップで提供 / 中小企業・個人事業主に特化、ITに詳しくなくても安心 / 東京・福岡の2拠点体制で全国対応 / AI活用による高品質・低コスト・スピード制作",
+      story: "「ITの力で、すべての人の道標になりたい」——代表の鈴木は、多くの中小企業がデジタル化の波に乗り遅れている現実を目の当たりにし、2020年に株式会社 斗を設立しました。",
+      menu_info: "WEB制作（コーポレートサイト・LP）/ SNS運用代行（Instagram・X・YouTube）/ マーケティング支援（広告運用・SEO）/ IT導入補助金 申請支援",
+      reference_sites: "https://meleap.com/meleap/public/index.php/jp\nhttps://assist-sports.com",
+      notes: "IT導入補助金の事業内容を含めること。名刺のブランドカラー（ダークネイビー）に合わせたデザイン。",
+    };
+    for (const [key, val] of Object.entries(preset)) {
+      const el = document.querySelector('[name="' + key + '"]');
+      if (el) el.value = val;
+    }
+    const goalR = document.querySelector('input[name="goal"][value="問い合わせ・予約を増やしたい"]');
+    if (goalR) goalR.checked = true;
+    const moodR = document.querySelector('input[name="mood"][value="スタイリッシュ・モダン"]');
+    if (moodR) { moodR.checked = true; moodR.dispatchEvent(new Event('change')); }
+    ['電話', 'フォーム', 'LINE'].forEach(function(v) {
+      var cb = document.querySelector('input[name="contact_method"][value="' + v + '"]');
+      if (cb) cb.checked = true;
+    });
+    var logoR = document.querySelector('input[name="logo_status"][value="あり"]');
+    if (logoR) logoR.checked = true;
+  });
+</script>
+</body>
+</html>
