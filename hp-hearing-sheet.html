@@ -313,9 +313,31 @@
       </div>
     </div>
 
-    <!-- ============ 5. お客さまの声 ============ -->
+    <!-- ============ 5. サイトの雰囲気 ============ -->
     <div class="card">
-      <h2>5. お客さまの声・実績</h2>
+      <h2>5. サイトの雰囲気</h2>
+      <p class="section-desc">お好みの雰囲気を選ぶと、業種に合った参考サイトが表示されます。</p>
+
+      <div class="field">
+        <label>サイトの雰囲気<span class="required">必須</span></label>
+        <div class="radio-group" id="mood-group">
+          <label><input type="radio" name="mood" value="シンプル・清潔感" required>シンプル・清潔感</label>
+          <label><input type="radio" name="mood" value="ナチュラル・やさしい">ナチュラル・やさしい</label>
+          <label><input type="radio" name="mood" value="高級感・上品">高級感・上品</label>
+          <label><input type="radio" name="mood" value="ポップ・カジュアル">ポップ・カジュアル</label>
+          <label><input type="radio" name="mood" value="スタイリッシュ・モダン">スタイリッシュ・モダン</label>
+          <label><input type="radio" name="mood" value="力強い・信頼感">力強い・信頼感</label>
+        </div>
+      </div>
+
+      <div id="reference-sites" style="display:none;">
+        <div class="notice" id="reference-sites-content"></div>
+      </div>
+    </div>
+
+    <!-- ============ 6. お客さまの声 ============ -->
+    <div class="card">
+      <h2>6. お客さまの声・実績</h2>
       <p class="section-desc">あればサイトの説得力が大きく上がります。</p>
 
       <div class="field">
@@ -329,9 +351,9 @@
       </div>
     </div>
 
-    <!-- ============ 6. よくある質問 ============ -->
+    <!-- ============ 7. よくある質問 ============ -->
     <div class="card">
-      <h2>6. よくある質問</h2>
+      <h2>7. よくある質問</h2>
       <p class="section-desc">お客さまからよく聞かれることを教えてください。FAQページに使います。</p>
 
       <div class="field">
@@ -341,9 +363,9 @@
       </div>
     </div>
 
-    <!-- ============ 7. 写真・素材 ============ -->
+    <!-- ============ 8. 写真・素材 ============ -->
     <div class="card">
-      <h2>7. 写真・素材</h2>
+      <h2>8. 写真・素材</h2>
       <p class="section-desc">サイトの画像はAIで生成します。実写写真やロゴをお持ちであれば後から差し替えます。</p>
 
       <div class="field">
@@ -357,7 +379,7 @@
 
     <!-- ============ 8. その他 ============ -->
     <div class="card">
-      <h2>8. その他</h2>
+      <h2>9. その他</h2>
 
       <div class="field">
         <label>参考にしたいサイト</label>
@@ -379,6 +401,107 @@
 </div>
 
 <script>
+  // ============================================================
+  // 業種×雰囲気 参考サイトストック
+  // 新しい参考サイトを見つけたらここに追加するだけでOK
+  // ============================================================
+  const referenceSites = {
+    '美容・サロン': {
+      'シンプル・清潔感': [
+        { name: '（参考サイト準備中）', url: '', note: '白基調・余白多め・写真大きめ' },
+      ],
+      'ナチュラル・やさしい': [
+        { name: '（参考サイト準備中）', url: '', note: 'ベージュ系・手書き風フォント' },
+      ],
+      '高級感・上品': [
+        { name: '（参考サイト準備中）', url: '', note: 'ダーク系・セリフ体・高画質写真' },
+      ],
+      'ポップ・カジュアル': [
+        { name: '（参考サイト準備中）', url: '', note: 'カラフル・丸み・イラスト' },
+      ],
+      'スタイリッシュ・モダン': [
+        { name: '（参考サイト準備中）', url: '', note: 'モノトーン・グリッド・動き' },
+      ],
+      '力強い・信頼感': [
+        { name: '（参考サイト準備中）', url: '', note: '濃紺/黒基調・太字・実績強調' },
+      ],
+    },
+    '飲食': {
+      'シンプル・清潔感': [
+        { name: '（参考サイト準備中）', url: '', note: '料理写真中心・白背景' },
+      ],
+      'ナチュラル・やさしい': [
+        { name: '（参考サイト準備中）', url: '', note: '木目調・温かみのある配色' },
+      ],
+      '高級感・上品': [
+        { name: '（参考サイト準備中）', url: '', note: '暗めの背景・料理写真が映える' },
+      ],
+      'ポップ・カジュアル': [
+        { name: '（参考サイト準備中）', url: '', note: '明るい色・親しみやすい' },
+      ],
+      'スタイリッシュ・モダン': [
+        { name: '（参考サイト準備中）', url: '', note: 'おしゃれなカフェ風' },
+      ],
+      '力強い・信頼感': [
+        { name: '（参考サイト準備中）', url: '', note: '老舗感・歴史・重厚感' },
+      ],
+    },
+    '福祉・介護': {
+      'シンプル・清潔感': [
+        { name: '（参考サイト準備中）', url: '', note: '明るい・安心感' },
+      ],
+      'ナチュラル・やさしい': [
+        { name: '（参考サイト準備中）', url: '', note: 'パステル系・やわらかい' },
+      ],
+      '高級感・上品': [
+        { name: '（参考サイト準備中）', url: '', note: '上質な介護施設向け' },
+      ],
+      '力強い・信頼感': [
+        { name: '（参考サイト準備中）', url: '', note: '実績・数字を前面に' },
+      ],
+    },
+  };
+
+  // 業種×雰囲気で参考サイトを表示
+  function updateReferenceSites() {
+    const industry = document.getElementById('industry-select').value;
+    const moodEl = document.querySelector('input[name="mood"]:checked');
+    const container = document.getElementById('reference-sites');
+    const content = document.getElementById('reference-sites-content');
+
+    if (!industry || !moodEl) {
+      container.style.display = 'none';
+      return;
+    }
+
+    const mood = moodEl.value;
+    const sites = (referenceSites[industry] && referenceSites[industry][mood]) || null;
+
+    if (sites && sites.length > 0) {
+      container.style.display = 'block';
+      let html = '<strong>【' + industry + ' × ' + mood + '】の参考サイト：</strong><br><br>';
+      sites.forEach((s, i) => {
+        if (s.url) {
+          html += (i + 1) + '. <a href="' + s.url + '" target="_blank" style="color:var(--brand);">' + s.name + '</a>';
+        } else {
+          html += (i + 1) + '. ' + s.name;
+        }
+        if (s.note) html += ' <span style="color:#888;">— ' + s.note + '</span>';
+        html += '<br>';
+      });
+      html += '<br><em style="color:#666;">参考サイトは随時追加されます。「この雰囲気がいい」というサイトがあれば「その他」欄にURLをお書きください。</em>';
+      content.innerHTML = html;
+    } else {
+      container.style.display = 'block';
+      content.innerHTML = '<strong>【' + industry + ' × ' + mood + '】</strong><br>この組み合わせの参考サイトは準備中です。<br><em style="color:#666;">「この雰囲気がいい」というサイトがあれば「その他」欄にURLをお書きください。</em>';
+    }
+  }
+
+  document.getElementById('industry-select').addEventListener('change', updateReferenceSites);
+  document.querySelectorAll('input[name="mood"]').forEach(r => {
+    r.addEventListener('change', updateReferenceSites);
+  });
+
   function collectFormData() {
     const form = document.getElementById('hearing-form');
     const fd = new FormData(form);
