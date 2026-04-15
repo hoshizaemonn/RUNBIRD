@@ -547,8 +547,8 @@
     URL.revokeObjectURL(url);
   }
 
-  // TODO: B案実装後、fetch POST でサーバーにJSON保存＋Chatwork通知
-  // TODO: C案実装後、業種テンプレ選択→動画生成パイプライン自動起動
+  const ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbydjMEQVB5nnVSzcfzflQX3rCoGYwXoe2nC4qpsOqRGZwTp38hPswX2-MeRCCe0fKcYYA/exec';
+
   document.getElementById('hearing-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!patternInput.value) {
@@ -556,9 +556,25 @@
       return;
     }
     const data = collectFormData();
-    console.log('送信データ:', data);
-    downloadJSON();
-    alert('シートを送信しました。');
+    const submitBtn = e.target.querySelector('.btn-primary');
+    submitBtn.textContent = '送信中...';
+    submitBtn.disabled = true;
+
+    try {
+      await fetch(ENDPOINT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      alert('送信が完了しました。担当者よりご連絡いたします。');
+    } catch (err) {
+      alert('送信に失敗しました。お手数ですが、お電話でご連絡ください。');
+      console.error(err);
+    } finally {
+      submitBtn.textContent = '送信する';
+      submitBtn.disabled = false;
+    }
   });
 </script>
 </body>
