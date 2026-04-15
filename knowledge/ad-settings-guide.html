@@ -3,181 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YouTube広告 設定チェックシート｜BELIEF TRUST</title>
+<title>YouTube広告 設定ガイド｜株式会社ランバード</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-    background: #f0f2f5;
-    color: #1a1a1a;
-    line-height: 1.7;
-    padding: 24px;
-}
+body { font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background: #f0f2f5; color: #1a1a1a; line-height: 1.7; padding: 24px; }
 .container { max-width: 1100px; margin: 0 auto; }
 h1 { text-align: center; font-size: 24px; border-bottom: 3px solid #cc0000; padding-bottom: 12px; margin-bottom: 6px; }
 .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 36px; }
-
-.section {
-    background: #fff;
-    border-radius: 12px;
-    padding: 24px 28px;
-    margin-bottom: 20px;
-    border: 2px solid #e0e0e0;
-}
-.section-title {
-    font-size: 18px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #eee;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.section-title .icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-
-/* 設定行 */
-.setting-row {
-    display: grid;
-    grid-template-columns: 180px 1fr 50px;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid #f5f5f5;
-    align-items: center;
-}
+.section { background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; border: 2px solid #e0e0e0; }
+.section-title { font-size: 18px; font-weight: 700; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #eee; display: flex; align-items: center; gap: 10px; }
+.section-title .icon { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 8px; color: #fff; font-size: 13px; font-weight: 700; flex-shrink: 0; }
+.setting-row { display: grid; grid-template-columns: 180px 1fr 50px; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f5f5f5; align-items: center; }
 .setting-row:last-child { border-bottom: none; }
-.setting-label {
-    font-size: 13px;
-    font-weight: 700;
-    color: #333;
-}
-.setting-value {
-    font-size: 13px;
-    color: #555;
-    background: #f8f9fa;
-    padding: 8px 14px;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-}
-.setting-value.warn {
-    background: #fff3e0;
-    border-color: #ff8800;
-    color: #e65100;
-}
-.setting-value.error {
-    background: #ffebee;
-    border-color: #cc0000;
-    color: #c62828;
-}
-.setting-value.ok {
-    background: #e8f5e9;
-    border-color: #2e7d32;
-    color: #2e7d32;
-}
-.status {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    font-size: 16px;
-    font-weight: 700;
-}
+.setting-label { font-size: 13px; font-weight: 700; color: #333; }
+.setting-value { font-size: 13px; color: #555; background: #f8f9fa; padding: 8px 14px; border-radius: 8px; border: 1px solid #e0e0e0; }
+.setting-value.ok { background: #e8f5e9; border-color: #2e7d32; color: #2e7d32; }
+.setting-value.warn { background: #fff3e0; border-color: #ff8800; color: #e65100; }
+.setting-value.ask { background: #e3f2fd; border-color: #1976d2; color: #1565c0; }
+.status { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; }
 .status-ok { background: #e8f5e9; color: #2e7d32; }
 .status-warn { background: #fff3e0; color: #e65100; }
-.status-error { background: #ffebee; color: #c62828; }
-
-/* 不安事項 */
-.concern-box {
-    background: #fff5f5;
-    border: 2px solid #cc0000;
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-top: 12px;
-}
-.concern-box h4 {
-    color: #c62828;
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-.concern-box p {
-    font-size: 13px;
-    color: #555;
-}
-
-/* ヒーロー */
-.hero {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    color: #fff;
-    border-radius: 12px;
-    padding: 28px 32px;
-    margin-bottom: 28px;
-    text-align: center;
-}
-.hero h2 { font-size: 20px; margin-bottom: 8px; }
-.hero .sub { font-size: 13px; color: #ccc; }
-
-/* サマリー */
-.summary-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-    margin-bottom: 20px;
-}
-.summary-card {
-    border-radius: 10px;
-    padding: 18px;
-    text-align: center;
-    border: 2px solid;
-}
-.summary-card.ok { background: #e8f5e9; border-color: #2e7d32; }
-.summary-card.warn { background: #fff3e0; border-color: #ff8800; }
-.summary-card.error { background: #ffebee; border-color: #cc0000; }
-.summary-card .num { font-size: 28px; font-weight: 800; }
-.summary-card.ok .num { color: #2e7d32; }
-.summary-card.warn .num { color: #e65100; }
-.summary-card.error .num { color: #c62828; }
-.summary-card .label { font-size: 12px; color: #888; margin-top: 4px; }
-
-@media (max-width: 768px) {
-    .setting-row { grid-template-columns: 1fr; gap: 4px; }
-    .summary-grid { grid-template-columns: 1fr; }
-}
+.status-ask { background: #e3f2fd; color: #1565c0; }
+.q-box { background: #e3f2fd; border: 2px solid #1976d2; border-radius: 10px; padding: 14px 18px; margin-top: 12px; }
+.q-box h4 { color: #1565c0; font-size: 14px; margin-bottom: 6px; }
+.q-box p { font-size: 13px; color: #555; }
+@media (max-width: 768px) { .setting-row { grid-template-columns: 1fr; gap: 4px; } }
 </style>
 </head>
 <body>
 <div class="container">
 
-<h1>YouTube広告 設定チェックシート</h1>
-<p class="subtitle">BELIEF TRUST 様｜設定確認・不安事項まとめ</p>
-
-<!-- サマリー -->
-<div class="summary-grid">
-    <div class="summary-card ok">
-        <div class="num">9</div>
-        <div class="label">問題なし ✓</div>
-    </div>
-    <div class="summary-card warn">
-        <div class="num">4</div>
-        <div class="label">要確認 ⚠</div>
-    </div>
-    <div class="summary-card error">
-        <div class="num">3</div>
-        <div class="label">未設定・要対応 ✕</div>
-    </div>
-</div>
+<h1>YouTube広告 設定ガイド</h1>
+<p class="subtitle">各クライアント共通の設定方法｜株式会社ランバード</p>
 
 <!-- ① キャンペーン設定 -->
 <div class="section">
@@ -200,33 +57,32 @@ h1 { text-align: center; font-size: 24px; border-bottom: 3px solid #cc0000; padd
 
     <div class="setting-row">
         <div class="setting-label">入札戦略</div>
-        <div class="setting-value warn">目標広告視聴単価 → 金額未確認</div>
-        <div class="status status-warn">⚠</div>
+        <div class="setting-value ask">なしでOK？</div>
+        <div class="status status-ask">？</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">予算タイプ</div>
-        <div class="setting-value warn">日額 → 金額が未入力に見える</div>
-        <div class="status status-warn">⚠</div>
+        <div class="setting-value ok">日額 → スプレッドシートの<strong>AA列「日圓」</strong>の金額を入力</div>
+        <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">開始日</div>
-        <div class="setting-value ok">2026年4月15日</div>
+        <div class="setting-value ok">広告の配信開始日を設定</div>
         <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">終了日</div>
-        <div class="setting-value warn">なし（未設定）</div>
-        <div class="status status-warn">⚠</div>
+        <div class="setting-value ask">なし？</div>
+        <div class="status status-ask">？</div>
     </div>
 
-    <div class="concern-box">
-        <h4>⚠ 確認ポイント</h4>
-        <p>・日額の金額はいくらで設定する？<br>
-        ・入札単価（視聴単価）はいくら？<br>
-        ・終了日は設定しなくていい？（設定しないと永続配信になる）</p>
+    <div class="q-box">
+        <h4>？ 確認したいこと</h4>
+        <p>・入札戦略は「なし」でOK？<br>
+        ・終了日は設定しない（永続配信）で問題ない？</p>
     </div>
 </div>
 
@@ -239,7 +95,7 @@ h1 { text-align: center; font-size: 24px; border-bottom: 3px solid #cc0000; padd
 
     <div class="setting-row">
         <div class="setting-label">YouTube</div>
-        <div class="setting-value ok">ON（YouTube動画・チャンネル・ホームに配信）</div>
+        <div class="setting-value ok">ON</div>
         <div class="status status-ok">✓</div>
     </div>
 
@@ -251,18 +107,17 @@ h1 { text-align: center; font-size: 24px; border-bottom: 3px solid #cc0000; padd
 
     <div class="setting-row">
         <div class="setting-label">ディスプレイネットワーク</div>
-        <div class="setting-value error">ON になっている</div>
-        <div class="status status-error">✕</div>
+        <div class="setting-value warn">要確認（ONにする？OFFにする？）</div>
+        <div class="status status-warn">⚠</div>
     </div>
 
-    <div class="concern-box">
-        <h4>✕ 要対応</h4>
-        <p>「Googleディスプレイネットワークの動画パートナー」がONのまま。<br>
-        他のクライアントではOFFにしている。OFFにすべきか確認が必要。</p>
+    <div class="q-box">
+        <h4>？ 確認したいこと</h4>
+        <p>ディスプレイネットワークはON / OFFどちらで統一する？</p>
     </div>
 </div>
 
-<!-- ③ 地域・言語 -->
+<!-- ③ 地域・言語・その他 -->
 <div class="section">
     <div class="section-title">
         <span class="icon" style="background:#2e7d32;">3</span>
@@ -271,7 +126,7 @@ h1 { text-align: center; font-size: 24px; border-bottom: 3px solid #cc0000; padd
 
     <div class="setting-row">
         <div class="setting-label">地域</div>
-        <div class="setting-value ok">日本</div>
+        <div class="setting-value ok">提案書のエリアに合わせて設定（クライアントごと）</div>
         <div class="status status-ok">✓</div>
     </div>
 
@@ -295,20 +150,14 @@ h1 { text-align: center; font-size: 24px; border-bottom: 3px solid #cc0000; padd
 
     <div class="setting-row">
         <div class="setting-label">フリークエンシーキャップ</div>
-        <div class="setting-value error">未設定（チェックなし）</div>
-        <div class="status status-error">✕</div>
+        <div class="setting-value ok">週3回まで（確認済み）</div>
+        <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">広告スケジュール</div>
-        <div class="setting-value ok">すべての曜日 0:00〜0:00（24時間）</div>
+        <div class="setting-value ok">動画・クライアントによりけり（提案書の配信時間に合わせて設定）</div>
         <div class="status status-ok">✓</div>
-    </div>
-
-    <div class="concern-box">
-        <h4>✕ 要対応</h4>
-        <p>フリークエンシーキャップが未設定。他クライアントでは週3回で設定している。<br>
-        入れなくていいのか確認が必要。</p>
     </div>
 </div>
 
@@ -321,44 +170,43 @@ h1 { text-align: center; font-size: 24px; border-bottom: 3px solid #cc0000; padd
 
     <div class="setting-row">
         <div class="setting-label">広告グループ名</div>
-        <div class="setting-value ok">動画 2026-04-15 #2</div>
+        <div class="setting-value ok">会社名を記載</div>
         <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">性別</div>
-        <div class="setting-value ok">女性 ✓ / 男性 ✓ / 不明 ✓</div>
-        <div class="status status-ok">✓</div>
+        <div class="setting-value ask">不明も含める？（現在は女性✓ 男性✓ 不明✓）</div>
+        <div class="status status-ask">？</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">年齢</div>
-        <div class="setting-value ok">19歳〜65歳以上</div>
+        <div class="setting-value ok">動画・クライアントによりけり（提案書の年齢に合わせて設定）</div>
         <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">子供の有無</div>
-        <div class="setting-value ok">子供あり ✓ / 子供なし ✓ / 不明 ✓</div>
+        <div class="setting-value ok">全部にチェック（子供あり✓ 子供なし✓ 不明✓）</div>
         <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">世帯収入</div>
-        <div class="setting-value warn">上位10%〜下位50% + 不明 ✓</div>
-        <div class="status status-warn">⚠</div>
+        <div class="setting-value ok">クライアントの希望があれば設定（まごころ庵：上位50%以上 等）</div>
+        <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">興味/関心</div>
-        <div class="setting-value error">新しいペット / ハチペット（中型犬）/ エポーツ（中学生）/ ピックアップトラック</div>
-        <div class="status status-error">✕</div>
+        <div class="setting-value ok">何も入れない</div>
+        <div class="status status-ok">✓</div>
     </div>
 
-    <div class="concern-box">
-        <h4>✕ 要確認</h4>
-        <p>興味関心の設定に「エポーツ（中学生）」「ピックアップトラック」が含まれている。<br>
-        このクライアントの業種に合っているか？意図した設定か確認が必要。</p>
+    <div class="q-box">
+        <h4>？ 確認したいこと</h4>
+        <p>性別の「不明」は全クライアント共通で含める？</p>
     </div>
 </div>
 
@@ -371,26 +219,20 @@ h1 { text-align: center; font-size: 24px; border-bottom: 3px solid #cc0000; padd
 
     <div class="setting-row">
         <div class="setting-label">キーワード</div>
-        <div class="setting-value error">未入力（空）</div>
-        <div class="status status-error">✕</div>
+        <div class="setting-value ok">動画・クライアントによって決定。大体<strong>20個前後</strong>（提案書のKWを入力）</div>
+        <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">トピック</div>
-        <div class="setting-value ok">検索ネットワーク / 閲覧</div>
+        <div class="setting-value ok">何も入れない</div>
         <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">プレースメント</div>
-        <div class="setting-value ok">選択されていません（任意）</div>
+        <div class="setting-value ok">何も入れない</div>
         <div class="status status-ok">✓</div>
-    </div>
-
-    <div class="concern-box">
-        <h4>✕ 要対応</h4>
-        <p>キーワードが空のまま。キーワードを設定しないとターゲティングの精度が下がり、<br>
-        関連性の低い視聴者にも配信されてしまう可能性がある。</p>
     </div>
 </div>
 
@@ -403,90 +245,91 @@ h1 { text-align: center; font-size: 24px; border-bottom: 3px solid #cc0000; padd
 
     <div class="setting-row">
         <div class="setting-label">広告動画</div>
-        <div class="setting-value ok">設定済み（プレビュー表示あり）</div>
-        <div class="status status-ok">✓</div>
+        <div class="setting-value ask">YouTubeにアップロード済みの動画を設定。横動画だけ？</div>
+        <div class="status status-ask">？</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">最終ページURL</div>
-        <div class="setting-value ok">設定済み</div>
+        <div class="setting-value ok">LINE予約ページ or HPを入力（クライアントごと）</div>
+        <div class="status status-ok">✓</div>
+    </div>
+
+    <div class="setting-row">
+        <div class="setting-label">表示URL パス</div>
+        <div class="setting-value ok">クライアントごとに設定</div>
         <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">行動を促すフレーズ</div>
-        <div class="setting-value ok">設定済み</div>
+        <div class="setting-value ok">何も入れない</div>
         <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">長い広告見出し</div>
-        <div class="setting-value ok">設定済み</div>
+        <div class="setting-value ok">各動画によって変える</div>
         <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">説明文</div>
-        <div class="setting-value ok">設定済み</div>
+        <div class="setting-value ok">各動画によって変える</div>
         <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">ビジネスの名前</div>
-        <div class="setting-value error">「コウケントラスト エンジン洗浄」→ 赤枠「送信されていません」</div>
-        <div class="status status-error">✕</div>
+        <div class="setting-value ok">チャンネル名のまま</div>
+        <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">ロゴ</div>
-        <div class="setting-value ok">設定済み</div>
+        <div class="setting-value ok">各クライアントのロゴを設定</div>
         <div class="status status-ok">✓</div>
     </div>
 
     <div class="setting-row">
         <div class="setting-label">入札単価</div>
-        <div class="setting-value error">「¥」のまま未入力</div>
-        <div class="status status-error">✕</div>
+        <div class="setting-value ok">スプレッドシートの<strong>AB列「単圓」</strong>の金額を入力</div>
+        <div class="status status-ok">✓</div>
     </div>
 
-    <div class="concern-box">
-        <h4>✕ 要対応</h4>
-        <p>・ビジネスの名前が「送信されていません」表示 → 再送信が必要？<br>
-        ・入札単価が未入力 → いくらで設定するか確認が必要</p>
+    <div class="q-box">
+        <h4>？ 確認したいこと</h4>
+        <p>広告動画は全て横動画のみ？縦動画（ショート用など）を使うケースはある？</p>
     </div>
 </div>
 
-<!-- まとめ -->
-<div class="section" style="border-color:#cc0000;">
+<!-- 未確認まとめ -->
+<div class="section" style="border-color:#1976d2;">
     <div class="section-title">
-        <span class="icon" style="background:#cc0000;">!</span>
-        確認が必要な項目まとめ
+        <span class="icon" style="background:#1976d2;">？</span>
+        確認したいことまとめ
     </div>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-        <div style="background:#ffebee;border-radius:10px;padding:16px;border-left:5px solid #cc0000;">
-            <div style="font-size:13px;font-weight:700;color:#c62828;margin-bottom:6px;">❶ 予算・入札単価</div>
-            <div style="font-size:12px;color:#555;">日額予算と入札単価が未入力。いくらで設定するか？</div>
+        <div style="background:#e3f2fd;border-radius:10px;padding:16px;border-left:5px solid #1976d2;">
+            <div style="font-size:13px;font-weight:700;color:#1565c0;margin-bottom:6px;">❶ 入札戦略</div>
+            <div style="font-size:12px;color:#555;">「なし」でOK？</div>
         </div>
-        <div style="background:#ffebee;border-radius:10px;padding:16px;border-left:5px solid #cc0000;">
-            <div style="font-size:13px;font-weight:700;color:#c62828;margin-bottom:6px;">❷ ディスプレイネットワーク</div>
-            <div style="font-size:12px;color:#555;">ONのまま。他クライアントではOFF。OFFにすべきか？</div>
-        </div>
-        <div style="background:#ffebee;border-radius:10px;padding:16px;border-left:5px solid #cc0000;">
-            <div style="font-size:13px;font-weight:700;color:#c62828;margin-bottom:6px;">❸ フリークエンシーキャップ</div>
-            <div style="font-size:12px;color:#555;">未設定。週3回の制限を入れるべきか？</div>
-        </div>
-        <div style="background:#ffebee;border-radius:10px;padding:16px;border-left:5px solid #cc0000;">
-            <div style="font-size:13px;font-weight:700;color:#c62828;margin-bottom:6px;">❹ キーワード</div>
-            <div style="font-size:12px;color:#555;">空のまま。キーワードを入れないとターゲティング精度が下がる。</div>
+        <div style="background:#e3f2fd;border-radius:10px;padding:16px;border-left:5px solid #1976d2;">
+            <div style="font-size:13px;font-weight:700;color:#1565c0;margin-bottom:6px;">❷ 終了日</div>
+            <div style="font-size:12px;color:#555;">設定なし（永続配信）でOK？</div>
         </div>
         <div style="background:#fff3e0;border-radius:10px;padding:16px;border-left:5px solid #ff8800;">
-            <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">❺ 興味関心</div>
-            <div style="font-size:12px;color:#555;">「エポーツ」「ピックアップトラック」は業種に合っている？</div>
+            <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">❸ ディスプレイネットワーク</div>
+            <div style="font-size:12px;color:#555;">ON / OFFどちらで統一？</div>
         </div>
-        <div style="background:#fff3e0;border-radius:10px;padding:16px;border-left:5px solid #ff8800;">
-            <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">❻ ビジネスの名前</div>
-            <div style="font-size:12px;color:#555;">「送信されていません」表示。再送信が必要？</div>
+        <div style="background:#e3f2fd;border-radius:10px;padding:16px;border-left:5px solid #1976d2;">
+            <div style="font-size:13px;font-weight:700;color:#1565c0;margin-bottom:6px;">❹ 性別「不明」</div>
+            <div style="font-size:12px;color:#555;">全クライアント共通で含める？</div>
+        </div>
+        <div style="background:#e3f2fd;border-radius:10px;padding:16px;border-left:5px solid #1976d2;">
+            <div style="font-size:13px;font-weight:700;color:#1565c0;margin-bottom:6px;">❺ 広告動画</div>
+            <div style="font-size:12px;color:#555;">全て横動画のみ？縦動画を使うケースはある？</div>
         </div>
     </div>
 </div>
