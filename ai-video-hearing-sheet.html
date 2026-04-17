@@ -292,6 +292,36 @@
       </div>
     </div>
 
+    <!-- ============ 3.5. 動画の中身（ズレ防止の核心） ============ -->
+    <div class="card requires-pattern">
+      <h2>3.5. この動画で何を見せるか</h2>
+      <p class="section-desc">制作物のズレを防ぐために、お客さまの言葉でそのまま記録してください。</p>
+
+      <div class="notice">
+        <strong>営業メモ：</strong>ここは営業が解釈せず、お客さまの言葉をそのまま書いてください。<br>
+        「ネイルチップを宣伝したい」と言われたらそのまま記入。「布小物も売りたい」と追加で言われたらそれも書く。<br>
+        電話録音と突き合わせて確認する項目です。
+      </div>
+
+      <div class="field">
+        <label>この動画で何を宣伝しますか？<span class="required">必須</span></label>
+        <textarea name="promotion_target" placeholder="例：ネイルチップのオーダーメイド販売&#10;例：布小物（ポーチ・巾着）の新作ライン&#10;例：店舗全体の認知度アップ&#10;&#10;※事業全体ではなく「この動画で推したいもの」を具体的に。&#10;複数あれば全部書いてください。" rows="4" required></textarea>
+        <span class="help">事業概要と違う場合があります。「事業はネイルチップだけど、今回宣伝したいのは布小物」のようなケースを見逃さないための項目です。</span>
+      </div>
+
+      <div class="field">
+        <label>動画の主役は誰（何）ですか？<span class="required">必須</span></label>
+        <textarea name="main_subject" placeholder="例：商品（ネイルチップ）そのもの&#10;例：オリジナルキャラクター（猫のまろん・犬のシフォン）&#10;例：オーナー本人&#10;例：お店の雰囲気・空間&#10;&#10;※「キャラクターを主役にしてほしい」と「テイスト参考にしてほしい」は全く違います。&#10;お客さまがどちらの意味で言っているか確認してください。" rows="4" required></textarea>
+        <span class="help">キャラクターやマスコットがいる場合、「動画に出す＝主役」なのか「テイストの参考」なのかを必ず確認してください。</span>
+      </div>
+
+      <div class="field">
+        <label>お客さまが描いているイメージ・ストーリー<span class="required">必須</span></label>
+        <textarea name="customer_vision" placeholder="例：猫のまろんが画面に登場して、商品を紹介していくストーリー&#10;例：お店の1日をドキュメンタリー風に追いかける感じ&#10;例：特にイメージはない、おまかせしたい&#10;&#10;※「おまかせ」の場合もそのまま書いてください。&#10;お客さまが具体的なイメージを持っている場合は、できるだけ詳しく。" rows="5" required></textarea>
+        <span class="help">お客さまの頭の中にある完成イメージを引き出してください。「こんな感じの動画にしたい」を自由に話してもらい、そのまま記録します。</span>
+      </div>
+    </div>
+
     <!-- ============ 4. 動画のゴール ============ -->
     <div class="card requires-pattern">
       <h2>4. 動画のゴール</h2>
@@ -547,8 +577,8 @@
     URL.revokeObjectURL(url);
   }
 
-  const ENDPOINT_URL = 'https://script.google.com/macros/s/AKfycbydjMEQVB5nnVSzcfzflQX3rCoGYwXoe2nC4qpsOqRGZwTp38hPswX2-MeRCCe0fKcYYA/exec';
-
+  // TODO: B案実装後、fetch POST でサーバーにJSON保存＋Chatwork通知
+  // TODO: C案実装後、業種テンプレ選択→動画生成パイプライン自動起動
   document.getElementById('hearing-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!patternInput.value) {
@@ -556,25 +586,9 @@
       return;
     }
     const data = collectFormData();
-    const submitBtn = e.target.querySelector('.btn-primary');
-    submitBtn.textContent = '送信中...';
-    submitBtn.disabled = true;
-
-    try {
-      await fetch(ENDPOINT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      alert('送信が完了しました。担当者よりご連絡いたします。');
-    } catch (err) {
-      alert('送信に失敗しました。お手数ですが、お電話でご連絡ください。');
-      console.error(err);
-    } finally {
-      submitBtn.textContent = '送信する';
-      submitBtn.disabled = false;
-    }
+    console.log('送信データ:', data);
+    downloadJSON();
+    alert('シートを送信しました。');
   });
 </script>
 </body>

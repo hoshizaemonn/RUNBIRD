@@ -13,7 +13,6 @@
     --muted: #666;
     --border: #d8dde6;
     --error: #c0392b;
-    --success: #27ae60;
   }
   * { box-sizing: border-box; }
   body {
@@ -158,78 +157,9 @@
     gap: 8px;
     margin-bottom: 6px;
   }
-
-  /* デザイン選択 */
-  .design-select-area {
-    margin-top: 16px;
-  }
-  .design-select-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--brand);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: background 0.3s;
-    margin-bottom: 16px;
-  }
-  .design-select-link:hover { background: var(--brand-light); color: #fff; }
-  .design-preview {
-    display: none;
-    margin-top: 16px;
-    border: 2px solid var(--brand);
-    border-radius: 8px;
-    overflow: hidden;
-    background: #fff;
-  }
-  .design-preview.is-active { display: block; }
-  .design-preview__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 16px;
-    background: #f0f3f8;
-    border-bottom: 1px solid var(--border);
-  }
-  .design-preview__selected {
-    font-weight: 600;
-    font-size: 14px;
-    color: var(--brand);
-  }
-  .design-preview__change {
-    font-size: 12px;
-    color: var(--brand);
-    cursor: pointer;
-    text-decoration: underline;
-  }
-  .design-preview__iframe {
-    width: 100%;
-    height: 400px;
-    border: none;
-  }
-
-  /* 送信完了 */
-  .submit-success {
-    display: none;
-    text-align: center;
-    padding: 40px;
-    background: #f0fdf4;
-    border: 2px solid var(--success);
-    border-radius: 12px;
-    margin-top: 24px;
-  }
-  .submit-success.is-active { display: block; }
-  .submit-success h3 { color: var(--success); font-size: 22px; margin: 0 0 12px; }
-
   @media (max-width: 640px) {
     .row-2, .row-3, .menu-row { grid-template-columns: 1fr; }
     .card { padding: 20px; }
-    .submit-area { flex-direction: column; }
-    .submit-area button { width: 100%; }
   }
 </style>
 </head>
@@ -238,120 +168,161 @@
 
   <header>
     <h1>HP制作 ヒアリングシート</h1>
-    <p>以下を記入して送信してください。内容をもとにホームページを制作いたします。</p>
+    <p>株式会社ランバード｜SWELL制作</p>
   </header>
 
-  <form id="hearing-form" autocomplete="on">
+  <form id="hearing-form">
 
     <!-- ============ 1. 基本情報 ============ -->
     <div class="card">
       <h2>1. 基本情報</h2>
-      <p class="section-desc">会社・店舗の基本情報を教えてください。</p>
+      <p class="section-desc">サイトに掲載する基本情報です。</p>
 
       <div class="field">
-        <label>会社名・店舗名<span class="required">必須</span></label>
-        <input type="text" name="company" required placeholder="例：Café Komorebi">
+        <label>店舗名・屋号<span class="required">必須</span></label>
+        <input type="text" name="company" required>
+        <span class="help">正式名称とフリガナを記入してください。</span>
       </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>代表者名<span class="required">必須</span></label>
+          <input type="text" name="representative" required>
+        </div>
+        <div class="field">
+          <label>電話番号<span class="required">必須</span></label>
+          <input type="tel" name="phone" required>
+        </div>
+      </div>
+
       <div class="field">
-        <label>代表者名</label>
-        <input type="text" name="representative" placeholder="例：山田 太郎">
+        <label>住所<span class="required">必須</span></label>
+        <input type="text" name="address" required>
       </div>
+
       <div class="row-2">
         <div class="field">
-          <label>業種<span class="required">必須</span></label>
-          <select name="industry" id="industry-select" required>
-            <option value="">選択してください</option>
-            <option value="美容・サロン">美容・サロン</option>
-            <option value="飲食">飲食</option>
-            <option value="福祉・介護">福祉・介護</option>
-            <option value="医療・クリニック">医療・クリニック</option>
-            <option value="建設・工事">建設・工事</option>
-            <option value="教育・スクール">教育・スクール</option>
-            <option value="小売・EC">小売・EC</option>
-            <option value="士業・コンサル">士業・コンサル</option>
-            <option value="IT・Web">IT・Web</option>
-            <option value="不動産">不動産</option>
-            <option value="製造業">製造業</option>
-            <option value="その他">その他</option>
-          </select>
+          <label>営業時間<span class="required">必須</span></label>
+          <input type="text" name="business_hours" placeholder="例：10:00〜20:00" required>
         </div>
         <div class="field">
-          <label>ドメイン</label>
-          <input type="text" name="domain_1" placeholder="例：komorebi-cafe.com">
-          <span class="help">お持ちでなければ空欄でOKです</span>
+          <label>定休日<span class="required">必須</span></label>
+          <input type="text" name="holidays" placeholder="例：毎週水曜・第3木曜" required>
         </div>
       </div>
-      <div class="row-2">
-        <div class="field">
-          <label>メールアドレス</label>
-          <input type="email" name="email" placeholder="例：info@example.com">
-        </div>
-        <div class="field">
-          <label>電話番号</label>
-          <input type="tel" name="phone" placeholder="例：092-123-4567">
-        </div>
-      </div>
+
       <div class="field">
-        <label>住所</label>
-        <input type="text" name="address" placeholder="例：福岡市中央区天神2-3-10">
+        <label>メールアドレス</label>
+        <input type="email" name="email">
       </div>
-      <div class="row-2">
-        <div class="field">
-          <label>営業時間</label>
-          <input type="text" name="business_hours" placeholder="例：9:00〜19:00">
-        </div>
-        <div class="field">
-          <label>定休日</label>
-          <input type="text" name="holidays" placeholder="例：毎週水曜日">
-        </div>
+
+      <div class="field">
+        <label>希望ドメイン</label>
+        <input type="text" name="domain_1" placeholder="第1候補：例 saruru-beauty.com" style="margin-bottom:6px;">
+        <input type="text" name="domain_2" placeholder="第2候補" style="margin-bottom:6px;">
+        <input type="text" name="domain_3" placeholder="第3候補">
+        <span class="help">短くて覚えやすいものがおすすめです。既にお持ちの場合はそのURLを記入してください。</span>
+      </div>
+
+      <div class="field">
+        <label>現在のWEBサイト・SNS</label>
+        <textarea name="existing_sites" placeholder="例：Instagram @saruru_beauty / ホットペッパー掲載中" rows="2"></textarea>
       </div>
     </div>
 
-    <!-- ============ 2. 事業内容・コンセプト ============ -->
+    <!-- ============ 2. 事業について ============ -->
     <div class="card">
-      <h2>2. 事業内容・コンセプト</h2>
-      <p class="section-desc">お店や会社のことを教えてください。文章はこちらで整えますので、箇条書きでもOKです。</p>
+      <h2>2. 事業について</h2>
+      <p class="section-desc">事業に合ったサイト構成を自動で組み立てるための情報です。</p>
 
       <div class="field">
-        <label>事業内容・お店の紹介<span class="required">必須</span></label>
-        <textarea name="business_description" required placeholder="例：オーガニック素材にこだわったカフェです。自家焙煎コーヒーと手作りスイーツを提供しています。&#10;&#10;どんなお店/会社か、何をしているかをざっくりお書きください。" rows="5"></textarea>
+        <label>業種<span class="required">必須</span></label>
+        <select name="industry" id="industry-select" required>
+          <option value="">選択してください</option>
+          <option value="飲食">飲食（居酒屋・レストラン・カフェ等）</option>
+          <option value="ジム・フィットネス">ジム・フィットネス</option>
+          <option value="美容・サロン">美容・サロン</option>
+          <option value="医療・クリニック">医療・クリニック</option>
+          <option value="不動産">不動産</option>
+          <option value="建設・工務店">建設・工務店</option>
+          <option value="福祉・介護">福祉・介護</option>
+          <option value="教育・スクール">教育・スクール</option>
+          <option value="士業（税理士・弁護士等）">士業（税理士・弁護士等）</option>
+          <option value="EC・通販">EC・通販</option>
+          <option value="その他">その他</option>
+        </select>
       </div>
+
       <div class="field">
-        <label>こだわり・強み</label>
-        <textarea name="strengths" placeholder="例：&#10;・自家焙煎のシングルオリジン豆を使用&#10;・地元農家から直接仕入れた野菜&#10;・添加物不使用の手作りスイーツ" rows="4"></textarea>
+        <label>事業・サービスの概要<span class="required">必須</span></label>
+        <textarea name="business_description" placeholder="お客さまに説明するように、何をしている事業かを教えてください。" required></textarea>
       </div>
+
       <div class="field">
-        <label>オーナーの想い・ストーリー</label>
-        <textarea name="story" placeholder="例：「忙しい毎日の中で、ほっとできる居場所を作りたい」という想いから2020年にオープン。&#10;&#10;創業のきっかけや想いがあれば教えてください。代表挨拶に使います。" rows="4"></textarea>
+        <label>他社と比べた強み・選ばれる理由<span class="required">必須</span></label>
+        <textarea name="strengths" placeholder="例：完全個室 / 国家資格保有 / 地域最安値 / 駅徒歩1分 / リピート率90%&#10;3つ以上あるとサイトの説得力が上がります。" required></textarea>
+      </div>
+
+      <div class="field">
+        <label>開業のきっかけ・想い</label>
+        <textarea name="story" placeholder="なぜこの事業を始めたか、お客さまにどうなってほしいかを教えてください。代表挨拶ページに使います。" rows="4"></textarea>
       </div>
     </div>
 
-    <!-- ============ 3. メニュー・サービス ============ -->
+    <!-- ============ 2.5. ズレ防止 ============ -->
     <div class="card">
-      <h2>3. メニュー・サービス</h2>
-      <p class="section-desc">提供しているメニューやサービスを教えてください。</p>
+      <h2>2.5. サイトのイメージ確認</h2>
+      <p class="section-desc">完成後に「思ってたのと違う」を防ぐための項目です。お客さまの言葉をそのまま書いてください。</p>
+
+      <div class="notice">
+        <strong>営業メモ：</strong>ここは営業が解釈せず、お客さまの言葉をそのまま書いてください。<br>
+        電話録音と突き合わせて確認する項目です。
+      </div>
 
       <div class="field">
-        <label>メニュー・サービス一覧</label>
-        <textarea name="menu_info" placeholder="例：&#10;こもれびブレンド — ¥550 — 自家焙煎のオリジナルブレンド&#10;季節のフルーツタルト — ¥680 — 旬のフルーツたっぷり&#10;アボカドトースト — ¥980 — 自家製パンにポーチドエッグ&#10;&#10;メニュー名 — 価格 — 説明 の形式で書いてください。&#10;価格や説明がなくてもOKです。" rows="8"></textarea>
+        <label>サイトを見た人に一番やってほしいことは？<span class="required">必須</span></label>
+        <textarea name="desired_action" placeholder="例：電話で予約してほしい&#10;例：LINEで友達追加してほしい&#10;例：まず店の雰囲気を知って来店してほしい&#10;例：商品を買ってほしい&#10;&#10;※「問い合わせを増やしたい」より具体的に。&#10;お客さんが「サイトを見た人にこうしてほしい」と言った言葉をそのまま。" rows="3" required></textarea>
+        <span class="help">ゴール選択（セクション4）とは別に、お客さまの言葉で具体的に記録します。</span>
+      </div>
+
+      <div class="field">
+        <label>サイトに絶対載せたい情報（優先順位つき）<span class="required">必須</span></label>
+        <textarea name="must_include" placeholder="例：&#10;1. 料金表（他より安いことを見せたい）&#10;2. ビフォーアフターの写真&#10;3. 院長の経歴（信頼感）&#10;&#10;※お客さんが「これは絶対入れて」と言ったものを順番に。&#10;「メニューと料金はホットペッパーと同じでいい」などもそのまま書く。" rows="4" required></textarea>
+        <span class="help">優先順位がわかると、トップページの構成・見せ方の判断がブレません。</span>
+      </div>
+
+      <div class="field">
+        <label>これだけはやめてほしいこと・嫌いなサイトの特徴</label>
+        <textarea name="must_avoid" placeholder="例：ごちゃごちゃしたデザインは嫌&#10;例：安っぽく見えるのはNG&#10;例：文字が多すぎるサイトは読まない&#10;例：前に作ってもらったサイトが〇〇で嫌だった&#10;&#10;※なければ空欄でOKです。" rows="3"></textarea>
+        <span class="help">嫌いな方向がわかると、ズレを大幅に減らせます。</span>
       </div>
     </div>
 
-    <!-- ============ 4. HPの目的・ゴール ============ -->
+    <!-- ============ 3. メニュー・料金 ============ -->
     <div class="card">
-      <h2>4. HPの目的</h2>
-      <p class="section-desc">ホームページで何を達成したいですか？</p>
+      <h2>3. メニュー・料金</h2>
+      <p class="section-desc">今わかる範囲でOKです。後から差し替えもできます。</p>
 
       <div class="field">
-        <label>HPの目的<span class="required">必須</span></label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="goal" value="集客・来店促進">集客・来店促進</label>
-          <label><input type="checkbox" name="goal" value="信頼感・ブランディング">信頼感・ブランディング</label>
-          <label><input type="checkbox" name="goal" value="お問い合わせ増加">お問い合わせ増加</label>
-          <label><input type="checkbox" name="goal" value="採用・求人">採用・求人</label>
-          <label><input type="checkbox" name="goal" value="EC・オンライン販売">EC・オンライン販売</label>
-          <label><input type="checkbox" name="goal" value="予約受付">予約受付</label>
-          <label><input type="checkbox" name="goal" value="名刺代わり">名刺代わり</label>
+        <label>メニュー・料金の情報</label>
+        <textarea name="menu_info" placeholder="例：ホットペッパーに掲載しているものと同じ内容で&#10;例：添付のメニュー表の通り&#10;例：カット ¥4,500 / カラー ¥6,000 / パーマ ¥8,000&#10;&#10;わからなければ空欄でOKです。業種の相場で仮の料金表を作成します。" rows="5"></textarea>
+        <span class="help">既存のメニュー表（ぐるなび・ホットペッパー・写真等）があればそのまま共有いただいてもOKです。なければ仮で作成します。</span>
+      </div>
+    </div>
+
+    <!-- ============ 4. ゴール ============ -->
+    <div class="card">
+      <h2>4. ホームページのゴール</h2>
+      <p class="section-desc">サイトで一番達成したいことを教えてください。</p>
+
+      <div class="field">
+        <label>ホームページで何を達成したいですか？<span class="required">必須</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="goal" value="問い合わせ・予約を増やしたい" required>問い合わせ・予約を増やしたい</label>
+          <label><input type="radio" name="goal" value="来店・集客を増やしたい">来店・集客を増やしたい</label>
+          <label><input type="radio" name="goal" value="信頼感・ブランドイメージを作りたい">信頼感・ブランドイメージを作りたい</label>
+          <label><input type="radio" name="goal" value="採用したい">採用したい</label>
+          <label><input type="radio" name="goal" value="商品を売りたい">商品を売りたい</label>
         </div>
       </div>
 
@@ -366,10 +337,10 @@
       </div>
     </div>
 
-    <!-- ============ 5. デザイン選択 ============ -->
+    <!-- ============ 5. サイトの雰囲気 ============ -->
     <div class="card">
-      <h2>5. デザインを選ぶ</h2>
-      <p class="section-desc">以下のサイトからお好みのデザインを選んで、URLを貼り付けてください。</p>
+      <h2>5. サイトの雰囲気</h2>
+      <p class="section-desc">お好みの雰囲気を選ぶと、業種に合った参考サイトが表示されます。</p>
 
       <div class="field">
         <label>サイトの雰囲気<span class="required">必須</span></label>
@@ -383,34 +354,8 @@
         </div>
       </div>
 
-      <div class="design-select-area">
-        <a href="https://list.cms-design.jp/template/" target="_blank" class="design-select-link">
-          デザインテンプレートを見る（別タブで開きます）→
-        </a>
-        <p style="font-size:13px; color:var(--muted); margin:8px 0 16px;">
-          上のリンクからテンプレート一覧を見て、気に入ったデザインのページURLを下に貼ってください。<br>
-          わからなければ空欄でOKです。雰囲気の選択をもとにこちらで選びます。
-        </p>
-
-        <div class="field">
-          <label>選んだデザインのURL</label>
-          <input type="url" name="design_template_url" id="design-url-input"
-                 placeholder="例：https://list.cms-design.jp/template/2023/10/89739/"
-                 oninput="previewDesign(this.value)">
-          <span class="help">テンプレートのページURLを貼ると、下にプレビューが表示されます</span>
-        </div>
-
-        <div class="design-preview" id="design-preview">
-          <div class="design-preview__header">
-            <span class="design-preview__selected" id="design-preview-label">プレビュー</span>
-          </div>
-          <iframe class="design-preview__iframe" id="design-preview-iframe" sandbox="allow-scripts allow-same-origin"></iframe>
-        </div>
-      </div>
-
-      <div class="field" style="margin-top:16px;">
-        <label>その他の参考サイト</label>
-        <textarea name="reference_sites" placeholder="「こんな雰囲気にしたい」というサイトのURLがあれば貼ってください。&#10;複数あれば1行1URLでOKです。" rows="3"></textarea>
+      <div id="reference-sites" style="display:none;">
+        <div class="notice" id="reference-sites-content"></div>
       </div>
     </div>
 
@@ -460,47 +405,127 @@
       <h2>8. その他</h2>
 
       <div class="field">
+        <label>参考にしたいサイト</label>
+        <textarea name="reference_sites" placeholder="「こんな雰囲気にしたい」というサイトのURLがあれば貼ってください。&#10;複数あれば1行1URLでOKです。" rows="3"></textarea>
+      </div>
+
+      <div class="field">
         <label>その他ご要望</label>
         <textarea name="notes" placeholder="何かあればご自由にお書きください。" rows="3"></textarea>
       </div>
     </div>
 
     <div class="submit-area">
-      <button type="submit" class="btn-primary" id="submit-btn">送信する</button>
+      <button type="button" class="btn-secondary" onclick="downloadJSON()">JSONをダウンロード</button>
+      <button type="submit" class="btn-primary">送信する</button>
     </div>
 
   </form>
-
-  <div class="submit-success" id="submit-success">
-    <h3>送信完了しました！</h3>
-    <p>ヒアリングシートを受け付けました。<br>内容を確認して、担当者からご連絡いたします。</p>
-    <p style="font-size:13px; color:var(--muted);">送信されたデータはJSONファイルとしてもダウンロードされています。</p>
-  </div>
-
 </div>
 
 <script>
   // ============================================================
-  // デザインプレビュー
+  // 業種×雰囲気 参考サイトストック
+  // 新しい参考サイトを見つけたらここに追加するだけでOK
   // ============================================================
-  function previewDesign(url) {
-    const preview = document.getElementById('design-preview');
-    const iframe = document.getElementById('design-preview-iframe');
-    const label = document.getElementById('design-preview-label');
+  const referenceSites = {
+    '美容・サロン': {
+      'シンプル・清潔感': [
+        { name: '（参考サイト準備中）', url: '', note: '白基調・余白多め・写真大きめ' },
+      ],
+      'ナチュラル・やさしい': [
+        { name: '（参考サイト準備中）', url: '', note: 'ベージュ系・手書き風フォント' },
+      ],
+      '高級感・上品': [
+        { name: '（参考サイト準備中）', url: '', note: 'ダーク系・セリフ体・高画質写真' },
+      ],
+      'ポップ・カジュアル': [
+        { name: '（参考サイト準備中）', url: '', note: 'カラフル・丸み・イラスト' },
+      ],
+      'スタイリッシュ・モダン': [
+        { name: '（参考サイト準備中）', url: '', note: 'モノトーン・グリッド・動き' },
+      ],
+      '力強い・信頼感': [
+        { name: '（参考サイト準備中）', url: '', note: '濃紺/黒基調・太字・実績強調' },
+      ],
+    },
+    '飲食': {
+      'シンプル・清潔感': [
+        { name: '（参考サイト準備中）', url: '', note: '料理写真中心・白背景' },
+      ],
+      'ナチュラル・やさしい': [
+        { name: '（参考サイト準備中）', url: '', note: '木目調・温かみのある配色' },
+      ],
+      '高級感・上品': [
+        { name: '（参考サイト準備中）', url: '', note: '暗めの背景・料理写真が映える' },
+      ],
+      'ポップ・カジュアル': [
+        { name: '（参考サイト準備中）', url: '', note: '明るい色・親しみやすい' },
+      ],
+      'スタイリッシュ・モダン': [
+        { name: '（参考サイト準備中）', url: '', note: 'おしゃれなカフェ風' },
+      ],
+      '力強い・信頼感': [
+        { name: '（参考サイト準備中）', url: '', note: '老舗感・歴史・重厚感' },
+      ],
+    },
+    '福祉・介護': {
+      'シンプル・清潔感': [
+        { name: '（参考サイト準備中）', url: '', note: '明るい・安心感' },
+      ],
+      'ナチュラル・やさしい': [
+        { name: '（参考サイト準備中）', url: '', note: 'パステル系・やわらかい' },
+      ],
+      '高級感・上品': [
+        { name: '（参考サイト準備中）', url: '', note: '上質な介護施設向け' },
+      ],
+      '力強い・信頼感': [
+        { name: '（参考サイト準備中）', url: '', note: '実績・数字を前面に' },
+      ],
+    },
+  };
 
-    if (!url || !url.includes('cms-design.jp')) {
-      preview.classList.remove('is-active');
+  // 業種×雰囲気で参考サイトを表示
+  function updateReferenceSites() {
+    const industry = document.getElementById('industry-select').value;
+    const moodEl = document.querySelector('input[name="mood"]:checked');
+    const container = document.getElementById('reference-sites');
+    const content = document.getElementById('reference-sites-content');
+
+    if (!industry || !moodEl) {
+      container.style.display = 'none';
       return;
     }
 
-    preview.classList.add('is-active');
-    label.textContent = '選択中: ' + url.split('/').filter(Boolean).pop();
-    iframe.src = url;
+    const mood = moodEl.value;
+    const sites = (referenceSites[industry] && referenceSites[industry][mood]) || null;
+
+    if (sites && sites.length > 0) {
+      container.style.display = 'block';
+      let html = '<strong>【' + industry + ' × ' + mood + '】の参考サイト：</strong><br><br>';
+      sites.forEach((s, i) => {
+        if (s.url) {
+          html += (i + 1) + '. <a href="' + s.url + '" target="_blank" style="color:var(--brand);">' + s.name + '</a>';
+        } else {
+          html += (i + 1) + '. ' + s.name;
+        }
+        if (s.note) html += ' <span style="color:#888;">— ' + s.note + '</span>';
+        html += '<br>';
+      });
+      html += '<br><em style="color:#666;">参考サイトは随時追加されます。「この雰囲気がいい」というサイトがあれば「その他」欄にURLをお書きください。</em>';
+      content.innerHTML = html;
+    } else {
+      container.style.display = 'block';
+      content.innerHTML = '<strong>【' + industry + ' × ' + mood + '】</strong><br>この組み合わせの参考サイトは準備中です。<br><em style="color:#666;">「この雰囲気がいい」というサイトがあれば「その他」欄にURLをお書きください。</em>';
+    }
   }
 
-  // ============================================================
+  document.getElementById('industry-select').addEventListener('change', updateReferenceSites);
+  document.querySelectorAll('input[name="mood"]').forEach(r => {
+    r.addEventListener('change', updateReferenceSites);
+  });
+
   // 写真アップロードのファイルリスト表示
-  // ============================================================
   document.getElementById('photo-upload').addEventListener('change', function() {
     const files = Array.from(this.files);
     const list = document.getElementById('photo-upload-list');
@@ -511,9 +536,6 @@
       (files.length > 5 ? '<br>...他' + (files.length - 5) + 'ファイル' : '');
   });
 
-  // ============================================================
-  // フォームデータ収集
-  // ============================================================
   function collectFormData() {
     const form = document.getElementById('hearing-form');
     const fd = new FormData(form);
@@ -530,7 +552,8 @@
     return data;
   }
 
-  function downloadJSON(data) {
+  function downloadJSON() {
+    const data = collectFormData();
     const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -540,42 +563,12 @@
     URL.revokeObjectURL(url);
   }
 
-  // ============================================================
-  // 送信処理
-  // ============================================================
   document.getElementById('hearing-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const btn = document.getElementById('submit-btn');
-    btn.disabled = true;
-    btn.textContent = '送信中...';
-
     const data = collectFormData();
-
-    // 1. JSONダウンロード（バックアップ）
-    downloadJSON(data);
-
-    // 2. Google Apps Script Webhook で送信
-    try {
-      const webhookUrl = 'https://script.google.com/macros/s/AKfycbyk1FVP-CW0Qx-ZHU6cZN6MtRYJsMg9pDu8eoUnmpWJns8QSMlQjnbjqjWMRFWgJKw/exec';
-      if (webhookUrl !== 'WEBHOOK_URL_HERE') {
-        await fetch(webhookUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
-      }
-    } catch (err) {
-      console.warn('Webhook送信エラー:', err);
-    }
-
-    // 3. 完了表示
-    document.getElementById('hearing-form').style.display = 'none';
-    document.getElementById('submit-success').classList.add('is-active');
-
-    btn.disabled = false;
-    btn.textContent = '送信する';
+    console.log('送信データ:', data);
+    downloadJSON();
+    alert('シートを送信しました。');
   });
 </script>
 </body>

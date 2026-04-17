@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ヒアリング〜制作開始フロー | RUNBIRD AI動画・HP制作</title>
+<style>
+  :root {
+    --brand: #0b3d91;
+    --brand-light: #e8eef8;
+    --bg: #f5f7fb;
+    --text: #1a1a1a;
+    --muted: #666;
+    --border: #d8dde6;
+    --green: #27ae60;
+    --orange: #e67e22;
+    --red: #c0392b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  h1 {
+    text-align: center;
+    color: var(--brand);
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  /* ===== 問題提起 ===== */
+  .problem {
+    background: #fff5f5;
+    border: 1px solid #e8c4c4;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+  }
+  .problem h2 {
+    color: var(--red);
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .problem ul {
+    padding-left: 20px;
+    font-size: 14px;
+  }
+  .problem li { margin-bottom: 6px; }
+  .problem .case {
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 13px;
+    border-left: 3px solid var(--red);
+  }
+
+  /* ===== フローステップ ===== */
+  .flow { margin-bottom: 40px; }
+  .flow h2 {
+    color: var(--brand);
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 0 16px;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .step-num {
+    width: 48px;
+    height: 48px;
+    background: var(--brand);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    position: relative;
+    z-index: 1;
+  }
+  .step-line {
+    position: absolute;
+    left: 23px;
+    top: 48px;
+    bottom: -24px;
+    width: 2px;
+    background: var(--border);
+  }
+  .step:last-child .step-line { display: none; }
+  .step-content {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+  .step-content h3 {
+    font-size: 16px;
+    color: var(--brand);
+    margin-bottom: 4px;
+  }
+  .step-content .who {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .who-sales { background: #e8f5e9; color: #2e7d32; }
+  .who-system { background: var(--brand-light); color: var(--brand); }
+  .who-customer { background: #fff3e0; color: #e65100; }
+  .step-content p {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .step-content .detail {
+    background: #f8f9fb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .step-content .detail ul {
+    padding-left: 16px;
+  }
+  .step-content .detail li {
+    margin-bottom: 4px;
+  }
+  .step-content .screen {
+    background: #1a1a2e;
+    color: #e0e0e0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-x: auto;
+  }
+
+  /* ===== 確認ページの説明 ===== */
+  .confirm-explain {
+    background: #fff;
+    border: 2px solid var(--brand);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+  }
+  .confirm-explain h2 {
+    color: var(--brand);
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .confirm-explain h3 {
+    font-size: 15px;
+    color: var(--text);
+    margin: 16px 0 8px;
+  }
+  .device-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .device-card {
+    background: #f8f9fb;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .device-card .icon { font-size: 32px; margin-bottom: 8px; }
+  .device-card .label { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+  .device-card .desc { font-size: 12px; color: var(--muted); }
+
+  /* ===== 改善効果 ===== */
+  .benefits {
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+  }
+  .benefits h2 {
+    color: #2e7d32;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .benefit-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  .benefit-check {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 640px) {
+    .device-compare { grid-template-columns: 1fr; }
+    .step { grid-template-columns: 48px 1fr; gap: 0 12px; }
+    .step-num { width: 40px; height: 40px; font-size: 16px; }
+    .step-line { left: 19px; }
+    .step-content { padding: 16px; }
+    .container { padding: 24px 16px 60px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>ヒアリング → 制作開始の新フロー</h1>
+  <p class="subtitle">RUNBIRD AI動画・HP制作｜2026年4月 改善版</p>
+
+  <!-- ===== 問題提起 ===== -->
+  <div class="problem">
+    <h2>なぜフローを変えるのか</h2>
+    <ul>
+      <li>営業が電話でヒアリング → シートに記入する際に、<strong>営業の解釈が入ってズレが発生</strong>していた</li>
+      <li>制作前にお客さんへの確認ステップがなく、<strong>完成してから「違う」と言われるリスク</strong>があった</li>
+    </ul>
+    <div class="case">
+      <strong>実例（marron's room案件）：</strong><br>
+      ・お客さんは「猫のキャラを動画の主役にしてほしい」と言ったのに、営業はテイスト参考と解釈<br>
+      ・お客さんは「布小物を宣伝したい」と言ったのに、シートには事業概要のネイルチップが記載<br>
+      → 完成した動画がお客さんの要望と全く違うものになった
+    </div>
+  </div>
+
+  <!-- ===== 新フロー ===== -->
+  <div class="flow">
+    <h2>新しいフロー（全5ステップ）</h2>
+
+    <!-- Step 1 -->
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-line"></div>
+      <div class="step-content">
+        <span class="who who-sales">営業</span>
+        <h3>電話しながらヒアリングシートに記入</h3>
+        <p>営業がお客さんに電話しながら、画面上のフォームを埋めていく。</p>
+        <div class="detail">
+          <strong>改善ポイント：新しい必須項目3つ</strong>
+          <ul>
+            <li><strong>「何を宣伝するか」</strong> — 事業全体ではなく、この動画/サイトで推したいものを具体的に</li>
+            <li><strong>「主役は誰（何）か」</strong> — キャラ？商品？オーナー？ を明確に</li>
+            <li><strong>「お客さんのイメージ」</strong> — こんな動画にしたいというストーリーをそのまま記録</li>
+          </ul>
+          <br>
+          <strong>ルール：お客さんの言葉をそのまま書く。営業が解釈しない。</strong><br>
+          電話の録音と突き合わせて確認できるようにしている。
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-line"></div>
+      <div class="step-content">
+        <span class="who who-system">自動</span>
+        <h3>スプレッドシートに自動保存</h3>
+        <p>シートの「送信」ボタンを押すと、入力内容がGoogleスプレッドシートに自動保存される。</p>
+        <div class="detail">
+          <ul>
+            <li>AI動画・HP制作それぞれ専用のスプレッドシートに蓄積</li>
+            <li>新しい項目（宣伝対象・主役・イメージ）もカラムとして保存</li>
+            <li>ステータス管理（未対応 → 構成作成中 → 確認待ち → 制作中 → 完了）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-line"></div>
+      <div class="step-content">
+        <span class="who who-system">自動</span>
+        <h3>構成・台本を自動生成</h3>
+        <p>ヒアリング内容をもとに、動画の台本（またはHPのページ構成）が自動生成される。</p>
+        <div class="detail">
+          <strong>AI動画の場合：</strong>
+          <ul>
+            <li>業種×ゴールに合った台本（PASONA構造：フック→権威→実績→問題→解決→CTA）</li>
+            <li>シーン別の構成表（秒数・ナレーション・画面イメージ）</li>
+            <li>お客さんの「宣伝対象」を台本の中心に、「主役」をメインビジュアルに反映</li>
+          </ul>
+          <strong>HP制作の場合：</strong>
+          <ul>
+            <li>業種×雰囲気に合ったページ構成（FV→悩み→サービス→選ばれる理由→メニュー→アクセス→CTA）</li>
+            <li>画像生成用のプロンプト一覧</li>
+          </ul>
+        </div>
+        <div class="screen">
+          $ python3 generate_script.py hearing_data.json<br>
+          台本を生成しました: 台本_〇〇株式会社_20260417.md
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-line"></div>
+      <div class="step-content">
+        <span class="who who-system">自動</span> <span class="who who-sales">営業</span>
+        <h3>お客さん確認ページを自動生成 → URLを送る</h3>
+        <p>台本・構成をもとに、お客さん向けの「わかりやすい確認ページ」がHTMLで自動生成される。</p>
+        <p>営業はこのURLをお客さんにLINE・メール等で送って「この内容で合ってますか？」と聞く。</p>
+        <div class="detail">
+          <strong>確認ページの中身：</strong>
+          <ul>
+            <li>お客さんの名前入りの挨拶文</li>
+            <li>核心確認（宣伝対象・主役・イメージ）を赤枠で強調 → 一番目立つ場所に表示</li>
+            <li>ヒアリング内容の一覧</li>
+            <li>台本やページ構成の詳細</li>
+            <li>「この内容でOK」「修正したい」ボタン</li>
+          </ul>
+        </div>
+        <div class="screen">
+          $ python3 generate_confirmation.py hearing_data.json --type video --script 台本.md<br>
+          確認ページを生成しました: 確認ページ_〇〇株式会社_20260417.html<br>
+          → このHTMLをお客さまに送って確認を取ってください。
+        </div>
+
+        <h3 style="margin-top:16px;">お客さんへの届け方</h3>
+        <div class="detail">
+          <strong>方法：GitHub Pagesで公開してURLを送る</strong>
+          <ul>
+            <li>生成したHTMLを <code>hoshizaemonn.github.io/RUNBIRD/confirm/〇〇.html</code> にアップ</li>
+            <li>お客さんはそのURLを開くだけ（アプリ不要・ログイン不要）</li>
+            <li>スマホ（iPhone）でもPCでもレスポンシブ対応で見やすい</li>
+          </ul>
+          <br>
+          <strong>営業が送るメッセージ例：</strong><br>
+          「〇〇様、先日のお打ち合わせありがとうございました。以下のURLから制作内容をご確認いただけますか？<br>
+          → https://hoshizaemonn.github.io/RUNBIRD/confirm/〇〇.html<br>
+          問題なければページ内の「この内容でOK」ボタンを押してください。」
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <span class="who who-customer">お客さん</span>
+        <h3>確認ページを見て OK or 修正依頼</h3>
+        <p>お客さんがスマホ or PCで確認ページを見て、内容を確認する。</p>
+        <div class="detail">
+          <ul>
+            <li><strong>OKの場合</strong> → 「この内容でOK」ボタンを押す → 制作開始</li>
+            <li><strong>修正がある場合</strong> → 「修正したい」ボタンを押す → 修正内容をメールで返信 → 再生成して再確認</li>
+          </ul>
+          <br>
+          <strong>お客さんがOKを出してから制作に入る</strong>ので、「完成してから違うと言われる」リスクがゼロになる。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 確認ページの見え方 ===== -->
+  <div class="confirm-explain">
+    <h2>確認ページはスマホでどう見えるか</h2>
+    <p style="font-size:14px; margin-bottom:12px;">
+      普通のWebページなので、URLを開くだけ。アプリのインストールもログインも不要。<br>
+      レスポンシブ対応済みなので、iPhoneでもPCでも見やすい。
+    </p>
+    <div class="device-compare">
+      <div class="device-card">
+        <div class="icon">📱</div>
+        <div class="label">iPhone / スマホ</div>
+        <div class="desc">
+          LINEやメールでURLをタップ → ブラウザで開く<br>
+          縦スクロールで全項目を確認<br>
+          ボタンもタップしやすいサイズ
+        </div>
+      </div>
+      <div class="device-card">
+        <div class="icon">💻</div>
+        <div class="label">PC</div>
+        <div class="desc">
+          メールのURLをクリック → ブラウザで開く<br>
+          2カラムで見やすいレイアウト<br>
+          印刷もそのままOK
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 改善効果 ===== -->
+  <div class="benefits">
+    <h2>この改善で防げること</h2>
+    <div class="benefit-item"><span class="benefit-check">✓</span><span>営業の解釈によるズレ → 「お客さんの言葉をそのまま書く」ルール＋必須項目で防止</span></div>
+    <div class="benefit-item"><span class="benefit-check">✓</span><span>「宣伝したいもの」と「事業内容」の混同 → 別フィールドで分離</span></div>
+    <div class="benefit-item"><span class="benefit-check">✓</span><span>「主役」の解釈違い → 必須項目として明示的に確認</span></div>
+    <div class="benefit-item"><span class="benefit-check">✓</span><span>完成後の「違う」→ 制作前にお客さん確認を挟むことで防止</span></div>
+    <div class="benefit-item"><span class="benefit-check">✓</span><span>確認に手間がかかる → URL1つ送るだけ。お客さんはスマホで見てボタン押すだけ</span></div>
+  </div>
+
+  <!-- ===== まとめ ===== -->
+  <div style="background:#fff; border:1px solid var(--border); border-radius:12px; padding:24px 28px; text-align:center;">
+    <h2 style="color:var(--brand); font-size:18px; margin-bottom:16px;">フローまとめ</h2>
+    <p style="font-size:15px; line-height:2.2;">
+      <strong>営業がヒアリング</strong><br>
+      ↓ シートに記入（お客さんの言葉をそのまま）<br>
+      <strong>構成・台本が自動生成</strong><br>
+      ↓<br>
+      <strong>確認ページが自動生成</strong><br>
+      ↓ 営業がURLをお客さんに送る<br>
+      <strong>お客さんがスマホで確認 → OKボタン</strong><br>
+      ↓<br>
+      <strong>制作開始</strong>
+    </p>
+  </div>
+
+  <div class="footer">
+    <p>株式会社ランバード｜RUNBIRD AI動画・HP制作事業</p>
+    <p>2026年4月17日作成</p>
+  </div>
+
+</div>
+</body>
+</html>
