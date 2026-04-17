@@ -157,6 +157,51 @@
     gap: 8px;
     margin-bottom: 6px;
   }
+  .design-select-area {
+    margin-top: 16px;
+  }
+  .design-select-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brand);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.3s;
+    margin-bottom: 16px;
+  }
+  .design-select-link:hover { background: var(--brand-light); color: #fff; }
+  .design-preview {
+    display: none;
+    margin-top: 16px;
+    border: 2px solid var(--brand);
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .design-preview.is-active { display: block; }
+  .design-preview__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #f0f3f8;
+    border-bottom: 1px solid var(--border);
+  }
+  .design-preview__selected {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--brand);
+  }
+  .design-preview__iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+  }
   @media (max-width: 640px) {
     .row-2, .row-3, .menu-row { grid-template-columns: 1fr; }
     .card { padding: 20px; }
@@ -357,6 +402,31 @@
       <div id="reference-sites" style="display:none;">
         <div class="notice" id="reference-sites-content"></div>
       </div>
+
+      <div class="design-select-area">
+        <a href="https://list.cms-design.jp/template/" target="_blank" class="design-select-link">
+          デザインテンプレートを見る（別タブで開きます）→
+        </a>
+        <p style="font-size:13px; color:var(--muted); margin:8px 0 16px;">
+          上のリンクからテンプレート一覧を見て、気に入ったデザインのページURLを下に貼ってください。<br>
+          わからなければ空欄でOKです。雰囲気の選択をもとにこちらで選びます。
+        </p>
+
+        <div class="field">
+          <label>選んだデザインのURL</label>
+          <input type="url" name="design_template_url" id="design-url-input"
+                 placeholder="例：https://list.cms-design.jp/template/2023/10/89739/"
+                 oninput="previewDesign(this.value)">
+          <span class="help">テンプレートのページURLを貼ると、下にプレビューが表示されます</span>
+        </div>
+
+        <div class="design-preview" id="design-preview">
+          <div class="design-preview__header">
+            <span class="design-preview__selected" id="design-preview-label">プレビュー</span>
+          </div>
+          <iframe class="design-preview__iframe" id="design-preview-iframe" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+      </div>
     </div>
 
     <!-- ============ 6. お客さまの声・実績・FAQ ============ -->
@@ -525,6 +595,22 @@
     r.addEventListener('change', updateReferenceSites);
   });
 
+  // デザインテンプレートURL プレビュー
+  function previewDesign(url) {
+    const preview = document.getElementById('design-preview');
+    const iframe = document.getElementById('design-preview-iframe');
+    const label = document.getElementById('design-preview-label');
+
+    if (!url || !url.includes('cms-design.jp')) {
+      preview.classList.remove('is-active');
+      return;
+    }
+
+    preview.classList.add('is-active');
+    label.textContent = '選択中: ' + url.split('/').filter(Boolean).pop();
+    iframe.src = url;
+  }
+
   // 写真アップロードのファイルリスト表示
   document.getElementById('photo-upload').addEventListener('change', function() {
     const files = Array.from(this.files);
@@ -563,12 +649,39 @@
     URL.revokeObjectURL(url);
   }
 
+  // GAS WebアプリのURL（デプロイ後に差し替え）
+  const GAS_ENDPOINT = '';
+
   document.getElementById('hearing-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = collectFormData();
-    console.log('送信データ:', data);
+    const submitBtn = e.target.querySelector('.btn-primary');
+    submitBtn.textContent = '送信中…';
+    submitBtn.disabled = true;
+
+    // JSONダウンロード（バックアップ）
     downloadJSON();
-    alert('シートを送信しました。');
+
+    // スプレッドシートに送信
+    if (GAS_ENDPOINT) {
+      try {
+        await fetch(GAS_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        alert('スプレッドシートに保存しました。JSONもダウンロード済みです。');
+      } catch (err) {
+        console.error('送信エラー:', err);
+        alert('スプレッドシートへの送信に失敗しました。\nJSONファイルはダウンロード済みです。手動でスプシに入力してください。');
+      }
+    } else {
+      alert('GAS未設定のためJSONダウンロードのみ完了しました。');
+    }
+
+    submitBtn.textContent = '送信する';
+    submitBtn.disabled = false;
   });
 </script>
 </body>
