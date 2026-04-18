@@ -258,7 +258,7 @@
 
   <!-- ===== 新フロー ===== -->
   <div class="flow">
-    <h2>新しいフロー（全5ステップ）</h2>
+    <h2>新しいフロー（全6ステップ）</h2>
 
     <!-- Step 1 -->
     <div class="step">
@@ -266,18 +266,18 @@
       <div class="step-line"></div>
       <div class="step-content">
         <span class="who who-sales">営業</span>
-        <h3>電話しながらヒアリングシートに記入</h3>
-        <p>営業がお客さんに電話しながら、画面上のフォームを埋めていく。</p>
+        <h3>ヒアリングシートを見ながらお客さんに電話</h3>
+        <p>営業はヒアリングシートの項目を「聞くべきことリスト」として見ながら、お客さんに電話する。</p>
         <div class="detail">
-          <strong>改善ポイント：新しい必須項目3つ</strong>
+          <strong>ヒアリングシートの必須項目に沿って聞く：</strong>
           <ul>
             <li><strong>「何を宣伝するか」</strong> — 事業全体ではなく、この動画/サイトで推したいものを具体的に</li>
             <li><strong>「主役は誰（何）か」</strong> — キャラ？商品？オーナー？ を明確に</li>
-            <li><strong>「お客さんのイメージ」</strong> — こんな動画にしたいというストーリーをそのまま記録</li>
+            <li><strong>「お客さんのイメージ」</strong> — こんな動画にしたいというストーリーをそのまま聞き出す</li>
           </ul>
           <br>
-          <strong>ルール：お客さんの言葉をそのまま書く。営業が解釈しない。</strong><br>
-          電話の録音と突き合わせて確認できるようにしている。
+          <strong>この段階ではシートに記入しなくてOK。聞くことに集中する。</strong><br>
+          電話はログ（録音・文字起こし）が残る前提。
         </div>
       </div>
     </div>
@@ -287,15 +287,18 @@
       <div class="step-num">2</div>
       <div class="step-line"></div>
       <div class="step-content">
-        <span class="who who-system">自動</span>
-        <h3>スプレッドシートに自動保存</h3>
-        <p>シートの「送信」ボタンを押すと、入力内容がGoogleスプレッドシートに自動保存される。</p>
+        <span class="who who-sales">営業</span>
+        <h3>電話後にシート記入 + 電話ログを共有</h3>
+        <p>電話が終わったら、ヒアリングシートに記入して送信。同時に電話ログ（録音 or 文字起こし）を制作チームに共有する。</p>
         <div class="detail">
           <ul>
-            <li>AI動画・HP制作それぞれ専用のスプレッドシートに蓄積</li>
-            <li>新しい項目（宣伝対象・主役・イメージ）もカラムとして保存</li>
-            <li>ステータス管理（未対応 → 構成作成中 → 確認待ち → 制作中 → 完了）</li>
+            <li>ヒアリングシートに記入 →「送信」でスプレッドシートに自動保存</li>
+            <li>電話ログ（録音ファイル or テキスト）をチャットワーク等で共有</li>
+            <li><strong>シートの内容はあくまで営業のメモ。電話ログが原本。</strong></li>
           </ul>
+          <br>
+          <strong>ルール：お客さんの言葉をそのまま書く。営業が解釈しない。</strong><br>
+          迷ったら空欄でもOK。電話ログがあるので制作チームが確認できる。
         </div>
       </div>
     </div>
@@ -305,10 +308,17 @@
       <div class="step-num">3</div>
       <div class="step-line"></div>
       <div class="step-content">
-        <span class="who who-system">自動</span>
-        <h3>構成・台本を自動生成</h3>
-        <p>ヒアリング内容をもとに、動画の台本（またはHPのページ構成）が自動生成される。</p>
+        <span class="who who-system">制作チーム</span>
+        <h3>シート + 電話ログをもとに構成・台本を作成</h3>
+        <p>制作チームがヒアリングシートと電話ログの両方を確認し、構成・台本を作成する。</p>
         <div class="detail">
+          <strong>電話ログがあることで：</strong>
+          <ul>
+            <li>営業のシート記入にズレがないか、お客さんの原文で確認できる</li>
+            <li>シートに書ききれなかったニュアンスや温度感もわかる</li>
+            <li>「お客さんはこう言ってるのにシートの記載が違う」をここで検知・修正</li>
+          </ul>
+          <br>
           <strong>AI動画の場合：</strong>
           <ul>
             <li>業種×ゴールに合った台本（PASONA構造：フック→権威→実績→問題→解決→CTA）</li>
@@ -321,10 +331,6 @@
             <li>画像生成用のプロンプト一覧</li>
           </ul>
         </div>
-        <div class="screen">
-          $ python3 generate_script.py hearing_data.json<br>
-          台本を生成しました: 台本_〇〇株式会社_20260417.md
-        </div>
       </div>
     </div>
 
@@ -333,10 +339,9 @@
       <div class="step-num">4</div>
       <div class="step-line"></div>
       <div class="step-content">
-        <span class="who who-system">自動</span> <span class="who who-sales">営業</span>
-        <h3>お客さん確認ページを自動生成 → URLを送る</h3>
-        <p>台本・構成をもとに、お客さん向けの「わかりやすい確認ページ」がHTMLで自動生成される。</p>
-        <p>営業はこのURLをお客さんにLINE・メール等で送って「この内容で合ってますか？」と聞く。</p>
+        <span class="who who-system">自動</span>
+        <h3>お客さん確認ページを自動生成</h3>
+        <p>構成・台本ができたら、お客さん向けの「わかりやすい確認ページ」がHTMLで自動生成される。</p>
         <div class="detail">
           <strong>確認ページの中身：</strong>
           <ul>
@@ -347,32 +352,34 @@
             <li>「この内容でOK」「修正したい」ボタン</li>
           </ul>
         </div>
-        <div class="screen">
-          $ python3 generate_confirmation.py hearing_data.json --type video --script 台本.md<br>
-          確認ページを生成しました: 確認ページ_〇〇株式会社_20260417.html<br>
-          → このHTMLをお客さまに送って確認を取ってください。
-        </div>
-
-        <h3 style="margin-top:16px;">お客さんへの届け方</h3>
-        <div class="detail">
-          <strong>方法：GitHub Pagesで公開してURLを送る</strong>
-          <ul>
-            <li>生成したHTMLを <code>hoshizaemonn.github.io/RUNBIRD/confirm/〇〇.html</code> にアップ</li>
-            <li>お客さんはそのURLを開くだけ（アプリ不要・ログイン不要）</li>
-            <li>スマホ（iPhone）でもPCでもレスポンシブ対応で見やすい</li>
-          </ul>
-          <br>
-          <strong>営業が送るメッセージ例：</strong><br>
-          「〇〇様、先日のお打ち合わせありがとうございました。以下のURLから制作内容をご確認いただけますか？<br>
-          → https://hoshizaemonn.github.io/RUNBIRD/confirm/〇〇.html<br>
-          問題なければページ内の「この内容でOK」ボタンを押してください。」
-        </div>
       </div>
     </div>
 
     <!-- Step 5 -->
     <div class="step">
       <div class="step-num">5</div>
+      <div class="step-line"></div>
+      <div class="step-content">
+        <span class="who who-sales">営業</span>
+        <h3>確認ページのURLをお客さんに送る</h3>
+        <p>営業が確認ページのURLをお客さんにLINE・メール等で送って「この内容で合ってますか？」と聞く。</p>
+        <div class="detail">
+          <ul>
+            <li>お客さんはURLを開くだけ（アプリ不要・ログイン不要）</li>
+            <li>スマホ（iPhone）でもPCでもレスポンシブ対応で見やすい</li>
+          </ul>
+          <br>
+          <strong>営業が送るメッセージ例：</strong><br>
+          「〇〇様、先日のお電話ありがとうございました。お伺いした内容をもとに制作内容をまとめました。以下のURLからご確認いただけますか？<br>
+          → https://hoshizaemonn.github.io/RUNBIRD/confirm/〇〇.html<br>
+          問題なければ「この内容でOK」ボタンを押してください。」
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step">
+      <div class="step-num">6</div>
       <div class="step-content">
         <span class="who who-customer">お客さん</span>
         <h3>確認ページを見て OK or 修正依頼</h3>
@@ -380,7 +387,7 @@
         <div class="detail">
           <ul>
             <li><strong>OKの場合</strong> → 「この内容でOK」ボタンを押す → 制作開始</li>
-            <li><strong>修正がある場合</strong> → 「修正したい」ボタンを押す → 修正内容をメールで返信 → 再生成して再確認</li>
+            <li><strong>修正がある場合</strong> → 「修正したい」ボタンを押す → 修正内容を返信 → 電話ログと照合して再作成</li>
           </ul>
           <br>
           <strong>お客さんがOKを出してから制作に入る</strong>ので、「完成してから違うと言われる」リスクがゼロになる。
@@ -421,9 +428,9 @@
   <!-- ===== 改善効果 ===== -->
   <div class="benefits">
     <h2>この改善で防げること</h2>
-    <div class="benefit-item"><span class="benefit-check">✓</span><span>営業の解釈によるズレ → 「お客さんの言葉をそのまま書く」ルール＋必須項目で防止</span></div>
-    <div class="benefit-item"><span class="benefit-check">✓</span><span>「宣伝したいもの」と「事業内容」の混同 → 別フィールドで分離</span></div>
-    <div class="benefit-item"><span class="benefit-check">✓</span><span>「主役」の解釈違い → 必須項目として明示的に確認</span></div>
+    <div class="benefit-item"><span class="benefit-check">✓</span><span>営業の解釈によるズレ → 電話ログが原本。制作チームが直接確認できる</span></div>
+    <div class="benefit-item"><span class="benefit-check">✓</span><span>シート記入のプレッシャー軽減 → 電話中はヒアリングに集中、記入は後でOK</span></div>
+    <div class="benefit-item"><span class="benefit-check">✓</span><span>「宣伝したいもの」と「事業内容」の混同 → 別フィールドで分離＋電話ログで二重チェック</span></div>
     <div class="benefit-item"><span class="benefit-check">✓</span><span>完成後の「違う」→ 制作前にお客さん確認を挟むことで防止</span></div>
     <div class="benefit-item"><span class="benefit-check">✓</span><span>確認に手間がかかる → URL1つ送るだけ。お客さんはスマホで見てボタン押すだけ</span></div>
   </div>
@@ -432,9 +439,11 @@
   <div style="background:#fff; border:1px solid var(--border); border-radius:12px; padding:24px 28px; text-align:center;">
     <h2 style="color:var(--brand); font-size:18px; margin-bottom:16px;">フローまとめ</h2>
     <p style="font-size:15px; line-height:2.2;">
-      <strong>営業がヒアリング</strong><br>
-      ↓ シートに記入（お客さんの言葉をそのまま）<br>
-      <strong>構成・台本が自動生成</strong><br>
+      <strong>営業がシートを見ながらお客さんに電話</strong><br>
+      ↓<br>
+      <strong>電話後にシート記入 + 電話ログを共有</strong><br>
+      ↓<br>
+      <strong>制作チームがシート＋電話ログで構成・台本を作成</strong><br>
       ↓<br>
       <strong>確認ページが自動生成</strong><br>
       ↓ 営業がURLをお客さんに送る<br>
