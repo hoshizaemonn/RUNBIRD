@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>marron's room 動画構成案 v2 | ご確認ページ</title>
+<style>
+  :root {
+    --pink: #FFB6C1;
+    --pink-light: #FFF0F3;
+    --pink-dark: #E8889A;
+    --mint: #B5EAD7;
+    --mint-light: #E8F8F0;
+    --cream: #FFF8E7;
+    --lavender: #E6E0F3;
+    --text: #5A4A5A;
+    --text-light: #8A7A8A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: linear-gradient(135deg, var(--pink-light), var(--mint-light));
+    color: var(--text);
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  /* ヘッダー */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(255, 182, 193, 0.2);
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+    color: var(--pink-dark);
+    margin-bottom: 8px;
+  }
+
+  .header .subtitle {
+    font-size: 0.95rem;
+    color: var(--text-light);
+  }
+
+  .header .version-badge {
+    display: inline-block;
+    background: var(--mint);
+    color: #3A6B55;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-top: 12px;
+  }
+
+  /* セクション */
+  .section {
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .section h2 {
+    font-size: 1.2rem;
+    color: var(--pink-dark);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--pink-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section h2 .icon {
+    font-size: 1.4rem;
+  }
+
+  /* コンセプト */
+  .concept-box {
+    background: linear-gradient(135deg, var(--pink-light), var(--lavender));
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.05rem;
+    line-height: 2;
+  }
+
+  .concept-box .highlight {
+    color: var(--pink-dark);
+    font-weight: bold;
+  }
+
+  /* キャラクターカード */
+  .character-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .char-card {
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .char-card.marron { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+  .char-card.chiffon { background: linear-gradient(135deg, var(--pink-light), #FFE4EC); }
+  .char-card.mokatan { background: linear-gradient(135deg, var(--lavender), #F3E5F5); }
+
+  .char-icon {
+    font-size: 2.4rem;
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .char-info h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+
+  .char-info .role {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 6px;
+  }
+
+  .char-info p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* ストーリーフロー */
+  .story-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 16px;
+    background: var(--cream);
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+
+  .story-step {
+    background: white;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+
+  .story-arrow {
+    color: var(--pink);
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  /* シーンテーブル */
+  .scene-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .scene-item {
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .scene-item:nth-child(odd) { background: var(--pink-light); }
+  .scene-item:nth-child(even) { background: var(--mint-light); }
+
+  .scene-num {
+    width: 36px;
+    height: 36px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--pink-dark);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    flex-shrink: 0;
+  }
+
+  .scene-content h4 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scene-content h4 .time {
+    font-size: 0.75rem;
+    background: white;
+    padding: 2px 8px;
+    border-radius: 8px;
+    color: var(--text-light);
+    font-weight: normal;
+  }
+
+  .scene-narration {
+    font-size: 0.95rem;
+    color: var(--pink-dark);
+    font-weight: bold;
+    margin: 6px 0;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 10px;
+    border-left: 3px solid var(--pink);
+  }
+
+  .scene-visual {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.5;
+  }
+
+  /* ナレーション全文 */
+  .narration-full {
+    background: linear-gradient(135deg, var(--pink-light), var(--cream));
+    border-radius: 16px;
+    padding: 24px;
+    font-size: 1rem;
+    line-height: 2.2;
+  }
+
+  .narration-full p {
+    margin-bottom: 12px;
+  }
+
+  .narration-full p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 商品リスト */
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .product-item {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  .product-item .emoji {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* 確認チェック */
+  .check-section {
+    background: linear-gradient(135deg, var(--mint-light), var(--cream));
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 0.95rem;
+  }
+
+  .check-item:last-child { border-bottom: none; }
+
+  .check-box {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--pink);
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  /* 変更点 */
+  .change-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 0.9rem;
+  }
+
+  .change-before {
+    text-decoration: line-through;
+    color: #C0C0C0;
+  }
+
+  .change-arrow { color: var(--pink-dark); font-weight: bold; }
+
+  .change-after {
+    color: var(--pink-dark);
+    font-weight: bold;
+  }
+
+  /* フッター */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--text-light);
+    font-size: 0.85rem;
+  }
+
+  /* レスポンシブ */
+  @media (max-width: 600px) {
+    .container { padding: 12px; }
+    .header h1 { font-size: 1.3rem; }
+    .section { padding: 20px; }
+    .story-flow { flex-direction: column; }
+    .story-arrow { transform: rotate(90deg); }
+    .product-list { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ヘッダー -->
+  <div class="header">
+    <h1>marron's room 動画構成案</h1>
+    <div class="subtitle">AI動画制作 ご確認ページ</div>
+    <div class="version-badge">v2 - 布小物 + キャラクターストーリー</div>
+  </div>
+
+  <!-- コンセプト -->
+  <div class="section">
+    <h2><span class="icon">&#x2728;</span> コンセプト</h2>
+    <div class="concept-box">
+      <span class="highlight">まろん社長</span>が考えた可愛いデザインを<br>
+      見習い<span class="highlight">シフォンちゃん</span>に指示を出し<br>
+      <span class="highlight">妖精もかたん</span>が魔法をかけて作り出す<br>
+      <br>
+      &#x2014; そんなストーリーで布小物を紹介する動画です &#x2014;
+    </div>
+  </div>
+
+  <!-- 旧版からの変更点 -->
+  <div class="section">
+    <h2><span class="icon">&#x1F504;</span> 前回からの変更点</h2>
+    <div class="change-item">
+      <span class="change-before">ネイルチップが主役</span>
+      <span class="change-arrow">&#x2192;</span>
+      <span class="change-after">布小物（リボン・シュシュ等）が主役</span>
+    </div>
+    <div class="change-item">
+      <span class="change-before">人間キャラクター</span>
+      <span class="change-arrow">&#x2192;</span>
+      <span class="change-after">まろん社長（猫）・シフォン（犬）・もかたん（妖精）</span>
+    </div>
+    <div class="change-item">
+      <span class="change-before">制作風景（手作り描写）</span>
+      <span class="change-arrow">&#x2192;</span>
+      <span class="change-after">キャラクターが魔法で作り出すストーリー</span>
+    </div>
+    <div class="change-item">
+      <span class="change-before">一般的な広告構成</span>
+      <span class="change-arrow">&#x2192;</span>
+      <span class="change-after">エミックマショップ風のキャラ紹介スタイル</span>
+    </div>
+  </div>
+
+  <!-- キャラクター -->
+  <div class="section">
+    <h2><span class="icon">&#x1F43E;</span> キャラクター</h2>
+    <div class="character-cards">
+      <div class="char-card marron">
+        <div class="char-icon">&#x1F431;</div>
+        <div class="char-info">
+          <h3>まろん社長</h3>
+          <div class="role">アイデアを考える社長</div>
+          <p>ベージュ〜茶色の丸い猫。リボン付き。おっとりしてるけど、仕事になると真剣。「こんなの作りたい！」とデザインを思いつく役。</p>
+        </div>
+      </div>
+      <div class="char-card chiffon">
+        <div class="char-icon">&#x1F436;</div>
+        <div class="char-info">
+          <h3>シフォン（見習い）</h3>
+          <div class="role">まろん社長の見習い</div>
+          <p>白くてふわふわの小さな犬。ピンクのリボン付き。素直でがんばり屋さん。まろん社長の指示を受けて一生懸命働く。</p>
+        </div>
+      </div>
+      <div class="char-card mokatan">
+        <div class="char-icon">&#x1F9DA;</div>
+        <div class="char-info">
+          <h3>妖精もかたん</h3>
+          <div class="role">魔法で布小物を作り出す</div>
+          <p>パステルカラーの髪とキラキラの羽を持つ小さな妖精。星のステッキで魔法をかけて、布から可愛い小物を作り出す。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 紹介する商品 -->
+  <div class="section">
+    <h2><span class="icon">&#x1F380;</span> 紹介する商品</h2>
+    <p style="margin-bottom: 12px;">動画内で紹介する布小物です。ネイルチップはメインには出しません。</p>
+    <div class="product-list">
+      <div class="product-item">
+        <span class="emoji">&#x1F380;</span>
+        リボン
+      </div>
+      <div class="product-item">
+        <span class="emoji">&#x1F48E;</span>
+        シュシュ
+      </div>
+      <div class="product-item">
+        <span class="emoji">&#x1F45C;</span>
+        ポシェット
+      </div>
+      <div class="product-item">
+        <span class="emoji">&#x1F392;</span>
+        レッスンバッグ
+      </div>
+      <div class="product-item">
+        <span class="emoji">&#x1F436;</span>
+        犬の洋服
+      </div>
+    </div>
+  </div>
+
+  <!-- ストーリーの流れ -->
+  <div class="section">
+    <h2><span class="icon">&#x1F3AC;</span> ストーリーの流れ</h2>
+    <div class="story-flow">
+      <div class="story-step">&#x1F431; まろん社長<br>アイデアを思いつく</div>
+      <span class="story-arrow">&#x25B6;</span>
+      <div class="story-step">&#x1F436; シフォンに<br>指示を出す</div>
+      <span class="story-arrow">&#x25B6;</span>
+      <div class="story-step">&#x1F9DA; もかたんが<br>魔法をかける</div>
+      <span class="story-arrow">&#x25B6;</span>
+      <div class="story-step">&#x1F380; 布小物が<br>完成！</div>
+      <span class="story-arrow">&#x25B6;</span>
+      <div class="story-step">&#x1F4F1; LINEで<br>ご相談</div>
+    </div>
+  </div>
+
+  <!-- ナレーション全文 -->
+  <div class="section">
+    <h2><span class="icon">&#x1F399;</span> ナレーション全文</h2>
+    <p style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px;">※ お客様ご自身で録音していただきます</p>
+    <div class="narration-full">
+      <p>まろん社長が考えた可愛いを、魔法でお届け。</p>
+      <p>marron's room（まろんずるぅむ）です。</p>
+      <p>まろん社長が「こんなの作りたい！」って思いついたら、見習いのシフォンちゃんにお願い。<br>そして妖精もかたんが、魔法をかけて&#x2014;&#x2014;</p>
+      <p>リボン、シュシュ、ポシェット、レッスンバッグ。<br>一つ一つ、心を込めて手作りしています。</p>
+      <p>ワンちゃんのお洋服だって、まろん社長のこだわりがいっぱい。</p>
+      <p>デザインもカラーも、LINEで気軽にご相談OK。<br>あなただけの「可愛い」を、一緒に作りましょう。</p>
+      <p>まずはLINEでお気軽にどうぞ。</p>
+    </div>
+  </div>
+
+  <!-- シーン構成 -->
+  <div class="section">
+    <h2><span class="icon">&#x1F3A8;</span> シーン構成（全10シーン / 約32秒）</h2>
+    <div class="scene-list">
+
+      <div class="scene-item">
+        <div class="scene-num">1</div>
+        <div class="scene-content">
+          <h4>フック <span class="time">3秒</span></h4>
+          <div class="scene-narration">まろん社長が考えた可愛いを、魔法でお届け。</div>
+          <div class="scene-visual">まろん社長がスケッチブックにデザインを描いている。さくらんぼ・リボンのモチーフが浮かぶ</div>
+        </div>
+      </div>
+
+      <div class="scene-item">
+        <div class="scene-num">2</div>
+        <div class="scene-content">
+          <h4>ブランド紹介 <span class="time">3秒</span></h4>
+          <div class="scene-narration">marron's roomです。</div>
+          <div class="scene-visual">3キャラが並ぶタイトルシーン。まろん中央、シフォン右、もかたんが上に浮かぶ</div>
+        </div>
+      </div>
+
+      <div class="scene-item">
+        <div class="scene-num">3</div>
+        <div class="scene-content">
+          <h4>ストーリー：指示 <span class="time">4秒</span></h4>
+          <div class="scene-narration">まろん社長が「こんなの作りたい！」って思いついたら、見習いのシフォンちゃんにお願い。</div>
+          <div class="scene-visual">まろん社長がシフォンにデザイン画を見せる。シフォンがメモを取っている</div>
+        </div>
+      </div>
+
+      <div class="scene-item">
+        <div class="scene-num">4</div>
+        <div class="scene-content">
+          <h4>ストーリー：魔法 <span class="time">3秒</span></h4>
+          <div class="scene-narration">そして妖精もかたんが、魔法をかけて&#x2014;&#x2014;</div>
+          <div class="scene-visual">もかたんがステッキを振り、キラキラの魔法エフェクト。布が光り出す</div>
+        </div>
+      </div>
+
+      <div class="scene-item">
+        <div class="scene-num">5</div>
+        <div class="scene-content">
+          <h4>商品紹介 <span class="time">4秒</span></h4>
+          <div class="scene-narration">リボン、シュシュ、ポシェット、レッスンバッグ。</div>
+          <div class="scene-visual">完成した布小物がパステルカラーで並ぶ。さくらんぼ柄のリボン・シュシュ・ポシェット等</div>
+        </div>
+      </div>
+
+      <div class="scene-item">
+        <div class="scene-num">6</div>
+        <div class="scene-content">
+          <h4>制作風景 <span class="time">3秒</span></h4>
+          <div class="scene-narration">一つ一つ、心を込めて手作りしています。</div>
+          <div class="scene-visual">もかたんの魔法で布がリボンに変わる。シフォンが嬉しそうに見守る</div>
+        </div>
+      </div>
+
+      <div class="scene-item">
+        <div class="scene-num">7</div>
+        <div class="scene-content">
+          <h4>犬服紹介 <span class="time">3秒</span></h4>
+          <div class="scene-narration">ワンちゃんのお洋服だって、まろん社長のこだわりがいっぱい。</div>
+          <div class="scene-visual">シフォンが可愛い洋服を着てポーズ。まろん社長が満足げに見ている</div>
+        </div>
+      </div>
+
+      <div class="scene-item">
+        <div class="scene-num">8</div>
+        <div class="scene-content">
+          <h4>LINE相談 <span class="time">3秒</span></h4>
+          <div class="scene-narration">デザインもカラーも、LINEで気軽にご相談OK。</div>
+          <div class="scene-visual">まろん社長がスマホでメッセージを返している。ハートが浮かぶ</div>
+        </div>
+      </div>
+
+      <div class="scene-item">
+        <div class="scene-num">9</div>
+        <div class="scene-content">
+          <h4>CTA <span class="time">3秒</span></h4>
+          <div class="scene-narration">あなただけの「可愛い」を、一緒に作りましょう。</div>
+          <div class="scene-visual">3キャラが完成品を持って笑顔。布小物に囲まれたお祝いシーン</div>
+        </div>
+      </div>
+
+      <div class="scene-item">
+        <div class="scene-num">10</div>
+        <div class="scene-content">
+          <h4>エンドカード <span class="time">3秒</span></h4>
+          <div class="scene-narration">まずはLINEでお気軽にどうぞ。</div>
+          <div class="scene-visual">ロゴ + LINE情報 + 3キャラが手を振る。テキストオーバーレイ用の余白あり</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- デザインテイスト -->
+  <div class="section">
+    <h2><span class="icon">&#x1F3A8;</span> デザインテイスト</h2>
+    <p>添付いただいた参考画像2枚に準拠します。</p>
+    <ul style="margin: 12px 0; padding-left: 20px; line-height: 2;">
+      <li>パステルピンク + ミントグリーンの配色</li>
+      <li>丸みのあるデフォルメキャラ（角張ったデザインはNG）</li>
+      <li>水彩風のやわらかいタッチ</li>
+      <li>さくらんぼ・リボン・ハートのモチーフ</li>
+      <li>キラキラ・ドットの背景装飾</li>
+    </ul>
+    <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 8px;">※ キャラクター画像は上記テイストでAI生成し、お客様にご確認いただいてから動画制作に入ります</p>
+  </div>
+
+  <!-- 確認チェック -->
+  <div class="section">
+    <h2><span class="icon">&#x2705;</span> ご確認ポイント</h2>
+    <p style="margin-bottom: 12px;">以下の内容でよろしければ、画像生成に進みます。</p>
+    <div class="check-section">
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span>ナレーション原稿の内容・長さは問題ないか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span>キャラクター（まろん・シフォン・もかたん）の設定は合っているか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span>紹介する商品（リボン・シュシュ・ポシェット・レッスンバッグ・犬服）に過不足ないか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span>ストーリーの流れ（アイデア→指示→魔法→完成→LINE）はイメージ通りか</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span>CTA（LINE誘導）の文言は適切か</span>
+      </div>
+      <div class="check-item">
+        <div class="check-box"></div>
+        <span>追加したいシーンや変更したい箇所はないか</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 今後の流れ -->
+  <div class="section">
+    <h2><span class="icon">&#x1F4CB;</span> 今後の流れ</h2>
+    <div style="line-height: 2.2;">
+      <strong>STEP 1</strong>&#x3000;この構成案のOKをいただく &#x2190; <span style="color: var(--pink-dark); font-weight: bold;">今ここ</span><br>
+      <strong>STEP 2</strong>&#x3000;キャラクター画像を生成 &#x2192; ご確認<br>
+      <strong>STEP 3</strong>&#x3000;全シーンの画像を生成 &#x2192; ご確認<br>
+      <strong>STEP 4</strong>&#x3000;動画化（Seedance）&#x2192; ご確認<br>
+      <strong>STEP 5</strong>&#x3000;ナレーション録音（お客様）<br>
+      <strong>STEP 6</strong>&#x3000;Premiere Proで最終仕上げ &#x2192; 納品
+    </div>
+  </div>
+
+  <div class="footer">
+    marron's room AI動画制作 | RUNBIRD<br>
+    2026年4月
+  </div>
+
+</div>
+</body>
+</html>
