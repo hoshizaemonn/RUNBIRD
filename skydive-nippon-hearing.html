@@ -912,11 +912,12 @@
     // スプレッドシートに送信
     if (GAS_ENDPOINT) {
       try {
+        const params = new URLSearchParams();
+        params.append('data', JSON.stringify(data));
         await fetch(GAS_ENDPOINT, {
           method: 'POST',
           mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify(data),
+          body: params,
         });
         alert('スプレッドシートに保存しました。JSONもダウンロード済みです。');
       } catch (err) {
