@@ -663,7 +663,7 @@
 
     <div class="submit-area requires-pattern">
       <button type="button" class="btn-secondary" onclick="downloadJSON()">JSONをダウンロード</button>
-      <button type="submit" class="btn-primary">送信する</button>
+      <button type="button" class="btn-primary" onclick="submitForm(this)">送信する</button>
     </div>
 
   </form>
@@ -895,42 +895,36 @@
   // GAS WebアプリのURL
   const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzwjXkqiEk7TdnNOPx8D4FQleWjmdRSYJ59MrrjCAPUUaUSQ7nPiEVyShdtMDy0Zd0/exec';
 
-  document.getElementById('hearing-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
+  async function submitForm(btn) {
     if (!patternInput.value) {
       alert('動画のタイプを選択してください。');
       return;
     }
     const data = collectFormData();
-    const submitBtn = e.target.querySelector('.btn-primary');
-    submitBtn.textContent = '送信中…';
-    submitBtn.disabled = true;
+    btn.textContent = '送信中…';
+    btn.disabled = true;
 
     // JSONダウンロード（バックアップ）
     downloadJSON();
 
     // スプレッドシートに送信
-    if (GAS_ENDPOINT) {
-      try {
-        const params = new URLSearchParams();
-        params.append('data', JSON.stringify(data));
-        await fetch(GAS_ENDPOINT, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: params,
-        });
-        alert('スプレッドシートに保存しました。JSONもダウンロード済みです。');
-      } catch (err) {
-        console.error('送信エラー:', err);
-        alert('スプレッドシートへの送信に失敗しました。\nJSONファイルはダウンロード済みです。手動でスプシに入力してください。');
-      }
-    } else {
-      alert('GAS未設定のためJSONダウンロードのみ完了しました。');
+    try {
+      const params = new URLSearchParams();
+      params.append('data', JSON.stringify(data));
+      await fetch(GAS_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: params,
+      });
+      alert('スプレッドシートに保存しました。JSONもダウンロード済みです。');
+    } catch (err) {
+      console.error('送信エラー:', err);
+      alert('スプレッドシートへの送信に失敗しました。\nJSONファイルはダウンロード済みです。手動でスプシに入力してください。');
     }
 
-    submitBtn.textContent = '送信する';
-    submitBtn.disabled = false;
-  });
+    btn.textContent = '送信する';
+    btn.disabled = false;
+  }
 </script>
 </body>
 </html>
