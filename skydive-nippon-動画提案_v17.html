@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skydive Nippon AI動画 v17 打ち合わせ資料</title>
+<style>
+:root{
+  --ink:#0a0e1a;--sky:#3aa5ff;--sky-deep:#0a4a8a;--sun:#ffb43a;
+  --accent:#ff3a5e;--green:#2eb872;--paper:#f6f8fb;--muted:#7a8599;--border:#dfe5ee;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;}
+.hero{background:linear-gradient(135deg,#0a1f3d 0%,#0a4a8a 60%,#3aa5ff 100%);color:#fff;padding:50px 40px;}
+.hero .tag{display:inline-block;background:rgba(255,255,255,.18);padding:5px 14px;border-radius:20px;font-size:11px;letter-spacing:.15em;margin-bottom:14px;}
+.hero h1{font-size:30px;margin-bottom:8px;}
+.hero p{opacity:.85;font-size:15px;}
+.hero .meta{margin-top:18px;display:flex;flex-wrap:wrap;gap:14px;font-size:13px;}
+.hero .meta div{background:rgba(255,255,255,.12);padding:6px 12px;border-radius:5px;}
+.container{max-width:1280px;margin:0 auto;padding:50px 30px;}
+.section{margin-bottom:60px;}
+.section-title{display:flex;align-items:center;gap:14px;margin-bottom:24px;}
+.section-title .num{background:var(--ink);color:#fff;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:17px;}
+.section-title h2{font-size:24px;}
+.section-title .sub{color:var(--muted);font-size:14px;margin-top:2px;}
+.goal-box{background:linear-gradient(135deg,#fff8e1,#fff);border:2px solid var(--sun);border-radius:14px;padding:24px 28px;font-size:16px;display:flex;align-items:center;gap:18px;}
+.goal-box .check{background:var(--sun);color:#fff;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;flex-shrink:0;}
+
+.timeline-wrap{background:#fff;border-radius:16px;padding:30px;border:1px solid var(--border);overflow-x:auto;}
+.timeline-bar{display:flex;align-items:stretch;border-radius:8px;overflow:hidden;min-width:1100px;height:60px;font-size:11px;font-weight:700;}
+.tl-seg{display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;padding:0 6px;border-right:1px solid rgba(255,255,255,.3);}
+.tl-pov{background:#1a3a6d;flex:4;}
+.tl-card{background:#ff3a5e;flex:3;}
+.tl-vista{background:#0a4a8a;flex:5;}
+.tl-high{background:#1a64c8;flex:6;}
+.tl-brand{background:#3aa5ff;flex:4;}
+.tl-tokyo{background:#7b4dff;flex:3;}
+.tl-air{background:#2eb872;flex:5;}
+.tl-safe{background:#5fd49a;color:#0a0e1a;flex:8;}
+.tl-owner{background:#9f7bff;flex:11;}
+.tl-arc{background:#ff7a3a;flex:6;}
+.tl-cta{background:#ffb43a;color:#0a0e1a;flex:8;}
+
+.scenes{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:24px;}
+.scene-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;border-top:5px solid var(--sky);}
+.scene-card .header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.scene-card .no{background:var(--ink);color:#fff;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700;}
+.scene-card .tc{font-size:11px;color:var(--muted);font-family:monospace;}
+.scene-card .title{font-size:15px;font-weight:700;margin-bottom:10px;}
+.scene-card .visual-type{display:inline-block;font-size:10px;padding:2px 8px;border-radius:3px;font-weight:700;letter-spacing:.05em;margin-bottom:8px;}
+.vt-pov{background:#e8eef9;color:#1a3a6d;}
+.vt-collage{background:#fff0f0;color:#cc1144;}
+.vt-ai{background:#e8f4ff;color:#0a4a8a;}
+.vt-real{background:#fff8e1;color:#8a6500;}
+.vt-info{background:#e6f7ed;color:#1a8a47;}
+.vt-cta{background:#fbe8ff;color:#7b1fa2;}
+.scene-card .telop{background:#f0f5ff;border-left:3px solid var(--sky);padding:7px 11px;font-size:12px;border-radius:3px;margin-bottom:6px;}
+.scene-card .narr{background:#fff8e1;border-left:3px solid var(--sun);padding:7px 11px;font-size:12px;border-radius:3px;color:#5c4a00;margin-bottom:8px;}
+.scene-card .material{border-top:1px dashed var(--border);padding-top:10px;margin-top:10px;font-size:12px;}
+.scene-card .material strong{color:var(--accent);}
+
+.material-table{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;}
+.mt-row{display:grid;grid-template-columns:60px 2fr 110px;gap:12px;font-size:13px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
+.mt-row.head{font-weight:700;color:var(--muted);border-bottom:2px solid var(--border);padding-bottom:8px;}
+.priority{font-weight:700;text-align:center;}
+.p3{color:var(--accent);}
+.p2{color:var(--sun);}
+.p1{color:var(--green);}
+
+.ref-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+.ref-card img{width:200px;border-radius:8px;}
+.ref-card .body{flex:1;min-width:240px;}
+.ref-card h3{font-size:15px;color:var(--accent);margin-bottom:6px;}
+.ref-card p{font-size:13px;color:var(--ink);margin-bottom:8px;}
+.ref-card a{color:var(--sky);font-size:12px;word-break:break-all;}
+
+.gantt{background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;}
+.gantt-row{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;margin-bottom:10px;font-size:13px;}
+.gantt-row .day{font-weight:700;}
+.gantt-bar{padding:8px 16px;border-radius:6px;font-size:12px;font-weight:600;color:#fff;}
+
+.note-card{background:#fff8e1;border-left:4px solid #f5b400;padding:14px 20px;margin-top:18px;border-radius:6px;font-size:13px;}
+
+.qa-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:14px;}
+.qa-card .q{font-weight:700;color:var(--accent);font-size:14px;margin-bottom:8px;}
+.qa-card .a{font-size:14px;line-height:1.8;}
+
+
+
+.composition{background:#fff;border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px;}
+.cp-row{display:grid;grid-template-columns:140px 30px 1fr;gap:14px;align-items:center;padding:12px 16px;background:#f9fbff;border-radius:8px;border-left:4px solid var(--sky);}
+.cp-row.cp-key{background:#fff0f0;border-left-color:var(--accent);}
+.cp-phase{font-weight:700;font-size:14px;color:var(--ink);}
+.cp-phase span{display:block;font-size:11px;color:var(--muted);font-weight:400;margin-top:2px;}
+.cp-arrow{font-size:20px;color:var(--muted);text-align:center;}
+.cp-desc{font-size:14px;}
+.cp-feel{display:block;margin-top:4px;font-size:12px;color:var(--accent);font-style:italic;}
+
+.storyboard{display:flex;flex-direction:column;gap:14px;}
+.sb-row{display:grid;grid-template-columns:60px 110px 1fr;gap:18px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px 22px;align-items:start;}
+.sb-row.sb-highlight{border-left:5px solid var(--accent);background:#fffafa;}
+.sb-no{background:var(--ink);color:#fff;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;}
+.sb-row.sb-highlight .sb-no{background:var(--accent);}
+.sb-time{font-family:monospace;font-size:13px;color:var(--muted);padding-top:8px;}
+.sb-body{padding-top:4px;}
+.sb-title{font-size:17px;font-weight:700;margin-bottom:10px;color:var(--ink);}
+.sb-meta{font-size:13px;margin-bottom:5px;display:grid;grid-template-columns:50px 1fr;gap:10px;align-items:start;}
+.sb-label{background:#eef2f9;color:var(--ink);font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;text-align:center;letter-spacing:.05em;}
+.sb-mat .sb-label{background:#fff0f0;color:var(--accent);}
+.sb-mat{color:var(--accent);font-weight:600;}
+
+footer{text-align:center;padding:30px;color:var(--muted);font-size:12px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="tag">FINAL DECK — v17 メモ日本語化版</span>
+  <h1>Skydive Nippon AI動画 台本FIX</h1>
+  <p>Sky Works株式会社 ／ 60秒YouTube広告動画 ／ 4月30日打ち合わせ用</p>
+  <div class="meta">
+    <div>📅 2026年4月30日</div>
+    <div>⏱ 60秒（クライアント指定）</div>
+    <div>🎯 認知拡大＋体験予約</div>
+    <div>📦 5/10 納品予定</div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 1. 参考動画 -->
+<div class="section">
+  <div class="section-title"><div class="num">1</div><div><h2>参考動画</h2><div class="sub">この方向性で本番制作します</div></div></div>
+  <div class="ref-card">
+    <img src="https://i.ytimg.com/vi/e0BNSDKWtQI/hqdefault.jpg" alt="Like daddy">
+    <div class="body">
+      <h3>📺 Like daddy（最初の打ち合わせでホビソンさんから「いいね」の反応）</h3>
+      <p>体験プロモ動画として、トンマナ・テロップの入れ方・エフェクトを参照する位置づけ。承認済みではなく、参考の方向性としてOKをもらった段階。</p>
+      <a href="https://www.youtube.com/watch?v=e0BNSDKWtQI" target="_blank">https://www.youtube.com/watch?v=e0BNSDKWtQI</a>
+    </div>
+  </div>
+  <div class="ref-card">
+    <img src="https://i.ytimg.com/vi/7Zj0hUwLNPk/hqdefault.jpg" alt="OSMO">
+    <div class="body">
+      <h3>📺 OSMO Action 5 Pro スカイダイブ（追加参考）</h3>
+      <p>「雲を抜ける」「広がる絶景」「気持ちよさ」を映像で表現。S02息をのむ・S03高度感シーンの方向性に活かす。</p>
+      <a href="https://youtube.com/shorts/7Zj0hUwLNPk" target="_blank">https://youtube.com/shorts/7Zj0hUwLNPk</a>
+    </div>
+  </div>
+</div>
+
+<!-- 2. ファネル -->
+<div class="section">
+  <div class="section-title"><div class="num">2</div><div><h2>導線（広告→HP→予約）</h2></div></div>
+  <div style="background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+      <div style="background:linear-gradient(135deg,#0a1f3d,#1a3a6d);color:#fff;padding:14px 24px;border-radius:8px;font-weight:700;width:100%;max-width:560px;text-align:center;">📺 YouTube広告 60秒（v17）</div>
+      <div style="font-size:18px;color:#999;">↓</div>
+      <div style="background:linear-gradient(135deg,#0a4a8a,#3aa5ff);color:#fff;padding:14px 24px;border-radius:8px;font-weight:700;width:100%;max-width:520px;text-align:center;">🌐 HP着地 skydivenippon.com（FV「心震える」が動画と一致）</div>
+      <div style="font-size:18px;color:#999;">↓</div>
+      <div style="background:linear-gradient(135deg,#ff7a3a,#ffb43a);color:#fff;padding:14px 24px;border-radius:8px;font-weight:700;width:100%;max-width:400px;text-align:center;">🎫 「今すぐ予約」フォーム入力</div>
+      <div style="font-size:18px;color:#999;">↓</div>
+      <div style="background:linear-gradient(135deg,#2eb872,#5fd49a);color:#fff;padding:14px 24px;border-radius:8px;font-weight:700;width:100%;max-width:340px;text-align:center;">🪂 体験予約完了</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3. 構成 -->
+<div class="section">
+  <div class="section-title"><div class="num">3</div><div><h2>動画の構成（流れ）</h2><div class="sub">視聴者がどう感じていくか</div></div></div>
+  <div class="composition">
+    <div class="cp-row">
+      <div class="cp-phase">① 掴み<br><span>0〜7秒</span></div>
+      <div class="cp-arrow">→</div>
+      <div class="cp-desc">
+        <strong>飛んでる映像 ＋ 笑顔写真3枚</strong>で「楽しそう！」と興味を引く<br>
+        <span class="cp-feel">感情：おっ、何これ</span>
+      </div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-phase">② 体験<br><span>7〜18秒</span></div>
+      <div class="cp-arrow">→</div>
+      <div class="cp-desc">
+        <strong>絶景・高度感</strong>で「気持ちよさ」を伝える<br>
+        <span class="cp-feel">感情：自分も体験してみたい</span>
+      </div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-phase">③ ブランド<br><span>18〜22秒</span></div>
+      <div class="cp-arrow">→</div>
+      <div class="cp-desc">
+        <strong>SKYDIVE NIPPON</strong>のロゴ提示<br>
+        <span class="cp-feel">感情：これがあのブランドか</span>
+      </div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-phase">④ 強み<br><span>22〜30秒</span></div>
+      <div class="cp-arrow">→</div>
+      <div class="cp-desc">
+        <strong>東京から最短90分</strong>のドロップゾーン<br>
+        <span class="cp-feel">感情：思ったより近い</span>
+      </div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-phase">⑤ 安心<br><span>30〜38秒</span></div>
+      <div class="cp-arrow">→</div>
+      <div class="cp-desc">
+        <strong>プロが受け止めてくれる</strong>ことを伝える<br>
+        <span class="cp-feel">感情：自分でも大丈夫そう</span>
+      </div>
+    </div>
+    <div class="cp-row cp-key">
+      <div class="cp-phase">⑥ 後押し<br><span>38〜49秒</span></div>
+      <div class="cp-arrow">→</div>
+      <div class="cp-desc">
+        <strong>★ホビソンさん名言</strong>「やらない後悔より、やった後悔」<br>
+        <span class="cp-feel">感情：今すぐやってみたい</span>
+      </div>
+    </div>
+    <div class="cp-row">
+      <div class="cp-phase">⑦ 物語<br><span>49〜55秒</span></div>
+      <div class="cp-arrow">→</div>
+      <div class="cp-desc">
+        <strong>飛んでる時も、降りてきた後も</strong>笑顔の対比<br>
+        <span class="cp-feel">感情：ずっと幸せそう</span>
+      </div>
+    </div>
+    <div class="cp-row cp-key">
+      <div class="cp-phase">⑧ 行動<br><span>55〜60秒</span></div>
+      <div class="cp-arrow">→</div>
+      <div class="cp-desc">
+        <strong>「次は、あなたの番。」</strong>＋ 検索枠・URL・電話<br>
+        <span class="cp-feel">感情：予約しよう</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. シーン詳細 -->
+<div class="section">
+  <div class="section-title"><div class="num">4</div><div><h2>シーン詳細</h2><div class="sub">何が映って、何を言うか</div></div></div>
+  <div class="storyboard">
+    <div class="sb-row">
+      <div class="sb-no">1</div>
+      <div class="sb-time">0:00–0:04</div>
+      <div class="sb-body">
+        <div class="sb-title">飛び降りた瞬間 → タンデム笑顔</div>
+        <div class="sb-meta"><span class="sb-label">画</span>飛行機から飛び出すシーンと、お客様の満面の笑顔（実際の動画素材）</div>
+        <div class="sb-meta"><span class="sb-label">音</span>（映像のみ）</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>飛び降りた瞬間の自分視点の映像</div>
+      </div>
+    </div>
+    <div class="sb-row">
+      <div class="sb-no">2</div>
+      <div class="sb-time">0:04–0:07</div>
+      <div class="sb-body">
+        <div class="sb-title">「心が、震える。」</div>
+        <div class="sb-meta"><span class="sb-label">画</span>飛行中のお客様の写真3枚がパッパッと現れる</div>
+        <div class="sb-meta"><span class="sb-label">音</span>「心が、震える。」</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>飛行中の笑顔写真 5〜6枚</div>
+      </div>
+    </div>
+    <div class="sb-row">
+      <div class="sb-no">3</div>
+      <div class="sb-time">0:07–0:12</div>
+      <div class="sb-body">
+        <div class="sb-title">「息を、のむ。」</div>
+        <div class="sb-meta"><span class="sb-label">画</span>雲を抜けた先に広がる絶景</div>
+        <div class="sb-meta"><span class="sb-label">音</span>「息を、のむ。」</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>雲を抜ける絶景の映像</div>
+      </div>
+    </div>
+    <div class="sb-row">
+      <div class="sb-no">4</div>
+      <div class="sb-time">0:12–0:18</div>
+      <div class="sb-body">
+        <div class="sb-title">「日本最高の高度から ／ 4,000m」</div>
+        <div class="sb-meta"><span class="sb-label">画</span>上空でタンデム飛行している様子（高度感が伝わる俯瞰）</div>
+        <div class="sb-meta"><span class="sb-label">音</span>「日本で、いちばん高い空から。」</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>上空のタンデム飛行映像</div>
+      </div>
+    </div>
+    <div class="sb-row">
+      <div class="sb-no">5</div>
+      <div class="sb-time">0:18–0:22</div>
+      <div class="sb-body">
+        <div class="sb-title">ブランド表示「SKYDIVE NIPPON」</div>
+        <div class="sb-meta"><span class="sb-label">画</span>機内ドアからの空の景色＋ロゴ</div>
+        <div class="sb-meta"><span class="sb-label">音</span>「Skydive Nippon。」</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>ロゴ画像（白・黒・透明）</div>
+      </div>
+    </div>
+    <div class="sb-row">
+      <div class="sb-no">6</div>
+      <div class="sb-time">0:22–0:25</div>
+      <div class="sb-body">
+        <div class="sb-title">「東京から、」</div>
+        <div class="sb-meta"><span class="sb-label">画</span>東京の街並み（東京タワーなど象徴的な景色）</div>
+        <div class="sb-meta"><span class="sb-label">音</span>（次へ続く）</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>東京の街並み（東京タワー等）</div>
+      </div>
+    </div>
+    <div class="sb-row">
+      <div class="sb-no">7</div>
+      <div class="sb-time">0:25–0:30</div>
+      <div class="sb-body">
+        <div class="sb-title">「いちばん近いドロップゾーン ／ 90分」</div>
+        <div class="sb-meta"><span class="sb-label">画</span>飛行場の外観・看板</div>
+        <div class="sb-meta"><span class="sb-label">音</span>「東京都心から、いちばん近いドロップゾーン。」</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>飛行場の外観・看板</div>
+      </div>
+    </div>
+    <div class="sb-row">
+      <div class="sb-no">8</div>
+      <div class="sb-time">0:30–0:38</div>
+      <div class="sb-body">
+        <div class="sb-title">「一人で飛ぶわけじゃない ／ プロが、ぜんぶ受け止める」</div>
+        <div class="sb-meta"><span class="sb-label">画</span>インストラクターとお客様のタンデム前後の安心シーン</div>
+        <div class="sb-meta"><span class="sb-label">音</span>「初めてでも、大丈夫。プロが、ぜんぶ受け止めてくれる。」</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>プロとお客様の信頼カット</div>
+      </div>
+    </div>
+    <div class="sb-row sb-highlight">
+      <div class="sb-no">9</div>
+      <div class="sb-time">0:38–0:49</div>
+      <div class="sb-body">
+        <div class="sb-title">★ホビソンさん名言「やらない後悔より、やった後悔。」</div>
+        <div class="sb-meta"><span class="sb-label">画</span>シルエット → 飛行機への搭乗シーン → シルエットに戻る（3場面）</div>
+        <div class="sb-meta"><span class="sb-label">音</span>（本人）「やらない後悔より、やった後悔。そう思える一日を、ここでつくっています。」</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>★最重要：ホビソンさんとお客様のタンデム写真 ＋ 飛行機への搭乗シーン</div>
+      </div>
+    </div>
+    <div class="sb-row">
+      <div class="sb-no">10</div>
+      <div class="sb-time">0:49–0:55</div>
+      <div class="sb-body">
+        <div class="sb-title">「飛んでる時も、降りてきた後も。」</div>
+        <div class="sb-meta"><span class="sb-label">画</span>飛行中の笑顔3枚 → 着地後の抱擁・歓喜</div>
+        <div class="sb-meta"><span class="sb-label">音</span>「降りてきた人は、みんな、笑ってる。」</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>飛行中の笑顔写真 ＋ 着地後の笑顔・抱擁</div>
+      </div>
+    </div>
+    <div class="sb-row sb-highlight">
+      <div class="sb-no">11</div>
+      <div class="sb-time">0:55–1:00</div>
+      <div class="sb-body">
+        <div class="sb-title">「次は、あなたの番。」（予約への案内）</div>
+        <div class="sb-meta"><span class="sb-label">画</span>ロゴ＋検索枠＋HP URL＋電話番号</div>
+        <div class="sb-meta"><span class="sb-label">音</span>「次は、あなたの番。Skydive Nippon。」</div>
+        <div class="sb-meta sb-mat"><span class="sb-label">必要</span>ロゴ画像・電話番号・QRコード</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. 台本 -->ナレーション -->
+<div class="section">
+  <div class="section-title"><div class="num">5</div><div><h2>台本</h2></div></div>
+  <div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:30px;font-size:15px;line-height:2.4;">
+    <div style="color:var(--muted);font-size:12px;">（0–7秒：映像のみ・ナレーションなし）</div>
+    <div style="margin-top:8px;">心が、震える。</div>
+    <div>息を、のむ。</div>
+    <div>日本で、いちばん高い空から。</div>
+    <div style="margin-top:14px;color:var(--accent);">Skydive Nippon。</div>
+    <div>東京都心から、いちばん近いドロップゾーン。</div>
+    <div>初めてでも、大丈夫。プロが、ぜんぶ受け止めてくれる。</div>
+    <div style="margin:14px 0;background:#fff8e1;padding:12px 18px;border-left:4px solid var(--sun);border-radius:4px;">
+      （ホビソンさん）<strong>やらない後悔より、やった後悔。そう思える一日を、ここでつくっています。</strong>
+    </div>
+    <div>降りてきた人は、みんな、笑ってる。</div>
+    <div style="margin-top:14px;color:var(--accent);font-weight:700;">次は、あなたの番。Skydive Nippon。</div>
+  </div>
+</div>
+
+<!-- 6. 必要素材 -->
+<div class="section">
+  <div class="section-title"><div class="num">6</div><div><h2>必要素材リスト</h2></div></div>
+  <div class="material-table">
+    <div class="mt-row head"><div>優先</div><div>素材</div><div>形式</div></div>
+    <div class="mt-row"><div class="priority p3">★★★</div><div><strong>ホビソンさんとお客様のタンデム写真</strong>（夕日背景が理想）</div><div style="color:var(--muted);">JPG / MP4</div></div>
+    <div class="mt-row"><div class="priority p3">★★★</div><div><strong>飛行中の笑顔写真 5〜6枚</strong></div><div style="color:var(--muted);">JPG</div></div>
+    <div class="mt-row"><div class="priority p3">★★★</div><div><strong>着地後の笑顔・抱擁の写真</strong></div><div style="color:var(--muted);">JPG</div></div>
+    <div class="mt-row"><div class="priority p3">★★★</div><div><strong>プロとお客様の信頼カット</strong></div><div style="color:var(--muted);">JPG / MP4</div></div>
+    <div class="mt-row"><div class="priority p3">★★★</div><div><strong>飛び降りた瞬間の自分視点の映像</strong></div><div>S01a 冒頭。ヘルメットカメラの躍動感</div><div style="color:var(--muted);">MP4</div></div>
+    <div class="mt-row"><div class="priority p2">★★</div><div>雲を抜ける絶景の映像</div><div style="color:var(--muted);">MP4</div></div>
+    <div class="mt-row"><div class="priority p2">★★</div><div>上空のタンデム飛行映像</div><div style="color:var(--muted);">MP4</div></div>
+    <div class="mt-row"><div class="priority p2">★★</div><div>飛行場の外観・看板</div><div style="color:var(--muted);">JPG</div></div>
+    <div class="mt-row"><div class="priority p2">★★</div><div>飛行機への搭乗シーン</div><div style="color:var(--muted);">JPG / MP4</div></div>
+    <div class="mt-row"><div class="priority p1">★</div><div>ロゴ画像（白・黒・透明）</div><div style="color:var(--muted);">AI/SVG/PNG</div></div>
+    <div class="mt-row"><div class="priority p1">★</div><div>QRコード（HP予約ページ）</div><div style="color:var(--muted);">PNG</div></div>
+  </div>
+  
+</div>
+
+<footer>
+  Skydive Nippon AI動画 v17 打ち合わせ資料 ／ 2026.04.30<br>
+  株式会社ランバード × 斗（hishaku）
+</footer>
+
+</body>
+</html>
