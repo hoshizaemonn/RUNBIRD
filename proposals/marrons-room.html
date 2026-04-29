@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告 運用提案書 — marron's room 様</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #fef5f8;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #e91e63;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .goal-banner {
+            background: linear-gradient(135deg, #ad1457, #e91e63);
+            color: #fff;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+        }
+        .goal-banner h2 {
+            color: #fff8f9;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .goal-banner .goal-sub {
+            text-align: center;
+            font-size: 14px;
+            color: #fde2e8;
+            margin-bottom: 24px;
+        }
+        .goal-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .gf-box {
+            background: rgba(255,255,255,.15);
+            border: 1px solid rgba(255,255,255,.25);
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            min-width: 160px;
+        }
+        .gf-box .gf-step { font-size: 11px; color: #ffeef3; font-weight: 700; margin-bottom: 4px; }
+        .gf-box .gf-title { font-size: 15px; font-weight: 700; }
+        .gf-box .gf-desc { font-size: 12px; color: #fde2e8; margin-top: 4px; }
+        .gf-arrow { color: #ffd6e0; font-size: 24px; font-weight: 700; padding: 0 10px; }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .target-card {
+            background: #fef5f8;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #f8bbd0;
+        }
+        .target-card .t-icon { font-size: 28px; margin-bottom: 8px; }
+        .target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+        .target-card .t-value { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.5; }
+
+        .area-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .area-box { border-radius: 10px; padding: 18px; }
+        .area-box.primary { background: #fce4ec; border: 2px solid #e91e63; }
+        .area-box.secondary { background: #f3e5f5; border: 2px solid #9c27b0; }
+        .area-box h4 { font-size: 14px; margin-bottom: 10px; }
+        .area-box .area-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 3px 4px;
+        }
+        .area-box.primary .area-tag { background: #fff; color: #c2185b; }
+        .area-box.secondary .area-tag { background: #fff; color: #6a1b9a; }
+
+        .kw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .kw-box {
+            background: #fef5f8;
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid #f8bbd0;
+        }
+        .kw-box h4 {
+            font-size: 13px;
+            color: #c2185b;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #f8bbd0;
+        }
+        .kw-tag {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #f8bbd0;
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 12px;
+            margin: 2px;
+            color: #333;
+        }
+
+        .note-bar {
+            background: #fff8e1;
+            border: 2px solid #ffa726;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+        }
+        .note-bar h3 { color: #e65100; font-size: 15px; margin-bottom: 10px; }
+        .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
+        .note-bar li { margin-bottom: 6px; }
+        .note-bar li strong { color: #c2185b; }
+
+        @media (max-width: 768px) {
+            .target-grid { grid-template-columns: repeat(2, 1fr); }
+            .area-section { grid-template-columns: 1fr; }
+            .kw-grid { grid-template-columns: 1fr; }
+            .goal-flow { flex-direction: column; }
+            .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 運用提案書</h1>
+    <p class="subtitle">marron's room 様｜株式会社ランバード</p>
+
+    <!-- ① 目的・ゴール -->
+    <div class="goal-banner">
+        <h2>広告配信の目的</h2>
+        <p class="goal-sub">「猫×ピンク×リボン」の甘々な世界観に共感する方に marron's room を知ってもらい、Instagramフォロー・購入につなげる</p>
+        <div class="goal-flow">
+            <div class="gf-box">
+                <div class="gf-step">STEP 1</div>
+                <div class="gf-title">認知</div>
+                <div class="gf-desc">YouTube広告で<br>世界観に出会う</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 2</div>
+                <div class="gf-title">共感</div>
+                <div class="gf-desc">「世界に一つだけ」の<br>ハンドメイドに惹かれる</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 3</div>
+                <div class="gf-title">フォロー</div>
+                <div class="gf-desc">Instagramへ遷移<br>新作情報をチェック</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">GOAL</div>
+                <div class="gf-title">購入・リピート</div>
+                <div class="gf-desc">オーダーメイド注文<br>・ファン化</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ② ターゲティング設定 -->
+    <div class="section" style="border-color:#e91e63;">
+        <div class="section-title">
+            <span class="icon" style="background:#e91e63;">1</span>
+            ターゲティング設定
+        </div>
+
+        <div class="target-grid">
+            <div class="target-card">
+                <div class="t-icon">👤</div>
+                <div class="t-label">性別</div>
+                <div class="t-value">女性</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📅</div>
+                <div class="t-label">年齢</div>
+                <div class="t-value">18〜44歳<br>（20〜30代中心）</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📍</div>
+                <div class="t-label">エリア</div>
+                <div class="t-value">全国配信</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">🕐</div>
+                <div class="t-label">配信時間</div>
+                <div class="t-value">7:00〜23:00</div>
+            </div>
+        </div>
+
+        <div class="area-section">
+            <div class="area-box primary">
+                <h4 style="color:#c2185b;">コアターゲット</h4>
+                <span class="area-tag">「世界に一つ」を求める方</span>
+                <span class="area-tag">ハンドメイドアクセが好きな方</span>
+                <span class="area-tag">推し活・量産型・地雷系ファッション層</span>
+                <span class="area-tag">猫モチーフ・リボン愛好家</span>
+            </div>
+            <div class="area-box secondary">
+                <h4 style="color:#6a1b9a;">拡張ターゲット</h4>
+                <span class="area-tag">ネイルチップ愛好家</span>
+                <span class="area-tag">ヘアアクセ・髪飾り好き</span>
+                <span class="area-tag">かわいい雑貨好きな方</span>
+                <span class="area-tag">ピンク・パステル系が好きな方</span>
+            </div>
+        </div>
+
+        <div style="background:#fff3e0;border-radius:8px;padding:14px 18px;font-size:13px;color:#e65100;">
+            <strong>ターゲット設定の理由：</strong>オンラインメインのハンドメイドショップのため全国配信。「猫×ピンク×リボン」という独自世界観に共感する20〜30代女性を中心に、推し活・量産型・地雷系などのサブカル層へ届けます。
+        </div>
+    </div>
+
+    <!-- ③ 関連キーワード設定 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#9c27b0;">2</span>
+            関連キーワード設定
+        </div>
+        <p style="font-size:13px;color:#666;margin-bottom:16px;">設定したキーワードに関心がある視聴者に優先的に広告が表示されます。</p>
+
+        <div class="kw-grid">
+            <div class="kw-box">
+                <h4>直接ニーズ（商品を探している人）</h4>
+                <span class="kw-tag">ネイルチップ オーダー</span>
+                <span class="kw-tag">オーダーネイルチップ</span>
+                <span class="kw-tag">痛ネイル</span>
+                <span class="kw-tag">推し活 ネイル</span>
+                <span class="kw-tag">量産型 ネイル</span>
+                <span class="kw-tag">地雷系 ネイル</span>
+                <span class="kw-tag">ハンドメイド アクセサリー</span>
+                <span class="kw-tag">オーダーメイド アクセサリー</span>
+            </div>
+            <div class="kw-box">
+                <h4>検討ニーズ（情報収集中の人）</h4>
+                <span class="kw-tag">ヘアアクセサリー オーダー</span>
+                <span class="kw-tag">リボン アクセサリー</span>
+                <span class="kw-tag">猫 アクセサリー</span>
+                <span class="kw-tag">オリジナル ネイルチップ</span>
+                <span class="kw-tag">ジェルネイル 船橋</span>
+                <span class="kw-tag">キャラクターネイル</span>
+                <span class="kw-tag">痛バッグ</span>
+            </div>
+            <div class="kw-box">
+                <h4>ライフスタイル（潜在層）</h4>
+                <span class="kw-tag">推し活 グッズ</span>
+                <span class="kw-tag">量産型 ファッション</span>
+                <span class="kw-tag">地雷系 ファッション</span>
+                <span class="kw-tag">かわいい アクセサリー</span>
+                <span class="kw-tag">ピンク 雑貨</span>
+                <span class="kw-tag">ハンドメイド 通販</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ④ 広告配信設定まとめ -->
+    <div class="section" style="border-color:#e91e63;">
+        <div class="section-title">
+            <span class="icon" style="background:#e91e63;">3</span>
+            広告配信設定まとめ
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:#fef5f8;border-radius:10px;padding:18px;border-left:5px solid #e91e63;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">広告形式</div>
+                <div style="font-size:16px;font-weight:700;">インストリーム広告（スキップ可能）</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">動画再生前に流れる広告。5秒後にスキップ可能。興味のある方だけに届きます。</div>
+            </div>
+            <div style="background:#fef5f8;border-radius:10px;padding:18px;border-left:5px solid #9c27b0;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">フリークエンシーキャップ</div>
+                <div style="font-size:16px;font-weight:700;">週3回まで</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">同じ方に何度も広告が出ないよう制限し、より多くの方にリーチします。</div>
+            </div>
+            <div style="background:#fef5f8;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">リンク先（CTA）</div>
+                <div style="font-size:15px;font-weight:700;">Instagram（@mokamoka_marron）</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">https://www.instagram.com/mokamoka_marron/<br>新作情報・作品ギャラリーをチェック、DMでオーダー相談が可能です。</div>
+            </div>
+            <div style="background:#fef5f8;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
+                <div style="font-size:16px;font-weight:700;">2026年5月1日〜</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">審査通過次第、配信を開始いたします。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ⑤ 参考リンク -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#2e7d32;">4</span>
+            参考リンク
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+            <a href="https://marrons.kawaiishop.jp/" target="_blank" style="display:block;background:#fef5f8;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;text-decoration:none;color:#1a1a1a;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">公式ショップ</div>
+                <div style="font-size:15px;font-weight:700;">marrons.kawaiishop.jp</div>
+            </a>
+            <a href="https://www.instagram.com/mokamoka_marron/" target="_blank" style="display:block;background:#fef5f8;border-radius:10px;padding:18px;border-left:5px solid #e91e63;text-decoration:none;color:#1a1a1a;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">Instagram（リンク先）</div>
+                <div style="font-size:15px;font-weight:700;">@mokamoka_marron</div>
+            </a>
+            <a href="https://youtu.be/rsxLOeFPPPQ" target="_blank" style="display:block;background:#fef5f8;border-radius:10px;padding:18px;border-left:5px solid #cc0000;text-decoration:none;color:#1a1a1a;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">YouTube広告動画</div>
+                <div style="font-size:15px;font-weight:700;">広告動画を見る →</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 補足事項 -->
+    <div class="note-bar">
+        <h3>補足事項</h3>
+        <ul>
+            <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
+            <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
+            <li>ご不明な点やご要望がございましたら、お気軽にお申し付けください</li>
+        </ul>
+    </div>
+
+    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
+        株式会社ランバード｜広告運用サポート窓口
+    </div>
+
+</div>
+</body>
+</html>
