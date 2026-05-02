@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>こもれび様 動画構成案 v1 | 株式会社ランバード</title>
+<style>
+  :root {
+    --beige: #F5EFE6;
+    --beige-light: #FAF6EF;
+    --cream: #FFFBF3;
+    --sage: #A8C4A2;
+    --sage-dark: #6B8E6B;
+    --sky: #BFD8E5;
+    --sky-dark: #6B92A8;
+    --warm-brown: #8B6F47;
+    --text: #4A4036;
+    --text-light: #8A7E70;
+    --gold: #D4A656;
+    --before: #5A6B7A;
+    --after: #E8B767;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: linear-gradient(135deg, var(--beige-light), var(--cream));
+    color: var(--text);
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+  .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+  .header {
+    text-align: center;
+    padding: 40px 24px;
+    background: white;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(139, 111, 71, 0.1);
+  }
+  .header h1 { font-size: 1.6rem; color: var(--warm-brown); margin-bottom: 6px; }
+  .header .subtitle { font-size: 0.95rem; color: var(--text-light); }
+  .version-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--sage), var(--sky));
+    color: white;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-top: 12px;
+  }
+
+  .section {
+    background: white;
+    border-radius: 16px;
+    padding: 26px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 12px rgba(139, 111, 71, 0.06);
+  }
+  .section h2 {
+    font-size: 1.2rem;
+    color: var(--warm-brown);
+    margin-bottom: 14px;
+    border-left: 4px solid var(--sage);
+    padding-left: 12px;
+  }
+  .section h3 { font-size: 1.05rem; color: var(--sage-dark); margin: 18px 0 8px; }
+  .section p { margin-bottom: 10px; font-size: 0.95rem; }
+  .section ul, .section ol { margin-left: 20px; margin-bottom: 10px; }
+  .section li { margin-bottom: 6px; font-size: 0.93rem; }
+
+  .intro-box {
+    background: linear-gradient(135deg, #FFF8EA, #F0F8F0);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+    border-left: 4px solid var(--gold);
+  }
+  .intro-box strong { color: var(--warm-brown); }
+
+  /* シーン表 */
+  .scenes { overflow-x: auto; }
+  table.scene-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  table.scene-table th {
+    background: var(--beige);
+    color: var(--warm-brown);
+    padding: 10px 8px;
+    text-align: left;
+    font-size: 0.85rem;
+    border: 1px solid #E8DDC8;
+  }
+  table.scene-table td {
+    padding: 10px 8px;
+    border: 1px solid #E8DDC8;
+    vertical-align: top;
+    font-size: 0.88rem;
+  }
+  table.scene-table tr:nth-child(even) td { background: #FDFAF4; }
+  .scene-num {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: var(--warm-brown);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.78rem;
+    font-weight: bold;
+  }
+  .tag-before { background: var(--before); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+  .tag-after { background: var(--after); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+  .tag-store { background: var(--sage-dark); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+
+  /* キャラ設計 */
+  .char-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 14px;
+  }
+  @media (max-width: 700px) { .char-grid { grid-template-columns: 1fr; } }
+  .char-card {
+    background: var(--beige-light);
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid #E8DDC8;
+  }
+  .char-card.male { border-top: 4px solid var(--sky-dark); }
+  .char-card.female { border-top: 4px solid var(--gold); }
+  .char-card h4 {
+    font-size: 1rem;
+    color: var(--warm-brown);
+    margin-bottom: 10px;
+  }
+  .char-card dl { font-size: 0.88rem; }
+  .char-card dt { font-weight: bold; color: var(--text); margin-top: 6px; }
+  .char-card dd { color: var(--text-light); margin-left: 12px; }
+  .pending {
+    color: #C0392B;
+    font-weight: bold;
+    font-size: 0.85rem;
+  }
+
+  /* 確認事項リスト */
+  .question-list {
+    list-style: none;
+    margin-left: 0;
+  }
+  .question-list li {
+    background: #FFF8EA;
+    border-left: 4px solid var(--gold);
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 0.93rem;
+  }
+  .question-list li strong {
+    color: var(--warm-brown);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* 重要メッセージ */
+  .priority-box {
+    background: linear-gradient(135deg, #FFEFD9, #FFF8EA);
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .priority-box h3 {
+    color: var(--warm-brown);
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-light);
+    font-size: 0.85rem;
+  }
+
+  /* 素材選択 */
+  .material-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 14px;
+  }
+  @media (max-width: 700px) { .material-options { grid-template-columns: 1fr; } }
+  .material-card {
+    border-radius: 12px;
+    padding: 18px;
+    border: 2px solid #E8DDC8;
+    background: white;
+  }
+  .material-card.option-a { border-color: var(--sage); background: #F5FAF5; }
+  .material-card.option-b { border-color: var(--sky-dark); background: #F2F8FB; }
+  .material-card h4 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .material-card.option-a h4 { color: var(--sage-dark); }
+  .material-card.option-b h4 { color: var(--sky-dark); }
+
+  /* ナレーション原稿 */
+  .narration-box {
+    background: var(--beige-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 2;
+    border-left: 4px solid var(--sage);
+  }
+  .narration-box .scene-mark {
+    display: inline-block;
+    background: var(--warm-brown);
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    font-style: normal;
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="header">
+    <h1>こもれび様 動画構成案 v1</h1>
+    <p class="subtitle">ドライヘッドスパ専門店 こもれび様｜ご確認用ページ</p>
+    <span class="version-badge">v1 ご提案版 — 2026/4/29</span>
+  </header>
+
+  <!-- イントロ -->
+  <section class="section">
+    <h2>はじめに</h2>
+    <div class="intro-box">
+      <p>中井様、ヒアリングシートをご提出いただきありがとうございました。<br>
+      いただいたストーリーをもとに、<strong>AI生成による動画</strong>として構成案を作成しました。</p>
+      <p style="margin-top:10px;">いくつかご確認・ご相談したい点がございます。<br>
+      下記の構成案・確認事項にひととおり目を通していただき、<strong>気になる点を中井様の言葉でお返事いただけますと幸いです。</strong></p>
+    </div>
+  </section>
+
+  <!-- 動画概要 -->
+  <section class="section">
+    <h2>動画の概要</h2>
+    <ul>
+      <li><strong>テーマ：</strong>「リラクゼーションではなく、睡眠の質を変える」を訴求するドライヘッドスパの紹介動画</li>
+      <li><strong>動画タイプ：</strong>AI完全生成（実写風）</li>
+      <li><strong>想定尺：</strong>60秒前後</li>
+      <li><strong>ゴール：</strong>来店・集客アップ</li>
+      <li><strong>登場人物：</strong>40代の疲れた男性 / 40代のしんどい女性 / 代表（手元のみ）</li>
+    </ul>
+  </section>
+
+  <!-- 8シーン構成 -->
+  <section class="section">
+    <h2>8シーン構成案</h2>
+    <p>中井様にいただいた台本イメージをもとに、8シーンに分解しました。</p>
+
+    <div class="scenes">
+      <table class="scene-table">
+        <thead>
+          <tr>
+            <th style="width:40px;">#</th>
+            <th>シーン</th>
+            <th>役割</th>
+            <th style="width:60px;">秒数</th>
+            <th>主役</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="scene-num">1</span></td>
+            <td>お店の入口・看板</td>
+            <td><span class="tag-store">店舗</span> 世界観導入</td>
+            <td>4秒</td>
+            <td>店舗</td>
+          </tr>
+          <tr>
+            <td><span class="scene-num">2</span></td>
+            <td>疲れた40代男性（オフィス or 通勤）</td>
+            <td><span class="tag-before">before</span> 共感</td>
+            <td>6秒</td>
+            <td>男性</td>
+          </tr>
+          <tr>
+            <td><span class="scene-num">3</span></td>
+            <td>朝起きれない40代女性（寝室 or 洗面所）</td>
+            <td><span class="tag-before">before</span> 共感</td>
+            <td>6秒</td>
+            <td>女性</td>
+          </tr>
+          <tr>
+            <td><span class="scene-num">4</span></td>
+            <td>お店に到着・施術が始まる</td>
+            <td><span class="tag-store">転換</span> 解決策</td>
+            <td>6秒</td>
+            <td>受け手 + 代表手元</td>
+          </tr>
+          <tr>
+            <td><span class="scene-num">5</span></td>
+            <td>施術中（代表の手元・受け手の表情）</td>
+            <td><span class="tag-store">体験</span> 訴求</td>
+            <td>10秒</td>
+            <td>代表手元 + 受け手</td>
+          </tr>
+          <tr>
+            <td><span class="scene-num">6</span></td>
+            <td>仕事頑張る男性（活き活き）</td>
+            <td><span class="tag-after">after</span> 効果①</td>
+            <td>6秒</td>
+            <td>男性</td>
+          </tr>
+          <tr>
+            <td><span class="scene-num">7</span></td>
+            <td>朝スッキリ起きる男女（2分割・カーテン開ける）</td>
+            <td><span class="tag-after">after</span> クライマックス</td>
+            <td>12秒</td>
+            <td>男性 + 女性</td>
+          </tr>
+          <tr>
+            <td><span class="scene-num">8</span></td>
+            <td>エンディング（ロゴ・店舗情報）</td>
+            <td><span class="tag-store">CTA</span> 導線</td>
+            <td>5秒</td>
+            <td>ロゴ・店舗情報</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px; color: var(--text-light); font-size: 0.88rem;">合計：約55秒（最終調整で60秒尺に）</p>
+  </section>
+
+  <!-- ナレーション原稿 -->
+  <section class="section">
+    <h2>ナレーション原稿（仮）</h2>
+    <p>あくまでイメージ案です。中井様のお言葉に寄せて調整いたします。</p>
+    <div class="narration-box" style="margin-top:14px;">
+      <span class="scene-mark">#2</span>「最近、なんだか疲れがとれない…」<br>
+      <span class="scene-mark">#3</span>「朝、起きるのがつらい…」<br><br>
+      <span class="scene-mark">#4-5</span>そんなあなたに、こもれびのドライヘッドスパ。<br>
+      リラクゼーションじゃない、睡眠の質を変える施術です。<br><br>
+      <span class="scene-mark">#7</span>翌朝、目覚めが変わる。<br>
+      <span class="scene-mark">#6</span>一日が、軽くなる。<br><br>
+      <span class="scene-mark">#8</span>こもれび。あなたの睡眠を、整える場所。
+    </div>
+  </section>
+
+  <!-- キャラクター設計 -->
+  <section class="section">
+    <h2>登場人物のイメージ</h2>
+    <p>動画全体で<strong>同じ顔・同じ雰囲気のキャラクター</strong>として登場させるため、特徴を最初に固めさせていただきます。</p>
+
+    <div class="char-grid">
+      <div class="char-card male">
+        <h4>👔 40代男性</h4>
+        <dl>
+          <dt>年齢</dt>
+          <dd>40代前半・日本人</dd>
+          <dt>服装（before）</dt>
+          <dd>スーツ姿</dd>
+          <dt>表情（before）</dt>
+          <dd>疲れた・目の下のクマ・無表情</dd>
+          <dt>表情（after）</dt>
+          <dd>スッキリ・笑顔・活き活き</dd>
+          <dt>顔の参考</dt>
+          <dd class="pending">⚠️ どんな雰囲気の方をイメージされていますか？<br>（参考になる芸能人・俳優のお名前があれば数名教えてください）</dd>
+        </dl>
+      </div>
+
+      <div class="char-card female">
+        <h4>💼 40代女性</h4>
+        <dl>
+          <dt>年齢</dt>
+          <dd>40代前半・日本人</dd>
+          <dt>服装（before）</dt>
+          <dd>パジャマ or 部屋着（朝のシーン）</dd>
+          <dt>表情（before）</dt>
+          <dd>しんどそう・眠い</dd>
+          <dt>表情（after）</dt>
+          <dd>スッキリ・明るい・カーテンを開ける勢い</dd>
+          <dt>顔の参考</dt>
+          <dd class="pending">⚠️ どんな雰囲気の方をイメージされていますか？<br>（参考になる芸能人・女優のお名前があれば数名教えてください）</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="priority-box">
+      <h3>🤲 代表（手元のみ）について</h3>
+      <p>ヒアリング内容より、<strong>代表のお顔は映さない</strong>方針で承知いたしました。<br>
+      施術シーンでは「手と前腕」のみフレームインさせます。</p>
+      <p style="margin-top:8px;"><strong style="color: #C0392B;">確認：</strong>手元は中井様ご自身をイメージして作成してよろしいですか？それとも標準的な手のビジュアルでも問題ないでしょうか？</p>
+    </div>
+  </section>
+
+  <!-- 一番大事な確認 -->
+  <section class="section">
+    <h2>★ 最重要のご相談：素材について</h2>
+
+    <div class="intro-box" style="border-color: var(--gold); background: linear-gradient(135deg, #FFEFD9, #FFF8EA);">
+      <p><strong>動画素材（写真・動画）はこちらでAI生成することも、中井様にご提供いただくこともできます。</strong>どちらでも対応可能ですが、それぞれ仕上がりが変わってきます。</p>
+    </div>
+
+    <div class="material-options">
+      <div class="material-card option-a">
+        <h4>✨ A. 全部こちらでAI生成</h4>
+        <ul>
+          <li>中井様の負担なし（撮影不要）</li>
+          <li>制作期間：3〜5日と短め</li>
+          <li>40代男女・施術シーン全てAI生成</li>
+          <li>ご相談いただきたい：参考にしたい芸能人イメージ</li>
+        </ul>
+      </div>
+      <div class="material-card option-b">
+        <h4>📸 B. 中井様から素材をご提供</h4>
+        <ul>
+          <li>店舗・施術シーン等、提供可能なものをいただく</li>
+          <li>不足分はAI生成で補完</li>
+          <li>本物の店舗・施術風景なので説得力が増す</li>
+          <li>ご提供できそうな素材：店舗写真・施術ベッド・備品など</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="priority-box">
+      <h3>💬 中井様にご質問</h3>
+      <p>下記についてお返事いただけますと幸いです：</p>
+      <ol>
+        <li><strong>店舗・施術シーンの写真や動画は、ご提供いただけますでしょうか？</strong>（あるものだけで大丈夫です）</li>
+        <li>提供可能な場合、どんな素材がありますか？（例：店舗外観・施術ベッド・施術中の様子・代表の手元アップなど）</li>
+        <li>提供する場合、いつ頃までにご準備可能ですか？</li>
+        <li>素材なしでAI完全生成のみで進める場合も対応可能ですので、お気軽にお選びください。</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- その他確認事項 -->
+  <section class="section">
+    <h2>その他のご確認事項</h2>
+
+    <ul class="question-list">
+      <li>
+        <strong>① 動画の尺</strong>
+        60秒前後を想定していますが、ご希望はありますか？（30秒・45秒・60秒・90秒など）
+      </li>
+      <li>
+        <strong>② ナレーション</strong>
+        AI音声・中井様ご本人のお声・ナレーションなし（テロップのみ）の3パターンから選べます。どれがご希望ですか？
+      </li>
+      <li>
+        <strong>③ BGMの方向性</strong>
+        穏やか系 / 朝の爽やか系 / 落ち着いたピアノ系 などイメージはありますか？
+      </li>
+      <li>
+        <strong>④ CTA（動画の最後にどこへ誘導するか）</strong>
+        Instagram・電話番号・店舗住所・LINE のうち、どれを最後に表示しますか？
+      </li>
+      <li>
+        <strong>⑤ 必ず入れたい言葉・NGの言葉</strong>
+        「リラクゼーションではなく睡眠改善」など、必ず入れたい表現や、逆に使わないでほしい言葉はありますか？
+      </li>
+      <li>
+        <strong>⑥ ロゴデータ</strong>
+        「こもれび」のロゴデータ（PNG透過・AI・SVGなど）はお持ちでしょうか？
+      </li>
+      <li>
+        <strong>⑦ シーン2（疲れた男性）の場所</strong>
+        オフィスのデスク／通勤電車／路上／その他、どんな状況がイメージに近いですか？
+      </li>
+      <li>
+        <strong>⑧ シーン3（しんどい女性）の場所</strong>
+        ベッドの中／洗面所／布団から出られない／その他、どんな状況がイメージに近いですか？
+      </li>
+      <li>
+        <strong>⑨ 施術される側</strong>
+        男性・女性・両方、どなたが施術を受けているシーンを描きましょうか？
+      </li>
+      <li>
+        <strong>⑩ 納品希望日</strong>
+        いつ頃までに動画をお渡しできるとよいでしょうか？
+      </li>
+    </ul>
+  </section>
+
+  <!-- 進め方 -->
+  <section class="section">
+    <h2>このあとの進め方</h2>
+    <ol>
+      <li>本ページのご質問にお答えいただく</li>
+      <li>いただいた内容をもとに、<strong>登場人物のキャラクター画像（男女2名）</strong>を作成してご確認いただく</li>
+      <li>キャラクターOKをいただいた後、<strong>8シーン分の画像</strong>を一気に作成</li>
+      <li>静止画でスライドショーを作り、構成のご確認</li>
+      <li>動画化（モーション付与）</li>
+      <li>BGM・テロップ・ナレーションを乗せて完成</li>
+      <li>初稿納品 → 修正（2回まで）→ 最終納品</li>
+    </ol>
+    <p style="margin-top:12px; font-size: 0.9rem; color: var(--text-light);">想定制作期間：3〜5日（修正含む・素材提供がある場合は1〜2日プラス）</p>
+  </section>
+
+  <footer class="footer">
+    <p>株式会社ランバード｜AI動画事業</p>
+    <p style="margin-top:6px;">ご質問・ご相談はいつでもお気軽にお寄せください。</p>
+  </footer>
+
+</div>
+</body>
+</html>
