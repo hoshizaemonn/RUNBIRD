@@ -120,9 +120,24 @@
 
   /* Location */
   .loc-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;height:100%}
-  .loc-map{background:#e2e8f0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);font-size:14px;position:relative;overflow:hidden}
-  .loc-map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--white);padding:10px 18px;border:2px solid var(--navy);border-radius:24px;font-size:13px;font-weight:600;color:var(--navy);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
-  .loc-map-pin::before{content:"";position:absolute;left:-1px;top:-1px;width:calc(100% + 2px);height:calc(100% + 2px);border:2px dashed var(--gold);border-radius:24px;opacity:0.5}
+  .loc-map{background:#e2e8f0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);font-size:14px;position:relative;overflow:hidden;min-height:680px}
+  .loc-map-pin{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    background:var(--navy);color:var(--white);
+    padding:14px 22px;border:3px solid var(--gold);
+    border-radius:8px;font-size:14px;font-weight:700;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25),0 0 0 8px rgba(201,169,97,0.15);
+    text-align:center;line-height:1.5;z-index:5;
+  }
+  .loc-map-label{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    background:rgba(255,255,255,0.92);
+    padding:4px 10px;border-radius:4px;
+    font-size:11px;color:#4a5568;font-weight:600;
+    box-shadow:0 1px 3px rgba(0,0,0,0.1);
+  }
   .loc-detail{padding-top:16px}
   .loc-detail-title{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);border-left:4px solid var(--gold);padding-left:12px;margin-bottom:18px}
   .loc-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:18px}
@@ -377,24 +392,55 @@
 
   /* Map */
   .map-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;height:100%}
-  .map-frame{background:#f0f4f8;border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--gray)}
-  .map-frame-head{position:absolute;top:14px;left:18px;font-size:14px;color:var(--navy);font-weight:700;display:flex;gap:14px;align-items:center}
-  .map-legend{display:flex;gap:10px;margin-left:14px}
-  .map-legend span{font-size:10px;color:var(--gray-2);display:flex;align-items:center;gap:4px}
-  .map-legend span::before{content:"●";font-size:14px}
-  .map-legend .lg-blue::before{color:#3182ce}
-  .map-legend .lg-green::before{color:#38a169}
-  .map-legend .lg-red::before{color:#e53e3e}
-  .map-legend .lg-purple::before{color:#805ad5}
-  .map-pin{position:absolute;background:var(--white);padding:6px 12px;border-radius:24px;font-size:11px;font-weight:700;color:var(--text);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.15);border:2px solid;cursor:pointer}
-  .map-pin.center{background:var(--navy);color:var(--white);border-color:var(--gold);padding:10px 18px;font-size:13px;z-index:5;border-width:3px}
+  .map-frame{background:#eef2f7;border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--gray);min-height:680px}
+  .map-frame-head{position:absolute;top:12px;left:16px;right:16px;font-size:13px;color:var(--navy);font-weight:700;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.92);padding:8px 14px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.06);z-index:10}
+  .map-legend{display:flex;gap:14px}
+  .map-legend span{font-size:10.5px;color:#4a5568;display:flex;align-items:center;gap:4px;font-weight:600}
+  .map-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%}
+  .map-legend .lg-blue::before{background:#3182ce}
+  .map-legend .lg-green::before{background:#38a169}
+  .map-legend .lg-red::before{background:#e53e3e}
+  .map-legend .lg-purple::before{background:#805ad5}
+  .map-pin{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    background:var(--white);
+    padding:6px 11px;border-radius:18px;
+    font-size:10.5px;font-weight:700;color:var(--text);
+    white-space:nowrap;
+    box-shadow:0 3px 10px rgba(0,0,0,0.18);
+    border:2px solid;
+    z-index:3;
+    display:inline-flex;align-items:center;gap:4px;
+    line-height:1.2;
+  }
+  .map-pin::before{
+    content:"";
+    width:8px;height:8px;border-radius:50%;
+    flex-shrink:0;
+  }
+  .map-pin.center{
+    background:var(--navy);color:var(--white);border-color:var(--gold);
+    padding:10px 18px;font-size:13px;z-index:9;border-width:3px;
+    box-shadow:0 6px 16px rgba(0,0,0,0.3),0 0 0 6px rgba(201,169,97,0.18);
+  }
+  .map-pin.center::before{display:none}
   .map-pin.blue{border-color:#3182ce;color:#2b6cb0}
+  .map-pin.blue::before{background:#3182ce}
   .map-pin.green{border-color:#38a169;color:#22543d}
+  .map-pin.green::before{background:#38a169}
   .map-pin.red{border-color:#e53e3e;color:#9b2c2c}
+  .map-pin.red::before{background:#e53e3e}
   .map-pin.purple{border-color:#805ad5;color:#553c9a}
-  .map-circles::before,.map-circles::after{content:"";position:absolute;top:50%;left:50%;border:1px dashed #cbd5e0;border-radius:50%;transform:translate(-50%,-50%)}
-  .map-circles::before{width:300px;height:300px}
-  .map-circles::after{width:480px;height:480px}
+  .map-pin.purple::before{background:#805ad5}
+  .map-circles{position:absolute;top:55%;left:50%;width:0;height:0;z-index:1}
+  .map-circles::before,.map-circles::after{
+    content:"";position:absolute;top:0;left:0;
+    border:1px dashed #b8c4d2;border-radius:50%;
+    transform:translate(-50%,-50%);
+  }
+  .map-circles::before{width:260px;height:260px}
+  .map-circles::after{width:440px;height:440px}
   .net-summary{display:flex;flex-direction:column;gap:14px;padding:0}
   .net-card{background:var(--white);border-radius:8px;padding:14px 18px;display:flex;align-items:center;gap:14px;border-left:4px solid;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
   .net-card.blue{border-left-color:#3182ce}
@@ -830,13 +876,29 @@
     <div class="loc-grid">
       <div class="loc-map">
         <!-- Simulated map background -->
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#f0f4f8 0%,#e6edf3 100%);background-image:repeating-linear-gradient(45deg,transparent,transparent 30px,#dde4ec 30px,#dde4ec 31px),repeating-linear-gradient(-45deg,transparent,transparent 40px,#dde4ec 40px,#dde4ec 41px)"></div>
-        <div style="position:absolute;top:30%;left:25%;font-size:10px;color:#a0aec0">古河駅</div>
-        <div style="position:absolute;top:65%;left:70%;font-size:10px;color:#a0aec0">古河第一小</div>
-        <div style="position:absolute;top:20%;left:60%;font-size:10px;color:#a0aec0">古河特別支援学校</div>
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(circle at 50% 50%, rgba(201,169,97,0.06) 0%, transparent 55%),
+          linear-gradient(135deg,#eef2f7 0%,#dde4ec 100%);
+          background-image:
+            repeating-linear-gradient(45deg,transparent 0,transparent 35px,rgba(184,196,210,0.4) 35px,rgba(184,196,210,0.4) 36px),
+            repeating-linear-gradient(-45deg,transparent 0,transparent 45px,rgba(184,196,210,0.4) 45px,rgba(184,196,210,0.4) 46px)"></div>
+
+        <!-- Surrounding labels -->
+        <div class="loc-map-label" style="top:22%;left:25%">🚉 古河駅</div>
+        <div class="loc-map-label" style="top:25%;left:75%">🏫 古河特別支援学校</div>
+        <div class="loc-map-label" style="top:75%;left:22%">🏫 古河第一小学校</div>
+        <div class="loc-map-label" style="top:78%;left:72%">🛒 スーパー</div>
+        <div class="loc-map-label" style="top:48%;left:12%">🏛️ 古河市役所</div>
+        <div class="loc-map-label" style="top:50%;left:88%">🏥 古河協立病院</div>
+
+        <!-- Distance circles -->
+        <div style="position:absolute;top:50%;left:50%;width:220px;height:220px;border:1px dashed #b8c4d2;border-radius:50%;transform:translate(-50%,-50%)"></div>
+        <div style="position:absolute;top:50%;left:50%;width:380px;height:380px;border:1px dashed #b8c4d2;border-radius:50%;transform:translate(-50%,-50%)"></div>
+
+        <!-- Center pin -->
         <div class="loc-map-pin">
           🏠 (仮称)長谷町壱番館<br>
-          <span style="font-size:10px;color:var(--gray-2);font-weight:400">出店予定地</span>
+          <span style="font-size:11px;color:var(--gold);font-weight:600">出店予定地</span>
         </div>
       </div>
       <div class="loc-detail">
@@ -1853,9 +1915,15 @@
     <div class="map-grid">
       <div class="map-frame">
         <!-- Map background pattern -->
-        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#f0f4f8 0%,#e6edf3 100%);background-image:repeating-linear-gradient(0deg,transparent,transparent 50px,#dde4ec 50px,#dde4ec 51px),repeating-linear-gradient(90deg,transparent,transparent 50px,#dde4ec 50px,#dde4ec 51px)"></div>
+        <div style="position:absolute;inset:0;background:
+          radial-gradient(circle at 50% 55%, rgba(201,169,97,0.05) 0%, transparent 60%),
+          linear-gradient(135deg,#eef2f7 0%,#e2e8f0 100%);
+          background-image:
+            repeating-linear-gradient(0deg,transparent 0,transparent 60px,rgba(184,196,210,0.4) 60px,rgba(184,196,210,0.4) 61px),
+            repeating-linear-gradient(90deg,transparent 0,transparent 60px,rgba(184,196,210,0.4) 60px,rgba(184,196,210,0.4) 61px)"></div>
+
         <div class="map-frame-head">
-          <span>🗺️ 古河市長谷町エリア</span>
+          <span>🗺️ 古河市長谷町エリア（連携施設マップ）</span>
           <div class="map-legend">
             <span class="lg-blue">相談</span>
             <span class="lg-green">就労</span>
@@ -1864,20 +1932,30 @@
           </div>
         </div>
         <div class="map-circles"></div>
+
         <!-- Center pin -->
-        <div class="map-pin center" style="top:50%;left:50%;transform:translate(-50%,-50%)">🏠 ひだまりの家</div>
-        <!-- Surrounding pins -->
-        <div class="map-pin blue" style="top:18%;left:30%">古河市相談支援センター</div>
-        <div class="map-pin blue" style="top:25%;left:60%">相談支援事業所A</div>
-        <div class="map-pin blue" style="top:75%;left:25%">相談支援事業所B</div>
-        <div class="map-pin green" style="top:32%;left:80%">A型作業所</div>
-        <div class="map-pin green" style="top:55%;left:82%">B型作業所</div>
-        <div class="map-pin green" style="top:78%;left:65%">就労継続支援C</div>
-        <div class="map-pin red" style="top:15%;left:55%">古河協立病院</div>
-        <div class="map-pin red" style="top:65%;left:14%">精神科クリニック</div>
-        <div class="map-pin red" style="top:82%;left:48%">歯科医院</div>
-        <div class="map-pin purple" style="top:30%;left:12%">古河特別支援学校</div>
-        <div class="map-pin purple" style="top:50%;left:8%">古河市役所</div>
+        <div class="map-pin center" style="top:55%;left:50%">🏠 ひだまりの家</div>
+
+        <!-- Top row -->
+        <div class="map-pin purple" style="top:18%;left:18%">古河特別支援学校</div>
+        <div class="map-pin red" style="top:18%;left:50%">古河協立病院</div>
+        <div class="map-pin blue" style="top:18%;left:82%">相談支援事業所A</div>
+
+        <!-- Upper-mid row -->
+        <div class="map-pin blue" style="top:33%;left:30%">古河市相談支援センター</div>
+        <div class="map-pin green" style="top:33%;left:75%">A型作業所</div>
+
+        <!-- Mid row (sides only - center is occupied) -->
+        <div class="map-pin purple" style="top:55%;left:14%">古河市役所</div>
+        <div class="map-pin green" style="top:55%;left:88%">B型作業所</div>
+
+        <!-- Lower-mid row -->
+        <div class="map-pin red" style="top:74%;left:18%">精神科クリニック</div>
+        <div class="map-pin green" style="top:74%;left:78%">就労継続支援C</div>
+
+        <!-- Bottom row -->
+        <div class="map-pin blue" style="top:88%;left:32%">相談支援事業所B</div>
+        <div class="map-pin red" style="top:88%;left:62%">歯科医院</div>
       </div>
 
       <div class="net-summary">
