@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1456, initial-scale=1.0">
+<title>合同会社サンライズ 事業計画書 — 障がい者グループホーム ひだまりの家</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0a1929;
+    --navy-2:#1a365d;
+    --navy-3:#2c4870;
+    --gold:#c9a961;
+    --gold-2:#daa520;
+    --bg:#f5f7fa;
+    --white:#ffffff;
+    --gray:#e2e8f0;
+    --gray-2:#718096;
+    --text:#1a1a1a;
+    --red:#c53030;
+    --green:#2f855a;
+  }
+  html,body{font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;background:#cfd8e3;color:var(--text);line-height:1.6}
+  .slide{
+    width:1456px;height:819px;margin:24px auto;background:var(--bg);
+    position:relative;overflow:hidden;
+    box-shadow:0 4px 20px rgba(0,0,0,0.15);
+    page-break-after:always;
+  }
+  /* Header bar */
+  .slide-header{
+    height:80px;background:var(--bg);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 56px;border-bottom:3px solid var(--gold);
+  }
+  .slide-title{
+    font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;
+    font-size:30px;color:var(--navy);font-weight:600;letter-spacing:4px;
+    border-left:6px solid var(--gold);padding-left:16px;
+  }
+  .slide-meta{font-size:13px;color:var(--gray-2)}
+  .pagenum{position:absolute;top:24px;right:40px;font-size:13px;color:var(--gray-2)}
+
+  /* Body */
+  .slide-body{padding:32px 56px;height:calc(100% - 80px);overflow:hidden}
+
+  /* Common card */
+  .card{background:var(--white);border-radius:8px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+
+  /* COVER */
+  .cover{background:var(--navy);color:var(--white);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative}
+  .cover::before,.cover::after{
+    content:"";position:absolute;width:80px;height:80px;border:1px solid var(--gold);
+  }
+  .cover::before{top:48px;left:48px;border-right:none;border-bottom:none}
+  .cover::after{bottom:48px;right:48px;border-left:none;border-top:none}
+  .cover-corner-tr{position:absolute;top:48px;right:48px;width:80px;height:80px;border:1px solid var(--gold);border-left:none;border-bottom:none}
+  .cover-corner-bl{position:absolute;bottom:48px;left:48px;width:80px;height:80px;border:1px solid var(--gold);border-right:none;border-top:none}
+  .cover-eyebrow{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:32px;letter-spacing:8px;font-weight:300;color:#cbd5e0;margin-bottom:24px}
+  .cover-title{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:64px;letter-spacing:6px;color:var(--white);font-weight:500;text-align:center;line-height:1.4}
+  .cover-company{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:24px;letter-spacing:6px;color:var(--gold);margin-top:24px;border-bottom:1px solid var(--gold);padding-bottom:8px}
+  .cover-info{margin-top:80px;background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,97,0.3);border-radius:8px;padding:24px 40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;width:880px}
+  .cover-info-row{display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(255,255,255,0.1);padding:8px 0}
+  .cover-info-label{font-size:13px;color:#a0aec0;min-width:80px}
+  .cover-info-value{font-size:16px;color:var(--white);font-weight:500}
+
+  /* Profile */
+  .profile-grid{display:grid;grid-template-columns:340px 1fr;gap:32px;height:100%}
+  .profile-card{background:var(--white);border:1px solid var(--gray);border-radius:8px;padding:32px 24px}
+  .profile-avatar{width:160px;height:160px;border-radius:50%;background:#edf2f7;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;color:#a0aec0;font-size:64px}
+  .profile-name{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:32px;text-align:center;color:var(--navy);margin-bottom:6px}
+  .profile-sub{text-align:center;font-size:13px;color:var(--gray-2);margin-bottom:14px}
+  .profile-badges{display:flex;justify-content:center;gap:8px;margin-bottom:20px}
+  .badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600}
+  .badge-navy{background:var(--navy);color:var(--white)}
+  .badge-gold{background:var(--gold);color:var(--navy)}
+  .profile-meta{border-top:1px solid var(--gray);padding-top:14px;font-size:13px;line-height:1.8}
+  .profile-meta-label{color:var(--gray-2);font-size:11px;margin-top:8px}
+  .profile-cert-card{margin-top:20px;background:var(--white);border:1px solid var(--gray);border-radius:8px;padding:16px;border-top:3px solid var(--gold)}
+  .profile-cert-title{font-size:14px;color:var(--navy);font-weight:700;margin-bottom:12px}
+  .cert-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .cert-tag{padding:5px 12px;border:1px solid var(--gray);border-radius:4px;font-size:12px;color:#2d3748;background:#f7fafc}
+  .career-list{padding-left:0}
+  .career-item{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:16px 0;border-left:2px solid var(--navy);padding-left:20px;position:relative;margin-bottom:4px}
+  .career-item::before{content:"";position:absolute;left:-7px;top:24px;width:12px;height:12px;background:var(--navy);border-radius:50%}
+  .career-period{font-size:13px;color:var(--gold-2);font-weight:600}
+  .career-company{font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
+  .career-role{font-size:13px;color:var(--gray-2)}
+  .career-highlight{display:inline-block;margin-top:6px;padding:3px 10px;background:#fef5e7;border-left:3px solid var(--gold);font-size:12px;color:#744210}
+  .career-highlight-success{background:#f0fff4;border-left-color:var(--green);color:#22543d}
+
+  /* TOC */
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;padding:8px 0}
+  .toc-item{display:grid;grid-template-columns:48px 1fr 32px;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray);font-size:15px}
+  .toc-item.active{background:var(--navy);color:var(--white);border-radius:4px;padding:14px 16px;border-bottom:none}
+  .toc-num{font-family:'Hiragino Mincho ProN',serif;color:var(--gold);font-weight:600}
+  .toc-item.active .toc-num{color:var(--gold)}
+
+  /* 4-card grid */
+  .grid-2x2{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:24px;height:100%}
+  .info-card{background:var(--white);border-radius:8px;padding:28px;border-left:5px solid var(--navy);box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .info-card.gold{border-left-color:var(--gold)}
+  .info-card.green{border-left-color:var(--green)}
+  .info-card.red{border-left-color:var(--red)}
+  .info-card-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--navy);color:var(--white);border-radius:50%;margin-bottom:14px;font-weight:700}
+  .info-card.gold .info-card-icon{background:var(--gold)}
+  .info-card.green .info-card-icon{background:var(--green)}
+  .info-card.red .info-card-icon{background:var(--red)}
+  .info-card-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .info-card-body{font-size:13.5px;color:#2d3748;line-height:1.8}
+  .quote-strip{position:absolute;bottom:32px;left:56px;right:56px;background:var(--navy);color:var(--white);padding:18px 28px;border-left:6px solid var(--gold);border-radius:4px;font-size:14px}
+
+  /* Service overview */
+  .service-top{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;margin-bottom:20px}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .service-card{background:var(--white);border-radius:8px;padding:22px;border:1px solid var(--gray)}
+  .service-icon{width:36px;height:36px;background:#edf2f7;color:var(--navy);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+  .service-name{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .service-desc{font-size:12px;color:#4a5568;line-height:1.7}
+
+  /* Location */
+  .loc-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;height:100%}
+  .loc-map{background:#e2e8f0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);font-size:14px;position:relative;overflow:hidden}
+  .loc-map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--white);padding:10px 18px;border:2px solid var(--navy);border-radius:24px;font-size:13px;font-weight:600;color:var(--navy);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+  .loc-map-pin::before{content:"";position:absolute;left:-1px;top:-1px;width:calc(100% + 2px);height:calc(100% + 2px);border:2px dashed var(--gold);border-radius:24px;opacity:0.5}
+  .loc-detail{padding-top:16px}
+  .loc-detail-title{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);border-left:4px solid var(--gold);padding-left:12px;margin-bottom:18px}
+  .loc-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:18px}
+  .loc-table th,.loc-table td{padding:10px 12px;border-bottom:1px solid var(--gray);text-align:left;vertical-align:top}
+  .loc-table th{background:#f7fafc;color:var(--navy);width:130px;font-weight:600}
+  .loc-bullet{display:flex;align-items:start;gap:10px;font-size:13px;margin:8px 0}
+  .loc-bullet::before{content:"●";color:var(--gold);font-size:10px;margin-top:6px}
+
+  /* Partner */
+  .partner-grid{display:grid;grid-template-columns:300px 1fr;gap:32px;height:100%}
+  .partner-card{background:var(--navy);color:var(--white);border-radius:8px;padding:32px 28px}
+  .partner-eyebrow{display:inline-block;background:rgba(201,169,97,0.2);color:var(--gold);font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:3px;margin-bottom:16px}
+  .partner-name{font-family:'Hiragino Mincho ProN',serif;font-size:24px;color:var(--white);margin-bottom:6px}
+  .partner-en{font-size:12px;color:var(--gold);font-style:italic;margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:16px}
+  .partner-meta-label{font-size:11px;color:#a0aec0;margin-top:14px}
+  .partner-meta-value{font-size:14px;color:var(--white);margin-top:2px;line-height:1.6}
+  .partner-feature{margin-bottom:18px}
+  .partner-feature-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  .partner-feature-en{font-size:11px;color:var(--gray-2);font-style:italic}
+  .partner-feature-desc{font-size:13px;color:#2d3748;line-height:1.7;background:var(--white);padding:18px;border-radius:6px;border:1px solid var(--gray);margin-top:6px}
+  .partner-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+  /* Philosophy */
+  .philo-mission{background:var(--white);border-radius:8px;padding:32px 40px;display:flex;align-items:center;gap:32px;margin-bottom:28px}
+  .philo-icon{width:80px;height:80px;background:var(--gold);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0}
+  .philo-mission-text{flex:1}
+  .philo-mission-eyebrow{font-size:11px;letter-spacing:3px;color:var(--gold-2);font-weight:600;margin-bottom:8px}
+  .philo-mission-title{font-family:'Hiragino Mincho ProN',serif;font-size:28px;color:var(--navy);margin-bottom:8px}
+  .philo-mission-desc{font-size:14px;color:#4a5568;line-height:1.8}
+  .philo-policies{display:flex;flex-direction:column;gap:12px}
+  .philo-policy{display:flex;align-items:center;gap:18px;padding:14px 24px;background:var(--white);border-radius:8px;border-left:4px solid var(--navy);font-size:13.5px}
+  .philo-policy-num{width:32px;height:32px;background:var(--navy);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+  .philo-policy-title{font-weight:700;color:var(--navy);margin-right:16px;min-width:160px}
+
+  /* Cash flow */
+  .cf-diagram{background:var(--white);border-radius:8px;padding:40px 32px;margin-bottom:28px}
+  .cf-eyebrow{font-size:11px;letter-spacing:3px;color:var(--gray-2);margin-bottom:20px}
+  .cf-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .cf-node{flex:1;background:var(--white);border:2px solid var(--gray);border-radius:8px;padding:18px 12px;text-align:center}
+  .cf-node.center{background:var(--navy);color:var(--white);border-color:var(--navy)}
+  .cf-node.gold{background:#fef5e7;border-color:var(--gold)}
+  .cf-node-icon{font-size:24px;color:var(--navy);margin-bottom:8px}
+  .cf-node.center .cf-node-icon{color:var(--gold)}
+  .cf-node.gold .cf-node-icon{color:var(--gold-2)}
+  .cf-node-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px}
+  .cf-node.center .cf-node-title{color:var(--white)}
+  .cf-node-sub{font-size:11px;color:var(--gray-2)}
+  .cf-arrow{font-size:11px;color:var(--gray-2);min-width:48px;text-align:center}
+  .cf-arrow strong{display:block;color:var(--navy);font-size:11px;margin-bottom:2px}
+  .cf-features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .cf-feature{background:var(--white);border-left:4px solid var(--gold);border-radius:4px;padding:18px 22px}
+  .cf-feature-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+
+  /* Rate table */
+  .rate-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;height:100%}
+  .rate-section-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;justify-content:space-between}
+  .rate-region{background:#fef5e7;color:var(--navy);font-size:12px;padding:6px 14px;border-radius:4px;font-weight:700}
+  .rate-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .rate-table th{background:#edf2f7;color:var(--navy);font-size:13px;font-weight:600;padding:14px 16px;text-align:left;border-bottom:2px solid var(--gold)}
+  .rate-table td{padding:18px 16px;border-bottom:1px solid var(--gray);font-size:14px}
+  .rate-table tr.featured td{background:#fef5e7}
+  .rate-table .rate-num{display:inline-flex;width:24px;height:24px;border-radius:50%;background:#cbd5e0;color:#4a5568;font-size:11px;align-items:center;justify-content:center;margin-right:8px}
+  .rate-table tr.featured .rate-num{background:var(--gold);color:var(--white)}
+  .rate-amount{font-family:'Hiragino Mincho ProN',serif;font-size:20px;color:var(--navy);font-weight:700;text-align:right}
+  .rate-table tr.featured .rate-amount{color:var(--gold-2);font-size:24px}
+  .rate-addons{margin-top:18px;background:var(--white);border:1px dashed var(--gray);border-radius:8px;padding:14px}
+  .rate-addons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+  .rate-addon{text-align:center;padding:12px;background:#f7fafc;border-radius:6px}
+  .rate-addon-label{font-size:11px;color:var(--gray-2)}
+  .rate-addon-value{font-size:18px;font-weight:700;color:var(--navy);margin-top:4px}
+  .rate-burden-card{background:var(--navy);color:var(--white);border-radius:8px;padding:24px;text-align:center;margin-bottom:14px}
+  .rate-burden-label{font-size:12px;color:#cbd5e0;margin-bottom:8px}
+  .rate-burden-value{font-family:'Hiragino Mincho ProN',serif;font-size:54px;font-weight:300;letter-spacing:1px}
+  .rate-burden-value span{font-size:24px}
+  .rate-burden-note{font-size:10px;color:#a0aec0;margin-top:6px}
+  .rate-burden-list{font-size:13px}
+  .rate-burden-list-row{display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-bottom:1px solid var(--gray)}
+  .rate-burden-list-row:last-child{border-bottom:none}
+  .rate-burden-list-row-label{display:flex;align-items:center;gap:10px;color:#2d3748}
+  .rate-burden-list-row-value{font-weight:700;color:var(--navy)}
+  .rate-info-note{font-size:11px;color:var(--gray-2);background:#f7fafc;padding:10px;border-radius:6px;margin-top:10px;line-height:1.6}
+  .rate-info-note strong{color:var(--gold-2)}
+
+  /* Staff */
+  .staff-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;height:100%}
+  .staff-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);border-radius:8px;overflow:hidden;font-size:13px}
+  .staff-table th{background:#edf2f7;padding:12px;text-align:left;color:var(--navy);font-weight:600;font-size:12px}
+  .staff-table td{padding:14px 12px;border-bottom:1px solid var(--gray);vertical-align:middle}
+  .staff-tag{display:inline-block;padding:3px 10px;background:#fef5e7;color:#744210;font-size:11px;border-radius:3px;font-weight:600}
+  .staff-tag.full{background:#1a365d;color:#fff}
+  .staff-tag.part{background:#fef5e7;color:#744210}
+  .staff-tag.fixed{background:#e2e8f0;color:#2d3748}
+  .staff-amount{text-align:right;font-weight:700;color:var(--navy)}
+  .staff-amount-sub{display:block;font-size:10px;color:var(--gray-2);font-weight:400}
+  .staff-amount-warn{color:var(--red);font-size:10px;font-weight:600;display:block;margin-top:2px}
+  .staff-summary{margin-top:14px;background:var(--white);border-radius:8px;padding:18px;display:flex;align-items:center;justify-content:space-between;border-top:3px solid var(--gold)}
+  .staff-summary-left{font-size:12px;color:var(--gray-2)}
+  .staff-summary-left strong{display:block;color:var(--navy);font-size:14px;margin-bottom:2px}
+  .staff-summary-total{font-family:'Hiragino Mincho ProN',serif;font-size:32px;font-weight:700;color:var(--gold-2);text-align:right}
+  .staff-summary-total span{font-size:14px}
+  .staff-strategy-card{background:var(--white);border-radius:8px;padding:20px;border:1px solid var(--gray);margin-bottom:14px}
+  .staff-strategy-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .staff-strategy-desc{font-size:12.5px;color:#2d3748;line-height:1.7}
+  .staff-strategy-pill{display:inline-block;background:#f0fff4;color:var(--green);padding:5px 10px;border-radius:4px;font-size:11px;font-weight:600;margin-top:8px}
+  .staff-variable{background:linear-gradient(135deg,#1a365d 0%,#2c4870 100%);color:var(--white);border-radius:8px;padding:18px}
+  .staff-variable-head{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:12px;margin-bottom:12px}
+  .staff-variable-label{font-size:13px;font-weight:600}
+  .staff-variable-sub{font-size:10px;color:#cbd5e0}
+  .staff-variable-amount{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--gold)}
+  .staff-variable-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:12px}
+  .staff-variable-row-name{display:flex;align-items:center;gap:8px}
+
+  /* Strengths */
+  .strengths-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .strength-card{background:var(--white);border-radius:8px;padding:28px;border-top:4px solid var(--navy);position:relative;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .strength-card.gold{border-top-color:var(--gold)}
+  .strength-card.green{border-top-color:var(--green)}
+  .strength-card.red{border-top-color:var(--red)}
+  .strength-card.purple{border-top-color:#805ad5}
+  .strength-num{position:absolute;top:16px;right:24px;font-family:'Hiragino Mincho ProN',serif;font-size:30px;color:#cbd5e0;font-weight:300}
+  .strength-icon{width:52px;height:52px;background:#edf2f7;color:var(--navy);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+  .strength-title{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .strength-desc{font-size:13px;color:#2d3748;line-height:1.7}
+  .strength-desc strong{color:var(--gold-2)}
+
+  /* Funding / Capital */
+  .fund-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:32px;height:100%}
+  .fund-table{width:100%;border-collapse:separate;border-spacing:0;font-size:12.5px}
+  .fund-table th{background:#edf2f7;padding:10px 12px;text-align:left;color:var(--navy);font-weight:600}
+  .fund-table td{padding:12px;border-bottom:1px solid var(--gray);background:var(--white)}
+  .fund-section-row td{background:#f7fafc;font-weight:700;color:var(--navy);padding:8px 12px;font-size:12px}
+  .fund-amount{text-align:right;font-weight:700;color:var(--navy)}
+  .fund-amount-sub{font-size:10px;color:var(--gray-2);font-weight:400}
+  .fund-subtotal{background:var(--navy);color:var(--white);padding:14px 16px;display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:14px;border-radius:4px}
+  .fund-subtotal .yen{font-family:'Hiragino Mincho ProN',serif;font-size:20px;color:var(--gold)}
+  .fund-total-card{background:var(--white);border-radius:8px;padding:32px;text-align:center;height:100%;display:flex;flex-direction:column;justify-content:center;border-top:4px solid var(--gold)}
+  .fund-total-icon{width:72px;height:72px;background:#fef5e7;color:var(--gold-2);border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:32px}
+  .fund-total-eyebrow{font-size:11px;letter-spacing:3px;color:var(--gray-2);margin-bottom:8px}
+  .fund-total-amount{font-family:'Hiragino Mincho ProN',serif;font-size:54px;font-weight:300;color:var(--navy)}
+  .fund-total-amount span{font-size:24px}
+  .fund-total-yen{font-size:13px;color:var(--gray-2);margin-top:6px}
+  .fund-strategy{margin-top:20px;background:#f7fafc;border-left:4px solid var(--gold);padding:14px 18px;text-align:left}
+  .fund-strategy-title{font-size:11px;letter-spacing:2px;color:var(--gold-2);font-weight:700;margin-bottom:8px}
+  .fund-strategy-row{display:flex;align-items:start;gap:8px;font-size:12px;color:#2d3748;margin:6px 0}
+  .fund-strategy-row::before{content:"✓";color:var(--green);font-weight:700;margin-top:1px}
+  .fund-strategy-row strong{color:var(--navy);display:block;font-size:12.5px}
+
+  /* P&L */
+  .pl-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:24px;height:100%}
+  .pl-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:8px;overflow:hidden;font-size:12px}
+  .pl-table th{background:var(--navy);color:var(--white);padding:11px 10px;text-align:right;font-weight:600;font-size:11px}
+  .pl-table th:first-child{text-align:left}
+  .pl-table th.phase1{background:#7b341e}
+  .pl-table th.phase2{background:#22543d}
+  .pl-table td{padding:10px;border-bottom:1px solid var(--gray);font-size:11.5px;text-align:right}
+  .pl-table td:first-child{text-align:left;font-weight:600;color:#2d3748}
+  .pl-table td:last-child{text-align:left;font-size:10px;color:var(--gray-2);font-weight:400}
+  .pl-table tr.section td{background:#edf2f7;font-weight:700;color:var(--navy);font-size:11px;padding:6px 10px}
+  .pl-table tr.subtotal td{background:#fef5e7;color:#744210;font-weight:700}
+  .pl-table tr.total td{background:var(--navy);color:var(--white);font-weight:700;font-size:13px;padding:14px 10px}
+  .pl-table tr.total td:last-child{background:var(--navy);color:#cbd5e0;font-size:10px;font-weight:400}
+  .pl-table .delta-up{color:var(--green);font-weight:600}
+  .pl-table .delta-down{color:var(--red);font-weight:600}
+  .pl-side-card{background:var(--white);border-radius:8px;padding:18px;margin-bottom:14px}
+  .pl-side-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .pl-phase{display:flex;gap:12px;align-items:start;margin-bottom:10px;padding:10px;border-radius:6px;background:#f7fafc}
+  .pl-phase-num{width:36px;height:36px;background:#7b341e;color:var(--white);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-weight:700;line-height:1.2;flex-direction:column}
+  .pl-phase-num.p2{background:#22543d}
+  .pl-phase-num small{font-size:8px;font-weight:400}
+  .pl-phase-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+  .pl-phase-desc{font-size:11px;color:#4a5568;line-height:1.6}
+  .pl-phase-desc strong{color:var(--red)}
+  .pl-summary{background:var(--navy);color:var(--white);border-radius:8px;padding:18px;margin-top:auto}
+  .pl-summary-eyebrow{font-size:10px;color:#cbd5e0;letter-spacing:1px;margin-bottom:4px}
+  .pl-summary-row{display:flex;justify-content:space-between;align-items:end}
+  .pl-summary-label{font-size:13px}
+  .pl-summary-amount{font-family:'Hiragino Mincho ProN',serif;font-size:36px;color:var(--gold);font-weight:700}
+  .pl-summary-amount span{font-size:14px}
+  .pl-summary-rate{text-align:right;font-size:10px;color:#cbd5e0;margin-top:2px}
+  .pl-summary-rate strong{color:var(--white);font-size:18px}
+
+  /* Chart */
+  .chart-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;height:100%}
+  .chart-card{background:var(--white);border-radius:8px;padding:24px;display:flex;flex-direction:column}
+  .chart-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:10px;justify-content:space-between}
+  .chart-legend{display:flex;gap:14px;font-size:11px;color:var(--gray-2)}
+  .chart-legend span::before{content:"";display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:2px;vertical-align:middle}
+  .chart-legend .leg-rev::before{background:var(--gold)}
+  .chart-legend .leg-cost::before{background:var(--navy)}
+  .chart-area{flex:1;display:flex;align-items:end;justify-content:space-around;padding:16px 0;border-bottom:1px solid var(--gray);border-left:1px solid var(--gray);position:relative;height:340px;gap:6px}
+  .chart-grid-line{position:absolute;left:0;right:0;border-top:1px dashed #edf2f7;font-size:9px;color:var(--gray-2)}
+  .chart-grid-line span{position:absolute;left:-32px;top:-6px}
+  .chart-month{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;height:100%;justify-content:end;position:relative;z-index:1}
+  .chart-bars{display:flex;align-items:end;gap:3px;height:calc(100% - 22px);width:100%;justify-content:center}
+  .chart-bar{width:18px;border-radius:2px 2px 0 0}
+  .chart-bar.rev{background:var(--gold)}
+  .chart-bar.cost{background:var(--navy)}
+  .chart-month-label{font-size:10px;color:var(--gray-2);margin-top:4px}
+  .chart-divider{position:absolute;top:0;bottom:32px;border-left:2px dashed var(--red);z-index:2}
+  .chart-note{font-size:10px;color:var(--gray-2);text-align:center;margin-top:8px}
+
+  /* 3 Patterns */
+  .pat-bar{display:flex;justify-content:center;gap:14px;margin-bottom:18px;font-size:11px;color:var(--gray-2)}
+  .pat-bar-tag{background:var(--white);padding:6px 14px;border-radius:20px;border:1px solid var(--gray)}
+  .pat-bar-tag::before{content:"✓ ";color:var(--green);font-weight:700}
+  .pat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;height:calc(100% - 80px)}
+  .pat-card{background:var(--white);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .pat-card-head{padding:24px 20px;text-align:center;color:var(--white)}
+  .pat-card.a .pat-card-head{background:#4a5568}
+  .pat-card.b .pat-card-head{background:var(--navy)}
+  .pat-card.c .pat-card-head{background:var(--green)}
+  .pat-card-title{font-family:'Hiragino Mincho ProN',serif;font-size:22px;font-weight:600}
+  .pat-card-en{font-size:11px;font-style:italic;color:rgba(255,255,255,0.7);margin-top:4px}
+  .pat-card-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;gap:14px}
+  .pat-section{background:#f7fafc;border-radius:6px;padding:12px;text-align:center}
+  .pat-section-label{font-size:11px;color:var(--gray-2);margin-bottom:4px}
+  .pat-section-value{font-size:14px;font-weight:700;color:var(--navy)}
+  .pat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--gray);font-size:12px}
+  .pat-row:last-child{border-bottom:none}
+  .pat-row-label{color:var(--gray-2)}
+  .pat-row-value{font-weight:700;color:var(--navy)}
+  .pat-result{margin-top:auto;background:#fef5e7;border-radius:6px;padding:14px;display:flex;justify-content:space-between;align-items:center}
+  .pat-card.b .pat-result{background:#fef5e7;border:2px solid var(--gold)}
+  .pat-result-label{font-size:11px;color:var(--gray-2)}
+  .pat-result-value{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--gold-2);font-weight:700}
+  .pat-card.b .pat-result-value{font-size:26px;color:var(--gold-2)}
+
+  /* Year2+ */
+  .year-list{display:flex;flex-direction:column;gap:18px;padding:20px 0}
+  .year-card{display:flex;align-items:start;gap:24px;background:var(--white);border-radius:8px;padding:24px 28px;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .year-icon{width:48px;height:48px;background:var(--navy);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .year-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .year-title strong{color:var(--gold-2)}
+  .year-desc{font-size:13px;color:#2d3748;line-height:1.8}
+
+  /* Risk */
+  .risk-intro{font-size:13px;color:var(--gray-2);margin-bottom:18px;line-height:1.7}
+  .risk-list{display:flex;flex-direction:column;gap:14px}
+  .risk-row{display:grid;grid-template-columns:280px 1fr;gap:24px;background:var(--white);border-radius:8px;padding:20px 24px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .risk-left{display:flex;align-items:center;gap:14px}
+  .risk-icon{width:42px;height:42px;background:#fed7d7;color:var(--red);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .risk-num{font-size:11px;color:var(--gray-2);font-weight:600;letter-spacing:1px}
+  .risk-tag{display:inline-block;background:var(--red);color:var(--white);font-size:10px;padding:2px 8px;border-radius:3px;font-weight:600;margin-left:6px}
+  .risk-tag.mid{background:#dd6b20}
+  .risk-title{font-size:16px;font-weight:700;color:var(--navy);margin-top:4px}
+  .risk-sub{font-size:11px;color:var(--gray-2)}
+  .risk-content{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .risk-content-col-title{font-size:12px;color:var(--green);font-weight:700;margin-bottom:6px}
+  .risk-content-col-title::before{content:"● ";color:var(--green)}
+  .risk-content-col-desc{font-size:12px;color:#2d3748;line-height:1.7}
+  .risk-content-col-desc strong{color:var(--gold-2)}
+
+  /* Map */
+  .map-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;height:100%}
+  .map-frame{background:#f0f4f8;border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--gray)}
+  .map-frame-head{position:absolute;top:14px;left:18px;font-size:14px;color:var(--navy);font-weight:700;display:flex;gap:14px;align-items:center}
+  .map-legend{display:flex;gap:10px;margin-left:14px}
+  .map-legend span{font-size:10px;color:var(--gray-2);display:flex;align-items:center;gap:4px}
+  .map-legend span::before{content:"●";font-size:14px}
+  .map-legend .lg-blue::before{color:#3182ce}
+  .map-legend .lg-green::before{color:#38a169}
+  .map-legend .lg-red::before{color:#e53e3e}
+  .map-legend .lg-purple::before{color:#805ad5}
+  .map-pin{position:absolute;background:var(--white);padding:6px 12px;border-radius:24px;font-size:11px;font-weight:700;color:var(--text);white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.15);border:2px solid;cursor:pointer}
+  .map-pin.center{background:var(--navy);color:var(--white);border-color:var(--gold);padding:10px 18px;font-size:13px;z-index:5;border-width:3px}
+  .map-pin.blue{border-color:#3182ce;color:#2b6cb0}
+  .map-pin.green{border-color:#38a169;color:#22543d}
+  .map-pin.red{border-color:#e53e3e;color:#9b2c2c}
+  .map-pin.purple{border-color:#805ad5;color:#553c9a}
+  .map-circles::before,.map-circles::after{content:"";position:absolute;top:50%;left:50%;border:1px dashed #cbd5e0;border-radius:50%;transform:translate(-50%,-50%)}
+  .map-circles::before{width:300px;height:300px}
+  .map-circles::after{width:480px;height:480px}
+  .net-summary{display:flex;flex-direction:column;gap:14px;padding:0}
+  .net-card{background:var(--white);border-radius:8px;padding:14px 18px;display:flex;align-items:center;gap:14px;border-left:4px solid;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+  .net-card.blue{border-left-color:#3182ce}
+  .net-card.green{border-left-color:#38a169}
+  .net-card.red{border-left-color:#e53e3e}
+  .net-card.purple{border-left-color:#805ad5}
+  .net-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:14px;flex-shrink:0}
+  .net-card.blue .net-icon{background:#3182ce}
+  .net-card.green .net-icon{background:#38a169}
+  .net-card.red .net-icon{background:#e53e3e}
+  .net-card.purple .net-icon{background:#805ad5}
+  .net-content{flex:1}
+  .net-eyebrow{font-size:10px;color:var(--gray-2);margin-bottom:2px}
+  .net-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+  .net-tags{display:flex;flex-wrap:wrap;gap:4px}
+  .net-tag{font-size:10px;color:#4a5568;background:#edf2f7;padding:2px 6px;border-radius:3px}
+  .net-count{font-family:'Hiragino Mincho ProN',serif;font-size:24px;color:var(--navy);font-weight:700;margin-left:10px}
+  .net-count span{font-size:10px;color:var(--gray-2)}
+  .map-key-message{position:absolute;bottom:14px;left:18px;right:18px;background:var(--navy);color:var(--white);padding:14px 18px;border-radius:6px;font-size:12px;border-left:3px solid var(--gold)}
+  .map-key-message strong{color:var(--gold)}
+
+  /* Schedule */
+  .sched-intro{font-size:13px;color:#4a5568;margin-bottom:32px;line-height:1.8}
+  .sched-track{position:relative;padding:40px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+  .sched-track::before{content:"";position:absolute;top:60px;left:8%;right:8%;height:1px;background:var(--gray);z-index:0}
+  .sched-step{position:relative;text-align:center;z-index:1}
+  .sched-date{font-family:'Hiragino Mincho ProN',serif;font-size:20px;color:var(--navy);font-weight:600;margin-bottom:14px}
+  .sched-step.active .sched-date{font-size:24px;color:var(--gold-2)}
+  .sched-icon{width:42px;height:42px;border-radius:50%;background:var(--white);border:2px solid var(--gray);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);position:relative;z-index:2}
+  .sched-step.done .sched-icon{background:var(--gold);border-color:var(--gold);color:var(--white)}
+  .sched-step.active .sched-icon{background:var(--navy);border-color:var(--gold);color:var(--gold);box-shadow:0 0 0 6px rgba(201,169,97,0.15)}
+  .sched-step.target .sched-icon{background:var(--white);border-color:var(--gold);color:var(--gold-2)}
+  .sched-card{background:var(--white);border-radius:8px;padding:18px 16px;border-top:3px solid var(--gray);min-height:160px;text-align:left}
+  .sched-step.done .sched-card{border-top-color:var(--gold)}
+  .sched-step.active .sched-card{border-top-color:var(--navy);background:#f7fafc}
+  .sched-step.target .sched-card{background:#fffaf0;border:2px solid var(--gold)}
+  .sched-card-title{font-size:14px;font-weight:700;color:var(--navy);text-align:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--gray)}
+  .sched-card-list{font-size:11.5px;color:#2d3748;line-height:1.8}
+  .sched-card-list li{list-style:none;display:flex;align-items:start;gap:6px;margin:3px 0}
+  .sched-card-list li::before{content:"●";color:var(--gold);font-size:8px;margin-top:6px}
+  .sched-tag{display:inline-block;background:var(--gold);color:var(--white);font-size:10px;padding:3px 8px;border-radius:3px;margin-top:8px;font-weight:600}
+  .sched-step.done .sched-tag{background:var(--gold);color:var(--white)}
+  .sched-step.active .sched-tag{background:var(--navy);color:var(--white)}
+
+  /* Summary */
+  .summ-intro{font-size:13px;color:#4a5568;margin-bottom:24px;line-height:1.8}
+  .summ-grid-1{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}
+  .summ-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:75%;margin:0 auto}
+  .summ-card{background:var(--white);border-radius:8px;padding:24px;border-top:4px solid var(--navy);position:relative;min-height:200px}
+  .summ-card.s1{border-top-color:#3182ce}
+  .summ-card.s2{border-top-color:#38a169}
+  .summ-card.s3{border-top-color:var(--gold)}
+  .summ-card.s4{border-top-color:#e53e3e}
+  .summ-card.s5{border-top-color:#805ad5}
+  .summ-num{position:absolute;top:14px;right:20px;font-family:'Hiragino Mincho ProN',serif;font-size:30px;color:#cbd5e0;font-weight:300}
+  .summ-icon{width:46px;height:46px;border-radius:10px;background:#edf2f7;color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+  .summ-card.s1 .summ-icon{background:#bee3f8;color:#2b6cb0}
+  .summ-card.s2 .summ-icon{background:#c6f6d5;color:#22543d}
+  .summ-card.s3 .summ-icon{background:#fef5e7;color:var(--gold-2)}
+  .summ-card.s4 .summ-icon{background:#fed7d7;color:#9b2c2c}
+  .summ-card.s5 .summ-icon{background:#e9d8fd;color:#553c9a}
+  .summ-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .summ-desc{font-size:12.5px;color:#2d3748;line-height:1.7}
+  .summ-desc strong{color:var(--gold-2)}
+  .summ-footer{margin-top:auto;background:var(--navy);color:var(--white);padding:18px 28px;border-radius:6px;font-size:14px;text-align:center;letter-spacing:1px;border-left:6px solid var(--gold)}
+
+  @media print{
+    html,body{background:#fff}
+    .slide{margin:0;box-shadow:none;page-break-after:always;page-break-inside:avoid}
+    @page{size:1456px 819px;margin:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SLIDE 1: COVER ============ -->
+<section class="slide cover">
+  <div class="cover-corner-tr"></div>
+  <div class="cover-corner-bl"></div>
+  <div class="pagenum" style="color:#cbd5e0">1 / 23</div>
+
+  <div class="cover-eyebrow">障 が い 者 グ ル ー プ ホ ー ム</div>
+  <h1 class="cover-title">ひだまりの家 事業計画書</h1>
+  <div class="cover-company">合 同 会 社 サ ン ラ イ ズ</div>
+
+  <div class="cover-info">
+    <div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">代表者</div>
+        <div class="cover-info-value">五島 明美 <span style="color:#a0aec0;font-size:13px;margin-left:8px">（49歳）</span></div>
+      </div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">設立日</div>
+        <div class="cover-info-value">2026年4月1日</div>
+      </div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">資本金</div>
+        <div class="cover-info-value">200万円</div>
+      </div>
+    </div>
+    <div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">事業内容</div>
+        <div class="cover-info-value">共同生活援助（GH）</div>
+      </div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">FC本部</div>
+        <div class="cover-info-value">株式会社ランバード</div>
+      </div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">提出日</div>
+        <div class="cover-info-value">2026年5月3日</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 2: PROFILE ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">代表者プロフィール</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">2 / 23</div>
+  <div class="slide-body">
+    <div class="profile-grid">
+      <div>
+        <div class="profile-card">
+          <div class="profile-avatar">👤</div>
+          <div class="profile-name">五島 明美</div>
+          <div class="profile-sub">代表社員 / 49歳</div>
+          <div class="profile-badges">
+            <span class="badge badge-navy">介護歴10年</span>
+            <span class="badge badge-gold">国家資格保有</span>
+          </div>
+          <div class="profile-meta">
+            <div class="profile-meta-label">生年月日</div>
+            1976年（昭和51年）10月8日
+            <div class="profile-meta-label">学歴</div>
+            埼玉県立 羽生実業高等学校 卒業（1995年3月）
+            <div class="profile-meta-label">家族構成</div>
+            👫 配偶者・子2人（社会人 / 大学生）
+          </div>
+        </div>
+        <div class="profile-cert-card">
+          <div class="profile-cert-title">⭐ 保有資格</div>
+          <div class="cert-tags">
+            <span class="cert-tag">介護福祉士</span>
+            <span class="cert-tag">ヘルパー2級</span>
+            <span class="cert-tag">日商簿記3級</span>
+            <span class="cert-tag" style="background:#fef5e7;border-color:var(--gold);color:#744210">サビ管基礎研修（2026/4受講確定）</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:17px;color:var(--navy);margin-bottom:18px;display:flex;align-items:center;gap:10px"><span style="background:var(--navy);color:#fff;width:30px;height:30px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:14px">📋</span>職務経歴</h3>
+
+        <div class="career-list">
+          <div class="career-item">
+            <div class="career-period">製薬会社時代</div>
+            <div>
+              <div class="career-company">製薬会社（品質管理・品質保証）</div>
+              <div class="career-role">製造工程の品質チェック・記録管理</div>
+              <span class="career-highlight">記録管理・コンプライアンス感覚を養う</span>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-period">医療事務時代</div>
+            <div>
+              <div class="career-company">医療機関（医療事務・医療秘書）</div>
+              <div class="career-role">受付・カルテ管理・診療報酬関連業務</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-period">事務職時代</div>
+            <div>
+              <div class="career-company">一般企業（一般事務）</div>
+              <div class="career-role">総務・経理補助</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-period">約10年間<br>〜2026年1月</div>
+            <div>
+              <div class="career-company">介護施設（高齢者介護）</div>
+              <div class="career-role">介護福祉士として身体障害者施設等で重度利用者の支援に従事</div>
+              <span class="career-highlight">本事業のため2026年1月退職（独立準備）</span>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-period">2026年4月〜現在</div>
+            <div>
+              <div class="career-company">合同会社サンライズ 代表社員</div>
+              <div class="career-role">障害者グループホーム「ひだまりの家」開設準備</div>
+              <span class="career-highlight career-highlight-success">物件取得済 / 賃貸借契約締結済 / サビ管研修確定</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 3: TOC ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">目次</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">3 / 23</div>
+  <div class="slide-body">
+    <div class="toc-grid">
+      <div class="toc-item"><div class="toc-num">01</div><div>表紙</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">02</div><div>代表者プロフィール</div><div></div></div>
+      <div class="toc-item active"><div class="toc-num">03</div><div>目次</div><div>‹</div></div>
+      <div class="toc-item"><div class="toc-num">04</div><div>創業の動機</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">05</div><div>市場環境・需要</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">06</div><div>事業概要（共同生活援助とは）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">07</div><div>出店場所</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">08</div><div>パートナー企業（株式会社ランバード）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">09</div><div>経営理念・基本方針</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">10</div><div>報酬の仕組み</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">11</div><div>報酬単価テーブル</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">12</div><div>人員体制・経費構造</div><div></div></div>
+
+      <div class="toc-item"><div class="toc-num">13</div><div>事業の強み（与信・世帯背景含む）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">14</div><div>必要資金</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">15</div><div>資金調達計画</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">16</div><div>月次収支シミュレーション</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">17</div><div>月次推移グラフ</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">18</div><div>3パターン比較</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">19</div><div>2年目以降の展望</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">20</div><div>リスクと対策</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">21</div><div>周辺施設マップ</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">22</div><div>スケジュール</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">23</div><div>まとめ</div><div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 4: 創業の動機 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">創業の動機</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">4 / 23</div>
+  <div class="slide-body" style="position:relative;padding-bottom:90px">
+    <div class="grid-2x2">
+      <div class="info-card gold">
+        <div class="info-card-icon">①</div>
+        <div class="info-card-title">介護福祉士10年・現場主義</div>
+        <div class="info-card-body">
+          高齢者介護現場で約10年従事し、介護福祉士として身体障害者施設等で重度利用者の支援に携わった経験を有します。「<strong>利用者を人として見ない</strong>」職員が増える前職に心苦しさを感じ、自らの手で利用者一人ひとりの思いを汲み取れる場を作る決意をしました。
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">②</div>
+        <div class="info-card-title">茨城県古河市・地域密着</div>
+        <div class="info-card-body">
+          配偶者の地縁を活かし、茨城県古河市長谷町に物件を取得済（2026/3/31引渡完了）。古河市障がい福祉課・消防本部への事前相談済、特別支援学校・相談支援員・市役所との連携素地を構築中。
+        </div>
+      </div>
+      <div class="info-card green">
+        <div class="info-card-icon">③</div>
+        <div class="info-card-title">国の給付金が支える事業安定性</div>
+        <div class="info-card-body">
+          売上の約70%が国（国保連）からの給付費。障害者総合支援法に基づく事業として景気変動に左右されず、長期的かつ安定的な運営が可能。<strong>古河市6級地（10.48円/単位）</strong>で堅実な収益設計が可能です。
+        </div>
+      </div>
+      <div class="info-card red">
+        <div class="info-card-icon">④</div>
+        <div class="info-card-title">将来展望：1棟目→2棟目→4棟目</div>
+        <div class="info-card-body">
+          まず古河市長谷町の1棟目（最大9居室）を安定運営。1棟目満床達成後に2棟目展開を計画。<strong>4棟目までの物件物色済</strong>で、契約締結次第追加申請する段階拡大方針です。
+        </div>
+      </div>
+    </div>
+    <div class="quote-strip">💬 介護福祉士10年の現場経験と、家族の理解・支援を基盤に、利用者が「自分の家」と感じられる温かなグループホームを地域に根づかせます。</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 5: 市場環境 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">市場環境・需要</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">5 / 23</div>
+  <div class="slide-body">
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:32px;height:100%">
+      <div class="card" style="display:flex;flex-direction:column">
+        <h3 style="font-size:17px;color:var(--navy);margin-bottom:6px">茨城県の障害福祉サービス整備状況</h3>
+        <div style="font-size:12px;color:var(--gray-2);margin-bottom:24px">茨城県内の障がい者数 約16万人 / 全国平均を下回る整備率</div>
+
+        <!-- Donut chart simulated with conic-gradient -->
+        <div style="margin:auto;width:280px;height:280px;border-radius:50%;background:conic-gradient(#1a365d 0% 50%, #c9a961 50% 70%, #a0aec0 70% 100%);position:relative">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:170px;height:170px;background:var(--white);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div style="font-size:11px;color:var(--gray-2)">茨城県内</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:32px;color:var(--navy);font-weight:700;margin-top:4px">160,000<span style="font-size:14px">人</span></div>
+            <div style="font-size:10px;color:var(--gray-2);margin-top:4px">障がい者手帳所持者</div>
+          </div>
+        </div>
+        <div style="margin-top:auto;display:flex;justify-content:center;gap:14px;font-size:11px;color:var(--gray-2);padding-top:18px">
+          <span><span style="display:inline-block;width:10px;height:10px;background:#1a365d;border-radius:2px;margin-right:4px"></span>身体障がい (50%)</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#c9a961;border-radius:2px;margin-right:4px"></span>知的障がい (20%)</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#a0aec0;border-radius:2px;margin-right:4px"></span>精神障がい (30%)</span>
+        </div>
+        <div style="margin-top:18px;display:flex;justify-content:space-between;border-top:1px dashed var(--gray);padding-top:16px">
+          <div>
+            <div style="font-size:11px;color:var(--gray-2)">古河市の障がい者手帳所持者</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:24px;color:var(--navy);font-weight:700">約 5,000 <span style="font-size:13px">人</span></div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:11px;color:var(--gray-2)">市人口比</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:24px;color:var(--gold-2);font-weight:700">約 4.0 <span style="font-size:13px">%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card" style="border-left:5px solid var(--navy);padding:20px 24px">
+          <div style="display:flex;align-items:start;gap:14px">
+            <div style="width:38px;height:38px;background:#edf2f7;color:var(--navy);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">👥</div>
+            <div>
+              <div style="font-size:15px;font-weight:700;color:var(--navy)">地域特性：6級地の単価優位性</div>
+              <div style="font-size:11px;color:var(--gold-2);margin-bottom:8px;font-weight:600">茨城県古河市</div>
+              <div style="font-size:13px;color:#2d3748;line-height:1.7">古河市は障害福祉サービスの<strong>6級地（1単位 10.48円）</strong>に区分され、収益性の面で堅実な事業設計が可能です。地方都市ながら都市部に近い単価設定で、9居室満床時に<strong>4ヶ月目で月次黒字転換</strong>を達成する設計（OWL試算）。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="border-left:5px solid var(--gold);padding:20px 24px">
+          <div style="display:flex;align-items:start;gap:14px">
+            <div style="width:38px;height:38px;background:#fef5e7;color:var(--gold-2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📋</div>
+            <div>
+              <div style="font-size:15px;font-weight:700;color:var(--navy)">行政方針：地域移行の推進</div>
+              <div style="font-size:11px;color:var(--gold-2);margin-bottom:8px;font-weight:600">第7期障害福祉計画（令和6〜8年度）</div>
+              <div style="font-size:13px;color:#2d3748;line-height:1.7">国・茨城県ともに「<strong>施設入所から地域生活への移行</strong>」を重点施策として掲げており、グループホーム整備による居住支援体制の充実が求められています。「親亡き後」を見据えた居住基盤需要も拡大中。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="border-left:5px solid var(--red);padding:20px 24px">
+          <div style="display:flex;align-items:start;gap:14px">
+            <div style="width:38px;height:38px;background:#fed7d7;color:var(--red);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📈</div>
+            <div>
+              <div style="font-size:15px;font-weight:700;color:var(--navy)">古河市の参入機会</div>
+              <div style="font-size:11px;color:var(--gold-2);margin-bottom:8px;font-weight:600">需給ギャップ分析</div>
+              <div style="font-size:13px;color:#2d3748;line-height:1.7">古河市内の障害者GH事業者は限定的で、特に長谷町エリアは競合が少なく、相談支援員・特別支援学校・A型B型作業所からの紹介ルートを開拓中。<strong>元同僚から退所予定者の紹介打診も既に獲得</strong>しており、開業前から具体的な入居候補が存在します。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 6: 事業概要 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">事業概要（共同生活援助とは）</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">6 / 23</div>
+  <div class="slide-body">
+    <div class="service-top">
+      <div class="card" style="border-left:5px solid var(--gold)">
+        <div style="display:flex;align-items:start;gap:14px">
+          <div style="font-size:24px">🏠</div>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px">障害者総合支援法に基づく 支援付きシェアハウス</div>
+            <div style="font-size:13px;color:#2d3748;line-height:1.7">障がいのある方が複数人で共同生活を営む住まいです。世話人等の支援を受けながら、地域社会の中で自立した生活を送ることを目的としています。</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="border-left:5px solid var(--navy)">
+        <div style="display:flex;align-items:start;gap:14px">
+          <div style="font-size:24px">👥</div>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px">入居対象者</div>
+            <div style="font-size:13px;color:#2d3748;line-height:1.7"><strong style="font-size:18px;color:var(--gold-2)">18〜64歳</strong> の「精神障がい」「知的障がい」「身体障がい」の方</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:15px;color:var(--navy);margin-bottom:14px;border-left:4px solid var(--navy);padding-left:10px">提供サービス（日常生活の包括的支援）</h3>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon">🍴</div>
+        <div class="service-name">食事の提供</div>
+        <div class="service-desc">日中は就労等で不在の方が多いため、主に朝食・夕食を提供します。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧹</div>
+        <div class="service-name">共有部の清掃</div>
+        <div class="service-desc">入居者と協力してリビングや風呂・トイレ等の清掃を行います。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💴</div>
+        <div class="service-name">お金の管理</div>
+        <div class="service-desc">ご自身での管理が難しい方のみ、金銭管理の支援を実施します。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💊</div>
+        <div class="service-name">服薬の管理</div>
+        <div class="service-desc">処方された薬を正しく服用できているか、毎日の確認を行います。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏥</div>
+        <div class="service-name">病院や役所との連携</div>
+        <div class="service-desc">通院同行や関係機関への挨拶、情報交換などを行います。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">❤️</div>
+        <div class="service-name">その他日常生活の援助</div>
+        <div class="service-desc">日々の相談対応や生活上の困りごとの解決をサポートします。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 7: 出店場所 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">出店場所</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">7 / 23</div>
+  <div class="slide-body">
+    <div class="loc-grid">
+      <div class="loc-map">
+        <!-- Simulated map background -->
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#f0f4f8 0%,#e6edf3 100%);background-image:repeating-linear-gradient(45deg,transparent,transparent 30px,#dde4ec 30px,#dde4ec 31px),repeating-linear-gradient(-45deg,transparent,transparent 40px,#dde4ec 40px,#dde4ec 41px)"></div>
+        <div style="position:absolute;top:30%;left:25%;font-size:10px;color:#a0aec0">古河駅</div>
+        <div style="position:absolute;top:65%;left:70%;font-size:10px;color:#a0aec0">古河第一小</div>
+        <div style="position:absolute;top:20%;left:60%;font-size:10px;color:#a0aec0">古河特別支援学校</div>
+        <div class="loc-map-pin">
+          🏠 (仮称)長谷町壱番館<br>
+          <span style="font-size:10px;color:var(--gray-2);font-weight:400">出店予定地</span>
+        </div>
+      </div>
+      <div class="loc-detail">
+        <div class="loc-detail-title">【出店計画地①】(仮称)長谷町壱番館</div>
+        <table class="loc-table">
+          <tr><th>所在地</th><td>茨城県古河市長谷町223番地1</td></tr>
+          <tr><th>家賃</th><td><strong style="font-size:18px;color:var(--gold-2)">315,000円</strong>/月（事業用賃貸借契約2026/4/26締結）</td></tr>
+          <tr><th>定員</th><td><strong>5名（5居室スタート）→ 最大9名（9居室拡張可）</strong></td></tr>
+          <tr><th>構造</th><td>木造スレート葺2階建 / 床面積199㎡（1F 99㎡＋2F 100㎡）</td></tr>
+          <tr><th>土地</th><td>596.72㎡（4筆）</td></tr>
+          <tr><th>取得状況</th><td><strong style="color:var(--green)">✅ 購入済</strong>（2026/3/31引渡完了 / 配偶者個人名義）</td></tr>
+          <tr><th>アクセス</th><td>古河駅徒歩18分 / スーパー16分 / 古河第一小12分</td></tr>
+        </table>
+        <div class="loc-bullet">9部屋取れる構造（リフォーム電気工事も9部屋分計上済）</div>
+        <div class="loc-bullet">配偶者個人取得 → 法人へ事業用賃貸借（親族間取引・書面化済）</div>
+        <div class="loc-bullet">行政事前相談済（消防同行 2026/3/6 完了）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 8: パートナー企業 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">パートナー企業</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">8 / 23</div>
+  <div class="slide-body">
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-eyebrow">FRANCHISE HQ</div>
+        <div class="partner-name">株式会社ランバード</div>
+        <div class="partner-en">OWL FC Headquarters</div>
+        <div class="partner-meta-label">設立</div>
+        <div class="partner-meta-value">2019年5月31日</div>
+        <div class="partner-meta-label">代表者</div>
+        <div class="partner-meta-value">代表取締役 嶋田 僚平</div>
+        <div class="partner-meta-label">本社所在地</div>
+        <div class="partner-meta-value">東京都中央区晴海1丁目8－10<br>晴海アイランド トリトンスクエア<br>オフィスタワーX棟40階</div>
+        <div class="partner-meta-label">福岡支店</div>
+        <div class="partner-meta-value">福岡県福岡市中央区大名1－9－27<br>西武ビル3階</div>
+        <div class="partner-meta-label">連絡先</div>
+        <div class="partner-meta-value" style="font-size:12px">TEL: 03-5843-6996<br>URL: https://runbird.net</div>
+        <div style="background:rgba(201,169,97,0.15);border:1px solid var(--gold);border-radius:6px;padding:10px;margin-top:18px;text-align:center">
+          <div style="font-size:11px;color:#cbd5e0;margin-bottom:2px">未経験からの参入実績</div>
+          <div style="font-size:14px;color:var(--gold);font-weight:700">あり</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="partner-feature">
+          <div class="partner-feature-title">🤝 包括的運営サポート体制</div>
+          <div style="font-size:12px;color:var(--gray-2);margin-bottom:14px">開設準備から運営開始後の安定化まで、専門チームによる伴走支援を提供。</div>
+        </div>
+        <div class="partner-features-grid">
+          <div>
+            <div class="partner-feature-title" style="font-size:14px">👤 人材紹介・確保</div>
+            <div class="partner-feature-en">Recruitment Support</div>
+            <div class="partner-feature-desc">福祉に強い専門の人材紹介会社と提携。管理者やサービス管理責任者など、採用難易度の高い有資格者の確保をスムーズに行えるよう支援。</div>
+          </div>
+          <div>
+            <div class="partner-feature-title" style="font-size:14px">📝 指定申請書類の作成</div>
+            <div class="partner-feature-en">Document Support</div>
+            <div class="partner-feature-desc">運営規程、指定申請書、事業計画書、設備・備品リストなど、行政提出する膨大かつ複雑な申請書類の作成を完全サポート。</div>
+          </div>
+          <div>
+            <div class="partner-feature-title" style="font-size:14px">🏛️ 行政同行・連絡代行</div>
+            <div class="partner-feature-en">Administrative Support</div>
+            <div class="partner-feature-desc">行政機関への連絡や必要書類の提出、実地指導・監査への同行対応。専門知識が必要な折衝を支援し、最短での指定取得を目指す。</div>
+          </div>
+          <div>
+            <div class="partner-feature-title" style="font-size:14px">📖 開設・運営マニュアル</div>
+            <div class="partner-feature-en">Operation Manual</div>
+            <div class="partner-feature-desc">契約完了後から開設までの流れ、人材ごとの働き方、日々の業務フローなど、運営に必要なノウハウを網羅したマニュアル一式を提供。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 9: 経営理念 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">経営理念・基本方針</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">9 / 23</div>
+  <div class="slide-body">
+    <div class="philo-mission">
+      <div class="philo-icon">⭐</div>
+      <div class="philo-mission-text">
+        <div class="philo-mission-eyebrow">MISSION / 経営理念</div>
+        <div class="philo-mission-title">人の役に立ち、感謝される仕事</div>
+        <div class="philo-mission-desc">障がいのある方が地域で安心して暮らせる「住まい」と自立支援を提供し、利用者一人ひとりが「自分の家」と感じられる温かなグループホームを実現する。</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:16px;font-size:12px;color:var(--gray-2);letter-spacing:2px">基本方針 / POLICY</div>
+    <div class="philo-policies">
+      <div class="philo-policy">
+        <div class="philo-policy-num">1</div>
+        <div class="philo-policy-title">心理的安全性の確保</div>
+        <div>利用者はもちろん、従業員も含めたすべての人に心理的安全性を確保します。</div>
+      </div>
+      <div class="philo-policy">
+        <div class="philo-policy-num">2</div>
+        <div class="philo-policy-title">利用者ファースト・障がい理解</div>
+        <div>利用者ファーストで業務に取り組み、様々な障がいや特性への理解を深め、一人ひとりに寄り添った対応を心掛けます。</div>
+      </div>
+      <div class="philo-policy">
+        <div class="philo-policy-num">3</div>
+        <div class="philo-policy-title">自立支援の見守り</div>
+        <div>利用者がグループホームでの生活の中で安心して日常生活を送り、自立に向かっていく姿を見守ります。</div>
+      </div>
+      <div class="philo-policy">
+        <div class="philo-policy-num">4</div>
+        <div class="philo-policy-title">安心できる環境保証</div>
+        <div>利用者が安心して日常生活を送ることができる環境を保証します。</div>
+      </div>
+      <div class="philo-policy">
+        <div class="philo-policy-num">5</div>
+        <div class="philo-policy-title">地域社会への貢献</div>
+        <div>障がい者理解を深め、誰もが互いに認め合いながら生活する安心感を感じられる温かい地域社会をつくる努力を心掛けます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 10: 報酬の仕組み ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">報酬の仕組み</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">10 / 23</div>
+  <div class="slide-body">
+    <div class="cf-diagram">
+      <div class="cf-eyebrow">CASH FLOW DIAGRAM</div>
+      <div class="cf-row">
+        <div class="cf-node">
+          <div class="cf-node-icon">👤</div>
+          <div class="cf-node-title">利用者</div>
+          <div class="cf-node-sub">障がい者の方</div>
+        </div>
+        <div class="cf-arrow"><strong>申請</strong>→</div>
+        <div class="cf-node">
+          <div class="cf-node-icon">🏢</div>
+          <div class="cf-node-title">市区町村</div>
+          <div class="cf-node-sub">支給決定</div>
+        </div>
+        <div class="cf-arrow"><strong>決定</strong>→</div>
+        <div class="cf-node center">
+          <div class="cf-node-icon">🏠</div>
+          <div class="cf-node-title">合同会社サンライズ</div>
+          <div class="cf-node-sub">グループホーム</div>
+        </div>
+        <div class="cf-arrow"><strong>請求</strong>→</div>
+        <div class="cf-node">
+          <div class="cf-node-icon">📋</div>
+          <div class="cf-node-title">国保連合会</div>
+          <div class="cf-node-sub">審査・支払代行</div>
+        </div>
+        <div class="cf-arrow"><strong>支払</strong>→</div>
+        <div class="cf-node gold">
+          <div class="cf-node-icon">💰</div>
+          <div class="cf-node-title">報酬受領</div>
+          <div class="cf-node-sub">訓練等給付費</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:24px;margin-top:18px;font-size:11px;color:var(--gray-2)">
+        <span>● 事務手続き・申請フロー</span>
+        <span>━ サービス提供・契約フロー</span>
+      </div>
+    </div>
+    <div class="cf-features">
+      <div class="cf-feature">
+        <div class="cf-feature-title">📈 売上の安定性</div>
+        <div style="font-size:12px;color:#2d3748;line-height:1.7">売上全体の<strong style="color:var(--gold-2)">約70%</strong>が国（公費）からの給付費。利用者からの未収リスクが極めて低く、確実な入金が見込める。</div>
+      </div>
+      <div class="cf-feature">
+        <div class="cf-feature-title">🛡️ 景気変動に強い</div>
+        <div style="font-size:12px;color:#2d3748;line-height:1.7">障害者総合支援法に基づく事業であり、景気の好不況に左右されません。不況時でも行政による報酬支払は保証。</div>
+      </div>
+      <div class="cf-feature">
+        <div class="cf-feature-title">💴 消費税非課税</div>
+        <div style="font-size:12px;color:#2d3748;line-height:1.7">社会福祉事業として、売上に対する<strong style="color:var(--gold-2)">消費税が免除</strong>。税務上のメリットが大きく、効率的な資金運用が可能。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 11: 報酬単価テーブル ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">報酬単価テーブル</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">11 / 23</div>
+  <div class="slide-body">
+    <div class="rate-grid">
+      <div>
+        <div class="rate-section-title">
+          <span>💰 基本報酬単価</span>
+          <span class="rate-region">地域区分（茨城県古河市・6級地） 10.48 円/単位</span>
+        </div>
+        <table class="rate-table">
+          <thead>
+            <tr><th>障害支援区分</th><th>日額単位数</th><th style="text-align:right">月額報酬目安</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="rate-num">2</span>区分2</td>
+              <td>403 単位</td>
+              <td class="rate-amount">126,690 <span style="font-size:12px">円</span></td>
+            </tr>
+            <tr class="featured">
+              <td><span class="rate-num">3</span>区分3</td>
+              <td>562 単位</td>
+              <td class="rate-amount">176,670 <span style="font-size:12px">円</span></td>
+            </tr>
+            <tr>
+              <td><span class="rate-num">4</span>区分4</td>
+              <td>689 単位</td>
+              <td class="rate-amount">216,600 <span style="font-size:12px">円</span></td>
+            </tr>
+            <tr>
+              <td><span class="rate-num">5</span>区分5</td>
+              <td>769 単位</td>
+              <td class="rate-amount">241,770 <span style="font-size:12px">円</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rate-addons">
+          <div style="font-size:12px;color:var(--navy);font-weight:600">🎁 適用加算</div>
+          <div class="rate-addons-grid">
+            <div class="rate-addon">
+              <div class="rate-addon-label">処遇改善加算</div>
+              <div class="rate-addon-value">12.8 <span style="font-size:11px">%</span></div>
+            </div>
+            <div class="rate-addon">
+              <div class="rate-addon-label">夜間支援等体制加算</div>
+              <div class="rate-addon-value" style="font-size:14px">Ⅰ型</div>
+            </div>
+            <div class="rate-addon">
+              <div class="rate-addon-label">医療連携加算</div>
+              <div class="rate-addon-value" style="font-size:14px">Ⅶ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column">
+        <div class="rate-section-title"><span>💼 利用者負担額</span><span style="font-size:11px;color:var(--gray-2)">（月額想定）</span></div>
+        <div class="rate-burden-card">
+          <div class="rate-burden-label">利用者実質負担額</div>
+          <div class="rate-burden-value">87,000<span>円</span></div>
+          <div class="rate-burden-note">家賃補助（特定障害者特別給付費）適用前の金額</div>
+        </div>
+        <div class="rate-burden-list" style="background:var(--white);border-radius:8px;padding:8px 16px;flex:1">
+          <div class="rate-burden-list-row">
+            <div class="rate-burden-list-row-label">🏠 家賃</div>
+            <div class="rate-burden-list-row-value">42,000円</div>
+          </div>
+          <div class="rate-burden-list-row">
+            <div class="rate-burden-list-row-label">🍴 食費</div>
+            <div class="rate-burden-list-row-value">30,000円</div>
+          </div>
+          <div class="rate-burden-list-row">
+            <div class="rate-burden-list-row-label">💡 水光熱費</div>
+            <div class="rate-burden-list-row-value">15,000円</div>
+          </div>
+        </div>
+        <div class="rate-info-note">
+          ℹ️ 体験利用時の日額設定や、家賃補助（1万円/月）の適用により、利用者の実質負担額は変動する場合があります。<br>
+          <strong>👥 定員9名の場合、利用者負担合計は ¥783,000/月（¥87,000×9名）となります。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 12 (renumbered): 人員体制 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">人員体制・経費構造</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">12 / 23</div>
+  <div class="slide-body">
+    <div class="staff-grid">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">👥 人員配置詳細・固定経費（9居室満床時）</div>
+        <table class="staff-table">
+          <thead>
+            <tr><th>項目</th><th>区分</th><th>人数/契約</th><th style="text-align:right">月額費用・備考</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>👤 管理者（代表兼務）</td>
+              <td><span class="staff-tag full">常勤月給</span></td>
+              <td>1名</td>
+              <td class="staff-amount">250,000円<span class="staff-amount-sub">五島明美様 本人</span></td>
+            </tr>
+            <tr>
+              <td>📋 サービス管理責任者</td>
+              <td><span class="staff-tag full">代表兼務</span></td>
+              <td>1名</td>
+              <td class="staff-amount">管理者報酬に含む<span class="staff-amount-sub" style="color:var(--green);font-weight:600">2026/4 基礎研修受講確定</span></td>
+            </tr>
+            <tr>
+              <td>🤝 サビ管補助パート</td>
+              <td><span class="staff-tag part">非常勤</span></td>
+              <td>1名</td>
+              <td class="staff-amount">80,000円<span class="staff-amount-sub">時給¥2,000・週3日3-4h</span></td>
+            </tr>
+            <tr>
+              <td>🌟 世話人</td>
+              <td><span class="staff-tag part">パート</span></td>
+              <td>—</td>
+              <td class="staff-amount">257,760円<span class="staff-amount-sub">時給¥1,074</span></td>
+            </tr>
+            <tr>
+              <td>💪 生活支援員</td>
+              <td><span class="staff-tag part">パート</span></td>
+              <td>—</td>
+              <td class="staff-amount">190,933円<span class="staff-amount-sub">時給¥1,074（満床時）</span></td>
+            </tr>
+            <tr>
+              <td>🌙 夜間職員</td>
+              <td><span class="staff-tag part">パート</span></td>
+              <td>—</td>
+              <td class="staff-amount">201,450円<span class="staff-amount-sub">時給¥1,343</span></td>
+            </tr>
+            <tr>
+              <td>➕ 加算分世話人</td>
+              <td><span class="staff-tag part">パート</span></td>
+              <td>—</td>
+              <td class="staff-amount">128,880円<span class="staff-amount-sub">時給¥1,074</span></td>
+            </tr>
+            <tr>
+              <td>📊 法定福利費</td>
+              <td><span class="staff-tag fixed">16%</span></td>
+              <td>—</td>
+              <td class="staff-amount">159,159円</td>
+            </tr>
+            <tr>
+              <td>🤝 OWLサポート費</td>
+              <td><span class="staff-tag fixed">月額固定</span></td>
+              <td>—</td>
+              <td class="staff-amount">49,500円<span class="staff-amount-sub">9居室×¥5,500</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="staff-summary">
+          <div class="staff-summary-left">
+            <strong>月次人件費合計（9居室満床時）</strong>
+            ※固定経費・法定福利費含む
+          </div>
+          <div class="staff-summary-total">1,282,782<span>円</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">🎯 戦略的人員配置・代表者の役割</div>
+        <div class="staff-strategy-card">
+          <div class="staff-strategy-title">👤 代表・五島明美様 の役割</div>
+          <div class="staff-strategy-desc"><strong>管理者兼サビ管</strong>を兼務。介護福祉士10年・現場経験を活かし、外部委託費を抑制しながらサービス品質を担保。</div>
+          <span class="staff-strategy-pill">✅ サビ管基礎研修 2026/4 受講確定</span>
+        </div>
+        <div class="staff-strategy-card">
+          <div class="staff-strategy-title">💡 補強体制（サビ管2人体制）</div>
+          <div class="staff-strategy-desc">サビ管基礎研修修了者をパートで別途採用予定（時給¥2,000・週3日3-4時間・<strong>月¥8万弱</strong>）。代表業務集中の緩和とサビ管業務の継続性を担保。</div>
+        </div>
+
+        <div class="staff-variable">
+          <div class="staff-variable-head">
+            <div>
+              <div class="staff-variable-label">変動経費構造</div>
+              <div class="staff-variable-sub">入居者数連動（満床9名時）</div>
+            </div>
+            <div class="staff-variable-amount">405,000<span style="font-size:12px">円/月</span></div>
+          </div>
+          <div class="staff-variable-row">
+            <div class="staff-variable-row-name">💡 水道光熱費</div>
+            <div>135,000円</div>
+          </div>
+          <div class="staff-variable-row">
+            <div class="staff-variable-row-name">🍴 食費・日用品費</div>
+            <div>270,000円</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 13: 事業の強み ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">事業の強み</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">13 / 23</div>
+  <div class="slide-body">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;height:100%">
+      <div class="strength-card">
+        <div class="strength-num">01</div>
+        <div class="strength-icon">💳</div>
+        <div class="strength-title">既存個人借入ゼロ</div>
+        <div class="strength-desc">代表者個人の<strong>住宅ローン・自動車ローン・カードローン・個人保証 全て無し</strong>。月次返済比率の負担がなく、本事業融資への返済原資を100%確保できるクリーンな与信背景。</div>
+      </div>
+      <div class="strength-card gold">
+        <div class="strength-num">02</div>
+        <div class="strength-icon">👫</div>
+        <div class="strength-title">配偶者の安定収入</div>
+        <div class="strength-desc">配偶者（建設業会社員）<strong>年収¥800〜1,200万</strong>。世帯収入の柱として開業初期の生活費を補完し、代表者報酬を抑えて運転資金を最大限温存できる世帯構造。</div>
+      </div>
+      <div class="strength-card green">
+        <div class="strength-num">03</div>
+        <div class="strength-icon">🏠</div>
+        <div class="strength-title">物件取得済・賃貸借契約済</div>
+        <div class="strength-desc"><strong>2026/3/31引渡完了・3/23登記完了</strong>。法人と配偶者個人で<strong>2026/4/26事業用賃貸借契約締結</strong>（月¥315,000・3年・敷金¥630,000）。書面化済の親族間取引で評価しやすい融資構造。</div>
+      </div>
+
+      <div class="strength-card red">
+        <div class="strength-num">04</div>
+        <div class="strength-icon">📋</div>
+        <div class="strength-title">サビ管確定・行政連携</div>
+        <div class="strength-desc">代表が<strong>2026年4月にサビ管基礎研修受講確定</strong>。介護福祉士10年の実務経験で要件クリア。古河市障がい福祉課・消防本部への事前相談済（3/6）で行政連携の基盤あり。</div>
+      </div>
+      <div class="strength-card purple">
+        <div class="strength-num">05</div>
+        <div class="strength-icon">🎯</div>
+        <div class="strength-title">開業前の入居打診あり</div>
+        <div class="strength-desc"><strong>前職同僚から退所予定者の紹介打診を獲得</strong>。A型/B型作業所・相談支援員・市役所・特別支援学校との連携素地を構築中。「開業後ゼロから集客」ではなく、開業前から具体的な入居候補が存在。</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">06</div>
+        <div class="strength-icon">📈</div>
+        <div class="strength-title">収益性の優位</div>
+        <div class="strength-desc">古河市6級地（10.48円/単位）+ 賃料¥315,000確定（OWL試算より<strong>年¥756,000改善</strong>）+ 9居室満床想定で<strong>4ヶ月目で月次黒字転換</strong>（OWL試算）。年間営業利益+¥335万を見込む。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 14: 必要資金 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">必要資金</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">14 / 23</div>
+  <div class="slide-body">
+    <div class="fund-grid">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">📊 資金使途内訳（1棟目分）</div>
+        <table class="fund-table">
+          <tr class="fund-section-row"><td colspan="3">設備資金（イニシャルコスト）</td></tr>
+          <tr><td>🔧 リフォーム工事</td><td style="font-size:11px;color:var(--gray-2)">スズモク見積（2026/3/8）税込・9部屋電気工事込</td><td class="fund-amount">2,600,000円</td></tr>
+          <tr><td>🚒 消防設備工事</td><td style="font-size:11px;color:var(--gray-2)">特小自火報・消火器・誘導灯・非常灯</td><td class="fund-amount">700,000円</td></tr>
+          <tr><td>❄️ エアコン（10台）</td><td style="font-size:11px;color:var(--gray-2)">9居室+食事スペース計10台</td><td class="fund-amount">900,000円</td></tr>
+          <tr><td>🚪 内装・鍵取付</td><td style="font-size:11px;color:var(--gray-2)">9居室対応</td><td class="fund-amount">200,000円</td></tr>
+          <tr><td>📞 電話・ネット回線</td><td style="font-size:11px;color:var(--gray-2)">回線工事費</td><td class="fund-amount">100,000円</td></tr>
+          <tr><td>🛋️ 備品・家具家電</td><td style="font-size:11px;color:var(--gray-2)">9居室分の冷蔵庫・テーブル等</td><td class="fund-amount">1,200,000円</td></tr>
+          <tr><td>📋 事務備品・消耗品</td><td style="font-size:11px;color:var(--gray-2)">PC・什器等</td><td class="fund-amount">200,000円</td></tr>
+        </table>
+        <div class="fund-subtotal">
+          <span>設備資金 小計</span>
+          <span class="yen">5,900,000 円</span>
+        </div>
+
+        <table class="fund-table">
+          <tr class="fund-section-row"><td colspan="3">運転資金（ランニングコスト確保）</td></tr>
+          <tr><td>👥 人件費 6ヶ月</td><td style="font-size:11px;color:var(--gray-2)">¥1,282,782 × 6（満床想定）</td><td class="fund-amount">7,696,692円</td></tr>
+          <tr><td>🏠 家賃 6ヶ月</td><td style="font-size:11px;color:var(--gray-2)">¥315,000 × 6</td><td class="fund-amount">1,890,000円</td></tr>
+          <tr><td>💵 敷金（一時金）</td><td style="font-size:11px;color:var(--gray-2)">賃料2ヶ月分</td><td class="fund-amount">630,000円</td></tr>
+          <tr><td>🍽️ 食材・光熱 6ヶ月</td><td style="font-size:11px;color:var(--gray-2)">段階入居想定</td><td class="fund-amount">810,000円</td></tr>
+          <tr><td>📋 その他固定費 6ヶ月</td><td style="font-size:11px;color:var(--gray-2)">通信・事務・消耗品</td><td class="fund-amount">540,000円</td></tr>
+          <tr><td>↘️ 立上げ期売上（差引）</td><td style="font-size:11px;color:var(--gray-2)">徐々に入居</td><td class="fund-amount" style="color:var(--red)">▲7,300,000円</td></tr>
+          <tr><td>🛡️ 予備費</td><td style="font-size:11px;color:var(--gray-2)">不測対応</td><td class="fund-amount">1,000,000円</td></tr>
+        </table>
+        <div class="fund-subtotal">
+          <span>運転資金 小計</span>
+          <span class="yen">5,266,692 円</span>
+        </div>
+      </div>
+
+      <div class="fund-total-card">
+        <div class="fund-total-icon">💰</div>
+        <div class="fund-total-eyebrow">TOTAL INITIAL INVESTMENT (1棟目)</div>
+        <div class="fund-total-amount">1,116<span> 万円</span></div>
+        <div class="fund-total-yen">¥11,166,692</div>
+
+        <div class="fund-strategy">
+          <div class="fund-strategy-title">FINANCIAL STRATEGY</div>
+          <div class="fund-strategy-row"><div><strong>1棟目+2棟目同時調達狙い</strong>融資希望額¥2,000万</div></div>
+          <div class="fund-strategy-row"><div><strong>運転資金6ヶ月分確保</strong>立上げ期赤字を吸収</div></div>
+          <div class="fund-strategy-row"><div><strong>敷金63万を組込済</strong>賃貸借契約4/26締結反映</div></div>
+          <div class="fund-strategy-row"><div><strong>家賃31.5万確定</strong>OWL試算より年¥756,000改善</div></div>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--gray);border-radius:6px;padding:12px;margin-top:14px;text-align:left">
+          <div style="font-size:11px;color:var(--gray-2);margin-bottom:6px">★2棟目分（仮計上）</div>
+          <div style="font-size:12px;color:#2d3748;line-height:1.6">2棟目契約締結時期次第。銀行から「契約書なきため1棟目分のみ」と縮小指示の可能性あり。その場合は<strong>パターンC</strong>（1棟目フル¥1,100万＋2棟目契約後追加）に切替。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 15: 資金調達計画 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">資金調達計画</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">15 / 23</div>
+  <div class="slide-body">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:24px;height:100%">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">💼 調達資金の内訳（推奨パターンB）</div>
+        <table class="fund-table" style="margin-bottom:18px">
+          <thead>
+            <tr><th>区分</th><th>金額</th><th>備考</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:700">● 自己資金</td>
+              <td class="fund-amount">420 万円</td>
+              <td style="font-size:11px;color:var(--gray-2)">資本金¥200万＋OWL加盟金¥220万既払</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">● 借入金（協調融資）</td>
+              <td class="fund-amount">2,000 万円</td>
+              <td style="font-size:11px;color:var(--gray-2)">公庫¥1,000万＋筑波¥500万＋信金¥500万</td>
+            </tr>
+            <tr style="background:var(--navy);color:#fff">
+              <td style="color:#fff;font-weight:700">TOTAL FUNDING 調達合計</td>
+              <td class="fund-amount" style="color:var(--gold);font-size:18px">2,420 万円</td>
+              <td style="font-size:11px;color:#cbd5e0">自己資金17.4% / 借入82.6%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">🏦 代表者の与信背景</div>
+        <table class="fund-table">
+          <tr>
+            <td style="font-weight:700">既存個人借入</td>
+            <td class="fund-amount" style="color:var(--green);font-size:16px">なし</td>
+            <td style="font-size:11px;color:var(--gray-2)">住宅・車・カード・個人保証 全て無し</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700">配偶者年収</td>
+            <td class="fund-amount">¥800〜1,200 万</td>
+            <td style="font-size:11px;color:var(--gray-2)">建設業会社員（安定収入）</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700">不動産保有</td>
+            <td class="fund-amount" style="font-size:13px">埼玉県羽生市</td>
+            <td style="font-size:11px;color:var(--gray-2)">上川崎585番地（名義要確認）</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700">個人信用情報</td>
+            <td class="fund-amount" style="color:var(--green);font-size:14px">クリーン</td>
+            <td style="font-size:11px;color:var(--gray-2)">月次返済比率の負担なし</td>
+          </tr>
+        </table>
+
+        <div style="background:#fef5e7;border-left:4px solid var(--gold);padding:14px;margin-top:14px;border-radius:4px">
+          <div style="font-size:11px;font-weight:700;color:var(--gold-2);margin-bottom:6px">💡 世帯返済余力について</div>
+          <div style="font-size:12px;color:#2d3748;line-height:1.7">配偶者年収¥800〜1,200万＋既存個人借入ゼロにより、<strong>世帯全体での返済余力は十分に確保</strong>。代表者は本事業に専念し、生活費は配偶者収入と貯蓄でカバー可能。</div>
+        </div>
+      </div>
+
+      <div>
+        <div style="background:var(--white);border-radius:8px;padding:20px;margin-bottom:14px">
+          <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;justify-content:space-between">
+            📄 新規借入条件（申請案）
+            <span style="background:var(--navy);color:var(--gold);font-size:10px;padding:3px 10px;border-radius:3px">協調融資</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--gray)">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-2)">💰 借入金額（合計）</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);font-weight:700">2,000 <span style="font-size:13px">万円</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--gray)">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-2)">📅 返済期間</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--navy);font-weight:700">10 <span style="font-size:13px">年</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--gray)">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-2)">% 年利（公庫想定）</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--navy);font-weight:700">2.5 <span style="font-size:13px">%</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-2)">⏱ 据置期間</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--navy);font-weight:700">6 <span style="font-size:13px">ヶ月</span></div>
+          </div>
+        </div>
+
+        <div style="background:var(--white);border-radius:8px;padding:18px;margin-bottom:14px">
+          <div style="text-align:center;font-size:11px;color:var(--gray-2);margin-bottom:10px">返済計画（月額目安）</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="background:#fef5e7;border-radius:6px;padding:14px;text-align:center">
+              <div style="font-size:11px;color:var(--gold-2);margin-bottom:4px">据置期間中</div>
+              <div style="font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);font-weight:700">42,000 <span style="font-size:12px">円</span></div>
+              <div style="font-size:10px;color:var(--gray-2);margin-top:4px">（利息のみ）</div>
+            </div>
+            <div style="background:#bee3f8;border-radius:6px;padding:14px;text-align:center">
+              <div style="font-size:11px;color:#2b6cb0;margin-bottom:4px">据置期間後</div>
+              <div style="font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);font-weight:700">191,000 <span style="font-size:12px">円</span></div>
+              <div style="font-size:10px;color:var(--gray-2);margin-top:4px">（元利均等）</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#f7fafc;border-left:4px solid var(--red);padding:14px;border-radius:4px">
+          <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:6px">★ 横展開ナレッジ（Royal案件の学び）</div>
+          <div style="font-size:11.5px;color:#2d3748;line-height:1.7">単独銀行フル申請は通らず → <strong>協調融資前提</strong>で公庫¥1,000万（希望額の半分）+ 信金・地銀で残り埋める設計。サンライズは筑波銀行に配偶者の住宅ローン取引実績ありで、関係性ベースで上乗せ¥500万を狙う。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 16: 月次収支シミュレーション ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">月次収支シミュレーション</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">16 / 23</div>
+  <div class="slide-body">
+    <div class="pl-grid">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px;justify-content:space-between">
+          📈 9居室満床時 月次収支モデル（OWL試算 / 古河市6級地）
+          <span style="background:#fef5e7;color:#744210;font-size:10px;padding:3px 10px;border-radius:3px">モデル：区分3×4＋区分4×4＋区分5×1</span>
+        </div>
+        <table class="pl-table">
+          <thead>
+            <tr><th>項目</th><th class="phase1">3ヶ月目（入居5）</th><th class="phase2">満床時（入居9）</th><th>備考</th></tr>
+          </thead>
+          <tbody>
+            <tr class="section"><td colspan="4">収入の部</td></tr>
+            <tr><td>● 訓練等給付費</td><td>1,118,725円</td><td>2,112,100円</td><td>各種加算含む</td></tr>
+            <tr><td>● 利用者負担金</td><td>391,503円</td><td>783,000円</td><td>¥87,000×名数</td></tr>
+            <tr class="subtotal"><td>売上合計</td><td>1,510,228円</td><td>2,895,100円</td><td></td></tr>
+
+            <tr class="section"><td colspan="4">支出の部</td></tr>
+            <tr><td>● 人件費</td><td>1,100,000円</td><td>1,282,782円</td><td>満床時パート増員</td></tr>
+            <tr><td>● 家賃・地代</td><td>315,000円</td><td>315,000円</td><td>賃貸借契約締結値</td></tr>
+            <tr><td>● 変動費（食・光熱）</td><td>225,000円</td><td>405,000円</td><td>入居者数連動</td></tr>
+            <tr><td>● サポート費・保険</td><td>55,750円</td><td>55,750円</td><td>OWL ¥49,500＋施設保険</td></tr>
+            <tr><td>● その他経費</td><td>32,500円</td><td>32,500円</td><td>通信・事務・消耗</td></tr>
+            <tr class="subtotal"><td>支出小計</td><td>1,728,250円</td><td>2,091,032円</td><td>返済前</td></tr>
+
+            <tr><td>● 返済金</td><td>42,000円</td><td>191,000円</td><td>据置中→満床時は据置後</td></tr>
+            <tr class="total"><td>支出合計</td><td>1,770,250円</td><td>2,282,032円</td><td></td></tr>
+            <tr class="total"><td>月間利益（返済後）</td><td><span class="delta-down">▲260,022円</span></td><td><span class="delta-up">+613,068円</span></td><td>満床時 利益率21%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex;flex-direction:column">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">🔄 入居者推移（12ヶ月）</div>
+        <div class="pl-side-card">
+          <div class="pl-phase">
+            <div class="pl-phase-num">1-3<small>月目</small></div>
+            <div>
+              <div class="pl-phase-title">立上げ期（入居0→5名）</div>
+              <div class="pl-phase-desc">月次<strong>赤字</strong>。融資の据置期間（6ヶ月）で吸収。1ヶ月目▲¥116万・2ヶ月目▲¥72万・3ヶ月目▲¥35万</div>
+            </div>
+          </div>
+          <div class="pl-phase">
+            <div class="pl-phase-num p2">4<small>月目</small></div>
+            <div>
+              <div class="pl-phase-title" style="color:var(--green)">★月次黒字転換（入居7名）</div>
+              <div class="pl-phase-desc">入居7名到達時点で<strong style="color:var(--green)">+¥194,002</strong>の月次黒字達成。OWL試算ベース。</div>
+            </div>
+          </div>
+          <div class="pl-phase">
+            <div class="pl-phase-num p2">6<small>月目</small></div>
+            <div>
+              <div class="pl-phase-title">満床達成（入居9名）</div>
+              <div class="pl-phase-desc">満床時月次利益<strong style="color:var(--green)">+¥741,068</strong>。以降は安定運営フェーズ。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pl-summary">
+          <div class="pl-summary-eyebrow">年間営業利益（初年度）</div>
+          <div class="pl-summary-row">
+            <div>
+              <div class="pl-summary-label">月平均利益</div>
+              <div class="pl-summary-amount">+335<span> 万円</span></div>
+            </div>
+            <div>
+              <div class="pl-summary-rate">対売上高利益率</div>
+              <div class="pl-summary-rate" style="margin-top:4px"><strong>12.5%</strong></div>
+            </div>
+          </div>
+          <div style="font-size:10px;color:#cbd5e0;margin-top:10px;border-top:1px solid rgba(255,255,255,0.2);padding-top:8px">立上げ期赤字を吸収後の年間累計</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 17: 月次推移グラフ ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">月次推移グラフ（入金ベース）</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">17 / 23</div>
+  <div class="slide-body">
+    <div class="chart-grid">
+      <div class="chart-card">
+        <div class="chart-title">
+          <span>📊 資金繰り推移シミュレーション（基本計画 / 9居室満床ベース）</span>
+          <div class="chart-legend">
+            <span class="leg-rev">売上高（入金）</span>
+            <span class="leg-cost">支出（返済込）</span>
+          </div>
+        </div>
+        <div class="chart-area" style="position:relative">
+          <!-- Grid lines -->
+          <div class="chart-grid-line" style="bottom:0%"><span>0</span></div>
+          <div class="chart-grid-line" style="bottom:25%"><span>1000千</span></div>
+          <div class="chart-grid-line" style="bottom:50%"><span>2000千</span></div>
+          <div class="chart-grid-line" style="bottom:75%"><span>3000千</span></div>
+          <!-- Phase divider at month 4 (黒字転換) -->
+          <div class="chart-divider" style="left:25%"></div>
+          <div style="position:absolute;left:25%;top:8px;transform:translateX(-50%);font-size:10px;color:var(--red);font-weight:700;background:#fff;padding:2px 8px;border:1px solid var(--red);border-radius:3px">★4月目 黒字転換</div>
+          <!-- Phase divider at month 6 (満床) -->
+          <div class="chart-divider" style="left:42%;border-color:var(--green)"></div>
+          <div style="position:absolute;left:42%;top:32px;transform:translateX(-50%);font-size:10px;color:var(--green);font-weight:700;background:#fff;padding:2px 8px;border:1px solid var(--green);border-radius:3px">満床</div>
+
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:0%"></div><div class="chart-bar cost" style="height:36%"></div></div><div class="chart-month-label">7月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:5%"></div><div class="chart-bar cost" style="height:54%"></div></div><div class="chart-month-label">8月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:18%"></div><div class="chart-bar cost" style="height:58%"></div></div><div class="chart-month-label">9月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:32%"></div><div class="chart-bar cost" style="height:60%"></div></div><div class="chart-month-label">10月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:46%"></div><div class="chart-bar cost" style="height:62%"></div></div><div class="chart-month-label">11月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:55%"></div><div class="chart-bar cost" style="height:65%"></div></div><div class="chart-month-label">12月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:65%"></div><div class="chart-bar cost" style="height:65%"></div></div><div class="chart-month-label">1月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:75%"></div><div class="chart-bar cost" style="height:65%"></div></div><div class="chart-month-label">2月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:85%"></div><div class="chart-bar cost" style="height:65%"></div></div><div class="chart-month-label">3月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:88%"></div><div class="chart-bar cost" style="height:67%"></div></div><div class="chart-month-label">4月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:88%"></div><div class="chart-bar cost" style="height:67%"></div></div><div class="chart-month-label">5月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:88%"></div><div class="chart-bar cost" style="height:67%"></div></div><div class="chart-month-label">6月</div></div>
+        </div>
+        <div class="chart-note">※単位：千円 / 訓練等給付費は提供翌々月の入金として計算 / 金利2.5%・据置6ヶ月 / 9居室満床想定</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="border-left:5px solid var(--gold)">
+          <div style="font-size:10px;color:var(--gold-2);font-weight:700;margin-bottom:4px;letter-spacing:1px">黒字転換</div>
+          <div style="font-size:16px;font-weight:700;color:var(--navy)">開設4ヶ月目（10月）</div>
+          <div style="font-size:12px;color:#2d3748;line-height:1.7;margin-top:8px">入居7名到達時点で<strong style="color:var(--gold-2)">月次黒字+¥194,002</strong>達成。Royal案件の9ヶ月目より<strong>5ヶ月早い</strong>のは古河市6級地の単価優位性と9居室規模が要因。</div>
+          <div style="border-top:1px dashed var(--gray);padding-top:8px;margin-top:10px;display:flex;justify-content:space-between;font-size:11px;color:var(--gray-2)">
+            <span>想定入居率（6ヶ月目）</span>
+            <span style="color:var(--gold-2);font-weight:700">100% (9名満床)</span>
+          </div>
+        </div>
+        <div class="card" style="border-left:5px solid var(--navy)">
+          <div style="font-size:10px;color:var(--gray-2);font-weight:700;margin-bottom:4px;letter-spacing:1px">キャッシュフロー</div>
+          <div style="font-size:14px;font-weight:700;color:var(--navy)">返済計画の反映</div>
+          <div style="font-size:11.5px;color:#2d3748;line-height:1.7;margin-top:8px">据置期間中（〜12月）は利息のみ<strong>月¥4.2万</strong>、据置明け（1月〜）は元金含め<strong>月¥19.1万</strong>の返済負担を計画に反映済み。</div>
+        </div>
+        <div class="card" style="border-left:5px solid var(--green)">
+          <div style="font-size:10px;color:var(--gray-2);font-weight:700;margin-bottom:4px;letter-spacing:1px">収益性</div>
+          <div style="font-size:14px;font-weight:700;color:var(--navy)">満床時の収益力</div>
+          <div style="font-size:11.5px;color:#2d3748;line-height:1.7;margin-top:8px">9名満床稼働時は、借入返済を含めた全支出を余裕を持って賄い、安定した黒字運営に。<strong style="color:var(--green)">満床月利益+¥74万</strong>水準で年¥335万の営業利益を見込む。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 18: 3パターン比較 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">3パターン収支比較</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">18 / 23</div>
+  <div class="slide-body">
+    <div style="text-align:center;font-size:11px;color:var(--gray-2);margin-bottom:8px">借入額・金利・据置期間を踏まえたシミュレーション（推奨：パターンB）</div>
+    <div class="pat-bar">
+      <span class="pat-bar-tag">推奨：協調融資</span>
+      <span class="pat-bar-tag">公庫は希望半分が標準</span>
+      <span class="pat-bar-tag">2棟目は契約後追加</span>
+    </div>
+
+    <div class="pat-grid">
+      <div class="pat-card a">
+        <div class="pat-card-head">
+          <div class="pat-card-title">パターンA（保守）</div>
+          <div class="pat-card-en">1棟目堅実プラン</div>
+        </div>
+        <div class="pat-card-body">
+          <div class="pat-section">
+            <div class="pat-section-label">想定借入</div>
+            <div class="pat-section-value">¥1,800万円</div>
+          </div>
+          <div>
+            <div class="pat-row"><div class="pat-row-label">公庫</div><div class="pat-row-value">¥1,000万</div></div>
+            <div class="pat-row"><div class="pat-row-label">筑波銀行</div><div class="pat-row-value">¥800万</div></div>
+            <div class="pat-row"><div class="pat-row-label">月返済（据置後）</div><div class="pat-row-value">¥17.2万</div></div>
+            <div class="pat-row"><div class="pat-row-label">返済比率</div><div class="pat-row-value">5.9%</div></div>
+          </div>
+          <div class="pat-result">
+            <div class="pat-result-label">満床時月間利益</div>
+            <div class="pat-result-value">+¥58万</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pat-card b">
+        <div class="pat-card-head">
+          <div class="pat-card-title">パターンB（推奨）</div>
+          <div class="pat-card-en">1棟+2棟つなぎ</div>
+        </div>
+        <div class="pat-card-body">
+          <div class="pat-section" style="background:#fef5e7">
+            <div class="pat-section-label" style="color:var(--gold-2);font-weight:700">想定借入 ★最推奨</div>
+            <div class="pat-section-value" style="color:var(--gold-2)">¥2,000万円</div>
+          </div>
+          <div>
+            <div class="pat-row"><div class="pat-row-label">公庫</div><div class="pat-row-value">¥1,000万</div></div>
+            <div class="pat-row"><div class="pat-row-label">筑波銀行</div><div class="pat-row-value">¥1,000万</div></div>
+            <div class="pat-row"><div class="pat-row-label">月返済（据置後）</div><div class="pat-row-value">¥19.1万</div></div>
+            <div class="pat-row"><div class="pat-row-label">返済比率</div><div class="pat-row-value">6.6%</div></div>
+          </div>
+          <div class="pat-result">
+            <div class="pat-result-label">満床時月間利益</div>
+            <div class="pat-result-value">+¥56万</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pat-card c">
+        <div class="pat-card-head">
+          <div class="pat-card-title">パターンC（ストレッチ）</div>
+          <div class="pat-card-en">2棟同時申請</div>
+        </div>
+        <div class="pat-card-body">
+          <div class="pat-section">
+            <div class="pat-section-label">想定借入</div>
+            <div class="pat-section-value">¥3,500万円</div>
+          </div>
+          <div>
+            <div class="pat-row"><div class="pat-row-label">公庫</div><div class="pat-row-value">¥1,500万</div></div>
+            <div class="pat-row"><div class="pat-row-label">筑波銀行</div><div class="pat-row-value">¥1,000万</div></div>
+            <div class="pat-row"><div class="pat-row-label">信金</div><div class="pat-row-value">¥1,000万</div></div>
+            <div class="pat-row"><div class="pat-row-label">月返済（据置後）</div><div class="pat-row-value">¥33.4万</div></div>
+          </div>
+          <div class="pat-result">
+            <div class="pat-result-label">満床時月間利益</div>
+            <div class="pat-result-value">+¥41万</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px;background:var(--white);border-left:4px solid var(--navy);padding:12px 18px;border-radius:4px;font-size:11.5px;color:#2d3748;display:flex;align-items:center;gap:14px">
+      <span style="font-size:18px">ℹ️</span>
+      <span>★ <strong>4/27打ち合わせで合意の融資希望額¥2,000万に整合する推奨パターン。</strong>1棟目運営フル＋2棟目契約時のつなぎ資金として活用可。Royal案件の学び「協調融資前提」を踏襲し、公庫+筑波銀行の2行で取りに行く。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 19: 2年目以降の展望 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">2年目以降の展望</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">19 / 23</div>
+  <div class="slide-body">
+    <div class="year-list">
+      <div class="year-card">
+        <div class="year-icon">📈</div>
+        <div>
+          <div class="year-title">満室安定時 年間利益 <strong>約700万円</strong> を想定</div>
+          <div class="year-desc">9居室満床稼働（入居率100%）が安定した場合、月次利益+¥74万水準で<strong>年間営業利益約¥700〜890万円</strong>を見込む。古河市6級地の単価優位性と9居室規模により、Royal案件（5居室）の倍以上の収益性を実現。強固な財務基盤と内部留保形成が可能。</div>
+        </div>
+      </div>
+      <div class="year-card">
+        <div class="year-icon">💰</div>
+        <div>
+          <div class="year-title">累計黒字転換 <strong>2年目末</strong> を見込む</div>
+          <div class="year-desc">初期投資（リフォーム¥260万・消防¥70万・備品等）と立上げ期赤字の累積損益は、9居室満床達成（6ヶ月目）後の高い月次利益で吸収。<strong>事業開始から約24ヶ月（2027年7月頃）で投資回収完了</strong>を計画。</div>
+        </div>
+      </div>
+      <div class="year-card">
+        <div class="year-icon">🏘️</div>
+        <div>
+          <div class="year-title">安定運営を前提に <strong>4棟目まで</strong> 段階拡大</div>
+          <div class="year-desc">1棟目満床達成・運営定着後、<strong>2027年中に2棟目展開</strong>を予定。4棟目までの物件物色は既に進行中。管理者・サビ管の2棟兼務（合計定員30名以下）で運営効率化と収益性向上を両立。2棟目以降は1棟目の内部留保を活用し、追加融資は最小限に抑制する計画。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 20: リスクと対策 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">リスクと対策</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">20 / 23</div>
+  <div class="slide-body">
+    <div class="risk-intro">事業運営において想定される主要なリスク要因を特定し、それぞれに対して具体的な対策を講じています。</div>
+
+    <div class="risk-list">
+      <div class="risk-row">
+        <div class="risk-left">
+          <div class="risk-icon">👥</div>
+          <div>
+            <div class="risk-num">RISK 01 <span class="risk-tag">重要</span></div>
+            <div class="risk-title">入居者確保リスク</div>
+            <div class="risk-sub">計画通りに入居が進まない可能性</div>
+          </div>
+        </div>
+        <div class="risk-content">
+          <div>
+            <div class="risk-content-col-title">対策：開業前からの集客チャネル構築</div>
+            <div class="risk-content-col-desc"><strong>元同僚から退所予定者の紹介打診あり</strong>（開業前獲得済）。古河市内のA型/B型作業所、相談支援員、市役所、特別支援学校との連携を構築中。</div>
+          </div>
+          <div>
+            <div class="risk-content-col-title">対策：見学会・体験利用</div>
+            <div class="risk-content-col-desc">完成直後から内覧会を実施。実際の住環境を確認いただき、安心感を醸成して入居の意思決定を促進。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="risk-row">
+        <div class="risk-left">
+          <div class="risk-icon">💰</div>
+          <div>
+            <div class="risk-num">RISK 02 <span class="risk-tag">重要</span></div>
+            <div class="risk-title">資金繰りリスク</div>
+            <div class="risk-sub">黒字化までの運転資金不足</div>
+          </div>
+        </div>
+        <div class="risk-content">
+          <div>
+            <div class="risk-content-col-title">対策：余裕ある資金計画</div>
+            <div class="risk-content-col-desc">融資の<strong>据置期間（6ヶ月）</strong>と<strong>運転資金6ヶ月分（¥527万）</strong>を確保。立上げ期赤字を吸収できる設計。</div>
+          </div>
+          <div>
+            <div class="risk-content-col-title">対策：世帯収入による補完</div>
+            <div class="risk-content-col-desc"><strong>配偶者年収¥800〜1,200万＋既存個人借入ゼロ</strong>で世帯返済余力は十分。代表者報酬を抑制し運転資金を温存。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="risk-row">
+        <div class="risk-left">
+          <div class="risk-icon">📋</div>
+          <div>
+            <div class="risk-num">RISK 03 <span class="risk-tag mid">中</span></div>
+            <div class="risk-title">サビ管・人材確保リスク</div>
+            <div class="risk-sub">サビ管研修クリア・職員採用の不確実性</div>
+          </div>
+        </div>
+        <div class="risk-content">
+          <div>
+            <div class="risk-content-col-title">対策：代表兼務＋研修確定</div>
+            <div class="risk-content-col-desc"><strong>2026年4月サビ管基礎研修受講確定</strong>。介護福祉士10年でみなし要件クリア。サビ管補助パート（月¥8万）も別途採用予定。</div>
+          </div>
+          <div>
+            <div class="risk-content-col-title">対策：FC本部の支援＋同僚ネットワーク</div>
+            <div class="risk-content-col-desc">RUNBIRD（OWL）の人材紹介ネットワークを活用。<strong>前職同僚に既に声がけ済</strong>で前向きな反応を獲得。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="risk-row">
+        <div class="risk-left">
+          <div class="risk-icon">🏠</div>
+          <div>
+            <div class="risk-num">RISK 04 <span class="risk-tag mid">中</span></div>
+            <div class="risk-title">親族間取引の妥当性リスク</div>
+            <div class="risk-sub">夫⇔妻法人の賃貸借契約</div>
+          </div>
+        </div>
+        <div class="risk-content">
+          <div>
+            <div class="risk-content-col-title">対策：書面化＋標準書式</div>
+            <div class="risk-content-col-desc">全国宅地建物取引業協会連合会の<strong>標準書式</strong>で事業用賃貸借契約締結（4/26）。連帯保証人 藤倉常子様（実母／極度額¥1,134万）。</div>
+          </div>
+          <div>
+            <div class="risk-content-col-title">対策：周辺賃料相場資料</div>
+            <div class="risk-content-col-desc">古河市長谷町・199㎡・GH仕様の<strong>周辺賃料相場資料を別途提出</strong>し、賃料¥315,000の妥当性を客観的に説明。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 21: 周辺施設マップ ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">周辺施設マップ・連携ネットワーク</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">21 / 23</div>
+  <div class="slide-body">
+    <div class="map-grid">
+      <div class="map-frame">
+        <!-- Map background pattern -->
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#f0f4f8 0%,#e6edf3 100%);background-image:repeating-linear-gradient(0deg,transparent,transparent 50px,#dde4ec 50px,#dde4ec 51px),repeating-linear-gradient(90deg,transparent,transparent 50px,#dde4ec 50px,#dde4ec 51px)"></div>
+        <div class="map-frame-head">
+          <span>🗺️ 古河市長谷町エリア</span>
+          <div class="map-legend">
+            <span class="lg-blue">相談</span>
+            <span class="lg-green">就労</span>
+            <span class="lg-red">医療</span>
+            <span class="lg-purple">教育・行政</span>
+          </div>
+        </div>
+        <div class="map-circles"></div>
+        <!-- Center pin -->
+        <div class="map-pin center" style="top:50%;left:50%;transform:translate(-50%,-50%)">🏠 ひだまりの家</div>
+        <!-- Surrounding pins -->
+        <div class="map-pin blue" style="top:18%;left:30%">古河市相談支援センター</div>
+        <div class="map-pin blue" style="top:25%;left:60%">相談支援事業所A</div>
+        <div class="map-pin blue" style="top:75%;left:25%">相談支援事業所B</div>
+        <div class="map-pin green" style="top:32%;left:80%">A型作業所</div>
+        <div class="map-pin green" style="top:55%;left:82%">B型作業所</div>
+        <div class="map-pin green" style="top:78%;left:65%">就労継続支援C</div>
+        <div class="map-pin red" style="top:15%;left:55%">古河協立病院</div>
+        <div class="map-pin red" style="top:65%;left:14%">精神科クリニック</div>
+        <div class="map-pin red" style="top:82%;left:48%">歯科医院</div>
+        <div class="map-pin purple" style="top:30%;left:12%">古河特別支援学校</div>
+        <div class="map-pin purple" style="top:50%;left:8%">古河市役所</div>
+      </div>
+
+      <div class="net-summary">
+        <div class="net-card blue">
+          <div class="net-icon">💬</div>
+          <div class="net-content">
+            <div class="net-eyebrow">入居者紹介・支援</div>
+            <div class="net-name">相談支援事業所</div>
+            <div class="net-tags">
+              <span class="net-tag">古河市相談支援センター</span>
+              <span class="net-tag">市内事業所</span>
+              <span class="net-tag">家族・知人</span>
+            </div>
+          </div>
+          <div class="net-count">3 <span>ヶ所〜</span></div>
+        </div>
+
+        <div class="net-card green">
+          <div class="net-icon">💼</div>
+          <div class="net-content">
+            <div class="net-eyebrow">日中活動先</div>
+            <div class="net-name">就労継続支援 A/B</div>
+            <div class="net-tags">
+              <span class="net-tag">A型作業所</span>
+              <span class="net-tag">B型作業所</span>
+              <span class="net-tag">市内連携先</span>
+            </div>
+          </div>
+          <div class="net-count">3 <span>ヶ所</span></div>
+        </div>
+
+        <div class="net-card red">
+          <div class="net-icon">🏥</div>
+          <div class="net-content">
+            <div class="net-eyebrow">医療連携・通院</div>
+            <div class="net-name">協力医療機関</div>
+            <div class="net-tags">
+              <span class="net-tag">古河協立病院</span>
+              <span class="net-tag">精神科クリニック</span>
+              <span class="net-tag">歯科</span>
+            </div>
+          </div>
+          <div class="net-count">3 <span>ヶ所</span></div>
+        </div>
+
+        <div class="net-card purple">
+          <div class="net-icon">🏫</div>
+          <div class="net-content">
+            <div class="net-eyebrow">教育・行政</div>
+            <div class="net-name">特別支援学校・市役所</div>
+            <div class="net-tags">
+              <span class="net-tag">古河特別支援学校</span>
+              <span class="net-tag">古河市障がい福祉課</span>
+            </div>
+          </div>
+          <div class="net-count">2 <span>機関</span></div>
+        </div>
+
+        <div style="background:var(--navy);color:var(--white);padding:14px 18px;border-radius:6px;font-size:12px;border-left:4px solid var(--gold);line-height:1.7;margin-top:auto">
+          <strong style="color:var(--gold)">✓ 包括的な支援体制</strong><br>
+          医療・就労・相談の導線が近接し、<strong>元同僚から退所予定者の紹介打診</strong>も既に獲得。面での支援ネットワークにより、緊急時対応もスムーズで安定運営が可能。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 22: スケジュール ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">スケジュール</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">22 / 23</div>
+  <div class="slide-body">
+    <div class="sched-intro">現在、<strong>法人設立・物件取得・賃貸借契約締結を完了</strong>し、融資申請のフェーズにあります。リフォーム工事完了後、2026年7月の正式開設に向け準備を進めてまいります。</div>
+
+    <div class="sched-track">
+      <div class="sched-step done">
+        <div class="sched-date">2026.2 - 4</div>
+        <div class="sched-icon">✓</div>
+        <div class="sched-card">
+          <div class="sched-card-title">準備・契約</div>
+          <ul class="sched-card-list">
+            <li>OWL契約締結（2/14）</li>
+            <li>消防同行・事前相談（3/6）</li>
+            <li>物件購入・引渡完了（3/31）</li>
+            <li>合同会社サンライズ設立（4/1）</li>
+            <li>事業用賃貸借契約締結（4/26）</li>
+          </ul>
+          <div class="sched-tag">完了</div>
+        </div>
+      </div>
+
+      <div class="sched-step active">
+        <div class="sched-date">2026.5</div>
+        <div class="sched-icon">📝</div>
+        <div class="sched-card">
+          <div class="sched-card-title">融資申請</div>
+          <ul class="sched-card-list">
+            <li>融資資料一式完成（5/8）</li>
+            <li>鈴木レビュー（5/9）</li>
+            <li>3行同行訪問（5/12週）<br>公庫・筑波・信金</li>
+            <li>サビ管基礎研修受講</li>
+          </ul>
+          <div class="sched-tag">進行中</div>
+        </div>
+      </div>
+
+      <div class="sched-step">
+        <div class="sched-date">2026.5 - 6</div>
+        <div class="sched-icon">🔧</div>
+        <div class="sched-card">
+          <div class="sched-card-title">工事・準備</div>
+          <ul class="sched-card-list">
+            <li>リフォーム工事（スズモク）</li>
+            <li>消防設備工事</li>
+            <li>家具・家電・備品購入</li>
+            <li>融資実行（6月中旬目標）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sched-step">
+        <div class="sched-date">2026.5 - 6</div>
+        <div class="sched-icon">📋</div>
+        <div class="sched-card">
+          <div class="sched-card-title">指定申請・採用</div>
+          <ul class="sched-card-list">
+            <li>県事前協議書類提出（5/10）</li>
+            <li>指定申請書（5/31）</li>
+            <li>スタッフ採用面接</li>
+            <li>開設前研修</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sched-step target">
+        <div class="sched-date">2026.7.1</div>
+        <div class="sched-icon">🎉</div>
+        <div class="sched-card">
+          <div class="sched-card-title">開設・受入開始</div>
+          <ul class="sched-card-list">
+            <li>ひだまりの家 開設</li>
+            <li>入居者受入開始</li>
+            <li>サービス提供開始</li>
+            <li>★4ヶ月目で月次黒字転換</li>
+          </ul>
+          <div class="sched-tag">目標</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 23: まとめ ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">まとめ</div>
+    <div class="slide-meta">合同会社サンライズ 事業計画書</div>
+  </div>
+  <div class="pagenum">23 / 23</div>
+  <div class="slide-body" style="display:flex;flex-direction:column">
+    <div class="summ-intro">本事業は、<strong>確実な市場ニーズ＋安定した収益基盤＋進捗最良の準備状況</strong>に基づき、地域社会への貢献と持続的な成長を両立させる計画です。融資審査における<strong>5つの重要ポイント</strong>を以下にまとめました。</div>
+
+    <div class="summ-grid-1">
+      <div class="summ-card s1">
+        <div class="summ-num">01</div>
+        <div class="summ-icon">📈</div>
+        <div class="summ-title">成長市場への参入</div>
+        <div class="summ-desc">国・茨城県の方針として障がい者の地域移行が進み、グループホーム需要は拡大。古河市内の供給は限定的で<strong>需給ギャップによる集客優位</strong>。</div>
+      </div>
+      <div class="summ-card s2">
+        <div class="summ-num">02</div>
+        <div class="summ-icon">💰</div>
+        <div class="summ-title">安定収入・低リスク</div>
+        <div class="summ-desc">売上の<strong>約70%が国の給付金</strong>（国保連請求）。貸し倒れリスクほぼゼロ・景気変動の影響を受けない安定収益基盤。</div>
+      </div>
+      <div class="summ-card s3">
+        <div class="summ-num">03</div>
+        <div class="summ-icon">🏠</div>
+        <div class="summ-title">進捗最良の準備状況</div>
+        <div class="summ-desc"><strong>物件購入済・賃貸借契約締結済・サビ管確定・行政相談済</strong>。Royal/SG案件と比較して進捗最良の3案件中ベスト。</div>
+      </div>
+    </div>
+
+    <div class="summ-grid-2" style="margin-bottom:18px">
+      <div class="summ-card s4">
+        <div class="summ-num">04</div>
+        <div class="summ-icon">⚡</div>
+        <div class="summ-title">早期の黒字化実現</div>
+        <div class="summ-desc">9居室規模＋古河市6級地（10.48円/単位）＋賃料圧縮（年¥756,000改善）により、<strong>開設4ヶ月目に月次黒字化</strong>を達成。年間営業利益+¥335万を見込む。</div>
+      </div>
+      <div class="summ-card s5">
+        <div class="summ-num">05</div>
+        <div class="summ-icon">💳</div>
+        <div class="summ-title">クリーンな与信背景</div>
+        <div class="summ-desc"><strong>既存個人借入ゼロ＋配偶者年収¥800〜1,200万</strong>で世帯返済余力十分。元同僚から退所予定者の紹介打診も獲得済で、初期入居の蓋然性が高い。</div>
+      </div>
+    </div>
+
+    <div class="summ-footer">
+      ✍ 以上の計画に基づき、本事業へのご融資を何卒ご検討賜りますようお願い申し上げます。
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
