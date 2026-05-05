@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1456, initial-scale=1.0">
+<title>五島 久哉 様 不動産賃貸事業計画書 — 古河市長谷町</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0a1929;--navy-2:#1a365d;--navy-3:#2c4870;
+    --gold:#c9a961;--gold-2:#daa520;
+    --bg:#f5f7fa;--white:#ffffff;--gray:#e2e8f0;--gray-2:#718096;
+    --text:#1a1a1a;--red:#c53030;--green:#2f855a;
+  }
+  html,body{font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;background:#cfd8e3;color:var(--text);line-height:1.6}
+  .slide{width:1456px;height:819px;margin:24px auto;background:var(--bg);position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.15);page-break-after:always}
+  .slide-header{height:80px;background:var(--bg);display:flex;align-items:center;justify-content:space-between;padding:0 56px;border-bottom:3px solid var(--gold)}
+  .slide-title{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:30px;color:var(--navy);font-weight:600;letter-spacing:4px;border-left:6px solid var(--gold);padding-left:16px}
+  .slide-meta{font-size:13px;color:var(--gray-2)}
+  .pagenum{position:absolute;bottom:20px;right:40px;font-size:13px;color:var(--gray-2);z-index:20}
+  .slide-body{padding:32px 56px;height:calc(100% - 80px);overflow:hidden}
+  .card{background:var(--white);border-radius:8px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+
+  /* COVER */
+  .cover{background:var(--navy);color:var(--white);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative}
+  .cover-corner-tr{position:absolute;top:48px;right:48px;width:80px;height:80px;border:1px solid var(--gold);border-left:none;border-bottom:none}
+  .cover-corner-bl{position:absolute;bottom:48px;left:48px;width:80px;height:80px;border:1px solid var(--gold);border-right:none;border-top:none}
+  .cover-corner-tl{position:absolute;top:48px;left:48px;width:80px;height:80px;border:1px solid var(--gold);border-right:none;border-bottom:none}
+  .cover-corner-br{position:absolute;bottom:48px;right:48px;width:80px;height:80px;border:1px solid var(--gold);border-left:none;border-top:none}
+  .cover-eyebrow{font-family:'Hiragino Mincho ProN',serif;font-size:28px;letter-spacing:8px;font-weight:300;color:#cbd5e0;margin-bottom:24px}
+  .cover-title{font-family:'Hiragino Mincho ProN',serif;font-size:56px;letter-spacing:6px;color:var(--white);font-weight:500;text-align:center;line-height:1.4}
+  .cover-applicant{font-family:'Hiragino Mincho ProN',serif;font-size:30px;letter-spacing:6px;color:var(--gold);margin-top:24px;border-bottom:1px solid var(--gold);padding-bottom:8px}
+  .cover-info{margin-top:60px;background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,97,0.3);border-radius:8px;padding:24px 40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;width:920px}
+  .cover-info-row{display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(255,255,255,0.1);padding:8px 0}
+  .cover-info-label{font-size:13px;color:#a0aec0;min-width:110px}
+  .cover-info-value{font-size:15px;color:var(--white);font-weight:500}
+
+  /* Profile (slide 2) */
+  .profile-grid{display:grid;grid-template-columns:340px 1fr;gap:32px;height:100%}
+  .profile-card{background:var(--white);border:1px solid var(--gray);border-radius:8px;padding:32px 24px}
+  .profile-avatar{width:160px;height:160px;border-radius:50%;background:#edf2f7;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;color:#a0aec0;font-size:64px}
+  .profile-name{font-family:'Hiragino Mincho ProN',serif;font-size:32px;text-align:center;color:var(--navy);margin-bottom:6px}
+  .profile-sub{text-align:center;font-size:13px;color:var(--gray-2);margin-bottom:14px}
+  .profile-badges{display:flex;justify-content:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600}
+  .badge-navy{background:var(--navy);color:var(--white)}
+  .badge-gold{background:var(--gold);color:var(--navy)}
+  .profile-meta{border-top:1px solid var(--gray);padding-top:14px;font-size:13px;line-height:1.8}
+  .profile-meta-label{color:var(--gray-2);font-size:11px;margin-top:8px}
+  .career-list{padding-left:0}
+  .career-item{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:14px 0;border-left:2px solid var(--navy);padding-left:20px;position:relative;margin-bottom:4px}
+  .career-item::before{content:"";position:absolute;left:-7px;top:24px;width:12px;height:12px;background:var(--navy);border-radius:50%}
+  .career-period{font-size:13px;color:var(--gold-2);font-weight:600}
+  .career-company{font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
+  .career-role{font-size:13px;color:var(--gray-2)}
+  .career-highlight{display:inline-block;margin-top:6px;padding:3px 10px;background:#fef5e7;border-left:3px solid var(--gold);font-size:12px;color:#744210}
+  .career-highlight-success{background:#f0fff4;border-left-color:var(--green);color:#22543d}
+
+  /* TOC */
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;padding:8px 0}
+  .toc-item{display:grid;grid-template-columns:48px 1fr 32px;align-items:center;padding:12px 0;border-bottom:1px solid var(--gray);font-size:14px}
+  .toc-item.active{background:var(--navy);color:var(--white);border-radius:4px;padding:12px 16px;border-bottom:none}
+  .toc-num{font-family:'Hiragino Mincho ProN',serif;color:var(--gold);font-weight:600}
+  .toc-item.active .toc-num{color:var(--gold)}
+
+  /* Summary (slide 4) */
+  .summary-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-3) 100%);color:#fff;border-radius:12px;padding:30px 40px;margin-bottom:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .summary-hero-item{text-align:center}
+  .summary-hero-label{font-size:11px;color:#cbd5e0;letter-spacing:2px;margin-bottom:6px}
+  .summary-hero-value{font-family:'Hiragino Mincho ProN',serif;font-size:32px;color:var(--gold);font-weight:700;line-height:1.2}
+  .summary-hero-value span{font-size:14px;color:#cbd5e0;font-weight:400;margin-left:4px}
+  .summary-hero-sub{font-size:11px;color:#a0aec0;margin-top:4px}
+  .summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .summary-card{background:var(--white);border-radius:8px;padding:22px 26px;border-left:5px solid var(--navy);box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .summary-card.gold{border-left-color:var(--gold)}
+  .summary-card.green{border-left-color:var(--green)}
+  .summary-card.red{border-left-color:var(--red)}
+  .summary-card-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .summary-card-body{font-size:13px;color:#2d3748;line-height:1.7}
+  .summary-card-body strong{color:var(--gold-2)}
+
+  /* Property (slide 5) */
+  .loc-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;height:100%}
+  .loc-map{background:#e2e8f0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);font-size:14px;position:relative;overflow:hidden;min-height:680px}
+  .loc-detail{padding-top:8px}
+  .loc-detail-title{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);border-left:4px solid var(--gold);padding-left:12px;margin-bottom:16px}
+  .loc-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:14px}
+  .loc-table th,.loc-table td{padding:8px 12px;border-bottom:1px solid var(--gray);text-align:left;vertical-align:top}
+  .loc-table th{background:#f7fafc;color:var(--navy);width:130px;font-weight:600;font-size:12px}
+  .loc-bullet{display:flex;align-items:start;gap:10px;font-size:12px;margin:6px 0}
+  .loc-bullet::before{content:"●";color:var(--gold);font-size:10px;margin-top:5px}
+
+  /* Contract (slide 6) */
+  .contract-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:32px;height:100%}
+  .contract-table{width:100%;border-collapse:collapse;font-size:13px;background:var(--white);border-radius:8px;overflow:hidden}
+  .contract-table th,.contract-table td{padding:11px 14px;border-bottom:1px solid var(--gray);text-align:left;vertical-align:top}
+  .contract-table th{background:var(--navy);color:#fff;font-size:12px;font-weight:600}
+  .contract-table tr:nth-child(even) td{background:#f7fafc}
+  .contract-highlight-card{background:linear-gradient(135deg,#fef5e7,#fffbeb);border:2px solid var(--gold);border-radius:10px;padding:24px;text-align:center;margin-bottom:20px}
+  .contract-highlight-label{font-size:11px;color:var(--gold-2);letter-spacing:3px;font-weight:700;margin-bottom:8px}
+  .contract-highlight-value{font-family:'Hiragino Mincho ProN',serif;font-size:42px;color:var(--navy);font-weight:700;letter-spacing:1px}
+  .contract-highlight-value span{font-size:16px;color:var(--gray-2);font-weight:400;margin-left:6px}
+  .contract-highlight-note{font-size:12px;color:#744210;margin-top:10px;line-height:1.5}
+
+  /* Apply (slide 7) */
+  .apply-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:32px;height:100%}
+  .apply-summary{background:var(--navy);color:#fff;border-radius:12px;padding:28px;display:flex;flex-direction:column;gap:14px}
+  .apply-summary-title{font-size:14px;color:var(--gold);letter-spacing:3px;margin-bottom:8px}
+  .apply-row{display:flex;justify-content:space-between;align-items:end;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.2)}
+  .apply-row-label{font-size:12px;color:#cbd5e0}
+  .apply-row-value{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--gold);font-weight:700}
+  .apply-row-value span{font-size:13px;color:#cbd5e0;font-weight:400;margin-left:4px}
+  .apply-key-card{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-2) 100%);color:var(--navy);border-radius:10px;padding:22px;text-align:center;margin-top:auto}
+  .apply-key-label{font-size:11px;letter-spacing:3px;font-weight:700;margin-bottom:6px}
+  .apply-key-value{font-family:'Hiragino Mincho ProN',serif;font-size:36px;font-weight:700;line-height:1.1}
+  .apply-key-value span{font-size:18px}
+  .apply-detail{display:flex;flex-direction:column;gap:14px}
+  .apply-detail-card{background:var(--white);border-radius:8px;padding:20px;border-top:4px solid var(--navy)}
+  .apply-detail-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .apply-detail-body{font-size:12.5px;color:#2d3748;line-height:1.7}
+  .apply-detail-body strong{color:var(--gold-2)}
+
+  /* Asset (slide 8) */
+  .asset-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;height:100%}
+  .asset-table{width:100%;border-collapse:collapse;font-size:13px;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .asset-table th,.asset-table td{padding:13px 16px;border-bottom:1px solid var(--gray)}
+  .asset-table th{background:#edf2f7;color:var(--navy);font-weight:600;font-size:12px;text-align:left}
+  .asset-table td.num{text-align:right;font-family:'Hiragino Mincho ProN',serif;font-size:16px;color:var(--navy);font-weight:700}
+  .asset-table tr.total td{background:var(--navy);color:#fff}
+  .asset-table tr.total td.num{color:var(--gold);font-size:20px}
+  .asset-key{background:linear-gradient(135deg,#1a365d,#2c4870);color:#fff;border-radius:10px;padding:28px;text-align:center;margin-top:14px}
+  .asset-key-label{font-size:11px;color:var(--gold);letter-spacing:3px;margin-bottom:8px}
+  .asset-key-value{font-family:'Hiragino Mincho ProN',serif;font-size:46px;color:var(--gold);font-weight:700}
+  .asset-key-value span{font-size:18px;color:#cbd5e0}
+  .asset-key-note{font-size:12px;color:#cbd5e0;margin-top:8px;line-height:1.5}
+  .asset-message-card{background:var(--white);border-radius:8px;padding:24px;border-left:5px solid var(--gold);height:100%;display:flex;flex-direction:column;justify-content:center}
+  .asset-message-eyebrow{font-size:12px;color:var(--gold-2);font-weight:700;letter-spacing:2px;margin-bottom:12px}
+  .asset-message-title{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);font-weight:700;margin-bottom:14px;line-height:1.5}
+  .asset-message-body{font-size:13px;color:#2d3748;line-height:1.9}
+  .asset-message-body strong{color:var(--gold-2)}
+
+  /* CF (slide 9) */
+  .cf-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;height:100%}
+  .cf-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:8px;overflow:hidden;font-size:12.5px}
+  .cf-table th{background:var(--navy);color:#fff;padding:10px 12px;text-align:right;font-weight:600;font-size:12px}
+  .cf-table th:first-child{text-align:left;width:50%}
+  .cf-table td{padding:9px 12px;border-bottom:1px solid var(--gray);text-align:right}
+  .cf-table td:first-child{text-align:left;font-weight:600;color:#2d3748}
+  .cf-table tr.section td{background:#edf2f7;font-weight:700;color:var(--navy);font-size:11px;padding:5px 12px}
+  .cf-table tr.subtotal td{background:#fef5e7;color:#744210;font-weight:700}
+  .cf-table tr.total td{background:var(--navy);color:#fff;font-weight:700;font-size:14px;padding:12px}
+  .cf-result-card{background:linear-gradient(135deg,#22543d,#2f855a);color:#fff;border-radius:10px;padding:30px;text-align:center}
+  .cf-result-label{font-size:11px;color:#c6f6d5;letter-spacing:3px;margin-bottom:8px}
+  .cf-result-value{font-family:'Hiragino Mincho ProN',serif;font-size:46px;color:var(--white);font-weight:700}
+  .cf-result-value span{font-size:18px;color:#c6f6d5}
+  .cf-mini-cards{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+  .cf-mini-card{background:var(--white);border-radius:8px;padding:14px 18px;border-left:4px solid var(--gold)}
+  .cf-mini-title{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:4px}
+  .cf-mini-desc{font-size:11.5px;color:#2d3748;line-height:1.6}
+
+  /* Ratio (slide 10) */
+  .ratio-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;height:100%}
+  .ratio-card{background:var(--white);border-radius:10px;padding:24px;border-top:4px solid var(--navy);position:relative;text-align:center;display:flex;flex-direction:column;justify-content:center}
+  .ratio-card.green{border-top-color:var(--green)}
+  .ratio-card.gold{border-top-color:var(--gold)}
+  .ratio-card.red{border-top-color:var(--red)}
+  .ratio-label{font-size:13px;color:var(--gray-2);font-weight:600;margin-bottom:12px}
+  .ratio-value{font-family:'Hiragino Mincho ProN',serif;font-size:64px;color:var(--navy);font-weight:700;line-height:1}
+  .ratio-card.green .ratio-value{color:var(--green)}
+  .ratio-card.gold .ratio-value{color:var(--gold-2)}
+  .ratio-card.red .ratio-value{color:var(--red)}
+  .ratio-value span{font-size:24px;margin-left:4px}
+  .ratio-judge{display:inline-block;margin-top:12px;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:700}
+  .ratio-judge.safe{background:#c6f6d5;color:#22543d}
+  .ratio-judge.ok{background:#fef5e7;color:#744210}
+  .ratio-judge.warn{background:#fed7d7;color:#9b2c2c}
+  .ratio-desc{font-size:12px;color:#4a5568;margin-top:14px;line-height:1.7}
+  .ratio-desc strong{color:var(--navy)}
+
+  /* Risk (slide 11) */
+  .stress-grid{display:grid;grid-template-columns:1fr;gap:18px;height:100%;align-content:center}
+  .stress-row{display:grid;grid-template-columns:160px 1fr 200px 200px;gap:16px;background:var(--white);border-radius:10px;padding:18px 22px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .stress-row.warn{background:#fef5e7;border-left:5px solid var(--gold)}
+  .stress-row.danger{background:#fed7d7;border-left:5px solid var(--red)}
+  .stress-row.normal{background:var(--white);border-left:5px solid var(--green)}
+  .stress-scenario{font-size:13px;font-weight:700;color:var(--navy)}
+  .stress-detail{font-size:12px;color:#4a5568;line-height:1.6}
+  .stress-cf{text-align:right;font-family:'Hiragino Mincho ProN',serif;font-size:22px;font-weight:700}
+  .stress-cf.green{color:var(--green)}
+  .stress-cf.red{color:var(--red)}
+  .stress-coverage{text-align:right;font-size:12px;color:var(--gray-2);line-height:1.5}
+  .stress-coverage strong{display:block;font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--navy)}
+
+  /* Existing loan (slide 12) */
+  .loan-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;height:100%}
+  .loan-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:8px;overflow:hidden;font-size:12.5px}
+  .loan-table th{background:var(--navy);color:#fff;padding:11px 12px;font-weight:600;font-size:11.5px;text-align:left}
+  .loan-table th.num{text-align:right}
+  .loan-table td{padding:11px 12px;border-bottom:1px solid var(--gray)}
+  .loan-table td.num{text-align:right;font-family:'Hiragino Mincho ProN',serif;font-size:14px;color:var(--navy);font-weight:700}
+  .loan-table tr.total td{background:#fef5e7;color:#744210;font-weight:700}
+  .loan-table tr.total td.num{color:var(--gold-2);font-size:16px}
+  .loan-status-tag{display:inline-block;padding:3px 10px;border-radius:3px;font-size:10px;font-weight:700;background:#c6f6d5;color:#22543d}
+  .loan-key-card{background:linear-gradient(135deg,#1a365d,#2c4870);color:#fff;border-radius:10px;padding:24px}
+  .loan-key-eyebrow{font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:8px}
+  .loan-key-title{font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:#fff;margin-bottom:14px;line-height:1.5}
+  .loan-key-body{font-size:12.5px;color:#cbd5e0;line-height:1.8}
+  .loan-key-body strong{color:var(--gold)}
+  .loan-no-debt{margin-top:14px;background:var(--white);border-radius:8px;padding:18px}
+  .loan-no-debt-title{font-size:13px;font-weight:700;color:var(--green);margin-bottom:8px}
+  .loan-no-debt-list{font-size:11.5px;color:#2d3748;line-height:1.8}
+  .loan-no-debt-list span{display:inline-flex;align-items:center;gap:4px;margin-right:12px}
+  .loan-no-debt-list span::before{content:"✓";color:var(--green);font-weight:700}
+
+  /* 三段構え (slide 13) */
+  .triad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;height:calc(100% - 110px)}
+  .triad-card{background:var(--white);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .triad-card.t1 .triad-head{background:#1a365d}
+  .triad-card.t2 .triad-head{background:#22543d}
+  .triad-card.t3 .triad-head{background:#7b341e}
+  .triad-head{padding:20px 22px;color:#fff;text-align:center}
+  .triad-layer{font-size:12px;color:var(--gold);letter-spacing:3px;margin-bottom:8px}
+  .triad-name{font-family:'Hiragino Mincho ProN',serif;font-size:24px;font-weight:600}
+  .triad-body{padding:22px;flex:1;display:flex;flex-direction:column;gap:12px}
+  .triad-section{background:#f7fafc;border-radius:6px;padding:14px}
+  .triad-section-title{font-size:12px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .triad-section-desc{font-size:11.5px;color:#2d3748;line-height:1.7}
+  .triad-section-desc strong{color:var(--gold-2)}
+  .triad-result{margin-top:auto;background:linear-gradient(135deg,#fef5e7,#fffbeb);border:2px solid var(--gold);border-radius:6px;padding:12px;text-align:center}
+  .triad-result-label{font-size:10px;color:var(--gold-2);letter-spacing:1px;margin-bottom:4px}
+  .triad-result-value{font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--navy);font-weight:700;line-height:1.3}
+  .triad-intro{background:#fff5f5;border-left:4px solid var(--red);padding:14px 20px;border-radius:6px;margin-bottom:14px;display:flex;align-items:center;gap:14px}
+  .triad-intro-icon{font-size:24px}
+  .triad-intro-text{font-size:13px;color:#9b2c2c;line-height:1.6}
+  .triad-intro-text strong{color:var(--navy)}
+
+  /* Bank deepening (slide 14) */
+  .deepen-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;height:100%}
+  .deepen-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:8px;overflow:hidden;font-size:13px}
+  .deepen-table th,.deepen-table td{padding:12px 14px;border-bottom:1px solid var(--gray);text-align:right}
+  .deepen-table th:first-child,.deepen-table td:first-child{text-align:left}
+  .deepen-table th{background:var(--navy);color:#fff;font-weight:600;font-size:12px}
+  .deepen-table tr.subtotal td{background:#fef5e7;color:#744210;font-weight:700}
+  .deepen-table tr.total td{background:linear-gradient(135deg,#1a365d,#2c4870);color:#fff;font-weight:700;font-size:15px;padding:16px 14px}
+  .deepen-table tr.total td:last-child{color:var(--gold)}
+  .deepen-story-card{background:linear-gradient(135deg,#1a365d,#2c4870);color:#fff;border-radius:10px;padding:28px;display:flex;flex-direction:column;height:100%}
+  .deepen-story-eyebrow{font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:10px}
+  .deepen-story-quote{font-family:'Hiragino Mincho ProN',serif;font-size:16px;color:#fff;line-height:1.8;border-left:3px solid var(--gold);padding-left:16px;margin-bottom:14px;font-weight:300}
+  .deepen-story-quote strong{color:var(--gold);font-weight:600}
+  .deepen-story-list{font-size:12px;color:#cbd5e0;line-height:1.9;margin-top:auto;border-top:1px solid rgba(255,255,255,0.15);padding-top:14px}
+
+  /* Risks (slide 15) */
+  .risks-list{display:flex;flex-direction:column;gap:12px}
+  .risk-row{display:grid;grid-template-columns:240px 80px 1fr;gap:18px;background:var(--white);border-radius:8px;padding:16px 20px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .risk-name{font-size:13px;font-weight:700;color:var(--navy)}
+  .risk-impact{text-align:center;font-size:11px;font-weight:700;padding:4px 10px;border-radius:3px}
+  .risk-impact.high{background:var(--red);color:#fff}
+  .risk-impact.mid{background:#dd6b20;color:#fff}
+  .risk-impact.low{background:var(--green);color:#fff}
+  .risk-mitigation{font-size:12px;color:#2d3748;line-height:1.7}
+  .risk-mitigation strong{color:var(--gold-2)}
+
+  /* Schedule (slide 17) */
+  .sched-track{position:relative;padding:30px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+  .sched-track::before{content:"";position:absolute;top:50px;left:8%;right:8%;height:1px;background:var(--gray);z-index:0}
+  .sched-step{position:relative;text-align:center;z-index:1}
+  .sched-date{font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--navy);font-weight:600;margin-bottom:14px}
+  .sched-step.active .sched-date{font-size:22px;color:var(--gold-2)}
+  .sched-icon{width:38px;height:38px;border-radius:50%;background:var(--white);border:2px solid var(--gray);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);position:relative;z-index:2}
+  .sched-step.done .sched-icon{background:var(--gold);border-color:var(--gold);color:var(--white)}
+  .sched-step.active .sched-icon{background:var(--navy);border-color:var(--gold);color:var(--gold);box-shadow:0 0 0 6px rgba(201,169,97,0.15)}
+  .sched-step.target .sched-icon{background:var(--white);border-color:var(--gold);color:var(--gold-2)}
+  .sched-card{background:var(--white);border-radius:8px;padding:18px 16px;border-top:3px solid var(--gray);min-height:240px;text-align:left}
+  .sched-step.done .sched-card{border-top-color:var(--gold)}
+  .sched-step.active .sched-card{border-top-color:var(--navy);background:#f7fafc}
+  .sched-step.target .sched-card{background:#fffaf0;border:2px solid var(--gold)}
+  .sched-card-title{font-size:13px;font-weight:700;color:var(--navy);text-align:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--gray)}
+  .sched-card-list{font-size:11px;color:#2d3748;line-height:1.7}
+  .sched-card-list li{list-style:none;display:flex;align-items:start;gap:6px;margin:3px 0}
+  .sched-card-list li::before{content:"●";color:var(--gold);font-size:8px;margin-top:6px}
+
+  /* Summary (slide 18) */
+  .summ-intro{font-size:13px;color:#4a5568;margin-bottom:20px;line-height:1.8}
+  .summ-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:20px}
+  .summ-grid.row2{grid-template-columns:repeat(2,1fr);max-width:80%;margin:0 auto 18px}
+  .summ-card{background:var(--white);border-radius:8px;padding:24px;border-top:4px solid var(--navy);position:relative;min-height:190px}
+  .summ-card.s1{border-top-color:#3182ce}
+  .summ-card.s2{border-top-color:#38a169}
+  .summ-card.s3{border-top-color:var(--gold)}
+  .summ-card.s4{border-top-color:#e53e3e}
+  .summ-card.s5{border-top-color:#805ad5}
+  .summ-num{position:absolute;top:14px;right:20px;font-family:'Hiragino Mincho ProN',serif;font-size:28px;color:#cbd5e0;font-weight:300}
+  .summ-icon{width:44px;height:44px;border-radius:10px;background:#edf2f7;color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+  .summ-card.s1 .summ-icon{background:#bee3f8;color:#2b6cb0}
+  .summ-card.s2 .summ-icon{background:#c6f6d5;color:#22543d}
+  .summ-card.s3 .summ-icon{background:#fef5e7;color:var(--gold-2)}
+  .summ-card.s4 .summ-icon{background:#fed7d7;color:#9b2c2c}
+  .summ-card.s5 .summ-icon{background:#e9d8fd;color:#553c9a}
+  .summ-title{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .summ-desc{font-size:12.5px;color:#2d3748;line-height:1.7}
+  .summ-desc strong{color:var(--gold-2)}
+  .summ-footer{background:var(--navy);color:#fff;padding:20px 28px;border-radius:6px;font-size:14px;text-align:center;letter-spacing:1px;border-left:6px solid var(--gold)}
+
+  @media print{
+    html,body{background:#fff}
+    .slide{margin:0;box-shadow:none;page-break-after:always;page-break-inside:avoid}
+    @page{size:1456px 819px;margin:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SLIDE 1: COVER ============ -->
+<section class="slide cover">
+  <div class="cover-corner-tl"></div>
+  <div class="cover-corner-tr"></div>
+  <div class="cover-corner-bl"></div>
+  <div class="cover-corner-br"></div>
+  <div class="pagenum" style="color:#cbd5e0">1 / 18</div>
+
+  <div class="cover-eyebrow">不 動 産 賃 貸 事 業 計 画 書</div>
+  <h1 class="cover-title">古河市長谷町223番地1<br>不動産融資 申込資料</h1>
+  <div class="cover-applicant">五 島 久 哉 様</div>
+
+  <div class="cover-info">
+    <div>
+      <div class="cover-info-row"><div class="cover-info-label">融資希望額</div><div class="cover-info-value">¥10,000,000</div></div>
+      <div class="cover-info-row"><div class="cover-info-label">返済期間</div><div class="cover-info-value">25年（元利均等）</div></div>
+      <div class="cover-info-row"><div class="cover-info-label">想定金利</div><div class="cover-info-value">1.5%固定</div></div>
+      <div class="cover-info-row"><div class="cover-info-label">月額返済</div><div class="cover-info-value">¥40,000</div></div>
+    </div>
+    <div>
+      <div class="cover-info-row"><div class="cover-info-label">申込先（メイン）</div><div class="cover-info-value">筑波銀行 古河支店</div></div>
+      <div class="cover-info-row"><div class="cover-info-label">バックアップ</div><div class="cover-info-value">常陽銀行 古河支店</div></div>
+      <div class="cover-info-row"><div class="cover-info-label">融資実行目標</div><div class="cover-info-value">2026年6月中旬</div></div>
+      <div class="cover-info-row"><div class="cover-info-label">提出日</div><div class="cover-info-value">2026年5月3日（v1）</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 2: PROFILE ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">申込者プロフィール</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">2 / 18</div>
+  <div class="slide-body">
+    <div class="profile-grid">
+      <div>
+        <div class="profile-card">
+          <div class="profile-avatar">👤</div>
+          <div class="profile-name">五島 久哉</div>
+          <div class="profile-sub">建設業 工事次長 / 53歳</div>
+          <div class="profile-badges">
+            <span class="badge badge-navy">勤続12年</span>
+            <span class="badge badge-gold">本業年収¥1,051万</span>
+          </div>
+          <div class="profile-meta">
+            <div class="profile-meta-label">生年月日</div>
+            昭和47年（1972年）8月11日
+            <div class="profile-meta-label">住所</div>
+            茨城県坂東市菅谷1185-1（持家・自己所有）
+            <div class="profile-meta-label">家族構成</div>
+            👫 配偶者：五島 明美様（合同会社サンライズ代表）／扶養親族1名
+            <div class="profile-meta-label">配偶者収入</div>
+            合同会社サンライズ 代表報酬（GH開業後）
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:17px;color:var(--navy);margin-bottom:18px;display:flex;align-items:center;gap:10px"><span style="background:var(--navy);color:#fff;width:30px;height:30px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:14px">📋</span>職務経歴</h3>
+
+        <div class="career-list">
+          <div class="career-item">
+            <div class="career-period">独立経営期</div>
+            <div>
+              <div class="career-company">建設業（自営）</div>
+              <div class="career-role">経営者として独立、従業員約20名規模を率いた経験</div>
+              <span class="career-highlight">経営判断・組織運営の経験を保有</span>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-period">介護業期</div>
+            <div>
+              <div class="career-company">介護施設</div>
+              <div class="career-role">ヘルパー2級を取得し介護業に従事</div>
+              <span class="career-highlight">福祉業界の実務経験あり（GH事業の理解度高い）</span>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-period">2014年〜現在<br>勤続12年</div>
+            <div>
+              <div class="career-company">株式会社 共進鋼業（茨城県猿島郡五霞町）</div>
+              <div class="career-role">建設業（鉄鋼加工）／<strong>工事次長として12年勤続</strong></div>
+              <span class="career-highlight career-highlight-success">本業年収 直近3年平均 ¥10,516,504／正社員・継続勤務</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;background:var(--white);border-radius:8px;padding:18px;border-top:3px solid var(--gold)">
+          <div style="font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px">⭐ 保有資格</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <span style="padding:5px 12px;border:1px solid var(--gray);border-radius:4px;font-size:12px;color:#2d3748;background:#f7fafc">鉄筋施工1級技能士</span>
+            <span style="padding:5px 12px;border:1px solid var(--gray);border-radius:4px;font-size:12px;color:#2d3748;background:#f7fafc">普通自動車免許</span>
+            <span style="padding:5px 12px;border:1px solid var(--gray);border-radius:4px;font-size:12px;color:#2d3748;background:#f7fafc">大型自動車免許</span>
+            <span style="padding:5px 12px;border:1px solid var(--gray);border-radius:4px;font-size:12px;color:#2d3748;background:#f7fafc">ヘルパー2級</span>
+            <span style="padding:5px 12px;border:1px solid var(--gray);border-radius:4px;font-size:12px;color:#2d3748;background:#f7fafc">建築関係資格多数</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 3: TOC ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">目次</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">3 / 18</div>
+  <div class="slide-body">
+    <div class="toc-grid">
+      <div class="toc-item"><div class="toc-num">01</div><div>表紙</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">02</div><div>申込者プロフィール</div><div></div></div>
+      <div class="toc-item active"><div class="toc-num">03</div><div>目次</div><div>‹</div></div>
+      <div class="toc-item"><div class="toc-num">04</div><div>案件サマリー（核心3点）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">05</div><div>対象物件（取得済・登記完了済）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">06</div><div>賃貸借契約（返済原資の客観立証）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">07</div><div>融資申込内容</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">08</div><div>自己資金・流動資産</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">09</div><div>月次キャッシュフロー</div><div></div></div>
+
+      <div class="toc-item"><div class="toc-num">10</div><div>返済比率（健全性指標）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">11</div><div>賃料停止リスク耐性</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">12</div><div>既存借入状況（透明性開示）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">13</div><div>★集中リスクへの三段構え保全策</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">14</div><div>銀行ストーリー（取引深耕）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">15</div><div>リスクと対策</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">16</div><div>添付資料一覧</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">17</div><div>スケジュール</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">18</div><div>まとめ</div><div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 4: SUMMARY ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">案件サマリー</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">4 / 18</div>
+  <div class="slide-body">
+    <div class="summary-hero">
+      <div class="summary-hero-item">
+        <div class="summary-hero-label">融資希望額</div>
+        <div class="summary-hero-value">¥1,000<span>万</span></div>
+        <div class="summary-hero-sub">25年・1.5%・月¥4万</div>
+      </div>
+      <div class="summary-hero-item">
+        <div class="summary-hero-label">月額賃料収入</div>
+        <div class="summary-hero-value">¥31.5<span>万</span></div>
+        <div class="summary-hero-sub">事業用賃貸借契約済</div>
+      </div>
+      <div class="summary-hero-item">
+        <div class="summary-hero-label">賃料カバー率</div>
+        <div class="summary-hero-value">7.9<span>倍</span></div>
+        <div class="summary-hero-sub">賃料 ÷ 月返済</div>
+      </div>
+      <div class="summary-hero-item">
+        <div class="summary-hero-label">流動資産</div>
+        <div class="summary-hero-value">¥2,300<span>万</span></div>
+        <div class="summary-hero-sub">本融資全額完済可能</div>
+      </div>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-card gold">
+        <div class="summary-card-title">🏠 ① 取得済物件の自己資金回収融資</div>
+        <div class="summary-card-body">
+          物件は<strong>¥10,000,000で自己資金にて取得済</strong>（2026/3/31引渡完了・3/23登記完了／買主：五島久哉）。本融資の目的は「事業活用が確定した収益不動産の自己資金回収」。回収資金は<strong>二棟目物件取得の頭金や緊急時の生活防衛資金として温存</strong>する。
+        </div>
+      </div>
+      <div class="summary-card">
+        <div class="summary-card-title">📋 ② 賃貸借契約による確実な返済原資</div>
+        <div class="summary-card-body">
+          <strong>2026/4/26 事業用定期建物賃貸借契約締結済</strong>（甲：五島久哉／乙：合同会社サンライズ／丙：藤倉常子＝代表の実母・極度額¥1,134万）。月額賃料¥315,000は本融資月返済¥40,000の<strong>約7.9倍</strong>で、返済原資の客観性は極めて高い。
+        </div>
+      </div>
+      <div class="summary-card green">
+        <div class="summary-card-title">💪 ③ 本業年収¥1,051万・流動資産¥2,300万</div>
+        <div class="summary-card-body">
+          共進鋼業 工事次長として<strong>勤続12年・3年連続年収¥1,000万超</strong>の安定実績。流動資産¥2,300万円（普通預金¥800万＋生命保険解約返戻金¥1,500万）により<strong>本融資¥1,000万を全額自己資金で完済可能</strong>な水準。返済能力は盤石。
+        </div>
+      </div>
+      <div class="summary-card red">
+        <div class="summary-card-title">🏦 ④ 既存住宅ローンとのリレーション深耕</div>
+        <div class="summary-card-body">
+          <strong>筑波銀行猿島支店との住宅ローン取引4年・正常返済継続中</strong>（残高¥2,487万・月¥107,425・住宅ローン控除も毎年適用）。本融資は同一行・古河支店での<strong>「家庭全体でのメインバンク化」</strong>として申込み、世帯総合取引¥1,135万円の獲得を提案。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 5: PROPERTY ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">対象物件（取得済・登記完了済）</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">5 / 18</div>
+  <div class="slide-body">
+    <div class="loc-grid">
+      <div class="loc-map" style="padding:0;overflow:hidden;border:1px solid var(--gray)">
+        <iframe
+          src="https://maps.google.com/maps?q=%E8%8C%A8%E5%9F%8E%E7%9C%8C%E5%8F%A4%E6%B2%B3%E5%B8%82%E9%95%B7%E8%B0%B7%E7%94%BA223&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          style="width:100%;height:100%;border:0;display:block"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div style="position:absolute;top:14px;left:14px;background:var(--navy);color:#fff;padding:8px 14px;border-radius:4px;font-size:12px;font-weight:700;border-left:3px solid var(--gold);z-index:10;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
+          📍 茨城県古河市長谷町223番地1
+        </div>
+      </div>
+      <div class="loc-detail">
+        <div class="loc-detail-title">物件概要</div>
+        <table class="loc-table">
+          <tr><th>所在地</th><td>茨城県古河市長谷町223番地1<br><span style="font-size:11px;color:var(--gray-2)">家屋番号 223番1</span></td></tr>
+          <tr><th>土地面積</th><td>596.72㎡（4筆／うち2筆は持分53/70）</td></tr>
+          <tr><th>建物</th><td>木造スレート葺2階建／合計199㎡<br><span style="font-size:11px;color:var(--gray-2)">1F 99㎡＋2F 100㎡</span></td></tr>
+          <tr><th>築年月</th><td>1995年3月（築31年）</td></tr>
+          <tr><th>用途地域</th><td>第一種中高層住居専用地域</td></tr>
+          <tr><th>売買代金</th><td><strong style="color:var(--gold-2);font-size:16px">¥10,000,000</strong>（自己資金で全額決済済）</td></tr>
+          <tr><th>引渡日</th><td>2026年3月31日（引渡完了）</td></tr>
+          <tr><th>登記</th><td><strong style="color:var(--green)">✅ 完了</strong>（令和8年3月23日／買主：五島久哉）</td></tr>
+        </table>
+
+        <div style="background:linear-gradient(135deg,#fef5e7,#fffbeb);border:2px solid var(--gold);border-radius:8px;padding:16px 20px;margin-top:6px">
+          <div style="font-size:11px;color:var(--gold-2);letter-spacing:2px;font-weight:700;margin-bottom:6px">★ 公的評価額（有担保健全性）</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <div style="font-size:12px;color:#2d3748">課税評価額（合計）</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);font-weight:700">¥10,843,423</div>
+          </div>
+          <div style="font-size:11px;color:#744210;line-height:1.5">取得価格¥10,000,000 < 課税評価額¥10,843,423 → <strong>有担保LTV約92%・健全性高</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 6: 賃貸借契約 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">賃貸借契約（返済原資の客観立証）</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">6 / 18</div>
+  <div class="slide-body">
+    <div class="contract-grid">
+      <div>
+        <table class="contract-table">
+          <tr><th>契約締結日</th><td><strong>2026年4月26日</strong></td></tr>
+          <tr><th>契約類型</th><td><strong>事業用定期建物賃貸借契約</strong>（全国宅地建物取引業協会連合会標準書式）</td></tr>
+          <tr><th>貸主（甲）</th><td>五島 久哉</td></tr>
+          <tr><th>借主（乙）</th><td>合同会社サンライズ（代表社員 五島明美）</td></tr>
+          <tr><th>連帯保証人（丙）</th><td>藤倉 常子（借主代表の実母）<br>極度額 <strong style="color:var(--gold-2)">¥11,340,000</strong>（賃料36ヶ月相当）</td></tr>
+          <tr><th>賃貸期間</th><td>令和8年7月1日〜令和11年6月30日（<strong>3年間</strong>・更新可能）</td></tr>
+          <tr><th>引渡時期</th><td>令和8年7月1日（GH開設日と一致）</td></tr>
+          <tr><th>用途</th><td>障がい者グループホーム（共同生活援助）の運営</td></tr>
+          <tr><th>敷金</th><td>¥630,000（賃料2ヶ月分）</td></tr>
+          <tr><th>賃料振込先</th><td>筑波銀行 普通預金 1062467（五島 久哉名義）<br><span style="font-size:11px;color:var(--gold-2)">※申込先と同一行で振込確認容易</span></td></tr>
+        </table>
+      </div>
+
+      <div>
+        <div class="contract-highlight-card">
+          <div class="contract-highlight-label">月 額 賃 料</div>
+          <div class="contract-highlight-value">315,000<span>円</span></div>
+          <div class="contract-highlight-note">本融資月返済¥40,000の<strong>約7.9倍</strong>。<br>賃料の1/8で完済可能な水準。</div>
+        </div>
+
+        <div style="background:var(--white);border-radius:8px;padding:18px;margin-bottom:12px;border-left:4px solid var(--green)">
+          <div style="font-size:12px;font-weight:700;color:var(--green);margin-bottom:6px">✅ 契約上の安全装置</div>
+          <div style="font-size:12px;color:#2d3748;line-height:1.7">
+            ・賃料は<strong>毎月末日までに翌月分</strong>を前払（遅延リスク低）<br>
+            ・連帯保証人は実母（極度額¥1,134万）<br>
+            ・敷金¥63万を契約時に預託済
+          </div>
+        </div>
+
+        <div style="background:var(--white);border-radius:8px;padding:18px;border-left:4px solid var(--gold)">
+          <div style="font-size:12px;font-weight:700;color:var(--gold-2);margin-bottom:6px">💡 ご主人個人の年収換算</div>
+          <div style="font-size:12px;color:#2d3748;line-height:1.7">
+            年間賃料収入 <strong style="color:var(--gold-2);font-size:16px">¥3,780,000</strong><br>
+            （¥315,000 × 12ヶ月）<br>
+            本業給与¥1,051万＋賃料¥378万＝<strong>世帯収入年¥1,429万</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 7: 融資申込内容 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">融資申込内容</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">7 / 18</div>
+  <div class="slide-body">
+    <div class="apply-grid">
+      <div class="apply-summary">
+        <div class="apply-summary-title">📄 申込概要</div>
+        <div class="apply-row"><div class="apply-row-label">融資希望額</div><div class="apply-row-value">1,000<span>万円</span></div></div>
+        <div class="apply-row"><div class="apply-row-label">返済期間</div><div class="apply-row-value">25<span>年（300回）</span></div></div>
+        <div class="apply-row"><div class="apply-row-label">想定金利</div><div class="apply-row-value">1.5<span>%固定</span></div></div>
+        <div class="apply-row"><div class="apply-row-label">返済方式</div><div class="apply-row-value" style="font-size:16px">元利均等</div></div>
+        <div class="apply-row"><div class="apply-row-label">担保</div><div class="apply-row-value" style="font-size:14px">対象物件・第一順位</div></div>
+        <div class="apply-row"><div class="apply-row-label">連帯保証人</div><div class="apply-row-value" style="font-size:14px">配偶者 五島 明美</div></div>
+        <div class="apply-key-card">
+          <div class="apply-key-label">月 額 返 済 額</div>
+          <div class="apply-key-value">40,000<span>円</span></div>
+        </div>
+      </div>
+
+      <div class="apply-detail">
+        <div class="apply-detail-card">
+          <div class="apply-detail-title">💰 資金使途</div>
+          <div class="apply-detail-body">既取得物件（古河市長谷町223番地1）の取得資金の<strong>後出し融資</strong>。物件は2026/3/31に自己資金¥1,000万で取得済・登記完了済。本融資の目的は「事業活用が確定した収益不動産の自己資金回収」。</div>
+        </div>
+
+        <div class="apply-detail-card" style="border-top-color:var(--gold)">
+          <div class="apply-detail-title">🎯 回収資金の使途</div>
+          <div class="apply-detail-body">回収した¥1,000万は、以下に温存・活用：<br>① <strong>二棟目物件取得の頭金</strong>（4棟目までの物件物色中）<br>② <strong>緊急時の生活防衛資金</strong>として温存<br>③ 法人サンライズ運営の予備バッファ</div>
+        </div>
+
+        <div class="apply-detail-card" style="border-top-color:var(--green)">
+          <div class="apply-detail-title">🏦 申込先（協調・優先順位）</div>
+          <div class="apply-detail-body">
+            <strong>第1優先：筑波銀行 古河支店</strong>（既存住宅ローン取引行・関係性深耕）<br>
+            <strong>バックアップ：常陽銀行 古河支店</strong>（茨城県内最大シェア・保証協会経由）
+          </div>
+        </div>
+
+        <div class="apply-detail-card" style="border-top-color:var(--red)">
+          <div class="apply-detail-title">📅 実行スケジュール</div>
+          <div class="apply-detail-body">
+            <strong>2026年5月13日（水）</strong> 銀行同行訪問（鈴木同行）<br>
+            <strong>2026年6月中旬</strong> 融資実行・本決済<br>
+            <strong>2026年7月1日</strong> 法人サンライズ開業・賃料発生開始
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 8: 自己資金・流動資産 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">自己資金・流動資産</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">8 / 18</div>
+  <div class="slide-body">
+    <div class="asset-grid">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px">💼 流動資産の内訳（フォーム回答ベース）</div>
+        <table class="asset-table">
+          <tr><th>項目</th><th style="text-align:right">金額</th></tr>
+          <tr><td>普通預金 合計（全金融機関）</td><td class="num">¥8,000,000</td></tr>
+          <tr><td>定期預金</td><td class="num" style="color:var(--gray-2);font-size:13px">¥0</td></tr>
+          <tr><td>有価証券</td><td class="num" style="color:var(--gray-2);font-size:13px">¥0</td></tr>
+          <tr><td>生命保険 解約返戻金</td><td class="num">¥15,000,000</td></tr>
+          <tr class="total"><td>流動資産 合計</td><td class="num">¥23,000,000</td></tr>
+        </table>
+
+        <div class="asset-key">
+          <div class="asset-key-label">本 融 資 完 済 倍 率</div>
+          <div class="asset-key-value">2.3<span>倍</span></div>
+          <div class="asset-key-note">流動資産¥2,300万 ÷ 本融資¥1,000万<br><strong style="color:var(--gold)">本融資を全額自己資金で完済可能な水準</strong></div>
+        </div>
+      </div>
+
+      <div class="asset-message-card">
+        <div class="asset-message-eyebrow">★ 銀 行 向 け 強 材 料</div>
+        <div class="asset-message-title">物件取得は自己資金にて完了済。<br>本融資は「収益不動産の<br>自己資金回収」</div>
+        <div class="asset-message-body">
+          物件取得¥1,000万を<strong>自己資金で全額決済済</strong>のうえ、賃貸借契約も締結済（2026/4/26）。返済原資は確定した賃料収入¥315,000/月で、本業給与¥1,051万との二本柱で支える構造。<br><br>
+          流動資産¥2,300万は本融資¥1,000万を<strong>2.3倍カバー</strong>しており、最悪のシナリオでも返済原資を喪失することはない。<br><br>
+          <strong>「貸し倒れリスクが極めて低い後出し融資案件」</strong>として、銀行にとって優良な貸出案件と位置付けられる。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 9: 月次キャッシュフロー ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">月次キャッシュフロー（本融資実行後）</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">9 / 18</div>
+  <div class="slide-body">
+    <div class="cf-grid">
+      <div>
+        <table class="cf-table">
+          <thead>
+            <tr><th>項目</th><th>金額</th></tr>
+          </thead>
+          <tbody>
+            <tr class="section"><td colspan="2">収入の部</td></tr>
+            <tr><td>● 本業給与（手取り月額・3ヶ月平均）</td><td>¥403,544</td></tr>
+            <tr><td>● 不動産賃料収入（法人サンライズより）</td><td>¥315,000</td></tr>
+            <tr class="subtotal"><td>収入合計</td><td>¥718,544</td></tr>
+
+            <tr class="section"><td colspan="2">支出の部</td></tr>
+            <tr><td>● 既存住宅ローン返済（確定）</td><td>¥107,425</td></tr>
+            <tr><td>● 既存車ローン返済（確定）</td><td>¥39,924</td></tr>
+            <tr><td>● 本融資 月額返済（新規）</td><td style="color:var(--gold-2);font-weight:700">¥40,000</td></tr>
+            <tr><td>● 不動産税・管理費（月按分）</td><td>¥15,000</td></tr>
+            <tr><td>● 生活費・その他</td><td>¥250,000</td></tr>
+            <tr class="subtotal"><td>支出合計</td><td>¥452,349</td></tr>
+
+            <tr class="total"><td>手元残（月）</td><td>+¥266,195</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div class="cf-result-card">
+          <div class="cf-result-label">月 次 余 剰 キ ャ ッ シ ュ フ ロ ー</div>
+          <div class="cf-result-value">+¥26.6<span>万/月</span></div>
+          <div style="font-size:11px;color:#c6f6d5;margin-top:6px">年間 +¥319万円 の余剰</div>
+        </div>
+
+        <div class="cf-mini-cards">
+          <div class="cf-mini-card">
+            <div class="cf-mini-title">📊 既存ローン含めた支払余力</div>
+            <div class="cf-mini-desc">既存ローン2本（住宅¥107k＋車¥40k）と本融資¥40k＝合計¥187,349/月を返済しても、<strong>月¥26.6万円が余剰</strong>。年間で¥319万円の積立可能。</div>
+          </div>
+          <div class="cf-mini-card">
+            <div class="cf-mini-title">💪 本業給与のみでも黒字</div>
+            <div class="cf-mini-desc">仮に賃料収入¥315,000がゼロでも、本業給与のみで支出¥452k − 給与¥403k＝▲¥49kの軽微な赤字に留まる。流動資産で十分吸収可能。</div>
+          </div>
+          <div class="cf-mini-card">
+            <div class="cf-mini-title">🎯 銀行視点での評価</div>
+            <div class="cf-mini-desc">月次返済比率は本融資のみで<strong>9.9%</strong>、全借入合計で世帯収入比<strong>26.1%</strong>。一般的な健全圏（30%以下）の範囲内に収まる。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 10: 返済比率 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">返済比率（健全性指標）</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">10 / 18</div>
+  <div class="slide-body">
+    <div class="ratio-grid">
+      <div class="ratio-card green">
+        <div class="ratio-label">本融資のみ／本業手取り</div>
+        <div class="ratio-value">9.9<span>%</span></div>
+        <div class="ratio-judge safe">✓ 安全圏（10%未満）</div>
+        <div class="ratio-desc">本融資¥40,000 ÷ 本業手取り¥403,544。<br>本融資単体では<strong>給与の1割未満</strong>で完済可能。</div>
+      </div>
+
+      <div class="ratio-card gold">
+        <div class="ratio-label">全借入合計／賃料込世帯収入</div>
+        <div class="ratio-value">26.1<span>%</span></div>
+        <div class="ratio-judge ok">✓ 健全圏（30%以下）</div>
+        <div class="ratio-desc">既存住宅+車+本融資の合計¥187,349 ÷ 世帯収入¥718,544。<br>賃料収入を含めれば<strong>銀行審査の健全圏</strong>に収まる。</div>
+      </div>
+
+      <div class="ratio-card">
+        <div class="ratio-label">本融資 月額 ÷ 賃料</div>
+        <div class="ratio-value">12.7<span>%</span></div>
+        <div class="ratio-judge safe">✓ 賃料カバー7.9倍</div>
+        <div class="ratio-desc">本融資¥40,000 ÷ 賃料¥315,000。<br><strong>賃料の1/8で完済可能</strong>。残り7/8は手元に残る。</div>
+      </div>
+
+      <div class="ratio-card red">
+        <div class="ratio-label">全借入合計／本業手取りのみ</div>
+        <div class="ratio-value">46.4<span>%</span></div>
+        <div class="ratio-judge warn">参考値（賃料除外時）</div>
+        <div class="ratio-desc">賃料を除いた本業給与のみで計算した場合の参考値。<br><strong>賃料収入があれば26.1%まで改善</strong>するのが本案件の構造。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 11: 賃料停止リスク耐性 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">賃料停止リスク耐性</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">11 / 18</div>
+  <div class="slide-body">
+    <div class="stress-grid">
+      <div class="stress-row normal">
+        <div>
+          <div class="stress-scenario">通常シナリオ</div>
+          <div style="font-size:11px;color:var(--gray-2);margin-top:4px">賃料正常入金（¥315,000/月）</div>
+        </div>
+        <div class="stress-detail">本業給与¥403,544＋賃料¥315,000＝¥718,544の収入で、支出¥452,349を賄う。</div>
+        <div class="stress-cf green">+¥266,195<span style="font-size:11px;color:var(--gray-2);font-weight:400">/月</span></div>
+        <div class="stress-coverage">
+          <strong style="color:var(--green)">永続的に黒字</strong>
+          年間¥319万円の余剰
+        </div>
+      </div>
+
+      <div class="stress-row warn">
+        <div>
+          <div class="stress-scenario">賃料50%減シナリオ</div>
+          <div style="font-size:11px;color:var(--gray-2);margin-top:4px">賃料が¥157,500まで下落</div>
+        </div>
+        <div class="stress-detail">借主交代やGH事業の一部停止等を想定。本業給与＋減額賃料で支出を賄う。</div>
+        <div class="stress-cf green">+¥108,695<span style="font-size:11px;color:var(--gray-2);font-weight:400">/月</span></div>
+        <div class="stress-coverage">
+          <strong style="color:var(--green)">永続的に黒字</strong>
+          流動資産取崩不要
+        </div>
+      </div>
+
+      <div class="stress-row danger">
+        <div>
+          <div class="stress-scenario">賃料完全停止シナリオ</div>
+          <div style="font-size:11px;color:#9b2c2c;margin-top:4px">最悪ケース：賃料収入ゼロ</div>
+        </div>
+        <div class="stress-detail">借主の事業破綻等で賃料がゼロになるケース。本業給与のみで全支出を賄う。</div>
+        <div class="stress-cf red">▲¥48,805<span style="font-size:11px;color:var(--gray-2);font-weight:400">/月</span></div>
+        <div class="stress-coverage">
+          <strong style="color:var(--navy)">流動資産で約471ヶ月持続可</strong>
+          ¥2,300万 ÷ ¥48,805 ＝<br>
+          <strong style="color:var(--gold-2);font-size:20px">約 39 年分</strong>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;background:linear-gradient(135deg,#1a365d,#2c4870);color:#fff;padding:20px 28px;border-radius:8px;border-left:6px solid var(--gold)">
+      <div style="font-size:12px;color:var(--gold);letter-spacing:2px;margin-bottom:8px">✓ ストレステスト結論</div>
+      <div style="font-size:14px;line-height:1.7">
+        最悪の賃料完全停止シナリオでも、<strong style="color:var(--gold)">流動資産¥2,300万で約39年分の支払を継続可能</strong>。本融資の返済期間25年を大幅に超える支払余力を確保しており、<strong>実質的な貸倒リスクはゼロに近い</strong>。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 12: 既存借入状況 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">既存借入状況（透明性開示）</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">12 / 18</div>
+  <div class="slide-body">
+    <div class="loan-grid">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px">📋 既存借入一覧（残高証明書＋フォーム回答より確定）</div>
+        <table class="loan-table">
+          <thead>
+            <tr>
+              <th>借入先</th>
+              <th>種類</th>
+              <th class="num">月額返済</th>
+              <th class="num">残高</th>
+              <th>状況</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>筑波銀行 猿島支店</strong></td>
+              <td>住宅ローン</td>
+              <td class="num">¥107,425</td>
+              <td class="num">¥24,874,642</td>
+              <td><span class="loan-status-tag">正常返済中</span></td>
+            </tr>
+            <tr>
+              <td>株式会社ジャックス</td>
+              <td>自動車ローン<br><span style="font-size:10px;color:var(--gray-2)">トヨタ アルファード</span></td>
+              <td class="num">¥39,924</td>
+              <td class="num">¥2,275,628</td>
+              <td><span class="loan-status-tag">正常返済中</span></td>
+            </tr>
+            <tr class="total">
+              <td colspan="2">合計</td>
+              <td class="num">¥147,349</td>
+              <td class="num">¥27,150,270</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="loan-no-debt">
+          <div class="loan-no-debt-title">✅ その他借入（全て無し）</div>
+          <div class="loan-no-debt-list">
+            <span>カードローン・キャッシング</span>
+            <span>教育ローン</span>
+            <span>親族借入</span>
+            <span>連帯保証債務</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="loan-key-card">
+          <div class="loan-key-eyebrow">★ 銀 行 戦 略 上 の 重 要 性</div>
+          <div class="loan-key-title">筑波銀行との<br>4年間の取引実績</div>
+          <div class="loan-key-body">
+            既存住宅ローンを<strong>4年間正常返済継続中</strong>。住宅ローン控除も毎年適用済（令和7年¥253,000）→ <strong style="color:var(--gold)">住宅特定優遇税制の継続適用要件を満たす優良顧客</strong>。<br><br>
+            本融資は<strong>同一行（筑波銀行）でのリレーション深耕</strong>として申込。古河支店での新規取引獲得は、銀行側にとって貸出残高拡大＋顧客深耕の両面でメリット大。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ SLIDE 13: 集中リスクへの三段構え保全策 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">★ 集中リスクへの三段構え保全策</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">13 / 18</div>
+  <div class="slide-body">
+    <div class="triad-intro">
+      <div class="triad-intro-icon">⚠️</div>
+      <div class="triad-intro-text">
+        銀行担当者の最大懸念：<strong>「借主＝親族法人＝障害者GH限定」の集中リスク</strong>。<br>
+        本案件はこれに対し<strong>3層の保全策</strong>を構築し、実質的な貸倒リスクをゼロに近づけている。
+      </div>
+    </div>
+
+    <div class="triad-grid">
+      <div class="triad-card t1">
+        <div class="triad-head">
+          <div class="triad-layer">FIRST LAYER</div>
+          <div class="triad-name">第一層</div>
+          <div style="margin-top:8px;font-size:13px;color:#cbd5e0">物件の汎用的賃貸需要</div>
+        </div>
+        <div class="triad-body">
+          <div class="triad-section">
+            <div class="triad-section-title">🏠 GH用途での借主交代</div>
+            <div class="triad-section-desc"><strong>RUNBIRDネットワーク</strong>経由で他のGH事業者へ転貸可能。同社は全国142事業所のFC本部として、後継借主の紹介力あり。</div>
+          </div>
+          <div class="triad-section">
+            <div class="triad-section-title">🔄 用途転用</div>
+            <div class="triad-section-desc">
+              ・一般戸建賃貸：<strong>¥12〜18万/月</strong><br>
+              ・小規模介護施設：<strong>¥20〜25万/月</strong><br>
+              199㎡の戸建として汎用転用可。
+            </div>
+          </div>
+          <div class="triad-result">
+            <div class="triad-result-label">レイヤー1の結論</div>
+            <div class="triad-result-value">借主交代でも<br>賃料維持可能</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="triad-card t2">
+        <div class="triad-head">
+          <div class="triad-layer">SECOND LAYER</div>
+          <div class="triad-name">第二層</div>
+          <div style="margin-top:8px;font-size:13px;color:#cbd5e0">流動資産による完全カバー</div>
+        </div>
+        <div class="triad-body">
+          <div class="triad-section">
+            <div class="triad-section-title">💴 借主交代3〜6ヶ月をカバー</div>
+            <div class="triad-section-desc">流動資産¥2,300万円で借主交代期間中の支払を完全カバー。<strong>本業給与のみ＋流動資産取崩で約39年分の返済原資を保有</strong>。</div>
+          </div>
+          <div class="triad-section">
+            <div class="triad-section-title">📈 本業給与の継続性</div>
+            <div class="triad-section-desc">共進鋼業 工事次長として<strong>勤続12年・年収¥1,051万</strong>の安定実績。本業のみでも本融資¥40,000は給与の<strong>1割未満</strong>で完済可能。</div>
+          </div>
+          <div class="triad-result">
+            <div class="triad-result-label">レイヤー2の結論</div>
+            <div class="triad-result-value">最大39年分の<br>返済原資を保有</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="triad-card t3">
+        <div class="triad-head">
+          <div class="triad-layer">THIRD LAYER</div>
+          <div class="triad-name">第三層</div>
+          <div style="margin-top:8px;font-size:13px;color:#cbd5e0">最終手段：強制売却</div>
+        </div>
+        <div class="triad-body">
+          <div class="triad-section">
+            <div class="triad-section-title">⚖️ 担保処分による回収</div>
+            <div class="triad-section-desc">課税評価額<strong>¥10,843,423</strong>の物件を競売／任意売却。実勢約70〜80%として<strong>¥759〜867万円</strong>を回収可能。</div>
+          </div>
+          <div class="triad-section">
+            <div class="triad-section-title">🛡️ 流動資産で完全補填</div>
+            <div class="triad-section-desc">仮に強制売却で本融資¥1,000万を完済できなくても、不足分は<strong>流動資産¥2,300万から完全補填可能</strong>。</div>
+          </div>
+          <div class="triad-result">
+            <div class="triad-result-label">レイヤー3の結論</div>
+            <div class="triad-result-value">実質的な<br>貸倒リスクゼロ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 14: 銀行ストーリー（取引深耕） ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">銀行ストーリー（取引深耕）</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">14 / 18</div>
+  <div class="slide-body">
+    <div class="deepen-grid">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px">🤝 世帯総合取引の経済規模（年間概算）</div>
+        <table class="deepen-table">
+          <thead>
+            <tr><th>取引項目</th><th>月次金額</th><th>年次金額</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>既存住宅ローン返済（継続）</td><td>¥107,425</td><td>¥1,289,100</td></tr>
+            <tr style="background:#fef5e7"><td><strong>★本不動産融資 返済（新規）</strong></td><td><strong>¥40,000</strong></td><td><strong>¥480,000</strong></td></tr>
+            <tr><td>法人サンライズ 融資返済（並行打診）</td><td>¥80,000</td><td>¥960,000</td></tr>
+            <tr><td>給与振込（共進鋼業より）</td><td>¥403,544</td><td>¥4,842,528</td></tr>
+            <tr><td>賃料振込（法人サンライズより）</td><td>¥315,000</td><td>¥3,780,000</td></tr>
+            <tr class="total">
+              <td>世帯総合取引</td>
+              <td>—</td>
+              <td>約 ¥1,135 万円</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:18px;background:#f7fafc;border-left:4px solid var(--gold);padding:14px 18px;border-radius:4px">
+          <div style="font-size:11px;color:var(--gold-2);letter-spacing:2px;font-weight:700;margin-bottom:6px">💡 銀行側のメリット</div>
+          <div style="font-size:12.5px;color:#2d3748;line-height:1.7">単一案件の貸出残高拡大に留まらず、<strong>世帯ぐるみのメインバンク化</strong>で年間¥1,135万円の取引深耕を実現。給与・賃料の振込口座が筑波銀行に集中することで、<strong>顧客リテンション・横展開の両面で長期的な収益貢献</strong>。</div>
+        </div>
+      </div>
+
+      <div class="deepen-story-card">
+        <div class="deepen-story-eyebrow">★ ベ ー ス ス ト ー リ ー</div>
+        <div class="deepen-story-quote">
+          自己資金<strong>¥1,000万円</strong>で物件を取得済。<br>
+          法人サンライズに賃貸する<strong>確定契約あり</strong>。<br>
+          御行との既存住宅ローン取引<strong>4年・正常返済継続中</strong>。<br>
+          流動資産<strong>¥2,300万円</strong>で本融資¥1,000万を完済可能。<br>
+          家庭全体で御行の<strong>メインバンク化を希望</strong>。
+        </div>
+        <div class="deepen-story-list">
+          <strong style="color:var(--gold);display:block;margin-bottom:8px">本案件の銀行側へのアピール3点</strong>
+          ① <strong style="color:#fff">既存取引の信用実績</strong>（住宅ローン4年正常返済）<br>
+          ② <strong style="color:#fff">高い返済確実性</strong>（賃料カバー7.9倍・流動資産2.3倍）<br>
+          ③ <strong style="color:#fff">取引深耕の機会</strong>（世帯総合取引¥1,135万）
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 15: リスクと対策 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">リスクと対策</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">15 / 18</div>
+  <div class="slide-body">
+    <div class="risks-list">
+      <div class="risk-row">
+        <div class="risk-name">法人サンライズの開業遅延</div>
+        <div class="risk-impact mid">中</div>
+        <div class="risk-mitigation"><strong>2026/7/1開設目標</strong>。物件取得済・行政事前相談（消防）完了済・サビ管研修確定。流動資産¥2,300万で長期遅延に耐性。</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-name">入居者確保の難航</div>
+        <div class="risk-impact mid">中</div>
+        <div class="risk-mitigation"><strong>RUNBIRD本部の紹介ネットワーク</strong>＋古河市障害福祉計画の供給不足＋6級地の単価優位性で、入居確保の見込み高い。代表の元同僚から退所予定者の紹介打診も既に獲得済。</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-name">制度報酬の改定</div>
+        <div class="risk-impact low">低</div>
+        <div class="risk-mitigation">賃料は<strong>生活保護住宅扶助基準内</strong>に設定済（古河市6級地基準を下回る）。報酬改定の影響を受けにくい構造。</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-name">借主（法人）からの賃料滞納</div>
+        <div class="risk-impact low">低</div>
+        <div class="risk-mitigation">連帯保証人 藤倉常子様（極度額¥1,134万）／敷金¥63万／法人事業の制度収入（給付費）の安定性で多重防御。</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-name">本業（共進鋼業）の収入減</div>
+        <div class="risk-impact low">低</div>
+        <div class="risk-mitigation"><strong>3年連続¥1,000万超</strong>の安定実績／工事次長として<strong>勤続12年</strong>・継続勤務／鉄筋施工1級技能士の専門性で代替性低い。</div>
+      </div>
+      <div class="risk-row">
+        <div class="risk-name">既存借入との合算与信</div>
+        <div class="risk-impact mid">中</div>
+        <div class="risk-mitigation">透明性開示で全借入を提示済／<strong>返済比率は賃料込で26.1%（健全圏）</strong>／住宅ローン控除継続で優良顧客評価維持。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 16: 添付資料 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">添付資料一覧</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">16 / 18</div>
+  <div class="slide-body">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div>
+        <h3 style="font-size:14px;color:var(--green);margin-bottom:12px;display:flex;align-items:center;gap:8px"><span style="background:#c6f6d5;color:#22543d;padding:2px 10px;border-radius:3px;font-size:11px">✅ 受領済</span> 既に揃っている書類</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--white);border-radius:8px;overflow:hidden">
+          <tr style="background:#f0fff4"><td style="padding:8px 12px;color:#22543d;font-weight:600">1. 本人確認書類（マイナンバーカード）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right">5/2受領</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">2. 源泉徴収票 直近3年分（R5・R6・R7）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">5/2受領</td></tr>
+          <tr style="background:#f0fff4"><td style="padding:8px 12px;color:#22543d;font-weight:600;border-top:1px solid var(--gray)">3. 給与明細 直近3ヶ月（R8/1・2・3月）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">5/2受領</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">4. 預金通帳 残高ページ</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">5/2受領</td></tr>
+          <tr style="background:#f0fff4"><td style="padding:8px 12px;color:#22543d;font-weight:600;border-top:1px solid var(--gray)">5. 既存借入残高証明書（筑波銀行・ジャックス）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">5/2受領</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">6. 不動産売買契約書（CENTURY 21）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">写し保管</td></tr>
+          <tr style="background:#f0fff4"><td style="padding:8px 12px;color:#22543d;font-weight:600;border-top:1px solid var(--gray)">7. 登記完了証 全3ページ</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">保管</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">8. 建物図面</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">保管</td></tr>
+          <tr style="background:#f0fff4"><td style="padding:8px 12px;color:#22543d;font-weight:600;border-top:1px solid var(--gray)">9. リフォーム見積書（株式会社スズモク）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">保管</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">10. 事業用賃貸借契約書（法人サンライズ）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">保管</td></tr>
+        </table>
+      </div>
+
+      <div>
+        <h3 style="font-size:14px;color:#dd6b20;margin-bottom:12px;display:flex;align-items:center;gap:8px"><span style="background:#fef5e7;color:#744210;padding:2px 10px;border-radius:3px;font-size:11px">⏳ 取得中</span> 5/10までに揃える書類</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;background:var(--white);border-radius:8px;overflow:hidden">
+          <tr style="background:#fffbeb"><td style="padding:8px 12px;color:#744210;font-weight:600">11. 重要事項説明書</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right">取得中</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">12. 登記簿謄本（4筆／3ヶ月以内）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">弊社代理</td></tr>
+          <tr style="background:#fffbeb"><td style="padding:8px 12px;color:#744210;font-weight:600;border-top:1px solid var(--gray)">13. 公図</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">弊社代理</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">14. 固定資産税評価証明書（令和8年度）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">取得予定</td></tr>
+          <tr style="background:#fffbeb"><td style="padding:8px 12px;color:#744210;font-weight:600;border-top:1px solid var(--gray)">15. 運転免許証 表裏コピー</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">依頼中</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">16. 健康保険証コピー</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">依頼中</td></tr>
+          <tr style="background:#fffbeb"><td style="padding:8px 12px;color:#744210;font-weight:600;border-top:1px solid var(--gray)">17. 既存借入返済予定表（筑波・ジャックス）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">依頼中</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">18. 生命保険証券コピー（解約返戻金記載）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">依頼中</td></tr>
+          <tr style="background:#fffbeb"><td style="padding:8px 12px;color:#744210;font-weight:600;border-top:1px solid var(--gray)">19. 通帳表紙＋取引ページ（複数口座）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">依頼中</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">20. 物件取得費用 振込控え（手付・残金）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">依頼中</td></tr>
+          <tr style="background:#fffbeb"><td style="padding:8px 12px;color:#744210;font-weight:600;border-top:1px solid var(--gray)">21. 司法書士費用領収書（おおさやなぎ事務所）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">依頼中</td></tr>
+          <tr><td style="padding:8px 12px;border-top:1px solid var(--gray)">22. 住民票・印鑑証明書（3ヶ月以内）</td><td style="padding:8px 12px;font-size:10px;color:var(--gray-2);text-align:right;border-top:1px solid var(--gray)">取得予定</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 17: スケジュール ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">スケジュール</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">17 / 18</div>
+  <div class="slide-body">
+    <div style="font-size:13px;color:#4a5568;margin-bottom:18px;line-height:1.8">
+      物件取得・登記完了済（2026/3）／賃貸借契約締結済（2026/4/26）／書類受領5点済（2026/5/2）。<br>
+      残るは<strong>5/13(水)銀行同行訪問→6月中旬実行→7/1法人開業</strong>のスケジュールとなります。
+    </div>
+    <div class="sched-track">
+      <div class="sched-step done">
+        <div class="sched-date">〜2026.4</div>
+        <div class="sched-icon">✓</div>
+        <div class="sched-card">
+          <div class="sched-card-title">物件取得・契約整備</div>
+          <ul class="sched-card-list">
+            <li>2026/3/31 物件引渡完了（自己資金¥1,000万）</li>
+            <li>2026/3/23 登記完了</li>
+            <li>2026/4/26 事業用賃貸借契約締結</li>
+            <li>4/27 Zoom打合せ（全戦略確定）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sched-step done">
+        <div class="sched-date">2026.5/2</div>
+        <div class="sched-icon">✓</div>
+        <div class="sched-card">
+          <div class="sched-card-title">書類受領・資料準備</div>
+          <ul class="sched-card-list">
+            <li>5/2 書類5点受領（マイナンバー・源泉3年・給与明細・通帳・残高証明）</li>
+            <li>5/3-5 銀行向けパッケージv1作成</li>
+            <li>5/5 引き継ぎ書 → 星崎</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sched-step active">
+        <div class="sched-date">2026.5/8-12</div>
+        <div class="sched-icon">▶</div>
+        <div class="sched-card">
+          <div class="sched-card-title">★最終仕上げフェーズ</div>
+          <ul class="sched-card-list">
+            <li>5/8 鈴木電話結果反映 v2更新</li>
+            <li>5/9 ChatWork返信文作成</li>
+            <li>5/10 残書類5点受領期限</li>
+            <li>5/11-12 全資料最終確認・印刷</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sched-step target">
+        <div class="sched-date">2026.5/13</div>
+        <div class="sched-icon">★</div>
+        <div class="sched-card">
+          <div class="sched-card-title">★ハードデッドライン</div>
+          <ul class="sched-card-list">
+            <li>筑波銀行 古河支店 同行訪問</li>
+            <li>出席：明美様＋久哉様＋鈴木</li>
+            <li>5/14〜 必要に応じ常陽銀行へバックアップ打診</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sched-step target">
+        <div class="sched-date">2026.6/中-7/1</div>
+        <div class="sched-icon">🎯</div>
+        <div class="sched-card">
+          <div class="sched-card-title">融資実行・法人開業</div>
+          <ul class="sched-card-list">
+            <li>6月中旬 融資実行・本決済</li>
+            <li>7/1 法人サンライズ開業</li>
+            <li>7月分賃料¥315,000 入金開始</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 18: まとめ ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">まとめ</div>
+    <div class="slide-meta">五島 久哉 様 不動産融資 申込資料</div>
+  </div>
+  <div class="pagenum">18 / 18</div>
+  <div class="slide-body" style="display:flex;flex-direction:column">
+    <div class="summ-intro">
+      本案件は、確実な返済原資（賃料カバー7.9倍）と十分な保全策（流動資産2.3倍カバー）に裏付けられた、低リスク・高確実性の不動産融資案件です。<br>
+      融資審査における5つの重要ポイントを以下にまとめます。
+    </div>
+
+    <div class="summ-grid">
+      <div class="summ-card s1">
+        <div class="summ-num">01</div>
+        <div class="summ-icon">🏠</div>
+        <div class="summ-title">取得済物件の後出し融資</div>
+        <div class="summ-desc">物件は<strong>¥1,000万自己資金で取得済</strong>。本融資は事業活用が確定した収益不動産の自己資金回収。新規取得リスクは無く、評価作業も既登記情報で完了。</div>
+      </div>
+      <div class="summ-card s2">
+        <div class="summ-num">02</div>
+        <div class="summ-icon">📋</div>
+        <div class="summ-title">確定賃料による返済原資</div>
+        <div class="summ-desc">事業用賃貸借契約締結済（2026/4/26）。月額賃料<strong>¥315,000は本融資月返済¥40,000の約7.9倍</strong>で、返済原資の客観性は極めて高い。</div>
+      </div>
+      <div class="summ-card s3">
+        <div class="summ-num">03</div>
+        <div class="summ-icon">💪</div>
+        <div class="summ-title">流動資産2.3倍カバー</div>
+        <div class="summ-desc">普通預金¥800万＋生命保険解約返戻金¥1,500万＝<strong>流動資産¥2,300万円で本融資を全額完済可能</strong>。最悪シナリオでも約39年分の支払余地。</div>
+      </div>
+    </div>
+
+    <div class="summ-grid row2">
+      <div class="summ-card s4">
+        <div class="summ-num">04</div>
+        <div class="summ-icon">🛡️</div>
+        <div class="summ-title">三段構えの集中リスク対策</div>
+        <div class="summ-desc">第一層：物件の汎用転用／第二層：流動資産で借主交代をカバー／第三層：強制売却で完済補填。<strong>実質的な貸倒リスクをゼロに近い水準</strong>に抑制。</div>
+      </div>
+      <div class="summ-card s5">
+        <div class="summ-num">05</div>
+        <div class="summ-icon">🤝</div>
+        <div class="summ-title">世帯総合取引深耕</div>
+        <div class="summ-desc">既存住宅ローン4年正常返済継続中。本融資・法人融資・給与・賃料を含めると<strong>年間¥1,135万円の世帯総合取引</strong>。筑波銀行のメインバンク化で長期収益貢献。</div>
+      </div>
+    </div>
+
+    <div class="summ-footer" style="margin-top:auto">
+      以上の計画に基づき、本件不動産融資¥10,000,000のご検討を何卒よろしくお願い申し上げます。
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
