@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>こもれび様 スライドショー v1 | 株式会社ランバード</title>
+<style>
+  :root {
+    --beige: #F5EFE6;
+    --beige-light: #FAF6EF;
+    --cream: #FFFBF3;
+    --sage: #A8C4A2;
+    --sage-dark: #6B8E6B;
+    --gold: #D4A656;
+    --warm-brown: #8B6F47;
+    --text: #4A4036;
+    --text-light: #8A7E70;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: linear-gradient(135deg, var(--beige-light), var(--cream));
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 20px 16px 60px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  header {
+    text-align: center;
+    background: white;
+    padding: 32px 24px;
+    border-radius: 18px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(139, 111, 71, 0.08);
+  }
+  header h1 { color: var(--warm-brown); font-size: 1.6rem; margin-bottom: 6px; }
+  header p { color: var(--text-light); font-size: 0.95rem; }
+  .badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--sage), var(--gold));
+    color: white;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 12px;
+  }
+
+  /* オーバービュー */
+  .overview {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--sage);
+  }
+  .overview h2 { font-size: 1.1rem; color: var(--warm-brown); margin-bottom: 10px; }
+  .overview ul { list-style: none; }
+  .overview li {
+    padding: 4px 0;
+    font-size: 0.92rem;
+  }
+  .overview li strong { color: var(--sage-dark); margin-right: 8px; }
+
+  /* シーン */
+  .scene {
+    background: white;
+    margin-bottom: 28px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 3px 16px rgba(139, 111, 71, 0.08);
+  }
+  .scene-header {
+    display: flex;
+    align-items: center;
+    padding: 16px 22px;
+    background: linear-gradient(90deg, var(--beige), var(--beige-light));
+    border-bottom: 1px solid #E8DDC8;
+  }
+  .scene-num {
+    width: 38px; height: 38px;
+    line-height: 38px;
+    text-align: center;
+    background: var(--warm-brown);
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    margin-right: 14px;
+    flex-shrink: 0;
+  }
+  .scene-title { font-size: 1.1rem; color: var(--warm-brown); font-weight: bold; }
+  .scene-meta {
+    margin-left: auto;
+    font-size: 0.85rem;
+    color: var(--text-light);
+  }
+  .scene-image {
+    width: 100%;
+    display: block;
+    background: #f5f5f5;
+  }
+  .scene-body {
+    padding: 20px 24px;
+  }
+  .scene-narration {
+    background: var(--beige-light);
+    border-left: 3px solid var(--sage);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-style: italic;
+    margin-bottom: 14px;
+    font-size: 0.95rem;
+    color: var(--text);
+  }
+  .scene-notes {
+    font-size: 0.88rem;
+    color: var(--text-light);
+  }
+  .scene-notes strong {
+    color: var(--warm-brown);
+    display: block;
+    margin-top: 6px;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-right: 6px;
+    color: white;
+  }
+  .tag-real { background: var(--sage-dark); }
+  .tag-ref { background: var(--gold); }
+  .tag-ai { background: #6B92A8; }
+
+  /* 注記 */
+  .footer-note {
+    background: #FFF8EA;
+    border-left: 4px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-size: 0.92rem;
+    margin-top: 24px;
+  }
+  .footer-note strong { color: var(--warm-brown); }
+
+  /* コミュニケーション */
+  .feedback-box {
+    background: linear-gradient(135deg, #FFEFD9, #FFF8EA);
+    border: 2px solid var(--gold);
+    padding: 22px 26px;
+    border-radius: 14px;
+    margin-top: 24px;
+  }
+  .feedback-box h3 {
+    color: var(--warm-brown);
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 600px) {
+    .scene-header { padding: 12px 16px; }
+    .scene-num { width: 32px; height: 32px; line-height: 32px; }
+    .scene-title { font-size: 0.95rem; }
+    .scene-body { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>こもれび様 スライドショー v1</h1>
+    <p>動画化前の構成イメージ｜静止画でのご確認用</p>
+    <span class="badge">2026/5/6 ご提案版</span>
+  </header>
+
+  <div class="overview">
+    <h2>📋 動画概要</h2>
+    <ul>
+      <li><strong>テーマ：</strong>睡眠改善・体質改善のドライヘッドスパ</li>
+      <li><strong>タイプ：</strong>実写ベース（提供素材＋AI生成）</li>
+      <li><strong>尺：</strong>約50秒（5シーン）</li>
+      <li><strong>構成：</strong>男女2人の before / after を並行表現</li>
+      <li><strong>テイスト：</strong>清潔感・温かみ・ナチュラル</li>
+    </ul>
+  </div>
+
+  <!-- Scene 1 -->
+  <section class="scene">
+    <div class="scene-header">
+      <div class="scene-num">1</div>
+      <div class="scene-title">お店の入口</div>
+      <div class="scene-meta">5秒</div>
+    </div>
+    <img src="komorebi_v1_images/scene1_entrance.jpg" alt="Scene 1 入口" class="scene-image">
+    <div class="scene-body">
+      <div class="scene-narration">— 静かに、世界観を開く。</div>
+      <div class="scene-notes">
+        <span class="tag tag-real">実写素材</span>中井様ご提供：店舗入口（welcomeリース・こもれびロゴ）
+        <strong>演出メモ：</strong>柔らかいズームイン・木漏れ日のような光のキラメキを足す
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 2 -->
+  <section class="scene">
+    <div class="scene-header">
+      <div class="scene-num">2</div>
+      <div class="scene-title">疲れた男女（2分割）before</div>
+      <div class="scene-meta">10秒</div>
+    </div>
+    <img src="komorebi_v1_images/scene2_before_split.jpg" alt="Scene 2 Before" class="scene-image">
+    <div class="scene-body">
+      <div class="scene-narration">「仕事の疲れが、抜けない…」「朝、起きるのがしんどい…」</div>
+      <div class="scene-notes">
+        <span class="tag tag-ref">中井様参考画像</span><span class="tag tag-ai">AI生成</span>
+        左：40代スーツ姿の疲れた男性 / 右：朝起きれないしんどそうな女性
+        <strong>演出メモ：</strong>色温度を冷たく・暗めに。下向き矢印で「これから良くなる」予感を演出
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 3 -->
+  <section class="scene">
+    <div class="scene-header">
+      <div class="scene-num">3</div>
+      <div class="scene-title">施術シーン（代表の手元のみ）</div>
+      <div class="scene-meta">13秒</div>
+    </div>
+    <img src="komorebi_v1_images/scene3_treatment.jpg" alt="Scene 3 Treatment" class="scene-image">
+    <div class="scene-body">
+      <div class="scene-narration">そんなあなたに、こもれびのドライヘッドスパ。<br>リラクゼーションじゃない、睡眠の質を変える体質改善です。</div>
+      <div class="scene-notes">
+        <span class="tag tag-real">実写素材</span>中井様ご提供：施術ベッド・ディプロマあり
+        <strong>演出メモ：</strong>このカット＋施術中の手元動画（ご提供素材から）を組み合わせる。代表のお顔は映さず、手と前腕のみ。受け手は気持ちよさそうに目を閉じている表情。
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 4 -->
+  <section class="scene">
+    <div class="scene-header">
+      <div class="scene-num">4</div>
+      <div class="scene-title">施術後の男女（2分割）after</div>
+      <div class="scene-meta">15秒</div>
+    </div>
+    <img src="komorebi_v1_images/scene4_after_split.jpg" alt="Scene 4 After" class="scene-image">
+    <div class="scene-body">
+      <div class="scene-narration">頭が軽くなる、朝が変わる。<br>1日のスタートが、明るくなる。</div>
+      <div class="scene-notes">
+        <span class="tag tag-ref">中井様参考画像</span><span class="tag tag-ai">AI生成</span>
+        左：仕事に活き活きと向かう男性 / 右：カーテンを開けて朝陽を浴びる女性
+        <strong>演出メモ：</strong>色温度を温かく・明るく。陽の光が両画面の中央から差し込む演出
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 5 -->
+  <section class="scene">
+    <div class="scene-header">
+      <div class="scene-num">5</div>
+      <div class="scene-title">fin（ロゴ・CTA）</div>
+      <div class="scene-meta">5秒</div>
+    </div>
+    <img src="komorebi_v1_images/scene5_fin.jpg" alt="Scene 5 Fin" class="scene-image">
+    <div class="scene-body">
+      <div class="scene-narration">こもれび。あなたの睡眠を、整える場所。</div>
+      <div class="scene-notes">
+        <span class="tag tag-real">実写ベース</span><span class="tag tag-ai">AI合成</span>
+        店舗入口写真をベースにロゴ・キャッチコピー・CTAを重ねた終幕カット
+        <strong>演出メモ：</strong>CTA部分（Instagram誘導 / 電話 / 住所等）は中井様にご希望いただいた誘導先を反映予定
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-note">
+    <strong>ご確認のお願い：</strong><br>
+    上記5シーンのイメージで動画化を進めてよろしいでしょうか？
+    気になる点・修正のご希望があればお気軽にお聞かせください✨
+    <br><br>
+    <strong>次のステップ：</strong>
+    OKをいただいた後、実写素材（動画）から施術中の手元カットを抽出して組み合わせ、
+    モーション付与（ズーム・パン・トランジション）と合わせて<strong>動画化したものをご確認</strong>いただきます。
+  </div>
+
+  <div class="feedback-box">
+    <h3>💬 中井様にご確認いただきたい点</h3>
+    <ol style="margin-left:20px; font-size: 0.95rem;">
+      <li><strong>男女のキャラクターのイメージ</strong>はこの方向性で問題ないか</li>
+      <li><strong>施術シーンの絵</strong>は、現状の店舗写真をベースにこのまま使ってよいか</li>
+      <li><strong>シーン5のCTA文言</strong>「ご予約・お問い合わせはInstagramより」で問題ないか（変更可能です）</li>
+      <li><strong>このまま動画化に進んでよいか</strong></li>
+    </ol>
+  </div>
+
+</div>
+</body>
+</html>
