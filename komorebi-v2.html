@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>こもれび様 動画構成案 v2 | 株式会社ランバード</title>
+<style>
+  :root {
+    --beige: #F5EFE6;
+    --beige-light: #FAF6EF;
+    --cream: #FFFBF3;
+    --sage: #A8C4A2;
+    --sage-dark: #6B8E6B;
+    --sky: #BFD8E5;
+    --sky-dark: #6B92A8;
+    --warm-brown: #8B6F47;
+    --text: #4A4036;
+    --text-light: #8A7E70;
+    --gold: #D4A656;
+    --before: #5A6B7A;
+    --after: #E8B767;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: linear-gradient(135deg, var(--beige-light), var(--cream));
+    color: var(--text);
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+  .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+
+  .header {
+    text-align: center;
+    padding: 36px 24px;
+    background: white;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(139, 111, 71, 0.1);
+  }
+  .header h1 { font-size: 1.6rem; color: var(--warm-brown); margin-bottom: 6px; }
+  .header .subtitle { font-size: 0.95rem; color: var(--text-light); }
+  .version-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--sage), var(--sky));
+    color: white;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-top: 12px;
+  }
+
+  .section {
+    background: white;
+    border-radius: 16px;
+    padding: 26px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 12px rgba(139, 111, 71, 0.06);
+  }
+  .section h2 {
+    font-size: 1.2rem;
+    color: var(--warm-brown);
+    margin-bottom: 14px;
+    border-left: 4px solid var(--sage);
+    padding-left: 12px;
+  }
+  .section h3 { font-size: 1.05rem; color: var(--sage-dark); margin: 18px 0 8px; }
+  .section ul, .section ol { margin-left: 20px; margin-bottom: 10px; }
+  .section li { margin-bottom: 6px; font-size: 0.93rem; }
+
+  .scenes { overflow-x: auto; }
+  table.scene-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 10px; }
+  table.scene-table th {
+    background: var(--beige); color: var(--warm-brown);
+    padding: 10px 8px; text-align: left; font-size: 0.85rem;
+    border: 1px solid #E8DDC8;
+  }
+  table.scene-table td {
+    padding: 10px 8px; border: 1px solid #E8DDC8;
+    vertical-align: top; font-size: 0.88rem;
+  }
+  table.scene-table tr:nth-child(even) td { background: #FDFAF4; }
+  .scene-num {
+    display: inline-block; width: 24px; height: 24px; line-height: 24px;
+    text-align: center; background: var(--warm-brown); color: white;
+    border-radius: 50%; font-size: 0.78rem; font-weight: bold;
+  }
+  .tag-before { background: var(--before); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; }
+  .tag-after { background: var(--after); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; }
+  .tag-store { background: var(--sage-dark); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; }
+  .tag-cta { background: var(--warm-brown); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.72rem; }
+
+  .narration-box {
+    background: var(--beige-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    font-style: italic;
+    line-height: 2;
+    border-left: 4px solid var(--sage);
+  }
+  .narration-box .scene-mark {
+    display: inline-block;
+    background: var(--warm-brown);
+    color: white;
+    font-size: 0.72rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+    font-style: normal;
+    vertical-align: middle;
+  }
+
+  .priority-box {
+    background: linear-gradient(135deg, #FFEFD9, #FFF8EA);
+    border: 2px solid var(--gold);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .priority-box h3 { color: var(--warm-brown); margin-bottom: 10px; font-size: 1.05rem; }
+
+  .char-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 14px; }
+  @media (max-width: 700px) { .char-grid { grid-template-columns: 1fr; } }
+  .char-card {
+    background: var(--beige-light); border-radius: 12px; padding: 16px;
+    border: 1px solid #E8DDC8;
+  }
+  .char-card.male { border-top: 4px solid var(--sky-dark); }
+  .char-card.female { border-top: 4px solid var(--gold); }
+  .char-card h4 { font-size: 1rem; color: var(--warm-brown); margin-bottom: 10px; }
+  .char-card p { font-size: 0.88rem; }
+
+  .footer { text-align: center; padding: 30px 20px; color: var(--text-light); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="header">
+    <h1>こもれび様 動画構成案 v2</h1>
+    <p class="subtitle">ドライヘッドスパ専門店 こもれび様｜最新版構成</p>
+    <span class="version-badge">v2 — 2026/5/7（12シーン・20秒）</span>
+  </header>
+
+  <section class="section">
+    <h2>📺 動画プレビュー</h2>
+    <p>実際の動画イメージはこちらからご確認いただけます。</p>
+    <p style="margin-top:10px;">
+      👉 <a href="komorebi-preview.html" style="color:var(--warm-brown); font-weight:bold;">プレビューページを開く</a>
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>動画の概要</h2>
+    <ul>
+      <li><strong>テーマ：</strong>「リラクゼーションではなく、睡眠改善＝体質改善」を訴求</li>
+      <li><strong>動画タイプ：</strong>実写風（AI生成画像ベース）</li>
+      <li><strong>尺：</strong>20秒（10〜12カット）</li>
+      <li><strong>ゴール：</strong>視聴者に「自分事」として捉えてもらい、施術後のポジティブな変化をイメージさせる</li>
+      <li><strong>テイスト：</strong>清潔感のあるインスタ映えする雰囲気</li>
+      <li><strong>参考CM：</strong>アリナミンV DRINK「進化した疲れ」篇 ／ アリナミンA「寝ている間に疲れに効く」篇</li>
+    </ul>
+
+    <h3>ターゲット</h3>
+    <div class="char-grid">
+      <div class="char-card male">
+        <h4>👔 40代男性</h4>
+        <p>仕事のストレスやPC作業で<strong>脳が疲れている</strong>サラリーマン</p>
+      </div>
+      <div class="char-card female">
+        <h4>💼 40代女性</h4>
+        <p>家事や育児に追われ、<strong>自分のケアができず朝がしんどい</strong>女性</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>12シーン構成案</h2>
+    <p>男性ブロック → 女性ブロック → 入店 → 施術 → 男性after → 女性after → CTA の流れで、視線が散らないように設計しています。</p>
+
+    <div class="scenes">
+      <table class="scene-table">
+        <thead>
+          <tr>
+            <th style="width:36px;">#</th>
+            <th>シーン</th>
+            <th>役割</th>
+            <th style="width:60px;">秒数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="scene-num">1</span></td>
+            <td>男性・夜のオフィスで疲労（引き）</td>
+            <td><span class="tag-before">before</span> 共感</td>
+            <td>1.5秒</td></tr>
+          <tr><td><span class="scene-num">2</span></td>
+            <td>男性・オフィスで疲労（寄り）</td>
+            <td><span class="tag-before">before</span> 共感</td>
+            <td>1.5秒</td></tr>
+          <tr><td><span class="scene-num">3</span></td>
+            <td>女性・キッチンで朝食準備（疲労）</td>
+            <td><span class="tag-before">before</span> 共感</td>
+            <td>1.5秒</td></tr>
+          <tr><td><span class="scene-num">4</span></td>
+            <td>女性・洗濯機にもたれて疲労</td>
+            <td><span class="tag-before">before</span> 共感</td>
+            <td>1.5秒</td></tr>
+          <tr><td><span class="scene-num">5</span></td>
+            <td>こもれびの扉に手をかける</td>
+            <td><span class="tag-store">入店</span> 動線</td>
+            <td>1.5秒</td></tr>
+          <tr><td><span class="scene-num">6</span></td>
+            <td>男性が施術を受ける</td>
+            <td><span class="tag-store">解決</span> 体験</td>
+            <td>2秒</td></tr>
+          <tr><td><span class="scene-num">7</span></td>
+            <td>女性が施術を受ける</td>
+            <td><span class="tag-store">解決</span> 体験</td>
+            <td>2秒</td></tr>
+          <tr><td><span class="scene-num">8</span></td>
+            <td>男性・同じデスクでやる気満々</td>
+            <td><span class="tag-after">after</span> 仕事バリバリ</td>
+            <td>1.5秒</td></tr>
+          <tr><td><span class="scene-num">9</span></td>
+            <td>男性・仲間にサポート</td>
+            <td><span class="tag-after">after</span> 余裕がある</td>
+            <td>1.5秒</td></tr>
+          <tr><td><span class="scene-num">10</span></td>
+            <td>女性・朝にこやかに料理（子供と）</td>
+            <td><span class="tag-after">after</span> 家族に笑顔</td>
+            <td>1.5秒</td></tr>
+          <tr><td><span class="scene-num">11</span></td>
+            <td>女性・子供と朝食（ホットケーキ）</td>
+            <td><span class="tag-after">after</span> 1日のスタートが明るく</td>
+            <td>1.5秒</td></tr>
+          <tr><td><span class="scene-num">12</span></td>
+            <td>こもれびロゴ＋公式LINE QR</td>
+            <td><span class="tag-cta">CTA</span> 導線</td>
+            <td>2.5秒</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:14px; color: var(--text-light); font-size: 0.88rem;">合計：約20秒（参考CMの15秒に近いテンポ）</p>
+  </section>
+
+  <section class="section">
+    <h2>📝 ナレーション・テロップ案（仮）</h2>
+    <p>動画化フェーズで音声・テロップを乗せる予定です。中井様のお声で本人ナレーションも検討可能です。</p>
+    <div class="narration-box" style="margin-top:14px;">
+      <span class="scene-mark">#1-2</span>「仕事の疲れが、抜けない…」<br>
+      <span class="scene-mark">#3-4</span>「朝、起きるのがつらい…」<br><br>
+      <span class="scene-mark">#5-7</span>そんなあなたに、こもれびのドライヘッドスパ。<br>
+      リラクゼーションじゃない、睡眠の質を変える体質改善です。<br><br>
+      <span class="scene-mark">#8-9</span>頭が軽くなる、仕事に向かえる。<br>
+      <span class="scene-mark">#10-11</span>朝が変わる、家族に笑顔で接せる。<br><br>
+      <span class="scene-mark">#12</span>こもれび。あなたの睡眠を、整える場所。
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>📦 制作にあたっていただいた素材</h2>
+    <ul>
+      <li>店舗の外観・玄関ドア（welcomeリース付き）</li>
+      <li>施術ルーム・施術ベッド・備品</li>
+      <li>施術中の動画（手元・お客様の表情）</li>
+      <li>こもれびロゴ・公式LINE QRコード</li>
+      <li>イメージ参考素材（ターゲット男女・参考動画URL）</li>
+    </ul>
+    <p style="margin-top:12px; font-size:0.9rem; color:var(--text-light);">
+      ※ 素材は画像生成の参考として活用し、実店舗の雰囲気と同一キャラの一貫性を維持しています。
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>🎨 制作上のこだわり</h2>
+    <ul>
+      <li><strong>キャラクター一貫性：</strong>男女2人とも全シーンで同一人物として描画（Geminiの参照画像機能で実現）</li>
+      <li><strong>子供の一貫性：</strong>before/afterの女性シーンに登場する子供も同一人物</li>
+      <li><strong>店舗の雰囲気：</strong>施術ルームは実店舗の茶系・ランプ・ディプロマを反映</li>
+      <li><strong>男性の対比：</strong>シーン2（疲労）とシーン8（やる気）は同じデスクで撮影することでbefore/after効果を強化</li>
+      <li><strong>女性の対比：</strong>シーン3（朝食準備で疲労）とシーン10-11（朝食で笑顔）の対比</li>
+      <li><strong>構成のテンポ：</strong>各カット1.5〜2秒でアリナミンCM並みの密度</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>このあとの進め方</h2>
+    <ol>
+      <li>本構成案・プレビュー動画にOKをいただく</li>
+      <li>動画化（モーション付与・トランジション）してご確認</li>
+      <li>BGM・テロップ・ナレーションを追加</li>
+      <li>初稿納品</li>
+    </ol>
+  </section>
+
+  <div class="priority-box">
+    <h3>💬 中井様にご確認いただきたい点</h3>
+    <ol style="margin-left:20px; font-size: 0.95rem;">
+      <li>全体の構成・流れはこの方向性で進めて問題ないか</li>
+      <li>気になるシーン・修正したい点があれば、シーン番号でお知らせください</li>
+      <li>OKをいただけたら、動画化フェーズに進みます</li>
+    </ol>
+  </div>
+
+  <footer class="footer">
+    <p>株式会社ランバード｜AI動画事業</p>
+  </footer>
+
+</div>
+</body>
+</html>
