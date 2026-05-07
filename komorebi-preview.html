@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>こもれび様 動画プレビュー（v1）</title>
+<style>
+  :root {
+    --beige: #F5EFE6;
+    --beige-light: #FAF6EF;
+    --cream: #FFFBF3;
+    --sage: #A8C4A2;
+    --sage-dark: #6B8E6B;
+    --gold: #D4A656;
+    --warm-brown: #8B6F47;
+    --text: #4A4036;
+    --text-light: #8A7E70;
+    --before: #5A6B7A;
+    --after: #E8B767;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;
+    background:linear-gradient(135deg,var(--beige-light),var(--cream));
+    color:var(--text); line-height:1.7; padding:20px 16px 60px;
+  }
+  .container { max-width:1000px; margin:0 auto; }
+  header {
+    text-align:center; padding:30px 24px; background:white;
+    border-radius:20px; margin-bottom:20px;
+    box-shadow:0 4px 20px rgba(139,111,71,0.08);
+  }
+  header h1 { color:var(--warm-brown); font-size:1.5rem; margin-bottom:6px; }
+  header p { color:var(--text-light); font-size:0.92rem; }
+  .badge {
+    display:inline-block;
+    background:linear-gradient(90deg,var(--sage),var(--gold));
+    color:white; padding:5px 16px; border-radius:20px;
+    font-size:0.78rem; font-weight:bold; margin-top:10px;
+  }
+  .section {
+    background:white; border-radius:16px; padding:24px;
+    margin-bottom:18px; box-shadow:0 2px 10px rgba(139,111,71,0.06);
+  }
+  .section h2 {
+    font-size:1.15rem; color:var(--warm-brown); margin-bottom:14px;
+    border-left:4px solid var(--sage); padding-left:12px;
+  }
+
+  .video-wrap {
+    background:#000; border-radius:14px; overflow:hidden;
+    margin-bottom:14px;
+  }
+  .video-wrap video { width:100%; display:block; }
+
+  .narration {
+    background:var(--beige-light);
+    border-left:3px solid var(--sage);
+    padding:14px 18px; border-radius:8px;
+    font-size:0.95rem; font-style:italic;
+  }
+
+  .scenes-grid {
+    display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+    margin-top:10px;
+  }
+  @media(max-width:600px){ .scenes-grid{grid-template-columns:1fr;} }
+  .scene {
+    background:var(--beige-light); border-radius:12px;
+    overflow:hidden; border:1px solid #E8DDC8;
+  }
+  .scene img { width:100%; display:block; }
+  .scene-info {
+    padding:12px 14px;
+  }
+  .scene-num {
+    display:inline-block; background:var(--warm-brown);
+    color:white; width:26px; height:26px; line-height:26px;
+    text-align:center; border-radius:50%; font-size:0.78rem;
+    font-weight:bold; margin-right:6px;
+  }
+  .scene-title { font-size:0.92rem; font-weight:bold; color:var(--warm-brown); }
+  .scene-desc {
+    color:var(--text-light); font-size:0.82rem; margin-top:6px;
+  }
+  .tag {
+    display:inline-block; padding:2px 8px; border-radius:4px;
+    font-size:0.7rem; font-weight:bold; color:white;
+    margin-right:4px;
+  }
+  .tag-before { background:var(--before); }
+  .tag-store { background:var(--sage-dark); }
+  .tag-after { background:var(--after); }
+  .tag-cta { background:var(--warm-brown); }
+
+  .feedback {
+    background:linear-gradient(135deg,#FFEFD9,#FFF8EA);
+    border:2px solid var(--gold); border-radius:14px;
+    padding:20px 24px; margin-top:20px;
+  }
+  .feedback h3 { color:var(--warm-brown); margin-bottom:10px; font-size:1.05rem; }
+  .footer { text-align:center; padding:24px; color:var(--text-light); font-size:0.85rem; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>こもれび様 動画プレビュー</h1>
+    <p>ドライヘッドスパ専門店 こもれび様｜画像つなぎ合わせ版</p>
+    <span class="badge">v1 ご提案版 — 2026/5/7</span>
+  </header>
+
+  <section class="section">
+    <h2>📺 動画プレビュー（20秒）</h2>
+    <div class="video-wrap">
+      <video src="komorebi-v29-preview.mp4" controls playsinline preload="metadata"></video>
+    </div>
+    <p style="font-size:0.92rem; color:var(--text-light);">
+      まずは画像をつなぎ合わせて構成のイメージを見ていただける形にしました。<br>
+      この後、動きや切り替え・BGM・テロップ・ナレーションを加えて完成形に仕上げていきます。
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>📝 訴求の流れ</h2>
+    <div class="narration">
+      ① <strong>before（共感）</strong> 仕事で疲れたサラリーマン男性 / 家事育児で朝がしんどい女性<br>
+      ② <strong>店舗到着</strong> こもれびのドアを開ける<br>
+      ③ <strong>施術（解決提示）</strong> 男女それぞれが安心の施術を受ける<br>
+      ④ <strong>after（変化）</strong> 男性は仕事にバリバリ取り組み、女性は家族と笑顔で過ごせる<br>
+      ⑤ <strong>CTA</strong> 公式LINEへ誘導
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🎬 全12シーン</h2>
+    <div class="scenes-grid">
+      <div class="scene">
+        <img src="komorebi_scenes/01.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">1</span><span class="scene-title">仕事疲れの男性（引き）</span>
+          <div class="scene-desc"><span class="tag tag-before">before</span>夜のオフィスで一人疲労</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/02.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">2</span><span class="scene-title">仕事疲れの男性（寄り）</span>
+          <div class="scene-desc"><span class="tag tag-before">before</span>椅子に背中を預けてぐったり</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/03.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">3</span><span class="scene-title">朝のキッチンで疲れた女性</span>
+          <div class="scene-desc"><span class="tag tag-before">before</span>朝食準備に追われる</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/04.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">4</span><span class="scene-title">家事で疲労困憊の女性</span>
+          <div class="scene-desc"><span class="tag tag-before">before</span>洗濯機にもたれて一息</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/05.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">5</span><span class="scene-title">こもれびの扉を開ける</span>
+          <div class="scene-desc"><span class="tag tag-store">入店</span>ドアノブに手をかける</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/06.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">6</span><span class="scene-title">男性が施術を受ける</span>
+          <div class="scene-desc"><span class="tag tag-store">体験</span>代表の手元のみ・リラックス</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/07.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">7</span><span class="scene-title">女性が施術を受ける</span>
+          <div class="scene-desc"><span class="tag tag-store">体験</span>同上・気持ちよさそう</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/08.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">8</span><span class="scene-title">男性・やる気満々で仕事</span>
+          <div class="scene-desc"><span class="tag tag-after">after</span>頭が軽くなりバリバリ</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/09.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">9</span><span class="scene-title">男性・仲間にサポート</span>
+          <div class="scene-desc"><span class="tag tag-after">after</span>余裕があるから人を助けられる</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/10.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">10</span><span class="scene-title">女性・朝にこやかに料理</span>
+          <div class="scene-desc"><span class="tag tag-after">after</span>子供と笑顔のキッチン</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/11.png" alt="">
+        <div class="scene-info">
+          <span class="scene-num">11</span><span class="scene-title">女性・家族で朝食</span>
+          <div class="scene-desc"><span class="tag tag-after">after</span>1日のスタートが明るくなる</div>
+        </div>
+      </div>
+      <div class="scene">
+        <img src="komorebi_scenes/12.jpg" alt="">
+        <div class="scene-info">
+          <span class="scene-num">12</span><span class="scene-title">こもれびロゴ＋公式LINE</span>
+          <div class="scene-desc"><span class="tag tag-cta">CTA</span>ご予約・お問い合わせはLINEから</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>📅 このあとの進め方</h2>
+    <ol style="margin-left:20px; font-size:0.95rem;">
+      <li>本ページの構成にOKをいただく</li>
+      <li>動画化（モーション付与・トランジション）してご確認</li>
+      <li>BGM・テロップ・ナレーションを追加</li>
+      <li>初稿納品</li>
+    </ol>
+  </section>
+
+  <div class="feedback">
+    <h3>💬 中井様にご確認いただきたい点</h3>
+    <ol style="margin-left:20px; font-size:0.95rem;">
+      <li>全体の構成・流れはこの方向性で進めてよろしいでしょうか？</li>
+      <li>気になるシーン・直したい点があれば、シーン番号と一緒にお知らせください</li>
+      <li>動画化のフェーズに進める場合は「OK」とお返事いただければ動き出します</li>
+    </ol>
+  </div>
+
+  <footer class="footer">
+    <p>株式会社ランバード｜AI動画事業</p>
+  </footer>
+
+</div>
+</body>
+</html>
