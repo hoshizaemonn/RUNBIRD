@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>こもれび テロップイメージ</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: "Noto Sans JP", "游ゴシック", sans-serif;
+    background:#1a1a1a; color:#eee; padding:30px 20px;
+  }
+  h1 { font-size:1.4rem; color:#d4a656; margin-bottom:6px; text-align:center; }
+  .lead { font-size:0.85rem; color:#888; text-align:center; margin-bottom:30px; }
+  .scene {
+    max-width:900px; margin:0 auto 20px;
+    background:#222; border-radius:10px; padding:16px 22px;
+    border-left:4px solid #d4a656;
+  }
+  .scene-head {
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid #333;
+  }
+  .scene-num { color:#d4a656; font-weight:bold; font-size:1rem; }
+  .scene-time { color:#888; font-size:0.85rem; }
+  .scene-name { color:#aaa; font-size:0.85rem; margin-left:12px; }
+  .preview-frame {
+    background:linear-gradient(135deg,#3a2a1a,#2a1a0a);
+    border-radius:8px; aspect-ratio:16/9; max-height:240px;
+    margin:0 auto 12px; position:relative;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .preview-frame.scene-bright {
+    background:linear-gradient(135deg,#e8d5a8,#c8b888);
+  }
+  .preview-frame.scene-dark {
+    background:linear-gradient(135deg,#252028,#1a1518);
+  }
+  .scene-bg-label {
+    position:absolute; top:8px; left:10px;
+    color:rgba(255,255,255,0.3); font-size:0.7rem;
+  }
+  .scene-bg-label.dark { color:rgba(0,0,0,0.4); }
+  .telop {
+    position:absolute; bottom:18%; left:50%;
+    transform:translateX(-50%);
+    text-align:center; color:white;
+    font-weight:500; line-height:1.5;
+    text-shadow:0 0 8px rgba(0,0,0,0.7), 0 2px 4px rgba(0,0,0,0.9);
+    letter-spacing:0.05em;
+    font-size:1.1rem;
+    padding:0 20px;
+  }
+  .telop.bright {
+    color:#3a2820;
+    text-shadow:0 0 8px rgba(255,250,240,0.9), 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .telop-emphasis { color:#d4a656; font-size:1.4rem; }
+  .telop-emphasis.bright { color:#8a6f47; }
+
+  .info-row {
+    display:grid; grid-template-columns:1fr 1fr 1fr;
+    gap:12px; margin-top:10px; font-size:0.82rem;
+  }
+  .info-item {
+    background:#2a2a2a; padding:8px 10px; border-radius:5px;
+  }
+  .info-label { color:#888; font-size:0.7rem; margin-bottom:3px; }
+  .info-val { color:#eee; }
+  .style-section {
+    max-width:900px; margin:30px auto; padding:24px;
+    background:#222; border-radius:10px;
+  }
+  .style-section h2 {
+    color:#d4a656; font-size:1.1rem; margin-bottom:14px;
+  }
+  .style-section table {
+    width:100%; border-collapse:collapse; font-size:0.85rem;
+  }
+  .style-section th, .style-section td {
+    padding:8px 12px; text-align:left; border-bottom:1px solid #333;
+  }
+  .style-section th { color:#888; font-weight:normal; }
+  .anim-demo {
+    display:inline-block; padding:4px 10px;
+    background:#333; border-radius:4px; font-size:0.85rem;
+    margin:0 4px;
+  }
+  .pattern-grid {
+    display:grid; grid-template-columns:repeat(2,1fr); gap:14px;
+  }
+  .pattern-card {
+    background:#2a2a2a; border-radius:6px; padding:14px;
+  }
+  .pattern-card h3 {
+    font-size:0.95rem; color:#d4a656; margin-bottom:8px;
+  }
+  .pattern-card .demo {
+    background:#1a1a1a; padding:14px; border-radius:4px;
+    margin:8px 0; min-height:60px;
+    display:flex; align-items:center; justify-content:center;
+    color:white; text-align:center; font-size:0.95rem;
+    line-height:1.5;
+  }
+  .pattern-card p { font-size:0.78rem; color:#aaa; }
+</style>
+</head>
+<body>
+
+<h1>こもれび テロップ展開イメージ（30秒版）</h1>
+<p class="lead">各シーンのテロップ表示タイミング・配置・スタイル</p>
+
+<!-- ============ パターン比較 ============ -->
+<div class="style-section">
+  <h2>📐 テロップ表示パターン4種</h2>
+  <p style="font-size:0.85rem; color:#aaa; margin-bottom:16px;">どの方向性で行くか選べます</p>
+
+  <div class="pattern-grid">
+    <div class="pattern-card">
+      <h3>A. 1行ずつフェード（推奨）</h3>
+      <div class="demo">
+        <span style="opacity:0.3">なんだか最近、</span><br>
+        <span>仕事の疲れが、抜けない。</span>
+      </div>
+      <p>1〜2行が画面下部に静かにフェード in/out。
+        上品で読みやすい。CMの王道。</p>
+    </div>
+
+    <div class="pattern-card">
+      <h3>B. キーワード強調</h3>
+      <div class="demo">
+        <span style="color:#888">なんだか最近、</span><br>
+        <span style="color:#d4a656; font-weight:bold; font-size:1.15em">仕事の疲れ</span><span style="color:#888">が抜けない。</span>
+      </div>
+      <p>感情キーワードだけ大きく/色変えで強調。インパクト重視。</p>
+    </div>
+
+    <div class="pattern-card">
+      <h3>C. タイプライター</h3>
+      <div class="demo">
+        <span>なんだか最近、仕事の疲れが、抜け<span style="border-right:2px solid #d4a656; animation:blink 0.7s infinite">|</span></span>
+      </div>
+      <p>1文字ずつ表示。SNS動画でよく使う、視線を引き付ける効果。</p>
+    </div>
+
+    <div class="pattern-card">
+      <h3>D. 全文一気に表示</h3>
+      <div class="demo">
+        なんだか最近、<br>仕事の疲れが、抜けない。
+      </div>
+      <p>シンプルに全文表示。ナレと完全同期させやすい。</p>
+    </div>
+  </div>
+  <style>
+    @keyframes blink { 50% { border-right-color:transparent; } }
+  </style>
+</div>
+
+<!-- ============ シーンごと展開 ============ -->
+
+<div class="scene">
+  <div class="scene-head">
+    <div><span class="scene-num">シーン1〜2</span><span class="scene-name">疲れた男性（夜オフィス）</span></div>
+    <div class="scene-time">0:00 - 0:04</div>
+  </div>
+  <div class="preview-frame scene-dark">
+    <div class="scene-bg-label">[暗いオフィス・男性うつむき]</div>
+    <div class="telop">
+      なんだか最近、<br>仕事の疲れが、抜けない。
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-item"><div class="info-label">配置</div><div class="info-val">画面下1/4・中央</div></div>
+    <div class="info-item"><div class="info-label">色</div><div class="info-val">白＋黒影</div></div>
+    <div class="info-item"><div class="info-label">演出</div><div class="info-val">フェードin 0.3s / フェードout 0.3s</div></div>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="scene-head">
+    <div><span class="scene-num">シーン3〜4</span><span class="scene-name">起きれない女性（朝・寝室）</span></div>
+    <div class="scene-time">0:04 - 0:08</div>
+  </div>
+  <div class="preview-frame" style="background:linear-gradient(135deg,#d8c8b8,#a89878);">
+    <div class="scene-bg-label dark">[寝室・女性ベッドで起きれない]</div>
+    <div class="telop">
+      毎朝、<br>起きるのがつらい。
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-item"><div class="info-label">配置</div><div class="info-val">画面下1/4・中央</div></div>
+    <div class="info-item"><div class="info-label">色</div><div class="info-val">白＋黒影</div></div>
+    <div class="info-item"><div class="info-label">演出</div><div class="info-val">フェードin/out</div></div>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="scene-head">
+    <div><span class="scene-num">シーン5</span><span class="scene-name">こもれび入店（ドア開く）</span></div>
+    <div class="scene-time">0:08 - 0:12</div>
+  </div>
+  <div class="preview-frame" style="background:linear-gradient(135deg,#3a2820,#5a3a28);">
+    <div class="scene-bg-label">[ドアが開いて店内]</div>
+    <div class="telop">
+      その不調、<br>ただの疲れじゃないかもしれません。
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-item"><div class="info-label">配置</div><div class="info-val">画面中央寄り</div></div>
+    <div class="info-item"><div class="info-label">色</div><div class="info-val">白＋微細影</div></div>
+    <div class="info-item"><div class="info-label">演出</div><div class="info-val">転換のキー文・少し長めに表示</div></div>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="scene-head">
+    <div><span class="scene-num">シーン6〜7</span><span class="scene-name">施術中（男女・サロン）</span></div>
+    <div class="scene-time">0:12 - 0:18</div>
+  </div>
+  <div class="preview-frame" style="background:linear-gradient(135deg,#3a2418,#2a1a10);">
+    <div class="scene-bg-label">[サロン施術中・茶ベッド・暖色]</div>
+    <div class="telop">
+      頭が軽くなると、<br><span class="telop-emphasis">毎日が変わる</span>。
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-item"><div class="info-label">配置</div><div class="info-val">中央下</div></div>
+    <div class="info-item"><div class="info-label">色</div><div class="info-val">白＋ゴールド強調</div></div>
+    <div class="info-item"><div class="info-label">演出</div><div class="info-val">「毎日が変わる」だけ大きく＋ゴールド</div></div>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="scene-head">
+    <div><span class="scene-num">シーン8〜9</span><span class="scene-name">男性 仕事はかどる（明るいオフィス）</span></div>
+    <div class="scene-time">0:18 - 0:23</div>
+  </div>
+  <div class="preview-frame scene-bright">
+    <div class="scene-bg-label dark">[明るいオフィス・男性がやる気で仕事]</div>
+    <div class="telop bright">
+      やる気が戻り、<br><span class="telop-emphasis bright">仕事もはかどる</span>。
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-item"><div class="info-label">配置</div><div class="info-val">中央下</div></div>
+    <div class="info-item"><div class="info-label">色</div><div class="info-val">濃茶＋白影（明るい背景用）</div></div>
+    <div class="info-item"><div class="info-label">演出</div><div class="info-val">明るい背景なので暗色文字</div></div>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="scene-head">
+    <div><span class="scene-num">シーン10〜11</span><span class="scene-name">女性 朝の目覚め（カーテン・朝食）</span></div>
+    <div class="scene-time">0:23 - 0:28</div>
+  </div>
+  <div class="preview-frame" style="background:linear-gradient(135deg,#f5e8d0,#d8c0a0);">
+    <div class="scene-bg-label dark">[カーテン開ける女性・朝光]</div>
+    <div class="telop bright">
+      朝の目覚めが変わり、<br>自然と笑顔で1日を始められる。
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-item"><div class="info-label">配置</div><div class="info-val">中央下</div></div>
+    <div class="info-item"><div class="info-label">色</div><div class="info-val">濃茶＋白影</div></div>
+    <div class="info-item"><div class="info-label">演出</div><div class="info-val">クライマックス・少し大きめ</div></div>
+  </div>
+</div>
+
+<div class="scene">
+  <div class="scene-head">
+    <div><span class="scene-num">シーン12</span><span class="scene-name">CTA（ロゴ＋公式LINE QR）</span></div>
+    <div class="scene-time">0:28 - 0:30</div>
+  </div>
+  <div class="preview-frame" style="background:linear-gradient(135deg,#e8d8b8,#c8b888);">
+    <div class="scene-bg-label dark">[ロゴ＋QRコード]</div>
+    <div class="telop bright" style="bottom:8%;">
+      <span style="font-size:1.6rem;color:#8a6f47;font-weight:bold;">こもれび</span><br>
+      <span style="font-size:0.9em;">あなたの"眠り"を整える場所。</span>
+    </div>
+  </div>
+  <div class="info-row">
+    <div class="info-item"><div class="info-label">配置</div><div class="info-val">中央下</div></div>
+    <div class="info-item"><div class="info-label">色</div><div class="info-val">濃茶＋ゴールド</div></div>
+    <div class="info-item"><div class="info-label">演出</div><div class="info-val">余韻・QR読み取り促す表示</div></div>
+  </div>
+</div>
+
+<!-- ============ スタイル仕様 ============ -->
+<div class="style-section">
+  <h2>🎨 推奨スタイル仕様</h2>
+  <table>
+    <tr><th>要素</th><th>推奨設定</th></tr>
+    <tr><td>フォント</td><td>Noto Sans JP Medium / 游ゴシック Medium</td></tr>
+    <tr><td>サイズ</td><td>本文: 画面高の 4-5%（小さめ・上品）<br>強調: 本文の 1.3倍</td></tr>
+    <tr><td>色（暗い背景）</td><td>白 #FFFFFF + 黒影 (drop-shadow 4px)</td></tr>
+    <tr><td>色（明るい背景）</td><td>濃茶 #3A2820 + 白縁取り</td></tr>
+    <tr><td>強調色</td><td>ゴールド #D4A656（こもれびブランドカラー）</td></tr>
+    <tr><td>配置</td><td>画面中央下（下から1/4ライン）</td></tr>
+    <tr><td>表示タイミング</td><td>ナレ開始 0.1s 前 → ナレ終了 +0.3s</td></tr>
+    <tr><td>トランジション</td><td>フェードイン 0.2-0.3s / フェードアウト 0.2-0.3s</td></tr>
+    <tr><td>行間</td><td>1.5倍（読みやすさ）</td></tr>
+    <tr><td>文字間</td><td>0.05em（少し空けて上品に）</td></tr>
+  </table>
+</div>
+
+<!-- ============ 制作ツール ============ -->
+<div class="style-section">
+  <h2>🛠 制作ツール推奨</h2>
+  <table>
+    <tr><th>ツール</th><th>用途</th><th>難易度</th></tr>
+    <tr><td>Premiere Pro</td><td>本格的な編集・エフェクト・キーフレーム制御</td><td>中</td></tr>
+    <tr><td>CapCut（無料）</td><td>テロップテンプレ豊富・SNS向け</td><td>易</td></tr>
+    <tr><td>DaVinci Resolve（無料）</td><td>本格的・無料で全部できる</td><td>中</td></tr>
+    <tr><td>Adobe Express</td><td>簡単テンプレ</td><td>易</td></tr>
+  </table>
+</div>
+
+</body>
+</html>
