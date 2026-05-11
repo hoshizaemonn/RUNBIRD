@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>有限会社良邊建設 様 動画Lite 3本 構成案 | RUNBIRD</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;background:#f4f5f7;color:#2a2a2a;line-height:1.7}
+  .container{max-width:760px;margin:0 auto;padding:20px}
+
+  .header{text-align:center;padding:32px 20px;background:#fff;border-radius:20px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+  .header h1{font-size:1.5rem;margin-bottom:8px;color:#1a1a1a}
+  .header .sub{font-size:.95rem;color:#666}
+  .header .meta{margin-top:14px;font-size:.8rem;color:#888}
+
+  .tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
+  .tabs a{flex:1;min-width:140px;padding:14px 12px;border-radius:14px;background:#fff;text-decoration:none;text-align:center;font-weight:bold;font-size:.9rem;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:transform .15s}
+  .tabs a:hover{transform:translateY(-2px)}
+  .tabs a.t1{color:#d35400;border-top:4px solid #d35400}
+  .tabs a.t2{color:#c2185b;border-top:4px solid #c2185b}
+  .tabs a.t3{color:#1565c0;border-top:4px solid #1565c0}
+
+  .movie{background:#fff;border-radius:20px;padding:28px 24px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.06);scroll-margin-top:20px}
+  .movie h2{font-size:1.3rem;margin-bottom:6px;padding-bottom:10px}
+  .movie .lead{font-size:.95rem;color:#666;margin-bottom:20px}
+
+  .m1 h2{color:#d35400;border-bottom:3px solid #d35400}
+  .m2 h2{color:#c2185b;border-bottom:3px solid #c2185b}
+  .m3 h2{color:#1565c0;border-bottom:3px solid #1565c0}
+
+  .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:20px}
+  .meta-card{padding:10px 14px;border-radius:10px;background:#fafafa}
+  .meta-card .l{font-size:.7rem;color:#999;letter-spacing:.05em}
+  .meta-card .v{font-size:.9rem;font-weight:bold;margin-top:2px}
+  .m1 .meta-card{border-left:4px solid #d35400}
+  .m2 .meta-card{border-left:4px solid #c2185b}
+  .m3 .meta-card{border-left:4px solid #1565c0}
+
+  h3.block{font-size:1rem;margin:20px 0 12px;padding-left:10px}
+  .m1 h3.block{border-left:5px solid #d35400}
+  .m2 h3.block{border-left:5px solid #c2185b}
+  .m3 h3.block{border-left:5px solid #1565c0}
+
+  .flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;padding:16px;border-radius:14px;margin-bottom:16px}
+  .m1 .flow{background:#fff5ec}
+  .m2 .flow{background:#fdeef4}
+  .m3 .flow{background:#eaf3fb}
+  .flow-step{background:#fff;border-radius:12px;padding:10px 14px;font-size:.82rem;font-weight:bold;text-align:center;min-width:90px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .flow-arrow{font-weight:bold;font-size:1.1rem}
+  .m1 .flow-arrow{color:#d35400}
+  .m2 .flow-arrow{color:#c2185b}
+  .m3 .flow-arrow{color:#1565c0}
+
+  .ref{background:#fffbea;border:1px solid #f0d878;border-radius:12px;padding:14px 18px;margin-bottom:20px;font-size:.85rem}
+  .ref .rt{font-weight:bold;color:#a07000;margin-bottom:4px}
+  .ref a{color:#c2185b;word-break:break-all}
+
+  .scene-list{display:grid;gap:10px}
+  .scene{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:14px;border-radius:14px;align-items:start}
+  .m1 .scene:nth-child(odd){background:#fff5ec}
+  .m1 .scene:nth-child(even){background:#fffbf6}
+  .m2 .scene:nth-child(odd){background:#fdeef4}
+  .m2 .scene:nth-child(even){background:#fef6f9}
+  .m3 .scene:nth-child(odd){background:#eaf3fb}
+  .m3 .scene:nth-child(even){background:#f4f9fd}
+
+  .scene-num{width:44px;height:44px;background:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:bold;font-size:.95rem;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+  .scene-num .sec{font-size:.55rem;color:#888;margin-top:1px;font-weight:normal}
+  .m1 .scene-num{color:#d35400}
+  .m2 .scene-num{color:#c2185b}
+  .m3 .scene-num{color:#1565c0}
+
+  .scene-body .role{font-weight:bold;font-size:.95rem;margin-bottom:6px}
+  .scene-visual{background:#fff;border-radius:8px;padding:8px 10px;font-size:.83rem;margin-bottom:6px;color:#444}
+  .scene-visual::before{content:"🎬 ";opacity:.8}
+  .scene-telop{font-size:.85rem;font-weight:bold;background:#fff;padding:6px 10px;border-radius:6px;display:inline-block;margin-bottom:4px}
+  .m1 .scene-telop{border-left:3px solid #d35400;color:#a04000}
+  .m2 .scene-telop{border-left:3px solid #c2185b;color:#8a134a}
+  .m3 .scene-telop{border-left:3px solid #1565c0;color:#0d3f7a}
+  .scene-telop::before{content:"📝 "}
+  .scene-narr{font-size:.8rem;color:#666;padding:4px 10px}
+  .scene-narr::before{content:"🔊 "}
+
+  .ask{border-radius:14px;padding:16px 20px;margin-top:18px}
+  .m1 .ask{background:#fff5ec;border-left:5px solid #d35400}
+  .m2 .ask{background:#fdeef4;border-left:5px solid #c2185b}
+  .m3 .ask{background:#eaf3fb;border-left:5px solid #1565c0}
+  .ask .at{font-weight:bold;margin-bottom:10px;font-size:.95rem}
+  .ask ul{margin-left:20px;font-size:.85rem}
+  .ask li{margin-bottom:4px}
+
+  .common{background:#fff;border-radius:20px;padding:28px 24px;margin-bottom:24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+  .common h2{font-size:1.2rem;margin-bottom:14px;padding-bottom:8px;border-bottom:3px solid #333}
+
+  .schedule{display:grid;gap:8px;margin-top:10px}
+  .sch-row{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:10px 14px;background:#f7f7f9;border-radius:10px;font-size:.88rem}
+  .sch-row .d{font-weight:bold;color:#333}
+
+  .point-list{background:#eef6ee;border-left:5px solid #2e7d32;border-radius:12px;padding:16px 20px;margin-top:12px;font-size:.9rem}
+  .point-list ol{margin-left:24px}
+  .point-list li{margin-bottom:6px}
+
+  .footer{text-align:center;padding:24px;color:#888;font-size:.78rem}
+
+  @media(max-width:600px){
+    .container{padding:12px}
+    .header h1{font-size:1.15rem}
+    .flow{flex-direction:column}
+    .flow-arrow{transform:rotate(90deg)}
+    .tabs a{min-width:0;font-size:.8rem;padding:10px 6px}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>動画Lite ／ 3本 構成案</h1>
+    <p class="sub">有限会社良邊建設 様（良邊 則光 代表）</p>
+    <p class="meta">ディレクション 2026.05.14(木) 11:00 ／ 株式会社ランバード ／ 担当: 齋藤 立</p>
+  </div>
+
+  <div class="tabs">
+    <a href="#m1" class="t1">① 建設業 求人</a>
+    <a href="#m2" class="t2">② Carat 美容室</a>
+    <a href="#m3" class="t3">③ YYGolfschool</a>
+  </div>
+
+  <!-- ====== ① 建設求人 ====== -->
+  <div class="movie m1" id="m1">
+    <h2>① 有限会社良邊建設 — 求人動画</h2>
+    <p class="lead">「全国を駆けまわる、稼げる現場へ。」<br>全国出張可能な仲間を募集する求人広告</p>
+
+    <div class="meta-grid">
+      <div class="meta-card"><div class="l">業種</div><div class="v">とび・土木<br>舗装・地盤改良</div></div>
+      <div class="meta-card"><div class="l">目的</div><div class="v">求人</div></div>
+      <div class="meta-card"><div class="l">ターゲット</div><div class="v">全国出張可能<br>な人</div></div>
+      <div class="meta-card"><div class="l">訴求軸</div><div class="v">稼げそう<br>楽しそう</div></div>
+      <div class="meta-card"><div class="l">想定尺</div><div class="v">60秒</div></div>
+      <div class="meta-card"><div class="l">CTA</div><div class="v">電話<br>0847-51-5811</div></div>
+    </div>
+
+    <h3 class="block">ストーリーの流れ</h3>
+    <div class="flow">
+      <div class="flow-step">現場のスケール感<br>でフック</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">仕事の幅<br>4分野紹介</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">働く仲間<br>笑顔・チーム</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">待遇・給与<br>具体数字</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">代表メッセージ<br>＋CTA</div>
+    </div>
+
+    <div class="ref">
+      <div class="rt">参考動画（クライアント提示）</div>
+      <a href="https://www.youtube.com/watch?v=EtiNaBw0Qdc" target="_blank">https://www.youtube.com/watch?v=EtiNaBw0Qdc</a><br>
+      「【求人】愛媛県！株式会社 清皓!!」 / 建設業求人 65秒 / 5,298回再生
+    </div>
+
+    <h3 class="block">シーン構成（全6シーン / 約60秒）</h3>
+    <div class="scene-list">
+      <div class="scene">
+        <div class="scene-num">1<span class="sec">0-3s</span></div>
+        <div class="scene-body">
+          <div class="role">フック</div>
+          <div class="scene-visual">現場のドローン俯瞰／重機が動くカット</div>
+          <div class="scene-telop">全国を駆けまわる、稼げる現場へ。</div>
+          <div class="scene-narr">力強いBGMで掴む</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">2<span class="sec">3-13s</span></div>
+        <div class="scene-body">
+          <div class="role">仕事紹介</div>
+          <div class="scene-visual">地盤改良・舗装・土木・河川 の各工事カット</div>
+          <div class="scene-telop">とび・土木・舗装・地盤改良</div>
+          <div class="scene-narr">広島・福山で50年。多彩な技術で地域を支えています</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">3<span class="sec">13-28s</span></div>
+        <div class="scene-body">
+          <div class="role">働く仲間</div>
+          <div class="scene-visual">社員の働く姿・笑顔・チームワークのカット</div>
+          <div class="scene-telop">未経験OK ／ 先輩がしっかり教えます</div>
+          <div class="scene-narr">未経験から、一人前の職人へ</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">4<span class="sec">28-43s</span></div>
+        <div class="scene-body">
+          <div class="role">待遇・強み</div>
+          <div class="scene-visual">給与・賞与のテキストアニメ／作業着・現場宿舎</div>
+          <div class="scene-telop">日給○○円〜 ／ 出張手当あり ／ 賞与年2回</div>
+          <div class="scene-narr">稼ぎながら、確かな技術が身につく</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">5<span class="sec">43-53s</span></div>
+        <div class="scene-body">
+          <div class="role">代表メッセージ</div>
+          <div class="scene-visual">代表 良邊様カット（写真／インタビュー）</div>
+          <div class="scene-telop">一緒に、現場を変えよう。</div>
+          <div class="scene-narr">代表メッセージ</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">6<span class="sec">53-60s</span></div>
+        <div class="scene-body">
+          <div class="role">CTA</div>
+          <div class="scene-visual">ロゴ・連絡先・QRコードを大きく表示</div>
+          <div class="scene-telop">お気軽にご相談ください ／ 0847-51-5811</div>
+          <div class="scene-narr">電話番号読み上げ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="at">5/14 確認したい項目</div>
+      <ul>
+        <li>給与レンジ（日給／月収）・賞与・福利厚生の具体数字</li>
+        <li>出張頻度・出張手当・宿舎の有無</li>
+        <li>欲しい人材像（年齢・経験・性格）</li>
+        <li>提供素材：現場写真・社員写真・既存動画・ロゴ</li>
+        <li>代表ご出演の可否（写真／インタビュー音声）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====== ② Carat ====== -->
+  <div class="movie m2" id="m2">
+    <h2>② Carat（カラット） — 美容室</h2>
+    <p class="lead">「ラグジュアリーなのにリーズナブル」<br>府中の隠れ家サロン／求人・集客の2方向で検討</p>
+
+    <div class="meta-grid">
+      <div class="meta-card"><div class="l">業種</div><div class="v">美容室<br>カラー・脱毛</div></div>
+      <div class="meta-card"><div class="l">目的</div><div class="v">認知拡大<br>＋ 求人</div></div>
+      <div class="meta-card"><div class="l">ターゲット</div><div class="v">幅広い<br>年齢層の男女</div></div>
+      <div class="meta-card"><div class="l">訴求軸</div><div class="v">高品質×低価格<br>セルフ脱毛</div></div>
+      <div class="meta-card"><div class="l">想定尺</div><div class="v">30秒</div></div>
+      <div class="meta-card"><div class="l">CTA</div><div class="v">ホットペッパー<br>／Instagram</div></div>
+    </div>
+
+    <div class="ref">
+      <div class="rt">参考動画</div>
+      クライアントからの参考動画指定なし。<br>
+      <strong>A案（集客）／B案（求人）</strong>の2構成を提示し、5/14で方向性を確定します。
+    </div>
+
+    <h3 class="block">A案：集客寄り構成（全5シーン / 約30秒）</h3>
+    <div class="flow">
+      <div class="flow-step">悩み訴求<br>白髪・くせ毛</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">施術シーン<br>カラー＋脱毛</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">アフター<br>仕上がり</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">料金訴求<br>＋ CTA</div>
+    </div>
+    <div class="scene-list">
+      <div class="scene">
+        <div class="scene-num">A1<span class="sec">0-3s</span></div>
+        <div class="scene-body">
+          <div class="role">悩み訴求</div>
+          <div class="scene-visual">カラー施術ビフォー（暗い髪色／白髪）</div>
+          <div class="scene-telop">白髪が気になる…</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">A2<span class="sec">3-8s</span></div>
+        <div class="scene-body">
+          <div class="role">施術紹介</div>
+          <div class="scene-visual">カラー剤の塗布／光脱毛のシーン</div>
+          <div class="scene-telop">高品質カラー＋セルフ脱毛も</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">A3<span class="sec">8-18s</span></div>
+        <div class="scene-body">
+          <div class="role">アフター</div>
+          <div class="scene-visual">仕上がりアフター（明るく艶やか）</div>
+          <div class="scene-telop">ラグジュアリーなのにリーズナブル</div>
+          <div class="scene-narr">府中・元町のCarat</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">A4<span class="sec">18-25s</span></div>
+        <div class="scene-body">
+          <div class="role">料金</div>
+          <div class="scene-visual">料金表のテキストアニメ／店内雰囲気</div>
+          <div class="scene-telop">白髪染め○○円〜 ／ おしゃれ染め○○円〜</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">A5<span class="sec">25-30s</span></div>
+        <div class="scene-body">
+          <div class="role">CTA</div>
+          <div class="scene-visual">ロゴ・QR・電話番号</div>
+          <div class="scene-telop">ご予約はホットペッパーから</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="block">B案：求人寄り構成（全4シーン / 約30秒）</h3>
+    <div class="flow">
+      <div class="flow-step">スタッフ笑顔<br>でフック</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">仕事紹介<br>接客風景</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">職場の雰囲気<br>＋ 待遇</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">CTA<br>DM / 電話</div>
+    </div>
+    <div class="scene-list">
+      <div class="scene">
+        <div class="scene-num">B1<span class="sec">0-3s</span></div>
+        <div class="scene-body">
+          <div class="role">フック</div>
+          <div class="scene-visual">明るい店内・スタッフの笑顔</div>
+          <div class="scene-telop">府中で美容師、はじめませんか？</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">B2<span class="sec">3-13s</span></div>
+        <div class="scene-body">
+          <div class="role">仕事紹介</div>
+          <div class="scene-visual">施術風景・接客シーン</div>
+          <div class="scene-telop">アシスタント／スタイリスト募集</div>
+          <div class="scene-narr">お客様も、スタッフも、主役のお店</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">B3<span class="sec">13-23s</span></div>
+        <div class="scene-body">
+          <div class="role">職場・待遇</div>
+          <div class="scene-visual">休憩・スタッフ仲良しカット</div>
+          <div class="scene-telop">週休2日 ／ 研修制度あり</div>
+          <div class="scene-narr">アットホームな職場</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">B4<span class="sec">23-30s</span></div>
+        <div class="scene-body">
+          <div class="role">CTA</div>
+          <div class="scene-visual">ロゴ・連絡先</div>
+          <div class="scene-telop">お電話 or Instagram DM</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="at">5/14 確認したい項目</div>
+      <ul>
+        <li><strong>最優先：求人 vs 集客 どちらを取るか</strong>（1本両立は薄まる）</li>
+        <li>料金表（具体金額の表示可否）</li>
+        <li>スタッフ写真・施術写真の提供可否</li>
+        <li>店内動画／既存撮影データの有無</li>
+        <li>求人の場合：欲しい職種と待遇</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====== ③ YYGolf ====== -->
+  <div class="movie m3" id="m3">
+    <h2>③ YYGolfschool — インドアゴルフ</h2>
+    <p class="lead">「素人でも、行きやすい。」<br>福山のインドアゴルフスクール集客</p>
+
+    <div class="meta-grid">
+      <div class="meta-card"><div class="l">業種</div><div class="v">インドア<br>ゴルフスクール</div></div>
+      <div class="meta-card"><div class="l">目的</div><div class="v">認知拡大<br>会員獲得</div></div>
+      <div class="meta-card"><div class="l">ターゲット</div><div class="v">初心者〜中級<br>女性・カップル</div></div>
+      <div class="meta-card"><div class="l">訴求軸</div><div class="v">素人歓迎<br>天候不問</div></div>
+      <div class="meta-card"><div class="l">想定尺</div><div class="v">60秒</div></div>
+      <div class="meta-card"><div class="l">CTA</div><div class="v">LINE予約<br>体験¥2,200</div></div>
+    </div>
+
+    <h3 class="block">ストーリーの流れ</h3>
+    <div class="flow">
+      <div class="flow-step">スイング<br>でフック</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">悩み訴求<br>天気・上達</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">設備紹介<br>シミュ・解析</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">レッスン<br>プロ＋初心者</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">料金・CTA<br>LINE予約</div>
+    </div>
+
+    <div class="ref">
+      <div class="rt">参考動画（クライアント提示）</div>
+      <a href="https://www.youtube.com/watch?v=xkM2WDXL1NU" target="_blank">https://www.youtube.com/watch?v=xkM2WDXL1NU</a><br>
+      「ForNext 04FIX」 / R-AD制作 / 80秒 / 2026-03投稿<br>
+      ※「出演プロが知り合い」とのコメントあり
+    </div>
+
+    <h3 class="block">シーン構成（全6シーン / 約60秒）</h3>
+    <div class="scene-list">
+      <div class="scene">
+        <div class="scene-num">1<span class="sec">0-3s</span></div>
+        <div class="scene-body">
+          <div class="role">フック</div>
+          <div class="scene-visual">シミュレーターのドライバーショット（飛球軌道CG）</div>
+          <div class="scene-telop">ゴルフ、はじめてみませんか？</div>
+          <div class="scene-narr">爽やかBGMで掴む</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">2<span class="sec">3-13s</span></div>
+        <div class="scene-body">
+          <div class="role">悩み訴求</div>
+          <div class="scene-visual">雨の窓／初心者がクラブを握る手</div>
+          <div class="scene-telop">天気で諦める ／ うまくならない…</div>
+          <div class="scene-narr">そんな悩み、室内で解決</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">3<span class="sec">13-28s</span></div>
+        <div class="scene-body">
+          <div class="role">設備紹介</div>
+          <div class="scene-visual">スイング解析画面／パッティング設備</div>
+          <div class="scene-telop">正面・側面の映像解析 ／ 高精度シミュレーター</div>
+          <div class="scene-narr">データで上達がわかる</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">4<span class="sec">28-43s</span></div>
+        <div class="scene-body">
+          <div class="role">レッスン</div>
+          <div class="scene-visual">プロコーチがレッスン／生徒の笑顔</div>
+          <div class="scene-telop">プロが基礎から丁寧に ／ 貸しクラブ完備</div>
+          <div class="scene-narr">初心者・女性・カップル大歓迎</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">5<span class="sec">43-53s</span></div>
+        <div class="scene-body">
+          <div class="role">料金・体験</div>
+          <div class="scene-visual">料金プランのテキストアニメ</div>
+          <div class="scene-telop">月5回 ¥11,000 ／ 体験 ¥2,200 ／ 入会金無料</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">6<span class="sec">53-60s</span></div>
+        <div class="scene-body">
+          <div class="role">CTA</div>
+          <div class="scene-visual">店舗外観・LINE QR</div>
+          <div class="scene-telop">LINEで予約 ／ 070-2305-8222</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="at">5/14 確認したい項目</div>
+      <ul>
+        <li>プロコーチ／既存生徒のご出演可否</li>
+        <li>施設内動画・写真の提供可否（解析画面のスクショ含む）</li>
+        <li>料金表示の最終確定（キャンペーン期間含む）</li>
+        <li>レッスン中の動画撮影が可能か（実写を増やしたい）</li>
+        <li>ターゲットの優先度：初心者 vs 既存ゴルファーの上達層</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====== 共通 ====== -->
+  <div class="common">
+    <h2>共通仕様 ／ 全体論点</h2>
+
+    <h3 class="block" style="border-left:5px solid #333">納品仕様</h3>
+    <div class="meta-grid" style="margin-bottom:10px">
+      <div class="meta-card" style="border-left:4px solid #333"><div class="l">本数</div><div class="v">3本</div></div>
+      <div class="meta-card" style="border-left:4px solid #333"><div class="l">運用</div><div class="v">3本合計<br>3万回想定</div></div>
+      <div class="meta-card" style="border-left:4px solid #333"><div class="l">納品</div><div class="v">DVD＋<br>ギガファイル便</div></div>
+      <div class="meta-card" style="border-left:4px solid #333"><div class="l">撮影</div><div class="v">なし<br>素材提供型</div></div>
+    </div>
+
+    <h3 class="block" style="border-left:5px solid #333">5/14 確定したい論点</h3>
+    <div class="point-list">
+      <ol>
+        <li><strong>各本の尺</strong>：15秒／30秒／60秒 のどれを基準にするか</li>
+        <li><strong>ナレーション方針</strong>：AI音声 ／ プロナレーター ／ テロップのみ</li>
+        <li><strong>BGM トーン</strong>：建設＝力強い ／ 美容＝明るく上品 ／ ゴルフ＝爽やか</li>
+        <li><strong>CTA</strong>：各本で電話／LINE／HPのどれを主にするか</li>
+        <li><strong>Carat の方向性</strong>：求人 vs 集客（最重要）</li>
+        <li><strong>提供素材の棚卸し</strong>：写真／既存動画／ロゴ／料金表／代表写真</li>
+        <li><strong>初稿提示日</strong>と修正ラリー回数の合意</li>
+      </ol>
+    </div>
+
+    <h3 class="block" style="border-left:5px solid #333">想定スケジュール</h3>
+    <div class="schedule">
+      <div class="sch-row"><div class="d">5/14(木)</div><div>ディレクション ／ 本資料で構成すり合わせ／素材依頼確定</div></div>
+      <div class="sch-row"><div class="d">5/15-18</div><div>素材受領 ／ 台本確定</div></div>
+      <div class="sch-row"><div class="d">5/19-23</div><div>3本初稿制作</div></div>
+      <div class="sch-row"><div class="d">5/26週</div><div>初稿提示 ／ 修正ラリー</div></div>
+      <div class="sch-row"><div class="d">5月末〜6月初</div><div>納品（DVD＋ギガファイル便）</div></div>
+    </div>
+
+    <div class="ask" style="background:#f7f7f9;border-left:5px solid #333;margin-top:18px">
+      <div class="at">本資料の位置づけ</div>
+      <ul>
+        <li>本資料は<strong>たたき案</strong>です。5/14当日に構成・尺・訴求を一緒に固めます</li>
+        <li>各シーンの映像／テロップは、素材確認後に再調整します</li>
+        <li>料金・給与等の数字はヒアリング後に正式版へ反映します</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">有限会社良邊建設 様 動画Lite 3本 制作 ／ RUNBIRD ／ 2026.05.14 ディレクション資料</div>
+
+</div>
+</body>
+</html>
