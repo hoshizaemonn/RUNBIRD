@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>こもれび テロップ修正案 v2（癒し系）</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: "Noto Sans JP", "游ゴシック", sans-serif;
+    background:#1a1a1a; color:#eee; padding:30px 20px;
+  }
+  h1 { font-size:1.4rem; color:#d4a656; margin-bottom:6px; text-align:center; }
+  .lead { font-size:0.85rem; color:#888; text-align:center; margin-bottom:24px; }
+  .container { max-width:980px; margin:0 auto; }
+  .compare {
+    display:grid; grid-template-columns:1fr 1fr; gap:14px;
+    margin-bottom:30px;
+  }
+  .panel {
+    background:#222; border-radius:10px; padding:14px;
+    text-align:center;
+  }
+  .panel.before { border-left:4px solid #555; }
+  .panel.after { border-left:4px solid #d4a656; }
+  .panel-title {
+    font-size:0.95rem; color:#aaa; margin-bottom:10px;
+    text-align:center;
+  }
+  .panel.after .panel-title { color:#d4a656; }
+
+  .preview-frame {
+    background:linear-gradient(135deg,#3a2820,#2a1a10);
+    border-radius:8px; aspect-ratio:16/9;
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .preview-frame.bright {
+    background:linear-gradient(135deg,#e8d5a8,#c8b888);
+  }
+  .preview-frame.dark {
+    background:linear-gradient(135deg,#252028,#1a1518);
+  }
+  .preview-frame.morning {
+    background:linear-gradient(135deg,#f5e8d0,#d8c0a0);
+  }
+  .preview-frame.spa {
+    background:linear-gradient(135deg,#3a2418,#2a1a10);
+  }
+
+  /* === BEFORE (current/strong) === */
+  .telop-old {
+    position:absolute; bottom:14%; left:50%;
+    transform:translateX(-50%);
+    text-align:center; color:white;
+    font-weight:600;
+    text-shadow:0 2px 6px rgba(0,0,0,0.95), 0 0 10px rgba(0,0,0,0.8);
+    letter-spacing:0.04em;
+    font-size:1.15rem;
+    line-height:1.4;
+    padding:0 24px;
+  }
+  .telop-old .emp { color:#d4a656; font-size:1.5rem; font-weight:bold; }
+
+  /* === AFTER (soft/new) === */
+  .telop-new {
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%, -50%);
+    text-align:center; color:rgba(255,255,255,0.92);
+    font-weight:300;
+    text-shadow:0 0 14px rgba(0,0,0,0.5);
+    letter-spacing:0.18em;
+    font-size:0.95rem;
+    line-height:2.1;
+    padding:0 30px;
+  }
+  .telop-new.bright { color:rgba(255,250,240,0.95); text-shadow:0 0 14px rgba(255,250,240,0.5), 0 1px 0 rgba(0,0,0,0.15); }
+
+  .section {
+    background:#222; border-radius:10px; padding:24px;
+    margin-bottom:18px;
+  }
+  .section h2 { color:#d4a656; font-size:1.1rem; margin-bottom:14px; }
+
+  table { width:100%; border-collapse:collapse; font-size:0.88rem; }
+  table th, table td { padding:10px 12px; text-align:left; border-bottom:1px solid #333; }
+  table th { color:#888; font-weight:normal; }
+
+  .badge-side {
+    display:inline-block; padding:3px 10px;
+    background:#444; border-radius:14px;
+    font-size:0.72rem; color:#aaa;
+    margin-right:6px;
+  }
+  .badge-side.new { background:#7a5028; color:#fff; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>こもれび テロップ修正案 v2</h1>
+<p class="lead">中井様の参考動画（癒し系・nems路線）に揃えた柔らかいテロップ設計</p>
+
+<!-- ============ 比較表 ============ -->
+<div class="section">
+  <h2>📊 変更点（before / after 比較）</h2>
+  <table>
+    <tr><th>要素</th><th>Before（現状）</th><th>After（修正）</th></tr>
+    <tr><td>配置</td><td>画面下1/4・センター</td><td><strong>画面の真ん中・センター</strong></td></tr>
+    <tr><td>文字色</td><td>白＋ゴールド強調</td><td><strong>白のみ（やや透明感）</strong></td></tr>
+    <tr><td>フォント太さ</td><td>Bold</td><td><strong>Light / Medium</strong></td></tr>
+    <tr><td>文字サイズ</td><td>52px〜80px（大）</td><td><strong>36px〜44px（小さめ）</strong></td></tr>
+    <tr><td>文字間隔</td><td>0.05em</td><td><strong>0.18em（広めで上品）</strong></td></tr>
+    <tr><td>影</td><td>濃い黒影</td><td><strong>柔らかいグロー影</strong></td></tr>
+    <tr><td>登場/退場</td><td>フェード 0.2s</td><td><strong>ゆっくりフェード 0.4-0.6s</strong></td></tr>
+    <tr><td>強調キーワード</td><td>ゴールド色＋大サイズ</td><td><strong>強調なし・すべて同じ調子</strong></td></tr>
+  </table>
+</div>
+
+<!-- ============ シーン6-7 比較 ============ -->
+<div class="section">
+  <h2>🎬 比較プレビュー① シーン6-7（施術中）</h2>
+  <div class="compare">
+    <div class="panel before">
+      <div class="panel-title"><span class="badge-side">Before</span> 強調・大きめ</div>
+      <div class="preview-frame spa">
+        <div class="telop-old">頭が軽くなると、<br><span class="emp">毎日が変わる</span></div>
+      </div>
+    </div>
+    <div class="panel after">
+      <div class="panel-title"><span class="badge-side new">After</span> 中央配置・柔らかく</div>
+      <div class="preview-frame spa">
+        <div class="telop-new">頭が、軽くなる<br>毎日が、変わる</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ シーン1-2 比較 ============ -->
+<div class="section">
+  <h2>🎬 比較プレビュー② シーン1-2（疲労男性）</h2>
+  <div class="compare">
+    <div class="panel before">
+      <div class="panel-title"><span class="badge-side">Before</span></div>
+      <div class="preview-frame dark">
+        <div class="telop-old">なんだか最近、<br>仕事の疲れが、抜けない。</div>
+      </div>
+    </div>
+    <div class="panel after">
+      <div class="panel-title"><span class="badge-side new">After</span></div>
+      <div class="preview-frame dark">
+        <div class="telop-new">なんだか最近<br>仕事の疲れが、抜けない</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ シーン10-11 比較 ============ -->
+<div class="section">
+  <h2>🎬 比較プレビュー③ シーン10-11（女性朝）</h2>
+  <div class="compare">
+    <div class="panel before">
+      <div class="panel-title"><span class="badge-side">Before</span></div>
+      <div class="preview-frame morning">
+        <div class="telop-old" style="color:#3a2820;text-shadow:0 1px 0 rgba(255,255,255,0.6);">朝の目覚めが変わり、<br><span class="emp" style="color:#8a6f47;">自然と笑顔で1日を始められる</span></div>
+      </div>
+    </div>
+    <div class="panel after">
+      <div class="panel-title"><span class="badge-side new">After</span></div>
+      <div class="preview-frame morning">
+        <div class="telop-new bright" style="color:rgba(58,40,32,0.85);text-shadow:0 0 14px rgba(255,250,240,0.9);">朝の目覚めが変わり<br>自然と、笑顔で1日を始められる</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ シーン12 CTA 比較 ============ -->
+<div class="section">
+  <h2>🎬 比較プレビュー④ シーン12（CTA）</h2>
+  <div class="compare">
+    <div class="panel before">
+      <div class="panel-title"><span class="badge-side">Before</span></div>
+      <div class="preview-frame bright">
+        <div class="telop-old" style="color:#3a2820;text-shadow:0 1px 0 rgba(255,255,255,0.7);"><span style="font-size:1.6em;color:#8a6f47;font-weight:bold;">こもれび</span><br>あなたの"眠り"を整える場所</div>
+      </div>
+    </div>
+    <div class="panel after">
+      <div class="panel-title"><span class="badge-side new">After</span></div>
+      <div class="preview-frame bright">
+        <div class="telop-new bright" style="color:rgba(58,40,32,0.92);text-shadow:0 0 14px rgba(255,250,240,0.95);"><span style="font-size:1.5em;letter-spacing:0.3em;">こ も れ び</span><br><span style="font-size:0.85em;">あなたの眠りを整える場所</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ デザイン仕様 ============ -->
+<div class="section">
+  <h2>🎨 デザイン仕様（修正版）</h2>
+  <table>
+    <tr><th>項目</th><th>設定値</th></tr>
+    <tr><td>フォント</td><td>Noto Sans JP <strong>Light</strong> または 游ゴシック <strong>Medium</strong></td></tr>
+    <tr><td>本文サイズ（1080p）</td><td><strong>36-44px</strong></td></tr>
+    <tr><td>本文色</td><td>rgba(255, 255, 255, 0.92)</td></tr>
+    <tr><td>影</td><td>0 0 14px rgba(0,0,0,0.5) — グロー風の柔らかい影</td></tr>
+    <tr><td>配置</td><td>画面中央（縦・横とも中央）</td></tr>
+    <tr><td>文字間隔（letter-spacing）</td><td>0.18em（広め）</td></tr>
+    <tr><td>行間（line-height）</td><td>2.1（余裕を持って）</td></tr>
+    <tr><td>登場アニメーション</td><td>ゆっくりフェードイン 0.5s（イーズアウト）</td></tr>
+    <tr><td>退場アニメーション</td><td>ゆっくりフェードアウト 0.6s</td></tr>
+    <tr><td>強調</td><td>使わない（全行同じトーン）</td></tr>
+  </table>
+</div>
+
+<!-- ============ BGM候補 ============ -->
+<div class="section">
+  <h2>🎵 BGM 修正方針</h2>
+  <table>
+    <tr><th>要素</th><th>修正版</th></tr>
+    <tr><td>ジャンル</td><td>アンビエント / メディテーション / スパヒーリング</td></tr>
+    <tr><td>BPM</td><td>50〜70（前より遅め）</td></tr>
+    <tr><td>主要楽器</td><td>ソフトピアノ＋アンビエントパッド（ストリングス控えめ）</td></tr>
+    <tr><td>音圧</td><td>-20dB〜-18dB（ナレーション優先）</td></tr>
+    <tr><td>曲調</td><td>上昇感なし・終始ふわっと包む</td></tr>
+    <tr><td>検索ワード</td><td>spa healing ambient / sleep meditation / soft pad piano</td></tr>
+    <tr><td>参考音源イメージ</td><td>nems・悟空のきもち系のスパ／睡眠系</td></tr>
+  </table>
+</div>
+
+</div>
+</body>
+</html>
