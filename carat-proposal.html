@@ -15,14 +15,18 @@
   .header .sub{font-size:.95rem;color:#f0c8d8}
   .header .meta{margin-top:14px;font-size:.78rem;color:#c08a9a}
 
+  .tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
+  .tabs a{flex:1;min-width:140px;padding:14px 12px;border-radius:14px;background:#fff;text-decoration:none;text-align:center;font-weight:bold;font-size:.9rem;box-shadow:0 2px 8px rgba(0,0,0,.05);transition:transform .15s}
+  .tabs a:hover{transform:translateY(-2px)}
+  .tabs a.t1{color:#c2185b;border-top:4px solid #c2185b}
+  .tabs a.t2{color:#5b8a72;border-top:4px solid #5b8a72}
+  .tabs a.t3{color:#a06e3a;border-top:4px solid #a06e3a}
+
   .intro{background:#fff;border-radius:18px;padding:24px;margin-bottom:22px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #c2185b}
   .intro h2{font-size:1.15rem;color:#c2185b;margin-bottom:12px}
   .intro p{font-size:.95rem;margin-bottom:10px}
   .intro .request-box{background:#fdeef4;padding:14px 18px;border-radius:10px;font-size:.9rem;border-left:4px solid #c2185b;margin-top:10px}
   .intro .request-box strong{color:#8a134a}
-
-  .alert-box{background:#fff8e6;border:2px solid #f0c878;border-radius:10px;padding:14px 18px;font-size:.9rem;margin-top:14px}
-  .alert-box strong{color:#a07000}
 
   .step-flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:14px 0 6px}
   .step-flow .s{background:#fdeef4;border-radius:10px;padding:8px 14px;font-size:.78rem;font-weight:bold;color:#8a134a}
@@ -36,12 +40,12 @@
   .pattern-title .pt-sub{font-size:.85rem;color:#666}
   .pattern-rec{padding:5px 10px;border-radius:14px;font-size:.7rem;font-weight:bold;white-space:nowrap}
   .rec-strong{background:#c2185b;color:#fff}
-  .rec-mid{background:#f0c878;color:#7a5500}
-  .rec-low{background:#e0e0e0;color:#666}
+  .rec-mid{background:#5b8a72;color:#fff}
+  .rec-low{background:#a06e3a;color:#fff}
 
   .pat-A{border-left:6px solid #c2185b}
-  .pat-B{border-left:6px solid #d4a574}
-  .pat-C{border-left:6px solid #5b8a72}
+  .pat-B{border-left:6px solid #5b8a72}
+  .pat-C{border-left:6px solid #a06e3a}
 
   .ref-videos{display:grid;gap:10px;margin-bottom:18px}
   .ref-card{display:grid;grid-template-columns:1fr;gap:6px;padding:12px 14px;background:#fafafa;border-radius:10px;border-left:4px solid #888}
@@ -62,34 +66,38 @@
   @media(max-width:600px){.mock-grid{grid-template-columns:1fr}}
 
   h3.block{font-size:1rem;margin:18px 0 10px;padding-left:10px;border-left:5px solid #c2185b}
-  .pat-B h3.block{border-left-color:#d4a574}
-  .pat-C h3.block{border-left-color:#5b8a72}
+  .pat-B h3.block{border-left-color:#5b8a72}
+  .pat-C h3.block{border-left-color:#a06e3a}
 
   .why-box{background:#fff8e6;border-radius:10px;padding:14px 18px;font-size:.88rem;margin-bottom:16px}
   .why-box .wt{font-weight:bold;color:#a07000;margin-bottom:6px}
+
+  .sub-variant{background:#faf3ea;border-radius:12px;padding:14px 18px;margin:14px 0;border-left:4px solid #d4a574}
+  .sub-variant .svt{font-weight:bold;color:#7a4e1a;margin-bottom:6px;font-size:.95rem}
+  .sub-variant p{font-size:.88rem;margin-bottom:0}
 
   .scene-list{display:grid;gap:8px}
   .scene{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:12px;border-radius:12px;align-items:start}
   .pat-A .scene:nth-child(odd){background:#fdeef4}
   .pat-A .scene:nth-child(even){background:#fef6f9}
-  .pat-B .scene:nth-child(odd){background:#faf3ea}
-  .pat-B .scene:nth-child(even){background:#fdf9f3}
-  .pat-C .scene:nth-child(odd){background:#eef5ef}
-  .pat-C .scene:nth-child(even){background:#f5f9f5}
+  .pat-B .scene:nth-child(odd){background:#eef5ef}
+  .pat-B .scene:nth-child(even){background:#f5f9f5}
+  .pat-C .scene:nth-child(odd){background:#faf3ea}
+  .pat-C .scene:nth-child(even){background:#fdf9f3}
 
   .scene-num{width:44px;height:44px;background:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:bold;font-size:.95rem;box-shadow:0 1px 4px rgba(0,0,0,.08)}
   .scene-num .sec{font-size:.55rem;color:#888;margin-top:1px;font-weight:normal}
   .pat-A .scene-num{color:#c2185b}
-  .pat-B .scene-num{color:#a06e3a}
-  .pat-C .scene-num{color:#3a6a5a}
+  .pat-B .scene-num{color:#3a6a5a}
+  .pat-C .scene-num{color:#7a4e1a}
 
   .scene-body .role{font-weight:bold;font-size:.93rem;margin-bottom:6px}
   .scene-visual{background:#fff;border-radius:8px;padding:7px 10px;font-size:.82rem;margin-bottom:5px;color:#444}
   .scene-visual::before{content:"🎬 ";opacity:.8}
   .scene-telop{font-size:.85rem;font-weight:bold;background:#fff;padding:6px 10px;border-radius:6px;display:inline-block;margin-bottom:4px}
   .pat-A .scene-telop{border-left:3px solid #c2185b;color:#8a134a}
-  .pat-B .scene-telop{border-left:3px solid #d4a574;color:#7a4e1a}
-  .pat-C .scene-telop{border-left:3px solid #5b8a72;color:#1a5a3a}
+  .pat-B .scene-telop{border-left:3px solid #5b8a72;color:#1a5a3a}
+  .pat-C .scene-telop{border-left:3px solid #a06e3a;color:#7a4e1a}
   .scene-telop::before{content:"📝 "}
   .scene-narr{font-size:.78rem;color:#666;padding:3px 10px}
   .scene-narr::before{content:"🔊 "}
@@ -103,12 +111,11 @@
   .cons .h{color:#7a1a1a}
   .pros ul,.cons ul{margin-left:18px}
 
-  .recommend{background:#fff;border-radius:20px;padding:26px;margin-bottom:22px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #c2185b}
-  .recommend h2{font-size:1.2rem;color:#c2185b;margin-bottom:14px}
-  .reco-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
-  .reco-card{padding:14px;border-radius:12px;background:#fafafa;border-top:3px solid #c2185b}
-  .reco-card .rl{font-size:.72rem;color:#888;letter-spacing:.05em;margin-bottom:4px}
-  .reco-card .rv{font-size:.95rem;font-weight:bold}
+  .hybrid-box{background:#fff;border-radius:12px;padding:18px;margin:14px 0;border:2px dashed #a06e3a}
+  .hybrid-box h4{color:#7a4e1a;font-size:1rem;margin-bottom:10px}
+  .hybrid-options{display:grid;gap:10px;margin-top:10px}
+  .hybrid-opt{padding:12px 16px;background:#faf3ea;border-radius:10px;font-size:.88rem}
+  .hybrid-opt strong{display:block;color:#7a4e1a;margin-bottom:4px}
 
   .ask{background:#fdeef4;border-left:5px solid #c2185b;border-radius:14px;padding:18px 22px;margin-top:20px}
   .ask .at{font-weight:bold;margin-bottom:10px;font-size:.98rem;color:#8a134a}
@@ -123,6 +130,7 @@
     .pros-cons{grid-template-columns:1fr}
     .step-flow{flex-direction:column}
     .step-flow .a{transform:rotate(90deg)}
+    .tabs a{min-width:0;font-size:.8rem;padding:10px 6px}
   }
 </style>
 </head>
@@ -136,35 +144,35 @@
     <p class="meta">2026.05.14(木) 11:00 ディレクション ／ 担当: 齋藤 立</p>
   </div>
 
+  <div class="tabs">
+    <a href="#patA" class="t1">A. 集客</a>
+    <a href="#patB" class="t2">B. 採用</a>
+    <a href="#patC" class="t3">C. ハイブリッド</a>
+  </div>
+
   <div class="intro">
     <h2>本資料の位置づけ</h2>
-    <p>美容室Caratの動画について、株式会社ランバードから <strong>3つの方向性</strong> をご提案します。<br>※ Caratは特に「<strong>求人 ／ 集客 どちらをメインにするか</strong>」が最重要論点です。</p>
+    <p>美容室Caratの動画について、ランバードから <strong>目的別の3パターン</strong> をご提案します。<br>「認知拡大・求人」というご要望に対して、まず <strong>1本でどこを狙うか</strong> を決めるための資料です。</p>
 
     <div class="request-box">
       <strong>ヒアリングでいただいたご要望</strong><br>
       ・目的：<strong>認知拡大・求人</strong>（両立か片方かは未確定）<br>
       ・ターゲット：幅広い年齢層の男女<br>
-      ・訴求軸：未確定<br>
       ・参考動画：クライアント提示なし
     </div>
 
-    <div class="alert-box">
-      ⚠️ <strong>1本の動画では「求人 × 集客」の両立は難しい</strong>です。ターゲットも訴求も分散してしまうため、本提案では3パターンに方向性を分け、当日どれで進めるか決めていただく形にしています。
-    </div>
-
     <div class="request-box" style="background:#eef6ee;border-left-color:#2e7d32;margin-top:10px">
-      <strong style="color:#1a5a1a">公開情報から確認できたCaratの特徴（HP・Instagram より）</strong><br>
-      ・コンセプト：<strong>「ラグジュアリーなのにリーズナブル」</strong><br>
-      ・差別化：セルフブロー／<strong>セルフ脱毛機</strong>導入で低価格化を実現<br>
-      ・予約：ホットペッパービューティー ／ Instagram <a href="https://www.instagram.com/fuchu_carat/" target="_blank" style="color:#1565c0">@fuchu_carat</a><br>
-      ・営業：9:00〜19:30 ／ 月曜定休 ／ 0847-54-2212<br>
-      ・住所：広島県府中市元町475-1
+      <strong style="color:#1a5a1a">公開情報からわかったCaratの特徴と求人ターゲット</strong><br>
+      <strong>店舗コンセプト</strong>：「ラグジュアリーなのにリーズナブル」／セルフブロー＋セルフ脱毛で低価格化<br>
+      <strong>採用ターゲット</strong>：<span style="color:#c2185b;font-weight:bold">ブランクのある元美容師・ママ美容師の復職</span>がメイン<br>
+      <strong>採用条件</strong>：パート 時給1,000〜1,200円 ／ 9:00〜19:30の間で4時間以上 ／ 週3〜5日 ／ ノルマなし・残業少なめ<br>
+      <strong>応募窓口</strong>：0847-54-2212 ／ <a href="https://carat-haircolor.net/recruit/" target="_blank" style="color:#1565c0">採用ページ</a> ／ <a href="https://www.instagram.com/fuchu_carat/" target="_blank" style="color:#1565c0">Instagram @fuchu_carat</a>
     </div>
 
     <div class="step-flow">
-      <div class="s">3パターン提示</div>
+      <div class="s">A 集客 ／<br>B 採用 ／<br>C ハイブリッド</div>
       <span class="a">▶</span>
-      <div class="s">方向性を確定<br>（求人 or 集客）</div>
+      <div class="s">方向性を確定</div>
       <span class="a">▶</span>
       <div class="s">素材依頼</div>
       <span class="a">▶</span>
@@ -174,134 +182,104 @@
     </div>
   </div>
 
-  <!-- ====== パターンA：体験フロー系（集客） ====== -->
+  <!-- ====== A. 集客 ====== -->
   <div class="pattern pat-A" id="patA">
     <div class="pattern-head">
       <div class="pattern-icon">💇</div>
       <div class="pattern-title">
-        <h2>パターンA：体験フロー系 ／ 集客</h2>
-        <div class="pt-sub">受付からお帰りまでをコンパクトに見せる ／ カラーイン所沢路線</div>
+        <h2>A. 集客に振る</h2>
+        <div class="pt-sub">新規来店を増やす ／ ホットペッパー経由を強化</div>
       </div>
-      <div class="pattern-rec rec-strong">★ おすすめ（集客なら）</div>
+      <div class="pattern-rec rec-strong">集客重視</div>
     </div>
 
-    <h3 class="block">参考動画</h3>
+    <h3 class="block">参考動画（2つの方向性）</h3>
     <div class="ref-videos">
       <div class="ref-card hot">
-        <div class="rc-title">🎀 カラーイン所沢店 ご紹介動画 受付からお帰りまで</div>
+        <div class="rc-title">🎀 ① 体験フロー型：カラーイン所沢店 ご紹介動画</div>
         <div class="rc-meta">92秒 ／ <span class="views">218,740回再生</span> ／ ヘアカラー専門店の集客動画でバズ</div>
-        <div class="rc-comment">受付・案内・カラー塗布・仕上げ・お見送りまでをテンポ良く見せる。<strong>来店イメージが完全に伝わる</strong>のが強み。Caratの「セルフ脱毛」「セルフブロー」も同じ手法で見せられる</div>
+        <div class="rc-comment">受付・カラー塗布・仕上げまでをテンポ良く見せる。<strong>Caratのセルフ脱毛・セルフブロー</strong>もこの手法で映像化できる</div>
         <a href="https://www.youtube.com/watch?v=lJzJdCh4jos" target="_blank">https://www.youtube.com/watch?v=lJzJdCh4jos</a>
+      </div>
+      <div class="ref-card hot">
+        <div class="rc-title">🌟 ② ビフォーアフター型：白髪ぼかし専門 カイ</div>
+        <div class="rc-meta">1622秒 ／ <span class="views">468,384回再生</span></div>
+        <div class="rc-comment">白髪→白髪ぼかしのドラマティック変化で、<strong>40〜60代女性</strong>に圧倒的に刺さる</div>
+        <a href="https://www.youtube.com/watch?v=3O53GdRbL1A" target="_blank">https://www.youtube.com/watch?v=3O53GdRbL1A</a>
       </div>
     </div>
 
     <div class="mock-title">📸 完成イメージ（AI生成モックアップ）</div>
     <div class="mock-grid">
       <div class="mock-card">
-        <span class="num">A-1</span>
+        <span class="num">体験①</span>
         <img src="carat-images/CaratA_01_受付からカラー.png" alt="受付シーン">
-        <div class="cap">受付の温かい接客 ／ 来店イメージ</div>
+        <div class="cap">受付の温かい接客</div>
       </div>
       <div class="mock-card">
-        <span class="num">A-2</span>
+        <span class="num">体験②</span>
         <img src="carat-images/CaratA_02_セルフ脱毛シーン.png" alt="セルフ脱毛">
-        <div class="cap">セルフ脱毛 ／ Caratの差別化要素</div>
+        <div class="cap">セルフ脱毛 ／ 差別化要素</div>
+      </div>
+      <div class="mock-card">
+        <span class="num">B/A①</span>
+        <img src="carat-images/CaratB_01_ビフォー暗い髪.png" alt="ビフォー">
+        <div class="cap">ビフォー ／ 白髪・くすみ</div>
+      </div>
+      <div class="mock-card">
+        <span class="num">B/A②</span>
+        <img src="carat-images/CaratB_02_アフター艶やか.png" alt="アフター">
+        <div class="cap">アフター ／ 艶やか</div>
       </div>
     </div>
 
     <div class="why-box">
-      <div class="wt">なぜCaratにハマるか</div>
-      Caratの最大の差別化「<strong>セルフブロー＋セルフ脱毛で低価格化</strong>」は、<strong>言葉で説明するより見せた方が早い</strong>。来店した人がどう過ごすかを30秒で見せれば、「私もこれなら通えそう」と思ってもらえます。
+      <div class="wt">集客で進める場合のおすすめ構成</div>
+      <strong>体験フロー型をベース ＋ 仕上がりカット（ビフォーアフター）を最後に挟む</strong>のがCaratにベストマッチ。「セルフ脱毛で低価格」という差別化を見せながら、「カラーの仕上がりも良い」と訴求できます。
     </div>
 
-    <h3 class="block">構成案（30秒 ／ 体験フロー型）</h3>
+    <h3 class="block">構成案（30秒 ／ 集客）</h3>
     <div class="scene-list">
-      <div class="scene">
-        <div class="scene-num">1<span class="sec">0-3s</span></div>
-        <div class="scene-body">
-          <div class="role">フック ／ コンセプト</div>
-          <div class="scene-visual">店内全景／ロゴ／カラー剤の鮮やかなカット</div>
-          <div class="scene-telop">ラグジュアリーなのに、リーズナブル。</div>
-        </div>
-      </div>
-      <div class="scene">
-        <div class="scene-num">2<span class="sec">3-8s</span></div>
-        <div class="scene-body">
-          <div class="role">受付・カウンセリング</div>
-          <div class="scene-visual">受付シーン／カラーチャートを見る</div>
-          <div class="scene-telop">予約不要・カウンセリング無料</div>
-        </div>
-      </div>
-      <div class="scene">
-        <div class="scene-num">3<span class="sec">8-15s</span></div>
-        <div class="scene-body">
-          <div class="role">施術 ／ 差別化</div>
-          <div class="scene-visual">カラー塗布→セルフ脱毛→セルフブローのテンポ良いカット</div>
-          <div class="scene-telop">カラー × セルフ脱毛もできる</div>
-        </div>
-      </div>
-      <div class="scene">
-        <div class="scene-num">4<span class="sec">15-22s</span></div>
-        <div class="scene-body">
-          <div class="role">仕上がり ／ お見送り</div>
-          <div class="scene-visual">仕上がり鏡前カット／笑顔のお見送り</div>
-          <div class="scene-telop">高品質カラー、お手頃価格で</div>
-        </div>
-      </div>
-      <div class="scene">
-        <div class="scene-num">5<span class="sec">22-30s</span></div>
-        <div class="scene-body">
-          <div class="role">CTA</div>
-          <div class="scene-visual">ロゴ・ホットペッパーQR・住所</div>
-          <div class="scene-telop">ご予約はホットペッパーから ／ 0847-54-2212</div>
-        </div>
-      </div>
+      <div class="scene"><div class="scene-num">1<span class="sec">0-3s</span></div><div class="scene-body"><div class="role">フック</div><div class="scene-visual">店内全景／ロゴ／カラー剤の鮮やかなカット</div><div class="scene-telop">ラグジュアリーなのに、リーズナブル。</div></div></div>
+      <div class="scene"><div class="scene-num">2<span class="sec">3-10s</span></div><div class="scene-body"><div class="role">体験フロー</div><div class="scene-visual">受付→カウンセリング→カラー塗布のテンポ良い繋ぎ</div><div class="scene-telop">予約不要・カウンセリング無料</div></div></div>
+      <div class="scene"><div class="scene-num">3<span class="sec">10-17s</span></div><div class="scene-body"><div class="role">差別化</div><div class="scene-visual">セルフ脱毛・セルフブローのカット</div><div class="scene-telop">カラー × セルフ脱毛もできる</div></div></div>
+      <div class="scene"><div class="scene-num">4<span class="sec">17-25s</span></div><div class="scene-body"><div class="role">仕上がり ／ ドラマ</div><div class="scene-visual">ビフォー → アフター の切り替え</div><div class="scene-telop">こんなに、変われる。</div></div></div>
+      <div class="scene"><div class="scene-num">5<span class="sec">25-30s</span></div><div class="scene-body"><div class="role">CTA</div><div class="scene-visual">ロゴ・ホットペッパーQR</div><div class="scene-telop">ご予約はホットペッパーから</div></div></div>
     </div>
 
     <div class="pros-cons">
-      <div class="pros">
-        <div class="h">✓ メリット</div>
-        <ul>
-          <li>来店イメージが完全に伝わる</li>
-          <li>セルフ脱毛など差別化を映像化できる</li>
-          <li>カラーイン所沢の21万再生で実証済</li>
-          <li>幅広い年齢層に刺さる</li>
-        </ul>
-      </div>
-      <div class="cons">
-        <div class="h">△ 注意点</div>
-        <ul>
-          <li>店内全シーンの撮影／既存写真が必要</li>
-          <li>スタッフ／お客様の出演調整</li>
-          <li>30秒に収めるテンポ感が肝</li>
-        </ul>
-      </div>
+      <div class="pros"><div class="h">✓ メリット</div><ul>
+        <li>来店イメージが完全に伝わる</li>
+        <li>セルフ脱毛など差別化を映像化</li>
+        <li>同業21.8万再生の実証</li>
+        <li>幅広い年齢層に刺さる</li>
+      </ul></div>
+      <div class="cons"><div class="h">△ 注意点</div><ul>
+        <li>店内全シーンの撮影／既存写真が必要</li>
+        <li>お客様の顔出し可否</li>
+        <li>30秒に収めるテンポ感が肝</li>
+      </ul></div>
     </div>
   </div>
 
-  <!-- ====== パターンB：ビフォーアフター系（集客） ====== -->
+  <!-- ====== B. 採用 ====== -->
   <div class="pattern pat-B" id="patB">
     <div class="pattern-head">
-      <div class="pattern-icon">✨</div>
+      <div class="pattern-icon">👩‍👧</div>
       <div class="pattern-title">
-        <h2>パターンB：ビフォーアフター系 ／ 集客</h2>
-        <div class="pt-sub">仕上がりの差で圧倒する ／ 白髪・くせ毛訴求</div>
+        <h2>B. 採用に振る</h2>
+        <div class="pt-sub">ブランクOK ／ ママ美容師復職を全面訴求</div>
       </div>
-      <div class="pattern-rec rec-mid">高反応型</div>
+      <div class="pattern-rec rec-mid">採用特化</div>
     </div>
 
     <h3 class="block">参考動画</h3>
     <div class="ref-videos">
       <div class="ref-card hot">
-        <div class="rc-title">🌟 白髪ぼかし専門 カイ（シングレイハイライトチーム）</div>
-        <div class="rc-meta">1622秒 ／ <span class="views">468,384回再生</span></div>
-        <div class="rc-comment">「真っ黒の白髪染め」→「白髪ぼかし」のドラマティックなビフォーアフター。<strong>40〜60代女性に圧倒的に刺さる</strong>テンプレ</div>
-        <a href="https://www.youtube.com/watch?v=3O53GdRbL1A" target="_blank">https://www.youtube.com/watch?v=3O53GdRbL1A</a>
-      </div>
-      <div class="ref-card">
-        <div class="rc-title">💇‍♀️ マツダマサナリ 脱白髪染めハイライト</div>
-        <div class="rc-meta">577〜1546秒 ／ <span class="views">12,954〜86,618回再生</span></div>
-        <div class="rc-comment">「予約3カ月待ち」の美容師。脱白髪染めのサロンワークを公開してファン化</div>
+        <div class="rc-title">🏪 八王子美容室Jovial 求人動画</div>
+        <div class="rc-meta">166秒 ／ 3,804回再生 ／ 中小美容室のお手本</div>
+        <div class="rc-comment">パート・アルバイト・美容師募集。スタッフの仲の良さと働きやすさを中心に</div>
+        <a href="https://www.youtube.com/watch?v=l38MYocfHMA" target="_blank">https://www.youtube.com/watch?v=l38MYocfHMA</a>
       </div>
     </div>
 
@@ -309,224 +287,143 @@
     <div class="mock-grid">
       <div class="mock-card">
         <span class="num">B-1</span>
-        <img src="carat-images/CaratB_01_ビフォー暗い髪.png" alt="ビフォー">
-        <div class="cap">ビフォー ／ 白髪・くすみ</div>
+        <img src="carat-images/CaratB_03_ママ美容師復職.png" alt="ママ美容師復職">
+        <div class="cap">ママ美容師復職 ／ 自信を取り戻す</div>
       </div>
       <div class="mock-card">
         <span class="num">B-2</span>
-        <img src="carat-images/CaratB_02_アフター艶やか.png" alt="アフター">
-        <div class="cap">アフター ／ 艶やか・若返り</div>
+        <img src="carat-images/CaratB_04_ブランクOKメッセージ.png" alt="ブランクOK">
+        <div class="cap">和やかな職場 ／ ブランクOK</div>
       </div>
-    </div>
-
-    <div class="why-box">
-      <div class="wt">なぜCaratに合うか</div>
-      Caratの主軸メニューは「白髪染め・おしゃれ染め・インナーカラー」。<strong>カラーの仕上がりこそ最大の差別化</strong>。「ラグジュアリーなのにリーズナブル」というコンセプトを、ビフォーアフターで一発で証明できます。
-    </div>
-
-    <h3 class="block">構成案（30秒 ／ ビフォーアフター型）</h3>
-    <div class="scene-list">
-      <div class="scene">
-        <div class="scene-num">1<span class="sec">0-3s</span></div>
-        <div class="scene-body">
-          <div class="role">フック ／ 悩み訴求</div>
-          <div class="scene-visual">ビフォー（白髪・くすみ）の暗い表情</div>
-          <div class="scene-telop">「もう、白髪が隠せない…」</div>
-        </div>
-      </div>
-      <div class="scene">
-        <div class="scene-num">2<span class="sec">3-10s</span></div>
-        <div class="scene-body">
-          <div class="role">施術プロセス</div>
-          <div class="scene-visual">カラー剤塗布／タイマー／洗髪のテンポ良いカット</div>
-          <div class="scene-telop">Caratのプロ仕上げ</div>
-        </div>
-      </div>
-      <div class="scene">
-        <div class="scene-num">3<span class="sec">10-20s</span></div>
-        <div class="scene-body">
-          <div class="role">変身 ／ ドラマ</div>
-          <div class="scene-visual">仕上がりカット（アフター）— 艶やか・笑顔</div>
-          <div class="scene-telop">こんなに、変われる。</div>
-          <div class="scene-narr">感動的なBGM</div>
-        </div>
-      </div>
-      <div class="scene">
-        <div class="scene-num">4<span class="sec">20-26s</span></div>
-        <div class="scene-body">
-          <div class="role">価格訴求</div>
-          <div class="scene-visual">料金テキストアニメ</div>
-          <div class="scene-telop">白髪染め ○○円〜（具体金額は当日確定）</div>
-        </div>
-      </div>
-      <div class="scene">
-        <div class="scene-num">5<span class="sec">26-30s</span></div>
-        <div class="scene-body">
-          <div class="role">CTA</div>
-          <div class="scene-visual">ロゴ・予約QR</div>
-          <div class="scene-telop">ご予約はホットペッパーから</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="pros-cons">
-      <div class="pros">
-        <div class="h">✓ メリット</div>
-        <ul>
-          <li>40〜60代女性に圧倒的に刺さる</li>
-          <li>カラーの実力で勝負できる</li>
-          <li>ビフォーアフターは反応率が高い</li>
-          <li>SNS拡散の可能性も</li>
-        </ul>
-      </div>
-      <div class="cons">
-        <div class="h">△ 注意点</div>
-        <ul>
-          <li>実際のお客様の協力（顔出し）必要</li>
-          <li>仕上がり写真の品質が肝</li>
-          <li>20代の集客は弱め</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- ====== パターンC：求人系 ====== -->
-  <div class="pattern pat-C" id="patC">
-    <div class="pattern-head">
-      <div class="pattern-icon">👥</div>
-      <div class="pattern-title">
-        <h2>パターンC：求人系</h2>
-        <div class="pt-sub">スタッフの笑顔と職場の雰囲気で採用に振る</div>
-      </div>
-      <div class="pattern-rec rec-low">求人特化</div>
-    </div>
-
-    <h3 class="block">参考動画</h3>
-    <div class="ref-videos">
-      <div class="ref-card">
-        <div class="rc-title">🏪 八王子美容室Jovial 求人動画</div>
-        <div class="rc-meta">166秒 ／ 3,804回再生 ／ 中小美容室のお手本</div>
-        <div class="rc-comment">パート・アルバイト・美容師募集。スタッフの仲の良さと職場の雰囲気を中心に</div>
-        <a href="https://www.youtube.com/watch?v=l38MYocfHMA" target="_blank">https://www.youtube.com/watch?v=l38MYocfHMA</a>
-      </div>
-      <div class="ref-card">
-        <div class="rc-title">💄 Steed Tokyo RECRUIT</div>
-        <div class="rc-meta">181秒 ／ 831回再生</div>
-        <div class="rc-comment">スタイリッシュなBGMと施術カット。都内サロンの王道</div>
-        <a href="https://www.youtube.com/watch?v=RW46lPoF98o" target="_blank">https://www.youtube.com/watch?v=RW46lPoF98o</a>
-      </div>
-    </div>
-
-    <div class="mock-title">📸 完成イメージ（AI生成モックアップ）</div>
-    <div class="mock-grid">
       <div class="mock-card">
-        <span class="num">C-1</span>
+        <span class="num">B-3</span>
         <img src="carat-images/CaratC_01_スタッフ集合.png" alt="スタッフ集合">
         <div class="cap">スタッフ集合 ／ チーム感</div>
       </div>
       <div class="mock-card">
-        <span class="num">C-2</span>
+        <span class="num">B-4</span>
         <img src="carat-images/CaratC_02_接客笑顔.png" alt="接客シーン">
-        <div class="cap">接客の笑顔 ／ 仕事の楽しさ</div>
+        <div class="cap">接客の楽しさ</div>
       </div>
     </div>
 
     <div class="why-box">
-      <div class="wt">求人にする場合の注意</div>
-      美容師求人は採用競合が激しいため、<strong>「Caratで働く理由」を明確に</strong>する必要があります。「アットホーム」「お客様との距離が近い」「セルフ脱毛など最新設備」など、具体的な切り口を5/14で確定したいです。
+      <div class="wt">採用ターゲットがすでに明確</div>
+      Caratの採用ページは <strong>「ブランクのある元美容師・出産育児後の復職」</strong> を明確にターゲット設定済み。条件も「<strong>パート時給1,000〜1,200円・週3〜5日・4時間以上・ノルマなし</strong>」と、子育て世代に刺さる内容。<br>
+      動画ではこの「<strong>家事と両立しながら、美容師として復帰できる</strong>」というメッセージを、復職したママ美容師の表情・職場の和やかさで一発で伝えます。
     </div>
 
-    <h3 class="block">構成案（30秒 ／ 求人）</h3>
+    <h3 class="block">構成案（30秒 ／ ママ美容師復職）</h3>
     <div class="scene-list">
-      <div class="scene">
-        <div class="scene-num">1<span class="sec">0-3s</span></div>
-        <div class="scene-body">
-          <div class="role">フック</div>
-          <div class="scene-visual">明るい店内・スタッフの笑顔</div>
-          <div class="scene-telop">府中で、美容師しませんか？</div>
-        </div>
+      <div class="scene"><div class="scene-num">1<span class="sec">0-4s</span></div><div class="scene-body"><div class="role">フック ／ 共感訴求</div><div class="scene-visual">朝の家事をしている女性（後ろ姿）／鏡の前で迷う表情</div><div class="scene-telop">「子育てが落ち着いて、また、美容師に戻りたい」</div></div></div>
+      <div class="scene"><div class="scene-num">2<span class="sec">4-10s</span></div><div class="scene-body"><div class="role">不安 → 安心</div><div class="scene-visual">スタッフが笑顔で迎える／カラー剤を手に取る復職ママ</div><div class="scene-telop">「ブランクOK ／ 研修制度あり」</div></div></div>
+      <div class="scene"><div class="scene-num">3<span class="sec">10-18s</span></div><div class="scene-body"><div class="role">働き方の魅力</div><div class="scene-visual">条件のテキストアニメ ／ 楽しそうな職場カット</div><div class="scene-telop">時給1,000〜1,200円 ／ 週3〜5日 ／ 4時間〜OK ／ ノルマなし</div></div></div>
+      <div class="scene"><div class="scene-num">4<span class="sec">18-25s</span></div><div class="scene-body"><div class="role">情緒</div><div class="scene-visual">復職ママが笑顔でカット／お客様も笑顔</div><div class="scene-telop">「家事と両立しながら、私の場所がある。」</div></div></div>
+      <div class="scene"><div class="scene-num">5<span class="sec">25-30s</span></div><div class="scene-body"><div class="role">CTA</div><div class="scene-visual">ロゴ・連絡先・QR</div><div class="scene-telop">お電話 or 採用ページから ／ 0847-54-2212</div></div></div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros"><div class="h">✓ メリット</div><ul>
+        <li>ターゲットが既に明確（ブランク美容師）</li>
+        <li>競合（地域美容室）と差別化できる</li>
+        <li>条件（時給・休日）が具体的</li>
+        <li>InstagramのDM導線とも相性◎</li>
+      </ul></div>
+      <div class="cons"><div class="h">△ 注意点</div><ul>
+        <li>復職ママ役の出演調整（既存スタッフ or 演者）</li>
+        <li>家庭シーンの素材を用意する必要あり</li>
+        <li>集客効果は薄い（求人特化）</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <!-- ====== C. ハイブリッド ====== -->
+  <div class="pattern pat-C" id="patC">
+    <div class="pattern-head">
+      <div class="pattern-icon">🔀</div>
+      <div class="pattern-title">
+        <h2>C. ハイブリッド</h2>
+        <div class="pt-sub">集客 ＋ 採用 を1本／2本で両立</div>
       </div>
-      <div class="scene">
-        <div class="scene-num">2<span class="sec">3-13s</span></div>
-        <div class="scene-body">
-          <div class="role">仕事紹介</div>
-          <div class="scene-visual">施術風景・カラーチャート・お客様との会話</div>
-          <div class="scene-telop">アシスタント／スタイリスト募集</div>
-          <div class="scene-narr">お客様も、スタッフも、主役のお店</div>
-        </div>
+      <div class="pattern-rec rec-low">バランス型</div>
+    </div>
+
+    <div class="why-box">
+      <div class="wt">ハイブリッドの考え方</div>
+      「1本の動画で集客×採用を完全両立」は<strong>原則ムリ</strong>です（訴求が分散して両方刺さらない）。<br>
+      ただし、ご予算とのバランスで、以下の2つの現実解があります。<br><br>
+      <strong>C-1：1本で軽く両立（妥協案）</strong> — 集客動画にスタッフのチームショットを混ぜて、Instagramで採用も誘導<br>
+      <strong>C-2：2本制作する（理想案）</strong> — Aパターン1本＋Bパターン1本。今回の3本枠の "建設求人 / Carat / YYGolf" を "建設求人 / Carat集客 / Carat採用" に組み替える等
+    </div>
+
+    <h3 class="block">完成イメージ（A集客＋B採用の良いとこ取り）</h3>
+    <div class="mock-grid">
+      <div class="mock-card">
+        <span class="num">C-1</span>
+        <img src="carat-images/CaratA_01_受付からカラー.png" alt="集客要素">
+        <div class="cap">集客要素：受付・接客</div>
       </div>
-      <div class="scene">
-        <div class="scene-num">3<span class="sec">13-23s</span></div>
-        <div class="scene-body">
-          <div class="role">職場・待遇</div>
-          <div class="scene-visual">休憩中の和気あいあいカット</div>
-          <div class="scene-telop">週休2日／研修制度／アットホーム</div>
-        </div>
+      <div class="mock-card">
+        <span class="num">C-2</span>
+        <img src="carat-images/CaratC_01_スタッフ集合.png" alt="採用要素">
+        <div class="cap">採用要素：スタッフ集合</div>
       </div>
-      <div class="scene">
-        <div class="scene-num">4<span class="sec">23-30s</span></div>
-        <div class="scene-body">
-          <div class="role">CTA</div>
-          <div class="scene-visual">ロゴ・連絡先</div>
-          <div class="scene-telop">お電話 or Instagram DM @fuchu_carat</div>
-        </div>
+    </div>
+
+    <div class="hybrid-box">
+      <h4>C-1：1本で軽く両立する場合の構成案（30秒）</h4>
+      <div class="scene-list">
+        <div class="scene"><div class="scene-num">1<span class="sec">0-3s</span></div><div class="scene-body"><div class="role">フック</div><div class="scene-visual">店内とスタッフの笑顔</div><div class="scene-telop">府中・元町、Carat</div></div></div>
+        <div class="scene"><div class="scene-num">2<span class="sec">3-15s</span></div><div class="scene-body"><div class="role">集客パート</div><div class="scene-visual">受付→カラー→セルフ脱毛→アフター</div><div class="scene-telop">ラグジュアリーなのにリーズナブル</div></div></div>
+        <div class="scene"><div class="scene-num">3<span class="sec">15-22s</span></div><div class="scene-body"><div class="role">採用差し込み</div><div class="scene-visual">スタッフ集合カット＋小さな求人テロップ</div><div class="scene-telop">「働きたい方も募集中 ／ ブランクOK」</div></div></div>
+        <div class="scene"><div class="scene-num">4<span class="sec">22-30s</span></div><div class="scene-body"><div class="role">CTA</div><div class="scene-visual">予約QR ＋ 採用ページQR の2本立て</div><div class="scene-telop">ご予約：ホットペッパー ／ 採用：DM @fuchu_carat</div></div></div>
+      </div>
+    </div>
+
+    <div class="hybrid-options">
+      <div class="hybrid-opt">
+        <strong>C-2：2本制作プラン（理想案 ／ 推奨）</strong>
+        現在の3本枠「建設求人 / Carat / YYGolf」を「<strong>建設求人 / Carat集客 / Carat採用</strong>」または「<strong>建設求人 / Carat（集客or採用） / YYGolf</strong>＋もう1本」に組み替え。1本ごとの効果が圧倒的に上がります。
       </div>
     </div>
 
     <div class="pros-cons">
-      <div class="pros">
-        <div class="h">✓ メリット</div>
-        <ul>
-          <li>採用力を強化できる</li>
-          <li>スタッフのモチベーション向上</li>
-          <li>InstagramのDM導線とも相性◎</li>
-        </ul>
-      </div>
-      <div class="cons">
-        <div class="h">△ 注意点</div>
-        <ul>
-          <li>競合（採用激戦）が多い</li>
-          <li>「働く理由」の明確化が必須</li>
-          <li>給与・待遇の具体数字が必要</li>
-        </ul>
-      </div>
+      <div class="pros"><div class="h">✓ メリット</div><ul>
+        <li>集客と採用、両方の窓口が開く</li>
+        <li>1本で予算内に収まる（C-1の場合）</li>
+        <li>Instagram単体で両用展開できる</li>
+      </ul></div>
+      <div class="cons"><div class="h">△ 注意点</div><ul>
+        <li>C-1は集客・採用ともに効果半減リスク</li>
+        <li>テロップが多くなりやすい</li>
+        <li>本数増やすなら別途の予算調整必要</li>
+      </ul></div>
     </div>
   </div>
 
   <!-- ====== ランバードからのおすすめ ====== -->
-  <div class="recommend">
-    <h2>🎯 ランバードからのおすすめ ＝ パターンA</h2>
-    <p style="font-size:.95rem;margin-bottom:10px">Caratの最大の武器「<strong>セルフ脱毛・セルフブローで低価格を実現</strong>」は <strong>映像で見せた瞬間に伝わる</strong>もの。同業ど真ん中で21.8万再生を取ったカラーイン所沢の手法を、Carat仕様にアレンジするのがベストです。</p>
+  <div class="recommend pattern" style="border-top:4px solid #c2185b;border-left:none">
+    <h2 style="color:#c2185b">🎯 ランバードからのおすすめ</h2>
+    <p style="font-size:.95rem;margin-bottom:14px">「認知拡大・求人」の両ニーズに対して、まずは <strong>1本で何を狙うか</strong> を決めましょう。ランバードの本命は <strong>パターンB（採用）</strong> です。</p>
 
-    <div class="reco-grid">
-      <div class="reco-card">
-        <div class="rl">理由①</div>
-        <div class="rv">差別化（セルフ脱毛）が映像化できる</div>
-      </div>
-      <div class="reco-card">
-        <div class="rl">理由②</div>
-        <div class="rv">「ラグジュアリー × リーズナブル」を体現</div>
-      </div>
-      <div class="reco-card">
-        <div class="rl">理由③</div>
-        <div class="rv">幅広い年齢層に刺さる</div>
-      </div>
-      <div class="reco-card">
-        <div class="rl">理由④</div>
-        <div class="rv">カラーイン所沢の21.8万再生で実証済</div>
-      </div>
+    <div class="why-box" style="background:#eef5ef;border:1px solid #5b8a72">
+      <div class="wt" style="color:#1a5a3a">なぜ「採用」をおすすめするか</div>
+      ・<strong>採用ターゲットがすでに明確</strong>（ブランク美容師・ママ美容師復職）<br>
+      ・<strong>条件が具体的</strong>（時給1,000-1,200円・週3-5日・ノルマなし）— そのままテロップに使える<br>
+      ・<strong>競合が手薄</strong>（求人動画は美容室業界でまだ少ない）<br>
+      ・<strong>集客はホットペッパー＋Instagramで既に動いている</strong>。動画でしか伝えられない「働きやすさ」を優先<br>
+      ・<strong>採用が決まれば人手不足が解消し、結果的に集客余力も増える</strong>（採用→集客の好循環）
     </div>
 
     <div class="ask">
-      <div class="at">5/14 で確認させてください（最重要論点）</div>
+      <div class="at">5/14 で確認させてください</div>
       <ol>
-        <li><strong>求人 vs 集客 ／ 1本ならどちらに振るか</strong>（最優先）</li>
-        <li>料金表（具体金額の表示可否）— 白髪染め・おしゃれ染め</li>
-        <li>店内写真・施術写真の提供可否</li>
-        <li>スタッフ／お客様の顔出しの可否</li>
-        <li>セルフ脱毛機の写真／動画</li>
-        <li>既存撮影データ（店内動画／Instagramの素材）の有無</li>
-        <li>BGM方針（明るく上品系 / おしゃれ系 / 落ち着いた系）</li>
+        <li><strong>A集客 ／ B採用 ／ C ハイブリッド どれで進めるか</strong>（最優先）</li>
+        <li>採用で進める場合：復職ママ役の出演（既存スタッフ／演者依頼）</li>
+        <li>集客で進める場合：料金表示・お客様の顔出し可否</li>
+        <li>店内撮影データ／スタッフ写真／施術写真の提供</li>
+        <li>BGM方針（明るく上品 ／ 落ち着き ／ 元気系）</li>
+        <li>3本構成の組み替えの可能性（C-2案）</li>
       </ol>
     </div>
   </div>
@@ -534,7 +431,7 @@
   <div class="footer">
     Carat（カラット）様 ／ 美容室動画 ご提案資料<br>
     株式会社ランバード ／ 2026.05.14 ディレクション資料<br>
-    ※ 建設求人「<a href="yayabe-kensetsu-proposal.html" style="color:#c2185b">良邊建設様 求人動画</a>」「YYGolfschool様 集客動画」は別資料
+    ※ 建設求人「<a href="yayabe-kensetsu-proposal.html" style="color:#c2185b">良邊建設様 求人動画</a>」／ YYGolfschool様は別資料
   </div>
 
 </div>
