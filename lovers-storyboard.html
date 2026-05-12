@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lovers 様 動画 構成案 v1 | RUNBIRD</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;background:#1a1a1d;color:#e8e6e3;line-height:1.7}
+  .container{max-width:760px;margin:0 auto;padding:20px}
+
+  .header{text-align:center;padding:36px 20px;background:linear-gradient(135deg,#2a2024,#1a1418);border-radius:20px;margin-bottom:20px;box-shadow:0 4px 20px rgba(0,0,0,.4);border:1px solid #3a2a30}
+  .header h1{font-size:1.6rem;margin-bottom:8px;color:#f5d5dc;letter-spacing:.04em}
+  .header .sub{font-size:.95rem;color:#c8a8b0}
+  .header .meta{margin-top:14px;font-size:.78rem;color:#8a7078}
+  .badge{display:inline-block;background:linear-gradient(90deg,#c2185b,#7a1238);color:#fff;padding:5px 16px;border-radius:18px;font-size:.78rem;font-weight:bold;margin-top:10px;letter-spacing:.05em}
+
+  .section{background:#24202a;border-radius:18px;padding:26px 22px;margin-bottom:18px;box-shadow:0 2px 12px rgba(0,0,0,.3);border:1px solid #332a36}
+  .section h2{font-size:1.2rem;margin-bottom:14px;padding-bottom:10px;border-bottom:3px solid #c2185b;color:#f5d5dc}
+  .section h3{font-size:1rem;margin:18px 0 10px;padding-left:10px;border-left:5px solid #c2185b;color:#f5d5dc}
+
+  .meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+  .meta-card{padding:10px 14px;border-radius:10px;background:#1e1a22;border-left:4px solid #c2185b}
+  .meta-card .l{font-size:.7rem;color:#8a7078;letter-spacing:.05em}
+  .meta-card .v{font-size:.9rem;font-weight:bold;margin-top:3px;color:#e8d6db}
+
+  .flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;padding:18px;border-radius:14px;margin-bottom:16px;background:#1e1820}
+  .flow-step{background:#2e2630;border-radius:12px;padding:10px 14px;font-size:.82rem;font-weight:bold;text-align:center;min-width:90px;box-shadow:0 1px 4px rgba(0,0,0,.3);color:#e8d6db}
+  .flow-arrow{font-weight:bold;font-size:1.1rem;color:#c2185b}
+
+  .scene-list{display:grid;gap:10px}
+  .scene{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:14px;border-radius:14px;align-items:start;background:#1e1a22}
+  .scene.cold{border-left:4px solid #4a5870}
+  .scene.warm{border-left:4px solid #c2185b}
+  .scene.cta{border-left:4px solid #d4a017}
+
+  .scene-num{width:44px;height:44px;background:#2e2630;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:bold;font-size:.95rem;box-shadow:0 1px 4px rgba(0,0,0,.3);color:#f5d5dc}
+  .scene-num .sec{font-size:.55rem;color:#8a7078;margin-top:1px;font-weight:normal}
+
+  .scene-body .role{font-weight:bold;font-size:.95rem;margin-bottom:6px;color:#f5d5dc}
+  .scene-visual{background:#2a2530;border-radius:8px;padding:8px 10px;font-size:.83rem;margin-bottom:6px;color:#c8b8c0}
+  .scene-visual::before{content:"🎬 ";opacity:.8}
+  .scene-telop{font-size:.85rem;font-weight:bold;background:#2a2530;padding:6px 10px;border-radius:6px;display:inline-block;margin:4px 0;color:#f5d5dc;border-left:3px solid #c2185b}
+  .scene-telop::before{content:"📝 "}
+  .scene-narr{font-size:.85rem;color:#c8b8c0;padding:6px 10px;background:#1a1520;border-radius:6px;margin-top:4px;font-style:italic}
+  .scene-narr::before{content:"🔊 "}
+
+  .ab-table{width:100%;border-collapse:collapse;margin-top:10px;background:#1e1a22;border-radius:10px;overflow:hidden}
+  .ab-table th,.ab-table td{padding:10px 12px;text-align:left;font-size:.85rem;border-bottom:1px solid #332a36}
+  .ab-table th{background:#2a2030;color:#f5d5dc;font-weight:bold}
+  .ab-table td{color:#d8c8d0}
+  .ab-table .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.72rem;background:#c2185b;color:#fff;font-weight:bold}
+
+  .narration-box{background:#1a1520;border:1px solid #3a2a36;border-radius:12px;padding:18px 22px;margin-top:12px;font-size:.95rem;line-height:2;color:#e8d6db}
+  .narration-box .pause{color:#8a7078;font-size:.85rem}
+
+  .ask{background:#2a2030;border-left:5px solid #d4a017;border-radius:12px;padding:16px 20px;margin-top:16px}
+  .ask .at{font-weight:bold;margin-bottom:10px;font-size:.95rem;color:#f5d5dc}
+  .ask ol,.ask ul{margin-left:22px;font-size:.88rem;color:#d8c8d0}
+  .ask li{margin-bottom:5px}
+
+  .point{background:#1e2420;border-left:5px solid #4a8060;border-radius:12px;padding:16px 20px;margin-top:12px;font-size:.9rem;color:#d8d0c8}
+  .point .pt{font-weight:bold;margin-bottom:8px;color:#a8d0b8}
+
+  .ng{background:#2a1818;border-left:5px solid #a04040;border-radius:12px;padding:16px 20px;margin-top:12px;font-size:.88rem;color:#e8c8c8}
+  .ng .nt{font-weight:bold;margin-bottom:8px;color:#e89090}
+
+  .footer{text-align:center;padding:24px;color:#6a5a62;font-size:.78rem}
+
+  @media(max-width:600px){
+    .container{padding:12px}
+    .header h1{font-size:1.2rem}
+    .flow{flex-direction:column}
+    .flow-arrow{transform:rotate(90deg)}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>動画広告 構成案 v1</h1>
+    <p class="sub">Lovers 様（川上 恵似 代表）</p>
+    <div class="badge">メンズマッサージ・福岡市西区姪浜</div>
+    <p class="meta">ご提案 2026.05.12 ／ 株式会社ランバード</p>
+  </div>
+
+  <!-- ====== 案件概要 ====== -->
+  <div class="section">
+    <h2>案件概要</h2>
+    <div class="meta-grid">
+      <div class="meta-card"><div class="l">業種</div><div class="v">メンズマッサージ</div></div>
+      <div class="meta-card"><div class="l">目的</div><div class="v">来店予約</div></div>
+      <div class="meta-card"><div class="l">ターゲット</div><div class="v">40〜50代男性<br>サラリーマン／私服勤務</div></div>
+      <div class="meta-card"><div class="l">訴求軸</div><div class="v">男性同士だから<br>通じ合える施術</div></div>
+      <div class="meta-card"><div class="l">想定尺</div><div class="v">30秒<br>（15秒派生あり）</div></div>
+      <div class="meta-card"><div class="l">CTA</div><div class="v">予約導線<br>※要確定</div></div>
+    </div>
+
+    <h3>ストーリーの流れ（おさるPASONA）</h3>
+    <div class="flow">
+      <div class="flow-step">フック<br>共感</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">問題<br>抜けない疲れ</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">解決<br>Loversへ</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">USP<br>独自施術</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">After<br>明日の活力</div>
+      <span class="flow-arrow">▶</span>
+      <div class="flow-step">CTA<br>予約</div>
+    </div>
+  </div>
+
+  <!-- ====== シーン構成 ====== -->
+  <div class="section">
+    <h2>シーン構成（全9シーン／30秒）</h2>
+    <p style="font-size:.85rem;color:#a89098;margin-bottom:12px">前半は寒色・低照度で疲労を描き、後半は暖色・暖かい照明で安心と回復を描く。主役は同一人物のbefore/afterで購買感情を作る。</p>
+
+    <div class="scene-list">
+      <div class="scene cold">
+        <div class="scene-num">1<span class="sec">0-3s</span></div>
+        <div class="scene-body">
+          <div class="role">フック</div>
+          <div class="scene-visual">電車内、スーツ姿の40代後半男性。つり革に掴まりうつむき気味。窓の外は流れる景色。寒色・低彩度</div>
+          <div class="scene-telop">その疲れ、まだ引きずってますか？</div>
+        </div>
+      </div>
+
+      <div class="scene cold">
+        <div class="scene-num">2<span class="sec">3-6s</span></div>
+        <div class="scene-body">
+          <div class="role">問題提起</div>
+          <div class="scene-visual">同男性の顔が電車の窓ガラスに映り込む。目線は下、眉間にうっすらしわ</div>
+          <div class="scene-narr">肩が重い。気持ちも、重い。</div>
+        </div>
+      </div>
+
+      <div class="scene cold">
+        <div class="scene-num">3<span class="sec">6-9s</span></div>
+        <div class="scene-body">
+          <div class="role">問題深掘り</div>
+          <div class="scene-visual">仕事終わり、白黒チェックのシャツに着替えた同男性。夜の住宅街を一人で歩く。肩を落とす</div>
+          <div class="scene-narr">家に帰っても、抜けない疲れ。</div>
+        </div>
+      </div>
+
+      <div class="scene warm">
+        <div class="scene-num">4<span class="sec">9-12s</span></div>
+        <div class="scene-body">
+          <div class="role">解決提示</div>
+          <div class="scene-visual">落ち着いた照明のLovers店舗エントランス。看板にロゴ。ドアが静かに開く</div>
+          <div class="scene-telop">福岡・姪浜　メンズマッサージ Lovers</div>
+        </div>
+      </div>
+
+      <div class="scene warm">
+        <div class="scene-num">5<span class="sec">12-17s</span></div>
+        <div class="scene-body">
+          <div class="role">USP①（キメ）</div>
+          <div class="scene-visual">施術ベッドの上、同男性の顔のクローズアップ。こわばっていた表情がゆっくり緩んでいく。暖色照明</div>
+          <div class="scene-narr">男性同士だからこそ、通じ合える感覚。</div>
+        </div>
+      </div>
+
+      <div class="scene warm">
+        <div class="scene-num">6<span class="sec">17-21s</span></div>
+        <div class="scene-body">
+          <div class="role">USP②</div>
+          <div class="scene-visual">施術師の手が肩・首をていねいにほぐすカット。手の動きにリズム感</div>
+          <div class="scene-narr">当店独自の施術が、最大の魅力です。</div>
+        </div>
+      </div>
+
+      <div class="scene warm">
+        <div class="scene-num">7<span class="sec">21-24s</span></div>
+        <div class="scene-body">
+          <div class="role">After／ベネフィット</div>
+          <div class="scene-visual">施術後、同男性が私服に戻って店を出る。表情は明るく軽く伸びをする。色温度は暖かく彩度上昇</div>
+          <div class="scene-telop">今日の疲れを、明日の活力に。</div>
+        </div>
+      </div>
+
+      <div class="scene cta">
+        <div class="scene-num">8<span class="sec">24-28s</span></div>
+        <div class="scene-body">
+          <div class="role">店舗情報</div>
+          <div class="scene-visual">店舗ロゴを中央配置。背景は施術ルームの落ち着いた画</div>
+          <div class="scene-telop">メンズマッサージ Lovers<br>福岡市西区下山門1-7-62 アメックス姪浜307<br>TEL: 080-3950-3324</div>
+        </div>
+      </div>
+
+      <div class="scene cta">
+        <div class="scene-num">9<span class="sec">28-30s</span></div>
+        <div class="scene-body">
+          <div class="role">CTA</div>
+          <div class="scene-visual">LINE QRコード／電話番号／予約ボタンの最終CTA画面</div>
+          <div class="scene-telop">ご予約はこちら ▶</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="pt">💡 演出のキモ</div>
+      <ul style="margin-left:18px">
+        <li><b>同一人物性：</b>S01〜S03（疲労）とS07（解放）は同じ顔・同じ体型の人物で。AIキャラ基準画像を1枚固定し全シーンで参照</li>
+        <li><b>色温度の落差：</b>前半=寒色／後半=暖色。BGM・ナレなしでも感情が伝わる</li>
+        <li><b>USPの2文：</b>S05・S06のナレはキメ。各2〜2.5秒の尺を確保しテロップ同時表示</li>
+      </ul>
+    </div>
+
+    <div class="ng">
+      <div class="nt">⚠️ NG・注意</div>
+      <ul style="margin-left:18px">
+        <li>過度に官能的・性的な描写は禁止（広告審査・ブランド毀損）</li>
+        <li>「癒し・リラクゼーション・健康」の文脈で統一</li>
+        <li>露出は施術着＋首・肩程度まで、表情は「ほぐれる」レベル</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====== 台本 ====== -->
+  <div class="section">
+    <h2>台本（ナレーション全文）</h2>
+    <div class="narration-box">
+      肩が重い。気持ちも、重い。<br>
+      家に帰っても、抜けない疲れ。<br>
+      <span class="pause">（間）</span><br>
+      男性同士だからこそ、通じ合える感覚。<br>
+      当店独自の施術が、最大の魅力です。
+    </div>
+    <p style="font-size:.82rem;color:#8a7078;margin-top:10px">総文字数：約65文字／想定読み時間：約16〜18秒（残り尺はテロップ＋ブランド情報）</p>
+    <p style="font-size:.85rem;color:#c8b8c0;margin-top:8px">ナレーション方針：落ち着いた30〜40代男性の声（AI音声 or 声優収録、要ご相談）<br>BGM：前半=静かなピアノ／後半=温かいアコースティック</p>
+  </div>
+
+  <!-- ====== A/Bテスト案 ====== -->
+  <div class="section">
+    <h2>フックA/Bテスト案（S01テロップ差し替え）</h2>
+    <table class="ab-table">
+      <thead>
+        <tr><th style="width:55px">案</th><th>テロップ</th><th style="width:35%">想定効果</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="tag">A</span></td><td>その疲れ、まだ引きずってますか？</td><td>共感型・自分事化。サラリーマンに刺さる<br><span style="color:#a8d0b8;font-size:.78rem">▼推奨</span></td></tr>
+        <tr><td><span class="tag" style="background:#7a1238">B</span></td><td>男の疲れは、男にしか分からない。</td><td>断定型。USPを冒頭から</td></tr>
+        <tr><td><span class="tag" style="background:#7a1238">C</span></td><td>40代、抜けない疲れの理由。</td><td>数字型。年齢でターゲット明示</td></tr>
+        <tr><td><span class="tag" style="background:#7a1238">D</span></td><td>なぜ、その疲れは取れないのか。</td><td>質問型。HOOK動画向き</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ====== 確認事項 ====== -->
+  <div class="section">
+    <h2>クライアントに確認したいこと</h2>
+    <div class="ask">
+      <div class="at">✏️ 7項目のご確認をお願いします</div>
+      <ol>
+        <li><b>CTA導線：</b>LINE予約／電話／HPフォーム、メインはどちら？</li>
+        <li><b>NG表現・必須表現：</b>特に施術描写の表現範囲</li>
+        <li><b>配信媒体：</b>Instagram／TikTok／Meta広告／YouTube</li>
+        <li><b>尺：</b>30秒のみ／15秒も並走</li>
+        <li><b>ブランドカラー：</b>主・副・NG色（HPは黒×ピンク基調）</li>
+        <li><b>ロゴ素材：</b>高解像度版の有無</li>
+        <li><b>テロップ掲載：</b>料金・営業時間・定休日の要否</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="footer">
+    Lovers 様 動画広告 構成案 v1 ／ 株式会社ランバード ／ 2026.05.12
+  </div>
+
+</div>
+</body>
+</html>
