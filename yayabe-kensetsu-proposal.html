@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>有限会社良邊建設 様 求人動画 ご提案 | RUNBIRD</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;background:#f4f5f7;color:#2a2a2a;line-height:1.75}
+  .container{max-width:780px;margin:0 auto;padding:20px}
+
+  .header{text-align:center;padding:34px 22px;background:linear-gradient(135deg,#1a1a1a 0%,#3a2a1a 100%);color:#fff;border-radius:20px;margin-bottom:24px;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+  .header .badge{display:inline-block;background:#d35400;color:#fff;padding:4px 14px;border-radius:14px;font-size:.75rem;font-weight:bold;margin-bottom:10px;letter-spacing:.05em}
+  .header h1{font-size:1.55rem;margin-bottom:8px}
+  .header .sub{font-size:.95rem;color:#f0d8b0}
+  .header .meta{margin-top:14px;font-size:.78rem;color:#c0a080}
+
+  .intro{background:#fff;border-radius:18px;padding:24px;margin-bottom:22px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #d35400}
+  .intro h2{font-size:1.15rem;color:#d35400;margin-bottom:12px}
+  .intro p{font-size:.95rem;margin-bottom:10px}
+  .intro .request-box{background:#fff5ec;padding:14px 18px;border-radius:10px;font-size:.9rem;border-left:4px solid #d35400;margin-top:10px}
+  .intro .request-box strong{color:#a04000}
+
+  .step-flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin:14px 0 6px}
+  .step-flow .s{background:#fff5ec;border-radius:10px;padding:8px 14px;font-size:.78rem;font-weight:bold;color:#a04000}
+  .step-flow .a{color:#d35400;font-weight:bold}
+
+  /* パターンセクション */
+  .pattern{background:#fff;border-radius:20px;padding:28px 24px;margin-bottom:22px;box-shadow:0 2px 12px rgba(0,0,0,.06);scroll-margin-top:20px}
+  .pattern-head{display:flex;align-items:center;gap:14px;margin-bottom:10px;padding-bottom:14px;border-bottom:2px dashed #e0e0e0}
+  .pattern-icon{font-size:2.2rem;line-height:1}
+  .pattern-title{flex:1}
+  .pattern-title h2{font-size:1.25rem;margin-bottom:4px}
+  .pattern-title .pt-sub{font-size:.85rem;color:#666}
+  .pattern-rec{padding:5px 10px;border-radius:14px;font-size:.7rem;font-weight:bold;white-space:nowrap}
+  .rec-strong{background:#d35400;color:#fff}
+  .rec-mid{background:#f0d878;color:#7a5500}
+  .rec-low{background:#e0e0e0;color:#666}
+
+  .pat-A h2,.pat-A .pattern-rec.rec-strong{}
+  .pat-A{border-left:6px solid #d35400}
+  .pat-B{border-left:6px solid #2e7d32}
+  .pat-C{border-left:6px solid #1565c0}
+
+  .ref-videos{display:grid;gap:10px;margin-bottom:18px}
+  .ref-card{display:grid;grid-template-columns:1fr;gap:6px;padding:12px 14px;background:#fafafa;border-radius:10px;border-left:4px solid #888}
+  .ref-card.hot{border-left-color:#d35400;background:#fff5ec}
+  .ref-card .rc-title{font-weight:bold;font-size:.92rem;color:#2a2a2a}
+  .ref-card .rc-meta{font-size:.75rem;color:#666}
+  .ref-card .rc-meta .views{color:#d35400;font-weight:bold}
+  .ref-card .rc-comment{font-size:.85rem;color:#555;font-style:italic;padding:4px 0}
+  .ref-card a{color:#1565c0;text-decoration:none;font-size:.8rem;word-break:break-all}
+  .ref-card a:hover{text-decoration:underline}
+
+  h3.block{font-size:1rem;margin:18px 0 10px;padding-left:10px;border-left:5px solid #d35400}
+  .pat-B h3.block{border-left-color:#2e7d32}
+  .pat-C h3.block{border-left-color:#1565c0}
+
+  .why-box{background:#fff8e6;border-radius:10px;padding:14px 18px;font-size:.88rem;margin-bottom:16px}
+  .why-box .wt{font-weight:bold;color:#a07000;margin-bottom:6px}
+
+  .scene-list{display:grid;gap:8px}
+  .scene{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:12px;border-radius:12px;align-items:start}
+  .pat-A .scene:nth-child(odd){background:#fff5ec}
+  .pat-A .scene:nth-child(even){background:#fffbf6}
+  .pat-B .scene:nth-child(odd){background:#eef7ee}
+  .pat-B .scene:nth-child(even){background:#f6fbf6}
+  .pat-C .scene:nth-child(odd){background:#eaf3fb}
+  .pat-C .scene:nth-child(even){background:#f4f9fd}
+
+  .scene-num{width:44px;height:44px;background:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:bold;font-size:.95rem;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+  .scene-num .sec{font-size:.55rem;color:#888;margin-top:1px;font-weight:normal}
+  .pat-A .scene-num{color:#d35400}
+  .pat-B .scene-num{color:#2e7d32}
+  .pat-C .scene-num{color:#1565c0}
+
+  .scene-body .role{font-weight:bold;font-size:.93rem;margin-bottom:6px}
+  .scene-visual{background:#fff;border-radius:8px;padding:7px 10px;font-size:.82rem;margin-bottom:5px;color:#444}
+  .scene-visual::before{content:"🎬 ";opacity:.8}
+  .scene-telop{font-size:.85rem;font-weight:bold;background:#fff;padding:6px 10px;border-radius:6px;display:inline-block;margin-bottom:4px}
+  .pat-A .scene-telop{border-left:3px solid #d35400;color:#a04000}
+  .pat-B .scene-telop{border-left:3px solid #2e7d32;color:#1a5a1a}
+  .pat-C .scene-telop{border-left:3px solid #1565c0;color:#0d3f7a}
+  .scene-telop::before{content:"📝 "}
+  .scene-narr{font-size:.78rem;color:#666;padding:3px 10px}
+  .scene-narr::before{content:"🔊 "}
+
+  .pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+  .pros,.cons{padding:12px 14px;border-radius:10px;font-size:.85rem}
+  .pros{background:#eef7ee;border-left:4px solid #2e7d32}
+  .cons{background:#fcefef;border-left:4px solid #c62828}
+  .pros .h,.cons .h{font-weight:bold;margin-bottom:6px;font-size:.8rem;letter-spacing:.05em}
+  .pros .h{color:#1a5a1a}
+  .cons .h{color:#7a1a1a}
+  .pros ul,.cons ul{margin-left:18px}
+
+  .recommend{background:#fff;border-radius:20px;padding:26px;margin-bottom:22px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-top:4px solid #d35400}
+  .recommend h2{font-size:1.2rem;color:#d35400;margin-bottom:14px}
+  .reco-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
+  .reco-card{padding:14px;border-radius:12px;background:#fafafa;border-top:3px solid #d35400}
+  .reco-card .rl{font-size:.72rem;color:#888;letter-spacing:.05em;margin-bottom:4px}
+  .reco-card .rv{font-size:.95rem;font-weight:bold}
+
+  .ask{background:#eef6ee;border-left:5px solid #2e7d32;border-radius:14px;padding:18px 22px;margin-top:20px}
+  .ask .at{font-weight:bold;margin-bottom:10px;font-size:.98rem;color:#1a5a1a}
+  .ask ol{margin-left:22px;font-size:.9rem}
+  .ask li{margin-bottom:6px}
+
+  .footer{text-align:center;padding:24px;color:#888;font-size:.78rem}
+
+  @media(max-width:600px){
+    .container{padding:12px}
+    .header h1{font-size:1.2rem}
+    .pros-cons{grid-template-columns:1fr}
+    .step-flow{flex-direction:column}
+    .step-flow .a{transform:rotate(90deg)}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="badge">RUNBIRD ご提案資料</div>
+    <h1>建設業 求人動画 ／ 方向性のご提案</h1>
+    <p class="sub">有限会社良邊建設 様（良邊 則光 代表）</p>
+    <p class="meta">2026.05.14(木) 11:00 ディレクション ／ 担当: 齋藤 立</p>
+  </div>
+
+  <div class="intro">
+    <h2>本資料の位置づけ</h2>
+    <p>本資料は、ヒアリング時にいただいたご要望をもとに <strong>株式会社ランバードから提案する3つの方向性</strong>です。5/14のディレクションで、どの方向性で進めるかを一緒に決めさせてください。</p>
+
+    <div class="request-box">
+      <strong>ヒアリングでいただいたご要望</strong><br>
+      ・ハローワークでは人が来ない／全国出張可能な人材が欲しい<br>
+      ・訴求軸は「<strong>稼げそう・楽しそう</strong>」<br>
+      ・撮影なし・素材提供型／DVD＋ギガファイル便で納品<br>
+      ・3本合計で3万回再生想定（建設求人／Carat／YYGolf）
+    </div>
+
+    <div class="step-flow">
+      <div class="s">参考動画を<br>3パターン提示</div>
+      <span class="a">▶</span>
+      <div class="s">方向性を選択</div>
+      <span class="a">▶</span>
+      <div class="s">素材依頼</div>
+      <span class="a">▶</span>
+      <div class="s">台本確定</div>
+      <span class="a">▶</span>
+      <div class="s">初稿制作</div>
+    </div>
+  </div>
+
+  <!-- ====== パターンA：バズ・ユーモア系 ====== -->
+  <div class="pattern pat-A" id="patA">
+    <div class="pattern-head">
+      <div class="pattern-icon">🎤</div>
+      <div class="pattern-title">
+        <h2>パターンA：バズ・ユーモア系</h2>
+        <div class="pt-sub">「面白くて働いてみたい」と思わせる ／ SNS拡散を狙う</div>
+      </div>
+      <div class="pattern-rec rec-strong">★ おすすめ</div>
+    </div>
+
+    <h3 class="block">参考動画</h3>
+    <div class="ref-videos">
+      <div class="ref-card hot">
+        <div class="rc-title">🐟 マグロ建設（押川 聖チャンネル）</div>
+        <div class="rc-meta">外構・建設会社の社長による個人系YouTube ／ <span class="views">登録者多数</span></div>
+        <div class="rc-comment">"社長キャラ立ち" でファン化。「こんな社長どう思いますか？」「実は社長と女社員の関係は…」など人柄ベースの企画で建設会社のイメージを刷新</div>
+        <a href="https://www.youtube.com/watch?v=73JakKsJHHk" target="_blank">https://www.youtube.com/watch?v=73JakKsJHHk</a>
+      </div>
+      <div class="ref-card hot">
+        <div class="rc-title">💪 レッツ！ドボクサイズ！（川邊組）</div>
+        <div class="rc-meta">150秒 ／ <span class="views">244,000回再生</span> ／ 建設求人動画でのバズ代表例</div>
+        <div class="rc-comment">「土木工事で筋肉ゲット！カッコイイ！」歌＆ダンスで土木の魅力を発信。建設求人で20万再生超えのレア例</div>
+        <a href="https://www.youtube.com/watch?v=cUIcIjRwrMc" target="_blank">https://www.youtube.com/watch?v=cUIcIjRwrMc</a>
+      </div>
+    </div>
+
+    <div class="why-box">
+      <div class="wt">なぜ良邊建設様にハマるか</div>
+      代表 良邊様の「<strong>横柄っぽいけど優しい・趣味でゴルフシミュ2台買う</strong>」というキャラクターは、まさにマグロ建設の押川社長と同じ "キャラ立ち" 路線。SNS的に拡散しやすく、ハローワークでは届かない若年層にリーチできます。
+    </div>
+
+    <h3 class="block">構成案（45秒）</h3>
+    <div class="scene-list">
+      <div class="scene">
+        <div class="scene-num">1<span class="sec">0-3s</span></div>
+        <div class="scene-body">
+          <div class="role">フック（強烈な掴み）</div>
+          <div class="scene-visual">良邊代表が自社のゴルフシミュ前でクラブを構える</div>
+          <div class="scene-telop">「現場入って、月いくら稼ぐ？」</div>
+          <div class="scene-narr">テンポ良いBGM／代表の声でストレートに</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">2<span class="sec">3-15s</span></div>
+        <div class="scene-body">
+          <div class="role">仕事の楽しさ</div>
+          <div class="scene-visual">現場の重機・地盤改良のド派手なカット／社員が笑顔で作業</div>
+          <div class="scene-telop">「全国の現場ぐるぐる回って、稼げる仕事」</div>
+          <div class="scene-narr">代表のしゃべりベース／ぶっきらぼう＋温かみ</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">3<span class="sec">15-28s</span></div>
+        <div class="scene-body">
+          <div class="role">代表の人柄エピソード</div>
+          <div class="scene-visual">事務所で社員と笑ってる／ゴルフシミュで遊んでいる</div>
+          <div class="scene-telop">「社長、ゴルフシミュ2台買ったらしい」</div>
+          <div class="scene-narr">代表本人のキャラを前面に</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">4<span class="sec">28-38s</span></div>
+        <div class="scene-body">
+          <div class="role">待遇・条件</div>
+          <div class="scene-visual">数字のアニメーション</div>
+          <div class="scene-telop">「日給○○円〜・出張手当別途・賞与年2回」</div>
+          <div class="scene-narr">テンポ良くテキスト読み上げ</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">5<span class="sec">38-45s</span></div>
+        <div class="scene-body">
+          <div class="role">CTA</div>
+          <div class="scene-visual">代表が手を振る／連絡先大表示</div>
+          <div class="scene-telop">「とりあえず電話してみ？ 0847-51-5811」</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="h">✓ メリット</div>
+        <ul>
+          <li>SNS拡散で広告外でも見られる</li>
+          <li>20代〜30代の若年層に強い</li>
+          <li>「他と違う会社」と印象づく</li>
+          <li>代表のキャラがそのまま強みになる</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="h">△ 注意点</div>
+        <ul>
+          <li>代表のご出演（写真／音声）が必須</li>
+          <li>固い印象を求める応募者は離れる可能性</li>
+          <li>シリーズ化（複数本）で効果倍増</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== パターンB：ドキュメンタリー系 ====== -->
+  <div class="pattern pat-B" id="patB">
+    <div class="pattern-head">
+      <div class="pattern-icon">🎬</div>
+      <div class="pattern-title">
+        <h2>パターンB：ドキュメンタリー系</h2>
+        <div class="pt-sub">職人の本音と仕事の魅力を生で伝える</div>
+      </div>
+      <div class="pattern-rec rec-mid">中堅向け</div>
+    </div>
+
+    <h3 class="block">参考動画</h3>
+    <div class="ref-videos">
+      <div class="ref-card">
+        <div class="rc-title">🪜 鳶 ドキュメンタリー編（しまね職人チャンネル）</div>
+        <div class="rc-meta">238秒 ／ <span class="views">39,876回再生</span></div>
+        <div class="rc-comment">「この仕事のおもしろさを伝えたい」職人本人にカメラを向けて、仕事を語ってもらう構成</div>
+        <a href="https://www.youtube.com/watch?v=cUIcIjRwrMc" target="_blank">参考URLは齋藤さんが共有可能</a>
+      </div>
+      <div class="ref-card">
+        <div class="rc-title">🔧 石上建設 リクルート向け動画（仕事の面白さ篇）</div>
+        <div class="rc-meta">240秒 ／ 1,156回再生</div>
+        <div class="rc-comment">中堅建設会社の正統派ドキュメンタリー。社員の声・現場の音を中心に</div>
+      </div>
+    </div>
+
+    <div class="why-box">
+      <div class="wt">なぜ良邊建設様に合うか</div>
+      経験者・即戦力層にリーチするなら、誇張のないドキュメンタリーが効果的。「全国を回ってどんな仕事をしているか」を社員の声でリアルに伝えると、出張前提の応募者の不安が消えます。
+    </div>
+
+    <h3 class="block">構成案（60秒）</h3>
+    <div class="scene-list">
+      <div class="scene">
+        <div class="scene-num">1<span class="sec">0-5s</span></div>
+        <div class="scene-body">
+          <div class="role">現場の朝</div>
+          <div class="scene-visual">朝日の中、現場に重機が動き出す</div>
+          <div class="scene-telop">「広島・福山、ある現場の朝。」</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">2<span class="sec">5-20s</span></div>
+        <div class="scene-body">
+          <div class="role">職人の声①</div>
+          <div class="scene-visual">中堅職人カット／作業中</div>
+          <div class="scene-telop">「未経験で入って3年。今は重機任されてます」</div>
+          <div class="scene-narr">職人本人のインタビュー音声</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">3<span class="sec">20-35s</span></div>
+        <div class="scene-body">
+          <div class="role">仕事の幅</div>
+          <div class="scene-visual">地盤改良→舗装→土木 のシーン繋ぎ</div>
+          <div class="scene-telop">「とび・土木・舗装・地盤改良 — 全国どこへでも」</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">4<span class="sec">35-50s</span></div>
+        <div class="scene-body">
+          <div class="role">職人の声②（楽しさ）</div>
+          <div class="scene-visual">休憩中の笑顔・仲間との会話</div>
+          <div class="scene-telop">「形に残る仕事だから、誇りがある」</div>
+        </div>
+      </div>
+      <div class="scene">
+        <div class="scene-num">5<span class="sec">50-60s</span></div>
+        <div class="scene-body">
+          <div class="role">CTA</div>
+          <div class="scene-visual">ロゴ・連絡先・代表の一言</div>
+          <div class="scene-telop">「一緒に、現場を変えよう。」</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="h">✓ メリット</div>
+        <ul>
+          <li>経験者・即戦力に刺さる</li>
+          <li>会社の信頼感を演出</li>
+          <li>長く使える（賞味期限が長い）</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="h">△ 注意点</div>
+        <ul>
+          <li>社員インタビューの音声素材が必要</li>
+          <li>SNS拡散は弱い／広告経由のリーチ前提</li>
+          <li>20代の興味は引きにくい</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== パターンC：スタイリッシュ系 ====== -->
+  <div class="pattern pat-C" id="patC">
+    <div class="pattern-head">
+      <div class="pattern-icon">🏗️</div>
+      <div class="pattern-title">
+        <h2>パターンC：スタイリッシュ系</h2>
+        <div class="pt-sub">大手企業風の "憧れ訴求" ／ きれいに見せる</div>
+      </div>
+      <div class="pattern-rec rec-low">堅実</div>
+    </div>
+
+    <h3 class="block">参考動画</h3>
+    <div class="ref-videos">
+      <div class="ref-card">
+        <div class="rc-title">🏢 シミズノヒト（清水建設）</div>
+        <div class="rc-meta">178秒 ／ <span class="views">131,571回再生</span></div>
+        <div class="rc-comment">大手の定番。スタイリッシュな映像と力強いコピーで "憧れの建設業" を演出</div>
+        <a href="https://www.youtube.com/watch?v=" target="_blank">URLは齋藤さんが共有可能</a>
+      </div>
+      <div class="ref-card">
+        <div class="rc-title">⚙️ 群馬の町工場が本気で映像作ってみた（石井工機）</div>
+        <div class="rc-meta">119秒 ／ <span class="views">127,949回再生</span></div>
+        <div class="rc-comment">「中小でもここまでカッコ良くできる」のお手本。BGMと映像のクオリティで勝負</div>
+      </div>
+      <div class="ref-card">
+        <div class="rc-title">🎥 清皓（クライアント提示動画）</div>
+        <div class="rc-meta">65秒 ／ 5,298回再生</div>
+        <div class="rc-comment">良邊様からご提示いただいた愛媛の建設会社求人動画。やや正統派寄り</div>
+        <a href="https://www.youtube.com/watch?v=EtiNaBw0Qdc" target="_blank">https://www.youtube.com/watch?v=EtiNaBw0Qdc</a>
+      </div>
+    </div>
+
+    <div class="why-box">
+      <div class="wt">なぜこの方向もあり得るか</div>
+      「中小だけどしっかりした会社」と見せたい場合、スタイリッシュ系が効果的。ただし他社と差別化は難しく、再生数も広告依存になります。良邊様の「稼げそう・楽しそう」というご要望には少し距離があります。
+    </div>
+
+    <h3 class="block">構成案（60秒・要点のみ）</h3>
+    <div class="scene-list">
+      <div class="scene">
+        <div class="scene-num">—<span class="sec">概要</span></div>
+        <div class="scene-body">
+          <div class="role">先にお見せした6シーン構成（前回モックアップ）</div>
+          <div class="scene-visual">ドローン俯瞰→各工事カット→働く仲間→待遇→代表メッセージ→CTA</div>
+          <div class="scene-telop">「全国を駆けまわる、稼げる現場へ。」</div>
+          <div class="scene-narr">詳細は <a href="yayabe-kensetsu-storyboard.html#m1" style="color:#1565c0">前回ストーリーボード</a> をご参照</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pros-cons">
+      <div class="pros">
+        <div class="h">✓ メリット</div>
+        <ul>
+          <li>無難・失敗しにくい</li>
+          <li>BtoB営業資料としても使える</li>
+          <li>素材ハードルが低い</li>
+        </ul>
+      </div>
+      <div class="cons">
+        <div class="h">△ 注意点</div>
+        <ul>
+          <li>埋もれやすい（差別化が弱い）</li>
+          <li>「稼げそう・楽しそう」感は出にくい</li>
+          <li>SNS拡散は期待できない</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== ランバードからのおすすめ ====== -->
+  <div class="recommend">
+    <h2>🎯 ランバードからのおすすめ</h2>
+    <p style="font-size:.95rem;margin-bottom:10px">良邊様の「<strong>稼げそう・楽しそう</strong>」というご要望、そして代表 良邊様ご自身の "キャラ立ち" を最大限活かすなら、<strong>パターンA（バズ・ユーモア系）</strong>を強くおすすめします。</p>
+
+    <div class="reco-grid">
+      <div class="reco-card">
+        <div class="rl">理由①</div>
+        <div class="rv">代表の人柄が最強の差別化</div>
+      </div>
+      <div class="reco-card">
+        <div class="rl">理由②</div>
+        <div class="rv">SNS拡散で広告費以上のリーチ</div>
+      </div>
+      <div class="reco-card">
+        <div class="rl">理由③</div>
+        <div class="rv">「楽しそう」が一目で伝わる</div>
+      </div>
+      <div class="reco-card">
+        <div class="rl">理由④</div>
+        <div class="rv">マグロ建設・川邊組の前例で実証済</div>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="at">5/14 で確認させてください</div>
+      <ol>
+        <li>3パターンのうち、どの方向に進めるか（あるいはハイブリッド）</li>
+        <li>代表ご出演の可否（写真／音声／動画）</li>
+        <li>給与レンジ・出張手当などの具体数字</li>
+        <li>NG表現（言わないでほしいこと）の確認</li>
+        <li>提供可能素材の棚卸し（現場写真／社員写真／既存動画）</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="footer">
+    有限会社良邊建設 様 ／ 建設業求人動画 ご提案資料<br>
+    株式会社ランバード ／ 2026.05.14 ディレクション資料<br>
+    ※ 美容室「Carat」「YYGolfschool」のご提案は別途資料にて
+  </div>
+
+</div>
+</body>
+</html>
