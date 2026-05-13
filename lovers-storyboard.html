@@ -3,18 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lovers 様 動画 構成案 v2 | RUNBIRD</title>
+<title>Lovers 様 動画 構成案 v3 モックアップ | RUNBIRD</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;background:#1a1a1d;color:#e8e6e3;line-height:1.7}
-  .container{max-width:760px;margin:0 auto;padding:20px}
+  .container{max-width:820px;margin:0 auto;padding:20px}
 
   .header{text-align:center;padding:36px 20px;background:linear-gradient(135deg,#2a2024,#1a1418);border-radius:20px;margin-bottom:20px;box-shadow:0 4px 20px rgba(0,0,0,.4);border:1px solid #3a2a30}
   .header h1{font-size:1.6rem;margin-bottom:8px;color:#f5d5dc;letter-spacing:.04em}
   .header .sub{font-size:.95rem;color:#c8a8b0}
   .header .meta{margin-top:14px;font-size:.78rem;color:#8a7078}
   .badge{display:inline-block;background:linear-gradient(90deg,#c2185b,#7a1238);color:#fff;padding:5px 16px;border-radius:18px;font-size:.78rem;font-weight:bold;margin-top:10px;letter-spacing:.05em}
-  .v2badge{display:inline-block;background:#d4a017;color:#1a1a1d;padding:3px 10px;border-radius:12px;font-size:.7rem;font-weight:bold;margin-left:6px}
+  .v3badge{display:inline-block;background:#d4a017;color:#1a1a1d;padding:3px 10px;border-radius:12px;font-size:.7rem;font-weight:bold;margin-left:6px}
+  .note{display:inline-block;background:#332a36;color:#c8a8b0;padding:4px 14px;border-radius:10px;font-size:.72rem;margin-top:8px}
 
   .section{background:#24202a;border-radius:18px;padding:26px 22px;margin-bottom:18px;box-shadow:0 2px 12px rgba(0,0,0,.3);border:1px solid #332a36}
   .section h2{font-size:1.2rem;margin-bottom:14px;padding-bottom:10px;border-bottom:3px solid #c2185b;color:#f5d5dc}
@@ -25,26 +26,31 @@
   .meta-card .l{font-size:.7rem;color:#8a7078;letter-spacing:.05em}
   .meta-card .v{font-size:.9rem;font-weight:bold;margin-top:3px;color:#e8d6db}
 
+  /* === Mockup style scene cards === */
+  .mockup-list{display:grid;gap:18px;margin-top:10px}
+  .mockup{display:grid;grid-template-columns:280px 1fr;gap:0;border-radius:16px;overflow:hidden;background:#1e1a22;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+  .mockup.cold{border-left:4px solid #4a5870}
+  .mockup.warm{border-left:4px solid #c2185b}
+  .mockup.cta{border-left:4px solid #d4a017}
+
+  .mockup-img{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#000}
+  .mockup-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .mockup-img .scene-tag{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.7);color:#fff;padding:6px 12px;border-radius:20px;font-size:.78rem;font-weight:bold;letter-spacing:.05em}
+  .mockup-img .sec-tag{position:absolute;top:10px;right:10px;background:rgba(194,24,91,.85);color:#fff;padding:6px 10px;border-radius:14px;font-size:.72rem;font-weight:bold}
+  .mockup-img .telop-overlay{position:absolute;bottom:14px;left:14px;right:14px;background:rgba(0,0,0,.65);color:#fff;padding:8px 14px;border-radius:8px;font-size:.85rem;font-weight:bold;text-align:center;line-height:1.4;backdrop-filter:blur(4px)}
+
+  .mockup-body{padding:18px 20px;display:flex;flex-direction:column;justify-content:center}
+  .mockup-body .role{font-weight:bold;font-size:1rem;color:#f5d5dc;margin-bottom:8px}
+  .mockup-body .vis{background:#2a2530;border-radius:8px;padding:8px 12px;font-size:.83rem;margin-bottom:8px;color:#c8b8c0}
+  .mockup-body .vis::before{content:"🎬 ";opacity:.8}
+  .mockup-body .narr{font-size:.85rem;color:#f5d5dc;padding:8px 12px;background:#1a1520;border-radius:6px;margin-top:4px;font-weight:bold;border-left:3px solid #c2185b}
+  .mockup-body .narr::before{content:"🔊 "}
+  .mockup-body .telop{font-size:.85rem;color:#f5d5dc;padding:8px 12px;background:#2a2030;border-radius:6px;margin-top:4px;border-left:3px solid #d4a017}
+  .mockup-body .telop::before{content:"📝 "}
+
   .flow{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;padding:18px;border-radius:14px;margin-bottom:16px;background:#1e1820}
-  .flow-step{background:#2e2630;border-radius:12px;padding:10px 14px;font-size:.82rem;font-weight:bold;text-align:center;min-width:90px;box-shadow:0 1px 4px rgba(0,0,0,.3);color:#e8d6db}
+  .flow-step{background:#2e2630;border-radius:12px;padding:10px 14px;font-size:.82rem;font-weight:bold;text-align:center;min-width:90px;color:#e8d6db}
   .flow-arrow{font-weight:bold;font-size:1.1rem;color:#c2185b}
-
-  .scene-list{display:grid;gap:10px}
-  .scene{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:14px;border-radius:14px;align-items:start;background:#1e1a22}
-  .scene.cold{border-left:4px solid #4a5870}
-  .scene.warm{border-left:4px solid #c2185b}
-  .scene.cta{border-left:4px solid #d4a017}
-
-  .scene-num{width:44px;height:44px;background:#2e2630;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:bold;font-size:.95rem;box-shadow:0 1px 4px rgba(0,0,0,.3);color:#f5d5dc}
-  .scene-num .sec{font-size:.55rem;color:#8a7078;margin-top:1px;font-weight:normal}
-
-  .scene-body .role{font-weight:bold;font-size:.95rem;margin-bottom:6px;color:#f5d5dc}
-  .scene-visual{background:#2a2530;border-radius:8px;padding:8px 10px;font-size:.83rem;margin-bottom:6px;color:#c8b8c0}
-  .scene-visual::before{content:"🎬 ";opacity:.8}
-  .scene-telop{font-size:.85rem;font-weight:bold;background:#2a2530;padding:6px 10px;border-radius:6px;display:inline-block;margin:4px 0;color:#f5d5dc;border-left:3px solid #c2185b}
-  .scene-telop::before{content:"📝 "}
-  .scene-narr{font-size:.85rem;color:#c8b8c0;padding:6px 10px;background:#1a1520;border-radius:6px;margin-top:4px;font-style:italic}
-  .scene-narr::before{content:"🔊 "}
 
   .ab-table{width:100%;border-collapse:collapse;margin-top:10px;background:#1e1a22;border-radius:10px;overflow:hidden}
   .ab-table th,.ab-table td{padding:10px 12px;text-align:left;font-size:.85rem;border-bottom:1px solid #332a36}
@@ -66,11 +72,16 @@
   .ng{background:#2a1818;border-left:5px solid #a04040;border-radius:12px;padding:16px 20px;margin-top:12px;font-size:.88rem;color:#e8c8c8}
   .ng .nt{font-weight:bold;margin-bottom:8px;color:#e89090}
 
+  .changelog{background:#1f2030;border-left:5px solid #6080c0;border-radius:12px;padding:14px 20px;margin-top:10px;font-size:.85rem;color:#c8d0e0}
+  .changelog .ct{font-weight:bold;color:#a0b8e0;margin-bottom:6px}
+
   .footer{text-align:center;padding:24px;color:#6a5a62;font-size:.78rem}
 
-  @media(max-width:600px){
+  @media(max-width:700px){
     .container{padding:12px}
     .header h1{font-size:1.2rem}
+    .mockup{grid-template-columns:1fr}
+    .mockup-img{aspect-ratio:16/10}
     .flow{flex-direction:column}
     .flow-arrow{transform:rotate(90deg)}
   }
@@ -80,10 +91,28 @@
 <div class="container">
 
   <div class="header">
-    <h1>YouTube広告 構成案 <span class="v2badge">v2</span></h1>
+    <h1>YouTube広告 構成案＋画像モックアップ <span class="v3badge">v3</span></h1>
     <p class="sub">Lovers 様（活動名：南 健／本名：川上 啓二 代表）</p>
     <div class="badge">男性専用リラクゼーションサロン・福岡市西区姪浜</div>
-    <p class="meta">打ち合わせまとめ反映版 ／ 2026.05.12 ／ 株式会社ランバード</p>
+    <div class="note">※ シーン画像は AI生成のイメージモックアップです（実制作前のたたき）</div>
+    <p class="meta">録音データ反映版 ／ 2026.05.13 ／ 株式会社ランバード</p>
+  </div>
+
+  <!-- ====== v2→v3 変更点 ====== -->
+  <div class="section">
+    <h2>v2 → v3 主な変更点（録音データ反映）</h2>
+    <div class="changelog">
+      <div class="ct">📝 ヒアリング録音を反映して以下を更新しました</div>
+      <ul style="margin-left:18px;font-size:.88rem">
+        <li><b>作業着の客層 → 医療・介護系</b>に修正（建設・工場系ではなく）</li>
+        <li><b>USP追加：</b>「無理な勧誘・コースの押し売りなし」（南氏ご提案の安心訴求）</li>
+        <li><b>出張対応：</b>「ご出張先・ご旅行先でも」明示</li>
+        <li><b>リピーター訴求：</b>「同じセラピストを指名できる」</li>
+        <li><b>フック候補追加：</b>「経験した人にしか、わからない。」（南氏お気に入り）</li>
+        <li><b>ナレーション主体</b>で構成確定（テロップ＋音声の二段構え）</li>
+        <li><b>ホワイトアウト演出</b>採用（やりすぎ注意）</li>
+      </ul>
+    </div>
   </div>
 
   <!-- ====== 案件概要 ====== -->
@@ -91,13 +120,11 @@
     <h2>案件概要</h2>
     <div class="meta-grid">
       <div class="meta-card"><div class="l">業種</div><div class="v">男性専用<br>リラクゼーションサロン</div></div>
-      <div class="meta-card"><div class="l">目的</div><div class="v">来店予約</div></div>
       <div class="meta-card"><div class="l">動画種類</div><div class="v">YouTube広告<br>悩み解決ストーリー型</div></div>
-      <div class="meta-card"><div class="l">ターゲット</div><div class="v">40〜50代男性<br>サラリーマン／作業員<br>医療・介護従事者</div></div>
-      <div class="meta-card"><div class="l">配信エリア</div><div class="v">東京・大阪・福岡</div></div>
-      <div class="meta-card"><div class="l">想定尺</div><div class="v">30秒<br>（15秒バンパー派生）</div></div>
+      <div class="meta-card"><div class="l">ターゲット</div><div class="v">40〜50代男性<br>サラリーマン／<br>医療・介護従事者</div></div>
+      <div class="meta-card"><div class="l">配信エリア</div><div class="v">東京・大阪・福岡<br>エリアセグメント</div></div>
+      <div class="meta-card"><div class="l">想定尺</div><div class="v">30秒</div></div>
       <div class="meta-card"><div class="l">CTA</div><div class="v">予約導線<br>※要最終確定</div></div>
-      <div class="meta-card"><div class="l">訴求軸</div><div class="v">男性同士だから<br>分かり合える施術／<br>明日への活力</div></div>
     </div>
 
     <h3>ストーリーの流れ（おさるPASONA）</h3>
@@ -110,150 +137,202 @@
       <span class="flow-arrow">▶</span>
       <div class="flow-step">USP<br>独自施術</div>
       <span class="flow-arrow">▶</span>
+      <div class="flow-step">安心<br>押し売りなし</div>
+      <span class="flow-arrow">▶</span>
       <div class="flow-step">After<br>復活</div>
       <span class="flow-arrow">▶</span>
       <div class="flow-step">CTA<br>予約</div>
     </div>
   </div>
 
-  <!-- ====== シーン構成 ====== -->
+  <!-- ====== モックアップ（画像つなぎ） ====== -->
   <div class="section">
-    <h2>シーン構成（全10シーン／30秒）</h2>
-    <p style="font-size:.85rem;color:#a89098;margin-bottom:12px">前半は寒色・低照度で疲労を描き、後半は暖色で安心と回復を描く。<b>スーツ姿＋作業着姿の2バリエーション</b>で配信エリア・職業セグメントに対応。</p>
+    <h2>📽 画像モックアップ（30秒・全10シーン）</h2>
+    <p style="font-size:.85rem;color:#a89098;margin-bottom:18px">AI生成のイメージ画像を各シーンに当てています。前半=寒色（疲労）／後半=暖色（解放）。本制作では、南氏の人物写真を施術者の顔にブレンドし、客モデルは全シーン同一人物で固定します。</p>
 
-    <div class="scene-list">
-      <div class="scene cold">
-        <div class="scene-num">1<span class="sec">0-3s</span></div>
-        <div class="scene-body">
-          <div class="role">フック</div>
-          <div class="scene-visual">電車内、スーツ姿の40代後半男性。つり革に掴まりうつむき気味。寒色・低彩度</div>
-          <div class="scene-telop">その疲れ、引きずってませんか？</div>
+    <div class="mockup-list">
+
+      <!-- S01 -->
+      <div class="mockup cold">
+        <div class="mockup-img">
+          <img src="lovers-images/s01_train_tired.png" alt="S01 電車内・スーツ男性の俯き">
+          <span class="scene-tag">S01</span>
+          <span class="sec-tag">0-3s</span>
+          <div class="telop-overlay">その疲れ、引きずってませんか？</div>
+        </div>
+        <div class="mockup-body">
+          <div class="role">フック（共感）</div>
+          <div class="vis">夕方の電車内。スーツ姿の40代後半男性、つり革に掴まり目線は下。寒色・低彩度</div>
+          <div class="telop">その疲れ、引きずってませんか？</div>
         </div>
       </div>
 
-      <div class="scene cold">
-        <div class="scene-num">2<span class="sec">3-6s</span></div>
-        <div class="scene-body">
-          <div class="role">問題深掘り（職業バリエ）</div>
-          <div class="scene-visual">夕方の建設現場 or 工場。作業着姿の同男性、休憩中に肩を回し首をさする。青みがかった夕景</div>
-          <div class="scene-narr">日常の疲れが、抜けない。</div>
+      <!-- S02 -->
+      <div class="mockup cold">
+        <div class="mockup-img">
+          <img src="lovers-images/s02_carework_tired.png" alt="S02 介護現場・ケアウェア男性が肩を回す">
+          <span class="scene-tag">S02</span>
+          <span class="sec-tag">3-6s</span>
+        </div>
+        <div class="mockup-body">
+          <div class="role">問題深掘り（職業バリエ・医療介護系）</div>
+          <div class="vis">介護施設の廊下、シフト終わり。ケアウェア姿の同男性、肩を回し首をさする。蛍光灯の冷色</div>
+          <div class="narr">日常の疲れが、抜けない。</div>
         </div>
       </div>
 
-      <div class="scene warm">
-        <div class="scene-num">3<span class="sec">6-9s</span></div>
-        <div class="scene-body">
+      <!-- S03 -->
+      <div class="mockup warm">
+        <div class="mockup-img">
+          <img src="lovers-images/s03_salon_exterior.png" alt="S03 Lovers店舗外観">
+          <span class="scene-tag">S03</span>
+          <span class="sec-tag">6-9s</span>
+          <div class="telop-overlay">男性のためのリラクゼーションサロン</div>
+        </div>
+        <div class="mockup-body">
           <div class="role">解決提示</div>
-          <div class="scene-visual">落ち着いた照明のLovers店舗エントランス。看板にロゴ。ドアが静かに開く</div>
-          <div class="scene-telop">男性のためのリラクゼーションサロン</div>
+          <div class="vis">落ち着いた照明のLovers店舗エントランス。ドアが静かに開き、暖色の光が漏れる</div>
+          <div class="telop">男性のためのリラクゼーションサロン</div>
         </div>
       </div>
 
-      <div class="scene warm">
-        <div class="scene-num">4<span class="sec">9-12s</span></div>
-        <div class="scene-body">
-          <div class="role">安心感・人柄</div>
-          <div class="scene-visual">施術者（南氏ベースAI・フレンドリーな顔）が軽くうなずきながら客を迎える。暖色照明</div>
-          <div class="scene-narr">静かに落ち着ける時間と、丁寧なマッサージ。</div>
+      <!-- S04 -->
+      <div class="mockup warm">
+        <div class="mockup-img">
+          <img src="lovers-images/s04_therapist.png" alt="S04 施術者が穏やかに迎える">
+          <span class="scene-tag">S04</span>
+          <span class="sec-tag">9-12s</span>
+        </div>
+        <div class="mockup-body">
+          <div class="role">人柄・安心感（施術者登場）</div>
+          <div class="vis">施術者（南氏ベース・フレンドリーな顔）が、軽くうなずきながら客を迎える。暖色照明</div>
+          <div class="narr">静かに落ち着ける時間と、丁寧なマッサージ。</div>
         </div>
       </div>
 
-      <div class="scene warm">
-        <div class="scene-num">5<span class="sec">12-17s</span></div>
-        <div class="scene-body">
+      <!-- S05 -->
+      <div class="mockup warm">
+        <div class="mockup-img">
+          <img src="lovers-images/s05_session_relief.png" alt="S05 施術中・男性の表情">
+          <span class="scene-tag">S05</span>
+          <span class="sec-tag">12-17s</span>
+          <div class="telop-overlay">男性同士だからこそ、通じ合える感覚。</div>
+        </div>
+        <div class="mockup-body">
           <div class="role">USP①（キメ）</div>
-          <div class="scene-visual">施術ベッドの上、同男性の顔のクローズアップ。表情がゆっくり緩んでいく。途中ホワイトアウトで切替演出</div>
-          <div class="scene-narr">男性同士だからこそ、通じ合える感覚。</div>
+          <div class="vis">施術ベッドにうつ伏せの同男性、顔のクローズアップ。表情がゆっくり緩む。途中ホワイトアウト演出</div>
+          <div class="narr">男性同士だからこそ、通じ合える感覚。</div>
         </div>
       </div>
 
-      <div class="scene warm">
-        <div class="scene-num">6<span class="sec">17-21s</span></div>
-        <div class="scene-body">
-          <div class="role">USP②</div>
-          <div class="scene-visual">施術師の手が肩・首・背中をていねいにほぐすカット。手の動きにリズム感</div>
-          <div class="scene-narr">敏感になりやすいポイントを、じっくり時間をかけて。</div>
+      <!-- S06 -->
+      <div class="mockup warm">
+        <div class="mockup-img">
+          <img src="lovers-images/s06_hands.png" alt="S06 施術師の手元">
+          <span class="scene-tag">S06</span>
+          <span class="sec-tag">17-21s</span>
+        </div>
+        <div class="mockup-body">
+          <div class="role">USP②（独自手技）</div>
+          <div class="vis">施術師の手が肩・首・背中をていねいにほぐすカット。手の動きにリズム感</div>
+          <div class="narr">敏感になりやすいポイントを、じっくり時間をかけて。</div>
         </div>
       </div>
 
-      <div class="scene warm">
-        <div class="scene-num">7<span class="sec">21-24s</span></div>
-        <div class="scene-body">
-          <div class="role">ベネフィット</div>
-          <div class="scene-visual">施術後、同男性が深呼吸して目を開ける。表情に余裕</div>
-          <div class="scene-telop">日常の疲れをリセット。</div>
+      <!-- S07 -->
+      <div class="mockup warm">
+        <div class="mockup-img">
+          <img src="lovers-images/s07_after_breath.png" alt="S07 施術後・深呼吸">
+          <span class="scene-tag">S07</span>
+          <span class="sec-tag">21-24s</span>
+          <div class="telop-overlay">無理な勧誘も、コースの押し売りも、ありません。</div>
+        </div>
+        <div class="mockup-body">
+          <div class="role">ベネフィット＋安心訴求（NEW）</div>
+          <div class="vis">施術後、同男性が白いガウン姿でベッドに座り深呼吸。表情に余裕</div>
+          <div class="telop">無理な勧誘も、コースの押し売りも、ありません。</div>
         </div>
       </div>
 
-      <div class="scene warm">
-        <div class="scene-num">8<span class="sec">24-27s</span></div>
-        <div class="scene-body">
-          <div class="role">After／復活（2カット）</div>
-          <div class="scene-visual">①スーツ姿で颯爽と空港・新幹線ホームを歩く ②作業着で現場に戻り仲間と笑顔で挨拶</div>
-          <div class="scene-telop">明日への活力を。</div>
+      <!-- S08 -->
+      <div class="mockup cta">
+        <div class="mockup-img">
+          <img src="lovers-images/s08_after_airport.png" alt="S08 After・空港で颯爽">
+          <span class="scene-tag">S08</span>
+          <span class="sec-tag">24-27s</span>
+          <div class="telop-overlay">ご出張先でも、明日への活力を。</div>
+        </div>
+        <div class="mockup-body">
+          <div class="role">After／復活（2カット連続）</div>
+          <div class="vis">①スーツ姿で空港・新幹線ホームを颯爽と歩く ②介護現場で利用者と笑顔で挨拶</div>
+          <div class="telop">ご出張先でも、明日への活力を。</div>
         </div>
       </div>
 
-      <div class="scene cta">
-        <div class="scene-num">9<span class="sec">27-29s</span></div>
-        <div class="scene-body">
+      <!-- S09 -->
+      <div class="mockup cta">
+        <div class="mockup-img" style="background:linear-gradient(135deg,#2a2030,#1a1520);display:flex;align-items:center;justify-content:center;aspect-ratio:1/1">
+          <span class="scene-tag">S09</span>
+          <span class="sec-tag">27-29s</span>
+          <div style="text-align:center;color:#f5d5dc;padding:20px">
+            <div style="font-size:1.3rem;font-weight:bold;letter-spacing:.1em;margin-bottom:8px">Lovers</div>
+            <div style="font-size:.7rem;color:#c8a8b0;margin-bottom:4px">福岡市西区下山門1-7-62</div>
+            <div style="font-size:.7rem;color:#c8a8b0;margin-bottom:4px">アメックス姪浜307</div>
+            <div style="font-size:.78rem;color:#f5d5dc;margin-top:8px">TEL: 080-3950-3324</div>
+          </div>
+        </div>
+        <div class="mockup-body">
           <div class="role">店舗情報</div>
-          <div class="scene-visual">店舗ロゴを中央配置。背景は施術ルームの落ち着いた画</div>
-          <div class="scene-telop">Lovers（ラバーズ）<br>福岡市西区下山門1-7-62 アメックス姪浜307<br>TEL: 080-3950-3324</div>
+          <div class="vis">店舗ロゴが中央に配置。背景は施術ルームの落ち着いた画</div>
+          <div class="telop">Lovers（ラバーズ）<br>福岡市西区下山門1-7-62 アメックス姪浜307<br>TEL: 080-3950-3324</div>
         </div>
       </div>
 
-      <div class="scene cta">
-        <div class="scene-num">10<span class="sec">29-30s</span></div>
-        <div class="scene-body">
+      <!-- S10 -->
+      <div class="mockup cta">
+        <div class="mockup-img" style="background:linear-gradient(135deg,#c2185b,#7a1238);display:flex;align-items:center;justify-content:center;aspect-ratio:1/1">
+          <span class="scene-tag">S10</span>
+          <span class="sec-tag">29-30s</span>
+          <div style="text-align:center;color:#fff;padding:20px">
+            <div style="font-size:1.5rem;font-weight:bold;margin-bottom:10px">ご予約はこちら ▶</div>
+            <div style="font-size:.8rem;opacity:.9">LINE / 電話 / Web</div>
+          </div>
+        </div>
+        <div class="mockup-body">
           <div class="role">CTA</div>
-          <div class="scene-visual">LINE QRコード／電話番号／予約ボタンの最終CTA画面</div>
-          <div class="scene-telop">ご予約はこちら ▶</div>
+          <div class="vis">LINE QRコード／電話番号／予約ボタンの最終CTA画面</div>
+          <div class="telop">ご予約はこちら ▶</div>
         </div>
       </div>
+
     </div>
 
     <div class="point">
       <div class="pt">💡 演出のキモ</div>
       <ul style="margin-left:18px">
-        <li><b>客モデル2バリエ：</b>スーツ＋作業着の2パターン撮影で、配信エリア（東京＝スーツ多／福岡＝作業着多）に出し分け可能</li>
-        <li><b>施術者の顔：</b>南氏の顔＋AI生成（プールサイドのフレンドリーな男性イメージ）をブレンド。親しみやすく信頼される顔を1枚固定し全シーン参照</li>
-        <li><b>施術シーン：</b>実際の施術動画ベース＋AI加工、<b>ホワイトアウト演出</b>でシーン切替し過激回避</li>
-        <li><b>結末：</b>「気持ちよかった」で終わらせず<b>「出張先・現場復帰」</b>まで描き、自分事化を強化</li>
-        <li><b>同一人物性：</b>before/after は同じ顔・同じ体型をキャラ基準画像1枚で固定し全シーン参照</li>
+        <li><b>客モデル：</b>40代後半、ややぽっこりお腹の普通体型（細い人・マッチョ NG）</li>
+        <li><b>衣装2バリエ：</b>スーツ＋医療・介護系ケアウェアでエリア出し分け</li>
+        <li><b>施術者：</b>南氏の写真＋AI生成（プールサイドの男性）をブレンド。フレンドリーで信頼される顔を1枚固定し全シーン参照</li>
+        <li><b>同一人物性：</b>before/after は同じ顔・同じ体型で統一</li>
+        <li><b>色温度の落差：</b>前半=寒色／後半=暖色。BGMなしでも感情が伝わる</li>
+        <li><b>結末：</b>「気持ちよかった」で終わらせず「出張先・現場復帰」まで描く</li>
       </ul>
     </div>
 
     <div class="ng">
       <div class="nt">⚠️ YouTube広告審査・ブランドセーフティ対策</div>
       <ul style="margin-left:18px">
-        <li>「敏感になりやすいポイント」表現は際どい → 映像は<b>肩・首・背中・足のみ</b>に限定</li>
-        <li>過度に官能的・性的な描写は禁止。ホワイトアウト演出で身体描写を回避</li>
-        <li>表情はあくまで「ほぐれる・深呼吸」レベル（恍惚NG）</li>
-        <li>「癒し・健康・疲労回復・リフレッシュ」ワードを並走させリラクゼーション文脈を明確化</li>
+        <li>「敏感になりやすいポイント」表現は際どい → 映像は<b>肩・首・背中・手元のみ</b>に限定</li>
+        <li>過度に官能的・性的な描写は禁止。<b>ホワイトアウト演出</b>で身体描写を回避</li>
+        <li>表情は「ほぐれる・深呼吸」レベル（恍惚NG）</li>
+        <li>「癒し・健康・疲労回復」ワードを並走</li>
       </ul>
     </div>
   </div>
 
-  <!-- ====== 配信エリア × 衣装 ====== -->
-  <div class="section">
-    <h2>配信エリア × 衣装パターン 出し分け案</h2>
-    <table class="ab-table">
-      <thead>
-        <tr><th>エリア</th><th>メイン衣装</th><th>サブ衣装</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>東京</td><td>スーツ</td><td>—</td></tr>
-        <tr><td>大阪</td><td>スーツ</td><td>作業着</td></tr>
-        <tr><td>福岡</td><td>作業着</td><td>スーツ</td></tr>
-      </tbody>
-    </table>
-    <p style="font-size:.82rem;color:#a89098;margin-top:8px">YouTube広告のセグメント機能でエリア×衣装違いを出し分け、最も反応の良い組み合わせを学習させる。</p>
-  </div>
-
   <!-- ====== 台本 ====== -->
   <div class="section">
-    <h2>台本（ナレーション全文）</h2>
+    <h2>🎙 台本（ナレーション全文）</h2>
     <div class="narration-box">
       日常の疲れが、抜けない。<br>
       <span class="pause">（間）</span><br>
@@ -262,12 +341,12 @@
       敏感になりやすいポイントを、じっくり時間をかけて。
     </div>
     <p style="font-size:.82rem;color:#8a7078;margin-top:10px">総文字数：約75文字／想定読み時間：約18〜20秒</p>
-    <p style="font-size:.85rem;color:#c8b8c0;margin-top:8px">ナレーション方針：落ち着いた30〜40代男性の声（AI音声 / 南氏本人 / 声優、要ご相談）<br>BGM：前半=静かなピアノ／後半=温かいアコースティック</p>
+    <p style="font-size:.85rem;color:#c8b8c0;margin-top:8px">ナレーション方針：落ち着いた30〜40代男性の声（AI音声 / 声優、要ご選定）<br>BGM：前半=静かなピアノ／後半=温かいアコースティック</p>
   </div>
 
-  <!-- ====== A/Bテスト案 ====== -->
+  <!-- ====== A/B フック ====== -->
   <div class="section">
-    <h2>フックA/Bテスト案（S01テロップ差し替え）</h2>
+    <h2>フックA/Bテスト案（S01テロップ）</h2>
     <table class="ab-table">
       <thead>
         <tr><th style="width:55px">案</th><th>テロップ</th><th style="width:35%">想定効果</th></tr>
@@ -275,8 +354,8 @@
       <tbody>
         <tr><td><span class="tag">A</span></td><td>その疲れ、引きずってませんか？</td><td>共感型・自分事化<br><span style="color:#a8d0b8;font-size:.78rem">▼推奨</span></td></tr>
         <tr><td><span class="tag" style="background:#7a1238">B</span></td><td>男の疲れは、男にしか分からない。</td><td>断定型。USPを冒頭から</td></tr>
-        <tr><td><span class="tag" style="background:#7a1238">C</span></td><td>40代、抜けない疲れの理由。</td><td>数字型。年齢でターゲット明示</td></tr>
-        <tr><td><span class="tag" style="background:#7a1238">D</span></td><td>出張族の体、ボロボロになっていませんか。</td><td>職業型。出張多いビジネスマン直撃</td></tr>
+        <tr><td><span class="tag" style="background:#7a1238">C</span></td><td>40代、抜けない疲れの理由。</td><td>数字型。年齢明示</td></tr>
+        <tr><td><span class="tag" style="background:#d4a017;color:#1a1a1d">E</span></td><td>経験した人にしか、わからない。</td><td><b>南様お気に入り</b>。限定感・興味喚起</td></tr>
       </tbody>
     </table>
   </div>
@@ -285,21 +364,20 @@
   <div class="section">
     <h2>南様にご確認したいこと</h2>
     <div class="ask">
-      <div class="at">✏️ 7項目のご確認をお願いします</div>
+      <div class="at">✏️ 6項目のご確認をお願いします</div>
       <ol>
         <li><b>CTA導線：</b>LINE予約／電話080-3950-3324／HPフォーム、メインはどちら？</li>
-        <li><b>尺：</b>30秒メイン＋15秒バンパー派生でOKか？</li>
-        <li><b>ナレーション：</b>AI音声 / 南氏本人の声 / 声優、どれにしますか？</li>
-        <li><b>施術動画素材：</b>南様撮影の実施術映像をAI加工のベースに使う運用でOKか</li>
-        <li><b>人物写真：</b>スーツ・作業着・脱いだ姿の参考写真ご送付タイミング</li>
-        <li><b>ロゴ素材：</b>高解像度PNG版の有無</li>
-        <li><b>「敏感になりやすいポイント」</b>表現：YouTube広告審査リスクの対応方針</li>
+        <li><b>本名の読み：</b>川上「啓二（けいじ）」or「健二（けんじ）」or その他？（契約書類サイン前に確定）</li>
+        <li><b>15秒バンパー版</b>も並走で作りますか？</li>
+        <li><b>ナレーション：</b>AI音声 / 声優、どちらにしますか？</li>
+        <li><b>人物写真：</b>南様の最新写真3枚（プールサイド系2枚＋本人正面）の送付タイミング</li>
+        <li><b>フックE案</b>「経験した人にしか、わからない。」をA案と並走テストしますか？</li>
       </ol>
     </div>
   </div>
 
   <div class="footer">
-    Lovers 様 YouTube広告 構成案 v2 ／ 株式会社ランバード ／ 2026.05.12
+    Lovers 様 YouTube広告 構成案＋画像モックアップ v3 ／ 株式会社ランバード ／ 2026.05.13
   </div>
 
 </div>
