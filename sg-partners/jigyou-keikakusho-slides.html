@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1456, initial-scale=1.0">
+<title>一般社団法人SGパートナーズ 事業計画書 — 障がい者グループホーム α-cupid</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0a1929;
+    --navy-2:#1a365d;
+    --navy-3:#2c4870;
+    --gold:#c9a961;
+    --gold-2:#daa520;
+    --bg:#f5f7fa;
+    --white:#ffffff;
+    --gray:#e2e8f0;
+    --gray-2:#718096;
+    --text:#1a1a1a;
+    --red:#c53030;
+    --green:#2f855a;
+  }
+  html,body{font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;background:#cfd8e3;color:var(--text);line-height:1.6}
+  .slide{
+    width:1456px;height:819px;margin:24px auto;background:var(--bg);
+    position:relative;overflow:hidden;
+    box-shadow:0 4px 20px rgba(0,0,0,0.15);
+    page-break-after:always;
+  }
+  /* Header bar */
+  .slide-header{
+    height:80px;background:var(--bg);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 56px;border-bottom:3px solid var(--gold);
+  }
+  .slide-title{
+    font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;
+    font-size:30px;color:var(--navy);font-weight:600;letter-spacing:4px;
+    border-left:6px solid var(--gold);padding-left:16px;
+  }
+  .slide-meta{font-size:13px;color:var(--gray-2)}
+  .pagenum{position:absolute;bottom:20px;right:40px;font-size:13px;color:var(--gray-2);z-index:20}
+
+  /* Body */
+  .slide-body{padding:32px 56px;height:calc(100% - 80px);overflow:hidden}
+
+  /* Common card */
+  .card{background:var(--white);border-radius:8px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+
+  /* COVER */
+  .cover{background:var(--navy);color:var(--white);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative}
+  .cover::before,.cover::after{
+    content:"";position:absolute;width:80px;height:80px;border:1px solid var(--gold);
+  }
+  .cover::before{top:48px;left:48px;border-right:none;border-bottom:none}
+  .cover::after{bottom:48px;right:48px;border-left:none;border-top:none}
+  .cover-corner-tr{position:absolute;top:48px;right:48px;width:80px;height:80px;border:1px solid var(--gold);border-left:none;border-bottom:none}
+  .cover-corner-bl{position:absolute;bottom:48px;left:48px;width:80px;height:80px;border:1px solid var(--gold);border-right:none;border-top:none}
+  .cover-eyebrow{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:32px;letter-spacing:8px;font-weight:300;color:#cbd5e0;margin-bottom:24px}
+  .cover-title{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:64px;letter-spacing:6px;color:var(--white);font-weight:500;text-align:center;line-height:1.4}
+  .cover-company{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:24px;letter-spacing:6px;color:var(--gold);margin-top:24px;border-bottom:1px solid var(--gold);padding-bottom:8px}
+  .cover-info{margin-top:80px;background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,97,0.3);border-radius:8px;padding:24px 40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;width:880px}
+  .cover-info-row{display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(255,255,255,0.1);padding:8px 0}
+  .cover-info-label{font-size:13px;color:#a0aec0;min-width:80px}
+  .cover-info-value{font-size:16px;color:var(--white);font-weight:500}
+
+  /* Profile */
+  .profile-grid{display:grid;grid-template-columns:340px 1fr;gap:32px;height:100%}
+  .profile-card{background:var(--white);border:1px solid var(--gray);border-radius:8px;padding:32px 24px}
+  .profile-avatar{width:160px;height:160px;border-radius:50%;background:#edf2f7;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;color:#a0aec0;font-size:64px}
+  .profile-name{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:32px;text-align:center;color:var(--navy);margin-bottom:6px}
+  .profile-sub{text-align:center;font-size:13px;color:var(--gray-2);margin-bottom:14px}
+  .profile-badges{display:flex;justify-content:center;gap:8px;margin-bottom:20px}
+  .badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600}
+  .badge-navy{background:var(--navy);color:var(--white)}
+  .badge-gold{background:var(--gold);color:var(--navy)}
+  .profile-meta{border-top:1px solid var(--gray);padding-top:14px;font-size:13px;line-height:1.8}
+  .profile-meta-label{color:var(--gray-2);font-size:11px;margin-top:8px}
+  .profile-cert-card{margin-top:20px;background:var(--white);border:1px solid var(--gray);border-radius:8px;padding:16px;border-top:3px solid var(--gold)}
+  .profile-cert-title{font-size:14px;color:var(--navy);font-weight:700;margin-bottom:12px}
+  .cert-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .cert-tag{padding:5px 12px;border:1px solid var(--gray);border-radius:4px;font-size:12px;color:#2d3748;background:#f7fafc}
+  .career-list{padding-left:0}
+  .career-item{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:16px 0;border-left:2px solid var(--navy);padding-left:20px;position:relative;margin-bottom:4px}
+  .career-item::before{content:"";position:absolute;left:-7px;top:24px;width:12px;height:12px;background:var(--navy);border-radius:50%}
+  .career-period{font-size:13px;color:var(--gold-2);font-weight:600}
+  .career-company{font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
+  .career-role{font-size:13px;color:var(--gray-2)}
+  .career-highlight{display:inline-block;margin-top:6px;padding:3px 10px;background:#fef5e7;border-left:3px solid var(--gold);font-size:12px;color:#744210}
+  .career-highlight-success{background:#f0fff4;border-left-color:var(--green);color:#22543d}
+
+  /* TOC */
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;padding:8px 0}
+  .toc-item{display:grid;grid-template-columns:48px 1fr 32px;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray);font-size:15px}
+  .toc-item.active{background:var(--navy);color:var(--white);border-radius:4px;padding:14px 16px;border-bottom:none}
+  .toc-num{font-family:'Hiragino Mincho ProN',serif;color:var(--gold);font-weight:600}
+  .toc-item.active .toc-num{color:var(--gold)}
+
+  /* 4-card grid */
+  .grid-2x2{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:24px;height:100%}
+  .info-card{background:var(--white);border-radius:8px;padding:28px;border-left:5px solid var(--navy);box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .info-card.gold{border-left-color:var(--gold)}
+  .info-card.green{border-left-color:var(--green)}
+  .info-card.red{border-left-color:var(--red)}
+  .info-card-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--navy);color:var(--white);border-radius:50%;margin-bottom:14px;font-weight:700}
+  .info-card.gold .info-card-icon{background:var(--gold)}
+  .info-card.green .info-card-icon{background:var(--green)}
+  .info-card.red .info-card-icon{background:var(--red)}
+  .info-card-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .info-card-body{font-size:13.5px;color:#2d3748;line-height:1.8}
+  .quote-strip{position:absolute;bottom:32px;left:56px;right:56px;background:var(--navy);color:var(--white);padding:18px 28px;border-left:6px solid var(--gold);border-radius:4px;font-size:14px}
+
+  /* Service overview */
+  .service-top{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;margin-bottom:20px}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .service-card{background:var(--white);border-radius:8px;padding:22px;border:1px solid var(--gray)}
+  .service-icon{width:36px;height:36px;background:#edf2f7;color:var(--navy);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+  .service-name{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .service-desc{font-size:12px;color:#4a5568;line-height:1.7}
+
+  /* Location */
+  .loc-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;height:100%}
+  .loc-map{background:#e2e8f0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);font-size:14px;position:relative;overflow:hidden;min-height:680px}
+  .loc-map-pin{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    background:var(--navy);color:var(--white);
+    padding:14px 22px;border:3px solid var(--gold);
+    border-radius:8px;font-size:14px;font-weight:700;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25),0 0 0 8px rgba(201,169,97,0.15);
+    text-align:center;line-height:1.5;z-index:5;
+  }
+  .loc-map-label{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    background:rgba(255,255,255,0.92);
+    padding:4px 10px;border-radius:4px;
+    font-size:11px;color:#4a5568;font-weight:600;
+    box-shadow:0 1px 3px rgba(0,0,0,0.1);
+  }
+  .loc-detail{padding-top:16px}
+  .loc-detail-title{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);border-left:4px solid var(--gold);padding-left:12px;margin-bottom:18px}
+  .loc-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:18px}
+  .loc-table th,.loc-table td{padding:10px 12px;border-bottom:1px solid var(--gray);text-align:left;vertical-align:top}
+  .loc-table th{background:#f7fafc;color:var(--navy);width:130px;font-weight:600}
+  .loc-bullet{display:flex;align-items:start;gap:10px;font-size:13px;margin:8px 0}
+  .loc-bullet::before{content:"●";color:var(--gold);font-size:10px;margin-top:6px}
+
+  /* Partner */
+  .partner-grid{display:grid;grid-template-columns:300px 1fr;gap:32px;height:100%}
+  .partner-card{background:var(--navy);color:var(--white);border-radius:8px;padding:32px 28px}
+  .partner-eyebrow{display:inline-block;background:rgba(201,169,97,0.2);color:var(--gold);font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:3px;margin-bottom:16px}
+  .partner-name{font-family:'Hiragino Mincho ProN',serif;font-size:24px;color:var(--white);margin-bottom:6px}
+  .partner-en{font-size:12px;color:var(--gold);font-style:italic;margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:16px}
+  .partner-meta-label{font-size:11px;color:#a0aec0;margin-top:14px}
+  .partner-meta-value{font-size:14px;color:var(--white);margin-top:2px;line-height:1.6}
+  .partner-feature{margin-bottom:18px}
+  .partner-feature-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  .partner-feature-en{font-size:11px;color:var(--gray-2);font-style:italic}
+  .partner-feature-desc{font-size:13px;color:#2d3748;line-height:1.7;background:var(--white);padding:18px;border-radius:6px;border:1px solid var(--gray);margin-top:6px}
+  .partner-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+  /* Philosophy */
+  .philo-mission{background:var(--white);border-radius:8px;padding:32px 40px;display:flex;align-items:center;gap:32px;margin-bottom:28px}
+  .philo-icon{width:80px;height:80px;background:var(--gold);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0}
+  .philo-mission-text{flex:1}
+  .philo-mission-eyebrow{font-size:11px;letter-spacing:3px;color:var(--gold-2);font-weight:600;margin-bottom:8px}
+  .philo-mission-title{font-family:'Hiragino Mincho ProN',serif;font-size:28px;color:var(--navy);margin-bottom:8px}
+  .philo-mission-desc{font-size:14px;color:#4a5568;line-height:1.8}
+  .philo-policies{display:flex;flex-direction:column;gap:12px}
+  .philo-policy{display:flex;align-items:center;gap:18px;padding:14px 24px;background:var(--white);border-radius:8px;border-left:4px solid var(--navy);font-size:13.5px}
+  .philo-policy-num{width:32px;height:32px;background:var(--navy);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+  .philo-policy-title{font-weight:700;color:var(--navy);margin-right:16px;min-width:160px}
+
+  /* Cash flow */
+  .cf-diagram{background:var(--white);border-radius:8px;padding:40px 32px;margin-bottom:28px}
+  .cf-eyebrow{font-size:11px;letter-spacing:3px;color:var(--gray-2);margin-bottom:20px}
+  .cf-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .cf-node{flex:1;background:var(--white);border:2px solid var(--gray);border-radius:8px;padding:18px 12px;text-align:center}
+  .cf-node.center{background:var(--navy);color:var(--white);border-color:var(--navy)}
+  .cf-node.gold{background:#fef5e7;border-color:var(--gold)}
+  .cf-node-icon{font-size:24px;color:var(--navy);margin-bottom:8px}
+  .cf-node.center .cf-node-icon{color:var(--gold)}
+  .cf-node.gold .cf-node-icon{color:var(--gold-2)}
+  .cf-node-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px}
+  .cf-node.center .cf-node-title{color:var(--white)}
+  .cf-node-sub{font-size:11px;color:var(--gray-2)}
+  .cf-arrow{font-size:11px;color:var(--gray-2);min-width:48px;text-align:center}
+  .cf-arrow strong{display:block;color:var(--navy);font-size:11px;margin-bottom:2px}
+  .cf-features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .cf-feature{background:var(--white);border-left:4px solid var(--gold);border-radius:4px;padding:18px 22px}
+  .cf-feature-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+
+  /* Rate table */
+  .rate-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;height:100%}
+  .rate-section-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;justify-content:space-between}
+  .rate-region{background:#fef5e7;color:var(--navy);font-size:12px;padding:6px 14px;border-radius:4px;font-weight:700}
+  .rate-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .rate-table th{background:#edf2f7;color:var(--navy);font-size:13px;font-weight:600;padding:14px 16px;text-align:left;border-bottom:2px solid var(--gold)}
+  .rate-table td{padding:18px 16px;border-bottom:1px solid var(--gray);font-size:14px}
+  .rate-table tr.featured td{background:#fef5e7}
+  .rate-table .rate-num{display:inline-flex;width:24px;height:24px;border-radius:50%;background:#cbd5e0;color:#4a5568;font-size:11px;align-items:center;justify-content:center;margin-right:8px}
+  .rate-table tr.featured .rate-num{background:var(--gold);color:var(--white)}
+  .rate-amount{font-family:'Hiragino Mincho ProN',serif;font-size:20px;color:var(--navy);font-weight:700;text-align:right}
+  .rate-table tr.featured .rate-amount{color:var(--gold-2);font-size:24px}
+  .rate-addons{margin-top:18px;background:var(--white);border:1px dashed var(--gray);border-radius:8px;padding:14px}
+  .rate-addons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+  .rate-addon{text-align:center;padding:12px;background:#f7fafc;border-radius:6px}
+  .rate-addon-label{font-size:11px;color:var(--gray-2)}
+  .rate-addon-value{font-size:18px;font-weight:700;color:var(--navy);margin-top:4px}
+  .rate-burden-card{background:var(--navy);color:var(--white);border-radius:8px;padding:24px;text-align:center;margin-bottom:14px}
+  .rate-burden-label{font-size:12px;color:#cbd5e0;margin-bottom:8px}
+  .rate-burden-value{font-family:'Hiragino Mincho ProN',serif;font-size:54px;font-weight:300;letter-spacing:1px}
+  .rate-burden-value span{font-size:24px}
+  .rate-burden-note{font-size:10px;color:#a0aec0;margin-top:6px}
+  .rate-burden-list{font-size:13px}
+  .rate-burden-list-row{display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-bottom:1px solid var(--gray)}
+  .rate-burden-list-row:last-child{border-bottom:none}
+  .rate-burden-list-row-label{display:flex;align-items:center;gap:10px;color:#2d3748}
+  .rate-burden-list-row-value{font-weight:700;color:var(--navy)}
+  .rate-info-note{font-size:11px;color:var(--gray-2);background:#f7fafc;padding:10px;border-radius:6px;margin-top:10px;line-height:1.6}
+  .rate-info-note strong{color:var(--gold-2)}
+
+  /* Staff */
+  .staff-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;height:100%}
+  .staff-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);border-radius:8px;overflow:hidden;font-size:13px}
+  .staff-table th{background:#edf2f7;padding:8px 10px;text-align:left;color:var(--navy);font-weight:600;font-size:11px}
+  .staff-table td{padding:8px 10px;border-bottom:1px solid var(--gray);vertical-align:middle;font-size:12px}
+  .staff-tag{display:inline-block;padding:3px 10px;background:#fef5e7;color:#744210;font-size:11px;border-radius:3px;font-weight:600}
+  .staff-tag.full{background:#1a365d;color:#fff}
+  .staff-tag.part{background:#fef5e7;color:#744210}
+  .staff-tag.fixed{background:#e2e8f0;color:#2d3748}
+  .staff-amount{text-align:right;font-weight:700;color:var(--navy)}
+  .staff-amount-sub{display:block;font-size:10px;color:var(--gray-2);font-weight:400}
+  .staff-amount-warn{color:var(--red);font-size:10px;font-weight:600;display:block;margin-top:2px}
+  .staff-summary{margin-top:10px;background:var(--white);border-radius:8px;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;border-top:3px solid var(--gold)}
+  .staff-summary-left{font-size:12px;color:var(--gray-2)}
+  .staff-summary-left strong{display:block;color:var(--navy);font-size:14px;margin-bottom:2px}
+  .staff-summary-total{font-family:'Hiragino Mincho ProN',serif;font-size:32px;font-weight:700;color:var(--gold-2);text-align:right}
+  .staff-summary-total span{font-size:14px}
+  .staff-strategy-card{background:var(--white);border-radius:8px;padding:20px;border:1px solid var(--gray);margin-bottom:14px}
+  .staff-strategy-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .staff-strategy-desc{font-size:12.5px;color:#2d3748;line-height:1.7}
+  .staff-strategy-pill{display:inline-block;background:#f0fff4;color:var(--green);padding:5px 10px;border-radius:4px;font-size:11px;font-weight:600;margin-top:8px}
+  .staff-variable{background:linear-gradient(135deg,#1a365d 0%,#2c4870 100%);color:var(--white);border-radius:8px;padding:18px}
+  .staff-variable-head{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:12px;margin-bottom:12px}
+  .staff-variable-label{font-size:13px;font-weight:600}
+  .staff-variable-sub{font-size:10px;color:#cbd5e0}
+  .staff-variable-amount{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--gold)}
+  .staff-variable-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:12px}
+  .staff-variable-row-name{display:flex;align-items:center;gap:8px}
+
+  /* Strengths */
+  .strengths-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .strength-card{background:var(--white);border-radius:8px;padding:28px;border-top:4px solid var(--navy);position:relative;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .strength-card.gold{border-top-color:var(--gold)}
+  .strength-card.green{border-top-color:var(--green)}
+  .strength-card.red{border-top-color:var(--red)}
+  .strength-card.purple{border-top-color:#805ad5}
+  .strength-num{position:absolute;top:16px;right:24px;font-family:'Hiragino Mincho ProN',serif;font-size:30px;color:#cbd5e0;font-weight:300}
+  .strength-icon{width:52px;height:52px;background:#edf2f7;color:var(--navy);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+  .strength-title{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .strength-desc{font-size:13px;color:#2d3748;line-height:1.7}
+  .strength-desc strong{color:var(--gold-2)}
+
+  /* Funding / Capital */
+  .fund-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;height:100%}
+  .fund-table{width:100%;border-collapse:separate;border-spacing:0;font-size:11.5px}
+  .fund-table th{background:#edf2f7;padding:6px 10px;text-align:left;color:var(--navy);font-weight:600}
+  .fund-table td{padding:6px 10px;border-bottom:1px solid var(--gray);background:var(--white)}
+  .fund-section-row td{background:#f7fafc;font-weight:700;color:var(--navy);padding:5px 10px;font-size:11px}
+  .fund-amount{text-align:right;font-weight:700;color:var(--navy)}
+  .fund-amount-sub{font-size:10px;color:var(--gray-2);font-weight:400}
+  .fund-subtotal{background:var(--navy);color:var(--white);padding:9px 14px;display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:10px;border-radius:4px}
+  .fund-subtotal .yen{font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--gold)}
+  .fund-total-card{background:var(--white);border-radius:8px;padding:32px;text-align:center;height:100%;display:flex;flex-direction:column;justify-content:center;border-top:4px solid var(--gold)}
+  .fund-total-icon{width:72px;height:72px;background:#fef5e7;color:var(--gold-2);border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:32px}
+  .fund-total-eyebrow{font-size:11px;letter-spacing:3px;color:var(--gray-2);margin-bottom:8px}
+  .fund-total-amount{font-family:'Hiragino Mincho ProN',serif;font-size:54px;font-weight:300;color:var(--navy)}
+  .fund-total-amount span{font-size:24px}
+  .fund-total-yen{font-size:13px;color:var(--gray-2);margin-top:6px}
+  .fund-strategy{margin-top:20px;background:#f7fafc;border-left:4px solid var(--gold);padding:14px 18px;text-align:left}
+  .fund-strategy-title{font-size:11px;letter-spacing:2px;color:var(--gold-2);font-weight:700;margin-bottom:8px}
+  .fund-strategy-row{display:flex;align-items:start;gap:8px;font-size:12px;color:#2d3748;margin:6px 0}
+  .fund-strategy-row::before{content:"✓";color:var(--green);font-weight:700;margin-top:1px}
+  .fund-strategy-row strong{color:var(--navy);display:block;font-size:12.5px}
+
+  /* P&L */
+  .pl-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:24px;height:100%}
+  .pl-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:8px;overflow:hidden;font-size:11.5px}
+  .pl-table th{background:var(--navy);color:var(--white);padding:7px 10px;text-align:right;font-weight:600;font-size:11px}
+  .pl-table th:first-child{text-align:left}
+  .pl-table th.phase1{background:#7b341e}
+  .pl-table th.phase2{background:#22543d}
+  .pl-table td{padding:5px 10px;border-bottom:1px solid var(--gray);font-size:11px;text-align:right;line-height:1.4}
+  .pl-table td:first-child{text-align:left;font-weight:600;color:#2d3748}
+  .pl-table td:last-child{text-align:left;font-size:10px;color:var(--gray-2);font-weight:400}
+  .pl-table tr.section td{background:#edf2f7;font-weight:700;color:var(--navy);font-size:10.5px;padding:4px 10px}
+  .pl-table tr.subtotal td{background:#fef5e7;color:#744210;font-weight:700}
+  .pl-table tr.total td{background:var(--navy);color:var(--white);font-weight:700;font-size:12.5px;padding:8px 10px}
+  .pl-table tr.total td:last-child{background:var(--navy);color:#cbd5e0;font-size:10px;font-weight:400}
+  .pl-table .delta-up{color:var(--green);font-weight:600}
+  .pl-table .delta-down{color:var(--red);font-weight:600}
+  .pl-side-card{background:var(--white);border-radius:8px;padding:18px;margin-bottom:14px}
+  .pl-side-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .pl-phase{display:flex;gap:12px;align-items:start;margin-bottom:10px;padding:10px;border-radius:6px;background:#f7fafc}
+  .pl-phase-num{width:36px;height:36px;background:#7b341e;color:var(--white);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-weight:700;line-height:1.2;flex-direction:column}
+  .pl-phase-num.p2{background:#22543d}
+  .pl-phase-num small{font-size:8px;font-weight:400}
+  .pl-phase-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+  .pl-phase-desc{font-size:11px;color:#4a5568;line-height:1.6}
+  .pl-phase-desc strong{color:var(--red)}
+  .pl-summary{background:var(--navy);color:var(--white);border-radius:8px;padding:18px;margin-top:auto}
+  .pl-summary-eyebrow{font-size:10px;color:#cbd5e0;letter-spacing:1px;margin-bottom:4px}
+  .pl-summary-row{display:flex;justify-content:space-between;align-items:end}
+  .pl-summary-label{font-size:13px}
+  .pl-summary-amount{font-family:'Hiragino Mincho ProN',serif;font-size:36px;color:var(--gold);font-weight:700}
+  .pl-summary-amount span{font-size:14px}
+  .pl-summary-rate{text-align:right;font-size:10px;color:#cbd5e0;margin-top:2px}
+  .pl-summary-rate strong{color:var(--white);font-size:18px}
+
+  /* Chart */
+  .chart-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;height:100%}
+  .chart-card{background:var(--white);border-radius:8px;padding:24px;display:flex;flex-direction:column}
+  .chart-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:10px;justify-content:space-between}
+  .chart-legend{display:flex;gap:14px;font-size:11px;color:var(--gray-2)}
+  .chart-legend span::before{content:"";display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:2px;vertical-align:middle}
+  .chart-legend .leg-rev::before{background:var(--gold)}
+  .chart-legend .leg-cost::before{background:var(--navy)}
+  .chart-area{flex:1;display:flex;align-items:end;justify-content:space-around;padding:16px 0;border-bottom:1px solid var(--gray);border-left:1px solid var(--gray);position:relative;height:340px;gap:6px}
+  .chart-grid-line{position:absolute;left:0;right:0;border-top:1px dashed #edf2f7;font-size:9px;color:var(--gray-2)}
+  .chart-grid-line span{position:absolute;left:-32px;top:-6px}
+  .chart-month{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;height:100%;justify-content:end;position:relative;z-index:1}
+  .chart-bars{display:flex;align-items:end;gap:3px;height:calc(100% - 22px);width:100%;justify-content:center}
+  .chart-bar{width:18px;border-radius:2px 2px 0 0}
+  .chart-bar.rev{background:var(--gold)}
+  .chart-bar.cost{background:var(--navy)}
+  .chart-month-label{font-size:10px;color:var(--gray-2);margin-top:4px}
+  .chart-divider{position:absolute;top:0;bottom:32px;border-left:2px dashed var(--red);z-index:2}
+  .chart-note{font-size:10px;color:var(--gray-2);text-align:center;margin-top:8px}
+
+  /* 3 Patterns */
+  .pat-bar{display:flex;justify-content:center;gap:14px;margin-bottom:14px;font-size:11px;color:var(--gray-2)}
+  .pat-bar-tag{background:var(--white);padding:5px 12px;border-radius:20px;border:1px solid var(--gray)}
+  .pat-bar-tag::before{content:"✓ ";color:var(--green);font-weight:700}
+  .pat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;height:calc(100% - 130px)}
+  .pat-card{background:var(--white);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .pat-card-head{padding:24px 20px;text-align:center;color:var(--white)}
+  .pat-card.a .pat-card-head{background:#4a5568}
+  .pat-card.b .pat-card-head{background:var(--navy)}
+  .pat-card.c .pat-card-head{background:var(--green)}
+  .pat-card-title{font-family:'Hiragino Mincho ProN',serif;font-size:22px;font-weight:600}
+  .pat-card-en{font-size:11px;font-style:italic;color:rgba(255,255,255,0.7);margin-top:4px}
+  .pat-card-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;gap:14px}
+  .pat-section{background:#f7fafc;border-radius:6px;padding:12px;text-align:center}
+  .pat-section-label{font-size:11px;color:var(--gray-2);margin-bottom:4px}
+  .pat-section-value{font-size:14px;font-weight:700;color:var(--navy)}
+  .pat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--gray);font-size:12px}
+  .pat-row:last-child{border-bottom:none}
+  .pat-row-label{color:var(--gray-2)}
+  .pat-row-value{font-weight:700;color:var(--navy)}
+  .pat-result{margin-top:auto;background:#fef5e7;border-radius:6px;padding:14px;display:flex;justify-content:space-between;align-items:center}
+  .pat-card.b .pat-result{background:#fef5e7;border:2px solid var(--gold)}
+  .pat-result-label{font-size:11px;color:var(--gray-2)}
+  .pat-result-value{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--gold-2);font-weight:700}
+  .pat-card.b .pat-result-value{font-size:26px;color:var(--gold-2)}
+
+  /* Year2+ */
+  .year-list{display:flex;flex-direction:column;gap:18px;padding:20px 0}
+  .year-card{display:flex;align-items:start;gap:24px;background:var(--white);border-radius:8px;padding:24px 28px;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .year-icon{width:48px;height:48px;background:var(--navy);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .year-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .year-title strong{color:var(--gold-2)}
+  .year-desc{font-size:13px;color:#2d3748;line-height:1.8}
+
+  /* Risk */
+  .risk-intro{font-size:13px;color:var(--gray-2);margin-bottom:18px;line-height:1.7}
+  .risk-list{display:flex;flex-direction:column;gap:14px}
+  .risk-row{display:grid;grid-template-columns:280px 1fr;gap:24px;background:var(--white);border-radius:8px;padding:20px 24px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .risk-left{display:flex;align-items:center;gap:14px}
+  .risk-icon{width:42px;height:42px;background:#fed7d7;color:var(--red);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .risk-num{font-size:11px;color:var(--gray-2);font-weight:600;letter-spacing:1px}
+  .risk-tag{display:inline-block;background:var(--red);color:var(--white);font-size:10px;padding:2px 8px;border-radius:3px;font-weight:600;margin-left:6px}
+  .risk-tag.mid{background:#dd6b20}
+  .risk-title{font-size:16px;font-weight:700;color:var(--navy);margin-top:4px}
+  .risk-sub{font-size:11px;color:var(--gray-2)}
+  .risk-content{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .risk-content-col-title{font-size:12px;color:var(--green);font-weight:700;margin-bottom:6px}
+  .risk-content-col-title::before{content:"● ";color:var(--green)}
+  .risk-content-col-desc{font-size:12px;color:#2d3748;line-height:1.7}
+  .risk-content-col-desc strong{color:var(--gold-2)}
+
+  /* Map */
+  .map-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;height:100%}
+  .map-frame{background:#eef2f7;border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--gray);min-height:680px}
+  .map-frame-head{position:absolute;top:12px;left:16px;right:16px;font-size:13px;color:var(--navy);font-weight:700;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.92);padding:8px 14px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.06);z-index:10}
+  .map-legend{display:flex;gap:14px}
+  .map-legend span{font-size:10.5px;color:#4a5568;display:flex;align-items:center;gap:4px;font-weight:600}
+  .map-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%}
+  .map-legend .lg-blue::before{background:#3182ce}
+  .map-legend .lg-green::before{background:#38a169}
+  .map-legend .lg-red::before{background:#e53e3e}
+  .map-legend .lg-purple::before{background:#805ad5}
+  .map-pin{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    background:var(--white);
+    padding:6px 11px;border-radius:18px;
+    font-size:10.5px;font-weight:700;color:var(--text);
+    white-space:nowrap;
+    box-shadow:0 3px 10px rgba(0,0,0,0.18);
+    border:2px solid;
+    z-index:3;
+    display:inline-flex;align-items:center;gap:4px;
+    line-height:1.2;
+  }
+  .map-pin::before{
+    content:"";
+    width:8px;height:8px;border-radius:50%;
+    flex-shrink:0;
+  }
+  .map-pin.center{
+    background:var(--navy);color:var(--white);border-color:var(--gold);
+    padding:10px 18px;font-size:13px;z-index:9;border-width:3px;
+    box-shadow:0 6px 16px rgba(0,0,0,0.3),0 0 0 6px rgba(201,169,97,0.18);
+  }
+  .map-pin.center::before{display:none}
+  .map-pin.blue{border-color:#3182ce;color:#2b6cb0}
+  .map-pin.blue::before{background:#3182ce}
+  .map-pin.green{border-color:#38a169;color:#22543d}
+  .map-pin.green::before{background:#38a169}
+  .map-pin.red{border-color:#e53e3e;color:#9b2c2c}
+  .map-pin.red::before{background:#e53e3e}
+  .map-pin.purple{border-color:#805ad5;color:#553c9a}
+  .map-pin.purple::before{background:#805ad5}
+  .map-circles{position:absolute;top:55%;left:50%;width:0;height:0;z-index:1}
+  .map-circles::before,.map-circles::after{
+    content:"";position:absolute;top:0;left:0;
+    border:1px dashed #b8c4d2;border-radius:50%;
+    transform:translate(-50%,-50%);
+  }
+  .map-circles::before{width:260px;height:260px}
+  .map-circles::after{width:440px;height:440px}
+  .net-summary{display:flex;flex-direction:column;gap:14px;padding:0}
+  .net-card{background:var(--white);border-radius:8px;padding:14px 18px;display:flex;align-items:center;gap:14px;border-left:4px solid;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+  .net-card.blue{border-left-color:#3182ce}
+  .net-card.green{border-left-color:#38a169}
+  .net-card.red{border-left-color:#e53e3e}
+  .net-card.purple{border-left-color:#805ad5}
+  .net-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:14px;flex-shrink:0}
+  .net-card.blue .net-icon{background:#3182ce}
+  .net-card.green .net-icon{background:#38a169}
+  .net-card.red .net-icon{background:#e53e3e}
+  .net-card.purple .net-icon{background:#805ad5}
+  .net-content{flex:1}
+  .net-eyebrow{font-size:10px;color:var(--gray-2);margin-bottom:2px}
+  .net-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+  .net-tags{display:flex;flex-wrap:wrap;gap:4px}
+  .net-tag{font-size:10px;color:#4a5568;background:#edf2f7;padding:2px 6px;border-radius:3px}
+  .net-count{font-family:'Hiragino Mincho ProN',serif;font-size:24px;color:var(--navy);font-weight:700;margin-left:10px}
+  .net-count span{font-size:10px;color:var(--gray-2)}
+  .map-key-message{position:absolute;bottom:14px;left:18px;right:18px;background:var(--navy);color:var(--white);padding:14px 18px;border-radius:6px;font-size:12px;border-left:3px solid var(--gold)}
+  .map-key-message strong{color:var(--gold)}
+
+  /* Schedule */
+  .sched-intro{font-size:13px;color:#4a5568;margin-bottom:32px;line-height:1.8}
+  .sched-track{position:relative;padding:40px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+  .sched-track::before{content:"";position:absolute;top:60px;left:8%;right:8%;height:1px;background:var(--gray);z-index:0}
+  .sched-step{position:relative;text-align:center;z-index:1}
+  .sched-date{font-family:'Hiragino Mincho ProN',serif;font-size:20px;color:var(--navy);font-weight:600;margin-bottom:14px}
+  .sched-step.active .sched-date{font-size:24px;color:var(--gold-2)}
+  .sched-icon{width:42px;height:42px;border-radius:50%;background:var(--white);border:2px solid var(--gray);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);position:relative;z-index:2}
+  .sched-step.done .sched-icon{background:var(--gold);border-color:var(--gold);color:var(--white)}
+  .sched-step.active .sched-icon{background:var(--navy);border-color:var(--gold);color:var(--gold);box-shadow:0 0 0 6px rgba(201,169,97,0.15)}
+  .sched-step.target .sched-icon{background:var(--white);border-color:var(--gold);color:var(--gold-2)}
+  .sched-card{background:var(--white);border-radius:8px;padding:18px 16px;border-top:3px solid var(--gray);min-height:160px;text-align:left}
+  .sched-step.done .sched-card{border-top-color:var(--gold)}
+  .sched-step.active .sched-card{border-top-color:var(--navy);background:#f7fafc}
+  .sched-step.target .sched-card{background:#fffaf0;border:2px solid var(--gold)}
+  .sched-card-title{font-size:14px;font-weight:700;color:var(--navy);text-align:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--gray)}
+  .sched-card-list{font-size:11.5px;color:#2d3748;line-height:1.8}
+  .sched-card-list li{list-style:none;display:flex;align-items:start;gap:6px;margin:3px 0}
+  .sched-card-list li::before{content:"●";color:var(--gold);font-size:8px;margin-top:6px}
+  .sched-tag{display:inline-block;background:var(--gold);color:var(--white);font-size:10px;padding:3px 8px;border-radius:3px;margin-top:8px;font-weight:600}
+  .sched-step.done .sched-tag{background:var(--gold);color:var(--white)}
+  .sched-step.active .sched-tag{background:var(--navy);color:var(--white)}
+
+  /* Summary */
+  .summ-intro{font-size:13px;color:#4a5568;margin-bottom:24px;line-height:1.8}
+  .summ-grid-1{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}
+  .summ-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:75%;margin:0 auto}
+  .summ-card{background:var(--white);border-radius:8px;padding:24px;border-top:4px solid var(--navy);position:relative;min-height:200px}
+  .summ-card.s1{border-top-color:#3182ce}
+  .summ-card.s2{border-top-color:#38a169}
+  .summ-card.s3{border-top-color:var(--gold)}
+  .summ-card.s4{border-top-color:#e53e3e}
+  .summ-card.s5{border-top-color:#805ad5}
+  .summ-num{position:absolute;top:14px;right:20px;font-family:'Hiragino Mincho ProN',serif;font-size:30px;color:#cbd5e0;font-weight:300}
+  .summ-icon{width:46px;height:46px;border-radius:10px;background:#edf2f7;color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+  .summ-card.s1 .summ-icon{background:#bee3f8;color:#2b6cb0}
+  .summ-card.s2 .summ-icon{background:#c6f6d5;color:#22543d}
+  .summ-card.s3 .summ-icon{background:#fef5e7;color:var(--gold-2)}
+  .summ-card.s4 .summ-icon{background:#fed7d7;color:#9b2c2c}
+  .summ-card.s5 .summ-icon{background:#e9d8fd;color:#553c9a}
+  .summ-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .summ-desc{font-size:12.5px;color:#2d3748;line-height:1.7}
+  .summ-desc strong{color:var(--gold-2)}
+  .summ-footer{margin-top:auto;background:var(--navy);color:var(--white);padding:18px 28px;border-radius:6px;font-size:14px;text-align:center;letter-spacing:1px;border-left:6px solid var(--gold)}
+
+  @media print{
+    html,body{background:#fff}
+    .slide{margin:0;box-shadow:none;page-break-after:always;page-break-inside:avoid}
+    @page{size:1456px 819px;margin:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SLIDE 1: COVER ============ -->
+<section class="slide cover">
+  <div class="cover-corner-tr"></div>
+  <div class="cover-corner-bl"></div>
+  <div class="pagenum" style="color:#cbd5e0;bottom:20px;right:40px">1 / 23</div>
+
+  <div class="cover-eyebrow">障 が い 者 グ ル ー プ ホ ー ム</div>
+  <h1 class="cover-title">α-cupid 事業計画書</h1>
+  <div class="cover-company">一 般 社 団 法 人 S G パ ー ト ナ ー ズ</div>
+
+  <div class="cover-info">
+    <div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">代表者</div>
+        <div class="cover-info-value">中村 潤 <span style="color:#a0aec0;font-size:13px;margin-left:8px">（63歳）</span></div>
+      </div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">法人設立</div>
+        <div class="cover-info-value">2022年7月1日（設立3期目）</div>
+      </div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">法人番号</div>
+        <div class="cover-info-value">5021005012866</div>
+      </div>
+    </div>
+    <div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">事業内容</div>
+        <div class="cover-info-value">共同生活援助（GH）</div>
+      </div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">OWLパートナー</div>
+        <div class="cover-info-value">株式会社ランバード</div>
+      </div>
+      <div class="cover-info-row">
+        <div class="cover-info-label">提出日</div>
+        <div class="cover-info-value">2026年5月13日（v2.0）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 2: PROFILE ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">代表者プロフィール</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">2 / 23</div>
+  <div class="slide-body">
+    <div class="profile-grid">
+      <div>
+        <div class="profile-card">
+          <div class="profile-avatar">👤</div>
+          <div class="profile-name">中村 潤</div>
+          <div class="profile-sub">代表理事 / 63歳（1962/9/20生）</div>
+          <div class="profile-badges">
+            <span class="badge badge-navy">製造業39年</span>
+            <span class="badge badge-gold">管理職24年</span>
+          </div>
+          <div class="profile-meta">
+            <div class="profile-meta-label">生年月日</div>
+            1962年（昭和37年）9月20日
+            <div class="profile-meta-label">学歴</div>
+            目黒高校 卒業 → 明治学院大学 経済学部 経済学科 卒業（1985年3月）
+            <div class="profile-meta-label">家族構成</div>
+            👫 配偶者（千鶴様55歳・副管理者候補）／お子様3名（全員別居・前夫姓）
+            <div class="profile-meta-label">本業年収（直近2年安定）</div>
+            ¥6,560,601（令和7年源泉徴収票・荏原マイスター継続）
+          </div>
+        </div>
+        <div class="profile-cert-card">
+          <div class="profile-cert-title">⭐ 保有資格</div>
+          <div class="cert-tags">
+            <span class="cert-tag">普通自動車運転免許</span>
+            <span class="cert-tag" style="background:#fef5e7;border-color:var(--gold);color:#744210">国家資格キャリアコンサルタント</span>
+            <span class="cert-tag" style="background:#fef5e7;border-color:var(--gold);color:#744210">経営倫理士</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:17px;color:var(--navy);margin-bottom:18px;display:flex;align-items:center;gap:10px"><span style="background:var(--navy);color:#fff;width:30px;height:30px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:14px">📋</span>職務経歴（製造業39年）</h3>
+
+        <div class="career-list">
+          <div class="career-item">
+            <div class="career-period">1986/3〜1992/12<br>6年9ヶ月</div>
+            <div>
+              <div class="career-company">クラリオン東京販売株式会社</div>
+              <div class="career-role">営業職（カーオーディオ販売）</div>
+              <span class="career-highlight">新卒入社・営業現場で顧客対応力を養う</span>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-period">1992/12〜1998/1<br>6年1ヶ月</div>
+            <div>
+              <div class="career-company">日立化成ハウステック株式会社</div>
+              <div class="career-role">営業・販売管理</div>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-period">1998/2〜2023/7<br>25年6ヶ月</div>
+            <div>
+              <div class="career-company">株式会社荏原フィールドテック</div>
+              <div class="career-role">フィールドサービス・現場運営／<strong>障碍者雇用・業務管理担当</strong>／管理職24年（課長12年・大分営業所長2年・部長10年）</div>
+              <span class="career-highlight career-highlight-success">★ 障碍者雇用25年半の実務経験＝管理者要件補強</span>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-period">2023/7〜現在<br>2年10ヶ月</div>
+            <div>
+              <div class="career-company">荏原マイスター株式会社（荏原製作所グループ）</div>
+              <div class="career-role">コンプライアンス担当顧問／<strong>本業継続中・年収¥650万安定</strong></div>
+              <span class="career-highlight">本業所得で創業期赤字を吸収可能</span>
+            </div>
+          </div>
+          <div class="career-item">
+            <div class="career-period">2022/7/1〜現在<br>法人代表</div>
+            <div>
+              <div class="career-company">一般社団法人SGパートナーズ 代表理事</div>
+              <div class="career-role">障害者グループホーム「α-cupid」開設準備（厚木市岡崎ハイツⅠ 4名定員）</div>
+              <span class="career-highlight career-highlight-success">★ 神奈川県事業運営許可取得済（2023/12）／オセアン茅ヶ崎で運営実績あり（不可抗力で閉所）／二次チャレンジ</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 3: TOC ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">目次</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">3 / 23</div>
+  <div class="slide-body">
+    <div class="toc-grid">
+      <div class="toc-item"><div class="toc-num">01</div><div>表紙</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">02</div><div>代表者プロフィール</div><div></div></div>
+      <div class="toc-item active"><div class="toc-num">03</div><div>目次</div><div>‹</div></div>
+      <div class="toc-item"><div class="toc-num">04</div><div>創業の動機</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">05</div><div>市場環境・需要</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">06</div><div>事業概要（共同生活援助とは）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">07</div><div>出店場所</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">08</div><div>パートナー企業（株式会社ランバード）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">09</div><div>経営理念・基本方針</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">10</div><div>報酬の仕組み</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">11</div><div>報酬単価テーブル</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">12</div><div>人員体制・経費構造</div><div></div></div>
+
+      <div class="toc-item"><div class="toc-num">13</div><div>事業の強み（与信・世帯背景含む）</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">14</div><div>必要資金</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">15</div><div>資金調達計画</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">16</div><div>月次収支シミュレーション</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">17</div><div>月次推移グラフ</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">18</div><div>3パターン比較</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">19</div><div>2年目以降の展望</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">20</div><div>リスクと対策</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">21</div><div>周辺施設マップ</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">22</div><div>スケジュール</div><div></div></div>
+      <div class="toc-item"><div class="toc-num">23</div><div>まとめ</div><div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 4: 創業の動機 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">創業の動機</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">4 / 23</div>
+  <div class="slide-body" style="position:relative;padding-bottom:90px">
+    <div class="grid-2x2">
+      <div class="info-card gold">
+        <div class="info-card-icon">①</div>
+        <div class="info-card-title">製造業39年・障碍者雇用25年半の実務蓄積</div>
+        <div class="info-card-body">
+          製造業（クラリオン・日立化成・荏原フィールドテック）で<strong>通算39年・管理職24年</strong>の現場運営経験を有し、特に荏原フィールドテック時代には<strong>障碍者雇用と業務管理を25年半担当</strong>。製造現場で障害特性の理解・配慮を実践してきた経験は、グループホーム運営における入居者支援・職員指導に直結する実務蓄積です。
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">②</div>
+        <div class="info-card-title">神奈川県厚木市・再起への決意</div>
+        <div class="info-card-body">
+          2024年「オセアン茅ヶ崎」を貸主不可抗力（売却・海外転出）で閉所したが、<strong>神奈川県事業運営許可取得＋入居者4名確定までの全工程を完遂した実績</strong>を有する。再起の地として厚木市岡崎ハイツⅠ（4名定員確定）を選定し、神奈川県障がい福祉課・厚木市建築指導課・消防本部への事前相談済。
+        </div>
+      </div>
+      <div class="info-card green">
+        <div class="info-card-icon">③</div>
+        <div class="info-card-title">国の給付金が支える事業安定性</div>
+        <div class="info-card-body">
+          売上の約70%が国（国保連）からの給付費。障害者総合支援法に基づく事業として景気変動に左右されず、長期的かつ安定的な運営が可能。<strong>厚木市4級地（10.96円/単位）</strong>で堅実な収益設計が可能です。
+        </div>
+      </div>
+      <div class="info-card red">
+        <div class="info-card-icon">④</div>
+        <div class="info-card-title">将来展望：2棟体制での収益化</div>
+        <div class="info-card-body">
+          まず1棟目「α-cupid 岡崎ハイツⅠ」（4名定員）を安定運営。1棟目満床達成後に<strong>2棟目（ヒルトップ緑ヶ丘 or 代替物件）</strong>の展開を計画。1棟目単独では月次▲17.9万の赤字構造だが、本業年収¥650万で吸収しながら2棟目展開で本格的な月次黒字化（+25万）を狙う段階拡大方針。
+        </div>
+      </div>
+    </div>
+    <div class="quote-strip">💬 製造業39年・障碍者雇用25年半の実務蓄積と、前回オセアン茅ヶ崎の運営完遂実績を基盤に、神奈川県厚木市で安定的なグループホーム運営を実現します。</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 5: 市場環境 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">市場環境・需要</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">5 / 23</div>
+  <div class="slide-body">
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:32px;height:100%">
+      <div class="card" style="display:flex;flex-direction:column">
+        <h3 style="font-size:17px;color:var(--navy);margin-bottom:6px">神奈川県の障害福祉サービス整備状況</h3>
+        <div style="font-size:12px;color:var(--gray-2);margin-bottom:24px">神奈川県内の障がい者手帳所持者 約30万人 / GH整備は需要に追いついていない</div>
+
+        <!-- Donut chart simulated with conic-gradient -->
+        <div style="margin:auto;width:280px;height:280px;border-radius:50%;background:conic-gradient(#1a365d 0% 50%, #c9a961 50% 70%, #a0aec0 70% 100%);position:relative">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:170px;height:170px;background:var(--white);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <div style="font-size:11px;color:var(--gray-2)">神奈川県内</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:32px;color:var(--navy);font-weight:700;margin-top:4px">300,000<span style="font-size:14px">人</span></div>
+            <div style="font-size:10px;color:var(--gray-2);margin-top:4px">障がい者手帳所持者</div>
+          </div>
+        </div>
+        <div style="margin-top:auto;display:flex;justify-content:center;gap:14px;font-size:11px;color:var(--gray-2);padding-top:18px">
+          <span><span style="display:inline-block;width:10px;height:10px;background:#1a365d;border-radius:2px;margin-right:4px"></span>身体障がい (50%)</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#c9a961;border-radius:2px;margin-right:4px"></span>知的障がい (20%)</span>
+          <span><span style="display:inline-block;width:10px;height:10px;background:#a0aec0;border-radius:2px;margin-right:4px"></span>精神障がい (30%)</span>
+        </div>
+        <div style="margin-top:18px;display:flex;justify-content:space-between;border-top:1px dashed var(--gray);padding-top:16px">
+          <div>
+            <div style="font-size:11px;color:var(--gray-2)">厚木市の障がい者手帳所持者</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:24px;color:var(--navy);font-weight:700">約 9,000 <span style="font-size:13px">人</span></div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:11px;color:var(--gray-2)">市人口比（22万人）</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:24px;color:var(--gold-2);font-weight:700">約 4.1 <span style="font-size:13px">%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="card" style="border-left:5px solid var(--navy);padding:20px 24px">
+          <div style="display:flex;align-items:start;gap:14px">
+            <div style="width:38px;height:38px;background:#edf2f7;color:var(--navy);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">👥</div>
+            <div>
+              <div style="font-size:15px;font-weight:700;color:var(--navy)">地域特性：4級地の単価優位性</div>
+              <div style="font-size:11px;color:var(--gold-2);margin-bottom:8px;font-weight:600">神奈川県厚木市</div>
+              <div style="font-size:13px;color:#2d3748;line-height:1.7">厚木市は障害福祉サービスの<strong>4級地（1単位 10.48円）</strong>に区分され、収益性の面で堅実な事業設計が可能です。地方都市ながら都市部に近い単価設定で、9居室満床時に<strong>4ヶ月目で月次黒字転換</strong>を達成する設計（OWL試算）。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="border-left:5px solid var(--gold);padding:20px 24px">
+          <div style="display:flex;align-items:start;gap:14px">
+            <div style="width:38px;height:38px;background:#fef5e7;color:var(--gold-2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📋</div>
+            <div>
+              <div style="font-size:15px;font-weight:700;color:var(--navy)">行政方針：地域移行の推進</div>
+              <div style="font-size:11px;color:var(--gold-2);margin-bottom:8px;font-weight:600">第7期障害福祉計画（令和6〜8年度）</div>
+              <div style="font-size:13px;color:#2d3748;line-height:1.7">国・神奈川県ともに「<strong>施設入所から地域生活への移行</strong>」を重点施策として掲げており、グループホーム整備による居住支援体制の充実が求められています。「親亡き後」を見据えた居住基盤需要も拡大中。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="border-left:5px solid var(--red);padding:20px 24px">
+          <div style="display:flex;align-items:start;gap:14px">
+            <div style="width:38px;height:38px;background:#fed7d7;color:var(--red);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">📈</div>
+            <div>
+              <div style="font-size:15px;font-weight:700;color:var(--navy)">厚木市の参入機会</div>
+              <div style="font-size:11px;color:var(--gold-2);margin-bottom:8px;font-weight:600">需給ギャップ分析</div>
+              <div style="font-size:13px;color:#2d3748;line-height:1.7">厚木市内の障害者GH事業者は限定的で、特に長谷町エリアは競合が少なく、相談支援員・特別支援学校・A型B型作業所からの紹介ルートを開拓中。<strong>元同僚から退所予定者の紹介打診も既に獲得</strong>しており、開業前から具体的な入居候補が存在します。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 6: 事業概要 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">事業概要（共同生活援助とは）</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">6 / 23</div>
+  <div class="slide-body">
+    <div class="service-top">
+      <div class="card" style="border-left:5px solid var(--gold)">
+        <div style="display:flex;align-items:start;gap:14px">
+          <div style="font-size:24px">🏠</div>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px">障害者総合支援法に基づく 支援付きシェアハウス</div>
+            <div style="font-size:13px;color:#2d3748;line-height:1.7">障がいのある方が複数人で共同生活を営む住まいです。世話人等の支援を受けながら、地域社会の中で自立した生活を送ることを目的としています。</div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="border-left:5px solid var(--navy)">
+        <div style="display:flex;align-items:start;gap:14px">
+          <div style="font-size:24px">👥</div>
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px">入居対象者</div>
+            <div style="font-size:13px;color:#2d3748;line-height:1.7"><strong style="font-size:18px;color:var(--gold-2)">18〜64歳</strong> の「精神障がい」「知的障がい」「身体障がい」の方</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:15px;color:var(--navy);margin-bottom:14px;border-left:4px solid var(--navy);padding-left:10px">提供サービス（日常生活の包括的支援）</h3>
+
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon">🍴</div>
+        <div class="service-name">食事の提供</div>
+        <div class="service-desc">日中は就労等で不在の方が多いため、主に朝食・夕食を提供します。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧹</div>
+        <div class="service-name">共有部の清掃</div>
+        <div class="service-desc">入居者と協力してリビングや風呂・トイレ等の清掃を行います。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💴</div>
+        <div class="service-name">お金の管理</div>
+        <div class="service-desc">ご自身での管理が難しい方のみ、金銭管理の支援を実施します。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">💊</div>
+        <div class="service-name">服薬の管理</div>
+        <div class="service-desc">処方された薬を正しく服用できているか、毎日の確認を行います。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏥</div>
+        <div class="service-name">病院や役所との連携</div>
+        <div class="service-desc">通院同行や関係機関への挨拶、情報交換などを行います。</div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">❤️</div>
+        <div class="service-name">その他日常生活の援助</div>
+        <div class="service-desc">日々の相談対応や生活上の困りごとの解決をサポートします。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 7: 出店場所 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">出店場所</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">7 / 23</div>
+  <div class="slide-body">
+    <div class="loc-grid">
+      <div class="loc-map" style="padding:0;overflow:hidden;border:1px solid var(--gray)">
+        <iframe
+          src="https://maps.google.com/maps?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E5%8E%9A%E6%9C%A8%E5%B8%82%E9%87%91%E7%94%B0363&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          style="width:100%;height:100%;border:0;display:block"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <!-- Address tag overlay (top left) -->
+        <div style="position:absolute;top:14px;left:14px;background:var(--navy);color:#fff;padding:8px 14px;border-radius:4px;font-size:12px;font-weight:700;border-left:3px solid var(--gold);z-index:10;box-shadow:0 2px 8px rgba(0,0,0,0.2)">
+          📍 神奈川県厚木市金田363-1 岡崎ハイツⅠ
+        </div>
+      </div>
+      <div class="loc-detail">
+        <div class="loc-detail-title">【出店計画地①】障がい者GH「α-cupid」</div>
+        <table class="loc-table">
+          <tr><th>事業所ブランド</th><td><strong style="color:var(--gold-2)">障がい者グループホーム「α-cupid」厚木岡崎ハイツⅠ</strong>（OWL FCブランド）</td></tr>
+          <tr><th>所在地</th><td>神奈川県厚木市金田363-1 岡崎ハイツⅠ</td></tr>
+          <tr><th>家賃</th><td><strong style="font-size:18px;color:var(--gold-2)">204,000円</strong>/月（4部屋分・1人¥34,000×4＋共有部分／契約条件最終確認待ち）</td></tr>
+          <tr><th>定員</th><td><strong>4名（4居室確定）</strong> ／ 神奈川県の共有部1.6㎡/人ルールで4居室確定（201号室=共有部、202〜206=各居室）</td></tr>
+          <tr><th>構造</th><td>賃貸／ワンルームタイプ／ワンフロア6部屋のうち5部屋を借上／築昭和60年3月（40年経過）</td></tr>
+          <tr><th>各部屋</th><td>居室4室（202〜206、最狭7.7㎡）・各居室にトイレ/風呂1個・共有部に食堂兼交流室・台所</td></tr>
+          <tr><th>取得形態</th><td><strong style="color:var(--green)">✅ 賃貸</strong>（不動産: ユーミーらいふ本厚木北口店 Mr小杉 046-259-6631）</td></tr>
+          <tr><th>アクセス</th><td>本厚木駅からバス「金田下宿」下車徒歩3分 ／ 用途地域: 第一種住居地域 ／ ハザード: 洪水浸水想定0.5m未満</td></tr>
+        </table>
+        <div class="loc-bullet">2棟目候補: ヒルトップ緑ヶ丘（204/206/301/306/307）／空き待ち継続中・開設時期未定／代替物件並行探索中</div>
+        <div class="loc-bullet">前回オセアン茅ヶ崎（2024閉所）の教訓を踏まえ、契約前に使用目的「障がい者GH運営」を明記＋登記簿で抵当権状態を確認</div>
+        <div class="loc-bullet">行政事前相談済（神奈川県障がい福祉課・厚木市建築指導課・消防本部 2026/3 完了）／厚木市障がい福祉課 総量規制なし・区分重度歓迎の回答取得済</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 8: パートナー企業 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">パートナー企業</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">8 / 23</div>
+  <div class="slide-body">
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-eyebrow">FRANCHISE HQ</div>
+        <div class="partner-name">株式会社ランバード</div>
+        <div class="partner-en">OWL FC Headquarters</div>
+        <div class="partner-meta-label">設立</div>
+        <div class="partner-meta-value">2019年5月31日</div>
+        <div class="partner-meta-label">代表者</div>
+        <div class="partner-meta-value">代表取締役 嶋田 僚平</div>
+        <div class="partner-meta-label">本社所在地</div>
+        <div class="partner-meta-value">東京都中央区晴海1丁目8－10<br>晴海アイランド トリトンスクエア<br>オフィスタワーX棟40階</div>
+        <div class="partner-meta-label">福岡支店</div>
+        <div class="partner-meta-value">福岡県福岡市中央区大名1－9－27<br>西武ビル3階</div>
+        <div class="partner-meta-label">連絡先</div>
+        <div class="partner-meta-value" style="font-size:12px">TEL: 03-5843-6996<br>URL: https://runbird.net</div>
+        <div style="background:rgba(201,169,97,0.15);border:1px solid var(--gold);border-radius:6px;padding:10px;margin-top:18px;text-align:center">
+          <div style="font-size:11px;color:#cbd5e0;margin-bottom:2px">FC支援による開業実績</div>
+          <div style="font-size:14px;color:var(--gold);font-weight:700">多数あり</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="partner-feature">
+          <div class="partner-feature-title">🤝 包括的運営サポート体制</div>
+          <div style="font-size:12px;color:var(--gray-2);margin-bottom:14px">開設準備から運営開始後の安定化まで、専門チームによる伴走支援を提供。</div>
+        </div>
+        <div class="partner-features-grid">
+          <div>
+            <div class="partner-feature-title" style="font-size:14px">👤 人材紹介・確保</div>
+            <div class="partner-feature-en">Recruitment Support</div>
+            <div class="partner-feature-desc">福祉に強い専門の人材紹介会社と提携。管理者やサービス管理責任者など、採用難易度の高い有資格者の確保をスムーズに行えるよう支援。</div>
+          </div>
+          <div>
+            <div class="partner-feature-title" style="font-size:14px">📝 指定申請書類の作成</div>
+            <div class="partner-feature-en">Document Support</div>
+            <div class="partner-feature-desc">運営規程、指定申請書、事業計画書、設備・備品リストなど、行政提出する膨大かつ複雑な申請書類の作成を完全サポート。</div>
+          </div>
+          <div>
+            <div class="partner-feature-title" style="font-size:14px">🏛️ 行政同行・連絡代行</div>
+            <div class="partner-feature-en">Administrative Support</div>
+            <div class="partner-feature-desc">行政機関への連絡や必要書類の提出、実地指導・監査への同行対応。専門知識が必要な折衝を支援し、最短での指定取得を目指す。</div>
+          </div>
+          <div>
+            <div class="partner-feature-title" style="font-size:14px">📖 開設・運営マニュアル</div>
+            <div class="partner-feature-en">Operation Manual</div>
+            <div class="partner-feature-desc">契約完了後から開設までの流れ、人材ごとの働き方、日々の業務フローなど、運営に必要なノウハウを網羅したマニュアル一式を提供。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 9: 経営理念 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">経営理念・基本方針</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">9 / 23</div>
+  <div class="slide-body">
+    <div class="philo-mission">
+      <div class="philo-icon">⭐</div>
+      <div class="philo-mission-text">
+        <div class="philo-mission-eyebrow">MISSION / 経営理念</div>
+        <div class="philo-mission-title">人の役に立ち、感謝される仕事</div>
+        <div class="philo-mission-desc">障がいのある方が地域で安心して暮らせる「住まい」と自立支援を提供し、利用者一人ひとりが「自分の家」と感じられる温かなグループホームを実現する。</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:16px;font-size:12px;color:var(--gray-2);letter-spacing:2px">基本方針 / POLICY</div>
+    <div class="philo-policies">
+      <div class="philo-policy">
+        <div class="philo-policy-num">1</div>
+        <div class="philo-policy-title">心理的安全性の確保</div>
+        <div>利用者はもちろん、従業員も含めたすべての人に心理的安全性を確保します。</div>
+      </div>
+      <div class="philo-policy">
+        <div class="philo-policy-num">2</div>
+        <div class="philo-policy-title">利用者ファースト・障がい理解</div>
+        <div>利用者ファーストで業務に取り組み、様々な障がいや特性への理解を深め、一人ひとりに寄り添った対応を心掛けます。</div>
+      </div>
+      <div class="philo-policy">
+        <div class="philo-policy-num">3</div>
+        <div class="philo-policy-title">自立支援の見守り</div>
+        <div>利用者がグループホームでの生活の中で安心して日常生活を送り、自立に向かっていく姿を見守ります。</div>
+      </div>
+      <div class="philo-policy">
+        <div class="philo-policy-num">4</div>
+        <div class="philo-policy-title">安心できる環境保証</div>
+        <div>利用者が安心して日常生活を送ることができる環境を保証します。</div>
+      </div>
+      <div class="philo-policy">
+        <div class="philo-policy-num">5</div>
+        <div class="philo-policy-title">地域社会への貢献</div>
+        <div>障がい者理解を深め、誰もが互いに認め合いながら生活する安心感を感じられる温かい地域社会をつくる努力を心掛けます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 10: 報酬の仕組み ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">報酬の仕組み</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">10 / 23</div>
+  <div class="slide-body">
+    <div class="cf-diagram">
+      <div class="cf-eyebrow">CASH FLOW DIAGRAM</div>
+      <div class="cf-row">
+        <div class="cf-node">
+          <div class="cf-node-icon">👤</div>
+          <div class="cf-node-title">利用者</div>
+          <div class="cf-node-sub">障がい者の方</div>
+        </div>
+        <div class="cf-arrow"><strong>申請</strong>→</div>
+        <div class="cf-node">
+          <div class="cf-node-icon">🏢</div>
+          <div class="cf-node-title">市区町村</div>
+          <div class="cf-node-sub">支給決定</div>
+        </div>
+        <div class="cf-arrow"><strong>決定</strong>→</div>
+        <div class="cf-node center">
+          <div class="cf-node-icon">🏠</div>
+          <div class="cf-node-title">一般社団法人SGパートナーズ</div>
+          <div class="cf-node-sub">グループホーム</div>
+        </div>
+        <div class="cf-arrow"><strong>請求</strong>→</div>
+        <div class="cf-node">
+          <div class="cf-node-icon">📋</div>
+          <div class="cf-node-title">国保連合会</div>
+          <div class="cf-node-sub">審査・支払代行</div>
+        </div>
+        <div class="cf-arrow"><strong>支払</strong>→</div>
+        <div class="cf-node gold">
+          <div class="cf-node-icon">💰</div>
+          <div class="cf-node-title">報酬受領</div>
+          <div class="cf-node-sub">訓練等給付費</div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:24px;margin-top:18px;font-size:11px;color:var(--gray-2)">
+        <span>● 事務手続き・申請フロー</span>
+        <span>━ サービス提供・契約フロー</span>
+      </div>
+    </div>
+    <div class="cf-features">
+      <div class="cf-feature">
+        <div class="cf-feature-title">📈 売上の安定性</div>
+        <div style="font-size:12px;color:#2d3748;line-height:1.7">売上全体の<strong style="color:var(--gold-2)">約70%</strong>が国（公費）からの給付費。利用者からの未収リスクが極めて低く、確実な入金が見込める。<br><span style="font-size:10px;color:var(--gray-2)">※OWL 9居室満床試算ベース（給付費¥2,112,100 / 売上¥2,895,100）</span></div>
+      </div>
+      <div class="cf-feature">
+        <div class="cf-feature-title">🛡️ 景気変動に強い</div>
+        <div style="font-size:12px;color:#2d3748;line-height:1.7">障害者総合支援法に基づく事業であり、景気の好不況に左右されません。不況時でも行政による報酬支払は保証。</div>
+      </div>
+      <div class="cf-feature">
+        <div class="cf-feature-title">💴 消費税非課税</div>
+        <div style="font-size:12px;color:#2d3748;line-height:1.7">社会福祉事業として、売上に対する<strong style="color:var(--gold-2)">消費税が免除</strong>。税務上のメリットが大きく、効率的な資金運用が可能。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 11: 報酬単価テーブル ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">報酬単価テーブル</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">11 / 23</div>
+  <div class="slide-body">
+    <div class="rate-grid">
+      <div>
+        <div class="rate-section-title">
+          <span>💰 基本報酬単価</span>
+          <span class="rate-region">地域区分（神奈川県厚木市・4級地） 10.96 円/単位</span>
+        </div>
+        <table class="rate-table">
+          <thead>
+            <tr><th>障害支援区分</th><th>日額単位数</th><th style="text-align:right">月額報酬目安</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="rate-num">2</span>区分2</td>
+              <td>444 単位</td>
+              <td class="rate-amount">145,980 <span style="font-size:12px">円</span></td>
+            </tr>
+            <tr class="featured">
+              <td><span class="rate-num">3</span>区分3</td>
+              <td>598 単位</td>
+              <td class="rate-amount">196,620 <span style="font-size:12px">円</span></td>
+            </tr>
+            <tr>
+              <td><span class="rate-num">4</span>区分4</td>
+              <td>724 単位</td>
+              <td class="rate-amount">238,050 <span style="font-size:12px">円</span></td>
+            </tr>
+            <tr>
+              <td><span class="rate-num">5</span>区分5</td>
+              <td>835 単位</td>
+              <td class="rate-amount">274,545 <span style="font-size:12px">円</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rate-addons">
+          <div style="font-size:12px;color:var(--navy);font-weight:600">🎁 適用加算 <span style="font-size:10px;color:var(--gray-2);font-weight:400">※下記加算は上の単位合計に既に含まれます</span></div>
+          <div class="rate-addons-grid">
+            <div class="rate-addon">
+              <div class="rate-addon-label">処遇改善加算（Ⅲ）</div>
+              <div class="rate-addon-value">12.8 <span style="font-size:11px">%</span></div>
+            </div>
+            <div class="rate-addon">
+              <div class="rate-addon-label">夜間支援等体制加算</div>
+              <div class="rate-addon-value" style="font-size:14px">Ⅰ型</div>
+            </div>
+            <div class="rate-addon">
+              <div class="rate-addon-label">医療連携加算</div>
+              <div class="rate-addon-value" style="font-size:14px">Ⅶ</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column">
+        <div class="rate-section-title"><span>💼 利用者負担額</span><span style="font-size:11px;color:var(--gray-2)">（月額想定）</span></div>
+        <div class="rate-burden-card">
+          <div class="rate-burden-label">利用者実質負担額</div>
+          <div class="rate-burden-value">83,000<span>円</span></div>
+          <div class="rate-burden-note">家賃補助（特定障害者特別給付費）適用前の金額</div>
+        </div>
+        <div class="rate-burden-list" style="background:var(--white);border-radius:8px;padding:8px 16px;flex:1">
+          <div class="rate-burden-list-row">
+            <div class="rate-burden-list-row-label">🏠 家賃</div>
+            <div class="rate-burden-list-row-value">41,000円</div>
+          </div>
+          <div class="rate-burden-list-row">
+            <div class="rate-burden-list-row-label">🍴 食費</div>
+            <div class="rate-burden-list-row-value">27,000円</div>
+          </div>
+          <div class="rate-burden-list-row">
+            <div class="rate-burden-list-row-label">💡 水光熱費</div>
+            <div class="rate-burden-list-row-value">15,000円</div>
+          </div>
+        </div>
+        <div class="rate-info-note">
+          ℹ️ 体験利用時の日額設定や、家賃補助（1万円/月）の適用により、利用者の実質負担額は変動する場合があります。<br>
+          <strong>👥 定員4名の場合、利用者負担合計は ¥332,000/月（¥83,000×4名）となります。</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 12 (renumbered): 人員体制 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">人員体制・経費構造</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">12 / 23</div>
+  <div class="slide-body">
+    <div class="staff-grid">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">👥 人員配置詳細・固定経費（4名満床時／v2.0 Royal方式）</div>
+        <table class="staff-table">
+          <thead>
+            <tr><th>項目</th><th>区分</th><th>人数/契約</th><th style="text-align:right">月額費用・備考</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>👤 管理者（代表兼務）</td>
+              <td><span class="staff-tag full">役員報酬</span></td>
+              <td>1名</td>
+              <td class="staff-amount">0円<span class="staff-amount-sub">中村潤様 本人／本業¥650万で生計完結</span></td>
+            </tr>
+            <tr>
+              <td>👫 副管理者（家族労働・無給）</td>
+              <td><span class="staff-tag fixed">家族</span></td>
+              <td>1名</td>
+              <td class="staff-amount">0円<span class="staff-amount-sub">中村千鶴様（B型福祉施設パート経験あり）／副管理者就任は検討中</span></td>
+            </tr>
+            <tr>
+              <td>📋 サービス管理責任者</td>
+              <td><span class="staff-tag part">パート月30h</span></td>
+              <td>1名</td>
+              <td class="staff-amount">75,000円<span class="staff-amount-sub">時給¥2,500／<strong>★未確定（致命的論点）</strong></span></td>
+            </tr>
+            <tr>
+              <td>🌟 世話人・生活支援員</td>
+              <td><span class="staff-tag part">パート複数</span></td>
+              <td>—</td>
+              <td class="staff-amount">240,762円<span class="staff-amount-sub">入居者連動（4名満床時）</span></td>
+            </tr>
+            <tr>
+              <td>🌙 夜間職員（外部委託）</td>
+              <td><span class="staff-tag part">外部・週5</span></td>
+              <td>—</td>
+              <td class="staff-amount">160,714円<span class="staff-amount-sub">中村様週2日兼務で圧縮（外部¥225,000→¥160,714）</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="staff-summary">
+          <div class="staff-summary-left">
+            <strong>月次人件費合計（4名満床時）</strong>
+            ※v2.0 Royal方式（役員報酬¥0計上）・資金繰り表v2.0と整合
+          </div>
+          <div class="staff-summary-total">476,476<span>円</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">🎯 戦略的人員配置・代表者の役割</div>
+        <div class="staff-strategy-card">
+          <div class="staff-strategy-title">👤 代表・中村潤様 の役割</div>
+          <div class="staff-strategy-desc"><strong>管理者を兼務</strong>。製造業39年・管理職24年で組織マネジメント経験を有し、特に荏原フィールドテック時代の<strong>障碍者雇用・業務管理25年半経験</strong>で管理者要件補強。<strong>本業（荏原マイスター¥650万）継続で創業期赤字を吸収</strong>。</div>
+          <span class="staff-strategy-pill">✅ 役員報酬¥0計上（Royal方式）／創業期固定費最小化</span>
+        </div>
+        <div class="staff-strategy-card">
+          <div class="staff-strategy-title">⚠️ サビ管論点（★致命的）</div>
+          <div class="staff-strategy-desc">サビ管候補者は<strong>未確定</strong>＝開設可否の前提条件。OWLジョブメドレー求人活用予定。中村様本人のサビ管資格取得（63歳での基礎+実践研修受講可否）も並行検討中。介護福祉士の前職経験での代替も検討。</div>
+        </div>
+
+        <div class="staff-variable">
+          <div class="staff-variable-head">
+            <div>
+              <div class="staff-variable-label">変動経費構造</div>
+              <div class="staff-variable-sub">入居者数連動（満床4名時）</div>
+            </div>
+            <div class="staff-variable-amount">168,000<span style="font-size:12px">円/月</span></div>
+          </div>
+          <div class="staff-variable-row">
+            <div class="staff-variable-row-name">🍴 食材費（¥27,000×4名）</div>
+            <div>108,000円</div>
+          </div>
+          <div class="staff-variable-row">
+            <div class="staff-variable-row-name">💡 水道光熱費（¥15,000×4名）</div>
+            <div>60,000円</div>
+          </div>
+        </div>
+
+        <div style="background:var(--white);border-radius:8px;padding:12px 16px;margin-top:12px;border-left:4px solid var(--gold)">
+          <div style="font-size:11px;color:var(--gray-2);margin-bottom:4px">🤝 その他固定経費</div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0"><span>家賃（4部屋＋共用）</span><span style="font-weight:700">¥204,000/月</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0"><span>OWLサポート費・保険</span><span style="font-weight:700">¥30,000/月</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:12px;margin:4px 0;border-top:1px dashed var(--gray);padding-top:6px"><span>販管費（通信・事務等）</span><span style="font-weight:700">¥50,000/月</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 13: 事業の強み ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">事業の強み</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">13 / 23</div>
+  <div class="slide-body">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;height:100%">
+      <div class="strength-card">
+        <div class="strength-num">01</div>
+        <div class="strength-icon">🏭</div>
+        <div class="strength-title">製造業39年・障碍者雇用25年半</div>
+        <div class="strength-desc">クラリオン→日立化成→<strong>荏原フィールドテック25年半</strong>でフィールドサービス・現場運営／管理職24年（課長12年・大分営業所長2年・部長10年）／<strong>障碍者雇用と業務管理を25年半担当</strong>。製造現場での障害特性理解・配慮の実務蓄積はGH管理者要件の強力な補強材料。</div>
+      </div>
+      <div class="strength-card gold">
+        <div class="strength-num">02</div>
+        <div class="strength-icon">📜</div>
+        <div class="strength-title">国家資格キャリアコンサルタント・経営倫理士</div>
+        <div class="strength-desc">介護系の有資格はないが、<strong>国家資格キャリアコンサルタント</strong>（厚生労働省所管）により職員のキャリア面談・育成支援に資格的根拠を持ち、<strong>経営倫理士</strong>保有は法人経営者としてのガバナンス遵守姿勢を客観立証。社会福祉主事任用資格は不該当だが、25年半の障碍者雇用実務経験で代替主張。</div>
+      </div>
+      <div class="strength-card green">
+        <div class="strength-num">03</div>
+        <div class="strength-icon">🏛️</div>
+        <div class="strength-title">神奈川県事業運営許可取得済（前回完遂実績）</div>
+        <div class="strength-desc"><strong>2023年12月に神奈川県より障害福祉サービス事業（共同生活援助）の運営許可を取得済</strong>。2024年1月「オセアン茅ヶ崎」開設・<strong>入居者4名確定までの全工程を完遂</strong>。2024年3月は貸主の不可抗力（不動産売却＋海外転出）で閉所したが、神奈川県の指定申請プロセスを既に1度経験している強み。</div>
+      </div>
+
+      <div class="strength-card red">
+        <div class="strength-num">04</div>
+        <div class="strength-icon">💼</div>
+        <div class="strength-title">本業継続による生活基盤の確保</div>
+        <div class="strength-desc">荏原マイスター（東証プライム上場 荏原製作所グループ）で<strong>コンプライアンス担当顧問</strong>として継続勤務中。<strong>年収¥650万（直近2年安定）</strong>。創業期の月次赤字を本業所得で吸収可能な構造（月¥20万を法人に追加貸付できる余力）。</div>
+      </div>
+      <div class="strength-card purple">
+        <div class="strength-num">05</div>
+        <div class="strength-icon">👫</div>
+        <div class="strength-title">配偶者千鶴様の協力体制</div>
+        <div class="strength-desc"><strong>中村千鶴様（55歳）</strong>は神奈川県立三崎高校→鎌倉女子短期大学卒。横浜冷凍株式会社→ケイキャリアパートナーズ→たんげ脳神経外科の職歴を有し、<strong>B型福祉施設でのパート経験あり</strong>。副管理者就任を検討中（要フォロー）。家族労働で人件費圧縮設計。</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">06</div>
+        <div class="strength-icon">📈</div>
+        <div class="strength-title">神奈川4級地・3社並行打診</div>
+        <div class="strength-desc">厚木市4級地（10.96円/単位）+ 4名満床時月次▲17.9万の赤字構造だが、<strong>2棟体制移行で月次+25万黒字化</strong>を狙う段階拡大設計。融資は<strong>3社並行打診</strong>（公庫横浜・きらぼし白井・神奈川県内信金）で信用情報照会期間を1〜2週間に圧縮し、最良条件を確保。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 14: 必要資金 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">必要資金</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">14 / 23</div>
+  <div class="slide-body">
+    <div class="fund-grid">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px;justify-content:space-between">
+          <span>📊 資金使途内訳（1棟目分）</span>
+          <span style="background:#fef5e7;color:#744210;font-size:10px;padding:3px 10px;border-radius:3px;font-weight:600">v0.5 保守シナリオ（売上差引なし）</span>
+        </div>
+        <table class="fund-table">
+          <tr class="fund-section-row"><td colspan="3">設備資金（イニシャルコスト）</td></tr>
+          <tr><td>🚒 消防設備工事</td><td style="font-size:10px;color:var(--gray-2)">厚木市消防本部確認済／既存設備再利用で減額</td><td class="fund-amount">800,000円</td></tr>
+          <tr><td>🛋️ 備品（家具・家電・冷蔵庫等）</td><td style="font-size:10px;color:var(--gray-2)">4居室分／OWL標準仕様</td><td class="fund-amount">600,000円</td></tr>
+          <tr><td>🚪 内装・鍵取付・通信</td><td style="font-size:10px;color:var(--gray-2)">4居室対応</td><td class="fund-amount">200,000円</td></tr>
+          <tr><td>📋 事務備品・消耗品</td><td style="font-size:10px;color:var(--gray-2)">PC・什器等</td><td class="fund-amount">150,000円</td></tr>
+          <tr><td>🛡️ 設備予備費</td><td style="font-size:10px;color:var(--gray-2)">不測対応</td><td class="fund-amount">50,000円</td></tr>
+        </table>
+        <div class="fund-subtotal">
+          <span>設備資金 小計</span>
+          <span class="yen">1,800,000 円</span>
+        </div>
+
+        <table class="fund-table">
+          <tr class="fund-section-row"><td colspan="3">一時金（既払・融資対象外）</td></tr>
+          <tr><td>🤝 OWLサポート料（既払）</td><td style="font-size:10px;color:var(--gray-2)">2023/5/25 既支払済／本事業根幹費用エビデンス</td><td class="fund-amount">4,400,000円</td></tr>
+        </table>
+        <div class="fund-subtotal" style="background:#718096">
+          <span>※OWL加盟金¥440万は3年前支払のため融資対象外</span>
+          <span class="yen">参考</span>
+        </div>
+
+        <table class="fund-table">
+          <tr class="fund-section-row"><td colspan="3">運転資金（立上げ6ヶ月分・★売上差引なし／Royal方式）</td></tr>
+          <tr><td>👥 人件費 6ヶ月</td><td style="font-size:10px;color:var(--gray-2)">役員¥0計上・サビ管¥75,000＋世話人・支援員¥240,762＋夜勤¥160,714の満室時想定</td><td class="fund-amount">2,449,908円</td></tr>
+          <tr><td>🏠 家賃 6ヶ月</td><td style="font-size:10px;color:var(--gray-2)">¥204,000×6（4部屋分・契約条件最終確認待ち）</td><td class="fund-amount">1,224,000円</td></tr>
+          <tr><td>🍽️ 食材・水光熱 6ヶ月</td><td style="font-size:10px;color:var(--gray-2)">段階入居想定／OWL標準値</td><td class="fund-amount">756,000円</td></tr>
+          <tr><td>🤝 サポート費・保険 6ヶ月</td><td style="font-size:10px;color:var(--gray-2)">OWLサポート費・施設賠償補償</td><td class="fund-amount">220,000円</td></tr>
+          <tr><td>📋 販管費 6ヶ月</td><td style="font-size:10px;color:var(--gray-2)">¥50,000×6</td><td class="fund-amount">300,000円</td></tr>
+          <tr><td>🛡️ 予備費</td><td style="font-size:10px;color:var(--gray-2)">不測対応</td><td class="fund-amount">500,000円</td></tr>
+        </table>
+        <div class="fund-subtotal">
+          <span>運転資金 小計（売上差引なし）</span>
+          <span class="yen">5,449,908 円</span>
+        </div>
+      </div>
+
+      <div class="fund-total-card">
+        <div class="fund-total-icon">💰</div>
+        <div class="fund-total-eyebrow">TOTAL INITIAL INVESTMENT (1棟目)</div>
+        <div class="fund-total-amount">725<span> 万円</span></div>
+        <div class="fund-total-yen">¥7,249,908</div>
+
+        <div class="fund-strategy">
+          <div class="fund-strategy-title">FINANCIAL STRATEGY (v2.0 中村様5/13ヒアリング反映)</div>
+          <div class="fund-strategy-row"><div><strong>★Royal方式・売上差引なしの保守シナリオ</strong>最悪入居0でも6ヶ月持つ金額</div></div>
+          <div class="fund-strategy-row"><div><strong>役員報酬¥0計上</strong>本業¥650万で代表者の生計完結、創業期固定費最小化</div></div>
+          <div class="fund-strategy-row"><div><strong>OWL加盟金¥440万は既払（2023/5）</strong>融資対象外・与信材料として開示</div></div>
+          <div class="fund-strategy-row"><div><strong>3社並行打診で確実調達</strong>公庫横浜＋きらぼし白井＋神奈川県内信金</div></div>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--gray);border-radius:6px;padding:10px;margin-top:12px;text-align:left">
+          <div style="font-size:10px;color:var(--gray-2);margin-bottom:4px">★2棟目分（仮計上・ヒルトップ緑ヶ丘 or 代替物件）</div>
+          <div style="font-size:11.5px;color:#2d3748;line-height:1.5">2棟目は<strong>¥725万</strong>同等を想定。契約書なき段階では銀行から縮小指示。1棟目満床確認後＋2棟目契約締結後の追加申請として2027年以降を視野。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 15: 資金調達計画 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">資金調達計画</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">15 / 23</div>
+  <div class="slide-body">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:24px;height:100%">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">💼 調達資金の内訳（推奨パターンB）</div>
+        <table class="fund-table" style="margin-bottom:18px">
+          <thead>
+            <tr><th>区分</th><th>金額</th><th>備考</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-weight:700">● 自己資金</td>
+              <td class="fund-amount">200 万円</td>
+              <td style="font-size:11px;color:var(--gray-2)">当初¥1,000万→前回オセアン茅ヶ崎で800万消化＋退職金消化で現在¥200万</td>
+            </tr>
+            <tr style="background:#fef5e7">
+              <td style="font-weight:700">● 公庫横浜（再チャレンジ）</td>
+              <td class="fund-amount" style="color:var(--gold-2)">250 万円</td>
+              <td style="font-size:11px;color:var(--gray-2)">日本政策金融公庫 横浜支店／再チャレンジ支援資金活用</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">● きらぼし銀行 白井支店</td>
+              <td class="fund-amount">200 万円</td>
+              <td style="font-size:11px;color:var(--gray-2)">神奈川県信用保証協会保証付き</td>
+            </tr>
+            <tr>
+              <td style="font-weight:700">● 神奈川県内信金 厚木支店</td>
+              <td class="fund-amount">150 万円</td>
+              <td style="font-size:11px;color:var(--gray-2)">中栄信用金庫 or さがみ信用金庫／神奈川県信用保証協会保証付き</td>
+            </tr>
+            <tr style="background:var(--navy);color:#fff">
+              <td style="color:#fff;font-weight:700">TOTAL FUNDING 調達合計</td>
+              <td class="fund-amount" style="color:var(--gold);font-size:18px">800 万円</td>
+              <td style="font-size:11px;color:#cbd5e0">借入合計¥600万＋自己資金¥200万（必要資金¥725万を上回る安全マージン）</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">🏦 代表者の与信背景</div>
+        <table class="fund-table">
+          <tr>
+            <td style="font-weight:700">既存個人借入</td>
+            <td class="fund-amount" style="color:var(--red);font-size:14px">¥430 万</td>
+            <td style="font-size:11px;color:var(--gray-2)">住宅¥10万/月＋車¥2万/月＋オリックス¥300万／返済予定表 5/13提出済</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700">法人累積欠損</td>
+            <td class="fund-amount" style="color:var(--red);font-size:14px">▲¥606 万</td>
+            <td style="font-size:11px;color:var(--gray-2)">前回オセアン茅ヶ崎の不可抗力起因／2期分決算申告済（ミカタ税理士法人）／2棟体制で5〜6年解消計画</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700">代表者本業年収</td>
+            <td class="fund-amount" style="color:var(--green);font-size:16px">¥656 万</td>
+            <td style="font-size:11px;color:var(--gray-2)">令和7年源泉徴収票・荏原マイスター継続中／直近2年¥650万で安定</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700">配偶者所得</td>
+            <td class="fund-amount">¥55 万</td>
+            <td style="font-size:11px;color:var(--gray-2)">中村千鶴様（扶養）／B型福祉施設パート経験あり</td>
+          </tr>
+          <tr>
+            <td style="font-weight:700">個人信用情報</td>
+            <td class="fund-amount" style="color:var(--gray-2);font-size:12px">事前確認予定</td>
+            <td style="font-size:11px;color:var(--gray-2)">CIC・JICC照会の意思★未回収／延滞・滞納履歴なし（自己申告）</td>
+          </tr>
+        </table>
+
+        <div style="background:#fef5e7;border-left:4px solid var(--gold);padding:14px;margin-top:14px;border-radius:4px">
+          <div style="font-size:11px;font-weight:700;color:var(--gold-2);margin-bottom:6px">💡 返済原資について（v2.0 Royal方式）</div>
+          <div style="font-size:12px;color:#2d3748;line-height:1.7"><strong>本業所得¥650万（荏原マイスター）の継続</strong>と<strong>役員報酬¥0計上</strong>により、創業期の月次赤字（▲17.9万）は本業所得から月¥20万を法人へ追加貸付できる構造で吸収可能。借入合計¥600万に対し本業年収が約11倍。さらに2棟体制移行後は月次+25万黒字化で返済余力大幅改善。配偶者千鶴様の副管理者就任（検討中）が実現すれば、家族労働で人件費圧縮を継続できる体制。</div>
+        </div>
+      </div>
+
+      <div>
+        <div style="background:var(--white);border-radius:8px;padding:20px;margin-bottom:14px">
+          <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;justify-content:space-between">
+            📄 新規借入条件（申請案）
+            <span style="background:var(--navy);color:var(--gold);font-size:10px;padding:3px 10px;border-radius:3px">3社並行</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--gray)">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-2)">💰 借入金額（合計）</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);font-weight:700">600 <span style="font-size:13px">万円</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--gray)">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-2)">📅 返済期間</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--navy);font-weight:700">7 <span style="font-size:13px">年</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--gray)">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-2)">% 年利（公庫想定）</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--navy);font-weight:700">1.5 <span style="font-size:13px">%</span></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-2)">⏱ 据置期間</div>
+            <div style="font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--navy);font-weight:700">6 <span style="font-size:13px">ヶ月</span></div>
+          </div>
+        </div>
+
+        <div style="background:var(--white);border-radius:8px;padding:18px;margin-bottom:14px">
+          <div style="text-align:center;font-size:11px;color:var(--gray-2);margin-bottom:10px">返済計画（月額目安）</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="background:#fef5e7;border-radius:6px;padding:14px;text-align:center">
+              <div style="font-size:11px;color:var(--gold-2);margin-bottom:4px">据置期間中</div>
+              <div style="font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);font-weight:700">7,500 <span style="font-size:12px">円</span></div>
+              <div style="font-size:10px;color:var(--gray-2);margin-top:4px">（利息のみ）</div>
+            </div>
+            <div style="background:#bee3f8;border-radius:6px;padding:14px;text-align:center">
+              <div style="font-size:11px;color:#2b6cb0;margin-bottom:4px">据置期間後</div>
+              <div style="font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);font-weight:700">73,000 <span style="font-size:12px">円</span></div>
+              <div style="font-size:10px;color:var(--gray-2);margin-top:4px">（元利均等）</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#f7fafc;border-left:4px solid var(--red);padding:14px;border-radius:4px">
+          <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:6px">★ 横展開ナレッジ（Royal・サンライズ案件の学び）</div>
+          <div style="font-size:11.5px;color:#2d3748;line-height:1.7">SGパートナーズは<strong>累積欠損¥606万＋既存借入¥430万</strong>の与信課題を抱える二次チャレンジ案件。Royal/サンライズで実証された<strong>「3社並行打診による信用情報照会期間圧縮」戦略</strong>を採用し、5/15〜5/21の集中打診で各行の審査結果を並列比較。<strong>公庫横浜は再チャレンジ支援資金</strong>を活用、民間2行は<strong>神奈川県信用保証協会保証付き</strong>で累積欠損リスクを保証協会が吸収する設計。横浜銀行BLPは前回頓挫情報懸念で初回打診から外す。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 16: 月次収支シミュレーション ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">月次収支シミュレーション</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">16 / 23</div>
+  <div class="slide-body">
+    <div class="pl-grid">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px;justify-content:space-between">
+          📈 4名満床時 月次収支モデル（パターンB・1棟運営／Royal方式・役員報酬¥0）
+          <span style="background:#fef5e7;color:#744210;font-size:10px;padding:3px 10px;border-radius:3px">資金計画書v2.0 §4と一致</span>
+        </div>
+        <table class="pl-table">
+          <thead>
+            <tr><th>項目</th><th class="phase2">満床時（入居4名）</th><th>備考</th></tr>
+          </thead>
+          <tbody>
+            <tr class="section"><td colspan="3">収入の部</td></tr>
+            <tr><td>● 自立支援給付費（4名分）</td><td>682,860円</td><td>区分2×2＋区分3×2（平均区分2.5）</td></tr>
+            <tr><td>● 処遇改善加算（Ⅲ）</td><td>87,406円</td><td>12.8%</td></tr>
+            <tr><td>● 医療連携体制加算（Ⅶ）</td><td>46,800円</td><td></td></tr>
+            <tr><td>● 人員配置体制加算</td><td>77,000円</td><td></td></tr>
+            <tr><td>● 利用者負担</td><td>332,000円</td><td>¥83,000×4名（家賃41,000＋食費27,000＋水光熱15,000）</td></tr>
+            <tr class="subtotal"><td>売上合計</td><td>1,226,066円</td><td>4名満床ベース</td></tr>
+
+            <tr class="section"><td colspan="3">支出の部</td></tr>
+            <tr><td>● 人件費（役員¥0・サビ管・パート）</td><td>315,000円</td><td>役員¥0計上＋千鶴様¥0＋サビ管¥7.5万＋パート支援員¥24万</td></tr>
+            <tr><td>● 家賃（4部屋＋共用）</td><td>204,000円</td><td>¥204,000/月（4部屋分）</td></tr>
+            <tr><td>● 食材費（¥27,000×4名）</td><td>108,000円</td><td></td></tr>
+            <tr><td>● 水道光熱費（¥15,000×4名）</td><td>60,000円</td><td></td></tr>
+            <tr><td>● 夜間職員（外部・中村様兼務圧縮）</td><td>160,714円</td><td>中村様週2日兼務で外部¥225,000→¥160,714に圧縮</td></tr>
+            <tr><td>● サポート費・保険</td><td>30,000円</td><td>OWLサポート費・施設賠償補償</td></tr>
+            <tr><td>● その他（販管費）</td><td>50,000円</td><td>旅費・通信・事務・消耗</td></tr>
+            <tr><td>● 借入返済（パターンB）</td><td>73,000円</td><td>据置後・3社合計¥600万 7年返済（金利1.5%）</td></tr>
+            <tr class="total"><td>支出合計</td><td>1,000,714円</td><td></td></tr>
+            <tr class="total"><td>月間利益（返済後）</td><td><span class="delta-up">+225,352円</span></td><td>4名満床ベース（役員¥0計上時）</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex;flex-direction:column">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">🔄 入居者推移（12ヶ月）</div>
+        <div class="pl-side-card">
+          <div class="pl-phase">
+            <div class="pl-phase-num">1-4<small>月目</small></div>
+            <div>
+              <div class="pl-phase-title">立上げ期（入居0→3名）</div>
+              <div class="pl-phase-desc">月次<strong>赤字</strong>。融資据置期間（6ヶ月）＋本業所得¥650万で吸収。1ヶ月目▲¥91万・2ヶ月目▲¥68万・3ヶ月目▲¥45万・4ヶ月目▲¥22万</div>
+            </div>
+          </div>
+          <div class="pl-phase">
+            <div class="pl-phase-num p2">5<small>月目</small></div>
+            <div>
+              <div class="pl-phase-title" style="color:var(--green)">★月次黒字転換（入居4名満床）</div>
+              <div class="pl-phase-desc">入居4名到達時点で<strong style="color:var(--green)">+¥7,920</strong>の月次黒字達成（役員¥0計上時）。神奈川県の共有部1.6㎡/人ルールで4居室確定。</div>
+            </div>
+          </div>
+          <div class="pl-phase">
+            <div class="pl-phase-num p2">7<small>月目〜</small></div>
+            <div>
+              <div class="pl-phase-title">返済開始（4名満床維持）</div>
+              <div class="pl-phase-desc">据置明けで返済開始。月次利益<strong style="color:var(--green)">+¥100,066</strong>（返済後）水準で安定。<strong>2棟体制（ヒルトップ緑ヶ丘）移行で月次+25万黒字化</strong>を狙う。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pl-summary">
+          <div class="pl-summary-eyebrow">年間営業利益（初年度・1棟単独）</div>
+          <div class="pl-summary-row">
+            <div>
+              <div class="pl-summary-label">年間累計</div>
+              <div class="pl-summary-amount" style="color:#fed7d7">▲100<span> 万円</span></div>
+            </div>
+            <div>
+              <div class="pl-summary-rate">対売上高利益率</div>
+              <div class="pl-summary-rate" style="margin-top:4px"><strong>-7.0%</strong></div>
+            </div>
+          </div>
+          <div style="font-size:10px;color:#cbd5e0;margin-top:10px;border-top:1px solid rgba(255,255,255,0.2);padding-top:8px">★1棟単独では赤字。本業所得¥650万から月¥20万を法人へ追加貸付して資金ショート回避／2棟目展開後は単月+25万黒字化</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 17: 月次推移グラフ ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">月次推移グラフ（入金ベース）</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">17 / 23</div>
+  <div class="slide-body">
+    <div class="chart-grid">
+      <div class="chart-card">
+        <div class="chart-title">
+          <span>📊 資金繰り推移シミュレーション（基本計画 / 4名満床ベース）</span>
+          <div class="chart-legend">
+            <span class="leg-rev">売上高（入金）</span>
+            <span class="leg-cost">支出（返済込）</span>
+          </div>
+        </div>
+        <div class="chart-area" style="position:relative">
+          <!-- Grid lines -->
+          <div class="chart-grid-line" style="bottom:0%"><span>0</span></div>
+          <div class="chart-grid-line" style="bottom:25%"><span>1000千</span></div>
+          <div class="chart-grid-line" style="bottom:50%"><span>2000千</span></div>
+          <div class="chart-grid-line" style="bottom:75%"><span>3000千</span></div>
+          <!-- Phase divider at month 4 (黒字転換) -->
+          <div class="chart-divider" style="left:25%"></div>
+          <div style="position:absolute;left:33%;top:8px;transform:translateX(-50%);font-size:10px;color:var(--red);font-weight:700;background:#fff;padding:2px 8px;border:1px solid var(--red);border-radius:3px">★5月目 黒字転換</div>
+          <!-- Phase divider at month 5 (満床4名) -->
+          <div class="chart-divider" style="left:42%;border-color:var(--green)"></div>
+          <div style="position:absolute;left:42%;top:32px;transform:translateX(-50%);font-size:10px;color:var(--green);font-weight:700;background:#fff;padding:2px 8px;border:1px solid var(--green);border-radius:3px">4名満床</div>
+
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:0%"></div><div class="chart-bar cost" style="height:36%"></div></div><div class="chart-month-label">7月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:5%"></div><div class="chart-bar cost" style="height:54%"></div></div><div class="chart-month-label">8月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:18%"></div><div class="chart-bar cost" style="height:58%"></div></div><div class="chart-month-label">9月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:32%"></div><div class="chart-bar cost" style="height:60%"></div></div><div class="chart-month-label">10月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:46%"></div><div class="chart-bar cost" style="height:62%"></div></div><div class="chart-month-label">11月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:55%"></div><div class="chart-bar cost" style="height:65%"></div></div><div class="chart-month-label">12月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:65%"></div><div class="chart-bar cost" style="height:65%"></div></div><div class="chart-month-label">1月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:75%"></div><div class="chart-bar cost" style="height:65%"></div></div><div class="chart-month-label">2月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:85%"></div><div class="chart-bar cost" style="height:65%"></div></div><div class="chart-month-label">3月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:88%"></div><div class="chart-bar cost" style="height:67%"></div></div><div class="chart-month-label">4月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:88%"></div><div class="chart-bar cost" style="height:67%"></div></div><div class="chart-month-label">5月</div></div>
+          <div class="chart-month"><div class="chart-bars"><div class="chart-bar rev" style="height:88%"></div><div class="chart-bar cost" style="height:67%"></div></div><div class="chart-month-label">6月</div></div>
+        </div>
+        <div class="chart-note">※単位：千円 / 訓練等給付費は提供翌々月の入金として計算 / 金利1.5%・据置6ヶ月 / 4名満床想定（資金計画書v2.0ベース）</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="border-left:5px solid var(--gold)">
+          <div style="font-size:10px;color:var(--gold-2);font-weight:700;margin-bottom:4px;letter-spacing:1px">黒字転換</div>
+          <div style="font-size:16px;font-weight:700;color:var(--navy)">開設5ヶ月目（11月）</div>
+          <div style="font-size:12px;color:#2d3748;line-height:1.7;margin-top:8px">入居4名満床到達時点で<strong style="color:var(--gold-2)">月次黒字+¥7,920</strong>達成。役員報酬¥0計上（Royal方式）と神奈川4級地（10.96円）の単価優位性が要因。<strong>2棟体制移行で月+25万黒字化を狙う</strong>。</div>
+          <div style="border-top:1px dashed var(--gray);padding-top:8px;margin-top:10px;display:flex;justify-content:space-between;font-size:11px;color:var(--gray-2)">
+            <span>想定入居率（5ヶ月目）</span>
+            <span style="color:var(--gold-2);font-weight:700">100% (4名満床)</span>
+          </div>
+        </div>
+        <div class="card" style="border-left:5px solid var(--navy)">
+          <div style="font-size:10px;color:var(--gray-2);font-weight:700;margin-bottom:4px;letter-spacing:1px">キャッシュフロー</div>
+          <div style="font-size:14px;font-weight:700;color:var(--navy)">返済計画の反映</div>
+          <div style="font-size:11.5px;color:#2d3748;line-height:1.7;margin-top:8px">据置期間中（〜12月）は利息のみ<strong>月¥7,500</strong>、据置明け（1月〜）は元金含め<strong>月¥73,000</strong>の返済負担を計画に反映済み（パターンB・3社合計¥600万・7年・1.5%）。</div>
+        </div>
+        <div class="card" style="border-left:5px solid var(--green)">
+          <div style="font-size:10px;color:var(--gray-2);font-weight:700;margin-bottom:4px;letter-spacing:1px">収益性</div>
+          <div style="font-size:14px;font-weight:700;color:var(--navy)">満床時の収益力</div>
+          <div style="font-size:11.5px;color:#2d3748;line-height:1.7;margin-top:8px">4名満床稼働時は、役員¥0計上で借入返済を含めた全支出を賄える設計。<strong style="color:var(--green)">満床月利益+¥10万</strong>水準だが、初年度は累計▲¥100万の赤字。本業所得¥650万から月¥20万を法人へ追加貸付して資金ショート回避。<strong>2棟体制移行で年+¥250万の黒字構造</strong>を狙う。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 18: 3パターン比較 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">3パターン収支比較</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">18 / 23</div>
+  <div class="slide-body">
+    <div style="text-align:center;font-size:11px;color:var(--gray-2);margin-bottom:8px">借入額・金利・据置期間を踏まえたシミュレーション（推奨：パターンB／v2.0確定）</div>
+    <div class="pat-bar">
+      <span class="pat-bar-tag">推奨：3社並行（公庫横浜・きらぼし白井・神奈川県内信金）</span>
+      <span class="pat-bar-tag">信用情報照会期間を1〜2週間に圧縮</span>
+      <span class="pat-bar-tag">2棟目は満床確認後追加</span>
+    </div>
+
+    <div class="pat-grid">
+      <div class="pat-card a">
+        <div class="pat-card-head">
+          <div class="pat-card-title">パターンA（最小）</div>
+          <div class="pat-card-en">公庫単独最小プラン</div>
+        </div>
+        <div class="pat-card-body">
+          <div class="pat-section">
+            <div class="pat-section-label">想定借入</div>
+            <div class="pat-section-value">¥200万円</div>
+          </div>
+          <div>
+            <div class="pat-row"><div class="pat-row-label">公庫横浜</div><div class="pat-row-value">¥200万</div></div>
+            <div class="pat-row"><div class="pat-row-label">想定金利</div><div class="pat-row-value">1.5%</div></div>
+            <div class="pat-row"><div class="pat-row-label">月返済（据置後）</div><div class="pat-row-value">¥2.5万</div></div>
+            <div class="pat-row"><div class="pat-row-label">返済比率</div><div class="pat-row-value">4%</div></div>
+          </div>
+          <div class="pat-result">
+            <div class="pat-result-label">満床時月間利益</div>
+            <div class="pat-result-value">+¥17万</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pat-card b">
+        <div class="pat-card-head">
+          <div class="pat-card-title">パターンB（推奨）</div>
+          <div class="pat-card-en">3社並行 標準</div>
+        </div>
+        <div class="pat-card-body">
+          <div class="pat-section" style="background:#fef5e7">
+            <div class="pat-section-label" style="color:var(--gold-2);font-weight:700">想定借入 ★最推奨</div>
+            <div class="pat-section-value" style="color:var(--gold-2)">¥600万円</div>
+          </div>
+          <div>
+            <div class="pat-row"><div class="pat-row-label">公庫横浜</div><div class="pat-row-value">¥250万</div></div>
+            <div class="pat-row"><div class="pat-row-label">きらぼし白井</div><div class="pat-row-value">¥200万</div></div>
+            <div class="pat-row"><div class="pat-row-label">神奈川信金</div><div class="pat-row-value">¥150万</div></div>
+            <div class="pat-row"><div class="pat-row-label">月返済（据置後）</div><div class="pat-row-value">¥7.3万</div></div>
+            <div class="pat-row"><div class="pat-row-label">返済比率</div><div class="pat-row-value">12%</div></div>
+          </div>
+          <div class="pat-result">
+            <div class="pat-result-label">満床時月間利益</div>
+            <div class="pat-result-value">+¥10万</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pat-card c">
+        <div class="pat-card-head">
+          <div class="pat-card-title">パターンC（ストレッチ）</div>
+          <div class="pat-card-en">3社上限＋2棟目同時</div>
+        </div>
+        <div class="pat-card-body">
+          <div class="pat-section">
+            <div class="pat-section-label">想定借入</div>
+            <div class="pat-section-value">¥1,325万円</div>
+          </div>
+          <div>
+            <div class="pat-row"><div class="pat-row-label">1棟目（3社合計）</div><div class="pat-row-value">¥600万</div></div>
+            <div class="pat-row"><div class="pat-row-label">2棟目（仮計上）</div><div class="pat-row-value">¥725万</div></div>
+            <div class="pat-row"><div class="pat-row-label">月返済（据置後）</div><div class="pat-row-value">¥16.1万</div></div>
+            <div class="pat-row"><div class="pat-row-label">返済比率</div><div class="pat-row-value" style="color:var(--red)">56%</div></div>
+          </div>
+          <div class="pat-result">
+            <div class="pat-result-label">満床時月間利益</div>
+            <div class="pat-result-value">+¥1万</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px;background:var(--white);border-left:4px solid var(--navy);padding:10px 16px;border-radius:4px;font-size:11px;color:#2d3748;display:flex;align-items:center;gap:12px;line-height:1.6">
+      <span style="font-size:16px">ℹ️</span>
+      <span>★ <strong>v2.0確定の必要資金¥725万に整合する推奨パターン。</strong>3社並行打診で信用情報照会期間を1〜2週間に圧縮（5/15〜5/21集中打診）、合計¥600万調達。横浜銀行BLPは前回頓挫情報懸念で初回打診から外す。2棟目は1棟目満床確認＋ヒルトップ緑ヶ丘契約締結後の追加申請として2027年以降を視野。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 19: 2年目以降の展望 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">2年目以降の展望</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">19 / 23</div>
+  <div class="slide-body">
+    <div class="year-list">
+      <div class="year-card">
+        <div class="year-icon">📉</div>
+        <div>
+          <div class="year-title">年度1（2026/7〜2027/6）：1棟単独で年間 <strong>▲約100万円</strong>の慢性赤字構造</div>
+          <div class="year-desc">4名満床稼働後（5ヶ月目以降）の月次利益+¥10万水準だが、立上げ期赤字（1〜4ヶ月目で累計▲¥225万）を吸収しきれず、年度1は<strong>年間営業損失▲約100万円</strong>。<strong>本業所得¥650万（荏原マイスター）から月¥20万を法人へ追加貸付</strong>することで資金ショート回避。年度1末残高+¥118万を運転資金として温存。</div>
+        </div>
+      </div>
+      <div class="year-card">
+        <div class="year-icon">💰</div>
+        <div>
+          <div class="year-title">年度2（2027/7〜2028/6）：2棟体制移行で <strong>+約250万円</strong>の本格黒字化</div>
+          <div class="year-desc"><strong>2棟目（ヒルトップ緑ヶ丘 or 代替物件）展開後</strong>は合計9〜10名規模に拡大。シナリオA（1棟目のみ継続）では運転資金枯渇のリスクあるが、<strong>シナリオB（2棟体制）で単月+¥25万黒字化</strong>。年間+¥250万水準の黒字構造へ移行。累積欠損¥606万の解消も5〜6年で実現する計画。</div>
+        </div>
+      </div>
+      <div class="year-card">
+        <div class="year-icon">🏘️</div>
+        <div>
+          <div class="year-title">2棟体制で安定運営、3棟目以降は内部留保形成後</div>
+          <div class="year-desc">1棟目（α-cupid 岡崎ハイツⅠ 4名）+ 2棟目（ヒルトップ緑ヶ丘 候補）の2棟体制が当面の事業基盤。<strong>管理者・サビ管の2棟兼務（神奈川県の2棟合計30名以下ルール）</strong>で運営効率化と収益性向上を両立。神奈川県への事前確認必須。3棟目以降は累積欠損解消後の安定運営フェーズで追加検討。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 20: リスクと対策 ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">リスクと対策</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">20 / 23</div>
+  <div class="slide-body">
+    <div class="risk-intro">事業運営において想定される主要なリスク要因を特定し、それぞれに対して具体的な対策を講じています。</div>
+
+    <div class="risk-list">
+      <div class="risk-row">
+        <div class="risk-left">
+          <div class="risk-icon">⚠️</div>
+          <div>
+            <div class="risk-num">RISK 01 <span class="risk-tag">重要</span></div>
+            <div class="risk-title">前回挫折（オセアン茅ヶ崎）再発リスク</div>
+            <div class="risk-sub">2024年の貸主不可抗力で約800万円消失の前例</div>
+          </div>
+        </div>
+        <div class="risk-content">
+          <div>
+            <div class="risk-content-col-title">対策：契約前デューデリ徹底</div>
+            <div class="risk-content-col-desc">契約前に<strong>登記簿で抵当権状態を確認</strong>（前回は事後発覚の¥3,270万抵当権が問題）。岡崎ハイツⅠでは<strong>使用目的「障がい者GH運営」を契約書に明記</strong>。物件オーナーの財務状況を可能な限り把握。</div>
+          </div>
+          <div>
+            <div class="risk-content-col-title">対策：賃貸物件選定</div>
+            <div class="risk-content-col-desc">前回は購入想定の不動産取引が頓挫したが、今回は<strong>賃貸契約</strong>で初期投資を最小化。ユーミーらいふ本厚木北口店（Mr小杉）を介した一般的な賃貸借契約で、貸主リスクを低減。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="risk-row">
+        <div class="risk-left">
+          <div class="risk-icon">💰</div>
+          <div>
+            <div class="risk-num">RISK 02 <span class="risk-tag">重要</span></div>
+            <div class="risk-title">資金繰りリスク（累積欠損¥606万＋立上げ期赤字）</div>
+            <div class="risk-sub">1棟単独では月次▲17.9万の慢性赤字構造</div>
+          </div>
+        </div>
+        <div class="risk-content">
+          <div>
+            <div class="risk-content-col-title">対策：Royal方式・役員¥0計上＋本業所得吸収</div>
+            <div class="risk-content-col-desc">創業期の<strong>役員報酬を¥0計上</strong>で固定費最小化。代表者の生計は<strong>本業¥650万（荏原マイスター継続）</strong>で完結。月¥20万を法人へ追加貸付できる構造で立上げ期赤字を吸収。</div>
+          </div>
+          <div>
+            <div class="risk-content-col-title">対策：3社並行打診＋保証協会</div>
+            <div class="risk-content-col-desc">融資の<strong>据置期間6ヶ月</strong>＋<strong>運転資金6ヶ月分グロス¥545万</strong>を確保。<strong>累積欠損は保証協会保証付きで吸収</strong>、公庫は再チャレンジ支援資金で対応。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="risk-row">
+        <div class="risk-left">
+          <div class="risk-icon">📋</div>
+          <div>
+            <div class="risk-num">RISK 03 <span class="risk-tag">致命的</span></div>
+            <div class="risk-title">サビ管未確定リスク（開設可否の前提条件）</div>
+            <div class="risk-sub">候補者は4/24時点で未確定</div>
+          </div>
+        </div>
+        <div class="risk-content">
+          <div>
+            <div class="risk-content-col-title">対策：OWLジョブメドレー求人活用</div>
+            <div class="risk-content-col-desc">OWLジョブメドレー求人を須賀SVが共有済（2026/3/13）。<strong>RUNBIRD（OWL）の人材紹介ネットワーク</strong>を最大活用。中村様本人のサビ管資格取得（63歳での基礎+実践研修受講可否）も並行検討中。</div>
+          </div>
+          <div>
+            <div class="risk-content-col-title">対策：障碍者雇用25年半経験の主張</div>
+            <div class="risk-content-col-desc">代表者の<strong>荏原フィールドテック障碍者雇用・業務管理25年半経験</strong>を管理者要件補強として神奈川県へ説明。社会福祉主事任用資格は不該当だが、実務経験で代替主張する戦略。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="risk-row">
+        <div class="risk-left">
+          <div class="risk-icon">🏠</div>
+          <div>
+            <div class="risk-num">RISK 04 <span class="risk-tag mid">中</span></div>
+            <div class="risk-title">代表者63歳の事業継続性リスク</div>
+            <div class="risk-sub">本人健康・後継者育成・事業承継</div>
+          </div>
+        </div>
+        <div class="risk-content">
+          <div>
+            <div class="risk-content-col-title">対策：配偶者・長男の体制構築</div>
+            <div class="risk-content-col-desc"><strong>配偶者千鶴様（55歳）副管理者就任を検討中</strong>（B型福祉施設パート経験あり）。<strong>長男（荏原フィールドテック勤務）が将来事業参画意欲あり</strong>で事業継承の選択肢を確保。家族体制で代表者個人への依存を低減。</div>
+          </div>
+          <div>
+            <div class="risk-content-col-title">対策：2〜3年での運営中核人員育成</div>
+            <div class="risk-content-col-desc">2棟目展開（2027年〜）の過程で運営の中核人員（管理者候補・サビ管）を段階的に育成。代表者は荏原マイスター継続勤務しながら<strong>2〜3年で内部留保形成＋運営体制安定化</strong>を目指す。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 21: 周辺施設マップ ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">周辺施設マップ・連携ネットワーク</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">21 / 23</div>
+  <div class="slide-body">
+    <div class="map-grid">
+      <div class="map-frame" style="padding:0;overflow:hidden;border:1px solid var(--gray);min-height:auto;height:100%;position:relative;background:linear-gradient(135deg,#eef2f7 0%,#dde4ec 100%)">
+        <!-- Background grid -->
+        <div style="position:absolute;inset:0;background-image:
+          repeating-linear-gradient(0deg,transparent 0,transparent 60px,rgba(184,196,210,0.4) 60px,rgba(184,196,210,0.4) 61px),
+          repeating-linear-gradient(90deg,transparent 0,transparent 60px,rgba(184,196,210,0.4) 60px,rgba(184,196,210,0.4) 61px)"></div>
+
+        <!-- Title -->
+        <div style="position:absolute;top:14px;left:14px;background:var(--navy);color:#fff;padding:8px 14px;border-radius:4px;font-size:12px;font-weight:700;border-left:3px solid var(--gold);z-index:20;box-shadow:0 2px 8px rgba(0,0,0,0.25)">
+          📍 α-cupid 周辺距離マップ（神奈川県厚木市金田363-1 岡崎ハイツⅠ）
+        </div>
+
+        <!-- Concentric distance circles (centered) -->
+        <!-- 500m circle -->
+        <div style="position:absolute;top:50%;left:50%;width:200px;height:200px;border:1.5px dashed #c9a961;border-radius:50%;transform:translate(-50%,-50%);z-index:2"></div>
+        <div style="position:absolute;top:calc(50% - 100px);left:50%;transform:translate(-50%,-50%);background:#fef5e7;color:#744210;padding:2px 10px;border-radius:10px;font-size:10px;font-weight:700;z-index:5;border:1px solid var(--gold)">徒歩6分 / 約500m</div>
+
+        <!-- 1km circle -->
+        <div style="position:absolute;top:50%;left:50%;width:340px;height:340px;border:1.5px dashed #4299e1;border-radius:50%;transform:translate(-50%,-50%);z-index:2"></div>
+        <div style="position:absolute;top:calc(50% - 170px);left:50%;transform:translate(-50%,-50%);background:#bee3f8;color:#2b6cb0;padding:2px 10px;border-radius:10px;font-size:10px;font-weight:700;z-index:5;border:1px solid #4299e1">徒歩12分 / 約1km</div>
+
+        <!-- 2km circle -->
+        <div style="position:absolute;top:50%;left:50%;width:480px;height:480px;border:1.5px dashed #a0aec0;border-radius:50%;transform:translate(-50%,-50%);z-index:2"></div>
+        <div style="position:absolute;top:calc(50% - 240px);left:50%;transform:translate(-50%,-50%);background:#e2e8f0;color:#2d3748;padding:2px 10px;border-radius:10px;font-size:10px;font-weight:700;z-index:5;border:1px solid #a0aec0">徒歩24分 / 約2km</div>
+
+        <!-- Center pin: α-cupid -->
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;background:var(--navy);color:#fff;padding:10px 18px;border:3px solid var(--gold);border-radius:8px;font-size:13px;font-weight:700;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,0.3),0 0 0 8px rgba(201,169,97,0.15);text-align:center;line-height:1.4">
+          🏠 α-cupid<br>
+          <span style="font-size:10px;color:var(--gold);font-weight:500">厚木市金田363-1 岡崎ハイツⅠ</span>
+        </div>
+
+        <!-- Confirmed facilities (from 情報まとめ §1) -->
+        <!-- バス停 金田下宿（徒歩3分）— inside 500m circle -->
+        <div style="position:absolute;top:60%;left:38%;transform:translate(-50%,-50%);z-index:7;background:rgba(255,255,255,0.95);border:2px solid #38a169;color:#22543d;padding:6px 11px;border-radius:14px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.18);display:inline-flex;align-items:center;gap:6px">
+          <span style="width:8px;height:8px;border-radius:50%;background:#38a169"></span>🚏 バス停「金田下宿」 <span style="font-size:9px;color:var(--gray-2);font-weight:500">徒歩3分</span>
+        </div>
+
+        <!-- 厚木市役所（バス便）— between 1km-2km, east -->
+        <div style="position:absolute;top:48%;left:75%;transform:translate(-50%,-50%);z-index:7;background:rgba(255,255,255,0.95);border:2px solid #4a5568;color:#2d3748;padding:6px 11px;border-radius:14px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.18);display:inline-flex;align-items:center;gap:6px">
+          🏛 厚木市役所 <span style="font-size:9px;color:var(--gray-2);font-weight:500">バス15分</span>
+        </div>
+
+        <!-- 本厚木駅（バス便でアクセス）— near 2km circle, north -->
+        <div style="position:absolute;top:18%;left:55%;transform:translate(-50%,-50%);z-index:7;background:rgba(255,255,255,0.95);border:2px solid #4a5568;color:#2d3748;padding:6px 11px;border-radius:14px;font-size:11px;font-weight:700;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.18);display:inline-flex;align-items:center;gap:6px">
+          🚉 本厚木駅 <span style="font-size:9px;color:var(--gray-2);font-weight:500">バス10分</span>
+        </div>
+
+        <!-- 連携先カテゴリエリア（同心円外）— 距離不明のため方角のみ示唆 -->
+        <div style="position:absolute;top:14%;left:18%;z-index:6;background:rgba(255,255,255,0.92);border:2px dashed #805ad5;color:#553c9a;padding:6px 11px;border-radius:8px;font-size:10.5px;font-weight:700;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.12)">
+          🏫 厚木市内 障害者支援センター
+        </div>
+        <div style="position:absolute;top:84%;left:75%;z-index:6;background:rgba(255,255,255,0.92);border:2px dashed #805ad5;color:#553c9a;padding:6px 11px;border-radius:8px;font-size:10.5px;font-weight:700;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.12)">
+          🏛 厚木市役所（市内）
+        </div>
+        <div style="position:absolute;top:80%;left:18%;z-index:6;background:rgba(255,255,255,0.92);border:2px dashed #e53e3e;color:#9b2c2c;padding:6px 11px;border-radius:8px;font-size:10.5px;font-weight:700;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.12)">
+          🏥 厚木市立病院
+        </div>
+        <div style="position:absolute;top:14%;left:80%;z-index:6;background:rgba(255,255,255,0.92);border:2px dashed #e53e3e;color:#9b2c2c;padding:6px 11px;border-radius:8px;font-size:10.5px;font-weight:700;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.12)">
+          🏥 湘南厚木病院
+        </div>
+
+        <!-- Bottom legend & note -->
+        <div style="position:absolute;bottom:14px;left:14px;right:14px;background:rgba(255,255,255,0.96);padding:10px 14px;border-radius:6px;font-size:11px;color:#2d3748;z-index:20;box-shadow:0 2px 10px rgba(0,0,0,0.15);line-height:1.7">
+          <div style="display:flex;gap:14px;font-size:10px;color:#4a5568;margin-bottom:4px;align-items:center;flex-wrap:wrap">
+            <strong style="color:var(--navy)">凡例：</strong>
+            <span style="display:flex;align-items:center;gap:4px"><span style="width:14px;height:0;border-top:2px solid var(--gold)"></span>徒歩約500m</span>
+            <span style="display:flex;align-items:center;gap:4px"><span style="width:14px;height:0;border-top:2px solid #4299e1"></span>徒歩約1km</span>
+            <span style="display:flex;align-items:center;gap:4px"><span style="width:14px;height:0;border-top:2px solid #a0aec0"></span>徒歩約2km</span>
+            <span style="margin-left:auto;color:var(--gray-2)">破線ピン＝市内連携先（距離は概略）</span>
+          </div>
+          📋 協力医療機関・連携福祉施設の協定締結は<strong>2026/4/20目途で進行中</strong>
+        </div>
+      </div>
+
+      <div class="net-summary">
+        <div class="net-card blue">
+          <div class="net-icon">💬</div>
+          <div class="net-content">
+            <div class="net-eyebrow">入居者紹介・支援</div>
+            <div class="net-name">相談支援事業所</div>
+            <div class="net-tags">
+              <span class="net-tag">厚木市相談支援センター</span>
+              <span class="net-tag">市内事業所</span>
+              <span class="net-tag">家族・知人</span>
+            </div>
+          </div>
+          <div class="net-count">3 <span>ヶ所〜</span></div>
+        </div>
+
+        <div class="net-card green">
+          <div class="net-icon">💼</div>
+          <div class="net-content">
+            <div class="net-eyebrow">日中活動先</div>
+            <div class="net-name">就労継続支援 A/B</div>
+            <div class="net-tags">
+              <span class="net-tag">A型作業所</span>
+              <span class="net-tag">B型作業所</span>
+              <span class="net-tag">市内連携先</span>
+            </div>
+          </div>
+          <div class="net-count">3 <span>ヶ所</span></div>
+        </div>
+
+        <div class="net-card red">
+          <div class="net-icon">🏥</div>
+          <div class="net-content">
+            <div class="net-eyebrow">医療連携・通院</div>
+            <div class="net-name">協力医療機関</div>
+            <div class="net-tags">
+              <span class="net-tag">内科・総合病院</span>
+              <span class="net-tag">精神科</span>
+              <span class="net-tag">歯科</span>
+            </div>
+          </div>
+          <div class="net-count">3 <span>ヶ所</span></div>
+        </div>
+
+        <div class="net-card purple">
+          <div class="net-icon">🏫</div>
+          <div class="net-content">
+            <div class="net-eyebrow">教育・行政</div>
+            <div class="net-name">特別支援学校・市役所</div>
+            <div class="net-tags">
+              <span class="net-tag">厚木市内 障害者支援センター</span>
+              <span class="net-tag">厚木市障がい福祉課</span>
+            </div>
+          </div>
+          <div class="net-count">2 <span>機関</span></div>
+        </div>
+
+        <div style="background:var(--navy);color:var(--white);padding:14px 18px;border-radius:6px;font-size:12px;border-left:4px solid var(--gold);line-height:1.7;margin-top:auto">
+          <strong style="color:var(--gold)">✓ 包括的な支援体制</strong><br>
+          医療・就労・相談の導線が近接し、<strong>元同僚から退所予定者の紹介打診</strong>も既に獲得。面での支援ネットワークにより、緊急時対応もスムーズで安定運営が可能。
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 22: スケジュール ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">スケジュール</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">22 / 23</div>
+  <div class="slide-body">
+    <div class="sched-intro">2022年7月の法人設立以降、<strong>神奈川県事業運営許可取得（2023/12）と前回オセアン茅ヶ崎の不可抗力による閉所（2024/3）</strong>を経て、現在は岡崎ハイツⅠでの再起を期した融資申請フェーズにあります。2026年7月の正式開設に向け準備を進めてまいります。</div>
+
+    <div class="sched-track">
+      <div class="sched-step done">
+        <div class="sched-date">2022 - 2024</div>
+        <div class="sched-icon">✓</div>
+        <div class="sched-card">
+          <div class="sched-card-title">法人設立〜オセアン茅ヶ崎</div>
+          <ul class="sched-card-list">
+            <li>SGパートナーズ設立（2022/7/1）</li>
+            <li>OWLパートナーシップ契約締結（2023/5/25）</li>
+            <li>神奈川県事業運営許可取得（2023/12）</li>
+            <li>オセアン茅ヶ崎開設・入居者4名確定（2024/1-2）</li>
+            <li>★貸主不可抗力で閉所（2024/3）</li>
+          </ul>
+          <div class="sched-tag">完了</div>
+        </div>
+      </div>
+
+      <div class="sched-step done">
+        <div class="sched-date">2026.4 - 5/13</div>
+        <div class="sched-icon">📋</div>
+        <div class="sched-card">
+          <div class="sched-card-title">再起準備・v2.0資料整備</div>
+          <ul class="sched-card-list">
+            <li>キークレアからの引き継ぎ完了（4/24）</li>
+            <li>金融機関打診先3社確定（4/24）</li>
+            <li>中村様5/13ヒアリング回答受領</li>
+            <li>履歴事項全部証明書受領（5/13）</li>
+            <li>v2.0資料群完成（5/13）</li>
+          </ul>
+          <div class="sched-tag">完了</div>
+        </div>
+      </div>
+
+      <div class="sched-step active">
+        <div class="sched-date">2026.5/15 - 5/21</div>
+        <div class="sched-icon">📝</div>
+        <div class="sched-card">
+          <div class="sched-card-title">3社並行打診（信用情報照会期間圧縮）</div>
+          <ul class="sched-card-list">
+            <li><strong>公庫横浜（再チャレンジ¥250万）</strong></li>
+            <li><strong>きらぼし白井（保証協会¥200万）</strong></li>
+            <li><strong>神奈川県内信金 厚木（保証協会¥150万）</strong></li>
+            <li>信用情報照会期間を1〜2週間に圧縮</li>
+          </ul>
+          <div class="sched-tag">進行中</div>
+        </div>
+      </div>
+
+      <div class="sched-step">
+        <div class="sched-date">2026.5/31 - 6月中旬</div>
+        <div class="sched-icon">🔧</div>
+        <div class="sched-card">
+          <div class="sched-card-title">指定申請・融資実行・工事</div>
+          <ul class="sched-card-list">
+            <li>県事前協議書類提出</li>
+            <li>指定申請書（5/31提出目標）</li>
+            <li>融資実行（6月中旬）</li>
+            <li>消防工事・備品準備</li>
+            <li>サビ管採用（最優先）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sched-step target">
+        <div class="sched-date">2026.7.1</div>
+        <div class="sched-icon">🎉</div>
+        <div class="sched-card">
+          <div class="sched-card-title">α-cupid 開設・受入開始</div>
+          <ul class="sched-card-list">
+            <li>α-cupid 岡崎ハイツⅠ 開設</li>
+            <li>4名定員 入居者募集開始</li>
+            <li>サービス提供開始</li>
+            <li>★5ヶ月目で4名満床・月次黒字転換</li>
+          </ul>
+          <div class="sched-tag">目標</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 23: まとめ ============ -->
+<section class="slide">
+  <div class="slide-header">
+    <div class="slide-title">まとめ</div>
+    <div class="slide-meta">一般社団法人SGパートナーズ 事業計画書</div>
+  </div>
+  <div class="pagenum">23 / 23</div>
+  <div class="slide-body" style="display:flex;flex-direction:column">
+    <div class="summ-intro">本事業は、<strong>確実な市場ニーズ＋障碍者雇用25年半の実務蓄積＋前回完遂実績＋本業継続による創業期赤字吸収</strong>を基盤に、地域社会への貢献と再起を実現する計画です。融資審査における<strong>5つの重要ポイント</strong>を以下にまとめました。</div>
+
+    <div class="summ-grid-1">
+      <div class="summ-card s1">
+        <div class="summ-num">01</div>
+        <div class="summ-icon">🏭</div>
+        <div class="summ-title">製造業39年・障碍者雇用25年半</div>
+        <div class="summ-desc">荏原フィールドテック<strong>25年半の障碍者雇用・業務管理経験</strong>＋管理職24年（5〜15名規模）＋<strong>国家資格キャリアコンサルタント・経営倫理士</strong>保有。GH管理者要件の強力な補強材料。</div>
+      </div>
+      <div class="summ-card s2">
+        <div class="summ-num">02</div>
+        <div class="summ-icon">🏛️</div>
+        <div class="summ-title">神奈川県完遂実績（二次チャレンジ）</div>
+        <div class="summ-desc"><strong>2023年12月に神奈川県事業運営許可取得＋入居者4名確定までを完遂</strong>。2024年3月は貸主不可抗力で閉所したが、神奈川県指定申請プロセスを既に1度経験している強み。<strong>累積欠損¥606万は不可抗力起因で2棟体制5〜6年解消計画</strong>。</div>
+      </div>
+      <div class="summ-card s3">
+        <div class="summ-num">03</div>
+        <div class="summ-icon">💼</div>
+        <div class="summ-title">本業継続で創業期赤字を吸収</div>
+        <div class="summ-desc">荏原マイスター（東証プライム上場グループ）で<strong>年収¥650万・直近2年安定</strong>。役員報酬¥0計上（Royal方式）＋本業所得から月¥20万を法人へ追加貸付できる構造で、立上げ期月次▲17.9万の赤字を吸収。</div>
+      </div>
+    </div>
+
+    <div class="summ-grid-2" style="margin-bottom:18px">
+      <div class="summ-card s4">
+        <div class="summ-num">04</div>
+        <div class="summ-icon">⚡</div>
+        <div class="summ-title">3社並行打診で確実調達</div>
+        <div class="summ-desc"><strong>公庫横浜（再チャレンジ¥250万）＋きらぼし白井（保証協会¥200万）＋神奈川県内信金（保証協会¥150万）の3社並行</strong>で合計¥600万調達目標。信用情報照会期間を1〜2週間に圧縮（5/15〜5/21集中打診）。累積欠損リスクは公庫の再チャレンジ枠＋保証協会で吸収。</div>
+      </div>
+      <div class="summ-card s5">
+        <div class="summ-num">05</div>
+        <div class="summ-icon">👫</div>
+        <div class="summ-title">家族体制と2棟体制での収益化</div>
+        <div class="summ-desc"><strong>配偶者千鶴様（55歳・B型福祉施設パート経験あり）副管理者就任を検討中</strong>。長男（荏原フィールドテック勤務）が将来事業参画意欲あり。<strong>2棟体制（ヒルトップ緑ヶ丘 or 代替物件）移行で月次+25万黒字化＋2〜3年で運営中核人員育成</strong>を実現。</div>
+      </div>
+    </div>
+
+    <div class="summ-footer">
+      ✍ 二次チャレンジに必要な再起資金として、本事業へのご融資を何卒ご検討賜りますようお願い申し上げます。
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
