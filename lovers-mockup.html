@@ -185,6 +185,14 @@
     <h2 style="border-bottom-color:#6080c0">🤖 GPT Image 2.0 統一プロンプト集（全10カット）</h2>
     <p style="font-size:.88rem;color:#c8d0e0;margin-bottom:10px">登場人物・部屋・タオルを<b>完全統一</b>するために、全プロンプトに同じキャラ説明＋同じ部屋説明＋同じタオル色を埋め込み済み。各プロンプトに3つの参考写真（南氏・客モデル・部屋）を添付してください。</p>
 
+    <div style="background:#3a2020;border:2px solid #e89090;border-radius:10px;padding:12px 16px;margin-bottom:14px;color:#e8c8c8;font-size:.85rem;line-height:1.7">
+      <b style="color:#e89090;font-size:.95rem">⚠️ 参考写真の添付ルール（顔混合を防ぐ）</b><br>
+      • <b>客の顔だけ見えるシーン（S1〜S3 手だけ系, S7 USPキメ, S10 客顔 など）</b> → <b>客モデル参考写真のみ</b>添付（施術者写真は添付しない）<br>
+      • <b>施術者の顔だけ見えるシーン（S15 CTA など）</b> → <b>施術者参考写真のみ</b>添付<br>
+      • <b>両方の顔が見えるシーン</b> → 両方添付するが、プロンプトで「左の人=施術者、右の人=客」と明示<br>
+      → 両方添付すると AI が混ぜて<b>顔がスワップ</b>してしまうので、必要最小限の参照だけにする
+    </div>
+
     <details open style="background:#1a2030;border-radius:10px;padding:14px 18px;margin-bottom:14px;border:2px solid #6080c0">
       <summary style="font-weight:bold;color:#a0b8e0;cursor:pointer;font-size:.95rem">📋 共通ブロック（全プロンプト末尾に貼り付け）</summary>
       <pre style="background:#0a0a14;padding:12px;border-radius:8px;margin-top:10px;font-size:.74rem;color:#e0e8f0;overflow-x:auto;white-space:pre-wrap;line-height:1.6">CHARACTER UNIFICATION (apply across ALL scenes — STRICT FACE CONSISTENCY):
@@ -243,7 +251,8 @@ LIGHTING: warm amber side-light, dramatic shadows, circular ring lamp glow in so
 
     <!-- Cut 2 -->
     <details open style="background:#1a1a22;border-left:3px solid #d4a017;border-radius:10px;padding:12px 16px;margin-bottom:8px">
-      <summary style="font-weight:bold;color:#f5d5dc;cursor:pointer;font-size:.9rem">02｜3-6s｜🎯 フックC — 両手で背中圧（解剖学正確版）</summary>
+      <summary style="font-weight:bold;color:#f5d5dc;cursor:pointer;font-size:.9rem">02｜3-6s｜🎯 フックC — 両手で背中圧（解剖学正確版・客顔のみ）</summary>
+      <p style="font-size:.78rem;color:#e89090;margin-top:6px"><b>📎 添付：客モデル写真のみ</b>（施術者写真は添付しない・顔が混ざるため）</p>
       <div style="display:grid;grid-template-columns:280px 1fr;gap:14px;margin-top:10px;align-items:start">
         <div>
           <img loading="lazy" src="lovers-images/final/thumbs/1.jpg?v=20260515h" alt="フックC参考" style="width:100%;border-radius:8px;border:2px solid #d4a017">
@@ -262,7 +271,8 @@ LIGHTING: warm amber, side light, circular wall lamp glowing in soft-focus backg
 
     <!-- Cut 3 -->
     <details open style="background:#1a1a22;border-left:3px solid #d4a017;border-radius:10px;padding:12px 16px;margin-bottom:8px">
-      <summary style="font-weight:bold;color:#f5d5dc;cursor:pointer;font-size:.9rem">03｜6-9s｜🎯 フックE — オイル塗布（解剖学＋顔一貫性版）</summary>
+      <summary style="font-weight:bold;color:#f5d5dc;cursor:pointer;font-size:.9rem">03｜6-9s｜🎯 フックE — オイル塗布（解剖学＋顔一貫性版・客顔のみ）</summary>
+      <p style="font-size:.78rem;color:#e89090;margin-top:6px"><b>📎 添付：客モデル写真のみ</b>（施術者写真は添付しない・顔が混ざるため）</p>
       <div style="display:grid;grid-template-columns:280px 1fr;gap:14px;margin-top:10px;align-items:start">
         <div>
           <img loading="lazy" src="lovers-images/final/thumbs/hookE.jpg?v=20260515h" alt="フックE参考" style="width:100%;border-radius:8px;border:2px solid #d4a017">
@@ -270,9 +280,11 @@ LIGHTING: warm amber, side light, circular wall lamp glowing in soft-focus backg
         </div>
         <pre style="background:#0a0a14;padding:12px;border-radius:8px;font-size:.74rem;color:#e0e8f0;overflow-x:auto;white-space:pre-wrap;line-height:1.6;margin:0">Cinematic close-up of a male massage therapist's BOTH hands (covered in glistening golden oil) smoothly gliding across the Japanese male client's bare upper back/shoulders in flowing massage strokes.
 
-FACE IDENTITY (CRITICAL):
-- The CLIENT's face visible in frame MUST EXACTLY MATCH the attached client reference photo. PRESERVE the same nose, eyes, mouth, jawline, brows, hairstyle (short dark hair) and stubble pattern. DO NOT generate a different person, different age, or different facial features.
-- If the client's face is visible (turned to one side in the face cradle), it MUST be the SAME PERSON as in the reference photo.
+FACE IDENTITY (CRITICAL — STRICT):
+- The CLIENT's face visible in frame is the ONLY face shown. It MUST EXACTLY MATCH the attached client reference photo (the man in the white/checkered shirt). PRESERVE all his unique features.
+- DO NOT apply any facial features from a different reference. ONLY ONE reference photo is attached intentionally — use it as the client.
+- The THERAPIST's face must NOT be visible (only his torso/arms enter from the top of frame). His face is intentionally cropped out.
+- Do not invent a new face. Do not blend faces. Do not use beard or short military hair unless they appear in the attached reference.
 
 ANATOMICAL CORRECTNESS:
 - Both arms reach in from the TOP of frame, naturally connected to a partially visible BLACK V-NECK chest/shoulders at the edge of frame (NOT floating disembodied).
