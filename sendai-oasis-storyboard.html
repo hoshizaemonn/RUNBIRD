@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>仙台オアシスカウンセリングルーム — AI動画ストーリーボード v1</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root {
+    --bg: #0e1813;
+    --panel: #14241d;
+    --panel2: #1b2f25;
+    --line: #2a4a3a;
+    --green: #6fbf8b;
+    --green-soft: #a8d8b9;
+    --amber: #e6b97a;
+    --text: #e6f1ea;
+    --muted: #9bb4a6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: linear-gradient(180deg, #0a130f 0%, #0e1813 60%, #0a130f 100%);
+    color: var(--text);
+    font-family: "Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 48px 24px 96px; }
+  header.hero {
+    text-align: center; padding: 48px 24px 32px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 48px;
+  }
+  header.hero .eyebrow {
+    display: inline-block; padding: 6px 14px; border: 1px solid var(--green);
+    color: var(--green); border-radius: 999px; font-size: 12px; letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+  header.hero h1 { font-size: 34px; margin: 0 0 8px; letter-spacing: 0.02em; }
+  header.hero .sub { color: var(--muted); font-size: 14px; }
+  header.hero .badges { margin-top: 18px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .badge {
+    background: rgba(111,191,139,0.12); color: var(--green-soft);
+    border: 1px solid rgba(111,191,139,0.4);
+    padding: 4px 10px; border-radius: 6px; font-size: 12px;
+  }
+  h2 {
+    font-size: 22px; margin: 48px 0 20px; padding-bottom: 10px;
+    border-bottom: 1px dashed var(--line); letter-spacing: 0.04em;
+  }
+  h2 .icon { color: var(--amber); margin-right: 8px; }
+  .grid { display: grid; gap: 18px; }
+  .grid-3 { grid-template-columns: repeat(3,1fr); }
+  .grid-2 { grid-template-columns: repeat(2,1fr); }
+  @media (max-width: 760px) { .grid-3, .grid-2 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--green); }
+  .card a { color: var(--green-soft); text-decoration: none; }
+  .card a:hover { color: var(--green); }
+  .card .title { font-weight: 600; margin-bottom: 6px; }
+  .card .meta { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+  .card .desc { font-size: 13px; color: #cfddd3; }
+  .ref-card.gold { border-color: var(--amber); background: linear-gradient(135deg,#1e2a1f 0%,#1c2418 100%); }
+  .ref-card.gold .title::before { content: "★ GOLD STANDARD　"; color: var(--amber); font-size: 12px; }
+  .scene {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+  }
+  @media (max-width: 760px) { .scene { grid-template-columns: 1fr; } }
+  .scene img { width: 100%; height: 220px; object-fit: cover; display: block; background: #20302a; }
+  .scene .body { padding: 16px 18px; }
+  .scene .sec { font-size: 11px; color: var(--green); letter-spacing: 0.15em; margin-bottom: 4px; }
+  .scene .telop { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .scene .narr { font-size: 13px; color: #cfddd3; border-left: 2px solid var(--green); padding-left: 10px; margin-top: 8px; }
+  .scene .tags { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .scene .tags span { font-size: 11px; background: rgba(111,191,139,0.12); color: var(--green-soft); padding: 2px 8px; border-radius: 4px; }
+  .meta-grid {
+    display: grid; grid-template-columns: 160px 1fr; gap: 8px 16px;
+    background: var(--panel2); border: 1px solid var(--line);
+    border-radius: 12px; padding: 18px 22px; font-size: 14px;
+  }
+  .meta-grid dt { color: var(--green-soft); }
+  .meta-grid dd { margin: 0; color: #cfddd3; }
+  .hook-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); }
+  .hook-card .title { color: var(--amber); margin-top: 8px; font-weight: 600; }
+  .hook-card .copy { font-size: 18px; font-weight: 700; margin: 4px 0; }
+  .hook-card .why { font-size: 12px; color: var(--muted); }
+  .ng-list, .check-list { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; }
+  .ng-list ul, .check-list ul { padding-left: 20px; margin: 0; }
+  .ng-list li, .check-list li { margin-bottom: 6px; font-size: 14px; }
+  blockquote.script {
+    background: var(--panel2); border-left: 4px solid var(--green);
+    padding: 18px 22px; margin: 0; border-radius: 0 8px 8px 0;
+    font-size: 15px; line-height: 2; white-space: pre-line;
+  }
+  footer { text-align: center; color: var(--muted); font-size: 12px; margin-top: 64px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">RUNBIRD AI VIDEO — STORYBOARD v1</div>
+  <h1>仙台オアシスカウンセリングルーム</h1>
+  <div class="sub">代表：家山 めぐみ（臨床心理士・公認心理師） ／ 業種：女性専用 心理カウンセリング ／ 動画尺：45秒（YouTube広告）</div>
+  <div class="badges">
+    <span class="badge">女性専用</span>
+    <span class="badge">オンライン全国対応</span>
+    <span class="badge">夜間・土日OK</span>
+    <span class="badge">対面：仙台駅近く</span>
+    <span class="badge">臨床心理士・公認心理師</span>
+  </div>
+</header>
+
+<h2><span class="icon">🎥</span>参考動画（ゴールドスタンダード＋同軸事例）</h2>
+<div class="grid grid-3">
+  <div class="card ref-card gold">
+    <div class="title"><a href="https://youtu.be/vpmNJdIjkUI" target="_blank">Masotera Tokyo — 60秒広告</a></div>
+    <div class="meta">YouTube ／ 約29万再生</div>
+    <div class="desc">RUNBIRD案件の品質基準。ナレ最小・映像で語る／冒頭3秒で「誰のための動画か」を明示／ターゲット具体化／ブランドセーフティの線引き。本案件では「言葉で語る部分」を増やしつつ、映像が主役という骨格を踏襲。</div>
+  </div>
+  <div class="card ref-card">
+    <div class="title"><a href="https://www.uraraka-soudan.com/video" target="_blank">うららか相談室 — ビデオカウンセリング訴求</a></div>
+    <div class="meta">業界大手のWeb動画</div>
+    <div class="desc">「自宅から・スマホで・気軽に」のオンライン安心訴求の型。コピーの間合いとビジュアル（穏やかな自宅・暖色）を参考。</div>
+  </div>
+  <div class="card ref-card">
+    <div class="title"><a href="https://manatuku.com/trainers/5/packages/655" target="_blank">心理カウンセリング講座 / まなつく</a></div>
+    <div class="meta">専門家プロフィール訴求の型</div>
+    <div class="desc">臨床心理士・公認心理師という資格訴求の見せ方。「国家資格者」という言葉の置き方と信頼の積み方を流用。</div>
+  </div>
+</div>
+
+<h2><span class="icon">🏛</span>同業他社（仙台エリア・女性軸）</h2>
+<div class="grid grid-3">
+  <div class="card">
+    <div class="title"><a href="https://www.asp-clair.com/" target="_blank">サロンクレール</a></div>
+    <div class="meta">仙台・女性専用</div>
+    <div class="desc">13年実績の女性専用カウンセリングサロン。「深層心理に働きかける」訴求が中心。本案件は「臨床心理士＋芸術療法」で差別化。</div>
+  </div>
+  <div class="card">
+    <div class="title"><a href="https://c-makibi.net/" target="_blank">カウンセリングルームまきび</a></div>
+    <div class="meta">仙台駅徒歩5分／対面＋オンライン</div>
+    <div class="desc">立地と即予約を訴求。本案件は同立地圏のため、「夜間・土日」「全国オンライン」「芸術療法」で差別化。</div>
+  </div>
+  <div class="card">
+    <div class="title"><a href="https://morinomiyako-counseling.jp/" target="_blank">杜の都カウンセリングセンター</a></div>
+    <div class="meta">公認心理師・臨床心理士運営</div>
+    <div class="desc">専門性ベタ寄せの訴求。本案件はそこに「女性専用」「悩み別属性訴求（子育て・モラハラ・対人援助職）」を加えて棲み分け。</div>
+  </div>
+</div>
+
+<h2><span class="icon">🎯</span>フック案バリエ（A/B/Cで運用）</h2>
+<div class="grid grid-3 hook-grid">
+  <div class="hook-card">
+    <img src="sendai-oasis-images/hook_A_silhouette_rain.png" alt="HOOK A">
+    <div class="title">案A（標準・共感）</div>
+    <div class="copy">「誰にも、言えない。」</div>
+    <div class="why">雨夜のシルエット。万能フック。CV最適化のベース素材。</div>
+  </div>
+  <div class="hook-card">
+    <img src="sendai-oasis-images/hook_B_mother_kitchen.png" alt="HOOK B">
+    <div class="title">案B（属性直撃）</div>
+    <div class="copy">「子育てに、疲れた。」</div>
+    <div class="why">30〜40代ママ層にダイレクト。最大ボリュームゾーン狙い。</div>
+  </div>
+  <div class="hook-card">
+    <img src="sendai-oasis-images/hook_C_mirror_self.png" alt="HOOK C">
+    <div class="title">案C（アイデンティティ）</div>
+    <div class="copy">「私は、私のままでいいの？」</div>
+    <div class="why">自己問い型。生きづらさ・援助職層に刺さる。</div>
+  </div>
+</div>
+
+<h2><span class="icon">📋</span>案件概要</h2>
+<dl class="meta-grid">
+  <dt>案件名</dt><dd>仙台オアシスカウンセリングルーム</dd>
+  <dt>代表者</dt><dd>家山 めぐみ（臨床心理士・公認心理師）</dd>
+  <dt>商材</dt><dd>心理カウンセリング（女性専用／オンライン・対面）</dd>
+  <dt>動画尺</dt><dd>45秒（YouTube広告横長）</dd>
+  <dt>ターゲット</dt><dd>子育て世代の女性、対人関係の悩み、モラハラ、不登校児の親、依存症問題、対人援助職</dd>
+  <dt>配信エリア</dt><dd>東北全域＋全国（オンライン）</dd>
+  <dt>ゴール</dt><dd>公式LINE登録 → 初回カウンセリング予約</dd>
+  <dt>強み</dt><dd>臨床心理士による的確なアセスメント／コラージュ療法・箱庭療法／夜間土日対応／女性専用の安心感</dd>
+</dl>
+
+<h2><span class="icon">📽</span>シーン構成（全10シーン・45秒）</h2>
+<div class="grid" style="gap:14px;">
+
+  <div class="scene">
+    <img src="sendai-oasis-images/s01_dark_window.png" alt="s01">
+    <div class="body">
+      <div class="sec">SCENE 01 ／ 0–3s ／ HOOK</div>
+      <div class="telop">「誰にも、言えない。」</div>
+      <div class="tags"><span>寒色</span><span>夜・雨</span><span>シルエット</span></div>
+      <div class="narr">（静かに）その悩み、ひとりで抱えていませんか。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <img src="sendai-oasis-images/s02_tired_mother.png" alt="s02">
+    <div class="body">
+      <div class="sec">SCENE 02 ／ 3–7s ／ PROBLEM</div>
+      <div class="telop">「子育てに、疲れた。」</div>
+      <div class="tags"><span>属性訴求</span><span>母親</span></div>
+      <div class="narr">家族にも、職場にも、本当の気持ちは言えない。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <img src="sendai-oasis-images/s03_identity_bed.png" alt="s03">
+    <div class="body">
+      <div class="sec">SCENE 03 ／ 7–11s ／ PROBLEM</div>
+      <div class="telop">「自分が、わからない。」</div>
+      <div class="tags"><span>アイデンティティ</span><span>夜</span></div>
+      <div class="narr">生きづらさ、アイデンティティの揺らぎ。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <img src="sendai-oasis-images/s04_light_transition.png" alt="s04">
+    <div class="body">
+      <div class="sec">SCENE 04 ／ 11–16s ／ AFFINITY（転換点）</div>
+      <div class="telop">「ここから、変えていい。」</div>
+      <div class="tags"><span>寒色→暖色</span><span>光が差す</span></div>
+      <div class="narr">（間）一人で抱え込まなくていい場所があります。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <img src="sendai-oasis-images/s05_oasis_room.png" alt="s05">
+    <div class="body">
+      <div class="sec">SCENE 05 ／ 16–21s ／ SOLUTION（屋号登場）</div>
+      <div class="telop">仙台オアシスカウンセリングルーム</div>
+      <div class="tags"><span>緑</span><span>暖色</span><span>安心</span></div>
+      <div class="narr">仙台オアシスカウンセリングルーム。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <img src="sendai-oasis-images/s06_counselor_listening.png" alt="s06">
+    <div class="body">
+      <div class="sec">SCENE 06 ／ 21–27s ／ USP① 専門性</div>
+      <div class="telop">国家資格者による的確なアセスメント</div>
+      <div class="tags"><span>臨床心理士</span><span>傾聴</span></div>
+      <div class="narr">臨床心理士・公認心理師による、女性のためのカウンセリング。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <img src="sendai-oasis-images/s07_art_therapy.png" alt="s07">
+    <div class="body">
+      <div class="sec">SCENE 07 ／ 27–33s ／ USP② 芸術療法</div>
+      <div class="telop">言葉にならない想いを、形に</div>
+      <div class="tags"><span>コラージュ</span><span>箱庭</span><span>差別化</span></div>
+      <div class="narr">コラージュ療法・箱庭療法で、声にならない気持ちを、形に。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <img src="sendai-oasis-images/s08_online_session.png" alt="s08">
+    <div class="body">
+      <div class="sec">SCENE 08 ／ 33–38s ／ USP③ 利便性</div>
+      <div class="telop">オンライン｜夜間・土日対応</div>
+      <div class="tags"><span>全国対応</span><span>夜間</span><span>土日</span></div>
+      <div class="narr">オンライン、夜間も土日も。あなたのペースで。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <img src="sendai-oasis-images/s04_light_transition.png" alt="s09 (afterはs04再利用or新規)">
+    <div class="body">
+      <div class="sec">SCENE 09 ／ 38–42s ／ AFTER</div>
+      <div class="telop">「自分を、取り戻す時間。」</div>
+      <div class="tags"><span>朝の光</span><span>緑</span><span>笑顔</span></div>
+      <div class="narr">（余韻・無声）</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <img src="sendai-oasis-images/s05_oasis_room.png" alt="s10 (CTA合成用ベース)">
+    <div class="body">
+      <div class="sec">SCENE 10 ／ 42–45s ／ CTA</div>
+      <div class="telop">まずは、LINEで相談</div>
+      <div class="tags"><span>LINE</span><span>HP</span><span>Google Map</span></div>
+      <div class="narr">公式LINEから、お気軽にどうぞ。</div>
+    </div>
+  </div>
+
+</div>
+
+<h2><span class="icon">🎙</span>ナレーション全文</h2>
+<blockquote class="script">
+その悩み、ひとりで抱えていませんか。
+家族にも、職場にも、本当の気持ちは言えない。
+生きづらさ、アイデンティティの揺らぎ。
+——一人で抱え込まなくていい場所があります。
+仙台オアシスカウンセリングルーム。
+臨床心理士・公認心理師による、女性のためのカウンセリング。
+コラージュ療法・箱庭療法で、声にならない気持ちを、形に。
+オンライン、夜間も土日も。あなたのペースで。
+公式LINEから、お気軽にどうぞ。
+</blockquote>
+<div style="color:var(--muted); font-size:13px; margin-top:8px;">※ 約115字 ／ 想定発声 23〜26秒 ／ 残りは映像＋テロップ＋BGMで間を持たせる</div>
+
+<h2><span class="icon">⚠️</span>演出のキモ ＋ NG・審査対策</h2>
+<div class="grid grid-2">
+  <div class="ng-list">
+    <div style="color:var(--green-soft); margin-bottom:8px;">◎ 演出のキモ</div>
+    <ul>
+      <li>HOOK 3秒で「女性／悩み／夜」を一発で伝える</li>
+      <li>シーン4で必ず「光が差し込む」転換カットを置く</li>
+      <li>カウンセラーの顔は正面で見せすぎず、後ろ姿越し傾聴で感情移入</li>
+      <li>芸術療法は手元クローズアップで「ただ話すだけじゃない」差別化</li>
+      <li>CTAは LINE一本に絞る（HP/Mapは小さく添える）</li>
+    </ul>
+  </div>
+  <div class="ng-list">
+    <div style="color:#e09e9e; margin-bottom:8px;">⚠ NG・YouTube広告審査対策</div>
+    <ul>
+      <li>「治る」「治療」「改善する」は使わない → 「整える」「向き合う」「寄り添う」</li>
+      <li>疾患名（鬱・パニック・PTSD等）はテロップで断定しない</li>
+      <li>男性は出演させない（女性専用業態）</li>
+      <li>アニメ・イラスト調NG（実写風で統一）</li>
+      <li>子供のアップ・泣き顔は避ける（広告審査の児童保護）</li>
+    </ul>
+  </div>
+</div>
+
+<h2><span class="icon">✅</span>家山様にご確認いただきたいこと</h2>
+<div class="check-list">
+  <ul>
+    <li>① 公式LINEのID・URL（QRコードの差し替え用）</li>
+    <li>② ホームページURL ／ Google Map URL</li>
+    <li>③ カウンセリングルームの実写写真（横向き／室内・外観）— 提供いただける時期</li>
+    <li>④ 代表者ご本人の写真使用可否（顔出しNGなら後ろ姿・手元のみで構成）</li>
+    <li>⑤ ナレーターは女性ナレーション（落ち着いた40代女性声）でOKか</li>
+    <li>⑥ 冒頭フックは A〜C のどれをメインに据えますか（A/B/Cテスト可）</li>
+    <li>⑦ 料金体系・初回相談無料 or 有料の表記をテロップに入れるか</li>
+    <li>⑧ 対人援助職向けコンサルテーションを動画に含めるか／別動画化するか</li>
+    <li>⑨ 配信エリア「東北＋全国」で問題ないか（オンライン中心の前提）</li>
+    <li>⑩ NG表現リスト（特に医療的効能表現の許容範囲）の最終すり合わせ</li>
+  </ul>
+</div>
+
+<footer>
+  仙台オアシスカウンセリングルーム — Storyboard v1 ／ Generated 2026-05-19 ／ RUNBIRD AI Video
+</footer>
+
+</div>
+</body>
+</html>
