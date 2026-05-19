@@ -25,15 +25,19 @@
   .spec-table th{background:#2a2030;color:#f5d5dc;font-weight:bold;width:140px;font-size:.78rem}
   .spec-table td{color:#d8c8d0}
 
-  table.scene-table{width:100%;border-collapse:collapse;margin-top:10px;background:#1e1a22;border-radius:10px;overflow:hidden}
-  table.scene-table th,table.scene-table td{padding:10px 12px;text-align:left;font-size:.85rem;border-bottom:1px solid #332a36;vertical-align:top}
-  table.scene-table th{background:#2a2030;color:#f5d5dc;font-weight:bold;font-size:.78rem}
-  table.scene-table td{color:#d8c8d0}
-  table.scene-table .num{width:30px;font-weight:bold;color:#c2185b;font-size:.95rem}
-  table.scene-table .sec{width:60px;color:#d4a017;font-weight:bold;font-size:.78rem;white-space:nowrap}
-  table.scene-table .thumb{width:140px}
-  table.scene-table .thumb img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:6px;display:block}
-  table.scene-table .thumb .placeholder{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#2a2030,#1e1a22);border:2px dashed #4a3a48;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#8a7078;font-size:.7rem;text-align:center}
+  .scene-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:14px}
+  .scene-card{background:#1e1a22;border:1px solid #332a36;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+  .scene-card .scene-img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#0a0a0a}
+  .scene-card .scene-body{padding:14px 16px}
+  .scene-card .scene-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .scene-card .scene-num{background:#c2185b;color:#fff;font-weight:bold;font-size:.78rem;padding:3px 10px;border-radius:12px}
+  .scene-card .scene-sec{color:#d4a017;font-size:.8rem;font-weight:bold}
+  .scene-card .scene-status{margin-left:auto;font-size:.72rem;padding:3px 8px;border-radius:10px}
+  .scene-card .scene-status.done{background:rgba(95,184,95,.15);color:#5fb85f}
+  .scene-card .scene-status.wip{background:rgba(212,160,23,.15);color:#d4a017}
+  .scene-card .scene-status.placeholder{background:rgba(138,112,120,.15);color:#a89898}
+  .scene-card h4{color:#f5d5dc;font-size:.95rem;margin-bottom:4px}
+  .scene-card p{color:#b8a8b0;font-size:.78rem;line-height:1.6}
 
   .status-done{color:#5fb85f;font-weight:bold}
   .status-wip{color:#d4a017;font-weight:bold}
@@ -56,7 +60,7 @@
   @media(max-width:600px){
     .container{padding:12px}
     .header h1{font-size:1.1rem}
-    table.scene-table .thumb{width:100px}
+    .scene-grid{grid-template-columns:1fr}
     .character-card{flex-direction:column;align-items:center;text-align:center;gap:14px}
     .character-card img{width:100%;max-width:100%;max-height:none}
   }
@@ -122,90 +126,118 @@
   <!-- 12シーン構成 -->
   <div class="section">
     <h2>📐 12シーン構成（24秒）</h2>
-    <table class="scene-table">
-      <thead>
-        <tr><th class="num">#</th><th class="thumb">画像</th><th class="sec">秒数</th><th>役割／内容</th><th>状態</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="num">1</td>
-          <td class="thumb"><div class="placeholder">S1<br>制作中</div></td>
-          <td class="sec">0-2s</td>
-          <td>🎯 フック施術①<br>両手で背中圧（マクロ）</td>
-          <td class="status-wip">作り直し中（背景暗め＋星空強調）</td>
-        </tr>
-        <tr>
-          <td class="num">2</td>
-          <td class="thumb"><div class="placeholder">S2<br>制作中</div></td>
-          <td class="sec">2-4s</td>
-          <td>👨‍⚕️ 先生の施術姿<br>背中マッサージ（顔メイン）</td>
-          <td class="status-wip">作り直し中（妻夫木似仕様）</td>
-        </tr>
-        <tr>
-          <td class="num">3</td>
-          <td class="thumb"><div class="placeholder">S3<br>制作中</div></td>
-          <td class="sec">4-6s</td>
-          <td>🌙 仰向け施術<br>首・鎖骨（タオル目隠し）</td>
-          <td class="status-wip">作り直し中（背景暗め＋星空強調）</td>
-        </tr>
-        <tr>
-          <td class="num">6</td>
-          <td class="thumb"><img loading="lazy" src="../lovers-images/v2/thumbs/6.jpg" alt="06" onerror="this.style.display='none';this.parentNode.innerHTML='<div class=placeholder>S6<br>v2流用</div>'"></td>
-          <td class="sec">10-12s</td>
-          <td>🏢 店舗外観（夜）</td>
-          <td class="status-done">✅ v2流用</td>
-        </tr>
-        <tr>
-          <td class="num">6c</td>
-          <td class="thumb"><div class="placeholder">S6c<br>完成</div></td>
-          <td class="sec">+</td>
-          <td>🚪 扉を開けて入る瞬間（後ろ姿）</td>
-          <td class="status-done">✅ 完成</td>
-        </tr>
-        <tr>
-          <td class="num">7</td>
-          <td class="thumb"><div class="placeholder">S7<br>未着手</div></td>
-          <td class="sec">12-14s</td>
-          <td>😌 アイマスク仰向けアップ</td>
-          <td class="status-todo">未着手</td>
-        </tr>
-        <tr>
-          <td class="num">8</td>
-          <td class="thumb"><div class="placeholder">S8<br>未着手</div></td>
-          <td class="sec">14-16s</td>
-          <td>👨‍⚕️ 先生施術（顔半分）</td>
-          <td class="status-todo">未着手</td>
-        </tr>
-        <tr>
-          <td class="num">9</td>
-          <td class="thumb"><div class="placeholder">S9<br>未着手</div></td>
-          <td class="sec">16-18s</td>
-          <td>🦵 足のマクロ（両手で圧）</td>
-          <td class="status-todo">未着手</td>
-        </tr>
-        <tr>
-          <td class="num">10</td>
-          <td class="thumb"><div class="placeholder">S10<br>未着手</div></td>
-          <td class="sec">18-20s</td>
-          <td>✨ 施術後の余韻</td>
-          <td class="status-todo">未着手</td>
-        </tr>
-        <tr>
-          <td class="num">11</td>
-          <td class="thumb"><img loading="lazy" src="lovers-images/v3/S11.png" alt="11"></td>
-          <td class="sec">20-22s</td>
-          <td>🌅 颯爽と空港を歩く（after）</td>
-          <td class="status-done">✅ お預かり写真を採用</td>
-        </tr>
-        <tr>
-          <td class="num">12</td>
-          <td class="thumb"><div class="placeholder">S12<br>未着手</div></td>
-          <td class="sec">22-24s</td>
-          <td>📱 CTA（先生＋QR・ご予約）</td>
-          <td class="status-todo">未着手</td>
-        </tr>
-      </tbody>
-    </table>
+    <p style="font-size:.82rem;color:#a89898;margin-bottom:6px">※現状はv2の画像で全体イメージをお見せしています。v3では新仕様（先生＝妻夫木似+メガネ／背景暗め＋星空強調／お客様＝customer_hero）で順次差し替えていきます。</p>
+    <div class="scene-grid">
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S1.png" alt="S1">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S1</span><span class="scene-sec">0-2s</span><span class="scene-status placeholder">v2参考／作り直し予定</span></div>
+          <h4>🎯 フック施術①</h4>
+          <p>両手で背中圧（マクロ）／v3では背景を暗め＋星空ライト強調で再生成</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S2.png" alt="S2">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S2</span><span class="scene-sec">2-4s</span><span class="scene-status wip">作り直し中（妻夫木+メガネ）</span></div>
+          <h4>👨‍⚕️ 先生の施術姿</h4>
+          <p>背中マッサージ／先生の顔メイン。妻夫木似+メガネ仕様で再生成中</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S3.png" alt="S3">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S3</span><span class="scene-sec">4-6s</span><span class="scene-status placeholder">v2参考／作り直し予定</span></div>
+          <h4>🌙 仰向け施術</h4>
+          <p>首・鎖骨（タオル目隠し）／背景暗め＋星空強調で再生成</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S4.png" alt="S4">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S4</span><span class="scene-sec">6-8s</span><span class="scene-status placeholder">v2参考</span></div>
+          <h4>🚃 仕事帰りの疲労（before）</h4>
+          <p>夜の通勤電車でつり革に掴まる疲れたサラリーマン</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S5.png" alt="S5">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S5</span><span class="scene-sec">8-10s</span><span class="scene-status placeholder">v2参考</span></div>
+          <h4>🌃 夜の街・私服姿（before）</h4>
+          <p>疲弊した男の姿、繁華街の歩道を1人で歩く</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S6.png" alt="S6">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S6</span><span class="scene-sec">10-12s</span><span class="scene-status done">✅ v2流用</span></div>
+          <h4>🏢 店舗外観（夜）</h4>
+          <p>AMEX姪浜のエントランス／夜の店舗</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S7.png" alt="S7">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S7</span><span class="scene-sec">12-14s</span><span class="scene-status placeholder">v2参考／作り直し予定</span></div>
+          <h4>😌 アイマスク仰向けアップ</h4>
+          <p>客の顔ドアップ・茶色フェイスタオルで目元隠し</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S8.png" alt="S8">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S8</span><span class="scene-sec">14-16s</span><span class="scene-status wip">作り直し中（妻夫木+メガネ）</span></div>
+          <h4>👨‍⚕️ 先生施術（顔半分）</h4>
+          <p>南氏が背中側から施術／妻夫木似+メガネ仕様で再生成中</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S9.png" alt="S9">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S9</span><span class="scene-sec">16-18s</span><span class="scene-status placeholder">v2参考</span></div>
+          <h4>🦵 足のマクロ（両手で圧）</h4>
+          <p>客の脚に両手で圧をかけリンパを流す</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S10.png" alt="S10">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S10</span><span class="scene-sec">18-20s</span><span class="scene-status placeholder">v2参考</span></div>
+          <h4>✨ 施術後の余韻</h4>
+          <p>客が仰向けで深呼吸／星空ライト広がる</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/S11.png" alt="S11">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S11</span><span class="scene-sec">20-22s</span><span class="scene-status done">✅ お預かり写真採用</span></div>
+          <h4>🌅 颯爽と空港を歩く（after）</h4>
+          <p>customer_hero様の元気な姿、変化後の希望</p>
+        </div>
+      </div>
+
+      <div class="scene-card">
+        <img class="scene-img" src="lovers-images/v3/v2_S12.png" alt="S12">
+        <div class="scene-body">
+          <div class="scene-head"><span class="scene-num">S12</span><span class="scene-sec">22-24s</span><span class="scene-status wip">作り直し中（CTA）</span></div>
+          <h4>📱 CTA（先生＋QR・ご予約）</h4>
+          <p>先生の正面ショット＋ご予約導線（QR等）</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 
   <!-- ナレーション -->
