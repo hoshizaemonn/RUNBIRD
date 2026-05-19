@@ -68,6 +68,19 @@
   .card .desc { font-size: 13px; color: #cfddd3; }
   .ref-card.gold { border-color: var(--amber); background: linear-gradient(135deg,#1e2a1f 0%,#1c2418 100%); }
   .ref-card.gold .title::before { content: "★ GOLD STANDARD　"; color: var(--amber); font-size: 12px; }
+  a.card-link { display: block; text-decoration: none; color: inherit; }
+  a.card-link:hover .card { transform: translateY(-3px); border-color: var(--green); box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+  .yt-thumb { position: relative; margin: -18px -18px 14px; overflow: hidden; border-radius: 12px 12px 0 0; }
+  .yt-thumb img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; }
+  .yt-thumb::after {
+    content: "▶"; position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%); width: 56px; height: 56px;
+    background: rgba(220,20,20,0.92); border-radius: 50%;
+    color: white; font-size: 22px; line-height: 56px; text-align: center;
+    padding-left: 4px;
+  }
+  .visit-cta { display: inline-block; margin-top: 10px; font-size: 12px; color: var(--green); border: 1px solid var(--green); padding: 4px 10px; border-radius: 4px; }
+  a.card-link:hover .visit-cta { background: var(--green); color: var(--bg); }
   .scene {
     background: var(--panel);
     border: 1px solid var(--line);
@@ -124,40 +137,59 @@
 
 <h2><span class="icon">🎥</span>参考動画（ゴールドスタンダード＋同軸事例）</h2>
 <div class="grid grid-3">
-  <div class="card ref-card gold">
-    <div class="title"><a href="https://youtu.be/vpmNJdIjkUI" target="_blank">Masotera Tokyo — 60秒広告</a></div>
-    <div class="meta">YouTube ／ 約29万再生</div>
-    <div class="desc">RUNBIRD案件の品質基準。ナレ最小・映像で語る／冒頭3秒で「誰のための動画か」を明示／ターゲット具体化／ブランドセーフティの線引き。本案件では「言葉で語る部分」を増やしつつ、映像が主役という骨格を踏襲。</div>
-  </div>
-  <div class="card ref-card">
-    <div class="title"><a href="https://www.uraraka-soudan.com/video" target="_blank">うららか相談室 — ビデオカウンセリング訴求</a></div>
-    <div class="meta">業界大手のWeb動画</div>
-    <div class="desc">「自宅から・スマホで・気軽に」のオンライン安心訴求の型。コピーの間合いとビジュアル（穏やかな自宅・暖色）を参考。</div>
-  </div>
-  <div class="card ref-card">
-    <div class="title"><a href="https://manatuku.com/trainers/5/packages/655" target="_blank">心理カウンセリング講座 / まなつく</a></div>
-    <div class="meta">専門家プロフィール訴求の型</div>
-    <div class="desc">臨床心理士・公認心理師という資格訴求の見せ方。「国家資格者」という言葉の置き方と信頼の積み方を流用。</div>
-  </div>
+  <a class="card-link" href="https://youtu.be/vpmNJdIjkUI" target="_blank" rel="noopener">
+    <div class="card ref-card gold">
+      <div class="yt-thumb"><img src="https://i.ytimg.com/vi/vpmNJdIjkUI/hqdefault.jpg" alt="Masotera Tokyo 60秒広告"></div>
+      <div class="title">Masotera Tokyo — 60秒広告</div>
+      <div class="meta">YouTube ／ 約29万再生</div>
+      <div class="desc">RUNBIRD案件の品質基準。ナレ最小・映像で語る／冒頭3秒で「誰のための動画か」を明示／ターゲット具体化／ブランドセーフティの線引き。本案件では「言葉で語る部分」を増やしつつ、映像が主役という骨格を踏襲。</div>
+      <span class="visit-cta">▶ YouTubeで開く</span>
+    </div>
+  </a>
+  <a class="card-link" href="https://www.uraraka-soudan.com/video" target="_blank" rel="noopener">
+    <div class="card ref-card">
+      <div class="title">うららか相談室 — ビデオカウンセリング訴求</div>
+      <div class="meta">業界大手のWeb動画</div>
+      <div class="desc">「自宅から・スマホで・気軽に」のオンライン安心訴求の型。コピーの間合いとビジュアル（穏やかな自宅・暖色）を参考。</div>
+      <span class="visit-cta">↗ サイトを開く</span>
+    </div>
+  </a>
+  <a class="card-link" href="https://manatuku.com/trainers/5/packages/655" target="_blank" rel="noopener">
+    <div class="card ref-card">
+      <div class="title">心理カウンセリング講座 / まなつく</div>
+      <div class="meta">専門家プロフィール訴求の型</div>
+      <div class="desc">臨床心理士・公認心理師という資格訴求の見せ方。「国家資格者」という言葉の置き方と信頼の積み方を流用。</div>
+      <span class="visit-cta">↗ サイトを開く</span>
+    </div>
+  </a>
 </div>
 
 <h2><span class="icon">🏛</span>同業他社（仙台エリア・女性軸）</h2>
 <div class="grid grid-3">
-  <div class="card">
-    <div class="title"><a href="https://www.asp-clair.com/" target="_blank">サロンクレール</a></div>
-    <div class="meta">仙台・女性専用</div>
-    <div class="desc">13年実績の女性専用カウンセリングサロン。「深層心理に働きかける」訴求が中心。本案件は「臨床心理士＋芸術療法」で差別化。</div>
-  </div>
-  <div class="card">
-    <div class="title"><a href="https://c-makibi.net/" target="_blank">カウンセリングルームまきび</a></div>
-    <div class="meta">仙台駅徒歩5分／対面＋オンライン</div>
-    <div class="desc">立地と即予約を訴求。本案件は同立地圏のため、「夜間・土日」「全国オンライン」「芸術療法」で差別化。</div>
-  </div>
-  <div class="card">
-    <div class="title"><a href="https://morinomiyako-counseling.jp/" target="_blank">杜の都カウンセリングセンター</a></div>
-    <div class="meta">公認心理師・臨床心理士運営</div>
-    <div class="desc">専門性ベタ寄せの訴求。本案件はそこに「女性専用」「悩み別属性訴求（子育て・モラハラ・対人援助職）」を加えて棲み分け。</div>
-  </div>
+  <a class="card-link" href="https://www.asp-clair.com/" target="_blank" rel="noopener">
+    <div class="card">
+      <div class="title">サロンクレール</div>
+      <div class="meta">仙台・女性専用</div>
+      <div class="desc">13年実績の女性専用カウンセリングサロン。「深層心理に働きかける」訴求が中心。本案件は「臨床心理士＋芸術療法」で差別化。</div>
+      <span class="visit-cta">↗ サイトを開く</span>
+    </div>
+  </a>
+  <a class="card-link" href="https://c-makibi.net/" target="_blank" rel="noopener">
+    <div class="card">
+      <div class="title">カウンセリングルームまきび</div>
+      <div class="meta">仙台駅徒歩5分／対面＋オンライン</div>
+      <div class="desc">立地と即予約を訴求。本案件は同立地圏のため、「夜間・土日」「全国オンライン」「芸術療法」で差別化。</div>
+      <span class="visit-cta">↗ サイトを開く</span>
+    </div>
+  </a>
+  <a class="card-link" href="https://morinomiyako-counseling.jp/" target="_blank" rel="noopener">
+    <div class="card">
+      <div class="title">杜の都カウンセリングセンター</div>
+      <div class="meta">公認心理師・臨床心理士運営</div>
+      <div class="desc">専門性ベタ寄せの訴求。本案件はそこに「女性専用」「悩み別属性訴求（子育て・モラハラ・対人援助職）」を加えて棲み分け。</div>
+      <span class="visit-cta">↗ サイトを開く</span>
+    </div>
+  </a>
 </div>
 
 <h2><span class="icon">🎯</span>フック案バリエ（A/B/Cで運用）</h2>
