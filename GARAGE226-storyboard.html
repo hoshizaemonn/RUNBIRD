@@ -396,9 +396,142 @@ GARAGE226、ガレージニニロク。勝沼に、できました。<br>
   <li>ナンバープレートなど個人情報が映る素材のモザイク要否</li>
 </ul>
 
+<h2>🧪 image2.0プロンプト集（統一感のため次工程用）</h2>
+<p class="lead">登場人物・バイク・車庫を全シーンで統一するためのimage2.0用プロンプト。<b>基準3枚（OWNER／MAIN BIKE／GARAGE）を先に作成 → 各シーン生成時にそれを参考画像として添付</b>する手順で進めます。生成後はSeedanceで動画化。<br>
+各ブロックをそのままコピー＆ペーストして使用してください。</p>
+
+<style>
+  .prompt-card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:24px;margin-top:16px}
+  .prompt-card h3{margin-top:0;color:var(--accent);font-size:16px;letter-spacing:.05em}
+  .prompt-card .meta{font-size:12px;color:var(--sub);margin-bottom:12px}
+  .prompt-card pre{background:#000;color:#d6e0ee;padding:16px;border-radius:6px;border-left:3px solid var(--accent);
+    font-family:'SF Mono','Menlo',monospace;font-size:12px;line-height:1.6;white-space:pre-wrap;
+    word-break:break-word;overflow-x:auto;margin:0}
+  .spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:14px}
+  .spec-grid .spec{background:var(--surface);border:1px solid var(--accent);border-radius:6px;padding:16px;font-size:13px}
+  .spec-grid .spec h4{color:var(--accent);font-size:13px;letter-spacing:.1em;margin-bottom:8px}
+  .seedance-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:13px}
+  .seedance-table th,.seedance-table td{padding:10px 12px;border:1px solid var(--line);text-align:left;vertical-align:top}
+  .seedance-table th{background:rgba(139,165,210,.1);color:var(--accent);font-weight:600;font-size:12px;letter-spacing:.05em}
+</style>
+
+<h3>① 統一スペック（5項目／全シーン共通）</h3>
+<div class="spec-grid">
+  <div class="spec">
+    <h4>OWNER ｜ 駒田オーナー（顔出しNG）</h4>
+    <p>Japanese man, early-to-mid 40s, lean fit build. Short black hair with clean fade/undercut. Dark navy work jacket (chest pockets) zipped halfway, dark t-shirt, dark work pants. ALWAYS shown from <b>back, in silhouette, in profile shadow, or only hands/arms</b> — face NEVER clearly identifiable.</p>
+  </div>
+  <div class="spec">
+    <h4>MAIN BIKE ｜ 主要バイク</h4>
+    <p>Single specific motorcycle across all scenes: classic Japanese standard 250–400cc, single-cylinder, <b>off-white tank with subtle dark side panels</b>, single round headlamp, exposed engine block, spoke wheels, dual-purpose tires. Vintage but well-maintained. <b>NO brand logos visible</b>.</p>
+  </div>
+  <div class="spec">
+    <h4>GARAGE ｜ GARAGE226建物</h4>
+    <p>Small private rural workshop in Yamanashi/Katsunuma: <b>single-story wooden frame with corrugated silver-gray metal roof</b>, large open front shutter showing tools and workbench, hand-painted wooden signboard above entrance (no readable text). Surrounded by grape vine trellises and peach trees, mountains in distance.</p>
+  </div>
+  <div class="spec">
+    <h4>STYLE ｜ 全シーン共通</h4>
+    <p>Photorealistic, cinematic Japanese countryside documentary, like NHK regional spotlight or Yamaha rural commercial. 16:9 widescreen, warm natural daylight or golden hour. Slightly warm color grading, soft contrast, 50mm shallow DOF.</p>
+  </div>
+  <div class="spec" style="grid-column:1/-1">
+    <h4>PROHIBITED ｜ 全シーン末尾に必ず付与</h4>
+    <pre style="margin-top:8px;font-size:11px">Prohibited: owner's face clearly visible, readable text on signs or logos, English/Chinese/Korean characters, watermarks, deformed hands or extra fingers, blood, weapons, women in foreground focus. Body exposure limited to neck, hands, arms.</pre>
+  </div>
+</div>
+
+<h3 style="margin-top:40px">② 各シーンのプロンプト（10シーン）</h3>
+
+<div class="prompt-card">
+  <h3>S01 ｜ 0-3s ｜ HOOK</h3>
+  <div class="meta">参考画像: s01b_peach_vineyard_garage.jpg ｜ ぶどう畑と桃畑のまんなかに</div>
+<pre>Create a cinematic 16:9 wide landscape shot of a Yamanashi countryside scene in late afternoon golden light, modeled on the attached reference. Rows of grape vines on wooden trellises occupy the foreground, peach trees with green leaves visible to one side, distant mountains. Sitting in the middle of this agricultural setting is THE GARAGE226 building (apply GARAGE spec: small single-story wooden frame, corrugated silver-gray metal roof, large open front shutter, hand-painted wooden signboard with no readable text). The garage clearly sits among the orchards. No people. Apply STYLE spec (warm tones, NHK-documentary aesthetic, 50mm shallow DOF). Prohibited list applies. --ar 16:9</pre>
+</div>
+
+<div class="prompt-card">
+  <h3>S02 ｜ 3-7s ｜ PROBLEM</h3>
+  <div class="meta">参考画像: MAIN BIKE基準画像 ｜ バイクが、農機が、電動が、不調…</div>
+<pre>Create a cinematic 16:9 split-feel composition. In the foreground, THE MAIN BIKE (apply BIKE spec: 250-400cc classic Japanese standard, off-white tank, single round headlamp, no brand logos) stands tilted at the side of a rural Yamanashi road in soft late afternoon light with cool blue undertones, suggesting it has broken down. Behind in the soft-focus background, a small agricultural power tiller (耕運機) sits in a field, and an electric bicycle leans against a wooden fence — three vehicles, three problems, one frame. Mood: stranded, in need of a nearby repair shop. Apply STYLE spec. Prohibited list applies. --ar 16:9</pre>
+</div>
+
+<div class="prompt-card">
+  <h3>S03 ｜ 7-10s ｜ AGITATION</h3>
+  <div class="meta">参考画像: OWNER基準＋MAIN BIKE基準 ｜ 近所に、相談できる場所がない</div>
+<pre>Create a cinematic 16:9 photo of THE MAIN BIKE (apply BIKE spec) parked at the side of a quiet rural Yamanashi road at dusk with cool blue tones. The rider stands next to it with his back to camera (apply OWNER spec: dark navy work jacket, no face visible), helmet held in his left hand at his side, looking down at the engine with shoulders showing concern. Empty country road stretches into the distance toward mountains. No other people. Mood: frustration, isolation, needing somewhere to turn. Apply STYLE spec. Prohibited list applies. --ar 16:9</pre>
+</div>
+
+<div class="prompt-card">
+  <h3>S04 ｜ 10-14s ｜ SOLUTION</h3>
+  <div class="meta">参考画像: GARAGE基準＋MAIN BIKE基準 ｜ GARAGE226、勝沼にできました</div>
+<pre>Create a cinematic 16:9 photo of THE GARAGE226 building (apply GARAGE spec) in late afternoon golden light. The shutter is fully open revealing tools on pegboard walls, a workbench, and one classic motorcycle (apply BIKE spec) parked just inside. THE MAIN BIKE visible inside the garage. The hand-painted wooden signboard above the entrance is clearly framed (NO readable text — just the textured wood). Warm interior light glowing from within contrasts with the cooler outdoor light. Grape vines visible to the side. No people. Apply STYLE spec. Prohibited list applies. --ar 16:9</pre>
+</div>
+
+<div class="prompt-card">
+  <h3>S05 ｜ 14-19s ｜ USP① 腕</h3>
+  <div class="meta">参考画像: OWNER基準＋MAIN BIKE基準 ｜ バイク王・KAWASAKIで培った、確かな腕</div>
+<pre>Create a cinematic 16:9 tight close-up of the owner's hands working on THE MAIN BIKE's engine (apply BIKE spec: same off-white tank visible in soft focus background, exposed engine block in focus). Hands hold a wrench, tightening a bolt on the engine — weathered but not old, slightly oil-stained, clearly experienced. The arms visible wear the SAME dark navy work jacket sleeve as the OWNER spec. The owner's face is NOT in frame — only hands and arms. Shallow depth of field, focus on the wrench-engine contact point. Warm tungsten work lamp from above. Apply STYLE spec. Prohibited list applies. --ar 16:9</pre>
+</div>
+
+<div class="prompt-card">
+  <h3>S06 ｜ 19-25s ｜ USP② 領域の広さ</h3>
+  <div class="meta">参考画像: OWNER基準＋GARAGE基準＋MAIN BIKE基準 ｜ バイクも。農機も。電動も。</div>
+<pre>Create a cinematic 16:9 photo inside THE GARAGE226 workshop (apply GARAGE spec: same wooden frame, tools on pegboard walls). In the foreground, THE OWNER (apply OWNER spec) is crouched in profile silhouette/backlit by the open shutter behind him — his face is OBSCURED in shadow/rim light, NOT identifiable. He is inspecting a small agricultural power tiller (耕運機) engine on the floor. Behind him along the wall: an electric bicycle leaning against the pegboard, and THE MAIN BIKE parked beside it (apply BIKE spec). The composition tells the story: bikes + farm machines + e-bikes all repaired here. Cinematic chiaroscuro from the doorway behind. Apply STYLE spec. Prohibited list applies. --ar 16:9</pre>
+</div>
+
+<div class="prompt-card">
+  <h3>S07 ｜ 25-29s ｜ STORY</h3>
+  <div class="meta">参考画像: OWNER基準＋GARAGE基準 ｜ 葡萄農家3代目が、本気で直す</div>
+<pre>Create a cinematic 16:9 photo of THE OWNER (apply OWNER spec: dark navy work jacket — sleeves rolled up, dark pants) viewed from BEHIND in a Yamanashi grape vineyard during golden hour. He is among the grape vines, one hand reaching up to inspect a cluster of dark purple grapes. His face is NOT visible — only the back of his head and his shoulders. Rows of grape trellises stretch in front of him toward distant peach trees. In the FAR BACKGROUND (small and visible), THE GARAGE226 building (apply GARAGE spec) is barely visible, telling the story: "vineyard farmer AND mechanic". Warm golden light filtering through vine leaves. Apply STYLE spec. Prohibited list applies. --ar 16:9</pre>
+</div>
+
+<div class="prompt-card">
+  <h3>S08 ｜ 29-33s ｜ PROOF</h3>
+  <div class="meta">参考画像: MAIN BIKE基準＋GARAGE基準 ｜ あなたの愛機、もう一度走らせます</div>
+<pre>Create a cinematic 16:9 photo of THE MAIN BIKE (apply BIKE spec: now gleaming clean after repair, polished off-white tank reflecting golden light, well-maintained details) parked in front of THE GARAGE226 building (apply GARAGE spec) in soft late afternoon golden light. The garage shutter open behind it, tools and workbench softly visible. The bike looks ready to ride again — front wheel slightly turned outward as if about to roll out. No people visible. Mood: triumph, satisfaction, "the bike lives again". Warm golden tones, cinematic anamorphic feel. Apply STYLE spec. Prohibited list applies. --ar 16:9</pre>
+</div>
+
+<div class="prompt-card">
+  <h3>S09 ｜ 33-36s ｜ PERSONALITY</h3>
+  <div class="meta">参考画像: OWNER基準＋GARAGE基準＋MAIN BIKE基準 ｜ 話、聞かせてください</div>
+<pre>Create a cinematic 16:9 medium shot of THE OWNER (apply OWNER spec) standing at the entrance of THE GARAGE226 (apply GARAGE spec) with his BACK TO CAMERA. He holds a wrench loosely in his right hand at his side, looking into the open garage at his tools and THE MAIN BIKE inside. His face is NOT visible — only his back, shoulders, and the back of his head. Warm late afternoon golden light backlights his silhouette slightly. The garage interior glows warmly. Mood: "a craftsman ready to listen and help". Apply STYLE spec. Prohibited list applies. --ar 16:9</pre>
+</div>
+
+<div class="prompt-card">
+  <h3>S10 ｜ 36-38s ｜ LOCAL</h3>
+  <div class="meta">参考画像: GARAGE基準 ｜ 甲州のバイク修理屋</div>
+<pre>Create a cinematic 16:9 high-angle / aerial wide landscape shot of THE GARAGE226 in its setting (apply GARAGE spec) in late afternoon golden hour. The garage sits in the middle of a Yamanashi vineyard with peach trees to one side and distant mountains. From above, rows of grape vines fill most of the frame. Two or three motorcycles (THE MAIN BIKE among them) parked next to the garage. No people. Wide cinematic landscape, warm tones, peaceful. The composition makes it visually obvious: this workshop is literally in the middle of grape and peach orchards. Apply STYLE spec. Prohibited list applies. --ar 16:9</pre>
+</div>
+
+<h3 style="margin-top:40px">③ Seedance（動画化）の動き指示</h3>
+<p class="lead">各シーン画像をSeedanceに渡すときの動きパラメータ。短くシンプルな動きが破綻しにくいので、過度なカメラ移動は避けます。</p>
+<table class="seedance-table">
+  <thead><tr><th>#</th><th>シーン</th><th>動き指示（Seedance）</th><th>尺</th></tr></thead>
+  <tbody>
+    <tr><td>S01</td><td>HOOK</td><td>Slow gentle camera push-in toward the garage, vines swaying softly in the wind, golden light shimmering.</td><td>3s</td></tr>
+    <tr><td>S02</td><td>PROBLEM</td><td>Static composition with subtle wind movement on the leaves around the bike.</td><td>4s</td></tr>
+    <tr><td>S03</td><td>AGITATION</td><td>Slow camera pull-back from the rider's back, the bike remains static, distant clouds drifting.</td><td>3s</td></tr>
+    <tr><td>S04</td><td>SOLUTION</td><td>Slow camera push-in toward the open garage shutter, warm interior light deepens, signboard slightly swaying.</td><td>4s</td></tr>
+    <tr><td>S05</td><td>USP①</td><td>Wrench tightening motion in real-time, hands moving with the tool, dust motes in warm light.</td><td>5s</td></tr>
+    <tr><td>S06</td><td>USP②</td><td>Owner's silhouette slowly turns or shifts weight, backlight flickers slightly with passing cloud.</td><td>6s</td></tr>
+    <tr><td>S07</td><td>STORY</td><td>Owner's hand slowly reaches and holds the grape cluster, vine leaves rustle in golden hour breeze.</td><td>4s</td></tr>
+    <tr><td>S08</td><td>PROOF</td><td>Subtle wind passes, light shifts across the polished tank of the bike, no movement of bike itself.</td><td>4s</td></tr>
+    <tr><td>S09</td><td>PERSONALITY</td><td>Owner shifts his weight slightly from back, breath movement in shoulders, wrench in hand barely moves.</td><td>3s</td></tr>
+    <tr><td>S10</td><td>LOCAL</td><td>Slow aerial drift over the vineyard toward the garage, warm tones intensify.</td><td>2s</td></tr>
+  </tbody>
+</table>
+
+<h3 style="margin-top:40px">④ 生成順の推奨</h3>
+<ol style="font-size:14px;line-height:2;color:var(--ink);margin-top:14px;padding-left:24px">
+  <li><b>基準ポートレート（OWNER）</b>を1枚生成 → 全人物シーンの参考画像に</li>
+  <li><b>MAIN BIKE基準画像</b>を1枚生成 → バイクシーンの参考画像に</li>
+  <li><b>GARAGE基準画像</b>を1枚生成 → ガレージシーンの参考画像に</li>
+  <li>上記3枚を持って、S01〜S10を順番に生成（毎回該当する基準画像を添付）</li>
+  <li>Seedanceに渡して各シーン2〜6秒の動画化</li>
+  <li>Premiere Proで連結＋BGM＋ナレ＋テロップ＋実ロゴ</li>
+</ol>
+
 <div class="footer">
   GARAGE226 ｜ 動画初稿ご提案 ｜ 株式会社ランバード × 株式会社JPクレスト<br>
-  Generated 2026-05-17
+  Generated 2026-05-17 ｜ v3 updated 2026-05-20
 </div>
 
 </div>
