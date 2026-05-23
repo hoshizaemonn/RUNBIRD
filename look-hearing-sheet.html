@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEBサイト制作 ヒアリングシート — .LOOK どっとるっく</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f3f0; color: #333; line-height: 1.8; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+  header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 2px solid #d4a017; }
+  header h1 { font-size: 28px; font-weight: 700; color: #2c2c2c; letter-spacing: 0.08em; margin-bottom: 8px; }
+  header p.subtitle { font-size: 13px; color: #888; margin-bottom: 16px; }
+  .header-meta { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; font-size: 13px; }
+  .header-meta input { border: none; border-bottom: 1px solid #ccc; padding: 4px; font-family: inherit; }
+  .purpose-box { background: #fff8e7; border-left: 4px solid #d4a017; padding: 16px 20px; margin-bottom: 32px; border-radius: 4px; }
+  .purpose-box h2 { font-size: 14px; color: #8a6a00; margin-bottom: 8px; }
+  .purpose-box p { font-size: 13px; color: #555; line-height: 1.8; }
+  .note-box { background: #fff0f0; border-left: 4px solid #c0392b; padding: 16px 20px; margin-bottom: 32px; border-radius: 4px; }
+  .note-box h3 { font-size: 14px; color: #8a0e0e; margin-bottom: 8px; }
+  .note-box ul { padding-left: 20px; font-size: 13px; color: #555; }
+  .note-box ul li { margin-bottom: 4px; }
+  section { background: #fff; border-radius: 12px; padding: 32px 28px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  section h2 { font-size: 20px; color: #2c2c2c; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid #d4a017; display: flex; align-items: center; gap: 12px; }
+  section h2 .num { background: #d4a017; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .q-group { margin-bottom: 28px; }
+  .q-label { font-size: 14px; font-weight: 700; color: #444; margin-bottom: 6px; }
+  .required { color: #c0392b; font-size: 11px; margin-left: 6px; }
+  .q-hint { font-size: 12px; color: #999; margin-bottom: 8px; }
+  .q-sub { font-size: 12px; color: #777; margin: 4px 0 4px 12px; }
+  .q-example { font-size: 11px; color: #999; margin-top: 6px; background: #fafafa; padding: 8px 10px; border-radius: 4px; }
+  textarea { width: 100%; min-height: 80px; border: 1px solid #ddd; border-radius: 6px; padding: 10px; font-family: inherit; font-size: 13px; resize: vertical; line-height: 1.7; }
+  input[type="text"], input[type="date"] { border: 1px solid #ddd; border-radius: 6px; padding: 8px 10px; font-family: inherit; font-size: 13px; }
+  .options { display: flex; flex-wrap: wrap; gap: 8px 12px; margin: 6px 0; }
+  .options label { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; background: #f5f3f0; padding: 4px 10px; border-radius: 16px; cursor: pointer; }
+  .options label:hover { background: #ebe7e0; }
+  .options input { margin: 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .domain-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .domain-grid .slot { display: flex; flex-direction: column; gap: 4px; }
+  .domain-grid label { font-size: 11px; color: #888; }
+  .domain-grid input { width: 100%; }
+  @media (max-width: 600px) {
+    .two-col, .domain-grid { grid-template-columns: 1fr; }
+  }
+  .ref-sites { margin-top: 12px; }
+  .ref-site { display: flex; align-items: center; gap: 12px; padding: 10px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+  .ref-site .num-badge { background: #e8e4de; color: #666; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+  .ref-site input { flex: 1; border: none; border-bottom: 1px solid #ddd; padding: 4px; font-size: 13px; }
+  .ref-site .ref-desc { font-size: 11px; color: #999; flex-basis: 100%; margin-top: 4px; padding-left: 36px; }
+  .ai-note { background: #fffbe6; border-left: 3px solid #d4a017; padding: 10px 14px; font-size: 12px; color: #666; border-radius: 4px; margin-top: 10px; }
+  footer { text-align: center; padding: 40px 0 20px; font-size: 12px; color: #bbb; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>WEBサイト制作 ヒアリングシート</h1>
+  <p class="subtitle">.LOOK どっとるっく｜ディレクション面談でこのシートに沿ってお話を伺います</p>
+  <div class="header-meta">
+    <div><label>担当者：</label><input type="text" value=""></div>
+    <div><label>クライアント名：</label><input type="text" value=".LOOK どっとるっく（淺川 雄史 様）"></div>
+    <div><label>面談日：</label><input type="date" value="2026-05-28"></div>
+  </div>
+</header>
+
+<div class="purpose-box">
+  <h2>このシートの使い方</h2>
+  <p>
+    ① 面談前にこのシートを開いておく<br>
+    ② セクション順に質問していく（録画ON）<br>
+    ③ 面談後、録画の文字起こしをAIに読ませ、サイトの文章を自動生成<br>
+    ④ 制作共有シート（JPクレスト様式）に転記
+  </p>
+</div>
+
+<!-- ========== 制作注意事項 ========== -->
+<div class="note-box">
+  <h3>制作注意事項（営業シートより）</h3>
+  <ul>
+    <li><strong>サイト種別：ECサイト</strong>。アダルト商品（中古本・DVD）のクレジット決済が前提</li>
+    <li><strong>TOPは買取アピール</strong>（販売ではなく買取訴求が前面）</li>
+    <li>出品数は数千個規模になる可能性あり</li>
+    <li>PayPay決済は別途月額課金になる旨を事前説明済</li>
+    <li><strong>屋号の扱い：</strong>初稿は「.LOOK どっとるっく」で作成 → 検収後「.LOOK」に変更の可能性大。ロゴ・タイトル差し替えコスト圧縮のため、ディレクションで最終屋号を確定したい</li>
+    <li>クライアント最大の不安：<strong>アダルト商品のクレカ決済可否</strong>（カラーミーR18対応プラン or 決済代行検討）</li>
+    <li>ITリテラシー低め＋とてもフランクな方。奥様と二人で運営、現在はヤフオク出品のみ</li>
+    <li><strong>既存R18 EC案件（5/15齋藤さん相談）と同一クライアントの可能性大</strong> → 自動ブログ投稿はカラーミー＋WP連携で対応予定</li>
+  </ul>
+</div>
+
+<!-- ========== 1. 基本情報 ========== -->
+<section>
+  <h2><span class="num">1</span>基本情報・サイト設定</h2>
+
+  <div class="q-group">
+    <div class="q-label">店舗名 / 屋号 <span class="required">必須</span></div>
+    <div class="q-hint">正式名称とフリガナ。検収後に「.LOOK」へ変更の可能性 → 確定確認</div>
+    <textarea>.LOOK どっとるっく（ドットルック）
+※検収後に「.LOOK」へ変更の可能性大。最終屋号を確定したい。</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">代表者名 <span class="required">必須</span></div>
+    <textarea>淺川 雄史（アサカワ タケシ）</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">運営体制</div>
+    <div class="q-sub">代表（淺川さん）と奥様の2名体制</div>
+    <textarea>淺川様＋奥様の2名で運営。現状ヤフオク出品のみ。</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="two-col">
+      <div>
+        <div class="q-label">住所 <span class="required">必須</span></div>
+        <textarea>大阪府大阪市住之江区安立1-12-22</textarea>
+      </div>
+      <div>
+        <div class="q-label">電話番号 <span class="required">必須</span></div>
+        <textarea>店舗：050-1794-1009
+代表：090-5886-2830（希望架電先）</textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="two-col">
+      <div>
+        <div class="q-label">メールアドレス</div>
+        <textarea>at09058862830@gmail.com（連絡・WP・GA共通）</textarea>
+      </div>
+      <div>
+        <div class="q-label">営業時間・定休日 <span class="required">必須</span></div>
+        <textarea>※ディレクションで確認（買取受付時間、店舗営業の有無、定休日）</textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">希望ドメイン <span class="required">必須</span></div>
+    <div class="q-hint">新規ドメイン（.com / .net のみ）。3つまで候補を出してください。</div>
+    <div class="domain-grid">
+      <div class="slot"><label>第1候補</label><input type="text" value="dot-look.com"></div>
+      <div class="slot"><label>第2候補</label><input type="text" value="dotlook-shop.com"></div>
+      <div class="slot"><label>第3候補</label><input type="text" value="look-kaitori.com"></div>
+    </div>
+    <div class="q-hint">※屋号確定後に再選定。「.LOOK」最終確定なら `dot-look.com` 系を最優先</div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">現在のWEBサイト・SNS</div>
+    <textarea>なし。ヤフオク出品のみ。
+※ヤフオクのIDが特定できるならポートフォリオとして掲載可否を要確認</textarea>
+  </div>
+</section>
+
+<!-- ========== 2. 事業・サービス ========== -->
+<section>
+  <h2><span class="num">2</span>事業内容・サービス</h2>
+
+  <div class="q-group">
+    <div class="q-label">どんなお仕事をされていますか？ <span class="required">必須</span></div>
+    <div class="q-sub">買取の対象商品は？（アダルト本・DVD以外も扱う？）</div>
+    <div class="q-sub">買取の流れは？（予約→出張→査定→現金）</div>
+    <div class="q-sub">出張買取の対応エリアは？（全国／関西／大阪限定？）</div>
+    <div class="q-sub">販売側はECで何を主力にする？（アダルト古本、DVD、カードなど）</div>
+    <textarea>【主な事業】
+・古本等の買い取り（中古本買取・ブランド品買取・不用品買取・出張買取）
+・ネット販売（アダルト中古本・R18本・エロ本・アダルトDVD中心）
+
+【現状】
+ヤフオク出品のみ。自社ECサイトを新規構築したい。
+
+【買取の流れ（想定）】
+予約 → 出張買取（or 持込）→ 査定 → 現金支払い
+※ディレクションで詳細確認</textarea>
+    <div class="q-example"><strong>AIが生成するページ：</strong>「買取サービス紹介」「買取の流れ」「ECショップ案内」</div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">買取の対象ジャンル・取扱範囲 <span class="required">必須</span></div>
+    <div class="q-sub">アダルト本（R18・エロ本）以外も買取する？</div>
+    <div class="q-sub">アダルトDVD以外の映像メディア（Blu-ray・VHS）は？</div>
+    <div class="q-sub">ブランド品・不用品はどこまで対応？</div>
+    <div class="q-sub">レアカード（トレーディングカード等）の取り扱いは？（手書きシートに「レアカード」記載）</div>
+    <textarea>※ディレクションで詳細確認
+
+【手書きシートからの示唆】
+・色々レアなものまで販売・買取している
+・幅広い古本・レアカード等を探している人がターゲット</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">買取価格・販売価格について</div>
+    <div class="q-sub">買取は無料査定？出張費は？</div>
+    <div class="q-sub">買取相場・販売価格帯の目安は？</div>
+    <div class="q-sub">支払い方法は？（買取＝現金／販売＝クレカ・PayPay等）</div>
+    <textarea>※ディレクションで確認
+※販売はクレカ決済必須（アダルト対応の可否がクライアント最大の不安）</textarea>
+  </div>
+</section>
+
+<!-- ========== 3. 強み・差別化 ========== -->
+<section>
+  <h2><span class="num">3</span>強み・選ばれる理由</h2>
+
+  <div class="q-group">
+    <div class="q-label">他社（ブックオフ・ヤフオク・メルカリ等）と比べて、ここが違う！というポイントは？ <span class="required">必須</span></div>
+    <div class="q-sub">アダルト専門の買取に強み？</div>
+    <div class="q-sub">レアもの・希少本の見極めに自信？</div>
+    <div class="q-sub">出張買取の対応スピード・エリア？</div>
+    <textarea>【営業シートからの事前情報】
+・色々な商品の取り扱いがある
+・色々レアなものまで販売・買取している
+
+※ディレクションで具体エピソード・他社との違いを引き出す</textarea>
+    <div class="q-example"><strong>AIが生成するページ：</strong>「選ばれる理由」「強み」</div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">開業のきっかけ・想い <span class="required">必須</span></div>
+    <div class="q-sub">なぜこの仕事を始めようと思ったんですか？</div>
+    <div class="q-sub">以前はどんなお仕事をされていましたか？</div>
+    <div class="q-sub">アダルト古本という特殊ジャンルを選んだ理由は？</div>
+    <div class="q-sub">奥様と二人での運営、こだわりは？</div>
+    <textarea>※ディレクションで深掘り
+※フランクで優しい人柄。話し始めると相談してくれるタイプ。</textarea>
+  </div>
+</section>
+
+<!-- ========== 4. ターゲット・お客様像 ========== -->
+<section>
+  <h2><span class="num">4</span>ターゲット・お客様像</h2>
+
+  <div class="q-group">
+    <div class="q-label">どんなお客様が多いですか？ <span class="required">必須</span></div>
+    <div class="q-sub">買取側：依頼してくるのはどんな層？（遺品整理、コレクター卒業、引越しなど）</div>
+    <div class="q-sub">販売側：購入するのはどんな層？（コレクター、レア本収集家、新規ファン）</div>
+    <textarea>【営業シートからの事前情報】
+・男性中心
+・20代、30代、40代、50代
+・幅広い古本・レアカード等を探している人
+
+※ディレクションで具体的な客層・購入動機を確認</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">お客様がよく抱えている悩み・不安 <span class="required">必須</span></div>
+    <div class="q-sub">買取側：「アダルト本を売るのが恥ずかしい」「処分に困っている」など？</div>
+    <div class="q-sub">販売側：「探していた絶版本が見つからない」「店頭で買いづらい」など？</div>
+    <textarea>※ディレクションで実際のお客様の声を確認</textarea>
+    <div class="q-example"><strong>AIが生成するページ：</strong>「よくあるお悩み」「こんな方におすすめ」</div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">商圏エリア <span class="required">必須</span></div>
+    <div class="q-sub">買取（出張）の対応範囲：全国／関西／大阪？</div>
+    <div class="q-sub">販売（EC）：全国向けで問題ない？</div>
+    <textarea>【対策キーワード（営業シートより）】
+地域：全国、大阪
+業種：買取、販売
+サービス：アダルト古本
+
+※出張買取の対応エリア範囲を確認</textarea>
+  </div>
+</section>
+
+<!-- ========== 5. お客様の声・実績 ========== -->
+<section>
+  <h2><span class="num">5</span>お客様の声・実績</h2>
+  <div class="q-group">
+    <div class="q-label">ヤフオク評価・印象に残るお客様エピソード</div>
+    <div class="q-sub">ヤフオクの評価・取引件数を実績として掲載可否</div>
+    <div class="q-sub">印象に残る買取・販売エピソード</div>
+    <textarea>※ディレクションで確認</textarea>
+  </div>
+</section>
+
+<!-- ========== 6. EC機能・決済 ========== -->
+<section>
+  <h2><span class="num">6</span>ECサイト機能・決済（最重要セクション）</h2>
+
+  <div class="q-group">
+    <div class="q-label">EC構築プラットフォーム <span class="required">必須</span></div>
+    <div class="q-hint">既存R18 EC案件と同一なら「カラーミー＋WordPress連携」想定</div>
+    <textarea>【想定】カラーミーEC（R18対応）＋ WordPress（自動ブログ投稿）
+※既存案件 [20260515]_R18_EC_カラーミー自動投稿 と統合するか別案件か、嶋田社長確認</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">クレジットカード決済（クライアント最大の不安）<span class="required">必須</span></div>
+    <div class="q-sub">アダルト商品のクレカ決済をどう実現するか</div>
+    <div class="q-sub">カラーミーR18対応プラン or PayGent等の決済代行 or BitCash・電子マネー</div>
+    <textarea>※カラーミーは規約上アダルトNGの可能性 → 要確認
+※決済代行（PayGent、ROBOT PAYMENT等のR18対応プラン）の検討必要
+※納品前に必ずクレカ決済の動作確認・利用可能ブランド明示</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">商品点数・商品登録方法</div>
+    <div class="q-sub">出品数は数千個規模 → 一括登録・CSV取込必須？</div>
+    <div class="q-sub">ヤフオク出品との二重出品体制？</div>
+    <div class="q-sub">在庫管理（1点物が多い）の運用は？</div>
+    <textarea>※ディレクションで運用フローを確認</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">年齢確認・成人認証</div>
+    <textarea>R18商品の取扱い：成人認証ゲートが必要（法的に必須）
+※ディレクションで認証方式・表示文言を確認</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">自動ブログ投稿機能</div>
+    <div class="q-hint">受注シートで明記。既存案件のWP連携構成で対応予定</div>
+    <textarea>【構成案】カラーミーEC本体 ← WordPress（別ドメイン/サブドメイン）の記事をiframe/JSで埋め込み
+※記事の中身：商品紹介／SEO記事／ニュース どれを書くか要確認
+※R18 × AI記事生成は Claude/Gemini/OpenAI のusage policy違反リスク要検討</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">送料・梱包・配送方法</div>
+    <textarea>※ディレクションで確認（無記名配送・プライバシー梱包の希望）</textarea>
+  </div>
+</section>
+
+<!-- ========== 7. デザイン・雰囲気 ========== -->
+<section>
+  <h2><span class="num">7</span>サイトのデザイン・雰囲気</h2>
+
+  <div class="q-group">
+    <div class="q-label">サイト全体の印象 <span class="required">必須</span></div>
+    <p style="font-size:13px; color:#666; margin: 8px 0 4px;">印象（複数OK）</p>
+    <div class="options">
+      <label><input type="checkbox"><span>誠実</span></label>
+      <label><input type="checkbox"><span>親しみ・優しい</span></label>
+      <label><input type="checkbox"><span>清潔</span></label>
+      <label><input type="checkbox"><span>高級感</span></label>
+      <label><input type="checkbox"><span>力強い</span></label>
+    </div>
+    <p style="font-size:13px; color:#666; margin: 12px 0 4px;">スタイル（複数OK）</p>
+    <div class="options">
+      <label><input type="checkbox"><span>シンプル</span></label>
+      <label><input type="checkbox"><span>スタイリッシュ</span></label>
+      <label><input type="checkbox"><span>カジュアル</span></label>
+      <label><input type="checkbox"><span>ナチュラル</span></label>
+    </div>
+    <textarea>※ディレクションで確認。アダルト商材だが、過度に煽情的でなく「コレクター向け古書店」のような落ち着いた信頼感が望ましい想定。</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">店舗カラー / アクセントカラー</div>
+    <div class="options">
+      <label><input type="checkbox"><span>青</span></label>
+      <label><input type="checkbox"><span>水色</span></label>
+      <label><input type="checkbox"><span>緑</span></label>
+      <label><input type="checkbox" checked><span>黄</span></label>
+      <label><input type="checkbox"><span>橙</span></label>
+      <label><input type="checkbox" checked><span>赤</span></label>
+      <label><input type="checkbox"><span>紫</span></label>
+      <label><input type="checkbox"><span>ピンク</span></label>
+      <label><input type="checkbox"><span>灰</span></label>
+      <label><input type="checkbox"><span>黒</span></label>
+      <label><input type="checkbox"><span>ベージュ</span></label>
+      <label><input type="checkbox"><span>ブラウン</span></label>
+    </div>
+    <textarea>ベースカラー：黄色
+アクセントカラー：赤色
+（手書きシートより。視認性・買取訴求のアテンション色として黄＋赤の組合せ）</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">参考サイト【A】業態ど真ん中マッチ — 制作軸（こちらで選定済）</div>
+    <div class="q-hint">アダルト中古本・DVD買取＋EC販売の3軸。それぞれ役割が異なるので3サイトをセットで参照</div>
+    <div class="ref-sites">
+      <div class="ref-site" style="border-color:#d4a017; border-width:2px;">
+        <span class="num-badge" style="background:#d4a017; color:#fff;">軸1</span>
+        <a href="https://www.suruga-ya.jp/books_ad.html" target="_blank" rel="noopener" style="flex:1; font-size:13px; color:#0066cc; text-decoration:underline;">https://www.suruga-ya.jp/books_ad.html</a>
+        <div class="ref-desc"><strong>駿河屋（アダルト書籍）— 構成・カテゴリ設計の軸。</strong>アダルト本・DVD買取＋販売の最大手メガEC。商品カテゴリ・成人認証ゲート・買取フローのお手本。.LOOK様の数千個規模出品に最も近い構成</div>
+      </div>
+      <div class="ref-site" style="border-color:#d4a017; border-width:2px;">
+        <span class="num-badge" style="background:#d4a017; color:#fff;">軸2</span>
+        <a href="https://www.e-trader.jp/r18/" target="_blank" rel="noopener" style="flex:1; font-size:13px; color:#0066cc; text-decoration:underline;">https://www.e-trader.jp/r18/</a>
+        <div class="ref-desc"><strong>トレーダー R18 — 買取訴求FVの軸。</strong>アダルトDVD・成年コミック・実写アダルトの買取＋EC専門。「高額買取」をFVで強調する設計＝.LOOK様の「TOPは買取アピール」要件と完全一致。黄＋赤の配色イメージとも親和性◎</div>
+      </div>
+      <div class="ref-site" style="border-color:#d4a017; border-width:2px;">
+        <span class="num-badge" style="background:#d4a017; color:#fff;">軸3</span>
+        <a href="https://www.lashinbang.com/" target="_blank" rel="noopener" style="flex:1; font-size:13px; color:#0066cc; text-decoration:underline;">https://www.lashinbang.com/</a>
+        <div class="ref-desc"><strong>らしんばん — 買取予約フォーム・コレクター訴求の補強。</strong>サブカル中古買取＋EC。出張買取・宅配買取・店頭買取の3導線設計、買取予約フォームのUIが参考になる</div>
+      </div>
+    </div>
+    <div class="ai-note">
+      <strong>制作方針：</strong>駿河屋の構成（カテゴリ設計・成人認証）×トレーダーR18の買取訴求FV（高額買取バッジ）×らしんばんの買取予約導線、を組み合わせる。<br>
+      <strong>注意：</strong>3社ともサブカル寄り／秋葉原系の世界観。.LOOK様は「コレクター向け古書店」の落ち着いた信頼感を狙う場合、配色・フォントはこの3サイトより上品に寄せる。
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">参考サイト【B】クライアント好み — ディレクションで埋める</div>
+    <div class="q-hint">淺川様が「こんな感じにしたい」と思っている参考サイトがあれば</div>
+    <div class="ref-sites">
+      <div class="ref-site">
+        <span class="num-badge">1</span>
+        <input type="text" value="">
+        <div class="ref-desc">※ディレクションで確認</div>
+      </div>
+      <div class="ref-site">
+        <span class="num-badge">2</span>
+        <input type="text" value="">
+        <div class="ref-desc">※好きなデザイン・雰囲気のサイト</div>
+      </div>
+    </div>
+    <div class="ai-note">
+      <strong>制作方針候補：</strong>買取アピールFV（黄＋赤）→ 取扱ジャンル → 買取の流れ（出張対応） → ECショップへの導線 → 強み → FAQ<br>
+      <strong>注意：</strong>アダルト要素を強く出しすぎず、コレクター向け古書店の信頼感を軸にする。成人認証ゲートはトップ前段に必須。
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">写真・素材について</div>
+    <div class="options">
+      <label><input type="radio" name="photo"><span>写真提供なし</span></label>
+      <label><input type="radio" name="photo"><span>写真提供あり</span></label>
+      <label><input type="radio" name="photo"><span>撮影あり</span></label>
+      <label><input type="radio" name="photo" checked><span>フリー素材10点迄</span></label>
+      <label><input type="radio" name="photo"><span>フリー素材20点迄</span></label>
+    </div>
+    <textarea>営業シート：フリー素材10点迄
+※商品写真（商品画像）はクライアント側で撮影・登録。サイト素材はフリー素材で補完</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">動画について</div>
+    <div class="options">
+      <label><input type="radio" name="video" checked><span>動画提供なし</span></label>
+      <label><input type="radio" name="video"><span>動画提供あり</span></label>
+      <label><input type="radio" name="video"><span>撮影・編集あり</span></label>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 8. ページ構成 ========== -->
+<section>
+  <h2><span class="num">8</span>ページ構成・機能</h2>
+
+  <div class="q-group">
+    <div class="q-label">サイト種別</div>
+    <div class="options">
+      <label><input type="radio" name="sitetype"><span>通常サイト（6-8P）</span></label>
+      <label><input type="radio" name="sitetype"><span>ランディングページ</span></label>
+      <label><input type="radio" name="sitetype" checked><span>ECサイト</span></label>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">作りたいページ <span class="required">必須</span></div>
+    <div class="options">
+      <label><input type="checkbox" checked><span>トップページ</span></label>
+      <label><input type="checkbox" checked><span>ブログ</span></label>
+      <label><input type="checkbox" checked><span>事業・サービス紹介</span></label>
+      <label><input type="checkbox" checked><span>ECサイト（販売）</span></label>
+      <label><input type="checkbox" checked><span>買取サービス紹介</span></label>
+      <label><input type="checkbox" checked><span>買取の流れ</span></label>
+      <label><input type="checkbox"><span>会社概要</span></label>
+      <label><input type="checkbox"><span>よくある質問</span></label>
+      <label><input type="checkbox" checked><span>お問い合わせフォーム&プライバシーポリシー</span></label>
+      <label><input type="checkbox" checked><span>特定商取引法表記</span></label>
+      <label><input type="checkbox" checked><span>成人認証ページ</span></label>
+    </div>
+    <textarea>※ECサイト機能（カート・決済・会員機能）＋WordPress（ブログ）の二段構成想定</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">お問い合わせ方法</div>
+    <div class="options">
+      <label><input type="checkbox" checked><span>電話</span></label>
+      <label><input type="checkbox" checked><span>お問い合わせフォーム（メール）</span></label>
+      <label><input type="checkbox"><span>公式LINE</span></label>
+      <label><input type="checkbox"><span>外部サイト</span></label>
+    </div>
+    <textarea>営業シート：お問い合わせフォーム（メール）
+※買取依頼フォーム（出張買取の予約受付）を別途設置検討</textarea>
+  </div>
+</section>
+
+<!-- ========== 9. 集客・今後 ========== -->
+<section>
+  <h2><span class="num">9</span>集客・今後の展望</h2>
+
+  <div class="q-group">
+    <div class="q-label">ホームページで一番達成したいことは？</div>
+    <div class="q-sub">買取依頼を増やしたい？（出張買取の予約獲得）</div>
+    <div class="q-sub">EC販売を伸ばしたい？（ヤフオクからの脱却）</div>
+    <textarea>※ディレクションで優先順位を確認
+【想定】TOPが買取アピールであることから、買取側を主軸とする可能性大</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">今後の事業展開</div>
+    <textarea>※ディレクションで確認</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">ユーザーに知ってほしいこと</div>
+    <textarea>【手書きシートより】
+・色々レアなものまで販売もしてるし、買い取りもしている
+・幅広い古本・レアカード等を探している人に届けたい</textarea>
+  </div>
+</section>
+
+<!-- ========== 10. MEO/SEO ========== -->
+<section>
+  <h2><span class="num">10</span>対策キーワード・MEO設定</h2>
+
+  <div class="q-group">
+    <div class="q-label">検索で見つけてもらいたいキーワード</div>
+    <textarea>【MEOクラウド対策設定（受注シート）】
+設定1: 中古本買取、ブランド品買取、不用品買取、出張買取
+設定2: R18本、アダルト本、エロ本
+設定3: アダルトDVD
+
+【地域キーワード】
+全国、大阪
+
+【組合せ例】
+大阪 アダルト本 買取 ／ 大阪 出張買取 ／ 中古本買取 大阪 ／ R18本 EC ／ アダルト古本 通販</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">Googleビジネスプロフィール（GBP）</div>
+    <textarea>権限取得サポート対象（営業シート）
+※アダルト商材でのGBP取得可否を要確認</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">SNSアカウント</div>
+    <textarea>※ディレクションで確認（SNS開設の有無・希望）</textarea>
+  </div>
+</section>
+
+<!-- ========== AI生成ガイド ========== -->
+<section style="background: linear-gradient(135deg, #fffbe6, #fff0c2); border: 1px solid #d4a017;">
+  <h2 style="border-bottom-color: #d4a017;"><span class="num" style="background:#8a6a00;">AI</span>ディレクション録画 → サイト文章 自動生成ガイド</h2>
+
+  <div class="q-group">
+    <div class="q-label">AIに渡すプロンプト例</div>
+    <div class="ai-note" style="background: #fff;">
+      以下はディレクション面談の文字起こしです。.LOOK どっとるっく様（アダルト中古本・DVD買取／ECサイト）のWEBサイト各ページの文章を作成してください。<br><br>
+
+      <strong>【生成してほしいページ】</strong><br>
+      ① トップページ（買取アピールFV＋ECショップ導線）<br>
+      ② 買取サービス紹介（取扱ジャンル・買取の流れ）<br>
+      ③ 出張買取案内（対応エリア・予約方法）<br>
+      ④ ECショップ紹介（販売側の特徴）<br>
+      ⑤ 代表あいさつ・想い<br>
+      ⑥ 会社概要<br>
+      ⑦ よくある質問（FAQ）5個以上<br>
+      ⑧ 特定商取引法表記<br>
+      ⑨ 成人認証ゲートの文言<br><br>
+
+      <strong>【トーン】</strong><br>
+      - ターゲットは20-50代男性中心<br>
+      - 過度に煽情的でなく、コレクター向け古書店の落ち着いた信頼感<br>
+      - 「プライバシー配慮」「査定無料」「全国対応（買取）」を訴求<br>
+      - 各ページ300〜500文字程度<br><br>
+
+      <strong>【文字起こしデータ】</strong><br>
+      （ここにディレクション録画の文字起こしを貼り付け）
+    </div>
+  </div>
+</section>
+
+<footer>
+  WEBサイト制作 ヒアリングシート — 株式会社ランバード<br>
+  審査期限：2026/8/13 ｜ ディレクション日：2026/5/28（木）13:00
+</footer>
+
+</div>
+</body>
+</html>
