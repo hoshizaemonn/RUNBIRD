@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>阿蘇ブルーベリーオーシャンファーム ／ Lovart用 1秒翻訳プロンプト集 v1</title>
+<style>
+  :root{
+    --bg:#0e1612; --bg2:#142019; --card:#1a2820; --line:#2c4234;
+    --text:#e9efe9; --muted:#9bb39c; --accent:#7eb86a; --accent2:#f5c45e; --berry:#7e54c4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#0d1611 0%,#0e1612 100%);color:var(--text);font-family:"Hiragino Sans","Yu Gothic UI","Noto Sans JP",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 18px 80px}
+  header{padding:24px 0 18px;border-bottom:1px solid var(--line)}
+  h1{margin:0 0 6px;font-size:24px;letter-spacing:.02em}
+  .lead{color:var(--muted);font-size:13px;margin:6px 0 12px}
+  .badges{display:flex;gap:8px;flex-wrap:wrap}
+  .badge{background:var(--bg2);border:1px solid var(--line);color:var(--accent);padding:5px 12px;border-radius:999px;font-size:12px}
+  .badge.warm{color:var(--accent2);border-color:#5b4824}
+  .badge.berry{color:#c8b6ff;border-color:#4a3a78}
+
+  .legend{margin-top:14px;padding:14px;background:#13201a;border:1px dashed var(--line);border-radius:10px;font-size:13px;color:var(--muted)}
+  .legend b{color:var(--text)}
+  .legend .ref{color:var(--accent2)}
+  .legend .new{color:#c8b6ff}
+
+  h2{margin:34px 0 14px;font-size:18px;border-left:4px solid var(--berry);padding-left:10px}
+
+  .scene{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:18px}
+  @media(max-width:880px){.scene{grid-template-columns:1fr}}
+  .col h3{margin:0 0 8px;font-size:14px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+  .col.ref h3{color:var(--accent2)}
+  .col.new h3{color:#c8b6ff}
+  .col img{width:100%;height:auto;border-radius:8px;background:#0c130d;display:block}
+  .stamp{font-size:11px;color:var(--muted);margin-top:6px}
+  .telop{margin-top:10px;padding:8px 12px;background:#0c1812;border-left:3px solid var(--accent2);font-size:13px;color:#f4ead0;border-radius:4px}
+  .telop b{color:#fff}
+  .telop.new{border-left-color:var(--berry);background:#161023}
+  .narr{margin-top:6px;font-size:12px;color:var(--muted)}
+
+  .prompt-box{margin-top:10px;background:#0a1410;border:1px solid #233a2a;border-radius:8px;padding:10px 12px;font-family:"SF Mono","Menlo",monospace;font-size:11.5px;color:#cde1cf;white-space:pre-wrap;word-break:break-word;line-height:1.55;max-height:240px;overflow:auto}
+  .prompt-label{margin-top:10px;font-size:11px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase}
+  .copy-hint{font-size:10px;color:var(--muted);margin-top:2px}
+
+  .scene-head{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:4px}
+  .scene-head .sno{font-weight:700;color:#c8b6ff;letter-spacing:.1em;font-size:13px}
+  .scene-head .time{color:var(--muted);font-size:12px}
+  .scene-head .frames{color:var(--accent);font-size:11px;font-family:monospace}
+
+  .global{background:#0a1814;border:1px solid #2e4a3a;border-radius:10px;padding:14px 18px;margin-top:14px}
+  .global h3{margin:0 0 8px;font-size:13px;color:var(--accent);letter-spacing:.05em}
+  .global pre{margin:0;font-family:"SF Mono","Menlo",monospace;font-size:11.5px;color:#cde1cf;white-space:pre-wrap}
+
+  footer{margin-top:60px;font-size:12px;color:var(--muted);text-align:center;border-top:1px solid var(--line);padding-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>阿蘇ブルーベリーオーシャンファーム ／ Lovart用 1秒翻訳プロンプト集 v1</h1>
+  <p class="lead">参考動画「空飛ぶいちご東京」（pE7RMN-TCpQ・65秒）を1秒単位で分解し、各シーンを<b>そのまま「ブルーベリー版」に翻訳</b>。Lovartにそのまま貼り付けて画像生成→Premiereで繋ぐ流れを想定。</p>
+  <div class="badges">
+    <span class="badge">参考動画：空飛ぶいちご東京</span>
+    <span class="badge warm">→ 阿蘇ブルーベリーオーシャンファーム</span>
+    <span class="badge berry">全16シーン・約65秒</span>
+    <span class="badge">Lovart Canvas: <a href="https://www.lovart.ai/canvas?projectId=722fe96816504334812853bf3a066e9a" style="color:#c8b6ff" target="_blank">ブルーベリー</a></span>
+  </div>
+  <div class="legend">
+    <b>使い方：</b>各シーンの「右側カラム＝ブルーベリー版」の <span class="new">📝 Lovartプロンプト</span>をコピーしてLovartに貼り付け→画像を生成。テロップ（青文字部分）は画像生成後にPremiere Pro／Lovartで合成。<br>
+    <b>翻訳ルール：</b>いちご→ブルーベリー（深い青紫）／ハウス空中栽培→<span class="new">屋外シート敷き農園65品種</span>／新宿駅から30分→<span class="new">JR阿蘇駅 徒歩10分</span>／空中栽培→<span class="new">日本トップクラス65品種</span>／ロゴ→<span class="new">阿蘇ブルーベリーオーシャンファーム</span>／検索→<span class="new">阿蘇ブルーベリー</span>。
+  </div>
+</header>
+
+<div class="global">
+  <h3>🌐 全シーン共通プロンプト（先頭に追加すると一貫性UP）</h3>
+  <pre>STYLE: Photorealistic Japanese tourism commercial, 16:9 frame composition, cinematic, soft natural daylight, shallow depth of field. NO anime, NO illustration, NO cartoon, NO 3D render, NO airbrushed look. Color palette: deep blue-purple blueberries with green leaves, soft pink-and-cream graphic overlays in pop & cute style (matching the reference). Shot on Sony A7 + 50mm lens.
+NEGATIVE: strawberries, red berries, men's faces, celebrity likeness, text watermarks, blurry low quality.
+BRAND COLORS: light pink #FFD9DE / cream #FFF6E8 / berry purple #7E54C4 / leaf green #7EB86A.</pre>
+</div>
+
+<!-- ========================= S01 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S01</span><span class="time">0–2秒（フック導入）</span><span class="frames">f_001 / f_002</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画（いちご）</h3>
+    <img src="aso-blueberry-ocean-ref/f_002.jpg" alt="">
+    <div class="stamp">いちごクローズアップ右、左にピンクドット背景＋街並みグラフィック。テロップ「新宿駅から3 → 30」カウントアップ</div>
+    <div class="telop">テロップ：<b>新宿駅から「3...30」</b>（数字がアニメで上がる）</div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/hook_a_question.jpg" alt="">
+    <div class="stamp">ブルーベリークローズアップ右、左にピンクドット＋阿蘇山シルエットの線画。テロップ「JR阿蘇駅から徒歩 1...10」カウントアップ</div>
+    <div class="telop new">テロップ：<b>JR阿蘇駅から徒歩「1...10」</b>（数字アニメ・分はS02で）</div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">A vertical-split composition. RIGHT HALF: macro close-up of ripe blueberries hanging from the bush, deep blue-purple color with visible natural bloom on the skin, fresh green leaves around them, soft morning backlight creating a gentle glow, shallow depth of field. LEFT HALF: solid soft pink background (#FFD9DE) with a horizontal pink dotted ribbon band across the upper third, and at the bottom a simple line-art silhouette of Mount Aso volcanic mountain range in light teal/blue. Cute Japanese travel commercial style, 16:9, photorealistic berry + flat graphic background.</div>
+  </div>
+</div>
+
+<!-- ========================= S02 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S02</span><span class="time">3–5秒（フック完成）</span><span class="frames">f_003〜f_005</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_005.jpg" alt="">
+    <div class="stamp">同構図のまま「東京で / 新宿駅から30分で / いちご狩り!?」吹き出しがポンッと出現</div>
+    <div class="telop">テロップ：<b>東京で／新宿駅から30分で／いちご狩り!?</b></div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/hook_a_question.jpg" alt="">
+    <div class="stamp">同構図のまま「阿蘇で／JR阿蘇駅から徒歩10分／ブルーベリー狩り!?」吹き出しが出現</div>
+    <div class="telop new">テロップ：<b>阿蘇で／JR阿蘇駅から徒歩10分／ブルーベリー狩り!?</b></div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Same composition as previous shot (blueberry close-up on right, pink dotted background on left with Mount Aso silhouette below). Add three pop-up text bubble graphics on the left side in cute Japanese travel commercial style: top small banner "阿蘇で" in red sans-serif, middle banner with pink polka-dot ribbon containing "JR阿蘇駅から徒歩" + a circular cyan badge with "10" + "分で", bottom large playful curved text "ブルーベリー狩り!?" in red brush-style font. All text in Japanese, balanced layout. 16:9, photorealistic blueberries + flat graphic overlay.</div>
+  </div>
+</div>
+
+<!-- ========================= S03 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S03</span><span class="time">6–9秒（ブランドカード）</span><span class="frames">f_006〜f_009</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_008.jpg" alt="">
+    <div class="stamp">ハウス通路の奥行きを背景に、中央に大きなレトロ看板風ロゴ「空飛ぶいちご東京」＋サブ「電車で行ける駅チカいちご狩り」＋右下に大きないちご2粒＋左下に「東京都府中市」バッジ＋中央下にバスケット</div>
+    <div class="telop">テロップ：<b>ロゴ「空飛ぶいちご東京」＋「電車で行ける駅チカいちご狩り」＋「東京都府中市」</b></div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s04_orchard_picnic_overhead.jpg" alt="">
+    <div class="stamp">阿蘇の高原・ブルーベリー農園の通路俯瞰を背景に、中央に大きなレトロ看板風ロゴ「阿蘇ブルーベリーオーシャンファーム」＋サブ「JR阿蘇駅から徒歩10分の観光農園」＋右下に大きなブルーベリー粒の塊＋左下に「熊本県阿蘇市」バッジ＋中央下にブルーベリーバスケット</div>
+    <div class="telop new">テロップ：<b>ロゴ「阿蘇ブルーベリーオーシャンファーム」＋「JR阿蘇駅から徒歩10分の観光農園」＋「熊本県阿蘇市」</b></div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Wide perspective shot down the rows of an outdoor blueberry orchard in Aso highlands with neat blueberry bushes on both sides receding into the distance, white pollination netting overhead, soft pink-tinted backlight, Mount Aso visible at the far end. In the foreground center: a retro signboard-style logo card on a cream-white scalloped banner, with thin arched Japanese text on top "JR阿蘇駅から徒歩10分の観光農園" and large brush-style Japanese title "阿蘇ブルーベリーオーシャンファーム" with a small "熊本" tag, sub-line "ASO BLUEBERRY OCEAN FARM" in elegant English serif. Bottom-left: a circular pink polka-dot badge with "熊本県 阿蘇市" in red. Bottom-right: two large fresh blueberries with green leaves overlaid as if floating in front. Center bottom: a small picnic basket with blueberries on a checkered cloth. Cute Japanese travel commercial flat-graphic + photo composite. 16:9.</div>
+  </div>
+</div>
+
+<!-- ========================= S04 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S04</span><span class="time">10–12秒</span><span class="frames">f_010〜f_012</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_010.jpg" alt="">
+    <div class="stamp">いちごクローズアップ（縦に吊り下がる粒）、画面右上に小さく「空飛ぶいちご東京」ロゴが固定、左上にピンクの三角アクセント</div>
+    <div class="telop">テロップ：<b>ロゴ固定（右上）＋ピンク三角（左上）</b></div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s03_berry_closeup.jpg" alt="">
+    <div class="stamp">ブルーベリー粒のクローズアップ（ぶら下がる粒・葉つき）、右上に小さく「阿蘇ブルーベリーオーシャンファーム」ロゴ固定、左上にピンク三角アクセント</div>
+    <div class="telop new">テロップ：<b>ロゴ固定（右上）＋ピンク三角（左上）</b></div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Macro close-up of ripe blueberries hanging from a blueberry bush branch, deep blue-purple with natural bloom, fresh green leaves around, soft warm backlight creating a delicate glow, shallow depth of field with soft green-cream blurred background. Compose with negative space in upper-left and upper-right corners so a small white scalloped logo badge can sit in upper right corner (placeholder for "阿蘇ブルーベリーオーシャンファーム" logo) and a small pink chevron/triangle accent in upper-left corner. 16:9 photorealistic food photography.</div>
+  </div>
+</div>
+
+<!-- ========================= S05 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S05</span><span class="time">13–15秒（アクセス訴求）</span><span class="frames">f_013〜f_015</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_013.jpg" alt="">
+    <div class="stamp">いちごクローズアップ＋左に白い吹き出しリボン「西府駅 / 徒歩 / 7分」</div>
+    <div class="telop">テロップ：<b>西府駅 徒歩 7分</b>（白リボン吹き出し）</div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s03_berry_closeup.jpg" alt="">
+    <div class="stamp">ブルーベリークローズアップ＋左に白い吹き出しリボン「JR阿蘇駅 / 徒歩 / 10分」</div>
+    <div class="telop new">テロップ：<b>JR阿蘇駅 徒歩 10分</b>（白リボン吹き出し）</div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Macro close-up of ripe blueberries on the bush with soft cream background. Add on the left side a vertical white scalloped ribbon banner graphic (like a paper tag) containing three lines of Japanese text: top small red sans-serif "JR阿蘇駅", middle small red "徒歩", bottom large red "10分" with the number "10" extra large. The ribbon has a pink fringe edge at the bottom forming a downward chevron. Keep the blueberry photo on the right side of frame. Cute Japanese travel commercial style. 16:9.</div>
+  </div>
+</div>
+
+<!-- ========================= S06 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S06</span><span class="time">16–22秒（USP核心）</span><span class="frames">f_016〜f_022</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_020.jpg" alt="">
+    <div class="stamp">ハウス通路を一点透視で奥に向かう俯瞰／中央にバスケット＋ワイングラス／中盤に「いちごを空中栽培!」テロップ（赤・楽天系フォント）が下から出現</div>
+    <div class="telop">テロップ：<b>いちごを空中栽培!</b>（下中央・赤字＋両脇に小いちごアイコン）</div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s04_orchard_picnic_overhead.jpg" alt="">
+    <div class="stamp">屋外ブルーベリー農園の通路を一点透視で奥へ／白いシート敷きの広々とした道／中央にブルーベリーバスケット＋ガラスのグラス／中盤に「日本トップクラス65品種!」テロップ</div>
+    <div class="telop new">テロップ：<b>日本トップクラス 65品種!</b>（下中央・赤字＋両脇に小ブルーベリーアイコン）</div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">One-point perspective shot looking straight down the central walkway of an outdoor blueberry orchard in Aso highland. Tidy rows of blueberry bushes on both sides receding to a vanishing point in the distance, neat white pollination netting hung overhead. The walkway is covered in clean white ground sheets (シート敷き). In the center foreground sits a small wicker picnic basket overflowing with fresh blueberries on a red-and-white gingham cloth, with two clear champagne glasses on either side. Soft pink-tinted morning light filtering through the netting. Mount Aso silhouette barely visible at the far vanishing point. Highly cinematic, photorealistic, 16:9. Leave clear space at the bottom-center for an overlay graphic.</div>
+  </div>
+</div>
+
+<!-- ========================= S07 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S07</span><span class="time">23–25秒（摘み取りの手元）</span><span class="frames">f_023〜f_025</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_023.jpg" alt="">
+    <div class="stamp">いちごをそっと手で持ち上げる女性の手元クローズアップ＋左上に「ラクラク♪」赤ピンク吹き出し＋下「いちごを空中栽培!」</div>
+    <div class="telop">テロップ：<b>ラクラク♪</b>（左上吹き出し）／下：<b>いちごを空中栽培!</b></div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s05_woman_tasting.jpg" alt="">
+    <div class="stamp">ブルーベリーをそっと手で摘み取る女性の手元クローズアップ＋左上に「カンタン♪」赤ピンク吹き出し＋下「日本トップクラス65品種!」</div>
+    <div class="telop new">テロップ：<b>カンタン♪</b>（左上吹き出し）／下：<b>日本トップクラス65品種!</b></div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Macro close-up of a young Japanese woman's gentle hand reaching up to pick a single ripe blueberry from the bush. Soft natural skin tone, clean unmanicured nails, very natural motion. The deep blue-purple berry between her thumb and forefinger is in sharp focus, surrounded by green leaves and other berries softly blurred. Warm gentle daylight. Leave the upper-left corner clear for a "カンタン♪" pop-bubble graphic overlay, and bottom-center clear for a horizontal label overlay. DO NOT include face. 16:9 photorealistic.</div>
+  </div>
+</div>
+
+<!-- ========================= S08 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S08</span><span class="time">26–32秒（園内の広さ）</span><span class="frames">f_026〜f_032</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_030.jpg" alt="">
+    <div class="stamp">ハウス内通路の俯瞰（縦に吊り下がるいちご棚が両側にずらり）／ロゴだけ右上に常駐／テロップなしの間／落ち着いた魅せカット</div>
+    <div class="telop">テロップ：<b>なし</b>（魅せカット・BGMで間をとる）</div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s04_orchard_picnic_overhead.jpg" alt="">
+    <div class="stamp">屋外ブルーベリー園の通路俯瞰（両側に整然と並ぶブルーベリーの株、奥に阿蘇山）／ロゴだけ右上常駐／テロップなしの間</div>
+    <div class="telop new">テロップ：<b>なし</b>（魅せカット）</div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Elevated wide shot of an outdoor blueberry orchard in Aso highland. Multiple parallel rows of mature blueberry bushes neatly arranged, each bush about 1.5m tall and laden with ripe blue-purple berries, separated by wide white-sheet pathways. Soft pollination netting overhead in places. The distant background shows the iconic Mount Aso volcanic mountain range under a soft pastel-pink/cream sky. Bright but gentle natural daylight. Empty of people. Calm, peaceful, almost dreamy travel commercial composition, 16:9. Leave upper-right corner clear for logo placement.</div>
+  </div>
+</div>
+
+<!-- ========================= S09 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S09</span><span class="time">33–35秒（滞在時間訴求）</span><span class="frames">f_033〜f_035</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_033.jpg" alt="">
+    <div class="stamp">いちごクローズアップ＋左に大きな円形「ゆっくり過ごせる / 90分」（赤数字・円形バッジ）＋下にいちごアイコン</div>
+    <div class="telop">テロップ：<b>ゆっくり過ごせる 90分</b>（円形バッジ）</div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s03_berry_closeup.jpg" alt="">
+    <div class="stamp">ブルーベリークローズアップ＋左に円形「ゆっくり過ごせる / 60分」（赤数字・円形バッジ）＋下にブルーベリーアイコン<br><span style="color:var(--accent2)">※実際の食べ放題時間はクライアント確認待ち。仮置き60分</span></div>
+    <div class="telop new">テロップ：<b>ゆっくり過ごせる 60分</b>（円形バッジ・要確認）</div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Macro close-up of hanging blueberries on the bush, deep blue-purple color, soft green-cream background. Leave the left third of the frame clear with a soft pink-cream tone for a large circular badge graphic overlay containing "ゆっくり過ごせる" in small text above and "60分" in extra-large red brush-style number+character below, with a small blueberry icon at the bottom. 16:9 photorealistic.</div>
+  </div>
+</div>
+
+<!-- ========================= S10 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S10</span><span class="time">36–39秒（カフェ訴求1）</span><span class="frames">f_036〜f_039</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_036.jpg" alt="">
+    <div class="stamp">「府中いちご狩り園」と書かれた白いキッチンカー＋右に「園内に / キッチンカー」雲型吹き出し</div>
+    <div class="telop">テロップ：<b>園内にキッチンカー</b>（雲型吹き出し）</div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s08_cafe_rest_area.jpg" alt="">
+    <div class="stamp">「阿蘇ブルーベリーカフェ」と書かれた白いウッド調カフェ小屋or木陰のカフェスペース＋右に「園内にカフェスペース」雲型吹き出し<br><span style="color:var(--accent2)">※カフェは商品未完成のためふんわり表現</span></div>
+    <div class="telop new">テロップ：<b>園内にカフェスペース</b>（雲型吹き出し）</div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Exterior of a charming small white wooden cafe hut (or food truck) at a blueberry farm in Aso, with hand-painted Japanese signage "阿蘇ブルーベリーカフェ" with cute blueberry icons across the front panel, parked against soft pastel pink-tinted background. Vintage-style cute travel commercial photography. Leave the right side of frame clear for a cloud-shaped speech bubble graphic. 16:9, photorealistic + flat graphic friendly composition.</div>
+  </div>
+</div>
+
+<!-- ========================= S11 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S11</span><span class="time">40–42秒（カフェ訴求2）</span><span class="frames">f_040〜f_042</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_040.jpg" alt="">
+    <div class="stamp">ハウス内に置かれた黒いラタンソファ2脚＋ローテーブル（シャンパン＋いちごバスケット）＋左に雲型「SNS映えする / VIP席」</div>
+    <div class="telop">テロップ：<b>SNS映えする VIP席</b>（雲型吹き出し）</div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s08_cafe_rest_area.jpg" alt="">
+    <div class="stamp">農園のレストエリアに置かれた白〜ナチュラルウッドのソファ2脚＋ローテーブル（ブルーベリードリンク＋バスケット）＋左に雲型「SNS映えする / シートエリア」<br><span style="color:var(--accent2)">※VIP席→シートエリアに翻訳（HP訴求のシート敷き完備に合わせる）</span></div>
+    <div class="telop new">テロップ：<b>SNS映えする シートエリア</b>（雲型吹き出し）</div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">A photogenic rest area at the blueberry farm: two stylish natural wood / cream rattan sofas facing each other with a low table between them, on the table two clear glasses of vibrant blue-purple blueberry juice with a small wicker basket of fresh blueberries. Soft pink-tinted background of orchard rows hanging blueberry branches behind. White ground sheet beneath. Empty of people, instagram-photo-ready composition. Leave the upper-left clear for a cloud-bubble graphic overlay. 16:9 photorealistic.</div>
+  </div>
+</div>
+
+<!-- ========================= S12 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S12</span><span class="time">43–45秒（カフェ訴求3）</span><span class="frames">f_043〜f_045</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_043.jpg" alt="">
+    <div class="stamp">ショーケースに並ぶ軽食（クレープ・ホットドッグ等）＋右下に雲型「軽食も / 一緒に楽しめる♪」</div>
+    <div class="telop">テロップ：<b>軽食も 一緒に楽しめる♪</b></div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s08_cafe_rest_area.jpg" alt="">
+    <div class="stamp">ショーケースに並ぶブルーベリースイーツのイメージ（マフィン・ヨーグルト・ジャム小瓶）＋右下に雲型「スイーツも / 一緒に楽しめる♪」<br><span style="color:var(--accent2)">※具体商品は未完成のため一般的なブルーベリースイーツで仮置き</span></div>
+    <div class="telop new">テロップ：<b>スイーツも 一緒に楽しめる♪</b></div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Close-up of a charming cafe display: rows of cute disposable cups in pink and green patterns holding blueberry yogurt, alongside fresh blueberry muffins, small jars of blueberry jam, and slices of blueberry cake. All photographed through a glass display case with soft natural light. Color palette dominated by blue-purple berries and cream tones. Leave the bottom-right clear for a cloud-bubble graphic overlay. 16:9 photorealistic food photography.</div>
+  </div>
+</div>
+
+<!-- ========================= S13 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S13</span><span class="time">46–49秒（友達ターゲット）</span><span class="frames">f_046〜f_049</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_046.jpg" alt="">
+    <div class="stamp">手のひらに乗せた大きないちご1粒のクローズアップ＋右上に「お友達との / 映えスポット / めぐり」吹き出し＋右下にスマホを構える2人の若い女性イラスト</div>
+    <div class="telop">テロップ：<b>お友達との 映えスポットめぐり</b>（右上＋友達アイコン）</div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s05_woman_tasting.jpg" alt="">
+    <div class="stamp">手のひらに乗せた大粒ブルーベリー（葉つき）クローズアップ＋右上に「お友達との / 映えスポット / めぐり」吹き出し＋右下にスマホを構える2人の若い女性イラスト</div>
+    <div class="telop new">テロップ：<b>お友達との 映えスポットめぐり</b>（右上＋友達アイコン）</div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Close-up of a young woman's hand holding up a single large ripe blueberry with a tiny green stem and leaf still attached, between her thumb and forefinger, presented vertically to camera. Soft pink-cream blurred background of orchard. Soft natural daylight. DO NOT show face. Leave the upper-right clear for a pop-bubble text graphic overlay, and lower-right clear for a flat illustration of two young women with a smartphone. 16:9 photorealistic.</div>
+  </div>
+</div>
+
+<!-- ========================= S14 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S14</span><span class="time">50–52秒（家族ターゲット）</span><span class="frames">f_050〜f_052</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_050.jpg" alt="">
+    <div class="stamp">バスケットいっぱいの大粒いちご＋左上に「お子さんと / 一緒に」吹き出し＋左下に親子3人（パパ・ママ・男の子）のイラスト</div>
+    <div class="telop">テロップ：<b>お子さんと一緒に</b>（左上＋家族アイコン）</div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s06_family_basket.jpg" alt="">
+    <div class="stamp">バスケットいっぱいの大粒ブルーベリー＋左上に「お子さんと / 一緒に」吹き出し＋左下に親子3人のイラスト</div>
+    <div class="telop new">テロップ：<b>お子さんと一緒に</b>（左上＋家族アイコン）</div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Top-down close-up of a wicker basket overflowing with abundant freshly picked ripe blueberries on a red-and-white gingham cloth, photographed at the orchard, surrounded by soft green leaves. Bright natural daylight, beautiful and abundant. Leave the upper-left clear for a pop-bubble text graphic overlay, and lower-left clear for a flat illustration of a family trio (father, mother, small child). 16:9 photorealistic food photography.</div>
+  </div>
+</div>
+
+<!-- ========================= S15 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S15</span><span class="time">53–55秒（カップルターゲット）</span><span class="frames">f_053〜f_055</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_053.jpg" alt="">
+    <div class="stamp">ハウス内の赤い椅子＋テーブルが並ぶ広々空間＋左上に「カップルの / デート / にも！」吹き出し＋左下に若いカップルイラスト</div>
+    <div class="telop">テロップ：<b>カップルのデートにも！</b>（左上＋カップルアイコン）</div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s04_orchard_picnic_overhead.jpg" alt="">
+    <div class="stamp">農園のレストエリア・木陰のベンチ&テーブルが並ぶ広々空間＋左上に「カップルの / デート / にも！」吹き出し＋左下に若いカップルイラスト</div>
+    <div class="telop new">テロップ：<b>カップルのデートにも！</b>（左上＋カップルアイコン）</div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Wide elevated shot of the rest area inside the blueberry farm: multiple stylish wooden benches and small round tables (or cream-pink chairs) arranged in a clean spacious area with white ground sheets, surrounded on both sides by rows of hanging blueberry branches above. Soft pink-tinted natural daylight, empty of people, very photogenic and resort-like. Leave upper-left clear for a pop-bubble graphic overlay, lower-left clear for a flat illustration of a young couple. 16:9 photorealistic.</div>
+  </div>
+</div>
+
+<!-- ========================= S16 ========================= -->
+<div class="scene">
+  <div class="scene-head"><span class="sno">S16</span><span class="time">56–65秒（CTA / 検索カード）</span><span class="frames">f_056〜f_065</span></div>
+  <div class="col ref">
+    <h3>📺 参考動画</h3>
+    <img src="aso-blueberry-ocean-ref/f_060.jpg" alt="">
+    <div class="stamp">ピンクドット全画面＋下に街並みグラフィック＋中央大きく看板風ロゴ「空飛ぶいちご東京」＋サブ「電車で行ける駅チカいちご狩り / SORATOBU ICHIGO TOKYO」＋下中央に検索バー（最初は空、後に「空飛ぶいちご東京」とタイプ→「検索」ボタン点滅）</div>
+    <div class="telop">テロップ：<b>ロゴ＋検索バー（「空飛ぶいちご東京」検索）</b></div>
+  </div>
+  <div class="col new">
+    <h3>🫐 ブルーベリー版</h3>
+    <img src="aso-blueberry-ocean-images/s07_station_access.jpg" alt="">
+    <div class="stamp">ピンクドット全画面＋下に阿蘇連山シルエット＋中央大きく看板風ロゴ「阿蘇ブルーベリーオーシャンファーム」＋サブ「JR阿蘇駅から徒歩10分の観光農園 / ASO BLUEBERRY OCEAN FARM」＋下中央に検索バー（最初は空、後に「阿蘇ブルーベリー」とタイプ→「検索」ボタン点滅）</div>
+    <div class="telop new">テロップ：<b>ロゴ＋検索バー（「阿蘇ブルーベリー」検索）</b></div>
+    <div class="prompt-label">📝 Lovartプロンプト</div>
+    <div class="prompt-box">Full-screen brand card design in cute Japanese travel commercial style. Background: soft pink (#FFD9DE) with regular pink polka-dot pattern. Bottom edge: a simple line-art silhouette of Mount Aso volcanic mountain range in light teal/blue, with a small train illustration to suggest accessibility. Center top: a large retro signboard graphic (cream-white with scalloped edges) containing:
+- Top arch thin text: "JR阿蘇駅から徒歩10分の観光農園"
+- Main large brush-style Japanese title: "阿蘇ブルーベリーオーシャンファーム" with a small "熊本" tag at the end
+- Sub-line elegant English serif: "ASO BLUEBERRY OCEAN FARM"
+Below the signboard, center: a horizontal search-bar UI element with a gray "検索" button on the right. Inside the search box: the text "阿蘇ブルーベリー" in plain Japanese.
+Layout balanced, designed as the final CTA frame of a 30-60s tourism commercial. 16:9.</div>
+  </div>
+</div>
+
+<footer>
+  阿蘇ブルーベリーオーシャンファーム ／ Lovart用 1秒翻訳プロンプト集 v1（2026-05-24）<br>
+  参考動画：空飛ぶいちご東京（R-AD制作・65秒）→ 全16シーン翻訳<br>
+  Lovart Canvas：<a style="color:var(--accent)" href="https://www.lovart.ai/canvas?projectId=722fe96816504334812853bf3a066e9a" target="_blank">canvas?projectId=722fe968...</a>
+</footer>
+
+</div>
+</body>
+</html>
