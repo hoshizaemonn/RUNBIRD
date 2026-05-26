@@ -390,6 +390,63 @@ th { background: #f0eadd; font-weight: 700; }
   </table>
 </div>
 
+<!-- 4.58 訪問者半減の原因分析 -->
+<div class="section warning">
+  <div class="eyebrow">ROOT CAUSE ANALYSIS</div>
+  <h2><span class="num">04.58</span>訪問者半減（↓53%）の原因分析</h2>
+  <p>「広告費を減らしたから訪問者が半減したのか？」という仮説を、Yahoo広告の月別データで検証しました。<strong>結論：広告費は逆に増えていました。原因は別にあります。</strong></p>
+
+  <h3>Yahoo広告コスト 前期 vs 今期（90日比較）</h3>
+  <table>
+    <thead><tr><th>期間</th><th>Yahoo広告費</th><th>訪問者数</th></tr></thead>
+    <tbody>
+      <tr><td>前期 90日（2025/11/27〜2026/2/25）</td><td>約 ¥162,000</td><td><strong>約14,000人</strong></td></tr>
+      <tr><td>今期 90日（2026/2/26〜2026/5/26）</td><td>約 <strong style="color:#fef08a;">¥453,000</strong>（前期比 約2.8倍）</td><td><strong>7,000人</strong>（↓53%）</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Yahoo広告 月別推移</h3>
+  <table>
+    <thead><tr><th>月</th><th>コスト</th><th>クリック</th><th>CPC</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr><td>2026/01</td><td>¥130,820</td><td>101</td><td class="bad">¥1,295</td><td>CPC異常に高い</td></tr>
+      <tr><td>2026/02</td><td class="bad">¥31,055</td><td>76</td><td>¥409</td><td>激減（一時停止？）</td></tr>
+      <tr><td>2026/03</td><td>¥162,221</td><td>368</td><td>¥441</td><td>再開・予算増</td></tr>
+      <tr><td>2026/04</td><td>¥157,933</td><td>355</td><td>¥445</td><td>安定運用</td></tr>
+      <tr><td>2026/05</td><td>¥132,671</td><td>307</td><td>¥432</td><td>〜5/26時点</td></tr>
+    </tbody>
+  </table>
+
+  <h3>本当の原因仮説</h3>
+  <p>広告費は増えているのに訪問者が減っている=「広告の構造に問題がある」状態。</p>
+
+  <div class="finding">
+    <strong>真の原因：広告は動いてるが、見込み客を連れてこれていない</strong>
+    <p>LP本体は直帰率31.8%と健全。広告のクリックも増えている（1月101→3月368）。にもかかわらず訪問者数が減っているのは、<strong>「見込み度の低い人を集めて、すぐ離脱されている」</strong>ことが原因。</p>
+  </div>
+
+  <h3>具体的に「連れてきている人」の質</h3>
+  <table>
+    <thead><tr><th>連れてきている人</th><th>クリック数</th><th>CV</th><th>意図</th></tr></thead>
+    <tbody>
+      <tr><td>「フランチャイズ 安い」検索者</td><td>14</td><td class="bad">0</td><td>そもそも安いFC探してる人</td></tr>
+      <tr><td>「在宅 フランチャイズ」検索者</td><td>11</td><td class="bad">0</td><td>在宅副業希望者</td></tr>
+      <tr><td>「リフォーム 木造 フランチャイズ」検索者</td><td>8</td><td class="bad">0</td><td>業種違い（建築系）</td></tr>
+      <tr><td>「レンタルスペース フランチャイズ」検索者</td><td>7</td><td class="bad">0</td><td>業種違い（不動産系）</td></tr>
+      <tr><td>「ダイヤチェアー フランチャイズ」検索者</td><td>—</td><td class="bad">0</td><td>商品名・全然関係なし</td></tr>
+      <tr><td>Google ディスプレイ広告経由</td><td>413セッション</td><td class="bad">エンゲージ20%・6.5秒</td><td>クリック誤爆・即離脱</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;">これらは <strong>「障がい者グループホーム開業を本気で検討している層」ではない</strong>。「FC一般」「リフォーム業」「在宅副業」の探索者に広告費を消費させてる状態。</p>
+
+  <h3>結論</h3>
+  <p style="background:rgba(255,255,255,0.1); padding:16px; border-radius:4px;">
+    広告は<strong>「KW設計・除外設定・遷移先LP対応」が雑</strong>で、見込み度の低い人を集めて即離脱されている。<br>
+    解決策は「予算を増やす」ではなく <strong>「予算配分を変える」</strong>。<br>
+    <strong>「グループホーム フランチャイズ」（CPA¥480の金鉱）への集中＋業種違いKWの除外</strong>で、訪問者の「質」を上げることが急務。
+  </p>
+</div>
+
 <!-- 4.6 広告施策の重要発見 -->
 <div class="section warning">
   <div class="eyebrow">YAHOO ADS — CRITICAL OPPORTUNITIES</div>
