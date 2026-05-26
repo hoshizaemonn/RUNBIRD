@@ -224,17 +224,97 @@ th { background: #f0eadd; font-weight: 700; }
   <p style="font-size: 13px;"><strong>注目点：</strong>本流の <code>/lp_zero-plan/</code> がTOP10圏外。広告は派生URL中心に配信されている。</p>
 </div>
 
+<!-- 4.5 Yahoo広告分析 -->
+<div class="section">
+  <div class="eyebrow">YAHOO ADS ANALYSIS（2025/12/25〜2026/5/26 = 約5ヶ月）</div>
+  <h2><span class="num">04.5</span>Yahoo広告の実態（CSV分析）</h2>
+  <p>株式会社ランバード（MCC 1002771691 / アカウントID 1441736）の検索広告データを分析しました。Google広告は現状未稼働とのことなので、<strong>Site Kitの「Paid Search 60.3%」はほぼYahoo広告経由</strong>と推測されます。</p>
+
+  <h3>全体サマリー</h3>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="num">¥614,700</div><div class="lbl">広告費（5ヶ月）</div></div>
+    <div class="kpi"><div class="num">1,207</div><div class="lbl">クリック数</div></div>
+    <div class="kpi"><div class="num">15</div><div class="lbl">CV数</div></div>
+    <div class="kpi alert"><div class="num">¥40,980</div><div class="lbl">CPA（コスト÷CV）</div><div class="delta">1問い合わせあたり</div></div>
+  </div>
+
+  <h3>💎 効率最良クエリ（既にCV出てる金鉱）</h3>
+  <table>
+    <thead><tr><th>クエリ</th><th>CL</th><th>CV</th><th>CVR</th><th>CPA</th><th>評価</th></tr></thead>
+    <tbody>
+      <tr><td><strong>グループホーム フランチャイズ</strong></td><td>5</td><td>1</td><td>20%</td><td class="good">¥480</td><td>🥇 本命キーワード</td></tr>
+      <tr><td>起業フランチャイズ</td><td>1</td><td>1</td><td>100%</td><td class="good">¥401</td><td>クエリ調整余地</td></tr>
+      <tr><td>fc 起業</td><td>4</td><td>1</td><td>25%</td><td class="good">¥985</td><td>近接クエリ</td></tr>
+      <tr><td>福祉 ボランティア 起業</td><td>9</td><td>2</td><td>22%</td><td class="warn">¥1,062</td><td>意図合致</td></tr>
+      <tr><td>フランチャイズ グループホーム</td><td>2</td><td>1</td><td>50%</td><td class="good">¥994</td><td>本命の語順違い</td></tr>
+      <tr><td>フランチャイズ 介護</td><td>14</td><td>2</td><td>14.29%</td><td class="warn">¥5,768</td><td>関連業種</td></tr>
+      <tr><td>介護 フランチャイズ</td><td>73</td><td>4</td><td>5.48%</td><td class="warn">¥34,219</td><td>CPC高い</td></tr>
+    </tbody>
+  </table>
+
+  <h3>💀 完全にムダ撃ちのクエリ（CV 0なのに高CPC）</h3>
+  <table>
+    <thead><tr><th>クエリ</th><th>CL</th><th>CPC</th><th>問題点</th></tr></thead>
+    <tbody>
+      <tr><td><strong>フランチャイズ 安い</strong></td><td>14</td><td class="bad">¥4,373</td><td>意図不一致＋CPC異常</td></tr>
+      <tr><td>レンタルスペース フランチャイズ</td><td>7</td><td class="bad">¥2,805</td><td>業種違い</td></tr>
+      <tr><td>在宅 フランチャイズ</td><td>11</td><td class="bad">¥2,234</td><td>業種違い</td></tr>
+      <tr><td>リフォーム 木造 フランチャイズ</td><td>8</td><td class="bad">¥1,679</td><td>業種違い</td></tr>
+      <tr><td>ダイヤチェアー フランチャイズ</td><td>—</td><td>—</td><td>商品名・関係なし</td></tr>
+      <tr><td>fc 福祉（高CPC帯）</td><td>48</td><td class="bad">¥1,325〜¥2,028</td><td>CPC異常に高い</td></tr>
+    </tbody>
+  </table>
+
+  <h3>キャンペーン構造の問題</h3>
+  <ul style="font-size: 14px; padding-left: 20px;">
+    <li><strong>5広告グループ全部が「フランチャイズ福祉・介護比較系LP」という同じ名前</strong> → どの広告がどれか判別困難</li>
+    <li>遷移先LPは「OWL福祉事業-経営者系LP202603」と「フランチャイズ福祉・介護比較系LP Ver1」の2種類のみ（30本のLPバリエーションのほぼ全部は<strong>未活用</strong>）</li>
+    <li><strong>「0円プランLP Camp1」キャンペーンが配信オフ</strong>になっている（再開の余地？）</li>
+    <li>入札戦略「クリック数の最大化」+ CPC上限¥500 → CV最適化ではない設定</li>
+  </ul>
+</div>
+
+<!-- 4.6 広告施策の重要発見 -->
+<div class="section warning">
+  <div class="eyebrow">YAHOO ADS — CRITICAL OPPORTUNITIES</div>
+  <h2><span class="num">04.6</span>Yahoo広告 ここを直せば即効性アリ</h2>
+
+  <div class="finding">
+    <strong>🥇 機会① 「グループホーム フランチャイズ」への予算集中</strong>
+    <p>このキーワードはCPA ¥480 でCVが出ている、検証済みの「金鉱」状態。しかし現状の表示回数が極小で、機会損失が発生しています。
+    <strong>このクエリに予算を寄せれば、CV数を数倍に伸ばせる可能性</strong>があります。</p>
+  </div>
+
+  <div class="finding">
+    <strong>🚫 機会② 除外キーワード追加で予算ムダ撃ち停止</strong>
+    <p>「安い」「在宅」「リフォーム」「レンタル」「ダイヤチェア」等のクエリで月数万円が垂れ流し状態。<strong>除外キーワードを15〜20語追加するだけで、即効でムダ消化を止められる</strong>。</p>
+  </div>
+
+  <div class="finding">
+    <strong>🏷 機会③ キャンペーン・広告グループの命名整理</strong>
+    <p>5広告グループが同名のため、どれが何の役割か判別不能。命名規則を整理して、各広告グループの目的と遷移先LPを対応付けることで、運用判断が一気にしやすくなる。</p>
+  </div>
+
+  <div class="finding">
+    <strong>🎯 機会④ 遷移先LPの整理＋ABテスト</strong>
+    <p>30本以上あるLPのうち実際に使われているのは2本のみ。残りは資産眠り。本命LP（/lp_zero-plan/）に新規流入を集めて改修＋構造化データ実装すれば、SEO/AEO効果も同時に拾える。</p>
+  </div>
+</div>
+
 <!-- 5. 打ち手 -->
 <div class="section dark">
   <div class="eyebrow">RECOMMENDED ACTIONS</div>
   <h2><span class="num">05</span>打ち手の優先順位</h2>
   <ul class="priority-list" style="color: #faf6ef;">
-    <li><span class="tag tag-max">緊急</span> ig/fb広告LPの即離脱原因究明＋改修（広告費損失を止める）</li>
-    <li><span class="tag tag-max">緊急</span> 「グループホーム フランチャイズ」のタイトル/ディスクリプション最適化（CTR向上）</li>
-    <li><span class="tag tag-max">緊急</span> 訪問者半減トレンドの原因究明</li>
-    <li><span class="tag tag-high">高</span> Organization スキーマの誤データ修正（10分で完了）</li>
-    <li><span class="tag tag-high">高</span> 主要LP6本に絞り、残り24本以上をnoindex化（重複コンテンツ整理）</li>
-    <li><span class="tag tag-high">高</span> 本体LPにh1タグ追加・h2の見出し修正</li>
+    <li><span class="tag tag-max">緊急</span> 【Yahoo広告】「グループホーム フランチャイズ」予算集中（CPA¥480の金鉱を放置中）</li>
+    <li><span class="tag tag-max">緊急</span> 【Yahoo広告】除外KW 15〜20語追加（安い／在宅／リフォーム／レンタル等の予算ムダ停止）</li>
+    <li><span class="tag tag-max">緊急</span> 訪問者半減トレンドの原因究明（Yahoo広告コスト推移と連動か確認）</li>
+    <li><span class="tag tag-max">緊急</span> ig/fb LP（lp_zero-plan-ig/fb）即離脱問題の原因究明（流入元の特定）</li>
+    <li><span class="tag tag-high">高</span> 【LP】Organization スキーマの誤データ修正（10分で完了）</li>
+    <li><span class="tag tag-high">高</span> 【Yahoo広告】キャンペーン・広告グループの命名整理</li>
+    <li><span class="tag tag-high">高</span> 【LP】主要LP6本に絞り、残り24本以上をnoindex化（重複コンテンツ整理）</li>
+    <li><span class="tag tag-high">高</span> 【LP】本体LPにh1タグ追加・h2の見出し修正</li>
+    <li><span class="tag tag-high">高</span> 「グループホーム フランチャイズ」のタイトル/ディスクリプション最適化（CTR向上）</li>
     <li><span class="tag tag-high">高</span> プラグイン21個の棚卸し（ページ速度改善）</li>
     <li><span class="tag tag-mid">中</span> AEO対策（FAQページ追加・構造化データ拡充）</li>
     <li><span class="tag tag-mid">中</span> Core Web Vitals 改善（LCP 8.1秒→2.5秒目標）</li>
@@ -264,6 +344,14 @@ th { background: #f0eadd; font-weight: 700; }
     <li><div class="ask-num">A4</div><div>
       <div class="ask-title">提案するAEO対策施策の承認</div>
       <div class="ask-desc">「設定改修＋FAQ追加＋構造化データ修正」のパッケージ案について、内容・スケジュール・予算感のすり合わせ。</div>
+    </div></li>
+    <li><div class="ask-num">A5</div><div>
+      <div class="ask-title">Yahoo広告の運用方針合意（即効性最大）</div>
+      <div class="ask-desc">「グループホーム フランチャイズ」予算集中・除外KW追加・キャンペーン名整理。現状CPA¥40,980→¥10,000台への改善見込み。Google広告は未稼働とのことなので、現状はYahooがメイン広告チャネル。</div>
+    </div></li>
+    <li><div class="ask-num">A6</div><div>
+      <div class="ask-title">Google広告未稼働の確認＋今後の方針</div>
+      <div class="ask-desc">Google広告アカウント（OWL福祉事業GH）の現状と、再開すべきかの判断材料を共有したい。</div>
     </div></li>
   </ul>
 
