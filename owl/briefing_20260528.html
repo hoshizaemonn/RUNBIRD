@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>OWL福祉事業 LP 現状診断＋ご相談事項｜2026-05-28</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  color: #14213d;
+  line-height: 1.8;
+  background: #faf6ef;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 980px; margin: 0 auto; padding: 32px; }
+
+/* セクション */
+.section { background: #fff; border: 1px solid #14213d; padding: 32px 40px; margin-bottom: 24px; }
+.section.dark { background: #14213d; color: #faf6ef; }
+.section.warning { background: #b91c1c; color: #fef2f2; }
+.section.good { background: #15803d; color: #f0fdf4; }
+
+/* タイポ */
+.eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; color: #d97706; margin-bottom: 12px; }
+.section.dark .eyebrow { color: #f5c47a; }
+.section.warning .eyebrow { color: #fef08a; }
+.section.good .eyebrow { color: #bbf7d0; }
+h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 36px; line-height: 1.4; margin-bottom: 16px; }
+h2 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 24px; line-height: 1.4; margin-bottom: 16px; }
+h2 .num { font-family: "Inter", sans-serif; color: #d97706; font-size: 16px; margin-right: 12px; }
+.section.dark h2 .num { color: #f5c47a; }
+h3 { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 18px; margin: 20px 0 8px; }
+p { margin-bottom: 12px; font-size: 14px; }
+
+/* ヒーロー */
+.hero { background: #faf6ef; border: 1px solid #14213d; padding: 60px 40px; margin-bottom: 24px; text-align: center; }
+.hero h1 { font-size: 42px; margin-bottom: 24px; }
+.hero .meta { font-size: 13px; color: #5a5a5a; line-height: 2; }
+
+/* KPI Cards */
+.kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+.kpi { background: #f0eadd; border: 1px solid #14213d; padding: 16px; text-align: center; }
+.kpi.alert { background: #b91c1c; color: #fff; border-color: #b91c1c; }
+.kpi .num { font-family: "Inter", sans-serif; font-weight: 900; font-size: 30px; line-height: 1; color: #d97706; }
+.kpi.alert .num { color: #fff; }
+.kpi .lbl { font-size: 11px; margin-top: 6px; color: #5a5a5a; }
+.kpi.alert .lbl { color: #fecaca; }
+.kpi .delta { font-size: 11px; margin-top: 4px; font-weight: 700; }
+.delta-down { color: #b91c1c; }
+.kpi.alert .delta { color: #fef08a; }
+
+/* Bar Chart */
+.chart-bar { display: flex; height: 32px; border: 1px solid #14213d; margin: 12px 0; }
+.chart-bar .seg { display: flex; align-items: center; justify-content: center; font-size: 11px; color: #fff; font-weight: 700; padding: 0 6px; overflow: hidden; }
+
+/* Table */
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; background: #fff; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+th { background: #f0eadd; font-weight: 700; }
+.bad { color: #b91c1c; font-weight: 700; }
+.good { color: #15803d; font-weight: 700; }
+.warn { color: #d97706; font-weight: 700; }
+
+/* Findings */
+.finding {
+  background: #fef2f2;
+  border-left: 5px solid #b91c1c;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+.finding strong { color: #b91c1c; display: block; margin-bottom: 6px; font-size: 15px; }
+.finding p { margin: 4px 0; font-size: 13px; }
+
+/* Ask list */
+.ask-list { list-style: none; padding: 0; margin: 0; }
+.ask-list li {
+  background: #f0eadd; border: 1px solid #14213d; padding: 16px 20px;
+  margin-bottom: 12px; display: grid; grid-template-columns: 48px 1fr; gap: 16px;
+  align-items: start;
+}
+.ask-num {
+  background: #d97706; color: #fff; width: 36px; height: 36px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-family: "Inter", sans-serif; font-weight: 900; font-size: 14px;
+}
+.ask-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+.ask-desc { font-size: 13px; color: #5a5a5a; }
+
+/* Tags */
+.tag { display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; margin-right: 4px; }
+.tag-max { background: #b91c1c; color: #fff; }
+.tag-high { background: #d97706; color: #fff; }
+.tag-mid { background: #14213d; color: #fff; }
+.tag-low { background: #888; color: #fff; }
+
+/* Code */
+.code-block {
+  background: #f0eadd; border: 1px solid #d4cab0;
+  padding: 12px 16px; font-family: "Inter", monospace; font-size: 12px;
+  margin: 12px 0; overflow-x: auto; white-space: pre-wrap; word-break: break-all;
+}
+
+/* Priority list */
+.priority-list { list-style: none; padding: 0; margin: 0; }
+.priority-list li {
+  padding: 10px 0; border-bottom: 1px dashed #d4cab0; font-size: 13px;
+}
+.priority-list li:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="eyebrow">BRIEFING DOCUMENT — 2026.05.28</div>
+  <h1>OWL福祉事業LP<br>現状診断 ＆ ご相談事項</h1>
+  <p style="font-size: 16px; color: #2a3a5f; margin: 24px 0;">
+    現状の数値を踏まえて、<strong>「問い合わせ→売上を増やすために何から手をつけるべきか」</strong>を整理しました。<br>
+    最後に、嶋田社長にご確認・ご対応いただきたい事項を一覧にしています。
+  </p>
+  <div class="meta">
+    打ち合わせ日：2026年5月28日（木）<br>
+    出席：嶋田社長 ／ 鈴木 ／ 星崎<br>
+    作成：株式会社 斗（hishaku）／ 星崎
+  </div>
+</div>
+
+<!-- 1. 結論サマリー -->
+<div class="section good">
+  <div class="eyebrow">EXECUTIVE SUMMARY</div>
+  <h2><span class="num">01</span>1分で分かる結論</h2>
+  <p style="font-size: 16px; line-height: 1.9;">
+    OWL福祉事業のLPは <strong style="background: #fff; color: #15803d; padding: 2px 8px;">「コンテンツは作り込まれているが、検索エンジン・AIに届く設計になっていない」</strong> 状態です。<br>
+    過去90日で訪問者は<strong>半減</strong>、Instagram/Facebook広告のLPでは<strong>エンゲージメント率がほぼ0%</strong>と、改善余地が極めて大きい状況です。<br><br>
+    朗報は、<strong>コンテンツスコアは77-80/100と良好</strong>であること。設定の改修と最低限のHTML修正で、大きな改善が見込めます。
+  </p>
+</div>
+
+<!-- 2. 現状把握 -->
+<div class="section">
+  <div class="eyebrow">CURRENT STATUS</div>
+  <h2><span class="num">02</span>現状把握（過去90日・Site Kit実データ）</h2>
+
+  <h3>アクセス指標</h3>
+  <div class="kpi-grid">
+    <div class="kpi alert"><div class="num">7,000</div><div class="lbl">訪問者数</div><div class="delta">↓ 53.2%（半減）</div></div>
+    <div class="kpi"><div class="num">23,000</div><div class="lbl">検索表示回数</div><div class="delta delta-down">↓ 18%</div></div>
+    <div class="kpi"><div class="num">413</div><div class="lbl">検索クリック</div><div class="delta delta-down">↓ 12.5%</div></div>
+    <div class="kpi"><div class="num">1.8%</div><div class="lbl">検索CTR</div><div class="delta delta-down">業界平均3-5%より低い</div></div>
+  </div>
+
+  <h3>流入チャネル</h3>
+  <div class="chart-bar">
+    <div class="seg" style="width:60.3%; background:#d97706;">Paid広告 60.3%</div>
+    <div class="seg" style="width:28.2%; background:#14213d;">Direct 28.2%</div>
+    <div class="seg" style="width:10.1%; background:#15803d;">Organic 10.1%</div>
+    <div class="seg" style="width:1.4%; background:#888;"></div>
+  </div>
+  <p style="font-size: 13px; color: #5a5a5a;">広告依存度60%、SEO/AEO経由はわずか10%。広告を止めれば訪問者が一気に減る構造。</p>
+
+  <h3>デバイス比率</h3>
+  <div class="chart-bar">
+    <div class="seg" style="width:63.8%; background:#d97706;">Mobile 63.8%</div>
+    <div class="seg" style="width:29.2%; background:#14213d;">PC 29.2%</div>
+    <div class="seg" style="width:6.9%; background:#888;">Tablet 6.9%</div>
+  </div>
+  <p style="font-size: 13px; color: #5a5a5a;">モバイル6割超。スマホ表示最適化が最優先。</p>
+</div>
+
+<!-- 3. 致命的発見 -->
+<div class="section warning">
+  <div class="eyebrow">CRITICAL FINDINGS</div>
+  <h2><span class="num">03</span>致命的発見 4つ</h2>
+
+  <div class="finding">
+    <strong>発見① 訪問者が前期比で半減（↓53.2%）</strong>
+    <p>過去90日で訪問者数が約半分に。広告予算の変動・競合台頭・AI検索流入流出のいずれか／複合が原因と推測。<strong>原因究明を急ぐ必要</strong>。</p>
+  </div>
+
+  <div class="finding">
+    <strong>発見② ig/fb広告LPのエンゲージメント率が「ほぼ0%」</strong>
+    <p>/lp_zero-plan-ig/（276PV・エンゲージメント 0.72%）／ /lp_zero-plan-fb/（273PV・エンゲージメント 0%）と、広告は刺さってクリックは入っているのに、<strong>LP着地後にほぼ全員が即離脱</strong>。広告費が垂れ流し状態。</p>
+  </div>
+
+  <div class="finding">
+    <strong>発見③ 流入クエリの大半が「指名検索」</strong>
+    <p>検索クエリTOP10のうち6個が「株式会社ランバード」「グループホームアウル」等の社名指名。本命の<strong>「グループホーム フランチャイズ」は表示88回もあるのにクリック3回（CTR 3.4%）</strong>。新規認知層を取れていない。</p>
+  </div>
+
+  <div class="finding">
+    <strong>発見④ 構造化データに重大な誤データ</strong>
+    <p>Organizationスキーマの会社名フィールドに、社名ではなくキャッチコピーが登録されている：</p>
+    <div class="code-block" style="background:#fff; color:#14213d;">"@type": "Organization",
+"name": "障がい者グループホームの開設・運営を完全サポート！"  ← 社名ではなくキャッチコピー</div>
+    <p>AI検索で「OWLの会社名は？」と聞かれた際に、誤った情報が返されるリスク。</p>
+  </div>
+</div>
+
+<!-- 4. 人気ページ -->
+<div class="section">
+  <div class="eyebrow">PAGE PERFORMANCE</div>
+  <h2><span class="num">04</span>人気ページ TOP10（PVベース）</h2>
+  <table>
+    <thead><tr><th>順位</th><th>URL</th><th>PV</th><th>エンゲージメント率</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>/lp_zero-plan-<strong>g</strong>/</td><td>3,256</td><td>36.77%</td><td>Google広告？</td></tr>
+      <tr><td>2</td><td>/lp_zero-plan-<strong>gpm</strong>/</td><td>1,608</td><td class="warn">20.16%</td><td>低エンゲージメント</td></tr>
+      <tr><td>3</td><td>/lp_zero-plan-<strong>y</strong>/</td><td>1,310</td><td>55.3%</td><td>Yahoo広告？</td></tr>
+      <tr><td>4</td><td>/（トップ）</td><td>441</td><td>49.39%</td><td></td></tr>
+      <tr><td>5</td><td>/gh-opening/</td><td>331</td><td>51.88%</td><td></td></tr>
+      <tr><td>6</td><td>/0planlp-bla/</td><td>294</td><td>53.48%</td><td></td></tr>
+      <tr><td>7</td><td>/lp_zero-plan-<strong>ig</strong>/</td><td>276</td><td class="bad">0.72% 💀</td><td>即離脱問題</td></tr>
+      <tr><td>8</td><td>/lp_zero-plan-<strong>fb</strong>/</td><td>273</td><td class="bad">0% 💀</td><td>即離脱問題</td></tr>
+      <tr><td>9</td><td>/company/</td><td>226</td><td>68.56%</td><td></td></tr>
+      <tr><td>10</td><td>/service-gh/</td><td>153</td><td>81.16%</td><td></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size: 13px;"><strong>注目点：</strong>本流の <code>/lp_zero-plan/</code> がTOP10圏外。広告は派生URL中心に配信されている。</p>
+</div>
+
+<!-- 5. 打ち手 -->
+<div class="section dark">
+  <div class="eyebrow">RECOMMENDED ACTIONS</div>
+  <h2><span class="num">05</span>打ち手の優先順位</h2>
+  <ul class="priority-list" style="color: #faf6ef;">
+    <li><span class="tag tag-max">緊急</span> ig/fb広告LPの即離脱原因究明＋改修（広告費損失を止める）</li>
+    <li><span class="tag tag-max">緊急</span> 「グループホーム フランチャイズ」のタイトル/ディスクリプション最適化（CTR向上）</li>
+    <li><span class="tag tag-max">緊急</span> 訪問者半減トレンドの原因究明</li>
+    <li><span class="tag tag-high">高</span> Organization スキーマの誤データ修正（10分で完了）</li>
+    <li><span class="tag tag-high">高</span> 主要LP6本に絞り、残り24本以上をnoindex化（重複コンテンツ整理）</li>
+    <li><span class="tag tag-high">高</span> 本体LPにh1タグ追加・h2の見出し修正</li>
+    <li><span class="tag tag-high">高</span> プラグイン21個の棚卸し（ページ速度改善）</li>
+    <li><span class="tag tag-mid">中</span> AEO対策（FAQページ追加・構造化データ拡充）</li>
+    <li><span class="tag tag-mid">中</span> Core Web Vitals 改善（LCP 8.1秒→2.5秒目標）</li>
+    <li><span class="tag tag-low">低</span> LINE問い合わせCTA追加（任意）</li>
+  </ul>
+</div>
+
+<!-- 6. ご相談・ご依頼事項 -->
+<div class="section">
+  <div class="eyebrow">REQUESTS TO 嶋田社長</div>
+  <h2><span class="num">06</span>嶋田社長にご相談・ご対応いただきたいこと</h2>
+
+  <h3>A. その場で会話したいこと</h3>
+  <ul class="ask-list">
+    <li><div class="ask-num">A1</div><div>
+      <div class="ask-title">ig/fb広告LPのエンゲージメント率0%について</div>
+      <div class="ask-desc">広告クリエイティブ側とLP内容のミスマッチがないか、運用代理店との連携状況、改修可否についてご相談。</div>
+    </div></li>
+    <li><div class="ask-num">A2</div><div>
+      <div class="ask-title">訪問者半減トレンドの背景</div>
+      <div class="ask-desc">広告予算変更／競合台頭／その他の心当たりについてご共有いただけますか。</div>
+    </div></li>
+    <li><div class="ask-num">A3</div><div>
+      <div class="ask-title">30本以上あるLPバリエーションの整理方針</div>
+      <div class="ask-desc">どれが現役／どれが休眠／廃止可能か、用途別に棚卸ししたいです。本流を6本程度に絞る提案。</div>
+    </div></li>
+    <li><div class="ask-num">A4</div><div>
+      <div class="ask-title">提案するAEO対策施策の承認</div>
+      <div class="ask-desc">「設定改修＋FAQ追加＋構造化データ修正」のパッケージ案について、内容・スケジュール・予算感のすり合わせ。</div>
+    </div></li>
+  </ul>
+
+  <h3>B. 情報・素材のご提供のお願い</h3>
+  <ul class="ask-list">
+    <li><div class="ask-num">B1</div><div>
+      <div class="ask-title">株式会社RUNBIRDの本社住所</div>
+      <div class="ask-desc">LocalBusinessスキーマ・ローカルSEO設定で使用します。</div>
+    </div></li>
+    <li><div class="ask-num">B2</div><div>
+      <div class="ask-title">OWL公式LINEの友だち追加URL</div>
+      <div class="ask-desc">LP内CTA追加に使用。なければスキップします。</div>
+    </div></li>
+    <li><div class="ask-num">B3</div><div>
+      <div class="ask-title">収益モデル図の元画像</div>
+      <div class="ask-desc">現在LP内で空白セクションになっており、メディアライブラリからも消えている可能性があります。</div>
+    </div></li>
+    <li><div class="ask-num">B4</div><div>
+      <div class="ask-title">All in One SEO Pro版アップグレード意向</div>
+      <div class="ask-desc">現在はLite版。Pro版（月額$49〜）にすると、ローカルSEO・FAQスキーマ自動生成等の運用負荷が下がります。任意。</div>
+    </div></li>
+  </ul>
+
+  <h3>C. 計測アカウントの追加（最優先でお願いしたい事項）</h3>
+  <p style="font-size: 13px; background: #fef3c7; padding: 12px 16px; border-left: 4px solid #d97706;">
+    現状、数値確認のたびにスクショをお願いする運用では、リアルタイムな改善判断ができません。<br>
+    以下のアカウントに <strong>andan.39.2106@gmail.com（星崎）</strong> を閲覧権限で追加いただけると、継続的な数値モニタリングと週次レポート提供が可能になります。
+  </p>
+  <ul class="ask-list">
+    <li><div class="ask-num">C1</div><div>
+      <div class="ask-title">Google Analytics 4（GA4）— 「閲覧者」または「アナリスト」権限</div>
+      <div class="ask-desc">GA4 → 管理 → プロパティのアクセス管理 → 「+」→ メールアドレス入力 → 役割「閲覧者」 → 追加</div>
+    </div></li>
+    <li><div class="ask-num">C2</div><div>
+      <div class="ask-title">Google Search Console — 「制限付き」または「フル」権限</div>
+      <div class="ask-desc">Search Console → 設定 → ユーザーと権限 → ユーザー追加 → メールアドレス入力 → 権限選択 → 追加</div>
+    </div></li>
+    <li><div class="ask-num">C3</div><div>
+      <div class="ask-title">Microsoft Clarity（導入済みでなければ新規導入を提案）</div>
+      <div class="ask-desc">ig/fb LPの即離脱原因究明にヒートマップ・録画が極めて有効。タグ追加にご承認いただければこちらで設定します。</div>
+    </div></li>
+  </ul>
+
+  <h3>D. その他</h3>
+  <ul class="ask-list">
+    <li><div class="ask-num">D1</div><div>
+      <div class="ask-title">お問い合わせ未読1件</div>
+      <div class="ask-desc">WordPress管理画面に未読の問い合わせが1件あります。内容確認＆対応方針について共有ください。</div>
+    </div></li>
+    <li><div class="ask-num">D2</div><div>
+      <div class="ask-title">本提案承認後の作業日時合意</div>
+      <div class="ask-desc">本番WordPress編集中は管理画面が一時的に編集中となります。作業実施日時を合意したいです。</div>
+    </div></li>
+  </ul>
+</div>
+
+<!-- 7. 次のステップ -->
+<div class="section dark">
+  <div class="eyebrow">NEXT STEPS</div>
+  <h2><span class="num">07</span>木曜打ち合わせ後の流れ（想定）</h2>
+  <table style="color: inherit; background: rgba(255,255,255,0.05);">
+    <thead><tr style="background:#0f1a2e;"><th style="background:transparent; color:#f5c47a;">タイミング</th><th style="background:transparent; color:#f5c47a;">アクション</th></tr></thead>
+    <tbody>
+      <tr><td>打ち合わせ当日（5/28）</td><td>方針合意・確認事項のご回答取得</td></tr>
+      <tr><td>5/29〜5/30</td><td>計測アカウント追加対応／素材受領／FAQ文面確認</td></tr>
+      <tr><td>6月第1週</td><td>WordPress実装（Cowork指示）／本番反映</td></tr>
+      <tr><td>6月第2週以降</td><td>効果計測開始・週次レポート提供開始</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- フッター -->
+<div class="section" style="text-align: center; font-size: 13px; color: #5a5a5a; border: none; background: transparent;">
+  株式会社 斗（hishaku）<br>
+  担当：星崎 ／ andan.39.2106@gmail.com<br>
+  本資料の生データソース：Google Site Kit（GA4＋Search Console） ／ owl-fukushi.net 公開HTMLクロール解析
+</div>
+
+</div>
+
+</body>
+</html>
