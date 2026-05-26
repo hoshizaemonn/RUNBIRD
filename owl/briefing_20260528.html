@@ -58,12 +58,20 @@ p { margin-bottom: 12px; font-size: 14px; }
 .chart-bar .seg { display: flex; align-items: center; justify-content: center; font-size: 11px; color: #fff; font-weight: 700; padding: 0 6px; overflow: hidden; }
 
 /* Table */
-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; background: #fff; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; background: #fff; color: #14213d; }
 th, td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
-th { background: #f0eadd; font-weight: 700; }
+th { background: #f0eadd; font-weight: 700; color: #14213d; }
 .bad { color: #b91c1c; font-weight: 700; }
 .good { color: #15803d; font-weight: 700; }
 .warn { color: #d97706; font-weight: 700; }
+/* Tableは常に白背景+紺文字（親sectionの色に影響されない） */
+.section.warning table, .section.warning table th, .section.warning table td { color: #14213d; background: #fff; }
+.section.warning table thead th { background: #faf6ef; color: #14213d; }
+.section.warning table .bad { color: #b91c1c; }
+.section.warning table .good { color: #15803d; }
+.section.warning table .warn { color: #d97706; }
+.section.dark table { color: #faf6ef; }
+.section.dark table thead th { background: #0f1a2e; color: #f5c47a; }
 
 /* Findings */
 .finding {
@@ -440,10 +448,10 @@ th { background: #f0eadd; font-weight: 700; }
   <p style="margin-top:12px;">これらは <strong>「障がい者グループホーム開業を本気で検討している層」ではない</strong>。「FC一般」「リフォーム業」「在宅副業」の探索者に広告費を消費させてる状態。</p>
 
   <h3>結論</h3>
-  <p style="background:rgba(255,255,255,0.1); padding:16px; border-radius:4px;">
-    広告は<strong>「KW設計・除外設定・遷移先LP対応」が雑</strong>で、見込み度の低い人を集めて即離脱されている。<br>
-    解決策は「予算を増やす」ではなく <strong>「予算配分を変える」</strong>。<br>
-    <strong>「グループホーム フランチャイズ」（CPA¥480の金鉱）への集中＋業種違いKWの除外</strong>で、訪問者の「質」を上げることが急務。
+  <p style="background:rgba(255,255,255,0.15); padding:16px; border-radius:4px; color:#fff;">
+    広告は<strong style="color:#fef08a;">「KW設計・除外設定・遷移先LP対応」が雑</strong>で、見込み度の低い人を集めて即離脱されている。<br>
+    解決策は「予算を増やす」ではなく <strong style="color:#fef08a;">「予算配分を変える」</strong>。<br>
+    <strong style="color:#fef08a;">「グループホーム フランチャイズ」（CPA¥480の金鉱）への集中＋業種違いKWの除外</strong>で、訪問者の「質」を上げることが急務。
   </p>
 </div>
 
