@@ -10,88 +10,99 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: "Noto Sans JP", sans-serif;
-  color: #14213d;
+  color: #0f172a;
   line-height: 1.8;
-  background: #faf6ef;
+  background: #f8fafc;
   font-feature-settings: "palt";
   -webkit-font-smoothing: antialiased;
 }
 .container { max-width: 980px; margin: 0 auto; padding: 32px; }
 
-/* セクション */
-.section { background: #fff; border: 1px solid #14213d; padding: 32px 40px; margin-bottom: 24px; }
-.section.dark { background: #14213d; color: #faf6ef; }
-.section.warning { background: #b91c1c; color: #fef2f2; }
-.section.good { background: #15803d; color: #f0fdf4; }
+/* セクション：基本は白背景＋ボーダーで区切り */
+.section { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 32px 40px; margin-bottom: 20px; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+.section.dark { background: #0f172a; color: #f1f5f9; border-color: #0f172a; }
+.section.warning { background: #fef2f2; color: #0f172a; border-color: #fecaca; border-left: 5px solid #b91c1c; }
+.section.good { background: #ecfdf5; color: #0f172a; border-color: #a7f3d0; border-left: 5px solid #047857; }
 
 /* タイポ */
-.eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; color: #d97706; margin-bottom: 12px; }
-.section.dark .eyebrow { color: #f5c47a; }
-.section.warning .eyebrow { color: #fef08a; }
-.section.good .eyebrow { color: #bbf7d0; }
-h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 36px; line-height: 1.4; margin-bottom: 16px; }
-h2 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 24px; line-height: 1.4; margin-bottom: 16px; }
-h2 .num { font-family: "Inter", sans-serif; color: #d97706; font-size: 16px; margin-right: 12px; }
-.section.dark h2 .num { color: #f5c47a; }
-h3 { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 18px; margin: 20px 0 8px; }
+.eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; color: #2563eb; margin-bottom: 12px; }
+.section.dark .eyebrow { color: #60a5fa; }
+.section.warning .eyebrow { color: #b91c1c; }
+.section.good .eyebrow { color: #047857; }
+h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 36px; line-height: 1.4; margin-bottom: 16px; color: #0f172a; }
+h2 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 24px; line-height: 1.4; margin-bottom: 16px; color: #0f172a; }
+.section.dark h2 { color: #f1f5f9; }
+h2 .num { font-family: "Inter", sans-serif; color: #2563eb; font-size: 16px; margin-right: 12px; }
+.section.dark h2 .num { color: #60a5fa; }
+.section.warning h2 .num { color: #b91c1c; }
+.section.good h2 .num { color: #047857; }
+h3 { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 18px; margin: 20px 0 8px; color: #0f172a; }
+.section.dark h3 { color: #f1f5f9; }
 p { margin-bottom: 12px; font-size: 14px; }
+strong { color: inherit; }
 
 /* ヒーロー */
-.hero { background: #faf6ef; border: 1px solid #14213d; padding: 60px 40px; margin-bottom: 24px; text-align: center; }
+.hero { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 60px 40px; margin-bottom: 20px; text-align: center; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
 .hero h1 { font-size: 42px; margin-bottom: 24px; }
-.hero .meta { font-size: 13px; color: #5a5a5a; line-height: 2; }
+.hero .meta { font-size: 13px; color: #64748b; line-height: 2; }
 
 /* KPI Cards */
 .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
-.kpi { background: #f0eadd; border: 1px solid #14213d; padding: 16px; text-align: center; }
-.kpi.alert { background: #b91c1c; color: #fff; border-color: #b91c1c; }
-.kpi .num { font-family: "Inter", sans-serif; font-weight: 900; font-size: 30px; line-height: 1; color: #d97706; }
-.kpi.alert .num { color: #fff; }
-.kpi .lbl { font-size: 11px; margin-top: 6px; color: #5a5a5a; }
-.kpi.alert .lbl { color: #fecaca; }
-.kpi .delta { font-size: 11px; margin-top: 4px; font-weight: 700; }
+.kpi { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; text-align: center; }
+.kpi.alert { background: #fef2f2; border-color: #fecaca; }
+.kpi .num { font-family: "Inter", sans-serif; font-weight: 900; font-size: 30px; line-height: 1; color: #2563eb; }
+.kpi.alert .num { color: #b91c1c; }
+.kpi .lbl { font-size: 11px; margin-top: 6px; color: #64748b; }
+.kpi .delta { font-size: 11px; margin-top: 4px; font-weight: 700; color: #64748b; }
 .delta-down { color: #b91c1c; }
-.kpi.alert .delta { color: #fef08a; }
+.kpi.alert .delta { color: #b91c1c; }
 
 /* Bar Chart */
-.chart-bar { display: flex; height: 32px; border: 1px solid #14213d; margin: 12px 0; }
+.chart-bar { display: flex; height: 32px; border: 1px solid #cbd5e1; border-radius: 4px; margin: 12px 0; overflow: hidden; }
 .chart-bar .seg { display: flex; align-items: center; justify-content: center; font-size: 11px; color: #fff; font-weight: 700; padding: 0 6px; overflow: hidden; }
 
 /* Table */
-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; background: #fff; color: #14213d; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; background: #ffffff; color: #0f172a; border-radius: 6px; overflow: hidden; }
 th, td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
-th { background: #f0eadd; font-weight: 700; color: #14213d; }
+th { background: #f8fafc; font-weight: 700; color: #0f172a; border-bottom: 2px solid #cbd5e1; }
 .bad { color: #b91c1c; font-weight: 700; }
-.good { color: #15803d; font-weight: 700; }
-.warn { color: #d97706; font-weight: 700; }
-/* Tableは常に白背景+紺文字（親sectionの色に影響されない） */
-.section.warning table, .section.warning table th, .section.warning table td { color: #14213d; background: #fff; }
-.section.warning table thead th { background: #faf6ef; color: #14213d; }
-.section.warning table .bad { color: #b91c1c; }
-.section.warning table .good { color: #15803d; }
-.section.warning table .warn { color: #d97706; }
-.section.dark table { color: #faf6ef; }
-.section.dark table thead th { background: #0f1a2e; color: #f5c47a; }
+.good { color: #047857; font-weight: 700; }
+.warn { color: #b45309; font-weight: 700; }
+.highlight { background: #dbeafe; font-weight: 700; }
+/* Tableは常に白背景＋紺文字（親sectionの色に影響されない） */
+.section.warning table { background: #ffffff; }
+.section.warning table thead th { background: #f8fafc; color: #0f172a; }
+.section.good table { background: #ffffff; }
+.section.good table thead th { background: #f8fafc; color: #0f172a; }
+.section.dark table { background: rgba(255,255,255,0.05); color: #f1f5f9; }
+.section.dark table th, .section.dark table td { border-bottom-color: rgba(255,255,255,0.1); }
+.section.dark table thead th { background: rgba(0,0,0,0.3); color: #93c5fd; border-bottom-color: rgba(255,255,255,0.2); }
 
 /* Findings */
 .finding {
-  background: #fef2f2;
-  border-left: 5px solid #b91c1c;
+  background: #fff7ed;
+  border-left: 4px solid #ea580c;
+  border-radius: 4px;
   padding: 16px 20px;
   margin: 12px 0;
 }
-.finding strong { color: #b91c1c; display: block; margin-bottom: 6px; font-size: 15px; }
-.finding p { margin: 4px 0; font-size: 13px; }
+.finding strong { color: #c2410c; display: block; margin-bottom: 6px; font-size: 15px; }
+.finding p { margin: 4px 0; font-size: 13px; color: #0f172a; }
+.section.warning .finding { background: #ffffff; border-left-color: #b91c1c; }
+.section.warning .finding strong { color: #b91c1c; }
+.section.dark .finding { background: rgba(255,255,255,0.05); border-left-color: #60a5fa; }
+.section.dark .finding strong { color: #93c5fd; }
+.section.dark .finding p { color: #f1f5f9; }
 
 /* Ask list */
 .ask-list { list-style: none; padding: 0; margin: 0; }
 .ask-list li {
-  background: #f0eadd; border: 1px solid #14213d; padding: 16px 20px;
+  background: #f1f5f9; border: 1px solid #cbd5e1; padding: 16px 20px;
   margin-bottom: 12px; display: grid; grid-template-columns: 48px 1fr; gap: 16px;
   align-items: start;
 }
 .ask-num {
-  background: #d97706; color: #fff; width: 36px; height: 36px;
+  background: #2563eb; color: #fff; width: 36px; height: 36px;
   border-radius: 50%; display: flex; align-items: center; justify-content: center;
   font-family: "Inter", sans-serif; font-weight: 900; font-size: 14px;
 }
@@ -101,23 +112,33 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
 /* Tags */
 .tag { display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; margin-right: 4px; }
 .tag-max { background: #b91c1c; color: #fff; }
-.tag-high { background: #d97706; color: #fff; }
-.tag-mid { background: #14213d; color: #fff; }
-.tag-low { background: #888; color: #fff; }
+.tag-high { background: #ea580c; color: #fff; }
+.tag-mid { background: #2563eb; color: #fff; }
+.tag-low { background: #64748b; color: #fff; }
 
 /* Code */
 .code-block {
-  background: #f0eadd; border: 1px solid #d4cab0;
+  background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px;
   padding: 12px 16px; font-family: "Inter", monospace; font-size: 12px;
   margin: 12px 0; overflow-x: auto; white-space: pre-wrap; word-break: break-all;
+  color: #0f172a;
 }
 
 /* Priority list */
 .priority-list { list-style: none; padding: 0; margin: 0; }
 .priority-list li {
-  padding: 10px 0; border-bottom: 1px dashed #d4cab0; font-size: 13px;
+  padding: 10px 0; border-bottom: 1px dashed #e2e8f0; font-size: 13px;
 }
 .priority-list li:last-child { border-bottom: none; }
+.section.dark .priority-list li { border-bottom-color: rgba(255,255,255,0.15); color: #f1f5f9; }
+
+/* Stat box（業界比較セクションで使用） */
+.stat-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+.stat-box { flex: 1; min-width: 140px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; text-align: center; }
+.stat-box .n { font-family: "Inter", sans-serif; font-weight: 900; font-size: 28px; color: #2563eb; line-height: 1; }
+.stat-box .l { font-size: 11px; color: #64748b; margin-top: 6px; }
+
+/* Ask numは廃止された旧スタイル（互換のため残す） */
 </style>
 </head>
 <body>
@@ -128,8 +149,8 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
 <div class="hero">
   <div class="eyebrow">BRIEFING DOCUMENT — 2026.05.28</div>
   <h1>OWL福祉事業LP<br>現状診断 ＆ ご相談事項</h1>
-  <p style="font-size: 16px; color: #2a3a5f; margin: 24px 0;">
-    現状の数値を踏まえて、<strong>「問い合わせ→売上を増やすために何から手をつけるべきか」</strong>を整理しました。<br>
+  <p style="font-size: 16px; color: #475569; margin: 24px 0;">
+    現状の数値を踏まえて、<strong style="color:#0f172a;">「問い合わせ→売上を増やすために何から手をつけるべきか」</strong>を整理しました。<br>
     最後に、嶋田社長にご確認・ご対応いただきたい事項を一覧にしています。
   </p>
   <div class="meta">
@@ -165,8 +186,8 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
 
   <h3>流入チャネル</h3>
   <div class="chart-bar">
-    <div class="seg" style="width:60.3%; background:#d97706;">Paid広告 60.3%</div>
-    <div class="seg" style="width:28.2%; background:#14213d;">Direct 28.2%</div>
+    <div class="seg" style="width:60.3%; background:#2563eb;">Paid広告 60.3%</div>
+    <div class="seg" style="width:28.2%; background:#0f172a;">Direct 28.2%</div>
     <div class="seg" style="width:10.1%; background:#15803d;">Organic 10.1%</div>
     <div class="seg" style="width:1.4%; background:#888;"></div>
   </div>
@@ -174,8 +195,8 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
 
   <h3>デバイス比率</h3>
   <div class="chart-bar">
-    <div class="seg" style="width:63.8%; background:#d97706;">Mobile 63.8%</div>
-    <div class="seg" style="width:29.2%; background:#14213d;">PC 29.2%</div>
+    <div class="seg" style="width:63.8%; background:#2563eb;">Mobile 63.8%</div>
+    <div class="seg" style="width:29.2%; background:#0f172a;">PC 29.2%</div>
     <div class="seg" style="width:6.9%; background:#888;">Tablet 6.9%</div>
   </div>
   <p style="font-size: 13px; color: #5a5a5a;">モバイル6割超。スマホ表示最適化が最優先。</p>
@@ -204,7 +225,7 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
   <div class="finding">
     <strong>発見④ 構造化データに重大な誤データ</strong>
     <p>Organizationスキーマの会社名フィールドに、社名ではなくキャッチコピーが登録されている：</p>
-    <div class="code-block" style="background:#fff; color:#14213d;">"@type": "Organization",
+    <div class="code-block" style="background:#fff; color:#0f172a;">"@type": "Organization",
 "name": "障がい者グループホームの開設・運営を完全サポート！"  ← 社名ではなくキャッチコピー</div>
     <p>AI検索で「OWLの会社名は？」と聞かれた際に、誤った情報が返されるリスク。</p>
   </div>
@@ -288,7 +309,7 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
   <h2><span class="num">04.55</span>業界平均との比較＋予算消化率問題</h2>
   <p>OWLの現状数字を、リスティング広告の業界平均・フランチャイズ業界の相場と比較しました。</p>
 
-  <div class="finding" style="background:#fef3c7; border-left-color:#d97706;">
+  <div class="finding" style="background:#fef3c7; border-left-color:#2563eb;">
     <strong>🚨 重要発見：予算消化率が約29%しかない</strong>
     <p>設定の日予算は <strong>¥14,000/日</strong>（月¥42万円）あるのに、実消化は月¥122,940（日¥4,098）。<br>
     つまり<strong>月¥30万円分の予算が余っている</strong>状態。原因は入札キーワード不足／マッチタイプ厳しすぎ／関連クエリ取りこぼし。</p>
@@ -345,9 +366,9 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
 
   <h3>チャネル別セッション数（2026/1/1〜5/26）</h3>
   <table style="color: inherit; background: rgba(255,255,255,0.05);">
-    <thead><tr style="background:#0f1a2e;"><th style="background:transparent; color:#f5c47a;">チャネル</th><th style="background:transparent; color:#f5c47a;">ソース/メディア</th><th style="background:transparent; color:#f5c47a;">セッション</th><th style="background:transparent; color:#f5c47a;">エンゲージ率</th><th style="background:transparent; color:#f5c47a;">平均秒数</th></tr></thead>
+    <thead><tr style="background:#0f172a;"><th style="background:transparent; color:#93c5fd;">チャネル</th><th style="background:transparent; color:#93c5fd;">ソース/メディア</th><th style="background:transparent; color:#93c5fd;">セッション</th><th style="background:transparent; color:#93c5fd;">エンゲージ率</th><th style="background:transparent; color:#93c5fd;">平均秒数</th></tr></thead>
     <tbody>
-      <tr><td><strong>Paid Search</strong></td><td>google / cpc</td><td><strong style="color:#bbf7d0;">1,332</strong></td><td>63.1%</td><td>42.0秒</td></tr>
+      <tr><td><strong>Paid Search</strong></td><td>google / cpc</td><td><strong style="color:#a7f3d0;">1,332</strong></td><td>63.1%</td><td>42.0秒</td></tr>
       <tr><td>Direct</td><td>(direct) / (none)</td><td><strong>938</strong></td><td>63.9%</td><td>50.0秒</td></tr>
       <tr><td><strong>Display</strong></td><td>google / cpc</td><td><strong style="color:#fecaca;">413</strong></td><td style="color:#fecaca;">20.1%</td><td style="color:#fecaca;">6.5秒</td></tr>
       <tr><td>Organic Search</td><td>yahoo / organic</td><td>214</td><td>63.1%</td><td>52.7秒</td></tr>
@@ -360,26 +381,26 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
 
   <h3>3つの重要発見</h3>
 
-  <div class="finding" style="background:rgba(255,255,255,0.05); border-left-color:#f5c47a;">
+  <div class="finding" style="background:rgba(255,255,255,0.08); border-left-color:#93c5fd;">
     <strong>① Google広告は稼働中（むしろメインチャネル）</strong>
-    <p style="color:#faf6ef;">
-      検索広告（Paid Search google/cpc）<strong>1,332セッション</strong> ＋ ディスプレイ広告（Display google/cpc）<strong>413セッション</strong> = 合計 <strong style="color:#bbf7d0;">1,745セッション</strong>。<br>
+    <p style="color:#f1f5f9;">
+      検索広告（Paid Search google/cpc）<strong>1,332セッション</strong> ＋ ディスプレイ広告（Display google/cpc）<strong>413セッション</strong> = 合計 <strong style="color:#a7f3d0;">1,745セッション</strong>。<br>
       Yahoo広告のセッション（後述）と合わせて、有料広告経由が約7割と推測。
     </p>
   </div>
 
-  <div class="finding" style="background:rgba(255,255,255,0.05); border-left-color:#fecaca;">
+  <div class="finding" style="background:rgba(255,255,255,0.08); border-left-color:#b91c1c;">
     <strong>② Yahoo広告のセッションがGA4で識別されていない</strong>
-    <p style="color:#faf6ef;">
+    <p style="color:#f1f5f9;">
       Yahoo管理画面ではCV15件・1,207クリックが計測されているのに、GA4のチャネル一覧に「yahoo / cpc」が存在しない。<br>
       → <strong>Yahoo広告のリンクURLにUTMパラメータが設定されていない</strong>可能性が高い。<br>
       → クロスチャネル比較が出来ない＝広告予算の最適配分が判断不能な状態。<strong>UTM設定漏れは即修正案件</strong>。
     </p>
   </div>
 
-  <div class="finding" style="background:rgba(255,255,255,0.05); border-left-color:#fecaca;">
+  <div class="finding" style="background:rgba(255,255,255,0.08); border-left-color:#b91c1c;">
     <strong>③ Google ディスプレイ広告（GDN）は事実上のムダ撃ち</strong>
-    <p style="color:#faf6ef;">
+    <p style="color:#f1f5f9;">
       413セッション流入してるが、エンゲージメント率<strong style="color:#fecaca;">20.1%</strong>（検索の1/3）、平均滞在<strong style="color:#fecaca;">6.5秒</strong>で即離脱。<br>
       認知用としてもパフォーマンス悪い。<strong>停止 or リターゲティング限定運用への変更を推奨</strong>。
     </p>
@@ -387,7 +408,7 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
 
   <h3>改善の優先順位（チャネル別アクション）</h3>
   <table style="color: inherit; background: rgba(255,255,255,0.05);">
-    <thead><tr style="background:#0f1a2e;"><th style="background:transparent; color:#f5c47a;">チャネル</th><th style="background:transparent; color:#f5c47a;">アクション</th><th style="background:transparent; color:#f5c47a;">期待効果</th></tr></thead>
+    <thead><tr style="background:#0f172a;"><th style="background:transparent; color:#93c5fd;">チャネル</th><th style="background:transparent; color:#93c5fd;">アクション</th><th style="background:transparent; color:#93c5fd;">期待効果</th></tr></thead>
     <tbody>
       <tr><td>Yahoo広告</td><td>UTM設定／金鉱KW集中／除外KW追加</td><td>CV計測復活＋CPA 1/2〜1/4</td></tr>
       <tr><td>Google検索広告</td><td>キーワード・LP・広告文の精査</td><td>CTR・CVR向上</td></tr>
@@ -409,7 +430,7 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
     <thead><tr><th>期間</th><th>Yahoo広告費</th><th>訪問者数</th></tr></thead>
     <tbody>
       <tr><td>前期 90日（2025/11/27〜2026/2/25）</td><td>約 ¥162,000</td><td><strong>約14,000人</strong></td></tr>
-      <tr><td>今期 90日（2026/2/26〜2026/5/26）</td><td>約 <strong style="color:#fef08a;">¥453,000</strong>（前期比 約2.8倍）</td><td><strong>7,000人</strong>（↓53%）</td></tr>
+      <tr><td>今期 90日（2026/2/26〜2026/5/26）</td><td>約 <strong style="color:#fde68a;">¥453,000</strong>（前期比 約2.8倍）</td><td><strong>7,000人</strong>（↓53%）</td></tr>
     </tbody>
   </table>
 
@@ -448,10 +469,10 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
   <p style="margin-top:12px;">これらは <strong>「障がい者グループホーム開業を本気で検討している層」ではない</strong>。「FC一般」「リフォーム業」「在宅副業」の探索者に広告費を消費させてる状態。</p>
 
   <h3>結論</h3>
-  <p style="background:rgba(255,255,255,0.15); padding:16px; border-radius:4px; color:#fff;">
-    広告は<strong style="color:#fef08a;">「KW設計・除外設定・遷移先LP対応」が雑</strong>で、見込み度の低い人を集めて即離脱されている。<br>
-    解決策は「予算を増やす」ではなく <strong style="color:#fef08a;">「予算配分を変える」</strong>。<br>
-    <strong style="color:#fef08a;">「グループホーム フランチャイズ」（CPA¥480の金鉱）への集中＋業種違いKWの除外</strong>で、訪問者の「質」を上げることが急務。
+  <p style="background:rgba(255,255,255,0.08); padding:16px; border-radius:4px; color:#fff;">
+    広告は<strong style="color:#fde68a;">「KW設計・除外設定・遷移先LP対応」が雑</strong>で、見込み度の低い人を集めて即離脱されている。<br>
+    解決策は「予算を増やす」ではなく <strong style="color:#fde68a;">「予算配分を変える」</strong>。<br>
+    <strong style="color:#fde68a;">「グループホーム フランチャイズ」（CPA¥480の金鉱）への集中＋業種違いKWの除外</strong>で、訪問者の「質」を上げることが急務。
   </p>
 </div>
 
@@ -486,7 +507,7 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
 <div class="section dark">
   <div class="eyebrow">RECOMMENDED ACTIONS</div>
   <h2><span class="num">05</span>打ち手の優先順位</h2>
-  <ul class="priority-list" style="color: #faf6ef;">
+  <ul class="priority-list" style="color: #f1f5f9;">
     <li><span class="tag tag-max">緊急</span> 【Yahoo広告】「グループホーム フランチャイズ」予算集中（CPA¥480の金鉱を放置中）</li>
     <li><span class="tag tag-max">緊急</span> 【Yahoo広告】除外KW 15〜20語追加（安い／在宅／リフォーム／レンタル等の予算ムダ停止）</li>
     <li><span class="tag tag-max">緊急</span> 訪問者半減トレンドの原因究明（Yahoo広告コスト推移と連動か確認）</li>
@@ -545,7 +566,7 @@ th { background: #f0eadd; font-weight: 700; color: #14213d; }
   </ul>
 
   <h3>計測アカウントへの追加（最優先）</h3>
-  <p style="font-size: 13px; background: #fef3c7; padding: 12px 16px; border-left: 4px solid #d97706;">
+  <p style="font-size: 13px; background: #fff7ed; padding: 12px 16px; border-left: 4px solid #2563eb;">
     数値確認のたびにスクショをお願いする運用は非効率なので、以下のアカウントに <strong>andan.39.2106@gmail.com（星崎）</strong> を閲覧権限で追加いただきたいです。
   </p>
   <ul style="font-size: 14px; padding-left: 24px; line-height: 2;">
