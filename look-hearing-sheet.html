@@ -580,5 +580,98 @@
 </footer>
 
 </div>
+
+<div class="action-bar" style="position:fixed; bottom:20px; right:20px; background:#fff; border:1px solid #d4a017; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.12); padding:12px 16px; display:flex; gap:8px; align-items:center; z-index:100;">
+  <span id="saveStatus" style="font-size:11px; color:#888; margin-right:8px; min-width:90px;">未保存</span>
+  <button type="button" onclick="downloadJSON()" style="font-family:inherit; font-size:12px; font-weight:700; padding:8px 14px; border-radius:6px; border:none; cursor:pointer; background:#2a7d4f; color:#fff;">JSON保存</button>
+  <button type="button" onclick="printPage()" style="font-family:inherit; font-size:12px; font-weight:700; padding:8px 14px; border-radius:6px; border:1px solid #ddd; cursor:pointer; background:#f5f3f0; color:#555;">印刷/PDF</button>
+  <button type="button" onclick="clearForm()" style="font-family:inherit; font-size:12px; font-weight:700; padding:8px 14px; border-radius:6px; border:1px solid #ddd; cursor:pointer; background:#f5f3f0; color:#555;">クリア</button>
+</div>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'hp_hearing_sheet_look_dottorukku_20260528';
+  const status = document.getElementById('saveStatus');
+  const fields = Array.from(document.querySelectorAll('input, textarea'));
+
+  fields.forEach((el, i) => { if (!el.dataset.fid) el.dataset.fid = 'f' + i; });
+
+  function loadSaved() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      fields.forEach(el => {
+        const v = data[el.dataset.fid];
+        if (v === undefined) return;
+        if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!v;
+        else el.value = v;
+      });
+      if (data.__savedAt) {
+        status.textContent = '保存済 ' + new Date(data.__savedAt).toLocaleString('ja-JP', {month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
+        status.style.color = '#4a9d6a';
+      }
+    } catch (e) { console.error(e); }
+  }
+
+  function save() {
+    const data = { __savedAt: Date.now() };
+    fields.forEach(el => {
+      if (el.type === 'checkbox' || el.type === 'radio') data[el.dataset.fid] = el.checked;
+      else data[el.dataset.fid] = el.value;
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      status.textContent = '保存済 ' + new Date().toLocaleTimeString('ja-JP', {hour:'2-digit', minute:'2-digit'});
+      status.style.color = '#4a9d6a';
+    } catch (e) { console.error(e); }
+  }
+
+  let saveTimer = null;
+  function scheduleSave() {
+    status.textContent = '入力中...';
+    status.style.color = '#888';
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(save, 600);
+  }
+
+  fields.forEach(el => {
+    el.addEventListener('input', scheduleSave);
+    el.addEventListener('change', scheduleSave);
+  });
+
+  loadSaved();
+
+  window.downloadJSON = function() {
+    const data = {};
+    fields.forEach(el => {
+      const key = el.previousElementSibling && el.previousElementSibling.textContent
+        ? el.previousElementSibling.textContent.replace(/必須/g,'').trim()
+        : el.dataset.fid;
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        if (el.checked) data[key] = (data[key] ? data[key]+', ' : '') + (el.nextElementSibling ? el.nextElementSibling.textContent : 'on');
+      } else if (el.value) {
+        data[key] = el.value;
+      }
+    });
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'LOOK_hearing_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  window.printPage = function() { window.print(); };
+
+  window.clearForm = function() {
+    if (!confirm('入力内容をすべてクリアしますか？')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  };
+})();
+</script>
+
 </body>
 </html>
