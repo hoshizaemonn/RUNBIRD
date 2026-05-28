@@ -130,15 +130,29 @@ li { font-size: 12px; line-height: 1.8; }
     </tbody>
   </table>
 
+  <h3>CV（/thanks/到達）をソース別に分解 ★new</h3>
+  <table>
+    <thead><tr><th>月</th><th>google/cpc<br>(Google広告)</th><th>(direct)/(none)<br>※Yahoo広告含む</th><th>yahoo/organic<br>(自然検索)</th><th>合計*</th></tr></thead>
+    <tbody>
+      <tr><td>1月</td><td class="good">4</td><td>6</td><td>–</td><td>約11</td></tr>
+      <tr><td>2月</td><td class="good">4</td><td>–</td><td>2</td><td>6</td></tr>
+      <tr><td>3月</td><td class="good">8</td><td>2</td><td>2</td><td>約14</td></tr>
+      <tr><td>4月</td><td class="bad">1</td><td>2</td><td>1</td><td>4</td></tr>
+      <tr><td>5月</td><td class="good">3</td><td>5</td><td>–</td><td>約10</td></tr>
+      <tr><td><strong>計</strong></td><td class="good"><strong>約20</strong></td><td><strong>約15</strong></td><td>5</td><td><strong>約45</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:11px; color:#64748b;">*テスト系(tagassistant等)を除外。Google広告経由CVは5ヶ月で約20件（月3〜8件）と判明。</p>
+
   <h3>3つの重要発見</h3>
   <ul>
-    <li><strong>Google広告は稼働中（メインチャネル）</strong>：検索1,332 + GDN 413 = 1,745セッション</li>
-    <li><strong>Yahoo広告がGA4で識別されていない</strong>：UTMパラメータ未設定 → クロスチャネル比較不能</li>
+    <li><strong>Google広告経由CVが確定</strong>：google/cpcで5ヶ月約20件。検索1,332 + GDN 413 = 1,745セッション稼働中</li>
+    <li><strong>Yahoo広告のUTM未設定が確定</strong>：CSVに「yahoo/cpc」が皆無。Yahoo広告LP(/fc-business-ylp/)への流入が「(direct)/(none)」月250前後＝<strong>これがYahoo広告の正体</strong>。UTMを付ければYahoo CVも正確に取れる</li>
     <li><strong>GDNは事実上のムダ撃ち</strong>：滞在6.5秒で即離脱、停止検討が必要</li>
   </ul>
 
   <div class="tagline">
-    <strong>運用詳細は不明：</strong>誰がどう運用しているか・代理店契約有無・キャンペーン構造・遷移先LPは未確認。打ち合わせで嶋田社長に要確認。
+    <strong>残る確認事項：</strong>誰がどう運用しているか・代理店契約有無・キャンペーン構造は未確認。打ち合わせで嶋田社長に要確認。<strong>UTM設定は即修正案件</strong>（Yahoo CVが見えるようになる）。
   </div>
 </div>
 
