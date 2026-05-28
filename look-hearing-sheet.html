@@ -339,22 +339,32 @@ shop.look-shop.com  → カラーミー（商品・カート・決済・成人�
     <div class="q-hint">受注シートで明記。RUNBIRDのAI自動投稿（wp_post.py）＋カラーミー商品埋め込みで実現</div>
 
     <div style="background:#f0f7ff; border:1px solid #b8d4f0; border-radius:8px; padding:14px 16px; margin:8px 0; font-size:12.5px; line-height:1.9;">
-      <strong style="color:#1a5a9e;">■ 技術構成（全体フロー）</strong><br>
-      <div style="font-family:monospace; background:#fff; border-radius:6px; padding:10px 12px; margin:8px 0; font-size:11.5px; white-space:pre; overflow-x:auto;">① AIが記事を生成
+      <strong style="color:#1a5a9e;">■ やりたいこと（ひとことで）</strong><br>
+      ブログ記事を自動で増やして集客し、<strong>その記事の中から商品が買えるようにする</strong>。<br><br>
+
+      <strong style="color:#1a5a9e;">■ 仕組み（4ステップ）</strong><br>
+      <div style="font-family:monospace; background:#fff; border-radius:6px; padding:10px 12px; margin:8px 0; font-size:11.5px; white-space:pre; overflow-x:auto;">① AIがブログ記事を書く
       ↓
-② wp_post.py が WordPress に記事を自動投稿
-   （look-shop.com のブログに記事が増える）
+② その記事をWordPress（ブログ）に自動で投稿
+   （= RUNBIRD既存ツール wp_post.py を使う）
       ↓
-③ 記事の中にカラーミー商品をJS/iframeで埋め込み
-   [商品画像][価格][カートに入れる] ← カラーミー
+③ 記事の中に「買えるボタン付き商品」を貼り付ける
+   [商品画像][価格][カートに入れる]  ← カラーミーの機能
       ↓
-④ 購入は shop.look-shop.com（カラーミー）で決済</div>
-      <strong style="color:#1a5a9e;">■ サブドメインの要否</strong><br>
-      ・埋め込み（カートJS）自体は<strong>サブドメイン不要</strong>（WP記事にコード貼るだけ）<br>
-      ・ただし<strong>.LOOK様はR18のため、カラーミーのアダルト販売条件「独自ドメイン必須」に該当</strong> → カラーミー側に <code>shop.look-shop.com</code> のような独自サブドメインを当てる必要あり<br>
-      ・<strong>ドメイン契約は1本でOK</strong>（WP=本体ドメイン／カラーミー=そのサブドメイン）<br><br>
+④ ボタンを押すとカラーミーのカートで決済</div>
+
+      <strong style="color:#1a5a9e;">■ 置き場所（2つに分かれる）</strong><br>
+      ・ブログ本体 ＝ WordPress（例 <code>look-shop.com</code>）<br>
+      ・商品・カート・決済 ＝ カラーミー（例 <code>shop.look-shop.com</code>）<br><br>
+
+      <strong style="color:#1a5a9e;">■ サブドメインは今は決めなくてOK</strong><br>
+      ・<strong>商品の貼り付け自体にサブドメインは不要</strong>（記事にコードを貼るだけ）<br>
+      ・ただし<strong>R18はカラーミーのルールで「独自ドメイン必須」</strong> → カラーミーを <code>shop.◯◯</code> のサブドメインに置く必要あり<br>
+      ・<strong>名前は本体ドメインが決まれば自動で決まる</strong>（本体 <code>dot-look.com</code> なら <code>shop.dot-look.com</code>）。<strong>屋号確定が先</strong><br>
+      ・<strong>ドメイン契約は1本でOK</strong>（本体＝WP／サブドメイン＝カラーミー）<br><br>
+
       <strong style="color:#c0392b;">■ 最大の注意：R18 × AI記事生成</strong><br>
-      Claude/Gemini/ChatGPTは<strong>アダルト内容の生成が規約違反</strong>。AI全自動はNG。<br>
+      Claude/Gemini/ChatGPTは<strong>アダルト内容の生成が規約違反</strong>。AI全自動はNG（アカウント停止リスク）。<br>
       → 回避策：(A)商品名・価格など事実だけ自動転記／(B)性的描写ゼロの定型文／(C)アダルト部分は人力／(D)非R18のSEO記事だけAI
     </div>
 
