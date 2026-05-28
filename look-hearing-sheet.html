@@ -67,13 +67,25 @@
 </header>
 
 <div class="purpose-box">
-  <h2>このシートの使い方</h2>
+  <h2>このシートの使い方（鈴木さん向け）</h2>
   <p>
-    ① 面談前にこのシートを開いておく<br>
-    ② セクション順に質問していく（録画ON）<br>
-    ③ 面談後、録画の文字起こしをAIに読ませ、サイトの文章を自動生成<br>
+    ① 面談前にこのシートを開いておく（録画ON）<br>
+    ② 下の「最優先で押さえる5項目」を意識しながら、セクション順に質問<br>
+    ③ 面談後、録画の文字起こしをAIに読ませてサイト文章を自動生成<br>
     ④ 制作共有シート（JPクレスト様式）に転記
   </p>
+</div>
+
+<div style="background:#fff8e7; border:2px solid #d4a017; border-radius:10px; padding:18px 20px; margin-bottom:32px;">
+  <h3 style="font-size:15px; color:#8a6a00; margin-bottom:12px;">★ ディレクションで最優先に押さえる5項目（この案件の肝）</h3>
+  <ol style="padding-left:22px; font-size:13px; line-height:2.0;">
+    <li><strong>最終屋号の確定</strong> — 「.LOOK どっとるっく」か「.LOOK」か。後で変えるとロゴ・タイトル全差し替えになる（→ セクション1）</li>
+    <li><strong>アダルト商品のクレカ決済をどう実現するか</strong> — クライアント最大の不安。カラーミーはアダルト決済NGの可能性、決済代行（PayGent等）の要否（→ セクション6）</li>
+    <li><strong>買取と販売、どちらを主役にするか</strong> — 受注シートは「TOPは買取アピール」。出張買取の対応エリア・流れも（→ セクション2・6）</li>
+    <li><strong>自動ブログ投稿で何を書くか＋AI生成の範囲</strong> — RUNBIRD既存の自動投稿を使う。ただしR18はAI生成が規約違反なので使う範囲を要確認（→ セクション6）</li>
+    <li><strong>既存R18 EC案件（齋藤さん相談）と同一か</strong> — 統合するか別案件か。嶋田社長まで上がる話（→ 社内確認）</li>
+  </ol>
+  <p style="font-size:12px; color:#8a6a00; margin-top:10px;">※「必須」マーク付きの設問を優先。アダルト商材なので決済・成人認証・独自ドメインの3点は技術的に外せない。</p>
 </div>
 
 <!-- ========== 制作注意事項 ========== -->
@@ -286,8 +298,16 @@
 
   <div class="q-group">
     <div class="q-label">EC構築プラットフォーム <span class="required">必須</span></div>
-    <div class="q-hint">既存R18 EC案件と同一なら「カラーミー＋WordPress連携」想定</div>
-    <textarea>【想定】カラーミーEC（R18対応）＋ WordPress（自動ブログ投稿）
+    <div class="q-hint">同業者調査の結論：「WP＋カラーミー」ハイブリッドは古本・アダルト業界に前例なし＝.LOOK様は業界初の構造</div>
+    <textarea>【想定構成】
+look-shop.com       → WordPress（買取訴求トップ＋AI自動投稿ブログ）
+shop.look-shop.com  → カラーミー（商品・カート・決済・成人認証）※R18は独自ドメイン必須のためサブドメイン要
+
+【参考実装】
+・書肆吾輩堂 wagahaido.com（WP+カラーミー、猫本・非R18）
+・萬月書店 mangetsusyoten.shop（アダルト古本×カラーミー、純カラーミー）
+・家事問屋 kajidonya.com（WP+カラーミー、HP感・コラム最高峰）
+
 ※既存案件 [20260515]_R18_EC_カラーミー自動投稿 と統合するか別案件か、嶋田社長確認</textarea>
   </div>
 
@@ -315,11 +335,35 @@
   </div>
 
   <div class="q-group">
-    <div class="q-label">自動ブログ投稿機能</div>
-    <div class="q-hint">受注シートで明記。既存案件のWP連携構成で対応予定</div>
-    <textarea>【構成案】カラーミーEC本体 ← WordPress（別ドメイン/サブドメイン）の記事をiframe/JSで埋め込み
-※記事の中身：商品紹介／SEO記事／ニュース どれを書くか要確認
-※R18 × AI記事生成は Claude/Gemini/OpenAI のusage policy違反リスク要検討</textarea>
+    <div class="q-label">自動ブログ投稿機能（RUNBIRD既存資産を活用）</div>
+    <div class="q-hint">受注シートで明記。RUNBIRDのAI自動投稿（wp_post.py）＋カラーミー商品埋め込みで実現</div>
+
+    <div style="background:#f0f7ff; border:1px solid #b8d4f0; border-radius:8px; padding:14px 16px; margin:8px 0; font-size:12.5px; line-height:1.9;">
+      <strong style="color:#1a5a9e;">■ 技術構成（全体フロー）</strong><br>
+      <div style="font-family:monospace; background:#fff; border-radius:6px; padding:10px 12px; margin:8px 0; font-size:11.5px; white-space:pre; overflow-x:auto;">① AIが記事を生成
+      ↓
+② wp_post.py が WordPress に記事を自動投稿
+   （look-shop.com のブログに記事が増える）
+      ↓
+③ 記事の中にカラーミー商品をJS/iframeで埋め込み
+   [商品画像][価格][カートに入れる] ← カラーミー
+      ↓
+④ 購入は shop.look-shop.com（カラーミー）で決済</div>
+      <strong style="color:#1a5a9e;">■ サブドメインの要否</strong><br>
+      ・埋め込み（カートJS）自体は<strong>サブドメイン不要</strong>（WP記事にコード貼るだけ）<br>
+      ・ただし<strong>.LOOK様はR18のため、カラーミーのアダルト販売条件「独自ドメイン必須」に該当</strong> → カラーミー側に <code>shop.look-shop.com</code> のような独自サブドメインを当てる必要あり<br>
+      ・<strong>ドメイン契約は1本でOK</strong>（WP=本体ドメイン／カラーミー=そのサブドメイン）<br><br>
+      <strong style="color:#c0392b;">■ 最大の注意：R18 × AI記事生成</strong><br>
+      Claude/Gemini/ChatGPTは<strong>アダルト内容の生成が規約違反</strong>。AI全自動はNG。<br>
+      → 回避策：(A)商品名・価格など事実だけ自動転記／(B)性的描写ゼロの定型文／(C)アダルト部分は人力／(D)非R18のSEO記事だけAI
+    </div>
+
+    <textarea>【既存資産】RUNBIRD wp_post.py（WP REST API自動投稿）あり。現状は固定ページ用 → 記事(/posts)用に改修必要（既存R18 EC案件の監査で「2-3割しか流用できない」と指摘済）
+
+【ディレクションで確認】
+・ブログ記事に何を書くか（商品紹介／SEO記事／ニュース）
+・AI生成をどこまで使うか（R18規約の壁をどう回避するか）
+・既存R18 EC案件（齋藤さん相談）と統合するか別案件か → 嶋田社長確認</textarea>
   </div>
 
   <div class="q-group">
