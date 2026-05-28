@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Google広告 設定レシピ｜OWL福祉事業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Noto Sans JP", sans-serif; color: #0f172a; line-height: 1.8; background: #f8fafc; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.container { max-width: 900px; margin: 0 auto; padding: 28px; }
+.section { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 26px 32px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+.section.good { background: #ecfdf5; border-color: #a7f3d0; border-left: 5px solid #047857; }
+.section.dark { background: #0f172a; color: #f1f5f9; border-color: #0f172a; }
+.section.warning { background: #fef2f2; border-color: #fecaca; border-left: 5px solid #b91c1c; }
+.eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; color: #4285F4; margin-bottom: 10px; }
+.section.good .eyebrow { color: #047857; }
+.section.warning .eyebrow { color: #b91c1c; }
+.section.dark .eyebrow { color: #93c5fd; }
+h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 30px; line-height: 1.4; margin-bottom: 12px; }
+h2 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 20px; line-height: 1.4; margin-bottom: 14px; }
+h3 { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 15px; margin: 18px 0 8px; color: #334155; }
+.section.dark h2, .section.dark h3 { color: #f1f5f9; }
+p { font-size: 14px; margin-bottom: 8px; }
+.hero { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 36px 32px; margin-bottom: 16px; text-align: center; }
+.hero h1 { font-size: 28px; }
+.hero .meta { font-size: 12px; color: #64748b; margin-top: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; background: #fff; }
+th, td { padding: 8px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+th { background: #eff6ff; font-weight: 700; color: #1e3a8a; }
+.section.good th { background: #ecfdf5; color: #047857; }
+.section.warning th { background: #fef2f2; color: #b91c1c; }
+.tag { display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 700; margin-right: 4px; border-radius: 3px; }
+.tag-stop { background: #b91c1c; color: #fff; }
+.tag-keep { background: #047857; color: #fff; }
+.tag-test { background: #2563eb; color: #fff; }
+.code { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 10px 14px; font-family: "Inter", monospace; font-size: 12px; margin: 8px 0; overflow-x: auto; white-space: pre-wrap; color: #0f172a; }
+.callout { background: #fef3c7; border-left: 4px solid #d97706; padding: 12px 16px; margin: 12px 0; border-radius: 4px; font-size: 13px; }
+.nav-back { display: inline-block; margin-bottom: 20px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
+.bad { color: #b91c1c; font-weight: 700; }
+.good { color: #047857; font-weight: 700; }
+.kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+.kpi { background: #f1f5f9; border-radius: 6px; padding: 14px; text-align: center; }
+.kpi .num { font-family: "Inter", sans-serif; font-weight: 900; font-size: 22px; color: #2563eb; }
+.kpi .lbl { font-size: 11px; color: #64748b; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="briefing_20260528_short.html" class="nav-back">← 短縮版ブリーフィングに戻る</a>
+
+<div class="hero">
+  <div class="eyebrow">GOOGLE ADS — SETTING RECIPE — 2026.05.28</div>
+  <h1>Google広告 設定レシピ</h1>
+  <p style="font-size:13px; color:#64748b; margin-top:14px;">
+    GA4実測：検索1,332セッション＋ディスプレイ413セッション。<br>
+    検索は伸ばす、ディスプレイは縮小、を基本方針とする。
+  </p>
+  <div class="meta">株式会社 斗（hishaku）／ 星崎</div>
+</div>
+
+<!-- 現状 -->
+<div class="section">
+  <div class="eyebrow">CURRENT STATUS（GA4 2026/1/1〜5/26）</div>
+  <h2>現状把握</h2>
+  <table>
+    <thead><tr><th>チャネル</th><th>セッション</th><th>エンゲージ率</th><th>平均滞在</th><th>判定</th></tr></thead>
+    <tbody>
+      <tr><td>Paid Search（検索広告）</td><td><strong class="good">1,332</strong></td><td class="good">63.1%</td><td>42.0秒</td><td>健全・伸ばす</td></tr>
+      <tr><td>Display（GDN）</td><td>413</td><td class="bad">20.1%</td><td class="bad">6.5秒</td><td>ムダ撃ち・縮小</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 1. 検索広告 -->
+<div class="section">
+  <div class="eyebrow">RECIPE 01 — SEARCH ADS</div>
+  <h2>検索広告（拡大方針）</h2>
+
+  <h3>🥇 入札キーワード（フレーズ一致）</h3>
+  <table>
+    <thead><tr><th>キーワード</th><th>マッチタイプ</th><th>入札上限CPC</th></tr></thead>
+    <tbody>
+      <tr><td><strong>グループホーム フランチャイズ</strong></td><td>フレーズ一致</td><td>¥1,000</td></tr>
+      <tr><td>障がい者グループホーム フランチャイズ</td><td>フレーズ一致</td><td>¥1,200</td></tr>
+      <tr><td>障害者グループホーム フランチャイズ</td><td>フレーズ一致</td><td>¥1,200</td></tr>
+      <tr><td>グループホーム 開業</td><td>フレーズ一致</td><td>¥800</td></tr>
+      <tr><td>福祉 フランチャイズ</td><td>フレーズ一致</td><td>¥800</td></tr>
+      <tr><td>福祉事業 開業</td><td>フレーズ一致</td><td>¥600</td></tr>
+      <tr><td>共同生活援助 開業</td><td>フレーズ一致</td><td>¥500</td></tr>
+      <tr><td>グループホーム 加盟金</td><td>フレーズ一致</td><td>¥600</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🥈 部分一致（テスト枠）</h3>
+  <table>
+    <thead><tr><th>キーワード</th><th>マッチタイプ</th><th>入札上限CPC</th></tr></thead>
+    <tbody>
+      <tr><td>障害福祉 起業</td><td>部分一致</td><td>¥500</td></tr>
+      <tr><td>福祉ビジネス 始める</td><td>部分一致</td><td>¥500</td></tr>
+      <tr><td>支援事業 開業</td><td>部分一致</td><td>¥500</td></tr>
+    </tbody>
+  </table>
+
+  <h3>除外キーワード（必須追加）</h3>
+  <div class="code">求人 / バイト / パート / 転職 / 採用
+入居 / 入所 / 利用 / 体験
+口コミ / 評判 / 比較サイト
+無料 / 安い / 格安
+家族 / 子供 / 高齢者
+助成金 / 補助金（情報目的のみの可能性高い）
+資格 / 講座 / 通信教育</div>
+</div>
+
+<!-- 2. 広告文 -->
+<div class="section">
+  <div class="eyebrow">RECIPE 02 — AD COPY</div>
+  <h2>レスポンシブ検索広告 文案</h2>
+
+  <h3>見出し（15個まで・10〜15文字）</h3>
+  <div class="code">障がい者GHを加盟金0円で開業
+未経験95%が選ぶOWL
+最短1.5ヶ月で開設可能
+最短4ヶ月で黒字化
+月額制で初期費用ゼロ
+グループホームFC加盟金0円
+福祉業界初の加盟金0円プラン
+無料資料請求・WEB説明会開催中
+オンライン説明会 受付中
+2.5ヶ月で満床の実績
+資料請求はこちら
+障がい者支援で社会貢献
+ストック型ビジネスで安定収入
+低リスク高収益の福祉事業
+ノウハウ完全サポート</div>
+
+  <h3>説明文（4個まで・45〜90文字）</h3>
+  <div class="code">業界初の加盟金0円プラン。月々の相談料のみで開業可能。初期費用を抑えて、より多くの方に始めていただけます。
+未経験者の方が約95%。OWLオリジナルマニュアルと経験豊富なスタッフが、行政対応から運営まで全面サポート。
+最短1.5ヶ月で開設、2.5ヶ月で満床、4ヶ月で黒字化の実績あり。国への請求で安定収入が見込めるストック型ビジネス。
+無料資料請求・オンライン説明会を実施中。詳細は今すぐWEBから。お電話でのご相談も承ります（0120-540-522）。</div>
+</div>
+
+<!-- 3. ディスプレイ広告 -->
+<div class="section warning">
+  <div class="eyebrow">RECIPE 03 — DISPLAY ADS</div>
+  <h2>ディスプレイ広告（GDN）の処遇</h2>
+  <p><strong>現状：</strong>413セッション流入・エンゲージメント20.1%・平均滞在6.5秒 → 即離脱の塊。</p>
+
+  <h3>選択肢2つ</h3>
+  <table>
+    <thead><tr><th>選択</th><th>内容</th><th>推奨度</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag tag-stop">A. 完全停止</span></td><td>GDNを即停止。浮いた予算（推定¥3-5万/月）を検索広告に回す</td><td><span class="good">★★★ 推奨</span></td></tr>
+      <tr><td><span class="tag tag-test">B. リターゲ限定</span></td><td>OWLサイト訪問者のみに配信制限。CPAは下がる</td><td>★★ 検索が伸びてから</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>判断軸：</strong>GDNは「認知拡大」用なので、現段階のOWL（CV最大化フェーズ）では合っていない。CV件数が月20件を超えたら認知層獲得のためにB案で再開を検討。
+  </div>
+</div>
+
+<!-- 4. 入札・予算 -->
+<div class="section">
+  <div class="eyebrow">RECIPE 04 — BIDDING & BUDGET</div>
+  <h2>入札戦略・予算配分</h2>
+  <table>
+    <thead><tr><th>項目</th><th>推奨値</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>入札戦略</td><td><strong>コンバージョン数の最大化</strong></td><td>CV最大化フェーズに最適</td></tr>
+      <tr><td>目標CPA（上限制限）</td><td>¥20,000</td><td>業界水準内に収める</td></tr>
+      <tr><td>検索広告 月予算</td><td>¥250,000</td><td>現GDN予算を寄せる</td></tr>
+      <tr><td>ディスプレイ広告</td><td><strong>停止 or ¥0</strong></td><td>上述</td></tr>
+      <tr><td>配信地域</td><td>全国（OWLは全国対応のため）</td><td>地域制限不要</td></tr>
+      <tr><td>配信デバイス</td><td>スマホ優先（流入64%）</td><td>スマホ入札+20%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 5. LP・コンバージョン -->
+<div class="section">
+  <div class="eyebrow">RECIPE 05 — LP & CONVERSION</div>
+  <h2>遷移先LP・コンバージョン設定</h2>
+
+  <h3>遷移先LP</h3>
+  <table>
+    <thead><tr><th>判定</th><th>LP</th><th>滞在時間</th><th>備考</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag tag-keep">採用</span></td><td><strong>/fc-business-glp/</strong></td><td class="good">64.6秒</td><td>最も読まれているLP</td></tr>
+      <tr><td><span class="tag tag-stop">停止</span></td><td>/lp_zero-plan-g/ 等の旧LP</td><td>—</td><td>noindex化＋遷移先から除外</td></tr>
+    </tbody>
+  </table>
+
+  <h3>UTMパラメータ（必須）</h3>
+  <div class="code">https://owl-fukushi.net/fc-business-glp/?utm_source=google&utm_medium=cpc&utm_campaign=CP01_franchise&utm_content={creative}&utm_term={keyword}</div>
+
+  <h3>コンバージョン設定</h3>
+  <ul style="padding-left:24px; font-size:13px; line-height:1.9;">
+    <li>主要CV：<strong>contact_complete</strong>（GA4インポート）</li>
+    <li>マイクロCV：<strong>form_start</strong>（フォーム開始を中間指標として計測）</li>
+    <li>電話CV：<strong>tel:0120540522 タップ</strong>（GTMで設定）</li>
+  </ul>
+</div>
+
+<!-- 期待効果 -->
+<div class="section good">
+  <div class="eyebrow">EXPECTED RESULT</div>
+  <h2>期待効果（推計）</h2>
+  <table>
+    <thead><tr><th>指標</th><th>現状（推定）</th><th>3ヶ月後 目標</th></tr></thead>
+    <tbody>
+      <tr><td>月間検索広告セッション</td><td>約267</td><td><strong class="good">500〜700</strong></td></tr>
+      <tr><td>月間CV件数（Google分）</td><td>推定5-8件</td><td><strong class="good">12〜18件</strong></td></tr>
+      <tr><td>CPA</td><td>不明（計測課題）</td><td><strong class="good">¥15,000以内</strong></td></tr>
+      <tr><td>ディスプレイのムダ予算</td><td>月¥3-5万</td><td><strong class="good">¥0</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13px; color:#64748b; margin-top:8px;">※ 業界平均値+OWL実データから推計。実績は実施後の計測で確定。</p>
+</div>
+
+<!-- 実行手順 -->
+<div class="section dark">
+  <div class="eyebrow">EXECUTION ORDER</div>
+  <h2>実行順序（推奨）</h2>
+  <ol style="padding-left:24px; font-size:14px; line-height:2;">
+    <li><strong>Day 0：</strong>フォームCV原因究明（別資料参照）</li>
+    <li><strong>Day 1：</strong>GDN停止（即効性最大・即実行可）</li>
+    <li><strong>Day 2-3：</strong>除外KW一括追加・既存KWのマッチタイプ整理</li>
+    <li><strong>Day 4-7：</strong>新規KW追加・広告文差し替え・UTM設定</li>
+    <li><strong>Day 8：</strong>入札戦略を「コンバージョン数の最大化」に切替</li>
+    <li><strong>2週間後：</strong>初回レビュー（CPA・CV件数で効果測定）</li>
+    <li><strong>1ヶ月後：</strong>勝ちKWを完全一致に格上げ・負けKW停止</li>
+  </ol>
+</div>
+
+<div style="text-align:center; font-size:12px; color:#5a5a5a; padding:16px 0;">
+  株式会社 斗（hishaku） ／ 星崎 ／ andan.39.2106@gmail.com
+</div>
+
+</div>
+</body>
+</html>

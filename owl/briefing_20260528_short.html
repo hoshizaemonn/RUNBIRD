@@ -31,6 +31,11 @@ p { font-size: 14px; margin-bottom: 8px; }
 .hero { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 40px 32px; margin-bottom: 16px; text-align: center; }
 .hero h1 { font-size: 30px; }
 .hero .meta { font-size: 12px; color: #64748b; line-height: 1.9; margin-top: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; background: #fff; }
+th, td { padding: 8px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; }
+th { background: #f1f5f9; font-weight: 700; }
+.bad { color: #b91c1c; font-weight: 700; }
+.good { color: #047857; font-weight: 700; }
 .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 8px 0 4px; }
 .kpi { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px 8px; text-align: center; }
 .kpi.alert { background: #fef2f2; border-color: #fecaca; }
@@ -46,12 +51,16 @@ p { font-size: 14px; margin-bottom: 8px; }
 .tag { display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 700; margin-right: 6px; }
 .tag-max { background: #b91c1c; color: #fff; }
 .tag-high { background: #ea580c; color: #fff; }
-.ask { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .ask-block h3 { color: #2563eb; border-bottom: 1px solid #dbeafe; padding-bottom: 4px; margin-top: 0; }
 .ask-block ul { list-style: none; padding: 0; }
 .ask-block li { font-size: 13px; padding: 6px 0 6px 18px; position: relative; line-height: 1.7; }
 .ask-block li::before { content: "→"; position: absolute; left: 0; color: #2563eb; font-weight: 700; }
 .callout-blue { font-size: 13px; background: #eff6ff; padding: 10px 14px; border-left: 4px solid #2563eb; margin-bottom: 10px; }
+.linkcard { display: block; padding: 16px 20px; background: #fff; border: 2px solid #2563eb; border-radius: 8px; margin: 8px 0; text-decoration: none; color: #0f172a; transition: background .15s; }
+.linkcard:hover { background: #eff6ff; }
+.linkcard .lc-title { font-weight: 700; font-size: 15px; color: #1e3a8a; margin-bottom: 4px; }
+.linkcard .lc-desc { font-size: 12px; color: #475569; }
+.linkcard .lc-arrow { float: right; color: #2563eb; font-weight: 900; }
 </style>
 </head>
 <body>
@@ -59,11 +68,11 @@ p { font-size: 14px; margin-bottom: 8px; }
 <div class="container">
 
 <div class="hero">
-  <div class="eyebrow">BRIEFING — SHORT VERSION — 2026.05.28</div>
+  <div class="eyebrow">BRIEFING — 2026.05.28</div>
   <h1>OWL福祉事業LP<br>現状診断 ＆ ご相談事項</h1>
   <p style="font-size:14px; color:#475569; margin:14px 0 0;">
-    数値の要点と、嶋田社長にご相談したいことだけを抜粋した短縮版です。<br>
-    詳細版は <a href="briefing_20260528.html" style="color:#2563eb; font-weight:700;">こちら</a>。
+    <strong>ゴール：お問い合わせ獲得を増やす</strong>こと。<br>
+    そのために「フォーム原因究明」「広告設定の改善」を中心にご相談します。
   </p>
   <div class="meta">2026年5月28日（木）打ち合わせ用 ／ 株式会社 斗（hishaku）／ 星崎</div>
 </div>
@@ -73,21 +82,20 @@ p { font-size: 14px; margin-bottom: 8px; }
   <div class="eyebrow">CONCLUSION</div>
   <h2><span class="num">01</span>結論（30秒）</h2>
   <p style="font-size:15px;">
-    LPの<strong>中身は良いが、検索エンジンとAIに届いていない</strong>状態。<br>
-    特に <strong>Yahoo広告の運用効率</strong>と <strong>ig/fb LPの即離脱</strong>を直せば、追加予算なしでCV増が見込めます。
+    LPは <strong>ちゃんと読まれている</strong>（滞在60秒前後・90%スクロール22%）。問題はLPではなく <strong>「フォームの完了率低下」と「広告KW設計のムダ」</strong>。<br>
+    この2つを直せば、追加予算なしで<strong>月CV 3件→8〜12件</strong>を狙えます。
   </p>
 </div>
 
-<!-- 数字 -->
+<!-- 押さえる数字 -->
 <div class="section">
-  <div class="eyebrow">KEY NUMBERS（過去90日）</div>
+  <div class="eyebrow">KEY NUMBERS</div>
   <h2><span class="num">02</span>押さえておきたい3つの数字</h2>
   <div class="kpi-grid">
-    <div class="kpi alert"><div class="num">↓53%</div><div class="lbl">訪問者数<br>（前期比・ほぼ半減）</div></div>
-    <div class="kpi alert"><div class="num">0%</div><div class="lbl">ig/fb LPの<br>エンゲージメント率</div></div>
-    <div class="kpi"><div class="num">88回</div><div class="lbl">「フランチャイズ」表示<br>→クリック3回のみ</div></div>
+    <div class="kpi alert"><div class="num">50%</div><div class="lbl">4月のフォーム完了率<br>（1-3月は100%）</div></div>
+    <div class="kpi alert"><div class="num">29%</div><div class="lbl">Yahoo広告 予算消化率<br>（71%が余ってる）</div></div>
+    <div class="kpi"><div class="num">22%</div><div class="lbl">LP最後まで読了率<br>（業界平均水準で健全）</div></div>
   </div>
-  <p style="font-size:12px; color:#64748b; margin-top:6px;">流入は Paid広告60% / Direct28% / Organic10%。広告依存の構造。</p>
 </div>
 
 <!-- 致命的発見 -->
@@ -96,33 +104,44 @@ p { font-size: 14px; margin-bottom: 8px; }
   <h2><span class="num">03</span>致命的発見 3つ</h2>
 
   <div class="finding">
-    <strong>① Yahoo広告が「ムダ撃ち」を続けている</strong>
-    <p>「グループホーム フランチャイズ」（CPA¥480の金鉱）は予算が薄く、一方で「在宅／レンタル」等の関係ないKWに予算が流れている。除外KWと予算配分の見直しで即効性アリ。</p>
+    <strong>① 4月にフォーム完了率が100%→50%に急落（最重要）</strong>
+    <p>フォーム開始8件のうち完了は4件のみ。半分が途中で離脱。1-3月はほぼ100%だったため、4月初旬に何かが変わった可能性大。</p>
   </div>
 
   <div class="finding">
-    <strong>② ig/fb広告LPでほぼ全員が即離脱（広告費が垂れ流し）</strong>
-    <p>lp_zero-plan-ig（276PV/エンゲージメント0.72%）、lp_zero-plan-fb（273PV/0%）。広告クリックは入っているのに、LP着地後にほぼ全員離脱。原因究明が急務。</p>
+    <strong>② Yahoo広告が「ムダ撃ち」を続けている</strong>
+    <p>「フランチャイズ 安い／在宅／レンタル」等の無関係KWで月¥10万以上消費しCV 0。一方で金鉱KW「グループホーム フランチャイズ」（CPA¥480）は予算が薄い。</p>
   </div>
 
   <div class="finding">
-    <strong>③ 会社情報の構造化データが誤データ</strong>
-    <p>Organizationスキーマの「会社名」欄に、社名ではなくキャッチコピーが登録されている。AI検索で誤情報が返るリスク。修正は10分で完了。</p>
+    <strong>③ Google ディスプレイ広告がほぼ即離脱（平均6.5秒）</strong>
+    <p>413セッション流入してるがエンゲージメント20%・平均滞在6.5秒。事実上のムダ予算。停止 or リターゲ限定に変更すべき。</p>
   </div>
 </div>
 
-<!-- 打ち手 -->
-<div class="section dark">
-  <div class="eyebrow">RECOMMENDED ACTIONS</div>
-  <h2><span class="num">04</span>緊急で着手したい打ち手</h2>
-  <ul class="priority-list">
-    <li><span class="tag tag-max">緊急</span>Yahoo広告「フランチャイズ」予算集中＋除外KW 15〜20語追加</li>
-    <li><span class="tag tag-max">緊急</span>訪問者半減トレンドの原因究明（Yahoo広告コスト推移と連動か確認）</li>
-    <li><span class="tag tag-max">緊急</span>ig/fb LP 即離脱の原因究明（流入元の特定）</li>
-    <li><span class="tag tag-high">高</span>Organizationスキーマの誤データ修正（10分）</li>
-    <li><span class="tag tag-high">高</span>主要LP6本に絞り、残りはnoindex化</li>
-    <li><span class="tag tag-high">高</span>本体LPにh1タグ追加・「フランチャイズ」のタイトル最適化</li>
-  </ul>
+<!-- 実行レシピ -->
+<div class="section">
+  <div class="eyebrow">EXECUTION RECIPES</div>
+  <h2><span class="num">04</span>具体的な実行レシピ（3本）</h2>
+  <p>本資料とは別に、具体的な設定手順をまとめた実行レシピを用意しました。</p>
+
+  <a href="form_diagnosis.html" class="linkcard">
+    <span class="lc-arrow">→</span>
+    <div class="lc-title">📝 フォームCV低下 原因究明チェックリスト</div>
+    <div class="lc-desc">打ち合わせ中に嶋田社長と一緒に12項目を確認 → 真因特定 → 即修正へ</div>
+  </a>
+
+  <a href="yahoo_ads_recipe.html" class="linkcard">
+    <span class="lc-arrow">→</span>
+    <div class="lc-title">🟣 Yahoo広告 設定レシピ（KW・除外・入札・LP）</div>
+    <div class="lc-desc">入札KW 13本・除外KW 25語・キャンペーン構造・入札戦略を具体的に明記</div>
+  </a>
+
+  <a href="google_ads_recipe.html" class="linkcard">
+    <span class="lc-arrow">→</span>
+    <div class="lc-title">🔵 Google広告 設定レシピ（検索強化・GDN停止）</div>
+    <div class="lc-desc">入札KW・広告文・GDN処遇・UTM設定・実行順序まで完全網羅</div>
+  </a>
 </div>
 
 <!-- 嶋田社長への相談 -->
@@ -134,48 +153,65 @@ p { font-size: 14px; margin-bottom: 8px; }
     打ち合わせの中で「これは必要／不要」「やる／やらない」を一緒に判断していければと思います。
   </div>
 
-  <div class="ask">
-    <div class="ask-block">
-      <h3>A. 運用状況の確認</h3>
-      <ul>
-        <li>訪問者半減（↓53%）の心当たり／広告予算の変動はあったか</li>
-        <li>ig/fb LP のエンゲージメント率0%、何の流入か把握しているか</li>
-        <li>Google広告アカウントは誰がどう運用しているか</li>
-      </ul>
-    </div>
-    <div class="ask-block">
-      <h3>B. LP・素材の整理</h3>
-      <ul>
-        <li>LP30本以上、どれが現役／休眠／廃止可能か</li>
-        <li>収益モデル図（空白セクション）の元画像が手元にあるか</li>
-        <li>RUNBIRD本社住所・OWL公式LINEのURL提供</li>
-      </ul>
-    </div>
-    <div class="ask-block">
-      <h3>C. 方針合意したいこと</h3>
-      <ul>
-        <li>Yahoo広告の予算集中＋除外KW追加を進めて良いか</li>
-        <li>AEO対策パッケージの内容・スケジュール・予算感</li>
-        <li>本番WordPress編集の作業実施日時</li>
-      </ul>
-    </div>
-    <div class="ask-block">
-      <h3>D. 計測アカウントへの追加（最優先）</h3>
-      <div class="callout-blue" style="margin:0 0 6px;">
-        毎回スクショ依頼は非効率なため、<strong>andan.39.2106@gmail.com（星崎）</strong> を閲覧権限で追加いただきたいです。
-      </div>
-      <ul>
-        <li>Google Analytics 4（GA4）</li>
-        <li>Google Search Console</li>
-        <li>Google広告アカウント（OWL福祉事業GH）</li>
-      </ul>
-    </div>
+  <div class="ask-block">
+    <h3>A. フォーム原因究明（最優先）</h3>
+    <ul>
+      <li><strong>4月にフォームを変更したか</strong>（項目追加・必須化・プラグイン更新等）</li>
+      <li>その場でスマホからテスト送信させてください（即原因判明の可能性）</li>
+      <li>WordPress管理画面の「未確認のお問い合わせ」件数確認</li>
+    </ul>
   </div>
+  <div class="ask-block">
+    <h3>B. 広告設定の方針合意</h3>
+    <ul>
+      <li>Yahoo広告：金鉱KW集中＋除外KW 25語追加を進めて良いか</li>
+      <li>Google広告：ディスプレイ広告（GDN）停止して良いか</li>
+      <li>Google広告：入札戦略を「コンバージョン数の最大化」に変更して良いか</li>
+      <li>UTMパラメータ設定の作業をhishakuで実施して良いか</li>
+    </ul>
+  </div>
+  <div class="ask-block">
+    <h3>C. 運用権限・素材提供</h3>
+    <ul>
+      <li>Google広告アカウントは誰が運用しているか／代理店契約有無</li>
+      <li>RUNBIRD本社住所・OWL公式LINE URL（広告文・LPで使用）</li>
+      <li>本番WordPress編集の作業実施日時合意</li>
+    </ul>
+  </div>
+  <div class="ask-block">
+    <h3>D. 計測アカウントへの追加（重要）</h3>
+    <div class="callout-blue" style="margin:0 0 6px;">
+      毎回スクショ依頼は非効率なため、<strong>andan.39.2106@gmail.com（星崎）</strong> を閲覧権限で追加いただきたいです。
+    </div>
+    <ul>
+      <li>Google Analytics 4（GA4）</li>
+      <li>Google Search Console</li>
+      <li>Google広告アカウント（OWL福祉事業GH）</li>
+      <li>Yahoo広告アカウント</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 期待効果 -->
+<div class="section good">
+  <div class="eyebrow">EXPECTED RESULT</div>
+  <h2><span class="num">06</span>期待効果（3ヶ月後）</h2>
+  <table>
+    <thead><tr><th>指標</th><th>現状</th><th>3ヶ月後 目標</th></tr></thead>
+    <tbody>
+      <tr><td>月間CV件数（全体）</td><td>8件</td><td><strong class="good">15〜25件</strong></td></tr>
+      <tr><td>Yahoo広告CPA</td><td>¥40,980</td><td><strong class="good">¥15,000〜25,000</strong></td></tr>
+      <tr><td>Yahoo広告 予算消化率</td><td>29%</td><td><strong class="good">70%以上</strong></td></tr>
+      <tr><td>Google GDN ムダ予算</td><td>月¥3-5万</td><td><strong class="good">¥0</strong></td></tr>
+      <tr><td>フォーム完了率</td><td>67%</td><td><strong class="good">90%以上</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px; color:#64748b; margin-top:8px;">※業界平均値+OWL実データから推計。実績は実施後の計測で確定。</p>
 </div>
 
 <div style="text-align:center; font-size:12px; color:#5a5a5a; padding:16px 0;">
   株式会社 斗（hishaku） ／ 星崎 ／ andan.39.2106@gmail.com<br>
-  詳細データは <a href="briefing_20260528.html" style="color:#2563eb;">詳細版</a> をご参照ください
+  詳細版は <a href="briefing_20260528.html" style="color:#2563eb;">こちら</a>
 </div>
 
 </div>
