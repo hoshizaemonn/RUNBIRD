@@ -15,22 +15,26 @@ h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; bor
 .subtitle { font-size: 13px; color: #64748b; margin-bottom: 28px; }
 .eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.2em; color: #2563eb; margin: 24px 0 10px; padding-top: 16px; border-top: 1px dashed #cbd5e1; }
 .eyebrow:first-of-type { border-top: none; padding-top: 0; }
+.eyebrow.supplement { color: #94a3b8; }
 .card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 18px 22px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: border-color .15s; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
 .card:hover { border-color: #14213d; }
-.card.featured { border: 2px solid #14213d; }
-.card.future { background: #f0f9ff; border-color: #93c5fd; }
+.card.featured { border: 2px solid #047857; }
+.card.live { border: 2px solid #b91c1c; }
+.card.supplement { background: #f6f4ef; border-style: dashed; box-shadow: none; }
 .card-left { flex: 1; }
 .card-title { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 16px; color: #0f172a; margin-bottom: 4px; }
 .card-desc { font-size: 12px; color: #64748b; line-height: 1.6; }
 .btn { background: #14213d; color: #fff; padding: 10px 18px; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
 .btn:hover { background: #000; }
-.btn.featured { background: #d97706; }
+.btn.featured { background: #047857; }
+.btn.live { background: #b91c1c; }
 .tag { display: inline-block; padding: 1px 6px; font-size: 9px; font-weight: 700; margin-right: 4px; border-radius: 3px; vertical-align: middle; }
-.tag-new { background: #b91c1c; color: #fff; }
-.tag-meeting { background: #2563eb; color: #fff; }
+.tag-new { background: #7c3aed; color: #fff; }
+.tag-live { background: #b91c1c; color: #fff; }
 .tag-recipe { background: #047857; color: #fff; }
 .tag-data { background: #64748b; color: #fff; }
 .tag-future { background: #7c3aed; color: #fff; }
+.tag-sup { background: #94a3b8; color: #fff; }
 .footer { font-size: 12px; color: #64748b; text-align: center; margin-top: 32px; padding: 16px; background: #f1f5f9; border-left: 4px solid #14213d; }
 </style>
 </head>
@@ -39,25 +43,33 @@ h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; bor
 <div class="container">
 
 <h1>OWL福祉事業 関連資料一覧</h1>
-<p class="subtitle">2026年5月28日打ち合わせ／LP改善・広告運用・SNS展開ロードマップ</p>
+<p class="subtitle">LP改善・広告運用・SNS展開ロードマップ／株式会社 斗（hishaku）</p>
 
-<!-- 打ち合わせ資料 -->
-<div class="eyebrow">📋 打ち合わせ用ブリーフィング</div>
+<!-- 一番上：現LP + 新モックアップ -->
+<div class="eyebrow">🎯 LP（現状 ＆ 新案）</div>
 
 <div class="card featured">
   <div class="card-left">
-    <div class="card-title"><span class="tag tag-meeting">推奨</span>短縮版ブリーフィング（5/28打ち合わせ用）</div>
-    <div class="card-desc">結論・致命的発見・実行レシピへのリンク・嶋田社長への相談事項を1画面に集約</div>
+    <div class="card-title"><span class="tag tag-new">提案</span>新LP モックアップ案（ミチル構造踏襲）</div>
+    <div class="card-desc">現状LPとの比較・改善ポイント・ChatGPT生成のデザイン案を掲載</div>
   </div>
-  <a class="btn featured" href="briefing_20260528_short.html">開く →</a>
+  <a class="btn featured" href="mockup.html">開く →</a>
 </div>
 
-<div class="card">
+<div class="card live">
   <div class="card-left">
-    <div class="card-title">詳細版ブリーフィング</div>
-    <div class="card-desc">深掘り分析・代理店評価・実検索テスト結果まで含む完全版</div>
+    <div class="card-title"><span class="tag tag-live">本番</span>現在のLP（Google広告用）</div>
+    <div class="card-desc">owl-fukushi.net/fc-business-glp/ ｜ 滞在64.6秒・最も読まれているLP</div>
   </div>
-  <a class="btn" href="briefing_20260528.html">開く →</a>
+  <a class="btn live" href="https://owl-fukushi.net/fc-business-glp/" target="_blank">開く →</a>
+</div>
+
+<div class="card live">
+  <div class="card-left">
+    <div class="card-title"><span class="tag tag-live">本番</span>現在のLP（Yahoo広告用）</div>
+    <div class="card-desc">owl-fukushi.net/fc-business-ylp/ ｜ 滞在58.8秒</div>
+  </div>
+  <a class="btn live" href="https://owl-fukushi.net/fc-business-ylp/" target="_blank">開く →</a>
 </div>
 
 <!-- データ・分析 -->
@@ -66,7 +78,7 @@ h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; bor
 <div class="card">
   <div class="card-left">
     <div class="card-title"><span class="tag tag-data">DATA</span>Google/Yahoo広告 & LPデータサマリー</div>
-    <div class="card-desc">これまで収集した広告・LPの数値を1枚に集約。打ち合わせ中の参照用</div>
+    <div class="card-desc">これまで収集した広告・LPの数値を1枚に集約</div>
   </div>
   <a class="btn" href="data_summary.html">開く →</a>
 </div>
@@ -77,7 +89,7 @@ h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; bor
 <div class="card">
   <div class="card-left">
     <div class="card-title"><span class="tag tag-recipe">RECIPE</span>📝 フォームCV低下 原因究明チェックリスト</div>
-    <div class="card-desc">4月フォーム完了率が100→50%に急落。打ち合わせ中に12項目を確認→真因特定</div>
+    <div class="card-desc">4月フォーム完了率が100→50%に急落。12項目を確認→真因特定</div>
   </div>
   <a class="btn" href="form_diagnosis.html">開く →</a>
 </div>
@@ -85,7 +97,7 @@ h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; bor
 <div class="card">
   <div class="card-left">
     <div class="card-title"><span class="tag tag-recipe">RECIPE</span>🟣 Yahoo広告 設定レシピ</div>
-    <div class="card-desc">入札KW13本・除外KW25語・キャンペーン構造・入札戦略まで具体的に明記</div>
+    <div class="card-desc">入札KW13本・除外KW25語・キャンペーン構造・入札戦略</div>
   </div>
   <a class="btn" href="yahoo_ads_recipe.html">開く →</a>
 </div>
@@ -93,7 +105,7 @@ h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; bor
 <div class="card">
   <div class="card-left">
     <div class="card-title"><span class="tag tag-recipe">RECIPE</span>🔵 Google広告 設定レシピ</div>
-    <div class="card-desc">検索広告強化＋GDN停止判断＋広告文＋UTM＋実行順序まで完全網羅</div>
+    <div class="card-desc">検索強化＋GDN停止＋広告文＋UTM＋実行順序</div>
   </div>
   <a class="btn" href="google_ads_recipe.html">開く →</a>
 </div>
@@ -101,12 +113,31 @@ h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; bor
 <!-- 中長期展望 -->
 <div class="eyebrow">🚀 中長期展望（Phase 2以降）</div>
 
-<div class="card future">
+<div class="card">
   <div class="card-left">
-    <div class="card-title"><span class="tag tag-future">NEW</span><span class="tag tag-new">FUTURE</span>Meta／Instagram展開ロードマップ</div>
-    <div class="card-desc">ミチルシリカの3媒体運用ノウハウを参照に、Meta広告・IG運用への展開を3フェーズで設計</div>
+    <div class="card-title"><span class="tag tag-future">FUTURE</span>Meta／Instagram展開ロードマップ</div>
+    <div class="card-desc">ミチルシリカの媒体運用ノウハウを参照に、3フェーズで設計</div>
   </div>
   <a class="btn" href="meta_instagram_roadmap.html">開く →</a>
+</div>
+
+<!-- 一番下：補足 -->
+<div class="eyebrow supplement">📎 補足資料（打ち合わせブリーフィング）</div>
+
+<div class="card supplement">
+  <div class="card-left">
+    <div class="card-title"><span class="tag tag-sup">補足</span>短縮版ブリーフィング（5/28打ち合わせ用）</div>
+    <div class="card-desc">結論・致命的発見・嶋田社長への相談事項を1画面に集約</div>
+  </div>
+  <a class="btn" href="briefing_20260528_short.html">開く →</a>
+</div>
+
+<div class="card supplement">
+  <div class="card-left">
+    <div class="card-title"><span class="tag tag-sup">補足</span>詳細版ブリーフィング</div>
+    <div class="card-desc">深掘り分析・代理店評価・実検索テスト結果まで含む完全版</div>
+  </div>
+  <a class="btn" href="briefing_20260528.html">開く →</a>
 </div>
 
 <div class="footer">
