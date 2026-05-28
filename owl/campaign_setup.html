@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>キャンペーン設定手順（Google/Yahoo）｜OWL福祉事業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Noto Sans JP", sans-serif; color: #0f172a; line-height: 1.8; background: #f8fafc; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.container { max-width: 880px; margin: 0 auto; padding: 26px; }
+.nav-back { display: inline-block; margin-bottom: 16px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
+.section { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px 28px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+.section.yahoo { border-left: 5px solid #ed1e79; }
+.section.google { border-left: 5px solid #4285F4; }
+.section.warning { background: #fef2f2; border-color: #fecaca; border-left: 5px solid #b91c1c; }
+.eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; margin-bottom: 8px; color: #64748b; }
+.hero { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 32px 28px; margin-bottom: 16px; text-align: center; }
+h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 26px; margin-bottom: 8px; }
+h2 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 20px; margin-bottom: 12px; }
+h3 { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 15px; margin: 16px 0 6px; color: #334155; }
+p { font-size: 14px; margin-bottom: 8px; }
+.meta { font-size: 12px; color: #64748b; margin-top: 10px; }
+ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 8px 0; }
+ol.steps > li { position: relative; padding: 12px 0 12px 44px; border-bottom: 1px solid #eef2f7; font-size: 14px; }
+ol.steps > li:last-child { border-bottom: none; }
+ol.steps > li::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 12px; width: 28px; height: 28px; background: #1A3A6C; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: "Inter", sans-serif; font-weight: 900; font-size: 13px; }
+.section.yahoo ol.steps > li::before { background: #ed1e79; }
+.section.google ol.steps > li::before { background: #4285F4; }
+.sub { font-size: 12px; color: #64748b; margin-top: 4px; }
+.code { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 10px 14px; font-family: "Inter", monospace; font-size: 12px; margin: 6px 0; overflow-x: auto; white-space: pre-wrap; word-break: break-all; color: #0f172a; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; }
+th, td { padding: 7px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; font-weight: 700; }
+.callout { background: #fef3c7; border-left: 4px solid #d97706; padding: 12px 16px; margin: 12px 0; border-radius: 4px; font-size: 13px; }
+.good { color: #047857; font-weight: 700; }
+.link { color: #2563eb; }
+.footer { font-size: 11px; color: #64748b; text-align: center; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="nav-back">← 資料一覧に戻る</a>
+
+<div class="hero">
+  <div class="eyebrow">CAMPAIGN SETUP GUIDE — 2026.05</div>
+  <h1>キャンペーン設定手順<br>（Google広告 ／ Yahoo広告）</h1>
+  <p style="font-size:13px; color:#475569;">設定レシピの内容を、実際の管理画面で設定する手順。自分で設定する時も、代理店に渡す指示書としても使えます。</p>
+  <div class="meta">株式会社 斗（hishaku）</div>
+</div>
+
+<!-- 前提 -->
+<div class="section warning">
+  <div class="eyebrow">PRE-CHECK</div>
+  <h2>⚠️ 着手前の3つの前提</h2>
+  <ol class="steps">
+    <li><strong>アカウントへのアクセス権</strong><div class="sub">自分で設定するなら管理者/編集権限が必要。代理店運用なら「この内容で設定して」と本手順を渡す。</div></li>
+    <li><strong>コンバージョン計測の設定</strong><div class="sub">「資料請求完了（/thanks/到達）」をCVとして計測できる状態にする。これが無いとCV最適化できない。GA4のcontact_completeを各媒体にインポート or 媒体側タグを設置。</div></li>
+    <li><strong>フォームの動作確認</strong><div class="sub">4月に完了率が落ちた件。設定前にフォームが正常に送信できるかテスト（別資料：フォーム原因究明チェックリスト）。</div></li>
+  </ol>
+</div>
+
+<!-- Yahoo -->
+<div class="section yahoo">
+  <div class="eyebrow">YAHOO ADS</div>
+  <h2>🟣 Yahoo広告 検索広告の設定手順</h2>
+  <p>管理画面：Yahoo!広告 → 検索広告。アカウント（ランバード / ID 1441736）にログイン。</p>
+
+  <h3>STEP 1〜9</h3>
+  <ol class="steps">
+    <li><strong>キャンペーンを3つ作成</strong>
+      <div class="sub">「+キャンペーン作成」→ 目的「コンバージョン」。下記3本を作る。</div>
+      <table>
+        <thead><tr><th>キャンペーン名</th><th>月予算</th></tr></thead>
+        <tbody>
+          <tr><td>CP01_本命_フランチャイズ</td><td>¥180,000（日¥6,000）</td></tr>
+          <tr><td>CP02_派生_開業全般</td><td>¥120,000（日¥4,000）</td></tr>
+          <tr><td>CP03_テスト_新規KW</td><td>¥60,000（日¥2,000）</td></tr>
+        </tbody>
+      </table>
+    </li>
+    <li><strong>入札戦略を設定</strong><div class="sub">まず「コンバージョン数の最大化」。CVデータが少ない初期は「クリック数の最大化＋CPC上限¥1,000」でも可。蓄積後に切替。</div></li>
+    <li><strong>広告グループを作成</strong><div class="sub">各キャンペーン内に1〜2グループ。命名は「本命KW」「派生KW」など中身がわかる名前に（現状の"全部同じ名前"を解消）。</div></li>
+    <li><strong>キーワードを登録（フレーズ一致）</strong>
+      <div class="sub">CP01に本命、CP02に派生を入れる。</div>
+      <div class="code">▼CP01_本命
+"グループホーム フランチャイズ" ¥800
+"フランチャイズ グループホーム" ¥800
+"障がい者グループホーム 開業" ¥1,000
+"障害者グループホーム 開業" ¥1,000
+"グループホーム 開業" ¥800
+"グループホーム 加盟金" ¥600
+
+▼CP02_派生
+"福祉事業 開業" ¥600
+"共同生活援助 開業" ¥500
+"fc 起業" ¥500
+"起業 フランチャイズ" ¥500
+"福祉 ボランティア 起業" ¥500</div>
+      <div class="sub">※「福祉 フランチャイズ」は広すぎるため入れない（削除方針で確定）。</div>
+    </li>
+    <li><strong>除外キーワードを登録</strong>
+      <div class="sub">ツール → 対象外キーワードリスト → 全キャンペーンに適用。</div>
+      <div class="code">レンタルスペース / 在宅 / リフォーム / 木造 / ダイヤチェアー
+介護タクシー / 飲食 / カフェ / 塾 / 学習塾
+安い / 格安 / 無料 / 口コミ / 評判
+求人 / バイト / パート / 転職 / 就職
+入居 / 入所 / 利用 / 申込み / 体験</div>
+    </li>
+    <li><strong>広告文を登録</strong><div class="sub">タイトル・説明文は別資料「Yahoo広告 設定レシピ／広告文」をコピペ。電話番号 0120-540-522 を含める。</div></li>
+    <li><strong>遷移先URL＋UTMを設定</strong>
+      <div class="code">https://owl-fukushi.net/lp_zero-plan-g/?utm_source=yahoo&utm_medium=cpc&utm_campaign=CP01_franchise</div>
+      <div class="sub">★最重要。これでGA4にYahoo広告のCVが正しく計測される（現状の未計測を解消）。</div>
+    </li>
+    <li><strong>日予算・配信スケジュールを確認</strong><div class="sub">合計 日¥12,000。配信地域＝全国。デバイス＝スマホ優先（流入64%）。</div></li>
+    <li><strong>配信オンにして完了</strong><div class="sub">停止中の「0円プランLP Camp1」等の旧キャンペーンは整理（停止 or 削除）。</div></li>
+  </ol>
+</div>
+
+<!-- Google -->
+<div class="section google">
+  <div class="eyebrow">GOOGLE ADS</div>
+  <h2>🔵 Google広告 検索広告の設定手順</h2>
+  <p>管理画面：Google 広告（ads.google.com）。</p>
+
+  <ol class="steps">
+    <li><strong>不要なGDN（ディスプレイ）を停止</strong><div class="sub">最初にやる。即離脱（滞在6.5秒）でムダなので停止 → 浮いた予算を検索へ。</div></li>
+    <li><strong>検索キャンペーンを作成</strong><div class="sub">目標「リード」→ キャンペーンタイプ「検索」。月予算 ¥250,000（日¥8,300）。</div></li>
+    <li><strong>入札戦略</strong><div class="sub">「コンバージョン数の最大化」＋目標CPA上限 ¥20,000。CVデータ不足時は「クリック数の最大化」で開始。</div></li>
+    <li><strong>キーワードを登録（フレーズ一致）</strong>
+      <div class="code">"グループホーム フランチャイズ" ¥1,000
+"障がい者グループホーム フランチャイズ" ¥1,200
+"障害者グループホーム フランチャイズ" ¥1,200
+"グループホーム 開業" ¥800
+"福祉事業 開業" ¥600
+"共同生活援助 開業" ¥500
+"グループホーム 加盟金" ¥600
+（テスト枠・部分一致）障害福祉 起業 / 福祉ビジネス 始める / 支援事業 開業 ¥500</div>
+      <div class="sub">※「福祉 フランチャイズ」は入れない（削除方針で確定）。</div>
+    </li>
+    <li><strong>除外キーワードを登録</strong>
+      <div class="code">求人 / バイト / パート / 転職 / 採用
+入居 / 入所 / 利用 / 体験
+口コミ / 評判 / 比較サイト / 無料 / 安い / 格安
+家族 / 子供 / 高齢者 / 資格 / 講座 / 通信教育</div>
+    </li>
+    <li><strong>レスポンシブ検索広告を作成</strong><div class="sub">見出し15本・説明文4本は別資料「Google広告 設定レシピ／広告文」をコピペ。</div></li>
+    <li><strong>遷移先URL＋UTM</strong>
+      <div class="code">https://owl-fukushi.net/lp_zero-plan-g/?utm_source=google&utm_medium=cpc&utm_campaign=CP01_franchise&utm_term={keyword}</div>
+    </li>
+    <li><strong>コンバージョン設定</strong><div class="sub">主CV＝contact_complete（資料請求完了）。電話タップ（tel:0120540522）もCVに。GA4からインポート推奨。</div></li>
+    <li><strong>配信オンにして完了</strong></li>
+  </ol>
+</div>
+
+<!-- 設定後 -->
+<div class="section">
+  <div class="eyebrow">AFTER LAUNCH</div>
+  <h2>設定後の運用（最初の1ヶ月）</h2>
+  <ol class="steps">
+    <li><strong>2週間後：初回チェック</strong><div class="sub">検索語句レポートを見て、想定外KWが来ていたら除外KWに追加。</div></li>
+    <li><strong>勝ちKWを完全一致に格上げ</strong><div class="sub">CVが出たKWは完全一致に上げて入札強化。</div></li>
+    <li><strong>負けKWを停止</strong><div class="sub">クリックは多いがCV0のKWは一時停止。</div></li>
+    <li><strong>CV最適化へ切替</strong><div class="sub">CVが30日で十分貯まったら入札戦略を「コンバージョン数の最大化」に。</div></li>
+  </ol>
+  <div class="callout">
+    <strong>最重要ポイント：</strong>何よりまず<strong>UTM設定とCV計測</strong>。これが無いと「どのKWが効いたか」が分からず最適化できません。設定の一番の目的はここです。
+  </div>
+</div>
+
+<div class="footer">株式会社 斗（hishaku）</div>
+
+</div>
+</body>
+</html>
