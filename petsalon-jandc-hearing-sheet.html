@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEBサイト制作 ヒアリングシート — Petsalon J&C</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f4f7f5; color: #333; line-height: 1.8; }
+  .container { max-width: 900px; margin: 0 auto; padding: 40px 24px; }
+  header { text-align: center; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 2px solid #5aa17f; }
+  header h1 { font-size: 28px; font-weight: 700; color: #2c3e35; letter-spacing: 0.08em; margin-bottom: 8px; }
+  header p.subtitle { font-size: 13px; color: #888; margin-bottom: 16px; }
+  .header-meta { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; font-size: 13px; }
+  .header-meta input { border: none; border-bottom: 1px solid #ccc; padding: 4px; font-family: inherit; }
+  .purpose-box { background: #eaf5ef; border-left: 4px solid #5aa17f; padding: 16px 20px; margin-bottom: 32px; border-radius: 4px; }
+  .purpose-box h2 { font-size: 14px; color: #2f6b4d; margin-bottom: 8px; }
+  .purpose-box p { font-size: 13px; color: #555; line-height: 1.8; }
+  .note-box { background: #fff6ec; border-left: 4px solid #e08e3a; padding: 16px 20px; margin-bottom: 32px; border-radius: 4px; }
+  .note-box h3 { font-size: 14px; color: #a35e12; margin-bottom: 8px; }
+  .note-box ul { padding-left: 20px; font-size: 13px; color: #555; }
+  .note-box ul li { margin-bottom: 4px; }
+  section { background: #fff; border-radius: 12px; padding: 32px 28px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  section h2 { font-size: 20px; color: #2c3e35; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid #5aa17f; display: flex; align-items: center; gap: 12px; }
+  section h2 .num { background: #5aa17f; color: #fff; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .q-group { margin-bottom: 28px; }
+  .q-label { font-size: 14px; font-weight: 700; color: #444; margin-bottom: 6px; }
+  .required { color: #c0392b; font-size: 11px; margin-left: 6px; }
+  .q-hint { font-size: 12px; color: #999; margin-bottom: 8px; }
+  .q-sub { font-size: 12px; color: #777; margin: 4px 0 4px 12px; }
+  .q-example { font-size: 11px; color: #999; margin-top: 6px; background: #fafafa; padding: 8px 10px; border-radius: 4px; }
+  textarea { width: 100%; min-height: 80px; border: 1px solid #ddd; border-radius: 6px; padding: 10px; font-family: inherit; font-size: 13px; resize: vertical; line-height: 1.7; }
+  input[type="text"], input[type="date"] { border: 1px solid #ddd; border-radius: 6px; padding: 8px 10px; font-family: inherit; font-size: 13px; }
+  .options { display: flex; flex-wrap: wrap; gap: 8px 12px; margin: 6px 0; }
+  .options label { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; background: #eef3f0; padding: 4px 10px; border-radius: 16px; cursor: pointer; }
+  .options label:hover { background: #e0e9e4; }
+  .options input { margin: 0; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .domain-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .domain-grid .slot { display: flex; flex-direction: column; gap: 4px; }
+  .domain-grid label { font-size: 11px; color: #888; }
+  .domain-grid input { width: 100%; }
+  @media (max-width: 600px) {
+    .two-col, .domain-grid { grid-template-columns: 1fr; }
+  }
+  .ref-sites { margin-top: 12px; }
+  .ref-site { display: flex; align-items: center; gap: 12px; padding: 10px; border: 1px solid #eee; border-radius: 8px; margin-bottom: 8px; flex-wrap: wrap; }
+  .ref-site .num-badge { background: #e3ece7; color: #666; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+  .ref-site input { flex: 1; border: none; border-bottom: 1px solid #ddd; padding: 4px; font-size: 13px; }
+  .ref-site .ref-desc { font-size: 11px; color: #999; flex-basis: 100%; margin-top: 4px; padding-left: 36px; }
+  .ai-note { background: #f1f8f4; border-left: 3px solid #5aa17f; padding: 10px 14px; font-size: 12px; color: #666; border-radius: 4px; margin-top: 10px; }
+  footer { text-align: center; padding: 40px 0 20px; font-size: 12px; color: #bbb; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>WEBサイト制作 ヒアリングシート</h1>
+  <p class="subtitle">Petsalon J&amp;C（犬＆猫トリミングサロン）｜ディレクション面談でこのシートに沿ってお話を伺います</p>
+  <div class="header-meta">
+    <div><label>担当者：</label><input type="text" value=""></div>
+    <div><label>クライアント名：</label><input type="text" value="Petsalon J&C（伊藤 紫園 様）"></div>
+    <div><label>面談日：</label><input type="date" value="2026-06-01"></div>
+  </div>
+</header>
+
+<div class="purpose-box">
+  <h2>このシートの使い方（鈴木さん向け）</h2>
+  <p>
+    ① 面談前にこのシートを開いておく（録画ON）<br>
+    ② 下の「最優先で押さえる5項目」を意識しながら、セクション順に質問<br>
+    ③ 面談後、録画の文字起こしをAIに読ませてサイト文章を自動生成<br>
+    ④ 制作共有シート（JPクレスト様式）に転記
+  </p>
+</div>
+
+<div style="background:#eaf5ef; border:2px solid #5aa17f; border-radius:10px; padding:18px 20px; margin-bottom:32px;">
+  <h3 style="font-size:15px; color:#2f6b4d; margin-bottom:12px;">★ ディレクションで最優先に押さえる5項目（この案件の肝）</h3>
+  <ol style="padding-left:22px; font-size:13px; line-height:2.0;">
+    <li><strong>「猫がカットできる」を主役にするか</strong> — 商談で出た最大の強み。周辺（一番町・半蔵門・麹町）で猫カット対応の同業はネット上ほぼ確認できず、訴求の妥当性は高い。ただし「唯一」は断定リスクがあるため「数少ない／猫もOK」表現で。猫カットの実績写真・対応範囲（長毛のライオンカット等）を確認（→ セクション2・3）</li>
+    <li><strong>メニュー・料金表が未確定</strong> — 受注シートで「料金表確認できておりません」。トリミング（犬/猫・サイズ別）と一時預かり（ペットホテル）の料金は面談で必ず回収。これが無いとサイトの中核ページが作れない（→ セクション6）</li>
+    <li><strong>「長時間営業・出勤前/退勤後対応」の具体化</strong> — 飼い主の出勤前にお預かり→退勤後にお迎え、が独自価値。実際の営業時間・受付時間・対応曜日を確定（→ セクション1・3）</li>
+    <li><strong>店舗写真の素材内容</strong> — 「HP用の写真素材は用意あり」。点数・内容（店内/施術/スタッフ/施術前後のワンちゃんネコちゃん）を確認し、不足分はフリー素材10点で補完（→ セクション7）</li>
+    <li><strong>屋号・ドメイン・連絡先の確定</strong> — ドメイン候補「petsaron.jandc.com」は綴り要確認（petsalon-jandc.com 等を提案）。メールが受注シート(petsalonjandc@outlook.jp)とご連絡(saltn1226@outlook.jp)で不一致 → 正を確定（→ セクション1）</li>
+  </ol>
+  <p style="font-size:12px; color:#2f6b4d; margin-top:10px;">※「必須」マーク付きの設問を優先。料金表・営業時間・猫対応範囲の3点は、サイト中核ページの前提なので外せない。</p>
+</div>
+
+<!-- ========== 制作注意事項 ========== -->
+<div class="note-box">
+  <h3>制作注意事項（営業シート・受注シートより）</h3>
+  <ul>
+    <li><strong>サイト種別：通常サイト（コーポレート型・6〜8ページ）</strong>。トップ＋ブログ込み</li>
+    <li><strong>業種：犬＆猫のトリミングサロン</strong>。一時預かり（ペットホテル）もOK</li>
+    <li><strong>最大の強み：周辺で数少ない「猫もカットできる」サロン</strong>（商談で言及。ネット調査でも一番町・半蔵門・麹町圏で猫カット対応店は未確認）</li>
+    <li>代表は経験豊富で、独立前のサロンでは後輩トリマーを指導する立場だった</li>
+    <li><strong>独自価値：長時間営業</strong>。飼い主の出勤前お預かり→退勤後お迎えが可能。犬猫がゆったりくつろげる空間</li>
+    <li><strong>写真提供あり</strong>（HP用素材はクライアント用意） ＋ フリー素材10点まで</li>
+    <li>アクセス解析あり（GA）。GBP権限付与サポート対象（付与アカウント：runbird.web@gmail.com）</li>
+    <li>代表の人柄：はきはき・さっぱり、自分の芯がある方</li>
+    <li><strong>★Instagram（@petsalonjc）が稼働中＝「プレオープン」状態。</strong>ここから判明した事実を以下に反映済：
+      <ul style="margin-top:4px; list-style:circle;">
+        <li><strong>ブランドカラー＝紺（ネイビー）×白</strong>。ロゴは紺地に白い犬＆猫のライン画＋筆記体「Petsalon J&C」</li>
+        <li><strong>内装＝白基調・大理石調・アーチ</strong>の清潔で上品な空間</li>
+        <li><strong>マイクロバブル（Thales）導入</strong>＝サービスの強み素材になる</li>
+        <li><strong>公式LINEあり</strong>（lin.ee/xFRmBvd）→ 予約導線に確定で使える</li>
+        <li>「〜価格について〜」投稿あり＝料金は存在。面談で正式な料金表を回収</li>
+      </ul>
+    </li>
+    <li><strong>ヒアリング未完の項目が多い</strong>（営業シートに「ヒアリングできておりません」多数）→ 6/1ディレクションでしっかり回収</li>
+  </ul>
+</div>
+
+<!-- ========== 1. 基本情報 ========== -->
+<section>
+  <h2><span class="num">1</span>基本情報・サイト設定</h2>
+
+  <div class="q-group">
+    <div class="q-label">店舗名 / 屋号 <span class="required">必須</span></div>
+    <div class="q-hint">英字表記・カナ表記・ロゴで使う正式表記を確定</div>
+    <textarea>Petsalon J&C（ペットサロン ジェーアンドシー）
+※サイト・ロゴでの表記ゆれ（J&C / J＆C / J and C）を確定</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">代表者名 <span class="required">必須</span></div>
+    <textarea>伊藤 紫園（イトウ シオン）</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">運営体制・スタッフ</div>
+    <div class="q-sub">代表お一人？ ほかにトリマーは？（スタッフ紹介ページを作るため人数・経歴を確認）</div>
+    <textarea>※ディレクションで確認
+【事前情報】代表は経験豊富、独立前のサロンで後輩を指導する立場だった</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="two-col">
+      <div>
+        <div class="q-label">住所 <span class="required">必須</span></div>
+        <textarea>東京都千代田区一番町15-20 一番町フェニックスビル202</textarea>
+      </div>
+      <div>
+        <div class="q-label">電話番号 <span class="required">必須</span></div>
+        <textarea>店舗：070-6626-0610
+代表：090-2650-3092（希望架電先）
+※サイト掲載は店舗番号でよいか確認</textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="two-col">
+      <div>
+        <div class="q-label">メールアドレス <span class="required">必須</span></div>
+        <textarea>① petsalonjandc@outlook.jp（受注内容共有シートPDF：連絡用＋WP/サーチコンソール/GA用）
+② saltn1226@outlook.jp（案件依頼メッセージ本文に記載）
+※出どころが別で不一致 → サイト掲載/問い合わせ受信用の正を面談で確定</textarea>
+      </div>
+      <div>
+        <div class="q-label">営業時間・定休日 <span class="required">必須</span></div>
+        <textarea>※ディレクションで確認（必須）
+【事前情報】長時間営業。出勤前お預かり〜退勤後お迎えに対応 → 開店/閉店の実時刻・受付時間・定休日を確定</textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">希望ドメイン <span class="required">必須</span></div>
+    <div class="q-hint">新規ドメイン（.com / .net のみ）。営業シート候補1は「petsaron.jandc.com」だが綴り（petsaron→petsalon）とサブドメイン形式を要確認</div>
+    <div class="domain-grid">
+      <div class="slot"><label>第1候補</label><input type="text" value="petsalon-jandc.com"></div>
+      <div class="slot"><label>第2候補</label><input type="text" value="jandc-pet.com"></div>
+      <div class="slot"><label>第3候補</label><input type="text" value="petsalon-jc.net"></div>
+    </div>
+    <div class="q-hint">※営業シート記載の「petsaron.jandc.com」はタイポ（petsaron）の可能性大。面談で正しい綴りと希望を確定</div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">現在のWEBサイト・SNS</div>
+    <textarea>【確認済み】
+・Instagram：@petsalonjc（https://www.instagram.com/petsalonjc/）稼働中。ハイライトに「プレオープン」「お休みカレンダー」→ 開業準備中で確定
+・公式LINE：lin.ee/xFRmBvd（Instagramプロフィールリンク）あり
+・既存HPはなし → 今回新規制作
+
+【Instagramから使える素材】内装写真（白基調・大理石・アーチ）／ロゴ（紺×白）／「〜価格について〜」投稿／マイクロバブル（Thales）導入の投稿
+※面談で「Instagramの写真・ロゴをHPに使ってよいか」を確認</textarea>
+  </div>
+</section>
+
+<!-- ========== 2. 事業・サービス ========== -->
+<section>
+  <h2><span class="num">2</span>事業内容・サービス</h2>
+
+  <div class="q-group">
+    <div class="q-label">どんなサービスを提供していますか？ <span class="required">必須</span></div>
+    <div class="q-sub">トリミング：犬・猫それぞれどこまで対応？（シャンプー/カット/部分カット/オプション）</div>
+    <div class="q-sub">猫のカット：ライオンカット・サマーカット等どこまで対応？長毛種対応？</div>
+    <div class="q-sub">一時預かり（ペットホテル）：日帰り/宿泊どちら？犬猫両方？</div>
+    <div class="q-sub">その他：爪切り・耳掃除・歯磨き・送迎などの単品メニューは？</div>
+    <textarea>【事前情報】
+・犬＆猫のトリミングサロン
+・一時預かり（ペットホテル）もOK
+・周辺で数少ない「猫もカットできる」サロン
+
+※各メニューの対応範囲をディレクションで確定</textarea>
+    <div class="q-example"><strong>AIが生成するページ：</strong>「トリミングメニュー」「一時預かり案内」「ご利用の流れ」</div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">一時預かり（ペットホテル）の運用 <span class="required">必須</span></div>
+    <div class="q-sub">受付の時間帯・最大預かり時間（長時間営業の具体時間）</div>
+    <div class="q-sub">利用条件（ワクチン接種証明の要否など）</div>
+    <div class="q-sub">猫の預かりにも対応？犬猫を分けるスペースは？</div>
+    <textarea>【事前情報】飼い主の出勤前にお預かり、退勤後にお迎えが可能。犬猫がゆったりくつろげる空間
+※一般にペットホテルはワクチン証明が利用条件。当店の条件・時間・料金を確認</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">ご利用の流れ</div>
+    <div class="q-sub">予約 → 来店/送迎 → カウンセリング → 施術 → お迎え、の流れを確認</div>
+    <textarea>※ディレクションで確認（初めての方向けに「ご利用の流れ」ページを作成）</textarea>
+  </div>
+</section>
+
+<!-- ========== 3. 強み・差別化 ========== -->
+<section>
+  <h2><span class="num">3</span>強み・選ばれる理由</h2>
+
+  <div class="q-group">
+    <div class="q-label">他のトリミングサロンと比べて、ここが違う！というポイントは？ <span class="required">必須</span></div>
+    <div class="q-sub">猫カット対応：周辺で数少ない強み。猫特有の配慮（短時間施術・性格対応）でアピールできること</div>
+    <div class="q-sub">長時間営業：共働き・多忙な飼い主に刺さる独自価値</div>
+    <div class="q-sub">代表の経験・指導歴：技術への安心感</div>
+    <textarea>【事前情報（営業シート＋Instagramより）】
+① 周辺では数少ない「猫もカットできる」サロン
+② 長時間営業（出勤前お預かり〜退勤後お迎え）
+③ 代表は経験豊富、独立前サロンで後輩を指導する立場だった
+④ 犬猫がゆったりくつろげる空間（白基調・大理石・アーチの清潔で上品な内装）
+⑤ マイクロバブル（Thales）導入 ＝ 皮膚・被毛にやさしい洗浄を訴求できる設備の強み
+
+※具体エピソード・実績で裏付けを引き出す。マイクロバブルの効果・推し方を確認</textarea>
+    <div class="q-example"><strong>AIが生成するページ：</strong>「選ばれる理由」「猫のトリミングについて」</div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">開業のきっかけ・想い <span class="required">必須</span></div>
+    <div class="q-sub">なぜ独立してこのサロンを始めたのか</div>
+    <div class="q-sub">トリマーとしてのこだわり・大切にしていること</div>
+    <div class="q-sub">猫カットに力を入れる理由（なぜ周りはやらないのか／自分はなぜできるのか）</div>
+    <textarea>※ディレクションで深掘り
+【人柄】はきはき・さっぱりした性格、自分の芯がある方 → 率直な言葉が拾える想定</textarea>
+  </div>
+</section>
+
+<!-- ========== 4. ターゲット・お客様像 ========== -->
+<section>
+  <h2><span class="num">4</span>ターゲット・お客様像</h2>
+
+  <div class="q-group">
+    <div class="q-label">どんなお客様に来てほしいですか？ <span class="required">必須</span></div>
+    <div class="q-sub">犬の飼い主／猫の飼い主、どちらを主に狙う？</div>
+    <div class="q-sub">「猫のカットができる店を探していた」層／「共働きで預けたい」層、どちらに重心？</div>
+    <textarea>【営業シートより】男女両方／20〜60代と幅広い
+【商圏（推測）】一番町・半蔵門・麹町は職住近接のオフィス街＋高級住宅地 → 共働き・単身高所得・小型犬/室内猫の飼い主が多い想定
+
+※ディレクションで実際の客層・狙いたい層を確認</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">お客様がよく抱えている悩み・不安 <span class="required">必須</span></div>
+    <div class="q-sub">「猫をカットしてくれる店が近くにない」</div>
+    <div class="q-sub">「仕事が忙しく、営業時間内に預けて受け取れない」</div>
+    <div class="q-sub">「うちの子は人見知り／シニアで、丁寧に見てくれる店がいい」</div>
+    <textarea>※ディレクションで実際のお客様の声を確認</textarea>
+    <div class="q-example"><strong>AIが生成するページ：</strong>「こんなお悩みありませんか？」「こんな方におすすめ」</div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">商圏エリア <span class="required">必須</span></div>
+    <div class="q-sub">主な来店エリア（一番町・半蔵門・麹町・番町エリア／千代田区全域）</div>
+    <div class="q-sub">送迎エリアの有無</div>
+    <textarea>【対策キーワード（営業シートより）】
+地域：半蔵門 / 一番町 / 麹町 / 千代田区
+業種：ペット
+サービス：トリミングサロン</textarea>
+  </div>
+</section>
+
+<!-- ========== 5. お客様の声・実績 ========== -->
+<section>
+  <h2><span class="num">5</span>お客様の声・実績</h2>
+  <div class="q-group">
+    <div class="q-label">事例紹介・お客様の声（受注ページに含む）</div>
+    <div class="q-sub">施術前後の写真（ビフォーアフター）を掲載可能か</div>
+    <div class="q-sub">猫カットの実例写真は特に強い武器 → 掲載可否</div>
+    <div class="q-sub">常連様・印象に残るエピソード／口コミの掲載可否</div>
+    <textarea>※ディレクションで確認
+※新規開業のため口コミ蓄積はこれから → 開業時にGoogle口コミ・Instagram投稿を並行構築する方針を提案</textarea>
+  </div>
+</section>
+
+<!-- ========== 6. メニュー・料金 ========== -->
+<section>
+  <h2><span class="num">6</span>メニュー・料金表（最重要・未回収）</h2>
+
+  <div class="q-group">
+    <div class="q-label">トリミング料金 <span class="required">必須</span></div>
+    <div class="q-hint">受注シートで「料金表確認できておりません」。サイトの中核ページなので面談で必ず回収</div>
+    <div class="q-sub">犬：犬種・サイズ別（小型/中型/大型）のシャンプー・カット料金</div>
+    <div class="q-sub">猫：シャンプー・カット（ライオンカット等）料金</div>
+    <div class="q-sub">オプション（爪切り・歯磨き・薬用シャンプー・毛玉処理 等）</div>
+    <textarea>※面談で料金表を回収（写真/メモ可）。料金表ページ＋トップの料金抜粋を作成
+
+【参考相場（業界一般・推測）】
+・犬シャンプー ¥3,500〜／カット込み 小型 ¥5,000〜
+・猫シャンプー ¥5,000前後／ライオンカット ¥7,000〜（店により幅大）
+→ あくまで叩き台。当店の実料金で上書き</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">一時預かり（ペットホテル）料金 <span class="required">必須</span></div>
+    <div class="q-sub">日帰り料金／1泊料金（犬・猫・サイズ別）</div>
+    <div class="q-sub">長時間預かりの料金体系（時間単位か一律か）</div>
+    <textarea>※面談で回収
+【参考相場（業界一般・推測）】猫1泊 都市部 ¥3,000〜5,000、日帰り ¥1,000台〜。繁忙期割増あり</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">支払い方法</div>
+    <div class="q-sub">現金のみ／クレジットカード／電子マネー／QR決済の対応</div>
+    <textarea>※ディレクションで確認</textarea>
+  </div>
+</section>
+
+<!-- ========== 7. デザイン・雰囲気 ========== -->
+<section>
+  <h2><span class="num">7</span>サイトのデザイン・雰囲気</h2>
+
+  <div class="q-group">
+    <div class="q-label">サイト全体の印象 <span class="required">必須</span></div>
+    <div class="q-hint">Instagramのブランド表現（紺×白・白基調内装）から方向性を反映。営業シートは未記入のため面談で最終確定</div>
+    <p style="font-size:13px; color:#666; margin: 8px 0 4px;">印象（複数OK）</p>
+    <div class="options">
+      <label><input type="checkbox"><span>誠実</span></label>
+      <label><input type="checkbox" checked><span>親しみ・優しい</span></label>
+      <label><input type="checkbox" checked><span>清潔</span></label>
+      <label><input type="checkbox" checked><span>高級感</span></label>
+      <label><input type="checkbox"><span>力強い</span></label>
+    </div>
+    <p style="font-size:13px; color:#666; margin: 12px 0 4px;">スタイル（複数OK）</p>
+    <div class="options">
+      <label><input type="checkbox"><span>シンプル</span></label>
+      <label><input type="checkbox" checked><span>スタイリッシュ</span></label>
+      <label><input type="checkbox"><span>カジュアル</span></label>
+      <label><input type="checkbox" checked><span>ナチュラル</span></label>
+    </div>
+    <textarea>【Instagramのブランド表現から】紺×白のロゴ、白基調・大理石・アーチの内装＝「清潔・上品・スタイリッシュ」寄り。
+そこに犬猫サロンらしい「親しみ・優しさ」を加えたトーンが軸。番町エリアの落ち着いた客層にも合致。
+※既存ブランド（ロゴ・内装の紺白）に揃えるのが基本。面談で温かみ寄り／上品寄りのバランスを確定</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">店舗カラー / アクセントカラー</div>
+    <div class="q-hint">Instagramのロゴ・内装から判明 → 既存ブランドカラーに揃える</div>
+    <div class="options">
+      <label><input type="checkbox" checked><span>紺（ネイビー）</span></label>
+      <label><input type="checkbox" checked><span>白</span></label>
+      <label><input type="checkbox"><span>青</span></label>
+      <label><input type="checkbox"><span>水色</span></label>
+      <label><input type="checkbox"><span>緑</span></label>
+      <label><input type="checkbox"><span>ピンク</span></label>
+      <label><input type="checkbox"><span>ベージュ</span></label>
+      <label><input type="checkbox"><span>グレー</span></label>
+    </div>
+    <textarea>【確定（Instagramより）】ベース＝白／メイン＝紺（ネイビー）。ロゴが紺地×白ライン画、内装も白基調＋大理石。
+【提案】白×ネイビーを軸に、写真（犬猫）で温かみを足す。アクセントに淡いゴールドやベージュを少量入れると「清潔×上品」が決まる。
+※ロゴのカラーコード（紺の正確な色）を面談で取得 or Instagram画像から抽出してサイトに統一</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">参考サイト（実在確認済み・6件）</div>
+    <div class="q-hint">先頭は当社（ランバード）制作の同業ドッグサロン実績。以下5件は「親しみ・優しい／清潔」系の好例。すべて稼働確認済み（HTTP 200）</div>
+    <div class="ref-sites">
+
+      <div class="ref-site" style="border-color:#c0392b; border-width:2px;">
+        <span class="num-badge" style="background:#c0392b; color:#fff;">自社</span>
+        <a href="https://annmerry.net/" target="_blank" rel="noopener" style="flex:1; font-size:13px; color:#0066cc; text-decoration:underline;">https://annmerry.net/</a>
+        <div class="ref-desc"><strong>ドッグサロン AnnMerry — 当社（ランバード）制作の同業実績。</strong>犬のトリミングサロンのWordPressサイト。料金（サイズ別）・サービスの流れ・トリミングアイテム紹介など、トリミング業の見せ方が一通り入っている。<strong>「うちが作るとこうなる」という品質提示＋同業構成の叩き台</strong>として面談で提示すると効果大</div>
+      </div>
+
+      <div class="ref-site" style="border-color:#5aa17f; border-width:2px;">
+        <span class="num-badge" style="background:#5aa17f; color:#fff;">A</span>
+        <a href="https://petsalon-nico.com/" target="_blank" rel="noopener" style="flex:1; font-size:13px; color:#0066cc; text-decoration:underline;">https://petsalon-nico.com/</a>
+        <div class="ref-desc"><strong>Petsalon nico — 親しみ・清潔系の到達点（最有力）。</strong>パステル基調＋広めの余白、施術後の幸せそうな犬とオーナーのライフスタイル写真。料金表が明朗、LINE/電話の二導線。J&C様の「親しみ・優しい／清潔」に最も近い</div>
+      </div>
+
+      <div class="ref-site" style="border-color:#5aa17f; border-width:2px;">
+        <span class="num-badge" style="background:#5aa17f; color:#fff;">B</span>
+        <a href="https://www.roots-flora.com/" target="_blank" rel="noopener" style="flex:1; font-size:13px; color:#0066cc; text-decoration:underline;">https://www.roots-flora.com/</a>
+        <div class="ref-desc"><strong>トリミングサロン FLORA — 清潔感＋安心感。</strong>白背景＋アクセントカラー。FVスライダー＋メインコピー＋トリマー紹介、シニア犬対応を訴求、予約CTAを随所に配置。「代表の経験・技術」を見せる構成の参考</div>
+      </div>
+
+      <div class="ref-site" style="border-color:#5aa17f; border-width:2px;">
+        <span class="num-badge" style="background:#5aa17f; color:#fff;">C</span>
+        <a href="https://trim.nagoyamirai.jp/" target="_blank" rel="noopener" style="flex:1; font-size:13px; color:#0066cc; text-decoration:underline;">https://trim.nagoyamirai.jp/</a>
+        <div class="ref-desc"><strong>みらいトリミングサロン — モダンで清潔感。</strong>アニメーション活用で今っぽさ。番町エリアの上品な客層に向けて少し洗練を足したいときの参考</div>
+      </div>
+
+      <div class="ref-site" style="border-color:#5aa17f; border-width:2px;">
+        <span class="num-badge" style="background:#5aa17f; color:#fff;">D</span>
+        <a href="https://www.petsalon-m-style.com/" target="_blank" rel="noopener" style="flex:1; font-size:13px; color:#0066cc; text-decoration:underline;">https://www.petsalon-m-style.com/</a>
+        <div class="ref-desc"><strong>ペットサロン M-style — 親密感のあるトーン。</strong>オーナーとの距離が近い柔らかい印象。個人サロンの温かみを出したいときの参考。スタッフ・店内紹介の見せ方が丁寧</div>
+      </div>
+
+      <div class="ref-site" style="border-color:#5aa17f; border-width:2px;">
+        <span class="num-badge" style="background:#5aa17f; color:#fff;">E</span>
+        <a href="https://www.p-frill.jp/" target="_blank" rel="noopener" style="flex:1; font-size:13px; color:#0066cc; text-decoration:underline;">https://www.p-frill.jp/</a>
+        <div class="ref-desc"><strong>トリミングサロン フリル — 洗練・やや高級感。</strong>番町エリアの上品な客層に寄せる場合の参考。清潔感の中に上質さを加えたトーン</div>
+      </div>
+
+    </div>
+    <div class="ai-note"><strong>借りる要素：</strong>明朗な料金表の見せ方／施術後の笑顔写真をFVに／トリマー紹介で安心感／LINE＋電話の二重予約導線。<br><strong>方向性の振り幅：</strong>A・D＝親しみ温かみ寄り ／ C・E＝洗練・上品寄り。面談で「どちら寄りが好みか」を1問で絞れる構成にしています</div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">参考サイト【クライアント好み】 — ディレクションで埋める</div>
+    <div class="q-hint">伊藤様が「こんな感じにしたい」と思う参考サイトがあれば</div>
+    <div class="ref-sites">
+      <div class="ref-site">
+        <span class="num-badge">1</span>
+        <input type="text" value="">
+        <div class="ref-desc">※ディレクションで確認</div>
+      </div>
+      <div class="ref-site">
+        <span class="num-badge">2</span>
+        <input type="text" value="">
+        <div class="ref-desc">※好きなデザイン・雰囲気のサイト</div>
+      </div>
+    </div>
+    <div class="ai-note">
+      <strong>制作方針候補：</strong>FV（くつろぐ犬猫＋短いコピー「猫もカットできる、番町のトリミングサロン」＋予約CTA）→ 選ばれる理由（猫カット／長時間営業／経験）→ メニュー・料金 → 一時預かり案内 → ご利用の流れ → スタッフ紹介 → アクセス → お問い合わせ
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">写真・素材について</div>
+    <div class="options">
+      <label><input type="radio" name="photo"><span>写真提供なし</span></label>
+      <label><input type="radio" name="photo" checked><span>写真提供あり</span></label>
+      <label><input type="radio" name="photo"><span>撮影あり</span></label>
+      <label><input type="radio" name="photo"><span>フリー素材10点迄</span></label>
+      <label><input type="radio" name="photo"><span>フリー素材20点迄</span></label>
+    </div>
+    <textarea>営業シート：写真提供あり ＋ フリー素材10点迄
+※提供素材の点数・内容（店内/施術風景/スタッフ/施術前後）を確認。猫カットのビフォーアフター写真があれば最優先で使用。不足はフリー素材で補完</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">動画について</div>
+    <div class="options">
+      <label><input type="radio" name="video" checked><span>動画提供なし</span></label>
+      <label><input type="radio" name="video"><span>動画提供あり</span></label>
+      <label><input type="radio" name="video"><span>撮影・編集あり</span></label>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 8. ページ構成 ========== -->
+<section>
+  <h2><span class="num">8</span>ページ構成・機能</h2>
+
+  <div class="q-group">
+    <div class="q-label">サイト種別</div>
+    <div class="options">
+      <label><input type="radio" name="sitetype" checked><span>通常サイト（6-8P）</span></label>
+      <label><input type="radio" name="sitetype"><span>ランディングページ</span></label>
+      <label><input type="radio" name="sitetype"><span>ECサイト</span></label>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">作りたいページ <span class="required">必須</span></div>
+    <div class="q-hint">営業シートで選択済みの構成。必要に応じて面談で増減</div>
+    <div class="options">
+      <label><input type="checkbox" checked><span>トップページ</span></label>
+      <label><input type="checkbox" checked><span>ブログ</span></label>
+      <label><input type="checkbox" checked><span>事業・サービス紹介（トリミング/一時預かり）</span></label>
+      <label><input type="checkbox" checked><span>スタッフ紹介</span></label>
+      <label><input type="checkbox" checked><span>メニュー・料金表</span></label>
+      <label><input type="checkbox" checked><span>アクセス</span></label>
+      <label><input type="checkbox" checked><span>事例紹介・お客様の声</span></label>
+      <label><input type="checkbox" checked><span>お問い合わせフォーム＆プライバシーポリシー</span></label>
+      <label><input type="checkbox"><span>会社概要</span></label>
+      <label><input type="checkbox"><span>よくある質問</span></label>
+    </div>
+    <textarea>※「ご利用の流れ」「猫のトリミングについて（強み訴求）」をパーツ or 下層に追加検討</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">予約・お問い合わせ方法 <span class="required">必須</span></div>
+    <div class="options">
+      <label><input type="checkbox" checked><span>電話</span></label>
+      <label><input type="checkbox" checked><span>お問い合わせフォーム（メール）</span></label>
+      <label><input type="checkbox" checked><span>公式LINE</span></label>
+      <label><input type="checkbox"><span>外部サイト</span></label>
+    </div>
+    <textarea>営業シート：電話・お問い合わせフォーム・公式LINE
+【確認済み】公式LINEあり（lin.ee/xFRmBvd）→ サイトに友だち追加ボタンを設置。予約はLINE＋電話の二導線がトリミング業界の定番</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">パーツ（営業シート未記入 → 面談で選定）</div>
+    <div class="options">
+      <label><input type="checkbox" checked><span>よくある悩み</span></label>
+      <label><input type="checkbox" checked><span>サービスの強み</span></label>
+      <label><input type="checkbox" checked><span>ご利用の流れ</span></label>
+      <label><input type="checkbox"><span>コンセプト</span></label>
+      <label><input type="checkbox" checked><span>代表あいさつ</span></label>
+      <label><input type="checkbox"><span>プロモーション動画</span></label>
+      <label><input type="checkbox" checked><span>よくある質問</span></label>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 9. 集客・今後 ========== -->
+<section>
+  <h2><span class="num">9</span>集客・今後の展望</h2>
+
+  <div class="q-group">
+    <div class="q-label">ホームページで一番達成したいことは？ <span class="required">必須</span></div>
+    <div class="q-sub">新規予約を増やしたい？／猫カットの認知を取りたい？／一時預かりの稼働を上げたい？</div>
+    <textarea>※ディレクションで優先順位を確認
+【想定】新規開業 → まずは「猫もカットできる番町のサロン」の認知獲得＋予約導線づくりが主目的</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">ユーザーに知ってほしいこと</div>
+    <textarea>【営業シートより】
+・長時間営業で、飼い主の出勤前にお預かり・退勤後にお迎えが可能
+・犬、猫がゆったりくつろげる空間
+・周辺では数少ない、猫もカットできるサロン</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">今後の事業展開</div>
+    <textarea>※ディレクションで確認（メニュー拡大・グッズ販売・SNS強化など）</textarea>
+  </div>
+</section>
+
+<!-- ========== 10. MEO/SEO ========== -->
+<section>
+  <h2><span class="num">10</span>対策キーワード・MEO設定</h2>
+
+  <div class="q-group">
+    <div class="q-label">検索で見つけてもらいたいキーワード</div>
+    <div class="q-hint">受注シートのMEOクラウド対策設定（最大7つ）より</div>
+    <textarea>【希望対策設定（受注シート）】
+1. 半蔵門 トリミング
+2. 一番町 トリミング
+3. 麹町 トリミング
+4. 千代田区 トリミング
+5. 千代田区 トリミング 猫
+6. （ヒアリング未完）
+7. （ヒアリング未完）
+
+【追加提案】猫 トリミング 東京 ／ 猫 カット 千代田区 ／ ペットホテル 千代田区 ／ 番町 トリミング
+※「猫」関連は競合が少なく勝ち筋。設定6・7に猫・ペットホテル系を充てる提案</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">Googleビジネスプロフィール（GBP）</div>
+    <div class="q-hint">受注シート：権限付与サポート対象。付与アカウント runbird.web@gmail.com</div>
+    <textarea>【方針】新規開業のためGBPはこれから整備。店名・住所・カテゴリ（トリミングサロン/ペット美容室）で登録 → 口コミ蓄積・写真投稿を並行。
+※実店舗あり（一番町フェニックスビル202）→ GBP登録可能。猫カットのビフォーアフター写真投稿が差別化に効く</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">アクセス解析</div>
+    <textarea>営業シート：アクセス解析あり（GA4）
+※GA用Gmailアドレスを確認（連絡用メールと同一か別か）</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">SNSアカウント</div>
+    <textarea>【確認済み】Instagram @petsalonjc（稼働中・プレオープン投稿あり）／公式LINE lin.ee/xFRmBvd
+※サイトにInstagram・LINEへの導線を設置。猫カット・ビフォーアフターはInstagram映えが強く、サイト⇄SNS連携を推奨</textarea>
+  </div>
+</section>
+
+<!-- ========== AI生成ガイド ========== -->
+<section style="background: linear-gradient(135deg, #eef7f1, #e2f0e8); border: 1px solid #5aa17f;">
+  <h2 style="border-bottom-color: #5aa17f;"><span class="num" style="background:#2f6b4d;">AI</span>ディレクション録画 → サイト文章 自動生成ガイド</h2>
+
+  <div class="q-group">
+    <div class="q-label">AIに渡すプロンプト例</div>
+    <div class="ai-note" style="background: #fff;">
+      以下はディレクション面談の文字起こしです。Petsalon J&C 様（東京・千代田区一番町の犬＆猫トリミングサロン／一時預かり対応）のWEBサイト各ページの文章を作成してください。<br><br>
+
+      <strong>【生成してほしいページ】</strong><br>
+      ① トップページ（FVコピー＋強みの要約＋予約導線）<br>
+      ② トリミングメニュー紹介（犬・猫、猫カットの強み）<br>
+      ③ 一時預かり（ペットホテル）案内<br>
+      ④ ご利用の流れ<br>
+      ⑤ 選ばれる理由（猫カット／長時間営業／経験）<br>
+      ⑥ 代表あいさつ・想い<br>
+      ⑦ スタッフ紹介<br>
+      ⑧ よくある質問（FAQ）5個以上<br>
+      ⑨ アクセス・店舗情報<br><br>
+
+      <strong>【トーン】</strong><br>
+      - ターゲットは20〜60代の犬・猫の飼い主（番町エリアの共働き・室内飼い層）<br>
+      - 紺×白の上品で清潔なブランド（既存ロゴ・内装に準拠）＋ 犬猫サロンの親しみ・優しさ<br>
+      - 「猫もカットできる（周辺で数少ない）」「長時間営業で出勤前〜退勤後対応」「犬猫がくつろげる空間」「マイクロバブル導入」を軸に訴求<br>
+      - 「唯一」は断定せず「数少ない」「猫もOK」で表現<br>
+      - 各ページ300〜500文字程度<br><br>
+
+      <strong>【文字起こしデータ】</strong><br>
+      （ここにディレクション録画の文字起こしを貼り付け）
+    </div>
+  </div>
+</section>
+
+<footer>
+  WEBサイト制作 ヒアリングシート — 株式会社ランバード（営業：株式会社JPクレスト）<br>
+  審査期限：2026/8/25 ｜ ディレクション日：2026/6/1（月）11:00
+</footer>
+
+</div>
+
+<div class="action-bar" style="position:fixed; bottom:20px; right:20px; background:#fff; border:1px solid #5aa17f; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.12); padding:12px 16px; display:flex; gap:8px; align-items:center; z-index:100;">
+  <span id="saveStatus" style="font-size:11px; color:#888; margin-right:8px; min-width:90px;">未保存</span>
+  <button type="button" onclick="downloadJSON()" style="font-family:inherit; font-size:12px; font-weight:700; padding:8px 14px; border-radius:6px; border:none; cursor:pointer; background:#2f6b4d; color:#fff;">JSON保存</button>
+  <button type="button" onclick="printPage()" style="font-family:inherit; font-size:12px; font-weight:700; padding:8px 14px; border-radius:6px; border:1px solid #ddd; cursor:pointer; background:#eef3f0; color:#555;">印刷/PDF</button>
+  <button type="button" onclick="clearForm()" style="font-family:inherit; font-size:12px; font-weight:700; padding:8px 14px; border-radius:6px; border:1px solid #ddd; cursor:pointer; background:#eef3f0; color:#555;">クリア</button>
+</div>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'hp_hearing_sheet_petsalon_jandc_20260601';
+  const status = document.getElementById('saveStatus');
+  const fields = Array.from(document.querySelectorAll('input, textarea'));
+
+  fields.forEach((el, i) => { if (!el.dataset.fid) el.dataset.fid = 'f' + i; });
+
+  function loadSaved() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      fields.forEach(el => {
+        const v = data[el.dataset.fid];
+        if (v === undefined) return;
+        if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!v;
+        else el.value = v;
+      });
+      if (data.__savedAt) {
+        status.textContent = '保存済 ' + new Date(data.__savedAt).toLocaleString('ja-JP', {month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
+        status.style.color = '#4a9d6a';
+      }
+    } catch (e) { console.error(e); }
+  }
+
+  function save() {
+    const data = { __savedAt: Date.now() };
+    fields.forEach(el => {
+      if (el.type === 'checkbox' || el.type === 'radio') data[el.dataset.fid] = el.checked;
+      else data[el.dataset.fid] = el.value;
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      status.textContent = '保存済 ' + new Date().toLocaleTimeString('ja-JP', {hour:'2-digit', minute:'2-digit'});
+      status.style.color = '#4a9d6a';
+    } catch (e) { console.error(e); }
+  }
+
+  let saveTimer = null;
+  function scheduleSave() {
+    status.textContent = '入力中...';
+    status.style.color = '#888';
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(save, 600);
+  }
+
+  fields.forEach(el => {
+    el.addEventListener('input', scheduleSave);
+    el.addEventListener('change', scheduleSave);
+  });
+
+  loadSaved();
+
+  window.downloadJSON = function() {
+    const data = {};
+    fields.forEach(el => {
+      const key = el.previousElementSibling && el.previousElementSibling.textContent
+        ? el.previousElementSibling.textContent.replace(/必須/g,'').trim()
+        : el.dataset.fid;
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        if (el.checked) data[key] = (data[key] ? data[key]+', ' : '') + (el.nextElementSibling ? el.nextElementSibling.textContent : 'on');
+      } else if (el.value) {
+        data[key] = el.value;
+      }
+    });
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'PetsalonJandC_hearing_' + new Date().toISOString().slice(0,10) + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  window.printPage = function() { window.print(); };
+
+  window.clearForm = function() {
+    if (!confirm('入力内容をすべてクリアしますか？')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  };
+})();
+</script>
+
+</body>
+</html>
