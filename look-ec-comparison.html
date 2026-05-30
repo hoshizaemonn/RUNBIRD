@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EC構成比較図解 — .look（どっとるっく）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f4f6f8; color: #222; line-height: 1.7; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+  h1 { font-size: 28px; text-align: center; margin-bottom: 8px; color: #1a3a5c; }
+  .sub { text-align: center; color: #777; font-size: 13px; margin-bottom: 36px; }
+  h2 { font-size: 20px; color: #1a3a5c; margin: 40px 0 16px; padding-left: 12px; border-left: 5px solid #2a7d4f; }
+  h3 { font-size: 15px; margin-bottom: 12px; color: #444; }
+
+  .diagram-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 20px; }
+  @media (max-width: 760px) { .diagram-grid { grid-template-columns: 1fr; } }
+
+  .card { background: #fff; border-radius: 14px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .card.bad { border-top: 5px solid #c0392b; }
+  .card.good { border-top: 5px solid #2a7d4f; }
+  .badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; margin-bottom: 8px; }
+  .badge.bad { background: #fde2e0; color: #c0392b; }
+  .badge.good { background: #d4ecdc; color: #2a7d4f; }
+
+  .svg-box { background: #f9fafc; border: 1px solid #e3e7ec; border-radius: 8px; padding: 12px; margin: 12px 0; }
+  svg { display: block; max-width: 100%; height: auto; }
+
+  .feature-list { font-size: 13px; margin-top: 12px; }
+  .feature-list li { list-style: none; padding: 4px 0 4px 22px; position: relative; }
+  .feature-list li::before { position: absolute; left: 0; font-weight: 700; }
+  .feature-list li.ok::before { content: "⭕️"; color: #2a7d4f; }
+  .feature-list li.ng::before { content: "❌"; color: #c0392b; }
+  .feature-list li.warn::before { content: "△"; color: #d4a017; }
+
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin-bottom: 24px; font-size: 13px; }
+  th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #e9edf1; vertical-align: top; }
+  th { background: #1a3a5c; color: #fff; font-weight: 600; }
+  td.center { text-align: center; }
+  td .o { color: #2a7d4f; font-weight: 700; }
+  td .x { color: #c0392b; font-weight: 700; }
+  td .t { color: #d4a017; font-weight: 700; }
+
+  .note { background: #fff8e7; border-left: 4px solid #d4a017; padding: 14px 18px; border-radius: 6px; font-size: 13px; margin: 16px 0; }
+  .conclusion { background: linear-gradient(135deg,#1a3a5c,#2a7d4f); color: #fff; padding: 24px; border-radius: 12px; margin: 32px 0; text-align: center; font-size: 16px; line-height: 1.9; }
+  .conclusion strong { font-size: 22px; display: block; margin-bottom: 8px; }
+
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 12px; margin-top: 12px; }
+  .link-card { background: #fff; border: 1px solid #dce4ec; border-radius: 8px; padding: 14px; font-size: 12px; }
+  .link-card a { color: #0066cc; text-decoration: none; word-break: break-all; }
+  .link-card a:hover { text-decoration: underline; }
+  .link-card .label { font-weight: 700; color: #1a3a5c; display: block; margin-bottom: 4px; font-size: 13px; }
+
+  footer { text-align: center; color: #aaa; font-size: 11px; padding: 32px 0 16px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>.look（どっとるっく）｜EC構成 比較図解</h1>
+<p class="sub">MakeShop vs EC-CUBE｜「一般＋成人を1サイトで分ける」要件で比較</p>
+
+<!-- ========== 図1: 年齢認証のかかり方 ========== -->
+<h2>図1. 年齢認証のかかり方の違い（ここが運命の分かれ目）</h2>
+
+<div class="diagram-grid">
+  <!-- MakeShop -->
+  <div class="card bad">
+    <span class="badge bad">MakeShop / カラーミー（SaaS）</span>
+    <h3>ショップ全体に年齢認証がかかる</h3>
+    <div class="svg-box">
+      <svg viewBox="0 0 360 230">
+        <rect x="20" y="15" width="320" height="30" fill="#c0392b" rx="6"/>
+        <text x="180" y="35" fill="#fff" font-size="13" text-anchor="middle" font-weight="700">🚪 18歳以上ですか？（全員が通る）</text>
+        <line x1="180" y1="50" x2="180" y2="75" stroke="#c0392b" stroke-width="2" marker-end="url(#arrow1)"/>
+        <rect x="20" y="80" width="320" height="135" fill="#fde2e0" stroke="#c0392b" stroke-width="2" rx="8"/>
+        <text x="180" y="105" fill="#c0392b" font-size="12" text-anchor="middle" font-weight="700">ショップ全体（認証の奥）</text>
+        <rect x="40" y="120" width="130" height="80" fill="#fff" stroke="#c0392b" stroke-dasharray="3,3" rx="6"/>
+        <text x="105" y="145" fill="#666" font-size="11" text-anchor="middle">一般商品</text>
+        <text x="105" y="165" fill="#666" font-size="10" text-anchor="middle">（古本・漫画）</text>
+        <text x="105" y="185" fill="#c0392b" font-size="9" text-anchor="middle">普通客にも認証</text>
+        <rect x="190" y="120" width="130" height="80" fill="#fff" stroke="#c0392b" rx="6"/>
+        <text x="255" y="145" fill="#c0392b" font-size="11" text-anchor="middle" font-weight="700">R18商品</text>
+        <text x="255" y="165" fill="#666" font-size="10" text-anchor="middle">（アダルト）</text>
+        <defs><marker id="arrow1" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><polygon points="0 0, 8 4, 0 8" fill="#c0392b"/></marker></defs>
+      </svg>
+    </div>
+    <ul class="feature-list">
+      <li class="ng">普通の古本客にも年齢認証ゲートが出る</li>
+      <li class="ng">分けたいなら結局 <strong>2ショップ＝2契約必要</strong>（カラーミーで判明した問題）</li>
+    </ul>
+  </div>
+
+  <!-- EC-CUBE -->
+  <div class="card good">
+    <span class="badge good">EC-CUBE（自社設置）</span>
+    <h3>カテゴリ単位で年齢認証がかかる</h3>
+    <div class="svg-box">
+      <svg viewBox="0 0 360 230">
+        <rect x="20" y="15" width="320" height="30" fill="#2a7d4f" rx="6"/>
+        <text x="180" y="35" fill="#fff" font-size="13" text-anchor="middle" font-weight="700">🏠 .look（誰でも入れる入口）</text>
+        <line x1="105" y1="50" x2="105" y2="75" stroke="#2a7d4f" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="255" y1="50" x2="255" y2="75" stroke="#c0392b" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrow3)"/>
+        <rect x="40" y="80" width="130" height="135" fill="#d4ecdc" stroke="#2a7d4f" stroke-width="2" rx="6"/>
+        <text x="105" y="105" fill="#2a7d4f" font-size="12" text-anchor="middle" font-weight="700">一般カテゴリ</text>
+        <text x="105" y="125" fill="#444" font-size="10" text-anchor="middle">古本・漫画・</text>
+        <text x="105" y="140" fill="#444" font-size="10" text-anchor="middle">おもちゃ等</text>
+        <text x="105" y="180" fill="#2a7d4f" font-size="11" text-anchor="middle" font-weight="700">認証なしで購入可</text>
+        <rect x="190" y="80" width="130" height="22" fill="#c0392b" rx="4"/>
+        <text x="255" y="96" fill="#fff" font-size="10" text-anchor="middle" font-weight="700">🚪 18歳以上ですか？</text>
+        <rect x="190" y="108" width="130" height="107" fill="#fde2e0" stroke="#c0392b" stroke-width="2" stroke-dasharray="4,3" rx="6"/>
+        <text x="255" y="135" fill="#c0392b" font-size="12" text-anchor="middle" font-weight="700">R18カテゴリ</text>
+        <text x="255" y="155" fill="#444" font-size="10" text-anchor="middle">アダルト本・DVD</text>
+        <text x="255" y="190" fill="#c0392b" font-size="11" text-anchor="middle" font-weight="700">認証の奥</text>
+        <defs>
+          <marker id="arrow2" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><polygon points="0 0, 8 4, 0 8" fill="#2a7d4f"/></marker>
+          <marker id="arrow3" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><polygon points="0 0, 8 4, 0 8" fill="#c0392b"/></marker>
+        </defs>
+      </svg>
+    </div>
+    <ul class="feature-list">
+      <li class="ok">普通の古本客は<strong>認証なしでそのまま購入</strong></li>
+      <li class="ok">R18だけ年齢認証の奥に分離 ＝<strong>1サイト・1契約で DMM方式</strong>が実現</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========== 図2: WordPress + EC 構成 ========== -->
+<h2>図2. WordPress（既存環境）＋ EC の全体構成</h2>
+
+<div class="card">
+  <div class="svg-box">
+    <svg viewBox="0 0 800 360">
+      <!-- WP block -->
+      <rect x="20" y="20" width="340" height="320" fill="#e8f0f7" stroke="#1a5a9e" stroke-width="2" rx="10"/>
+      <text x="190" y="48" fill="#1a5a9e" font-size="15" text-anchor="middle" font-weight="700">WordPress + Lightning（既存環境）</text>
+      <text x="190" y="68" fill="#666" font-size="11" text-anchor="middle">表サイト・集客</text>
+      <rect x="40" y="85" width="300" height="46" fill="#fff" stroke="#1a5a9e" rx="6"/>
+      <text x="190" y="105" fill="#1a5a9e" font-size="13" text-anchor="middle" font-weight="700">📣 トップ（買取訴求）</text>
+      <text x="190" y="121" fill="#666" font-size="10" text-anchor="middle">買取歴20年・出張買取・査定無料</text>
+      <rect x="40" y="140" width="300" height="46" fill="#fff" stroke="#1a5a9e" rx="6"/>
+      <text x="190" y="160" fill="#1a5a9e" font-size="13" text-anchor="middle" font-weight="700">📝 買取案内・会社概要</text>
+      <text x="190" y="176" fill="#666" font-size="10" text-anchor="middle">出張買取の流れ・店主の想い</text>
+      <rect x="40" y="195" width="300" height="58" fill="#fff8e7" stroke="#d4a017" stroke-width="2" rx="6"/>
+      <text x="190" y="215" fill="#8a6a00" font-size="13" text-anchor="middle" font-weight="700">🤖 AI自動投稿ブログ</text>
+      <text x="190" y="232" fill="#666" font-size="10" text-anchor="middle">買取SEO記事（非性的・規約クリア）</text>
+      <text x="190" y="247" fill="#666" font-size="10" text-anchor="middle">記事内に「商品はこちら ▶」リンク</text>
+      <rect x="40" y="262" width="300" height="60" fill="#fff" stroke="#1a5a9e" rx="6"/>
+      <text x="190" y="282" fill="#1a5a9e" font-size="12" text-anchor="middle" font-weight="700">📞 追従CTA</text>
+      <text x="190" y="300" fill="#666" font-size="10" text-anchor="middle">電話 050-1794-1009</text>
+      <text x="190" y="315" fill="#666" font-size="10" text-anchor="middle">LINE @401sqqbs</text>
+
+      <!-- Arrow -->
+      <line x1="365" y1="225" x2="430" y2="180" stroke="#444" stroke-width="2" marker-end="url(#arrow4)"/>
+      <text x="395" y="200" fill="#444" font-size="11" font-weight="700">リンク誘導</text>
+
+      <!-- EC block -->
+      <rect x="440" y="20" width="340" height="320" fill="#eaf5ee" stroke="#2a7d4f" stroke-width="2" rx="10"/>
+      <text x="610" y="48" fill="#2a7d4f" font-size="15" text-anchor="middle" font-weight="700">EC-CUBE（新規・別サーバー）</text>
+      <text x="610" y="68" fill="#666" font-size="11" text-anchor="middle">販売・カート・決済・年齢認証</text>
+      <rect x="460" y="85" width="300" height="100" fill="#d4ecdc" stroke="#2a7d4f" rx="6"/>
+      <text x="610" y="108" fill="#2a7d4f" font-size="13" text-anchor="middle" font-weight="700">🟢 一般カテゴリ</text>
+      <text x="610" y="128" fill="#444" font-size="10" text-anchor="middle">古本・漫画・おもちゃ等</text>
+      <text x="610" y="148" fill="#2a7d4f" font-size="11" text-anchor="middle" font-weight="700">認証なしで購入可</text>
+      <text x="610" y="170" fill="#666" font-size="10" text-anchor="middle">→ カート → クレカ決済</text>
+      <rect x="460" y="195" width="300" height="22" fill="#c0392b" rx="4"/>
+      <text x="610" y="211" fill="#fff" font-size="11" text-anchor="middle" font-weight="700">🚪 18歳以上ですか？</text>
+      <rect x="460" y="220" width="300" height="103" fill="#fde2e0" stroke="#c0392b" stroke-dasharray="4,3" rx="6"/>
+      <text x="610" y="243" fill="#c0392b" font-size="13" text-anchor="middle" font-weight="700">🔴 R18カテゴリ</text>
+      <text x="610" y="263" fill="#444" font-size="10" text-anchor="middle">アダルト本・DVD</text>
+      <text x="610" y="283" fill="#c0392b" font-size="11" text-anchor="middle" font-weight="700">認証の奥でだけ表示</text>
+      <text x="610" y="305" fill="#666" font-size="10" text-anchor="middle">→ カート → クレカ決済</text>
+
+      <defs><marker id="arrow4" markerWidth="10" markerHeight="10" refX="6" refY="5" orient="auto"><polygon points="0 0, 10 5, 0 10" fill="#444"/></marker></defs>
+    </svg>
+  </div>
+  <p style="font-size:13px;color:#555;margin-top:12px;">
+    💡 <strong>記事は健全（AI生成OK）／商品は認証の奥（法令OK）</strong>。両方を成立させるため、商品は<strong>iframe直貼りではなくリンク誘導</strong>するのが正解。
+  </p>
+</div>
+
+<!-- ========== 比較表 ========== -->
+<h2>図3. 機能・料金・運用 比較表</h2>
+
+<table>
+  <thead>
+    <tr><th>観点</th><th>MakeShop（SaaS）</th><th>EC-CUBE（自社設置）</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>アダルト可否</td><td><span class="o">⭕️ 可</span>（年齢認証必須・有料プラン）</td><td><span class="o">⭕️ 可</span>（自社サーバー管理）</td></tr>
+    <tr><td><strong>1サイトで一般＋成人分離</strong></td><td><span class="x">❌ ショップ全体認証</span>→2契約化</td><td><span class="o">⭕️ カテゴリ別認証</span>で分離可</td></tr>
+    <tr><td>クレカ（アダルト）</td><td>外部決済代行を連携</td><td>外部決済代行を連携</td></tr>
+    <tr><td>WordPress埋め込み</td><td>カゴだけMakeShop＋WP連携OP（有料）</td><td>API連携・ショートコード</td></tr>
+    <tr><td>デザインテンプレ</td><td>プラン内テンプレ</td><td>公式 <strong>800種以上</strong>（無料〜有料10〜20万）</td></tr>
+    <tr><td>構築の重さ</td><td><span class="o">軽い（即日SaaS）</span></td><td><span class="t">重い</span>（サーバー＋インストール＋プラグイン）</td></tr>
+    <tr><td>月額固定費</td><td>11,000円〜＋WP連携OP</td><td>サーバー数千〜1.5万円</td></tr>
+    <tr><td>保守</td><td><span class="o">ラク（SaaS任せ）</span></td><td><span class="t">自社保守必要</span>（脆弱性対応など）</td></tr>
+    <tr><td>実在のアダルト分離例</td><td><span class="x">公開上なし</span></td><td><span class="o">らしんばん／メロンブックス／ラブピースクラブ</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ========== 結論 ========== -->
+<div class="conclusion">
+  <strong>結論：.look様の要件にはEC-CUBEが最適</strong>
+  「普通の古本（一般）＋アダルト（R18）を1サイトで分ける」要件を素直に実現できるのはEC-CUBEだけ。<br>
+  実在の中古買取＋販売モデル（らしんばん）があり、構造が完全に一致。
+</div>
+
+<!-- ========== 実在モデル ========== -->
+<h2>図4. 実在モデル（クリックして実物確認）</h2>
+
+<div class="links">
+  <div class="link-card">
+    <span class="label">★ らしんばん（最重要）</span>
+    <a href="https://shop.lashinbang.com/" target="_blank">shop.lashinbang.com</a>
+    <p style="font-size:11px;color:#666;margin-top:6px;">EC-CUBE｜中古買取＋販売＋全年齢/成人分離<br><strong>.look様とほぼ同構造</strong></p>
+  </div>
+  <div class="link-card">
+    <span class="label">メロンブックス</span>
+    <a href="https://www.melonbooks.co.jp/" target="_blank">melonbooks.co.jp</a>
+    <p style="font-size:11px;color:#666;margin-top:6px;">EC-CUBE｜全年齢⇄R18の分離切り替えUI</p>
+  </div>
+  <div class="link-card">
+    <span class="label">ラブピースクラブ</span>
+    <a href="https://lovepiececlub-shop.com/" target="_blank">lovepiececlub-shop.com</a>
+    <p style="font-size:11px;color:#666;margin-top:6px;">EC-CUBE｜女性向けアダルトグッズ大手</p>
+  </div>
+  <div class="link-card">
+    <span class="label">萬月書店（参考：成人専用1店）</span>
+    <a href="https://mangetsusyoten.shop/" target="_blank">mangetsusyoten.shop</a>
+    <p style="font-size:11px;color:#666;margin-top:6px;">カラーミー｜アダルト古本買取（成人専用1店パターン）</p>
+  </div>
+</div>
+
+<!-- ========== EC-CUBEテンプレ閲覧 ========== -->
+<h2>図5. EC-CUBEテンプレートの見方</h2>
+
+<div class="links">
+  <div class="link-card">
+    <span class="label">公式テンプレ紹介LP（入口）</span>
+    <a href="https://www.ec-cube.net/lp/design-template/" target="_blank">ec-cube.net/lp/design-template/</a>
+    <p style="font-size:11px;color:#666;margin-top:6px;">テンプレ機能の概要・サンプル</p>
+  </div>
+  <div class="link-card">
+    <span class="label">公式テンプレ一覧</span>
+    <a href="https://www.ec-cube.net/products/list.php?category_id=7" target="_blank">products/list.php?category_id=7</a>
+    <p style="font-size:11px;color:#666;margin-top:6px;">業種別の全テンプレ</p>
+  </div>
+  <div class="link-card">
+    <span class="label">公式オーナーズストア</span>
+    <a href="https://www.ec-cube.net/products/" target="_blank">ec-cube.net/products/</a>
+    <p style="font-size:11px;color:#666;margin-top:6px;">800種以上のテンプレ＋プラグイン</p>
+  </div>
+  <div class="link-card">
+    <span class="label">無料テンプレ紹介</span>
+    <a href="https://shuukyakudesign.com/content64" target="_blank">shuukyakudesign.com/content64</a>
+    <p style="font-size:11px;color:#666;margin-top:6px;">厳選した無料テンプレ紹介</p>
+  </div>
+</div>
+
+<div class="note">
+  <strong>値段の目安：</strong>無料テンプレあり／有料はシンプル <strong>10万円前後</strong>、装飾あり <strong>17万円台</strong>、公式最新 <strong>20万円前後</strong><br>
+  <strong>選ぶ目線（.look様向け）：</strong>白＋青＋グレーの清潔系／カテゴリ別商品グリッドが綺麗／レスポンシブ／ブログ枠が組み込める
+</div>
+
+<!-- ========== 月曜の論点 ========== -->
+<h2>図6. 月曜（6/2）で決めたい論点</h2>
+
+<div class="card">
+  <ol style="font-size:13px; padding-left:22px; line-height:2.0;">
+    <li><strong>EC-CUBE方式で進めるか</strong>（鈴木さん／齋藤さん／嶋田社長の合意）</li>
+    <li><strong>T.Kawaiさんの開発アサイン</strong>（1ヶ月オープン目標へのリソース）</li>
+    <li><strong>決済代行の選定と契約主体</strong>（テレコムクレジット等／淺川様 or ランバード名義）</li>
+    <li><strong>R18対応サーバーの手配</strong>（mixhost等の候補・契約主体）</li>
+    <li><strong>ドメイン</strong>：本体 dotlook.com 確定／EC-CUBEは shop.dotlook.com 等のサブドメインに置く</li>
+    <li><strong>既存R18 EC案件（齋藤さん5/15相談分）との統合 or 別案件</strong></li>
+    <li><strong>wp_post.py（既存WP自動投稿）改修方針</strong>（記事投稿用に2-3割流用＋作り直し）</li>
+  </ol>
+</div>
+
+<footer>
+  EC構成 比較図解 — .look（どっとるっく）｜2026-05-30 作成<br>
+  関連：cowork_制作指示書.md／EC契約まとめ_月曜相談用.md／_クライアント情報.md（SST）
+</footer>
+
+</div>
+</body>
+</html>
