@@ -43,25 +43,33 @@ h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; bor
 .measure-link:hover { background: #000; }
 .measure-link.alt { background: #fff; color: #14213d; border: 1px solid #14213d; }
 
-/* RECENT UPDATES：タイムライン */
-.timeline { position: relative; padding-left: 24px; }
-.timeline::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: #cbd5e1; }
-.tl-item { position: relative; padding: 12px 0 12px 18px; }
-.tl-item::before { content: ""; position: absolute; left: -22px; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: #2563eb; border: 2px solid #fff; box-shadow: 0 0 0 2px #cbd5e1; }
-.tl-item.featured::before { background: #047857; }
-.tl-date { font-family: "Inter", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.1em; color: #64748b; margin-bottom: 4px; }
-.tl-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 14px 16px; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
-.tl-card-title { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 14px; margin-bottom: 4px; }
-.tl-card-title a { color: #0f172a; text-decoration: none; }
-.tl-card-title a:hover { color: #2563eb; text-decoration: underline; }
-.tl-card-desc { font-size: 12px; color: #64748b; line-height: 1.6; }
-.tl-card-tags { margin-top: 6px; }
-.tag { display: inline-block; padding: 1px 7px; font-size: 9px; font-weight: 700; margin-right: 4px; border-radius: 3px; }
-.tag-setup { background: #047857; color: #fff; }
-.tag-research { background: #7c3aed; color: #fff; }
-.tag-design { background: #d97706; color: #fff; }
-.tag-data { background: #64748b; color: #fff; }
-.tag-plan { background: #2563eb; color: #fff; }
+/* COMPETITIVE LANDSCAPE：埋め込み */
+.comp-panel { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 24px; margin-bottom: 16px; }
+.comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+@media (max-width: 700px) { .comp-grid { grid-template-columns: 1fr; } }
+.comp-card { background: #f8fafc; border-radius: 8px; padding: 14px 16px; border-top: 4px solid #cbd5e1; }
+.comp-card.cat1 { border-top-color: #047857; }
+.comp-card.cat2 { border-top-color: #d97706; }
+.comp-card.cat3 { border-top-color: #b91c1c; }
+.comp-lbl { font-family: "Inter", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.1em; color: #64748b; margin-bottom: 6px; }
+.comp-name { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 15px; color: #0f172a; margin-bottom: 4px; }
+.comp-stat { font-size: 12px; color: #1e3a8a; font-weight: 700; margin-bottom: 6px; }
+.comp-note { font-size: 11px; color: #475569; line-height: 1.6; }
+
+.comp-winner { background: linear-gradient(135deg,#fef3c7,#fed7aa); border-left: 5px solid #d97706; padding: 16px 20px; border-radius: 6px; margin: 16px 0; }
+.comp-winner-lbl { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 14px; color: #92400e; margin-bottom: 6px; }
+.comp-winner p { font-size: 13px; color: #0f172a; margin: 6px 0; line-height: 1.7; }
+.comp-winner strong { background: #fff; padding: 1px 6px; border-radius: 3px; }
+
+.comp-table-wrap { overflow-x: auto; margin: 12px 0; }
+.comp-table { width: 100%; border-collapse: collapse; font-size: 12px; background: #fff; }
+.comp-table th, .comp-table td { padding: 6px 8px; border-bottom: 1px solid #e5e7eb; text-align: left; }
+.comp-table th { background: #f1f5f9; font-weight: 700; font-size: 11px; }
+.comp-table td.hi { background: #ecfdf5; color: #047857; font-weight: 700; }
+
+.comp-cta { text-align: center; margin-top: 12px; padding-top: 12px; border-top: 1px dashed #cbd5e1; }
+.comp-link { color: #2563eb; font-size: 12px; font-weight: 700; text-decoration: none; }
+.comp-link:hover { text-decoration: underline; }
 
 /* ARCHIVE：旧来のカード形式 */
 .archive-eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.2em; color: #94a3b8; margin: 18px 0 8px; }
@@ -115,111 +123,55 @@ h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; bor
   </div>
 </div>
 
-<!-- 🆕 RECENT UPDATES -->
-<div class="layer-h recent">🆕 RECENT UPDATES — 直近の作業ログ（新しいものが上）</div>
-<p class="layer-desc">何を作って何を進めたか、時系列で追えます。</p>
+<!-- 🏆 COMPETITIVE LANDSCAPE -->
+<div class="layer-h recent">🏆 COMPETITIVE LANDSCAPE — 競合調査と戦略示唆</div>
+<p class="layer-desc">OWLがベンチマークすべき3カテゴリの企業と、勝ち筋を埋め込み表示。</p>
 
-<div class="timeline">
-
-  <div class="tl-item featured">
-    <div class="tl-date">2026-05-30</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="competitor_research.html">🏆 福祉事業 競合調査3カテゴリを実施</a></div>
-      <div class="tl-card-desc">①介護大手ニチイHD ②FC1位セブン ③同分野tocotoco・イグルー を比較。OWLの差別化軸「加盟金0円」が最大の勝ち筋と判明</div>
-      <div class="tl-card-tags"><span class="tag tag-research">調査</span></div>
+<div class="comp-panel">
+  <div class="comp-grid">
+    <div class="comp-card cat1">
+      <div class="comp-lbl">① 業界成功企業</div>
+      <div class="comp-name">ニチイホールディングス</div>
+      <div class="comp-stat">介護事業売上 ¥1,691億（2025/3期）</div>
+      <div class="comp-note">大手の規模では戦わない。ニッチで差別化。</div>
+    </div>
+    <div class="comp-card cat2">
+      <div class="comp-lbl">② FC業界1位</div>
+      <div class="comp-name">セブン-イレブン・ジャパン</div>
+      <div class="comp-stat">21,735店舗（2026/4末）／シェア42%</div>
+      <div class="comp-note">本部サポート体制を参考。マニュアル整備が鍵。</div>
+    </div>
+    <div class="comp-card cat3">
+      <div class="comp-lbl">③ 同分野FC1位</div>
+      <div class="comp-name">tocotoco（旧わおん）</div>
+      <div class="comp-stat">150〜600社（時期変動）／ペット共生型</div>
+      <div class="comp-note">直接競合。加盟金0円訴求はOWLのみ。</div>
     </div>
   </div>
 
-  <div class="tl-item featured">
-    <div class="tl-date">2026-05-30</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="google_setup_report.html">🔵 Google広告 3キャンペーン設定完了</a></div>
-      <div class="tl-card-desc">CP01/CP02/CP03 合計¥14,000/日・除外KW22個・GDN停止・UTM計測対応で構築。認証完了次第6/1配信開始</div>
-      <div class="tl-card-tags"><span class="tag tag-setup">設定</span></div>
-    </div>
+  <div class="comp-winner">
+    <div class="comp-winner-lbl">🎯 OWLの勝ち筋（調査結論）</div>
+    <p><strong>「加盟金0円」を打ち出しているのはOWLのみ</strong>。tocotoco・イグルー含めて競合の中で唯一の差別化要素。LP・広告ではこの1点を徹底的に押し出すべき。</p>
+    <p>2番手の訴求は「最短4ヶ月で黒字化」「未経験95%」「加盟実績162社」「全国32都道府県」など実数で具体化。「収益安定（給付金9割）」は業界共通なので後半で補強。</p>
   </div>
 
-  <div class="tl-item">
-    <div class="tl-date">2026-05-30</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="measurement_check.html">📊 GA4計測確認手順書を作成</a></div>
-      <div class="tl-card-desc">6/1配信開始後にyahoo/cpc・google/cpcのCV識別が動いているか実測確認する手順</div>
-      <div class="tl-card-tags"><span class="tag tag-data">計測</span></div>
-    </div>
+  <div class="comp-table-wrap">
+    <table class="comp-table">
+      <thead><tr><th>訴求軸</th><th>tocotoco</th><th>イグルー</th><th>OWL</th></tr></thead>
+      <tbody>
+        <tr><td>加盟金</td><td>—</td><td>—</td><td class="hi"><strong>0円</strong></td></tr>
+        <tr><td>差別化軸</td><td>ペット共生</td><td>未経験OK</td><td class="hi">加盟金0円・月額制</td></tr>
+        <tr><td>初期投資</td><td>488万円〜</td><td>非公開</td><td class="hi">物件・内装費のみ</td></tr>
+        <tr><td>未経験率</td><td>—</td><td>—</td><td class="hi">95%</td></tr>
+        <tr><td>最短黒字化</td><td>—</td><td>—</td><td class="hi">4ヶ月</td></tr>
+        <tr><td>規模</td><td>150〜600社</td><td>145事業所</td><td>162社（2021-25累計）</td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="tl-item">
-    <div class="tl-date">2026-05-30</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="clarity_setup.html">🔍 Microsoft Clarity 導入ガイドを準備</a></div>
-      <div class="tl-card-desc">LPの「どこが悪いか」をヒートマップ・録画で可視化。嶋田社長承認次第設置</div>
-      <div class="tl-card-tags"><span class="tag tag-plan">提案</span></div>
-    </div>
+  <div class="comp-cta">
+    <a class="comp-link" href="competitor_research.html">→ 競合調査の詳細レポートを見る</a>
   </div>
-
-  <div class="tl-item featured">
-    <div class="tl-date">2026-05-28</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="yahoo_setup_report.html">🟣 Yahoo広告 3キャンペーン設定完了</a></div>
-      <div class="tl-card-desc">CP01/CP02/CP03 合計¥14,000/日・除外KW25個・UTM計測対応で構築。6/1配信開始予定</div>
-      <div class="tl-card-tags"><span class="tag tag-setup">設定</span></div>
-    </div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-date">2026-05-28</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="mockup.html">🎨 新LP モックアップ3案を作成</a></div>
-      <div class="tl-card-desc">A:共感型／B:収益シミュレーション型／C:現LP活用の改修案（おすすめ）</div>
-      <div class="tl-card-tags"><span class="tag tag-design">デザイン</span></div>
-    </div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-date">2026-05-28</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="data_summary.html">📊 広告/LPデータサマリーを作成</a></div>
-      <div class="tl-card-desc">Yahoo・Google広告・LPの数値を1枚に集約、加盟実績162社・全国32都道府県も反映</div>
-      <div class="tl-card-tags"><span class="tag tag-data">データ</span></div>
-    </div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-date">2026-05-28</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="meta_instagram_roadmap.html">🚀 Meta/Instagram展開ロードマップを作成</a></div>
-      <div class="tl-card-desc">Phase1:現状最適化／Phase2:IG立ち上げ＋Meta認知広告／Phase3:3媒体連動ファネル</div>
-      <div class="tl-card-tags"><span class="tag tag-plan">計画</span></div>
-    </div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-date">2026-05-28</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="yahoo_ads_recipe.html">🛠 Yahoo・Google広告 設定レシピを作成</a></div>
-      <div class="tl-card-desc">入札KW・除外KW・キャンペーン構造・入札戦略を具体的に明記</div>
-      <div class="tl-card-tags"><span class="tag tag-setup">レシピ</span></div>
-    </div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-date">2026-05-28</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="form_diagnosis.html">📝 フォームCV低下 原因究明チェックリストを作成</a></div>
-      <div class="tl-card-desc">4月にフォーム完了率が100→50%に急落した真因を究明するための12項目</div>
-      <div class="tl-card-tags"><span class="tag tag-data">分析</span></div>
-    </div>
-  </div>
-
-  <div class="tl-item">
-    <div class="tl-date">2026-05-28</div>
-    <div class="tl-card">
-      <div class="tl-card-title"><a href="briefing_20260528_short.html">📋 5/28打ち合わせブリーフィング作成</a></div>
-      <div class="tl-card-desc">現状診断・致命的発見・嶋田社長への相談事項を1画面に集約</div>
-      <div class="tl-card-tags"><span class="tag tag-plan">準備</span></div>
-    </div>
-  </div>
-
 </div>
 
 <!-- 📚 ARCHIVE -->
