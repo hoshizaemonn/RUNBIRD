@@ -2,21 +2,26 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>Lani — AI動画 v1 ストーリーボード</title>
+<title>Lani — AI動画 v2 ストーリーボード</title>
 <style>
-  :root{ --bg:#1a1815; --ink:#f3ece2; --ink2:#c8bba8; --accent:#c69b7b; --card:#252220; --line:#3a342e; }
+  :root{ --bg:#1a1815; --ink:#f3ece2; --ink2:#c8bba8; --accent:#c69b7b; --hook:#d4af6c; --card:#252220; --line:#3a342e; }
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Yu Gothic",sans-serif;line-height:1.7;padding:40px 24px;max-width:1400px;margin:0 auto}
   header{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:32px}
   h1{font-size:32px;font-weight:300;letter-spacing:.08em}
   h1 .brand{color:var(--accent);font-weight:500}
+  .ver{font-size:12px;color:var(--ink2);margin-left:8px;letter-spacing:.1em}
   .meta{display:flex;gap:24px;flex-wrap:wrap;color:var(--ink2);font-size:13px;margin-top:12px}
   .meta b{color:var(--ink);font-weight:500}
   h2{font-size:18px;font-weight:500;letter-spacing:.06em;margin:40px 0 16px;color:var(--accent)}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}
-  .card .ph{aspect-ratio:16/9;background:#0e0c0a center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#564a3d;font-size:12px}
-  .card .ph[data-loaded] { background-color: transparent }
+  .card.hook{border-top:3px solid var(--hook);position:relative}
+  .card.hook::before{content:"HOOK";position:absolute;top:8px;right:10px;background:var(--hook);color:#1a1815;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.1em;z-index:2}
+  .card.hybrid{border-top:3px solid #7aa3a3}
+  .card.hybrid::before{content:"実写ハイブリッド";position:absolute;top:8px;right:10px;background:#7aa3a3;color:#1a1815;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.05em;z-index:2}
+  .card{position:relative}
+  .card .ph{aspect-ratio:1/1;background:#0e0c0a center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#564a3d;font-size:12px}
   .card .body{padding:14px 16px 16px}
   .card .scene{font-size:11px;color:var(--ink2);letter-spacing:.1em;text-transform:uppercase}
   .card .time{font-size:11px;color:var(--ink2);float:right}
@@ -29,64 +34,72 @@
   .check li{margin:6px 0 6px 20px;color:var(--ink2);font-size:13px}
   .check b{color:#fff;font-weight:500}
   .nb{font-size:11px;color:#7e7367;margin-top:32px;text-align:center}
+  .legend{display:inline-flex;gap:14px;font-size:11.5px;color:var(--ink2);margin-top:8px}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 </style>
 </head>
 <body>
 <header>
-  <h1>AI動画 v1 ストーリーボード — <span class="brand">Lani（ラニ）</span></h1>
+  <h1>AI動画 v2 ストーリーボード — <span class="brand">Lani（ラニ）</span><span class="ver">v2 / 2026-05-30</span></h1>
   <div class="meta">
     <span>業態：<b>フェイシャルエステサロン</b>（名古屋市守山区）</span>
-    <span>尺：<b>約55秒</b></span>
+    <span>尺：<b>約60秒</b>（HOOK 5秒＋本編 55秒）</span>
     <span>音：<b>ナレなし／音楽のみ</b></span>
     <span>主役：<b>日本人30代女性モデル＋お店の空間</b></span>
     <span>CTA：<b>電話＋ホットペッパー</b></span>
   </div>
+  <div class="legend">
+    <span><i style="background:#d4af6c"></i>HOOKカット（冒頭5秒）</span>
+    <span><i style="background:#7aa3a3"></i>実写ハイブリッド（受領写真活用）</span>
+  </div>
 </header>
 
-<h2>🎯 コンセプト</h2>
+<h2>🎯 v2の変更点（v1→v2）</h2>
 <div class="points">
   <ul>
-    <li>ラグジュアリーなスキンケアブランド動画。<b>高級感・自然さ・落ち着き・ボタニカル</b>。</li>
-    <li><b>過度にAIっぽい/派手な広告/安さ感はNG</b>（クライアント明示）。リアルで上質、明るめ・自然光。</li>
-    <li>受領素材（ロゴ看板／玄関／ラウンジ／施術室／ボタニカル小物）を下敷きに、実店舗を上質に昇華。</li>
-    <li>テロップは「ハーブピーリング」のみ（メニュー名の羅列は高級感を損なう＝録音で明示）。</li>
+    <li><b>冒頭5秒のHOOK追加</b>（中野メソッド準拠）— ベネフィット型シズル感HOOK：ブラシ＋緑のペースト→ツヤ肌Afterで「What」と「理想の姿」を即提示</li>
+    <li><b>受領写真を実際に背景として活用</b>（S01は受領写真そのまま／S02玄関・S03ラウンジ・S05施術室・S08スチーム・S11お見送りは実写ベースのハイブリッド合成）</li>
+    <li>テロップ最小限（HOOK＋S07ハーブピーリング＋CTAのみ）／クライアントNG「AIっぽい・派手・安さ感」は引き続き徹底</li>
   </ul>
 </div>
 
-<h2>📽 シーン構成 全12カット</h2>
+<h2>📽 シーン構成 全14カット（HOOK 2＋本編 12）</h2>
 <div class="grid">
-  <div class="card"><div class="ph" id="ph-S01_logo_sign">S01</div><div class="body"><span class="scene">S01 入口・ロゴ看板</span><span class="time">0:00–0:05</span><div class="telop empty">（テロップなし）</div><div class="desc">フロストの円形ロゴ看板に寄る。テクスチャ壁＋暖かな自然光。ロゴは後合成</div><div class="motion">▶ ピント送り＋光のふんわり明滅／カメラ固定</div></div></div>
-  <div class="card"><div class="ph" id="ph-S02_genkan_candle">S02</div><div class="body"><span class="scene">S02 玄関・招き入れ</span><span class="time">0:05–0:10</span><div class="telop empty">（テロップなし）</div><div class="desc">キャンドル＋丸太スツール＋額装アート、白スクリーン。ドアが開いて光が差す</div><div class="motion">▶ 炎が揺れ／ドアがゆっくり開く／わずかに前進</div></div></div>
-  <div class="card"><div class="ph" id="ph-S03_lounge_sofa">S03</div><div class="body"><span class="scene">S03 ラウンジ・自然光</span><span class="time">0:10–0:15</span><div class="telop empty">（テロップなし）</div><div class="desc">グレーリネンソファに30代女性モデル。レースカーテン越しの自然光</div><div class="motion">▶ 女性が腰かけ視線を上げる／微風／光が揺れる</div></div></div>
-  <div class="card"><div class="ph" id="ph-S04_counseling_hands">S04</div><div class="body"><span class="scene">S04 カウンセリング・手元</span><span class="time">0:15–0:20</span><div class="telop empty">（テロップなし）</div><div class="desc">オーナーの手元がカルテ／肌チェック。ボタニカル小物</div><div class="motion">▶ 手元スロー／紙面に光／カメラ固定</div></div></div>
-  <div class="card"><div class="ph" id="ph-S05_treatment_room">S05</div><div class="body"><span class="scene">S05 施術ルームへ</span><span class="time">0:20–0:25</span><div class="telop empty">（テロップなし）</div><div class="desc">白ベッド＋ヘリンボーン壁＋タオル＋シダ。無人</div><div class="motion">▶ シダが微かに揺れる／わずかに右パン</div></div></div>
-  <div class="card"><div class="ph" id="ph-S06_cleansing">S06</div><div class="body"><span class="scene">S06 クレンジング</span><span class="time">0:25–0:30</span><div class="telop empty">（テロップなし）</div><div class="desc">モデルが横たわり、オーナーの手元がやさしく肌をなでる</div><div class="motion">▶ 手元スロー／肌に自然光／カメラほぼ固定</div></div></div>
-  <div class="card"><div class="ph" id="ph-S07_herb_peeling">S07 ★</div><div class="body"><span class="scene">S07 ハーブピーリング施術</span><span class="time">0:30–0:36</span><div class="telop">Herb Peeling／ハーブピーリング</div><div class="desc">手元アップ＋モデルの安らいだ表情。下左にテロップ余白</div><div class="motion">▶ 塗布の手元スロー／最後にわずかに引く／カメラ固定</div></div></div>
-  <div class="card"><div class="ph" id="ph-S08_steam_botanical">S08</div><div class="body"><span class="scene">S08 スチーム・ボタニカル</span><span class="time">0:36–0:41</span><div class="telop empty">（テロップなし）</div><div class="desc">ボタニカルな蒸気がふわり、パンパスグラスの小物</div><div class="motion">▶ 蒸気がゆっくり立ちのぼる／カメラ固定</div></div></div>
-  <div class="card"><div class="ph" id="ph-S09_after_glow">S09</div><div class="body"><span class="scene">S09 仕上がり・ツヤ肌</span><span class="time">0:41–0:46</span><div class="telop empty">（テロップなし）</div><div class="desc">モデルの肌のツヤ・透明感クローズアップ（After）</div><div class="motion">▶ 肌に光がすっと走る／わずかな微笑み／静かに寄る</div></div></div>
-  <div class="card"><div class="ph" id="ph-S10_after_tea">S10</div><div class="body"><span class="scene">S10 アフターティー＋物販</span><span class="time">0:46–0:50</span><div class="telop empty">（任意・仮置き）物販もご用意</div><div class="desc">ハーブティー＋傍らにスキンケア物販を上品に</div><div class="motion">▶ 湯気がゆれる／商品にピント送り／カメラ固定</div></div></div>
-  <div class="card"><div class="ph" id="ph-S11_farewell_bow">S11</div><div class="body"><span class="scene">S11 お見送り</span><span class="time">0:50–0:54</span><div class="telop empty">（テロップなし）</div><div class="desc">玄関でモデルが穏やかに会釈、ドアの自然光</div><div class="motion">▶ 会釈／光がふんわり／カメラ固定</div></div></div>
-  <div class="card"><div class="ph" id="ph-S12_end_card_bg">S12 ★</div><div class="body"><span class="scene">S12 エンドカード・CTA</span><span class="time">0:54–0:58</span><div class="telop">Lani／ご予約はお電話／ホットペッパーから／TEL 090-2188-8962</div><div class="desc">ロゴ＋連絡先（後合成）。背景は余白を確保</div><div class="motion">▶ 光がふんわり明滅／カメラ固定</div></div></div>
+  <div class="card hook"><div class="ph" id="ph-HOOK_brush_skin">HOOK</div><div class="body"><span class="scene">H1 ブラシ＋緑のペースト</span><span class="time">0:00–0:02</span><div class="telop">Herb Peeling.</div><div class="desc">ハーブピーリングの瞬間を冒頭で先出し＝What即提示・シズル感</div><div class="motion">▶ ブラシ塗布の超スロー／光がふんわり</div></div></div>
+  <div class="card hook"><div class="ph" id="ph-HOOK_after_glow">HOOK</div><div class="body"><span class="scene">H2 ツヤ肌アフター</span><span class="time">0:02–0:04</span><div class="telop empty">（テロップなし／映像で語る）</div><div class="desc">アフターのツヤ肌＝理想の姿（ベネフィット型）</div><div class="motion">▶ 肌に光がすっと走る／微笑み</div></div></div>
+  <div class="card hybrid"><div class="ph" id="ph-S01_logo_sign">S01</div><div class="body"><span class="scene">S01 入口・ロゴ看板</span><span class="time">0:04–0:08</span><div class="telop empty">（テロップなし／屋号着地）</div><div class="desc">受領のフロスト円形ロゴ看板をそのまま使用（実写）</div><div class="motion">▶ ピント送り＋光のふんわり明滅</div></div></div>
+  <div class="card hybrid"><div class="ph" id="ph-S02_genkan_candle">S02</div><div class="body"><span class="scene">S02 玄関・招き入れ</span><span class="time">0:08–0:13</span><div class="telop empty">（テロップなし）</div><div class="desc">受領玄関写真を背景に、AIで光を上質に補強</div><div class="motion">▶ 炎が揺れ／ドアがゆっくり開く</div></div></div>
+  <div class="card hybrid"><div class="ph" id="ph-S03_lounge_sofa">S03</div><div class="body"><span class="scene">S03 ラウンジ・自然光</span><span class="time">0:13–0:18</span><div class="telop empty">（テロップなし）</div><div class="desc">受領のグレーソファ＋窓＋ラベンダーアートを背景に、30代女性モデルを合成</div><div class="motion">▶ モデルが座り視線を上げる／光が揺れる</div></div></div>
+  <div class="card"><div class="ph" id="ph-S04_counseling_hands">S04</div><div class="body"><span class="scene">S04 カウンセリング・手元</span><span class="time">0:18–0:23</span><div class="telop empty">（テロップなし）</div><div class="desc">オーナーの手元がカルテ／肌チェック。ボタニカル小物</div><div class="motion">▶ 手元スロー／紙面に光</div></div></div>
+  <div class="card hybrid"><div class="ph" id="ph-S05_treatment_room">S05</div><div class="body"><span class="scene">S05 施術ルームへ</span><span class="time">0:23–0:28</span><div class="telop empty">（テロップなし）</div><div class="desc">受領のヘリンボーン施術室を背景に、タオル＋シダを追加</div><div class="motion">▶ シダが微かに揺れる／わずかに右パン</div></div></div>
+  <div class="card"><div class="ph" id="ph-S06_cleansing">S06</div><div class="body"><span class="scene">S06 クレンジング</span><span class="time">0:28–0:33</span><div class="telop empty">（テロップなし）</div><div class="desc">モデル＋オーナー手元のクレンジング</div><div class="motion">▶ 手元スロー／肌に自然光</div></div></div>
+  <div class="card"><div class="ph" id="ph-S07_herb_peeling">S07 ★</div><div class="body"><span class="scene">S07 ハーブピーリング施術</span><span class="time">0:33–0:39</span><div class="telop">Herb Peeling／ハーブピーリング</div><div class="desc">手元アップ＋安らいだ表情。下左にテロップ余白</div><div class="motion">▶ 塗布スロー／最後にわずかに引く</div></div></div>
+  <div class="card hybrid"><div class="ph" id="ph-S08_steam_botanical">S08</div><div class="body"><span class="scene">S08 スチーム・ボタニカル</span><span class="time">0:39–0:44</span><div class="telop empty">（テロップなし）</div><div class="desc">受領のパンパスグラス・タオル＋シダを下敷きに、スチーム合成</div><div class="motion">▶ 蒸気がゆっくり立ちのぼる</div></div></div>
+  <div class="card"><div class="ph" id="ph-S09_after_glow">S09</div><div class="body"><span class="scene">S09 仕上がり・ツヤ肌</span><span class="time">0:44–0:49</span><div class="telop empty">（テロップなし）</div><div class="desc">モデルの肌のツヤ・透明感クローズアップ</div><div class="motion">▶ 肌に光／微笑み／静かに寄る</div></div></div>
+  <div class="card"><div class="ph" id="ph-S10_after_tea">S10</div><div class="body"><span class="scene">S10 アフターティー＋物販</span><span class="time">0:49–0:53</span><div class="telop empty">（任意）物販もご用意</div><div class="desc">ハーブティー＋傍らにスキンケア物販を上品に</div><div class="motion">▶ 湯気がゆれる／商品にピント送り</div></div></div>
+  <div class="card hybrid"><div class="ph" id="ph-S11_farewell_bow">S11</div><div class="body"><span class="scene">S11 お見送り</span><span class="time">0:53–0:57</span><div class="telop empty">（テロップなし）</div><div class="desc">受領の玄関写真を背景に、モデルが穏やかに会釈</div><div class="motion">▶ 会釈／光がふんわり</div></div></div>
+  <div class="card"><div class="ph" id="ph-S12_end_card_bg">S12 ★</div><div class="body"><span class="scene">S12 エンドカード・CTA</span><span class="time">0:57–1:00</span><div class="telop">Lani／ご予約はお電話／ホットペッパーから／TEL 090-2188-8962</div><div class="desc">ロゴ＋連絡先（後合成）。背景は余白を確保</div><div class="motion">▶ 光がふんわり明滅</div></div></div>
 </div>
 
 <h2>✅ ご確認いただきたい点</h2>
 <div class="points">
   <ul class="check">
-    <li><b>尺</b>：約55秒で構成（録音「1分弱」準拠）でよろしいでしょうか。</li>
-    <li><b>モデル</b>：AI生成の日本人30代女性で作成中。正面・横のお写真をいただければ寄せて差し替え可能です。</li>
-    <li><b>オーナー出演</b>：手元のみで作成（「私よりお店」のご意向）。お顔を出す場合はお知らせください。</li>
-    <li><b>S10物販テロップ</b>：「物販もご用意しています」を入れる/入れないをご確認ください。</li>
+    <li><b>HOOK 2カット</b>：「ハーブピーリングの瞬間＋アフターのツヤ肌」で冒頭5秒に「What/理想の姿」を即提示。AI動画事業の標準化（中野メソッド準拠）。</li>
+    <li><b>受領写真活用</b>：S01は受領のロゴ看板をそのまま使用。S02/S03/S05/S08/S11は実写を背景にハイブリッド合成。実物に寄せました。</li>
+    <li><b>尺</b>：HOOK 5秒＋本編 55秒の合計 約60秒で構成しています。</li>
+    <li><b>モデル写真</b>後日いただければ寄せて差し替え可能です。</li>
+    <li><b>オーナー出演</b>は手元のみで作成（「私よりお店」のご意向）。お顔を出す場合はお知らせください。</li>
+    <li><b>S10物販テロップ</b>「物販もご用意しています」入れる/入れないをご確認ください。</li>
     <li><b>CTA</b>：ホットペッパーのネット予約URLは契約確定後に差し込みます。</li>
-    <li><b>アフターティー</b>：演出として採用（高級サロンの“間”）。実施有無に合わせて調整可能です。</li>
-    <li>後日いただける場合：店舗の横向き動画／モデルさんの写真／オーナー本人のお写真／ロゴ — 該当カットを実物に差し替えます。</li>
   </ul>
 </div>
 
-<p class="nb">※ このページはモックアップ確認用です。最終納品物はLovartで動画化→ffmpeg合成した MP4（テロップ／ロゴ／BGM焼き込み）になります。</p>
+<p class="nb">※ このページはモックアップ確認用です。最終納品物はLovartで動画化→ffmpeg合成した MP4 になります。</p>
 
 <script>
-// 画像が生成されたら自動でアタッチ
 const map = {
+  "HOOK_brush_skin":"lani-images/HOOK_brush_skin.jpg",
+  "HOOK_after_glow":"lani-images/HOOK_after_glow.jpg",
   "S01_logo_sign":"lani-images/S01_logo_sign.jpg",
   "S02_genkan_candle":"lani-images/S02_genkan_candle.jpg",
   "S03_lounge_sofa":"lani-images/S03_lounge_sofa.jpg",
@@ -102,7 +115,7 @@ const map = {
 };
 for(const [k,v] of Object.entries(map)){
   const el = document.getElementById("ph-"+k);
-  if(el){ el.style.backgroundImage = `url('${v}')`; el.setAttribute("data-loaded",""); }
+  if(el){ el.style.backgroundImage = `url('${v}')`; }
 }
 </script>
 </body>
