@@ -10,31 +10,67 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: "Noto Sans JP", sans-serif; color: #0f172a; line-height: 1.7; background: #faf6ef; padding: 32px 16px; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
-.container { max-width: 820px; margin: 0 auto; }
+.container { max-width: 860px; margin: 0 auto; }
 h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; border-bottom: 3px solid #14213d; padding-bottom: 14px; margin-bottom: 8px; }
 .subtitle { font-size: 13px; color: #64748b; margin-bottom: 28px; }
-.eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.2em; color: #2563eb; margin: 24px 0 10px; padding-top: 16px; border-top: 1px dashed #cbd5e1; }
-.eyebrow:first-of-type { border-top: none; padding-top: 0; }
-.eyebrow.supplement { color: #94a3b8; }
-.card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 18px 22px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: border-color .15s; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
-.card:hover { border-color: #14213d; }
-.card.featured { border: 2px solid #047857; }
-.card.live { border: 2px solid #b91c1c; }
-.card.supplement { background: #f6f4ef; border-style: dashed; box-shadow: none; }
-.card-left { flex: 1; }
-.card-title { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 16px; color: #0f172a; margin-bottom: 4px; }
-.card-desc { font-size: 12px; color: #64748b; line-height: 1.6; }
-.btn { background: #14213d; color: #fff; padding: 10px 18px; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
-.btn:hover { background: #000; }
-.btn.featured { background: #047857; }
-.btn.live { background: #b91c1c; }
-.tag { display: inline-block; padding: 1px 6px; font-size: 9px; font-weight: 700; margin-right: 4px; border-radius: 3px; vertical-align: middle; }
-.tag-new { background: #7c3aed; color: #fff; }
-.tag-live { background: #b91c1c; color: #fff; }
-.tag-recipe { background: #047857; color: #fff; }
+
+/* セクションヘッダー */
+.layer-h { font-family: "Inter", sans-serif; font-weight: 900; font-size: 12px; letter-spacing: 0.2em; margin: 32px 0 14px; padding: 8px 14px; border-radius: 6px; }
+.layer-h.now { background: #14213d; color: #fff; }
+.layer-h.recent { background: #fff; border: 2px solid #14213d; color: #14213d; }
+.layer-h.archive { background: #f1f5f9; color: #64748b; border-left: 4px solid #cbd5e1; padding-left: 12px; }
+.layer-desc { font-size: 12px; color: #64748b; margin: -8px 0 14px; padding-left: 8px; }
+
+/* NOW セクション：稼働状況パネル */
+.now-panel { background: #fff; border: 2px solid #14213d; border-radius: 10px; padding: 24px; margin-bottom: 16px; box-shadow: 0 4px 14px rgba(20,33,61,0.1); }
+.now-panel h2 { font-family: "Noto Serif JP", serif; font-size: 18px; margin-bottom: 12px; }
+.status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.status-card { background: #f8fafc; border-radius: 8px; padding: 14px; border-left: 4px solid #047857; }
+.status-card.live { border-left-color: #047857; background: #ecfdf5; }
+.status-card.pending { border-left-color: #d97706; background: #fffbeb; }
+.status-card.scheduled { border-left-color: #2563eb; background: #eff6ff; }
+.status-card .lbl { font-family: "Inter", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.1em; color: #64748b; margin-bottom: 4px; }
+.status-card .ttl { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 14px; margin-bottom: 4px; color: #0f172a; }
+.status-card .meta { font-size: 11px; color: #475569; line-height: 1.6; }
+.status-badge { display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 700; border-radius: 10px; margin-left: 6px; }
+.status-badge.live { background: #047857; color: #fff; }
+.status-badge.pending { background: #d97706; color: #fff; }
+.status-badge.scheduled { background: #2563eb; color: #fff; }
+
+.measure-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; padding-top: 14px; border-top: 1px dashed #cbd5e1; }
+@media (max-width: 560px) { .measure-row { grid-template-columns: 1fr; } }
+.measure-link { background: #14213d; color: #fff; padding: 10px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none; text-align: center; }
+.measure-link:hover { background: #000; }
+.measure-link.alt { background: #fff; color: #14213d; border: 1px solid #14213d; }
+
+/* RECENT UPDATES：タイムライン */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: #cbd5e1; }
+.tl-item { position: relative; padding: 12px 0 12px 18px; }
+.tl-item::before { content: ""; position: absolute; left: -22px; top: 18px; width: 12px; height: 12px; border-radius: 50%; background: #2563eb; border: 2px solid #fff; box-shadow: 0 0 0 2px #cbd5e1; }
+.tl-item.featured::before { background: #047857; }
+.tl-date { font-family: "Inter", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.1em; color: #64748b; margin-bottom: 4px; }
+.tl-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 14px 16px; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+.tl-card-title { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+.tl-card-title a { color: #0f172a; text-decoration: none; }
+.tl-card-title a:hover { color: #2563eb; text-decoration: underline; }
+.tl-card-desc { font-size: 12px; color: #64748b; line-height: 1.6; }
+.tl-card-tags { margin-top: 6px; }
+.tag { display: inline-block; padding: 1px 7px; font-size: 9px; font-weight: 700; margin-right: 4px; border-radius: 3px; }
+.tag-setup { background: #047857; color: #fff; }
+.tag-research { background: #7c3aed; color: #fff; }
+.tag-design { background: #d97706; color: #fff; }
 .tag-data { background: #64748b; color: #fff; }
-.tag-future { background: #7c3aed; color: #fff; }
-.tag-sup { background: #94a3b8; color: #fff; }
+.tag-plan { background: #2563eb; color: #fff; }
+
+/* ARCHIVE：旧来のカード形式 */
+.archive-eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 10px; letter-spacing: 0.2em; color: #94a3b8; margin: 18px 0 8px; }
+.card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 12px 16px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 13px; }
+.card-title { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 13px; color: #0f172a; }
+.card-desc { font-size: 11px; color: #64748b; margin-top: 2px; }
+.btn { background: #14213d; color: #fff; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; text-decoration: none; white-space: nowrap; flex-shrink: 0; }
+.btn:hover { background: #000; }
+
 .footer { font-size: 12px; color: #64748b; text-align: center; margin-top: 32px; padding: 16px; background: #f1f5f9; border-left: 4px solid #14213d; }
 </style>
 </head>
@@ -45,114 +81,225 @@ h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 28px; bor
 <h1>OWL福祉事業 関連資料一覧</h1>
 <p class="subtitle">LP改善・広告運用・SNS展開ロードマップ／株式会社 斗（hishaku）</p>
 
-<!-- 一番上：現LP + 新モックアップ -->
-<div class="eyebrow">🎯 LP（現状 ＆ 新案）</div>
+<!-- 🎯 NOW -->
+<div class="layer-h now">🎯 NOW — 今動いている施策・効果計測中</div>
 
-<div class="card featured">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-new">提案</span>新LP モックアップ案（ミチル構造踏襲）</div>
-    <div class="card-desc">現状LPとの比較・改善ポイント・ChatGPT生成のデザイン案を掲載</div>
+<div class="now-panel">
+  <h2>📡 配信・運用状況（2026-05-30時点）</h2>
+  <div class="status-grid">
+    <div class="status-card scheduled">
+      <div class="lbl">YAHOO ADS</div>
+      <div class="ttl">Yahoo広告 3キャンペーン<span class="status-badge scheduled">6/1配信開始</span></div>
+      <div class="meta">CP01本命¥7,000 / CP02派生¥5,000 / CP03テスト¥2,000<br>合計¥14,000/日・除外KW25個・UTM対応</div>
+    </div>
+    <div class="status-card pending">
+      <div class="lbl">GOOGLE ADS</div>
+      <div class="ttl">Google広告 3キャンペーン<span class="status-badge pending">認証待ち→6/1</span></div>
+      <div class="meta">同じ予算配分・除外KW22個・GDN停止・UTM対応<br>認証完了次第6/1配信開始予定</div>
+    </div>
+    <div class="status-card live">
+      <div class="lbl">LANDING PAGE</div>
+      <div class="ttl">LP本番<span class="status-badge live">稼働中</span></div>
+      <div class="meta">owl-fukushi.net/lp_zero-plan-g/<br>滞在60秒前後・スクロール22%（健全）</div>
+    </div>
+    <div class="status-card pending">
+      <div class="lbl">MEASUREMENT</div>
+      <div class="ttl">Microsoft Clarity<span class="status-badge pending">嶋田社長承認待ち</span></div>
+      <div class="meta">ヒートマップ・録画でLP行動分析<br>無料・タグ1行で導入可能</div>
+    </div>
   </div>
-  <a class="btn featured" href="mockup.html">開く →</a>
+
+  <div class="measure-row">
+    <a class="measure-link" href="measurement_check.html">📊 計測確認手順を見る</a>
+    <a class="measure-link alt" href="https://owl-fukushi.net/lp_zero-plan-g/" target="_blank">🌐 本番LPを開く</a>
+  </div>
 </div>
 
-<div class="card live">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-live">本番</span>現在のLP（広告共通）</div>
-    <div class="card-desc">owl-fukushi.net/lp_zero-plan-g/ ｜ 広告LPは内容共通のためこちらに統一</div>
+<!-- 🆕 RECENT UPDATES -->
+<div class="layer-h recent">🆕 RECENT UPDATES — 直近の作業ログ（新しいものが上）</div>
+<p class="layer-desc">何を作って何を進めたか、時系列で追えます。</p>
+
+<div class="timeline">
+
+  <div class="tl-item featured">
+    <div class="tl-date">2026-05-30</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="competitor_research.html">🏆 福祉事業 競合調査3カテゴリを実施</a></div>
+      <div class="tl-card-desc">①介護大手ニチイHD ②FC1位セブン ③同分野tocotoco・イグルー を比較。OWLの差別化軸「加盟金0円」が最大の勝ち筋と判明</div>
+      <div class="tl-card-tags"><span class="tag tag-research">調査</span></div>
+    </div>
   </div>
-  <a class="btn live" href="https://owl-fukushi.net/lp_zero-plan-g/" target="_blank">開く →</a>
+
+  <div class="tl-item featured">
+    <div class="tl-date">2026-05-30</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="google_setup_report.html">🔵 Google広告 3キャンペーン設定完了</a></div>
+      <div class="tl-card-desc">CP01/CP02/CP03 合計¥14,000/日・除外KW22個・GDN停止・UTM計測対応で構築。認証完了次第6/1配信開始</div>
+      <div class="tl-card-tags"><span class="tag tag-setup">設定</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-date">2026-05-30</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="measurement_check.html">📊 GA4計測確認手順書を作成</a></div>
+      <div class="tl-card-desc">6/1配信開始後にyahoo/cpc・google/cpcのCV識別が動いているか実測確認する手順</div>
+      <div class="tl-card-tags"><span class="tag tag-data">計測</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-date">2026-05-30</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="clarity_setup.html">🔍 Microsoft Clarity 導入ガイドを準備</a></div>
+      <div class="tl-card-desc">LPの「どこが悪いか」をヒートマップ・録画で可視化。嶋田社長承認次第設置</div>
+      <div class="tl-card-tags"><span class="tag tag-plan">提案</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item featured">
+    <div class="tl-date">2026-05-28</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="yahoo_setup_report.html">🟣 Yahoo広告 3キャンペーン設定完了</a></div>
+      <div class="tl-card-desc">CP01/CP02/CP03 合計¥14,000/日・除外KW25個・UTM計測対応で構築。6/1配信開始予定</div>
+      <div class="tl-card-tags"><span class="tag tag-setup">設定</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-date">2026-05-28</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="mockup.html">🎨 新LP モックアップ3案を作成</a></div>
+      <div class="tl-card-desc">A:共感型／B:収益シミュレーション型／C:現LP活用の改修案（おすすめ）</div>
+      <div class="tl-card-tags"><span class="tag tag-design">デザイン</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-date">2026-05-28</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="data_summary.html">📊 広告/LPデータサマリーを作成</a></div>
+      <div class="tl-card-desc">Yahoo・Google広告・LPの数値を1枚に集約、加盟実績162社・全国32都道府県も反映</div>
+      <div class="tl-card-tags"><span class="tag tag-data">データ</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-date">2026-05-28</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="meta_instagram_roadmap.html">🚀 Meta/Instagram展開ロードマップを作成</a></div>
+      <div class="tl-card-desc">Phase1:現状最適化／Phase2:IG立ち上げ＋Meta認知広告／Phase3:3媒体連動ファネル</div>
+      <div class="tl-card-tags"><span class="tag tag-plan">計画</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-date">2026-05-28</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="yahoo_ads_recipe.html">🛠 Yahoo・Google広告 設定レシピを作成</a></div>
+      <div class="tl-card-desc">入札KW・除外KW・キャンペーン構造・入札戦略を具体的に明記</div>
+      <div class="tl-card-tags"><span class="tag tag-setup">レシピ</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-date">2026-05-28</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="form_diagnosis.html">📝 フォームCV低下 原因究明チェックリストを作成</a></div>
+      <div class="tl-card-desc">4月にフォーム完了率が100→50%に急落した真因を究明するための12項目</div>
+      <div class="tl-card-tags"><span class="tag tag-data">分析</span></div>
+    </div>
+  </div>
+
+  <div class="tl-item">
+    <div class="tl-date">2026-05-28</div>
+    <div class="tl-card">
+      <div class="tl-card-title"><a href="briefing_20260528_short.html">📋 5/28打ち合わせブリーフィング作成</a></div>
+      <div class="tl-card-desc">現状診断・致命的発見・嶋田社長への相談事項を1画面に集約</div>
+      <div class="tl-card-tags"><span class="tag tag-plan">準備</span></div>
+    </div>
+  </div>
+
 </div>
 
-<!-- データ・分析 -->
-<div class="eyebrow">📊 データ・分析サマリー</div>
+<!-- 📚 ARCHIVE -->
+<div class="layer-h archive">📚 ARCHIVE — 資料カテゴリ別アーカイブ</div>
+<p class="layer-desc">過去の全資料に直接アクセスしたい時はこちら。</p>
 
+<div class="archive-eyebrow">🎯 LP（現状 ＆ 新案）</div>
 <div class="card">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-data">DATA</span>Google/Yahoo広告 & LPデータサマリー</div>
-    <div class="card-desc">これまで収集した広告・LPの数値を1枚に集約</div>
-  </div>
-  <a class="btn" href="data_summary.html">開く →</a>
+  <div><div class="card-title">新LPモックアップ案（3パターン）</div><div class="card-desc">A:共感型／B:収益型／C:現LP改修</div></div>
+  <a class="btn" href="mockup.html">開く</a>
 </div>
-
-<!-- 設定完了報告 -->
-<div class="eyebrow">✅ 設定完了報告</div>
-
-<div class="card featured">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-new">完了</span>🟣 Yahoo広告 設定完了報告（6/1配信開始）</div>
-    <div class="card-desc">新3キャンペーン構成・除外KW25個・UTM計測対応の完了報告書</div>
-  </div>
-  <a class="btn featured" href="yahoo_setup_report.html">開く →</a>
-</div>
-
-<!-- 実行レシピ -->
-<div class="eyebrow">🛠 実行レシピ（具体的な設定内容）</div>
-
 <div class="card">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-recipe">RECIPE</span>🟣 Yahoo広告 設定レシピ</div>
-    <div class="card-desc">入札KW13本・除外KW25語・キャンペーン構造・入札戦略</div>
-  </div>
-  <a class="btn" href="yahoo_ads_recipe.html">開く →</a>
+  <div><div class="card-title">現在のLP（広告共通）</div><div class="card-desc">owl-fukushi.net/lp_zero-plan-g/</div></div>
+  <a class="btn" href="https://owl-fukushi.net/lp_zero-plan-g/" target="_blank">開く</a>
 </div>
 
+<div class="archive-eyebrow">✅ 設定完了報告</div>
 <div class="card">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-recipe">RECIPE</span>🔵 Google広告 設定レシピ</div>
-    <div class="card-desc">検索強化＋GDN停止＋広告文＋UTM＋実行順序</div>
-  </div>
-  <a class="btn" href="google_ads_recipe.html">開く →</a>
+  <div><div class="card-title">🟣 Yahoo広告 設定完了報告</div><div class="card-desc">6/1配信開始</div></div>
+  <a class="btn" href="yahoo_setup_report.html">開く</a>
 </div>
-
 <div class="card">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-recipe">RECIPE</span>⚙️ キャンペーン設定手順（Google/Yahoo）</div>
-    <div class="card-desc">レシピを管理画面で設定する実作業手順。代理店への指示書としても使える</div>
-  </div>
-  <a class="btn" href="campaign_setup.html">開く →</a>
+  <div><div class="card-title">🔵 Google広告 設定完了報告</div><div class="card-desc">認証完了次第6/1配信開始</div></div>
+  <a class="btn" href="google_setup_report.html">開く</a>
 </div>
 
-<!-- 中長期展望 -->
-<div class="eyebrow">🚀 中長期展望（Phase 2以降）</div>
-
+<div class="archive-eyebrow">📊 データ・分析・計測</div>
 <div class="card">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-future">FUTURE</span>Meta／Instagram展開ロードマップ</div>
-    <div class="card-desc">ミチルシリカの媒体運用ノウハウを参照に、3フェーズで設計</div>
-  </div>
-  <a class="btn" href="meta_instagram_roadmap.html">開く →</a>
+  <div><div class="card-title">Google/Yahoo広告 & LPデータサマリー</div><div class="card-desc">これまで収集した数値を1枚に</div></div>
+  <a class="btn" href="data_summary.html">開く</a>
+</div>
+<div class="card">
+  <div><div class="card-title">計測確認手順書（GA4 UTM識別）</div><div class="card-desc">6/1配信後のCV分解確認</div></div>
+  <a class="btn" href="measurement_check.html">開く</a>
+</div>
+<div class="card">
+  <div><div class="card-title">🔍 Microsoft Clarity 導入ガイド</div><div class="card-desc">ヒートマップ・録画で行動分析</div></div>
+  <a class="btn" href="clarity_setup.html">開く</a>
 </div>
 
-<!-- 一番下：補足 -->
-<div class="eyebrow supplement">📎 補足資料</div>
-
-<div class="card supplement">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-sup">補足</span>📝 フォームCV低下 原因究明チェックリスト</div>
-    <div class="card-desc">4月フォーム完了率が100→50%に急落。12項目を確認→真因特定</div>
-  </div>
-  <a class="btn" href="form_diagnosis.html">開く →</a>
+<div class="archive-eyebrow">🛠 実行レシピ</div>
+<div class="card">
+  <div><div class="card-title">🟣 Yahoo広告 設定レシピ</div><div class="card-desc">KW・除外・入札・LP</div></div>
+  <a class="btn" href="yahoo_ads_recipe.html">開く</a>
+</div>
+<div class="card">
+  <div><div class="card-title">🔵 Google広告 設定レシピ</div><div class="card-desc">検索強化＋GDN停止</div></div>
+  <a class="btn" href="google_ads_recipe.html">開く</a>
+</div>
+<div class="card">
+  <div><div class="card-title">⚙️ キャンペーン設定手順書</div><div class="card-desc">管理画面での実作業手順</div></div>
+  <a class="btn" href="campaign_setup.html">開く</a>
 </div>
 
-<div class="card supplement">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-sup">補足</span>短縮版ブリーフィング（5/28打ち合わせ用）</div>
-    <div class="card-desc">結論・致命的発見・嶋田社長への相談事項を1画面に集約</div>
-  </div>
-  <a class="btn" href="briefing_20260528_short.html">開く →</a>
+<div class="archive-eyebrow">🏆 調査・戦略</div>
+<div class="card">
+  <div><div class="card-title">福祉事業 競合調査3カテゴリ</div><div class="card-desc">ニチイ・セブン・tocotoco比較</div></div>
+  <a class="btn" href="competitor_research.html">開く</a>
+</div>
+<div class="card">
+  <div><div class="card-title">🚀 Meta/Instagram展開ロードマップ</div><div class="card-desc">3フェーズ設計</div></div>
+  <a class="btn" href="meta_instagram_roadmap.html">開く</a>
 </div>
 
-<div class="card supplement">
-  <div class="card-left">
-    <div class="card-title"><span class="tag tag-sup">補足</span>詳細版ブリーフィング</div>
-    <div class="card-desc">深掘り分析・代理店評価・実検索テスト結果まで含む完全版</div>
-  </div>
-  <a class="btn" href="briefing_20260528.html">開く →</a>
+<div class="archive-eyebrow">📎 補足資料</div>
+<div class="card">
+  <div><div class="card-title">📝 フォームCV低下 原因究明チェックリスト</div><div class="card-desc">12項目で真因特定</div></div>
+  <a class="btn" href="form_diagnosis.html">開く</a>
+</div>
+<div class="card">
+  <div><div class="card-title">短縮版ブリーフィング（5/28打ち合わせ用）</div><div class="card-desc">結論・致命的発見・相談事項</div></div>
+  <a class="btn" href="briefing_20260528_short.html">開く</a>
+</div>
+<div class="card">
+  <div><div class="card-title">詳細版ブリーフィング</div><div class="card-desc">深掘り分析・代理店評価</div></div>
+  <a class="btn" href="briefing_20260528.html">開く</a>
 </div>
 
 <div class="footer">
-  株式会社 斗（hishaku）
+  関係者限定／株式会社 斗（hishaku）
 </div>
 
 </div>

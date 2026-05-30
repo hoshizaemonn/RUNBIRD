@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>計測確認手順書（GA4 UTM識別）｜OWL福祉事業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Noto Sans JP", sans-serif; color: #0f172a; line-height: 1.8; background: #f8fafc; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.container { max-width: 880px; margin: 0 auto; padding: 26px; }
+.nav-back { display: inline-block; margin-bottom: 16px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
+.section { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px 28px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+.section.warning { background: #fef2f2; border-color: #fecaca; border-left: 5px solid #b91c1c; }
+.section.good { background: #ecfdf5; border-color: #a7f3d0; border-left: 5px solid #047857; }
+.eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; margin-bottom: 8px; color: #64748b; }
+.section.warning .eyebrow { color: #b91c1c; }
+.section.good .eyebrow { color: #047857; }
+.hero { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 32px 28px; margin-bottom: 16px; text-align: center; }
+h1 { font-family: "Noto Serif JP", serif; font-size: 26px; margin-bottom: 8px; }
+h2 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 20px; margin-bottom: 12px; }
+h3 { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 15px; margin: 14px 0 8px; color: #334155; }
+p { font-size: 14px; margin-bottom: 8px; }
+.code-block { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 10px 14px; font-family: "Inter", monospace; font-size: 12px; margin: 8px 0; word-break: break-all; color: #0f172a; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; }
+th, td { padding: 8px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; font-weight: 700; }
+.bad { color: #b91c1c; font-weight: 700; }
+.good { color: #047857; font-weight: 700; }
+ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 8px 0; }
+ol.steps > li { position: relative; padding: 12px 0 12px 44px; border-bottom: 1px solid #eef2f7; font-size: 14px; }
+ol.steps > li:last-child { border-bottom: none; }
+ol.steps > li::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 12px; width: 28px; height: 28px; background: #2563eb; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: "Inter", sans-serif; font-weight: 900; font-size: 13px; }
+.sub { font-size: 12px; color: #64748b; margin-top: 4px; }
+.callout { background: #fef3c7; border-left: 4px solid #d97706; padding: 12px 16px; margin: 12px 0; border-radius: 4px; font-size: 13px; }
+.checklist { list-style: none; padding: 0; }
+.checklist li { padding: 6px 0 6px 30px; position: relative; font-size: 13px; }
+.checklist li::before { content: "☐"; position: absolute; left: 0; font-size: 18px; color: #2563eb; }
+.footer { font-size: 11px; color: #64748b; text-align: center; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="nav-back">← 資料一覧に戻る</a>
+
+<div class="hero">
+  <div class="eyebrow">MEASUREMENT VERIFICATION — 6/1〜</div>
+  <h1>計測確認手順書（GA4でUTM識別）</h1>
+  <p style="font-size:13px; color:#475569; margin-top:10px;">
+    6/1の新キャンペーン配信開始後、<strong>UTMが正しくGA4に届いてCVが分解できているか</strong>を確認する手順
+  </p>
+</div>
+
+<!-- 背景 -->
+<div class="section">
+  <div class="eyebrow">BACKGROUND</div>
+  <h2>📌 なぜ確認が必要か</h2>
+  <p>これまで <strong>Yahoo広告のCVがGA4で識別できていなかった</strong>のは、UTM未設定だったため。今回各広告にUTMを付与したので、6/1配信開始後に<strong>本当に動いているか実測確認</strong>が必要です。</p>
+
+  <h3>確認したい3つのこと</h3>
+  <ul>
+    <li><strong>Yahoo広告</strong>：GA4で「yahoo / cpc」が出現するか（これまで出ていなかった）</li>
+    <li><strong>Google広告</strong>：GA4で「google / cpc」が継続して識別されているか</li>
+    <li><strong>キャンペーン別</strong>：utm_campaignで CP01/CP02/CP03 の内訳が見えるか</li>
+  </ul>
+</div>
+
+<!-- リアルタイム確認 -->
+<div class="section">
+  <div class="eyebrow">STEP 1 — 6/1配信開始直後</div>
+  <h2>⚡ リアルタイムで「届いてるか」確認</h2>
+  <p>配信開始から30分〜数時間で、クリックが発生したらリアルタイムで見えるはずです。</p>
+
+  <ol class="steps">
+    <li><strong>GA4を開く</strong><div class="sub">GA4プロパティ「OWL福祉事業LPサイト」を開く</div></li>
+    <li><strong>左メニュー「レポート」→「リアルタイム」</strong><div class="sub">過去30分のアクセスがリアルタイムで見える</div></li>
+    <li><strong>「ユーザーの最初のメディアでユーザー数を確認」カードを探す</strong><div class="sub">またはディメンションを「セッションのソース/メディア」に変える</div></li>
+    <li><strong>下記が出現するかチェック</strong>
+      <div class="code-block">yahoo / cpc       ← 新登場（これまで0だった）
+google / cpc      ← 継続（これまでも出ていた）</div>
+    </li>
+  </ol>
+
+  <div class="callout">
+    <strong>OKパターン：</strong>「yahoo / cpc」が新たに出現していたら成功。「google / cpc」も継続していればOK。<br>
+    <strong>NGパターン：</strong>「yahoo / cpc」が一切出ない / 「(direct) / (none)」のままYahoo分が紛れている → UTM設定要再確認。
+  </div>
+</div>
+
+<!-- 数日後 -->
+<div class="section">
+  <div class="eyebrow">STEP 2 — 6/3〜6/5（数日後）</div>
+  <h2>📊 チャネル別のCV内訳を確認</h2>
+  <p>数日経って数件CVが出てきたら、ソース/メディア別のCV内訳が見えます。</p>
+
+  <ol class="steps">
+    <li><strong>レポート → エンゲージメント → コンバージョン</strong></li>
+    <li><strong>テーブルの行を「セッションのデフォルトチャネルグループ」または「セッションのソース/メディア」に変更</strong></li>
+    <li><strong>contact_complete の行を見る</strong>
+      <div class="sub">下記のように分解されているのが理想：</div>
+      <table>
+        <thead><tr><th>ソース/メディア</th><th>期待される件数</th></tr></thead>
+        <tbody>
+          <tr><td class="good">yahoo / cpc</td><td>1件〜（Yahoo広告経由）</td></tr>
+          <tr><td class="good">google / cpc</td><td>1件〜（Google広告経由）</td></tr>
+          <tr><td>(direct) / (none)</td><td>これまでより<strong>減るはず</strong>（Yahoo分が抜けるため）</td></tr>
+        </tbody>
+      </table>
+    </li>
+  </ol>
+</div>
+
+<!-- キャンペーン別 -->
+<div class="section">
+  <div class="eyebrow">STEP 3 — 1週間後</div>
+  <h2>🎯 キャンペーン別の内訳を確認</h2>
+  <p>utm_campaign の値（CP01_franchise / CP02_kaigyo / CP03_test）でキャンペーン別のCV件数・CPAが見えます。</p>
+
+  <ol class="steps">
+    <li><strong>レポート → 集客 → トラフィック獲得</strong></li>
+    <li><strong>テーブルの行を「セッション キャンペーン」に変更</strong></li>
+    <li><strong>下記のキャンペーン名が表示されるか確認</strong>
+      <div class="code-block">CP01_franchise（Yahoo・Google 本命）
+CP02_kaigyo（Yahoo・Google 派生）
+CP03_test（Yahoo・Google テスト）</div>
+    </li>
+    <li><strong>各キャンペーンのCV件数を比較</strong>
+      <div class="sub">どのキャンペーンが効率良くCVを生んでいるかが分かる → 予算配分の判断材料に</div></li>
+  </ol>
+</div>
+
+<!-- トラブルシューティング -->
+<div class="section warning">
+  <div class="eyebrow">TROUBLESHOOTING</div>
+  <h2>⚠️ もし「yahoo / cpc」が出てこない場合</h2>
+  <p>UTMが効いていない原因と対処法：</p>
+
+  <table>
+    <thead><tr><th>症状</th><th>原因</th><th>対処</th></tr></thead>
+    <tbody>
+      <tr><td>yahoo / cpc が0</td><td>UTMが付いていない／消えている</td><td>Yahoo広告管理画面で各広告の最終リンク先URLにUTMが入っているか確認</td></tr>
+      <tr><td>yahoo / referral として出る</td><td>UTM_medium=cpc になっていない</td><td>URL を再確認、特に medium=cpc を入れ直し</td></tr>
+      <tr><td>(direct) / (none) が異常に多い</td><td>LP側のリダイレクト等でUTMが落ちている</td><td>WordPressやCloudflareの設定確認、必要なら .htaccess で UTM 保持</td></tr>
+      <tr><td>Yahoo CV が広告管理画面とGA4で違う</td><td>YCLID と UTM の競合</td><td>Yahoo広告の「自動タグ機能」設定を確認</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- チェックリスト -->
+<div class="section good">
+  <div class="eyebrow">CHECKLIST</div>
+  <h2>✅ 確認チェックリスト（6/1〜）</h2>
+  <ul class="checklist">
+    <li>6/1 配信開始：GA4リアルタイムで「yahoo / cpc」が出現</li>
+    <li>6/1 配信開始：GA4リアルタイムで「google / cpc」が継続</li>
+    <li>6/3 数日後：contact_complete が yahoo/cpc 経由で1件以上記録</li>
+    <li>6/3 数日後：contact_complete が google/cpc 経由で1件以上記録</li>
+    <li>6/8 1週間後：CP01/CP02/CP03 のキャンペーン名がGA4で確認できる</li>
+    <li>6/8 1週間後：各キャンペーンのCV件数・CPAが算出できる</li>
+  </ul>
+</div>
+
+<!-- Microsoft Clarity -->
+<div class="section">
+  <div class="eyebrow">RELATED</div>
+  <h2>🔗 関連：LP行動分析（Microsoft Clarity）</h2>
+  <p>UTMで「どこから来たか」は分かりますが、「LPで何を見て何で離脱したか」までは見えません。Microsoft Clarity導入で <strong>ヒートマップ・セッション録画</strong>を取れるようになります。</p>
+  <p><a href="clarity_setup.html" style="color:#2563eb;">→ Microsoft Clarity 導入ガイドを見る</a></p>
+</div>
+
+<div class="footer">株式会社 斗（hishaku）</div>
+
+</div>
+</body>
+</html>

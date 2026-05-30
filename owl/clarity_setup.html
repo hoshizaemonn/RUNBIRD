@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Clarity 導入ガイド｜OWL福祉事業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Noto Sans JP", sans-serif; color: #0f172a; line-height: 1.8; background: #f8fafc; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.container { max-width: 880px; margin: 0 auto; padding: 26px; }
+.nav-back { display: inline-block; margin-bottom: 16px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
+.section { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px 28px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+.section.good { background: #ecfdf5; border-color: #a7f3d0; border-left: 5px solid #047857; }
+.section.warning { background: #fef3c7; border-color: #fde68a; border-left: 5px solid #d97706; }
+.eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; margin-bottom: 8px; color: #64748b; }
+.section.good .eyebrow { color: #047857; }
+.section.warning .eyebrow { color: #92400e; }
+.hero { background: linear-gradient(135deg,#0078d4,#106ebe); color: #fff; border-radius: 8px; padding: 36px 28px; margin-bottom: 16px; text-align: center; }
+.hero h1 { font-family: "Noto Serif JP", serif; font-size: 28px; margin-bottom: 8px; }
+.hero p { font-size: 13px; opacity: 0.95; }
+.hero .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 16px; font-family: "Inter", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; margin-bottom: 12px; }
+h2 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 20px; margin-bottom: 12px; }
+h3 { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 15px; margin: 14px 0 8px; color: #334155; }
+p { font-size: 14px; margin-bottom: 8px; }
+ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 8px 0; }
+ol.steps > li { position: relative; padding: 12px 0 12px 44px; border-bottom: 1px solid #eef2f7; font-size: 14px; }
+ol.steps > li:last-child { border-bottom: none; }
+ol.steps > li::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 12px; width: 28px; height: 28px; background: #0078d4; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: "Inter", sans-serif; font-weight: 900; font-size: 13px; }
+.sub { font-size: 12px; color: #64748b; margin-top: 4px; }
+.code-block { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 10px 14px; font-family: "Inter", monospace; font-size: 12px; margin: 8px 0; white-space: pre-wrap; word-break: break-all; color: #0f172a; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; }
+th, td { padding: 8px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; font-weight: 700; }
+.kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10px 0; }
+.kpi { background: #f1f5f9; border-radius: 6px; padding: 14px 8px; text-align: center; }
+.kpi .num { font-family: "Inter", sans-serif; font-weight: 900; font-size: 20px; color: #0078d4; }
+.kpi .lbl { font-size: 11px; color: #64748b; margin-top: 4px; }
+ul { padding-left: 22px; } li { font-size: 14px; line-height: 1.9; }
+.callout { background: #eff6ff; border-left: 4px solid #2563eb; padding: 12px 16px; margin: 12px 0; border-radius: 4px; font-size: 13px; }
+.callout strong { color: #1e3a8a; }
+.footer { font-size: 11px; color: #64748b; text-align: center; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="nav-back">← 資料一覧に戻る</a>
+
+<div class="hero">
+  <div class="badge">CLARITY INTEGRATION GUIDE</div>
+  <h1>Microsoft Clarity 導入ガイド</h1>
+  <p>LPで「どこが見られて、どこで離脱したか」を可視化するための導入手順</p>
+</div>
+
+<!-- なぜ必要か -->
+<div class="section">
+  <div class="eyebrow">WHY</div>
+  <h2>📌 なぜClarityが必要か</h2>
+  <p>現状、GA4で<strong>「LPに来た／何秒滞在した／スクロール率22%」</strong>までは分かりますが、以下が見えていません：</p>
+  <ul>
+    <li>❌ FV（ファーストビュー）で離脱したのか、比較表まで読んだのか</li>
+    <li>❌ どのボタンが押されてどのボタンが無視されたのか</li>
+    <li>❌ フォーム入力中にどの項目で詰まったのか（4月のフォーム完了率50%急落の真因）</li>
+  </ul>
+  <p>これらを<strong>無料で・タグ1行で・即日</strong>取れるようにするのがMicrosoft Clarityです。</p>
+</div>
+
+<!-- Clarityでできること -->
+<div class="section good">
+  <div class="eyebrow">FEATURES</div>
+  <h2>✨ Clarityでできる3つのこと</h2>
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">🔥</div><div class="lbl">クリックヒートマップ<br>どこが押されてるか</div></div>
+    <div class="kpi"><div class="num">📜</div><div class="lbl">スクロールヒートマップ<br>どこで離脱したか</div></div>
+    <div class="kpi"><div class="num">🎬</div><div class="lbl">セッション録画<br>実際の動きを動画で再生</div></div>
+  </div>
+
+  <h3>特にOWLで効果が出そうな分析</h3>
+  <ul>
+    <li><strong>フォーム完了率の真因究明</strong>：4月に100→50%に急落した原因が、セッション録画で見える</li>
+    <li><strong>LP改修の根拠取得</strong>：3案モックアップのどれが効きそうか、現状のヒートマップから判断</li>
+    <li><strong>広告との連携</strong>：CV出ない広告のクリック後、LPで何が起きてるか可視化</li>
+  </ul>
+</div>
+
+<!-- 導入手順 -->
+<div class="section">
+  <div class="eyebrow">SETUP STEPS</div>
+  <h2>🛠 導入手順（所要時間：15分）</h2>
+
+  <ol class="steps">
+    <li><strong>Microsoft Clarityにアカウント作成</strong>
+      <div class="sub"><a href="https://clarity.microsoft.com/" target="_blank">https://clarity.microsoft.com/</a> でMicrosoftアカウント or Googleアカウントでログイン（無料）</div>
+    </li>
+    <li><strong>新規プロジェクトを作成</strong>
+      <div class="sub">
+        プロジェクト名：「OWL福祉事業LP」<br>
+        ウェブサイトURL：<code>https://owl-fukushi.net</code><br>
+        サイトのカテゴリ：「ビジネスサービス」または近いもの
+      </div>
+    </li>
+    <li><strong>トラッキングコード（タグ）を取得</strong>
+      <div class="sub">プロジェクト作成後、「設定」→「セットアップ」でJavaScriptタグが表示される。下記のような形：</div>
+      <div class="code-block">&lt;script type="text/javascript"&gt;
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "XXXXXXXXXX");
+&lt;/script&gt;</div>
+      <div class="sub">XXXXXXXXXX の部分が固有のプロジェクトID</div>
+    </li>
+    <li><strong>WordPressにタグを設置</strong>
+      <div class="sub">3つの方法のどれか：</div>
+      <ul style="margin-top:6px;">
+        <li><strong>A: テーマの header.php に直接埋め込む</strong>（WPテーマ編集権限が必要）</li>
+        <li><strong>B: 「Insert Headers and Footers」プラグインで &lt;head&gt; 内に貼る</strong>（推奨・簡単）</li>
+        <li><strong>C: GTM経由で配信</strong>（GTMが既に入っていれば）</li>
+      </ul>
+    </li>
+    <li><strong>動作確認</strong>
+      <div class="sub">タグ設置後、自分のスマホ・PCでLP（lp_zero-plan-g/）にアクセス → Clarityダッシュボードで「セッション」に自分の訪問が記録されるか確認（数分で反映）</div>
+    </li>
+    <li><strong>データ蓄積（最低3〜7日）</strong>
+      <div class="sub">最低3日、できれば1週間データを溜めると分析できるレベルになる</div>
+    </li>
+  </ol>
+</div>
+
+<!-- プライバシー -->
+<div class="section warning">
+  <div class="eyebrow">PRIVACY</div>
+  <h2>🔒 プライバシーの扱い（重要）</h2>
+  <ul>
+    <li>Clarityは<strong>個人特定情報（PII）を自動マスキング</strong>します</li>
+    <li>フォーム入力フィールドの中身（氏名・メール等）は<strong>デフォルトで録画されません</strong>（マスキング表示）</li>
+    <li>クッキーは使用されますが、Microsoft の取り扱いに準拠</li>
+    <li>サイトのプライバシーポリシーに「行動分析ツールを使用」と1行追記しておくのが望ましい</li>
+  </ul>
+  <div class="callout">
+    <strong>嶋田社長への確認事項：</strong>タグの追加が必要なので、WordPress編集の許諾が必要です。承諾いただければ星崎で設置作業を進めます。
+  </div>
+</div>
+
+<!-- 分析の流れ -->
+<div class="section">
+  <div class="eyebrow">ANALYSIS</div>
+  <h2>📊 導入後の分析フロー</h2>
+
+  <h3>1週間後の最初の分析（推奨）</h3>
+  <ol class="steps">
+    <li><strong>スクロールヒートマップでLP全体の到達率を見る</strong>
+      <div class="sub">「FVで離脱25%、比較表で30%、CTAまで45%」など、どこで何%が落ちているか可視化</div></li>
+    <li><strong>クリックヒートマップで反応箇所を見る</strong>
+      <div class="sub">「電話番号は押されているか」「資料請求ボタンの色違いどっちが押されているか」など</div></li>
+    <li><strong>セッション録画で離脱パターンを観察</strong>
+      <div class="sub">10〜20件の録画を流し見し、共通の離脱ポイントを特定</div></li>
+    <li><strong>フォーム特化の分析</strong>
+      <div class="sub">フォーム入力途中で離脱したセッションを抽出 → どの項目で詰まったかを特定</div></li>
+  </ol>
+</div>
+
+<!-- 期待効果 -->
+<div class="section good">
+  <div class="eyebrow">EXPECTED RESULT</div>
+  <h2>📈 Clarityで取れる施策</h2>
+  <table>
+    <thead><tr><th>分析結果</th><th>取れる施策</th></tr></thead>
+    <tbody>
+      <tr><td>FVで50%離脱</td><td>FVの見出し・画像を3案モックアップに差し替えA/Bテスト</td></tr>
+      <tr><td>料金セクションで離脱多発</td><td>料金表の見せ方改修・FAQ追加</td></tr>
+      <tr><td>フォーム途中で離脱</td><td>必須項目の削減・項目順の入れ替え（4月急落の真因に直結）</td></tr>
+      <tr><td>CTAボタンが押されていない</td><td>ボタン色・文言・配置の改修</td></tr>
+      <tr><td>スマホでズレている</td><td>レスポンシブ修正</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- コスト -->
+<div class="section">
+  <div class="eyebrow">COST</div>
+  <h2>💰 コスト</h2>
+  <table>
+    <thead><tr><th>項目</th><th>金額</th></tr></thead>
+    <tbody>
+      <tr><td>Microsoft Clarity 利用料</td><td><strong>完全無料</strong>（Microsoftが買収後、無制限無料化）</td></tr>
+      <tr><td>設置作業（hishaku）</td><td>—（既存運用内で対応可能）</td></tr>
+      <tr><td>初回分析レポート</td><td>—（1週間後にデータが溜まり次第提示）</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">株式会社 斗（hishaku）</div>
+
+</div>
+</body>
+</html>
