@@ -58,7 +58,98 @@
 <div class="container">
 
 <h1>.look（どっとるっく）｜EC構成 比較図解</h1>
-<p class="sub">MakeShop vs EC-CUBE｜「一般＋成人を1サイトで分ける」要件で比較</p>
+<p class="sub">2026-05-31 更新／鈴木さん指摘で結論TOP2を最上部に再構成</p>
+
+<!-- ========== 結論TOP2（鈴木さん向け最重要） ========== -->
+<div style="background:linear-gradient(135deg,#1a3a5c,#2a7d4f);color:#fff;padding:24px;border-radius:14px;margin-bottom:28px;">
+  <div style="font-size:13px;opacity:0.85;margin-bottom:8px;">📌 鈴木さん向け：判断に必要な結論TOP2</div>
+  <h2 style="color:#fff;border:none;padding:0;font-size:22px;margin-bottom:14px;">月額いくら？／クレカ通る？</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:16px;">
+    <!-- カラーミー結論 -->
+    <div style="background:#fff;color:#222;border-radius:10px;padding:16px;">
+      <div style="font-size:12px;color:#888;">カラーミー（2契約）</div>
+      <div style="font-size:13px;font-weight:700;color:#1a3a5c;margin:4px 0;">月額</div>
+      <div style="font-size:24px;font-weight:700;color:#c0392b;">約 9,600〜14,600円</div>
+      <div style="font-size:11px;color:#888;margin-top:2px;">プラン×2＋決済代行</div>
+      <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
+      <div style="font-size:13px;font-weight:700;color:#1a3a5c;">クレカ（アダルト）</div>
+      <div style="font-size:18px;font-weight:700;color:#2a7d4f;">⭕️ 通りやすい</div>
+      <div style="font-size:11px;color:#666;margin-top:2px;">カラーミーペイメント（GMOイプシロン）が<strong>標準付属</strong>。R18指定商品として申請</div>
+    </div>
+
+    <!-- MakeShop結論 -->
+    <div style="background:#fff;color:#222;border-radius:10px;padding:16px;">
+      <div style="font-size:12px;color:#888;">MakeShop（2契約）</div>
+      <div style="font-size:13px;font-weight:700;color:#1a3a5c;margin:4px 0;">月額</div>
+      <div style="font-size:24px;font-weight:700;color:#c0392b;">約 30,500〜38,500円</div>
+      <div style="font-size:11px;color:#888;margin-top:2px;">プラン×2＋WP連携OP＋決済代行</div>
+      <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
+      <div style="font-size:13px;font-weight:700;color:#1a3a5c;">クレカ（アダルト）</div>
+      <div style="font-size:18px;font-weight:700;color:#2a7d4f;">⭕️ 通りやすい</div>
+      <div style="font-size:11px;color:#666;margin-top:2px;">MakeShopペイメント標準付属。要審査</div>
+    </div>
+
+    <!-- EC-CUBE結論 -->
+    <div style="background:#fff;color:#222;border-radius:10px;padding:16px;border:3px solid #d4a017;">
+      <div style="font-size:12px;color:#888;">EC-CUBE（推奨候補）</div>
+      <div style="font-size:13px;font-weight:700;color:#1a3a5c;margin:4px 0;">月額</div>
+      <div style="font-size:24px;font-weight:700;color:#2a7d4f;">約 4,000〜11,000円</div>
+      <div style="font-size:11px;color:#888;margin-top:2px;">サーバー＋決済代行月額</div>
+      <hr style="margin:10px 0;border:none;border-top:1px solid #eee;">
+      <div style="font-size:13px;font-weight:700;color:#1a3a5c;">クレカ（アダルト）</div>
+      <div style="font-size:18px;font-weight:700;color:#d4a017;">△ 自前で契約</div>
+      <div style="font-size:11px;color:#666;margin-top:2px;">標準で<strong>付かない</strong>。アダルト対応決済代行（テレコムクレジット等）を別途契約。<strong>審査約4週間</strong>。要求どおり通るか別途要確認</div>
+    </div>
+  </div>
+
+  <div style="background:rgba(255,255,255,0.12);border-radius:10px;padding:14px 18px;margin-top:16px;font-size:13px;line-height:1.85;">
+    <strong>3社の組み合わせ評価（鈴木さんの判断軸）：</strong><br>
+    🟢 <strong>月額の安さ</strong>＝EC-CUBE → カラーミー → MakeShop<br>
+    🟢 <strong>クレカ通りやすさ（=決済が止まらないリスク）</strong>＝カラーミー／MakeShop（標準付属）→ EC-CUBE（自前契約・審査要）<br>
+    🔵 「一般＋成人を1サイトで分ける」要件 ＝ EC-CUBE のみ素直に実現可（カラーミー/MakeShopは2契約必要）
+  </div>
+</div>
+
+<!-- 既存環境（Xサーバー）対応 -->
+<h2 style="margin-top:8px;">図0. 既存環境（Xサーバー）にそのまま乗るか？</h2>
+
+<div class="card" style="padding:18px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="background:#fff0f0;border-radius:10px;padding:14px;border-left:5px solid #c0392b;">
+      <div style="font-size:13px;font-weight:700;color:#c0392b;">❌ 既存Xサーバーには R18 EC を乗せられない</div>
+      <div style="font-size:12px;color:#444;margin-top:6px;line-height:1.8;">
+        ・EC-CUBE 4 自体は<strong>Xサーバーで動く</strong>（公式に簡単インストール提供）<br>
+        ・<strong>ただしXサーバーの規約で「ポルノサイト・性的画像/動画」は禁止</strong><br>
+        ・R18本・アダルトDVDのEC（商品画像が必然的に出る）は<strong>規約違反リスク</strong>でアカウント停止の恐れ
+      </div>
+    </div>
+    <div style="background:#eaf5ee;border-radius:10px;padding:14px;border-left:5px solid #2a7d4f;">
+      <div style="font-size:13px;font-weight:700;color:#2a7d4f;">⭕️ 解決：シンレンタルサーバー（同系列）に乗せる</div>
+      <div style="font-size:12px;color:#444;margin-top:6px;line-height:1.8;">
+        ・<strong>Xserver社の兄弟サービス「シンレンタルサーバー」がアダルト公認</strong>（無修正・児ポは禁止）<br>
+        ・Xサーバーから移管せず<strong>新規契約で別サーバー</strong>として並走可<br>
+        ・月額数百円〜の同系列なので運用感はXサーバーと類似
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff8e7;border-left:4px solid #d4a017;padding:14px 18px;border-radius:6px;margin-top:14px;font-size:13px;">
+    <strong>つまり：</strong>既存環境（Xサーバー上の hidemo.rb-demo.net）には<strong>表サイト（WordPress / 買取訴求トップ・ブログ）だけ</strong>を残し、<strong>EC本体（EC-CUBE・R18含む）はシンレンタルサーバー等のアダルト公認サーバーに別契約で構築</strong>するのが正解。<br>
+    既存Xサーバーをまるごと使い回す案は不可。
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
+    <div class="link-card">
+      <span class="label">Xサーバー アダルト規約</span>
+      <a href="https://www.xserver.ne.jp/support/faq/dont_contents_stint.php" target="_blank">xserver.ne.jp/support/faq/dont_contents_stint.php</a>
+    </div>
+    <div class="link-card">
+      <span class="label">シンレンタルサーバー アダルト可</span>
+      <a href="https://www.shin-server.jp/support/faq/dont_adult.php" target="_blank">shin-server.jp/support/faq/dont_adult.php</a>
+    </div>
+  </div>
+</div>
 
 <!-- ========== 図1: 年齢認証のかかり方 ========== -->
 <h2>図1. 年齢認証のかかり方の違い（ここが運命の分かれ目）</h2>
