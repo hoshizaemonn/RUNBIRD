@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meta広告ライブラリ 手動キャプチャ ガイド｜OWL福祉事業</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; background: #f4f6f9; color: #0f172a; line-height: 1.7; padding: 16px; -webkit-font-smoothing: antialiased; }
+.container { max-width: 920px; margin: 0 auto; }
+.nav-back { display: inline-block; margin-bottom: 12px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
+h1 { font-size: 24px; margin-bottom: 4px; }
+.sub { color: #64748b; font-size: 13px; margin-bottom: 18px; }
+
+.intro { background: linear-gradient(135deg,#7c3aed,#2563eb); color: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+.intro h2 { font-size: 18px; margin-bottom: 10px; }
+.intro p { font-size: 13px; opacity: 0.95; }
+.intro .meta { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 14px; }
+.intro .m { background: rgba(255,255,255,0.16); border-radius: 8px; padding: 10px; text-align: center; }
+.intro .m .num { font-size: 22px; font-weight: 700; }
+.intro .m .lbl { font-size: 11px; opacity: 0.9; }
+
+.section { background: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(15,23,42,0.05); }
+.section h2 { font-size: 18px; margin-bottom: 12px; border-left: 5px solid #7c3aed; padding-left: 12px; }
+.section h3 { font-size: 15px; margin: 14px 0 8px; color: #1e3a8a; }
+
+.target { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
+.target-head { display: flex; gap: 10px; align-items: baseline; margin-bottom: 10px; flex-wrap: wrap; }
+.target-num { background: #7c3aed; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; flex-shrink: 0; }
+.target-name { font-size: 16px; font-weight: 700; color: #0f172a; }
+.target-cat { font-size: 11px; background: #ede9fe; color: #5b21b6; padding: 2px 10px; border-radius: 12px; }
+.target-cat.competitor { background: #fee2e2; color: #b91c1c; }
+.target-cat.benchmark { background: #d1fae5; color: #047857; }
+
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+.btn { display: inline-block; padding: 6px 14px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 6px; font-size: 12px; font-weight: 700; }
+.btn:hover { background: #1d4ed8; }
+.btn.secondary { background: #fff; color: #2563eb; border: 1px solid #2563eb; }
+
+.hint { background: #fffbeb; border-left: 4px solid #d97706; padding: 10px 14px; border-radius: 6px; font-size: 12px; color: #78350f; margin-top: 8px; }
+
+/* チェックリスト */
+.checklist { background: #f9fafb; border-radius: 10px; padding: 14px 18px; }
+.checklist label { display: block; padding: 6px 0; font-size: 13px; cursor: pointer; border-bottom: 1px solid #e5e7eb; }
+.checklist label:last-child { border-bottom: none; }
+.checklist input[type=checkbox] { margin-right: 10px; transform: scale(1.2); accent-color: #7c3aed; }
+
+/* 保存先 */
+.path { font-family: ui-monospace, Menlo, monospace; background: #1f2937; color: #f9fafb; padding: 10px 14px; border-radius: 6px; font-size: 12px; word-break: break-all; }
+
+/* キャプチャ項目表 */
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; }
+table code { background: #ede9fe; color: #5b21b6; padding: 2px 6px; border-radius: 3px; font-size: 11px; }
+
+footer { text-align: center; color: #94a3b8; font-size: 11px; padding: 24px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="index.html" class="nav-back">← 資料一覧に戻る</a>
+
+<h1>Meta広告ライブラリ 手動キャプチャ ガイド</h1>
+<p class="sub">2026-06-01 ／ Meta Ad Library API は権限不足で取れないため、手動キャプチャを最短化するチェックシート</p>
+
+<!-- イントロ -->
+<div class="intro">
+  <h2>📌 このページの使い方</h2>
+  <p>下のボタンを<strong>1社ずつクリックすればMeta広告ライブラリの該当検索ページが直接開く</strong>。配信中広告のスクショを撮ってフォルダに保存し、最後にチェックボックスを埋める。Claudeに「キャプチャ終わった」と話せば、収集結果から<strong>OWL用クリエ案6本目以降を自動生成</strong>します。</p>
+  <div class="meta">
+    <div class="m"><div class="num">5社</div><div class="lbl">調査対象</div></div>
+    <div class="m"><div class="num">30〜60分</div><div class="lbl">所要時間</div></div>
+    <div class="m"><div class="num">7項目</div><div class="lbl">/広告 記録</div></div>
+  </div>
+</div>
+
+<!-- 対象5社 -->
+<div class="section">
+  <h2>🎯 調査対象5社（クリック=Meta広告ライブラリ検索ページが直接開く）</h2>
+
+  <div class="target">
+    <div class="target-head">
+      <span class="target-num">1</span>
+      <span class="target-name">tocotoco株式会社</span>
+      <span class="target-cat competitor">直接競合</span>
+    </div>
+    <p style="font-size:12px;color:#64748b;">旧アニスピHD。障害者グループホーム業界最大手。2025年商号変更後の配信状況確認</p>
+    <div class="btn-row">
+      <a class="btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=JP&q=tocotoco&search_type=keyword_unordered" target="_blank">▶ tocotoco 配信中</a>
+      <a class="btn secondary" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=JP&q=tocotoco&search_type=keyword_unordered" target="_blank">過去含む全件</a>
+    </div>
+  </div>
+
+  <div class="target">
+    <div class="target-head">
+      <span class="target-num">2</span>
+      <span class="target-name">アニスピホールディングス</span>
+      <span class="target-cat competitor">直接競合（旧法人名）</span>
+    </div>
+    <p style="font-size:12px;color:#64748b;">2025年7月にtocotocoへ商号変更したが旧名義の広告が残っている可能性</p>
+    <div class="btn-row">
+      <a class="btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=JP&q=%E3%82%A2%E3%83%8B%E3%82%B9%E3%83%94&search_type=keyword_unordered" target="_blank">▶ アニスピ 配信中</a>
+      <a class="btn secondary" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=JP&q=%E3%82%A2%E3%83%8B%E3%82%B9%E3%83%94&search_type=keyword_unordered" target="_blank">全件</a>
+    </div>
+  </div>
+
+  <div class="target">
+    <div class="target-head">
+      <span class="target-num">3</span>
+      <span class="target-name">わおん（ペット共生型グループホーム）</span>
+      <span class="target-cat competitor">サービスブランド</span>
+    </div>
+    <p style="font-size:12px;color:#64748b;">tocotocoの主力サービス名。本部直接配信＋加盟店個別配信を両方確認</p>
+    <div class="btn-row">
+      <a class="btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=JP&q=%E3%82%8F%E3%81%8A%E3%82%93+%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0&search_type=keyword_unordered" target="_blank">▶ わおん 配信中</a>
+      <a class="btn secondary" href="https://www.facebook.com/ads/library/?active_status=all&ad_type=all&country=JP&q=%E3%82%8F%E3%81%8A%E3%82%93+%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0&search_type=keyword_unordered" target="_blank">全件</a>
+    </div>
+  </div>
+
+  <div class="target">
+    <div class="target-head">
+      <span class="target-num">4</span>
+      <span class="target-name">ハリナチュレ／KOSHIKI（仲野直紀代表）</span>
+      <span class="target-cat benchmark">学習対象（別業界）</span>
+    </div>
+    <p style="font-size:12px;color:#64748b;">15秒広告マスターメソッドの本人。動画クリエの構造・テンポを学ぶ</p>
+    <div class="btn-row">
+      <a class="btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=JP&q=%E3%83%8F%E3%83%AA%E3%83%8A%E3%83%81%E3%83%A5%E3%83%AC&search_type=keyword_unordered" target="_blank">▶ ハリナチュレ 配信中</a>
+      <a class="btn secondary" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=JP&q=KOSHIKI&search_type=keyword_unordered" target="_blank">KOSHIKI</a>
+    </div>
+  </div>
+
+  <div class="target">
+    <div class="target-head">
+      <span class="target-num">5</span>
+      <span class="target-name">買取大吉（株式会社エンパワー）</span>
+      <span class="target-cat benchmark">学習対象（FC1500店）</span>
+    </div>
+    <p style="font-size:12px;color:#64748b;">業界別だが「本部の伴走」「初期費用負担」訴求の参考になる</p>
+    <div class="btn-row">
+      <a class="btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=JP&q=%E8%B2%B7%E5%8F%96%E5%A4%A7%E5%90%89&search_type=keyword_unordered" target="_blank">▶ 買取大吉 配信中</a>
+      <a class="btn secondary" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=JP&q=%E3%82%A8%E3%83%B3%E3%83%91%E3%83%AF%E3%83%BC&search_type=keyword_unordered" target="_blank">エンパワー</a>
+    </div>
+  </div>
+</div>
+
+<!-- キャプチャすべき項目 -->
+<div class="section">
+  <h2>📷 各広告で記録する7項目</h2>
+  <table>
+    <thead><tr><th width="120">項目</th><th>取得方法</th></tr></thead>
+    <tbody>
+      <tr><td><strong>① 広告本文</strong></td><td>クリエイティブの上に表示されるテキスト全文。コピペ可</td></tr>
+      <tr><td><strong>② 見出し/サブ</strong></td><td>クリエ内のメインテキスト・ボタン上のタイトル</td></tr>
+      <tr><td><strong>③ 配信開始日</strong></td><td>「Active since」表示の日付</td></tr>
+      <tr><td><strong>④ 配信媒体</strong></td><td>Facebook / Instagram / Messenger / Audience Network のチェック表示</td></tr>
+      <tr><td><strong>⑤ CTAボタン</strong></td><td>「詳しくはこちら」「資料請求」「お申し込み」等の文字</td></tr>
+      <tr><td><strong>⑥ クリエ形式</strong></td><td>静止画／動画／カルーセル／コレクション</td></tr>
+      <tr><td><strong>⑦ 遷移先URL</strong></td><td>CTAボタンの「リンク先」をマウスホバーで確認</td></tr>
+    </tbody>
+  </table>
+  <div class="hint">
+    <strong>💡 効率化Tips：</strong>クリエ全体は<strong>スクショ撮影＋ファイル名で連番管理</strong>。本文等のテキストは<strong>テキストファイル1つに番号付きで全部追記</strong>するのが最速。1広告あたり目標30秒以内。
+  </div>
+</div>
+
+<!-- 保存先 -->
+<div class="section">
+  <h2>📁 保存先と命名規則</h2>
+  <h3>保存先フォルダ</h3>
+  <div class="path">受託事業/クライアント/RUNBIRD/福祉事業/_調査/meta_ads_20260601/</div>
+
+  <h3>ファイル命名規則</h3>
+  <table>
+    <thead><tr><th width="200">ファイル</th><th>説明</th></tr></thead>
+    <tbody>
+      <tr><td><code>01_tocotoco_001.png</code></td><td>スクショ。社番号_順序の連番</td></tr>
+      <tr><td><code>01_tocotoco_notes.md</code></td><td>テキスト記録。各広告の7項目を箇条書き</td></tr>
+      <tr><td><code>02_anispi_001.png</code></td><td>同上（アニスピ）</td></tr>
+      <tr><td><code>_全体メモ.md</code></td><td>気づきや「これパクりたい」メモ</td></tr>
+    </tbody>
+  </table>
+
+  <h3>テキストファイルの書き方テンプレ</h3>
+  <div class="path">## 001<br>本文: 加盟金0円から始める福祉事業<br>見出し: 月60万円の安定収益<br>開始: 2026/04/15<br>媒体: FB+IG<br>CTA: 詳しくはこちら<br>形式: 動画15秒<br>遷移: https://...</div>
+</div>
+
+<!-- チェックリスト -->
+<div class="section">
+  <h2>✅ 進捗チェックリスト</h2>
+  <div class="checklist">
+    <label><input type="checkbox"> 1. tocotoco 配信中広告キャプチャ完了</label>
+    <label><input type="checkbox"> 2. アニスピHD 配信中広告キャプチャ完了（残ってる場合）</label>
+    <label><input type="checkbox"> 3. わおん（ブランド名）キャプチャ完了</label>
+    <label><input type="checkbox"> 4. ハリナチュレ／KOSHIKI キャプチャ完了</label>
+    <label><input type="checkbox"> 5. 買取大吉／エンパワー キャプチャ完了</label>
+    <label><input type="checkbox"> 6. 全社の _調査/meta_ads_20260601/ への保存完了</label>
+    <label><input type="checkbox"> 7. _全体メモ.md に「これパクりたい」リスト記録</label>
+  </div>
+  <div class="hint">
+    <strong>💡 完了後：</strong>Claudeに「<strong>Meta広告キャプチャ終わった</strong>」と話せば、保存先フォルダを読み込んで<strong>OWL用広告クリエ6本目以降を自動生成</strong>します。
+  </div>
+</div>
+
+<!-- 補足 -->
+<div class="section">
+  <h2>⚠️ 想定される結果パターンと対処</h2>
+  <table>
+    <thead><tr><th width="280">結果</th><th>対処</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>A. tocotocoの配信中広告が0件</strong></td>
+        <td>商号変更直後で配信停止中の可能性。「過去含む全件」ボタンで履歴を確認</td>
+      </tr>
+      <tr>
+        <td><strong>B. わおん加盟店個別アカウントが多数</strong></td>
+        <td>本部広告と加盟店広告を分けて記録。加盟店広告は「テンプレ型」が多いので1〜2件サンプルで十分</td>
+      </tr>
+      <tr>
+        <td><strong>C. ハリナチュレ配信なし</strong></td>
+        <td>仲野氏の他事業（おさるマーケ大学／チラリア）を試す → <a href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=JP&q=%E3%81%8A%E3%81%95%E3%82%8B%E3%83%9E%E3%83%BC%E3%82%B1&search_type=keyword_unordered" target="_blank">おさるマーケ検索</a></td>
+      </tr>
+      <tr>
+        <td><strong>D. 全社配信なし</strong></td>
+        <td>Yahoo広告経由・Google検索のみ運用の可能性。その場合は<strong>OWLがMetaで先行できる</strong>ポジティブニュース</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>OWL福祉事業 ／ Meta広告キャプチャガイド ／ 2026-06-01</footer>
+</div>
+</body>
+</html>
