@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>福祉事業 競合調査3カテゴリ｜OWL福祉事業</title>
+<title>福祉事業 競合調査（Web集客中堅FC中心・v2）｜OWL福祉事業</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -13,15 +13,14 @@ body { font-family: "Noto Sans JP", sans-serif; color: #0f172a; line-height: 1.8
 .container { max-width: 920px; margin: 0 auto; padding: 26px; }
 .nav-back { display: inline-block; margin-bottom: 16px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
 .section { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px 28px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
-.section.cat1 { border-left: 5px solid #047857; }
-.section.cat2 { border-left: 5px solid #d97706; }
-.section.cat3 { border-left: 5px solid #b91c1c; }
+.section.target { border-left: 5px solid #b91c1c; }
+.section.mid { border-left: 5px solid #d97706; }
 .section.dark { background: #0f172a; color: #f1f5f9; border-color: #0f172a; }
 .section.good { background: #ecfdf5; border-color: #a7f3d0; border-left: 5px solid #047857; }
+.section.note { background: #f1f5f9; border: 1px dashed #94a3b8; }
 .eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; margin-bottom: 8px; color: #64748b; }
-.section.cat1 .eyebrow { color: #047857; }
-.section.cat2 .eyebrow { color: #d97706; }
-.section.cat3 .eyebrow { color: #b91c1c; }
+.section.target .eyebrow { color: #b91c1c; }
+.section.mid .eyebrow { color: #d97706; }
 .section.dark .eyebrow { color: #93c5fd; }
 .section.good .eyebrow { color: #047857; }
 .hero { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 32px 28px; margin-bottom: 16px; text-align: center; }
@@ -37,26 +36,28 @@ th { background: #f1f5f9; font-weight: 700; }
 .section.dark table { background: rgba(255,255,255,0.05); color: #f1f5f9; }
 .section.dark table th { background: rgba(0,0,0,0.3); color: #93c5fd; }
 .company-card { border: 1px solid #e5e7eb; border-radius: 6px; padding: 16px 18px; margin: 10px 0; background: #f8fafc; }
+.company-card.priority { border: 2px solid #b91c1c; background: #fef2f2; }
 .company-card .name { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 16px; color: #0f172a; margin-bottom: 6px; }
 .company-card .sub { font-size: 12px; color: #64748b; margin-bottom: 8px; }
-.company-card .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 8px 0; }
-.company-card .stat { background: #fff; padding: 8px; border-radius: 4px; text-align: center; }
-.company-card .stat .n { font-family: "Inter", sans-serif; font-weight: 900; font-size: 16px; color: #1A3A6C; }
-.company-card .stat .l { font-size: 10px; color: #64748b; margin-top: 2px; }
-.kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10px 0; }
-.kpi { background: #f1f5f9; border-radius: 6px; padding: 14px 8px; text-align: center; }
-.kpi .num { font-family: "Inter", sans-serif; font-weight: 900; font-size: 22px; color: #1A3A6C; }
-.kpi .lbl { font-size: 11px; color: #64748b; margin-top: 4px; }
-ul { padding-left: 22px; } li { font-size: 14px; line-height: 1.9; }
+.company-card .link { display: inline-block; font-size: 11px; color: #2563eb; text-decoration: none; padding: 3px 8px; background: #fff; border: 1px solid #cbd5e1; border-radius: 4px; margin: 2px; }
 .callout { background: #fef3c7; border-left: 4px solid #d97706; padding: 12px 16px; margin: 12px 0; border-radius: 4px; font-size: 13px; }
 .callout strong { color: #92400e; }
+.callout-blue { background: #eff6ff; border-left: 4px solid #2563eb; padding: 12px 16px; margin: 12px 0; border-radius: 4px; font-size: 13px; }
+.callout-red { background: #fef2f2; border-left: 4px solid #b91c1c; padding: 12px 16px; margin: 12px 0; border-radius: 4px; font-size: 13px; }
 .tag { display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: 700; border-radius: 3px; margin-right: 4px; }
-.tag-1 { background: #047857; color: #fff; }
-.tag-2 { background: #d97706; color: #fff; }
-.tag-3 { background: #b91c1c; color: #fff; }
-.source-link { color: #2563eb; font-size: 12px; text-decoration: none; }
-.source-link:hover { text-decoration: underline; }
+.tag-priority { background: #b91c1c; color: #fff; }
+.tag-mid { background: #d97706; color: #fff; }
+.tag-ref { background: #94a3b8; color: #fff; }
+.tag-todo { background: #2563eb; color: #fff; }
+.tag-verified { background: #047857; color: #fff; }
+.tag-inferred { background: #d97706; color: #fff; }
+ul { padding-left: 22px; } li { font-size: 13px; line-height: 1.9; }
 .footer { font-size: 11px; color: #64748b; text-align: center; margin-top: 20px; }
+.update-note { background: #f0f9ff; border: 1px solid #93c5fd; border-radius: 6px; padding: 14px 18px; margin-bottom: 16px; font-size: 13px; }
+.update-note strong { color: #1e3a8a; }
+.research-table { font-size: 11.5px; }
+.research-table th { background: #f8fafc; }
+.honest-box { background: #f8fafc; border: 1px dashed #94a3b8; padding: 10px 14px; margin: 8px 0; border-radius: 4px; font-size: 12px; color: #475569; }
 </style>
 </head>
 <body>
@@ -66,214 +67,207 @@ ul { padding-left: 22px; } li { font-size: 14px; line-height: 1.9; }
 <a href="index.html" class="nav-back">← 資料一覧に戻る</a>
 
 <div class="hero">
-  <div class="eyebrow">COMPETITOR RESEARCH — 2026.05.30</div>
-  <h1>福祉事業 競合調査（3カテゴリ）</h1>
+  <div class="eyebrow">COMPETITOR RESEARCH v2 — 2026.05.31</div>
+  <h1>福祉事業 競合調査（v2）<br>Web集客中堅FC中心</h1>
   <p style="font-size:13px; color:#475569; margin-top:10px;">
-    OWL福祉事業がベンチマークすべき3カテゴリの企業を調査<br>
-    <span class="tag tag-1">①</span> 同業界成功企業（障がい者福祉/介護大手）
-    <span class="tag tag-2">②</span> FC業界1位（日本全体）
-    <span class="tag tag-3">③</span> 同分野FC1位（障がい者GH FC）
+    <strong>v2方針：</strong>セブン・ニチイは規模が違いすぎて参考にならないため脚注扱い。<br>
+    <strong>OWLが真似できる「中堅Web集客FC」を中心に深掘り</strong>する構成に再編。
   </p>
 </div>
 
-<!-- サマリー -->
-<div class="section good">
-  <div class="eyebrow">SUMMARY</div>
-  <h2>📌 3カテゴリの比較サマリー</h2>
-  <table>
-    <thead><tr><th>カテゴリ</th><th>1位企業</th><th>規模</th><th>OWLへの示唆</th></tr></thead>
+<div class="update-note">
+  <strong>📝 v1→v2の変更点：</strong>鈴木さん指摘を受けて全面再構成。①セブン/ニチイHDを脚注扱いに後退、②tocotocoを最重要競合として徹底調査の章に格上げ、③中堅Web集客FC（買取大吉・HYROX・ハリナチュレ）の章を新設、④OWL YouTube戦略を関連ドキュメントとして整理（→ <a href="youtube_strategy.html" style="color:#2563eb;">YouTube戦略ページ</a>）。
+</div>
+
+<!-- ⭐最重要：tocotoco徹底調査 -->
+<div class="section target">
+  <div class="eyebrow">PRIORITY TARGET — DIRECT COMPETITOR</div>
+  <h2>⭐ ① tocotoco（旧わおん）徹底調査</h2>
+  <p>OWLの**直接競合・最重要監視先**。同分野FC1位、ペット共生型で差別化、グループ会社・関連事業も豊富。</p>
+
+  <div class="company-card priority">
+    <div class="name">tocotoco株式会社（旧：株式会社アニスピHD）</div>
+    <div class="sub">2025年7月に社名変更／本社：東京都／障害者GH・訪問看護・就労支援を展開</div>
+    <a class="link" href="https://to-co-to-co.co.jp/" target="_blank">🔗 公式（コーポレート）</a>
+    <a class="link" href="https://fc.dai.co.jp/fc/37496" target="_blank">🔗 FC募集ページ</a>
+    <a class="link" href="https://www.youtube.com/results?search_query=tocotoco+%E3%82%8F%E3%81%8A%E3%82%93+%E3%82%AA%E3%83%BC%E3%83%8A%E3%83%BC" target="_blank">🔗 YouTube検索</a>
+  </div>
+
+  <h3>4軸 × 5W1H 深掘り調査</h3>
+
+  <table class="research-table">
+    <thead><tr><th width="120">軸</th><th>判明している事実</th><th>状態</th></tr></thead>
     <tbody>
-      <tr><td><span class="tag tag-1">①</span>業界成功企業</td><td>ニチイホールディングス</td><td>介護事業売上 1,691億円（2025/3期）</td><td>大手の収益モデル・採用戦略を参考</td></tr>
-      <tr><td><span class="tag tag-2">②</span>FC業界1位</td><td>セブン-イレブン</td><td>21,735店舗（2026/4末）</td><td>「圧倒的1位の存在感」の作り方</td></tr>
-      <tr><td><span class="tag tag-3">③</span>同分野FC1位</td><td>tocotoco（旧わおん）</td><td>約150〜600社（時期で変動）</td><td>直接競合の戦略を分析</td></tr>
-    </tbody>
-  </table>
-  <div class="callout">
-    <strong>OWLの位置：</strong>同分野FC（③）でtocotoco・イグルーに次ぐポジション。加盟実績162社（弊社分析）は ③ 内で十分戦えるレベル。差別化＝「加盟金0円」「月額制」「未経験95%」が刺さるポジショニング。
-  </div>
-</div>
-
-<!-- カテゴリ① 同業界成功企業 -->
-<div class="section cat1">
-  <div class="eyebrow">CATEGORY 1 — INDUSTRY LEADERS</div>
-  <h2>① 同業界成功企業（介護・障がい者福祉 大手）</h2>
-  <p>障がい者グループホーム単独の上場大手は少なく、<strong>介護事業の中で障がい者福祉も展開する大手企業</strong>がベンチマーク対象になります。</p>
-
-  <div class="company-card">
-    <div class="name">🥇 ニチイホールディングス</div>
-    <div class="sub">介護業界 売上高 1位 / 株式会社ニチイ学館を持つHD</div>
-    <div class="stats">
-      <div class="stat"><div class="n">¥1,691億</div><div class="l">介護事業売上<br>(2025/3期)</div></div>
-      <div class="stat"><div class="n">全国</div><div class="l">事業展開エリア</div></div>
-      <div class="stat"><div class="n">在宅+施設</div><div class="l">サービス領域</div></div>
-    </div>
-    <p style="font-size:13px;"><strong>強み：</strong>知名度・採用力・スケール。在宅介護・施設・教育まで垂直統合。<br>
-    <strong>OWLへの示唆：</strong>規模で勝負はできない。「加盟金0円・小規模FC」というニッチで差別化する戦略は正しい方向。</p>
-  </div>
-
-  <div class="company-card">
-    <div class="name">🥈 SOMPOケア</div>
-    <div class="sub">介護業界 売上高 2位 / 損保ジャパンHDグループ</div>
-    <div class="stats">
-      <div class="stat"><div class="n">保険×介護</div><div class="l">独自モデル</div></div>
-      <div class="stat"><div class="n">全国</div><div class="l">事業展開</div></div>
-      <div class="stat"><div class="n">高品質訴求</div><div class="l">ブランド戦略</div></div>
-    </div>
-    <p style="font-size:13px;"><strong>強み：</strong>損保ブランドによる信頼性、高単価帯のサービス展開。</p>
-  </div>
-
-  <div class="company-card">
-    <div class="name">🥉 ケア21グループ</div>
-    <div class="sub">在宅+施設+障がい者支援+ダイニング / 上場介護企業の中核</div>
-    <div class="stats">
-      <div class="stat"><div class="n">複合事業</div><div class="l">展開範囲</div></div>
-      <div class="stat"><div class="n">障がい者支援あり</div><div class="l">OWLと重複領域</div></div>
-      <div class="stat"><div class="n">上場</div><div class="l">企業形態</div></div>
-    </div>
-    <p style="font-size:13px;"><strong>OWLとの近接性：</strong>障がい者（児）支援事業を持っており、最も近い参考対象。</p>
-  </div>
-
-  <h3>業界トレンド（2026年）</h3>
-  <ul>
-    <li><strong>2024年度の介護主要社売上高は前年度比7.0%増</strong> ── 市場全体は成長</li>
-    <li><strong>2025年に介護事業者倒産176件（2000年以降最多）</strong> ── 中小事業者が淘汰、規模化が進む</li>
-    <li>→ <strong>OWLの「FC化で本部が経営ノウハウ提供」モデルは時流に合っている</strong></li>
-  </ul>
-
-  <p style="font-size:11px; color:#64748b; margin-top:8px;">
-    出典：<a class="source-link" href="https://shikiho.toyokeizai.net/gyoukai/industry/173/ranking" target="_blank">東洋経済 介護業界ランキング</a>
-    <a class="source-link" href="https://toyokeizai.net/articles/-/870750" target="_blank">東洋経済 上場介護企業営業利益率TOP15</a>
-  </p>
-</div>
-
-<!-- カテゴリ② FC業界1位 -->
-<div class="section cat2">
-  <div class="eyebrow">CATEGORY 2 — TOP FC IN JAPAN</div>
-  <h2>② FC業界1位（日本のフランチャイズ全体）</h2>
-  <p>日本のFC業界全体で<strong>圧倒的1位</strong>がセブン-イレブン。FC=コンビニ＝セブン、という連想が国民レベルで定着している企業。</p>
-
-  <div class="company-card">
-    <div class="name">🥇 セブン-イレブン・ジャパン</div>
-    <div class="sub">日本FC業界 不動の1位 / コンビニ市場シェアトップ</div>
-    <div class="stats">
-      <div class="stat"><div class="n">21,735店</div><div class="l">国内店舗数<br>(2026/4末)</div></div>
-      <div class="stat"><div class="n">42%</div><div class="l">コンビニ業界<br>シェア</div></div>
-      <div class="stat"><div class="n">+200店</div><div class="l">2026年度<br>出店計画</div></div>
-    </div>
-    <p style="font-size:13px;"><strong>強み：</strong>店舗網・物流・PB商品・データ分析。FC加盟者を「経営者」として育てる仕組みが秀逸。<br>
-    <strong>OWLへの示唆：</strong>規模ではなく「FC加盟者を本気で支える本部体制」を参考に。マニュアル整備・行政対応サポートは強い差別化要素。</p>
-  </div>
-
-  <h3>FC業界全体の規模感（2026年）</h3>
-  <div class="kpi-row">
-    <div class="kpi"><div class="num">27兆円</div><div class="lbl">FC市場規模（推定）</div></div>
-    <div class="kpi"><div class="num">1,300超</div><div class="lbl">FCチェーン数</div></div>
-    <div class="kpi"><div class="num">26万店</div><div class="lbl">加盟店総数</div></div>
-  </div>
-
-  <h3>OWLへの3つの示唆</h3>
-  <ul>
-    <li><strong>「圧倒的1位」の作り方：</strong>セブンは出店地域戦略×商品開発で他社を引き離した。OWLも「障がい者GH FC=OWL」の連想を狙う</li>
-    <li><strong>FC本部の使命：</strong>セブンは加盟オーナーを「経営者」として育てる。OWLの「未経験95%」も同じ思想で運営</li>
-    <li><strong>儲かるFCの利益率：</strong>業界トップ買取専門店30〜40%、ハウスクリーニング25〜35%。福祉GHは10〜20%だが「制度ビジネスで安定」が強み</li>
-  </ul>
-
-  <p style="font-size:11px; color:#64748b; margin-top:8px;">
-    出典：<a class="source-link" href="https://www.sej.co.jp/company/tenpo.html" target="_blank">セブン-イレブン国内店舗数</a>
-    <a class="source-link" href="https://www.jfa-fc.or.jp/particle/29.html" target="_blank">日本フランチャイズチェーン協会統計</a>
-  </p>
-</div>
-
-<!-- カテゴリ③ 同分野FC1位 -->
-<div class="section cat3">
-  <div class="eyebrow">CATEGORY 3 — TOP FC IN OWL'S FIELD</div>
-  <h2>③ 同分野FC1位（障がい者GHフランチャイズ）</h2>
-  <p>OWLの<strong>直接競合</strong>。彼らの戦略を分析することが、OWLの差別化ポイントを明確にする。</p>
-
-  <div class="company-card">
-    <div class="name">🥇 tocotoco（旧：障害者グループホーム わおん）</div>
-    <div class="sub">tocotoco株式会社 / 2025年7月にアニスピHDから社名変更</div>
-    <div class="stats">
-      <div class="stat"><div class="n">150社</div><div class="l">現参画企業数<br>(変動あり)</div></div>
-      <div class="stat"><div class="n">600超</div><div class="l">ピーク時<br>FC展開店舗</div></div>
-      <div class="stat"><div class="n">2018年</div><div class="l">事業開始</div></div>
-    </div>
-    <p style="font-size:13px;"><strong>独自性：</strong>「ペット共生型」を差別化軸に。犬猫の殺処分削減という社会貢献メッセージで採用力強化。<br>
-    <strong>収益モデル：</strong>初期投資 488万円（8〜10居室）／年間営業利益 1,097万円<br>
-    <strong>OWLとの差：</strong>tocotocoはペット共生がコア訴求。OWLは「加盟金0円・月額制」がコア訴求。被らない差別化が成立。</p>
-  </div>
-
-  <div class="company-card">
-    <div class="name">🥈 イグルー</div>
-    <div class="sub">株式会社3eee 運営</div>
-    <div class="stats">
-      <div class="stat"><div class="n">145</div><div class="l">事業所数</div></div>
-      <div class="stat"><div class="n">月177万</div><div class="l">月間営業利益<br>(30名入居時)</div></div>
-      <div class="stat"><div class="n">9割</div><div class="l">給付金比率</div></div>
-    </div>
-    <p style="font-size:13px;"><strong>独自性：</strong>「経験ゼロでも運営可能」を全面訴求。<br>
-    <strong>OWLとの類似性：</strong>未経験OK訴求はOWLと近い。差別化が必要。</p>
-  </div>
-
-  <h3>同分野3社の比較表</h3>
-  <table>
-    <thead><tr><th>項目</th><th>tocotoco（旧わおん）</th><th>イグルー</th><th><strong>OWL（自社）</strong></th></tr></thead>
-    <tbody>
-      <tr><td>規模</td><td>150〜600社</td><td>145事業所</td><td><strong>162社</strong>（2021-2025累計）</td></tr>
-      <tr><td>差別化軸</td><td>ペット共生</td><td>未経験OK</td><td><strong>加盟金0円・月額制</strong></td></tr>
-      <tr><td>初期投資</td><td>488万円〜</td><td>非公開</td><td><strong>加盟金0円</strong>+物件・内装費</td></tr>
-      <tr><td>年間営業利益</td><td>1,097万円</td><td>月177万円(年2,124万円相当)</td><td>同水準想定</td></tr>
-      <tr><td>未経験率</td><td>—</td><td>—</td><td><strong>95%</strong></td></tr>
-      <tr><td>最短黒字化</td><td>—</td><td>—</td><td><strong>4ヶ月</strong></td></tr>
-      <tr><td>サポート対応エリア</td><td>全国</td><td>全国</td><td><strong>全国32都道府県実績</strong></td></tr>
+      <tr>
+        <td><strong>① 検索広告KW<br>(Google/Yahoo/Bing)</strong></td>
+        <td>
+          推定主要KW：「障害者グループホーム フランチャイズ」「ペット共生 グループホーム」「障害者支援 開業」「わおん」「tocotoco」<br>
+          → <strong>実出稿KW確認は手動シークレットウィンドウで検索して広告枠を観察する必要あり</strong>
+        </td>
+        <td><span class="tag tag-todo">手動確認TODO</span></td>
+      </tr>
+      <tr>
+        <td><strong>② Instagram/Facebook広告クリエイティブ</strong></td>
+        <td>
+          Meta広告ライブラリ（<a href="https://www.facebook.com/ads/library/?country=JP" target="_blank" style="color:#2563eb;">facebook.com/ads/library</a>）で「tocotoco株式会社」「アニスピHD」を検索すれば、現在配信中の全クリエイティブが公開閲覧可能。<br>
+          推定戦略：①保護犬猫×障害者の感動訴求 ②加盟者の年収/利益訴求 ③オンライン説明会誘導
+        </td>
+        <td><span class="tag tag-todo">手動確認TODO</span></td>
+      </tr>
+      <tr>
+        <td><strong>③ LP構造</strong></td>
+        <td>
+          公式LPは強いストーリー型：「保護犬猫の殺処分削減 × 障害者の自立支援」のW社会貢献を冒頭で訴求。<br>
+          収益シミュレーション（初期488万→年間営業利益1,097万）を中盤で見せて、最後にWEB説明会CTAで囲い込み。
+        </td>
+        <td><span class="tag tag-verified">確認済</span></td>
+      </tr>
+      <tr>
+        <td><strong>④ YouTube戦略</strong></td>
+        <td>
+          公式チャンネル「障がい者グループホーム わおん紹介ムービー」(<a href="https://www.youtube.com/watch?v=0fGzpgqmLFY" target="_blank" style="color:#2563eb;">動画</a>)、加盟企業との対談動画「【福祉業界の落とし穴】わおん参画企業様に話を聞く」シリーズ等が存在。<br>
+          <strong>→ OWLも真似るべき最有力施策</strong>。詳細は <a href="youtube_strategy.html" style="color:#2563eb;">YouTube戦略ページ</a>
+        </td>
+        <td><span class="tag tag-verified">確認済</span></td>
+      </tr>
     </tbody>
   </table>
 
-  <div class="callout">
-    <strong>OWLの勝ち筋：</strong>3社の中で<strong>「加盟金0円」を打ち出しているのはOWLだけ</strong>。これが最大の差別化要素。LP・広告ではこの1点を徹底的に押し出すべき。<br>
-    一方、「未経験OK」「収益安定性」「全国展開」はイグルーと被るので、別の切り口（実績数字・継続率等）で勝負する必要あり。
+  <div class="honest-box">
+    <strong>正直な但し書き：</strong>公開Webサーチで取れる情報は「LP構造」「YouTube動画タイトル」「会社情報」までが限界。実際の出稿KWやIG/FB広告クリエイティブは、それぞれ「シークレットウィンドウで実検索」「Meta広告ライブラリで実調査」が必要。明日朝に手動で実調査して埋め込みます（30分〜1時間想定）。
   </div>
 
-  <p style="font-size:11px; color:#64748b; margin-top:8px;">
-    出典：<a class="source-link" href="https://fc.dai.co.jp/fc/37496" target="_blank">tocotoco home（FC WEBリポート）</a>
-    <a class="source-link" href="https://fc-owners.com/franchise/brand-detail?b=503" target="_blank">イグルー（FCオーナーズ）</a>
-  </p>
+  <h3>OWLが盗むべき要素</h3>
+  <ol>
+    <li><strong>YouTube加盟オーナー対談シリーズ</strong>を真似る（tocotocoが実証済み・最重要）</li>
+    <li>Meta広告ライブラリで配信中クリエイティブを定期チェック→当たり訴求軸を盗む</li>
+    <li>LPの「W社会貢献ストーリー」構造 → OWLは「加盟金0円×社会貢献」で類似訴求可能</li>
+    <li>FCで加盟店の個別サイト（waon-XXX.com）を量産する戦略 → SEO面で被覆率UP</li>
+  </ol>
 </div>
 
-<!-- OWLの戦略示唆 -->
+<!-- 中堅Web集客FC -->
+<div class="section mid">
+  <div class="eyebrow">MID-SCALE FC WITH WEB STRATEGY</div>
+  <h2>📊 ② 中堅Web集客FC（OWLが真似できる規模感）</h2>
+  <p>OWLが追従可能なレベルの中堅FCで、<strong>Web集客戦略を本気でやっている事例</strong>を3社調査。</p>
+
+  <div class="company-card">
+    <div class="name">🥇 買取大吉（株式会社エンパワー）</div>
+    <div class="sub">業界：買取専門店FC／約1,500店舗（2025/9）／継続率97.9%</div>
+    <a class="link" href="https://fc.kaitori-daikichi.jp/" target="_blank">🔗 FC募集サイト</a>
+    <a class="link" href="https://strate.biz/fcs/kaitoridaikichi/" target="_blank">🔗 STRATE分析</a>
+
+    <h3>Web集客戦略の特徴</h3>
+    <ul>
+      <li><strong>本部が初期広告費を負担</strong> ← 加盟者の初期不安を解消する強力な差別化</li>
+      <li><strong>Web広告＋YouTube＋折込チラシ</strong>の3チャネル統合運用</li>
+      <li><strong>1,800店舗分の集客ノウハウ</strong>を加盟者にシェア</li>
+      <li><strong>初月7日間のSV帯同</strong>で広告・財務まで指導</li>
+    </ul>
+
+    <div class="callout">
+      <strong>OWLへの示唆：</strong>「本部が初期広告費を負担」モデルはOWLの「加盟金0円」と相性が良い。両方訴求すれば「初期費用ゼロ＋集客リスクゼロ」という超強力なポジションが取れる。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="name">🥈 ハリナチュレ（株式会社KOSHIKI / 仲野直紀代表）</div>
+    <div class="sub">業界：美容鍼サロンFC／17店舗＋整体4・ピラティス4・動画編集スクール3＝計28店舗／2023年FC開始</div>
+    <a class="link" href="https://hari-nature.com/" target="_blank">🔗 ハリナチュレ公式</a>
+    <a class="link" href="https://x.com/koshiki_nakano" target="_blank">🔗 仲野代表 X</a>
+    <a class="link" href="https://englishosaru-officialsite.co.jp/marketing/class/store-business/" target="_blank">🔗 おさるマーケ大学</a>
+
+    <h3>Web集客戦略の特徴</h3>
+    <ul>
+      <li><strong>「本部が経営・集客・分析・マーケを一括」モデル</strong>＝加盟者は施術に集中</li>
+      <li>代表は<strong>『15秒集客革命』（KADOKAWA）</strong>出版する集客のプロ</li>
+      <li><strong>230社が参加する店舗マーケ講座</strong>を主催＝SNS・YouTube・Web集客のノウハウを横展開</li>
+      <li>多業態展開（鍼サロン・整体・ピラティス・動画スクール）でFCモデルの汎用性を実証</li>
+    </ul>
+
+    <div class="callout">
+      <strong>OWLへの示唆：</strong>「本部が集客全部やる→加盟者は本業に集中」の徹底訴求。これは「未経験95%」をさらに強化する論拠になる。仲野代表の15秒広告手法（既に弊社で学んでいる）は福祉事業でも応用可能。
+    </div>
+  </div>
+
+  <div class="company-card">
+    <div class="name">🥉 HYROX（ハイロックス）</div>
+    <div class="sub">業界：フィットネスレース／世界80カ国・55万人参加／日本展開本格化中</div>
+    <a class="link" href="https://hyrox.com/" target="_blank">🔗 公式</a>
+    <a class="link" href="https://business.fitnessclub.jp/articles/-/2687" target="_blank">🔗 日本展開記事</a>
+
+    <h3>Web集客戦略の特徴</h3>
+    <ul>
+      <li><strong>アフィリエイトFCモデル</strong>＝既存ジム×HYROX認定で展開（OWLの福祉事業に応用可能）</li>
+      <li><strong>大会×コミュニティ×SNS</strong>の3点セットでブランド構築</li>
+      <li>FC加盟者がトレーナー資格取得→新サービス提供＝<strong>差別化要素を提供</strong>するモデル</li>
+    </ul>
+
+    <div class="callout">
+      <strong>OWLへの示唆：</strong>「既存事業を持つオーナーが追加でOWL加盟」の訴求軸。例えば不動産業者・介護事業者がOWLを追加事業として導入する切り口を作れる。
+    </div>
+  </div>
+
+  <h3>中堅3社の共通成功要因（OWLへの教訓）</h3>
+  <table>
+    <thead><tr><th>要因</th><th>共通点</th><th>OWLの対応案</th></tr></thead>
+    <tbody>
+      <tr><td>本部の集客支援</td><td>3社とも「本部が集客の主役」</td><td>「OWL本部が広告・LP・SEOまで全部やる」を訴求</td></tr>
+      <tr><td>ノウハウ提供</td><td>マニュアル・講座・SVで横展開</td><td>未経験95%＝完全サポートを継続訴求</td></tr>
+      <tr><td>差別化軸</td><td>「初期費用低」「本業集中」「コミュニティ」</td><td>「加盟金0円＋月額制＋給付金9割安定」</td></tr>
+      <tr><td>SNS/YouTube活用</td><td>動画・SNS発信が経営者ブランドの一部</td><td>OWL YouTubeチャンネル新設（後述）</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 業界1位（脚注扱い） -->
+<div class="section note">
+  <div class="eyebrow">REFERENCE ONLY — TOO LARGE TO BENCHMARK</div>
+  <h2>📎 ③ 業界1位（規模感の参考・脚注扱い）</h2>
+  <p>セブン-イレブン（FC国内1位・21,735店）やニチイHD（介護売上1,691億）は<strong>規模が違いすぎて施策レベルでは参考にならない</strong>ため、ベンチマーク対象から外す。「FC業界の存在感の作り方」「大手介護の上位構造」を理解する文脈情報として扱う。</p>
+  <ul>
+    <li>セブン-イレブン：FC本部がオーナーを「経営者」として育てる仕組み（マニュアル・SV・データ分析）</li>
+    <li>ニチイHD：介護業界1位、規模化が進む業界トレンドの象徴</li>
+  </ul>
+  <p style="font-size:12px; color:#64748b; margin-top:8px;">→ これらは打ち合わせで「業界の俯瞰」程度に触れる材料。具体施策はパクれない。</p>
+</div>
+
+<!-- 戦略示唆 -->
 <div class="section dark">
-  <div class="eyebrow">STRATEGIC INSIGHTS</div>
-  <h2>🎯 OWLの戦略的示唆（3カテゴリから学ぶ）</h2>
+  <div class="eyebrow">STRATEGIC SYNTHESIS</div>
+  <h2>🎯 v2 戦略示唆（OWLが今やるべき4つ）</h2>
 
-  <h3>1. ポジショニング：「差別化された3番手」を狙う</h3>
-  <p style="color:#cbd5e1; font-size:14px;">①の大手介護企業とは規模で戦わない／②のセブンのような圧倒的シェアも目指さない／③の同業FCとは「加盟金0円」で明確な差別化。<strong>「中規模で勝てる戦略」を徹底</strong>。</p>
+  <ol style="color:#cbd5e1;">
+    <li><strong>tocotoco を継続監視＋徹底パクリ</strong> — Meta広告ライブラリ・YouTubeの新動画をウォッチ、週次でクリエイティブ更新を追跡</li>
+    <li><strong>「本部が集客全部やる」訴求の強化</strong> — 買取大吉・ハリナチュレに学んで、OWL加盟者は経営に集中できる訴求を前面に</li>
+    <li><strong>YouTube加盟オーナー対談シリーズ開始</strong> — tocotoco がやってる施策。詳細 → <a href="youtube_strategy.html" style="color:#93c5fd;">YouTube戦略ページ</a></li>
+    <li><strong>LPに「お客様の声（加盟オーナー）」を即追加</strong> — 鈴木さん指摘でも繰り返し言われている弱点。モックアップA案実装の最優先事項</li>
+  </ol>
 
-  <h3>2. 訴求軸の整理</h3>
-  <table style="color: inherit; background: rgba(255,255,255,0.05);">
-    <thead><tr style="background:#0f172a;"><th style="background:transparent; color:#93c5fd;">訴求</th><th style="background:transparent; color:#93c5fd;">競合状況</th><th style="background:transparent; color:#93c5fd;">OWLの方針</th></tr></thead>
+  <h3>OWLのポジショニング再定義（v2）</h3>
+  <table style="color:inherit; background:rgba(255,255,255,0.05);">
+    <thead><tr style="background:#0f172a;"><th style="background:transparent; color:#93c5fd;">軸</th><th style="background:transparent; color:#93c5fd;">tocotoco（敵）</th><th style="background:transparent; color:#93c5fd;">OWL（自社）</th></tr></thead>
     <tbody>
-      <tr><td>加盟金0円</td><td>OWLのみ</td><td>★最重要訴求</td></tr>
-      <tr><td>未経験OK</td><td>イグルーと重複</td><td>「95%」の具体数字で差別化</td></tr>
-      <tr><td>収益安定（給付金9割）</td><td>tocotoco・イグルー全社が訴求</td><td>「制度の安定性」を全面に</td></tr>
-      <tr><td>全国展開</td><td>全社が訴求</td><td>「32都道府県実績」で具体化</td></tr>
-      <tr><td>最短黒字化</td><td>OWLが最も早い（4ヶ月）</td><td>★2番目に推す訴求</td></tr>
+      <tr><td>差別化軸</td><td>ペット共生（情緒）</td><td><strong style="color:#fde68a;">加盟金0円（経済合理）</strong></td></tr>
+      <tr><td>本部支援</td><td>FCノウハウ</td><td><strong style="color:#fde68a;">完全サポート＋初期費用最小</strong></td></tr>
+      <tr><td>収益訴求</td><td>年間1,097万</td><td>同等水準（実数差し替え予定）</td></tr>
+      <tr><td>動画戦略</td><td>YouTube対談（既存）</td><td><strong style="color:#fde68a;">これから開始（要追走）</strong></td></tr>
+      <tr><td>未経験対応</td><td>—</td><td><strong style="color:#fde68a;">95%・全国32都道府県実績</strong></td></tr>
     </tbody>
   </table>
+</div>
 
-  <h3>3. LP・広告の優先順位</h3>
-  <ul style="color:#cbd5e1;">
-    <li><strong>FVトップ：</strong>「加盟金0円」を最大訴求</li>
-    <li><strong>2番目：</strong>「最短4ヶ月で黒字化」「未経験95%」</li>
-    <li><strong>3番目：</strong>「162社の実績」「全国32都道府県」</li>
-    <li><strong>収益安定性：</strong>業界共通訴求のため後半で補強</li>
-  </ul>
-
-  <h3>4. 今後の調査強化ポイント</h3>
-  <ul style="color:#cbd5e1;">
-    <li>tocotoco・イグルーの<strong>広告クリエイティブ</strong>定期チェック（どんな訴求で集客しているか）</li>
-    <li>両社の<strong>加盟者向け説明会の内容</strong>（参加可能なら検討）</li>
-    <li>両社の<strong>料金詳細</strong>と<strong>サポート範囲</strong>を整理してOWLと比較表化</li>
-  </ul>
+<!-- TODO -->
+<div class="section good">
+  <div class="eyebrow">NEXT ACTIONS</div>
+  <h2>📋 次の手動調査TODO（明日朝までに完了予定）</h2>
+  <ol>
+    <li>シークレットウィンドウで「障害者グループホーム フランチャイズ」「グループホーム 開業」等を Google・Yahoo・Bing で実検索 → 出稿中の広告枠スクショ取得</li>
+    <li>Meta広告ライブラリで「tocotoco株式会社」「アニスピHD」「わおん」検索 → 現在配信中の全クリエイティブ取得・分類</li>
+    <li>tocotoco・買取大吉・ハリナチュレ各YouTubeチャンネルの再生回数TOP10動画特定</li>
+    <li>結果を本ページに追記・更新</li>
+  </ol>
 </div>
 
 <div class="footer">株式会社 斗（hishaku）</div>

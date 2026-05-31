@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bing広告（Microsoft Advertising）設定レシピ｜OWL福祉事業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Noto Sans JP", sans-serif; color: #0f172a; line-height: 1.8; background: #f8fafc; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.container { max-width: 880px; margin: 0 auto; padding: 26px; }
+.nav-back { display: inline-block; margin-bottom: 16px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
+.section { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px 28px; margin-bottom: 16px; box-shadow: 0 1px 2px rgba(15,23,42,0.04); }
+.section.bing { border-left: 5px solid #00bcf2; }
+.section.good { background: #ecfdf5; border-color: #a7f3d0; border-left: 5px solid #047857; }
+.section.warning { background: #fef3c7; border-left: 5px solid #d97706; }
+.eyebrow { font-family: "Inter", sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.2em; color: #00bcf2; margin-bottom: 8px; }
+.section.good .eyebrow { color: #047857; }
+.section.warning .eyebrow { color: #92400e; }
+.hero { background: linear-gradient(135deg,#0078d4,#00bcf2); color: #fff; border-radius: 8px; padding: 36px 28px; margin-bottom: 16px; text-align: center; }
+.hero h1 { font-family: "Noto Serif JP", serif; font-size: 28px; margin-bottom: 8px; }
+.hero .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 16px; font-family: "Inter", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; margin-bottom: 12px; }
+h2 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 20px; margin-bottom: 12px; }
+h3 { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 15px; margin: 16px 0 8px; color: #334155; }
+p { font-size: 14px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 8px 0; background: #fff; }
+th, td { padding: 8px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; font-weight: 700; }
+.code-block { background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 10px 14px; font-family: "Inter", monospace; font-size: 12px; margin: 8px 0; word-break: break-all; color: #0f172a; }
+.callout { background: #fef3c7; border-left: 4px solid #d97706; padding: 12px 16px; margin: 12px 0; border-radius: 4px; font-size: 13px; }
+ol.steps { counter-reset: s; list-style: none; padding: 0; margin: 8px 0; }
+ol.steps > li { position: relative; padding: 12px 0 12px 44px; border-bottom: 1px solid #eef2f7; font-size: 14px; }
+ol.steps > li::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 12px; width: 28px; height: 28px; background: #00bcf2; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: "Inter", sans-serif; font-weight: 900; font-size: 13px; }
+.sub { font-size: 12px; color: #64748b; margin-top: 4px; }
+ul { padding-left: 22px; } li { font-size: 14px; line-height: 1.9; }
+.footer { font-size: 11px; color: #64748b; text-align: center; margin-top: 20px; }
+.kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10px 0; }
+.kpi { background: #f1f5f9; border-radius: 6px; padding: 14px 8px; text-align: center; }
+.kpi .num { font-family: "Inter", sans-serif; font-weight: 900; font-size: 20px; color: #0078d4; }
+.kpi .lbl { font-size: 11px; color: #64748b; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="nav-back">← 資料一覧に戻る</a>
+
+<div class="hero">
+  <div class="badge">BING ADS SETUP RECIPE</div>
+  <h1>Bing広告（Microsoft Advertising）<br>設定レシピ</h1>
+  <p>鈴木さん指摘「Bingが抜けてた」を受けて、Yahoo・Google・Bingの3媒体構成に追加するための準備</p>
+</div>
+
+<!-- なぜBingか -->
+<div class="section">
+  <div class="eyebrow">WHY BING</div>
+  <h2>📌 なぜBing広告も追加するのか</h2>
+
+  <ul>
+    <li><strong>当初の計画通り</strong>：Yahoo/Bing/Googleの3媒体構成が本来の計画だった（鈴木さん指摘）</li>
+    <li><strong>競合不在＝CPCが安い</strong>：Google・Yahooより参入企業が少ない＝CPCが低く、コスパが良い場合が多い</li>
+    <li><strong>40代以上のユーザー比率が高い</strong>：Edgeブラウザ標準利用層＝OWLのターゲット層と相性◎</li>
+    <li><strong>Microsoft Copilot連携</strong>：2026年版では生成AI検索からの広告流入が急増（B2B向けが特に強い）</li>
+    <li><strong>LinkedInターゲティング</strong>：B2B向け詳細ターゲティングが可能（職種・業界・会社規模）</li>
+  </ul>
+</div>
+
+<!-- 概要 -->
+<div class="section bing">
+  <div class="eyebrow">OVERVIEW</div>
+  <h2>🔵 Bing広告 構成案（Yahoo/Google同様の3キャンペーン構成）</h2>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="num">3</div><div class="lbl">キャンペーン数</div></div>
+    <div class="kpi"><div class="num">¥5,000〜10,000</div><div class="lbl">日予算目安（テスト）</div></div>
+    <div class="kpi"><div class="num">2022年〜</div><div class="lbl">日本サービス開始</div></div>
+  </div>
+
+  <h3>テスト予算で開始する理由</h3>
+  <p>BingはYahoo/Googleと比べてシェアが小さい（日本では検索シェア5〜10%程度）ので、いきなり同額予算は過剰投資になります。<strong>日¥5,000〜10,000で3ヶ月走らせて、効率が良ければスケール</strong>が安全策。</p>
+
+  <h3>3キャンペーン構成（同じ命名規則で統一）</h3>
+  <table>
+    <thead><tr><th>キャンペーン</th><th>日予算（テスト）</th><th>役割</th></tr></thead>
+    <tbody>
+      <tr><td><strong>CP01_本命_フランチャイズ</strong></td><td>¥3,000</td><td>本命KW投下</td></tr>
+      <tr><td><strong>CP02_派生_開業全般</strong></td><td>¥2,000</td><td>派生KW</td></tr>
+      <tr><td><strong>CP03_テスト_新規KW</strong></td><td>¥1,000</td><td>テスト枠</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 設定手順 -->
+<div class="section">
+  <div class="eyebrow">SETUP STEPS</div>
+  <h2>🛠 Bing広告 アカウント開設＆設定手順</h2>
+
+  <ol class="steps">
+    <li><strong>Microsoft広告のアカウントを開設</strong>
+      <div class="sub">
+        <a href="https://about.ads.microsoft.com/ja-jp/sign-up" target="_blank" style="color:#2563eb;">https://about.ads.microsoft.com/ja-jp/sign-up</a> から「無料でサインアップ」<br>
+        Microsoftアカウント（既存 or 新規）でログイン
+      </div>
+    </li>
+    <li><strong>ビジネス情報を登録</strong>
+      <div class="sub">会社名（株式会社RUNBIRD）、住所、電話、ウェブサイト等を入力</div>
+    </li>
+    <li><strong>支払い方法を登録</strong>
+      <div class="sub">クレジットカード or 請求書払い（請求書は審査必要・時間かかる）。Yahoo・Google同様にクレカ推奨</div>
+    </li>
+    <li><strong>Googleからのインポートを使う（時短）</strong>
+      <div class="sub">★Microsoft広告は<strong>Google広告からキャンペーンを丸ごとインポートできる機能</strong>がある。CP01/CP02/CP03を一括コピーして、Bing用に予算調整するのが最速</div>
+    </li>
+    <li><strong>キーワード調整</strong>
+      <div class="sub">Bingは検索ボリュームがGoogleより少ないので、上限CPCは少し低めに設定（例：本命¥800→¥600）</div>
+    </li>
+    <li><strong>UTM設定</strong>
+      <div class="sub">utm_source=bing&utm_medium=cpc&utm_campaign=CP01_franchise の形式</div>
+    </li>
+    <li><strong>UET Tag（Bing版コンバージョントラッキング）を設置</strong>
+      <div class="sub">GTM経由でUET Tagを配信、コンバージョン目標を設定（Yahoo・Googleと同じく/thanks/到達）</div>
+    </li>
+    <li><strong>配信オン</strong></li>
+  </ol>
+</div>
+
+<!-- キーワード -->
+<div class="section">
+  <div class="eyebrow">KEYWORDS</div>
+  <h2>🔑 キーワード（Yahoo・Googleと同じ構成）</h2>
+
+  <p>同じKWセットを使うことで、3媒体の成果を横断比較しやすくなります。</p>
+
+  <h3>CP01_本命（フレーズ一致）</h3>
+  <div class="code-block">"グループホーム フランチャイズ" 上限¥600
+"フランチャイズ グループホーム" 上限¥600
+"障がい者グループホーム フランチャイズ" 上限¥800
+"障害者グループホーム フランチャイズ" 上限¥800
+"障がい者グループホーム 開業" 上限¥800
+"障害者グループホーム 開業" 上限¥800
+"グループホーム 開業" 上限¥600
+"グループホーム 加盟金" 上限¥500</div>
+
+  <h3>CP02_派生（フレーズ一致）</h3>
+  <div class="code-block">"福祉事業 開業" 上限¥500
+"共同生活援助 開業" 上限¥400
+"fc 起業" 上限¥400
+"起業 フランチャイズ" 上限¥400
+"福祉 ボランティア 起業" 上限¥400</div>
+
+  <h3>CP03_テスト（フレーズ一致）</h3>
+  <div class="code-block">"障害福祉 起業" 上限¥400
+"福祉ビジネス 始める" 上限¥400
+"支援事業 開業" 上限¥400
+"障害者 ビジネス 開業" 上限¥400</div>
+
+  <h3>除外KW（22個・Google同じ）</h3>
+  <div class="code-block">求人 / バイト / パート / 転職 / 採用
+入居 / 入所 / 利用 / 体験
+口コミ / 評判 / 比較サイト / 無料 / 安い / 格安
+家族 / 子供 / 高齢者 / 資格 / 講座 / 通信教育 / 助成金</div>
+</div>
+
+<!-- 広告文 -->
+<div class="section">
+  <div class="eyebrow">AD COPY</div>
+  <h2>📝 広告文（Yahoo・Googleと共通使用OK）</h2>
+
+  <h3>タイトル（30バイト以内・10個）</h3>
+  <div class="code-block">加盟金0円のGHフランチャイズ
+未経験95%が選ぶ福祉FC
+最短1.5ヶ月で開設可能
+業界初の加盟金0円プラン
+月額制で初期費用を最小化
+2.5ヶ月で満床の実績あり
+無料資料請求・WEB説明会受付中
+行政手続きまで完全サポート
+全国32都道府県で加盟実績
+加盟実績160社以上のFC</div>
+
+  <h3>説明文（90バイト以内・4個）</h3>
+  <div class="code-block">業界初の加盟金0円プラン。月額制で初期費用を抑え、福祉事業を始められます。
+オーナーの約95%が未経験スタート。物件選定から運営まで完全サポートします。
+最短1.5ヶ月で開設、4ヶ月で黒字化。売上の多くが国の給付金で安定収益が見込めます。
+無料資料請求・オンライン説明会を実施中。お電話でのご相談も承ります（0120-540-522）。</div>
+
+  <h3>最終リンク先URL（CP01例・UTM付き）</h3>
+  <div class="code-block">https://owl-fukushi.net/lp_zero-plan-g/?utm_source=bing&utm_medium=cpc&utm_campaign=CP01_franchise</div>
+</div>
+
+<!-- 注意点 -->
+<div class="section warning">
+  <div class="eyebrow">NOTES</div>
+  <h2>⚠️ Bing広告 特有の注意点</h2>
+  <ul>
+    <li><strong>UET Tag（コンバージョン計測タグ）の設置が必要</strong>：GTMで配信、Yahoo/Googleとは別タグ</li>
+    <li><strong>検索ボリュームが少ない</strong>：Yahooの1/2〜1/3程度。データ蓄積に時間がかかる</li>
+    <li><strong>請求書払いは審査がある</strong>：クレカ即時開始推奨</li>
+    <li><strong>Microsoft Audience Network（MSAN）はOFFにする</strong>：ディスプレイ枠でムダ撃ち防止</li>
+    <li><strong>3ヶ月運用してダメなら撤退判断</strong>：シェアの小さい媒体なので、効率が悪ければ早めに見切る</li>
+  </ul>
+</div>
+
+<!-- 期待効果 -->
+<div class="section good">
+  <div class="eyebrow">EXPECTED IMPACT</div>
+  <h2>📈 期待される効果（テスト3ヶ月）</h2>
+  <table>
+    <thead><tr><th>指標</th><th>目標</th></tr></thead>
+    <tbody>
+      <tr><td>月CV件数</td><td>1〜5件（YahooやGoogleの1/3程度）</td></tr>
+      <tr><td>CPA</td><td>¥10,000〜20,000（競合少なめでGoogleより安い可能性）</td></tr>
+      <tr><td>判断ポイント</td><td>3ヶ月でCPA¥30,000以下なら継続・以上なら撤退</td></tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>戦略的位置づけ：</strong>Bingは「補完媒体」。Yahoo・Googleで主力を稼ぎ、Bingで上澄みを取る形。当たれば儲け、ダメでも数万円の損で済む実験。
+  </div>
+</div>
+
+<!-- スケジュール -->
+<div class="section">
+  <div class="eyebrow">SCHEDULE</div>
+  <h2>📅 着手スケジュール</h2>
+  <ol class="steps">
+    <li><strong>嶋田社長承認</strong>（Bing広告アカウント開設の許諾）</li>
+    <li><strong>1週間以内</strong>：Microsoft広告アカウント開設＋支払い設定</li>
+    <li><strong>2週間以内</strong>：Google広告からインポート＋Bing用に調整</li>
+    <li><strong>3週間以内</strong>：UET Tag設置・配信オン</li>
+    <li><strong>1ヶ月後</strong>：初回パフォーマンスレビュー</li>
+    <li><strong>3ヶ月後</strong>：継続/撤退判断</li>
+  </ol>
+</div>
+
+<div class="footer">株式会社 斗（hishaku）</div>
+
+</div>
+</body>
+</html>
