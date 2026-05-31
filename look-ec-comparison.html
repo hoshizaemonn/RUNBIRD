@@ -184,12 +184,12 @@
       <tr>
         <td><strong>初期費用</strong></td>
         <td style="text-align:center;color:#c0392b;font-weight:700;">20,000円〜</td>
-        <td>契約時に1回払う（私の試算「3〜8万」は他社含む相場の上限。テレコムなら下限）</td>
+        <td>契約時に1回払う</td>
       </tr>
       <tr>
         <td><strong>システム利用料（月額固定）</strong></td>
         <td style="text-align:center;color:#c0392b;font-weight:700;">3,000円〜/月</td>
-        <td>これが私の試算「決済代行月額3,000〜8,000円」の意味。<strong>売上ゼロでもかかる固定費</strong>。他社は8,000円近いケースあり</td>
+        <td><strong>売上ゼロでもかかる固定費</strong>（8,000円のケースもあり）</td>
       </tr>
       <tr>
         <td><strong>決済手数料（売上連動）</strong></td>
@@ -204,8 +204,7 @@
     </tbody>
   </table>
   <div class="note">
-    <strong>「3,000〜8,000円」が指していたもの：</strong>これは<strong>システム利用料（固定費）</strong>のこと。テレコムクレジットなら3,000円〜、他社（BILLMONT等）でやや高いケースを想定して〜8,000円としていた。<br>
-    <strong>注意：</strong>上記に加えて、商品が売れるたびに「手数料3%＋15円」がかかる（売上連動）。
+    <strong>注意：</strong>上記の月額固定費に加えて、商品が売れるたびに「手数料3%＋15円」がかかる（売上連動）。
   </div>
 
   <h3 style="margin-top:24px;">⚠️ 審査通過率の実態（重要）</h3>
@@ -257,10 +256,6 @@
     </ul>
   </div>
 
-  <div class="note">
-    <strong>.look様への見通し：</strong>淺川様の事業形態（法人 or 個人）が通過率を大きく左右する。ヤフオク実績は強み。<strong>確実な通過率は実際に審査申請しないと不明</strong>（業界の常）。
-  </div>
-
   <div class="links" style="margin-top:14px;">
     <div class="link-card">
       <span class="label">テレコムクレジット 料金</span>
@@ -273,10 +268,6 @@
     <div class="link-card">
       <span class="label">creditcardmerchant.net（アダルト対応）</span>
       <a href="https://creditcardmerchant.net/" target="_blank">creditcardmerchant.net</a>
-    </div>
-    <div class="link-card">
-      <span class="label">BILLMONT（ハイリスク商材）</span>
-      <a href="https://billmont.com/blog-jp/adult-site-payment-solutions/" target="_blank">billmont.com</a>
     </div>
   </div>
 </div>
@@ -320,52 +311,43 @@
     </tbody>
   </table>
 
-  <div style="background:#fff0ed;border-left:5px solid #c0392b;padding:14px 18px;border-radius:6px;margin-top:18px;font-size:13px;line-height:1.85;">
-    <strong style="color:#c0392b;">🚨 最大の発見：メロンブックス（R18ど真ん中）でVISA／Masterが利用不可</strong><br>
-    2024-2025年のクレジット業界の成人向け規制で、メロンブックスは<strong>VISA／Masterブランドの直接利用を停止</strong>。JCB／American Express のみ（楽天カード経由ならVISA/Masterも可）。<br>
-    → <strong>.look様もR18ど真ん中なら、同じ規制の影響を受ける前提で設計が必要</strong>。VISA／Master前提でクレカ唯一に頼る構成は危険。<strong>JCB／AMEX／PayPay／Amazon Pay／コンビニ／代引／後払い（atone・ベリトランス後払い）の併用が業界の現実解</strong>。
-  </div>
-
-  <h3 style="margin-top:20px;">EC-CUBE採用サイトで「よく使われる決済代行」傾向</h3>
+  <h3 style="margin-top:20px;">🔍 実在EC-CUBE他社が「裏側で使ってる決済代行」（HTML検証で判明）</h3>
   <table style="margin:0;font-size:12.5px;">
     <thead>
       <tr>
-        <th>決済代行／サービス</th>
-        <th>使われ方</th>
-        <th>アダルト可否</th>
+        <th>サイト</th>
+        <th>クレカの裏側（決済代行会社）</th>
+        <th>後払い・その他の裏側</th>
+        <th>検証根拠</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>ベリトランス（DGFT）</strong></td>
-        <td>メロンブックスで「コンビニ後払い」として明記。EC-CUBE決済モジュールあり</td>
-        <td>商材次第・要審査</td>
+        <td><strong>らしんばん</strong></td>
+        <td><strong style="color:#1a3a5c;">GMOペイメントゲートウェイ（GMO-PG）</strong></td>
+        <td>Amazon Pay／PayPay／Paidy／ヤマト代引</td>
+        <td>HTML内に <code>p01.mul-pay</code>（GMO-PGのドメイン）／<code>gmo-pg</code></td>
       </tr>
       <tr>
-        <td><strong>Amazon Pay</strong></td>
-        <td>らしんばん／ラブピースクラブで採用。クレカ規制を回避する有力手段</td>
-        <td>Amazon審査次第（ラブピースクラブで通っている実例）</td>
+        <td><strong>メロンブックス</strong></td>
+        <td>非公開（クレカ部分の裏側は表に出ず）</td>
+        <td><strong style="color:#1a3a5c;">ベリトランス（DGFT）</strong>（後払い）／atone（NPテクノロジーズ）／Paidy／PayPay</td>
+        <td>公式お支払いガイドに「コンビニ後払い（ベリトランス後払い）」と明記</td>
       </tr>
       <tr>
-        <td><strong>PayPay オンライン決済</strong></td>
-        <td>3社全てで採用。アダルト商材でも通りやすい</td>
-        <td>⭕️ 通りやすい</td>
-      </tr>
-      <tr>
-        <td><strong>atone／Paidy（後払い）</strong></td>
-        <td>メロンブックスで採用。クレカ規制を回避</td>
-        <td>商材次第・後払い系は通りやすい傾向</td>
-      </tr>
-      <tr>
-        <td><strong>テレコムクレジット</strong></td>
-        <td>表サイトには出ないが、ハイリスク商材専門でEC-CUBE連携実績</td>
-        <td>⭕️ アダルト対応で知られる</td>
+        <td><strong>ラブピースクラブ</strong></td>
+        <td>非公開（クレカ部分の裏側は表に出ず）</td>
+        <td>Amazon Pay／PayPay／ヤマト代引</td>
+        <td>表サイト上ではクレカ代行会社名なし</td>
       </tr>
     </tbody>
   </table>
 
   <div class="note" style="margin-top:14px;">
-    <strong>.look様への示唆：</strong>EC-CUBEを採用するなら、メロンブックス／らしんばん／ラブピースクラブと同じ<strong>「クレカ＋PayPay＋Amazon Pay＋後払い＋コンビニ＋代引」の多角化構成</strong>が現実解。テレコムクレジット等のハイリスク決済代行は<strong>クレカ部分の裏側で動かす</strong>形になる（表に名前は出ない）。
+    <strong>分かったこと：</strong><br>
+    ・らしんばん（中古サブカル・成人含む）= <strong>GMO-PG（GMOペイメントゲートウェイ）</strong>でクレカ通っている<br>
+    ・メロンブックス（R18ど真ん中）= 後払いに<strong>ベリトランス（DGFT）</strong>。クレカ裏側は非公開（ただしVISA/Master停止／JCB/AMEXのみ）<br>
+    ・<strong>クレカの裏側決済代行は表に出ないことが多い</strong>（メロンブックス／ラブピースクラブとも非公開）。商材／規模／時期で個別契約のため
   </div>
 </div>
 
