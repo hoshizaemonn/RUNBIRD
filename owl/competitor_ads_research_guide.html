@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>競合広告 4媒体 統合調査ガイド｜OWL福祉事業</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; background: #f4f6f9; color: #0f172a; line-height: 1.7; padding: 16px; -webkit-font-smoothing: antialiased; }
+.container { max-width: 980px; margin: 0 auto; }
+.nav-back { display: inline-block; margin-bottom: 12px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
+h1 { font-size: 24px; margin-bottom: 4px; }
+.sub { color: #64748b; font-size: 13px; margin-bottom: 18px; }
+
+.intro { background: linear-gradient(135deg,#7c3aed,#db2777); color: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+.intro h2 { font-size: 18px; margin-bottom: 10px; }
+.intro p { font-size: 13px; opacity: 0.95; }
+
+.honest { background: #fffbeb; border: 2px solid #d97706; border-radius: 10px; padding: 14px 18px; margin-bottom: 18px; }
+.honest strong { color: #b45309; }
+
+.section { background: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(15,23,42,0.05); }
+.section h2 { font-size: 18px; margin-bottom: 12px; border-left: 5px solid #7c3aed; padding-left: 12px; }
+.section h3 { font-size: 14px; margin: 14px 0 8px; color: #1e3a8a; }
+
+/* メディア別ブロック */
+.media { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px 22px; margin-bottom: 16px; }
+.media-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 2px solid #e5e7eb; }
+.media-icon { width: 38px; height: 38px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #fff; font-size: 14px; }
+.icon-meta { background: #1877f2; }
+.icon-google { background: #4285f4; }
+.icon-yahoo { background: #ff0033; }
+.icon-bing { background: #008373; }
+.media-title { font-size: 17px; font-weight: 700; color: #0f172a; }
+.media-method { font-size: 11px; color: #64748b; margin-left: auto; }
+
+.btn-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 6px 0; }
+.btn { display: inline-block; padding: 5px 12px; background: #2563eb; color: #fff; text-decoration: none; border-radius: 5px; font-size: 11.5px; font-weight: 700; }
+.btn.green { background: #047857; }
+.btn.red { background: #b91c1c; }
+.btn.purple { background: #7c3aed; }
+.btn.secondary { background: #fff; color: #2563eb; border: 1px solid #cbd5e1; }
+
+.target-block { background: #fff; border-radius: 8px; padding: 12px 16px; margin: 8px 0; }
+.target-block .nm { font-weight: 700; color: #0f172a; font-size: 13px; margin-bottom: 4px; }
+.target-block .nt { font-size: 11px; color: #64748b; margin-bottom: 6px; }
+
+/* KW一覧 */
+.kw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
+.kw-item { background: #ede9fe; color: #5b21b6; padding: 4px 10px; border-radius: 4px; font-size: 11.5px; }
+.kw-item code { background: transparent; font-weight: 700; }
+
+/* 保存先 */
+.path { font-family: ui-monospace, Menlo, monospace; background: #1f2937; color: #f9fafb; padding: 10px 14px; border-radius: 6px; font-size: 11.5px; word-break: break-all; }
+
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 8px; }
+th, td { padding: 8px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; }
+th { background: #f1f5f9; }
+
+.checklist { background: #f9fafb; border-radius: 10px; padding: 14px 18px; }
+.checklist label { display: block; padding: 6px 0; font-size: 13px; cursor: pointer; border-bottom: 1px solid #e5e7eb; }
+.checklist label:last-child { border-bottom: none; }
+.checklist input[type=checkbox] { margin-right: 10px; transform: scale(1.2); accent-color: #7c3aed; }
+
+.hint { background: #eff6ff; border-left: 4px solid #2563eb; padding: 10px 14px; border-radius: 6px; font-size: 12px; color: #1e3a8a; margin-top: 8px; }
+
+footer { text-align: center; color: #94a3b8; font-size: 11px; padding: 24px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="index.html" class="nav-back">← 資料一覧に戻る</a>
+
+<h1>競合広告 4媒体 統合調査ガイド</h1>
+<p class="sub">2026-06-01 ／ Meta／Google検索／Yahoo検索／Bing検索 を網羅的に調査するチェックシート</p>
+
+<!-- イントロ -->
+<div class="intro">
+  <h2>📌 鈴木さん指示「Google・Yahoo・Bingでどういうワードで出してるか」への対応</h2>
+  <p>tocotocoほか競合5社が<strong>4媒体（Meta／Google／Yahoo／Bing）でどんな広告を出しているか</strong>を網羅的に調査する。媒体ごとに公開ライブラリの有無が違うので、手段別にチェックシート化。</p>
+</div>
+
+<!-- 正直な但し書き -->
+<div class="honest">
+  <strong>⚠️ 技術的な前提（読んでください）：</strong><br>
+  Meta広告ライブラリ／Google Ads Transparency Center は<strong>JavaScriptレンダリングが必要で機械的取得は不可</strong>。Yahoo／Bingには公開ライブラリ自体が存在しません。<br>
+  <strong>つまり全媒体「手動キャプチャ」が唯一の手段。</strong>ただしKW直リンク・URL直リンク・チェックリストを整備することで <strong>4媒体×5社 を90分以内</strong> に終わらせられるよう設計しています。
+</div>
+
+<!-- ========== ① Meta ========== -->
+<div class="media">
+  <div class="media-head">
+    <div class="media-icon icon-meta">M</div>
+    <div class="media-title">① Meta（Facebook / Instagram）</div>
+    <div class="media-method">公式ライブラリあり・手動キャプチャ・所要30分</div>
+  </div>
+  <p style="font-size:13px;">→ 既存の <a href="meta_ads_capture_guide.html" style="color:#2563eb;">Meta広告 手動キャプチャガイド</a> を使う（5社の検索URL直リンク済）。本ガイドのMetaパートはそちらに集約。</p>
+</div>
+
+<!-- ========== ② Google検索広告 ========== -->
+<div class="media">
+  <div class="media-head">
+    <div class="media-icon icon-google">G</div>
+    <div class="media-title">② Google検索広告</div>
+    <div class="media-method">2軸調査・所要30分</div>
+  </div>
+
+  <h3>軸A：Google Ads Transparency Center（広告主単位の配信履歴）</h3>
+  <p style="font-size:12px;color:#475569;margin-bottom:8px;">広告主のドメインを入れると、その広告主が過去30日でGoogle系（検索/ディスプレイ/YouTube/Gmail）に出した広告を全件確認可能</p>
+  <div class="btn-row">
+    <a class="btn purple" href="https://adstransparency.google.com/?region=JP&domain=to-co-to-co.co.jp" target="_blank">▶ tocotoco</a>
+    <a class="btn purple" href="https://adstransparency.google.com/?region=JP&domain=anispi.co.jp" target="_blank">▶ アニスピHD</a>
+    <a class="btn purple" href="https://adstransparency.google.com/?region=JP&domain=hari-nature.com" target="_blank">▶ ハリナチュレ</a>
+    <a class="btn purple" href="https://adstransparency.google.com/?region=JP&domain=kaitori-daikichi.jp" target="_blank">▶ 買取大吉</a>
+    <a class="btn secondary" href="https://adstransparency.google.com/?region=JP" target="_blank">広告主名で検索</a>
+  </div>
+
+  <h3>軸B：シークレットウィンドウで実KW検索（広告枠の表示確認）</h3>
+  <p style="font-size:12px;color:#475569;margin-bottom:8px;">「広告」ラベル付きの検索結果を全件スクショ。誰が・どんなコピーで・どのLPへ誘導しているかを把握</p>
+  <h3 style="font-size:12px;margin-top:10px;">📋 検索すべき主要KW（クリックで Google 検索が開く）</h3>
+  <div class="kw-grid">
+    <div class="kw-item"><a href="https://www.google.com/search?q=%E9%9A%9C%E5%AE%B3%E8%80%85%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E3%83%95%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%82%A4%E3%82%BA" target="_blank" style="color:#5b21b6;">障害者グループホーム フランチャイズ</a></div>
+    <div class="kw-item"><a href="https://www.google.com/search?q=%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E3%83%95%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%82%A4%E3%82%BA" target="_blank" style="color:#5b21b6;">グループホーム フランチャイズ</a></div>
+    <div class="kw-item"><a href="https://www.google.com/search?q=%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E9%96%8B%E6%A5%AD" target="_blank" style="color:#5b21b6;">グループホーム 開業</a></div>
+    <div class="kw-item"><a href="https://www.google.com/search?q=%E9%9A%9C%E5%AE%B3%E8%80%85%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E5%8A%A0%E7%9B%9F" target="_blank" style="color:#5b21b6;">障害者グループホーム 加盟</a></div>
+    <div class="kw-item"><a href="https://www.google.com/search?q=%E3%83%9A%E3%83%83%E3%83%88%E5%85%B1%E7%94%9F+%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" style="color:#5b21b6;">ペット共生 グループホーム</a></div>
+    <div class="kw-item"><a href="https://www.google.com/search?q=%E3%82%8F%E3%81%8A%E3%82%93+%E5%8A%A0%E7%9B%9F" target="_blank" style="color:#5b21b6;">わおん 加盟</a></div>
+    <div class="kw-item"><a href="https://www.google.com/search?q=tocotoco+%E5%8A%A0%E7%9B%9F" target="_blank" style="color:#5b21b6;">tocotoco 加盟</a></div>
+    <div class="kw-item"><a href="https://www.google.com/search?q=%E7%A6%8F%E7%A5%89%E4%BA%8B%E6%A5%AD+%E9%96%8B%E6%A5%AD" target="_blank" style="color:#5b21b6;">福祉事業 開業</a></div>
+    <div class="kw-item"><a href="https://www.google.com/search?q=%E5%85%B1%E5%90%8C%E7%94%9F%E6%B4%BB%E6%8F%B4%E5%8A%A9+%E9%96%8B%E6%A5%AD" target="_blank" style="color:#5b21b6;">共同生活援助 開業</a></div>
+    <div class="kw-item"><a href="https://www.google.com/search?q=%E9%9A%9C%E5%AE%B3%E7%A6%8F%E7%A5%89+%E8%B5%B7%E6%A5%AD" target="_blank" style="color:#5b21b6;">障害福祉 起業</a></div>
+  </div>
+  <div class="hint">
+    <strong>📷 何を記録する：</strong>各KWで①出稿数 ②誰が出してる ③広告コピー（見出し/説明文） ④遷移先LP ⑤広告表示順<br>
+    <strong>📁 保存：</strong> <code>_調査/google_ads_20260601/search_KW名.png</code>
+  </div>
+</div>
+
+<!-- ========== ③ Yahoo検索広告 ========== -->
+<div class="media">
+  <div class="media-head">
+    <div class="media-icon icon-yahoo">Y!</div>
+    <div class="media-title">③ Yahoo検索広告</div>
+    <div class="media-method">公開ライブラリ無し・シークレット実検索のみ・所要15分</div>
+  </div>
+  <p style="font-size:12px;color:#475569;">Yahoo!検索（PC/SP両方）でシークレットウィンドウで検索→「広告」ラベル付き枠を全件スクショ</p>
+
+  <h3 style="font-size:12px;margin-top:10px;">📋 主要KW（クリックで Yahoo! 検索が開く）</h3>
+  <div class="kw-grid">
+    <div class="kw-item"><a href="https://search.yahoo.co.jp/search?p=%E9%9A%9C%E5%AE%B3%E8%80%85%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E3%83%95%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%82%A4%E3%82%BA" target="_blank" style="color:#5b21b6;">障害者グループホーム フランチャイズ</a></div>
+    <div class="kw-item"><a href="https://search.yahoo.co.jp/search?p=%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E3%83%95%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%82%A4%E3%82%BA" target="_blank" style="color:#5b21b6;">グループホーム フランチャイズ</a></div>
+    <div class="kw-item"><a href="https://search.yahoo.co.jp/search?p=%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E9%96%8B%E6%A5%AD" target="_blank" style="color:#5b21b6;">グループホーム 開業</a></div>
+    <div class="kw-item"><a href="https://search.yahoo.co.jp/search?p=%E9%9A%9C%E5%AE%B3%E8%80%85%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E5%8A%A0%E7%9B%9F" target="_blank" style="color:#5b21b6;">障害者グループホーム 加盟</a></div>
+    <div class="kw-item"><a href="https://search.yahoo.co.jp/search?p=%E3%83%9A%E3%83%83%E3%83%88%E5%85%B1%E7%94%9F+%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" style="color:#5b21b6;">ペット共生 グループホーム</a></div>
+    <div class="kw-item"><a href="https://search.yahoo.co.jp/search?p=%E3%82%8F%E3%81%8A%E3%82%93+%E5%8A%A0%E7%9B%9F" target="_blank" style="color:#5b21b6;">わおん 加盟</a></div>
+    <div class="kw-item"><a href="https://search.yahoo.co.jp/search?p=tocotoco+%E5%8A%A0%E7%9B%9F" target="_blank" style="color:#5b21b6;">tocotoco 加盟</a></div>
+    <div class="kw-item"><a href="https://search.yahoo.co.jp/search?p=%E7%A6%8F%E7%A5%89%E4%BA%8B%E6%A5%AD+%E9%96%8B%E6%A5%AD" target="_blank" style="color:#5b21b6;">福祉事業 開業</a></div>
+  </div>
+  <div class="hint">
+    <strong>📷 何を記録する：</strong>同上（Google）。Yahoo独自に競合がいる可能性あり<br>
+    <strong>📁 保存：</strong> <code>_調査/yahoo_ads_20260601/search_KW名.png</code>
+  </div>
+</div>
+
+<!-- ========== ④ Bing検索広告 ========== -->
+<div class="media">
+  <div class="media-head">
+    <div class="media-icon icon-bing">B</div>
+    <div class="media-title">④ Bing検索広告（Microsoft）</div>
+    <div class="media-method">公開ライブラリ無し・シークレット実検索のみ・所要15分</div>
+  </div>
+  <p style="font-size:12px;color:#475569;">Bing検索でシークレットウィンドウで検索。日本のBingシェアは数%だが、競合不在なら格安出稿可能</p>
+
+  <h3 style="font-size:12px;margin-top:10px;">📋 主要KW（クリックで Bing 検索が開く）</h3>
+  <div class="kw-grid">
+    <div class="kw-item"><a href="https://www.bing.com/search?q=%E9%9A%9C%E5%AE%B3%E8%80%85%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E3%83%95%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%82%A4%E3%82%BA" target="_blank" style="color:#5b21b6;">障害者グループホーム フランチャイズ</a></div>
+    <div class="kw-item"><a href="https://www.bing.com/search?q=%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E3%83%95%E3%83%A9%E3%83%B3%E3%83%81%E3%83%A3%E3%82%A4%E3%82%BA" target="_blank" style="color:#5b21b6;">グループホーム フランチャイズ</a></div>
+    <div class="kw-item"><a href="https://www.bing.com/search?q=%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E9%96%8B%E6%A5%AD" target="_blank" style="color:#5b21b6;">グループホーム 開業</a></div>
+    <div class="kw-item"><a href="https://www.bing.com/search?q=%E9%9A%9C%E5%AE%B3%E8%80%85%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0+%E5%8A%A0%E7%9B%9F" target="_blank" style="color:#5b21b6;">障害者グループホーム 加盟</a></div>
+    <div class="kw-item"><a href="https://www.bing.com/search?q=%E3%83%9A%E3%83%83%E3%83%88%E5%85%B1%E7%94%9F+%E3%82%B0%E3%83%AB%E3%83%BC%E3%83%97%E3%83%9B%E3%83%BC%E3%83%A0" target="_blank" style="color:#5b21b6;">ペット共生 グループホーム</a></div>
+    <div class="kw-item"><a href="https://www.bing.com/search?q=%E3%82%8F%E3%81%8A%E3%82%93+%E5%8A%A0%E7%9B%9F" target="_blank" style="color:#5b21b6;">わおん 加盟</a></div>
+  </div>
+  <div class="hint">
+    <strong>📷 何を記録する：</strong>同上。<strong>競合不在の場合「BingでOWLが独占できる」ポジティブニュース</strong><br>
+    <strong>📁 保存：</strong> <code>_調査/bing_ads_20260601/search_KW名.png</code>
+  </div>
+</div>
+
+<!-- ========== 保存先まとめ ========== -->
+<div class="section">
+  <h2>📁 保存先まとめ</h2>
+  <div class="path">受託事業/クライアント/RUNBIRD/福祉事業/_調査/<br>　├ meta_ads_20260601/<br>　├ google_ads_20260601/<br>　├ yahoo_ads_20260601/<br>　├ bing_ads_20260601/<br>　└ _全体メモ.md  （4媒体横断の気づき・「これパクりたい」リスト）</div>
+</div>
+
+<!-- ========== 進捗チェック ========== -->
+<div class="section">
+  <h2>✅ 進捗チェックリスト</h2>
+  <div class="checklist">
+    <label><input type="checkbox"> ① Meta：5社の配信中広告キャプチャ完了（<a href="meta_ads_capture_guide.html" style="color:#2563eb;">専用ガイド</a>）</label>
+    <label><input type="checkbox"> ② Google A：Transparency Centerで5社のドメイン検索＆スクショ</label>
+    <label><input type="checkbox"> ② Google B：主要10KWでシークレット検索＆広告枠スクショ</label>
+    <label><input type="checkbox"> ③ Yahoo：主要8KWでシークレット検索＆広告枠スクショ</label>
+    <label><input type="checkbox"> ④ Bing：主要6KWでシークレット検索＆広告枠スクショ</label>
+    <label><input type="checkbox"> ⑤ 全媒体の保存完了</label>
+    <label><input type="checkbox"> ⑥ _全体メモ.md に4媒体横断インサイト記録</label>
+  </div>
+  <div class="hint">
+    <strong>💡 完了後：</strong>Claudeに「<strong>広告調査終わった</strong>」と話せば、4媒体の保存フォルダを読み込んで以下を自動生成します。<br>
+    　・媒体別×競合別 マトリクス分析<br>
+    　・OWLが勝てるKW隙間（競合が出稿してない・出稿が薄いKW）<br>
+    　・OWL用 広告クリエ 6本目以降の提案（媒体別最適化込み）<br>
+    　・3媒体予算配分の再提案（実競合状況を踏まえて）
+  </div>
+</div>
+
+<!-- ========== 想定パターン ========== -->
+<div class="section">
+  <h2>⚠️ 想定される結果パターンと対処</h2>
+  <table>
+    <thead><tr><th width="280">結果</th><th>対処と意味</th></tr></thead>
+    <tbody>
+      <tr><td><strong>A. Google検索でtocotoco/わおんが多数出稿</strong></td><td>競合激しい。OWLは差別化KW（「クリーン」「未経験」等）で勝負</td></tr>
+      <tr><td><strong>B. Google検索で競合不在</strong></td><td>OWLが独占可能。予算積み増し推奨</td></tr>
+      <tr><td><strong>C. Yahoo/Bingで競合不在</strong></td><td>競合がGoogleしか張ってない＝Yahoo/Bingが穴場。OWL先行確定</td></tr>
+      <tr><td><strong>D. Google Transparency Centerで全社配信あり＋Metaも配信中</strong></td><td>本格的なマルチ媒体運用中。OWLも全媒体展開必須</td></tr>
+      <tr><td><strong>E. 競合がローカル検索（地域名+KW）に絞ってる</strong></td><td>OWLは「全国」+「地域別」の二段構えで対応</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>OWL福祉事業 ／ 競合広告 4媒体 統合調査ガイド ／ 2026-06-01</footer>
+</div>
+</body>
+</html>
