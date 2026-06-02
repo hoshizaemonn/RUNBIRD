@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告 業務引継ぎのご提案｜株式会社ランバード 鈴木様向け</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #cc0000;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* バナー */
+        .hero-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            border-radius: 12px;
+            padding: 36px 32px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .hero-banner h2 { color: #ff6b6b; font-size: 22px; margin-bottom: 12px; }
+        .hero-banner p { font-size: 14px; color: #ccc; line-height: 1.9; }
+
+        /* 役割分担カード */
+        .role-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .role-card { border-radius: 12px; padding: 24px; border: 2px solid; }
+        .role-card.runbird { background: #fff5f5; border-color: #cc0000; }
+        .role-card.suzuki { background: #f0f7ff; border-color: #1976d2; }
+        .role-card h3 { font-size: 16px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid rgba(0,0,0,.1); }
+        .role-card.runbird h3 { color: #c62828; }
+        .role-card.suzuki h3 { color: #1565c0; }
+        .role-card ul { list-style: none; padding: 0; }
+        .role-card li {
+            font-size: 13px;
+            padding: 8px 0 8px 24px;
+            position: relative;
+            line-height: 1.7;
+        }
+        .role-card li::before {
+            content: '●';
+            position: absolute;
+            left: 6px;
+            top: 8px;
+        }
+        .role-card.runbird li::before { color: #c62828; }
+        .role-card.suzuki li::before { color: #1565c0; }
+
+        /* タイムライン */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline-row {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 16px;
+            margin-bottom: 14px;
+            align-items: stretch;
+        }
+        .timeline-week {
+            background: #1a1a2e;
+            color: #fff;
+            border-radius: 10px;
+            padding: 14px 10px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .timeline-week .w-num { font-size: 22px; color: #ff6b6b; line-height: 1; }
+        .timeline-week .w-label { font-size: 11px; margin-top: 4px; opacity: .85; }
+        .timeline-card {
+            border-radius: 10px;
+            padding: 16px 18px;
+            border: 2px solid;
+        }
+        .timeline-card.runbird { background: #fff5f5; border-color: #cc0000; }
+        .timeline-card.suzuki { background: #f0f7ff; border-color: #1976d2; }
+        .timeline-card.shared { background: #f3e5f5; border-color: #6a1b9a; }
+        .timeline-card .tc-role {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .timeline-card.runbird .tc-role { background: #cc0000; }
+        .timeline-card.suzuki .tc-role { background: #1976d2; }
+        .timeline-card.shared .tc-role { background: #6a1b9a; }
+        .timeline-card .tc-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+        .timeline-card .tc-desc { font-size: 12px; color: #555; }
+
+        /* タスクリスト */
+        .task-list {
+            background: #fafafa;
+            border-left: 5px solid #cc0000;
+            border-radius: 0 8px 8px 0;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+        }
+        .task-list h4 { font-size: 14px; color: #c62828; margin-bottom: 8px; }
+        .task-list ol { margin-left: 22px; font-size: 13px; }
+        .task-list li { margin-bottom: 4px; }
+
+        /* 課題・相談ポイント */
+        .point-box {
+            background: #fff8e1;
+            border: 2px solid #f9a825;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-bottom: 14px;
+        }
+        .point-box h4 { color: #e65100; font-size: 15px; margin-bottom: 10px; }
+        .point-box p { font-size: 13px; color: #444; line-height: 1.9; }
+        .point-box ul { font-size: 13px; margin-left: 20px; color: #444; }
+
+        /* メリット */
+        .merit-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .merit-card {
+            background: #e8f5e9;
+            border: 2px solid #2e7d32;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+        }
+        .merit-card .m-icon { font-size: 32px; margin-bottom: 6px; }
+        .merit-card .m-title { font-size: 14px; font-weight: 700; color: #1b5e20; margin-bottom: 4px; }
+        .merit-card .m-desc { font-size: 12px; color: #444; line-height: 1.7; }
+
+        .footer { text-align: center; color: #aaa; font-size: 12px; padding: 20px 0; }
+
+        @media (max-width: 768px) {
+            .role-grid, .merit-grid { grid-template-columns: 1fr; }
+            .timeline-row { grid-template-columns: 80px 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 業務引継ぎのご提案</h1>
+    <p class="subtitle">株式会社ランバード 鈴木様 向け｜星崎より</p>
+
+    <!-- ヒーロー -->
+    <div class="hero-banner">
+        <h2>「チャンネル開設〜権限付与」までの業務を新人さんへ</h2>
+        <p>
+            現在ランバード側で対応している「チャンネル開設サポート〜権限付与確認まで」の業務を、<br>
+            <strong>新人さんへ巻き取りいただく形でのご提案</strong>です。<br>
+            ヒアリング〜配信設定は引き続き弊社（星崎）で対応いたします。
+        </p>
+    </div>
+
+    <!-- ① 役割分担 -->
+    <div class="section" style="border-color:#cc0000;">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">1</span>
+            ご提案する役割分担
+        </div>
+        <div class="role-grid">
+            <div class="role-card suzuki">
+                <h3>🏢 ランバード様（新人さん）</h3>
+                <ul>
+                    <li>新規案件 初回案内メール送付</li>
+                    <li>YouTubeチャンネル開設サポート</li>
+                    <li>動画アップロード確認</li>
+                    <li>オーナー権限付与の確認</li>
+                    <li>状況確認の督促連絡</li>
+                </ul>
+            </div>
+            <div class="role-card runbird">
+                <h3>💼 こちら側（星崎）</h3>
+                <ul>
+                    <li>提案書の作成（ターゲティング・キーワード）</li>
+                    <li>クライアントへのヒアリング・修正対応</li>
+                    <li>Google Ads 配信設定・審査</li>
+                    <li>配信開始のお知らせ送付</li>
+                    <li>定期レポート対応（2ヶ月に1回）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="point-box">
+            <h4>👉 切り分けのポイント</h4>
+            <p>
+                クライアント様への「<strong>定型対応の部分</strong>」をランバード側へ。<br>
+                「<strong>判断・カスタマイズが必要な部分</strong>」はこちらで継続対応。
+            </p>
+        </div>
+    </div>
+
+    <!-- ② 全体スケジュール（4週間構成） -->
+    <div class="section" style="border-color:#1976d2;">
+        <div class="section-title">
+            <span class="icon" style="background:#1976d2;">2</span>
+            全体スケジュール（配信開始まで1ヶ月の場合）
+        </div>
+        <div class="timeline">
+            <div class="timeline-row">
+                <div class="timeline-week"><span class="w-num">W1</span><span class="w-label">1週目</span></div>
+                <div class="timeline-card suzuki">
+                    <span class="tc-role">ランバード様</span>
+                    <div class="tc-title">📧 初回案内メール送付</div>
+                    <div class="tc-desc">新規案件依頼を受け、お客様に「チャンネル開設・動画アップ・権限付与」の案内メールを送付。スケジュールHTMLを添えて送る。</div>
+                </div>
+            </div>
+            <div class="timeline-row">
+                <div class="timeline-week"><span class="w-num">W2</span><span class="w-label">2週目</span></div>
+                <div class="timeline-card suzuki">
+                    <span class="tc-role">ランバード様</span>
+                    <div class="tc-title">📺 チャンネル開設サポート＋確認</div>
+                    <div class="tc-desc">お客様の対応状況を確認しつつ、必要に応じて督促・サポート。動画アップロード・権限付与まで完了したら、こちら（星崎）にバトンタッチ。</div>
+                </div>
+            </div>
+            <div class="timeline-row">
+                <div class="timeline-week"><span class="w-num">W3</span><span class="w-label">3週目</span></div>
+                <div class="timeline-card runbird">
+                    <span class="tc-role">星崎</span>
+                    <div class="tc-title">📋 提案書作成＋クライアントへのヒアリング</div>
+                    <div class="tc-desc">ターゲティング・キーワード・CTAを設計した提案書を作成し、お客様確認・修正対応。</div>
+                </div>
+            </div>
+            <div class="timeline-row">
+                <div class="timeline-week"><span class="w-num">W4</span><span class="w-label">4週目</span></div>
+                <div class="timeline-card runbird">
+                    <span class="tc-role">星崎</span>
+                    <div class="tc-title">⚙️ Google Ads 配信設定・審査</div>
+                    <div class="tc-desc">Google広告管理画面で配信設定を完了し、Google審査を通過させる。</div>
+                </div>
+            </div>
+            <div class="timeline-row">
+                <div class="timeline-week" style="background:#6a1b9a;"><span class="w-num" style="color:#fff;">🎬</span><span class="w-label">配信開始日</span></div>
+                <div class="timeline-card shared">
+                    <span class="tc-role">星崎</span>
+                    <div class="tc-title">🚀 配信開始のお知らせ送付</div>
+                    <div class="tc-desc">配信開始の報告メールをクライアントへ送付。以降は2ヶ月に1回レポート対応。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ③ 新人さんが担当する具体タスク -->
+    <div class="section" style="border-color:#2e7d32;">
+        <div class="section-title">
+            <span class="icon" style="background:#2e7d32;">3</span>
+            新人さんが担当する具体タスク
+        </div>
+
+        <div class="task-list">
+            <h4>📧 タスク1：初回案内メール送付</h4>
+            <ol>
+                <li>クライアント情報をスプレッドシートで確認</li>
+                <li>運用スケジュールHTMLを作成（既存テンプレ流用）</li>
+                <li>初回案内メールをテンプレに沿って送付</li>
+            </ol>
+        </div>
+
+        <div class="task-list">
+            <h4>📺 タスク2：チャンネル開設サポート</h4>
+            <ol>
+                <li>お客様からの質問・トラブル相談に対応</li>
+                <li>Loomの操作動画を案内して自己解決を促す</li>
+                <li>進捗が止まっている場合は督促連絡</li>
+            </ol>
+        </div>
+
+        <div class="task-list">
+            <h4>🎥 タスク3：動画アップロード確認</h4>
+            <ol>
+                <li>お客様から「アップロード完了」連絡があったら確認</li>
+                <li>YouTube上で動画が公開されているかチェック</li>
+            </ol>
+        </div>
+
+        <div class="task-list">
+            <h4>🔑 タスク4：オーナー権限付与の確認</h4>
+            <ol>
+                <li>runbird.ads@gmail.com 宛に招待メールが届くか確認</li>
+                <li>YouTubeチャンネルにアクセスできるかテスト</li>
+                <li>確認OKなら星崎にバトンタッチ（Slack/LINE WORKSで通知）</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- ④ 引継ぎ提供物 -->
+    <div class="section" style="border-color:#9c27b0;">
+        <div class="section-title">
+            <span class="icon" style="background:#9c27b0;">4</span>
+            引継ぎ時に提供するもの
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:#f3e5f5;border-radius:10px;padding:18px;border:2px solid #9c27b0;">
+                <div style="font-size:15px;font-weight:700;color:#4a148c;margin-bottom:8px;">📚 ナレッジ集</div>
+                <div style="font-size:13px;color:#444;line-height:1.8;">
+                    ・初回案内メールテンプレ<br>
+                    ・督促メールテンプレ<br>
+                    ・運用スケジュールHTML雛形<br>
+                    ・FAQ（よくある質問・トラブル対応）<br>
+                    ・言葉遣いNGルール（予算・クリック数 等）
+                </div>
+            </div>
+            <div style="background:#f3e5f5;border-radius:10px;padding:18px;border:2px solid #9c27b0;">
+                <div style="font-size:15px;font-weight:700;color:#4a148c;margin-bottom:8px;">🛠️ 運用ツール</div>
+                <div style="font-size:13px;color:#444;line-height:1.8;">
+                    ・鈴木様対応顧客スプシ（既存）<br>
+                    ・スケジュールHTMLテンプレ（GitHub Pages）<br>
+                    ・Gmail送信用アドレス：ads.yt@runbird.net<br>
+                    ・YouTubeチャンネル管理アカウント：runbird.ads@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ⑤ ご相談ポイント -->
+    <div class="section" style="border-color:#f9a825;">
+        <div class="section-title">
+            <span class="icon" style="background:#f9a825;">5</span>
+            鈴木様にご相談したいポイント
+        </div>
+        <div class="point-box">
+            <h4>① ナレッジ共有の方法</h4>
+            <p>
+                現在こちらでナレッジを <strong>Cursor + GitHub</strong> で管理しております。<br>
+                新人さんへは下記いずれかの方法で共有が考えられます。
+            </p>
+            <ul>
+                <li>A. Cursor/GitHubアクセスを新人さんに付与（一番効率的）</li>
+                <li>B. ナレッジを別途PDF/Notion等にエクスポートして渡す</li>
+                <li>C. メールテンプレ集だけ抜粋して渡す</li>
+            </ul>
+        </div>
+        <div class="point-box">
+            <h4>② バトンタッチのタイミング</h4>
+            <p>
+                権限付与確認OKの時点で、新人さん→星崎へバトンタッチが理想です。<br>
+                連絡方法はLINE WORKS or Slack等、鈴木様のご希望をお聞かせください。
+            </p>
+        </div>
+        <div class="point-box">
+            <h4>③ 引継ぎ開始時期</h4>
+            <p>
+                即時開始 or 次回新規案件から段階的に移行など、<br>
+                新人さんのご経験・スケジュールに合わせてご相談いただけますと幸いです。
+            </p>
+        </div>
+    </div>
+
+    <!-- ⑥ メリット -->
+    <div class="section" style="border-color:#2e7d32;">
+        <div class="section-title">
+            <span class="icon" style="background:#2e7d32;">6</span>
+            この引継ぎによる効果
+        </div>
+        <div class="merit-grid">
+            <div class="merit-card">
+                <div class="m-icon">⚡</div>
+                <div class="m-title">対応スピードUP</div>
+                <div class="m-desc">定型業務がランバード側で完結し、レスポンスが早くなります</div>
+            </div>
+            <div class="merit-card">
+                <div class="m-icon">🎯</div>
+                <div class="m-title">星崎は専門業務に集中</div>
+                <div class="m-desc">提案書作成・配信設定など、判断が必要な業務に集中できます</div>
+            </div>
+            <div class="merit-card">
+                <div class="m-icon">📈</div>
+                <div class="m-title">新人さんの実務経験</div>
+                <div class="m-desc">クライアント対応・YouTube広告の基礎が身につきます</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">星崎｜YouTube広告 業務引継ぎご提案資料</div>
+
+</div>
+</body>
+</html>
