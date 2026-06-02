@@ -3,56 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>整体院 左駒良 SAKURA 動画モックアップ v1</title>
+<title>整体院 左駒良 SAKURA 動画モックアップ v2</title>
 <style>
-:root{ --bg:#faf5ee; --ink:#2e2a26; --ink2:#6b6058; --accent:#a68b6b; --warm:#d4a574; --hook:#c08862; --story:#7a8b7c; --card:#ffffff; --line:#ece3d6; }
+:root{ --bg:#1a1815; --bg2:#fbf6ed; --ink:#1f1c18; --ink2:#6b6058; --accent:#c0654f; --warm:#d4a574; --hook:#e74c3c; --before:#8b7355; --after:#5fa370; --card:#ffffff; --line:#ece3d6; }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;line-height:1.7}
+body{margin:0;background:var(--bg2);color:var(--ink);font-family:"Hiragino Sans","Noto Sans JP",-apple-system,system-ui,sans-serif;line-height:1.7}
 .wrap{max-width:1200px;margin:0 auto;padding:32px 24px 64px}
 header{padding:24px 0 16px;border-bottom:2px solid var(--line);margin-bottom:32px}
-header h1{margin:0 0 12px;font-size:26px;letter-spacing:.04em;font-weight:500}
-header .ver{display:inline-block;background:var(--accent);color:#fff;padding:3px 10px;border-radius:3px;font-size:13px;margin-left:8px;vertical-align:middle;font-family:"Hiragino Sans",sans-serif}
-header .meta{display:flex;flex-wrap:wrap;gap:18px;color:var(--ink2);font-size:14px;margin-top:8px;font-family:"Hiragino Sans",sans-serif}
+header h1{margin:0 0 12px;font-size:26px;letter-spacing:.04em;font-weight:600;font-family:"Hiragino Mincho ProN","Yu Mincho",serif}
+header .ver{display:inline-block;background:var(--hook);color:#fff;padding:3px 10px;border-radius:3px;font-size:13px;margin-left:8px;vertical-align:middle}
+header .meta{display:flex;flex-wrap:wrap;gap:18px;color:var(--ink2);font-size:14px;margin-top:8px}
 header .meta b{color:var(--ink)}
-h2{margin:36px 0 16px;font-size:20px;color:var(--ink);border-left:4px solid var(--accent);padding-left:12px;font-weight:500}
+h2{margin:36px 0 16px;font-size:20px;color:var(--ink);border-left:4px solid var(--accent);padding-left:12px;font-weight:600}
 .scenes{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:18px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.04)}
 .card.hook{border-top:3px solid var(--hook)}
-.card.hook::before{content:"HOOK";position:absolute;top:8px;right:10px;background:var(--hook);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.1em;z-index:2;font-family:"Hiragino Sans",sans-serif}
+.card.hook::before{content:"HOOK";position:absolute;top:8px;right:10px;background:var(--hook);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.1em;z-index:2}
+.card.before{border-top:3px solid var(--before)}
+.card.before::before{content:"BEFORE";position:absolute;top:8px;right:10px;background:var(--before);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.1em;z-index:2}
+.card.after{border-top:3px solid var(--after)}
+.card.after::before{content:"AFTER";position:absolute;top:8px;right:10px;background:var(--after);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.1em;z-index:2}
 .card.warm{border-top:3px solid var(--warm)}
-.card.warm::before{content:"CTA";position:absolute;top:8px;right:10px;background:var(--warm);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.1em;z-index:2;font-family:"Hiragino Sans",sans-serif}
-.ph{aspect-ratio:16/9;background:#e8ddca;background-size:cover;background-position:center}
-.body{padding:14px 16px 16px;font-family:"Hiragino Sans","Noto Sans JP",sans-serif}
+.card.warm::before{content:"CTA";position:absolute;top:8px;right:10px;background:var(--warm);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.1em;z-index:2}
+.ph{aspect-ratio:16/9;background:#e8ddca;background-size:cover;background-position:center;position:relative}
+.ph.hook-text::after{content:"肩、もう限界。";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:36px;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.05)}
+.body{padding:14px 16px 16px}
 .scene{font-size:15px;font-weight:700;display:block;margin-bottom:4px}
 .time{font-size:12px;color:var(--ink2);font-family:"SF Mono",Menlo,monospace;display:block;margin-bottom:8px}
 .telop{font-size:14px;color:var(--ink);padding:8px 10px;background:#f7efe0;border-radius:4px;margin:6px 0;border-left:3px solid var(--accent);font-family:"Hiragino Mincho ProN",serif}
 .desc{font-size:13px;color:var(--ink2);margin:6px 0}
 .motion{font-size:12px;color:#a08879;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
-.section-info{background:#fff;padding:20px 24px;border-radius:6px;border:1px solid var(--line);margin:24px 0;font-family:"Hiragino Sans",sans-serif}
+.section-info{background:#fff;padding:20px 24px;border-radius:6px;border:1px solid var(--line);margin:24px 0}
 .section-info ul{margin:8px 0 0;padding-left:20px}
 .section-info li{margin:6px 0;font-size:14px;color:var(--ink2)}
-.note{background:#fff8e6;border:1px solid #e8d49a;padding:12px 16px;border-radius:5px;margin:16px 0;font-size:13px;color:#6e5a2e;font-family:"Hiragino Sans",sans-serif}
-.change-summary{background:#eee7dc;border:1px solid #c9b896;padding:14px 18px;border-radius:5px;margin:16px 0;font-size:13px;color:#4a3d2a;font-family:"Hiragino Sans",sans-serif}
-.change-summary b{color:#2e2417}
+.note{background:#fff8e6;border:1px solid #e8d49a;padding:12px 16px;border-radius:5px;margin:16px 0;font-size:13px;color:#6e5a2e}
+.change-summary{background:#fdf0ee;border:1px solid #e8c4be;padding:14px 18px;border-radius:5px;margin:16px 0;font-size:13px;color:#7a3a2c}
+.change-summary b{color:#5a1e14}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
-<h1>整体院 左駒良 <span style="letter-spacing:.1em">SAKURA</span> 動画モックアップ <span class="ver">v1 上品サロン路線</span></h1>
+<h1>整体院 左駒良 <span style="letter-spacing:.1em">SAKURA</span> 動画モックアップ <span class="ver">v2 ビフォーアフター×悩み代弁ハイブリッド</span></h1>
 <div class="meta">
-<span>尺：<b>30秒</b>（HOOK 3秒＋本編 23秒＋CTA 4秒）</span>
-<span>カット数：<b>9</b></span>
-<span>スタイル：<b>Re.Ra.Ku / ラフィネ系の落ち着き＋圧の強さ＋多言語</b></span>
-<span>ナレ：<b>なし（音楽＋テロップ／仮置き）</b></span>
+<span>尺：<b>30秒</b>（HOOK 6秒＋本編 20秒＋CTA 4秒）</span>
+<span>カット数：<b>10</b></span>
+<span>スタイル：<b>SNS広告ネイティブ・ビフォーアフター鉄板構造</b></span>
+<span>ナレ：<b>なし（音楽＋テロップ）</b></span>
 </div>
 </header>
 
 <div class="change-summary">
-<b>📝 v1 設計方針</b><br>
-PDFヒアリングの「広告系・ライト・清潔感」＋「現場で見せたCMが落ち着いた印象で合っている」を起点に、<b>Re.Ra.Ku / ラフィネ系の上品サロン路線</b>で設計しました。<br>
-<b>顔出し完全NG</b>のため、施術者・代表ともに手元・後ろ姿・首肩のクローズアップのみで構成。<br>
-<b>「MASSAGE」英字テロップ</b>はS1で大きく独立、CTAでも併記し、外国人ホテル滞在層への接点を確保しています。
+<b>📝 v1からの全面リファイン</b><br>
+v1のCM風ブランディング（Re.Ra.Ku／ラフィネ系）はフックが弱いとのフィードバックを受け、
+<b>SNS広告で実際に伸びている「ビフォーアフター×悩み代弁テロップ」のハイブリッド構造</b>へ全面リファインしました。<br>
+冒頭2秒で <b>「肩、もう限界。」</b> のテロップを即時表示 → 困った後ろ姿 → 施術 → 同じ女性の<b>首がスッと回るAfter</b> で因果を画で証明します。<br>
+ヒアリング制約（顔出しNG・MASSAGE必須・上品・ボキボキ禁止）はすべて遵守。
 </div>
 
 <div class="note">
@@ -60,58 +66,76 @@ PDFヒアリングの「広告系・ライト・清潔感」＋「現場で見�
 </div>
 
 <div class="section-info">
-<b>📺 参考動画（全URL生存確認済み・2026-06-02）</b>
+<b>📺 参考動画 v2（再リサーチ・全URL生存確認済み・2026-06-02）</b><br><br>
+<b>★ SNSバズ型・ビフォーアフター系（主参考）</b>
 <ul>
-<li><b>★★★ <a href="https://www.youtube.com/watch?v=lDuyM3yAMNA" target="_blank">Re.Ra.Ku イメージムービー</a></b> ← 業態同軸・直接参考</li>
-<li><b>★★★ <a href="https://www.youtube.com/watch?v=rJqVUZB83g8" target="_blank">Re.Ra.Ku CM</a></b> ← 業態同軸・直接参考</li>
-<li>★★ <a href="https://www.youtube.com/watch?v=uB4ORQteebs" target="_blank">ラフィネグループ新CM 30秒</a>（30秒尺・テンポと音楽参考）</li>
-<li>★★ <a href="https://www.youtube.com/watch?v=h_J7mxFRGz8" target="_blank">外国人が日本の整体に感動</a>（外国人ターゲット軸の参考）</li>
-<li>★ <a href="https://youtu.be/jOtcBUUmZWo" target="_blank">クライアントが現場で見せた参考動画</a>（「落ち着いた感じで合っている」反応）</li>
+<li><a href="https://www.youtube.com/watch?v=PEz5Url3nYM" target="_blank">大阪 ボキボキ整体 肩こり改善</a>（施術→反応→Afterの3段構造）</li>
+<li><a href="https://www.youtube.com/watch?v=cwed2bg-2aM" target="_blank">大阪市旭区 マッサージ無効客の改善</a>（「マッサージじゃ効かない人へ」型の悩みターゲット解像度）</li>
+<li><a href="https://www.youtube.com/watch?v=k9xhPh9o4u8" target="_blank">骨盤先生の悶絶整体を受けてみた</a>（体験者目線・反応構造）</li>
+<li><a href="https://www.youtube.com/watch?v=Nn2KI_PtFY0" target="_blank">悶絶整体 女性の肩こり首こり</a>（強ワード×クリック構造）</li>
+<li><a href="https://www.youtube.com/watch?v=My0F9dYrR_o" target="_blank">20代女性 肩痛・腰痛 整体</a>（同性ターゲットへの寄り添い）</li>
+</ul>
+<b>★ 外国人ターゲット参考（成田圏ホテル滞在客）</b>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=h_J7mxFRGz8" target="_blank">外国人が日本の整体に感動</a>（"Japanese is magic!?" 字幕の使い方）</li>
+<li><a href="https://www.youtube.com/watch?v=Xwo-Z326wHI" target="_blank">海外美女が驚愕 日本の整体技術</a>（外国人リアクション系の冒頭フック）</li>
+</ul>
+<b>★ あらいみか型（TikTok整体ジャンル世界1位）</b>
+<ul>
+<li><a href="https://www.tiktok.com/@arai_mika" target="_blank">@arai_mika</a>（冒頭テロップで悩み言い切る → 即解決演出 → 「もっと知りたい」型）</li>
+</ul>
+<b>★ クライアントが現場で見せた動画（基準点）</b>
+<ul>
+<li><a href="https://youtu.be/jOtcBUUmZWo" target="_blank">参考動画</a>（「落ち着いた感じで合っている／反応は普通」→ 落ち着きは残しつつ最初2秒だけSNSネイティブの強フックに振る）</li>
 </ul>
 </div>
 
-<h2>📽 シーン構成 全9カット</h2>
+<h2>📽 シーン構成 全10カット（v2）</h2>
 <div class="scenes">
 
-<div class="card hook"><div class="ph" style="background-image:url('sakura-images/v1_HOOK_neck_roll.jpg')"></div><div class="body"><span class="scene">HOOK 首のコリ</span><span class="time">0:00–0:03</span><div class="telop">（なし）</div><div class="desc">デスクワーク終わりに首を回す30代女性。窓辺の柔らかい光、シルエットで顔は出さない。</div><div class="motion">▶ 固定カメラ・首を15度ゆっくり回す</div></div></div>
+<div class="card hook"><div class="ph hook-text" style="background-image:url('sakura-images/v2_HOOK1_black_bg.jpg')"></div><div class="body"><span class="scene">HOOK-1 悩み代弁テロップ</span><span class="time">0:00–0:02</span><div class="telop">肩、もう限界。<br>MASSAGE</div><div class="desc">黒地に大きく「肩、もう限界。」明朝。小さく英字"MASSAGE"。冒頭2秒で共感を獲得。</div><div class="motion">▶ テロップ即時表示＋粒子</div></div></div>
 
-<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S1_massage_typography_bg.jpg')"></div><div class="body"><span class="scene">S1 MASSAGE タイポ</span><span class="time">0:03–0:06</span><div class="telop">MASSAGE<br>整体院 左駒良 SAKURA</div><div class="desc">真っ白な余白に大きく「MASSAGE」英字。下に屋号。外国人認知の起点。</div><div class="motion">▶ 文字フェードイン＋粒子</div></div></div>
+<div class="card hook"><div class="ph" style="background-image:url('sakura-images/v2_HOOK2_neck_stuck.jpg')"></div><div class="body"><span class="scene">HOOK-2 首が回らない</span><span class="time">0:02–0:04</span><div class="telop">（引き継ぎ）</div><div class="desc">30代女性（後ろ姿）が首を回そうとして途中で止まる。デスクワーク後の疲労感。</div><div class="motion">▶ 首をひねる→止まる</div></div></div>
 
-<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S2_treatment_room.jpg')"></div><div class="body"><span class="scene">S2 静謐な施術室</span><span class="time">0:06–0:10</span><div class="telop">強い圧で、深く、ほぐす。</div><div class="desc">無人の施術ベッド・畳んだ白タオル・観葉植物。サンクチュアリ感。</div><div class="motion">▶ スローパン 左→右</div></div></div>
+<div class="card before"><div class="ph" style="background-image:url('sakura-images/v2_BEFORE_shoulder_tight.jpg')"></div><div class="body"><span class="scene">BEFORE 肩のこり</span><span class="time">0:04–0:06</span><div class="telop">こり、ガチガチ。</div><div class="desc">首と肩の付け根クローズアップ。緊張で皮膚が引きつる。</div><div class="motion">▶ わずかな呼吸</div></div></div>
 
-<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S3_thumb_pressure.jpg')"></div><div class="body"><span class="scene">S3 親指で圧</span><span class="time">0:10–0:14</span><div class="telop">本格整体。</div><div class="desc">施術者の親指が肩・僧帽筋に深く入る瞬間（手元のみ・顔NG）。</div><div class="motion">▶ 圧の入る瞬間 → 緩める</div></div></div>
+<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S3_thumb_pressure.jpg')"></div><div class="body"><span class="scene">S1 親指で圧</span><span class="time">0:06–0:11</span><div class="telop">圧で、効く。</div><div class="desc">施術者の親指が僧帽筋に深く入る瞬間（手元のみ・顔NG）。圧の点が一瞬白く反射。</div><div class="motion">▶ 親指の押し込み→解放</div></div></div>
 
-<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S4_head_cradle.jpg')"></div><div class="body"><span class="scene">S4 後頭部を支える</span><span class="time">0:14–0:18</span><div class="telop">一点に、しっかり効かせる。</div><div class="desc">施術者の手がお客様の後頭部・首筋を支える。施術者の顔は出さない。</div><div class="motion">▶ わずかに頭を左右へ整える</div></div></div>
+<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S4_head_cradle.jpg')"></div><div class="body"><span class="scene">S2 後頭部を支える</span><span class="time">0:11–0:15</span><div class="telop">一点に、しっかり。</div><div class="desc">施術者の手がお客様の後頭部・首筋を支える。横アングル・タオル白。</div><div class="motion">▶ 頭をわずかに整える</div></div></div>
 
-<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S5_multilingual_reception.jpg')"></div><div class="body"><span class="scene">S5 English OK.</span><span class="time">0:18–0:21</span><div class="telop">English OK.</div><div class="desc">受付コーナーの引き。多言語対応の安心感を出す。</div><div class="motion">▶ 微かなドリーイン 5%</div></div></div>
+<div class="card after"><div class="ph" style="background-image:url('sakura-images/v2_AFTER_neck_free.jpg')"></div><div class="body"><span class="scene">AFTER 首が回る</span><span class="time">0:15–0:18</span><div class="telop">回る。</div><div class="desc">HOOK-2と同じ女性、今度は首がなめらかに大きく回る。肩のシワがほどけている。</div><div class="motion">▶ 首を大きく回す</div></div></div>
 
-<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S6_relief_back.jpg')"></div><div class="body"><span class="scene">S6 帰り道の解放</span><span class="time">0:21–0:25</span><div class="telop">帰り道、肩が軽い。</div><div class="desc">施術後、夕方の柔らかい光の中で深呼吸する女性（後ろ姿）。</div><div class="motion">▶ 微風で髪が揺れる＋肩が下がる呼吸</div></div></div>
+<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S5_multilingual_reception.jpg')"></div><div class="body"><span class="scene">S3 English OK.</span><span class="time">0:18–0:21</span><div class="telop">English OK.</div><div class="desc">受付コーナーの引き。多言語対応の安心感。</div><div class="motion">▶ 微ドリーイン 5%</div></div></div>
 
-<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S7_exterior.jpg')"></div><div class="body"><span class="scene">S7 整体院 外観</span><span class="time">0:25–0:28</span><div class="telop">千葉県富里市・整体院 左駒良 SAKURA</div><div class="desc">夕方の柔らかい光に灯りがともる外観。看板は後合成のため白く確保。</div><div class="motion">▶ 固定・窓の灯りがわずかに揺らぐ</div></div></div>
+<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S6_relief_back.jpg')"></div><div class="body"><span class="scene">S4 帰り道の解放</span><span class="time">0:21–0:25</span><div class="telop">帰り道、肩が軽い。</div><div class="desc">施術後、夕方の街へ。後ろ姿、肩が下がり、髪が風に揺れる。</div><div class="motion">▶ スロー</div></div></div>
+
+<div class="card"><div class="ph" style="background-image:url('sakura-images/v1_S7_exterior.jpg')"></div><div class="body"><span class="scene">S5 整体院 外観</span><span class="time">0:25–0:28</span><div class="telop">千葉県富里市・整体院 左駒良 SAKURA</div><div class="desc">夕方の灯り・落ち着いた看板。</div><div class="motion">▶ 静かな引き</div></div></div>
 
 <div class="card warm"><div class="ph" style="background-image:url('sakura-images/v1_CTA_endcard_bg.jpg')"></div><div class="body"><span class="scene">CTA エンドカード</span><span class="time">0:28–0:30</span><div class="telop">MASSAGE / 整体院 左駒良 SAKURA<br>TEL 070-3820-1102<br>千葉県富里市七栄502-13 <span style="color:#c08;">★要確認</span><br>HP QR</div><div class="desc">余白広めの上品背景にロゴ＋連絡情報＋QRを後合成。</div><div class="motion">▶ ロゴふわっと表示</div></div></div>
 
 </div>
 
 <div class="section-info" style="margin-top:32px">
-<b>【今回モックで仮置きさせていただいた点】</b>（ご希望と違う場合はお知らせください）
+<b>【今回モックで仮置きさせていただいた点】</b>
 <ul>
-<li><b>店舗住所の番地</b>：ヒアリングシートPDF=502-13／ユーザー文中=802-13 → どちらが正か <b>★要確認</b></li>
-<li><b>尺</b>：30秒で仮置き（ライトプランの標準尺）</li>
+<li><b>店舗住所の番地</b>：PDF=502-13／文中=802-13 → <b>★要確認</b></li>
+<li><b>尺</b>：30秒で仮置き</li>
+<li><b>キャッチコピー</b>：「肩、もう限界。」（HOOK）／「圧で、効く。」（中盤）／「回る。」（After）で仮置き</li>
 <li><b>ナレーション</b>：なし（音楽＋テロップ主体）で仮置き</li>
-<li><b>BGM</b>：上品な癒し系（弦楽＋ピアノ・BPM70-85）で仮置き</li>
-<li><b>CTA</b>：電話番号（オオツ様直通 070-3820-1102）＋住所＋HP QR で仮置き。Instagram・LINEのご希望あればお知らせください</li>
-<li><b>モデル男女</b>：女性ターゲット中心のため女性主役で設計（実態の現場仕事男性層は画面トーンで包摂）</li>
-<li><b>マスク可否</b>：殿崎様・オオツ様のマスク着用での写り込みは今回未使用（PDF反応「マスクなら可かも」→ 確認のうえ次稿で起用も可能）</li>
-<li><b>「MASSAGE」テロップ</b>：S1で大きく独立提示＋CTAで併記。位置・サイズのご希望あればお知らせください</li>
+<li><b>BGM</b>：シネマティック癒し系（弦楽＋ピアノ・BPM75-90）で仮置き</li>
+<li><b>CTA</b>：電話番号（オオツ様直通 070-3820-1102）＋住所＋HP QR で仮置き</li>
+<li><b>モデル男女</b>：女性主役で設計</li>
+<li><b>「MASSAGE」テロップ</b>：HOOK-1で英字＋CTAで併記</li>
 </ul>
 </div>
 
 <div class="section-info">
-<b>【今回の制作スコープ】</b>
+<b>【v1→v2 主な変更点】</b>
 <ul>
-<li>第1弾（今回）：AI動画（撮影なし）</li>
-<li>第2弾：成田移転後の実写撮影動画（年内予定）</li>
+<li>HOOK構造：静かな首回し → <b>テロップ「肩、もう限界。」即時表示</b>（伸びる構造）</li>
+<li>BEFORE/AFTER 因果構造を追加（同一女性の首が「回らない→回る」で証明）</li>
+<li>参考動画：Re.Ra.Ku/ラフィネCM → <b>整体院リール・あらいみか型</b>のSNSバズ参照に切り替え</li>
+<li>カット数：9 → 10（BEFORE/AFTER追加・HOOK分割）</li>
 </ul>
 </div>
 
