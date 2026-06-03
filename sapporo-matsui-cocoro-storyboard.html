@@ -1,103 +1,113 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>札幌松井こころ相談室 動画モックアップ v3</title>
+<meta charset="UTF-8">
+<title>札幌松井こころ相談室 — AI動画 v6 ストーリーボード</title>
 <style>
-:root{ --bg:#fafafa; --ink:#2b2d33; --ink2:#4d5159; --accent:#7a9f9f; --warm:#c9a87a; --hook:#b89160; --card:#ffffff; --line:#e3e5ea; }
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Noto Sans JP",-apple-system,system-ui,sans-serif;line-height:1.65}
-.wrap{max-width:1200px;margin:0 auto;padding:32px 24px 64px}
-header{padding:24px 0 16px;border-bottom:2px solid var(--line);margin-bottom:32px}
-header h1{margin:0 0 12px;font-size:28px;letter-spacing:.02em}
-header .meta{display:flex;flex-wrap:wrap;gap:18px;color:var(--ink2);font-size:14px}
-header .meta b{color:var(--ink)}
-h2{margin:36px 0 16px;font-size:20px;color:var(--ink);border-left:4px solid var(--accent);padding-left:12px}
-.scenes{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:18px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.card.hook{border-top:3px solid var(--hook)}
-.card.hook::before{content:"HOOK";position:absolute;top:8px;right:10px;background:var(--hook);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.1em;z-index:2}
-.card.warm{border-top:3px solid var(--warm)}
-.card.warm::before{content:"CTA";position:absolute;top:8px;right:10px;background:var(--warm);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.1em;z-index:2}
-.ph{aspect-ratio:16/9;background:#e8e9ed;background-size:cover;background-position:center}
-.body{padding:14px 16px 16px}
-.scene{font-size:15px;font-weight:700;display:block;margin-bottom:4px}
-.time{font-size:12px;color:var(--ink2);font-family:"SF Mono",Menlo,monospace;display:block;margin-bottom:8px}
-.telop{font-size:14px;color:var(--ink);padding:8px 10px;background:#f4f5f7;border-radius:4px;margin:6px 0;border-left:3px solid var(--accent)}
-.desc{font-size:13px;color:var(--ink2);margin:6px 0}
-.motion{font-size:12px;color:#7c8087;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
-.section-info{background:#fff;padding:20px 24px;border-radius:8px;border:1px solid var(--line);margin:24px 0}
-.section-info ul{margin:8px 0 0;padding-left:20px}
-.section-info li{margin:6px 0;font-size:14px;color:var(--ink2)}
-.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--ink2);margin:12px 0}
-.legend span{display:inline-flex;align-items:center;gap:6px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:2px}
+  :root{ --bg:#1c1d22; --ink:#ecedf2; --ink2:#b9bac4; --accent:#b7a7d6; --warm:#e6b886; --hook:#d4af6c; --card:#262830; --line:#3a3c45; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Yu Gothic",sans-serif;line-height:1.7;padding:40px 24px;max-width:1400px;margin:0 auto}
+  header{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:32px}
+  h1{font-size:30px;font-weight:300;letter-spacing:.08em}
+  h1 .brand{color:var(--accent);font-weight:500}
+  .ver{font-size:12px;color:var(--ink2);margin-left:8px;letter-spacing:.1em}
+  .meta{display:flex;gap:24px;flex-wrap:wrap;color:var(--ink2);font-size:13px;margin-top:12px}
+  .meta b{color:var(--ink);font-weight:500}
+  h2{font-size:18px;font-weight:500;letter-spacing:.06em;margin:40px 0 16px;color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;position:relative}
+  .card.hook{border-top:3px solid var(--hook)}
+  .card.hook::before{content:"HOOK";position:absolute;top:8px;right:10px;background:var(--hook);color:#1c1d22;font-size:10px;font-weight:700;padding:2px 8px;border-radius:3px;letter-spacing:.1em;z-index:2}
+  .card.cool{border-top:3px solid #6f7a99}
+  .card.warm{border-top:3px solid var(--warm)}
+  .card .ph{aspect-ratio:1/1;background:#0e0e12 center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:#4a4b54;font-size:12px}
+  .card .body{padding:14px 16px 16px}
+  .card .scene{font-size:11px;color:var(--ink2);letter-spacing:.1em;text-transform:uppercase}
+  .card .time{font-size:11px;color:var(--ink2);float:right}
+  .card .telop{margin-top:8px;font-size:14px;color:#fff;background:rgba(183,167,214,.18);padding:8px 10px;border-left:3px solid var(--accent);border-radius:2px;min-height:36px}
+  .card .telop.empty{opacity:.4;font-style:italic;color:var(--ink2);background:transparent;border-left:1px dashed var(--line)}
+  .card .desc{margin-top:10px;font-size:12.5px;color:var(--ink2)}
+  .card .motion{margin-top:8px;font-size:11.5px;color:#8c8a99}
+  .points{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px 20px;margin-top:8px}
+  .points li{font-size:13.5px;color:var(--ink2);margin:4px 0 4px 18px}
+  .check li{margin:6px 0 6px 20px;color:var(--ink2);font-size:13px}
+  .check b{color:#fff;font-weight:500}
+  .nb{font-size:11px;color:#6f6e7a;margin-top:32px;text-align:center}
+  .legend{display:inline-flex;gap:14px;font-size:11.5px;color:var(--ink2);margin-top:8px;flex-wrap:wrap}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 </style>
 </head>
 <body>
-<div class="wrap">
 <header>
-<h1>札幌松井こころ相談室 動画モックアップ v3</h1>
-<div class="meta">
-<span>尺：<b>約38秒</b>（HOOK 3秒＋本編 29秒＋CTA 6秒）</span>
-<span>カット数：<b>10</b></span>
-<span>スタイル：<b>アリナミンD CM風・寄り添い系</b></span>
-<span>ナレ：<b>なし（音楽＋テロップ）</b></span>
-</div>
-<div class="legend">
-<span><i style="background:#b89160"></i>HOOKカット</span>
-<span><i style="background:#7a9f9f"></i>本編カット</span>
-<span><i style="background:#c9a87a"></i>CTAエンドカード</span>
-</div>
+  <h1>AI動画 v6 ストーリーボード — <span class="brand">札幌松井こころ相談室</span><span class="ver">v6 / 2026-06-03</span></h1>
+  <div class="meta">
+    <span>業態：<b>悩み相談室（カウンセリング）</b>（札幌・琴似駅徒歩1分）</span>
+    <span>尺：<b>約34秒</b>（HOOK 5秒＋本編 23秒＋CTA 6秒）</span>
+    <span>スタイル：<b>参考動画路線（夜・寒色・明朝白テロップ）</b></span>
+    <span>HOOK構造：<b>男→女 連続2カット・世界観統一</b></span>
+    <span>CTA：<b>QR(HP)＋電話＋住所＋営業時間＋ボタン</b></span>
+  </div>
+  <div class="legend">
+    <span><i style="background:#d4af6c"></i>HOOKカット</span>
+    <span><i style="background:#6f7a99"></i>前半=寒色（悩み）</span>
+    <span><i style="background:#e6b886"></i>後半=暖色（解決）</span>
+  </div>
 </header>
 
-<div class="section-info">
-<b>構成のポイント</b>
-<ul>
-<li><b>HOOK1</b>「相談するほどでも、ない」そう思っていませんか？ — 心理的バリアを言語化し、当事者意識を即喚起</li>
-<li><b>本編構造</b> — 男女の悩み（S1/S2）→ 男性入店（S3）→ 男性対面相談＆女性Zoom（S4/S5・並列）→ 男女スッキリ（S6/S7）→ 先生締め（S8）</li>
-<li><b>16-B 自然さ厳守</b> — 全カットで「目開き・自然な微笑・10-15度以内の頷き」を徹底</li>
-<li><b>施設整合性</b> — HP施設写真（緑シャギーラグ・水色カーテン・焦茶引き戸・石マーブル円卓・ベージュ家具）を厳密保持</li>
-<li><b>CTA厳守</b> — S9 エンドカードに「ロゴ・TEL・住所・営業時間・QR・予約ボタン」を載せる</li>
-</ul>
+<h2>🎯 v6の変更点（v5→v6）</h2>
+<div class="points">
+  <ul>
+    <li><b>HOOKを「原因シーン込み」に刷新</b>：旧HOOK1（スマホ伏せ）／S1男性街中疲れ／S2女性自宅悩み を廃止し、<b>HOOK_M（男性・オフィス・上司シルエットに叱責）＋HOOK_W（女性・自宅夜・夫シルエットに詰められる）の連続2カット5秒</b>に変更</li>
+    <li><b>参考動画路線</b>：寒色・コントラスト高・明朝白テロップ・「実は…40~50代の男性／女性」的な悩み具体化</li>
+    <li><b>男女連続2カット・世界観統一</b>：両カットで色温度・カメラレンズ感・編集リズムを揃え、「事情は違うけど同じように悩んでる人がいる」を印象づけ</li>
+    <li><b>原因人物（上司・夫）はシルエット or 後ろ姿</b>：顔は見せず、主役の悩みに視線を集中</li>
+    <li><b>総尺38秒→34秒</b>：HOOKが悩みパートを兼ねるため4秒短縮</li>
+  </ul>
 </div>
 
-<h2>📽 シーン構成 全10カット</h2>
-<div class="scenes">
-
-<div class="card hook"><div class="ph" style="background-image:url('sapporo-matsui-cocoro-images/HOOK1_smartphone_search.jpg')"></div><div class="body"><span class="scene">HOOK1 スマホ検索→画面伏せる</span><span class="time">0:00–0:03</span><div class="telop">「相談するほどでも、ない」そう思っていませんか？</div><div class="desc">夜の自宅でスマホ検索→画面を伏せる手元。心理的バリアの言語化。</div><div class="motion">▶ 手が画面をゆっくり伏せる</div></div></div>
-
-<div class="card"><div class="ph" style="background-image:url('sapporo-matsui-cocoro-images/S1_man_tired_street.jpg')"></div><div class="body"><span class="scene">S1 男性 街中疲労</span><span class="time">0:03–0:06</span><div class="telop">最近、疲れが抜けない。</div><div class="desc">40代男性・スーツ。寒色の街中で立ち止まり、疲労を表す。</div><div class="motion">▶ ため息、肩が下がる</div></div></div>
-
-<div class="card"><div class="ph" style="background-image:url('sapporo-matsui-cocoro-images/S2_woman_home_worry.jpg')"></div><div class="body"><span class="scene">S2 女性 自宅悩み</span><span class="time">0:06–0:09</span><div class="telop">家族のこと、人間関係。</div><div class="desc">60代女性、夜の自宅で物思いに耽る。</div><div class="motion">▶ 静かな物思い</div></div></div>
-
-<div class="card"><div class="ph" style="background-image:url('sapporo-matsui-cocoro-images/S3_entrance.jpg')"></div><div class="body"><span class="scene">S3 相談室入口</span><span class="time">0:09–0:13</span><div class="telop">琴似駅から、徒歩1分。</div><div class="desc">男性が202号室のドアを開ける瞬間。実物入口を再現。</div><div class="motion">▶ ドアが開き、暖色光が漏れる</div></div></div>
-
-<div class="card"><div class="ph" style="background-image:url('sapporo-matsui-cocoro-images/S4_counseling.jpg')"></div><div class="body"><span class="scene">S4 男性 対面相談（先生初登場）</span><span class="time">0:13–0:17</span><div class="telop">話すだけでも、心は整理される。</div><div class="desc">L字配置の対面相談。男性が話し、松井先生が静かに聴く。</div><div class="motion">▶ 松井がうなずく、自然光ゆらぎ</div></div></div>
-
-<div class="card"><div class="ph" style="background-image:url('sapporo-matsui-cocoro-images/S5_woman_zoom.jpg')"></div><div class="body"><span class="scene">S5 女性 Zoom相談</span><span class="time">0:17–0:21</span><div class="telop">オンラインでも、話せます。</div><div class="desc">女性が自宅PCで松井先生とZoomリモート相談。</div><div class="motion">▶ 画面見て少し笑む</div></div></div>
-
-<div class="card"><div class="ph" style="background-image:url('sapporo-matsui-cocoro-images/S6_man_relief.jpg')"></div><div class="body"><span class="scene">S6 男性スッキリ（仕事文脈）</span><span class="time">0:21–0:24</span><div class="telop">肩の力が、ふっと抜けた。</div><div class="desc">夕方の街、ネクタイを緩めて空を見上げる軽い足取り。</div><div class="motion">▶ 軽い足取りで歩く</div></div></div>
-
-<div class="card"><div class="ph" style="background-image:url('sapporo-matsui-cocoro-images/S7_woman_relief.jpg')"></div><div class="body"><span class="scene">S7 女性スッキリ（関係性文脈）</span><span class="time">0:24–0:27</span><div class="telop">心が、少し軽くなる。</div><div class="desc">母と娘さん（大学生）が自宅で仲良く会話。</div><div class="motion">▶ 母娘が微笑み合う</div></div></div>
-
-<div class="card"><div class="ph" style="background-image:url('sapporo-matsui-cocoro-images/S8_matsui_closing.jpg')"></div><div class="body"><span class="scene">S8 先生 やさしい締め</span><span class="time">0:27–0:32</span><div class="telop">気軽に話せる、こころの相談室。</div><div class="desc">松井先生のクライマックスメッセージ。</div><div class="motion">▶ 穏やかな微笑＋小さな頷き</div></div></div>
-
-<div class="card warm"><div class="ph" style="background-image:url('sapporo-matsui-cocoro-images/S9_CTA.jpg')"></div><div class="body"><span class="scene">S9 CTA エンドカード</span><span class="time">0:32–0:38</span><div class="telop">ロゴ／TEL 011-624-6905／住所／営業時間／QR／予約ボタン</div><div class="desc">実物ロゴ・QR使用。「ご予約はこちら」CTAボタン入り。</div><div class="motion">▶ ロゴふわっと表示・ボタン微発光</div></div></div>
-
+<h2>📽 シーン構成 全9カット（HOOK 2＋本編 6＋CTA 1）</h2>
+<div class="grid">
+  <div class="card hook"><div class="ph" id="ph-HOOK_M">HOOK_M</div><div class="body"><span class="scene">H1 男性・上司に叱責</span><span class="time">0:00–0:02.5</span><div class="telop">相談するほどでも、ない</div><div class="desc">薄暗いオフィス（昼〜夕方の窓光）。40代男性が肩を落とし俯く。背景に上司シルエット（顔は見せない）</div><div class="motion">▶ ガラスプリズム屈折→素抜け／俯き→肩落とし</div></div></div>
+  <div class="card hook"><div class="ph" id="ph-HOOK_W">HOOK_W</div><div class="body"><span class="scene">H2 女性・夫に詰められ</span><span class="time">0:02.5–0:05</span><div class="telop">そう思っていませんか？</div><div class="desc">自宅リビング夜。50代女性が膝で手を握り俯く。背景に夫シルエット（顔は見せない）<br><b>HOOK_Mと同色温度・同レンズ感・同リズム</b></div><div class="motion">▶ ガラスプリズム屈折→素抜け／俯き→肩落とし</div></div></div>
+  <div class="card warm"><div class="ph" id="ph-S3">S3</div><div class="body"><span class="scene">S3 相談室の入口</span><span class="time">0:05–0:09</span><div class="telop">琴似駅から、徒歩1分。</div><div class="desc">白壁＋焦茶引き戸／靴を脱ぐスペース。男性が一歩踏み入れる</div><div class="motion">▶ ドアに手をかけ／光が差す</div></div></div>
+  <div class="card warm"><div class="ph" id="ph-S4">S4</div><div class="body"><span class="scene">S4 男性 対面相談</span><span class="time">0:09–0:13</span><div class="telop">話すだけでも、心は整理される。</div><div class="desc">L字配置・松井先生＝木フレームラウンジチェア／男性＝ベージュ丸ソファ／間に石マーブル円卓</div><div class="motion">▶ 松井が小さく頷く／自然光ゆれる</div></div></div>
+  <div class="card warm"><div class="ph" id="ph-S5">S5</div><div class="body"><span class="scene">S5 女性 Zoom相談</span><span class="time">0:13–0:17</span><div class="telop">オンラインでも、話せます。</div><div class="desc">自宅でノートPC、画面に松井先生（白シャツ）</div><div class="motion">▶ 画面を見て少し笑む</div></div></div>
+  <div class="card warm"><div class="ph" id="ph-S6">S6</div><div class="body"><span class="scene">S6 男性 仕事絶好調</span><span class="time">0:17–0:20</span><div class="telop">肩の力が、ふっと抜けた。</div><div class="desc">明るいオフィスでプレゼン成功・同僚と笑顔の打ち合わせ／HOOK_M男性と同一人物</div><div class="motion">▶ 笑顔でうなずく／プレゼン資料を指す</div></div></div>
+  <div class="card warm"><div class="ph" id="ph-S7">S7</div><div class="body"><span class="scene">S7 女性 家族団欒</span><span class="time">0:20–0:23</span><div class="telop">心が、少し軽くなる。</div><div class="desc">自宅で娘・夫と笑顔で談笑／HOOK_W女性と同一人物・夫の顔も明るく見せる</div><div class="motion">▶ 笑顔で家族を見る／うなずく</div></div></div>
+  <div class="card warm"><div class="ph" id="ph-S8">S8</div><div class="body"><span class="scene">S8 先生締め</span><span class="time">0:23–0:28</span><div class="telop">気軽に話せる、こころの相談室。</div><div class="desc">松井先生（白シャツ＋グレーチノ）・施設内・自然な微笑</div><div class="motion">▶ おだやかにうなずく</div></div></div>
+  <div class="card warm"><div class="ph" id="ph-S9">S9 ★</div><div class="body"><span class="scene">S9 エンドカード・CTA</span><span class="time">0:28–0:34</span><div class="telop">ロゴ／QR(HP)／TEL 011-624-6905／住所／平日 7:30-20:30・土日祝 13:00-17:00／「ご予約はこちら」ボタン</div><div class="desc">実物ロゴ＋電話＋住所＋営業時間＋QR(HP)＋予約ボタン</div><div class="motion">▶ ロゴふわっと表示／ボタン軽く光る</div></div></div>
 </div>
 
-<div class="section-info" style="margin-top:32px">
-<b>仮置き・確認事項</b>
-<ul>
-<li><b>ナレーション</b>：今回は<b>音楽＋テロップのみ</b>で作成。寄り添い系ナレを追加ご希望の場合はお知らせください。</li>
-<li><b>松井先生のお顔</b>：HP施設紹介ページの写真を参考に生成。ご本人写真をいただければ寄せて差し替え可能。</li>
-<li><b>BGM</b>：穏やかなピアノ系（前半静か→後半温かく開く）で仕上げます。</li>
-<li><b>尺</b>：38秒で構成（録音「30〜40秒」準拠）。</li>
-</ul>
+<h2>✅ ご確認いただきたい点</h2>
+<div class="points">
+  <ul class="check">
+    <li><b>HOOK構造</b>：参考動画路線で「相談するほどでも、ない／そう思っていませんか？」の問いかけを、<b>男性=仕事ストレス（上司叱責）／女性=家族ストレス（夫詰め）</b>の連続2カットで具体化しました。これで方向性OKでしょうか？</li>
+    <li><b>原因人物（上司・夫）の見せ方</b>：顔は出さず後ろ姿/シルエットで「悩みの原因」だけ伝える設計。これでよろしいでしょうか？</li>
+    <li><b>HOOK_M男性の表情</b>：現状「額に手・目つむり気味」。目を半開きに修正可能。</li>
+    <li><b>HOOK_W女性のトーン</b>：暖色ランプアクセントがやや強い。HOOK_Mと同じくらい寒色寄りに揃え直す可能性あり。</li>
+    <li><b>画角</b>：現状は仮で正方形。最終は16:9 横長（1920×1080）で揃えます。</li>
+    <li><b>テロップ</b>：明朝・白・センター大（参考動画準拠）。フォントは「源界明朝」or「Noto Serif JP」想定。</li>
+  </ul>
 </div>
 
-</div>
+<p class="nb">※ このページはモックアップ確認用です。最終納品物はLovart/Veoで動画化→ffmpeg合成した MP4 になります。HOOK_M/HOOK_Wは Gemini 2.5 Flash Image で生成。</p>
+
+<script>
+const map = {
+  "HOOK_M":"sapporo-matsui-cocoro-images/HOOK_M_office_scolded.jpg",
+  "HOOK_W":"sapporo-matsui-cocoro-images/HOOK_W_home_scolded.jpg",
+  "S3":"sapporo-matsui-cocoro-images/S03_entrance_step.jpg",
+  "S4":"sapporo-matsui-cocoro-images/S04_counseling_seated.jpg",
+  "S5":"sapporo-matsui-cocoro-images/S07_woman_zoom_laptop.jpg",
+  "S6":"sapporo-matsui-cocoro-images/S6_man_work_success.jpg",
+  "S7":"sapporo-matsui-cocoro-images/S7_woman_family_talk.jpg",
+  "S8":"sapporo-matsui-cocoro-images/S09_counselor_portrait.jpg",
+  "S9":"sapporo-matsui-cocoro-images/S10_endcard_bg.jpg"
+};
+for(const [k,v] of Object.entries(map)){
+  const el = document.getElementById("ph-"+k);
+  if(el){ el.style.backgroundImage = `url('${v}')`; }
+}
+</script>
 </body>
 </html>
