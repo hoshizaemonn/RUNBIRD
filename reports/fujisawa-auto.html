@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告 運用レポート — フジサワオート 様</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #cc0000;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* 目的・ゴール */
+        .goal-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+        }
+        .goal-banner h2 {
+            color: #ff6b6b;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .goal-banner .goal-sub {
+            text-align: center;
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 24px;
+        }
+        .goal-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .gf-box {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            min-width: 160px;
+        }
+        .gf-box .gf-step { font-size: 11px; color: #ff6b6b; font-weight: 700; margin-bottom: 4px; }
+        .gf-box .gf-title { font-size: 15px; font-weight: 700; }
+        .gf-box .gf-desc { font-size: 12px; color: #ccc; margin-top: 4px; }
+        .gf-arrow { color: #ff6b6b; font-size: 24px; font-weight: 700; padding: 0 10px; }
+
+        /* ターゲティング */
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .target-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+        .target-card .t-icon { font-size: 28px; margin-bottom: 8px; }
+        .target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+        .target-card .t-value { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.5; }
+
+        .area-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .area-box { border-radius: 10px; padding: 18px; }
+        .area-box.primary { background: #fff0f0; border: 2px solid #cc0000; }
+        .area-box.secondary { background: #f0f7ff; border: 2px solid #1976d2; }
+        .area-box h4 { font-size: 14px; margin-bottom: 10px; }
+        .area-box .area-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 3px 4px;
+        }
+        .area-box.primary .area-tag { background: #ffebee; color: #c62828; }
+        .area-box.secondary .area-tag { background: #e3f2fd; color: #1565c0; }
+
+        /* キーワード */
+        .kw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .kw-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+        }
+        .kw-box h4 {
+            font-size: 13px;
+            color: #cc0000;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #eee;
+        }
+        .kw-tag {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 12px;
+            margin: 2px;
+            color: #333;
+        }
+
+        /* 補足 */
+        .note-bar {
+            background: #fff3e0;
+            border: 2px solid #ff8800;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+        }
+        .note-bar h3 { color: #e65100; font-size: 15px; margin-bottom: 10px; }
+        .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
+        .note-bar li { margin-bottom: 6px; }
+        .note-bar li strong { color: #cc0000; }
+
+        @media (max-width: 768px) {
+            .target-grid { grid-template-columns: repeat(2, 1fr); }
+            .area-section { grid-template-columns: 1fr; }
+            .kw-grid { grid-template-columns: 1fr; }
+
+            .goal-flow { flex-direction: column; }
+            .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 運用提案書</h1>
+    <p class="subtitle">フジサワオート 様｜株式会社ランバード</p>
+
+    <!-- ① 目的・ゴール -->
+    <div class="goal-banner">
+        <h2>広告配信の目的</h2>
+        <p class="goal-sub">岡山市・赤磐市エリアで愛車を大切にしているオーナーに、エンジン内部洗浄という選択肢を知ってもらいお問い合わせにつなげる</p>
+        <div class="goal-flow">
+            <div class="gf-box">
+                <div class="gf-step">STEP 1</div>
+                <div class="gf-title">認知</div>
+                <div class="gf-desc">YouTube広告で<br>「乗り換えの前に再生という選択」を届ける</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 2</div>
+                <div class="gf-title">興味</div>
+                <div class="gf-desc">動画を30秒以上見た方に<br>エンジン復元の技術力を伝える</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 3</div>
+                <div class="gf-title">問い合わせ</div>
+                <div class="gf-desc">LPで詳細を確認<br>電話・相談の予約</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">GOAL</div>
+                <div class="gf-title">施工・紹介</div>
+                <div class="gf-desc">エンジン洗浄を体感<br>口コミ・リピートへ</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ② ターゲティング設定 -->
+    <div class="section" style="border-color:#cc0000;">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">1</span>
+            ターゲティング設定
+        </div>
+
+        <div class="target-grid">
+            <div class="target-card">
+                <div class="t-icon">👤</div>
+                <div class="t-label">性別</div>
+                <div class="t-value">男性</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📅</div>
+                <div class="t-label">年齢</div>
+                <div class="t-value">25〜64歳</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📍</div>
+                <div class="t-label">エリア</div>
+                <div class="t-value">岡山市内＋赤磐市<br>（まず広めに配信→絞り込み）</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">🕐</div>
+                <div class="t-label">配信時間</div>
+                <div class="t-value">7:00〜23:00</div>
+            </div>
+        </div>
+
+        <div class="area-section">
+            <div class="area-box primary">
+                <h4 style="color:#c62828;">初期配信エリア（広めに配信）</h4>
+                <span class="area-tag">岡山市北区</span>
+                <span class="area-tag">岡山市東区</span>
+                <span class="area-tag">岡山市中区</span>
+                <span class="area-tag">岡山市南区</span>
+                <span class="area-tag">赤磐市</span>
+            </div>
+            <div class="area-box secondary">
+                <h4 style="color:#1565c0;">データを見て絞り込み</h4>
+                <span class="area-tag">反応の良いエリアに集中</span>
+                <span class="area-tag">反応の悪いエリアを除外</span>
+            </div>
+        </div>
+
+        <div style="background:#fff3e0;border-radius:8px;padding:14px 18px;font-size:13px;color:#e65100;">
+            <strong>エリア設定の理由：</strong>エンジン内部洗浄は高単価サービスのため、まず岡山市内＋赤磐市で広めに配信し、反応データをもとに効果の高いエリアへ絞り込んでいきます。
+        </div>
+    </div>
+
+    <!-- ③ 関連キーワード設定 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#1976d2;">2</span>
+            関連キーワード設定
+        </div>
+        <p style="font-size:13px;color:#666;margin-bottom:16px;">設定したキーワードに関心がある視聴者に優先的に広告が表示されます。</p>
+
+        <div class="kw-grid">
+            <div class="kw-box">
+                <h4>直接ニーズ（エンジンの不調を感じている人）</h4>
+                <span class="kw-tag">エンジン洗浄</span>
+                <span class="kw-tag">エンジン 不調</span>
+                <span class="kw-tag">エンジン パワーダウン</span>
+                <span class="kw-tag">エンジン 異音</span>
+                <span class="kw-tag">カーボン除去</span>
+                <span class="kw-tag">エンジン リフレッシュ</span>
+            </div>
+            <div class="kw-box">
+                <h4>愛車こだわり層（高単価サービスに響く人）</h4>
+                <span class="kw-tag">愛車 メンテナンス</span>
+                <span class="kw-tag">車 長く乗る</span>
+                <span class="kw-tag">車 整備</span>
+                <span class="kw-tag">車 コンディション</span>
+            </div>
+            <div class="kw-box">
+                <h4>ライフスタイル（潜在層）</h4>
+                <span class="kw-tag">車好き</span>
+                <span class="kw-tag">ドライブ 岡山</span>
+                <span class="kw-tag">旧車 維持</span>
+                <span class="kw-tag">走行距離 多い</span>
+                <span class="kw-tag">車 乗り換え 迷う</span>
+                <span class="kw-tag">10万キロ 車</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ④ 広告配信設定まとめ -->
+    <div class="section" style="border-color:#cc0000;">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">3</span>
+            広告配信設定まとめ
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #cc0000;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">広告形式</div>
+                <div style="font-size:16px;font-weight:700;">インストリーム広告（スキップ可能）</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">動画再生前に流れる広告。5秒後にスキップ可能。興味のある方だけに課金されます。</div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #1976d2;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">フリークエンシーキャップ</div>
+                <div style="font-size:16px;font-weight:700;">週3回まで</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">同じ方に何度も広告が出ないよう制限。限られた予算でより多くの方にリーチします。</div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">リンク先</div>
+                <div style="font-size:16px;font-weight:700;">https://engine-restore.hp.peraichi.com/</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">広告をクリックした際の遷移先。エンジン内部洗浄の詳細・施工事例・お問い合わせが確認できます。</div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
+                <div style="font-size:16px;font-weight:700;">2026年4月1日〜</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">審査通過次第、配信を開始いたします。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ⑤ 配信実績 -->
+    <div class="section" style="border-color:#2e7d32;">
+        <div class="section-title">
+            <span class="icon" style="background:#2e7d32;">5</span>
+            配信実績（2ヶ月ごと更新）
+        </div>
+
+        <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:16px 20px;margin-bottom:18px;">
+            <div style="font-size:13px;color:#1b5e20;line-height:1.8;">
+                <strong>📊 集計対象:</strong> Google広告キャンペーン「フジサワオート」<br>
+                <strong>📅 更新方針:</strong> 2ヶ月に1回、最新月分を追記してまいります（本ページがそのまま運用ダッシュボードになります）
+            </div>
+        </div>
+
+        <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:14px;">
+            <thead>
+                <tr style="background:#2e7d32;color:#fff;">
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;width:18%;">対象月</th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">表示回数<br><span style="font-size:11px;font-weight:normal;">（インプレッション）</span></th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">視聴回数</th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:12px;text-align:left;border:1px solid #ddd;width:28%;">コメント</th>
+                </tr>
+            </thead>
+            <tbody data-report-table="bimonthly">
+                <tr data-report-month="2026-04">
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026年4月</td>
+                    <td data-metric="impressions" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
+                    <td data-metric="views" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
+                    <td data-metric="view_rate" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
+                    <td data-metric="comment" style="padding:10px;border:1px solid #ddd;color:#555;font-size:13px;">数値確定後にコメント追記</td>
+                </tr>
+                <tr data-report-month="2026-05">
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026年5月</td>
+                    <td data-metric="impressions" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
+                    <td data-metric="views" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
+                    <td data-metric="view_rate" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
+                    <td data-metric="comment" style="padding:10px;border:1px solid #ddd;color:#555;font-size:13px;">数値確定後にコメント追記</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="font-size:12px;color:#888;text-align:right;">
+            最終更新: 2026年6月6日｜次回更新: 2026年8月上旬予定
+        </div>
+    </div>
+
+    <!-- ⑥ 今後の運用サイクル -->
+    <div class="section" style="border-color:#1976d2;">
+        <div class="section-title">
+            <span class="icon" style="background:#1976d2;">6</span>
+            今後の運用サイクル（2ヶ月ごとの流れ）
+        </div>
+
+        <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:18px 22px;margin-bottom:20px;">
+            <div style="font-size:14px;color:#0d47a1;line-height:1.9;">
+                <strong>🔁 2ヶ月を1サイクルとして、以下の流れで運用してまいります。</strong><br>
+                ご要望や改善のご提案があれば、その都度サイクルに組み込み、本ページを更新してまいります。
+            </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px;">
+            <div style="background:#fff0f0;border:2px solid #cc0000;border-radius:10px;padding:18px;text-align:center;">
+                <div style="font-size:11px;color:#cc0000;font-weight:700;margin-bottom:6px;">STEP 1</div>
+                <div style="font-size:30px;margin-bottom:6px;">📊</div>
+                <div style="font-size:14px;font-weight:700;margin-bottom:4px;">配信＋データ蓄積</div>
+                <div style="font-size:12px;color:#555;">2ヶ月間、ターゲット層へ配信し、表示・視聴データを蓄積</div>
+            </div>
+            <div style="background:#fff8e1;border:2px solid #f9a825;border-radius:10px;padding:18px;text-align:center;">
+                <div style="font-size:11px;color:#e65100;font-weight:700;margin-bottom:6px;">STEP 2</div>
+                <div style="font-size:30px;margin-bottom:6px;">📞</div>
+                <div style="font-size:14px;font-weight:700;margin-bottom:4px;">レポート＋ご報告</div>
+                <div style="font-size:12px;color:#555;">本ページに実績を反映し、お電話で藤澤様に直接ご報告</div>
+            </div>
+            <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:18px;text-align:center;">
+                <div style="font-size:11px;color:#1b5e20;font-weight:700;margin-bottom:6px;">STEP 3</div>
+                <div style="font-size:30px;margin-bottom:6px;">💡</div>
+                <div style="font-size:14px;font-weight:700;margin-bottom:4px;">ご要望ヒアリング</div>
+                <div style="font-size:12px;color:#555;">「こうしたい」「ここを変えたい」をお伺いし、次サイクルへ反映</div>
+            </div>
+            <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:18px;text-align:center;">
+                <div style="font-size:11px;color:#0d47a1;font-weight:700;margin-bottom:6px;">STEP 4</div>
+                <div style="font-size:30px;margin-bottom:6px;">⚙️</div>
+                <div style="font-size:14px;font-weight:700;margin-bottom:4px;">最適化＋次サイクル</div>
+                <div style="font-size:12px;color:#555;">キーワード・地域・年齢層など調整し、再びSTEP 1へ</div>
+            </div>
+        </div>
+
+        <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #1976d2;">
+            <div style="font-size:14px;font-weight:700;margin-bottom:8px;">💬 藤澤様にお願いしたいこと</div>
+            <ul style="font-size:13px;color:#444;line-height:1.9;margin-left:20px;">
+                <li>サイクルごとの電話レポート時に、<strong>「もう少しこうしたい」というご要望があれば遠慮なくお伝えください</strong></li>
+                <li>頂いたご要望は本ページの「ご要望・改善履歴」セクションに記録し、次サイクルから反映いたします</li>
+                <li>レポートのお時間（30分〜1時間程度）は事前にご都合の良い日時をご相談いたします</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ⑦ ご要望・改善履歴 -->
+    <div class="section" style="border-color:#6a1b9a;">
+        <div class="section-title">
+            <span class="icon" style="background:#6a1b9a;">7</span>
+            ご要望・改善履歴
+        </div>
+
+        <div style="background:#f3e5f5;border:2px solid #6a1b9a;border-radius:10px;padding:16px 20px;margin-bottom:18px;">
+            <div style="font-size:13px;color:#4a148c;line-height:1.8;">
+                藤澤様からいただいたご要望と、その対応状況をこちらに記録してまいります。<br>
+                対応完了後は実施内容と効果（次サイクルの実績）もあわせて記録します。
+            </div>
+        </div>
+
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+                <tr style="background:#6a1b9a;color:#fff;">
+                    <th style="padding:10px;text-align:center;border:1px solid #ddd;width:14%;">受領日</th>
+                    <th style="padding:10px;text-align:left;border:1px solid #ddd;width:40%;">ご要望内容</th>
+                    <th style="padding:10px;text-align:left;border:1px solid #ddd;width:32%;">対応内容</th>
+                    <th style="padding:10px;text-align:center;border:1px solid #ddd;width:14%;">ステータス</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" style="padding:20px;text-align:center;color:#999;border:1px solid #ddd;font-size:13px;">
+                        ※ 6月8日（月）の電話ヒアリング後、こちらに記録してまいります
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 補足事項 -->
+    <div class="note-bar">
+        <h3>補足事項</h3>
+        <ul>
+            <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
+            <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
+            <li>ご不明な点やご要望がございましたら、お気軽にお申し付けください</li>
+        </ul>
+    </div>
+
+    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
+        株式会社ランバード｜広告運用サポート窓口
+    </div>
+
+</div>
+</body>
+</html>
