@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="description" content="加盟金0円・福祉業界初のフランチャイズ。未経験率95%／最短3ヶ月で開設／月次黒字化最短4ヶ月。OWL福祉事業のグループホームFC。年間収益最大1,800万円規模。">
+<meta name="keywords" content="障がい者グループホーム,フランチャイズ,加盟金0円,福祉事業,未経験,OWL">
+<meta property="og:title" content="加盟金0円で、障がい者グループホーム開業｜OWL福祉事業">
+<meta property="og:description" content="未経験率95%・最短3ヶ月で開設・月次黒字化最短4ヶ月。">
+<meta property="og:type" content="website">
+<title>加盟金0円で、障がい者グループホーム開業｜OWL福祉事業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream:        #fef8ed;
+  --sky:          #4fb3d9;
+  --navy:         #1e3a5f;
+  --orange:       #ff8c42;
+  --green:        #4caf7a;
+  --text:         #1e3a5f;
+}
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.lp {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--cream);
+}
+@media (min-width: 481px) {
+  .lp { box-shadow: 0 0 24px rgba(0,0,0,0.08); }
+}
+
+/* デザインカンプ画像 */
+.section-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 浮遊CTA（スクロール中常時表示） */
+.float-cta {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
+  border-top: 2px solid var(--orange);
+  padding: 8px 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  z-index: 100;
+  box-shadow: 0 -2px 12px rgba(0,0,0,0.1);
+}
+.float-cta a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 8px;
+  border-radius: 8px;
+  font-weight: 900;
+  font-size: 13px;
+  color: #fff;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+}
+.float-cta .orange { background: var(--orange); }
+.float-cta .sky { background: var(--sky); }
+.lp { padding-bottom: 70px; }
+
+/* SEO補強用テキスト（画面非表示・スクリーンリーダー対応） */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* 画像下のSEO補強テキスト（小さく表示・読まれる） */
+.section-meta {
+  padding: 4px 16px 0;
+  font-size: 10px;
+  color: rgba(30, 58, 95, 0.5);
+  text-align: center;
+}
+
+/* CTAブロック（最下部に重複・タップ可能） */
+.cta-block {
+  background: linear-gradient(180deg, #e6f4f8 0%, var(--cream) 100%);
+  padding: 32px 20px;
+  text-align: center;
+}
+.cta-block h2 {
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.5;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.cta-block .lead {
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 20px;
+  line-height: 1.85;
+}
+.cta-block .btn {
+  display: block;
+  width: 100%;
+  padding: 18px;
+  border-radius: 10px;
+  font-weight: 900;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.1);
+}
+.cta-block .btn-orange { background: var(--orange); }
+.cta-block .btn-sky { background: var(--sky); }
+.cta-block .tel {
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.cta-block .tel .num {
+  display: block;
+  font-size: 24px;
+  color: var(--orange);
+  font-weight: 900;
+  margin: 4px 0 2px;
+}
+.cta-block .tel .hours {
+  font-size: 11px;
+  color: rgba(30, 58, 95, 0.6);
+}
+
+/* フッター */
+.footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.7);
+  padding: 24px 20px;
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.85;
+}
+.footer p { margin: 3px 0; }
+
+/* デバッグヘッダー */
+.dev-bar {
+  background: #1a1812;
+  color: #fde68a;
+  padding: 8px;
+  text-align: center;
+  font-size: 10px;
+}
+.dev-bar a { color: #fde68a; }
+</style>
+</head>
+<body>
+
+<!-- ========== SEO/AEO用ヘッダー（h1）：画像LPでもSEO強化 ========== -->
+<h1 class="sr-only">加盟金0円で、障がい者グループホーム開業｜OWL福祉事業のフランチャイズ。未経験率95%・最短3ヶ月で開設・月次黒字化最短4ヶ月の実績。</h1>
+
+<div class="lp">
+
+<div class="dev-bar">
+  📝 lp_owl_v3.html（画像LP版）／ <a href="lp_owl_v2.html">テキスト版v2</a> ／ <a href="index.html">資料一覧</a>
+</div>
+
+<!-- ① FV -->
+<section id="fv">
+  <a href="#cta">
+    <img class="section-image" src="assets/lp/01_fv.png"
+         alt="加盟金0円で、障がい者グループホーム開業。未経験率95%・最短3ヶ月で開設・月次黒字化最短4ヶ月。福祉業界初のフランチャイズ。"
+         width="976" height="2048" loading="eager">
+  </a>
+</section>
+
+<!-- ② お悩み -->
+<section id="worry">
+  <img class="section-image" src="assets/lp/02_worry.png"
+       alt="こんなお悩みありませんか？ 安定した収入を得られる事業をしたい・福祉に興味があるが未経験で不安・初期投資が心配・社会貢献できる仕事をしたい"
+       loading="lazy">
+</section>
+
+<!-- ③ 解決 -->
+<section id="solve">
+  <img class="section-image" src="assets/lp/03_solve.png"
+       alt="そのお悩み、OWL福祉事業が解決します。加盟金0円で初期費用を抑えて開業可能。開設から運営まで完全サポート。最短3ヶ月で開設、月次黒字化最短4ヶ月の実績。"
+       loading="lazy">
+</section>
+
+<!-- ④ 実績数字 -->
+<section id="kpi">
+  <img class="section-image" src="assets/lp/04_kpi.png"
+       alt="数字で見るOWLの実績。開設実績・未経験率95%・月次黒字化最短4ヶ月・最短満床2.5ヶ月。"
+       loading="lazy">
+</section>
+
+<!-- ⑤ 市場機会 -->
+<section id="market">
+  <img class="section-image" src="assets/lp/05_market.png"
+       alt="未経験から年間営業利益1,200万円規模の福祉経営へ。市場の大きなチャンス。障がい者965万人 vs グループホーム利用者14万人 = 51倍の需給ギャップ。成長市場・国の制度ビジネス・安定性。"
+       loading="lazy">
+</section>
+
+<!-- ⑥ なぜ安定 -->
+<section id="stable">
+  <img class="section-image" src="assets/lp/06_stable.png"
+       alt="なぜ福祉事業は安定するのか。売上の約9割が国の給付金。景気変動の影響を受けにくい制度ビジネス。長期入居前提のストック型収益。"
+       loading="lazy">
+</section>
+
+<!-- ⑦ 収益シミュ -->
+<section id="revenue">
+  <img class="section-image" src="assets/lp/07_revenue.png"
+       alt="収益シミュレーション。居室規模別・OWL実績ベースの想定年間収益。8〜10居室で約700万円。12〜14居室で約1,200万円（人気プラン）。16〜20居室で約1,800万円。"
+       loading="lazy">
+</section>
+
+<!-- ⑧ 開業の流れ -->
+<section id="flow">
+  <img class="section-image" src="assets/lp/08_flow.png"
+       alt="開業までの流れ5ステップ。1無料資料請求・WEB説明会。2個別相談・物件検討。3行政手続き・契約。4内装・スタッフ採用。5オープン。最短3ヶ月で開設可能。"
+       loading="lazy">
+</section>
+
+<!-- ⑨ 加盟者の声 -->
+<section id="voices">
+  <img class="section-image" src="assets/lp/09_voices.png"
+       alt="加盟オーナーの声。大阪府70居室以上・地域No.1の規模。千葉県3棟運営・不動産業から成長。愛知県2棟運営・複数本部比較で選択。福島県4棟運営・介護事業から転換。三重県2棟運営・子供の将来を支える。"
+       loading="lazy">
+</section>
+
+<!-- ⑩ 他社比較 -->
+<section id="compare">
+  <img class="section-image" src="assets/lp/10_compare.png"
+       alt="他社フランチャイズとの違い。加盟金：一般的なFC200万〜500万円、OWL0円。月額費用：一般数十万円＋ロイヤリティ、OWL月額固定のみ。サポート期間：一般3ヶ月、OWL開業後も継続。未経験率95%。黒字化期間最短4ヶ月。"
+       loading="lazy">
+</section>
+
+<!-- ⑪ 仕組み化 -->
+<section id="system">
+  <img class="section-image" src="assets/lp/11_system.png"
+       alt="OWLが、ここまで仕組み化できた理由。集客・自社マーケ／WEBメディア／TVCM／店舗開発／運営。独自のノウハウをすべて仕組み化。"
+       loading="lazy">
+</section>
+
+<!-- ⑫ CTAビジュアル -->
+<section id="cta-visual">
+  <img class="section-image" src="assets/lp/12_cta.png"
+       alt="まずは無料相談から始めましょう。事業概要・収益モデル・加盟プランの詳細を無料でお送りします。"
+       loading="lazy">
+</section>
+
+<!-- ⑫b CTAブロック（タップ可能） -->
+<section id="cta" class="cta-block">
+  <h2>まずは、<br>無料相談から始めましょう</h2>
+  <p class="lead">事業概要・収益モデル・加盟プランの<br>詳細を無料でお送りします。</p>
+
+  <a href="#" class="btn btn-orange">📄 無料資料請求</a>
+  <a href="#" class="btn btn-sky">📅 WEB説明会に参加</a>
+
+  <div class="tel">
+    お電話でのお問い合わせ
+    <span class="num">📞 0120-540-522</span>
+    <span class="hours">（平日 9:00〜18:00）</span>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer class="footer">
+  <p><strong>株式会社RUNBIRD ／ OWL福祉事業</strong></p>
+  <p>未経験から始める障がい者グループホームのフランチャイズ</p>
+  <p style="margin-top:12px;">© 2026 RUNBIRD inc. All rights reserved.</p>
+</footer>
+
+</div>
+
+<!-- 浮遊CTA（スクロール中常時表示） -->
+<div class="float-cta">
+  <a href="#cta" class="orange">📄 資料請求</a>
+  <a href="#cta" class="sky">📅 説明会</a>
+</div>
+
+<!-- SEO/AEO補強：構造化データ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "OWL福祉事業 グループホームFC",
+  "description": "加盟金0円で始められる障がい者グループホームのフランチャイズ。未経験率95%、最短3ヶ月で開設、月次黒字化最短4ヶ月。",
+  "provider": {
+    "@type": "Organization",
+    "name": "株式会社RUNBIRD",
+    "telephone": "0120-540-522"
+  },
+  "areaServed": "JP",
+  "offers": {
+    "@type": "Offer",
+    "name": "加盟金0円プラン",
+    "description": "月額制で初期費用を最小化"
+  }
+}
+</script>
+
+</body>
+</html>
