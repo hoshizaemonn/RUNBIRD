@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatGPT image プロンプト集 v2（河合さんLP案ベース）｜OWL福祉事業</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; background: #fef8ed; color: #1e3a5f; line-height: 1.85; padding: 16px; -webkit-font-smoothing: antialiased; }
+.container { max-width: 980px; margin: 0 auto; }
+.nav-back { display: inline-block; margin-bottom: 12px; padding: 6px 14px; background: #fff; border: 1px solid #4fb3d9; border-radius: 20px; font-size: 12px; color: #1e3a5f; text-decoration: none; }
+h1 { font-size: 24px; color: #1e3a5f; margin-bottom: 8px; }
+.sub { color: #5a6378; font-size: 13px; margin-bottom: 22px; }
+
+.update-banner { background: #fff; border: 2px solid #ff8c42; border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; }
+.update-banner strong { color: #ff8c42; }
+
+.policy { background: linear-gradient(135deg,#fff,#fef8ed); border: 1px solid #4fb3d9; padding: 18px 22px; border-radius: 8px; margin-bottom: 22px; font-size: 13px; line-height: 2; }
+.policy-title { font-weight: 900; color: #1e3a5f; margin-bottom: 8px; }
+.style-base { background: #1e3a5f; color: #fff8ed; padding: 14px 18px; border-radius: 6px; margin-top: 8px; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; line-height: 1.8; white-space: pre-wrap; }
+
+.section { background: #fff; border: 1px solid #d4dde8; border-radius: 8px; padding: 24px 26px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(30,58,95,0.05); }
+.section-num { display: inline-block; background: #4fb3d9; color: #fff; width: 36px; height: 36px; border-radius: 50%; font-weight: 900; line-height: 36px; text-align: center; font-size: 16px; margin-bottom: 12px; }
+.section.featured { border: 2px solid #ff8c42; background: #fff8f0; }
+.section.featured .section-num { background: #ff8c42; }
+.section h2 { font-size: 19px; color: #1e3a5f; margin-bottom: 6px; }
+.section .purpose { font-size: 12px; color: #5a6378; margin-bottom: 14px; font-style: italic; }
+
+.prompt-box { background: #1e3a5f; color: #fef8ed; padding: 16px 20px; border-radius: 6px; margin: 8px 0; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; line-height: 1.75; white-space: pre-wrap; overflow-x: auto; border-left: 3px solid #ff8c42; }
+
+.note-important { background: #fff5e6; border-left: 4px solid #ff8c42; padding: 10px 14px; border-radius: 4px; font-size: 12px; margin-top: 10px; }
+.note-important strong { color: #ff8c42; }
+
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 12px 0; background: #fff; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #d4dde8; text-align: left; }
+th { background: #1e3a5f; color: #fef8ed; font-weight: 900; }
+
+.fix-list { background: #fef8ed; border: 2px solid #ff8c42; border-radius: 8px; padding: 16px 20px; margin: 16px 0; }
+.fix-list-title { color: #ff8c42; font-weight: 900; margin-bottom: 8px; }
+.fix-list ol { padding-left: 22px; font-size: 13px; line-height: 2; }
+.fix-list strong { color: #1e3a5f; }
+
+.path { font-family: ui-monospace, Menlo, monospace; background: #1e3a5f; color: #fde68a; padding: 4px 10px; border-radius: 4px; font-size: 11px; display: inline-block; }
+
+footer { text-align: center; color: #5a6378; font-size: 11px; padding: 24px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="index.html" class="nav-back">← 資料一覧に戻る</a>
+
+<h1>🦉 ChatGPT image プロンプト集 v2</h1>
+<p class="sub">2026-06-07 ／ 河合さん作成LP案（2026/5/28）と同じトーン継承 ＋ 修正5項目反映</p>
+
+<div class="update-banner">
+  <strong>📝 v2の方針転換：</strong>v1（プレミアム・editorial magazine）は方向性違いだったため非推奨。<br>
+  実際の方向性は <strong>「明るい暖色×OWLマスコット×実写写真×親しみやすさ」</strong> でした。
+</div>
+
+<!-- 修正5項目 -->
+<div class="fix-list">
+  <div class="fix-list-title">✓ 河合さん2026-06-05チェックバック 修正5項目</div>
+  <ol>
+    <li><strong>「最短1.5ヶ月」→ 「最短3ヶ月」</strong>に全所修正</li>
+    <li><strong>「投資回収」表現を撤去 → 「月次黒字化最短4ヶ月」</strong>に統一</li>
+    <li><strong>収益シミュ新数字</strong>：8-10居室 約700万円／12-14居室 約1,200万円／16-20居室 約1,800万円</li>
+    <li><strong>初期投資の列・項目を表から削除</strong></li>
+    <li><strong>加盟者の声を本番5件</strong>に差し替え：大阪70居室+ ／千葉3棟／福島4棟／愛知2棟／三重2棟（全員実写写真）</li>
+  </ol>
+</div>
+
+<!-- 共通スタイル -->
+<div class="policy">
+  <div class="policy-title">🎨 全セクション共通スタイル指定（プロンプト先頭に必ず貼る）</div>
+  <div class="style-base">明るく親しみやすい福祉事業フランチャイズのLP（縦長スマホ最適化）。
+カラーパレット：温かいクリーム/ベージュ #fef8ed をベース、
+水色 #4fb3d9、ネイビー #1e3a5f、オレンジアクセント #ff8c42、
+グリーンアクセント #4caf7a。
+書体は親しみやすいゴシック体（Noto Sans JP / 游ゴシック系）。
+フラットデザイン、カード型レイアウト、丸みのあるアイコン多用。
+OWL（フクロウのマスコットキャラクター・優しい表情）を要所で配置。
+実写写真は笑顔の日本人加盟者・自然な打ち合わせ風景（ストック写真風）。
+温かみのある信頼感、専門的だが親近感あり、決して重くない。
+スマホ縦長表示前提（9:16 比率）。</div>
+</div>
+
+<!-- ① FV -->
+<div class="section">
+  <div class="section-num">1</div>
+  <h2>FV（ヒーローセクション）</h2>
+  <p class="purpose">用途：LP最上部・キャッチコピー＋実写写真＋CTA</p>
+
+  <div class="prompt-box">LP最上部のヒーローセクション。
+
+上部に「OWLロゴ + 加盟金0円・福祉業界初のフランチャイズ」のヘッダーバナー（薄水色背景）。
+
+中央：
+- 大きな見出し（ゴシック太字・ネイビー）：
+  「加盟金0円で、
+   障がい者グループホーム開業。」
+- サブ見出し（小さめ）：未経験率95%／最短3ヶ月で開設／月次黒字化最短4ヶ月
+- 横並びの実写写真：笑顔の30-40代男女が打ち合わせしている自然なシーン
+- 右下にOWLマスコット（フクロウ・優しい笑顔）を小さめに配置
+
+下部CTAボタン2つ横並び：
+- オレンジ「無料資料請求」（白文字・角丸ボタン）
+- 水色「WEB説明会」（白文字・角丸ボタン）
+
+最下部に3つのバッジ：
+「月額制」「完全サポート」「全国対応」（丸アイコン付き）
+
+背景：上から下にクリーム→薄ベージュのグラデーション
+スマホ縦長 9:16。</div>
+</div>
+
+<!-- ② 悩み -->
+<div class="section">
+  <div class="section-num">2</div>
+  <h2>こんなお悩み、ありませんか？（4つの悩み）</h2>
+  <div class="prompt-box">「こんなお悩み、ありませんか？」の悩み提示セクション。
+
+中央上部：見出し「こんなお悩み、ありませんか？」（ネイビー太字）
+
+下部に2×2グリッドで4つの悩みカード（白背景・薄水色枠線）：
+1. 棒グラフアイコン「安定した収入を得られる事業をしたい」
+2. ハートアイコン「福祉に興味があるが、未経験で不安」
+3. 財布アイコン「初期投資が心配」
+4. 握手アイコン「社会貢献できる仕事をしたい」
+
+各カードは丸みのある角・優しい影付き。
+アイコンは線画＋水色塗り（フラット）。
+左下or右下にOWLマスコットを小さく配置（共感している表情）。
+
+背景：クリーム #fef8ed
+スマホ縦長 9:16。</div>
+</div>
+
+<!-- ③ 解決 -->
+<div class="section">
+  <div class="section-num">3</div>
+  <h2>OWL福祉事業が解決します</h2>
+  <div class="prompt-box">「OWL福祉事業が解決します」の解決セクション。
+
+上部見出し（ネイビー太字）：「そのお悩み、OWL福祉事業が解決します」
+
+OWLマスコット（フクロウ・元気な表情）が指差している大きめイラスト。
+
+下に3つのポイントを縦並びリスト（チェックマーク付き）：
+✓ 加盟金0円、初期費用を抑えて開業可能
+✓ 開設から運営まで完全サポート
+✓ 最短3ヶ月で開設・月次黒字化最短4ヶ月の実績
+
+各ポイントは横長カード、薄水色背景、白文字数字アイコン付き。
+
+★ここで「投資回収」「最短1.5ヶ月」表現は使用しない。
+
+背景：薄水色 → クリームのグラデーション
+スマホ縦長 9:16。</div>
+  <div class="note-important"><strong>★修正反映：</strong>「最短3ヶ月で開設」「月次黒字化最短4ヶ月」に統一・「1.5ヶ月」「投資回収」は使わない</div>
+</div>
+
+<!-- ④ 実績数字 -->
+<div class="section">
+  <div class="section-num">4</div>
+  <h2>数字で見る、OWLの実績</h2>
+  <div class="prompt-box">「数字で見る、OWLの実績」セクション。
+
+上部見出し（ネイビー太字）：「数字で見る、OWLの実績」
+
+下に4つの大きな数字カードを2×2グリッド：
+1. 「開設実績 ○○件」（水色背景・白文字）
+2. 「未経験率 95%」（オレンジ背景・白文字）
+3. 「月次黒字化 最短4ヶ月」（グリーン背景・白文字）
+4. 「最短満床 2.5ヶ月」（ネイビー背景・白文字）
+
+各数字は超大きく（150pt級・ゴシック太字）、ラベルは小さめ。
+カードは丸角・優しい影。
+左右にOWLマスコットを小さく配置（達成のポーズ）。
+
+背景：クリーム
+スマホ縦長 9:16。</div>
+</div>
+
+<!-- ⑤ 市場機会 -->
+<div class="section">
+  <div class="section-num">5</div>
+  <h2>市場機会（成長市場）</h2>
+  <div class="prompt-box">「未経験から、年間営業利益1,200万円規模の福祉経営へ」の市場機会セクション。
+
+上部に大きな実写写真（笑顔の若い男女が資料を見ているシーン・打ち合わせ風景）。
+
+下に市場規模の図解：
+- 棒グラフ：「障がい者965万人」vs「グループホーム利用者14万人」
+- 縦長の棒2本・色違い・実数値の数字大きく表示
+- 下に「51倍の需給ギャップ」というメッセージ
+
+下に3つのアイコンタグ：
+🟢 成長市場
+🔵 国の制度ビジネス
+🟠 安定性
+
+OWLマスコットを右下に配置（市場を見ている表情）。
+
+背景：クリーム
+スマホ縦長 9:16。</div>
+</div>
+
+<!-- ⑥ なぜ安定 -->
+<div class="section">
+  <div class="section-num">6</div>
+  <h2>なぜ、福祉事業は安定するのか？</h2>
+  <div class="prompt-box">「なぜ、福祉事業は安定するのか？」の安定性セクション。
+
+上部見出し（ネイビー太字）：「なぜ、福祉事業は安定するのか？」
+
+中央に大きな円グラフ：
+- 90%が「国の給付金」（オレンジ系の塗りつぶし）
+- 10%が「その他」（グレー塗り）
+- 中央に大きく「給付金 90%」表示
+
+下に3つの説明テキスト：
+- 「売上の約9割が国の給付金」
+- 「景気変動の影響を受けにくい制度ビジネス」
+- 「長期入居前提のストック型収益」
+
+左下にOWLマスコットを配置。
+
+背景：クリーム → 薄水色のグラデーション
+スマホ縦長 9:16。</div>
+</div>
+
+<!-- ⑦ 収益シミュ ★最重要 -->
+<div class="section featured">
+  <div class="section-num">7</div>
+  <h2>★ 収益シミュレーション（最重要・新数字）</h2>
+  <p class="purpose">★河合さん指示の新数字を反映・「初期投資」列は完全削除</p>
+
+  <div class="prompt-box">「収益シミュレーション」セクション。
+
+上部見出し（ネイビー太字）：「収益シミュレーション」
+サブテキスト：「居室規模別・OWL実績ベースの想定年間収益」
+
+下に表形式で3規模を横並び（カード型）：
+
+カード1（薄水色背景）：
+- 「8〜10居室」
+- 大きな数字「約700万円」（オレンジ太字）
+- ラベル「想定年間収益」
+- 小さく「月間営業利益 約58万円」
+
+カード2（薄オレンジ背景・★中央・ハイライト）：
+- 上に「人気プラン」リボン
+- 「12〜14居室」
+- 大きな数字「約1,200万円」（オレンジ太字・最大）
+- ラベル「想定年間収益」
+- 小さく「月間営業利益 約100万円」
+
+カード3（薄グリーン背景）：
+- 「16〜20居室」
+- 大きな数字「約1,800万円」（オレンジ太字）
+- ラベル「想定年間収益」
+- 小さく「月間営業利益 約150万円」
+
+★重要：表には「初期投資」「投資回収」の列は一切含めない。
+
+下に小さく注記：
+「※ OWL加盟者の実績例に基づく想定参考値です。立地により変動します。」
+
+右下にOWLマスコット（電卓を持つポーズ）。
+
+背景：クリーム
+スマホ縦長 9:16。</div>
+
+  <div class="note-important"><strong>★ここが最重要修正箇所：</strong>旧版の数字（¥3,900万/月¥1,400万等）と「初期投資」項目は完全に廃止し、新数字（700/1,200/1,800万円）のみで再構成。</div>
+</div>
+
+<!-- ⑧ 開業の流れ -->
+<div class="section featured">
+  <div class="section-num">8</div>
+  <h2>★ 開業までの流れ（1.5ヶ月→3ヶ月）</h2>
+
+  <div class="prompt-box">「開業までの流れ」セクション。
+
+上部見出し（ネイビー太字）：「開業までの流れ」
+
+縦並び5ステップ（番号付きカード）：
+
+Step 1（薄水色）：書類アイコン「無料資料請求・WEB説明会」
+Step 2（薄ベージュ）：握手アイコン「個別相談・物件検討（1〜2週間）」
+Step 3（薄水色）：チェックリスト「行政手続き・契約（〜1ヶ月）」
+Step 4（薄オレンジ）：人＋ビル「内装・スタッフ採用」
+Step 5（薄グリーン）：太陽＋花「オープン」
+
+下部バナー（ネイビー背景・白文字）：
+「☀ 最短3ヶ月で開設可能」
+
+OWLマスコットを右下に配置（嬉しそうな表情）。
+
+背景：クリーム
+スマホ縦長 9:16。</div>
+
+  <div class="note-important"><strong>★修正反映：</strong>下部バナーは「最短3ヶ月」（旧「1.5ヶ月」から修正）</div>
+</div>
+
+<!-- ⑨ 加盟者の声 ★5名 -->
+<div class="section featured">
+  <div class="section-num">9</div>
+  <h2>★ 加盟オーナーの声（本番5件・実写写真）</h2>
+  <p class="purpose">★旧版は3名・河合さん指示で本番5件全員に差し替え</p>
+
+  <div class="prompt-box">「加盟オーナーの声」セクション。
+
+上部見出し（ネイビー太字）：「加盟オーナーの声」
+サブ：「実際にOWLに加盟されたオーナー様のご紹介」
+
+縦並びで5件の実写顔写真付き証言カード（白背景・薄水色枠）：
+
+カード1（大阪府）：
+- 実写顔写真（40-50代男性・笑顔・自然光）
+- リボン「地域No.1の規模」
+- 「大阪府・70居室以上運営」
+- 引用：「コロナ禍に打撃を受けた中、OWLと出会い開業。
+  60居室を超える事業所を開設し地域では一番大きな信頼を得ています。」
+
+カード2（千葉県）：
+- 実写顔写真（30-40代男性・笑顔）
+- リボン「不動産業から成長」
+- 「千葉県・3棟運営」
+- 引用：「不動産業から参入。未経験でしたが、今では行政担当者と
+  対等に話せる自分に成長しました（笑）」
+
+カード3（愛知県）：
+- 実写顔写真（40-50代男性・笑顔）
+- リボン「複数本部比較で選択」
+- 「愛知県・2棟運営」
+- 引用：「いろんな本部を比較して一番支援が手厚そうなOWLに。
+  一生お付き合いしたいと思っています。」
+
+カード4（福島県）：
+- 実写顔写真（40-50代男性・落ち着いた表情）
+- リボン「介護事業から転換」
+- 「福島県・4棟運営」
+- 引用：「介護事業の壁にぶつかった時、OWLに出会えた。
+  何回聞いても丁寧に伝えてくれて頼りに。」
+
+カード5（三重県）：
+- 実写顔写真（50-60代男性or女性・温かい表情）
+- リボン「子供の将来を支える」
+- 「三重県・2棟運営」
+- 引用：「障害ある子供の将来を支えたくて開業。
+  障害を持つ子供の親からの感謝の言葉が多く、やってよかったと実感。」
+
+写真は全員自然光・笑顔・打ち合わせ風景や日常風景。
+
+OWLマスコットを最下部に配置（拍手のポーズ）。
+
+背景：クリーム
+スマホ縦長 9:16（カード5枚で長め）。</div>
+</div>
+
+<!-- ⑩ 他社比較 -->
+<div class="section">
+  <div class="section-num">10</div>
+  <h2>他社フランチャイズとの違い</h2>
+  <div class="prompt-box">「他社フランチャイズとの違い」比較表セクション。
+
+上部見出し（ネイビー太字）：「他社フランチャイズとの違い」
+
+下に横並び2列の比較表（白背景・薄ベージュ枠）：
+
+| 比較項目 | 一般的なFC | OWL福祉事業 |
+| 加盟金 | 200万〜500万円 | ★ 0円 |
+| 月額費用 | 数十万円＋ロイヤリティ | 月額固定のみ |
+| サポート期間 | 3ヶ月程度 | 開業後も継続 |
+| 未経験率 | 表記なし | 未経験率95% |
+| 黒字化期間 | 表記なし | 最短4ヶ月
+
+OWL列はオレンジ系背景でハイライト・「★ 0円」など強調マーク付き。
+
+下部に小さくマスコット。
+
+背景：クリーム
+スマホ縦長 9:16。</div>
+</div>
+
+<!-- ⑪ 仕組み化 -->
+<div class="section">
+  <div class="section-num">11</div>
+  <h2>OWLが、ここまで仕組み化できた理由</h2>
+  <div class="prompt-box">「OWLが、ここまで仕組み化できた理由」セクション。
+
+上部見出し（ネイビー太字）：
+「OWLが、ここまで仕組み化できた理由」
+
+下に横並び5つのアイコンカード（薄色背景・丸アイコン）：
+1. 集客 ／ 自社マーケ
+2. WEBメディア
+3. TVC（テレビCM）
+4. 店舗開発
+5. 運営
+
+各カードはネイビー塗りに白アイコン・キャプション。
+
+下にOWLマスコット（本を持って解説しているポーズ）。
+
+背景：クリーム
+スマホ縦長 9:16。</div>
+</div>
+
+<!-- ⑫ CTA -->
+<div class="section">
+  <div class="section-num">12</div>
+  <h2>CTA（最終ブロック）</h2>
+  <div class="prompt-box">「まずは無料相談から」最終CTAセクション。
+
+上部見出し（ネイビー太字）：
+「まずは、無料相談から始めましょう」
+
+サブテキスト：
+「事業概要・収益モデル・加盟プランの詳細を無料でお送りします。」
+
+中央に大きなCTAボタン2つ（縦並び）：
+- オレンジ大ボタン「📩 無料資料請求」（白文字・最大級サイズ）
+- 水色大ボタン「📅 WEB説明会に参加」（白文字）
+
+下に電話番号：
+「📞 0120-540-522（平日 9:00〜18:00）」
+
+中央にOWLマスコット（手を振っている笑顔・大きめ）。
+
+背景：薄水色 → クリームのグラデーション
+スマホ縦長 9:16。</div>
+</div>
+
+<!-- 判定チェックリスト -->
+<div class="section">
+  <div class="section-num">✓</div>
+  <h2>生成後の判定チェックリスト</h2>
+  <table>
+    <thead><tr><th width="40">#</th><th>チェック項目</th><th>合格条件</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>河合さんLP案のトーン継承</td><td>暖色×水色×OWLマスコット</td></tr>
+      <tr><td>2</td><td>「1.5ヶ月」の文字が一切ない</td><td>「3ヶ月」に統一</td></tr>
+      <tr><td>3</td><td>「投資回収」の文字が一切ない</td><td>「月次黒字化最短4ヶ月」に統一</td></tr>
+      <tr><td>4</td><td>収益シミュ新数字反映</td><td>700万/1,200万/1,800万</td></tr>
+      <tr><td>5</td><td>初期投資の列・項目がない</td><td>表から完全削除</td></tr>
+      <tr><td>6</td><td>加盟者の声が5名</td><td>大阪/千葉/愛知/福島/三重 全件</td></tr>
+      <tr><td>7</td><td>OWLマスコット出現</td><td>各セクションに一貫</td></tr>
+      <tr><td>8</td><td>実写写真が自然</td><td>ストック写真風で違和感ない</td></tr>
+      <tr><td>9</td><td>スマホ縦長 9:16</td><td>PC幅で構図が崩れない</td></tr>
+      <tr><td>10</td><td>派手すぎず親しみやすい</td><td>「Premium」「Editorial」感は不要</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 関連資料 -->
+<div class="section">
+  <div class="section-num">📎</div>
+  <h2>関連資料</h2>
+  <table>
+    <tbody>
+      <tr><td>継承元画像（必参照）</td><td><span class="path">/Users/hoshizaki/Downloads/ランバード LP/福祉LP案/ChatGPT Image 2026年5月28日 *.png</span></td></tr>
+      <tr><td>修正5項目 実装指示書</td><td><a href="lp_implementation_guide.html">lp_implementation_guide.html</a></td></tr>
+      <tr><td>本番口コミ5件 フルテキスト</td><td>上記実装指示書内</td></tr>
+      <tr><td>Markdown原本</td><td><span class="path">_image2_prompts/v2_ChatGPT_image_プロンプト集（河合さんLP案ベース・修正5項目反映）.md</span></td></tr>
+      <tr><td>⚠️ 旧版（方向性違い・非推奨）</td><td><a href="image2_prompts_revenue.html" style="text-decoration:line-through;color:#999;">image2_prompts_revenue.html</a></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>OWL福祉事業 ／ ChatGPT image プロンプト集 v2 ／ 2026-06-07</footer>
+
+</div>
+</body>
+</html>
