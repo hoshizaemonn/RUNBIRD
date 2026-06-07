@@ -3,230 +3,921 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OWL本番LP v2（lp_zero-plan-g 改修版）｜OWL福祉事業</title>
+<title>本番LP v2 Premium（A案・ハイブリッド改修）｜OWL福祉事業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Noto+Serif+JP:wght@500;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --navy: #14213d;
-  --navy-light: #2e5c9e;
-  --gold: #d4a017;
-  --gold-light: #fde68a;
-  --red: #b91c1c;
-  --green: #047857;
-  --gray-50: #f8fafc;
-  --gray-100: #f1f5f9;
-  --gray-300: #cbd5e1;
-  --gray-600: #475569;
-  --gray-900: #0f172a;
+  /* ベース：明るくクリーンな品格 */
+  --cream-bg:     #fbf8f0;
+  --cream-soft:   #f4eedf;
+  --pearl:        #fffdf7;
+  --pearl-warm:   #f8f2e3;
+
+  /* ネイビー階層（A案は明るめ） */
+  --navy-deep:    #0d1d35;
+  --navy:         #14213d;
+  --navy-light:   #1f3252;
+  --navy-soft:    #2e5c9e;
+
+  /* ゴールド階層（暖かく親しみやすい） */
+  --gold-deep:    #8a6914;
+  --gold-bronze:  #b8860b;
+  --gold:         #c89c2c;
+  --gold-warm:    #d4a017;
+  --gold-light:   #e8c468;
+  --gold-pale:    #f8e3a3;
+  --gold-cream:   #fdf6e3;
+
+  /* アクセント */
+  --terracotta:   #c5824a;
+  --red-deep:     #b91c1c;
+  --burgundy:     #7c1d2e;
+
+  /* 暖色グレー */
+  --warm-300:     #d4cdb5;
+  --warm-500:     #8a7e63;
+  --warm-700:     #4a4332;
+
+  --gray-50:      #faf8f3;
+  --gray-100:     #f2efe8;
+  --gray-300:     #d4ceba;
+  --gray-600:     #5a5544;
+  --gray-900:     #1a1812;
+
+  --space-section: 96px;
 }
 html { scroll-behavior: smooth; }
-body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; color: var(--gray-900); line-height: 1.8; background: #fff; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  color: var(--gray-900);
+  line-height: 1.85;
+  background: var(--cream-bg);
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+  font-weight: 500;
+}
+.serif-en { font-family: "Cormorant Garamond", "Playfair Display", serif; letter-spacing: 0.02em; }
+.sans-en  { font-family: "Inter", sans-serif; letter-spacing: 0.12em; }
+
 .lp-container { max-width: 100%; margin: 0 auto; overflow-x: hidden; }
-.inner { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+.inner { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+/* 金線アクセント */
+.gold-ornament {
+  display: flex; align-items: center; justify-content: center;
+  gap: 18px; margin: 0 auto 18px; max-width: 360px;
+}
+.gold-ornament .line {
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+.gold-ornament .line.r { background: linear-gradient(90deg, var(--gold), transparent); }
+.gold-ornament .diamond {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
 
 /* 開発者ヘッダー */
-.dev-header { background: #0f172a; color: #fff; padding: 10px 16px; text-align: center; font-size: 11px; }
-.dev-header a { color: #fde68a; }
-.dev-header strong { color: #fde68a; }
+.dev-header {
+  background: var(--navy-deep);
+  color: rgba(255,255,255,0.7);
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 11px;
+  border-bottom: 1px solid var(--gold-deep);
+  font-family: "Inter", sans-serif;
+}
+.dev-header a { color: var(--gold-light); }
+.dev-header strong { color: var(--gold-light); }
 
-/* FV */
-.fv { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: #fff; padding: 60px 16px 80px; position: relative; overflow: hidden; }
-.fv::after { content: ""; position: absolute; right: -100px; top: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,160,23,0.18), transparent 70%); }
-.fv-eyebrow { display: inline-block; background: var(--gold); color: var(--navy); font-size: 12px; font-weight: 900; padding: 6px 14px; border-radius: 4px; letter-spacing: 0.05em; margin-bottom: 16px; }
-.fv h1 { font-size: 38px; font-weight: 900; line-height: 1.35; margin-bottom: 16px; letter-spacing: -0.02em; }
-.fv h1 .accent { color: var(--gold); }
-.fv .lead { font-size: 16px; opacity: 0.95; line-height: 1.85; margin-bottom: 28px; }
-.fv .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 28px; }
-.fv .kpi { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; padding: 14px 8px; text-align: center; }
-.fv .kpi .num { font-size: 24px; font-weight: 900; color: var(--gold); line-height: 1.2; }
-.fv .kpi .lbl { font-size: 11px; opacity: 0.85; margin-top: 4px; }
-.fv-cta { display: flex; gap: 10px; flex-wrap: wrap; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; }
-.btn-primary { background: var(--gold); color: var(--navy); flex: 1; min-width: 180px; box-shadow: 0 4px 14px rgba(212,160,23,0.4); }
-.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(212,160,23,0.5); }
-.btn-secondary { background: rgba(255,255,255,0.1); color: #fff; border: 2px solid rgba(255,255,255,0.4); flex: 1; min-width: 180px; }
-.btn-secondary:hover { background: rgba(255,255,255,0.2); }
+/* ========== FV ========== */
+.fv {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(212,160,23,0.12), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(46,92,158,0.30), transparent 60%),
+    linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, var(--navy-soft) 100%);
+  color: var(--gold-cream);
+  padding: 90px 24px 110px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--gold-deep);
+}
+.fv::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(0deg, rgba(212,160,23,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,160,23,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.35;
+}
+.fv-content { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
+.fv-eyebrow {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(212,160,23,0.18), rgba(232,196,104,0.28));
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 10px 22px;
+  letter-spacing: 0.25em;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.fv-eyebrow::before, .fv-eyebrow::after {
+  content: "✦"; color: var(--gold-light);
+  margin: 0 10px;
+  font-size: 10px;
+}
 
-/* セクション共通 */
-section { padding: 64px 0; }
-section h2 { font-size: 30px; font-weight: 900; text-align: center; color: var(--navy); margin-bottom: 16px; letter-spacing: -0.01em; line-height: 1.4; }
-section h2 .accent { color: var(--gold); }
-section .section-lead { font-size: 14px; text-align: center; color: var(--gray-600); margin-bottom: 40px; max-width: 640px; margin-left: auto; margin-right: auto; }
+.fv h1 {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 900;
+  font-size: 46px;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+  color: var(--pearl);
+}
+.fv h1 .accent {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--gold-light);
+  font-size: 64px;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  line-height: 0.95;
+  text-shadow:
+    0 2px 0 var(--gold-deep),
+    0 4px 14px rgba(232,196,104,0.4);
+  position: relative;
+  padding: 0 6px;
+}
+.fv h1 .accent::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: -6px;
+  transform: translateX(-50%);
+  width: 60%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+}
 
-/* 3つの選ばれる理由 */
-.reasons { background: var(--gray-50); }
-.reasons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.reason-card { background: #fff; border: 1px solid var(--gray-300); border-top: 4px solid var(--gold); border-radius: 8px; padding: 28px 22px; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
-.reason-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(20,33,61,0.1); }
-.reason-num { display: inline-block; background: var(--navy); color: var(--gold); width: 36px; height: 36px; border-radius: 50%; font-weight: 900; line-height: 36px; font-size: 14px; margin-bottom: 14px; }
-.reason-title { font-size: 18px; font-weight: 900; color: var(--navy); margin-bottom: 10px; line-height: 1.4; }
-.reason-big { font-size: 32px; font-weight: 900; color: var(--red); line-height: 1; margin-bottom: 10px; }
-.reason-desc { font-size: 13px; color: var(--gray-600); line-height: 1.85; }
+.fv .lead {
+  font-size: 16.5px;
+  color: rgba(253,246,227,0.92);
+  line-height: 2.05;
+  margin-bottom: 36px;
+  font-weight: 500;
+}
+.fv .lead strong { color: var(--gold-light); font-weight: 700; }
 
-/* 市場機会 */
-.market { background: #fff; }
-.market-compare { background: var(--navy); color: #fff; border-radius: 12px; padding: 32px 24px; text-align: center; }
-.market-compare-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; margin: 24px 0; }
-.market-compare .num-big { font-size: 42px; font-weight: 900; color: var(--gold); line-height: 1; }
-.market-compare .num-lbl { font-size: 13px; opacity: 0.85; margin-top: 4px; }
-.market-compare .vs { font-size: 18px; font-weight: 700; opacity: 0.6; }
-.market-compare .insight { background: rgba(212,160,23,0.18); border-left: 3px solid var(--gold); padding: 14px 18px; border-radius: 4px; text-align: left; font-size: 14px; margin-top: 16px; }
-.market-compare .insight strong { color: var(--gold); }
+.fv .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+.fv .kpi {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(212,160,23,0.08));
+  border: 1px solid rgba(212,160,23,0.35);
+  border-radius: 4px;
+  padding: 22px 12px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+.fv .kpi::before {
+  content: "";
+  position: absolute; inset: 4px;
+  border: 1px solid rgba(212,160,23,0.18);
+  border-radius: 2px;
+  pointer-events: none;
+}
+.fv .kpi .num {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--gold-light);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.fv .kpi .lbl {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  color: var(--gold-pale);
+  margin-top: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
 
-/* なぜ安定？ */
-.stable { background: var(--gray-50); }
-.stable-pie { display: grid; grid-template-columns: 200px 1fr; gap: 32px; align-items: center; max-width: 640px; margin: 0 auto; }
-.stable-pie-visual { background: conic-gradient(var(--gold) 0deg 324deg, var(--gray-300) 324deg 360deg); border-radius: 50%; width: 200px; height: 200px; position: relative; }
-.stable-pie-visual::after { content: "90%"; position: absolute; inset: 30px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 36px; font-weight: 900; color: var(--navy); }
-.stable-text h3 { font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 12px; line-height: 1.4; }
-.stable-text p { font-size: 14px; color: var(--gray-600); line-height: 1.95; }
-.stable-text strong { color: var(--navy); }
+.fv-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 22px 32px;
+  border-radius: 4px;
+  font-family: "Noto Serif JP", serif;
+  font-weight: 900;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  letter-spacing: 0.05em;
+  position: relative;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold) 60%, var(--gold-bronze));
+  color: var(--navy-deep);
+  flex: 1; min-width: 220px;
+  box-shadow:
+    0 4px 0 var(--gold-deep),
+    0 8px 24px rgba(212,160,23,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.45);
+  border: 1px solid var(--gold-pale);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 7px 0 var(--gold-deep),
+    0 12px 32px rgba(212,160,23,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.45);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--gold-cream);
+  border: 1px solid rgba(212,160,23,0.5);
+  flex: 1; min-width: 220px;
+  backdrop-filter: blur(8px);
+}
+.btn-secondary:hover {
+  background: rgba(212,160,23,0.12);
+  border-color: var(--gold-light);
+}
 
-/* 収益シミュレーション */
-.revenue { background: #fff; }
-.revenue-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 24px; }
-.revenue-card { background: linear-gradient(180deg, var(--gold-light), #fff); border: 2px solid var(--gold); border-radius: 12px; padding: 28px 16px; text-align: center; position: relative; }
-.revenue-card .scale-tag { display: inline-block; background: var(--navy); color: var(--gold); font-size: 11px; font-weight: 900; padding: 4px 12px; border-radius: 12px; margin-bottom: 14px; letter-spacing: 0.05em; }
-.revenue-card .scale-rooms { font-size: 16px; font-weight: 900; color: var(--navy); margin-bottom: 8px; }
-.revenue-card .scale-amount { font-size: 32px; font-weight: 900; color: var(--red); line-height: 1; margin: 8px 0; letter-spacing: -0.02em; }
-.revenue-card .scale-unit { font-size: 11px; color: var(--gray-600); margin-top: 4px; }
-.revenue-note { background: var(--gray-100); border-left: 4px solid var(--gold); padding: 14px 18px; border-radius: 4px; font-size: 12px; color: var(--gray-600); line-height: 1.85; }
+/* ========== セクション共通 ========== */
+section { padding: var(--space-section) 0; }
+section h2 {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 900;
+  font-size: 34px;
+  text-align: center;
+  color: var(--navy);
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+section h2 .accent {
+  color: var(--gold-bronze);
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.15em;
+}
+section h2 .small {
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  color: var(--gold-bronze);
+  margin-bottom: 14px;
+  letter-spacing: 0.4em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+section .section-lead {
+  font-size: 15px;
+  text-align: center;
+  color: var(--gray-600);
+  margin-bottom: 56px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2.1;
+}
 
-/* 開業までの流れ */
-.flow { background: var(--gray-50); }
-.flow-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; position: relative; }
-.flow-step { background: #fff; border: 1px solid var(--gray-300); border-radius: 8px; padding: 22px 14px 18px; text-align: center; position: relative; }
-.flow-step:not(:last-child)::after { content: "▶"; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 16px; z-index: 2; }
-.flow-step .step-num { background: var(--navy); color: var(--gold); width: 32px; height: 32px; border-radius: 50%; font-weight: 900; line-height: 32px; font-size: 13px; margin: 0 auto 10px; }
-.flow-step .step-title { font-size: 13px; font-weight: 900; color: var(--navy); margin-bottom: 6px; line-height: 1.4; }
-.flow-step .step-desc { font-size: 11px; color: var(--gray-600); line-height: 1.6; }
-.flow-banner { background: var(--navy); color: #fff; border-radius: 8px; padding: 18px 24px; text-align: center; font-size: 15px; font-weight: 700; margin-top: 24px; }
-.flow-banner .accent { color: var(--gold); font-size: 20px; font-weight: 900; }
+/* ========== ① 3つの選ばれる理由 ========== */
+.reasons { background: var(--pearl); }
+.reasons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.reason-card {
+  background: #fff;
+  border: 1px solid var(--warm-300);
+  border-top: 4px solid var(--gold);
+  border-radius: 4px;
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.reason-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(212,160,23,0.12);
+  border-top: none;
+  pointer-events: none;
+}
+.reason-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(20,33,61,0.1);
+}
+.reason-num {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--gold-light);
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 42px;
+  font-size: 16px;
+  margin-bottom: 18px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 0 3px #fff, 0 0 0 4px var(--gold);
+}
+.reason-title {
+  font-family: "Noto Serif JP", serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.reason-big {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 48px;
+  color: var(--red-deep);
+  line-height: 1;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 0 rgba(185,28,28,0.15);
+}
+.reason-desc { font-size: 13px; color: var(--gray-600); line-height: 1.95; }
 
-/* お客様の声 */
-.voices { background: #fff; }
-.voice-card { background: var(--gray-50); border: 1px solid var(--gray-300); border-left: 5px solid var(--navy); border-radius: 8px; padding: 24px 22px; margin-bottom: 16px; }
-.voice-head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 14px; }
-.voice-region { background: var(--navy); color: #fff; font-size: 12px; font-weight: 900; padding: 4px 12px; border-radius: 4px; letter-spacing: 0.05em; }
-.voice-scale { background: var(--gold); color: var(--navy); font-size: 12px; font-weight: 900; padding: 4px 12px; border-radius: 4px; }
-.voice-bg { font-size: 11px; color: var(--gray-600); }
-.voice-headline { font-size: 17px; font-weight: 900; color: var(--navy); line-height: 1.5; margin-bottom: 12px; padding-left: 14px; border-left: 3px solid var(--gold); }
-.voice-quote { font-size: 14px; line-height: 2; color: var(--gray-900); background: #fff; padding: 16px 18px; border-radius: 6px; border: 1px solid var(--gray-300); }
-.voice-quote strong { color: var(--red); font-weight: 900; }
+/* ========== ② 市場機会 ========== */
+.market { background: var(--cream-bg); }
+.market-compare {
+  background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+  color: var(--gold-cream);
+  border-radius: 4px;
+  padding: 48px 36px;
+  text-align: center;
+  position: relative;
+  border: 1px solid var(--gold-bronze);
+  box-shadow: 0 8px 36px rgba(20,33,61,0.18);
+}
+.market-compare::before, .market-compare::after {
+  content: "";
+  position: absolute;
+  width: 28px; height: 28px;
+  border-color: var(--gold);
+  border-style: solid;
+  border-width: 0;
+}
+.market-compare::before { top: 12px; left: 12px; border-top-width: 1px; border-left-width: 1px; }
+.market-compare::after { bottom: 12px; right: 12px; border-bottom-width: 1px; border-right-width: 1px; }
+.market-compare-row {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 20px; align-items: center;
+  margin: 28px 0;
+}
+.market-compare .num-big {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 52px;
+  color: var(--gold-light);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 0 var(--gold-deep), 0 4px 14px rgba(232,196,104,0.3);
+}
+.market-compare .num-lbl {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: var(--gold-pale);
+  margin-top: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.market-compare .vs {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 26px;
+  color: var(--gold-light);
+  opacity: 0.85;
+}
+.market-compare .insight {
+  background: rgba(212,160,23,0.15);
+  border: 1px solid rgba(212,160,23,0.3);
+  border-left: 3px solid var(--gold-light);
+  padding: 18px 22px;
+  border-radius: 2px;
+  text-align: left;
+  font-size: 14px;
+  margin-top: 20px;
+  line-height: 2;
+}
+.market-compare .insight strong { color: var(--gold-light); font-weight: 900; }
 
-/* FAQ */
-.faq { background: var(--gray-50); }
-.faq-item { background: #fff; border: 1px solid var(--gray-300); border-radius: 6px; margin-bottom: 10px; overflow: hidden; }
-.faq-q { padding: 18px 22px; font-weight: 700; font-size: 14px; color: var(--navy); cursor: pointer; display: flex; align-items: center; gap: 12px; background: #fff; }
-.faq-q::before { content: "Q"; background: var(--gold); color: var(--navy); width: 26px; height: 26px; border-radius: 50%; font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
-.faq-a { padding: 0 22px 18px 60px; font-size: 13px; color: var(--gray-600); line-height: 1.95; }
+/* ========== ③ なぜ安定？ ========== */
+.stable { background: var(--pearl); }
+.stable-pie {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+  align-items: center;
+  max-width: 780px;
+  margin: 0 auto;
+}
+.stable-pie-visual {
+  background: conic-gradient(var(--gold-bronze) 0deg 324deg, var(--warm-300) 324deg 360deg);
+  border-radius: 50%;
+  width: 240px; height: 240px;
+  position: relative;
+  box-shadow:
+    0 12px 36px rgba(184,134,11,0.25),
+    0 0 0 1px var(--gold) inset;
+}
+.stable-pie-visual::after {
+  content: "";
+  position: absolute;
+  inset: 32px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px var(--gold-pale),
+    inset 0 4px 12px rgba(212,160,23,0.08);
+}
+.stable-pie-label {
+  position: absolute;
+  inset: 32px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 2;
+}
+.stable-pie-label-big {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 58px;
+  color: var(--navy);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+.stable-pie-label-small {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  color: var(--gold-bronze);
+  margin-top: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.stable-text h3 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.stable-text p { font-size: 14.5px; color: var(--gray-900); line-height: 2.1; }
+.stable-text strong { color: var(--navy); font-weight: 900; }
 
-/* CTA */
-.cta-section { background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: #fff; text-align: center; padding: 64px 16px; }
-.cta-section h2 { color: #fff; }
-.cta-section h2 .accent { color: var(--gold); }
-.cta-section .cta-lead { font-size: 15px; opacity: 0.95; margin-bottom: 28px; max-width: 560px; margin-left: auto; margin-right: auto; }
-.cta-section .cta-btns { display: flex; gap: 12px; max-width: 560px; margin: 0 auto; flex-wrap: wrap; }
-.cta-section .btn-primary { background: var(--gold); }
-.cta-section .btn-secondary { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); color: #fff; }
+/* ========== ④ 収益シミュレーション ========== */
+.revenue { background: var(--cream-bg); }
+.revenue-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 28px; }
+.revenue-card {
+  background: linear-gradient(180deg, var(--gold-pale) 0%, var(--cream-bg) 100%);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  padding: 36px 22px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.revenue-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(212,160,23,0.18);
+  pointer-events: none;
+}
+.revenue-card .scale-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--gold-light);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 5px 16px;
+  border-radius: 2px;
+  margin-bottom: 18px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.revenue-card .scale-rooms {
+  font-family: "Noto Serif JP", serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+.revenue-card .scale-amount {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 56px;
+  color: var(--red-deep);
+  line-height: 1;
+  margin: 14px 0 6px;
+  letter-spacing: -0.04em;
+  text-shadow: 0 2px 0 rgba(185,28,28,0.15);
+}
+.revenue-card .scale-amount .unit {
+  font-family: "Noto Serif JP", serif;
+  font-style: normal;
+  font-size: 20px;
+  color: var(--burgundy);
+}
+.revenue-card .scale-unit {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  color: var(--gray-600);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.revenue-note {
+  background: linear-gradient(135deg, var(--gold-pale), var(--gold-cream));
+  border: 1px solid var(--gold);
+  border-left: 4px solid var(--gold-bronze);
+  padding: 20px 24px;
+  border-radius: 2px;
+  font-size: 13px;
+  color: var(--gray-900);
+  line-height: 2;
+}
 
-/* フッター */
-.footer { background: var(--gray-900); color: #94a3b8; padding: 32px 16px; text-align: center; font-size: 12px; }
-.footer p { margin: 4px 0; }
+/* ========== ⑤ 開業までの流れ ========== */
+.flow { background: var(--pearl); }
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+  position: relative;
+  margin-bottom: 32px;
+}
+.flow-step {
+  background: var(--cream-bg);
+  border: 1px solid var(--warm-300);
+  border-radius: 4px;
+  padding: 28px 14px 22px;
+  text-align: center;
+  position: relative;
+}
+.flow-step:not(:last-child)::after {
+  content: "▶";
+  position: absolute;
+  right: -16px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+  font-size: 18px;
+  z-index: 2;
+}
+.flow-step .step-num {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--gold-light);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 40px;
+  font-size: 18px;
+  margin: 0 auto 14px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 0 3px var(--cream-bg), 0 0 0 4px var(--gold);
+}
+.flow-step .step-title {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.flow-step .step-desc { font-size: 11.5px; color: var(--gray-600); line-height: 1.75; }
+.flow-banner {
+  background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+  color: var(--gold-cream);
+  border-radius: 4px;
+  padding: 26px 32px;
+  text-align: center;
+  font-family: "Noto Serif JP", serif;
+  font-size: 16px;
+  font-weight: 700;
+  border: 1px solid var(--gold-bronze);
+  position: relative;
+}
+.flow-banner::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(212,160,23,0.18);
+  pointer-events: none;
+}
+.flow-banner .accent {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  color: var(--gold-light);
+  font-size: 26px;
+  font-weight: 700;
+}
 
-/* スマホ最適化 */
+/* ========== ⑥ お客様の声 ========== */
+.voices { background: var(--cream-bg); }
+.voice-card {
+  background: #fff;
+  border: 1px solid var(--warm-300);
+  border-left: 5px solid var(--navy);
+  border-radius: 4px;
+  padding: 28px 28px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 12px rgba(20,33,61,0.04);
+}
+.voice-head {
+  display: flex; gap: 12px;
+  align-items: center; flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.voice-region {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--gold-light);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 5px 14px;
+  border-radius: 2px;
+  letter-spacing: 0.15em;
+  border: 1px solid var(--gold-bronze);
+}
+.voice-scale {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--navy-deep);
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  padding: 5px 14px;
+  border-radius: 2px;
+  letter-spacing: 0.1em;
+}
+.voice-bg { font-size: 12px; color: var(--gray-600); font-style: italic; }
+.voice-headline {
+  font-family: "Noto Serif JP", serif;
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  padding-left: 16px;
+  border-left: 3px solid var(--gold-bronze);
+}
+.voice-quote {
+  font-size: 14px;
+  line-height: 2.05;
+  color: var(--gray-900);
+  background: var(--cream-bg);
+  padding: 18px 22px;
+  border-radius: 2px;
+  border: 1px solid var(--warm-300);
+}
+.voice-quote strong { color: var(--red-deep); font-weight: 900; }
+
+/* ========== ⑦ FAQ ========== */
+.faq { background: var(--pearl); }
+.faq-item {
+  background: var(--cream-bg);
+  border: 1px solid var(--warm-300);
+  border-radius: 4px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 22px 26px;
+  font-weight: 900;
+  font-size: 15px;
+  color: var(--navy);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #fff;
+  font-family: "Noto Serif JP", serif;
+}
+.faq-q::before {
+  content: "Q";
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--navy-deep);
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  border: 1px solid var(--gold-bronze);
+}
+.faq-a {
+  padding: 0 26px 22px 72px;
+  font-size: 13.5px;
+  color: var(--gray-600);
+  line-height: 2.05;
+}
+.faq-a strong { color: var(--navy); font-weight: 900; }
+
+/* ========== ⑧ CTA ========== */
+.cta-section {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(212,160,23,0.18), transparent 50%),
+    linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, var(--navy-light) 100%);
+  color: var(--gold-cream);
+  text-align: center;
+  padding: 100px 24px;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--gold-deep);
+}
+.cta-section::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(0deg, rgba(212,160,23,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,160,23,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.35;
+}
+.cta-section > .inner { position: relative; z-index: 2; }
+.cta-section h2 { color: var(--pearl); font-size: 36px; }
+.cta-section h2 .accent { color: var(--gold-light); }
+.cta-section h2 .small { color: var(--gold-light); }
+.cta-section .cta-lead {
+  font-size: 16px;
+  color: rgba(253,246,227,0.92);
+  margin-bottom: 40px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2.1;
+}
+.cta-section .cta-btns {
+  display: flex; gap: 14px;
+  max-width: 640px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.cta-section .cta-foot {
+  margin-top: 26px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  color: rgba(253,246,227,0.7);
+  letter-spacing: 0.1em;
+}
+.cta-section .cta-foot strong {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  color: var(--gold-light);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ========== フッター ========== */
+.footer {
+  background: var(--navy-deep);
+  color: var(--warm-500);
+  padding: 36px 16px;
+  text-align: center;
+  font-size: 12px;
+  border-top: 1px solid var(--gold-deep);
+}
+.footer p { margin: 5px 0; }
+
+/* ========== スマホ ========== */
 @media (max-width: 760px) {
-  .fv { padding: 40px 16px 60px; }
-  .fv h1 { font-size: 26px; }
+  :root { --space-section: 64px; }
+  .fv { padding: 60px 20px 80px; }
+  .fv h1 { font-size: 28px; }
+  .fv h1 .accent { font-size: 44px; }
   .fv .lead { font-size: 14px; }
-  .fv .kpi-row { grid-template-columns: repeat(3, 1fr); gap: 6px; }
-  .fv .kpi .num { font-size: 18px; }
-  section { padding: 48px 0; }
-  section h2 { font-size: 22px; }
+  .fv .kpi-row { gap: 8px; }
+  .fv .kpi .num { font-size: 24px; }
+  section { padding: var(--space-section) 0; }
+  section h2 { font-size: 24px; }
   .reasons-grid { grid-template-columns: 1fr; }
-  .market-compare-row { grid-template-columns: 1fr; gap: 8px; }
-  .market-compare .vs { transform: rotate(90deg); }
-  .stable-pie { grid-template-columns: 1fr; gap: 20px; justify-items: center; text-align: center; }
+  .reason-big { font-size: 38px; }
+  .market-compare { padding: 32px 22px; }
+  .market-compare-row { grid-template-columns: 1fr; gap: 12px; }
+  .market-compare .vs { transform: rotate(90deg); font-size: 20px; }
+  .market-compare .num-big { font-size: 38px; }
+  .stable-pie { grid-template-columns: 1fr; gap: 28px; justify-items: center; text-align: center; }
+  .stable-pie-visual { width: 220px; height: 220px; }
+  .stable-pie-visual::after, .stable-pie-label { inset: 28px; }
+  .stable-pie-label-big { font-size: 48px; }
   .revenue-grid { grid-template-columns: 1fr; }
-  .flow-steps { grid-template-columns: 1fr; gap: 8px; }
-  .flow-step:not(:last-child)::after { content: "▼"; right: 50%; top: auto; bottom: -10px; transform: translateX(50%); }
-  .voice-head { gap: 6px; }
+  .revenue-card .scale-amount { font-size: 46px; }
+  .flow-steps { grid-template-columns: 1fr; gap: 10px; }
+  .flow-step:not(:last-child)::after { content: "▼"; right: 50%; top: auto; bottom: -12px; transform: translateX(50%); }
+  .flow-banner { font-size: 14px; padding: 20px 22px; }
+  .flow-banner .accent { font-size: 20px; }
+  .voice-card { padding: 22px 22px; }
+  .voice-head { gap: 8px; }
+  .voice-headline { font-size: 15px; }
+  .cta-section { padding: 70px 20px; }
+  .cta-section h2 { font-size: 26px; }
 }
 </style>
 </head>
 <body>
 <div class="lp-container">
 
-<!-- 開発者ヘッダー（本番では削除） -->
+<!-- 開発者ヘッダー -->
 <div class="dev-header">
-  📝 <strong>本番LPモックアップ v2</strong>（2026-06-05 河合さんチェックバック5項目反映済）
-  ／ <a href="lp_implementation_guide.html">実装指示書</a>
-  ／ <a href="index.html">資料一覧へ戻る</a>
+  📝 <strong>本番LP v2 Premium（A案・ハイブリッド改修）</strong> ／ 2026-06-05 ／ 万人向け・親しみやすい品格
+  ／ <a href="lp_revenue_simulation.html">B案収益型</a>
+  ／ <a href="mockup.html">3案比較</a>
+  ／ <a href="index.html">資料一覧</a>
 </div>
 
-<!-- FV -->
+<!-- ============ FV ============ -->
 <header class="fv">
-  <div class="inner">
-    <span class="fv-eyebrow">★加盟金0円から始める／業界初プラン</span>
-    <h1>障がい者グループホーム、<br>未経験から始めて<span class="accent">月次黒字化最短4ヶ月</span>。</h1>
+  <div class="fv-content">
+    <span class="fv-eyebrow">For Future Founders</span>
+    <h1>
+      障がい者グループホーム、<br>未経験から始めて<br>
+      <span class="accent">月次黒字化、最短4ヶ月。</span>
+    </h1>
     <p class="lead">
       初期費用を抑えて、社会貢献と安定収益を両立。<br>
       OWLの<strong>マンツーマン伴走</strong>で、未経験でも最短3ヶ月で開設可能です。
     </p>
     <div class="kpi-row">
-      <div class="kpi"><div class="num">¥0</div><div class="lbl">加盟金</div></div>
-      <div class="kpi"><div class="num">95%</div><div class="lbl">未経験スタート</div></div>
-      <div class="kpi"><div class="num">最短3ヶ月</div><div class="lbl">で開設</div></div>
+      <div class="kpi"><div class="num">¥0</div><div class="lbl">Entry Fee</div></div>
+      <div class="kpi"><div class="num">95%</div><div class="lbl">Newcomers</div></div>
+      <div class="kpi"><div class="num">3 Months</div><div class="lbl">to Open</div></div>
     </div>
     <div class="fv-cta">
-      <a href="#cta" class="btn btn-primary">▶ 無料で資料を請求する</a>
-      <a href="#cta" class="btn btn-secondary">📅 オンライン説明会に参加</a>
+      <a href="#cta" class="btn btn-primary">✦ 無料で資料を請求する</a>
+      <a href="#cta" class="btn btn-secondary">▸ オンライン説明会に参加</a>
     </div>
   </div>
 </header>
 
-<!-- 3つの選ばれる理由 -->
+<!-- ① 3つの選ばれる理由 -->
 <section class="reasons">
   <div class="inner">
-    <h2><span class="accent">3つの</span>選ばれる理由</h2>
-    <p class="section-lead">全国の加盟者が「OWLに決めた」と語る、揺るがない強み</p>
+    <div class="gold-ornament"><div class="line"></div><div class="diamond"></div><div class="line r"></div></div>
+    <h2><span class="small">— Three Pillars —</span>3つの<span class="accent">選ばれる理由</span></h2>
+    <p class="section-lead">全国の加盟者が「OWLに決めた」と語る、揺るがない強み。</p>
     <div class="reasons-grid">
       <div class="reason-card">
         <div class="reason-num">01</div>
         <div class="reason-big">¥0</div>
-        <div class="reason-title">業界初・加盟金0円プラン</div>
+        <div class="reason-title">業界初<br>加盟金0円プラン</div>
         <p class="reason-desc">月額制で初期費用を最小化。<br>「初期投資が大きすぎて踏み出せない」を解消します。</p>
       </div>
       <div class="reason-card">
         <div class="reason-num">02</div>
-        <div class="reason-big">最短4ヶ月</div>
-        <div class="reason-title">月次黒字化を実現</div>
+        <div class="reason-big">4ヶ月</div>
+        <div class="reason-title">月次黒字化を<br>最短実現</div>
         <p class="reason-desc">国の給付金収益で安定。<br>運営ノウハウの完全サポートで早期黒字化を支援します。</p>
       </div>
       <div class="reason-card">
         <div class="reason-num">03</div>
         <div class="reason-big">95%</div>
-        <div class="reason-title">未経験スタートが当たり前</div>
+        <div class="reason-title">未経験スタート<br>が当たり前</div>
         <p class="reason-desc">福祉未経験95%。<br>マニュアル・研修・行政対応まで本部が伴走します。</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 市場機会 -->
+<!-- ② 市場機会 -->
 <section class="market">
   <div class="inner">
-    <h2>需給ギャップが、<span class="accent">大きな事業機会</span>を生む。</h2>
+    <div class="gold-ornament"><div class="line"></div><div class="diamond"></div><div class="line r"></div></div>
+    <h2><span class="small">— Market Opportunity —</span>需給ギャップが、<br><span class="accent">大きな事業機会</span>を生む。</h2>
     <p class="section-lead">障がい者の数に対して、グループホームが圧倒的に足りていません。</p>
     <div class="market-compare">
       <div class="market-compare-row">
         <div>
-          <div class="num-big">約965万人</div>
+          <div class="num-big">965万人</div>
           <div class="num-lbl">障がいのある方（国内）</div>
         </div>
         <div class="vs">VS</div>
         <div>
-          <div class="num-big">約14万人</div>
+          <div class="num-big">14万人</div>
           <div class="num-lbl">GH利用者（全国）</div>
         </div>
       </div>
@@ -237,15 +928,22 @@ section .section-lead { font-size: 14px; text-align: center; color: var(--gray-6
   </div>
 </section>
 
-<!-- なぜ収益が安定するのか -->
+<!-- ③ なぜ収益が安定するのか -->
 <section class="stable">
   <div class="inner">
-    <h2>なぜ、<span class="accent">収益が安定</span>するのか。</h2>
+    <div class="gold-ornament"><div class="line"></div><div class="diamond"></div><div class="line r"></div></div>
+    <h2><span class="small">— Why Stable —</span>なぜ、<span class="accent">収益が安定</span>するのか。</h2>
     <p class="section-lead">障がい者総合支援法に基づく制度ビジネスだから。</p>
     <div class="stable-pie">
-      <div class="stable-pie-visual"></div>
+      <div style="position:relative;">
+        <div class="stable-pie-visual"></div>
+        <div class="stable-pie-label">
+          <div class="stable-pie-label-big">90%</div>
+          <div class="stable-pie-label-small">Subsidy</div>
+        </div>
+      </div>
       <div class="stable-text">
-        <h3>売上の約9割が、国・自治体の給付金。</h3>
+        <h3>売上の約9割が、<br>国・自治体の給付金。</h3>
         <p>
           障がい福祉サービスは<strong>障害者総合支援法</strong>に基づく公的制度。<br>
           売上の大半が国・自治体からの給付金収入で構成されるため、<strong>景気変動の影響を受けにくく、安定したストック型収益</strong>が見込めます。<br><br>
@@ -256,42 +954,44 @@ section .section-lead { font-size: 14px; text-align: center; color: var(--gray-6
   </div>
 </section>
 
-<!-- 収益シミュレーション -->
+<!-- ④ 収益シミュレーション -->
 <section class="revenue">
   <div class="inner">
-    <h2><span class="accent">居室数別</span>・年間収益シミュレーション</h2>
+    <div class="gold-ornament"><div class="line"></div><div class="diamond"></div><div class="line r"></div></div>
+    <h2><span class="small">— Revenue Simulation —</span>居室数別、<span class="accent">年間収益</span></h2>
     <p class="section-lead">OWL実績ベースの想定年間収益。規模に応じて伸ばすことが可能です。</p>
     <div class="revenue-grid">
       <div class="revenue-card">
-        <span class="scale-tag">SMALL</span>
+        <span class="scale-tag">Small</span>
         <div class="scale-rooms">8〜10居室</div>
-        <div class="scale-amount">約 700<span style="font-size:18px;">万円</span></div>
-        <div class="scale-unit">想定年間収益</div>
+        <div class="scale-amount">700<span class="unit">万円</span></div>
+        <div class="scale-unit">Annual Revenue</div>
       </div>
       <div class="revenue-card">
-        <span class="scale-tag">MEDIUM</span>
+        <span class="scale-tag">Medium</span>
         <div class="scale-rooms">12〜14居室</div>
-        <div class="scale-amount">約 1,200<span style="font-size:18px;">万円</span></div>
-        <div class="scale-unit">想定年間収益</div>
+        <div class="scale-amount">1,200<span class="unit">万円</span></div>
+        <div class="scale-unit">Annual Revenue</div>
       </div>
       <div class="revenue-card">
-        <span class="scale-tag">LARGE</span>
+        <span class="scale-tag">Large</span>
         <div class="scale-rooms">16〜20居室</div>
-        <div class="scale-amount">約 1,800<span style="font-size:18px;">万円</span></div>
-        <div class="scale-unit">想定年間収益</div>
+        <div class="scale-amount">1,800<span class="unit">万円</span></div>
+        <div class="scale-unit">Annual Revenue</div>
       </div>
     </div>
     <div class="revenue-note">
-      ※ 上記はOWL加盟者の実績例に基づく参考値です。立地・運営状況により変動します。詳細な収支計画は、無料の個別相談でお伝えします。<br>
+      ※ 上記はOWL加盟者の実績例に基づく参考値です。立地・運営状況により変動します。<br>
       ※ より詳細な収支シミュレーションは、資料請求にて無料で配布しています。
     </div>
   </div>
 </section>
 
-<!-- 開業までの流れ -->
+<!-- ⑤ 開業までの流れ -->
 <section class="flow">
   <div class="inner">
-    <h2>開業までの流れ <span class="accent">5ステップ</span></h2>
+    <div class="gold-ornament"><div class="line"></div><div class="diamond"></div><div class="line r"></div></div>
+    <h2><span class="small">— Process —</span>開業までの流れ、<span class="accent">5ステップ。</span></h2>
     <p class="section-lead">資料請求から開所まで、最短3ヶ月。本部が伴走します。</p>
     <div class="flow-steps">
       <div class="flow-step">
@@ -326,61 +1026,57 @@ section .section-lead { font-size: 14px; text-align: center; color: var(--gray-6
   </div>
 </section>
 
-<!-- お客様の声 -->
+<!-- ⑥ お客様の声 -->
 <section class="voices">
   <div class="inner">
-    <h2><span class="accent">全国の</span>加盟オーナーの声</h2>
+    <div class="gold-ornament"><div class="line"></div><div class="diamond"></div><div class="line r"></div></div>
+    <h2><span class="small">— Voices of Owners —</span>全国の<span class="accent">加盟オーナーの声。</span></h2>
     <p class="section-lead">未経験から始めた方々が、なぜOWLを選び、どのように成長したか。本人の声でお伝えします。</p>
 
-    <!-- 声1：大阪 -->
     <div class="voice-card">
       <div class="voice-head">
-        <span class="voice-region">📍 大阪府</span>
-        <span class="voice-scale">🏢 70居室以上</span>
+        <span class="voice-region">Osaka</span>
+        <span class="voice-scale">70+ Rooms</span>
         <span class="voice-bg">既存事業者・コロナ禍からの転身</span>
       </div>
       <div class="voice-headline">「コロナ禍に打撃を受けた中、OWLと出会い開業。<br>今では地域では一番大きな信頼を得ています。」</div>
       <div class="voice-quote">既存事業がコロナ禍に打撃を受けてしまった中でOWLさんと出会い開業を決意しました。今では<strong>60居室を超える事業所を開設し地域では一番大きな信頼を得ております</strong>。それも全て何も知らなかった私に丁寧な指導をくださったOWLさんのおかげです。まだ入居のお声が多いので増やしていきます。</div>
     </div>
 
-    <!-- 声2：千葉 -->
     <div class="voice-card">
       <div class="voice-head">
-        <span class="voice-region">📍 千葉県</span>
-        <span class="voice-scale">🏢 3棟運営</span>
+        <span class="voice-region">Chiba</span>
+        <span class="voice-scale">3 Facilities</span>
         <span class="voice-bg">不動産業からの参入</span>
       </div>
       <div class="voice-headline">「不動産業から参入。未経験でしたが、<br>今では行政担当者と対等に話せる自分に成長しました。」</div>
       <div class="voice-quote">不動産事業を営んでいたときにGHでの問い合わせが多くて気になって調べて参入を決意。未経験でもしっかりと支援してくれるようなところを探してOWLさんに出会いました。最初は福祉の言葉自体も理解できなかったですが、今では<strong>行政担当者の言う内容など全て理解している自分に成長したな〜と思うことが多くなりました（笑）</strong>マンツーで支援してくれる支援内容があったからこそ今の自分があると思ってます。</div>
     </div>
 
-    <!-- 声3：愛知 -->
     <div class="voice-card">
       <div class="voice-head">
-        <span class="voice-region">📍 愛知県</span>
-        <span class="voice-scale">🏠 2棟運営</span>
+        <span class="voice-region">Aichi</span>
+        <span class="voice-scale">2 Facilities</span>
         <span class="voice-bg">複数本部比較からOWLを選択</span>
       </div>
-      <div class="voice-headline">「いろんな本部を比較して、一番支援が手厚そうなOWLに。<br>今のところは一生お付き合いしたいと思っています。」</div>
+      <div class="voice-headline">「いろんな本部を比較して、一番支援が手厚そうなOWLに。<br>一生お付き合いしたいと思っています。」</div>
       <div class="voice-quote">GHのいろんな本部さんの話を聞いて<strong>一番支援が手厚そうと感じたOWLさんに決めました</strong>。とは言いつつそこまで期待していなかったですが実際想定していたよりも手厚いサポートがあり大満足です。学んでから止めることも可能ですが、<strong>今のところは一生お付き合いしていきたい</strong>と思ってます。</div>
     </div>
 
-    <!-- 声4：福島 -->
     <div class="voice-card">
       <div class="voice-head">
-        <span class="voice-region">📍 福島県</span>
-        <span class="voice-scale">🏢 4棟運営</span>
+        <span class="voice-region">Fukushima</span>
+        <span class="voice-scale">4 Facilities</span>
         <span class="voice-bg">介護事業者・報酬改定の壁から</span>
       </div>
       <div class="voice-headline">「介護事業の壁にぶつかった時、OWLに出会えた。<br>何回聞いても丁寧に伝えてくれて、大変頼りに。」</div>
       <div class="voice-quote">介護の事業をしておりましたが、報酬の改定や、人材不足など様々な壁に当たった時にGHが気になり検討しました。似たような事業ですが中身は全く違くて最初は大変でしたが<strong>OWLさんはスピード感を合わせてくださり、何回も同じことを聞いても分かるまで丁寧に伝えてくれた</strong>りなど、大変頼りになりました。</div>
     </div>
 
-    <!-- 声5：三重 -->
     <div class="voice-card">
       <div class="voice-head">
-        <span class="voice-region">📍 三重県</span>
-        <span class="voice-scale">🏠 2棟運営</span>
+        <span class="voice-region">Mie</span>
+        <span class="voice-scale">2 Facilities</span>
         <span class="voice-bg">障害ある子供を持つ親として</span>
       </div>
       <div class="voice-headline">「子供の将来を支えたくて開業。<br>障害を持つ子供の親からの感謝の言葉が多く、やってよかったと実感。」</div>
@@ -389,11 +1085,12 @@ section .section-lead { font-size: 14px; text-align: center; color: var(--gray-6
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- ⑦ FAQ -->
 <section class="faq">
   <div class="inner">
-    <h2>よくあるご質問 <span class="accent">FAQ</span></h2>
-    <div style="max-width:760px;margin:0 auto;">
+    <div class="gold-ornament"><div class="line"></div><div class="diamond"></div><div class="line r"></div></div>
+    <h2><span class="small">— FAQ —</span>よくある<span class="accent">ご質問。</span></h2>
+    <div style="max-width:800px;margin:48px auto 0;">
 
       <div class="faq-item">
         <div class="faq-q">福祉業界が未経験ですが、本当に大丈夫ですか？</div>
@@ -429,10 +1126,11 @@ section .section-lead { font-size: 14px; text-align: center; color: var(--gray-6
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ⑧ CTA -->
 <section class="cta-section" id="cta">
   <div class="inner">
-    <h2>まずは <span class="accent">資料請求</span>から。</h2>
+    <div class="gold-ornament"><div class="line"></div><div class="diamond"></div><div class="line r"></div></div>
+    <h2><span class="small">— Get Started —</span>まずは <span class="accent">資料請求</span>から。</h2>
     <p class="cta-lead">
       事業概要・収益モデル・加盟プランの詳細をまとめた資料を無料でお送りします。<br>
       しつこい営業は一切ありません。ご都合の良いタイミングでご検討ください。
@@ -441,8 +1139,8 @@ section .section-lead { font-size: 14px; text-align: center; color: var(--gray-6
       <a href="#" class="btn btn-primary">📩 無料で資料を請求する</a>
       <a href="#" class="btn btn-secondary">📅 オンライン説明会に申し込む</a>
     </div>
-    <p style="font-size:12px;opacity:0.85;margin-top:20px;">
-      お電話でのお問い合わせ：<strong style="color:#fde68a;">0120-540-522</strong>（平日 9:00〜18:00）
+    <p class="cta-foot">
+      お電話でのお問い合わせ — <strong>0120-540-522</strong>（平日 9:00〜18:00）
     </p>
   </div>
 </section>
@@ -451,7 +1149,7 @@ section .section-lead { font-size: 14px; text-align: center; color: var(--gray-6
 <footer class="footer">
   <p>株式会社RUNBIRD ／ OWL福祉事業</p>
   <p>〒XXXX-XXXX　所在地（要追加）</p>
-  <p style="margin-top:12px;">© 2026 RUNBIRD inc. All rights reserved.</p>
+  <p style="margin-top:14px;">© 2026 RUNBIRD inc. All rights reserved.</p>
 </footer>
 
 </div>
