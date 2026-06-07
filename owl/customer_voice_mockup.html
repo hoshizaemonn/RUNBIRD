@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LP「お客様の声」モックアップ A/B/C｜OWL福祉事業</title>
+<title>LP「お客様の声」モックアップ A/B/C（本番5件反映）｜OWL福祉事業</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; background: #f4f6f9; color: #0f172a; line-height: 1.7; padding: 16px; -webkit-font-smoothing: antialiased; }
@@ -11,33 +11,36 @@ body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; bac
 .nav-back { display: inline-block; margin-bottom: 12px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
 h1 { font-size: 22px; margin-bottom: 4px; }
 .sub { color: #64748b; font-size: 13px; margin-bottom: 18px; }
+.update-banner { background: #fef2f2; border: 2px solid #b91c1c; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 13px; color: #7f1d1d; }
+.update-banner strong { color: #b91c1c; }
 .intro { background: #fff; border-left: 5px solid #2563eb; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; font-size: 13px; line-height: 1.85; }
 .intro strong { color: #1e3a8a; }
 .case { background: #fff; border-radius: 14px; padding: 22px; margin-bottom: 22px; box-shadow: 0 2px 10px rgba(15,23,42,0.06); }
-.case-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-bottom: 14px; }
+.case-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-bottom: 14px; flex-wrap: wrap; }
 .case-tag { background: #2563eb; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
 .case-tag.b { background: #047857; }
 .case-tag.c { background: #d97706; }
 .case-title { font-size: 18px; font-weight: 700; color: #0f172a; }
 .case-sub { font-size: 12px; color: #64748b; margin-left: auto; }
 
-/* 共通：モック枠 */
 .mock { background: #fafbfc; border: 2px dashed #cbd5e1; border-radius: 12px; padding: 20px; margin: 14px 0; }
 .mock-label { font-size: 11px; letter-spacing: 0.15em; color: #94a3b8; font-weight: 700; margin-bottom: 10px; }
 
-/* A案: 動画＋テキスト */
-.mock-video { background: #1f2937; color: #f9fafb; border-radius: 10px; padding: 16px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-.mock-video .play { font-size: 36px; }
-.mock-video .label { font-size: 13px; opacity: 0.85; }
+/* A案: 動画 */
+.mock-video { background: linear-gradient(135deg,#0f172a,#1e3a8a); color: #f9fafb; border-radius: 10px; padding: 20px; aspect-ratio: 16/9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+.mock-video .play { font-size: 44px; }
+.mock-video .label { font-size: 13px; opacity: 0.92; text-align: center; }
+.mock-video .telop { background: rgba(255,235,59,0.9); color: #1f2937; padding: 4px 12px; border-radius: 4px; font-weight: 900; font-size: 14px; margin-top: 6px; }
 .video-cap { font-size: 12px; color: #475569; margin-top: 10px; text-align: center; }
 
-/* B案: カードグリッド */
-.b-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+/* B案: 5枚カードグリッド */
+.b-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
 .b-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px; }
-.b-photo { width: 100%; aspect-ratio: 1; background: linear-gradient(135deg,#cbd5e1,#94a3b8); border-radius: 50%; max-width: 80px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #fff; }
-.b-quote { font-size: 13px; line-height: 1.7; color: #0f172a; }
-.b-quote::before { content: "“"; font-size: 24px; color: #2563eb; vertical-align: top; line-height: 0.8; }
-.b-name { font-size: 11px; color: #64748b; margin-top: 10px; text-align: right; font-weight: 700; }
+.b-photo { width: 90px; height: 90px; background: linear-gradient(135deg,#cbd5e1,#94a3b8); border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: #fff; border: 3px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.b-region { font-size: 11px; color: #1e3a8a; font-weight: 700; text-align: center; margin-bottom: 4px; }
+.b-scale { font-size: 11px; color: #047857; font-weight: 700; text-align: center; margin-bottom: 8px; }
+.b-quote { font-size: 12.5px; line-height: 1.7; color: #0f172a; }
+.b-quote::before { content: "“"; font-size: 22px; color: #2563eb; vertical-align: top; line-height: 0.8; }
 
 /* C案: ストーリー型 */
 .c-story { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 18px; margin-bottom: 10px; }
@@ -48,7 +51,7 @@ h1 { font-size: 22px; margin-bottom: 4px; }
 .c-num { background: #fff; border-radius: 8px; padding: 10px; text-align: center; }
 .c-num .big { font-size: 20px; font-weight: 700; color: #92400e; }
 .c-num .lbl { font-size: 10px; color: #94a3b8; margin-top: 2px; }
-.c-body { font-size: 13px; line-height: 1.85; color: #1f2937; margin-top: 10px; }
+.c-body { font-size: 13px; line-height: 1.85; color: #1f2937; margin-top: 10px; background: #fff; padding: 12px; border-radius: 6px; }
 
 .pros { background: #ecfdf5; border-left: 4px solid #047857; padding: 12px 14px; margin: 10px 0 6px; border-radius: 6px; font-size: 12px; }
 .cons { background: #fef2f2; border-left: 4px solid #b91c1c; padding: 12px 14px; margin: 0 0 10px; border-radius: 6px; font-size: 12px; }
@@ -70,13 +73,17 @@ footer { text-align: center; color: #94a3b8; font-size: 11px; padding: 24px 0; }
 
 <a href="index.html" class="nav-back">← 資料一覧に戻る</a>
 
-<h1>LP「お客様の声」モックアップ 3案</h1>
-<p class="sub">OWL福祉事業 ／ 2026-06-01 ／ 鈴木さん「お客様の声がやっぱ入ってないのが弱い」対応</p>
+<h1>LP「お客様の声」モックアップ 3案（★本番5件反映版）</h1>
+<p class="sub">OWL福祉事業 ／ 2026-06-05更新 ／ 河合さん提供の本番口コミ5件で全面アップデート</p>
+
+<div class="update-banner">
+  <strong>📝 2026-06-05 更新：</strong>河合さんから本番加盟者の声5件（大阪70居室+／三重2棟／福島4棟／千葉3棟／愛知2棟）＋撮影可能の連絡を受け、3案すべて本番データで作り直し。<strong>★撮影可能なので、A案動画の実現可能性が一気に高まった</strong>。
+</div>
 
 <div class="intro">
-  <strong>現状認識：</strong>LP <code>lp_zero-plan-g/</code> には現在「加盟者の生声」要素が皆無。tocotocoや買取大吉は加盟者対談・実例数字を前面に出している。<br>
-  <strong>本資料の目的：</strong>3案（A=動画／B=カードグリッド／C=ストーリー型）を並べて鈴木さん＋嶋田社長に方向選択してもらう。<br>
-  <strong>素材依頼：</strong>採用案決定後、嶋田社長サイドで実加盟者2〜3名に取材（オンラインで30分×人数分）。
+  <strong>本資料の目的：</strong>A=動画／B=カードグリッド／C=ストーリー型の3案で、嶋田社長＋鈴木さんに方向選択してもらう。<br>
+  <strong>素材状況：</strong>本番口コミ5件のテキスト全件確定済み（<a href="lp_implementation_guide.html" style="color:#2563eb;">フルテキストはこちら</a>）／<strong>撮影可能（河合さん経由で本人承認確認済み）</strong>。<br>
+  <strong>掲載順の推奨：</strong>大阪70居室+（規模感最大）→ 千葉3棟（不動産業者・成長ストーリー）→ 愛知2棟（競合比較で選ばれた）→ 福島4棟（同業転換）→ 三重2棟（親心ストーリー）
 </div>
 
 <!-- ============ A案 ============ -->
@@ -84,7 +91,7 @@ footer { text-align: center; color: #94a3b8; font-size: 11px; padding: 24px 0; }
   <div class="case-head">
     <span class="case-tag">A 案</span>
     <span class="case-title">動画インタビュー型（YouTube埋込）</span>
-    <span class="case-sub">tocotoco・買取大吉が採用しているフォーマット</span>
+    <span class="case-sub">★撮影可能・主役候補は大阪70居室+さん</span>
   </div>
 
   <div class="mock">
@@ -93,21 +100,28 @@ footer { text-align: center; color: #94a3b8; font-size: 11px; padding: 24px 0; }
     <div class="mock-video">
       <div class="play">▶</div>
       <div class="label">YouTube動画埋込（3〜5分）</div>
-      <div class="label" style="font-size:11px;opacity:0.7;">福岡県・◯◯さん「未経験から1年で1棟稼働まで」</div>
+      <div class="telop">大阪・70居室超え／コロナ禍からの逆転劇</div>
+      <div class="label" style="font-size:11px;opacity:0.85;">「既存事業がコロナ禍で打撃を受けた中OWLと出会い、今では地域No.1の信頼を得るまでに」</div>
     </div>
-    <p class="video-cap">サムネは加盟者の表情アップ＋テロップ「未経験から1年で稼働」</p>
+    <p class="video-cap">サムネは加盟者の表情アップ＋テロップ「地域No.1の信頼／60居室超」</p>
   </div>
 
-  <div class="pros"><strong>👍 強み:</strong> 信頼感が圧倒的。YouTube戦略と素材を兼用できる（動画1本で広告/LP/YouTube/SNS 全部使える）</div>
-  <div class="cons"><strong>👎 弱み:</strong> 加盟者の出演承諾＋撮影/編集が必要（1本あたり制作費5〜10万円）。即着手で2週間〜1ヶ月かかる</div>
+  <p style="font-size:13px;margin-top:10px;"><strong>その他の動画候補：</strong></p>
+  <ul style="font-size:12.5px;padding-left:22px;line-height:1.85;">
+    <li><strong>千葉県3棟さん</strong>：「不動産業から福祉へ→マンツー支援で行政担当者と対等に話せる成長」 ★広告クリエ案5（不動産業者向け）との連動最強</li>
+    <li><strong>愛知県2棟さん</strong>：「複数本部比較してOWLを選んだ理由／想定以上の手厚さ」 ★競合検討者の最後押し</li>
+  </ul>
+
+  <div class="pros"><strong>👍 強み:</strong> 信頼感が圧倒的。YouTube戦略（tocotoco @tocotoco0701 登録99人）を一気に追い抜ける。動画1本で <strong>LP・広告・YouTube・SNS</strong> すべてに転用可</div>
+  <div class="cons"><strong>👎 弱み:</strong> 撮影/編集が必要（1本5〜10万円）。最短2週間〜1ヶ月。<strong>撮影可能の連絡があったので即着手可能</strong></div>
 </div>
 
 <!-- ============ B案 ============ -->
 <div class="case">
   <div class="case-head">
     <span class="case-tag b">B 案</span>
-    <span class="case-title">3人カードグリッド型（写真＋短いコメント）</span>
-    <span class="case-sub">最短1週間で実装可能</span>
+    <span class="case-title">5枚カードグリッド型（本番5件全件掲載）</span>
+    <span class="case-sub">最短1週間で実装可能・撮影前の暫定展開可</span>
   </div>
 
   <div class="mock">
@@ -116,96 +130,123 @@ footer { text-align: center; color: #94a3b8; font-size: 11px; padding: 24px 0; }
     <div class="b-grid">
       <div class="b-card">
         <div class="b-photo">👤</div>
-        <div class="b-quote">福祉未経験でしたが、本部の研修と日々のサポートで安心して開業できました。3ヶ月で満室になりました。</div>
-        <div class="b-name">福岡県 / 30代男性 / 元飲食店経営</div>
+        <div class="b-region">📍 大阪府</div>
+        <div class="b-scale">🏢 70居室以上</div>
+        <div class="b-quote">既存事業がコロナ禍に打撃を受けた中でOWLさんと出会い開業を決意。今では60居室超え・地域No.1の信頼を得ています。</div>
       </div>
       <div class="b-card">
         <div class="b-photo">👤</div>
-        <div class="b-quote">加盟金が0円なのが決め手でした。他社は何百万も必要で、二の足を踏んでいました。</div>
-        <div class="b-name">大阪府 / 40代女性 / 元介護職</div>
+        <div class="b-region">📍 千葉県</div>
+        <div class="b-scale">🏢 3棟運営</div>
+        <div class="b-quote">不動産業から参入。未経験でしたが、マンツーマン支援のおかげで今は行政担当者の話も全部理解できる自分に成長しました（笑）</div>
       </div>
       <div class="b-card">
         <div class="b-photo">👤</div>
-        <div class="b-quote">利用者さんの笑顔を毎日見られるのが何よりの喜びです。経営も安定しました。</div>
-        <div class="b-name">愛知県 / 50代男性 / 不動産業との兼業</div>
+        <div class="b-region">📍 愛知県</div>
+        <div class="b-scale">🏠 2棟運営</div>
+        <div class="b-quote">いろんな本部の話を聞いて一番支援が手厚そうなOWLに決定。想定以上の手厚さで、一生お付き合いしたいと思っています。</div>
+      </div>
+      <div class="b-card">
+        <div class="b-photo">👤</div>
+        <div class="b-region">📍 福島県</div>
+        <div class="b-scale">🏢 4棟運営</div>
+        <div class="b-quote">介護事業の壁にぶつかってGHを検討。OWLさんはスピード感を合わせてくださり、何回聞いても丁寧に伝えてくれて頼りになりました。</div>
+      </div>
+      <div class="b-card">
+        <div class="b-photo">👤</div>
+        <div class="b-region">📍 三重県</div>
+        <div class="b-scale">🏠 2棟運営</div>
+        <div class="b-quote">障害ある子供を持つ親として、子供の将来を支えたく開業。資金相談から伴走いただき、利用者家族から感謝の声を多くいただいています。</div>
       </div>
     </div>
   </div>
 
-  <div class="pros"><strong>👍 強み:</strong> 実装が最速（写真3枚＋テキストでOK）。SP表示でもスクロール圧迫しない。複数業界からの加盟事例が一目で分かる</div>
-  <div class="cons"><strong>👎 弱み:</strong> 信頼度はA案より弱い（写真と短文は誰でも書ける感）。本物感を出すには本名＋実写写真＋施設名まで欲しい</div>
+  <div class="pros"><strong>👍 強み:</strong> 実装最速。<strong>5件全部見せられるので「ストーリーの多様性」(規模・元職業・動機)が一目で伝わる</strong>。撮影スケジュール調整中の暫定展開として最適</div>
+  <div class="cons"><strong>👎 弱み:</strong> 信頼度はA案より低い（写真と短文）。本物感を出すには本名＋実写写真＋施設名まで欲しい。撮影完了後はA案に格上げ推奨</div>
 </div>
 
 <!-- ============ C案 ============ -->
 <div class="case">
   <div class="case-head">
     <span class="case-tag c">C 案</span>
-    <span class="case-title">ストーリー型（1名深堀り＋数字訴求）</span>
-    <span class="case-sub">「未経験→1年で月利◯万」の数字を見せる</span>
+    <span class="case-title">ストーリー型（千葉3棟さん深堀り）</span>
+    <span class="case-sub">「不動産業→未経験から成長」の最強ストーリー</span>
   </div>
 
   <div class="mock">
     <div class="mock-label">▼ LP表示イメージ</div>
-    <h3 style="text-align:center;font-size:18px;margin-bottom:14px;color:#d97706;">未経験から1年で月利60万円。福岡・◯◯さんの実例</h3>
+    <h3 style="text-align:center;font-size:18px;margin-bottom:14px;color:#d97706;">不動産業から参入。未経験でも、ここまで成長できた理由。</h3>
 
     <div class="c-story">
       <div class="c-meta">
-        <span>📍 福岡県</span>
-        <span>👨 30代男性</span>
-        <span>🏢 加盟2025年4月</span>
-        <span>📈 2棟稼働中</span>
+        <span>📍 千葉県</span>
+        <span>🏢 3棟運営</span>
+        <span>👔 元・不動産業者</span>
+        <span>🆕 福祉未経験スタート</span>
       </div>
-      <div class="c-headline">「飲食店経営が頭打ちで、社会貢献もできる事業を探していた」</div>
+      <div class="c-headline">「不動産事業を営んでいたときに、GHでの問い合わせが多くて気になって調べて参入を決意」</div>
 
       <div class="c-num-row">
-        <div class="c-num"><div class="big">¥0</div><div class="lbl">加盟金</div></div>
-        <div class="c-num"><div class="big">3ヶ月</div><div class="lbl">稼働まで</div></div>
-        <div class="c-num"><div class="big">¥66万</div><div class="lbl">月営業利益</div></div>
+        <div class="c-num"><div class="big">0</div><div class="lbl">福祉経験</div></div>
+        <div class="c-num"><div class="big">3棟</div><div class="lbl">運営施設</div></div>
+        <div class="c-num"><div class="big">マンツー</div><div class="lbl">本部サポート</div></div>
       </div>
 
       <div class="c-body">
-        「居酒屋を15年続けてきましたが、コロナ後の客足が戻らず、別の収益柱を探していました。<br>
-        OWLを選んだ理由は3つあります。①加盟金が0円で初期負担が軽い、②給付金収益が安定している、③本部が物件選定から職員採用まで伴走してくれること。<br>
-        正直、福祉は未経験で不安でしたが、研修30時間と毎週のオンライン相談で、3ヶ月で1棟目を開所できました。今は2棟目も稼働して、月60万円以上の利益が出ています」</div>
+        「不動産事業を営んでいたときにGHでの問い合わせが多くて気になって調べて参入を決意。未経験でもしっかりと支援してくれるようなところを探してOWLさんに出会いました。<br><br>
+        最初は福祉の言葉自体も理解できなかったですが、<strong>今では行政担当者の言う内容など全て理解している自分に成長したな〜と思うことが多くなりました（笑）</strong><br><br>
+        マンツーで支援してくれる支援内容があったからこそ今の自分があると思ってます」</div>
     </div>
   </div>
 
-  <div class="pros"><strong>👍 強み:</strong> 数字（¥66万・3ヶ月・¥0）がパッと目に入る。具体的なストーリーで信頼性が高い。Meta広告のクリエとも連動可能</div>
-  <div class="cons"><strong>👎 弱み:</strong> 1名フォーカスのため、別属性（女性・別業界）が「自分はムリかも」と感じる可能性。B案と組み合わせるのが理想</div>
+  <div class="pros"><strong>👍 強み:</strong> <strong>不動産業→福祉の成長ストーリー</strong>が刺さる。広告クリエ案5（不動産業者向け）と完全連動。「未経験でも行政と対等に話せる」が安心材料として強力</div>
+  <div class="cons"><strong>👎 弱み:</strong> 1名フォーカスのため別属性が「自分はムリかも」と感じる可能性。B案と組み合わせて多様性も見せるのが理想</div>
 </div>
 
 <!-- ============ 比較表 ============ -->
 <div class="compare">
-  <h2>📊 3案 一覧比較</h2>
+  <h2>📊 3案 一覧比較（本番5件反映後）</h2>
   <table class="cmp">
     <thead>
       <tr><th width="160">観点</th><th>A 動画</th><th>B カードグリッド</th><th>C ストーリー型</th></tr>
     </thead>
     <tbody>
-      <tr><th>信頼度</th><td class="center">⭐⭐⭐⭐⭐</td><td class="center">⭐⭐⭐</td><td class="center">⭐⭐⭐⭐</td></tr>
+      <tr><th>主役</th><td>大阪70居室+（規模最大）</td><td>5件全件</td><td>千葉3棟（不動産業者）</td></tr>
+      <tr><th>信頼度</th><td class="center">⭐⭐⭐⭐⭐</td><td class="center">⭐⭐⭐⭐</td><td class="center">⭐⭐⭐⭐</td></tr>
       <tr><th>実装スピード</th><td class="center">2週〜1ヶ月</td><td class="center">1週間</td><td class="center">2週間</td></tr>
       <tr><th>制作コスト</th><td>5〜10万円/本</td><td>0〜2万円（写真撮影代）</td><td>3〜5万円（取材+デザイン）</td></tr>
       <tr><th>SP最適</th><td class="center">⭕️</td><td class="center">⭕️</td><td class="center">⭕️</td></tr>
-      <tr><th>素材転用性</th><td>YouTube・広告・SNS全部使える（最強）</td><td>LP専用</td><td>LP＋広告クリエ</td></tr>
-      <tr><th>加盟者の負担</th><td>撮影30分〜1時間</td><td>写真提供＋短文確認</td><td>取材30分</td></tr>
-      <tr><th>鈴木さん向け感</th><td>「ちゃんと取り組んでる感」最強</td><td>とりあえず形に</td><td>「数字で語る」スタイル</td></tr>
+      <tr><th>素材転用性</th><td>★YouTube・広告・SNS全部使える</td><td>LP専用</td><td>LP＋広告クリエ</td></tr>
+      <tr><th>★広告クリエ連動</th><td>動画広告に直接活用</td><td>静止画クリエ素材化可</td><td>★案5（不動産業者）と最強連動</td></tr>
+      <tr><th>★tocotoco対抗</th><td>★YouTube追い抜ける（@tocotoco0701 登録99人）</td><td>—</td><td>—</td></tr>
     </tbody>
   </table>
 </div>
 
 <!-- 推奨 -->
-<div style="background:#fff;border:3px solid #d4a017;border-radius:12px;padding:18px 22px;">
-  <div style="font-size:12px;color:#d4a017;font-weight:700;letter-spacing:0.1em;margin-bottom:10px;">💡 星崎の推奨</div>
-  <h3 style="font-size:17px;color:#1e3a8a;margin-bottom:10px;">【段階的に B → C → A】の3段ロケット</h3>
+<div style="background:#fff;border:3px solid #d4a017;border-radius:12px;padding:18px 22px;margin-bottom:18px;">
+  <div style="font-size:12px;color:#d4a017;font-weight:700;letter-spacing:0.1em;margin-bottom:10px;">💡 星崎の推奨（本番5件入手＋撮影可能を踏まえて）</div>
+  <h3 style="font-size:17px;color:#1e3a8a;margin-bottom:10px;">【B案を即LP公開 → A案を順次差し替え → C案を広告LPに展開】の3段ロケット</h3>
   <ol style="font-size:13px;line-height:1.95;padding-left:20px;">
-    <li><strong>今週中：B案を仮データで実装</strong>（加盟者承諾が取れるまで匿名イラスト＋仮コメントで）→ LP空白を埋める</li>
-    <li><strong>2週間以内：C案を1名で実装</strong>（最初に承諾取れた加盟者で深堀り）→ 数字訴求でCV後押し</li>
-    <li><strong>1ヶ月以内：A案を3名分撮影</strong>（YouTubeチャンネル用と兼用）→ 信頼度MAX</li>
+    <li><strong>今週中：B案（5枚カード）を本番5件のテキスト＋暫定イラスト/イメージ画像でLP公開</strong>。撮影なしでも信頼性が大幅UP（仮データから本物の声へ）</li>
+    <li><strong>2週間以内：撮影完了次第A案動画を順次LPに差し込み</strong>。主役は大阪70居室+（地域No.1）。同時にYouTube公式チャンネル（@OWL_official 仮）開設して動画を配信</li>
+    <li><strong>1ヶ月以内：C案を不動産業者向けに別LP化</strong>（lp_property-owner/）。広告クリエ案5「既存事業者向け」の遷移先として運用開始</li>
   </ol>
-  <p style="font-size:12px;color:#64748b;margin-top:10px;">※ 加盟者取材の窓口は嶋田社長サイド。今週中に「協力可能な加盟者2〜3名」のリストアップを依頼。</p>
+  <p style="font-size:12px;color:#64748b;margin-top:12px;">★ 撮影スケジュールは <strong>星崎が嶋田社長と調整中</strong>。最初の3名（大阪・千葉・愛知）から開始予定。</p>
 </div>
 
-<footer>OWL福祉事業 ／ お客様の声 LPモックアップ ／ 2026-06-01</footer>
+<!-- 関連資料 -->
+<div style="background:#eff6ff;border-left:4px solid #2563eb;border-radius:6px;padding:12px 16px;font-size:12px;">
+  <strong>📎 関連資料：</strong>
+  <ul style="padding-left:20px;margin-top:6px;line-height:1.85;">
+    <li><a href="lp_implementation_guide.html" style="color:#2563eb;">LP実装指示書 v3</a>（口コミ5件フルテキスト・収益シミュ・全体修正5項目）</li>
+    <li><a href="mockup.html" style="color:#2563eb;">LP モックアップ3案</a>（A共感型／B収益型／C ハイブリッド改修）</li>
+    <li><a href="ad_creative_lineup.html" style="color:#2563eb;">広告クリエ ラインナップ5本</a>（クリエ案5「既存事業者向け」は千葉3棟さんと連動）</li>
+    <li><a href="competitor_research.html" style="color:#2563eb;">競合調査</a>（tocotoco P-MAX運用・YouTube登録99人）</li>
+  </ul>
+</div>
+
+<footer>OWL福祉事業 ／ お客様の声LPモックアップ A/B/C 本番5件反映版 ／ 2026-06-05</footer>
 </div>
 </body>
 </html>
