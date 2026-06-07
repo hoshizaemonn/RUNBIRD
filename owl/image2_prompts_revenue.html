@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>image2.0プロンプト集（B案収益型LP・6セクション）｜OWL福祉事業</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; background: #faf6ed; color: #1a1812; line-height: 1.8; padding: 16px; -webkit-font-smoothing: antialiased; }
+.container { max-width: 980px; margin: 0 auto; }
+.nav-back { display: inline-block; margin-bottom: 12px; padding: 6px 14px; background: #fff; border: 1px solid #d4ceba; border-radius: 20px; font-size: 12px; color: #5a5544; text-decoration: none; }
+h1 { font-family: "Hiragino Mincho ProN", serif; font-size: 26px; color: #14213d; margin-bottom: 8px; letter-spacing: -0.01em; }
+.sub { color: #5a5544; font-size: 13px; margin-bottom: 22px; }
+
+.intro { background: #fff; border-left: 5px solid #c89c2c; padding: 18px 22px; margin-bottom: 22px; border-radius: 4px; font-size: 13.5px; }
+.intro strong { color: #14213d; }
+.policy { background: linear-gradient(135deg,#fffdf7,#f8e3a3); border: 1px solid #c89c2c; padding: 18px 22px; border-radius: 4px; margin-bottom: 22px; font-size: 13px; line-height: 2; }
+.policy-title { font-weight: 900; color: #8a6914; margin-bottom: 8px; letter-spacing: 0.05em; }
+
+.section { background: #fff; border: 1px solid #d4ceba; border-radius: 6px; padding: 26px 28px; margin-bottom: 22px; box-shadow: 0 2px 12px rgba(20,33,61,0.04); }
+.section-num { display: inline-block; background: linear-gradient(135deg,#14213d,#1f3252); color: #c89c2c; width: 38px; height: 38px; border-radius: 50%; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 700; line-height: 38px; text-align: center; font-size: 18px; margin-bottom: 12px; border: 1px solid #c89c2c; box-shadow: 0 0 0 3px #fff, 0 0 0 4px #c89c2c; }
+.section h2 { font-family: "Hiragino Mincho ProN", serif; font-size: 22px; color: #14213d; margin-bottom: 6px; letter-spacing: -0.01em; }
+.section .purpose { font-size: 12px; color: #5a5544; margin-bottom: 16px; font-style: italic; }
+
+.style-base { background: #f8f4e9; border: 1px dashed #b8860b; padding: 14px 18px; border-radius: 4px; margin-bottom: 14px; }
+.style-base-label { font-size: 11px; color: #8a6914; font-weight: 900; letter-spacing: 0.15em; margin-bottom: 6px; }
+.style-base code { font-size: 12px; line-height: 1.85; color: #4a4332; display: block; white-space: pre-wrap; font-family: ui-monospace, Menlo, monospace; }
+
+.prompt-box { background: #1a1812; color: #fdf6e3; padding: 18px 20px; border-radius: 4px; margin: 10px 0; font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; line-height: 1.75; white-space: pre-wrap; overflow-x: auto; border-left: 3px solid #c89c2c; }
+
+.recommend { background: #fffbeb; border-left: 4px solid #c89c2c; padding: 10px 14px; border-radius: 4px; font-size: 12px; margin-top: 10px; }
+.recommend strong { color: #8a6914; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; background: #fff; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #d4ceba; text-align: left; }
+th { background: #14213d; color: #f8e3a3; font-weight: 900; font-size: 12px; letter-spacing: 0.05em; }
+
+.ornament { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 28px auto 18px; max-width: 360px; }
+.ornament .line { flex: 1; height: 1px; background: linear-gradient(90deg,transparent,#c89c2c); }
+.ornament .line.r { background: linear-gradient(90deg,#c89c2c,transparent); }
+.ornament .diamond { width: 8px; height: 8px; background: #c89c2c; transform: rotate(45deg); }
+
+.flow-box { background: #14213d; color: #fdf6e3; padding: 22px 26px; border-radius: 4px; margin: 22px 0; font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; line-height: 2; }
+.flow-box .arrow { color: #f8e3a3; font-weight: 700; }
+
+.path { font-family: ui-monospace, Menlo, monospace; background: #1a1812; color: #f8e3a3; padding: 8px 14px; border-radius: 4px; font-size: 11px; display: inline-block; }
+
+footer { text-align: center; color: #8a7e63; font-size: 11px; padding: 24px 0; }
+
+@media (max-width: 760px) {
+  .section { padding: 20px 18px; }
+  h1 { font-size: 22px; }
+  .section h2 { font-size: 18px; }
+  .prompt-box { font-size: 10.5px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="index.html" class="nav-back">← 資料一覧に戻る</a>
+
+<h1>image2.0 プロンプト集（B案 収益シミュレーション型）</h1>
+<p class="sub">2026-06-07 ／ 6セクション分のプロンプト ／ 既存 v2_00_全体.png のトーン継承</p>
+
+<div class="intro">
+  <strong>📝 制作方針：</strong>既存「v2_00_全体.png」（嶋田社長向け提案・2026-05-21）のベージュ×ネイビー×ゴールド×明朝体トーンを継承し、image2.0で6セクションを画像生成 → ベスト案選定 → Claude DesignでHTML化、というワークフロー。<br><br>
+  <strong>📁 保存先：</strong><br>
+  <span class="path">受託事業/クライアント/RUNBIRD/福祉事業/新LP_AEO最適化版/_image2_prompts/</span>
+</div>
+
+<div class="flow-box">
+<span class="arrow">①</span> image2.0で6セクションそれぞれ生成（各2-5枚バリエーション）<br>
+<span class="arrow">②</span> ベスト案を _image2_prompts/0X_section/ フォルダに保存<br>
+<span class="arrow">③</span> 全セクション選定後、Claude DesignでHTML化<br>
+<span class="arrow">④</span> 河合さんにWordPress実装依頼<br>
+<span class="arrow">⑤</span> 鈴木さん最終承認 → 本番公開
+</div>
+
+<!-- 共通スタイル -->
+<div class="policy">
+  <div class="policy-title">🎨 全セクション共通スタイル（プロンプト冒頭に必ずコピペ）</div>
+  <div class="style-base">
+<code>Japanese editorial magazine layout, premium financial brochure aesthetic.
+Color palette: warm cream beige #faf6ed background, deep navy #14213d primary, antique gold #c89c2c accent, soft black #1a1812 text.
+Typography: refined Japanese serif (明朝 Mincho) for headlines, italic Cormorant Garamond serif for English/numbers, generous letter spacing.
+Minimal modern Japan, thin gold rule lines (1px), small ornamental diamond markers ◆.
+Generous white space, calm and confident, no clutter.
+Subtle texture: very faint paper grain or fine grid pattern.
+High-end real estate or premium investment brochure feel.
+No photography unless specified. Vector/typography-driven design.</code>
+  </div>
+</div>
+
+<div class="ornament"><div class="line"></div><div class="diamond"></div><div class="line r"></div></div>
+
+<!-- ① FV -->
+<div class="section">
+  <div class="section-num">1</div>
+  <h2>FV（Hero Section）</h2>
+  <p class="purpose">用途：LP最上部のキャッチコピー＋3KPI＋CTA／推奨3〜4枚バリエーション</p>
+
+  <div class="prompt-box">Hero section of a premium Japanese FC (franchise) investment LP.
+Layout: full width, centered text, dark navy background with subtle gold grid texture overlay.
+
+Foreground content (text in Japanese):
+- Small eyebrow text top: "✦ FOR INVESTORS &amp; FOUNDERS ✦" in gold caps small letters
+- Main headline (Mincho serif, white):
+  "年間 1,800万円。"
+  "月次黒字化、最短4ヶ月。"
+  with the numbers "1,800" and "4" in large italic Cormorant Garamond gold (200pt+),
+  with subtle gold text-shadow underglow
+- Subhead in cream white: 売上の約9割が国・自治体の給付金。景気変動に強い、ストック型の制度ビジネス。OWLは、加盟金0円で始められる、障がい者グループホームFCです。
+- 3 KPI cards in horizontal row below:
+  [¥0 / Entry Fee]  [4 Months / to Profit]  [90% / Subsidy]
+  each in glass-morphism style with gold border, italic serif numbers in gold
+- Two CTA buttons below:
+  Primary "✦ 無料・収益シミュレーション" (gold gradient on dark)
+  Secondary "▸ 資料を請求する" (gold outline, transparent)
+
+Background: deep navy #14213d to #0a1628 gradient, very subtle gold mesh pattern overlay 8% opacity, soft golden radial glow from center.
+Add thin gold horizontal rule lines as decorative dividers.
+Aspect ratio 16:9, ultra-premium magazine cover style, no people in image.</div>
+
+  <div class="recommend"><strong>💡 重点：</strong>1,800と4を超大文字イタリックゴールドで主役化。ネイビー×ゴールドの重厚感を最優先。</div>
+</div>
+
+<!-- ② SUMMARY -->
+<div class="section">
+  <div class="section-num">2</div>
+  <h2>SUMMARY（数字で見るなぜOWLか）</h2>
+  <p class="purpose">用途：3つの大数字でビジネス特性を即提示</p>
+
+  <div class="prompt-box">Editorial summary section of a Japanese premium investment brochure.
+Dark navy background (#0d1d35) with thin gold grid pattern.
+
+Top centered title:
+- English eyebrow: "— SUMMARY —" in tiny gold caps
+- Japanese headline (Mincho serif, cream white):
+  "数字で見る、なぜOWLか。"
+  with "なぜOWLか" in italic Cormorant gold
+
+Below: 3 luxurious cards in horizontal grid with golden inner borders:
+
+Card 1 - Revenue:
+- Top label "Revenue" in gold caps small
+- Huge italic Cormorant gold "1,800万円" (180pt)
+- Caption below: "16-20居室規模 / 想定年間収益（実績ベース）"
+
+Card 2 - Profitability:
+- Top label "Profitability"
+- Huge italic gold "4ヶ月"
+- Caption: "月次黒字化までの最短実績期間"
+
+Card 3 - Stability:
+- Top label "Stability"
+- Huge italic gold "90%"
+- Caption: "売上に占める国・自治体給付金の比率"
+
+Each card has:
+- Glass morphism dark background
+- Inner double border in thin gold
+- Small ornament "✦" at top center
+- Subtle gold radial glow
+
+Two horizontal subsidiary panels at bottom:
+- "Initial Cost / 加盟金0円＋月額相談料のみ"
+- "Market Size / 障害福祉サービス市場5.2兆円規模"
+
+Layout: cinematic, lots of breathing room, magazine spread feel.
+Aspect ratio 16:9.</div>
+
+  <div class="recommend"><strong>💡 重点：</strong>3カードの並びが等間隔でセンシブル。各数字の存在感が均等＝どれも重要というメッセージ。</div>
+</div>
+
+<!-- ③ REVENUE SIMULATION -->
+<div class="section" style="border:2px solid #c89c2c;background:#fffbeb;">
+  <div class="section-num">3</div>
+  <h2>REVENUE SIMULATION ★最重要</h2>
+  <p class="purpose">用途：規模別収益カードの主役見せ／推奨5〜6枚生成</p>
+
+  <div class="prompt-box">Premium investment simulation section, editorial magazine layout.
+Dark cinema background (deep navy to abyss black gradient) with central gold radial glow.
+
+Top centered title:
+- English eyebrow: "— REVENUE SIMULATION —" gold caps
+- Japanese headline (Mincho cream white):
+  "居室規模別、年間収益。"
+  with "年間収益" in italic Cormorant gold large
+
+Below: 3 luxury price-tier cards in horizontal grid, like premium subscription tiers:
+
+Card 1 - SMALL (left):
+- Top tag "Small" in italic Cormorant gold caps
+- "8〜10居室" (Mincho cream)
+- "Annual Revenue" eyebrow
+- Huge italic gold number "700万円" (180pt+) with gold underglow
+- Below: itemized list (Monthly Revenue ¥1.75M / Operating Cost ¥1.17M / Operating Profit ¥0.58M / Residents 8-10 / Staff 3-4)
+- Italic numbers, thin gold dividers between rows
+- Card has dark background, thin gold double border
+
+Card 2 - MEDIUM (center, ★featured):
+- Top banner "★ MOST POPULAR" in solid gold strip
+- Top tag "Medium" italic Cormorant
+- "12〜14居室"
+- Huge gold "1,200万円"
+- Items: ¥3.00M / ¥2.00M / ¥1.00M / 12-14 / 5-6
+- Slightly scaled up (1.05x), extra gold glow halo, prominent
+- Bright gold border (2px)
+
+Card 3 - LARGE (right):
+- Top tag "Large"
+- "16〜20居室"
+- Huge gold "1,800万円"
+- Items: ¥4.50M / ¥3.00M / ¥1.50M / 16-20 / 7-9
+- Same style as SMALL
+
+Below cards: thin disclaimer note panel in dark with gold left border:
+"※ OWL加盟者の実績例に基づく想定参考値です。"
+
+Overall mood: Apple Vision Pro pricing page meets vintage financial brochure.
+Aspect ratio 16:9 wide.
+Generous luxury spacing.</div>
+
+  <div class="recommend"><strong>💡 重点：</strong>最重要セクション。MEDIUMが「★MOST POPULAR」で目立つ三段構成。数字を彫刻的に見せて、価格表として読みやすく。<strong>5-6枚生成して最良を選ぶ</strong>。</div>
+</div>
+
+<!-- ④ TIMELINE -->
+<div class="section">
+  <div class="section-num">4</div>
+  <h2>PROFITABILITY TIMELINE（月次黒字化までの道のり）</h2>
+  <p class="purpose">用途：0-4ヶ月のロードマップで具体性を見せる</p>
+
+  <div class="prompt-box">Timeline infographic for profitability milestones, editorial design.
+Cream beige background (#fbf8f0), elegant editorial spread.
+
+Top title:
+- Eyebrow "— PROFITABILITY TIMELINE —" gold caps
+- Japanese (Mincho navy):
+  "月次黒字化までの、道のり。"
+  with "道のり" in italic Cormorant Garamond gold
+
+Center: vertical timeline with 5 milestones, connected by elegant gold gradient line:
+
+Step 0 - "Month 0 — Opening"
+  Title: 開業準備〜オープン
+  Description: 物件契約・内装・スタッフ採用・行政申請を完了
+  Marker: cream circle with grey ring
+
+Step 1 - "Month 1"
+  Title: 入居開始
+  Description: 利用者の入居受入開始
+  Marker: same as 0
+
+Step 2 - "Month 2"
+  Title: 稼働率向上
+  Description: 給付金請求が開始
+  Marker: same as 0
+
+Step 3 - "Month 3"
+  Title: 満床に近づく
+  Description: 最短実績では開設後2.5ヶ月で満床のケースも
+  Marker: same as 0
+
+Step 4 ★ - "Month 4 ★ Profit"
+  Title (in burgundy red): 月次黒字化、達成。
+  Description: 給付金収入が運営コストを上回り、月次キャッシュフローが黒字に。
+  Marker: GOLD glowing circle with gold halo glow
+  Background: this step has soft gold-cream box highlight with gold border
+
+Months labels in italic Cormorant gold caps small.
+Titles in Mincho serif bold navy.
+Descriptions in clean sans-serif.
+Generous vertical spacing between steps.
+Aspect ratio: 3:4 portrait or 16:9 landscape both work.</div>
+
+  <div class="recommend"><strong>💡 重点：</strong>最後のMonth 4だけ金色グロー＋黒字化メッセージで強調。クライマックス感を出す。</div>
+</div>
+
+<!-- ⑤ OWNERS -->
+<div class="section">
+  <div class="section-num">5</div>
+  <h2>OWNER SUCCESS STORIES（オーナー実績）</h2>
+  <p class="purpose">用途：大阪70居室+を主役にした規模感ストーリー</p>
+
+  <div class="prompt-box">Premium testimonial/case study spread, editorial magazine style.
+Cream background with one featured case study card prominently displayed.
+
+Top title:
+- Eyebrow "— SUCCESS STORIES —"
+- Japanese Mincho navy: "規模別、オーナー実績。"
+
+Below: featured large case study card (the largest one - Osaka):
+
+Card design:
+- Top header bar (dark navy with gold details):
+  - Gold tag "Osaka" (geometric badge with thin gold border)
+  - Large italic Cormorant gold "70+ Rooms" (centered or left)
+  - Small italic cream text right: "既存事業者・コロナ禍からの転身"
+
+- Body (cream white):
+  - Headline (Mincho navy, larger):
+    「コロナ禍で打撃を受けた中、OWLと出会い開業。
+     今では地域では一番大きな信頼を得ています。」
+    with gold left border quote mark accent
+
+  - Quote body (gray text, Mincho or sans):
+    long testimonial paragraph with key phrases highlighted in burgundy red:
+    「60居室を超える事業所を開設し地域では一番大きな信頼を得ております」
+    inside a subtle cream panel with thin warm border
+
+Card has overall:
+- Subtle warm shadow
+- Thin gold double border
+- Inner corner ornaments
+
+Below: 4 smaller secondary case study cards in 2x2 grid:
+- Chiba / 3 Facilities (Real Estate background)
+- Fukushima / 4 Facilities (Care Business)
+- Aichi / 2 Facilities (Multi-HQ Comparison)
+- Mie / 2 Facilities (Parent Story)
+
+Each mini-card has same header pattern (smaller), single headline, no full quote.
+
+Magazine spread feel, generous spacing.
+Aspect ratio 16:9 or 4:5.</div>
+
+  <div class="recommend"><strong>💡 重点：</strong>大阪70居室+を主役の大カードに、他4件は2x2グリッドで脇役。視線の流れを「大→小4」で導く。</div>
+</div>
+
+<!-- ⑥ CTA -->
+<div class="section">
+  <div class="section-num">6</div>
+  <h2>CTA（無料収益シミュレーション）</h2>
+  <p class="purpose">用途：最終CTAブロック</p>
+
+  <div class="prompt-box">Final premium CTA section, dramatic invitation to action.
+Deep navy abyss gradient background with subtle gold mesh texture and central golden radial glow.
+
+Top centered:
+- Eyebrow "— GET STARTED —" in gold tiny caps
+- Headline (Mincho cream white serif):
+  "まずは、無料・収益シミュレーションから。"
+  with "無料・収益シミュレーション" in italic Cormorant Garamond gold large
+
+Subhead (cream white):
+"ご希望の規模・地域をお伝えいただければ、個別物件・地域別の精緻な収支シミュレーションを24時間以内にお送りします。"
+with "個別物件・地域別" highlighted in gold.
+
+Two large CTA buttons in horizontal pair:
+Primary:
+  "✦ 無料・収益シミュレーション"
+  gold gradient background (light gold to deeper gold), navy text, 3D drop shadow, italic serif font
+
+Secondary:
+  "▸ 資料を請求する"
+  transparent with gold outline border, cream text
+
+Below buttons: small caption "お電話でのお問い合わせ — 0120-540-522（平日 9:00〜18:00）"
+with phone number in italic Cormorant gold large
+
+Decorative elements:
+- Top: gold ornament diamond ✦ with thin lines extending left and right
+- Subtle gold corner ornaments (top-left, bottom-right)
+- Whole section feels like a wax-sealed envelope or premium invitation
+
+Aspect ratio 16:9, dramatic but elegant.</div>
+
+  <div class="recommend"><strong>💡 重点：</strong>「無料・収益シミュレーション」を主CTAに（資料請求より深いリード）。封蝋を押した招待状のような上品さで締めくくる。</div>
+</div>
+
+<!-- 生成後チェックリスト -->
+<div class="section">
+  <div class="section-num">✓</div>
+  <h2>生成後の判定チェックリスト</h2>
+  <p class="purpose">各セクション画像を生成したら、以下6項目で判定</p>
+
+  <table>
+    <thead><tr><th width="40">#</th><th>評価項目</th><th>合格条件</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>v2_00_全体.png のトーン継承</td><td>ベージュ/ネイビー/ゴールド比率が近い</td></tr>
+      <tr><td>2</td><td>数字の主役感</td><td>1,800万円・4ヶ月・90% が即視認できる</td></tr>
+      <tr><td>3</td><td>河合さん指示反映</td><td>1.5ヶ月／投資回収 が一切ない</td></tr>
+      <tr><td>4</td><td>読みやすさ</td><td>テキストが正しく日本語表示・誤字なし</td></tr>
+      <tr><td>5</td><td>高級感</td><td>駅前広告ではなくプライベートバンク資料の質感</td></tr>
+      <tr><td>6</td><td>スマホ転用可能</td><td>縦長アスペクトでも構図が崩れない</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 関連資料 -->
+<div class="section">
+  <div class="section-num">📎</div>
+  <h2>関連資料</h2>
+  <table>
+    <tbody>
+      <tr><td>既存リファレンス画像</td><td><span class="path">受託事業/クライアント/RUNBIRD/福祉事業/新LP_AEO最適化版/03_嶋田社長向け提案/v2_00_全体.png</span></td></tr>
+      <tr><td>既存提案PDF</td><td><span class="path">同上ディレクトリ/OWL福祉事業LP_リニューアル提案_20260521.pdf</span></td></tr>
+      <tr><td>B案HTML版（参考）</td><td><a href="lp_revenue_simulation.html">lp_revenue_simulation.html</a></td></tr>
+      <tr><td>LP実装指示書</td><td><a href="lp_implementation_guide.html">lp_implementation_guide.html</a></td></tr>
+      <tr><td>本Markdown原本</td><td><span class="path">_image2_prompts/B案_収益シミュレーション型_image2_プロンプト集.md</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>OWL福祉事業 ／ image2.0プロンプト集 B案 ／ 2026-06-07</footer>
+
+</div>
+</body>
+</html>
