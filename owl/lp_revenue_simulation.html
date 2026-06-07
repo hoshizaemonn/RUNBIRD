@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>収益シミュレーション型LP（B案フル版）｜OWL福祉事業</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-dark: #0a1628;
+  --bg-darker: #050d1a;
+  --navy: #14213d;
+  --navy-light: #2e5c9e;
+  --gold: #d4a017;
+  --gold-bright: #f4c842;
+  --gold-light: #fef3c7;
+  --red: #b91c1c;
+  --green: #047857;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-300: #cbd5e1;
+  --gray-600: #475569;
+  --gray-900: #0f172a;
+}
+html { scroll-behavior: smooth; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif; color: var(--gray-900); line-height: 1.8; background: #fff; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.lp-container { max-width: 100%; margin: 0 auto; overflow-x: hidden; }
+.inner { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+/* 開発者ヘッダー */
+.dev-header { background: #050d1a; color: #fff; padding: 10px 16px; text-align: center; font-size: 11px; }
+.dev-header a { color: var(--gold-bright); }
+.dev-header strong { color: var(--gold-bright); }
+
+/* ========== FV ========== */
+.fv { background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 50%, var(--navy) 100%); color: #fff; padding: 70px 20px 90px; position: relative; overflow: hidden; }
+.fv::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 20%, rgba(212,160,23,0.12), transparent 40%), radial-gradient(circle at 80% 80%, rgba(46,92,158,0.18), transparent 40%); }
+.fv-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+.fv-eyebrow { display: inline-block; background: rgba(212,160,23,0.18); color: var(--gold-bright); border: 1px solid rgba(212,160,23,0.4); font-size: 12px; font-weight: 900; padding: 7px 16px; border-radius: 4px; letter-spacing: 0.1em; margin-bottom: 20px; }
+.fv h1 { font-size: 44px; font-weight: 900; line-height: 1.3; margin-bottom: 18px; letter-spacing: -0.02em; }
+.fv h1 .big-number { color: var(--gold-bright); font-size: 56px; letter-spacing: -0.04em; display: inline-block; }
+.fv .lead { font-size: 16px; opacity: 0.95; line-height: 1.95; margin-bottom: 32px; }
+.fv .lead strong { color: var(--gold-bright); font-weight: 700; }
+.fv .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px; }
+.fv .kpi { background: rgba(255,255,255,0.05); border: 1px solid rgba(212,160,23,0.3); border-radius: 8px; padding: 16px 10px; text-align: center; backdrop-filter: blur(10px); }
+.fv .kpi .num { font-size: 26px; font-weight: 900; color: var(--gold-bright); line-height: 1.2; letter-spacing: -0.02em; }
+.fv .kpi .lbl { font-size: 11px; opacity: 0.85; margin-top: 6px; }
+.fv-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 18px 28px; border-radius: 8px; font-weight: 900; font-size: 15px; text-decoration: none; transition: transform 0.15s, box-shadow 0.15s; }
+.btn-primary { background: linear-gradient(135deg, var(--gold-bright), var(--gold)); color: var(--bg-dark); flex: 1; min-width: 200px; box-shadow: 0 6px 22px rgba(212,160,23,0.5); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(212,160,23,0.6); }
+.btn-secondary { background: rgba(255,255,255,0.08); color: #fff; border: 2px solid rgba(255,255,255,0.4); flex: 1; min-width: 200px; backdrop-filter: blur(10px); }
+.btn-secondary:hover { background: rgba(255,255,255,0.16); }
+
+/* ========== セクション共通 ========== */
+section { padding: 70px 0; }
+section h2 { font-size: 32px; font-weight: 900; text-align: center; color: var(--navy); margin-bottom: 18px; letter-spacing: -0.01em; line-height: 1.4; }
+section h2 .accent { color: var(--gold); }
+section h2 .small { display: block; font-size: 14px; color: var(--gold); margin-bottom: 6px; letter-spacing: 0.2em; font-weight: 700; }
+section .section-lead { font-size: 15px; text-align: center; color: var(--gray-600); margin-bottom: 48px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.95; }
+
+/* ========== ① 数字で見る、なぜOWLか ========== */
+.summary { background: var(--bg-dark); color: #fff; padding: 70px 0; }
+.summary h2 { color: #fff; }
+.summary h2 .accent { color: var(--gold-bright); }
+.summary .section-lead { color: rgba(255,255,255,0.7); }
+.summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+.summary-card { background: linear-gradient(135deg, rgba(212,160,23,0.08), rgba(46,92,158,0.12)); border: 1px solid rgba(212,160,23,0.25); border-radius: 12px; padding: 28px 20px; text-align: center; }
+.summary-card .icon { font-size: 32px; margin-bottom: 12px; }
+.summary-card .big { font-size: 38px; font-weight: 900; color: var(--gold-bright); line-height: 1; letter-spacing: -0.02em; }
+.summary-card .big .unit { font-size: 16px; opacity: 0.85; }
+.summary-card .lbl { font-size: 13px; margin-top: 10px; opacity: 0.9; line-height: 1.6; }
+.summary-bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.summary-bottom .item { background: rgba(255,255,255,0.04); border-left: 3px solid var(--gold); padding: 16px 20px; border-radius: 4px; }
+.summary-bottom .item-title { font-size: 13px; color: var(--gold-bright); font-weight: 900; margin-bottom: 4px; letter-spacing: 0.05em; }
+.summary-bottom .item-desc { font-size: 13px; opacity: 0.9; line-height: 1.85; }
+
+/* ========== ② 市場機会 ========== */
+.market { background: var(--gray-50); }
+.market-headline { text-align: center; font-size: 22px; font-weight: 900; color: var(--navy); margin-bottom: 32px; line-height: 1.5; }
+.market-headline .gap-num { color: var(--red); font-size: 36px; }
+.market-compare { background: #fff; border: 1px solid var(--gray-300); border-radius: 16px; padding: 36px 28px; box-shadow: 0 4px 20px rgba(20,33,61,0.06); }
+.market-bars { display: grid; grid-template-columns: 100px 1fr 100px; gap: 14px; align-items: center; margin: 18px 0; font-size: 14px; }
+.market-bars .label { font-weight: 700; color: var(--navy); }
+.market-bars .bar { background: var(--gray-100); border-radius: 4px; height: 32px; overflow: hidden; position: relative; }
+.market-bars .bar .fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 12px; color: #fff; font-weight: 900; font-size: 13px; }
+.market-bars .bar .fill.full { background: linear-gradient(90deg, var(--navy), var(--navy-light)); width: 100%; }
+.market-bars .bar .fill.partial { background: linear-gradient(90deg, var(--gray-300), var(--gray-600)); width: 1.4%; min-width: 60px; padding-left: 0; padding-right: 12px; justify-content: flex-end; }
+.market-bars .value { text-align: right; font-weight: 900; color: var(--navy); font-size: 16px; }
+.market-source { font-size: 11px; color: var(--gray-600); margin-top: 16px; text-align: center; }
+.market-insight { background: var(--gold-light); border-left: 4px solid var(--gold); padding: 16px 20px; border-radius: 4px; margin-top: 24px; font-size: 14px; line-height: 1.85; }
+.market-insight strong { color: var(--red); }
+
+/* ========== ③ なぜ安定？ ========== */
+.stable { background: #fff; }
+.stable-main { display: grid; grid-template-columns: 240px 1fr; gap: 40px; align-items: center; max-width: 760px; margin: 0 auto; }
+.stable-pie-wrap { position: relative; }
+.stable-pie { background: conic-gradient(var(--gold) 0deg 324deg, var(--gray-300) 324deg 360deg); border-radius: 50%; width: 240px; height: 240px; position: relative; box-shadow: 0 8px 28px rgba(212,160,23,0.25); }
+.stable-pie::after { content: ""; position: absolute; inset: 32px; background: #fff; border-radius: 50%; }
+.stable-pie-label { position: absolute; inset: 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.stable-pie-label .big { font-size: 48px; font-weight: 900; color: var(--navy); line-height: 1; }
+.stable-pie-label .small { font-size: 11px; color: var(--gray-600); margin-top: 6px; text-align: center; }
+.stable-text h3 { font-size: 24px; font-weight: 900; color: var(--navy); margin-bottom: 14px; line-height: 1.4; }
+.stable-text p { font-size: 14px; color: var(--gray-900); line-height: 2; }
+.stable-text strong { color: var(--navy); }
+.stable-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 800px; margin: 36px auto 0; }
+.stable-feat { background: var(--gray-50); border: 1px solid var(--gray-300); border-radius: 8px; padding: 16px; text-align: center; }
+.stable-feat .icon { font-size: 26px; margin-bottom: 8px; }
+.stable-feat .title { font-size: 13px; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+.stable-feat .desc { font-size: 11.5px; color: var(--gray-600); line-height: 1.65; }
+
+/* ========== ④★ 収益シミュレーション（メイン） ========== */
+.simulation { background: linear-gradient(180deg, var(--bg-dark), var(--navy)); color: #fff; padding: 80px 0; position: relative; }
+.simulation::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 0%, rgba(212,160,23,0.18), transparent 50%); }
+.simulation > .inner { position: relative; z-index: 2; }
+.simulation h2 { color: #fff; }
+.simulation h2 .accent { color: var(--gold-bright); }
+.simulation .section-lead { color: rgba(255,255,255,0.85); }
+
+.sim-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 24px; }
+.sim-card { background: rgba(255,255,255,0.04); border: 2px solid rgba(212,160,23,0.4); border-radius: 14px; padding: 0; overflow: hidden; transition: transform 0.2s; }
+.sim-card.middle { border-color: var(--gold-bright); position: relative; transform: scale(1.03); box-shadow: 0 8px 32px rgba(212,160,23,0.3); }
+.sim-card.middle::before { content: "★ MOST POPULAR"; position: absolute; top: -1px; left: -1px; right: -1px; background: var(--gold-bright); color: var(--bg-dark); font-size: 11px; font-weight: 900; padding: 5px; text-align: center; letter-spacing: 0.1em; }
+.sim-card .head { padding: 32px 20px 20px; text-align: center; background: rgba(0,0,0,0.18); border-bottom: 1px solid rgba(212,160,23,0.2); }
+.sim-card.middle .head { padding-top: 44px; }
+.sim-card .tier { font-size: 11px; font-weight: 900; color: var(--gold-bright); letter-spacing: 0.15em; margin-bottom: 8px; }
+.sim-card .rooms { font-size: 22px; font-weight: 900; margin-bottom: 16px; }
+.sim-card .annual { font-size: 14px; opacity: 0.85; margin-bottom: 4px; }
+.sim-card .amount { font-size: 44px; font-weight: 900; color: var(--gold-bright); line-height: 1; letter-spacing: -0.03em; }
+.sim-card .amount .unit { font-size: 18px; }
+.sim-card .body { padding: 20px 22px; }
+.sim-card .body-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 13px; }
+.sim-card .body-row:last-child { border-bottom: none; }
+.sim-card .body-row .lbl { opacity: 0.7; }
+.sim-card .body-row .val { font-weight: 900; }
+.sim-card .body-row.profit .val { color: var(--gold-bright); }
+
+.sim-note { background: rgba(0,0,0,0.25); border-left: 4px solid var(--gold-bright); border-radius: 4px; padding: 16px 20px; font-size: 12.5px; line-height: 1.85; opacity: 0.92; }
+.sim-note strong { color: var(--gold-bright); }
+
+/* ========== ⑤ 月次黒字化タイムライン ========== */
+.timeline { background: #fff; }
+.timeline-track { position: relative; margin: 40px 0 30px; padding-left: 20px; }
+.timeline-track::before { content: ""; position: absolute; left: 0; top: 16px; bottom: 16px; width: 3px; background: linear-gradient(180deg, var(--gray-300), var(--gold)); border-radius: 2px; }
+.timeline-step { position: relative; padding: 14px 0 14px 30px; }
+.timeline-step::before { content: ""; position: absolute; left: -27px; top: 18px; width: 16px; height: 16px; background: var(--gray-300); border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 2px var(--gray-300); }
+.timeline-step.profit::before { background: var(--gold); box-shadow: 0 0 0 2px var(--gold); }
+.timeline-step .month { font-size: 13px; font-weight: 900; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 4px; }
+.timeline-step .title { font-size: 16px; font-weight: 900; color: var(--navy); margin-bottom: 4px; }
+.timeline-step .desc { font-size: 13px; color: var(--gray-600); line-height: 1.85; }
+.timeline-step.profit { background: var(--gold-light); padding: 16px 16px 16px 30px; border-radius: 8px; margin-left: -10px; padding-left: 40px; }
+.timeline-step.profit .title { color: var(--red); }
+
+/* ========== ⑥ 加盟金0円の仕組み ========== */
+.zerocost { background: var(--gray-50); }
+.zerocost-headline { font-size: 22px; font-weight: 900; text-align: center; color: var(--navy); margin-bottom: 28px; line-height: 1.5; }
+.zerocost-headline .accent { color: var(--red); }
+.zerocost-compare { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 4px 20px rgba(20,33,61,0.06); margin-bottom: 24px; }
+.zerocost-compare table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.zerocost-compare th, .zerocost-compare td { padding: 14px 12px; text-align: center; border-bottom: 1px solid var(--gray-300); }
+.zerocost-compare th { background: var(--navy); color: var(--gold-bright); font-weight: 900; font-size: 13px; letter-spacing: 0.05em; }
+.zerocost-compare th:first-child { text-align: left; padding-left: 20px; }
+.zerocost-compare td:first-child { text-align: left; padding-left: 20px; font-weight: 700; color: var(--navy); }
+.zerocost-compare .owl { background: var(--gold-light); color: var(--red); font-weight: 900; }
+.zerocost-compare .other { color: var(--gray-600); }
+
+/* ========== ⑦ 開業の流れ ========== */
+.flow { background: #fff; }
+.flow-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; position: relative; margin-bottom: 28px; }
+.flow-step { background: var(--gray-50); border: 1px solid var(--gray-300); border-radius: 10px; padding: 24px 14px 20px; text-align: center; position: relative; }
+.flow-step:not(:last-child)::after { content: "▶"; position: absolute; right: -14px; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 18px; z-index: 2; }
+.flow-step .step-num { background: var(--navy); color: var(--gold-bright); width: 36px; height: 36px; border-radius: 50%; font-weight: 900; line-height: 36px; font-size: 14px; margin: 0 auto 12px; }
+.flow-step .step-title { font-size: 13.5px; font-weight: 900; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
+.flow-step .step-desc { font-size: 11.5px; color: var(--gray-600); line-height: 1.7; }
+.flow-banner { background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: #fff; border-radius: 10px; padding: 22px 28px; text-align: center; font-size: 16px; font-weight: 700; }
+.flow-banner .accent { color: var(--gold-bright); font-size: 24px; font-weight: 900; }
+
+/* ========== ⑧★ オーナー実績 ========== */
+.owners { background: var(--gray-50); }
+.owner-card { background: #fff; border: 1px solid var(--gray-300); border-radius: 12px; padding: 0; margin-bottom: 18px; overflow: hidden; box-shadow: 0 2px 10px rgba(20,33,61,0.04); }
+.owner-card .head { background: linear-gradient(135deg, var(--navy), var(--navy-light)); color: #fff; padding: 20px 26px; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.owner-card .head .region { background: rgba(212,160,23,0.25); color: var(--gold-bright); padding: 4px 12px; border-radius: 4px; font-weight: 900; font-size: 13px; }
+.owner-card .head .scale { font-size: 22px; font-weight: 900; }
+.owner-card .head .bg { font-size: 12px; opacity: 0.85; margin-left: auto; }
+.owner-card .body { padding: 24px 26px; }
+.owner-card .headline { font-size: 17px; font-weight: 900; color: var(--navy); line-height: 1.5; margin-bottom: 14px; padding-left: 14px; border-left: 4px solid var(--gold); }
+.owner-card .quote { font-size: 14px; line-height: 2; color: var(--gray-900); background: var(--gray-50); padding: 16px 18px; border-radius: 6px; }
+.owner-card .quote strong { color: var(--red); font-weight: 900; }
+
+/* ========== ⑨ FAQ ========== */
+.faq { background: #fff; }
+.faq-item { background: var(--gray-50); border: 1px solid var(--gray-300); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+.faq-q { padding: 20px 24px; font-weight: 700; font-size: 14px; color: var(--navy); display: flex; align-items: flex-start; gap: 14px; background: #fff; }
+.faq-q::before { content: "Q"; background: var(--gold); color: var(--navy); width: 28px; height: 28px; border-radius: 50%; font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.faq-a { padding: 0 24px 20px 66px; font-size: 13px; color: var(--gray-600); line-height: 1.95; }
+.faq-a strong { color: var(--navy); }
+
+/* ========== ⑩ CTA ========== */
+.cta-section { background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 50%, var(--navy) 100%); color: #fff; text-align: center; padding: 80px 20px; position: relative; overflow: hidden; }
+.cta-section::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 50% 50%, rgba(212,160,23,0.18), transparent 60%); }
+.cta-section > .inner { position: relative; z-index: 2; }
+.cta-section h2 { color: #fff; font-size: 36px; }
+.cta-section h2 .accent { color: var(--gold-bright); }
+.cta-section .cta-lead { font-size: 16px; opacity: 0.95; margin-bottom: 36px; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.95; }
+.cta-section .cta-btns { display: flex; gap: 14px; max-width: 640px; margin: 0 auto; flex-wrap: wrap; }
+.cta-section .btn-primary { background: linear-gradient(135deg, var(--gold-bright), var(--gold)); color: var(--bg-dark); }
+.cta-section .btn-secondary { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); color: #fff; }
+.cta-section .cta-foot { margin-top: 24px; font-size: 13px; opacity: 0.85; }
+.cta-section .cta-foot strong { color: var(--gold-bright); font-size: 16px; }
+
+/* ========== フッター ========== */
+.footer { background: #050d1a; color: #94a3b8; padding: 32px 16px; text-align: center; font-size: 12px; }
+.footer p { margin: 4px 0; }
+
+/* ========== スマホ ========== */
+@media (max-width: 760px) {
+  .fv { padding: 50px 20px 70px; }
+  .fv h1 { font-size: 28px; }
+  .fv h1 .big-number { font-size: 38px; }
+  .fv .lead { font-size: 14px; }
+  .fv .kpi-row { gap: 8px; }
+  .fv .kpi .num { font-size: 20px; }
+  section { padding: 56px 0; }
+  section h2 { font-size: 24px; }
+  .summary-grid { grid-template-columns: 1fr; }
+  .summary-card .big { font-size: 32px; }
+  .summary-bottom { grid-template-columns: 1fr; }
+  .market-bars { grid-template-columns: 80px 1fr 80px; font-size: 12px; }
+  .market-bars .value { font-size: 13px; }
+  .market-headline { font-size: 18px; }
+  .market-headline .gap-num { font-size: 28px; }
+  .stable-main { grid-template-columns: 1fr; gap: 24px; justify-items: center; text-align: center; }
+  .stable-features { grid-template-columns: 1fr; }
+  .sim-grid { grid-template-columns: 1fr; gap: 14px; }
+  .sim-card.middle { transform: none; }
+  .sim-card .amount { font-size: 36px; }
+  .timeline-track { padding-left: 14px; }
+  .timeline-step::before { width: 12px; height: 12px; left: -22px; }
+  .zerocost-compare { padding: 18px; }
+  .zerocost-compare table { font-size: 12px; }
+  .zerocost-compare th, .zerocost-compare td { padding: 10px 6px; }
+  .flow-steps { grid-template-columns: 1fr; gap: 8px; }
+  .flow-step:not(:last-child)::after { content: "▼"; right: 50%; top: auto; bottom: -10px; transform: translateX(50%); }
+  .flow-banner { font-size: 14px; padding: 18px 20px; }
+  .flow-banner .accent { font-size: 18px; }
+  .owner-card .head { padding: 16px 20px; }
+  .owner-card .head .scale { font-size: 18px; }
+  .owner-card .head .bg { margin-left: 0; font-size: 11px; }
+  .owner-card .body { padding: 18px 20px; }
+  .owner-card .headline { font-size: 15px; }
+  .cta-section h2 { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+<div class="lp-container">
+
+<!-- 開発者ヘッダー -->
+<div class="dev-header">
+  📝 <strong>収益シミュレーション型LP（B案フル版）</strong> ／ 2026-06-05 ／ 経営者・投資家目線特化
+  ／ <a href="lp_zero-plan-g_v2.html">A案ハイブリッド</a>
+  ／ <a href="mockup.html">3案比較</a>
+  ／ <a href="index.html">資料一覧</a>
+</div>
+
+<!-- ============ FV ============ -->
+<header class="fv">
+  <div class="fv-content">
+    <span class="fv-eyebrow">★ 経営者・投資家のための事業選定資料</span>
+    <h1>
+      年間 <span class="big-number">1,800万円</span>。<br>
+      月次黒字化、<span class="big-number">最短4ヶ月</span>。
+    </h1>
+    <p class="lead">
+      売上の<strong>約9割が国・自治体の給付金</strong>。景気変動に強い、ストック型の制度ビジネス。<br>
+      OWLは、<strong>加盟金0円</strong>で始められる、障がい者グループホームFCです。
+    </p>
+    <div class="kpi-row">
+      <div class="kpi"><div class="num">¥0</div><div class="lbl">加盟金</div></div>
+      <div class="kpi"><div class="num">最短4ヶ月</div><div class="lbl">月次黒字化</div></div>
+      <div class="kpi"><div class="num">9割</div><div class="lbl">給付金収益</div></div>
+    </div>
+    <div class="fv-cta">
+      <a href="#cta" class="btn btn-primary">💰 無料・収益シミュレーション</a>
+      <a href="#cta" class="btn btn-secondary">📄 資料を請求する</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ① 数字で見るOWL ============ -->
+<section class="summary">
+  <div class="inner">
+    <h2><span class="small">SUMMARY</span>数字で見る、<span class="accent">なぜOWLか。</span></h2>
+    <p class="section-lead">障がい者グループホーム事業の「儲かるか・安定するか・始められるか」を、3つの数字でお伝えします。</p>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="icon">💰</div>
+        <div class="big">1,800<span class="unit">万円</span></div>
+        <div class="lbl">16-20居室規模・<br>想定年間収益（OWL実績ベース）</div>
+      </div>
+      <div class="summary-card">
+        <div class="icon">📈</div>
+        <div class="big">最短 4<span class="unit">ヶ月</span></div>
+        <div class="lbl">月次黒字化までの期間<br>（実績例）</div>
+      </div>
+      <div class="summary-card">
+        <div class="icon">🏛️</div>
+        <div class="big">9<span class="unit">割</span></div>
+        <div class="lbl">売上に占める<br>国・自治体給付金の比率</div>
+      </div>
+    </div>
+
+    <div class="summary-bottom">
+      <div class="item">
+        <div class="item-title">★ 初期費用</div>
+        <div class="item-desc"><strong style="color:#fff;">加盟金0円</strong>＋月額相談料のみ。業界初の低リスク参入プラン。</div>
+      </div>
+      <div class="item">
+        <div class="item-title">★ 市場規模</div>
+        <div class="item-desc">障害福祉サービス市場 <strong style="color:#fff;">5.2兆円規模</strong>（2025年予測）。GH需給ギャップ51倍の成長市場。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ② 市場機会 ============ -->
+<section class="market">
+  <div class="inner">
+    <h2><span class="small">MARKET OPPORTUNITY</span>需給ギャップは、<span class="accent">51倍</span>。</h2>
+    <p class="section-lead">障がいのある方の数に対して、グループホームが圧倒的に足りていません。これがOWLの加盟者が「入居問い合わせが絶えない」と語る理由です。</p>
+
+    <div class="market-compare">
+      <div class="market-headline">障がい者 約965万人 vs GH利用者 約14万人 ＝ <span class="gap-num">51倍</span> の入居需要ギャップ</div>
+      <div class="market-bars">
+        <div class="label">障がい者</div>
+        <div class="bar"><div class="fill full">約 965万人</div></div>
+        <div class="value">100%</div>
+      </div>
+      <div class="market-bars">
+        <div class="label">GH利用者</div>
+        <div class="bar"><div class="fill partial">14万人</div></div>
+        <div class="value">約1.4%</div>
+      </div>
+      <div class="market-source">出典：厚生労働省「障害者の数」「障害福祉サービス等関連統計」</div>
+      <div class="market-insight">
+        <strong>★ さらに、障害福祉サービス市場は2025年に約5.2兆円規模に到達する見通し</strong>（業界調査による）。需要超過状態が当面続くため、新規参入者でも入居者確保が現実的に可能な市場環境です。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ③ なぜ安定？ ============ -->
+<section class="stable">
+  <div class="inner">
+    <h2><span class="small">WHY STABLE?</span>なぜ、<span class="accent">景気の影響を受けにくい</span>のか。</h2>
+    <p class="section-lead">障がい者グループホームの収益構造は、一般的なビジネスとは根本的に異なります。</p>
+
+    <div class="stable-main">
+      <div class="stable-pie-wrap">
+        <div class="stable-pie"></div>
+        <div class="stable-pie-label">
+          <div class="big">90<span style="font-size:24px;">%</span></div>
+          <div class="small">売上に占める<br>給付金収入</div>
+        </div>
+      </div>
+      <div class="stable-text">
+        <h3>売上の約9割が、国・自治体の給付金。</h3>
+        <p>
+          障がい福祉サービスは <strong>障害者総合支援法</strong> に基づく公的制度。<br>
+          売上の大半が国・自治体からの給付金収入で構成されるため、<strong>景気変動の影響を受けにくく、安定したストック型収益</strong>が見込めます。<br><br>
+          だからこそ、銀行融資の事業性評価でも高い評価を得やすく、<strong>事業拡大時の資金調達もしやすい</strong>のが特徴です。
+        </p>
+      </div>
+    </div>
+
+    <div class="stable-features">
+      <div class="stable-feat">
+        <div class="icon">🏛️</div>
+        <div class="title">国制度の安定収益</div>
+        <div class="desc">障害者総合支援法の給付金で売上の9割を構成</div>
+      </div>
+      <div class="stable-feat">
+        <div class="icon">🔄</div>
+        <div class="title">ストック型ビジネス</div>
+        <div class="desc">長期入居が前提で月次の安定収益が継続</div>
+      </div>
+      <div class="stable-feat">
+        <div class="icon">📊</div>
+        <div class="title">融資評価が高い</div>
+        <div class="desc">事業性評価が高く拡大時の資金調達も有利</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ④★ 収益シミュレーション（メイン） ============ -->
+<section class="simulation" id="simulation">
+  <div class="inner">
+    <h2><span class="small">REVENUE SIMULATION</span>居室規模別、<span class="accent">年間収益シミュレーション</span></h2>
+    <p class="section-lead">OWL実績ベースの想定年間収益です。規模に応じて段階的に伸ばしていくことができます。</p>
+
+    <div class="sim-grid">
+      <div class="sim-card">
+        <div class="head">
+          <div class="tier">SMALL</div>
+          <div class="rooms">8〜10居室</div>
+          <div class="annual">想定年間収益</div>
+          <div class="amount">700<span class="unit">万円</span></div>
+        </div>
+        <div class="body">
+          <div class="body-row"><span class="lbl">月間売上目安</span><span class="val">約 175万円</span></div>
+          <div class="body-row"><span class="lbl">月間運営コスト</span><span class="val">約 117万円</span></div>
+          <div class="body-row profit"><span class="lbl">月間営業利益</span><span class="val">約 58万円</span></div>
+          <div class="body-row"><span class="lbl">入居者数</span><span class="val">8〜10名</span></div>
+          <div class="body-row"><span class="lbl">推奨スタッフ数</span><span class="val">3〜4名</span></div>
+        </div>
+      </div>
+
+      <div class="sim-card middle">
+        <div class="head">
+          <div class="tier">MEDIUM</div>
+          <div class="rooms">12〜14居室</div>
+          <div class="annual">想定年間収益</div>
+          <div class="amount">1,200<span class="unit">万円</span></div>
+        </div>
+        <div class="body">
+          <div class="body-row"><span class="lbl">月間売上目安</span><span class="val">約 300万円</span></div>
+          <div class="body-row"><span class="lbl">月間運営コスト</span><span class="val">約 200万円</span></div>
+          <div class="body-row profit"><span class="lbl">月間営業利益</span><span class="val">約 100万円</span></div>
+          <div class="body-row"><span class="lbl">入居者数</span><span class="val">12〜14名</span></div>
+          <div class="body-row"><span class="lbl">推奨スタッフ数</span><span class="val">5〜6名</span></div>
+        </div>
+      </div>
+
+      <div class="sim-card">
+        <div class="head">
+          <div class="tier">LARGE</div>
+          <div class="rooms">16〜20居室</div>
+          <div class="annual">想定年間収益</div>
+          <div class="amount">1,800<span class="unit">万円</span></div>
+        </div>
+        <div class="body">
+          <div class="body-row"><span class="lbl">月間売上目安</span><span class="val">約 450万円</span></div>
+          <div class="body-row"><span class="lbl">月間運営コスト</span><span class="val">約 300万円</span></div>
+          <div class="body-row profit"><span class="lbl">月間営業利益</span><span class="val">約 150万円</span></div>
+          <div class="body-row"><span class="lbl">入居者数</span><span class="val">16〜20名</span></div>
+          <div class="body-row"><span class="lbl">推奨スタッフ数</span><span class="val">7〜9名</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sim-note">
+      <strong>※ 注記：</strong>上記はOWL加盟者の実績例に基づく想定参考値です。立地・運営状況により変動します。<br>
+      <strong>※ より精緻な収支計算（個別物件・地域別の給付単価反映）は、無料の個別収益シミュレーションで対応いたします。</strong><br>
+      ご希望の規模・地域をお伝えいただければ、24時間以内にご返信します。
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑤ 月次黒字化タイムライン ============ -->
+<section class="timeline">
+  <div class="inner">
+    <h2><span class="small">PROFITABILITY TIMELINE</span>月次黒字化までの、<span class="accent">タイムライン</span></h2>
+    <p class="section-lead">最短4ヶ月で月次黒字化を達成。本部の伴走支援で立ち上げ初期のリスクを最小化します。</p>
+
+    <div class="timeline-track">
+      <div class="timeline-step">
+        <div class="month">OPENING</div>
+        <div class="title">0ヶ月目：開業準備〜オープン</div>
+        <div class="desc">物件契約・内装・スタッフ採用・行政申請を完了。OWL本部が全工程に伴走します。</div>
+      </div>
+      <div class="timeline-step">
+        <div class="month">MONTH 1</div>
+        <div class="title">1ヶ月目：入居開始</div>
+        <div class="desc">利用者の入居受入開始。本部の集客支援＋既存ネットワークで初動入居者を確保します。</div>
+      </div>
+      <div class="timeline-step">
+        <div class="month">MONTH 2</div>
+        <div class="title">2ヶ月目：稼働率向上</div>
+        <div class="desc">給付金請求が開始。スタッフ配置の最適化・運営オペレーション確立を本部がサポート。</div>
+      </div>
+      <div class="timeline-step">
+        <div class="month">MONTH 3</div>
+        <div class="title">3ヶ月目：満床に近づく</div>
+        <div class="desc">★最短実績では「開設後2.5ヶ月で満床」のケースも。給付金収入が定常化し始めます。</div>
+      </div>
+      <div class="timeline-step profit">
+        <div class="month">MONTH 4 ★</div>
+        <div class="title">4ヶ月目：月次黒字化達成（最短実績）</div>
+        <div class="desc">給付金収入が運営コストを上回り、月次キャッシュフローが黒字に。以降は安定収益期へ。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑥ 加盟金0円の仕組み・他社比較 ============ -->
+<section class="zerocost">
+  <div class="inner">
+    <h2><span class="small">ZERO ENTRY COST</span>なぜ、<span class="accent">加盟金0円</span>で始められるのか。</h2>
+    <p class="section-lead">業界一般の障がい者GHフランチャイズと比較しても、OWLの参入コストは圧倒的に低水準です。</p>
+
+    <div class="zerocost-headline">業界一般 <span class="accent">100〜500万円</span> の加盟金が、<br>OWLは <strong style="color:#b91c1c;">0円</strong>。</div>
+
+    <div class="zerocost-compare">
+      <table>
+        <thead>
+          <tr><th>項目</th><th>業界一般のFC</th><th>OWL</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>加盟金</td><td class="other">100〜500万円</td><td class="owl">★ 0円</td></tr>
+          <tr><td>研修費</td><td class="other">数十万円</td><td class="owl">月額相談料に込み</td></tr>
+          <tr><td>ロイヤリティ</td><td class="other">売上の3〜10%</td><td class="owl">月額固定の相談料のみ</td></tr>
+          <tr><td>開業資金 総額目安</td><td class="other">数百万円〜</td><td class="owl">300万円〜＋物件取得費</td></tr>
+          <tr><td>サポート期間</td><td class="other">1〜3年が一般的</td><td class="owl">★ 開業後も継続支援</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sim-note" style="background:#fef3c7;color:#7c2d12;border-left-color:#d4a017;">
+      <strong>★ OWLの参入コストが低い理由：</strong>本部はFC加盟による初期収益でなく、運営支援の月額相談料モデルで収益を得る仕組み。加盟者と本部が「長期で成功する」インセンティブが一致する設計です。
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑦ 開業の流れ ============ -->
+<section class="flow">
+  <div class="inner">
+    <h2><span class="small">PROCESS</span>開業までの流れ、<span class="accent">5ステップ</span></h2>
+    <p class="section-lead">資料請求からオープンまで、最短3ヶ月。本部が全工程を伴走します。</p>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="step-num">1</div>
+        <div class="step-title">資料請求・<br>オンライン説明会</div>
+        <div class="step-desc">事業概要と収益モデルをご説明</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">2</div>
+        <div class="step-title">個別相談・<br>物件検討</div>
+        <div class="step-desc">資金計画・物件選定を本部が支援</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">3</div>
+        <div class="step-title">申請・契約</div>
+        <div class="step-desc">行政手続きはOWLが完全サポート</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">4</div>
+        <div class="step-title">内装・採用・<br>研修</div>
+        <div class="step-desc">スタッフ採用・運営研修まで伴走</div>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">5</div>
+        <div class="step-title">オープン</div>
+        <div class="step-desc">入居者募集・運営支援を継続</div>
+      </div>
+    </div>
+
+    <div class="flow-banner">
+      最短 <span class="accent">3ヶ月</span> で開設 ／ 開設後 <span class="accent">2.5ヶ月</span> で満床の実績あり。
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑧★ オーナー実績（金額入り） ============ -->
+<section class="owners">
+  <div class="inner">
+    <h2><span class="small">SUCCESS STORIES</span>規模別・<span class="accent">オーナー実績</span></h2>
+    <p class="section-lead">全国の加盟オーナーが、どの規模でどう成長したか。本人の声でお伝えします。</p>
+
+    <!-- 大阪 -->
+    <div class="owner-card">
+      <div class="head">
+        <span class="region">📍 大阪府</span>
+        <span class="scale">🏢 70居室以上</span>
+        <span class="bg">既存事業者・コロナ禍からの転身</span>
+      </div>
+      <div class="body">
+        <div class="headline">「コロナ禍で打撃を受けた中、OWLと出会い開業。<br>今では地域では一番大きな信頼を得ています。」</div>
+        <div class="quote">既存事業がコロナ禍に打撃を受けてしまった中でOWLさんと出会い開業を決意しました。今では<strong>60居室を超える事業所を開設し地域では一番大きな信頼を得ております</strong>。それも全て何も知らなかった私に丁寧な指導をくださったOWLさんのおかげです。まだ入居のお声が多いので増やしていきます。</div>
+      </div>
+    </div>
+
+    <!-- 千葉 -->
+    <div class="owner-card">
+      <div class="head">
+        <span class="region">📍 千葉県</span>
+        <span class="scale">🏢 3棟運営</span>
+        <span class="bg">不動産業からの参入</span>
+      </div>
+      <div class="body">
+        <div class="headline">「不動産業から参入。未経験でしたが、<br>今では行政担当者と対等に話せる自分に成長しました。」</div>
+        <div class="quote">不動産事業を営んでいたときにGHでの問い合わせが多くて気になって調べて参入を決意。未経験でもしっかりと支援してくれるようなところを探してOWLさんに出会いました。最初は福祉の言葉自体も理解できなかったですが、今では<strong>行政担当者の言う内容など全て理解している自分に成長したな〜と思うことが多くなりました（笑）</strong>マンツーで支援してくれる支援内容があったからこそ今の自分があると思ってます。</div>
+      </div>
+    </div>
+
+    <!-- 福島 -->
+    <div class="owner-card">
+      <div class="head">
+        <span class="region">📍 福島県</span>
+        <span class="scale">🏢 4棟運営</span>
+        <span class="bg">介護事業者・報酬改定の壁から</span>
+      </div>
+      <div class="body">
+        <div class="headline">「介護事業の壁にぶつかった時、OWLに出会えた。<br>何回聞いても丁寧に伝えてくれて、大変頼りに。」</div>
+        <div class="quote">介護の事業をしておりましたが、報酬の改定や、人材不足など様々な壁に当たった時にGHが気になり検討しました。似たような事業ですが中身は全く違くて最初は大変でしたが<strong>OWLさんはスピード感を合わせてくださり、何回も同じことを聞いても分かるまで丁寧に伝えてくれた</strong>りなど、大変頼りになりました。</div>
+      </div>
+    </div>
+
+    <!-- 愛知 -->
+    <div class="owner-card">
+      <div class="head">
+        <span class="region">📍 愛知県</span>
+        <span class="scale">🏠 2棟運営</span>
+        <span class="bg">複数本部比較からOWLを選択</span>
+      </div>
+      <div class="body">
+        <div class="headline">「いろんな本部を比較して、一番支援が手厚そうなOWLに。<br>一生お付き合いしたいと思っています。」</div>
+        <div class="quote">GHのいろんな本部さんの話を聞いて<strong>一番支援が手厚そうと感じたOWLさんに決めました</strong>。とは言いつつそこまで期待していなかったですが実際想定していたよりも手厚いサポートがあり大満足です。学んでから止めることも可能ですが、<strong>今のところは一生お付き合いしていきたい</strong>と思ってます。</div>
+      </div>
+    </div>
+
+    <!-- 三重 -->
+    <div class="owner-card">
+      <div class="head">
+        <span class="region">📍 三重県</span>
+        <span class="scale">🏠 2棟運営</span>
+        <span class="bg">障害ある子供を持つ親として</span>
+      </div>
+      <div class="body">
+        <div class="headline">「子供の将来を支えたくて開業。<br>障害を持つ子供の親からの感謝の言葉が多く、やってよかったと実感。」</div>
+        <div class="quote">子供に障害があり、夫婦ともに高齢になっていく中で今のうちに子供の将来を支えたくて開業を決意しました。資金相談から始め、GHの開設運営など幅広く相談乗っていただき無事に開業できました。<strong>障害を持つ子供の親からの感謝の言葉などが多く</strong>やってよかったなと実感しております。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑨ FAQ（数字寄り） ============ -->
+<section class="faq">
+  <div class="inner">
+    <h2><span class="small">FAQ</span>よくあるご質問</h2>
+
+    <div style="max-width:800px;margin:0 auto;">
+
+      <div class="faq-item">
+        <div class="faq-q">想定収益はどの程度信頼できますか？</div>
+        <div class="faq-a">本ページの収益数字は <strong>OWL加盟者の実績例</strong> を元にした想定参考値です。立地・運営状況・スタッフ配置により変動するため、<strong>個別物件・地域別の精緻なシミュレーション</strong>を無料で個別対応しています。お気軽に「無料収益シミュレーション」からお申し込みください。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">月次黒字化4ヶ月は本当に達成できますか？</div>
+        <div class="faq-a">「最短4ヶ月」はOWL加盟者の <strong>実績例の最短ケース</strong> です。実際の黒字化時期は、入居者の確保ペース・スタッフ採用状況・運営オペレーション習熟度により変動します。本部の集客支援＋運営伴走で、立ち上げ期のリスクを最小化します。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">給付金収益はなぜ安定するのですか？</div>
+        <div class="faq-a">障がい福祉サービスは <strong>障害者総合支援法</strong> に基づく公的制度で、利用者ごとの給付金が国・自治体から定額支給されます。景気変動の影響を受けにくく、長期入居が前提のためストック型の安定収益が見込めます。給付単価は地域・障害区分により定められており、運営継続中は安定した請求が可能です。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">開業資金は最低いくら必要ですか？</div>
+        <div class="faq-a">加盟金0円のため、<strong>開業資金は約300万円〜＋物件取得費</strong>が目安です。内訳は総合開業支援・備品・採用費・事務機器など。物件は賃貸契約が可能なため、購入は必須ではありません。資金調達のご相談（融資含む）も本部がサポートします。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">本業（不動産業・介護事業など）と並行できますか？</div>
+        <div class="faq-a">可能です。実際に <strong>不動産業からの参入（千葉県加盟者）・介護事業からの転換（福島県加盟者）</strong> など、既存事業との両立・転換事例が多数あります。本業の空き物件活用や既存事業のノウハウ連動など、個別にご相談ください。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">未経験でも本当に運営できますか？</div>
+        <div class="faq-a">大丈夫です。OWL加盟者の <strong>約95%が福祉未経験スタート</strong>です。本部がオリジナルマニュアル・研修・行政対応・運営支援まで完全サポートします。「最初は福祉の言葉も分からなかった」加盟者が今では行政担当者と対等に話せるまで成長している実例があります。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">他社FCと比較してOWLを選ぶ理由は何ですか？</div>
+        <div class="faq-a">3つあります。①<strong>加盟金0円</strong>で初期参入リスクが低い ②<strong>本部の収益モデルが月額相談料制</strong>のため、加盟者と本部のインセンティブが「長期で成功する」方向で一致 ③<strong>実加盟者が「一番支援が手厚そう」と評価</strong>（愛知県加盟者の声）。複数本部比較した上でOWLを選んだ加盟者が多数いらっしゃいます。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ ⑩ CTA ============ -->
+<section class="cta-section" id="cta">
+  <div class="inner">
+    <h2>まずは、<span class="accent">無料・収益シミュレーション</span>から。</h2>
+    <p class="cta-lead">
+      ご希望の規模・地域をお伝えいただければ、<strong style="color:#fde68a;">個別物件・地域別の精緻な収支シミュレーション</strong>を24時間以内にお送りします。<br>
+      しつこい営業は一切ありません。ご都合の良いタイミングでご検討ください。
+    </p>
+    <div class="cta-btns">
+      <a href="#" class="btn btn-primary">💰 無料・収益シミュレーション</a>
+      <a href="#" class="btn btn-secondary">📄 資料を請求する</a>
+    </div>
+    <p class="cta-foot">
+      お電話でのお問い合わせ：<strong>0120-540-522</strong>（平日 9:00〜18:00）
+    </p>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer class="footer">
+  <p>株式会社RUNBIRD ／ OWL福祉事業</p>
+  <p>〒XXXX-XXXX　所在地（要追加）</p>
+  <p style="margin-top:12px;">© 2026 RUNBIRD inc. All rights reserved.</p>
+</footer>
+
+</div>
+</body>
+</html>
