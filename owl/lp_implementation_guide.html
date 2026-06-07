@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LP実装指示書 v3（河合さんチェックバック反映版）｜OWL福祉事業</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; background: #f4f6f9; color: #0f172a; line-height: 1.75; padding: 16px; -webkit-font-smoothing: antialiased; }
+.container { max-width: 940px; margin: 0 auto; }
+.nav-back { display: inline-block; margin-bottom: 12px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
+h1 { font-size: 24px; margin-bottom: 4px; }
+.sub { color: #64748b; font-size: 13px; margin-bottom: 18px; }
+
+.hero { background: linear-gradient(135deg,#b91c1c,#dc2626); color: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 20px; }
+.hero h2 { font-size: 18px; margin-bottom: 10px; }
+.hero p { font-size: 13px; opacity: 0.95; }
+.hero .kpi { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-top: 14px; }
+.hero .k { background: rgba(255,255,255,0.16); border-radius: 8px; padding: 10px; text-align: center; }
+.hero .k .num { font-size: 20px; font-weight: 700; }
+.hero .k .lbl { font-size: 11px; opacity: 0.9; }
+
+.section { background: #fff; border-radius: 14px; padding: 22px 26px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(15,23,42,0.05); }
+.section h2 { font-size: 18px; margin-bottom: 12px; border-left: 5px solid #b91c1c; padding-left: 12px; }
+.section h3 { font-size: 15px; margin: 14px 0 8px; color: #1e3a8a; }
+
+.fix-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+.fix-table th, .fix-table td { padding: 10px 12px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+.fix-table th { background: #fef2f2; color: #b91c1c; font-size: 12px; }
+.fix-table .old { background: #fee2e2; color: #7f1d1d; text-decoration: line-through; font-size: 12px; padding: 4px 8px; border-radius: 4px; display: inline-block; }
+.fix-table .new { background: #d1fae5; color: #064e3b; font-weight: 700; font-size: 13px; padding: 4px 8px; border-radius: 4px; display: inline-block; }
+
+.voice { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px 22px; margin: 12px 0; border-left: 5px solid #047857; }
+.voice .head { display: flex; gap: 10px; align-items: baseline; margin-bottom: 10px; flex-wrap: wrap; }
+.voice .area { background: #1e3a8a; color: #fff; padding: 4px 12px; border-radius: 16px; font-size: 12px; font-weight: 700; }
+.voice .scale { background: #047857; color: #fff; padding: 4px 12px; border-radius: 16px; font-size: 12px; font-weight: 700; }
+.voice .tag { background: #f1f5f9; color: #475569; padding: 3px 10px; border-radius: 12px; font-size: 11px; }
+.voice .quote { background: #f9fafb; border-left: 3px solid #cbd5e1; padding: 12px 16px; margin: 10px 0; font-size: 14px; line-height: 1.9; color: #1f2937; }
+.voice .highlights { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.voice .highlight { background: #fef3c7; color: #92400e; padding: 3px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+
+.sim-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin: 12px 0; }
+.sim-card { background: linear-gradient(135deg,#fef3c7,#fde68a); border: 2px solid #d97706; border-radius: 12px; padding: 16px; text-align: center; }
+.sim-card .scale { font-size: 13px; color: #78350f; font-weight: 700; }
+.sim-card .num { font-size: 28px; font-weight: 900; color: #b45309; margin: 6px 0; }
+.sim-card .lbl { font-size: 11px; color: #92400e; }
+
+.note { background: #fffbeb; border-left: 4px solid #d97706; padding: 12px 16px; border-radius: 6px; font-size: 13px; color: #78350f; margin: 10px 0; }
+.note-blue { background: #eff6ff; border-left: 4px solid #2563eb; padding: 12px 16px; border-radius: 6px; font-size: 13px; color: #1e3a8a; margin: 10px 0; }
+.note-red { background: #fef2f2; border-left: 4px solid #b91c1c; padding: 12px 16px; border-radius: 6px; font-size: 13px; color: #7f1d1d; margin: 10px 0; }
+
+.priority { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; }
+.p0 { background: #fee2e2; color: #b91c1c; }
+.p1 { background: #fef3c7; color: #92400e; }
+
+footer { text-align: center; color: #94a3b8; font-size: 11px; padding: 24px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<a href="index.html" class="nav-back">← 資料一覧に戻る</a>
+
+<h1>LP実装指示書 v3</h1>
+<p class="sub">2026-06-05 ／ 河合さん2回目チェックバック反映＋本番口コミ5件＋新収益シミュ</p>
+
+<!-- イントロ -->
+<div class="hero">
+  <h2>📌 河合さん指摘 5項目を本日中に反映</h2>
+  <p>2026-06-05 河合さんからLPチェックバック＋本番口コミ5件＋新収益シミュ提供。<strong>本日LPを完成させ、設定完了させる</strong>のがゴール。</p>
+  <div class="kpi">
+    <div class="k"><div class="num">5</div><div class="lbl">修正項目</div></div>
+    <div class="k"><div class="num">5</div><div class="lbl">本番口コミ</div></div>
+    <div class="k"><div class="num">3</div><div class="lbl">収益シミュ案</div></div>
+    <div class="k"><div class="num">P0</div><div class="lbl">優先度</div></div>
+  </div>
+</div>
+
+<!-- ============ 修正5項目 ============ -->
+<div class="section">
+  <h2>🔧 修正5項目（一覧）</h2>
+  <table class="fix-table">
+    <thead>
+      <tr><th width="50">#</th><th width="200">項目</th><th>旧</th><th>新</th><th width="80">優先</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>最短期間表記</strong></td>
+        <td><span class="old">最短1.5ヶ月で開設</span><br>※LP内全箇所</td>
+        <td><span class="new">最短3ヶ月で開設</span></td>
+        <td><span class="priority p0">P0</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>黒字化表記</strong></td>
+        <td><span class="old">投資回収4ヶ月</span></td>
+        <td><span class="new">月次黒字化最短4ヶ月</span></td>
+        <td><span class="priority p0">P0</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>0円売上予測の居室数</strong></td>
+        <td><span class="old">不明な居室数</span></td>
+        <td><span class="new">12居室</span></td>
+        <td><span class="priority p0">P0</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>収益シミュレーション</strong></td>
+        <td><span class="old">旧数値＋初期投資項目</span></td>
+        <td><span class="new">8-10居室700万／12-14居室1200万／16-20居室1800万<br>初期投資項目は削除</span></td>
+        <td><span class="priority p0">P0</span></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>お客様の声</strong></td>
+        <td><span class="old">アウくん等キャラ仮データ</span></td>
+        <td><span class="new">本番口コミ5件に差し替え（撮影可）</span></td>
+        <td><span class="priority p1">P1</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ 収益シミュレーション ============ -->
+<div class="section">
+  <h2>💰 新・収益シミュレーション（LPに差し替え）</h2>
+  <p style="font-size:13px;color:#475569;margin-bottom:10px;">河合さん指示の正式数字。<strong>初期投資の項目はLPから削除</strong>。</p>
+
+  <div class="sim-grid">
+    <div class="sim-card">
+      <div class="scale">小規模</div>
+      <div class="num">約 700万円</div>
+      <div class="lbl">8〜10居室 ／ 想定年間収益</div>
+    </div>
+    <div class="sim-card">
+      <div class="scale">中規模</div>
+      <div class="num">約 1,200万円</div>
+      <div class="lbl">12〜14居室 ／ 想定年間収益</div>
+    </div>
+    <div class="sim-card">
+      <div class="scale">大規模</div>
+      <div class="num">約 1,800万円</div>
+      <div class="lbl">16〜20居室 ／ 想定年間収益</div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>💡 LP掲載時の注意：</strong>
+    <ul style="padding-left:22px;margin-top:6px;">
+      <li>「初期投資」「投資回収」表記は削除</li>
+      <li>「月次黒字化最短4ヶ月」表記は別セクションで残してOK（収益安定性の訴求）</li>
+      <li>収益数字に「※実績例の参考値です」等の注記を付けて景表法リスクを下げる</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ 本番口コミ 5件 ============ -->
+<div class="section">
+  <h2>👥 本番口コミ 5件（LP掲載用フルテキスト）</h2>
+  <p style="font-size:13px;color:#475569;margin-bottom:10px;">河合さん経由で全件本人承認済み・撮影も可能。<strong>5件すべて「未経験→OWLサポートで成長」のストーリー型</strong>で構成統一されており、LPで強い社会証明になる。</p>
+
+  <!-- 口コミ1 -->
+  <div class="voice">
+    <div class="head">
+      <span class="area">📍 大阪府</span>
+      <span class="scale">🏢 70居室以上</span>
+      <span class="tag">既存事業者・コロナ禍からの転身</span>
+    </div>
+    <div class="quote">既存事業がコロナ禍に打撃を受けてしまった中でOWLさんと出会い開業を決意しました。今では60居室を超える事業所を開設し<strong>地域では一番大きな信頼を得ております</strong>。それも全て何も知らなかった私に丁寧な指導をくださったOWLさんのおかげです。まだ入居のお声が多いので増やしていきます。</div>
+    <div class="highlights">
+      <span class="highlight">★地域No.1の規模感</span>
+      <span class="highlight">事業承継ニーズ</span>
+      <span class="highlight">本部の丁寧指導</span>
+    </div>
+  </div>
+
+  <!-- 口コミ2 -->
+  <div class="voice">
+    <div class="head">
+      <span class="area">📍 三重県</span>
+      <span class="scale">🏠 2棟運営</span>
+      <span class="tag">障害ある子供を持つ親</span>
+    </div>
+    <div class="quote">子供に障害があり、夫婦ともに高齢になっていく中で今のうちに子供の将来を支えたくて開業を決意しました。資金相談から始め、GHの開設運営など幅広く相談乗っていただき無事に開業できました。<strong>障害を持つ子供の親からの感謝の言葉などが多く</strong>やってよかったなと実感しております。</div>
+    <div class="highlights">
+      <span class="highlight">★親のため・社会貢献</span>
+      <span class="highlight">資金相談から伴走</span>
+      <span class="highlight">利用者家族の感謝</span>
+    </div>
+  </div>
+
+  <!-- 口コミ3 -->
+  <div class="voice">
+    <div class="head">
+      <span class="area">📍 福島県</span>
+      <span class="scale">🏢 4棟運営</span>
+      <span class="tag">介護事業者・報酬改定の壁</span>
+    </div>
+    <div class="quote">介護の事業をしておりましたが、報酬の改定や、人材不足など様々な壁に当たった時にGHが気になり検討しました。似たような事業ですが中身は全く違くて最初は大変でしたが<strong>OWLさんはスピード感を合わせてくださり、何回も同じことを聞いても分かるまで丁寧に伝えてくれた</strong>りなど、大変頼りになりました。</div>
+    <div class="highlights">
+      <span class="highlight">★同業からの転換</span>
+      <span class="highlight">スピード対応</span>
+      <span class="highlight">何度でも丁寧</span>
+    </div>
+  </div>
+
+  <!-- 口コミ4 -->
+  <div class="voice">
+    <div class="head">
+      <span class="area">📍 千葉県</span>
+      <span class="scale">🏢 3棟運営</span>
+      <span class="tag">不動産業からの参入</span>
+    </div>
+    <div class="quote">不動産事業を営んでいたときにGHでの問い合わせが多くて気になって調べて参入を決意。未経験でもしっかりと支援してくれるようなところを探してOWLさんに出会いました。最初は福祉の言葉自体も理解できなかったですが今では<strong>行政担当者の言う内容など全て理解している自分に成長したな〜と思うことが多くなりました（笑）マンツーで支援してくれる支援内容があったからこそ今の自分がある</strong>と思ってます。</div>
+    <div class="highlights">
+      <span class="highlight">★クリエ案5「不動産業者」と整合</span>
+      <span class="highlight">マンツーマン支援</span>
+      <span class="highlight">未経験→専門家へ成長</span>
+    </div>
+  </div>
+
+  <!-- 口コミ5 -->
+  <div class="voice">
+    <div class="head">
+      <span class="area">📍 愛知県</span>
+      <span class="scale">🏠 2棟運営</span>
+      <span class="tag">複数本部比較からOWL選択</span>
+    </div>
+    <div class="quote">GHのいろんな本部さんの話を聞いて<strong>一番支援が手厚そうと感じたOWLさんに決めました</strong>。とは言いつつそこまで期待していなかったですが実際想定していたよりも手厚いサポートがあり大満足です。学んでから止めることも可能ですが、<strong>今のところは一生お付き合いしていきたい</strong>と思ってます。</div>
+    <div class="highlights">
+      <span class="highlight">★競合比較で選ばれた事実</span>
+      <span class="highlight">想定超えの満足度</span>
+      <span class="highlight">継続意向</span>
+    </div>
+  </div>
+
+  <div class="note-blue">
+    <strong>💡 LP掲載順の推奨：</strong>大阪府（規模感最大＝信頼性）→ 千葉県（不動産業者→広告クリエ案5と連動）→ 愛知県（競合比較→選ばれた理由）→ 福島県（同業転換）→ 三重県（親心ストーリー）<br>
+    <strong>★撮影対応可能</strong>なので、まず3名から動画撮影予約 → LP掲載用＋YouTube加盟者対談シリーズに兼用 → tocotoco YouTube（@tocotoco0701 登録99人）を一気に追い抜く戦略。
+  </div>
+</div>
+
+<!-- ============ アウくんキャラ差し替え ============ -->
+<div class="section">
+  <h2>🎭 アウくんキャラ → 本番データ差し替え</h2>
+  <p style="font-size:13px;">河合さん指示：「アウくんとかキャラは本番時にこちらのデータに差し替えてください」</p>
+
+  <div class="note-red">
+    <strong>★LP制作の暫定対応：</strong>河合さんはまずLP本体を完成させ、アウくんキャラのまま公開→撮影後に実写差し替える方針。<br>
+    <strong>★星崎側で並走すべきこと：</strong>
+    <ol style="padding-left:22px;margin-top:6px;">
+      <li>嶋田社長と「撮影スケジュール」調整（推奨：今週中に最初の3名）</li>
+      <li>撮影スタイル決定（インタビュー動画／写真＋音声／顔出し可否）</li>
+      <li>撮影完了後、YouTube公式チャンネル開設＋第1弾アップ＋LP差し替え</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============ 1.5ヶ月未修正箇所チェックリスト ============ -->
+<div class="section">
+  <h2>🔍 「1.5ヶ月」未修正箇所 チェックリスト（LP）</h2>
+  <p style="font-size:13px;color:#475569;">河合さん「1.5ヶ月のとこが未修正ですね！」→ LP本体を全文grep して残箇所を潰す。</p>
+
+  <table class="fix-table">
+    <thead><tr><th width="40">✓</th><th>確認場所</th><th>典型的な記述</th></tr></thead>
+    <tbody>
+      <tr><td>☐</td><td>FV直下のキャッチ</td><td>「最短1.5ヶ月で開設」</td></tr>
+      <tr><td>☐</td><td>開業までの流れ（ステップ図）</td><td>「合計1.5ヶ月で開業」</td></tr>
+      <tr><td>☐</td><td>選ばれる理由・特徴セクション</td><td>「最短1.5ヶ月でスタート」</td></tr>
+      <tr><td>☐</td><td>収益シミュレーション セクション</td><td>「1.5ヶ月開設・◯ヶ月満床」</td></tr>
+      <tr><td>☐</td><td>FAQ・Q&A</td><td>「Q: 開業までどれくらい？ A: 最短1.5ヶ月」</td></tr>
+      <tr><td>☐</td><td>フッター・CTA直前のサマリ</td><td>「最短1.5ヶ月で」</td></tr>
+      <tr><td>☐</td><td>画像内のテキスト（要画像差し替え）</td><td>バナー画像・図解の中の「1.5ヶ月」</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>💡 漏れ防止のTips：</strong>WordPress編集画面で「1.5」を全文検索（または DevTools の検索）で残箇所をゼロ確認してから公開。
+  </div>
+</div>
+
+<!-- ============ 連動修正済み資料一覧 ============ -->
+<div class="section">
+  <h2>📚 連動修正済み資料（参考）</h2>
+  <p style="font-size:13px;">先日の指摘（2026-06-01）で広告コピーは修正済。本日のチェックバックでさらにLP本体を整合。</p>
+
+  <table class="fix-table">
+    <thead><tr><th>資料</th><th>状態</th></tr></thead>
+    <tbody>
+      <tr><td><a href="google_ads_summary.html">google_ads_summary.html</a>（Google広告1枚）</td><td>✅ 修正済（見出し3「最短3ヶ月」見出し4「月次黒字化最短4ヶ月」説明文3）</td></tr>
+      <tr><td><a href="google_ads_recipe.html">google_ads_recipe.html</a>（Google広告レシピ）</td><td>✅ 修正済（同じ箇所）</td></tr>
+      <tr><td><a href="bing_ads_recipe.html">bing_ads_recipe.html</a>（Bing広告レシピ）</td><td>✅ 修正済</td></tr>
+      <tr><td><a href="yahoo_setup_report.html">yahoo_setup_report.html</a>（Yahoo設定報告）</td><td>✅ 広告コピー追記＋修正済</td></tr>
+      <tr><td>LP本体 <code>owl-fukushi.net/lp_zero-plan-g/</code></td><td>🟡 本日中・河合さん作業中</td></tr>
+      <tr><td>Google広告 現場管理画面</td><td>🟡 本日中・星崎手動</td></tr>
+      <tr><td>Yahoo広告 現場管理画面</td><td>🟡 本日中・星崎手動</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ 本日のクロージング目標 ============ -->
+<div class="section" style="border:3px solid #047857;">
+  <h2>🎯 本日のクロージング目標</h2>
+  <table class="fix-table">
+    <thead><tr><th width="40">#</th><th>タスク</th><th width="100">担当</th><th width="80">優先</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>LP本体の「1.5ヶ月」全箇所修正</td><td>河合さん</td><td><span class="priority p0">P0</span></td></tr>
+      <tr><td>2</td><td>LP本体の収益シミュ差し替え（700万/1200万/1800万）</td><td>河合さん</td><td><span class="priority p0">P0</span></td></tr>
+      <tr><td>3</td><td>LP本体の初期投資項目削除</td><td>河合さん</td><td><span class="priority p0">P0</span></td></tr>
+      <tr><td>4</td><td>LP本体の0円売上予測「12居室」修正</td><td>河合さん</td><td><span class="priority p0">P0</span></td></tr>
+      <tr><td>5</td><td>Google広告 管理画面で見出し3・4・説明文3を新コピーに差替</td><td>星崎</td><td><span class="priority p0">P0</span></td></tr>
+      <tr><td>6</td><td>Yahoo広告 管理画面で同じ3箇所を差替</td><td>星崎</td><td><span class="priority p0">P0</span></td></tr>
+      <tr><td>7</td><td>嶋田社長へ撮影スケジュール調整連絡</td><td>星崎</td><td><span class="priority p1">P1</span></td></tr>
+      <tr><td>8</td><td>本番口コミ5件のLP実装（アウくんから差替）</td><td>河合さん（撮影後 ／ 暫定テキストのみ先行可）</td><td><span class="priority p1">P1</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<footer>OWL福祉事業 ／ LP実装指示書 v3 ／ 2026-06-05</footer>
+</div>
+</body>
+</html>
