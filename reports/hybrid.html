@@ -100,68 +100,6 @@
         .gf-box .gf-desc { font-size: 12px; color: #ccc; margin-top: 4px; }
         .gf-arrow { color: #ff6b6b; font-size: 24px; font-weight: 700; padding: 0 10px; }
 
-        /* YouTube広告とは */
-        .yt-explain {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        .yt-card {
-            border-radius: 10px;
-            padding: 20px;
-            border-left: 5px solid;
-        }
-        .yt-card.what { background: #f0f7ff; border-left-color: #1976d2; }
-        .yt-card.how { background: #fff5f5; border-left-color: #cc0000; }
-        .yt-card.merit { background: #e8f5e9; border-left-color: #2e7d32; }
-        .yt-card.cost { background: #fff8e1; border-left-color: #f9a825; }
-        .yt-card h4 { font-size: 15px; margin-bottom: 8px; }
-        .yt-card p, .yt-card ul { font-size: 13px; color: #555; line-height: 1.8; }
-        .yt-card ul { margin-left: 18px; }
-        .yt-card li { margin-bottom: 4px; }
-
-        .flow-row {
-            display: flex;
-            align-items: stretch;
-            justify-content: center;
-            gap: 0;
-            margin: 20px 0;
-        }
-        .flow-box {
-            flex: 1;
-            border-radius: 10px;
-            padding: 18px;
-            text-align: center;
-        }
-        .flow-box .step-badge {
-            display: inline-block;
-            color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 12px;
-            border-radius: 12px;
-            margin-bottom: 8px;
-        }
-        .flow-box .flow-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
-        .flow-box .flow-desc { font-size: 12px; color: #555; }
-        .flow-arrow {
-            display: flex;
-            align-items: center;
-            font-size: 28px;
-            color: #bbb;
-            padding: 0 8px;
-            font-weight: 700;
-        }
-        .flow-box.s1 { background: #fff0f0; border: 2px solid #cc0000; }
-        .flow-box.s1 .step-badge { background: #cc0000; }
-        .flow-box.s2 { background: #fff8e1; border: 2px solid #f9a825; }
-        .flow-box.s2 .step-badge { background: #f9a825; color: #333; }
-        .flow-box.s3 { background: #e8f5e9; border: 2px solid #2e7d32; }
-        .flow-box.s3 .step-badge { background: #2e7d32; }
-        .flow-box.s4 { background: #e3f2fd; border: 2px solid #1976d2; }
-        .flow-box.s4 .step-badge { background: #1976d2; }
-
         /* ターゲティング */
         .target-grid {
             display: grid;
@@ -245,12 +183,10 @@
         .note-bar li strong { color: #cc0000; }
 
         @media (max-width: 768px) {
-            .yt-explain { grid-template-columns: 1fr; }
             .target-grid { grid-template-columns: repeat(2, 1fr); }
             .area-section { grid-template-columns: 1fr; }
             .kw-grid { grid-template-columns: 1fr; }
-            .flow-row { flex-direction: column; align-items: center; }
-            .flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+
             .goal-flow { flex-direction: column; }
             .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
         }
@@ -259,7 +195,7 @@
 <body>
 <div class="container">
 
-    <h1>YouTube広告 運用提案書</h1>
+    <h1>YouTube広告 運用レポート</h1>
     <p class="subtitle">株式会社ＨＹＢＲＩＤ 様｜株式会社ランバード</p>
 
     <!-- ① 目的・ゴール -->
@@ -293,173 +229,836 @@
         </div>
     </div>
 
-    <!-- ② ターゲティング設定 -->
-    <div class="section" style="border-color:#cc0000;">
+
+    <!-- ② 現在の運用設定 -->
+    <div class="section" style="border-color:#1976d2;">
         <div class="section-title">
-            <span class="icon" style="background:#cc0000;">1</span>
-            ターゲティング設定
+            <span class="icon" style="background:#1976d2;">1</span>
+            現在の運用設定
         </div>
 
-        <div class="target-grid">
-            <div class="target-card">
-                <div class="t-icon">👤</div>
-                <div class="t-label">性別</div>
-                <div class="t-value">男性メイン</div>
-            </div>
-            <div class="target-card">
-                <div class="t-icon">📅</div>
-                <div class="t-label">年齢</div>
-                <div class="t-value">35〜64歳</div>
-            </div>
-            <div class="target-card">
-                <div class="t-icon">📍</div>
-                <div class="t-label">エリア</div>
-                <div class="t-value">沖縄中部<br>車20分圏内</div>
-            </div>
-            <div class="target-card">
-                <div class="t-icon">🕐</div>
-                <div class="t-label">配信時間</div>
-                <div class="t-value">7:00〜24:00</div>
+        <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px 18px;margin-bottom:18px;">
+            <div style="font-size:13px;color:#0d47a1;line-height:1.8;">
+                <strong>📌 ご契約内容:</strong> 「株式会社ＨＹＢＲＩＤ」キャンペーン（沖縄中部 シミュレーションゴルフ）／配信開始 2026年4月1日〜<br>
+                <strong>📺 広告形式:</strong> YouTube インストリーム広告（動画再生前に流れ、5秒後にスキップ可能。興味のある方だけに届きます）
             </div>
         </div>
 
-        <div class="area-section">
-            <div class="area-box primary">
-                <h4 style="color:#c62828;">重点エリア（車10分圏内）</h4>
-                <span class="area-tag">沖縄市</span>
-                <span class="area-tag">北中城村</span>
-                <span class="area-tag">中城村</span>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px;">
+            <div style="background:#f8f9fa;border-left:5px solid #cc0000;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">📍 配信エリア</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    <strong>重点:</strong> 沖縄市・北中城村・中城村<br>
+                    <strong>拡張:</strong> うるま市・宜野湾市・北谷町・嘉手納町・読谷村
+                </div>
             </div>
-            <div class="area-box secondary">
-                <h4 style="color:#1565c0;">拡張エリア（車20分圏内）</h4>
-                <span class="area-tag">うるま市</span>
-                <span class="area-tag">宜野湾市</span>
-                <span class="area-tag">北谷町</span>
-                <span class="area-tag">嘉手納町</span>
-                <span class="area-tag">読谷村</span>
+            <div style="background:#f8f9fa;border-left:5px solid #cc0000;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">👤 ターゲット</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    男性メイン 35〜64才
+                </div>
+            </div>
+            <div style="background:#f8f9fa;border-left:5px solid #2e7d32;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🕐 配信時間</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    毎日 7:00〜24:00<br>
+                    <span style="font-size:11px;color:#888;">同じ方への表示は週3回まで</span>
+                </div>
+            </div>
+            <div style="background:#f8f9fa;border-left:5px solid #2e7d32;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🔗 ご案内先（HP）</div>
+                <div style="font-size:12px;color:#1976d2;word-break:break-all;line-height:1.6;">
+                    <a href="https://www.hybrid-golf.com/" target="_blank" rel="noopener" style="color:#1976d2;">www.hybrid-golf.com</a>
+                </div>
             </div>
         </div>
 
-        <div style="background:#fff3e0;border-radius:8px;padding:14px 18px;font-size:13px;color:#e65100;">
-            <strong>エリア設定の理由：</strong>沖縄市を中心とした中部エリアに集中して配信することで、来店圏内の方に効率的にリーチします。
-        </div>
-    </div>
-
-    <!-- ④ 関連キーワード設定 -->
-    <div class="section">
-        <div class="section-title">
-            <span class="icon" style="background:#1976d2;">2</span>
-            関連キーワード設定
-        </div>
-        <p style="font-size:13px;color:#666;margin-bottom:16px;">設定したキーワードに関心がある視聴者に優先的に広告が表示されます。</p>
-
-        <div class="kw-grid">
-            <div class="kw-box">
-                <h4>直接ニーズ（施設を探している人）</h4>
-                <span class="kw-tag">ゴルフ練習場</span>
-                <span class="kw-tag">打ちっぱなし</span>
-                <span class="kw-tag">シミュレーションゴルフ</span>
-                <span class="kw-tag">インドアゴルフ</span>
-                <span class="kw-tag">ゴルフ 沖縄</span>
-                <span class="kw-tag">ゴルフ練習 室内</span>
+        <div style="background:#f8f9fa;border-left:5px solid #f9a825;border-radius:8px;padding:14px 16px;margin-bottom:14px;">
+            <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🎬 配信中の動画</div>
+            <div style="font-size:13px;color:#333;line-height:1.8;">
+                株式会社ＨＹＢＲＩＤ シミュレーションゴルフ施設紹介動画<br>
+                <span style="font-size:11px;color:#888;">※福永様承認版を配信中</span>
             </div>
-            <div class="kw-box">
-                <h4>上達ニーズ（ゴルフを学びたい人）</h4>
-                <span class="kw-tag">ゴルフ 初心者</span>
-                <span class="kw-tag">スイング 改善</span>
-                <span class="kw-tag">ゴルフ 上達</span>
-                <span class="kw-tag">100切り</span>
-                <span class="kw-tag">ゴルフ レッスン</span>
-                <span class="kw-tag">ドライバー 飛距離</span>
-            </div>
-            <div class="kw-box">
-                <h4>ライフスタイル（潜在層）</h4>
-                <span class="kw-tag">接待 ゴルフ</span>
-                <span class="kw-tag">趣味 始めたい</span>
-                <span class="kw-tag">休日 過ごし方</span>
-                <span class="kw-tag">運動不足 解消</span>
-                <span class="kw-tag">福利厚生</span>
-                <span class="kw-tag">デート スポット 沖縄</span>
+        </div>
+
+        <div style="background:#f8f9fa;border-radius:8px;padding:14px 18px;">
+            <div style="font-size:13px;font-weight:700;color:#333;margin-bottom:10px;">🔑 設定キーワード（広告が表示される検索意図／全18語）</div>
+            <div style="font-size:12px;color:#555;line-height:1.9;">
+                <strong style="color:#cc0000;">直接ニーズ（施設を探している人）:</strong> ゴルフ練習場 / 打ちっぱなし / シミュレーションゴルフ / インドアゴルフ / ゴルフ 沖縄 / ゴルフ練習 室内<br>
+                <strong style="color:#1976d2;">上達ニーズ（ゴルフを学びたい人）:</strong> ゴルフ 初心者 / スイング 改善 / ゴルフ 上達 / 100切り / ゴルフ レッスン / ドライバー 飛距離<br>
+                <strong style="color:#2e7d32;">ライフスタイル（潜在層）:</strong> 接待 ゴルフ / 趣味 始めたい / 休日 過ごし方 / 運動不足 解消 / 福利厚生 / デート スポット 沖縄
             </div>
         </div>
     </div>
 
-    <!-- ⑤ 広告配信設定まとめ -->
-    <div class="section" style="border-color:#cc0000;">
-        <div class="section-title">
-            <span class="icon" style="background:#cc0000;">3</span>
-            広告配信設定まとめ
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #cc0000;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">広告形式</div>
-                <div style="font-size:16px;font-weight:700;">インストリーム広告（スキップ可能）</div>
-                <div style="font-size:12px;color:#555;margin-top:6px;">動画再生前に流れる広告。5秒後にスキップ可能。興味のある方だけに課金されます。</div>
-            </div>
-            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #1976d2;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">フリークエンシーキャップ</div>
-                <div style="font-size:16px;font-weight:700;">週3回まで</div>
-                <div style="font-size:12px;color:#555;margin-top:6px;">同じ方に何度も広告が出ないよう制限。限られた予算でより多くの方にリーチします。</div>
-            </div>
-            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">リンク先</div>
-                <div style="font-size:16px;font-weight:700;">https://www.hybrid-golf.com/</div>
-                <div style="font-size:12px;color:#555;margin-top:6px;">広告をクリックした際の遷移先。施設詳細・料金・入会案内が確認できます。</div>
-            </div>
-            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
-                <div style="font-size:16px;font-weight:700;">2026年4月1日〜</div>
-                <div style="font-size:12px;color:#555;margin-top:6px;">審査通過次第、配信を開始いたします。</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ⑥ 配信実績 -->
+    <!-- ③ 配信実績サマリー -->
     <div class="section" style="border-color:#2e7d32;">
         <div class="section-title">
-            <span class="icon" style="background:#2e7d32;">6</span>
-            配信実績（月次更新）
+            <span class="icon" style="background:#2e7d32;">2</span>
+            配信実績サマリー（2026年4月・5月）
         </div>
 
-        <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:16px 20px;margin-bottom:18px;">
+        <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:16px 20px;margin-bottom:14px;">
             <div style="font-size:13px;color:#1b5e20;line-height:1.8;">
-                <strong>📊 集計対象:</strong> Google広告キャンペーン「株式会社ＨＹＢＲＩＤ」<br>
-                <strong>📅 更新方針:</strong> 2ヶ月に1回、最新月分を追記してまいります
+                <strong>📊 集計対象:</strong> Google広告キャンペーン「株式会社ＨＹＢＲＩＤ」（福永様運営施設）<br>
+                <strong>🎯 結論ひとこと:</strong> <strong>表示+56.8% / 視聴+50.8% と急成長</strong>。視聴率は2ヶ月とも業界平均（25%）の<strong>約1.9倍</strong>と非常に好調。同予算内でリーチが大きく伸びています。
             </div>
         </div>
 
+        <!-- 用語の説明 -->
+        <details style="background:#f8f9fa;border:1px solid #ddd;border-radius:10px;padding:14px 18px;margin-bottom:18px;">
+            <summary style="cursor:pointer;font-weight:700;color:#1a1a1a;font-size:13px;">📖 用語の説明（クリックで開く）</summary>
+            <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;">
+                <thead>
+                    <tr style="background:#f1f8e9;">
+                        <th style="padding:8px;text-align:left;border:1px solid #ddd;width:22%;">用語</th>
+                        <th style="padding:8px;text-align:left;border:1px solid #ddd;">意味</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">表示回数<br><span style="font-weight:normal;font-size:11px;color:#888;">（インプレッション）</span></td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;">広告動画が画面に表示された回数。スキップされた場合も「表示」としてカウントされます（=どれだけの方の目に触れたか）。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">視聴回数</td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;"><strong>30秒以上ご覧いただいた回数</strong>（動画が30秒より短い場合は<strong>最後まで視聴</strong>された回数）。5秒経過後にスキップされた場合は視聴にカウントされません。<br>＝<strong>「興味を持って見続けてくれた方の数」</strong>として捉えていただけます。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">視聴率</td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;"><strong>視聴回数 ÷ 表示回数</strong>。表示された方のうち、どれくらいの方がスキップせずに見続けてくれたかの割合。<br>YouTube動画広告全体での業界平均は<strong>約25%</strong>。ＨＹＢＲＩＤ様の視聴率は<strong>47.26%（2ヶ月平均）</strong>と、業界平均の約1.9倍に達しています。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">完視率<br><span style="font-weight:normal;font-size:11px;color:#888;">（25% / 50% / 75% / 100%）</span></td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;">動画全体のうち、各到達ポイント（4分の1・半分・4分の3・最後まで）を再生された割合。<br>特に <strong>100%完視率</strong> は「動画を最後まで見届けてくれた方の割合」を示します。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </details>
+
+        <!-- 月別基本指標 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📈 月別 基本指標</h3>
         <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:14px;">
             <thead>
                 <tr style="background:#2e7d32;color:#fff;">
                     <th style="padding:12px;text-align:center;border:1px solid #ddd;width:18%;">対象月</th>
-                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">表示回数<br><span style="font-size:11px;font-weight:normal;">（インプレッション）</span></th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">表示回数</th>
                     <th style="padding:12px;text-align:center;border:1px solid #ddd;">視聴回数</th>
                     <th style="padding:12px;text-align:center;border:1px solid #ddd;">視聴率</th>
-                    <th style="padding:12px;text-align:left;border:1px solid #ddd;width:28%;">コメント</th>
                 </tr>
             </thead>
             <tbody data-report-table="bimonthly">
                 <tr data-report-month="2026-04">
                     <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026年4月</td>
-                    <td data-metric="impressions" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
-                    <td data-metric="views" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
-                    <td data-metric="view_rate" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
-                    <td data-metric="comment" style="padding:10px;border:1px solid #ddd;color:#555;font-size:13px;">数値確定後にコメント追記</td>
+                    <td data-metric="impressions" style="padding:10px;text-align:right;border:1px solid #ddd;">1,620</td>
+                    <td data-metric="views" style="padding:10px;text-align:right;border:1px solid #ddd;">784</td>
+                    <td data-metric="view_rate" style="padding:10px;text-align:right;border:1px solid #ddd;">48.40%</td>
                 </tr>
                 <tr data-report-month="2026-05">
                     <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026年5月</td>
-                    <td data-metric="impressions" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
-                    <td data-metric="views" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
-                    <td data-metric="view_rate" style="padding:10px;text-align:right;border:1px solid #ddd;">（取得中）</td>
-                    <td data-metric="comment" style="padding:10px;border:1px solid #ddd;color:#555;font-size:13px;">数値確定後にコメント追記</td>
+                    <td data-metric="impressions" style="padding:10px;text-align:right;border:1px solid #ddd;">2,540</td>
+                    <td data-metric="views" style="padding:10px;text-align:right;border:1px solid #ddd;">1,182</td>
+                    <td data-metric="view_rate" style="padding:10px;text-align:right;border:1px solid #ddd;">46.54%</td>
+                </tr>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;font-weight:700;color:#e65100;">推移</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+56.8% 🚀</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+50.8% 🚀</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#888;">-1.86pt</td>
                 </tr>
             </tbody>
         </table>
 
-        <div style="font-size:12px;color:#888;text-align:right;">
-            最終更新: 2026年6月5日｜次回更新: 2026年8月上旬予定
+        <!-- 業界平均比較ハイライト -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;">
+            <div style="background:#fff0f0;border:2px solid #cc0000;border-radius:10px;padding:16px;text-align:center;">
+                <div style="font-size:11px;color:#cc0000;font-weight:700;margin-bottom:4px;">視聴率（5月）</div>
+                <div style="font-size:28px;font-weight:800;color:#cc0000;">46.54<span style="font-size:18px;">%</span></div>
+                <div style="font-size:11px;color:#555;margin-top:4px;">業界平均25% の<strong>約1.9倍</strong></div>
+            </div>
+            <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:16px;text-align:center;">
+                <div style="font-size:11px;color:#1976d2;font-weight:700;margin-bottom:4px;">表示回数（5月）</div>
+                <div style="font-size:28px;font-weight:800;color:#1976d2;">2,540<span style="font-size:16px;">回</span></div>
+                <div style="font-size:11px;color:#555;margin-top:4px;">4月比<strong>+56.8%</strong>と急増</div>
+            </div>
+            <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:16px;text-align:center;">
+                <div style="font-size:11px;color:#2e7d32;font-weight:700;margin-bottom:4px;">視聴回数（5月）</div>
+                <div style="font-size:28px;font-weight:800;color:#2e7d32;">1,182<span style="font-size:16px;">回</span></div>
+                <div style="font-size:11px;color:#555;margin-top:4px;">4月比<strong>+50.8%</strong>と増加</div>
+            </div>
         </div>
+
+        <!-- 配信規模 注意 -->
+        <div style="background:#fff3e0;border-left:5px solid #ff8800;border-radius:8px;padding:14px 18px;margin-bottom:20px;">
+            <div style="font-size:13px;color:#e65100;font-weight:700;margin-bottom:4px;">⚠️ 配信ステータス: リーチ拡大の余地あり</div>
+            <div style="font-size:13px;color:#444;line-height:1.8;">
+                現状の配信規模では、配信したくてもできていない時間帯があります。<br>
+                視聴率が業界平均の約2倍と好調なため、<strong>配信規模を広げればその分しっかりリーチが伸びる状況</strong>です（後述の「次サイクル提案」で詳細）。
+            </div>
+        </div>
+
+        <!-- 切り口別分析タイトル -->
+        <div style="background:#2e7d32;color:#fff;padding:14px 18px;border-radius:8px;margin:24px 0 18px;">
+            <div style="font-size:16px;font-weight:700;">🔍 切り口別 深掘り分析</div>
+            <div style="font-size:12px;margin-top:4px;opacity:0.9;">「どこに刺さっているのか」を6つの切り口で可視化</div>
+        </div>
+
+        <!-- デバイス別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📱 デバイス別パフォーマンス（4月→5月比較）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">デバイス</th>
+                    <th colspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
+                    <th colspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">視聴率<br>推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🥇 スマートフォン（主戦場）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">598</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">47.01%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>918</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>47.96%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+0.95pt ↑（視聴+54%🚀）</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">PC（コンピュータ）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">120</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">52.40%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">185</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">41.67%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">-10.73pt ↓（視聴+54%）</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">テレビ画面</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">42</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">63.64%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">55</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">50.00%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-13.64pt</td>
+                </tr>
+                <tr style="background:#fff3e0;">
+                    <td style="padding:8px;border:1px solid #ddd;">⚠️ タブレット</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">24</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">45.28%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">24</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">33.33%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">-11.95pt ↓</td>
+                </tr>
+                <tr style="background:#f8f9fa;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">合計</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">784</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">48.40%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">1,182</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">46.54%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-1.86pt</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>スマートフォンが圧倒的な主戦場</strong>。視聴の78%（918/1,182）がスマホ。視聴率48%・視聴+54%で規模・効率ともに急成長。<br>
+            ② <strong>PCも視聴+54%（120→185）と急増</strong>。ただし視聴率は-10.73pt 悪化。新しい流入層が広告に慣れていない可能性。<br>
+            ③ <strong>テレビ画面・タブレットは視聴率悪化</strong>。少量配信のため数字の振れ幅が大きい段階。次サイクルで深掘り。<br>
+            ④ ゴルフ層がスマホ＝検索→YouTube視聴の流れに完全にハマっています。
+        </div>
+
+        <!-- 地域別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📍 地域別パフォーマンス（4月→5月比較）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">地域</th>
+                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
+                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">視聴率<br>推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🚀 沖縄市（重点）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">372</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">165</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">44.35%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>778</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>381</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>48.97%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+4.62pt ↑（表示+109%）</td>
+                </tr>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🥇 宜野湾市（拡張）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">328</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">171</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">52.13%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>563</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>294</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>52.22%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+0.09pt ↑（高位安定）</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td style="padding:8px;border:1px solid #ddd;color:#cc0000;">⚠️ うるま市（拡張）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">413</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">225</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">54.48%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">489</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">183</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">37.42%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">-17.06pt ↓↓</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">読谷村（拡張）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">136</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">59</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">43.38%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">251</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">102</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">40.64%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-2.74pt（表示+85%）</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">北谷町（拡張）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">118</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">49</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">41.53%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">188</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">89</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">47.34%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+5.81pt ↑</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">中城村（重点）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">77</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">41</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">53.25%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">115</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">60</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">52.17%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-1.08pt（高位安定）</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td style="padding:8px;border:1px solid #ddd;color:#cc0000;">⚠️ 北中城村（重点）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">134</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">62</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46.27%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">105</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">39</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">37.14%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">-9.13pt ↓</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🚀 嘉手納町（拡張・小規模）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">42</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">12</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">28.57%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">51</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">34</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>66.67%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+38.10pt ↑↑</td>
+                </tr>
+                <tr style="background:#f8f9fa;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">合計</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">1,620</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">784</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">48.40%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">2,540</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">1,182</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">46.54%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-1.86pt</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>沖縄市が急成長</strong>。表示+109%（372→778）かつ視聴率+4.62pt と量・質ともに改善。重点エリア指定通り主戦場として機能。<br>
+            ② <strong>宜野湾市が稼ぎ頭</strong>。視聴率52%超を2ヶ月連続キープ。拡張エリアながら最強の質。<br>
+            ③ ⚠️ <strong>うるま市が-17.06pt 大幅悪化</strong>（54%→37%）。表示は維持しているのに視聴率が落ち、予算ロスにつながる状態。<br>
+            ④ 🚀 <strong>嘉手納町が28%→66%へ急改善</strong>（規模小ながら）。視聴者層との相性が急に良くなった兆し。<br>
+            ⑤ ⚠️ <strong>北中城村が-9.13pt 悪化</strong>（重点エリア指定なのに表示も減少）。次サイクルで原因確認。
+        </div>
+
+        <!-- 性別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">👤 性別パフォーマンス（4月→5月比較）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">性別</th>
+                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#558b2f;">4月</th>
+                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">🥇 男性（視聴回数多）</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">403</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.52%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>671</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">45.96%</td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-1.56pt（視聴+66%🚀）</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">女性（視聴率高め）</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">381</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">49.35%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">511</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>47.31%</strong></td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-2.04pt（視聴+34%）</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:18px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>男性が視聴回数で主力</strong>（671 vs 511）。提案書通り「男性メイン」設計がきちんと機能しています。<br>
+            ② 一方で <strong>女性の視聴率が47.31%と男性より高い</strong>。福利厚生・デートスポット系のKWで女性層にも刺さっており、想定より広めに届いている。<br>
+            ③ 男女どちらも45-47%と業界平均の約2倍。性別バランスは現状維持で良さそう。
+        </div>
+
+        <!-- 年齢層 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">👥 年齢層パフォーマンス（4月→5月比較）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">年齢</th>
+                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#558b2f;">4月</th>
+                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding:6px;border:1px solid #ddd;">35-44才</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">178</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">50.14%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">209</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.18%</td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-2.96pt</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">🚀 45-54才（質トップ）</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">289</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.41%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>470</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>50.32%</strong></td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+1.91pt ↑（視聴+63%）</td>
+                </tr>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">🥇 55-64才（ボリューム最大）</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">317</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.46%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>503</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">43.25%</td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-4.21pt（視聴+59%）</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:18px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>55-64才が視聴回数最大</strong>（503視聴）。退職後の趣味ゴルフ層がボリュームトップ。<br>
+            ② <strong>45-54才が視聴率トップ（50.32%）かつ+1.91pt 改善</strong>。働き盛りの「接待・100切り・上達」ニーズが最も強く反応。<br>
+            ③ 3層すべて視聴+50〜63%と急成長。ゴルフ＝中高年男性の趣味として狙い通り。<br>
+            ④ ※18-24才・25-34才・65才以上は配信対象外（提案書の指定通り運用）。
+        </div>
+
+        <!-- 世帯収入 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">💰 世帯収入別パフォーマンス（4月→5月比較）</h3>
+
+        <details style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+            <summary style="cursor:pointer;font-weight:700;color:#1a1a1a;font-size:13px;">📖 「上位10%」「下位50%」とは？（クリックで開く）</summary>
+            <div style="font-size:13px;color:#444;line-height:1.9;margin-top:10px;">
+                Google広告では、視聴者を <strong>全国の世帯所得ランキングで7段階に分類</strong>しています。<br>
+                所得情報はGoogleが <strong>住所・利用サービス・地域統計などから推定</strong>しているもので、本人申告ではありません。
+            </div>
+            <table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:10px;">
+                <thead>
+                    <tr style="background:#f1f8e9;color:#1b5e20;">
+                        <th style="padding:6px;text-align:left;border:1px solid #ddd;width:22%;">区分</th>
+                        <th style="padding:6px;text-align:left;border:1px solid #ddd;">意味（イメージ）</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">上位10%</td><td style="padding:6px;border:1px solid #ddd;">日本の全世帯の中で、収入が <strong>上位10%以内</strong> の方（=高所得層、世帯年収目安1,500万円〜）</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">11〜20%</td><td style="padding:6px;border:1px solid #ddd;">上位11〜20%（やや高所得層、世帯年収目安1,000〜1,500万円）</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">21〜30%</td><td style="padding:6px;border:1px solid #ddd;">上位21〜30%（中の上、世帯年収目安800〜1,000万円）</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">31〜40%</td><td style="padding:6px;border:1px solid #ddd;">上位31〜40%（中位寄り）</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">41〜50%</td><td style="padding:6px;border:1px solid #ddd;">上位41〜50%（中位、平均的な世帯所得層）</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">下位50%</td><td style="padding:6px;border:1px solid #ddd;">下位50%全体（=日本の世帯の半分。世帯年収目安〜500万円程度）</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">不明</td><td style="padding:6px;border:1px solid #ddd;">Googleが所得層を推定できなかった視聴者（ログイン情報が少ない等）</td></tr>
+                </tbody>
+            </table>
+            <div style="font-size:11px;color:#888;margin-top:8px;">※ 金額目安はGoogle非公表のため一般統計に基づく推定値です。実際の判定基準はGoogle内部のものになります。</div>
+        </details>
+
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">世帯収入</th>
+                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#558b2f;">4月</th>
+                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">上位10%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">26</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.15%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">44</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>52.38%</strong></td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+4.23pt ↑</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td style="padding:6px;border:1px solid #ddd;color:#cc0000;">⚠️ 11-20%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">24</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">45.28%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">57</td><td style="padding:4px;text-align:right;border:1px solid #ddd;color:#cc0000;">34.55%</td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-10.73pt ↓</td>
+                </tr>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">🥇 21-30%（質トップ）</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">98</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">64.90%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">104</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>57.46%</strong></td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-7.44pt（高位維持）</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px;border:1px solid #ddd;">31-40%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">148</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">46.54%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">236</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.16%</td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+1.62pt ↑</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px;border:1px solid #ddd;">41-50%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">105</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">46.05%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">147</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">43.49%</td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-2.56pt</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">下位50%（ボリューム最大）</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">304</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.10%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>480</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.81%</td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-0.29pt（高位安定）</td>
+                </tr>
+                <tr>
+                    <td style="padding:6px;border:1px solid #ddd;">不明</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">79</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">42.93%</td>
+                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">114</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">41.01%</td>
+                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-1.92pt</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>21-30%層（やや高所得）が視聴率57.46%と最強</strong>。月会員ニーズが最もハマる中の上の所得層。<br>
+            ② <strong>下位50%層がボリューム最大</strong>（480視聴）かつ視聴率47.81%と高水準で安定。シミュレーションゴルフが「気軽に試せる練習」として幅広い層に届いています。<br>
+            ③ <strong>上位10%層も+4.23pt 改善</strong>（48%→52%）。法人会員・福利厚生ニーズの可能性。<br>
+            ④ 一方で <strong>11-20%層が-10.73pt 大幅悪化</strong>。表示が倍増したのに質が落ちており、要監視。
+        </div>
+
+        <!-- 曜日別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📅 曜日別パフォーマンス（4月→5月比較）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">曜日</th>
+                    <th colspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
+                    <th colspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#ffebee;"><td style="padding:6px;border:1px solid #ddd;color:#cc0000;">⚠️ 月</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">209</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">61.83%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">87</td><td style="padding:4px;text-align:right;border:1px solid #ddd;color:#cc0000;">40.85%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">-20.98pt ↓↓</td></tr>
+                <tr style="background:#e8f5e9;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">🚀 火</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">90</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">41.28%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>321</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>51.69%</strong></td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+10.41pt ↑（視聴+257%）</td></tr>
+                <tr style="background:#fff8e1;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">🥇 水（最強）</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">188</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">62.05%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>391</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>65.17%</strong></td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+3.12pt ↑（視聴+108%）</td></tr>
+                <tr style="background:#ffebee;"><td style="padding:6px;border:1px solid #ddd;color:#cc0000;">⚠️ 木</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">94</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.24%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">91</td><td style="padding:4px;text-align:right;border:1px solid #ddd;color:#cc0000;">28.35%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">-18.89pt ↓↓</td></tr>
+                <tr><td style="padding:6px;border:1px solid #ddd;">金</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">61</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">32.11%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">90</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">40.91%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+8.80pt ↑</td></tr>
+                <tr><td style="padding:6px;border:1px solid #ddd;">土</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">57</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">37.50%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">91</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">36.55%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-0.95pt</td></tr>
+                <tr><td style="padding:6px;border:1px solid #ddd;">日</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">85</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">38.64%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">111</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">35.13%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-3.51pt</td></tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin:8px 0 24px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>水曜が圧倒的に最強</strong>（視聴率65.17%、視聴+108%）。週中ど真ん中＝週末ゴルフ予定を考える時間帯と推察。<br>
+            ② <strong>火曜が大躍進 +10.41pt</strong>（41%→52%、視聴+257%）。新しい黄金日が誕生。<br>
+            ③ ⚠️ <strong>月曜が-20.98pt 大幅悪化</strong>、<strong>木曜も-18.89pt 急悪化</strong>。週初・週後半は視聴者層の質が落ちており、この曜日への配信はムダ撃ちになりやすい。<br>
+            ④ 平日（水・火）が休日（土・日）より圧倒的に強い特殊なパターン。仕事のスキマ時間にスマホで動画を見る層に刺さっています。
+        </div>
+
+        <!-- キーワード別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">🔑 キーワード別（4月→5月比較・5月視聴回数順）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">キーワード</th>
+                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
+                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">視聴率<br>推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:8px;border:1px solid #ddd;">🥇 100切り 🚀</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">277</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">180</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">64.98%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>1,821</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>858</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;">47.12%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">表示+557% 🚀（質はやや低下）</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;">🥈 打ちっぱなし</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">573</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">259</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">45.20%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">122</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">76</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>62.30%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+17.10pt ↑（量↓質↑）</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;">🥉 ゴルフ 初心者</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">105</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">59</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">56.19%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">77</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">52</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>67.53%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+11.34pt ↑</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td style="padding:8px;border:1px solid #ddd;color:#cc0000;">⚠️ ドライバー 飛距離</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">86</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">49</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">56.98%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">225</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">51</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">22.67%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">-34.31pt ↓↓</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">シミュレーションゴルフ</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">379</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">141</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">37.20%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">79</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">44</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">55.70%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+18.50pt ↑（量↓質↑）</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">福利厚生</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">43</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">20</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46.51%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">76</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">40</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">52.63%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+6.12pt ↑</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">ゴルフ レッスン</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">60</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">22</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">36.67%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">61</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">30</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">49.18%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+12.51pt ↑</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">ゴルフ 上達</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">23</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">12</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">52.17%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">45</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">18</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">40.00%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-12.17pt</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">休日 過ごし方</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">20</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">7</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">35.00%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">17</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">6</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">35.29%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">+0.29pt</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td style="padding:8px;border:1px solid #ddd;">⚠️ 運動不足 解消</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">8</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">4</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">50.00%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">4</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">1</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">25.00%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">悪化</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td style="padding:8px;border:1px solid #ddd;">⚠️ ゴルフ練習場</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">41</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">27</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">65.85%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">1</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">0</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">0.00%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">5月ほぼ配信なし</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td style="padding:8px;border:1px solid #ddd;">⚠️ 接待 ゴルフ / スイング 改善 / ゴルフ練習 室内 / 趣味 始めたい / デート スポット 沖縄</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;" colspan="3">表示・視聴ともに5以下</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;" colspan="3">表示・視聴ともに5以下</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">届いていない</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① 🚀 <strong>「100切り」が爆発的に主力化</strong>（表示277→1,821、+557%）。視聴率は64%→47%とやや落ちたものの、視聴数858と主力に。本気のゴルファー層への到達ルートが定まりました。<br>
+            ② <strong>「打ちっぱなし」「シミュレーションゴルフ」は表示を絞ったことで視聴率が大幅改善</strong>（45%→62%／37%→56%）。質重視の最適化が機能。<br>
+            ③ <strong>「ゴルフ 初心者」「福利厚生」「ゴルフ レッスン」の視聴率が大幅改善</strong>。法人向け・初心者層への訴求が手応えあり。<br>
+            ④ ⚠️ <strong>「ドライバー 飛距離」が-34.31pt 大幅悪化</strong>（57%→23%）。表示は3倍に増えたのに視聴率激落ち。具体的な悩みを持つ層と動画内容のズレが疑われます。<br>
+            ⑤ <strong>ライフスタイル系（運動不足・接待・デートスポット等）はほぼ機能していません</strong>。次サイクルで除外検討。
+        </div>
+
+        <!-- 動画完視率 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">🎬 動画完視率（最後まで見られているか）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:8px;">
+            <thead><tr style="background:#f1f8e9;"><th style="padding:8px;border:1px solid #ddd;">月</th><th style="padding:8px;border:1px solid #ddd;">25%視聴</th><th style="padding:8px;border:1px solid #ddd;">50%視聴</th><th style="padding:8px;border:1px solid #ddd;">75%視聴</th><th style="padding:8px;border:1px solid #ddd;">100%完視</th></tr></thead>
+            <tbody>
+                <tr><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;">4月</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">51.88%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">10.43%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">8.14%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">6.85%</td></tr>
+                <tr style="background:#e8f5e9;"><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;">5月</td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>51.16%</strong></td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>11.31%</strong></td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>8.87%</strong></td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>7.22%</strong></td></tr>
+                <tr style="background:#fff8e1;"><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;color:#e65100;">推移</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#888;">-0.72pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#2e7d32;">+0.88pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#2e7d32;">+0.73pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#2e7d32;">+0.37pt</td></tr>
+            </tbody>
+        </table>
+        <div style="background:#fff3e0;border-left:5px solid #ff8800;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:8px;">
+            <strong>⚠️ ここが最大の改善ポイント:</strong> 4分の1までは半数（51%）が見てくれていますが、<strong>そこから半分（50%地点）までで急激に離脱して10%程度まで落ち込みます</strong>。動画前半（特に25%→50%の区間）で視聴者を惹きつけきれていない可能性が高く、<strong>動画の中盤フック・後半の見せ場の磨き込み</strong>が次サイクル最大のテーマです。一方で各段階が4月→5月でわずかに改善している点はポジティブな兆候。
+        </div>
+
+        <div style="font-size:12px;color:#888;text-align:right;margin-top:18px;">
+            最終更新: 2026年6月8日｜次回更新: 2026年8月上旬予定
+        </div>
+    </div>
+
+
+    <!-- ④ 次サイクル運用提案 -->
+    <div class="section" style="border-color:#cc0000;">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">3</span>
+            次サイクル運用提案（弊社からのご提案）
+        </div>
+
+        <div style="background:#fff0f0;border:2px solid #cc0000;border-radius:10px;padding:16px 20px;margin-bottom:20px;">
+            <div style="font-size:13px;color:#cc0000;line-height:1.9;">
+                <strong>👇 配信実績データから導いた、次2ヶ月の運用最適化案を3点まとめました。</strong><br>
+                ご一読のうえ、福永様のご判断・ご相談をお待ちしております。
+            </div>
+        </div>
+
+        <!-- 提案① 動画クリエイティブ強化 -->
+        <div style="background:#fff;border:2px solid #cc0000;border-radius:10px;padding:20px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                <span style="background:#cc0000;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案①</span>
+                <span style="font-size:17px;font-weight:700;">動画クリエイティブの中盤フック強化</span>
+            </div>
+
+            <div style="background:#fff8f8;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#cc0000;margin-bottom:6px;">📊 データから見えること</div>
+                <ul style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;">
+                    <li>視聴率は<strong>47.26%（業界平均25%の約1.9倍）</strong>と非常に好調。広告は「再生してもらえる」状態</li>
+                    <li>一方で <strong>動画の25%→50%地点で大量離脱</strong>（51% → 11%）。中盤で離脱が起きている</li>
+                    <li><strong>100%完視率は7.22%</strong>（業界平均の半分程度）。最後まで届いているのは少数</li>
+                </ul>
+            </div>
+
+            <div style="background:#e8f5e9;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:6px;">💡 ご提案（3点セット）</div>
+                <ol style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;">
+                    <li><strong>動画前半（0〜10秒）で「100切り」「沖縄中部のシミュレーションゴルフ」を明示</strong>（流入KWに合わせた最初の引き）</li>
+                    <li><strong>中盤（10〜20秒）で施設の差別化ポイントを1つ強調</strong>（最新シミュレーター／個室／練習し放題料金など、福永様の強みを1点）</li>
+                    <li><strong>終盤（最後3秒）でCTA明確化</strong>（「初回体験は公式サイトから」「会員プラン詳細はHP」）</li>
+                </ol>
+            </div>
+
+            <div style="background:#fffde7;border-radius:8px;padding:12px 16px;">
+                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">📈 期待される効果</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                    <tr style="background:#fff8e1;"><th style="padding:6px;text-align:left;border:1px solid #ddd;">項目</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">5月実績</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">クリエイティブ強化後の見込み</th></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;">50%視聴率</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">11.31%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">15〜20%</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;">100%完視率</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">7.22%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">10%超</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;">HPへの誘導効果</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">—</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">明確に向上</td></tr>
+                </table>
+                <div style="font-size:11px;color:#888;margin-top:6px;">💡 動画更新は弊社で素材ご支給・もしくは編集対応もご相談可能です。</div>
+            </div>
+        </div>
+
+        <!-- 提案② 曜日入札の最適化 -->
+        <div style="background:#fff;border:2px solid #ff8800;border-radius:10px;padding:20px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                <span style="background:#ff8800;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案②</span>
+                <span style="font-size:17px;font-weight:700;">曜日入札の最適化（水・火を強化、月・木を抑制）</span>
+            </div>
+
+            <div style="background:#fff8f0;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">📊 データから見えること</div>
+                <ul style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;">
+                    <li>🥇 <strong>水曜の視聴率65.17%</strong>（圧倒的最強）。視聴+108%の急成長</li>
+                    <li>🚀 <strong>火曜が+10.41pt 急成長</strong>（41% → 52%、視聴+257%）</li>
+                    <li>⚠️ <strong>月曜が-20.98pt</strong>、⚠️ <strong>木曜が-18.89pt 急悪化</strong>。同じ予算でも質が下がる</li>
+                    <li>休日（土・日）も視聴率35%前後と相対的に低調</li>
+                </ul>
+            </div>
+
+            <div style="background:#e8f5e9;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:6px;">💡 ご提案</div>
+                <ol style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;">
+                    <li><strong>水・火曜の入札比率を +20〜30%</strong>（最も効率の良い曜日へ予算を寄せる）</li>
+                    <li><strong>月・木曜の入札比率を -20%</strong>（質が落ちる曜日は控えめに）</li>
+                    <li>土日は現状維持（無理に強化しない）</li>
+                </ol>
+            </div>
+
+            <div style="background:#fffde7;border-radius:8px;padding:12px 16px;">
+                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">📈 期待される効果</div>
+                <div style="font-size:13px;color:#333;line-height:1.9;">
+                    同予算で <strong>視聴率+1〜2pt の上振れ</strong>＋ <strong>月間視聴回数+10〜15%</strong> 見込み。<br>
+                    実際の店舗予約も「水曜に予定を立てて週末来店」のサイクルにフィットする可能性が高い。
+                </div>
+            </div>
+        </div>
+
+        <!-- 提案③ エリア＋キーワード最適化 -->
+        <div style="background:#fff;border:2px solid #2e7d32;border-radius:10px;padding:20px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                <span style="background:#2e7d32;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案③</span>
+                <span style="font-size:17px;font-weight:700;">エリア＋キーワードを「効いてる順」に組み直す</span>
+            </div>
+
+            <div style="background:#f1f8e9;border-radius:8px;padding:12px 16px;margin-bottom:14px;">
+                <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:6px;">📊 データから見えること</div>
+                <div style="font-size:13px;color:#333;line-height:1.9;">
+                    <strong>沖縄市・宜野湾市・中城村</strong> の3エリアと、<strong>「100切り」「打ちっぱなし」「ゴルフ 初心者」「シミュレーションゴルフ」「福利厚生」</strong> の5KWで視聴の大半を稼いでいる構造が明確に。<br>
+                    一方で <strong>うるま市の質悪化</strong>と <strong>ライフスタイル系KWの不発</strong>が予算ロスにつながっています。
+                </div>
+            </div>
+
+            <!-- A. 強化候補 -->
+            <div style="background:#e8f5e9;border:1px solid #2e7d32;border-radius:8px;padding:14px 16px;margin-bottom:10px;">
+                <div style="font-size:14px;font-weight:700;color:#1b5e20;margin-bottom:8px;">🚀 A. 「もっと出したい」候補（入札・配信比率強化）</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                    <thead><tr style="background:#c8e6c9;"><th style="padding:6px;text-align:left;border:1px solid #aed581;">対象</th><th style="padding:6px;text-align:right;border:1px solid #aed581;">5月視聴率</th><th style="padding:6px;text-align:right;border:1px solid #aed581;">推移</th><th style="padding:6px;text-align:left;border:1px solid #aed581;">なぜ強化したいか</th></tr></thead>
+                    <tbody>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">エリア：沖縄市</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">48.97%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#cc0000;font-weight:700;">+4.62pt 🚀</td><td style="padding:6px;border:1px solid #aed581;">表示+109%・視聴率改善のW快進撃</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">エリア：宜野湾市</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">52.22%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;">+0.09pt</td><td style="padding:6px;border:1px solid #aed581;">最高水準を2ヶ月連続キープ</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">KW：100切り</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">47.12%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#cc0000;">表示+557%🚀</td><td style="padding:6px;border:1px solid #aed581;">圧倒的主力KW。本気のゴルファー層の入り口</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">KW：ゴルフ 初心者</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">67.53%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;">+11.34pt</td><td style="padding:6px;border:1px solid #aed581;">視聴率トップ。初心者層の体験予約導線</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">KW：福利厚生</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">52.63%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;">+6.12pt</td><td style="padding:6px;border:1px solid #aed581;">法人プラン獲得の有望ルート</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- B. 除外候補 -->
+            <div style="background:#ffebee;border:1px solid #cc0000;border-radius:8px;padding:14px 16px;margin-bottom:10px;">
+                <div style="font-size:14px;font-weight:700;color:#b71c1c;margin-bottom:8px;">🗑 B. 「外したい」候補（除外・縮小）</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                    <thead><tr style="background:#ffcdd2;"><th style="padding:6px;text-align:left;border:1px solid #ef9a9a;">対象</th><th style="padding:6px;text-align:right;border:1px solid #ef9a9a;">4月実績</th><th style="padding:6px;text-align:right;border:1px solid #ef9a9a;">5月実績</th><th style="padding:6px;text-align:left;border:1px solid #ef9a9a;">なぜ外したいか</th></tr></thead>
+                    <tbody>
+                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">エリア：うるま市</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">視聴率54.48%</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">視聴率37.42%</td><td style="padding:6px;border:1px solid #ef9a9a;">-17pt の急悪化。配信比率を一時的に下げ要因調査</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">KW：ドライバー 飛距離</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">視聴率56.98%</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">視聴率22.67%</td><td style="padding:6px;border:1px solid #ef9a9a;">-34pt の急悪化。広告内容との不一致が疑われる</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">KW：運動不足 解消 / 接待 ゴルフ / 趣味 始めたい / デート スポット 沖縄</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;" colspan="2">表示・視聴ともに5以下</td><td style="padding:6px;border:1px solid #ef9a9a;">ライフスタイル系で全体的に無風</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">KW：ゴルフ練習場</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">視聴27</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">視聴0</td><td style="padding:6px;border:1px solid #ef9a9a;">5月に「100切り」へ予算がシフト。除外で枠を整理</td></tr>
+                    </tbody>
+                </table>
+                <div style="font-size:11px;color:#555;margin-top:6px;">→ 外しても配信に悪影響なし。枠を強化候補に回せる</div>
+            </div>
+
+            <!-- C. 新規追加候補 -->
+            <div style="background:#e3f2fd;border:1px solid #1976d2;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:14px;font-weight:700;color:#0d47a1;margin-bottom:8px;">✨ C. 「新しく試したい」キーワード（追加候補）</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                    <thead><tr style="background:#bbdefb;"><th style="padding:6px;text-align:left;border:1px solid #90caf9;">追加候補</th><th style="padding:6px;text-align:left;border:1px solid #90caf9;">なぜこれを試したいか</th></tr></thead>
+                    <tbody>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">90切り / 80切り</td><td style="padding:6px;border:1px solid #90caf9;">「100切り」が大成功。上達ステップの次段階KWへ拡張</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">ゴルフ 初心者 沖縄</td><td style="padding:6px;border:1px solid #90caf9;">「ゴルフ 初心者」67%の地域版。来店圏内意向の濃い層</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">パター練習 / アプローチ 練習</td><td style="padding:6px;border:1px solid #90caf9;">具体的な悩み系。「ドライバー 飛距離」より具体度高く質が高い見込み</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">ゴルフ 法人会員</td><td style="padding:6px;border:1px solid #90caf9;">「福利厚生」52%好調。法人会員プランへの直接的アプローチ</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">雨でも ゴルフ 沖縄</td><td style="padding:6px;border:1px solid #90caf9;">インドア×沖縄の天候という強み訴求。差別化KW</td></tr>
+                    </tbody>
+                </table>
+                <div style="font-size:11px;color:#555;margin-top:6px;">→ 次サイクル中に少量ずつ投入し、反応を見て本採用するかご相談</div>
+            </div>
+        </div>
+
+        <div style="background:#f8f9fa;border-left:5px solid #cc0000;padding:14px 18px;font-size:13px;line-height:1.9;color:#333;">
+            <strong>📅 次サイクルの想定スケジュール:</strong><br>
+            ご報告共有 → 福永様ご判断 → 6月中旬 設定変更（曜日入札・KW整理） → 6月下旬〜7月 動画クリエイティブ更新 → 8月上旬 次回ご報告
+        </div>
+    </div>
+
+    <!-- ⑤ ご要望・改善履歴 -->
+    <div class="section" style="border-color:#6a1b9a;">
+        <div class="section-title">
+            <span class="icon" style="background:#6a1b9a;">4</span>
+            ご要望・改善履歴
+        </div>
+
+        <div style="background:#f3e5f5;border:2px solid #6a1b9a;border-radius:10px;padding:16px 20px;margin-bottom:18px;">
+            <div style="font-size:13px;color:#4a148c;line-height:1.8;">
+                福永様からいただいたご要望と、その対応状況をこちらに記録してまいります。<br>
+                対応完了後は実施内容と効果（次サイクルの実績）もあわせて記録します。
+            </div>
+        </div>
+
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+                <tr style="background:#6a1b9a;color:#fff;">
+                    <th style="padding:10px;text-align:center;border:1px solid #ddd;width:14%;">受領日</th>
+                    <th style="padding:10px;text-align:left;border:1px solid #ddd;width:40%;">ご要望内容</th>
+                    <th style="padding:10px;text-align:left;border:1px solid #ddd;width:32%;">対応内容</th>
+                    <th style="padding:10px;text-align:center;border:1px solid #ddd;width:14%;">ステータス</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="4" style="padding:20px;text-align:center;color:#999;border:1px solid #ddd;font-size:13px;">
+                        ※ 次回ご報告時のヒアリング後、こちらに記録してまいります
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- 補足事項 -->
