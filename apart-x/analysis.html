@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>apart-x.jp / f-build.co.jp 現状分析（同業他社比較）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --red:#b91c1c; --orange:#f59e0b; --dark:#14213d; --light:#f8fafc; --border:#e5e7eb; --green:#059669; --yellow:#f59e0b; --critical:#dc2626; }
+body { font-family: "Noto Sans JP", sans-serif; color: #0f172a; line-height: 1.7; background: #faf6ef; padding: 24px 16px; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1080px; margin: 0 auto; }
+.nav-back { display: inline-block; margin-bottom: 16px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
+header.hero { background: linear-gradient(135deg, var(--red), var(--orange)); color: #fff; padding: 36px 32px; border-radius: 14px; margin-bottom: 28px; }
+header.hero .eyebrow { font-size: 11px; letter-spacing: 0.2em; opacity: 0.9; }
+header.hero h1 { font-family: "Noto Serif JP", serif; font-size: 28px; margin: 8px 0 12px; }
+header.hero .subtitle { font-size: 13px; opacity: 0.95; }
+header.hero .meta { margin-top: 18px; font-size: 12px; opacity: 0.85; border-top: 1px solid rgba(255,255,255,0.25); padding-top: 14px; }
+
+/* TOP3 結論 */
+.top3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+@media(max-width:760px){ .top3{grid-template-columns: 1fr;} }
+.top3-card { background: #fff; border: 2px solid var(--red); border-radius: 12px; padding: 20px; position: relative; }
+.top3-card .rank { position: absolute; top: -12px; left: 16px; background: var(--red); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 900; }
+.top3-card h2 { font-family: "Noto Serif JP", serif; font-size: 15px; color: var(--red); margin: 4px 0 10px; }
+.top3-card p { font-size: 12px; color: #334155; }
+.top3-card .big { font-family: "Inter", sans-serif; font-weight: 900; font-size: 28px; color: var(--critical); margin: 8px 0; line-height: 1; }
+
+/* Sections */
+section { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 28px 28px 24px; margin-bottom: 20px; }
+section h2.sec-ttl { font-family: "Noto Serif JP", serif; font-size: 22px; color: var(--dark); border-left: 5px solid var(--red); padding-left: 12px; margin-bottom: 18px; }
+section h3 { font-family: "Noto Serif JP", serif; font-size: 16px; color: var(--dark); margin: 18px 0 10px; }
+section p { font-size: 13px; margin-bottom: 10px; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 10px 0 14px; }
+th, td { padding: 9px 11px; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+th { background: var(--dark); color: #fff; font-weight: 700; font-size: 12px; }
+td:first-child { font-weight: 700; }
+.num { text-align: right; font-family: "Inter", sans-serif; font-weight: 700; }
+.critical { background: #fef2f2; color: var(--critical); font-weight: 900; }
+.warn { background: #fffbeb; color: #b45309; }
+.ok { background: #ecfdf5; color: var(--green); font-weight: 700; }
+
+/* Compare boxes */
+.compare-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+@media(max-width:760px){ .compare-2{grid-template-columns: 1fr;} }
+.compare-box { padding: 20px; border-radius: 10px; border: 2px solid; }
+.compare-box.lp { border-color: var(--critical); background: #fef2f2; }
+.compare-box.hp { border-color: var(--green); background: #ecfdf5; }
+.compare-box h3 { margin-top: 0; }
+.compare-box.lp h3 { color: var(--critical); }
+.compare-box.hp h3 { color: var(--green); }
+.compare-box ul { padding-left: 20px; font-size: 13px; }
+.compare-box li { margin: 4px 0; }
+
+/* Bar chart */
+.bar-row { display: grid; grid-template-columns: 130px 1fr 50px; gap: 10px; align-items: center; padding: 5px 0; font-size: 12px; }
+.bar { background: var(--red); height: 18px; border-radius: 3px; min-width: 6px; }
+.bar.zero { background: var(--critical); width: 28px !important; }
+.bar.lo { background: var(--yellow); }
+.bar.mid { background: var(--orange); }
+.bar.hi { background: var(--red); }
+.bar-row.zero { background: #fef2f2; padding: 5px 8px; border-radius: 4px; }
+.bar-row .val { text-align: right; font-family: "Inter"; font-weight: 700; }
+
+/* Insight box */
+.insight { background: linear-gradient(135deg, #fff5f5, #fef3e2); border-left: 5px solid var(--orange); padding: 18px 22px; border-radius: 8px; margin: 18px 0; }
+.insight .label { font-size: 11px; color: var(--orange); font-weight: 900; letter-spacing: 0.15em; margin-bottom: 6px; }
+.insight .body { font-size: 13px; }
+.insight strong { color: var(--red); }
+
+/* Action box */
+.action-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:760px){ .action-2{grid-template-columns: 1fr;} }
+.action-box { background: #fff; border-radius: 10px; padding: 22px; border-top: 4px solid; }
+.action-box.lp { border-color: var(--critical); }
+.action-box.hp { border-color: var(--green); }
+.action-box h3 { font-family: "Noto Serif JP", serif; font-size: 15px; margin-bottom: 12px; }
+.action-box.lp h3 { color: var(--critical); }
+.action-box.hp h3 { color: var(--green); }
+.action-box ol { padding-left: 22px; font-size: 13px; }
+.action-box ol li { margin: 6px 0; }
+.action-box .pri { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 9px; font-weight: 900; color: #fff; margin-right: 4px; }
+.action-box .pri.h { background: var(--critical); }
+.action-box .pri.m { background: var(--orange); }
+.action-box .pri.l { background: #94a3b8; }
+
+footer { text-align: center; padding: 24px; color: #64748b; font-size: 11px; }
+.tag { display: inline-block; padding: 1px 6px; font-size: 9px; font-weight: 700; border-radius: 3px; background: #7c3aed; color: #fff; margin-left: 6px; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="nav-back">← apart-x.jp 資料一覧に戻る</a>
+
+<header class="hero">
+  <div class="eyebrow">APART-X.JP × F-BUILD.CO.JP — STATUS ANALYSIS</div>
+  <h1>LP（apart-x.jp）／ HP（f-build.co.jp）統合現状分析<span class="tag">同業他社比較</span></h1>
+  <p class="subtitle">公開HTMLを定量解析。GA4／Search Console は除外。同業大手3社（大東建託・東建コーポレーション・生和コーポレーション）との比較を含む。</p>
+  <div class="meta">調査日: 2026-06-06 ／ 株式会社 斗 ／ 参照: 角田代表「LP設計書 Ver.1.2」・鈴木さん「HP変更のご提案」PDF</div>
+</header>
+
+<!-- 結論TOP3 -->
+<div class="top3">
+  <div class="top3-card">
+    <span class="rank">No.1</span>
+    <h2>LPは構造致命傷、HPは構造健全</h2>
+    <p>apart-x.jp の H1なし／alt92%未設定／本文中 contact 0個 は致命傷。<br>f-build.co.jp は H1・alt・H2・CTA いずれも健全。</p>
+    <div class="big">92% / 0%</div>
+    <p style="font-size:11px; color:#64748b">LP画像alt未設定率 vs HP alt未設定率</p>
+  </div>
+  <div class="top3-card">
+    <span class="rank">No.2</span>
+    <h2>土地活用キーワードが両方薄い</h2>
+    <p>LP「土地活用」3回 / HP「土地活用」1回 / 「相続税」「建替え」「法人」両方0回。<br>競合は最大16〜650倍密度。</p>
+    <div class="big">3 / 1</div>
+    <p style="font-size:11px; color:#64748b">LP / HP の「土地活用」出現回数</p>
+  </div>
+  <div class="top3-card">
+    <span class="rank">No.3</span>
+    <h2>v1.2方向転換はLP+HP両方必要</h2>
+    <p>HPも「投資家向け＋採用」が前面で、地主・相続・建替え・法人がゼロ。<br>動機ファースト軸はLP単独では完結しない。</p>
+    <div class="big">採用 8</div>
+    <p style="font-size:11px; color:#64748b">HP TOP の「採用」キーワード回数（土地活用の8倍）</p>
+  </div>
+</div>
+
+<!-- 1. LP現状 -->
+<section>
+  <h2 class="sec-ttl">1. apart-x.jp（LP）— 現状</h2>
+  <h3>1-1. 構造的事実</h3>
+  <table>
+    <tr><th>項目</th><th>実測</th><th>判定</th></tr>
+    <tr><td>title</td><td>アパート建築の方程式 | 創業<strong>４９年</strong>を誇る実績…</td><td class="warn">創業49年（古い）</td></tr>
+    <tr><td>H1</td><td>1（画像ロゴで実装）</td><td class="warn">テキストH1ではない</td></tr>
+    <tr><td>H2数</td><td class="num">4</td><td class="critical">構造化不足</td></tr>
+    <tr><td>本文文字数</td><td class="num">19,961字</td><td class="warn">LPとして長すぎ</td></tr>
+    <tr><td>画像数</td><td class="num">38（alt未設定 <strong>35＝92%</strong>）</td><td class="critical">SEO/A11y致命</td></tr>
+    <tr><td>本文中 tel リンク</td><td class="num">1</td><td class="warn">少ない</td></tr>
+    <tr><td>本文中 contact リンク</td><td class="num">0</td><td class="critical">致命</td></tr>
+    <tr><td>本文中 LINE リンク</td><td class="num">0</td><td class="critical">致命</td></tr>
+  </table>
+
+  <h3>1-2. キーワード密度（出現回数）</h3>
+  <div style="background:#f8fafc; padding:16px; border-radius:8px;">
+    <div class="bar-row"><span>アパート建築</span><div class="bar hi" style="width:90%"></div><span class="val">35</span></div>
+    <div class="bar-row"><span>棟</span><div class="bar hi" style="width:82%"></div><span class="val">32</span></div>
+    <div class="bar-row"><span>投資</span><div class="bar mid" style="width:33%"></div><span class="val">13</span></div>
+    <div class="bar-row"><span>利回り</span><div class="bar mid" style="width:28%"></div><span class="val">11</span></div>
+    <div class="bar-row"><span>賃貸</span><div class="bar lo" style="width:18%"></div><span class="val">7</span></div>
+    <div class="bar-row"><span>公務員</span><div class="bar lo" style="width:10%"></div><span class="val">4</span></div>
+    <div class="bar-row"><span>会社員</span><div class="bar lo" style="width:10%"></div><span class="val">4</span></div>
+    <div class="bar-row"><span>土地活用</span><div class="bar lo" style="width:8%"></div><span class="val">3</span></div>
+    <div class="bar-row zero"><span>相続税</span><div class="bar zero"></div><span class="val">0</span></div>
+    <div class="bar-row zero"><span>建替え</span><div class="bar zero"></div><span class="val">0</span></div>
+    <div class="bar-row zero"><span>法人</span><div class="bar zero"></div><span class="val">1</span></div>
+    <div class="bar-row zero"><span>ZEH / 省エネ</span><div class="bar zero"></div><span class="val">0</span></div>
+    <div class="bar-row zero"><span>地主</span><div class="bar zero"></div><span class="val">0</span></div>
+  </div>
+
+  <div class="insight">
+    <div class="label">読み取り</div>
+    <div class="body">「会社員・公務員・投資・利回り」軸が中心で、<strong>地主・相続・建替え・法人・ZEH はほぼゼロ</strong>。v1.2 設計書が指摘する 5動機ペルソナ（地主／建替え／会社員／子世代／法人）のうち、現状で網羅されているのは「会社員」のみ。</div>
+  </div>
+</section>
+
+<!-- 2. HP現状 -->
+<section>
+  <h2 class="sec-ttl">2. f-build.co.jp（HP）— 現状</h2>
+  <h3>2-1. 構造的事実（TOPページ）</h3>
+  <table>
+    <tr><th>項目</th><th>実測</th><th>判定</th></tr>
+    <tr><td>title</td><td>福岡ビルド株式会社</td><td class="ok">シンプル</td></tr>
+    <tr><td>description</td><td>投資家向け木造アパート・土地選びから施工・販売まで一貫対応</td><td class="ok">適切</td></tr>
+    <tr><td>H1</td><td>1（「木造建築のその先へ — Vision Statement」）</td><td class="ok">テキスト実装</td></tr>
+    <tr><td>H2数</td><td class="num">12</td><td class="ok">構造化OK</td></tr>
+    <tr><td>本文字数</td><td class="num">3,542字</td><td class="ok">HPとして適切</td></tr>
+    <tr><td>画像数</td><td class="num">129（alt未設定 <strong>0%</strong>）</td><td class="ok">完璧</td></tr>
+    <tr><td>本文中 contact リンク</td><td class="num">4</td><td class="ok">OK</td></tr>
+    <tr><td>本文中 LINE リンク</td><td class="num">1</td><td class="warn">もう少し増やしたい</td></tr>
+  </table>
+
+  <h3>2-2. キーワード密度（HP TOP）</h3>
+  <div style="background:#f8fafc; padding:16px; border-radius:8px;">
+    <div class="bar-row"><span>利回り</span><div class="bar mid" style="width:60%"></div><span class="val">12</span></div>
+    <div class="bar-row"><span>棟</span><div class="bar mid" style="width:40%"></div><span class="val">8</span></div>
+    <div class="bar-row"><span>採用 ⭐</span><div class="bar" style="width:40%; background:#7c3aed"></div><span class="val">8</span></div>
+    <div class="bar-row"><span>実績</span><div class="bar mid" style="width:35%"></div><span class="val">7</span></div>
+    <div class="bar-row"><span>投資</span><div class="bar lo" style="width:20%"></div><span class="val">4</span></div>
+    <div class="bar-row"><span>資料</span><div class="bar lo" style="width:20%"></div><span class="val">4</span></div>
+    <div class="bar-row"><span>エントリー</span><div class="bar" style="width:15%; background:#7c3aed"></div><span class="val">3</span></div>
+    <div class="bar-row"><span>無料</span><div class="bar lo" style="width:15%"></div><span class="val">3</span></div>
+    <div class="bar-row"><span>土地活用</span><div class="bar lo" style="width:5%"></div><span class="val">1</span></div>
+    <div class="bar-row zero"><span>相続税</span><div class="bar zero"></div><span class="val">0</span></div>
+    <div class="bar-row zero"><span>建替え</span><div class="bar zero"></div><span class="val">0</span></div>
+    <div class="bar-row zero"><span>法人</span><div class="bar zero"></div><span class="val">0</span></div>
+    <div class="bar-row zero"><span>地主</span><div class="bar zero"></div><span class="val">0</span></div>
+    <div class="bar-row zero"><span>ZEH / 省エネ</span><div class="bar zero"></div><span class="val">0</span></div>
+  </div>
+
+  <div class="insight">
+    <div class="label">読み取り</div>
+    <div class="body">HPでも<strong>「投資家向け一辺倒 ＋ 採用への誘導」</strong>が二大訴求軸。「採用」「エントリー」が計11回で「土地活用 1回」を圧倒。v1.2の動機軸転換は<strong>LP単独では完結せず、HPも含めて並行で進めるべき</strong>。</div>
+  </div>
+
+  <h3>2-3. 「HP変更のご提案」PDF指摘との照合</h3>
+  <p style="font-size:12px; color:#64748b;">鈴木さん／角田代表サイドからの指摘事項を実HTMLデータと突合：</p>
+  <table>
+    <tr><th>PDF指摘</th><th>実測 / 現状</th><th>判定</th></tr>
+    <tr><td>HP開封時の画像スクロールがカクつく</td><td>動作確認必要</td><td class="warn">要動作確認</td></tr>
+    <tr><td>斜めバーが太い・色が浮く</td><td>デザイン目視</td><td class="warn">要目視確認</td></tr>
+    <tr><td>LINEバーがオレンジ</td><td>本文LINEリンク1個</td><td class="warn">色・位置別途確認</td></tr>
+    <tr><td>「強み」が①〜⑥スクロール多い</td><td>/strong/ のH2は1個・本文3,634字</td><td class="critical">構造単調・コンパクト化必要</td></tr>
+    <tr><td>「お客様の声」女性写真がAI感</td><td>要画像目視</td><td class="warn">要画像チェック</td></tr>
+    <tr><td>「事業案内」写真見直し</td><td>要画像目視</td><td class="warn">要画像チェック</td></tr>
+    <tr><td>携帯サイドバーが大きい</td><td>要実機確認</td><td class="warn">要モバイル確認</td></tr>
+    <tr><td>ロゴ赤＋濃グレー＋オレンジで統一感ない</td><td>デザイン目視</td><td class="warn">要目視確認</td></tr>
+    <tr><td>会社案内パンフ（ネイビー＋ゴールド）に統一案</td><td>方針提案</td><td class="ok">提案として有効</td></tr>
+  </table>
+</section>
+
+<!-- 3. 同業他社比較 -->
+<section>
+  <h2 class="sec-ttl">3. 同業他社との比較</h2>
+  <h3>3-1. LP（apart-x.jp） vs 同業者の土地活用LP</h3>
+  <table>
+    <tr><th>観点</th><th>apart-x.jp</th><th>大東 /estate/</th><th>東建 /estate/</th><th>生和 TOP</th></tr>
+    <tr><td>H1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+    <tr><td>H2数</td><td class="critical">4</td><td>5</td><td>7</td><td>1</td></tr>
+    <tr><td>本文字数</td><td class="warn">19,961</td><td>3,941</td><td>2,893</td><td>2,029</td></tr>
+    <tr><td><strong>「土地活用」回数</strong></td><td class="critical">3</td><td>48</td><td>37</td><td>17</td></tr>
+    <tr><td>「相続税」回数</td><td class="critical">0</td><td>0(別ページ)</td><td>2</td><td>4</td></tr>
+    <tr><td>「建替え」回数</td><td class="critical">0</td><td>0</td><td>1</td><td>2</td></tr>
+    <tr><td>「診断」回数</td><td class="critical">0</td><td>12</td><td>3</td><td>6</td></tr>
+    <tr><td>contact内部リンク</td><td class="critical">0</td><td>17</td><td>10</td><td>6</td></tr>
+    <tr><td>画像alt未設定率</td><td class="critical">92%</td><td>15%</td><td>0%</td><td>36%</td></tr>
+  </table>
+  <p style="font-size:12px; color:var(--critical); font-weight:700; margin-top:6px;">→ 「土地活用」訴求密度で最大16倍差。診断ツール・CTAも完全不在。</p>
+
+  <h3>3-2. 本体HP（f-build.co.jp） vs 同業者の本体HP</h3>
+  <table>
+    <tr><th>観点</th><th>f-build.co.jp</th><th>大東 TOP</th><th>東建 TOP</th><th>生和 TOP</th></tr>
+    <tr><td>H1</td><td class="ok">1（テキスト）</td><td>0</td><td>1</td><td>1</td></tr>
+    <tr><td>H2数</td><td class="ok">12</td><td>13</td><td>3</td><td>1</td></tr>
+    <tr><td>本文字数</td><td>3,542</td><td>4,052</td><td>22,819</td><td>2,029</td></tr>
+    <tr><td>画像alt未設定率</td><td class="ok">0%</td><td>15%</td><td>0%</td><td>36%</td></tr>
+    <tr><td><strong>「土地活用」回数</strong></td><td class="critical">1</td><td>6</td><td>658</td><td>17</td></tr>
+    <tr><td>「相続税」回数</td><td class="critical">0</td><td>0</td><td>14</td><td>4</td></tr>
+    <tr><td>「賃貸」回数</td><td>2</td><td>5</td><td>66</td><td>19</td></tr>
+    <tr><td>「ZEH」回数</td><td class="critical">0</td><td>1</td><td>3</td><td>2</td></tr>
+    <tr><td>「採用」回数</td><td>8</td><td>3</td><td>8</td><td>2</td></tr>
+    <tr><td>contact内部</td><td>4</td><td>6</td><td>5</td><td>6</td></tr>
+  </table>
+  <p style="font-size:12px; color:var(--green); font-weight:700; margin-top:6px;">→ HPは <strong>構造的には大手と同等・むしろ alt 100% 対応で優秀</strong>。ただし「土地活用 1回」は競合の 1/6 〜 1/658 で訴求軸が薄い。</p>
+</section>
+
+<!-- 4. 役割整理 -->
+<section>
+  <h2 class="sec-ttl">4. LP vs HP の役割分担</h2>
+  <div class="compare-2">
+    <div class="compare-box lp">
+      <h3>🏷 apart-x.jp（LP）</h3>
+      <ul>
+        <li><strong>位置づけ</strong>: アパート建築特化LP</li>
+        <li><strong>主訴求</strong>: 「アパート建築の方程式」ブランド</li>
+        <li><strong>ターゲット</strong>: 投資家・地主（v1.2で5動機軸へ拡張）</li>
+        <li><strong>構造</strong>: 致命傷あり</li>
+        <li><strong>着手</strong>: v1.2準拠の動機ファースト改修（4入口）</li>
+      </ul>
+    </div>
+    <div class="compare-box hp">
+      <h3>🏢 f-build.co.jp（HP）</h3>
+      <ul>
+        <li><strong>位置づけ</strong>: 会社全体の本体HP</li>
+        <li><strong>主訴求</strong>: 「投資家向けアパート」＋「採用」</li>
+        <li><strong>ターゲット</strong>: 投資家＋採用応募者</li>
+        <li><strong>構造</strong>: 健全</li>
+        <li><strong>着手</strong>: 「HP変更のご提案」PDFのデザイン課題対応＋土地活用キーワード強化</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 優先順位 -->
+<section>
+  <h2 class="sec-ttl">5. 両サイトの優先順位</h2>
+  <div class="action-2">
+    <div class="action-box lp">
+      <h3>LP（apart-x.jp）</h3>
+      <ol>
+        <li><span class="pri h">H</span><strong>HTML基礎構造修復</strong>: H1テキスト化／alt付与／本文中CTA10個以上／LINEリンク追加</li>
+        <li><span class="pri h">H</span><strong>動機軸転換</strong>: v1.2準拠の4入口カード・5動機ペルソナ</li>
+        <li><span class="pri m">M</span><strong>ペルソナE（法人）セクション新設</strong>: 既存J/T/M様の言語化（即効性最大）</li>
+        <li><span class="pri m">M</span><strong>本文圧縮</strong>: 19,961字を5,000〜8,000字へ要点集中</li>
+      </ol>
+    </div>
+    <div class="action-box hp">
+      <h3>HP（f-build.co.jp）</h3>
+      <ol>
+        <li><span class="pri h">H</span><strong>デザイン課題対応</strong>: 「HP変更のご提案」PDF指摘事項（カラー統一・写真差替・サイドバー調整・強みコンパクト化）</li>
+        <li><span class="pri m">M</span><strong>土地活用キーワード強化</strong>: HP TOPに「土地活用」「相続税」「建替え」を最低各10回以上</li>
+        <li><span class="pri m">M</span><strong>LINE導線強化</strong>: 現状1個 → 5個以上に</li>
+        <li><span class="pri l">L</span><strong>構造（H1/alt/H2）は維持</strong>: 既に健全なため触らない</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 報告ストーリー -->
+<section>
+  <h2 class="sec-ttl">6. 鈴木さん／角田代表への報告ストーリー</h2>
+  <div class="insight" style="background:linear-gradient(135deg, #ecfdf5, #f0fdf4); border-left-color: var(--green);">
+    <div class="label" style="color: var(--green);">提案メッセージ</div>
+    <div class="body">
+      「LPとHP両方を調査した結果、<strong>構造的にはHPの方が健全で、LPに致命傷</strong>があります。<br>
+      一方で、<strong>土地活用・相続税・建替え・法人活用への訴求は両サイトとも軒並みゼロ</strong>で、v1.2設計書の方向性転換は<strong>LP単独ではなくHPも含めて並行で進めるべき</strong>です。<br>
+      順序としては、<strong>LPは構造修復から、HPはデザイン課題（HP変更のご提案PDFの指摘）から並列着手</strong>することを提案します。」
+    </div>
+  </div>
+</section>
+
+<!-- 7. 出典 -->
+<section>
+  <h2 class="sec-ttl">7. 出典・取得ログ</h2>
+  <table>
+    <tr><th>対象</th><th>URL</th><th>取得日時</th></tr>
+    <tr><td>apart-x.jp TOP</td><td><a href="https://apart-x.jp/" target="_blank">https://apart-x.jp/</a></td><td>2026-06-06</td></tr>
+    <tr><td>f-build.co.jp TOP</td><td><a href="https://f-build.co.jp/" target="_blank">https://f-build.co.jp/</a></td><td>2026-06-06</td></tr>
+    <tr><td>f-build.co.jp /strong/</td><td><a href="https://f-build.co.jp/strong/" target="_blank">https://f-build.co.jp/strong/</a></td><td>2026-06-06</td></tr>
+    <tr><td>大東建託 TOP</td><td><a href="https://www.kentaku.co.jp/" target="_blank">https://www.kentaku.co.jp/</a></td><td>2026-06-06</td></tr>
+    <tr><td>大東建託 /estate/</td><td><a href="https://www.kentaku.co.jp/estate/" target="_blank">https://www.kentaku.co.jp/estate/</a></td><td>2026-06-06</td></tr>
+    <tr><td>東建コーポレーション TOP</td><td><a href="https://www.token.co.jp/" target="_blank">https://www.token.co.jp/</a></td><td>2026-06-06</td></tr>
+    <tr><td>東建コーポレーション /estate/</td><td><a href="https://www.token.co.jp/estate/" target="_blank">https://www.token.co.jp/estate/</a></td><td>2026-06-06</td></tr>
+    <tr><td>生和コーポレーション</td><td><a href="https://www.seiwa-stss.jp/" target="_blank">https://www.seiwa-stss.jp/</a></td><td>2026-06-06</td></tr>
+  </table>
+  <p style="font-size:11px; color:#64748b; margin-top:10px;">本調査は公開HTMLのみを使用し、GA4・Search Consoleデータは含まない。デザイン・UX・モバイル体験の評価は別途実機確認が必要。</p>
+</section>
+
+<footer>
+  株式会社 斗 ／ apart-x.jp × f-build.co.jp 統合現状分析 ／ 作成: 2026-06-06<br>
+  本資料は社内検討用です。打ち合わせで方針決定後、選定案を本実装します。<br>
+  関連: <a href="mockup.html">3案モックアップ</a> ／ <a href="index.html">資料一覧</a>
+</footer>
+
+</div>
+
+</body>
+</html>
