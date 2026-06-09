@@ -19,14 +19,30 @@ header.hero h1 { font-family: "Noto Serif JP", serif; font-size: 28px; margin: 8
 header.hero .subtitle { font-size: 13px; opacity: 0.95; }
 header.hero .meta { margin-top: 18px; font-size: 12px; opacity: 0.85; border-top: 1px solid rgba(255,255,255,0.25); padding-top: 14px; }
 
-/* TOP3 結論 */
-.top3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
-@media(max-width:760px){ .top3{grid-template-columns: 1fr;} }
-.top3-card { background: #fff; border: 2px solid var(--red); border-radius: 12px; padding: 20px; position: relative; }
-.top3-card .rank { position: absolute; top: -12px; left: 16px; background: var(--red); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 900; }
-.top3-card h2 { font-family: "Noto Serif JP", serif; font-size: 15px; color: var(--red); margin: 4px 0 10px; }
-.top3-card p { font-size: 12px; color: #334155; }
-.top3-card .big { font-family: "Inter", sans-serif; font-weight: 900; font-size: 28px; color: var(--critical); margin: 8px 0; line-height: 1; }
+/* TOP3 結論（縦並びの大型カード） */
+.top3 { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
+.top3-card { background: #fff; border: 2px solid var(--red); border-radius: 12px; padding: 24px 28px; position: relative; }
+.top3-card .rank { position: absolute; top: -12px; left: 20px; background: var(--red); color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 900; }
+.top3-card h2 { font-family: "Noto Serif JP", serif; font-size: 19px; color: var(--red); margin: 4px 0 16px; }
+.top3-card p { font-size: 13px; color: #334155; margin-top: 12px; }
+.top3-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+@media(max-width:760px){ .top3-compare{grid-template-columns: 1fr;} }
+.top3-side { padding: 14px 16px; border-radius: 8px; border-left: 4px solid; }
+.top3-side.lp { background: #fef2f2; border-color: var(--critical); }
+.top3-side.hp { background: #ecfdf5; border-color: var(--green); }
+.top3-side .label { font-size: 10px; font-weight: 900; letter-spacing: 0.1em; margin-bottom: 4px; }
+.top3-side.lp .label { color: var(--critical); }
+.top3-side.hp .label { color: var(--green); }
+.top3-side .url { font-family: "Inter", sans-serif; font-size: 11px; color: #64748b; }
+.top3-side .num { font-family: "Inter", sans-serif; font-weight: 900; font-size: 28px; line-height: 1.1; margin: 6px 0 4px; }
+.top3-side.lp .num { color: var(--critical); }
+.top3-side.hp .num { color: var(--green); }
+.top3-side .what { font-size: 12px; color: #334155; }
+.top3-side .ico { font-size: 16px; margin-right: 4px; }
+.top3-3rd { background: #fffbeb; padding: 14px 16px; border-radius: 8px; border-left: 4px solid var(--orange); }
+.top3-3rd .row { display: grid; grid-template-columns: 130px 1fr; gap: 10px; padding: 4px 0; font-size: 12.5px; align-items: center; }
+.top3-3rd .row .k { color: #64748b; }
+.top3-3rd .row .v { font-family: "Inter"; font-weight: 700; }
 
 /* Sections */
 section { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 28px 28px 24px; margin-bottom: 20px; }
@@ -107,27 +123,57 @@ footer { text-align: center; padding: 24px; color: #64748b; font-size: 11px; }
 
 <!-- 結論TOP3 -->
 <div class="top3">
+
+  <!-- No.1: LPは致命傷、HPは健全 -->
   <div class="top3-card">
     <span class="rank">No.1</span>
-    <h2>LPは構造致命傷、HPは構造健全</h2>
-    <p>apart-x.jp の H1なし／alt92%未設定／本文中 contact 0個 は致命傷。<br>f-build.co.jp は H1・alt・H2・CTA いずれも健全。</p>
-    <div class="big">92% / 0%</div>
-    <p style="font-size:11px; color:#64748b">LP画像alt未設定率 vs HP alt未設定率</p>
+    <h2>LPは構造致命傷、HPは構造健全（同じ会社の2サイトで真逆）</h2>
+    <div class="top3-compare">
+      <div class="top3-side lp">
+        <div class="label">🔴 LP（apart-x.jp）</div>
+        <div class="num">alt 92%未設定</div>
+        <div class="what">画像38枚中35枚にalt属性なし。本文中の contact リンク 0個・LINE リンク 0個。H1タグもテキストではない。</div>
+      </div>
+      <div class="top3-side hp">
+        <div class="label">✅ HP（f-build.co.jp）</div>
+        <div class="num">alt 0%未設定</div>
+        <div class="what">画像129枚すべてに alt 設定済。H1・H2・CTA も適切で、SEO/UX 構造としては大手と同等以上。</div>
+      </div>
+    </div>
+    <p>同じ会社が運営する2サイトで <strong>SEO/UXの基礎構造が真逆</strong>。LPは即修復が必要、HPは現状維持でOK。</p>
   </div>
+
+  <!-- No.2: 土地活用キーワード両方薄い -->
   <div class="top3-card">
     <span class="rank">No.2</span>
-    <h2>土地活用キーワードが両方薄い</h2>
-    <p>LP「土地活用」3回 / HP「土地活用」1回 / 「相続税」「建替え」「法人」両方0回。<br>競合は最大16〜650倍密度。</p>
-    <div class="big">3 / 1</div>
-    <p style="font-size:11px; color:#64748b">LP / HP の「土地活用」出現回数</p>
+    <h2>「土地活用」訴求が両サイトとも薄い（競合と最大16〜650倍の差）</h2>
+    <div class="top3-compare">
+      <div class="top3-side lp">
+        <div class="label">🔴 LP（apart-x.jp）</div>
+        <div class="num">3<span style="font-size:14px">回</span></div>
+        <div class="what">本文中の「土地活用」出現回数。<br>競合: 大東48 / 東建37 / 生和17</div>
+      </div>
+      <div class="top3-side lp">
+        <div class="label">🔴 HP（f-build.co.jp）</div>
+        <div class="num">1<span style="font-size:14px">回</span></div>
+        <div class="what">本文中の「土地活用」出現回数。<br>競合TOP: 大東6 / 東建658 / 生和17</div>
+      </div>
+    </div>
+    <p>さらに「<strong>相続税・建替え・法人・ZEH・地主</strong>」は<strong>両サイトとも0〜1回</strong>。v1.2設計書が指摘する動機軸（地主・相続・建替え・法人）が訴求として不在。</p>
   </div>
+
+  <!-- No.3: 数字での問合せ実態 -->
   <div class="top3-card">
     <span class="rank">No.3</span>
-    <h2>v1.2方向転換はLP+HP両方必要</h2>
-    <p>HPも「投資家向け＋採用」が前面で、地主・相続・建替え・法人がゼロ。<br>動機ファースト軸はLP単独では完結しない。</p>
-    <div class="big">採用 8</div>
-    <p style="font-size:11px; color:#64748b">HP TOP の「採用」キーワード回数（土地活用の8倍）</p>
+    <h2>問合せ数の現状 = 月平均4件（v1.2目標は12〜15件＝3〜4倍）</h2>
+    <div class="top3-3rd">
+      <div class="row"><span class="k">f-build.co.jp 実測</span><span class="v">月平均 約4件（GA4 90日 12件）</span></div>
+      <div class="row"><span class="k">apart-x.jp 実測</span><span class="v">— GA4 計測未稼働（要設定確認）</span></div>
+      <div class="row"><span class="k">v1.2 設計書のKPI</span><span class="v" style="color: var(--red);">月 12〜15件（現状の3〜4倍）</span></div>
+    </div>
+    <p>桁違いの問合せ数を持つ大手と直接競う必要はない（規模・商圏が違う）。<br>重要なのは <strong>「現状の構造とコンテンツでは v1.2 のKPIに届かない」</strong> が数字で裏付けられたこと。リニューアルの必要性は明確。</p>
   </div>
+
 </div>
 
 <!-- 1. LP現状 -->
