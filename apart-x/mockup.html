@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>apart-x.jp 新LP モックアップ（3案）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Noto Sans JP", sans-serif; color: #0f172a; line-height: 1.7; background: #faf6ef; padding: 24px 16px; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.container { max-width: 980px; margin: 0 auto; }
+.nav-back { display: inline-block; margin-bottom: 16px; padding: 6px 14px; background: #fff; border: 1px solid #cbd5e1; border-radius: 20px; font-size: 12px; color: #475569; text-decoration: none; }
+h1 { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 26px; border-bottom: 3px solid #14213d; padding-bottom: 12px; margin-bottom: 8px; }
+.subtitle { font-size: 13px; color: #64748b; margin-bottom: 24px; }
+.intro { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px 24px; margin-bottom: 24px; font-size: 13px; line-height: 1.9; }
+.intro strong { color: #14213d; }
+.current-box { background: #fff; border: 2px solid #b91c1c; border-radius: 8px; padding: 18px 22px; margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.current-box .t { font-family: "Noto Serif JP", serif; font-weight: 700; font-size: 15px; }
+.current-box .u { font-size: 12px; color: #64748b; }
+.btn { display: inline-block; background: #b91c1c; color: #fff; padding: 10px 18px; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.btn:hover { background: #991717; }
+.pattern { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 0; margin-bottom: 28px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.pattern-head { padding: 20px 24px; color: #fff; position: relative; }
+.pattern.a .pattern-head { background: linear-gradient(135deg,#7f1d1d,#dc2626); }
+.pattern.b .pattern-head { background: linear-gradient(135deg,#1e3a8a,#2563eb); }
+.pattern.c .pattern-head { background: linear-gradient(135deg,#065f46,#10b981); }
+.pattern-head .badge { font-family: "Inter", sans-serif; font-weight: 900; font-size: 11px; letter-spacing: 0.15em; opacity: 0.85; }
+.pattern-head h2 { font-family: "Noto Serif JP", serif; font-size: 22px; margin: 4px 0 6px; }
+.pattern-head p { font-size: 12px; opacity: 0.92; }
+.pattern-head .recommend { position: absolute; top: 14px; right: 18px; background: #fbbf24; color: #78350f; font-size: 10px; font-weight: 900; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.1em; }
+.pattern-body { display: grid; grid-template-columns: 320px 1fr; gap: 0; }
+@media (max-width: 760px) { .pattern-body { grid-template-columns: 1fr; } }
+.pattern-img { padding: 20px; background: #f6f4ef; text-align: center; border-right: 1px solid #e5e7eb; }
+.pattern-img .mock-fv { width: 100%; max-width: 280px; aspect-ratio: 9/16; margin: 0 auto; border-radius: 6px; border: 1px solid #cbd5e1; box-shadow: 0 4px 14px rgba(0,0,0,0.12); display: flex; flex-direction: column; overflow: hidden; }
+.pattern-img .cap { font-size: 11px; color: #64748b; margin-top: 8px; }
+.pattern-img .view-btn { display: inline-block; margin-top: 10px; padding: 8px 16px; background: #14213d; color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; border-radius: 4px; }
+.pattern-info { padding: 20px 24px; }
+.pattern-info h3 { font-family: "Noto Serif JP", serif; font-size: 14px; margin: 12px 0 6px; color: #334155; }
+.pattern-info h3:first-child { margin-top: 0; }
+.pattern-info ul { padding-left: 18px; } .pattern-info li { font-size: 13px; line-height: 1.8; }
+.ref-link { font-size: 12px; color: #2563eb; text-decoration: none; }
+.ref-link:hover { text-decoration: underline; }
+.reason-box { background: #f8fafc; border-left: 3px solid #d4a857; padding: 10px 14px; border-radius: 4px; font-size: 12px; margin-top: 8px; }
+.reason-box strong { color: #92400e; }
+.section { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px 24px; margin-bottom: 16px; }
+.section h2 { font-family: "Noto Serif JP", serif; font-size: 18px; margin-bottom: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 8px 0; }
+th, td { padding: 7px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+th { background: #f1f5f9; font-weight: 700; }
+.section ul { padding-left: 20px; } .section li { font-size: 13px; line-height: 1.9; }
+.note { background: #fef3c7; border-left: 4px solid #d97706; padding: 12px 16px; border-radius: 4px; font-size: 12px; margin-top: 12px; }
+.footer { font-size: 11px; color: #64748b; text-align: center; margin-top: 24px; }
+.tag { display:inline-block; padding:1px 6px; font-size:9px; font-weight:700; border-radius:3px; background:#7c3aed; color:#fff; margin-left:6px; vertical-align:middle; }
+
+/* mini-FV mockups (inline visual) */
+.mfv { width:100%; height:100%; display:flex; flex-direction:column; color:#fff; font-family: "Noto Sans JP", sans-serif; }
+.mfv.a { background: linear-gradient(180deg, rgba(20,33,61,0.55), rgba(20,33,61,0.75)), linear-gradient(135deg, #1f2937, #374151); }
+.mfv.b { background: linear-gradient(180deg, rgba(15,23,42,0.7), rgba(15,23,42,0.85)), linear-gradient(135deg, #0c4a6e, #1e3a8a); }
+.mfv.c { background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6)), linear-gradient(135deg, #b91c1c, #f59e0b); }
+.mfv .nav { padding:8px 10px; font-size:7px; opacity:0.9; border-bottom:1px solid rgba(255,255,255,0.2); display:flex; gap:5px; flex-wrap:wrap; }
+.mfv .hero { flex:1; padding:12px 12px 8px; text-align:center; display:flex; flex-direction:column; justify-content:center; }
+.mfv .hero .tag-small { font-size:7px; opacity:0.8; letter-spacing:0.1em; }
+.mfv .hero h4 { font-family: "Noto Serif JP", serif; font-size:11px; line-height:1.4; margin:5px 0; font-weight:900; }
+.mfv .hero .sub { font-size:7px; opacity:0.85; margin-bottom:8px; }
+.mfv .badges { display:flex; justify-content:center; gap:4px; margin-bottom:6px; }
+.mfv .badge-pill { background:rgba(255,255,255,0.18); padding:2px 5px; border-radius:8px; font-size:7px; }
+.mfv .cards { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin:5px 6px 0; }
+.mfv .cards.three { grid-template-columns: 1fr 1fr 1fr; }
+.mfv .cards.four { grid-template-columns: 1fr 1fr; }
+.mfv .card-mini { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.25); padding:4px 3px; border-radius:3px; font-size:7px; text-align:center; line-height:1.3; }
+.mfv .card-mini b { font-size:8px; display:block; margin-bottom:1px; }
+.mfv .cta-bar { background:rgba(255,255,255,0.95); color:#14213d; padding:5px; display:flex; gap:3px; }
+.mfv .cta-bar div { flex:1; padding:3px 1px; text-align:center; border-radius:2px; font-size:7px; font-weight:700; }
+.mfv .cta-bar .c1 { background:#b91c1c; color:#fff; }
+.mfv .cta-bar .c2 { background:#10b981; color:#fff; }
+.mfv .cta-bar .c3 { background:#0ea5e9; color:#fff; }
+.mfv .numbers { display:flex; justify-content:space-around; padding:5px 6px; }
+.mfv .number-big { text-align:center; }
+.mfv .number-big .v { font-family: "Inter", sans-serif; font-weight:900; font-size:14px; line-height:1; }
+.mfv .number-big .l { font-size:6px; opacity:0.8; margin-top:1px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<a href="index.html" class="nav-back">← 資料一覧に戻る</a>
+
+<h1>apart-x.jp 新LP モックアップ案（3パターン）<span class="tag">提案</span><span class="tag" style="background:#047857;">v1.2準拠</span></h1>
+<p class="subtitle">角田代表「LPサイトリニューアル設計書 2026年版 Ver.1.2」を踏まえ、3案をご用意しました。<br>A・Bはフル作り替え、Cは現LPを活かす改修案です。打ち合わせでご判断ください。</p>
+
+<div class="intro">
+  <strong>現状apart-x.jpの課題（斗・実測）</strong>:<br>
+  • 主要キーワードが軒並み0回（「相続税」0回／「建替え」0回／「ZEH」0回／「法人」1回）<br>
+  • HTML基礎構造に致命傷（H1タグなし／画像alt 92%未設定／本文中LINEリンク0個／contactリンク0個）<br>
+  • 競合大手3社と「土地活用」キーワード密度で<strong>最大16倍差</strong>（大東48・東建37・生和17 vs apart-x 3）<br><br>
+  v1.2設計書の「動機ファースト・5動機ペルソナ」を骨格に、3パターンを提案します。<br>
+  <strong>A案＝動機ファースト型（v1.2完全準拠）</strong>／<strong>B案＝数字訴求型（実績前面）</strong>／<strong>C案＝ハイブリッド改修（おすすめ）</strong>
+</div>
+
+<div class="current-box">
+  <div>
+    <div class="t">📍 現状LP（参照）: apart-x.jp</div>
+    <div class="u">2026-06-02 公開HTML時点 ／ H1なし ／ alt92%未設定 ／ contact内部リンク0個</div>
+  </div>
+  <a href="https://apart-x.jp/" target="_blank" class="btn">現状LPを開く</a>
+</div>
+
+<!-- ============================================= -->
+<!-- パターンA: 動機ファースト型 -->
+<!-- ============================================= -->
+<div class="pattern a">
+  <div class="pattern-head">
+    <div class="badge">PATTERN A — フル作り替え</div>
+    <h2>動機ファースト型（v1.2完全準拠）</h2>
+    <p>5動機ペルソナ × 4入口カードで「自分はどの動機か」を選ばせる構成</p>
+  </div>
+  <div class="pattern-body">
+    <div class="pattern-img">
+      <div class="mock-fv">
+        <div class="mfv a">
+          <div class="nav">apart-x.jp │ 土地・相続 │ 建替え │ 資産形成 │ 法人活用</div>
+          <div class="hero">
+            <div class="tag-small">福岡・佐賀 創業53年</div>
+            <h4>その土地、<br>次の50年を<br>どう活かすか。</h4>
+            <div class="sub">アパート建築の方程式が、答えを出します</div>
+            <div class="badges">
+              <span class="badge-pill">創業53年</span>
+              <span class="badge-pill">満室○%</span>
+            </div>
+            <div class="cards four">
+              <div class="card-mini"><b>🌾</b>土地・相続</div>
+              <div class="card-mini"><b>🏗️</b>建替え</div>
+              <div class="card-mini"><b>💰</b>資産形成</div>
+              <div class="card-mini" style="background:rgba(251,191,36,0.4);"><b>🏢</b>法人活用</div>
+            </div>
+          </div>
+          <div class="cta-bar">
+            <div class="c1">電話</div>
+            <div class="c2">LINE</div>
+            <div class="c3">無料相談</div>
+          </div>
+        </div>
+      </div>
+      <div class="cap">FV: 4入口カード方式</div>
+      <a href="pattern_a.html" target="_blank" class="view-btn">▶ 全体を見る</a>
+    </div>
+    <div class="pattern-info">
+      <h3>骨格</h3>
+      <p style="font-size:12px;">v1.2設計書の章立てを忠実に実装：FV → 3つの入口 → 市場環境（時流） → 動機別5セクション → 6つの約束 → 実績 → VR → オーナーボイス → ご相談の流れ → FAQ → 会社概要 → フォーム</p>
+
+      <h3>刺さる層</h3>
+      <ul>
+        <li><strong>地主・土地所有者</strong>（60-75歳）</li>
+        <li><strong>相続準備の子世代</strong>（40-60代）★新ターゲット</li>
+        <li>「自分は何タイプ？」を意識して入る層</li>
+      </ul>
+
+      <h3>強み</h3>
+      <ul>
+        <li>v1.2設計書の戦略を100%反映、ブレなし</li>
+        <li>動機別セクションでSEOキーワード密度UP（「土地活用」「相続税」「建替え」「法人」を各30回以上）</li>
+        <li>ペルソナE（法人）セクション新設で既存顧客J/T/M様の実態と一致</li>
+      </ul>
+
+      <h3>リスク</h3>
+      <ul>
+        <li>フル作り替えのため <strong>制作費 250〜350万円</strong></li>
+        <li>既存SEO評価が一時的に下がる可能性</li>
+        <li>納期 3〜6ヶ月</li>
+      </ul>
+
+      <div class="reason-box">
+        <strong>こんな時に推奨:</strong> 設計書通りに完全に作り替えたい／予算と時間に余裕がある／3年スパンで地主層を本格獲得したい
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- パターンB: 数字訴求型 -->
+<!-- ============================================= -->
+<div class="pattern b">
+  <div class="pattern-head">
+    <div class="badge">PATTERN B — フル作り替え</div>
+    <h2>数字訴求型（実績前面）</h2>
+    <p>創業53年・累計○棟・満室○%・想定利回り8.5%で「信頼を数字で証明」する構成</p>
+  </div>
+  <div class="pattern-body">
+    <div class="pattern-img">
+      <div class="mock-fv">
+        <div class="mfv b">
+          <div class="nav">apart-x.jp │ 実績 │ 数字で見る │ 診断ツール │ 相談</div>
+          <div class="hero">
+            <div class="tag-small">数字で選ぶアパート建築</div>
+            <h4>53年。○棟。<br>8.5%。○%。</h4>
+            <div class="sub">福岡・佐賀の実績が、答えです。</div>
+          </div>
+          <div class="numbers">
+            <div class="number-big"><div class="v">53</div><div class="l">創業年数</div></div>
+            <div class="number-big"><div class="v">○</div><div class="l">累計棟数</div></div>
+            <div class="number-big"><div class="v">8.5%</div><div class="l">想定利回り</div></div>
+            <div class="number-big"><div class="v">○%</div><div class="l">満室稼働</div></div>
+          </div>
+          <div class="cards three" style="margin-top:5px;">
+            <div class="card-mini"><b>📊</b>診断ツール</div>
+            <div class="card-mini"><b>💴</b>収益試算</div>
+            <div class="card-mini"><b>📄</b>資料DL</div>
+          </div>
+          <div class="cta-bar">
+            <div class="c1">無料診断</div>
+            <div class="c2">LINE</div>
+            <div class="c3">電話</div>
+          </div>
+        </div>
+      </div>
+      <div class="cap">FV: 大型数字バッジ</div>
+      <a href="pattern_b.html" target="_blank" class="view-btn">▶ 全体を見る</a>
+    </div>
+    <div class="pattern-info">
+      <h3>骨格</h3>
+      <p style="font-size:12px;">FV → 数字で見る実績バナー → 土地活用診断ツール（最初に配置） → 競合との数値比較 → オーナーボイス（数字の証言） → 動機別セクション（簡易版）→ FAQ → フォーム</p>
+
+      <h3>刺さる層</h3>
+      <ul>
+        <li><strong>投資家・サラリーマン</strong>（35-55歳）</li>
+        <li><strong>法人経営者</strong>（J/T/M様タイプ）</li>
+        <li>論理派・数字で意思決定する層</li>
+      </ul>
+
+      <h3>強み</h3>
+      <ul>
+        <li>競合大手（大東・東建・生和）と<strong>同じ土俵で勝てる</strong>（数字×地域密着）</li>
+        <li>診断ツールを最初に配置（v1.2の10-1「最優先」と整合）</li>
+        <li>競合差別化軸（VR・利回り透明性）を活かせる</li>
+      </ul>
+
+      <h3>リスク</h3>
+      <ul>
+        <li>公表可能な数値が必要（年間竣工棟数・稼働率・実利回り）</li>
+        <li>制作費 200〜300万円</li>
+        <li>地主層には硬すぎる可能性（情緒訴求が弱い）</li>
+      </ul>
+
+      <div class="reason-box">
+        <strong>こんな時に推奨:</strong> 公表可能な数値を整理できる／投資家・法人層を最優先で獲得したい／競合大手と数値で正面勝負したい
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- パターンC: ハイブリッド改修 -->
+<!-- ============================================= -->
+<div class="pattern c">
+  <div class="pattern-head">
+    <div class="recommend">★ おすすめ</div>
+    <div class="badge">PATTERN C — 現LPを活かす改修</div>
+    <h2>ハイブリッド改修（低コスト・低リスク）</h2>
+    <p>現apart-x.jpの良い部分は残し、足りない要素だけを追加。最短1〜2ヶ月で底上げ完了</p>
+  </div>
+  <div class="pattern-body">
+    <div class="pattern-img">
+      <div class="mock-fv">
+        <div class="mfv c">
+          <div class="nav">apart-x.jp │ 土地・相続NEW │ 建替えNEW │ 法人活用NEW</div>
+          <div class="hero">
+            <div class="tag-small">福岡・佐賀 創業53年</div>
+            <h4>アパート建築の<br>方程式</h4>
+            <div class="sub">+ 土地活用・資産承継 + 法人活用 NEW</div>
+            <div class="badges">
+              <span class="badge-pill" style="background:rgba(251,191,36,0.4);">+H1新設</span>
+              <span class="badge-pill" style="background:rgba(251,191,36,0.4);">+alt付与</span>
+            </div>
+            <div class="cards three">
+              <div class="card-mini" style="background:rgba(251,191,36,0.4);"><b>NEW</b>土地・相続</div>
+              <div class="card-mini" style="background:rgba(251,191,36,0.4);"><b>NEW</b>建替え</div>
+              <div class="card-mini" style="background:rgba(251,191,36,0.4);"><b>NEW</b>法人活用</div>
+            </div>
+          </div>
+          <div class="cta-bar">
+            <div class="c1">電話</div>
+            <div class="c2" style="background:#facc15;color:#78350f;">LINE✦NEW</div>
+            <div class="c3">無料相談</div>
+          </div>
+        </div>
+      </div>
+      <div class="cap">FV: 既存ロゴ + 入口カード追加</div>
+      <a href="pattern_c.html" target="_blank" class="view-btn">▶ 全体を見る</a>
+    </div>
+    <div class="pattern-info">
+      <h3>骨格（残す+追加）</h3>
+      <p style="font-size:12px;">既存LPを土台に、以下を追加：<br>
+      ✅ <strong>残す</strong>: 創業49年→53年更新／オーナーボイス5名／360°VR／利回り訴求／コーポレートカラー<br>
+      ➕ <strong>追加</strong>: H1タグ／画像alt／法人セクション（ペルソナE）／FAQ +12問／LINE主動線化／本文中CTA10個以上</p>
+
+      <h3>刺さる層</h3>
+      <ul>
+        <li>既存ファン+新規少し（地主・法人）</li>
+        <li>コスト抑制したい意思決定層</li>
+      </ul>
+
+      <h3>強み</h3>
+      <ul>
+        <li><strong>制作費 80〜150万円</strong>（A/Bの半額以下）</li>
+        <li>既存SEO評価を毀損しない</li>
+        <li>納期 <strong>1〜2ヶ月</strong>（最短）</li>
+        <li>Phase 1完了後、効果見ながらA/Bに移行可能（二段構え）</li>
+        <li>ペルソナE（法人）セクション追加で<strong>即効性最大</strong>（既存J/T/M様の言語化のみ）</li>
+      </ul>
+
+      <h3>リスク</h3>
+      <ul>
+        <li>大規模改修ではないため、競合との数値ギャップを完全に埋めるには至らない</li>
+        <li>将来的にA/Bへの作り替えが必要になる可能性</li>
+      </ul>
+
+      <div class="reason-box">
+        <strong>こんな時に推奨:</strong> まず低リスクで底上げしたい／予算を抑えたい／効果を見てから次の投資判断したい
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 比較表 -->
+<div class="section">
+  <h2>3案の違い・選び方</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>観点</th>
+        <th>A: 動機ファースト</th>
+        <th>B: 数字訴求</th>
+        <th>C: ハイブリッド ★推奨</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>やること</td><td>フル作り替え</td><td>フル作り替え</td><td>現LP活用＋追加</td></tr>
+      <tr><td>参照元</td><td>v1.2設計書・大東建託</td><td>生和・東建・利回り透明性</td><td>現apart-x.jp ＋ A/Bの良い要素</td></tr>
+      <tr><td>刺さる層</td><td>地主・子世代</td><td>投資家・法人経営者</td><td>既存ファン＋新規少し</td></tr>
+      <tr><td>制作費目安</td><td>250〜350万円</td><td>200〜300万円</td><td><strong>80〜150万円</strong></td></tr>
+      <tr><td>納期</td><td>3〜6ヶ月</td><td>2〜4ヶ月</td><td><strong>1〜2ヶ月</strong></td></tr>
+      <tr><td>SEO資産</td><td>一時的に下がる可能性</td><td>同左</td><td><strong>毀損しない</strong></td></tr>
+      <tr><td>リスク</td><td>高</td><td>中</td><td><strong>低</strong></td></tr>
+      <tr><td>v1.2 Phase 1適合</td><td>○ オーバースペック</td><td>△ 部分一致</td><td><strong>◎ 完全一致</strong></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>おすすめの進め方:</strong> まず <strong>C案（ハイブリッド改修）</strong> で底上げ → 効果が見えたら A or B のフル作り替えへ、という<strong>二段構え</strong>が現実的です。Phase 1の予算で底上げ完了 → Phase 2/3 でフル展開、という設計書のロードマップとも整合します。
+  </div>
+</div>
+
+<!-- 共通改善ポイント -->
+<div class="section">
+  <h2>3案共通：現状LPからの改善ポイント</h2>
+  <ul>
+    <li><strong>H1タグの新設</strong>: 現状LP は H1 が無く SEO 致命傷（競合3社は全社設置）</li>
+    <li><strong>画像 alt 属性の付与</strong>: 38枚中35枚（92%）が未設定。SEO + アクセシビリティで改善必須</li>
+    <li><strong>本文中 CTA リンクの追加</strong>: 大東17箇所・東建10箇所 vs 現状0箇所。最低10箇所配置</li>
+    <li><strong>LINE 公式アカウントの主動線化</strong>: 現状本文中の LINE リンクは 0 個</li>
+    <li><strong>創業49年 → 53年への全件更新</strong>: title・本文・写真キャプション含めて統一</li>
+    <li><strong>ペルソナE（法人）セクション新設</strong>: 既存J様・T様・M様は実態として法人経営者層。<strong>言語化するだけで訴求と実態の整合が即取れる</strong>（最もコスト対効果が高い）</li>
+    <li><strong>「土地活用」「相続税」「建替え」「ZEH」キーワードの本文密度UP</strong>: 競合と最大16倍差を埋める</li>
+    <li><strong>FAQ +12問追加</strong>: 法人活用・親の土地・5年ルール等（v1.2 8-10より）</li>
+    <li><strong>お問い合わせフォーム「ご相談の種類」7択化</strong>: 法人活用・無料診断を含む（v1.2 8-13より）</li>
+  </ul>
+
+  <div class="note">
+    <strong>斗からの推奨:</strong> 上記9項目のうち、特に <strong>H1新設 / alt付与 / 法人セクション新設 / LINE主動線化</strong> の4項目は<strong>どの案を選んでも実施すべき基礎修復</strong>です。Phase 1 着手時の最初のタスクに組み込むことを提案します。
+  </div>
+</div>
+
+<!-- 関連資料 -->
+<div class="section">
+  <h2>関連資料・データ</h2>
+  <ul>
+    <li><strong>v1.2 設計書要約</strong>: 角田代表「LPサイトリニューアル設計書 2026年版 Ver.1.2」を1枚に圧縮 → 別途共有</li>
+    <li><strong>現状実証データ（数字版）</strong>: 公開HTML・Wayback Machine・GA4実データから現状を裏付け → 別途共有</li>
+    <li><strong>競合大手3社LP分析</strong>: 大東・東建・生和との実LP比較 → 別途共有</li>
+    <li><strong>方向性確認資料（v1.2図解）</strong>: 5動機ペルソナへの転換を視覚化 → 別途共有</li>
+  </ul>
+</div>
+
+<div class="footer">
+  株式会社 斗 ／ apart-x.jp LPリニューアル モックアップ案 ／ 作成: 2026-06-06<br>
+  本資料は社内検討用です。打ち合わせでパターン決定後、選定案を本実装します。
+</div>
+
+</div>
+
+</body>
+</html>

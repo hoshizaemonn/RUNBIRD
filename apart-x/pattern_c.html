@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【モックアップ C】ハイブリッド改修型 | アパート建築の方程式</title>
+<meta name="description" content="apart-x.jp LP モックアップ パターンC：現apart-x.jpを活かしつつ法人セクション・LINE主動線・H1付与など必須要素のみを追加">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --red:#b91c1c; --orange:#f59e0b; --dark:#14213d; --light:#f8fafc; --border:#e5e7eb; --new:#10b981; }
+body { font-family: "Noto Sans JP", sans-serif; color: var(--dark); line-height: 1.7; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.mock-banner { background: #d1fae5; border-bottom: 2px solid var(--new); padding: 8px 16px; text-align: center; font-size: 12px; color: #065f46; font-weight: 700; }
+.mock-banner a { color: #047857; }
+
+/* NEW tag */
+.new-tag { display: inline-block; background: var(--new); color: #fff; font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 3px; margin-left: 8px; vertical-align: middle; letter-spacing: 0.1em; }
+.new-block { position: relative; }
+.new-block::before { content: "NEW"; position: absolute; top: -10px; left: 16px; background: var(--new); color: #fff; font-size: 10px; font-weight: 900; padding: 3px 10px; border-radius: 3px; letter-spacing: 0.1em; }
+
+/* Header */
+header.gh { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 100; }
+.logo { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 18px; color: var(--red); }
+.logo small { display: block; font-family: "Noto Sans JP"; font-weight: 400; font-size: 10px; color: #64748b; }
+nav.gn { display: flex; gap: 14px; font-size: 13px; }
+nav.gn a { color: var(--dark); text-decoration: none; }
+nav.gn a:hover { color: var(--red); }
+.hd-cta { display:flex; gap:6px; }
+.hd-cta a { padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; text-decoration: none; }
+.hd-cta .a1 { background: var(--red); color:#fff; }
+.hd-cta .a2 { background:#06c755; color:#fff; }
+@media(max-width:760px){ nav.gn{display:none} }
+
+/* FV - 現状LP の見た目を継承 */
+.fv { background: linear-gradient(135deg, #b91c1c 0%, #f59e0b 100%); color:#fff; padding: 48px 24px 32px; text-align: center; min-height: 480px; display: flex; flex-direction: column; justify-content: center; }
+.fv-tag { font-size: 12px; letter-spacing: 0.2em; opacity: 0.95; margin-bottom: 14px; }
+.fv h1 { font-family: "Noto Serif JP", serif; font-size: 40px; font-weight: 900; line-height: 1.3; margin-bottom: 12px; }
+@media(max-width:760px){ .fv h1{font-size:28px;} }
+.fv h1 small { display: block; font-weight: 700; font-size: 16px; margin-top: 10px; opacity: 0.95; }
+.fv-sub { font-size: 15px; opacity: 0.95; margin-bottom: 26px; }
+.fv-bdgs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+.fv-bdg { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+
+/* 入口カード（新規追加） */
+.entries-c { background: rgba(255,255,255,0.95); color: var(--dark); border-radius: 12px; padding: 18px; max-width: 800px; margin: 0 auto 22px; position: relative; }
+.entries-c::before { content: "NEW 追加"; position: absolute; top: -10px; left: 18px; background: var(--new); color: #fff; font-size: 10px; font-weight: 900; padding: 3px 10px; border-radius: 3px; letter-spacing: 0.1em; }
+.entries-c-ttl { font-size: 12px; margin-bottom: 12px; color: #64748b; }
+.entry-grid-c { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+@media(max-width:760px){ .entry-grid-c{grid-template-columns: 1fr 1fr;} }
+.entry-c { background: var(--light); border: 1px solid var(--border); border-radius: 6px; padding: 14px 8px; text-align: center; text-decoration: none; color: var(--dark); }
+.entry-c:hover { border-color: var(--red); }
+.entry-c .ico { font-size: 22px; margin-bottom: 4px; }
+.entry-c b { display: block; font-size: 12px; margin-bottom: 2px; }
+.entry-c p { font-size: 10px; color: #64748b; }
+.entry-c.law { border-color: var(--orange); background: #fffbeb; }
+.entry-c.law b { color: var(--red); }
+
+.fv-cta { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.fv-cta a { padding: 12px 22px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; display: inline-block; }
+.fv-cta .c1 { background: rgba(255,255,255,0.95); color: var(--red); }
+.fv-cta .c2 { background: #06c755; color: #fff; position: relative; }
+.fv-cta .c2 .nt { position: absolute; top: -8px; right: -8px; background: #fbbf24; color: var(--dark); font-size: 8px; font-weight: 900; padding: 1px 5px; border-radius: 3px; }
+.fv-cta .c3 { background: rgba(255,255,255,0.2); color: #fff; border: 1px solid rgba(255,255,255,0.4); }
+
+section { padding: 60px 24px; }
+.cont { max-width: 1000px; margin: 0 auto; }
+.eyebrow { font-size: 11px; letter-spacing: 0.2em; color: var(--red); font-weight: 700; }
+h2.sec-ttl { font-family: "Noto Serif JP", serif; font-size: 26px; font-weight: 900; margin: 8px 0 14px; }
+h2.sec-ttl small { display: block; font-family: "Noto Sans JP"; font-weight: 400; font-size: 13px; color: #64748b; margin-top: 6px; }
+
+/* 既存セクション風（現状LP維持の表現） */
+.legacy { background: #fff; }
+.legacy-ttl { background: var(--light); padding: 10px 14px; border-left: 4px solid var(--dark); font-size: 12px; color: #64748b; margin-bottom: 20px; }
+.legacy-ttl strong { color: var(--dark); }
+
+.point-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media(max-width:760px){ .point-grid{grid-template-columns: 1fr;} }
+.point { background: var(--light); border-radius: 8px; padding: 24px; }
+.point .ic { font-size: 28px; }
+.point h3 { font-family: "Noto Serif JP", serif; font-size: 16px; margin: 10px 0; }
+.point p { font-size: 13px; color: #475569; }
+
+/* 法人セクション（新規追加・ハイライト） */
+.law-section { background: linear-gradient(180deg, #fffbeb, #fff); border-top: 4px solid var(--orange); border-bottom: 4px solid var(--orange); }
+.law-card { background: #fff; border: 2px solid var(--orange); border-radius: 12px; padding: 30px; margin-top: 24px; }
+.law-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+@media(max-width:760px){ .law-4{grid-template-columns: 1fr;} }
+.law-item { background: var(--light); padding: 16px; border-radius: 6px; }
+.law-item h4 { font-size: 14px; margin-bottom: 6px; color: var(--red); }
+.law-item p { font-size: 12px; color: #475569; }
+.law-card a { display: inline-block; margin-top: 20px; padding: 14px 28px; background: var(--red); color: #fff; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 14px; }
+.law-mention { background: #f0fdf4; border-left: 4px solid var(--new); padding: 14px 18px; border-radius: 6px; margin-top: 16px; font-size: 12px; color: #166534; }
+
+/* LINE主動線 */
+.line-cta { background: #06c755; color: #fff; padding: 40px 24px; text-align: center; }
+.line-cta h2 { font-family: "Noto Serif JP", serif; font-size: 24px; margin-bottom: 10px; }
+.line-cta p { font-size: 13px; opacity: 0.95; margin-bottom: 18px; }
+.line-cta a { display: inline-block; padding: 14px 32px; background: #fff; color: #06c755; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 14px; }
+
+footer { background: #0f172a; color: #fff; padding: 32px 24px; text-align: center; font-size: 11px; }
+footer a { color: #93c5fd; }
+
+.fix-cta { position: fixed; bottom: 20px; right: 20px; background: var(--red); color: #fff; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-size: 13px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.25); z-index: 90; }
+@media(max-width:760px){ .fix-cta{bottom:0; right:0; left:0; border-radius:0; text-align:center; padding:14px;} }
+
+/* 改修サマリ表示用 */
+.improve-info { background: #fef3c7; border: 1px solid #fbbf24; padding: 12px 18px; border-radius: 6px; font-size: 12px; color: #78350f; margin: 20px 0; }
+.improve-info b { color: #b91c1c; }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">📄 これは <strong>モックアップ C（ハイブリッド改修型 ★おすすめ）</strong> です ／ <a href="mockup.html">← 3案比較ページに戻る</a></div>
+
+<header class="gh">
+  <div class="logo">アパート建築の方程式<small>福岡ビルド株式会社 / 創業53年</small></div>
+  <nav class="gn">
+    <a href="#strong">選ばれる理由</a>
+    <a href="#law">法人活用 <span class="new-tag" style="font-size:8px;padding:1px 4px;">NEW</span></a>
+    <a href="#voice">オーナーの声</a>
+    <a href="#contact">無料相談</a>
+  </nav>
+  <div class="hd-cta">
+    <a class="a1" href="#contact">無料相談</a>
+    <a class="a2" href="#line">LINE</a>
+  </div>
+</header>
+
+<!-- ファーストビュー（既存LPトンマナを保ちつつ4入口カード追加） -->
+<section class="fv">
+  <div class="fv-tag">福岡・佐賀 創業53年 ／ アパート建築のプロフェッショナル</div>
+  <h1>アパート建築の方程式<small>福岡県・佐賀県エリア 創業53年の信頼と実績</small></h1>
+  <div class="fv-bdgs">
+    <div class="fv-bdg">創業53年</div>
+    <div class="fv-bdg">年間竣工 ○棟</div>
+    <div class="fv-bdg">想定利回り 8.5%台</div>
+  </div>
+
+  <div class="entries-c">
+    <div class="entries-c-ttl">▼ あなたの動機にあわせて、4つの入口をご用意しました</div>
+    <div class="entry-grid-c">
+      <a href="#tochi" class="entry-c">
+        <div class="ico">🌾</div>
+        <b>土地・相続</b>
+        <p>地主の方</p>
+      </a>
+      <a href="#tatekae" class="entry-c">
+        <div class="ico">🏗️</div>
+        <b>建替え</b>
+        <p>築古オーナー</p>
+      </a>
+      <a href="#shisan" class="entry-c">
+        <div class="ico">💰</div>
+        <b>資産形成</b>
+        <p>会社員・公務員</p>
+      </a>
+      <a href="#law" class="entry-c law">
+        <div class="ico">🏢</div>
+        <b>法人活用</b>
+        <p>経営者・自営業</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="fv-cta">
+    <a href="tel:0927101180" class="c1">📞 電話で相談</a>
+    <a href="#line" class="c2">💬 LINE で相談 <span class="nt">主動線化</span></a>
+    <a href="#contact" class="c3">📝 無料相談フォーム</a>
+  </div>
+</section>
+
+<!-- 改修ポイント表示（モックアップ説明用） -->
+<div style="background:#fff; padding: 16px 24px; border-bottom: 1px solid var(--border);">
+  <div class="cont">
+    <div class="improve-info">
+      <b>💡 このモックアップの改修内容（現apart-x.jpからの差分）:</b><br>
+      ✅ H1タグの新設（「アパート建築の方程式」）／ ✅ 全画像にalt属性付与 ／ ✅ LINE主動線化（FV/中間/末尾の3箇所） ／ ✅ 4入口カード追加 ／ ✅ <strong>法人活用セクション新設</strong>（下記） ／ ✅ FAQ +12問追加 ／ ✅ 本文中CTAリンク10箇所配置
+    </div>
+  </div>
+</div>
+
+<!-- 既存「選ばれる理由」（既存LP維持） -->
+<section class="legacy" id="strong">
+  <div class="cont">
+    <div class="legacy-ttl"><strong>📌 既存LPから継続</strong> ／ 福岡ビルドの強み3点（オーナーボイス・360°VR・利回り透明性は既存LPで好評）</div>
+    <span class="eyebrow">REASON</span>
+    <h2 class="sec-ttl">福岡ビルドが選ばれる理由</h2>
+    <div class="point-grid">
+      <div class="point"><div class="ic">📍</div><h3>地元密着 53年</h3><p>福岡県・佐賀県エリアに特化。地元の土地・家賃相場・人の流れを誰よりも理解した提案。</p></div>
+      <div class="point"><div class="ic">🏗️</div><h3>自由設計・自社施工</h3><p>規格パッケージではなく土地ごとに一からプランニング。自社大工による施工で品質を担保。</p></div>
+      <div class="point"><div class="ic">💴</div><h3>中間マージンゼロ</h3><p>自社設計・自社施工で中間業者なし。想定利回り8.5%台の根拠もここにあります。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 法人活用セクション（新規追加・即効性最大） -->
+<section class="law-section" id="law">
+  <div class="cont">
+    <span class="eyebrow" style="color: var(--orange);">CORPORATE — NEW</span>
+    <h2 class="sec-ttl">法人での活用をお考えの方へ <span class="new-tag">新設</span><small>中小企業オーナー・自営業者にとってのアパート経営の4つの意味</small></h2>
+
+    <div class="law-card new-block">
+      <p style="font-size:14px;">中小企業のオーナー、または個人事業主として一定の事業基盤を持つ層へ。<br>本業のキャッシュフローを不動産に振り向け、減価償却・退職金準備・事業承継・社員福利厚生を視野に。</p>
+
+      <div class="law-4">
+        <div class="law-item">
+          <h4>① 本業以外のキャッシュフロー柱</h4>
+          <p>本業の業績変動に左右されない、安定的な収入源を構築。</p>
+        </div>
+        <div class="law-item">
+          <h4>② 法人での減価償却・税務メリット</h4>
+          <p>木造アパートの法定耐用年数22年を活かした節税効果。</p>
+        </div>
+        <div class="law-item">
+          <h4>③ 社員社宅活用・福利厚生</h4>
+          <p>建てたアパートの一部を社員社宅として活用、福利厚生強化。</p>
+        </div>
+        <div class="law-item">
+          <h4>④ 退職金準備・事業承継</h4>
+          <p>長期保有による退職金原資・後継への事業承継の選択肢に。</p>
+        </div>
+      </div>
+
+      <div class="law-mention">
+        ✨ <strong>当社の現行オーナー様（J様・T様・M様）はまさにこの層です。</strong>これまで「会社員・公務員投資家」として紹介してきましたが、実態は法人経営者・自営業オーナーです。経営者視点からの導入経緯を語っていただいています。
+      </div>
+
+      <a href="#contact">▶ 経営者向け無料相談（税理士同席可）</a>
+    </div>
+  </div>
+</section>
+
+<!-- 既存「オーナーボイス」（既存LP維持） -->
+<section class="legacy" id="voice">
+  <div class="cont">
+    <div class="legacy-ttl"><strong>📌 既存LPから継続+強化</strong> ／ オーナーボイス S/J/T/K/M様の5名（追加で地主・建替えオーナーを取材予定）</div>
+    <span class="eyebrow">OWNER VOICE</span>
+    <h2 class="sec-ttl">オーナー様の声</h2>
+    <div class="point-grid">
+      <div class="point"><div class="ic">👤</div><h3>S様（既存）</h3><p>「自分の土地で、自分のペースで、自分の家族のために。」賃貸業のプロからの一言。</p></div>
+      <div class="point"><div class="ic">👤</div><h3>J様（既存→法人として再整理）</h3><p>「20棟紹介した理由」。元ゼネコン勤務の経営者視点で語る、福岡ビルドを選び続ける理由。</p></div>
+      <div class="point"><div class="ic">👤</div><h3>地主オーナー <span class="new-tag">追加予定</span></h3><p>取材調整中 ／ 親の土地を活用、ペルソナA・Dの実例として収録予定。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LINE主動線 -->
+<section class="line-cta" id="line">
+  <div class="cont">
+    <h2>LINE で気軽にご相談ください</h2>
+    <p>土地活用診断・相続税試算・建替えシミュレーション。<br>電話やフォームよりも、LINE での会話のほうが楽です。<br><strong>登録者限定：無料現地調査キャンペーン実施中</strong></p>
+    <a href="#">💬 LINE 公式アカウントを友だち追加</a>
+  </div>
+</section>
+
+<!-- 既存CTA（強化） -->
+<section style="background: var(--dark); color: #fff; text-align: center; padding: 56px 24px;" id="contact">
+  <div class="cont">
+    <h2 style="font-family: 'Noto Serif JP', serif; font-size: 24px; margin-bottom: 14px;">無料相談はこちらから</h2>
+    <p style="font-size: 13px; opacity: 0.9; margin-bottom: 24px;">電話・LINE・フォームの3つの導線をご用意しています。<br>土地・相続／建替え／資産形成／法人活用、それぞれに最適な担当者が対応します。</p>
+    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+      <a href="tel:0927101180" style="padding: 14px 28px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; background: var(--red); color: #fff;">📞 092-710-1180</a>
+      <a href="#line" style="padding: 14px 28px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; background: #06c755; color: #fff;">💬 LINEで相談</a>
+      <a href="#" style="padding: 14px 28px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; background: #fff; color: var(--dark);">📝 無料相談フォーム</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  福岡ビルド株式会社 ／ 福岡県那珂川市今光一丁目56番地 ／ TEL: 092-710-1180<br>
+  © Fukuoka Build Co., Ltd. ／ <a href="mockup.html">← モックアップ3案比較に戻る</a>
+</footer>
+
+<a href="#contact" class="fix-cta">📝 無料相談</a>
+
+</body>
+</html>

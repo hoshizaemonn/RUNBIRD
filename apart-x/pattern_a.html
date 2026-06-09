@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【モックアップ A】動機ファースト型 | アパート建築の方程式</title>
+<meta name="description" content="apart-x.jp LP モックアップ パターンA：v1.2設計書の動機ファースト・5動機ペルソナ・4入口カード型">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --red:#b91c1c; --orange:#f59e0b; --dark:#14213d; --light:#f8fafc; --border:#e5e7eb; }
+body { font-family: "Noto Sans JP", sans-serif; color: var(--dark); line-height: 1.7; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.mock-banner { background: #fef3c7; border-bottom: 2px solid #d97706; padding: 8px 16px; text-align: center; font-size: 12px; color: #92400e; font-weight: 700; }
+.mock-banner a { color: #1d4ed8; }
+
+/* Header */
+header.gh { background: #fff; border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 100; }
+.logo { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 18px; color: var(--red); }
+.logo small { display: block; font-family: "Noto Sans JP"; font-weight: 400; font-size: 10px; color: #64748b; }
+nav.gn { display: flex; gap: 16px; font-size: 13px; }
+nav.gn a { color: var(--dark); text-decoration: none; }
+nav.gn a:hover { color: var(--red); }
+.hd-cta { display:flex; gap:6px; }
+.hd-cta a { padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; text-decoration: none; }
+.hd-cta .a1 { background: var(--red); color:#fff; }
+.hd-cta .a2 { background:#06c755; color:#fff; }
+@media(max-width:760px){ nav.gn{display:none} }
+
+/* FV */
+.fv { background: linear-gradient(180deg, rgba(20,33,61,0.5) 0%, rgba(20,33,61,0.85) 100%), url('https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1600&q=80') center/cover; color:#fff; padding: 50px 24px 36px; text-align: center; min-height: 540px; display: flex; flex-direction: column; justify-content: center; }
+.fv-tag { font-size: 12px; letter-spacing: 0.2em; opacity: 0.9; margin-bottom: 14px; }
+.fv h1 { font-family: "Noto Serif JP", serif; font-size: 38px; font-weight: 900; line-height: 1.4; margin-bottom: 18px; }
+@media(max-width:760px){ .fv h1{font-size:26px;} }
+.fv h1 small { display: block; font-weight: 700; font-size: 18px; margin-top: 12px; opacity: 0.95; }
+.fv-sub { font-size: 14px; opacity: 0.9; margin-bottom: 24px; }
+.fv-bdgs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.fv-bdg { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.fv-cta { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+.fv-cta a { padding: 12px 24px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; display: inline-block; }
+.fv-cta .c1 { background: var(--red); color: #fff; }
+.fv-cta .c2 { background: #06c755; color: #fff; }
+.fv-cta .c3 { background: rgba(255,255,255,0.9); color: var(--dark); }
+
+/* 4入口カード（v1.2の核） */
+.entries { background: rgba(255,255,255,0.05); backdrop-filter: blur(6px); padding: 24px 16px; border-radius: 14px; max-width: 900px; margin: 0 auto; }
+.entries-ttl { font-size: 13px; margin-bottom: 14px; opacity: 0.85; }
+.entry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+@media(max-width:760px){ .entry-grid{grid-template-columns: repeat(2, 1fr);} }
+.entry { background: rgba(255,255,255,0.95); color: var(--dark); border-radius: 8px; padding: 18px 12px; text-align: center; text-decoration: none; transition: transform 0.2s; }
+.entry:hover { transform: translateY(-3px); }
+.entry .ico { font-size: 28px; margin-bottom: 6px; }
+.entry b { display: block; font-size: 13px; margin-bottom: 4px; color: var(--dark); }
+.entry p { font-size: 11px; color: #64748b; line-height: 1.5; }
+.entry.law b { color: var(--red); }
+.entry.law::after { content: "NEW"; position: absolute; background: var(--orange); color: #fff; font-size: 9px; font-weight: 900; padding: 2px 6px; border-radius: 3px; margin-left: 4px; vertical-align: super; }
+
+/* Section common */
+section { padding: 60px 24px; }
+.cont { max-width: 1000px; margin: 0 auto; }
+.eyebrow { font-size: 11px; letter-spacing: 0.2em; color: var(--red); font-weight: 700; }
+h2.sec-ttl { font-family: "Noto Serif JP", serif; font-size: 28px; font-weight: 900; margin: 8px 0 14px; }
+h2.sec-ttl small { display: block; font-family: "Noto Sans JP"; font-weight: 400; font-size: 14px; color: #64748b; margin-top: 6px; }
+
+/* 市場環境 */
+.market { background: var(--light); }
+.mk-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 30px; }
+@media(max-width:760px){ .mk-3{grid-template-columns: 1fr;} }
+.mk-card { background: #fff; padding: 24px; border-radius: 8px; border-top: 4px solid var(--red); }
+.mk-card .num { font-family: "Inter", sans-serif; font-weight: 900; font-size: 36px; color: var(--red); }
+.mk-card h3 { font-family: "Noto Serif JP", serif; font-size: 15px; margin: 10px 0; }
+.mk-card p { font-size: 12px; color: #475569; }
+
+/* 5動機ペルソナセクション */
+.personas { background: #fff; }
+.persona { padding: 30px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 100px 1fr; gap: 24px; }
+@media(max-width:760px){ .persona{grid-template-columns: 1fr;} }
+.persona-mark { display: flex; flex-direction: column; align-items: center; }
+.persona-mark .letter { width: 60px; height: 60px; border-radius: 50%; background: var(--red); color: #fff; display: flex; align-items: center; justify-content: center; font-family: "Inter"; font-weight: 900; font-size: 28px; }
+.persona-mark.new .letter { background: var(--orange); }
+.persona-mark .new-tag { font-size: 9px; background: var(--orange); color: #fff; padding: 2px 6px; border-radius: 3px; margin-top: 6px; font-weight: 900; }
+.persona h3 { font-family: "Noto Serif JP", serif; font-size: 18px; margin-bottom: 8px; }
+.persona .motive { background: var(--light); padding: 8px 12px; border-radius: 4px; font-size: 13px; margin-bottom: 12px; color: var(--dark); }
+.persona p { font-size: 13px; color: #475569; }
+.persona .cta-mini { display: inline-block; margin-top: 10px; padding: 6px 14px; background: var(--red); color: #fff; font-size: 11px; font-weight: 700; text-decoration: none; border-radius: 4px; }
+
+/* 6つの約束 */
+.promise { background: linear-gradient(180deg, #fef3f2, #fff); }
+.pr-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 26px; }
+@media(max-width:760px){ .pr-6{grid-template-columns: 1fr 1fr;} }
+.pr-card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 20px; text-align: center; }
+.pr-card .n { font-family: "Inter"; font-weight: 900; font-size: 32px; color: var(--red); line-height: 1; }
+.pr-card h4 { font-family: "Noto Serif JP", serif; font-size: 14px; margin: 10px 0 6px; }
+.pr-card p { font-size: 11px; color: #64748b; line-height: 1.6; }
+
+/* CTA */
+.cta-sec { background: var(--dark); color: #fff; text-align: center; }
+.cta-sec h2 { font-family: "Noto Serif JP", serif; font-size: 24px; margin-bottom: 16px; }
+.cta-sec p { font-size: 13px; opacity: 0.9; margin-bottom: 24px; }
+.cta-3 { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.cta-3 a { padding: 14px 28px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; }
+.cta-3 .c1 { background: var(--red); color: #fff; }
+.cta-3 .c2 { background: #06c755; color: #fff; }
+.cta-3 .c3 { background: #fff; color: var(--dark); }
+
+/* footer */
+footer { background: #0f172a; color: #fff; padding: 32px 24px; text-align: center; font-size: 11px; }
+footer a { color: #93c5fd; }
+
+/* 追従 */
+.fix-cta { position: fixed; bottom: 20px; right: 20px; background: var(--red); color: #fff; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-size: 13px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.25); z-index: 90; }
+@media(max-width:760px){ .fix-cta{bottom:0; right:0; left:0; border-radius:0; text-align:center; padding:14px;} }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">📄 これは <strong>モックアップ A（動機ファースト型）</strong> です ／ <a href="mockup.html">← 3案比較ページに戻る</a></div>
+
+<header class="gh">
+  <div class="logo">アパート建築の方程式<small>福岡ビルド株式会社 / 創業53年</small></div>
+  <nav class="gn">
+    <a href="#tochi">土地・相続</a>
+    <a href="#tatekae">建替え</a>
+    <a href="#shisan">資産形成</a>
+    <a href="#houjin">法人活用</a>
+    <a href="#voice">オーナーの声</a>
+    <a href="#contact">無料相談</a>
+  </nav>
+  <div class="hd-cta">
+    <a class="a1" href="#contact">無料相談</a>
+    <a class="a2" href="#line">LINE</a>
+  </div>
+</header>
+
+<!-- ファーストビュー -->
+<section class="fv">
+  <div class="fv-tag">福岡・佐賀 創業53年 / 動機の数だけ、答えがある。</div>
+  <h1>その土地、次の50年を<br>どう活かすか。<small>アパート建築の方程式が、答えを出します。</small></h1>
+  <div class="fv-bdgs">
+    <div class="fv-bdg">福岡・佐賀 創業53年</div>
+    <div class="fv-bdg">年間竣工 ○棟</div>
+    <div class="fv-bdg">満室稼働率 ○%</div>
+  </div>
+  <div class="fv-cta">
+    <a href="tel:0927101180" class="c1">📞 電話で相談</a>
+    <a href="#line" class="c2">💬 LINE で相談</a>
+    <a href="#contact" class="c3">📝 無料相談フォーム</a>
+  </div>
+
+  <div class="entries">
+    <div class="entries-ttl">▼ あなたの「動機」は？ どこから入っても、最適な答えへ。</div>
+    <div class="entry-grid">
+      <a href="#tochi" class="entry">
+        <div class="ico">🌾</div>
+        <b>土地・相続でお悩みの方</b>
+        <p>地主・相続準備の子世代向け</p>
+      </a>
+      <a href="#tatekae" class="entry">
+        <div class="ico">🏗️</div>
+        <b>建替えをお考えの方</b>
+        <p>築古アパートのオーナー向け</p>
+      </a>
+      <a href="#shisan" class="entry">
+        <div class="ico">💰</div>
+        <b>資産形成をお考えの方</b>
+        <p>会社員・公務員向け</p>
+      </a>
+      <a href="#houjin" class="entry" style="position:relative;">
+        <div class="ico">🏢</div>
+        <b>法人活用</b>
+        <p>法人経営者・自営業向け</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 市場環境 -->
+<section class="market">
+  <div class="cont">
+    <span class="eyebrow">MARKET CHANGE</span>
+    <h2 class="sec-ttl">なぜ今、動くべきなのか。<small>2025〜2026年、地主・オーナーを取り巻く3つの構造変化</small></h2>
+    <div class="mk-3">
+      <div class="mk-card">
+        <div class="num">5年</div>
+        <h3>令和8年税制改正「5年ルール」</h3>
+        <p>不動産小口化商品の節税が封じられる一方、実物土地活用の評価圧縮効果は維持。「相続の5年前に始めるべき準備」があります。</p>
+      </div>
+      <div class="mk-card">
+        <div class="num">2025.4</div>
+        <h3>住宅省エネ説明義務化</h3>
+        <p>新築賃貸の省エネ基準適合が必須に。木造×省エネ×自由設計で「10年後も満室であり続けるアパート」へ。</p>
+      </div>
+      <div class="mk-card">
+        <div class="num">4号</div>
+        <h3>建築基準法 4号特例縮小</h3>
+        <p>構造計算審査の対象拡大で零細業者は淘汰へ。当社は自社一級建築士事務所「オリナス」と連携で完全対応。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 動機別5セクション -->
+<section class="personas">
+  <div class="cont">
+    <span class="eyebrow">5 MOTIVES</span>
+    <h2 class="sec-ttl">5つの動機、5つの答え。<small>動機が違えば、刺さるメッセージも、最適な提案も変わります。</small></h2>
+
+    <div class="persona" id="tochi">
+      <div class="persona-mark"><div class="letter">A</div></div>
+      <div>
+        <h3>土地・相続でお悩みの方へ</h3>
+        <div class="motive">動機: 土地を活かしたい／家族で相続を準備したい</div>
+        <p>先祖から引き継いだ土地、または購入したが活用できていない土地。固定資産税を払い続けるだけの土地から、家族と次世代に何かを残せる資産へ。<br>2026年税制改正の「5年ルール」を踏まえ、今動くべき理由があります。<br><br>無料の<strong>土地活用診断</strong>と<strong>相続税試算</strong>をご用意しています。家族会議の材料としてお使いください。</p>
+        <a href="#contact" class="cta-mini">▶ 土地活用診断（無料）</a>
+      </div>
+    </div>
+
+    <div class="persona" id="tatekae">
+      <div class="persona-mark"><div class="letter">B</div></div>
+      <div>
+        <h3>建替えをお考えの方へ</h3>
+        <div class="motive">動機: 築古を何とかしたい</div>
+        <p>築20〜40年の木造アパートを保有しているが、空室・修繕費・入居者の入れ替わりに疲れている。続けるか、建替えるか、売却するか、判断材料が欲しい。<br><br>築古アパートの3つの選択肢（リフォーム／建替え／売却）を数字で比較。立退きから新築・客付けまでワンストップで対応します。</p>
+        <a href="#contact" class="cta-mini">▶ 建替えシミュレーション</a>
+      </div>
+    </div>
+
+    <div class="persona" id="shisan">
+      <div class="persona-mark"><div class="letter">C</div></div>
+      <div>
+        <h3>資産形成をお考えの方へ</h3>
+        <div class="motive">動機: 資産形成・老後資金の確保</div>
+        <p>会社員・公務員として安定した属性を持ち、本業以外の収入源と老後資金を確保したい。給与収入と並行して、無理なく続けられる資産形成手段を求めている方へ。<br><br>1棟目で福岡ビルドを選ばなかった人ほど、2棟目で選びます。土地探しから対応可能です。</p>
+        <a href="#contact" class="cta-mini">▶ 収益物件のご相談</a>
+      </div>
+    </div>
+
+    <div class="persona new" id="dai">
+      <div class="persona-mark new"><div class="letter">D</div><span class="new-tag">NEW</span></div>
+      <div>
+        <h3>相続準備の子世代の方へ</h3>
+        <div class="motive">動機: 家族で相続を準備したい（親の土地を引き継ぐ40〜60代）</div>
+        <p>親が高齢になり、相続を意識し始めた。親本人は動かないか、何をすべきか分からない状態。子である自分が情報を集め、親と一緒に検討しなければと考えている方へ。<br><br>他県在住の方のオンライン相談、親同席のWeb面談にも対応します。家族で考える土地活用の5ステップをご用意しています。</p>
+        <a href="#contact" class="cta-mini">▶ 親同席Web面談を予約</a>
+      </div>
+    </div>
+
+    <div class="persona new" id="houjin">
+      <div class="persona-mark new"><div class="letter">E</div><span class="new-tag">NEW</span></div>
+      <div>
+        <h3>法人での活用をお考えの方へ</h3>
+        <div class="motive">動機: 事業の柱を増やす・法人活用したい</div>
+        <p>中小企業のオーナー、または個人事業主として一定の事業基盤を持つ層。本業のキャッシュフローを不動産に振り向け、減価償却・退職金準備・事業承継・社員福利厚生を視野に入れている方へ。<br><br>当社の現行オーナー様（J様・T様・M様）はまさにこの層。経営者視点からの導入経緯を語っていただいています。</p>
+        <a href="#contact" class="cta-mini">▶ 経営者向け無料相談（税理士同席可）</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6つの約束 -->
+<section class="promise">
+  <div class="cont">
+    <span class="eyebrow">6 PROMISES</span>
+    <h2 class="sec-ttl">福岡ビルドが選ばれる、6つの約束。</h2>
+    <div class="pr-6">
+      <div class="pr-card"><div class="n">01</div><h4>地元密着 53年</h4><p>福岡県・佐賀県エリアに特化。地元の土地・家賃相場・人の流れを誰よりも理解。</p></div>
+      <div class="pr-card"><div class="n">02</div><h4>自由設計・自社施工</h4><p>規格パッケージではなく土地ごとに一からプランニング。自社大工が品質を担保。</p></div>
+      <div class="pr-card"><div class="n">03</div><h4>自社一級建築士事務所</h4><p>子会社オリナス株式会社と連携し、2025年法改正にも完全対応。</p></div>
+      <div class="pr-card"><div class="n">04</div><h4>金融機関との太いパイプ</h4><p>福岡銀行・佐賀銀行・西日本シティ銀行・JA・信金との取引実績で融資をサポート。</p></div>
+      <div class="pr-card"><div class="n">05</div><h4>空室を生まない設計力</h4><p>立地マーケティングに基づく徹底した需要分析。多くのオーナーが満室経営を継続。</p></div>
+      <div class="pr-card"><div class="n">06</div><h4>案件に応じた対応力</h4><p>木軸（在来）・ツーバイフォー・テクノストラクチャーから最適な構造を選択。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <div class="cont">
+    <h2>あなたの動機に、いちばん近い答えへ。</h2>
+    <p>ご相談・資料請求・無料診断、お選びください。土地・相続／建替え／資産形成／法人活用、それぞれに最適な担当者が対応します。</p>
+    <div class="cta-3">
+      <a href="tel:0927101180" class="c1">📞 092-710-1180</a>
+      <a href="#line" class="c2">💬 LINEで相談</a>
+      <a href="#" class="c3">📝 無料相談フォーム</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  福岡ビルド株式会社 ／ 福岡県那珂川市今光一丁目56番地 ／ TEL: 092-710-1180<br>
+  © Fukuoka Build Co., Ltd. ／ <a href="mockup.html">← モックアップ3案比較に戻る</a>
+</footer>
+
+<a href="#contact" class="fix-cta">📝 無料相談</a>
+
+</body>
+</html>

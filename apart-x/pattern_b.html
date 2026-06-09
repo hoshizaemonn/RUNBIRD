@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【モックアップ B】数字訴求型 | アパート建築の方程式</title>
+<meta name="description" content="apart-x.jp LP モックアップ パターンB：創業53年・累計棟数・想定利回り8.5%を前面に押し出す数字訴求型">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --navy:#0c4a6e; --blue:#2563eb; --red:#b91c1c; --orange:#f59e0b; --dark:#0f172a; --light:#f1f5f9; --border:#e2e8f0; }
+body { font-family: "Noto Sans JP", sans-serif; color: var(--dark); line-height: 1.7; font-feature-settings: "palt"; -webkit-font-smoothing: antialiased; }
+.mock-banner { background: #dbeafe; border-bottom: 2px solid var(--blue); padding: 8px 16px; text-align: center; font-size: 12px; color: #1e3a8a; font-weight: 700; }
+.mock-banner a { color: #1d4ed8; }
+
+/* Header */
+header.gh { background: var(--dark); color: #fff; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; position: sticky; top:0; z-index: 100; }
+.logo { font-family: "Noto Serif JP", serif; font-weight: 900; font-size: 18px; color: #fff; }
+.logo small { display: block; font-family: "Noto Sans JP"; font-weight: 400; font-size: 10px; opacity: 0.75; }
+nav.gn { display: flex; gap: 16px; font-size: 13px; }
+nav.gn a { color: #fff; text-decoration: none; }
+nav.gn a:hover { color: var(--orange); }
+.hd-cta { display:flex; gap:6px; }
+.hd-cta a { padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; text-decoration: none; }
+.hd-cta .a1 { background: var(--orange); color:#fff; }
+.hd-cta .a2 { background:#06c755; color:#fff; }
+@media(max-width:760px){ nav.gn{display:none} }
+
+/* FV */
+.fv { background: linear-gradient(180deg, rgba(12,74,110,0.6) 0%, rgba(15,23,42,0.9) 100%), url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1600&q=80') center/cover; color:#fff; padding: 56px 24px 32px; text-align: center; min-height: 580px; }
+.fv-tag { font-size: 12px; letter-spacing: 0.25em; color: var(--orange); font-weight: 700; margin-bottom: 14px; }
+.fv h1 { font-family: "Noto Serif JP", serif; font-size: 44px; font-weight: 900; line-height: 1.2; margin-bottom: 14px; }
+@media(max-width:760px){ .fv h1{font-size:30px;} }
+.fv-sub { font-size: 16px; opacity: 0.9; margin-bottom: 36px; }
+
+/* 大型数字バナー（FV内） */
+.numbers-hero { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 900px; margin: 0 auto 30px; }
+@media(max-width:760px){ .numbers-hero{grid-template-columns: 1fr 1fr;} }
+.num-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 20px 12px; backdrop-filter: blur(6px); }
+.num-card .v { font-family: "Inter", sans-serif; font-weight: 900; font-size: 44px; line-height: 1; color: var(--orange); }
+.num-card .v small { font-size: 18px; }
+.num-card .l { font-size: 11px; opacity: 0.85; margin-top: 6px; letter-spacing: 0.1em; }
+
+.fv-cta { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.fv-cta a { padding: 13px 26px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; }
+.fv-cta .c1 { background: var(--orange); color: #fff; }
+.fv-cta .c2 { background: #06c755; color: #fff; }
+.fv-cta .c3 { background: rgba(255,255,255,0.95); color: var(--dark); }
+
+/* sections */
+section { padding: 60px 24px; }
+.cont { max-width: 1080px; margin: 0 auto; }
+.eyebrow { font-size: 11px; letter-spacing: 0.25em; color: var(--blue); font-weight: 700; }
+h2.sec-ttl { font-family: "Noto Serif JP", serif; font-size: 28px; font-weight: 900; margin: 8px 0 14px; }
+h2.sec-ttl small { display: block; font-family: "Noto Sans JP"; font-weight: 400; font-size: 14px; color: #64748b; margin-top: 6px; }
+
+/* 診断ツールセクション（最優先） */
+.diag { background: linear-gradient(135deg, #0c4a6e, #1e3a8a); color: #fff; }
+.diag h2.sec-ttl, .diag .eyebrow { color: #fff; }
+.diag .eyebrow { opacity: 0.85; }
+.diag-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 30px; margin-top: 24px; text-align: center; }
+.diag-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 24px 0; }
+@media(max-width:760px){ .diag-steps{grid-template-columns: 1fr 1fr;} }
+.step { background: rgba(255,255,255,0.1); padding: 14px 8px; border-radius: 6px; font-size: 11px; }
+.step .n { font-family: "Inter"; font-weight: 900; font-size: 22px; color: var(--orange); display: block; margin-bottom: 4px; }
+.diag-card a { display: inline-block; padding: 14px 32px; background: var(--orange); color: #fff; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 14px; margin-top: 12px; }
+
+/* 競合比較 */
+.compare { background: var(--light); }
+.compare table { width: 100%; background: #fff; border-collapse: collapse; margin-top: 24px; font-size: 13px; }
+.compare th, .compare td { padding: 14px; border-bottom: 1px solid var(--border); text-align: center; }
+.compare th { background: var(--dark); color: #fff; font-weight: 700; }
+.compare td:first-child { text-align: left; font-weight: 700; background: #f8fafc; }
+.compare td.ours { background: #fef3c7; font-weight: 700; color: var(--red); }
+.compare td.ok { color: #047857; font-weight: 700; }
+.compare td.bad { color: #b91c1c; }
+
+/* オーナーボイス（数字で語る） */
+.voice { background: #fff; }
+.voice-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 26px; }
+@media(max-width:760px){ .voice-grid{grid-template-columns: 1fr;} }
+.voice-card { background: var(--light); border-radius: 10px; padding: 24px; border-top: 4px solid var(--blue); }
+.voice-card .v-num { font-family: "Inter"; font-weight: 900; font-size: 36px; color: var(--blue); line-height: 1; }
+.voice-card .v-label { font-size: 11px; color: #475569; letter-spacing: 0.1em; }
+.voice-card .v-quote { font-size: 14px; margin: 14px 0 10px; line-height: 1.7; }
+.voice-card .v-name { font-size: 12px; color: #64748b; }
+
+/* CTA */
+.cta-sec { background: linear-gradient(135deg, var(--navy), var(--dark)); color: #fff; text-align: center; }
+.cta-sec h2 { font-family: "Noto Serif JP", serif; font-size: 26px; margin-bottom: 16px; }
+.cta-sec p { font-size: 13px; opacity: 0.9; margin-bottom: 24px; }
+.cta-3 { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.cta-3 a { padding: 14px 28px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; }
+.cta-3 .c1 { background: var(--orange); color: #fff; }
+.cta-3 .c2 { background: #06c755; color: #fff; }
+.cta-3 .c3 { background: #fff; color: var(--dark); }
+
+footer { background: var(--dark); color: #fff; padding: 32px 24px; text-align: center; font-size: 11px; }
+footer a { color: #93c5fd; }
+
+.fix-cta { position: fixed; bottom: 20px; right: 20px; background: var(--orange); color: #fff; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-size: 13px; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,0.25); z-index: 90; }
+@media(max-width:760px){ .fix-cta{bottom:0; right:0; left:0; border-radius:0; text-align:center; padding:14px;} }
+</style>
+</head>
+<body>
+
+<div class="mock-banner">📄 これは <strong>モックアップ B（数字訴求型）</strong> です ／ <a href="mockup.html">← 3案比較ページに戻る</a></div>
+
+<header class="gh">
+  <div class="logo">アパート建築の方程式<small>福岡ビルド株式会社 / 創業53年</small></div>
+  <nav class="gn">
+    <a href="#diag">無料診断</a>
+    <a href="#compare">数字で比較</a>
+    <a href="#voice">オーナーの声</a>
+    <a href="#contact">無料相談</a>
+  </nav>
+  <div class="hd-cta">
+    <a class="a1" href="#diag">無料診断</a>
+    <a class="a2" href="#line">LINE</a>
+  </div>
+</header>
+
+<!-- ファーストビュー -->
+<section class="fv">
+  <div class="fv-tag">数字で選ぶアパート建築</div>
+  <h1>53年。○棟。<br>8.5%。○%。</h1>
+  <div class="fv-sub">福岡・佐賀の実績が、答えです。</div>
+
+  <div class="numbers-hero">
+    <div class="num-card">
+      <div class="v">53<small>年</small></div>
+      <div class="l">CREATION 創業年数</div>
+    </div>
+    <div class="num-card">
+      <div class="v">○<small>棟</small></div>
+      <div class="l">RECORDS 累計建築</div>
+    </div>
+    <div class="num-card">
+      <div class="v">8.5<small>%</small></div>
+      <div class="l">YIELD 想定利回り</div>
+    </div>
+    <div class="num-card">
+      <div class="v">○<small>%</small></div>
+      <div class="l">OCCUPANCY 満室稼働</div>
+    </div>
+  </div>
+
+  <div class="fv-cta">
+    <a href="#diag" class="c1">📊 無料の土地活用診断（90秒）</a>
+    <a href="#line" class="c2">💬 LINE で相談</a>
+    <a href="tel:0927101180" class="c3">📞 092-710-1180</a>
+  </div>
+</section>
+
+<!-- 診断ツール最前面 -->
+<section class="diag" id="diag">
+  <div class="cont">
+    <span class="eyebrow">FREE DIAGNOSIS</span>
+    <h2 class="sec-ttl">90秒で、あなたの土地の答えを。<small>無料の土地活用診断ツール（土地有無を問わずご利用可能）</small></h2>
+
+    <div class="diag-card">
+      <p style="font-size:14px; margin-bottom: 14px;">5つの質問に答えるだけで、あなたに最適な活用方法ベスト3と概算収益が分かります。</p>
+      <div class="diag-steps">
+        <div class="step"><span class="n">01</span>土地のエリア</div>
+        <div class="step"><span class="n">02</span>土地の広さ</div>
+        <div class="step"><span class="n">03</span>土地の状況</div>
+        <div class="step"><span class="n">04</span>活用の目的</div>
+        <div class="step"><span class="n">05</span>検討の温度感</div>
+      </div>
+      <a href="#">▶ 今すぐ診断を始める（無料・90秒）</a>
+    </div>
+  </div>
+</section>
+
+<!-- 数字で見る競合比較 -->
+<section class="compare" id="compare">
+  <div class="cont">
+    <span class="eyebrow">COMPARISON</span>
+    <h2 class="sec-ttl">数字で選ぶ、福岡ビルドの強み。<small>大手アパートメーカーとの実数比較（公表値ベース）</small></h2>
+
+    <table>
+      <thead>
+        <tr><th>項目</th><th>大手A</th><th>大手B</th><th class="ours">福岡ビルド ★</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>地域密着エリア</td><td>全国</td><td>全国</td><td class="ours">福岡・佐賀53年</td></tr>
+        <tr><td>想定利回り公表</td><td class="bad">非公表</td><td class="bad">非公表</td><td class="ours">8.5%台</td></tr>
+        <tr><td>オーナーボイス詳細</td><td>標準</td><td>標準</td><td class="ours">詳細インタビュー5名</td></tr>
+        <tr><td>360°VR内覧</td><td class="bad">限定的</td><td class="bad">なし</td><td class="ours">あり（3物件）</td></tr>
+        <tr><td>自社一級建築士事務所</td><td>あり</td><td>あり</td><td class="ours">オリナス連携</td></tr>
+        <tr><td>金融機関パイプ</td><td>全国行</td><td>全国行</td><td class="ours">福岡銀行・佐賀銀行・JA</td></tr>
+        <tr><td>中間マージン</td><td>あり</td><td>あり</td><td class="ours">ゼロ（自社施工）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- オーナーボイス（数字で語る） -->
+<section class="voice" id="voice">
+  <div class="cont">
+    <span class="eyebrow">OWNER VOICE</span>
+    <h2 class="sec-ttl">オーナーの声、数字で語る。<small>福岡ビルドを選んだ理由を、実数とともに。</small></h2>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="v-num">20<small style="font-size:16px">棟</small></div>
+        <div class="v-label">紹介リピート</div>
+        <p class="v-quote">「最初の1棟で経営の手応えを得て、その後20棟を仲間や家族に紹介しました。」</p>
+        <p class="v-name">J様（元ゼネコン勤務 → 法人オーナー）</p>
+      </div>
+      <div class="voice-card">
+        <div class="v-num">98<small style="font-size:16px">%</small></div>
+        <div class="v-label">稼働率</div>
+        <p class="v-quote">「立地の選定からこだわった結果、満室経営を10年以上継続できています。」</p>
+        <p class="v-name">T様（元 新聞販売店経営 → 法人オーナー）</p>
+      </div>
+      <div class="voice-card">
+        <div class="v-num">5<small style="font-size:16px">棟</small></div>
+        <div class="v-label">複数棟保有</div>
+        <p class="v-quote">「会社経営の柱として、3棟目から5棟目まで福岡ビルドに任せています。」</p>
+        <p class="v-name">M様（中小企業経営者 → 法人オーナー）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <div class="cont">
+    <h2>数字で、最初の一歩を。</h2>
+    <p>無料診断・LINE相談・お電話。<br>あなたの土地に合った答えを、数字でお伝えします。</p>
+    <div class="cta-3">
+      <a href="tel:0927101180" class="c1">📞 092-710-1180</a>
+      <a href="#line" class="c2">💬 LINEで相談</a>
+      <a href="#" class="c3">📝 無料相談フォーム</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  福岡ビルド株式会社 ／ 福岡県那珂川市今光一丁目56番地 ／ TEL: 092-710-1180<br>
+  © Fukuoka Build Co., Ltd. ／ <a href="mockup.html">← モックアップ3案比較に戻る</a>
+</footer>
+
+<a href="#diag" class="fix-cta">📊 無料診断</a>
+
+</body>
+</html>
