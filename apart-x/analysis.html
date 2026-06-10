@@ -339,24 +339,31 @@ footer { text-align: center; padding: 24px; color: #64748b; font-size: 11px; }
     </tr>
     <tr style="background:#fee2e2;">
       <td><strong>apart-x.jp（LP）</strong></td>
-      <td class="num">計測なし</td>
+      <td class="num">計測未稼働</td>
       <td class="num">N/A</td>
       <td class="num">N/A</td>
-      <td class="critical">GA4プロパティはあるがデータ未計測</td>
+      <td class="critical">タグ不一致（修正依頼中）</td>
     </tr>
   </table>
 
-  <p style="font-size:11px; color:#64748b; margin-top:8px;">
+  <div style="background:#fffbeb; border:2px solid var(--orange); border-radius:8px; padding:14px 18px; margin-top:14px;">
+    <div style="font-size:11px; font-weight:900; color: var(--orange); letter-spacing:0.15em; margin-bottom:6px;">✅ 原因判明 2026-06-10</div>
+    <div style="font-size:13px;">
+      apart-x.jp の GA4プロパティ <code>470896939</code>（「アパート建築の方程式」）の<br>
+      <strong>正しい測定ID</strong>: <code style="background:#ecfdf5; padding:2px 6px; border-radius:3px;">G-0T2J051GZ6</code><br>
+      <strong>サイトに埋め込まれているID</strong>: <code style="background:#fef2f2; padding:2px 6px; border-radius:3px;">G-S9L2VB6EKQ</code>（別物）<br>
+      → <strong>サイト側のWordPressプラグイン設定で測定IDを差し替えれば、計測が即開始</strong>します（1〜5分の作業）。<br>
+      鈴木さんに WordPress 側の対応をご依頼中（24〜48時間後にデータ蓄積開始予定）。
+    </div>
+  </div>
+
+  <p style="font-size:11px; color:#64748b; margin-top:14px;">
     <strong>※注記</strong>:<br>
     ・f-build.co.jp の実測値は GA4プロパティ <code>523286535</code> から取得（2026-03-08〜2026-06-05 の90日間）。<br>
     　セッション 1,071 / フォーム送信完了（/contact-confirm/ 到達） 12件 → 月平均約 4件・CV率 1.1%<br>
     ・大手3社の月間訪問数は SimilarWeb 系の業界水準（公開レポート・第三者推定）からのレンジ表示。<strong>正確な数字は非公開</strong>。<br>
     ・CV率 0.5〜1.5% は住宅・不動産業界LPの一般的な水準（出典：複数のCV最適化レポートの中央値）。<br>
-    ・apart-x.jp の GA4プロパティ <code>470896939</code> はアクセス権付与済（鈴木様にご対応いただきました）。<br>
-    　ただし<strong>過去365日でデータが0件</strong>。プロパティは作成されているが、apart-x.jp の HTML側のタグ／GTM設定で<br>
-    　このプロパティへのデータ配信が有効になっていない可能性があります。<br>
-    　現状、apart-x.jp の実流入の一部は f-build.co.jp 用プロパティ <code>523286535</code> に混在して計測されている模様です。<br>
-    　→ <strong>GTM配信設定の確認・調整後</strong>に、apart-x.jp の独立した実測値で更新可能になります。
+    ・apart-x.jp の GA4 タグ修正後、本ページの数値も実測値で更新します。
   </p>
 
   <div class="insight">
