@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>中古買取販売店 EC構築 3プラットフォーム比較（2026-06-10）</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Hiragino Sans", "Yu Gothic", sans-serif; background: #f6f7f9; margin: 0; padding: 24px; color: #222; line-height: 1.6; }
+  h1 { font-size: 26px; margin: 0 0 8px; }
+  h2 { font-size: 20px; margin: 36px 0 12px; padding-left: 10px; border-left: 5px solid #2e7d72; }
+  .subtitle { color: #666; font-size: 13px; margin-bottom: 24px; }
+  .conclusion { background: linear-gradient(135deg, #B8E6CE 0%, #B4CDF2 100%); padding: 20px 24px; border-radius: 12px; margin-bottom: 24px; }
+  .conclusion h2 { margin-top: 0; border-left: none; color: #000; font-size: 22px; padding: 0; }
+  .conclusion ol { margin: 0; padding-left: 20px; }
+  .conclusion li { margin-bottom: 8px; font-weight: 600; }
+  /* 3カラム */
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 20px; }
+  .card.colorme { border-top: 6px solid #ff6b9d; }
+  .card.shopify { border-top: 6px solid #95bf47; }
+  .card.eccube { border-top: 6px solid #4a90e2; }
+  .card-title { font-size: 20px; font-weight: 700; margin: 0 0 4px; }
+  .card-sub { font-size: 12px; color: #666; margin-bottom: 14px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-bottom: 12px; }
+  .badge.win { background: #d4f4e2; color: #1f7a3e; }
+  .badge.cond { background: #fff3cd; color: #856404; }
+  .badge.lose { background: #f8d7da; color: #721c24; }
+  /* 項目リスト */
+  ul.checklist { list-style: none; padding: 0; margin: 0; font-size: 13px; }
+  ul.checklist li { padding: 6px 0; border-bottom: 1px dotted #eee; display: flex; gap: 8px; align-items: flex-start; }
+  ul.checklist li:last-child { border-bottom: none; }
+  .mark { font-weight: 700; width: 24px; flex-shrink: 0; text-align: center; }
+  .mark.ok { color: #1f7a3e; }
+  .mark.ng { color: #c0392b; }
+  .mark.cond { color: #d68910; }
+  .mark.q { color: #999; }
+  .section-label { font-size: 12px; font-weight: 700; color: #555; text-transform: uppercase; margin: 14px 0 4px; letter-spacing: 0.5px; }
+  /* 決済フロー図 */
+  .payment-flow { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  .flow-row { display: flex; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid #eee; }
+  .flow-row:last-child { border-bottom: none; }
+  .flow-product { width: 130px; font-weight: 700; font-size: 13px; padding: 8px 10px; background: #f1f3f5; border-radius: 6px; text-align: center; }
+  .flow-arrow { font-size: 18px; color: #999; }
+  .flow-payment { flex: 1; padding: 8px 12px; border-radius: 6px; font-size: 13px; }
+  .flow-payment.std { background: #d4f4e2; color: #1f7a3e; }
+  .flow-payment.ext { background: #fff3cd; color: #856404; }
+  .flow-payment.bank { background: #e1f0fa; color: #1e6091; }
+  /* クライアント要件 */
+  .req-table { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  .req-table table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .req-table th, .req-table td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #eee; }
+  .req-table th:first-child, .req-table td:first-child { text-align: left; font-weight: 600; }
+  .req-table thead th { background: #f1f3f5; font-size: 12px; }
+  /* 未確定 */
+  .unknown { background: #fff8e1; border-left: 5px solid #f9a825; padding: 16px 20px; border-radius: 8px; margin-bottom: 16px; }
+  .unknown h2 { margin-top: 0; border-left: none; padding-left: 0; }
+  .unknown ul { padding-left: 20px; }
+  /* スコアシート */
+  .score { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 24px; }
+  .score h2 { margin-top: 0; }
+  .score-scenario { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+  .scenario-box { padding: 16px; border-radius: 10px; }
+  .scenario-box.win { background: #d4f4e2; }
+  .scenario-box.alt { background: #e1f0fa; }
+  .scenario-box h3 { margin: 0 0 6px; font-size: 16px; }
+  .scenario-box p { margin: 4px 0; font-size: 13px; }
+  /* 印刷 */
+  @media print {
+    body { background: #fff; padding: 12px; }
+    .card, .payment-flow, .req-table, .score, .conclusion { box-shadow: none; border: 1px solid #ddd; }
+  }
+  /* レスポンシブ */
+  @media (max-width: 900px) {
+    .grid3 { grid-template-columns: 1fr; }
+    .score-scenario { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>中古買取販売店 EC構築｜3プラットフォーム比較図解</h1>
+<p class="subtitle">2026-06-10 作成 ／ 担当：星崎 ／ 明日 鈴木さんMTG用</p>
+
+<!-- 結論 -->
+<div class="conclusion">
+  <h2>🎯 結論 TOP3</h2>
+  <ol>
+    <li><b>R18等を売る限り、3プラットフォーム共通で「アダルト対応決済代行（ICPGW等）の審査」が必須</b><br><small>＝プラットフォーム選びより、まず<b>ICPGW審査で対象4商材が通るか</b>を確認すべき（最優先論点）</small></li>
+    <li>EC-CUBE × R18 × クレカは <b>ラブピースクラブで稼働実例確定</b>（一次情報）<br><small>※カラーミー / Shopify は公開情報での稼働実例は確認できず（R18 ECは独自構築が業界主流のため）</small></li>
+    <li><b>カラーミーは「R18 規約OK」が今日確定</b>。残課題は外部決済を併設できるかのみ（U1）</li>
+  </ol>
+</div>
+
+<!-- 3カード比較 -->
+<h2>🛒 3プラットフォーム カード比較</h2>
+<div class="grid3">
+
+  <!-- カラーミー -->
+  <div class="card colorme">
+    <div class="card-title">カラーミー</div>
+    <div class="card-sub">GMOペパボ／日本特化</div>
+    <span class="badge cond">条件付き本命</span>
+
+    <div class="section-label">商材販売</div>
+    <ul class="checklist">
+      <li><span class="mark ok">⭕️</span>R18 規約OK（条件付き）</li>
+      <li><span class="mark ok">⭕️</span>中古ブランド・骨董・モデルガン・古銭</li>
+    </ul>
+
+    <div class="section-label">決済（クレカ）</div>
+    <ul class="checklist">
+      <li><span class="mark ng">❌</span>カラーミーペイメント＝R18等NG</li>
+      <li><span class="mark q">❓</span>外部の決済代行（ICPGW等）を併設できるか<br><small style="color:#666;">★カラーミーへ要問合せ（文面完成済・未送信）</small></li>
+    </ul>
+
+    <div class="section-label">運用</div>
+    <ul class="checklist">
+      <li><span class="mark ok">⭕️</span>スマホ商品登録（公式アプリ）</li>
+      <li><span class="mark ok">⭕️</span>写真50枚／商品</li>
+    </ul>
+
+    <div class="section-label">月額ランニング費</div>
+    <ul class="checklist">
+      <li><span class="mark ok">⭕️</span>月額：¥8,000〜¥13,000</li>
+      <li><span class="mark ok">⭕️</span>保守：カラーミー社</li>
+    </ul>
+
+    <div class="section-label">実例</div>
+    <ul class="checklist">
+      <li><span class="mark q">❓</span>R18稼働実例：公開情報での確認できず<br><small style="color:#666;">（業界的にR18 ECは独自構築が大半でSaaS稼働例の公開が稀。検出失敗＝存在しないとは言えないが、確実な実例は得られず）</small></li>
+    </ul>
+  </div>
+
+  <!-- Shopify -->
+  <div class="card shopify">
+    <div class="card-title">Shopify</div>
+    <div class="card-sub">カナダ発／グローバル最大級</div>
+    <span class="badge win">スマホ最強</span>
+
+    <div class="section-label">商材販売</div>
+    <ul class="checklist">
+      <li><span class="mark q">❓</span>R18 規約（要確認）</li>
+      <li><span class="mark ok">⭕️</span>中古ブランド・骨董・モデルガン・古銭</li>
+    </ul>
+
+    <div class="section-label">決済（クレカ）</div>
+    <ul class="checklist">
+      <li><span class="mark ng">❌</span>Shopify Payments＝R18等NG</li>
+      <li><span class="mark ok">⭕️</span>外部決済接続が公式許可（追加手数料あり）</li>
+    </ul>
+
+    <div class="section-label">運用</div>
+    <ul class="checklist">
+      <li><span class="mark ok">⭕️</span>スマホ商品登録（世界最高水準）</li>
+      <li><span class="mark ok">⭕️</span>写真多数／商品</li>
+    </ul>
+
+    <div class="section-label">月額ランニング費</div>
+    <ul class="checklist">
+      <li><span class="mark cond">🔺</span>月額：¥10,000〜¥25,000</li>
+      <li><span class="mark ok">⭕️</span>保守：Shopify社</li>
+    </ul>
+
+    <div class="section-label">実例</div>
+    <ul class="checklist">
+      <li><span class="mark q">❓</span>R18稼働実例：公開情報での確認できず<br><small style="color:#666;">（業界的にR18 ECは独自構築が大半でSaaS稼働例の公開が稀。検出失敗＝存在しないとは言えないが、確実な実例は得られず）</small></li>
+    </ul>
+  </div>
+
+  <!-- EC-CUBE -->
+  <div class="card eccube">
+    <div class="card-title">EC-CUBE</div>
+    <div class="card-sub">日本／OSS（自社設置）</div>
+    <span class="badge win">R18実例あり</span>
+
+    <div class="section-label">商材販売</div>
+    <ul class="checklist">
+      <li><span class="mark ok">⭕️</span>R18 規約制限なし（OSS）</li>
+      <li><span class="mark ok">⭕️</span>全商材OK</li>
+    </ul>
+
+    <div class="section-label">決済（クレカ）</div>
+    <ul class="checklist">
+      <li><span class="mark ok">⭕️</span>EC-CUBE本体に決済機能なし<br><small style="color:#666;">＝アダルト対応決済代行（ICPGW等）と接続する「プラグイン」を入れて使う。プラグイン自体に審査なし</small></li>
+      <li><span class="mark cond">🔺</span>★決済代行側（ICPGW等）の審査は必要<br><small style="color:#666;">＝対象4商材が個別審査される（U3）</small></li>
+      <li><span class="mark ok">⭕️</span>ラブピースクラブ も同方式で稼働</li>
+    </ul>
+
+    <div class="section-label">運用</div>
+    <ul class="checklist">
+      <li><span class="mark ng">❌</span>スマホ商品登録 弱い（最大の課題）</li>
+      <li><span class="mark ok">⭕️</span>写真無制限／商品</li>
+    </ul>
+
+    <div class="section-label">月額ランニング費</div>
+    <ul class="checklist">
+      <li><span class="mark ok">⭕️</span>月額：¥4,500〜¥10,500</li>
+      <li><span class="mark ng">❌</span>保守：ランバード負担</li>
+    </ul>
+
+    <div class="section-label">実例</div>
+    <ul class="checklist">
+      <li><span class="mark ok">⭕️</span><b>ラブピースクラブ で稼働実例確認済</b></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- 決済の仕組み図 -->
+<h2>🔐 クレカ決済の仕組み（3プラットフォーム共通の構造）</h2>
+<div class="payment-flow">
+  <p style="margin-top:0;font-size:13px;color:#444;">
+    重要：プラットフォーム選びでクレカ決済の可否が決まるわけではなく、<b>「決済代行会社の審査」が最終判定</b>です。
+  </p>
+  <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:14px;">
+    <thead>
+      <tr style="background:#f1f3f5;">
+        <th style="padding:10px;text-align:left;">レイヤー</th>
+        <th style="padding:10px;text-align:left;">役割</th>
+        <th style="padding:10px;text-align:left;">審査の有無</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:10px;border-bottom:1px solid #eee;"><b>① プラットフォーム</b><br>（カラーミー／Shopify／EC-CUBE）</td><td style="padding:10px;border-bottom:1px solid #eee;">サイトを動かす土台</td><td style="padding:10px;border-bottom:1px solid #eee;">⭕️ 契約のみ・審査なし<br><small>※カラーミーは規約で R18 条件付きOK</small></td></tr>
+      <tr><td style="padding:10px;border-bottom:1px solid #eee;"><b>② 決済プラグイン/接続部品</b><br>（EC-CUBE系で言うプラグイン）</td><td style="padding:10px;border-bottom:1px solid #eee;">プラットフォームと決済代行を繋ぐ部品</td><td style="padding:10px;border-bottom:1px solid #eee;">⭕️ インストールのみ・<b>審査なし</b></td></tr>
+      <tr style="background:#fff5f5;"><td style="padding:10px;border-bottom:1px solid #eee;"><b>③ 決済代行会社</b><br>（GMOイプシロン／Stripe／ICPGW等）</td><td style="padding:10px;border-bottom:1px solid #eee;">実際にクレカを処理する会社</td><td style="padding:10px;border-bottom:1px solid #eee;">❌ <b>★ここで審査</b><br>商材ごとに個別判定</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:14px;font-size:13px;background:#fff3cd;color:#856404;padding:12px;border-radius:6px;">
+    <b>結論：</b>3プラットフォームとも、最終的に <b>「アダルト対応決済代行（ICPGW等）の審査」</b> を通す必要があります。<br>
+    プラットフォームの違いは「決済代行をどう繋ぐか」だけで、審査自体は共通の課題です（U3）。
+  </p>
+</div>
+
+<!-- 決済方法フロー -->
+<h2>💳 商材別 必要な決済の種類</h2>
+<div class="payment-flow">
+  <p style="margin-top:0;font-size:13px;background:#fff3cd;color:#856404;padding:10px 14px;border-radius:6px;">
+    <b>⚠️ 注意：</b>「どんな決済が必要か」は3プラットフォーム共通ですが、「<b>その決済を実際に接続できるか</b>」はプラットフォームごとに違います。<br>
+    ・カラーミー：外部決済併設の可否 <b>未確定（U1）</b><br>
+    ・Shopify：外部決済接続は<b>公式許可（追加手数料あり）</b><br>
+    ・EC-CUBE：プラグインで<b>自由に接続可能</b>
+  </p>
+  <div class="flow-row">
+    <div class="flow-product">古本・漫画など<br>一般商品</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-payment std">⭕️ 標準決済（カラーミーペイメント / Shopify Payments / 一般決済代行）OK</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-product">中古ブランド</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-payment std">🔺 標準決済 古物商提出で要審査 → 多くは通る</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-product">R18<br>（書籍・DVD）</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-payment ext">❌ 標準決済NG → ⭕️ アダルト対応決済代行（ICPGW等）併設で可</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-product">モデルガン</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-payment ext">❌ 標準決済NG → 🔺 アダルト対応決済代行の個別審査</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-product">古銭</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-payment ext">❌ 標準決済NG → 🔺 アダルト対応決済代行の個別審査</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-product">金・銀地金</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-payment bank">❌ クレカほぼ不可 → 銀行振込（業界慣行）or 買取問合せ受付に絞る</div>
+  </div>
+  <div class="flow-row">
+    <div class="flow-product">骨董・美術品</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-payment bank">⭕️ 安価品はクレカ／高額品は銀行振込（業界慣行）</div>
+  </div>
+</div>
+
+<!-- クライアント要件チェック -->
+<h2>📝 クライアント（クライアント様）要件 × 3プラットフォーム</h2>
+<div class="req-table">
+  <table>
+    <thead>
+      <tr>
+        <th>クライアント様の要件</th>
+        <th style="color:#ff6b9d;">カラーミー</th>
+        <th style="color:#95bf47;">Shopify</th>
+        <th style="color:#4a90e2;">EC-CUBE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>① R18販売（規約OK）</td><td>⭕️ 条件付き</td><td>❓ 要確認</td><td>⭕️</td></tr>
+      <tr><td>② クレカ決済（R18も含む）</td><td>🔺 カラーミーが外部の決済代行を併設できれば可（要確認）</td><td>⭕️ 外部の決済代行を接続</td><td>⭕️ プラグイン経由で外部決済代行を接続</td></tr>
+      <tr><td>③ スマホで商品登録（クライアント様運用）</td><td>⭕️</td><td>⭕️</td><td>❌</td></tr>
+      <tr><td>写真10枚以上／商品</td><td>⭕️ 50枚</td><td>⭕️ 多数</td><td>⭕️ 無制限</td></tr>
+      <tr><td>200点→将来2,000点</td><td>⭕️</td><td>⭕️</td><td>⭕️</td></tr>
+      <tr><td>独自ドメイン （独自ドメイン取得予定）</td><td>⭕️</td><td>⭕️</td><td>⭕️</td></tr>
+      <tr><td>「種類で選ぶ」12カテゴリ</td><td>⭕️</td><td>⭕️</td><td>⭕️</td></tr>
+      <tr><td>「シーンで選ぶ」3軸</td><td>⭕️</td><td>⭕️</td><td>⭕️</td></tr>
+      <tr><td>年齢確認ゲート（DMM方式）</td><td>⭕️ 購入制限</td><td>⭕️ カスタム</td><td>⭕️ プラグイン</td></tr>
+      <tr><td>SEOブログ自動更新</td><td>🔺 弱め</td><td>🔺 普通</td><td>⭕️ WP連携で強</td></tr>
+      <tr><td>古物商番号表示</td><td>⭕️</td><td>⭕️</td><td>⭕️</td></tr>
+      <tr><td>月額ランニング（クライアント様負担分）</td><td>⭕️ ¥8〜13K</td><td>🔺 ¥10〜25K</td><td>⭕️ ¥4.5〜10.5K</td></tr>
+      <tr><td>保守の容易さ</td><td>⭕️ カラーミー社</td><td>⭕️ Shopify社</td><td>❌ ランバード負担</td></tr>
+      <tr><td>R18稼働実例の有無</td><td>❓</td><td>❓</td><td>⭕️ ラブピースクラブ</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 同業他社の決済実例 -->
+<h2>🏪 同業他社の決済メニュー実例（一次情報）</h2>
+<div class="payment-flow">
+  <p style="font-size:13px;color:#444;margin-top:0;">中古買取販売＋R18コンテンツを扱う中規模ECの決済構成を確認しました。<b>共通パターンが見えます</b>。</p>
+  <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;">
+    <thead>
+      <tr style="background:#f1f3f5;">
+        <th style="padding:8px;text-align:left;">決済方法</th>
+        <th style="padding:8px;text-align:center;">ラブピースクラブ<br><small style="font-weight:normal;">(EC-CUBE)</small></th>
+        <th style="padding:8px;text-align:center;">らしんばん<br><small style="font-weight:normal;">(独自構築)</small></th>
+        <th style="padding:8px;text-align:center;">メロンブックス<br><small style="font-weight:normal;">(独自構築)</small></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">クレジットカード</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">代引き</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">—</td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">銀行振込</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">—</td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">コンビニ決済</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">—</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">—</td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">Amazon Pay</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">—</td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">PayPay</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">—</td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">Paidy</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">—</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">⭕️</td><td style="padding:8px;text-align:center;border-bottom:1px solid #eee;">—</td></tr>
+      <tr style="background:#fff5f5;"><td style="padding:8px;"><b>クレカの決済代行会社</b></td><td style="padding:8px;text-align:center;"><b>非公開</b></td><td style="padding:8px;text-align:center;"><b>非公開</b></td><td style="padding:8px;text-align:center;"><b>非公開</b></td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:14px;background:#d4f4e2;padding:14px;border-radius:8px;font-size:13px;">
+    <b>業界共通パターン：</b>
+    <ul style="margin:6px 0 0;padding-left:20px;">
+      <li>どの社も「クレカ＋Amazon Pay＋PayPay＋代引＋振込＋コンビニ」のフルメニュー</li>
+      <li>クレカの裏側の決済代行会社は<b>公表しない</b>のが業界慣行</li>
+      <li>構築方式は EC-CUBE / 独自構築でバラバラ</li>
+    </ul>
+  </div>
+  <div style="margin-top:10px;background:#fff3cd;padding:14px;border-radius:8px;font-size:13px;color:#856404;">
+    <b>★ 対象クライアント の現実解：</b><br>
+    業界と同じフルメニュー構成で組めばユーザーから見て"普通"のショップに見える。<br>
+    クレカ部分は <b>ICPGW（アダルト完全対応・15年実績）に直接照会</b>するのが、確実な道を作る最速ルート。<br>
+    「他社のクレカ決済代行を逆引きする」方法はない（公表されないため）。
+  </div>
+</div>
+
+<!-- スコアシート -->
+<div class="score">
+  <h2>🎯 シナリオ別の意思決定フロー</h2>
+  <p style="font-size:13px;color:#555;">まず ① 決済代行の審査結果 → 次に ② カラーミーが外部決済を併設できるか の順で判定する</p>
+
+  <div style="background:#fff;border:2px solid #f9a825;border-radius:10px;padding:16px;margin-bottom:14px;">
+    <h3 style="margin:0 0 8px;">STEP 1：アダルト対応決済代行（ICPGW等）の審査で 対象4商材が通るか</h3>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px;">
+      <div style="background:#f8d7da;padding:14px;border-radius:8px;">
+        <p style="margin:0;"><b>❌ NG の場合（4商材が通らない）</b></p>
+        <p style="margin:6px 0 0;font-size:13px;">R18のクレカ販売 全プラットフォームで成立不可<br>→ <b>クレカ無し運用</b>（銀行振込・代引・コンビニのみ）<br>→ プラットフォーム選びは「一般商材のクレカ＋スマホ運用」基準で<br>→ <b>カラーミー優勢</b>（月額最安・スマホOK）</p>
+      </div>
+      <div style="background:#d4f4e2;padding:14px;border-radius:8px;">
+        <p style="margin:0;"><b>⭕️ OK の場合（4商材が通る）</b></p>
+        <p style="margin:6px 0 0;font-size:13px;">アダルト対応決済代行で対象クライアントのクレカ販売成立<br>→ STEP 2 へ</p>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:2px solid #4a90e2;border-radius:10px;padding:16px;">
+    <h3 style="margin:0 0 8px;">STEP 2：カラーミーが外部の決済代行を併設できるか</h3>
+    <div class="score-scenario">
+      <div class="scenario-box win">
+        <h3>🟢 ⭕️ できる場合</h3>
+        <p><b>→ カラーミーが最有力</b></p>
+        <p>✅ スマホ運用OK ／ ✅ 月額最安 ／ ✅ R18規約OK</p>
+      </div>
+      <div class="scenario-box alt">
+        <h3>🔵 ❌ できない場合</h3>
+        <p><b>→ Shopify or EC-CUBE の二択</b></p>
+        <p>📱 スマホ優先 → <b>Shopify</b></p>
+        <p>💰 コスト・自由度優先 → <b>EC-CUBE</b><br>（実例あり・スマホはiPad/代理登録で回避）</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GMOイプシロン公式 取扱不可リスト -->
+<h2>📜 GMOイプシロン公式「取扱不可商材」完全リスト</h2>
+<div class="payment-flow">
+  <p style="margin-top:0;font-size:13px;color:#666;">出典: <a href="https://www.epsilon.jp/subscription/apply.html#disapprove" target="_blank">https://www.epsilon.jp/subscription/apply.html#disapprove</a>（一次情報・2026-06-10 確認済）</p>
+  <table style="width:100%;border-collapse:collapse;font-size:13px;">
+    <thead>
+      <tr style="background:#f1f3f5;">
+        <th style="padding:8px;text-align:left;border-bottom:1px solid #ddd;">カテゴリ</th>
+        <th style="padding:8px;text-align:left;border-bottom:1px solid #ddd;">該当商材</th>
+        <th style="padding:8px;text-align:left;border-bottom:1px solid #ddd;">対象クライアント での関連</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">金融行為</td><td style="padding:8px;border-bottom:1px solid #eee;">現金化</td><td style="padding:8px;border-bottom:1px solid #eee;">—</td></tr>
+      <tr style="background:#fff5f5;"><td style="padding:8px;border-bottom:1px solid #eee;">公序良俗違反</td><td style="padding:8px;border-bottom:1px solid #eee;"><b>アダルト・出会い系</b></td><td style="padding:8px;border-bottom:1px solid #eee;"><b>★ R18 該当</b></td></tr>
+      <tr style="background:#fff5f5;"><td style="padding:8px;border-bottom:1px solid #eee;">法律違反</td><td style="padding:8px;border-bottom:1px solid #eee;">銃刀法等</td><td style="padding:8px;border-bottom:1px solid #eee;"><b>★ モデルガン関連</b></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">知財侵害</td><td style="padding:8px;border-bottom:1px solid #eee;">著作権等侵害</td><td style="padding:8px;border-bottom:1px solid #eee;">—（偽ブランド除外で対応）</td></tr>
+      <tr style="background:#fff5f5;"><td style="padding:8px;border-bottom:1px solid #eee;">専売品・有価証券</td><td style="padding:8px;border-bottom:1px solid #eee;">商品券・プリペイド・<b>古銭</b>・回数券・有価証券・<b>金銀の地金</b>・タバコ・印紙・切手</td><td style="padding:8px;border-bottom:1px solid #eee;"><b>★ 古銭・地金 明記NG</b></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">生物</td><td style="padding:8px;border-bottom:1px solid #eee;">生き物・標本・剥製</td><td style="padding:8px;border-bottom:1px solid #eee;">—</td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">RMT</td><td style="padding:8px;border-bottom:1px solid #eee;">リアルマネートレード</td><td style="padding:8px;border-bottom:1px solid #eee;">—</td></tr>
+      <tr style="background:#fff8e1;"><td style="padding:8px;border-bottom:1px solid #eee;"><b>刀剣</b></td><td style="padding:8px;border-bottom:1px solid #eee;"><b>刀剣、日本刀</b></td><td style="padding:8px;border-bottom:1px solid #eee;"><b>★ 骨董で扱う？要確認</b></td></tr>
+      <tr style="background:#fff8e1;"><td style="padding:8px;border-bottom:1px solid #eee;"><b>宗教関連</b></td><td style="padding:8px;border-bottom:1px solid #eee;"><b>宗教関連商材</b></td><td style="padding:8px;border-bottom:1px solid #eee;"><b>★ 仏具・仏像など？要確認</b></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">タバコ</td><td style="padding:8px;border-bottom:1px solid #eee;">タバコ・電子タバコ</td><td style="padding:8px;border-bottom:1px solid #eee;">—</td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #eee;">CBD</td><td style="padding:8px;border-bottom:1px solid #eee;">カンナビジオール関連</td><td style="padding:8px;border-bottom:1px solid #eee;">—</td></tr>
+      <tr><td style="padding:8px;">その他</td><td style="padding:8px;">イプシロン判断</td><td style="padding:8px;">—</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:14px;font-size:13px;background:#fff8e1;padding:12px;border-radius:6px;">
+    <b>★ クライアント様に追加ヒアリング必要：</b>「骨董品」のラインナップに <b>刀剣・日本刀・仏具・仏像</b> が含まれるか？<br>
+    含まれる場合 → 該当商材は <b>どの決済代行でも個別審査が厳しい</b>（カラーミーペイメントでは明記NG）
+  </p>
+</div>
+
+<!-- 未確定 -->
+<div class="unknown">
+  <h2>⚠️ 未確定論点（明日6/11までに詰める／優先順位順）</h2>
+  <ul>
+    <li><b>★U3（最優先）</b> ICPGW × 対象クライアント 4商材の個別審査結果 → ICPGWへ直接照会<br><small>3プラットフォーム共通の生死を握る論点。これがNGなら全プラットフォームでR18のクレカ販売が成立しない</small></li>
+    <li><b>U6</b> ★クライアント様：骨董ラインナップに 刀剣・日本刀・仏具・仏像 含まれるか？</li>
+    <li><b>U4</b> クライアント様の地金EC販売は必須か？（買取問合せ受付で代替可？）</li>
+    <li><b>U1</b> カラーミー × 外部決済併設の可否 → カラーミー人間サポート問い合わせ（文面完成済・未送信）<br><small>U3が⭕️ならカラーミーが本命候補に。U3が❌ならこの確認は不要に</small></li>
+    <li><b>U2</b> Shopify × アダルト対応決済代行の追加手数料率</li>
+    <li><b>U5</b> カラーミー実機検証（購入制限設定／費用面）</li>
+  </ul>
+</div>
+
+</body>
+</html>
