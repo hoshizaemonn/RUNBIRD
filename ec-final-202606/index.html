@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>中古買取販売店 EC構築 最終構成案（2026-06-11）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+    background: #f6f7f9;
+    color: #222;
+    line-height: 1.7;
+    padding: 30px 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+  h1 {
+    font-size: 30px;
+    margin-bottom: 6px;
+    background: linear-gradient(135deg, #B8E6CE 0%, #B4CDF2 100%);
+    padding: 18px 24px;
+    border-radius: 12px;
+    color: #000;
+  }
+  .meta { color: #666; font-size: 13px; margin-bottom: 28px; padding-left: 24px; }
+  h2 {
+    font-size: 22px;
+    margin: 36px 0 14px;
+    padding: 10px 16px;
+    background: #fff;
+    border-left: 6px solid #4a90e2;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+  .card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 18px;
+  }
+
+  /* 構成図 */
+  .arch {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+  }
+  .arch-row {
+    display: grid;
+    grid-template-columns: 200px 60px 1fr;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .arch-label { font-weight: 700; font-size: 14px; color: #555; }
+  .arch-arrow { font-size: 24px; color: #999; text-align: center; }
+  .arch-box {
+    background: #f1f3f5;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .arch-box.primary { background: #B8E6CE; font-weight: 700; }
+  .arch-box.cube { background: #d4e7ff; font-weight: 700; }
+  .arch-box.payment { background: #ffe0b2; font-weight: 700; }
+  .arch-box.server { background: #f0d4ff; font-weight: 700; }
+
+  /* 商材表 */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid #eee; }
+  th { background: #f1f3f5; font-size: 12px; color: #555; }
+  td.ok { color: #1f7a3e; font-weight: 700; }
+  td.ng { color: #c0392b; font-weight: 700; }
+  td.cond { color: #d68910; font-weight: 700; }
+
+  /* エビデンス */
+  .evidence {
+    background: linear-gradient(135deg, #fff8e1 0%, #ffeaa7 100%);
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    border: 2px solid #f9a825;
+  }
+  .evidence h3 { margin-bottom: 12px; font-size: 18px; }
+  .evidence a {
+    display: inline-block;
+    background: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #1976d2;
+    font-weight: 700;
+    margin-top: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .evidence a:hover { background: #e3f2fd; }
+
+  /* 結論ボックス */
+  .conclusion {
+    background: linear-gradient(135deg, #B8E6CE 0%, #B4CDF2 100%);
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  .conclusion h2 {
+    background: transparent;
+    border-left: none;
+    box-shadow: none;
+    margin: 0 0 12px;
+    padding: 0;
+    color: #000;
+  }
+  .conclusion ol { padding-left: 24px; }
+  .conclusion li { margin-bottom: 8px; font-weight: 600; font-size: 16px; }
+
+  /* 費用表 */
+  .price-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    margin-bottom: 14px;
+  }
+  .price-card h3 { font-size: 16px; margin-bottom: 12px; }
+  .price-card .price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dotted #eee;
+    font-size: 14px;
+  }
+  .price-card .total {
+    border-top: 2px solid #4a90e2;
+    margin-top: 8px;
+    padding-top: 12px;
+    font-weight: 700;
+  }
+  .highlight { background: #fff3cd; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+  .star { color: #d63384; font-weight: 700; }
+
+  /* 移行図 */
+  .migration {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 18px;
+  }
+  .migration-flow {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    align-items: center;
+    gap: 14px;
+    margin-top: 12px;
+  }
+  .migration-from {
+    background: #ffebee;
+    padding: 18px;
+    border-radius: 10px;
+    border: 2px solid #e57373;
+    text-align: center;
+  }
+  .migration-to {
+    background: #e8f5e9;
+    padding: 18px;
+    border-radius: 10px;
+    border: 2px solid #4caf50;
+    text-align: center;
+  }
+  .migration-arrow {
+    font-size: 32px;
+    color: #999;
+    text-align: center;
+  }
+
+  /* レスポンシブ */
+  @media (max-width: 800px) {
+    .arch-row { grid-template-columns: 1fr; gap: 8px; }
+    .arch-arrow { transform: rotate(90deg); }
+    .migration-flow { grid-template-columns: 1fr; }
+    .migration-arrow { transform: rotate(90deg); }
+  }
+  @media print { body { background: #fff; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>中古買取販売店 EC構築 最終構成案</h1>
+<p class="meta">2026-06-11 ／ 担当：星崎 ／ アルファノート見積反映・確定版</p>
+
+<!-- 結論 -->
+<div class="conclusion">
+  <h2>🎯 結論TOP3</h2>
+  <ol>
+    <li>EC-CUBE × アルファノート × シンレンタル で全商材販売可能</li>
+    <li>稼働実例あり（ラブピースクラブ EC-CUBE × R18 × クレカ 稼働中）</li>
+    <li>月額：アルファノート¥55,000＋手数料5〜8.5%（サーバーは弊社負担）</li>
+  </ol>
+</div>
+
+<!-- 構成図 -->
+<h2>🏗 システム構成図</h2>
+<div class="arch">
+  <div class="arch-row">
+    <div class="arch-label">ドメイン</div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-box primary">独自ドメイン（取得予定）</div>
+  </div>
+  <div class="arch-row">
+    <div class="arch-label">サーバー</div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-box server">シンレンタル（アダルト公認・弊社負担）</div>
+  </div>
+  <div class="arch-row">
+    <div class="arch-label">表サイト</div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-box">WordPress（買取訴求・自動投稿ブログ・カテゴリ導線）</div>
+  </div>
+  <div class="arch-row">
+    <div class="arch-label">EC本体</div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-box cube">EC-CUBE 4系（オープンソース・無料）</div>
+  </div>
+  <div class="arch-row">
+    <div class="arch-label">決済代行</div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-box payment">アルファノート（WEBアダルト商材プラン）</div>
+  </div>
+  <div class="arch-row">
+    <div class="arch-label">年齢確認</div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-box">年齢認証プラグイン（V-WORKS・¥5,000買切）</div>
+  </div>
+</div>
+
+<!-- エビデンス -->
+<h2>🌟 稼働実例（エビデンス）</h2>
+<div class="evidence">
+  <h3>ラブピースクラブ（女性向けR18 EC・1996年〜の老舗）</h3>
+  <p>EC-CUBE で R18商品 × クレジットカード決済が <b>実際に稼働している</b>サイト。</p>
+  <p>本日実機確認：年齢確認ページの動作・クレカ決済対応 すべて確認済み。</p>
+  <a href="https://lovepiececlub-shop.com/" target="_blank">▶ サイトを見る（lovepiececlub-shop.com）</a>
+  <p style="margin-top:14px;font-size:12px;color:#856404;">出典：HTTPレスポンスの `eccube=` cookie と `eccube-csrf-token` メタタグでEC-CUBE使用を一次確認</p>
+</div>
+
+<!-- 商材販売可否 -->
+<h2>🛒 対象商材 × 販売可否（全部OK）</h2>
+<div class="card">
+  <table>
+    <thead><tr><th>商材</th><th>EC-CUBE</th><th>アルファノート決済</th><th>結論</th></tr></thead>
+    <tbody>
+      <tr><td>古本・漫画・雑誌・ゲーム・玩具・フィギュア</td><td class="ok">⭕️ 制限なし</td><td class="ok">⭕️ 通常商材で対応</td><td class="ok">⭕️ 売れる</td></tr>
+      <tr><td>中古ブランド品（正規品・古物商）</td><td class="ok">⭕️ 制限なし</td><td class="ok">⭕️ 古物商で対応</td><td class="ok">⭕️ 売れる</td></tr>
+      <tr><td>骨董品・美術品・絵画</td><td class="ok">⭕️ 制限なし</td><td class="ok">⭕️ 古物商で対応</td><td class="ok">⭕️ 売れる</td></tr>
+      <tr><td>モデルガン・トイガン</td><td class="ok">⭕️ 制限なし</td><td class="ok">⭕️ アダルトプランで対応</td><td class="ok">⭕️ 売れる</td></tr>
+      <tr><td>R18（中古DVD・成人向け書籍）</td><td class="ok">⭕️ 制限なし</td><td class="ok">⭕️ アダルトプランで対応</td><td class="ok">⭕️ 売れる</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#666;margin-top:12px;">※全商材 古物商許可番号の表示（特商法）必須。R18は年齢確認ゲート経由が必要。</p>
+</div>
+
+<!-- 費用 -->
+<h2>💰 月額費用（クライアント様負担）</h2>
+
+<div class="price-card">
+  <h3>🟢 固定費（毎月発生）</h3>
+  <div class="price-row"><span>EC-CUBE本体</span><span class="ok">¥0（オープンソース）</span></div>
+  <div class="price-row"><span>アルファノート決済プラグイン</span><span class="ok">¥0（公式・無料）</span></div>
+  <div class="price-row"><span>シンレンタルサーバー</span><span class="ok">弊社負担</span></div>
+  <div class="price-row"><span>独自ドメイン</span><span>約¥125/月</span></div>
+  <div class="price-row"><span>アルファノート月額固定費</span><span class="star">¥55,000/月（アダルトプラン）</span></div>
+  <div class="price-row total"><span>固定費合計</span><span class="highlight">¥55,125/月</span></div>
+</div>
+
+<div class="price-card">
+  <h3>🟡 売上連動費</h3>
+  <div class="price-row"><span>決済手数料</span><span>売上の 5〜8.5%</span></div>
+  <div class="price-row"><span>トランザクション料</span><span>¥30/件</span></div>
+</div>
+
+<div class="price-card">
+  <h3>🔵 初期費用（1回のみ）</h3>
+  <div class="price-row"><span>アルファノート初期費用</span><span>¥330,000（アダルトプラン）</span></div>
+  <div class="price-row"><span>年齢確認プラグイン（V-WORKS）</span><span>¥5,000（買切）</span></div>
+  <div class="price-row"><span>ドメイン取得</span><span>約¥1,500</span></div>
+  <div class="price-row total"><span>初期費用合計</span><span class="highlight">約¥336,500</span></div>
+</div>
+
+<!-- 月商試算 -->
+<h2>📊 月商別シミュレーション</h2>
+<div class="card">
+  <table>
+    <thead><tr><th>月商</th><th>月額固定</th><th>手数料5%（仮）</th><th>月額合計</th><th>売上比</th></tr></thead>
+    <tbody>
+      <tr><td>100万円</td><td>¥55,125</td><td>¥50,000</td><td class="highlight">¥105,125</td><td>10.5%</td></tr>
+      <tr><td>200万円</td><td>¥55,125</td><td>¥100,000</td><td class="highlight">¥155,125</td><td>7.76%</td></tr>
+      <tr><td>300万円</td><td>¥55,125</td><td>¥150,000</td><td class="highlight">¥205,125</td><td class="ok">6.84%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12px;color:#666;margin-top:12px;">※月商が大きくなるほど比率が下がる（固定費の影響軽減）</p>
+</div>
+
+<!-- サーバー移行 -->
+<h2>🔄 サーバー移行案（Xサーバー → シンレンタル）</h2>
+<div class="migration">
+  <p><b>なぜ切替が必要か：</b>Xサーバーはアダルトコンテンツ規約NG。R18販売を含む対象クライアントでは突然のアカウント停止リスクあり。シンレンタル（Xサーバー兄弟ブランド・アダルト公認）に移行が業界スタンダード。</p>
+  <div class="migration-flow">
+    <div class="migration-from">
+      <h3>Xサーバー（現状）</h3>
+      <p style="font-size:13px;margin-top:8px;">❌ アダルト規約NG<br>突然停止リスクあり</p>
+    </div>
+    <div class="migration-arrow">→</div>
+    <div class="migration-to">
+      <h3>シンレンタル（移行先）</h3>
+      <p style="font-size:13px;margin-top:8px;">⭕️ アダルト公認<br>兄弟ブランド・管理画面同じ<br>サーバー費は弊社負担</p>
+    </div>
+  </div>
+  <p style="margin-top:18px;font-size:13px;">
+    <b>移行作業：</b>半日〜1日（DNS切替含む）／弊社対応・<b>クライアント様の手間ゼロ</b>／追加費用なし<br>
+    <b>引き継ぐもの：</b>WordPressデータ・記事・画像・デザイン・プラグイン設定すべて
+  </p>
+</div>
+
+<!-- 申込み・必要書類 -->
+<h2>📝 申込み・必要書類</h2>
+<div class="card">
+  <h3 style="margin-bottom:12px;">クライアント様にご準備いただく書類（4点）</h3>
+  <table>
+    <tr><td>① 代表者身分証明書（両面）</td><td>—</td></tr>
+    <tr><td>② 登記簿謄本（3ヶ月以内）</td><td>代行取得¥550も可</td></tr>
+    <tr><td>③ 古物商許可証</td><td>クライアント様 取得済（要確認）</td></tr>
+    <tr><td><b>④ 無店舗型性風俗特殊営業届出書</b></td><td><span class="star">★クライアント様 取得済か要確認</span></td></tr>
+  </table>
+  <h3 style="margin:20px 0 12px;">スケジュール</h3>
+  <table>
+    <tr><td>STEP1 書類提出</td><td>申込URLにアップロード</td></tr>
+    <tr><td>STEP2 審査</td><td><b>最短2週間</b></td></tr>
+    <tr><td>STEP3 審査結果報告</td><td>担当営業より連絡</td></tr>
+    <tr><td>STEP4 初期費用精算</td><td>銀行振込／クレカ／代引きから選択</td></tr>
+    <tr><td>STEP5 ご利用開始</td><td>テスト決済後、本番稼働</td></tr>
+  </table>
+</div>
+
+<!-- まとめ -->
+<h2>📌 本日の決定・ご相談事項</h2>
+<div class="card">
+  <h3>✅ 確定したこと</h3>
+  <ul style="padding-left:24px;margin:10px 0;">
+    <li>EC-CUBE × アルファノート × シンレンタル で全商材販売可能</li>
+    <li>ラブピースクラブで EC-CUBE×R18×クレカ稼働実例 確認済</li>
+    <li>アルファノートから見積書受領・申込URL発行済</li>
+  </ul>
+  <h3 style="margin-top:18px;">⚠️ ご相談したいこと</h3>
+  <ul style="padding-left:24px;margin:10px 0;">
+    <li>クライアント様の「無店舗型性風俗特殊営業届出書」の有無</li>
+    <li>初期費用¥330,000・月額¥55,000の負担確認</li>
+    <li>オープン目標見直し（6月中→7月以降）</li>
+    <li>サーバー切替（Xサーバー→シンレンタル）の同意</li>
+  </ul>
+</div>
+
+</div>
+
+</body>
+</html>
