@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>ECサイト開設 お手続きガイド</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Hiragino Sans", "Yu Gothic", sans-serif; background: #f4f6f9; margin: 0; padding: 30px 20px; color: #1a1a1a; line-height: 1.7; }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  .hero { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); color: #fff; padding: 32px 28px; border-radius: 14px; margin-bottom: 24px; }
+  .hero h1 { margin: 0 0 8px; font-size: 26px; }
+  .hero p { margin: 6px 0 0; font-size: 14px; opacity: 0.95; }
+  .lead { background: #fff; padding: 20px 24px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); margin-bottom: 24px; font-size: 14px; }
+  .timeline { display: flex; gap: 8px; flex-wrap: wrap; align-items: stretch; margin: 16px 0 28px; }
+  .timeline-step { flex: 1 1 140px; background: #fff; border: 2px solid #3b82f6; border-radius: 10px; padding: 12px; text-align: center; font-size: 12px; min-width: 130px; }
+  .timeline-step b { display: block; font-size: 14px; color: #1e40af; margin-bottom: 4px; }
+  .timeline-step.you { background: #fef3c7; border-color: #d97706; }
+  .timeline-step.us { background: #ecfdf5; border-color: #047857; }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; margin-bottom: 16px; }
+  .legend-item { padding: 4px 10px; border-radius: 6px; font-weight: 700; }
+  .legend-item.you { background: #fef3c7; color: #92400e; border: 1px solid #d97706; }
+  .legend-item.us { background: #ecfdf5; color: #065f46; border: 1px solid #047857; }
+  .section { background: #fff; border-radius: 12px; padding: 24px 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 18px; }
+  .section h2 { margin: 0 0 14px; font-size: 20px; padding-bottom: 8px; border-bottom: 3px solid; }
+  .section.s1 h2 { color: #d97706; border-color: #fbbf24; }
+  .section.s2 h2 { color: #1e40af; border-color: #3b82f6; }
+  .section.s3 h2 { color: #db2777; border-color: #f9a8d4; }
+  .section.s4 h2 { color: #047857; border-color: #6ee7b7; }
+  .check-list { list-style: none; padding: 0; margin: 12px 0; }
+  .check-list li { padding: 12px 14px; background: #f9fafb; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; font-size: 14px; border-left: 4px solid #3b82f6; }
+  .check-list li.must { border-left-color: #dc2626; background: #fef2f2; }
+  .check-list li.option { border-left-color: #9ca3af; background: #f9fafb; }
+  .check-list li.r18 { border-left-color: #db2777; background: #fdf2f8; }
+  .check-box { width: 22px; height: 22px; border: 2px solid #9ca3af; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+  .check-list b { display: block; margin-bottom: 4px; font-size: 14px; }
+  .check-list small { color: #555; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-left: 6px; vertical-align: middle; }
+  .badge.must { background: #dc2626; color: #fff; }
+  .badge.r18 { background: #db2777; color: #fff; }
+  .badge.option { background: #6b7280; color: #fff; }
+  .badge.best { background: #047857; color: #fff; }
+  .cta-button { display: inline-block; background: #1e40af; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; margin: 10px 0; transition: 0.2s; }
+  .cta-button:hover { background: #1e3a8a; }
+  .cta-button.orange { background: #ea580c; }
+  .cta-button.orange:hover { background: #c2410c; }
+  .info-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 13px; }
+  .warning-box { background: #fef2f2; border: 1px solid #fecaca; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 13px; color: #991b1b; }
+  .note-box { background: #fffbeb; border: 1px solid #fde68a; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 13px; }
+  .step-num { display: inline-block; background: #1e40af; color: #fff; width: 30px; height: 30px; border-radius: 50%; text-align: center; line-height: 30px; font-weight: 700; margin-right: 8px; }
+  .step-num.orange { background: #ea580c; }
+  .price-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  .price-table th { background: #1e40af; color: #fff; padding: 10px; text-align: left; }
+  .price-table td { padding: 10px; border-bottom: 1px solid #e5e7eb; }
+  .contact-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 20px; margin: 10px 0; }
+  .contact-card h3 { margin: 0 0 8px; font-size: 15px; color: #1e40af; }
+  .contact-card .tel { font-size: 22px; font-weight: 700; color: #ea580c; text-decoration: none; }
+  .contact-card a { color: #1e40af; }
+  .help-card { background: #1e3a8a; color: #fff; padding: 20px 24px; border-radius: 12px; margin-top: 30px; text-align: center; }
+  .help-card h3 { margin: 0 0 8px; font-size: 17px; }
+  .help-card p { margin: 4px 0; font-size: 13px; opacity: 0.95; }
+  .section-title { font-size: 16px; font-weight: 700; margin: 18px 0 10px; color: #1e3a8a; }
+  @media print { body { background: #fff; } .section, .lead { box-shadow: none; border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <h1>📋 ECサイト開設 お手続きガイド</h1>
+  <p>クライアント様にお手続きいただく内容と弊社が対応する内容のご案内</p>
+  <p style="font-size:12px; margin-top:10px;">2026-06-12 作成 ／ 株式会社ランバード</p>
+</div>
+
+<div class="lead">
+  <b>このガイドの目的</b><br>
+  ECサイト開設に向けて、<b>クライアント様にお手続きいただくこと</b>と<b>弊社（ランバード）が代行すること</b>を明確に分けてご案内します。<br>
+  迷ったときは下記凡例の色で判別できます。
+</div>
+
+<div class="legend">
+  <span class="legend-item you">🟧 クライアント様にお手続きいただく</span>
+  <span class="legend-item us">🟩 弊社で対応します</span>
+</div>
+
+<!-- 全体フロー -->
+<div class="section-title" style="font-size:18px;">🗺️ 全体の流れ</div>
+<div class="timeline">
+  <div class="timeline-step you"><b>STEP 1</b>カラーミー本契約お手続き</div>
+  <div class="timeline-step you"><b>STEP 2</b>決済代行（テレコム）審査書類ご準備</div>
+  <div class="timeline-step you"><b>STEP 3</b>Googleフォームご入力</div>
+  <div class="timeline-step us"><b>STEP 4</b>サイト構築・規約等の設置</div>
+  <div class="timeline-step us"><b>STEP 5</b>審査対応・運用開始</div>
+</div>
+
+<!-- STEP 1 カラーミー -->
+<div class="section s1">
+  <h2>STEP 1 🟧 カラーミーショップ 本契約のお手続き</h2>
+  <p>現在「無料体験プラン」でお試しいただいているカラーミーショップを、<b>レギュラープラン</b>に本契約していただきます。</p>
+
+  <div class="section-title">📌 ご契約手順（所要時間 約10分）</div>
+  <ol style="font-size:14px; padding-left:24px;">
+    <li><b>カラーミーショップ管理画面にログイン</b><br>
+      <a href="https://manage.shop-pro.jp/" target="_blank">https://manage.shop-pro.jp/</a>
+    </li>
+    <li>左サイドバー上部の <b>「契約・お支払い」</b> ボタンをクリック</li>
+    <li><b>レギュラープラン</b> を選択（月額 ¥4,950 税込）</li>
+    <li>お支払い方法をご選択（クレジットカード／銀行振込）</li>
+    <li>必要情報をご入力 → 申込ボタンで契約完了</li>
+  </ol>
+
+  <div class="info-box">
+    <b>📌 レギュラープランの主な特徴</b><br>
+    ・月額 ¥4,950（税込）<br>
+    ・独自ドメイン利用可能<br>
+    ・外部決済代行の併設可能（今回テレコムを併設）<br>
+    ・年齢確認ページ機能あり（R18商品対応）<br>
+    ・商品登録数 無制限
+  </div>
+
+  <div class="note-box">
+    <b>ご注意</b>：無料体験は<b>残り26日</b>です。本契約手続きは早めにお願いします。
+  </div>
+</div>
+
+<!-- STEP 2 必要書類 -->
+<div class="section s2">
+  <h2>STEP 2 🟧 決済代行（テレコムクレジット）審査書類のご準備</h2>
+  <p>カードで決済を受け付けるため、決済代行会社「テレコムクレジット様」の審査をお受けいただきます。<br>
+  下記書類をご準備ください。</p>
+
+  <div class="section-title">✅ テレコム審査 必須書類（5点）</div>
+  <ul class="check-list">
+    <li class="must">
+      <div class="check-box"></div>
+      <div>
+        <b>1. 代表者様の身分証 <span class="badge must">必須</span></b>
+        <small>下記いずれか：<br>・運転免許証（表面と裏面）<br>・マイナンバーカード（表面のみ）<br>・住民票</small>
+      </div>
+    </li>
+    <li class="must">
+      <div class="check-box"></div>
+      <div>
+        <b>2. 履歴事項全部証明書（登記簿謄本） <span class="badge must">法人・必須</span></b>
+        <small>法務局で取得 ／ 発行から3ヶ月以内</small>
+      </div>
+    </li>
+    <li class="must">
+      <div class="check-box"></div>
+      <div>
+        <b>3. 連帯保証書および承諾書 <span class="badge must">必須</span></b>
+        <small>連帯保証人＝代表者様ご本人で可<br>※書式はテレコム様から後日お送りいただけます</small>
+      </div>
+    </li>
+    <li class="must">
+      <div class="check-box"></div>
+      <div>
+        <b>4. 法人印鑑証明書 <span class="badge must">必須</span></b>
+        <small>取得から3ヶ月以内</small>
+      </div>
+    </li>
+    <li class="must">
+      <div class="check-box"></div>
+      <div>
+        <b>5. 代表者個人印鑑証明書 <span class="badge must">必須</span></b>
+        <small>取得から3ヶ月以内 ／ 市区町村役場で取得</small>
+      </div>
+    </li>
+  </ul>
+
+  <div class="section-title">📎 参考（実運用で必要・お手元にあれば）</div>
+  <ul class="check-list">
+    <li class="option">
+      <div class="check-box"></div>
+      <div>
+        <b>古物商許可証 コピー <span class="badge option">参考</span></b>
+        <small>カード会社側審査で求められる場合あり ／ 既にお持ちと伺っております</small>
+      </div>
+    </li>
+    <li class="option">
+      <div class="check-box"></div>
+      <div>
+        <b>入金受取口座 通帳コピー <span class="badge option">参考</span></b>
+        <small>契約時に口座情報のご提示が必要 ／ 表紙＋見開き1ページ目</small>
+      </div>
+    </li>
+  </ul>
+
+  <div class="section-title">📌 R18商品取扱いについて</div>
+  <ul class="check-list">
+    <li class="r18">
+      <div class="check-box"></div>
+      <div>
+        <b>無店舗型性風俗特殊営業届出書 受理証明書 <span class="badge r18">R18時参考</span></b>
+        <small>
+          テレコム必須書類には含まれていませんが、カードブランド審査段階で求められる可能性があります。<br>
+          R18商品を本格的に取扱われる場合は、念のため事前取得をご検討ください。<br>
+          （警察署 生活安全課で申請 ／ 取得期間 2〜4週間）
+        </small>
+      </div>
+    </li>
+  </ul>
+
+  <div class="warning-box">
+    <b>⚠️ ご注意</b>：印鑑証明書2種（法人・代表者個人）の取得には、市区町村役場で<b>1〜2日</b>かかります。先にお手続きをお願いいたします。
+  </div>
+</div>
+
+<!-- STEP 3 Googleフォーム -->
+<div class="section s2">
+  <h2>STEP 3 🟧 テレコムクレジット 審査申請フォームのご入力</h2>
+  <p>下記Googleフォームに必要事項をご入力ください。<b>所要時間：約10分</b></p>
+
+  <div style="text-align:center; padding: 14px 0;">
+    <a href="https://forms.gle/mxeDKhCLjD77iURU7" target="_blank" class="cta-button orange">
+      📝 テレコム審査 申請フォームを開く →
+    </a>
+  </div>
+
+  <div class="info-box">
+    <b>入力内容</b>：会社情報・代表者情報・取扱商品・想定売上 など<br>
+    ご不明な項目は弊社（株式会社ランバード）までお気軽にお問合せください。
+  </div>
+
+  <div class="section-title">📞 ご担当者連絡先（テレコムクレジット）</div>
+  <div class="contact-card">
+    <h3>テレコムクレジット株式会社 営業部 木戸 孝司 様</h3>
+    <p style="font-size:13px; margin:4px 0;">📧 <a href="mailto:k.kido@telecomcredit.co.jp">k.kido@telecomcredit.co.jp</a></p>
+    <p style="font-size:13px; margin:4px 0;">📮 〒108-0073 東京都港区三田1-2-22 東洋ビル5F</p>
+  </div>
+</div>
+
+<!-- STEP 4 弊社対応 -->
+<div class="section s4">
+  <h2>STEP 4 🟩 サイト構築・規約等の設置（弊社対応）</h2>
+  <p>下記は弊社（株式会社ランバード）で対応いたしますので、クライアント様のお手続きは不要です。</p>
+
+  <ul class="check-list">
+    <li><div class="check-box" style="background:#047857; border-color:#047857;"></div><div>カラーミーショップのデザイン・商品ページ設計</div></li>
+    <li><div class="check-box" style="background:#047857; border-color:#047857;"></div><div>特定商取引法に基づく表記ページの作成</div></li>
+    <li><div class="check-box" style="background:#047857; border-color:#047857;"></div><div>利用規約ページの作成</div></li>
+    <li><div class="check-box" style="background:#047857; border-color:#047857;"></div><div>プライバシーポリシーページの作成</div></li>
+    <li><div class="check-box" style="background:#047857; border-color:#047857;"></div><div>R18年齢確認ページの設定</div></li>
+    <li><div class="check-box" style="background:#047857; border-color:#047857;"></div><div>独自ドメイン取得・接続</div></li>
+    <li><div class="check-box" style="background:#047857; border-color:#047857;"></div><div>サーバー手配・運用（シンレンタル／弊社負担）</div></li>
+    <li><div class="check-box" style="background:#047857; border-color:#047857;"></div><div>テレコム審査における追加対応・サイト修正依頼への対応</div></li>
+  </ul>
+</div>
+
+<!-- STEP 5 -->
+<div class="section s4">
+  <h2>STEP 5 🟩 審査対応・契約・運用開始（弊社サポート）</h2>
+  <p>審査の途中で追加対応が必要な場合は、弊社が代行いたします。</p>
+
+  <table class="price-table">
+    <tr><th colspan="2">テレコムクレジット ご契約条件</th></tr>
+    <tr><td>初期費用</td><td>¥20,000</td></tr>
+    <tr><td>月額費用</td><td>¥3,000</td></tr>
+    <tr><td>決済手数料率</td><td>3%（売上連動）</td></tr>
+    <tr><td>解約金</td><td>なし</td></tr>
+    <tr><td>入金サイクル</td><td>月末締めの翌10日払い</td></tr>
+    <tr><td>審査期間</td><td>約5営業日</td></tr>
+  </table>
+</div>
+
+<!-- バックアップ候補 SUI -->
+<div class="section s3">
+  <h2>📌 バックアップ候補：SUI Credit Service</h2>
+  <p>テレコム様の審査が万一通らなかった場合に備え、別の決済代行会社「SUI Credit Service様」をバックアップ候補としています。<br>
+  <b>現時点ではご連絡不要</b>です。必要となった場合のみ、弊社からご案内いたします。</p>
+
+  <div class="contact-card">
+    <h3>SUI Credit Service ご連絡先（ご参考）</h3>
+    <p style="font-size:13px; margin:4px 0;">📞 東京 <a href="tel:0366670668" class="tel">03-6667-0668</a></p>
+    <p style="font-size:13px; margin:4px 0;">📞 関西 <a href="tel:0748321411" class="tel">0748-32-1411</a></p>
+    <p style="font-size:13px; margin:4px 0;">🌐 <a href="https://adult.sui-c-ad.com/" target="_blank">https://adult.sui-c-ad.com/</a></p>
+  </div>
+
+  <table class="price-table">
+    <tr><th colspan="2">SUI 概算条件（ご参考）</th></tr>
+    <tr><td>初期費用</td><td>¥22,000</td></tr>
+    <tr><td>月額費用</td><td>¥16,500</td></tr>
+    <tr><td>取扱可否</td><td>審査通過次第</td></tr>
+  </table>
+</div>
+
+<!-- まとめ -->
+<div class="section s1">
+  <h2>📝 クライアント様にお手続きいただくこと まとめ</h2>
+  <ol style="font-size:14px; padding-left:24px;">
+    <li><b>カラーミーショップ レギュラープラン 本契約</b>（約10分）</li>
+    <li><b>必要書類のご準備</b>（印鑑証明等の取得 1〜2日）</li>
+    <li><b>テレコム審査申請フォームのご入力</b>（約10分）</li>
+    <li><b>準備書類をテレコム様にご提出</b>（メール添付 or 郵送）</li>
+  </ol>
+  <div class="info-box">
+    その他のサイト構築・規約整備・審査対応は<b>全て弊社で対応</b>いたしますのでご安心ください。
+  </div>
+</div>
+
+<!-- お問い合わせ -->
+<div class="help-card">
+  <h3>❓ ご不明な点がございましたら</h3>
+  <p>株式会社ランバード 担当：鈴木 / 星崎</p>
+  <p>本ガイドに関するご質問は、いつでもお気軽にご連絡ください</p>
+</div>
+
+<p style="text-align:center; color:#666; font-size:11px; margin-top:24px;">
+  株式会社ランバード ／ 2026-06-12 作成
+</p>
+
+</div>
+</body>
+</html>
