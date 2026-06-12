@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>決済代行 審査お申込みガイド</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Hiragino Sans", "Yu Gothic", sans-serif; background: #f4f6f9; margin: 0; padding: 30px 20px; color: #1a1a1a; line-height: 1.7; }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  .hero { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); color: #fff; padding: 32px 28px; border-radius: 14px; margin-bottom: 24px; }
+  .hero h1 { margin: 0 0 8px; font-size: 26px; }
+  .hero p { margin: 6px 0 0; font-size: 14px; opacity: 0.95; }
+  .lead { background: #fff; padding: 20px 24px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); margin-bottom: 24px; font-size: 14px; }
+  .step-box { background: #fff; border-radius: 12px; padding: 24px 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 18px; position: relative; padding-left: 90px; }
+  .step-num { position: absolute; left: 22px; top: 22px; width: 50px; height: 50px; background: #1e40af; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 700; }
+  .step-box h2 { margin: 0 0 10px; font-size: 19px; color: #1e40af; }
+  .step-box p { margin: 6px 0; font-size: 14px; }
+  .check-list { list-style: none; padding: 0; margin: 12px 0; }
+  .check-list li { padding: 12px 14px; background: #f9fafb; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 12px; font-size: 14px; border-left: 4px solid #3b82f6; }
+  .check-list li.must { border-left-color: #dc2626; background: #fef2f2; }
+  .check-list li.r18 { border-left-color: #db2777; background: #fdf2f8; }
+  .check-list li.option { border-left-color: #9ca3af; background: #f9fafb; }
+  .check-box { width: 22px; height: 22px; border: 2px solid #9ca3af; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+  .check-list b { display: block; margin-bottom: 4px; font-size: 14px; }
+  .check-list small { color: #555; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-left: 6px; vertical-align: middle; }
+  .badge.must { background: #dc2626; color: #fff; }
+  .badge.r18 { background: #db2777; color: #fff; }
+  .badge.option { background: #6b7280; color: #fff; }
+  .cta-button { display: inline-block; background: #1e40af; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; font-size: 15px; margin: 10px 0; transition: 0.2s; }
+  .cta-button:hover { background: #1e3a8a; }
+  .info-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 13px; }
+  .warning-box { background: #fef2f2; border: 1px solid #fecaca; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 13px; color: #991b1b; }
+  .note-box { background: #fffbeb; border: 1px solid #fde68a; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 13px; }
+  .timeline { display: flex; gap: 8px; flex-wrap: wrap; align-items: stretch; margin: 16px 0; }
+  .timeline-step { flex: 1 1 140px; background: #fff; border: 2px solid #3b82f6; border-radius: 10px; padding: 12px; text-align: center; font-size: 12px; min-width: 130px; }
+  .timeline-step b { display: block; font-size: 14px; color: #1e40af; margin-bottom: 4px; }
+  .arrow-down { text-align: center; font-size: 28px; color: #9ca3af; margin: -4px 0; }
+  .section-title { font-size: 16px; font-weight: 700; margin: 20px 0 10px; color: #1e3a8a; padding-bottom: 6px; border-bottom: 2px solid #dbeafe; }
+  .help-card { background: #1e3a8a; color: #fff; padding: 20px 24px; border-radius: 12px; margin-top: 30px; text-align: center; }
+  .help-card h3 { margin: 0 0 8px; font-size: 17px; }
+  .help-card p { margin: 4px 0; font-size: 13px; opacity: 0.95; }
+  @media print { body { background: #fff; } .step-box, .lead { box-shadow: none; border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <h1>📋 決済代行 審査お申込みガイド</h1>
+  <p>テレコムクレジット株式会社 審査お申込みの流れ</p>
+  <p style="font-size:12px; margin-top:10px;">2026-06-12 作成 ／ 株式会社ランバード</p>
+</div>
+
+<div class="lead">
+  <b>この資料の目的</b><br>
+  ECサイトでクレジットカード決済を導入するため、決済代行会社「テレコムクレジット」様の審査をお申込みいただきます。<br>
+  <b>所要時間目安</b>：書類準備 1〜2日／フォーム入力 約10分／審査 約5営業日
+</div>
+
+<!-- 全体フロー -->
+<div class="section-title">🗺️ 全体の流れ</div>
+<div class="timeline">
+  <div class="timeline-step"><b>STEP 1</b>必要書類のご準備</div>
+  <div class="timeline-step"><b>STEP 2</b>Googleフォーム入力</div>
+  <div class="timeline-step"><b>STEP 3</b>書類提出</div>
+  <div class="timeline-step"><b>STEP 4</b>審査<br>（約5営業日）</div>
+  <div class="timeline-step"><b>STEP 5</b>契約・運用開始</div>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-box">
+  <div class="step-num">1</div>
+  <h2>必要書類をご準備ください</h2>
+  <p>下記書類をすべてご準備いただきます。チェックを入れながら進めてください。</p>
+
+  <div class="section-title" style="margin-top:18px;">✅ テレコムクレジット様 必須書類（5点）</div>
+  <ul class="check-list">
+    <li class="must">
+      <div class="check-box"></div>
+      <div>
+        <b>1. 代表者様の身分証 <span class="badge must">必須</span></b>
+        <small>下記いずれか：<br>・運転免許証（表面と裏面の両方）<br>・マイナンバーカード（表面のみ）<br>・住民票</small>
+      </div>
+    </li>
+    <li class="must">
+      <div class="check-box"></div>
+      <div>
+        <b>2. 履歴事項全部証明書（登記簿謄本） <span class="badge must">法人の場合・必須</span></b>
+        <small>法務局で取得 ／ 発行から3ヶ月以内のもの</small>
+      </div>
+    </li>
+    <li class="must">
+      <div class="check-box"></div>
+      <div>
+        <b>3. 連帯保証書および承諾書 <span class="badge must">必須</span></b>
+        <small>連帯保証人は<b>代表者様ご本人</b>で問題ありません<br>※書式はテレコム様からお送りいただきます</small>
+      </div>
+    </li>
+    <li class="must">
+      <div class="check-box"></div>
+      <div>
+        <b>4. 法人印鑑証明書 <span class="badge must">必須</span></b>
+        <small>取得から3ヶ月以内のもの</small>
+      </div>
+    </li>
+    <li class="must">
+      <div class="check-box"></div>
+      <div>
+        <b>5. 代表者個人印鑑証明書 <span class="badge must">必須</span></b>
+        <small>取得から3ヶ月以内のもの ／ 市区町村役場で取得</small>
+      </div>
+    </li>
+  </ul>
+
+  <div class="section-title" style="margin-top:18px;">📎 念のため準備しておくと安心（参考）</div>
+  <ul class="check-list">
+    <li class="option">
+      <div class="check-box"></div>
+      <div>
+        <b>古物商許可証 コピー <span class="badge option">参考</span></b>
+        <small>カード会社側の審査で求められる可能性がございます ／ 既にお持ちと伺っております</small>
+      </div>
+    </li>
+    <li class="option">
+      <div class="check-box"></div>
+      <div>
+        <b>入金受取口座 通帳コピー <span class="badge option">参考</span></b>
+        <small>契約時に口座情報のご提示が必要となります ／ 表紙＋見開き1ページ目</small>
+      </div>
+    </li>
+  </ul>
+
+  <div class="warning-box">
+    <b>⚠️ ご注意</b>：印鑑証明書2種（法人・代表者個人）の取得には、市区町村役場で<b>1〜2日</b>かかります。先にお手続きをお願いいたします。
+  </div>
+
+  <div class="note-box">
+    <b>📌 R18商品取扱いについて</b><br>
+    テレコムクレジット様からの必須書類には含まれておりませんが、カードブランド側の審査段階で<br>
+    <b>「無店舗型性風俗特殊営業届出書」</b>のご提示を求められる可能性がございます。<br>
+    R18商品を本格的に取扱われる場合は、念のため事前取得をご検討ください<br>
+    （警察署 生活安全課 ／ 取得期間2〜4週間）。
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-box">
+  <div class="step-num">2</div>
+  <h2>Googleフォームにご回答ください</h2>
+  <p>テレコムクレジット様の審査申請フォームに必要事項をご入力いただきます。<br>
+  <b>所要時間：約10分</b></p>
+
+  <div style="text-align:center; padding: 14px 0;">
+    <a href="https://forms.gle/mxeDKhCLjD77iURU7" target="_blank" class="cta-button">
+      📝 審査申請フォームを開く →
+    </a>
+  </div>
+
+  <div class="info-box">
+    <b>入力内容</b>：会社情報・代表者情報・取扱商品・想定売上 など<br>
+    ご不明な項目は弊社（株式会社ランバード）までお気軽にお問合せください。
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-box">
+  <div class="step-num">3</div>
+  <h2>書類のご提出</h2>
+  <p>STEP 1でご準備いただいた書類をテレコム様にご提出いただきます。<br>
+  ※提出方法（メール添付・郵送など）はフォーム入力後、テレコム様からご案内があります。</p>
+
+  <div class="info-box">
+    <b>並行して弊社（ランバード）が準備するもの</b>：<br>
+    ・特定商取引法に基づく表記ページ作成<br>
+    ・利用規約ページ作成<br>
+    ・プライバシーポリシーページ作成<br>
+    →これらは審査時に必要となります
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-box">
+  <div class="step-num">4</div>
+  <h2>審査（約5営業日）</h2>
+  <p>テレコム様 → カード会社（Visa／Master／JCB／AMEX等）の順で審査が進みます。</p>
+
+  <div class="note-box">
+    <b>📌 ポイント</b><br>
+    審査の途中で書類の追加や、サイトの修正依頼が来る場合があります。<br>
+    その際は弊社が代行して対応いたしますのでご安心ください。
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step-box">
+  <div class="step-num">5</div>
+  <h2>契約・運用開始</h2>
+  <p>審査通過後、決済機能をショップに組み込み、運用開始となります。</p>
+
+  <div class="info-box">
+    <b>テレコムクレジット 契約条件（ご参考）</b><br>
+    ・初期費用：¥20,000<br>
+    ・月額費用：¥3,000<br>
+    ・決済手数料：3%（売上連動）<br>
+    ・解約金：なし<br>
+    ・入金サイクル：月末締めの翌10日払い
+  </div>
+</div>
+
+<!-- お問い合わせ -->
+<div class="help-card">
+  <h3>❓ ご不明な点がございましたら</h3>
+  <p>株式会社ランバード 担当：鈴木 / 星崎</p>
+  <p>本資料に関するご質問は、いつでもお気軽にご連絡ください</p>
+</div>
+
+<p style="text-align:center; color:#666; font-size:11px; margin-top:24px;">
+  株式会社ランバード ／ 2026-06-12 作成
+</p>
+
+</div>
+</body>
+</html>
