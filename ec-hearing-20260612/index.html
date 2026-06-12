@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>EC構築 ヒアリング・確認シート 2026-06-12</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Hiragino Sans", "Yu Gothic", sans-serif; background: #f4f6f9; margin: 0; padding: 24px; color: #1a1a1a; line-height: 1.55; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  .meta { color: #666; font-size: 13px; margin-bottom: 20px; }
+  h2 { font-size: 18px; margin: 24px 0 10px; padding: 8px 14px; border-radius: 6px; }
+  h2.red { background: #fde8e8; color: #b91c1c; border-left: 5px solid #b91c1c; }
+  h2.yellow { background: #fef3c7; color: #92400e; border-left: 5px solid #d97706; }
+  h2.green { background: #d1fae5; color: #065f46; border-left: 5px solid #047857; }
+  h2.blue { background: #dbeafe; color: #1e3a8a; border-left: 5px solid #1d4ed8; }
+  .card { background: #fff; border-radius: 10px; padding: 16px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #e5e7eb; vertical-align: top; }
+  th { background: #f9fafb; font-weight: 600; width: 32%; }
+  .check { display: inline-block; width: 18px; height: 18px; border: 2px solid #9ca3af; border-radius: 3px; margin-right: 8px; vertical-align: middle; }
+  .flow { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 14px 0; }
+  .step { flex: 1 1 180px; padding: 14px; border-radius: 8px; text-align: center; font-size: 13px; min-width: 160px; }
+  .step.s1 { background: #e0f2fe; border: 2px solid #0284c7; }
+  .step.s2 { background: #fef3c7; border: 2px solid #d97706; }
+  .step.s3 { background: #d1fae5; border: 2px solid #047857; }
+  .step.s4 { background: #f3e8ff; border: 2px solid #7c3aed; }
+  .arrow { font-size: 24px; color: #9ca3af; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+  .badge.must { background: #b91c1c; color: #fff; }
+  .badge.r18 { background: #db2777; color: #fff; }
+  .badge.option { background: #6b7280; color: #fff; }
+  .badge.best { background: #047857; color: #fff; }
+  .note { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 10px 14px; border-radius: 6px; font-size: 13px; margin-top: 10px; }
+  .warning { background: #fef2f2; border-left: 4px solid #dc2626; padding: 10px 14px; border-radius: 6px; font-size: 13px; margin-top: 10px; }
+  .conclusion { background: #1e3a8a; color: #fff; padding: 18px 22px; border-radius: 10px; margin-bottom: 18px; }
+  .conclusion h2 { background: transparent; color: #fff; padding: 0; border: none; margin: 0 0 8px; font-size: 18px; }
+  .conclusion p { margin: 4px 0; font-size: 14px; }
+  .top3 { background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%); color: #fff; padding: 20px 24px; border-radius: 12px; margin-bottom: 16px; }
+  .top3 h2 { background: transparent; color: #fff; padding: 0; border: none; margin: 0 0 10px; font-size: 19px; }
+  .top3 ol { margin: 0; padding-left: 20px; }
+  .top3 li { margin: 8px 0; font-size: 14px; line-height: 1.6; }
+  .unconfirmed { background: #fef3c7; border: 2px solid #f59e0b; padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; }
+  .unconfirmed h3 { margin: 0 0 6px; color: #92400e; font-size: 15px; }
+  .unconfirmed ul { margin: 4px 0; padding-left: 20px; font-size: 13px; }
+  .compare th { background: #1e3a8a; color: #fff; width: auto; text-align: center; }
+  .compare td { text-align: center; }
+  .compare td:first-child { text-align: left; font-weight: 600; background: #f9fafb; }
+  .ok { color: #047857; font-weight: 700; }
+  .ng { color: #b91c1c; font-weight: 700; }
+  .warn { color: #d97706; font-weight: 700; }
+  .best-col { background: #ecfdf5; }
+  .best-col-th { background: #047857 !important; }
+  .price-table th { background: #1e3a8a; color: #fff; }
+  .price-best { background: #d1fae5; font-weight: 700; }
+  @media print { body { background: #fff; } .card { box-shadow: none; border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>📋 EC構築 ヒアリング・確認シート</h1>
+<p class="meta">2026-06-12（金）／ クライアント様向けMTG用</p>
+
+<div class="top3">
+  <h2>🔴 結論TOP3（最有力構成）</h2>
+  <ol>
+    <li><b>テレコムクレジットが最有力</b>：月¥3,000・手数料3%・カラーミー連携実績あり・ハイリスク登録不要 → SUI比較で<b>月¥13,500安・年¥162,000安</b></li>
+    <li><b>ただしカード会社側審査次第</b>：テレコム弊社判定はOKだが Visa/Master/JCB等のブランド審査でR18・モデルガンの最終可否は申請しないと不明</li>
+    <li><b>構成 = カラーミー＋テレコム＋シンレンタル移行</b>。SUIをバックアップ候補に温存。EC-CUBE転換は保留</li>
+  </ol>
+</div>
+
+<div class="unconfirmed">
+  <h3>⚠️ 未確定論点</h3>
+  <ul>
+    <li>カード会社（Visa/Master/JCB/AMEX等）審査での R18・モデルガンの最終可否（申請＝5営業日で結果判明）</li>
+    <li>無店舗型性風俗特殊営業届出書の取得有無（クライアント様確認要）</li>
+    <li>テレコム連帯保証書（クライアント様ご本人署名要）</li>
+    <li>カラーミー連携の具体手段（テレコム実績ありと回答／詳細手段未取得）</li>
+    <li>SUI 手数料率（未取得・要再ヒアリング）</li>
+  </ul>
+</div>
+
+<div class="conclusion">
+  <h2>🎯 本日MTGゴール</h2>
+  <p>① 構成A案-1（カラーミー＋テレコム）で進める最終承認</p>
+  <p>② 決済代行審査に必要な書類のご準備依頼</p>
+  <p>③ オープン目標日と R18取扱の最終意思確認</p>
+</div>
+
+<h2 class="blue">🏗️ A案-1 構成図解（既存環境＝カラーミーで動く）</h2>
+<div class="card">
+  <div class="flow">
+    <div class="step s1">
+      <b>① 既存トップ</b><br>
+      <small>WordPress（既存サイト）</small><br>
+      <small style="color:#666">Xサーバー → シンレンタル移行（弊社負担）</small>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step s2">
+      <b>② ショップ本体</b><br>
+      <small>カラーミーショップ<br>レギュラープラン</small><br>
+      <small style="color:#666">月¥4,950</small>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step s3">
+      <b>③ 決済代行</b><br>
+      <small><b>テレコムクレジット</b><br>（カラーミー連携実績あり）</small><br>
+      <small style="color:#666">初期¥20,000 ／月¥3,000 ／3%</small>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step s4">
+      <b>④ R18年齢確認</b><br>
+      <small>カラーミー標準機能<br>商品単位で設定</small><br>
+      <small style="color:#666">動作確認済</small>
+    </div>
+  </div>
+  <div class="note">
+    <b>月額イメージ</b>：カラーミー ¥4,950 ＋ テレコム ¥3,000 = <b>約¥7,950/月</b>（＋決済手数料3%・独自ドメイン）
+  </div>
+</div>
+
+<h2 class="blue">📊 決済代行 3社比較（クレカ通りやすさ ◯×△）</h2>
+<div class="card">
+<table class="compare">
+  <tr>
+    <th></th>
+    <th class="best-col-th">テレコムクレジット<br><span class="badge best">最有力</span></th>
+    <th>SUI Credit Service</th>
+    <th>アルファノート WEBアダルト</th>
+  </tr>
+  <tr><td>取扱可否（弊社判定）</td><td class="best-col ok">◯ 5商材OK</td><td class="ok">◯ 審査次第</td><td class="ok">◯ 5商材OK</td></tr>
+  <tr><td>クレカ通りやすさ</td><td class="best-col warn">△ ブランド審査次第</td><td class="warn">△ ブランド審査次第</td><td class="warn">△ ブランド審査次第</td></tr>
+  <tr><td>カラーミー連携</td><td class="best-col ok">◯ 実績あり</td><td>未確認</td><td>未確認</td></tr>
+  <tr><td><b>初期費用</b></td><td class="best-col"><b>¥20,000</b></td><td>¥22,000</td><td>¥330,000</td></tr>
+  <tr><td><b>月額固定費</b></td><td class="best-col"><b>¥3,000</b></td><td>¥16,500</td><td>¥55,000</td></tr>
+  <tr><td><b>手数料率</b></td><td class="best-col"><b>3%</b></td><td>未取得</td><td>5〜8.5%</td></tr>
+  <tr><td>ハイリスク登録</td><td class="best-col ok">不要</td><td>要確認</td><td class="ok">プラン込み</td></tr>
+  <tr><td>審査期間</td><td class="best-col">約5営業日</td><td>未確認</td><td>最短2営業日</td></tr>
+  <tr><td>解約金</td><td class="best-col ok">なし</td><td>未確認</td><td class="ok">なし</td></tr>
+  <tr><td>入金サイクル</td><td class="best-col">月末締め翌10日</td><td>未確認</td><td>月末締め翌20日</td></tr>
+  <tr><td>必要書類（追加）</td><td class="best-col">連帯保証書・印鑑証明（法/個）</td><td>要確認</td><td>無店舗型性風俗届出書</td></tr>
+  <tr><td>一次情報</td><td class="best-col">6/12 メール回答</td><td>6/11 電話回答</td><td>6/11 メール+見積書</td></tr>
+</table>
+<div class="warning">
+  <b>※CREDIX</b>：本日午前「対応難しい」回答受領 → 候補外
+</div>
+</div>
+
+<h2 class="blue">💰 月額シミュレーション（クライアント様負担分のみ）</h2>
+<div class="card">
+<table class="price-table">
+  <tr><th>構成</th><th>カラーミー</th><th>決済代行</th><th>合計（月額固定）</th><th>手数料率</th></tr>
+  <tr class="price-best"><td><b>A-1 テレコム ★最有力</b></td><td>¥4,950</td><td>¥3,000</td><td><b>¥7,950/月</b></td><td>3%</td></tr>
+  <tr><td>A-2 SUI</td><td>¥4,950</td><td>¥16,500</td><td>¥21,450/月</td><td>未取得</td></tr>
+  <tr><td>A-3 アルファノート</td><td>¥4,950</td><td>¥55,000</td><td>¥59,950/月</td><td>5〜8.5%</td></tr>
+</table>
+<div class="note">
+  ※開発費は弊社社内吸収のため非掲載<br>
+  ※サーバー（シンレンタル 月¥1,078〜）は弊社負担のため非掲載
+</div>
+</div>
+
+<h2 class="red">🔴 必ず今日決めること（5点）</h2>
+<div class="card">
+<table>
+  <tr><th><span class="check"></span>1. 構成A案-1 承認</th><td>カラーミー＋テレコムで進めてOKか</td></tr>
+  <tr><th><span class="check"></span>2. R18取扱の最終意思</th><td>中古DVD・成人向け書籍を本当に売るか／月どれくらいの規模感か</td></tr>
+  <tr><th><span class="check"></span>3. オープン目標日</th><td>6月中目標は維持か／具体的にいつを狙うか</td></tr>
+  <tr><th><span class="check"></span>4. 予算合意</th><td>月¥7,950＋手数料3% でOKか</td></tr>
+  <tr><th><span class="check"></span>5. 法人 or 個人事業主</th><td>どちらで決済代行と契約するか（必要書類が変わる）</td></tr>
+</table>
+</div>
+
+<h2 class="yellow">📑 ご準備いただく書類（テレコム審査用）</h2>
+
+<div class="card">
+  <h3 style="margin-top:0; color:#b91c1c;">✅ テレコム審査 必須書類</h3>
+  <table>
+    <tr><th>1. 代表者身分証 <span class="badge must">必須</span></th><td>下記いずれか：運転免許証（両面）／マイナンバーカード（表面）／住民票</td></tr>
+    <tr><th>2. 法人の場合：履歴事項全部証明書 <span class="badge must">必須</span></th><td>登記簿謄本／3ヶ月以内</td></tr>
+    <tr><th>3. 連帯保証書および承諾書 <span class="badge must">必須</span></th><td>連帯保証人＝代表者様にて可</td></tr>
+    <tr><th>4. 法人印鑑証明書 <span class="badge must">必須</span></th><td>取得3ヶ月以内</td></tr>
+    <tr><th>5. 代表者個人印鑑証明書 <span class="badge must">必須</span></th><td>取得3ヶ月以内</td></tr>
+    <tr><th>6. 古物商許可証 コピー <span class="badge must">必須</span></th><td>公安委員会発行（5商材で必須）</td></tr>
+    <tr><th>7. 入金受取口座 通帳コピー <span class="badge must">必須</span></th><td>表紙＋見開き</td></tr>
+  </table>
+  <div class="note">
+    <b>テレコムからのご案内</b>：審査申請には Googleフォーム入力 + サイト内に <b>特商法表記・利用規約・プライバシーポリシー</b> 設置が必要
+  </div>
+</div>
+
+<div class="card" style="border-top: 4px solid #db2777;">
+  <h3 style="margin-top:0; color:#db2777;">🔴 R18決済を通す場合のみ追加</h3>
+  <table>
+    <tr>
+      <th>無店舗型性風俗特殊営業届出書 受理証明書 <span class="badge r18">R18時</span></th>
+      <td>
+        公安委員会発行。<b>テレコム自体は不要だがカードブランド審査で求められる可能性あり</b>。<br>
+        <b>未取得の場合</b>：最寄り警察署 生活安全課で申請 → <b>取得期間2〜4週間</b>
+      </td>
+    </tr>
+  </table>
+  <div class="warning">
+    <b>⚠️ ここが全体スケジュールの分岐点</b><br>
+    ・既に取得済 → 即審査申請可能<br>
+    ・未取得 → 取得待ち2〜4週間で6月中オープン厳しい<br>
+    ・R18を諦める → 不要・即進行可能
+  </div>
+</div>
+
+<h2 class="green">🟢 運用・商材ヒアリング（6点）</h2>
+<div class="card">
+<table>
+  <tr><th><span class="check"></span>1. 5商材それぞれの月間想定売上／取扱数</th><td>カードブランド審査時に申告必要</td></tr>
+  <tr><th><span class="check"></span>2. R18の商品点数</th><td>数点だけ？継続的に増やす？</td></tr>
+  <tr><th><span class="check"></span>3. 商品撮影は誰が行うか</th><td>クライアント様 / 弊社 / 外注</td></tr>
+  <tr><th><span class="check"></span>4. 商品登録の運用</th><td>誰が登録・在庫管理するか（PC運用OKと再確認）</td></tr>
+  <tr><th><span class="check"></span>5. 配送方法</th><td>ヤマト / ゆうパック / 自社配送 など</td></tr>
+  <tr><th><span class="check"></span>6. 入金受取口座（屋号 or 個人）</th><td>通帳コピーをいただく口座</td></tr>
+</table>
+</div>
+
+<h2 class="blue">📢 クライアント様にお伝えする経緯と現状</h2>
+<div class="card">
+  <table>
+    <tr><th>方針経緯</th><td>カラーミー本体が R18・1契約・外部決済併設すべてOKと判明（6/11回答）<br>→ EC-CUBE転換は保留してカラーミー継続のA案に最終帰着</td></tr>
+    <tr><th>決済代行の現況</th><td>
+      ・<b>テレコムクレジット最有力（本日午前回答）</b>：月¥3,000・手数料3%・カラーミー連携実績あり<br>
+      ・SUI Credit Service：バックアップ候補（月¥16,500）<br>
+      ・アルファノート WEBアダルト：高額のため次点<br>
+      ・CREDIX：本日午前「対応不可」回答受領
+    </td></tr>
+    <tr><th>サーバー</th><td>Xサーバー（アダルトNG）→ シンレンタル（アダルト公認）に移行予定／弊社負担</td></tr>
+  </table>
+</div>
+
+<h2 class="blue">📅 次のアクション・スケジュール感</h2>
+<div class="card">
+  <table>
+    <tr><th>本日中（6/12）</th><td>クライアント様 A案-1承認 → テレコム審査申請着手</td></tr>
+    <tr><th>6/13〜6/14</th><td>必要書類（印鑑証明等）取得依頼／Googleフォーム入力</td></tr>
+    <tr><th>6/15週</th><td>テレコム審査申請 → 約5営業日でカードブランド可否判明</td></tr>
+    <tr><th>6/20週</th><td>シンレンタル移行・独自ドメイン設定・特商法表記/規約/プラポリ設置</td></tr>
+    <tr><th>6月末</th><td>R18取扱有無・届出書取得状況によりオープン時期確定</td></tr>
+  </table>
+</div>
+
+<p style="text-align:center; color:#666; font-size:11px; margin-top:30px;">
+  2026-06-12 11時台 更新
+</p>
+
+</div>
+</body>
+</html>
