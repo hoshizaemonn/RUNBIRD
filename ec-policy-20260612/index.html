@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>EC構築 方針確認資料（社内用）</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Hiragino Sans", "Yu Gothic", sans-serif; background: #f4f6f9; margin: 0; padding: 30px 20px; color: #1a1a1a; line-height: 1.6; }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); color: #fff; padding: 28px 28px; border-radius: 14px; margin-bottom: 24px; }
+  .hero h1 { margin: 0 0 6px; font-size: 24px; }
+  .hero p { margin: 4px 0 0; font-size: 13px; opacity: 0.9; }
+  .label { display: inline-block; background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 4px; font-size: 11px; margin-bottom: 8px; }
+  .summary { background: #fff; padding: 20px 24px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); margin-bottom: 20px; }
+  .summary h2 { margin: 0 0 12px; font-size: 17px; color: #1e3a8a; }
+  .summary ol { margin: 0; padding-left: 20px; font-size: 14px; }
+  .summary ol li { margin: 6px 0; }
+  .section { background: #fff; border-radius: 12px; padding: 22px 26px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 18px; }
+  .section h2 { margin: 0 0 14px; font-size: 18px; padding-bottom: 8px; border-bottom: 3px solid; }
+  .section.s1 h2 { color: #0284c7; border-color: #38bdf8; }
+  .section.s2 h2 { color: #d97706; border-color: #fbbf24; }
+  .section.s3 h2 { color: #db2777; border-color: #f9a8d4; }
+  .section.s4 h2 { color: #047857; border-color: #6ee7b7; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+  th { background: #f9fafb; font-weight: 600; }
+  .compare th { background: #1e3a8a; color: #fff; text-align: center; }
+  .compare td { text-align: center; }
+  .compare td:first-child { text-align: left; font-weight: 600; background: #f9fafb; }
+  .best-col { background: #ecfdf5; }
+  .best-col-th { background: #047857 !important; }
+  .ok { color: #047857; font-weight: 700; }
+  .ng { color: #b91c1c; font-weight: 700; }
+  .warn { color: #d97706; font-weight: 700; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; margin-left: 4px; vertical-align: middle; }
+  .badge.adopted { background: #047857; color: #fff; }
+  .badge.reject { background: #6b7280; color: #fff; }
+  .badge.must { background: #dc2626; color: #fff; }
+  .info-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 8px; margin: 10px 0; font-size: 13px; }
+  .warning-box { background: #fef2f2; border: 1px solid #fecaca; padding: 12px 16px; border-radius: 8px; margin: 10px 0; font-size: 13px; color: #991b1b; }
+  .note-box { background: #fffbeb; border: 1px solid #fde68a; padding: 12px 16px; border-radius: 8px; margin: 10px 0; font-size: 13px; }
+  .reason-list { background: #fef2f2; padding: 14px 18px; border-radius: 8px; border-left: 4px solid #dc2626; margin: 10px 0; font-size: 13px; }
+  .reason-list b { color: #b91c1c; }
+  .price-table th { background: #1e40af; color: #fff; }
+  .price-best { background: #d1fae5; font-weight: 700; }
+  .flow { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 14px 0; }
+  .step { flex: 1 1 180px; padding: 14px; border-radius: 8px; text-align: center; font-size: 12px; min-width: 160px; }
+  .step.s1 { background: #e0f2fe; border: 2px solid #0284c7; }
+  .step.s2 { background: #fef3c7; border: 2px solid #d97706; }
+  .step.s3 { background: #d1fae5; border: 2px solid #047857; }
+  .step.s4 { background: #f3e8ff; border: 2px solid #7c3aed; }
+  .arrow { font-size: 22px; color: #9ca3af; }
+  .check-list { list-style: none; padding: 0; margin: 10px 0; }
+  .check-list li { padding: 10px 14px; background: #f9fafb; border-radius: 6px; margin-bottom: 6px; display: flex; align-items: flex-start; gap: 10px; font-size: 13px; border-left: 3px solid #3b82f6; }
+  .check-box { width: 18px; height: 18px; border: 2px solid #9ca3af; border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+  .verdict { padding: 8px 14px; border-radius: 6px; font-weight: 700; font-size: 13px; display: inline-block; margin-top: 6px; }
+  .verdict.adopt { background: #d1fae5; color: #065f46; border: 1px solid #047857; }
+  .verdict.reject { background: #f3f4f6; color: #4b5563; border: 1px solid #9ca3af; }
+  @media print { body { background: #fff; } .section, .summary { box-shadow: none; border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <span class="label">社内用 / RUNBIRD</span>
+  <h1>📋 EC構築 方針確認資料</h1>
+  <p>サーバー・カラーミー・決済代行 — 現在進めている方針のご確認</p>
+  <p style="font-size:12px; margin-top:8px;">2026-06-12 作成 ／ 担当：星崎</p>
+</div>
+
+<!-- サマリ -->
+<div class="summary">
+  <h2>🎯 全体方針サマリ（最有力構成）</h2>
+  <div class="flow">
+    <div class="step s1">
+      <b>① サーバー</b><br>
+      <small><b>シンレンタル</b><br>（弊社負担）</small><br>
+      <small style="color:#666">アダルト公認</small>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step s2">
+      <b>② ECショップ</b><br>
+      <small><b>カラーミーショップ</b><br>レギュラープラン</small><br>
+      <small style="color:#666">月¥4,950</small>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step s3">
+      <b>③ 決済代行</b><br>
+      <small><b>テレコム ＋ SUI</b><br>2社並行で審査</small><br>
+      <small style="color:#666">最終1〜2社採用</small>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step s4">
+      <b>④ 商品運用</b><br>
+      <small>R18年齢確認は<br>カラーミー標準機能</small><br>
+      <small style="color:#666">設定済</small>
+    </div>
+  </div>
+  <ol>
+    <li>EC本体：<b>カラーミーショップ レギュラープラン</b>（月¥4,950）／規約上R18・1契約・外部決済併設すべてOK確認済</li>
+    <li>決済代行：<b>テレコム ＋ SUI に並行審査依頼</b>（リスクヘッジ／カード会社審査次第のため2社保険）</li>
+    <li>サーバー：<b>Xサーバー → シンレンタル移行</b>（XサーバーはアダルトNGのため）／弊社負担</li>
+  </ol>
+</div>
+
+<!-- 1. サーバー -->
+<div class="section s1">
+  <h2>1. サーバー：Xサーバー → シンレンタル移行</h2>
+
+  <div class="reason-list">
+    <b>⚠️ Xサーバー継続NGの理由</b><br>
+    Xサーバーの利用規約上、<b>アダルト・成人向けコンテンツの設置は明確に禁止</b>されています。R18商材を本格的に取扱う場合、規約違反となりサーバー停止リスクがあります。<br>
+    <small>※今回クライアント様は中古DVD・成人向け書籍の取扱いを予定しているため、Xサーバー継続不可と判断。</small>
+  </div>
+
+  <div class="info-box">
+    <b>シンレンタルサーバー採用理由</b><br>
+    ・<b>アダルトサイト公認</b>（規約上明示）<br>
+    ・Xサーバーの兄弟ブランド／同社運営のため移行容易<br>
+    ・WordPress完全対応・SSL無料・高速SSD<br>
+    ・既存トップページ（WP）の移行が最小工数で済む
+  </div>
+
+  <h3 style="margin-top:18px; font-size:15px;">💰 シンレンタル 費用プラン</h3>
+  <table>
+    <tr><th>プラン</th><th>月額（36ヶ月契約）</th><th>初期費用</th><th>容量</th></tr>
+    <tr><td>ベーシック</td><td><b>¥770/月〜</b></td><td>無料</td><td>300GB SSD</td></tr>
+    <tr><td>スタンダード</td><td><b>¥1,540/月〜</b></td><td>無料</td><td>400GB SSD</td></tr>
+    <tr><td>プレミアム</td><td><b>¥2,970/月〜</b></td><td>無料</td><td>500GB SSD</td></tr>
+  </table>
+
+  <div class="verdict adopt">採用：ベーシック または スタンダード（弊社負担）</div>
+  <p style="font-size:12px; color:#555; margin-top:8px;">
+    ※費用は弊社負担のためクライアント様請求対象外<br>
+    ※出典：<a href="https://www.shinrentalserver.com/" target="_blank">shinrentalserver.com</a>
+  </p>
+</div>
+
+<!-- 2. カラーミーショップ -->
+<div class="section s2">
+  <h2>2. ECプラットフォーム：カラーミーショップ</h2>
+
+  <div class="info-box">
+    <b>カラーミー採用理由</b><br>
+    ・規約上 <b>R18・1契約・外部決済併設すべてOK</b> 確認済（6/11人間サポート回答）<br>
+    ・短期構築可能（EC-CUBE比3〜5週間短縮）<br>
+    ・運用負担軽減（保守はカラーミー側）<br>
+    ・年齢確認ページ機能 標準搭載
+  </div>
+
+  <h3 style="margin-top:18px; font-size:15px;">💰 カラーミーショップ プラン別費用</h3>
+  <table class="compare">
+    <tr>
+      <th>プラン</th>
+      <th>月額（年払）</th>
+      <th>初期費用</th>
+      <th>独自ドメイン</th>
+      <th>外部決済併設</th>
+      <th>商品数</th>
+    </tr>
+    <tr>
+      <td>フリー</td>
+      <td>¥0</td>
+      <td>¥0</td>
+      <td class="ng">×</td>
+      <td class="ng">×</td>
+      <td>無制限</td>
+    </tr>
+    <tr class="best-col">
+      <td><b>レギュラー <span class="badge adopted">採用</span></b></td>
+      <td><b>¥4,950</b></td>
+      <td>¥3,300</td>
+      <td class="ok">◯</td>
+      <td class="ok">◯</td>
+      <td>無制限</td>
+    </tr>
+    <tr>
+      <td>ラージ</td>
+      <td>¥9,595</td>
+      <td>¥3,300</td>
+      <td class="ok">◯</td>
+      <td class="ok">◯</td>
+      <td>無制限</td>
+    </tr>
+    <tr>
+      <td>プレミアム</td>
+      <td>¥39,600</td>
+      <td>¥22,000</td>
+      <td class="ok">◯</td>
+      <td class="ok">◯</td>
+      <td>無制限</td>
+    </tr>
+  </table>
+
+  <div class="verdict adopt">採用：レギュラープラン（月¥4,950 ／ 初期¥3,300）</div>
+
+  <div class="note-box">
+    <b>📌 採用根拠</b><br>
+    ・フリー：独自ドメイン不可・外部決済不可のため除外<br>
+    ・ラージ／プレミアム：オーバースペック（クライアント様規模で過剰）<br>
+    ・レギュラーが今回必要な「独自ドメイン＋外部決済併設＋年齢確認」を満たす最安プラン
+  </div>
+
+  <p style="font-size:12px; color:#555; margin-top:8px;">
+    ※出典：<a href="https://shop-pro.jp/plan/" target="_blank">shop-pro.jp/plan/</a>
+  </p>
+</div>
+
+<!-- 3. 決済代行 -->
+<div class="section s3">
+  <h2>3. 決済代行：テレコム ＋ SUI 並行審査方針</h2>
+
+  <div class="info-box">
+    <b>📌 なぜ2社並行？</b><br>
+    決済代行会社（テレコム／SUI）はクライアント側で審査OKでも、最終的に <b>カードブランド（Visa／Master／JCB／AMEX）の審査</b> が必要。R18・モデルガン商材はブランド側で蹴られるリスクがあるため、<br>
+    <b>2社並行で申請しリスクヘッジ</b>。両社通れば併用も可能。
+  </div>
+
+  <h3 style="margin-top:18px; font-size:15px;">💰 決済代行 候補比較</h3>
+  <table class="compare">
+    <tr>
+      <th></th>
+      <th class="best-col-th">テレコム<br><span class="badge adopted">採用</span></th>
+      <th class="best-col-th" style="background:#db2777 !important;">SUI<br><span class="badge adopted">採用</span></th>
+      <th>アルファノート</th>
+      <th>CREDIX</th>
+    </tr>
+    <tr><td>取扱可否</td><td class="best-col ok">◯ 5商材OK</td><td class="best-col ok">◯ 審査次第</td><td class="ok">◯ 5商材OK</td><td class="ng">× 対応不可</td></tr>
+    <tr><td>カラーミー連携</td><td class="best-col ok">◯ 実績あり</td><td class="best-col">未確認</td><td>未確認</td><td>—</td></tr>
+    <tr><td><b>初期費用</b></td><td class="best-col"><b>¥20,000</b></td><td class="best-col"><b>¥22,000</b></td><td>¥330,000</td><td>—</td></tr>
+    <tr><td><b>月額固定費</b></td><td class="best-col"><b>¥3,000</b></td><td class="best-col"><b>¥16,500</b></td><td>¥55,000</td><td>—</td></tr>
+    <tr><td><b>手数料率</b></td><td class="best-col"><b>3%</b></td><td class="best-col">未取得</td><td>5〜8.5%</td><td>—</td></tr>
+    <tr><td>ハイリスク登録</td><td class="best-col ok">不要</td><td class="best-col">要確認</td><td class="ok">プラン込み</td><td>—</td></tr>
+    <tr><td>審査期間</td><td class="best-col">約5営業日</td><td class="best-col">未確認</td><td>最短2営業日</td><td>—</td></tr>
+    <tr><td>解約金</td><td class="best-col ok">なし</td><td class="best-col">未確認</td><td class="ok">なし</td><td>—</td></tr>
+    <tr><td>判定</td>
+      <td class="best-col"><span class="verdict adopt">採用</span></td>
+      <td class="best-col"><span class="verdict adopt">採用</span></td>
+      <td><span class="verdict reject">高額のため見送り</span></td>
+      <td><span class="verdict reject">本日午前NG回答</span></td>
+    </tr>
+  </table>
+
+  <h3 style="margin-top:18px; font-size:15px;">📅 並行進行のオペレーション</h3>
+  <ul class="check-list">
+    <li><div class="check-box"></div><div><b>クライアント様にテレコム Googleフォーム入力</b>を依頼</div></li>
+    <li><div class="check-box"></div><div><b>クライアント様にSUI 電話連絡</b>を依頼（東京 03-6667-0668 ／ 関西 0748-32-1411）</div></li>
+    <li><div class="check-box"></div><div>必要書類（5点）は<b>両社共通</b>で1セット準備</div></li>
+    <li><div class="check-box"></div><div>サイト整備（特商法・規約・プラポリ）は弊社で並行</div></li>
+    <li><div class="check-box"></div><div>テレコム5営業日 ／ SUI未確定で先に通った方を本採用</div></li>
+  </ul>
+</div>
+
+<!-- 4. 月額シミュレーション -->
+<div class="section s4">
+  <h2>4. 月額シミュレーション（クライアント様負担分）</h2>
+
+  <table class="price-table">
+    <tr><th>構成</th><th>カラーミー</th><th>決済代行</th><th>合計（月額固定）</th><th>手数料率</th></tr>
+    <tr class="price-best"><td><b>A-1 テレコム ★</b></td><td>¥4,950</td><td>¥3,000</td><td><b>¥7,950/月</b></td><td>3%</td></tr>
+    <tr><td>A-2 SUI</td><td>¥4,950</td><td>¥16,500</td><td>¥21,450/月</td><td>未取得</td></tr>
+    <tr><td>A-3 両社併用</td><td>¥4,950</td><td>¥19,500</td><td>¥24,450/月</td><td>3% / 未取得</td></tr>
+  </table>
+
+  <div class="note-box">
+    ※開発費は弊社社内吸収のため非掲載<br>
+    ※サーバー（シンレンタル 月¥770〜）は弊社負担のため非掲載<br>
+    ※決済手数料は売上に対して別途発生
+  </div>
+</div>
+
+<!-- 鈴木さん確認事項 -->
+<div class="section s2">
+  <h2>🔴 鈴木さん 確認事項</h2>
+  <ul class="check-list">
+    <li><div class="check-box"></div><div><b>A. サーバー方針：</b>Xサーバー→シンレンタル移行（弊社負担）でOKか</div></li>
+    <li><div class="check-box"></div><div><b>B. ECプラットフォーム：</b>カラーミーショップ レギュラープラン（月¥4,950）採用でOKか</div></li>
+    <li><div class="check-box"></div><div><b>C. 決済代行：</b>テレコム ＋ SUI 2社並行審査依頼でOKか</div></li>
+    <li><div class="check-box"></div><div><b>D. クライアント様への依頼：</b>カラーミー新規登録＋テレコム/SUI両社への審査依頼＋必要書類準備でOKか</div></li>
+    <li><div class="check-box"></div><div><b>E. 弊社代行範囲：</b>サイト構築・特商法/規約/プラポリ・ドメイン・サーバー・審査対応で過不足ないか</div></li>
+  </ul>
+</div>
+
+<!-- 関連リンク -->
+<div class="section s1">
+  <h2>🔗 関連資料</h2>
+  <ul style="font-size:13px;">
+    <li><a href="https://hoshizaemonn.github.io/RUNBIRD/ec-hearing-20260612/" target="_blank">鈴木さん向けヒアリングシート（MTG用）</a></li>
+    <li><a href="https://hoshizaemonn.github.io/RUNBIRD/ec-onboarding-20260612/" target="_blank">クライアント様向け EC開設お手続きガイド</a></li>
+    <li><a href="https://hoshizaemonn.github.io/RUNBIRD/ec-shinsa-guide-20260612/" target="_blank">クライアント様向け テレコム審査ガイド（個別版）</a></li>
+  </ul>
+</div>
+
+<p style="text-align:center; color:#666; font-size:11px; margin-top:24px;">
+  株式会社ランバード ／ 2026-06-12 作成（社内確認用）
+</p>
+
+</div>
+</body>
+</html>
