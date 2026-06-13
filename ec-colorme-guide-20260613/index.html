@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>カラーミーショップ 新規開設ガイド</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Hiragino Sans", "Yu Gothic", sans-serif; background: #f4f6f9; margin: 0; padding: 30px 20px; color: #1a1a1a; line-height: 1.7; }
+  .wrap { max-width: 880px; margin: 0 auto; }
+  .hero { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #fff; padding: 32px 28px; border-radius: 14px; margin-bottom: 24px; }
+  .hero h1 { margin: 0 0 8px; font-size: 26px; }
+  .hero p { margin: 6px 0 0; font-size: 14px; opacity: 0.95; }
+  .lead { background: #fff; padding: 20px 24px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); margin-bottom: 24px; font-size: 14px; }
+  .timeline { display: flex; gap: 8px; flex-wrap: wrap; align-items: stretch; margin: 16px 0 28px; }
+  .timeline-step { flex: 1 1 100px; background: #fff; border: 2px solid #f97316; border-radius: 10px; padding: 10px 8px; text-align: center; font-size: 11px; min-width: 100px; }
+  .timeline-step b { display: block; font-size: 13px; color: #ea580c; margin-bottom: 4px; }
+  .step-card { background: #fff; border-radius: 12px; padding: 28px 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 20px; position: relative; }
+  .step-num { display: inline-block; background: #f97316; color: #fff; width: 44px; height: 44px; border-radius: 50%; text-align: center; line-height: 44px; font-size: 22px; font-weight: 700; margin-right: 12px; vertical-align: middle; }
+  .step-card h2 { display: inline-block; vertical-align: middle; margin: 0; font-size: 20px; color: #ea580c; }
+  .step-body { margin-top: 16px; }
+  .screen { background: #f9fafb; border: 2px dashed #d1d5db; border-radius: 10px; padding: 18px 20px; margin: 14px 0; }
+  .screen-title { font-size: 12px; color: #6b7280; margin-bottom: 8px; }
+  .browser-bar { background: #e5e7eb; padding: 6px 10px; border-radius: 6px 6px 0 0; font-size: 12px; color: #4b5563; font-family: monospace; }
+  .browser-body { background: #fff; padding: 14px; border-radius: 0 0 6px 6px; min-height: 60px; font-size: 13px; }
+  .cta-button { display: inline-block; background: #ea580c; color: #fff !important; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; margin: 10px 0; }
+  .cta-button:hover { background: #c2410c; }
+  .info-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 14px 18px; border-radius: 8px; margin: 14px 0; font-size: 13px; }
+  .check-box { width: 22px; height: 22px; border: 2px solid #9ca3af; border-radius: 4px; flex-shrink: 0; margin-top: 2px; display: inline-block; vertical-align: top; margin-right: 8px; }
+  .input-list { background: #fff7ed; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-size: 13px; }
+  .input-list .row { display: flex; padding: 8px 0; border-bottom: 1px dashed #fdba74; }
+  .input-list .row:last-child { border-bottom: none; }
+  .input-list .label { font-weight: 700; min-width: 140px; color: #9a3412; }
+  .plan-card { border: 3px solid #ea580c; background: #fff7ed; padding: 20px 24px; border-radius: 12px; margin: 14px 0; }
+  .plan-card h3 { margin: 0 0 8px; color: #9a3412; font-size: 18px; }
+  .plan-card .price { font-size: 26px; font-weight: 800; color: #ea580c; }
+  .plan-card .features { margin: 10px 0 0; font-size: 13px; }
+  .key-point { background: #fef2f2; border: 1px solid #fecaca; padding: 14px 18px; border-radius: 8px; margin: 14px 0; font-size: 13px; }
+  .key-point b { color: #b91c1c; }
+  .help-card { background: #1e3a8a; color: #fff; padding: 20px 24px; border-radius: 12px; margin-top: 30px; text-align: center; }
+  .help-card h3 { margin: 0 0 8px; font-size: 17px; }
+  .help-card p { margin: 4px 0; font-size: 13px; opacity: 0.95; }
+  .arrow { text-align: center; font-size: 30px; color: #d1d5db; margin: -8px 0; }
+  @media print { body { background: #fff; } .step-card, .lead { box-shadow: none; border: 1px solid #ddd; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <h1>🛍️ カラーミーショップ 新規開設ガイド</h1>
+  <p>ECサイト本体「カラーミーショップ」のお申込み手順をご案内します</p>
+  <p style="font-size:12px; margin-top:10px;">2026-06-13 作成 ／ 株式会社ランバード</p>
+</div>
+
+<div class="lead">
+  <b>このガイドの目的</b><br>
+  カラーミーショップ（GMOペパボ社のECサイト構築サービス）にお申込みいただく手順を、画面イメージ付きでご案内します。<br>
+  <b>所要時間：約10分</b>
+</div>
+
+<!-- 全体フロー -->
+<div class="timeline">
+  <div class="timeline-step"><b>STEP 1</b>公式サイトアクセス</div>
+  <div class="timeline-step"><b>STEP 2</b>無料お試し申込</div>
+  <div class="timeline-step"><b>STEP 3</b>メール認証</div>
+  <div class="timeline-step"><b>STEP 4</b>ショップ情報入力</div>
+  <div class="timeline-step"><b>STEP 5</b>レギュラー本契約</div>
+  <div class="timeline-step"><b>STEP 6</b>弊社へID共有</div>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-card">
+  <span class="step-num">1</span>
+  <h2>カラーミーショップ 公式サイトにアクセス</h2>
+  <div class="step-body">
+    <div style="text-align:center;">
+      <a href="https://shop-pro.jp/" target="_blank" class="cta-button">🌐 公式サイトを開く（shop-pro.jp）</a>
+    </div>
+
+    <div class="screen">
+      <div class="screen-title">画面イメージ</div>
+      <div class="browser-bar">🔒 https://shop-pro.jp/</div>
+      <div class="browser-body">
+        <p style="text-align:center; font-size:18px; font-weight:700;">カラーミーショップ</p>
+        <p style="text-align:center; font-size:13px; color:#666;">ネットショップを開設できるECサイト構築サービス</p>
+        <div style="text-align:center; margin:14px 0;">
+          <span style="background:#ea580c; color:#fff; padding:8px 24px; border-radius:6px; font-size:13px;">▶ 無料でお試し</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="arrow">▼</div>
+
+<!-- STEP 2 -->
+<div class="step-card">
+  <span class="step-num">2</span>
+  <h2>「無料でお試し」ボタンをクリック</h2>
+  <div class="step-body">
+    <p>トップページ右上または中央の「無料でお試し」または「お申込み」ボタンをクリックしてください。</p>
+
+    <div class="info-box">
+      <b>💡 ポイント</b>：まず<b>30日間無料お試し</b>から始まります。お試し期間内に本契約手続きへ進めます。
+    </div>
+  </div>
+</div>
+
+<div class="arrow">▼</div>
+
+<!-- STEP 3 -->
+<div class="step-card">
+  <span class="step-num">3</span>
+  <h2>メールアドレスを入力 → 認証メールを開く</h2>
+  <div class="step-body">
+    <p>ご利用のメールアドレスを入力 → 認証メールが届くので、メール内のリンクをクリックします。</p>
+
+    <div class="screen">
+      <div class="screen-title">入力画面イメージ</div>
+      <div class="browser-body">
+        <p style="font-size:13px;">📧 メールアドレス</p>
+        <div style="border:1px solid #d1d5db; padding:8px; border-radius:4px; font-size:13px; color:#9ca3af; margin-bottom:10px;">your-email@example.com</div>
+        <div style="text-align:center;">
+          <span style="background:#ea580c; color:#fff; padding:8px 24px; border-radius:6px; font-size:13px;">▶ 確認メールを送信</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <b>📌 メールが届かない場合</b>：迷惑メールフォルダをご確認ください。送信元：<code>info@shop-pro.jp</code>
+    </div>
+  </div>
+</div>
+
+<div class="arrow">▼</div>
+
+<!-- STEP 4 -->
+<div class="step-card">
+  <span class="step-num">4</span>
+  <h2>ショップ情報をご入力</h2>
+  <div class="step-body">
+    <p>下記の項目をご入力ください。</p>
+
+    <div class="input-list">
+      <div class="row"><span class="label">📝 ショップID</span><span>半角英数字 ／ 後でURLになります</span></div>
+      <div class="row"><span class="label">📝 ショップ名</span><span>表示するお店の名前（後から変更可）</span></div>
+      <div class="row"><span class="label">📝 パスワード</span><span>管理画面ログイン用 ／ 8文字以上推奨</span></div>
+      <div class="row"><span class="label">📝 お名前</span><span>代表者様のお名前</span></div>
+      <div class="row"><span class="label">📝 電話番号</span><span>連絡先電話番号</span></div>
+      <div class="row"><span class="label">📝 業種</span><span>「中古品・リサイクル」を選択</span></div>
+    </div>
+
+    <div class="key-point">
+      <b>⚠️ ご注意</b>：<b>ショップID</b>は後から変更できません。お店の英語名やローマ字略称など、わかりやすいものをご選択ください。
+    </div>
+  </div>
+</div>
+
+<div class="arrow">▼</div>
+
+<!-- STEP 5 -->
+<div class="step-card">
+  <span class="step-num">5</span>
+  <h2>レギュラープランで本契約</h2>
+  <div class="step-body">
+    <p>お試し期間中に、本契約手続きを進めていただきます。<br>
+    <b>「レギュラープラン」</b>をご選択ください。</p>
+
+    <div class="plan-card">
+      <h3>✨ レギュラープラン（採用）</h3>
+      <p class="price">¥4,950<span style="font-size:14px; font-weight:400;">／月（税込）</span></p>
+      <p style="font-size:12px; color:#666; margin:4px 0;">初期費用 ¥3,300</p>
+      <div class="features">
+        ✅ 独自ドメイン利用可<br>
+        ✅ 外部決済代行併設可（テレコム／SUI接続）<br>
+        ✅ 年齢確認ページ機能搭載<br>
+        ✅ 商品登録数 無制限<br>
+        ✅ サーバー込み・SSL無料
+      </div>
+    </div>
+
+    <div class="info-box">
+      <b>📌 お支払い方法</b>：クレジットカード／銀行振込／コンビニ払い より選択<br>
+      <b>📌 お試し期間中</b>：無料でカテゴリ作成や商品登録の操作練習が可能
+    </div>
+  </div>
+</div>
+
+<div class="arrow">▼</div>
+
+<!-- STEP 6 -->
+<div class="step-card">
+  <span class="step-num">6</span>
+  <h2>管理画面ログイン情報を弊社へ共有</h2>
+  <div class="step-body">
+    <p>登録完了後、管理画面のログイン情報を弊社にご共有ください。<br>
+    弊社で<b>サイトデザイン・商品ページ設計・規約類設置</b>を進めさせていただきます。</p>
+
+    <div class="input-list">
+      <div class="row"><span class="label">📩 共有内容</span><span>下記3点をご連絡ください</span></div>
+      <div class="row"><span class="label">①管理画面URL</span><span>例：https://manage.shop-pro.jp/</span></div>
+      <div class="row"><span class="label">②ショップID</span><span>STEP 4でご登録いただいたID</span></div>
+      <div class="row"><span class="label">③パスワード</span><span>STEP 4でご設定いただいたパスワード</span></div>
+    </div>
+
+    <div class="key-point">
+      <b>🔐 セキュリティのため</b>：パスワードはメール本文ではなく、ChatWorkのDMやLINEなど閉じたチャネルでご共有ください。
+    </div>
+  </div>
+</div>
+
+<!-- 完了 -->
+<div class="step-card" style="background:linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border:2px solid #047857;">
+  <h2 style="color:#047857; display:block;">🎉 ここまでで完了です！</h2>
+  <p>以降はランバード側でサイト構築を進めさせていただきます。<br>
+  並行してテレコム／SUIへの決済代行審査もお進めください。</p>
+</div>
+
+<!-- 補足 -->
+<div class="step-card">
+  <h2 style="color:#1e40af; display:block;">❓ よくあるご質問</h2>
+  <p><b>Q. 無料お試し中に契約を解約できますか？</b><br>
+  A. はい、お試し期間内であれば解約可能です。期間が過ぎると自動で本契約に移行する場合があるためご注意ください。</p>
+
+  <p style="margin-top:14px;"><b>Q. ショップ名は後から変更できますか？</b><br>
+  A. ショップ名は変更可能ですが、<b>ショップID（URLの一部）は変更不可</b>です。</p>
+
+  <p style="margin-top:14px;"><b>Q. 独自ドメインはいつ設定しますか？</b><br>
+  A. 独自ドメイン取得後、弊社で接続設定を行います。お申込み時点では初期サブドメインのままで問題ありません。</p>
+</div>
+
+<!-- お問い合わせ -->
+<div class="help-card">
+  <h3>❓ ご不明な点がございましたら</h3>
+  <p>株式会社ランバード 担当：鈴木 / 星崎</p>
+  <p>本ガイドに関するご質問は、いつでもお気軽にご連絡ください</p>
+</div>
+
+<p style="text-align:center; color:#666; font-size:11px; margin-top:24px;">
+  株式会社ランバード ／ 2026-06-13 作成
+</p>
+
+</div>
+</body>
+</html>
