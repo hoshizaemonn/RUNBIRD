@@ -17,36 +17,30 @@
   .legend-item { padding: 4px 10px; border-radius: 5px; font-weight: 700; }
   .legend-item.green { background: #d1fae5; color: #065f46; border: 1px solid #047857; }
   .legend-item.yellow { background: #fef3c7; color: #92400e; border: 1px solid #d97706; }
-  .legend-item.blue { background: #dbeafe; color: #1e3a8a; border: 1px solid #1d4ed8; }
   .section { background: #fff; border-radius: 12px; padding: 20px 26px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 14px; }
   .section h2 { margin: 0 0 12px; font-size: 17px; color: #ea580c; padding-bottom: 6px; border-bottom: 2px solid #fdba74; }
   .row { display: flex; padding: 8px 0; border-bottom: 1px dashed #e5e7eb; align-items: flex-start; gap: 14px; }
   .row:last-child { border-bottom: none; }
   .row .label { flex: 0 0 200px; font-weight: 600; padding-right: 6px; font-size: 13px; padding-top: 8px; }
   .row .value { flex: 1; font-size: 14px; }
-  .filled { background: #ecfdf5; padding: 8px 12px; border-radius: 5px; color: #065f46; display: inline-block; font-weight: 600; border: 1px solid #047857; }
-  .alert { background: #fef2f2; padding: 8px 12px; border-radius: 5px; color: #b91c1c; font-weight: 600; border: 2px dashed #dc2626; font-size: 13px; }
-  input[type="text"], input[type="number"], input[type="email"], input[type="date"], textarea, select {
+  input[type="text"], input[type="number"], input[type="email"], textarea {
     width: 100%; max-width: 420px; padding: 9px 12px; border: 2px solid #d1d5db; border-radius: 6px;
     font-size: 14px; font-family: inherit; background: #fffbeb;
   }
-  input:focus, textarea:focus, select:focus { outline: none; border-color: #ea580c; background: #fff; }
+  input:focus, textarea:focus { outline: none; border-color: #ea580c; background: #fff; }
   input.short { max-width: 200px; }
   input.xshort { max-width: 100px; }
-  .radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
-  .radio-group label { display: flex; align-items: center; gap: 6px; padding: 7px 12px; border: 2px solid #d1d5db; border-radius: 6px; cursor: pointer; font-size: 13px; background: #fffbeb; }
-  .radio-group input[type="radio"] { margin: 0; }
-  .radio-group input[type="radio"]:checked + span { font-weight: 700; }
+  input.prefilled, textarea.prefilled { background: #ecfdf5; border-color: #047857; color: #065f46; font-weight: 600; }
+  .choice-group { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .choice-btn { padding: 8px 14px; border: 2px solid #d1d5db; border-radius: 6px; cursor: pointer; font-size: 13px; background: #fffbeb; user-select: none; transition: 0.15s; }
+  .choice-btn:hover { background: #fff7ed; border-color: #fdba74; }
+  .choice-btn.selected { background: #ea580c; color: #fff; border-color: #ea580c; }
+  .clear-btn { padding: 5px 10px; border: 1px solid #9ca3af; background: #fff; color: #6b7280; border-radius: 5px; cursor: pointer; font-size: 11px; }
+  .clear-btn:hover { background: #fef2f2; color: #b91c1c; border-color: #b91c1c; }
   small.hint { color: #666; font-size: 11px; display: block; margin-top: 3px; }
+  small.hint.warn { color: #b91c1c; font-weight: 600; }
+  small.hint.suggest { color: #047857; font-weight: 600; }
   .warning-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; border-radius: 8px; margin: 10px 0; font-size: 13px; color: #991b1b; }
-  .info-box { background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px 16px; border-radius: 8px; margin: 10px 0; font-size: 13px; }
-  .note-box { background: #fffbeb; border: 1px solid #fde68a; padding: 12px 16px; border-radius: 8px; margin: 10px 0; font-size: 13px; }
-  .check-list { list-style: none; padding: 0; margin: 8px 0; }
-  .check-list li { padding: 10px 14px; background: #f9fafb; border-radius: 6px; margin-bottom: 6px; font-size: 13px; border-left: 3px solid #ea580c; display: flex; gap: 10px; align-items: flex-start; }
-  .check-list li.must { border-left-color: #dc2626; background: #fef2f2; }
-  .check-list li.us { border-left-color: #047857; background: #ecfdf5; }
-  .check-list label.cbx { display: flex; gap: 8px; align-items: flex-start; width: 100%; cursor: pointer; }
-  .check-list input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; cursor: pointer; }
   .help-card { background: #1e3a8a; color: #fff; padding: 18px 22px; border-radius: 12px; margin-top: 20px; text-align: center; }
   .help-card h3 { margin: 0 0 6px; font-size: 16px; }
   .help-card p { margin: 4px 0; font-size: 13px; }
@@ -55,7 +49,6 @@
   .btn-primary { background: #ea580c; color: #fff; }
   .btn-primary:hover { background: #c2410c; }
   .btn-secondary { background: #f3f4f6; color: #1e3a8a; border: 2px solid #1e3a8a; }
-  .btn-secondary:hover { background: #1e3a8a; color: #fff; }
   .btn-danger { background: #fff; color: #b91c1c; border: 2px solid #b91c1c; }
   .btn-danger:hover { background: #b91c1c; color: #fff; }
   .status { font-size: 12px; color: #666; }
@@ -63,8 +56,8 @@
   @media print {
     body { background: #fff; }
     .section, .lead { box-shadow: none; border: 1px solid #ddd; }
-    .action-bar { display: none; }
-    input, textarea, select { background: #fff !important; border: 1px solid #999 !important; }
+    .action-bar, .clear-btn { display: none; }
+    input, textarea { background: #fff !important; border: 1px solid #999 !important; }
   }
 </style>
 </head>
@@ -79,12 +72,13 @@
 
 <div class="lead">
   <b>ご記入方法</b><br>
-  黄色いマス目に直接ご入力ください。途中で離脱しても、再度同じURLを開けば自動的に復元されます。<br>
-  ご入力完了後、画面下部の<b>「📋 入力内容をコピー」</b>ボタンで全テキストをコピーし、弊社にお送りください。
+  <b style="color:#047857;">緑色のマス</b>は弊社で記入済です。間違いがあればそのまま修正可能です。<br>
+  <b style="color:#ea580c;">黄色のマス</b>のみご記入ください。<br>
+  選択肢は<b>クリックで選択／もう一度クリックで解除</b>できます。「クリア」ボタンでも解除可。<br>
+  入力内容は<b>自動保存</b>されます。完了後「📋 コピー」で全テキストを取得→弊社へお送りください。
   <div class="legend">
-    <span class="legend-item green">🟢 弊社で記入済</span>
+    <span class="legend-item green">🟢 弊社で記入済（修正可）</span>
     <span class="legend-item yellow">🟡 ご記入ください</span>
-    <span class="legend-item blue">🟦 弊社で対応</span>
   </div>
 </div>
 
@@ -99,69 +93,74 @@
 <div class="section">
   <h2>0️⃣ 申請する決済方法</h2>
   <div class="row"><div class="label">事業形態 <span style="color:#dc2626;">*</span></div><div class="value">
-    <div class="radio-group">
-      <label><input type="radio" name="form_houjin" value="法人"><span>法人</span></label>
-      <label><input type="radio" name="form_houjin" value="個人"><span>個人事業主</span></label>
+    <div class="choice-group" data-name="form_houjin">
+      <div class="choice-btn" data-value="法人">法人</div>
+      <div class="choice-btn selected" data-value="個人">個人事業主</div>
+      <button type="button" class="clear-btn" data-clear="form_houjin">クリア</button>
     </div>
+    <small class="hint suggest">※ヒアリング情報より「個人事業主」を仮選択。法人化済の場合は変更してください</small>
   </div></div>
-  <div class="row"><div class="label">販売形態</div><div class="value"><span class="filled">物販（発送する商品）</span></div></div>
-  <div class="row"><div class="label">申請する決済方法</div><div class="value"><span class="filled">クレジットカード ／ Amazon Pay</span></div></div>
-  <div class="row"><div class="label">同時申込</div><div class="value"><span class="filled">銀行振込（バーチャル口座）</span><small class="hint">楽天ペイ／コンビニ／PayPayは後追加可</small></div></div>
 </div>
 
 <!-- 1. 基本情報 -->
 <div class="section">
   <h2>1️⃣ 基本情報</h2>
   <div class="row"><div class="label">会社区分</div><div class="value">
-    <div class="radio-group">
-      <label><input type="radio" name="kaisha_kbn" value="株式会社"><span>株式会社</span></label>
-      <label><input type="radio" name="kaisha_kbn" value="有限会社"><span>有限会社</span></label>
-      <label><input type="radio" name="kaisha_kbn" value="合資会社"><span>合資会社</span></label>
-      <label><input type="radio" name="kaisha_kbn" value="その他"><span>その他</span></label>
+    <div class="choice-group" data-name="kaisha_kbn">
+      <div class="choice-btn" data-value="株式会社">株式会社</div>
+      <div class="choice-btn" data-value="有限会社">有限会社</div>
+      <div class="choice-btn" data-value="合資会社">合資会社</div>
+      <div class="choice-btn selected" data-value="その他">その他（個人事業主）</div>
+      <button type="button" class="clear-btn" data-clear="kaisha_kbn">クリア</button>
     </div>
-    <small class="hint">個人事業主の場合は「その他」</small>
   </div></div>
-  <div class="row"><div class="label">会社名 / 屋号</div><div class="value"><span class="filled">.look（どっとるっく）</span></div></div>
-  <div class="row"><div class="label">会社名（カナ）</div><div class="value"><input type="text" name="kaisha_kana" placeholder="例：ドットルック"></div></div>
-  <div class="row"><div class="label">ご担当者氏名</div><div class="value"><span class="filled">淺川 雄史</span></div></div>
+  <div class="row"><div class="label">会社名 / 屋号</div><div class="value"><input type="text" name="kaisha_name" class="prefilled" value=".look（どっとるっく）"></div></div>
+  <div class="row"><div class="label">会社名（カナ）</div><div class="value"><input type="text" name="kaisha_kana" class="prefilled" value="ドットルック"></div></div>
+  <div class="row"><div class="label">ご担当者氏名</div><div class="value">
+    <input type="text" name="tanto_sei" class="short prefilled" value="淺川" style="display:inline-block; margin-right:6px;">
+    <input type="text" name="tanto_mei" class="short prefilled" value="雄史" style="display:inline-block;">
+  </div></div>
   <div class="row"><div class="label">ご担当者氏名（カナ）</div><div class="value">
-    <input type="text" name="tanto_sei_kana" class="short" placeholder="セイ（例：アサカワ）" style="display:inline-block; margin-right:6px;">
-    <input type="text" name="tanto_mei_kana" class="short" placeholder="メイ" style="display:inline-block;">
+    <input type="text" name="tanto_sei_kana" class="short prefilled" value="アサカワ" style="display:inline-block; margin-right:6px;">
+    <input type="text" name="tanto_mei_kana" class="short prefilled" value="タケシ" style="display:inline-block;">
   </div></div>
   <div class="row"><div class="label">電話番号</div><div class="value">
     <input type="text" name="kihon_tel" class="short" placeholder="例：06-XXXX-XXXX">
-    <small class="hint" style="color:#b91c1c;">※法人契約の場合は固定電話必須（市外局番03/06等）</small>
+    <small class="hint warn">⚠️ 法人契約の場合は固定電話必須。個人事業主は携帯090-5886-2830・店舗050-1794-1009 でもOK</small>
   </div></div>
-  <div class="row"><div class="label">メールアドレス</div><div class="value"><span class="filled">a.look2025@outlook.jp</span></div></div>
+  <div class="row"><div class="label">メールアドレス</div><div class="value"><input type="email" name="kihon_mail" class="prefilled" value="at09058862830@gmail.com"></div></div>
 </div>
 
 <!-- 2. 加盟店情報 -->
 <div class="section">
   <h2>2️⃣ 加盟店情報（特商法に記載する事業所情報）</h2>
-  <div class="row"><div class="label">郵便番号</div><div class="value"><span class="filled">559-0003</span></div></div>
-  <div class="row"><div class="label">特商法住所</div><div class="value"><span class="filled">大阪府大阪市住之江区安立1-12-22</span></div></div>
+  <div class="row"><div class="label">郵便番号</div><div class="value"><input type="text" name="zip" class="short prefilled" value="559-0003"></div></div>
+  <div class="row"><div class="label">特商法住所</div><div class="value"><input type="text" name="tokushou_jusho" class="prefilled" value="大阪府大阪市住之江区安立1-12-22"></div></div>
   <div class="row"><div class="label">特商法住所（カナ）</div><div class="value"><input type="text" name="tokushou_jusho_kana" placeholder="例：オオサカフオオサカシスミノエクアンリュウ1-12-22"></div></div>
-  <div class="row"><div class="label">電話番号</div><div class="value"><input type="text" name="kameiten_tel" class="short" placeholder="例：06-XXXX-XXXX"><small class="hint" style="color:#b91c1c;">※法人契約の場合は固定電話必須</small></div></div>
-  <div class="row"><div class="label">資本金</div><div class="value"><input type="number" name="shihonkin" class="xshort" placeholder="例：100"> 万円 <small class="hint">※法人のみ</small></div></div>
+  <div class="row"><div class="label">電話番号</div><div class="value"><input type="text" name="kameiten_tel" class="short" placeholder="同上"></div></div>
+  <div class="row"><div class="label">資本金</div><div class="value"><input type="number" name="shihonkin" class="xshort" placeholder="100"> 万円<small class="hint">※法人のみ・個人事業主は不要</small></div></div>
   <div class="row"><div class="label">設立年月日 / 開業日</div><div class="value">
-    <input type="number" name="ssetsu_y" class="xshort" placeholder="2025"> 年
+    <input type="number" name="ssetsu_y" class="xshort" value="2025"> 年
     <input type="number" name="ssetsu_m" class="xshort" placeholder="MM"> 月
     <input type="number" name="ssetsu_d" class="xshort" placeholder="DD"> 日
   </div></div>
-  <div class="row"><div class="label">年商</div><div class="value"><input type="number" name="nensho" class="xshort" placeholder="例：500"> 万円 <small class="hint">※直近もしくは想定</small></div></div>
-  <div class="row"><div class="label">従業員数</div><div class="value"><input type="number" name="jugyoin" class="xshort" placeholder="例：1"> 人</div></div>
-  <div class="row"><div class="label">業種・事業内容</div><div class="value"><span class="filled">古本・骨董・貴金属ほか中古品の買取・販売</span></div></div>
+  <div class="row"><div class="label">年商</div><div class="value"><input type="number" name="nensho" class="xshort" placeholder="例：500"> 万円<small class="hint">※直近もしくは想定</small></div></div>
+  <div class="row"><div class="label">従業員数</div><div class="value"><input type="number" name="jugyoin" class="xshort" value="2"> 人<small class="hint suggest">※夫婦経営から仮入力</small></div></div>
+  <div class="row"><div class="label">業種・事業内容</div><div class="value"><input type="text" name="gyoshu" class="prefilled" value="古本・骨董・貴金属ほか中古品の買取・販売"></div></div>
 </div>
 
 <!-- 3. 代表者情報 -->
 <div class="section">
   <h2>3️⃣ 代表者情報</h2>
-  <div class="row"><div class="label">代表者氏名</div><div class="value"><span class="filled">淺川 雄史</span></div></div>
-  <div class="row"><div class="label">代表者氏名（カナ）</div><div class="value">
-    <input type="text" name="daihyo_sei_kana" class="short" placeholder="セイ（例：アサカワ）" style="display:inline-block; margin-right:6px;">
-    <input type="text" name="daihyo_mei_kana" class="short" placeholder="メイ" style="display:inline-block;">
+  <div class="row"><div class="label">代表者氏名</div><div class="value">
+    <input type="text" name="daihyo_sei" class="short prefilled" value="淺川" style="display:inline-block; margin-right:6px;">
+    <input type="text" name="daihyo_mei" class="short prefilled" value="雄史" style="display:inline-block;">
   </div></div>
-  <div class="row"><div class="label">代表者郵便番号</div><div class="value"><input type="text" name="daihyo_zip" class="short" placeholder="例：559-0003"><small class="hint">自宅住所の郵便番号</small></div></div>
+  <div class="row"><div class="label">代表者氏名（カナ）</div><div class="value">
+    <input type="text" name="daihyo_sei_kana" class="short prefilled" value="アサカワ" style="display:inline-block; margin-right:6px;">
+    <input type="text" name="daihyo_mei_kana" class="short prefilled" value="タケシ" style="display:inline-block;">
+  </div></div>
+  <div class="row"><div class="label">代表者郵便番号</div><div class="value"><input type="text" name="daihyo_zip" class="short" placeholder="自宅住所の郵便番号"></div></div>
   <div class="row"><div class="label">代表者の住所</div><div class="value"><input type="text" name="daihyo_jusho" placeholder="自宅住所"></div></div>
   <div class="row"><div class="label">代表者の住所（カナ）</div><div class="value"><input type="text" name="daihyo_jusho_kana" placeholder="カナ"></div></div>
   <div class="row"><div class="label">代表者の生年月日</div><div class="value">
@@ -170,9 +169,10 @@
     <input type="number" name="daihyo_d" class="xshort" placeholder="DD"> 日
   </div></div>
   <div class="row"><div class="label">代表者の性別</div><div class="value">
-    <div class="radio-group">
-      <label><input type="radio" name="daihyo_sex" value="男性"><span>男性</span></label>
-      <label><input type="radio" name="daihyo_sex" value="女性"><span>女性</span></label>
+    <div class="choice-group" data-name="daihyo_sex">
+      <div class="choice-btn" data-value="男性">男性</div>
+      <div class="choice-btn" data-value="女性">女性</div>
+      <button type="button" class="clear-btn" data-clear="daihyo_sex">クリア</button>
     </div>
   </div></div>
   <div class="row"><div class="label">法人番号</div><div class="value"><input type="text" name="houjin_bango" placeholder="13桁"><small class="hint">※法人のみ</small></div></div>
@@ -181,14 +181,14 @@
 <!-- 4. サイト情報 -->
 <div class="section">
   <h2>4️⃣ サイト情報</h2>
-  <div class="row"><div class="label">ショップ名</div><div class="value"><span class="filled">.look（どっとるっく）</span></div></div>
-  <div class="row"><div class="label">ショップ名（カナ）</div><div class="value"><input type="text" name="shop_kana" placeholder="例：ドットルック"></div></div>
-  <div class="row"><div class="label">ショップ名（英数字）</div><div class="value"><span class="filled">.look</span></div></div>
+  <div class="row"><div class="label">ショップ名</div><div class="value"><input type="text" name="shop_name" class="prefilled" value=".look（どっとるっく）"></div></div>
+  <div class="row"><div class="label">ショップ名（カナ）</div><div class="value"><input type="text" name="shop_kana" class="prefilled" value="ドットルック"></div></div>
+  <div class="row"><div class="label">ショップ名（英数字）</div><div class="value"><input type="text" name="shop_eng" class="prefilled" value=".look"></div></div>
   <div class="row"><div class="label">電話番号</div><div class="value"><input type="text" name="site_tel" class="short" placeholder="例：06-XXXX-XXXX"></div></div>
-  <div class="row"><div class="label">公開メールアドレス</div><div class="value"><span class="filled">a.look2025@outlook.jp</span></div></div>
-  <div class="row"><div class="label">取扱商品</div><div class="value"><span class="filled">中古ブランド・古本・玩具・骨董・絵画・貴金属 等の一般中古品</span><small class="hint" style="color:#991b1b;">※R18・モデルガン・成人向け書籍は含めません</small></div></div>
+  <div class="row"><div class="label">公開メールアドレス</div><div class="value"><input type="email" name="site_mail" class="prefilled" value="at09058862830@gmail.com"></div></div>
+  <div class="row"><div class="label">取扱商品</div><div class="value"><input type="text" name="toriatsukai" class="prefilled" value="中古ブランド・古本・玩具・骨董・絵画・貴金属 等の一般中古品"><small class="hint warn">※R18・モデルガン・成人向け書籍は含めません</small></div></div>
   <div class="row"><div class="label">主力商品のジャンル</div><div class="value"><input type="text" name="shuryoku" placeholder="例：中古ブランド／骨董／古本 等"></div></div>
-  <div class="row"><div class="label">一回の平均取引金額</div><div class="value"><input type="number" name="heikin" class="xshort" placeholder="例：8000"> 円</div></div>
+  <div class="row"><div class="label">一回の平均取引金額</div><div class="value"><input type="number" name="heikin" class="xshort" placeholder="8000"> 円</div></div>
 </div>
 
 <!-- 5. 口座情報 -->
@@ -199,13 +199,14 @@
   <div class="row"><div class="label">支店名</div><div class="value"><input type="text" name="branch_name" class="short" placeholder="例：難波支店"></div></div>
   <div class="row"><div class="label">支店コード</div><div class="value"><input type="text" name="branch_code" class="xshort" placeholder="3桁"></div></div>
   <div class="row"><div class="label">口座種別</div><div class="value">
-    <div class="radio-group">
-      <label><input type="radio" name="kouza_kbn" value="普通"><span>普通</span></label>
-      <label><input type="radio" name="kouza_kbn" value="当座"><span>当座</span></label>
+    <div class="choice-group" data-name="kouza_kbn">
+      <div class="choice-btn" data-value="普通">普通</div>
+      <div class="choice-btn" data-value="当座">当座</div>
+      <button type="button" class="clear-btn" data-clear="kouza_kbn">クリア</button>
     </div>
   </div></div>
   <div class="row"><div class="label">口座番号</div><div class="value"><input type="text" name="kouza_no" class="short" placeholder="7桁"></div></div>
-  <div class="row"><div class="label">口座名義</div><div class="value"><input type="text" name="kouza_name" placeholder="例：アサカワ ユウシ"></div></div>
+  <div class="row"><div class="label">口座名義</div><div class="value"><input type="text" name="kouza_name" placeholder="例：アサカワ タケシ"></div></div>
   <div class="row"><div class="label">口座名義（カナ）</div><div class="value"><input type="text" name="kouza_name_kana" placeholder="カナ"></div></div>
 </div>
 
@@ -214,28 +215,17 @@
   <h2>6️⃣ 手数料お支払い方法</h2>
   <p style="font-size:13px;">GMOイプシロンへの手数料は売上金から相殺されますが、相殺できない場合のお支払い方法です。</p>
   <div class="row"><div class="label">お支払い方法</div><div class="value">
-    <div class="radio-group">
-      <label><input type="radio" name="tesuryo_pay" value="クレジットカード"><span>クレジットカード</span></label>
-      <label><input type="radio" name="tesuryo_pay" value="銀行口座振替"><span>銀行口座振替</span></label>
+    <div class="choice-group" data-name="tesuryo_pay">
+      <div class="choice-btn" data-value="クレジットカード">クレジットカード</div>
+      <div class="choice-btn" data-value="銀行口座振替">銀行口座振替</div>
+      <button type="button" class="clear-btn" data-clear="tesuryo_pay">クリア</button>
     </div>
   </div></div>
 </div>
 
-<!-- 7. 添付書類 -->
+<!-- 7. 自由コメント -->
 <div class="section">
-  <h2>7️⃣ ご準備いただく添付書類（チェック）</h2>
-  <ul class="check-list">
-    <li class="must"><label class="cbx"><input type="checkbox" name="doc_id"><div><b>代表者身分証</b><br><small>運転免許証／マイナンバーカード／住民票 のいずれか</small></div></label></li>
-    <li class="must"><label class="cbx"><input type="checkbox" name="doc_touki"><div><b>履歴事項全部証明書（登記簿謄本）</b> ※法人のみ<br><small>3ヶ月以内</small></div></label></li>
-    <li class="must"><label class="cbx"><input type="checkbox" name="doc_kaigyou"><div><b>開業届コピー</b> ※個人事業主のみ<br><small>税務署受付印あり</small></div></label></li>
-    <li class="must"><label class="cbx"><input type="checkbox" name="doc_kobutsu" checked><div><b>古物商許可証コピー</b><br><small style="color:#065f46;">第62128R062702号 ✅ 取得済</small></div></label></li>
-    <li><label class="cbx"><input type="checkbox" name="doc_tucho"><div><b>通帳コピー</b><br><small>表紙＋見開き／口座名義確認用</small></div></label></li>
-  </ul>
-</div>
-
-<!-- 8. 自由コメント -->
-<div class="section">
-  <h2>8️⃣ 補足・ご質問</h2>
+  <h2>7️⃣ 補足・ご質問</h2>
   <div class="row" style="border:none;"><div class="value" style="width:100%;">
     <textarea name="free_memo" rows="4" style="max-width:100%;" placeholder="ご不明な点や補足情報がございましたらこちらにご記入ください"></textarea>
   </div></div>
@@ -248,13 +238,12 @@
   <span class="status" id="saveStatus">💾 入力内容は自動保存されます</span>
   <div>
     <button type="button" class="btn btn-secondary" onclick="printPage()">🖨 印刷／PDF</button>
-    <button type="button" class="btn btn-danger" onclick="clearForm()">🗑 クリア</button>
+    <button type="button" class="btn btn-danger" onclick="clearForm()">🗑 全クリア</button>
     <button type="button" class="btn btn-primary" onclick="copyAll()">📋 入力内容をコピー</button>
   </div>
 </div>
 <div id="copyResult"></div>
 
-<!-- お問い合わせ -->
 <div class="help-card">
   <h3>❓ ご不明な点がございましたら</h3>
   <p>株式会社ランバード 担当：鈴木 / 星崎</p>
@@ -268,43 +257,61 @@
 </div>
 
 <script>
-const STORAGE_KEY = 'cp_form_data_v1';
+const STORAGE_KEY = 'cp_form_data_v2';
+const choiceData = {};
 
-// Restore on load
+document.querySelectorAll('.choice-group').forEach(group => {
+  const name = group.dataset.name;
+  group.querySelectorAll('.choice-btn').forEach(btn => {
+    if (btn.classList.contains('selected')) choiceData[name] = btn.dataset.value;
+    btn.addEventListener('click', () => {
+      const val = btn.dataset.value;
+      const wasSelected = btn.classList.contains('selected');
+      group.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+      if (!wasSelected) {
+        btn.classList.add('selected');
+        choiceData[name] = val;
+      } else {
+        delete choiceData[name];
+      }
+      saveForm();
+    });
+  });
+});
+
+document.querySelectorAll('.clear-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.clear;
+    const group = document.querySelector(`[data-name="${name}"]`);
+    group.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+    delete choiceData[name];
+    saveForm();
+  });
+});
+
 window.addEventListener('load', () => {
   try {
     const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
     Object.entries(data).forEach(([name, value]) => {
-      const inputs = document.querySelectorAll(`[name="${name}"]`);
-      inputs.forEach(input => {
-        if (input.type === 'radio' || input.type === 'checkbox') {
-          if (input.value === value || (value === true && input.type === 'checkbox')) {
-            input.checked = true;
-          }
-        } else {
-          input.value = value;
-        }
-      });
+      const input = document.querySelector(`input[name="${name}"], textarea[name="${name}"]`);
+      if (input) { input.value = value; return; }
+      const group = document.querySelector(`[data-name="${name}"]`);
+      if (group) {
+        group.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+        const btn = group.querySelector(`[data-value="${value}"]`);
+        if (btn) { btn.classList.add('selected'); choiceData[name] = value; }
+        else delete choiceData[name];
+      }
     });
-  } catch(e) { console.warn('restore failed', e); }
+  } catch(e) {}
 });
 
-// Auto save
 document.getElementById('cpForm').addEventListener('input', saveForm);
-document.getElementById('cpForm').addEventListener('change', saveForm);
 
 function saveForm() {
-  const data = {};
-  const form = document.getElementById('cpForm');
-  const inputs = form.querySelectorAll('input, textarea, select');
-  inputs.forEach(input => {
-    if (input.type === 'radio') {
-      if (input.checked) data[input.name] = input.value;
-    } else if (input.type === 'checkbox') {
-      data[input.name] = input.checked;
-    } else {
-      if (input.value) data[input.name] = input.value;
-    }
+  const data = {...choiceData};
+  document.querySelectorAll('#cpForm input[type="text"], #cpForm input[type="number"], #cpForm input[type="email"], #cpForm textarea').forEach(input => {
+    if (input.value) data[input.name] = input.value;
   });
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   const status = document.getElementById('saveStatus');
@@ -312,76 +319,76 @@ function saveForm() {
   setTimeout(() => { status.textContent = '💾 入力内容は自動保存されます'; }, 2000);
 }
 
+function getVal(name) {
+  const input = document.querySelector(`input[name="${name}"], textarea[name="${name}"]`);
+  if (input) return input.value;
+  return choiceData[name] || '';
+}
+
 function copyAll() {
-  const fields = [
-    {label: '【0. 申請の決済方法】', items: [
-      ['事業形態', 'form_houjin'],
-    ]},
-    {label: '【1. 基本情報】', items: [
-      ['会社区分', 'kaisha_kbn'],
-      ['会社名（カナ）', 'kaisha_kana'],
-      ['ご担当者氏名（カナ）', ['tanto_sei_kana', 'tanto_mei_kana']],
-      ['電話番号', 'kihon_tel'],
-    ]},
-    {label: '【2. 加盟店情報】', items: [
-      ['特商法住所（カナ）', 'tokushou_jusho_kana'],
-      ['電話番号', 'kameiten_tel'],
-      ['資本金（万円）', 'shihonkin'],
+  const groups = [
+    ['【0. 申請の決済方法】', [['事業形態', ['form_houjin']]]],
+    ['【1. 基本情報】', [
+      ['会社区分', ['kaisha_kbn']],
+      ['会社名／屋号', ['kaisha_name']],
+      ['会社名（カナ）', ['kaisha_kana']],
+      ['ご担当者氏名', ['tanto_sei', 'tanto_mei'], ' '],
+      ['ご担当者氏名（カナ）', ['tanto_sei_kana', 'tanto_mei_kana'], ' '],
+      ['電話番号', ['kihon_tel']],
+      ['メールアドレス', ['kihon_mail']],
+    ]],
+    ['【2. 加盟店情報】', [
+      ['郵便番号', ['zip']],
+      ['特商法住所', ['tokushou_jusho']],
+      ['特商法住所（カナ）', ['tokushou_jusho_kana']],
+      ['電話番号', ['kameiten_tel']],
+      ['資本金（万円）', ['shihonkin']],
       ['設立年月日', ['ssetsu_y', 'ssetsu_m', 'ssetsu_d'], '/'],
-      ['年商（万円）', 'nensho'],
-      ['従業員数', 'jugyoin'],
-    ]},
-    {label: '【3. 代表者情報】', items: [
-      ['氏名（カナ）', ['daihyo_sei_kana', 'daihyo_mei_kana']],
-      ['代表者郵便番号', 'daihyo_zip'],
-      ['代表者の住所', 'daihyo_jusho'],
-      ['代表者の住所（カナ）', 'daihyo_jusho_kana'],
+      ['年商（万円）', ['nensho']],
+      ['従業員数', ['jugyoin']],
+      ['業種・事業内容', ['gyoshu']],
+    ]],
+    ['【3. 代表者情報】', [
+      ['代表者氏名', ['daihyo_sei', 'daihyo_mei'], ' '],
+      ['代表者氏名（カナ）', ['daihyo_sei_kana', 'daihyo_mei_kana'], ' '],
+      ['代表者郵便番号', ['daihyo_zip']],
+      ['代表者の住所', ['daihyo_jusho']],
+      ['代表者の住所（カナ）', ['daihyo_jusho_kana']],
       ['生年月日', ['daihyo_y', 'daihyo_m', 'daihyo_d'], '/'],
-      ['性別', 'daihyo_sex'],
-      ['法人番号', 'houjin_bango'],
-    ]},
-    {label: '【4. サイト情報】', items: [
-      ['ショップ名（カナ）', 'shop_kana'],
-      ['電話番号', 'site_tel'],
-      ['主力商品のジャンル', 'shuryoku'],
-      ['一回の平均取引金額', 'heikin'],
-    ]},
-    {label: '【5. 口座情報】', items: [
-      ['金融機関名', 'bank_name'],
-      ['金融機関コード', 'bank_code'],
-      ['支店名', 'branch_name'],
-      ['支店コード', 'branch_code'],
-      ['口座種別', 'kouza_kbn'],
-      ['口座番号', 'kouza_no'],
-      ['口座名義', 'kouza_name'],
-      ['口座名義（カナ）', 'kouza_name_kana'],
-    ]},
-    {label: '【6. 手数料支払い】', items: [
-      ['お支払い方法', 'tesuryo_pay'],
-    ]},
-    {label: '【7. 添付書類】', items: [
-      ['代表者身分証', 'doc_id'],
-      ['履歴事項全部証明書', 'doc_touki'],
-      ['開業届', 'doc_kaigyou'],
-      ['古物商許可証', 'doc_kobutsu'],
-      ['通帳コピー', 'doc_tucho'],
-    ]},
-    {label: '【8. 補足】', items: [
-      ['補足', 'free_memo'],
-    ]},
+      ['性別', ['daihyo_sex']],
+      ['法人番号', ['houjin_bango']],
+    ]],
+    ['【4. サイト情報】', [
+      ['ショップ名', ['shop_name']],
+      ['ショップ名（カナ）', ['shop_kana']],
+      ['ショップ名（英数字）', ['shop_eng']],
+      ['電話番号', ['site_tel']],
+      ['公開メールアドレス', ['site_mail']],
+      ['取扱商品', ['toriatsukai']],
+      ['主力商品のジャンル', ['shuryoku']],
+      ['一回の平均取引金額', ['heikin']],
+    ]],
+    ['【5. 口座情報】', [
+      ['金融機関名', ['bank_name']],
+      ['金融機関コード', ['bank_code']],
+      ['支店名', ['branch_name']],
+      ['支店コード', ['branch_code']],
+      ['口座種別', ['kouza_kbn']],
+      ['口座番号', ['kouza_no']],
+      ['口座名義', ['kouza_name']],
+      ['口座名義（カナ）', ['kouza_name_kana']],
+    ]],
+    ['【6. 手数料支払い】', [['お支払い方法', ['tesuryo_pay']]]],
+    ['【7. 補足】', [['補足', ['free_memo']]]],
   ];
 
   let out = '【カラーミーペイメント 申込情報】\n.look（どっとるっく） 様 ／ ' + new Date().toLocaleString('ja-JP') + '\n\n';
-  fields.forEach(group => {
-    out += group.label + '\n';
-    group.items.forEach(([label, name, sep]) => {
-      let val = '';
-      if (Array.isArray(name)) {
-        val = name.map(n => getValue(n)).filter(Boolean).join(sep || ' ');
-      } else {
-        val = getValue(name);
-      }
-      out += '  ' + label + '：' + (val || '（未入力）') + '\n';
+  groups.forEach(([title, items]) => {
+    out += title + '\n';
+    items.forEach(([label, names, sep]) => {
+      const vals = names.map(getVal).filter(v => v !== '');
+      const val = vals.length ? vals.join(sep || '') : '（未入力）';
+      out += '  ' + label + '：' + val + '\n';
     });
     out += '\n';
   });
@@ -391,27 +398,13 @@ function copyAll() {
     r.style.display = 'block';
     r.textContent = '✅ コピーしました！ChatWork／メール／LINE等で弊社へお送りください';
     setTimeout(() => { r.style.display = 'none'; }, 4000);
-  }).catch(() => {
-    // Fallback - show prompt
-    prompt('コピーしてください：', out);
-  });
-}
-
-function getValue(name) {
-  const inputs = document.querySelectorAll(`[name="${name}"]`);
-  for (const input of inputs) {
-    if (input.type === 'radio' && input.checked) return input.value;
-    if (input.type === 'checkbox') return input.checked ? '✅' : '☐';
-    if (input.value) return input.value;
-  }
-  return '';
+  }).catch(() => prompt('コピーしてください：', out));
 }
 
 function clearForm() {
-  if (!confirm('入力内容を全てクリアしてよろしいですか？')) return;
+  if (!confirm('入力内容を全てクリアしてよろしいですか？\n（弊社プレフィル分も消えます）')) return;
   localStorage.removeItem(STORAGE_KEY);
-  document.getElementById('cpForm').reset();
-  alert('クリアしました');
+  location.reload();
 }
 
 function printPage() { window.print(); }
