@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OWL福祉事業 LP新デザイン案｜嶋田社長 ご確認用</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&family=Noto+Serif+JP:wght@700;900&family=Inter:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Noto Sans JP',sans-serif;
+  background:#fbf6e9;color:#1d1d1d;
+  line-height:1.85;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:48px 24px 80px}
+header.top{text-align:center;padding:32px 16px 48px;border-bottom:2px solid #1d1d1d;margin-bottom:48px}
+.kicker{font-family:'Inter';font-weight:700;font-size:12px;letter-spacing:.3em;color:#ff7a35;margin-bottom:14px}
+h1{font-family:'Noto Serif JP',serif;font-weight:900;font-size:clamp(28px,5vw,42px);line-height:1.4;letter-spacing:.04em;margin-bottom:16px}
+.subline{font-size:14px;color:#5a5a5a;line-height:1.95;letter-spacing:.04em}
+
+.intro{
+  background:#fff;border:1.5px solid #1d1d1d;border-radius:0;padding:28px 24px;margin-bottom:48px;
+  box-shadow:6px 6px 0 #1d1d1d;
+}
+.intro h2{font-family:'Noto Serif JP',serif;font-weight:900;font-size:18px;margin-bottom:14px;letter-spacing:.06em}
+.intro p{font-size:13px;color:#3a3a3a;line-height:2;letter-spacing:.04em;margin-bottom:10px}
+.intro p:last-child{margin-bottom:0}
+.intro b{background:linear-gradient(transparent 60%,#f7d11f 60% 92%,transparent 92%);padding:0 .1em}
+
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:48px}
+@media(max-width:720px){.duo{grid-template-columns:1fr}}
+
+.card{
+  background:#fff;border:1.5px solid #1d1d1d;border-radius:0;overflow:hidden;
+  box-shadow:6px 6px 0 #1d1d1d;
+  transition:transform .15s;
+}
+.card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 #1d1d1d}
+.card .label{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:#1d1d1d;color:#fff}
+.card .label .num{font-family:'Inter';font-weight:900;font-size:24px;letter-spacing:-.02em}
+.card .label .num small{font-family:'Noto Sans JP';font-size:11px;font-weight:700;margin-left:6px;letter-spacing:.16em}
+.card .label .ar{
+  width:32px;height:32px;background:#ff7a35;border-radius:50%;
+  display:grid;place-items:center;color:#fff;font-size:14px;
+}
+.card .preview{aspect-ratio:480/720;overflow:hidden;background:#fdf6ec;position:relative}
+.card .preview img{
+  width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
+}
+.card .preview::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:80px;
+  background:linear-gradient(transparent,rgba(255,255,255,.92));pointer-events:none;
+}
+.card .info{padding:22px}
+.card .info h3{font-family:'Noto Serif JP',serif;font-weight:900;font-size:22px;line-height:1.4;letter-spacing:.04em;margin-bottom:10px}
+.card .info .tag{display:inline-block;background:#fff0e0;color:#ff7a35;padding:3px 12px;border-radius:999px;font-size:11px;font-weight:700;margin-bottom:12px;letter-spacing:.08em}
+.card .info .meta{font-size:12px;color:#666;line-height:1.95;margin-bottom:16px;letter-spacing:.04em}
+.card .info .meta strong{color:#1d1d1d;font-weight:900}
+.card .info .open{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:#ff7a35;color:#fff;padding:14px;text-decoration:none;font-weight:900;font-size:14px;letter-spacing:.06em;
+  border-radius:0;border:1.5px solid #1d1d1d;box-shadow:3px 3px 0 #1d1d1d;
+  transition:transform .12s,box-shadow .12s;
+}
+.card .info .open:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #1d1d1d}
+
+.refs{background:#fff;border:1.5px solid #1d1d1d;padding:28px 24px;margin-bottom:32px;box-shadow:6px 6px 0 #1d1d1d}
+.refs h2{font-family:'Noto Serif JP',serif;font-weight:900;font-size:18px;margin-bottom:18px;letter-spacing:.06em}
+.refs h2::before{content:"●";color:#ff7a35;margin-right:8px;font-size:13px;vertical-align:middle}
+.refs .ref{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px dashed rgba(0,0,0,.15)}
+.refs .ref:last-child{border-bottom:0}
+.refs .ref .l strong{display:block;font-family:'Noto Serif JP',serif;font-weight:900;font-size:15px;margin-bottom:2px;letter-spacing:.04em}
+.refs .ref .l small{font-size:11px;color:#666;font-family:'Inter';letter-spacing:.06em}
+.refs .ref a{
+  font-family:'Inter';font-weight:700;font-size:12px;color:#ff7a35;text-decoration:none;letter-spacing:.04em;
+  padding:8px 14px;border:1.5px solid #ff7a35;border-radius:999px;white-space:nowrap;
+}
+.refs .ref a:hover{background:#ff7a35;color:#fff}
+
+.note{
+  font-size:11px;color:#666;line-height:1.95;text-align:center;padding-top:24px;border-top:1px solid rgba(0,0,0,.1);
+  letter-spacing:.04em;
+}
+.note strong{display:block;font-family:'Noto Serif JP',serif;font-weight:900;font-size:13px;color:#1d1d1d;margin-bottom:6px;letter-spacing:.06em}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="kicker">PROPOSAL / 2026.06.13</div>
+    <h1>OWL福祉事業<br>LP新デザイン 2案 ご確認</h1>
+    <p class="subline">
+      現行LPに加えて、テスト用の新デザインを2案ご提案します。<br>
+      下記カードをクリックすると、スマホ表示のモックアップが開きます。
+    </p>
+  </header>
+
+  <div class="intro">
+    <h2>本日ご確認いただきたいこと</h2>
+    <p>
+      現在ライブの<b>A版（現行LP）</b>に加えて、A/Bテスト用の<b>新デザイン2案</b>を作成しました。
+    </p>
+    <p>
+      各案でターゲットの心理訴求とデザインの方向性を変えています。<br>
+      どちらでテスト配信を進めるか、ご意見をお聞かせください。
+    </p>
+  </div>
+
+  <div class="duo">
+    <div class="card">
+      <div class="label">
+        <div class="num">01<small>CASE A</small></div>
+        <a href="A_lemon/index.html" class="ar" style="text-decoration:none">→</a>
+      </div>
+      <a href="A_lemon/index.html" class="preview">
+        <img src="A_lemon/img/01.png" alt="案A プレビュー">
+      </a>
+      <div class="info">
+        <span class="tag">カラフル・ポップ</span>
+        <h3>「親しみ」と<br>「数字訴求」</h3>
+        <p class="meta">
+          <strong>狙い：</strong>未経験で福祉に興味がある層に、明るく分かりやすく訴求。<br>
+          <strong>軸：</strong>加盟金0円・未経験率95%など、数字をポップに見せる。
+        </p>
+        <a href="A_lemon/index.html" class="open">案Aを開く →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">
+        <div class="num">02<small>CASE B</small></div>
+        <a href="B_yamato/index.html" class="ar" style="text-decoration:none">→</a>
+      </div>
+      <a href="B_yamato/index.html" class="preview">
+        <img src="B_yamato/img/01.png" alt="案B プレビュー">
+      </a>
+      <div class="info">
+        <span class="tag">温かみ・ストーリー</span>
+        <h3>「共感」と<br>「物語訴求」</h3>
+        <p class="meta">
+          <strong>狙い：</strong>家族の将来や社会貢献を考える層に、ストーリーで訴求。<br>
+          <strong>軸：</strong>「親なき後」「もう一つの家」など、課題と意義から入る。
+        </p>
+        <a href="B_yamato/index.html" class="open">案Bを開く →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="refs">
+    <h2>参考デザインソース</h2>
+    <div class="ref">
+      <div class="l">
+        <strong>案A：社会福祉法人 檸檬会 採用サイト</strong>
+        <small>recruit.lemonkai.or.jp</small>
+      </div>
+      <a href="https://recruit.lemonkai.or.jp/" target="_blank">サイトを開く →</a>
+    </div>
+    <div class="ref">
+      <div class="l">
+        <strong>案B：社会福祉法人 功有会 公式サイト</strong>
+        <small>www.yamatoen.or.jp</small>
+      </div>
+      <a href="https://www.yamatoen.or.jp/" target="_blank">サイトを開く →</a>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>※モックアップは仮の画像です</strong>
+    各セクションのデザイン方向性をご確認いただくものです。<br>
+    正式版は方向性のご承認後に、本番コーディングして公開いたします。<br>
+    <br>
+    株式会社RUNBIRD ／ OWL福祉事業 LP制作チーム
+  </div>
+
+</div>
+
+</body>
+</html>
