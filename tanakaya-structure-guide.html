@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>炭火焼肉たなか屋 — 来店を増やす構成＆HOOK設計（調査ベース）</title>
+<style>
+  :root{ --bg:#1a1310; --ink:#f5e9df; --ink2:#bfa896; --accent:#e8893a; --warm:#f0a83c; --cool:#5f7d92; --ember:#d2402a; --card:#241a15; --line:#3a2a20; --good:#7fb069; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;line-height:1.8;padding:40px 24px;max-width:1080px;margin:0 auto}
+  header{border-bottom:2px dashed var(--line);padding-bottom:20px;margin-bottom:28px}
+  h1{font-size:27px;font-weight:700;letter-spacing:.03em}
+  h1 .brand{color:var(--accent)}
+  .sub{font-size:13px;color:var(--ink2);margin-top:8px}
+  h2{font-size:19px;font-weight:700;margin:38px 0 14px;color:var(--accent);border-left:5px solid var(--accent);padding-left:12px}
+  h3{font-size:15px;font-weight:700;margin:20px 0 8px;color:var(--warm)}
+  p,li{font-size:14px}
+  .concl{background:linear-gradient(135deg,#2e2018,#3a2415);border:2px solid var(--accent);border-radius:14px;padding:20px 24px;margin-bottom:10px}
+  .concl h2{margin-top:0;border:none;padding:0;color:var(--warm);font-size:20px}
+  .concl .big{font-size:16px;color:var(--ink);margin:10px 0}
+  .concl b{color:var(--warm)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:12px 0}
+  ul,ol{margin:6px 0 6px 22px}
+  li{margin:5px 0}
+  .flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;position:relative}
+  .step .t{font-size:11px;color:var(--ink2);font-weight:700;letter-spacing:.08em}
+  .step .h{font-size:14px;font-weight:700;color:var(--warm);margin:4px 0}
+  .step .d{font-size:12px;color:var(--ink2)}
+  .step.hook{border:2px solid var(--ember)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{color:var(--accent);font-size:12px}
+  .pick{color:var(--good);font-weight:700}
+  .tag{display:inline-block;background:rgba(232,137,58,.18);color:var(--warm);font-size:11px;font-weight:700;padding:2px 8px;border-radius:8px;margin-right:4px}
+  .src{font-size:11.5px;color:var(--ink2);margin-top:6px}
+  a{color:var(--warm)}
+  .nb{font-size:11px;color:var(--ink2);margin-top:30px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <h1>来店を増やす「構成 ＆ HOOK」設計図 — <span class="brand">炭火焼肉たなか屋</span></h1>
+  <div class="sub">調査ベースの構成参考資料 ／ 2026-06-16 ／ 目的：来店・ご予約を増やす ／ 主役：仕事終わりの50代サラリーマン・40代カップル ／ USP：カウンター × 炭火</div>
+</header>
+
+<!-- ===== 結論を最上部に ===== -->
+<div class="concl">
+  <h2>🎯 結論（これで目的＝来店が達成される）</h2>
+  <p class="big">① <b>冒頭2秒は「物語」より先に「うまそう」</b>を出す。<br>
+  ＝ 炭火で肉がジュッと焼ける“飯テロ”ドアップ＋テロップ <b>「仕事終わりの、ご褒美。」</b> で始める。</p>
+  <p class="big">② HOOKの型は <b>「飯テロ（おいしそう）型 × ターゲット名指し型」の掛け合わせ</b>。<br>
+  「うまそう」で指を止め、「これは“あなた”の動画だ」と一瞬で自分事化させる。</p>
+  <p class="big">③ そのあと <b>共感→解決→シズル工程→ベネフィット→予約</b> の順で、最後はカウンター席と連絡先で<b>来店導線</b>を明確に締める。</p>
+  <p style="font-size:13px;color:var(--ink2);margin-top:10px">※ 当初v1は「疲れたサラリーマン」から始めていましたが、<b>飲食ショートの鉄則は『冒頭に物語の説明を置かず、まず食欲カット』</b>（下記調査）。物語は2秒のフックの“後ろ”に回すのが正解です。</p>
+</div>
+
+<h2>① なぜ「冒頭＝物語」ではダメなのか（調査の根拠）</h2>
+<div class="card">
+  <ul>
+    <li><b>ショート動画は最初の3秒で9割決まる。</b>冒頭フックが弱いと本編がどれだけ良くても再生・来店に繋がらない。</li>
+    <li><b>食べ物動画の鉄則＝最初に「おいしそう」と感じさせるカットを置く</b>（離脱防止の鉄則）。調理工程をテンポよく見せ、<b>完成品のシズルカットで締める</b>のが王道。</li>
+    <li>飲食店動画の最大の武器は、見る人の<b>「食べたい！」を引き出すシズル感</b>。これが来店動機に直結する。</li>
+  </ul>
+  <div class="src">出典：<a href="https://note.com/miucchi0009/n/nb19be716f0d6" target="_blank">最初の3秒で9割決まる（note）</a> ／ <a href="https://0120.co.jp/blog/video-103/" target="_blank">最初の3秒で離脱させない構成（0120）</a> ／ <a href="https://www.foodconnection.jp/restaurant-short-video-service/" target="_blank">飲食店向けショート動画（フードコネクション）</a></div>
+</div>
+
+<h2>② HOOKの7つの型 — たなか屋はどれを使うか</h2>
+<table>
+  <tr><th>HOOK型</th><th>例</th><th>たなか屋への適性</th></tr>
+  <tr><td>飯テロ（おいしそう）型</td><td>いきなり焼ける肉のドアップ＋音</td><td class="pick">◎ 主軸に採用</td></tr>
+  <tr><td>ターゲット名指し型</td><td>「仕事終わりのあなたへ」</td><td class="pick">◎ 飯テロと掛け合わせ</td></tr>
+  <tr><td>ビフォーアフター型</td><td>疲れ顔→満足顔</td><td>◯ 中盤〜ラストで活用</td></tr>
+  <tr><td>疑問提起型</td><td>「なぜ炭火だと旨い？」</td><td>△ 説明的で食欲が鈍る</td></tr>
+  <tr><td>数字提示型</td><td>「越前で◯年」</td><td>△ 実績訴求なら可</td></tr>
+  <tr><td>結論先出し型</td><td>「結論、ここの炭火が最高」</td><td>△ 飯テロの方が強い</td></tr>
+  <tr><td>意外性型</td><td>「実は…」</td><td>△ 焼肉では不要</td></tr>
+</table>
+<p style="font-size:13px;color:var(--ink2)">→ <b>飯テロ型 × ターゲット名指し型</b>が最強。「うまそう（感情）」＋「自分のことだ（自分事化）」を2秒で同時発火させる。</p>
+<div class="src">出典：<a href="https://note.com/mask_ai/n/n006f1ce7079e" target="_blank">オープニングフック活用（note）</a></div>
+
+<h2>③ シズル感の作り方（来店動機の核）</h2>
+<div class="card">
+  <p>焼肉のシズル感＝<b>「ジュ〜ジュ〜と音、ジュワジュワ肉汁、モクモク香ばしい煙」</b>。具体的には：</p>
+  <ul>
+    <li><b>肉汁・脂</b>：炭の上ではじける脂、テカり。少し<b>焦げ目</b>があると香ばしさを連想させ食欲↑</li>
+    <li><b>ライティング</b>：脂のテカり＝ジューシーさ。光の当て方が最重要</li>
+    <li><b>調理過程</b>：焼いている様子（音・肉汁・煙）が五感を刺激</li>
+    <li><b>タレ演出</b>：焼けた肉をタレにくぐらせる／切り口から肉汁 ＝ 強力な一押し</li>
+  </ul>
+  <p style="color:var(--warm)">※ クライアント提供の参考アニメ（12秒）も実はこの構造：<b>炭→着火→熾火→肉のせ→煙→焼き目マクロ→返す→タレにくぐらせる→キャラが至福の実食</b>。＝「工程を丁寧に魅せる飯テロ＋幸せそうな実食」。この“工程×実食”を必ず取り込む。</p>
+  <div class="src">出典：<a href="https://thingmedia.jp/7100" target="_blank">シズル感の演出方法（シングメディア）</a> ／ <a href="https://shibuyamovie.tokyo/column/1826/" target="_blank">シズル感動画広告の作り方（Shibuya Movie）</a></div>
+</div>
+
+<h2>④ 推奨構成（仲野メソッド5要素 × 飲食ショート鉄則）</h2>
+<div class="flow">
+  <div class="step hook"><div class="t">0:00–0:02 HOOK</div><div class="h">飯テロ＋名指し</div><div class="d">炭火で肉がジュッ＋脂はじけ＋煙のドアップ。テロップ「仕事終わりの、ご褒美。」</div></div>
+  <div class="step"><div class="t">0:02–0:06 共感</div><div class="h">悩み（疲れ）</div><div class="d">夜の街を歩く疲れたサラリーマン。「今日も、おつかれさま。」</div></div>
+  <div class="step"><div class="t">0:06–0:12 解決</div><div class="h">来店・カウンター</div><div class="d">暖簾→カウンターの特等席→目の前に真っ赤な炭火（USP）</div></div>
+  <div class="step"><div class="t">0:12–0:26 根拠</div><div class="h">シズル工程</div><div class="d">炭→肉のせ→焼き目マクロ→タレにくぐらせ→ビール。工程をテンポよく</div></div>
+  <div class="step"><div class="t">0:26–0:34 ベネフィット</div><div class="h">至福・未来</div><div class="d">至福の一口（before/after）。カップルでも。「また明日、がんばれる」</div></div>
+  <div class="step"><div class="t">0:34–0:45 オファー</div><div class="h">来店導線・CTA</div><div class="d">店名＋電話＋Instagram＋住所＋クレカ/QR。「ご予約はお気軽に」</div></div>
+</div>
+<div class="card">
+  <h3>仲野メソッド5要素との対応（チェック）</h3>
+  <ul>
+    <li>① 理想の姿（ベネフィット）＝ 至福の一口・明日への活力 ✅</li>
+    <li>② 悩みの共感＝ 仕事終わりの疲れ ✅</li>
+    <li>③ 解決方法＝ カウンターで目の前の炭火 ✅</li>
+    <li>④ 根拠＝ 炭火で焼くシズル工程（脂・煙・タレ） ✅</li>
+    <li>⑤ オファー＝ ご予約・来店導線（3心理：限定感＝カウンターの特等席） ✅</li>
+    <li>＋ 冒頭2秒にWho（仕事終わりの人）/What（炭火焼肉）を提示 ✅</li>
+  </ul>
+  <div class="src">社内ナレッジ：15秒広告マスターメソッド（仲野直紀）</div>
+</div>
+
+<h2>⑤ 来店導線（飲食ショート特有・忘れがち）</h2>
+<div class="card">
+  <ul>
+    <li>ラストに<b>店名・電話・Instagram・住所</b>を必ず固定表示（タップ→Google Map/予約に繋ぐ）</li>
+    <li><b>「お店までの道案内」</b>や外観カットは来店の安心材料（道案内リールが19万再生の事例も）</li>
+    <li>カウンター×炭火という<b>「ここでしか味わえない体験」</b>を限定感として押す</li>
+  </ul>
+  <div class="src">出典：<a href="https://pro.gnavi.co.jp/magazine/t_res/cat_3/a_4095/" target="_blank">飲食店のTikTok活用ガイド（ぐるなび）</a> ／ <a href="https://find-model.jp/insta-lab/instagram-reel-restaurant/" target="_blank">飲食店リール上手いアカウント5選</a></div>
+</div>
+
+<h2>⑥ v1からの変更点（この設計でv2へ）</h2>
+<table>
+  <tr><th>項目</th><th>v1（現行）</th><th>v2（この設計）</th></tr>
+  <tr><td>冒頭</td><td>疲れたサラリーマン（物語）</td><td class="pick">炭火で肉ジュッ＋「仕事終わりのご褒美。」（飯テロ＋名指し）</td></tr>
+  <tr><td>工程</td><td>肉のせ・焼き目・実食</td><td class="pick">＋着火/熾火 ＋タレにくぐらせカットを追加（参考アニメの肝）</td></tr>
+  <tr><td>ビフォーアフター</td><td>退店で軽く</td><td class="pick">疲れ顔→至福顔を明確に対比</td></tr>
+  <tr><td>導線</td><td>CTA1枚</td><td>CTA＋外観で来店の安心感を補強</td></tr>
+</table>
+
+<p class="nb">※ この資料は「構成・HOOK設計の根拠」を示す内部／クライアント共有用です。OKであればこの設計でv2（炭火工程＋タレカット追加・冒頭フック差し替え）を作り直します。</p>
+</body>
+</html>
