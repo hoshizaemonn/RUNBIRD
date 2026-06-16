@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>炭火焼肉たなか屋 — AI動画 v1 ストーリーボード</title>
+<style>
+  :root{ --bg:#1a1310; --ink:#f5e9df; --ink2:#bfa896; --accent:#e8893a; --warm:#f0a83c; --cool:#5f7d92; --ember:#d2402a; --card:#241a15; --line:#3a2a20; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;line-height:1.75;padding:40px 24px;max-width:1400px;margin:0 auto}
+  header{border-bottom:2px dashed var(--line);padding-bottom:24px;margin-bottom:32px}
+  h1{font-size:30px;font-weight:700;letter-spacing:.04em}
+  h1 .brand{color:var(--accent)}
+  .ver{font-size:12px;color:var(--ink2);margin-left:8px;letter-spacing:.1em}
+  .meta{display:flex;gap:24px;flex-wrap:wrap;color:var(--ink2);font-size:13px;margin-top:14px}
+  .meta b{color:var(--ink);font-weight:600}
+  h2{font-size:18px;font-weight:600;letter-spacing:.04em;margin:40px 0 16px;color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+  .card.hook{border-top:4px solid var(--cool)}
+  .card.hook::before{content:"HOOK";position:absolute;top:8px;right:10px;background:var(--cool);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.1em;z-index:2}
+  .card.meat{border-top:4px solid var(--ember)}
+  .card.meat::before{content:"焼肉";position:absolute;top:8px;right:10px;background:var(--ember);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.1em;z-index:2}
+  .card.warm{border-top:4px solid var(--warm)}
+  .card.cta{border-top:4px solid var(--accent)}
+  .card .ph{aspect-ratio:16/9;background:linear-gradient(135deg,#2a1c14 0%,#5a2c18 50%,#d2402a 110%);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+  .card .ph .num{font-size:38px;font-weight:800;color:rgba(245,233,223,.22);letter-spacing:.05em}
+  .card .ph .lbl{position:absolute;top:8px;left:10px;background:rgba(0,0,0,.5);color:var(--ink);font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.05em}
+  .card .body{padding:14px 16px 16px}
+  .card .scene{font-size:11px;color:var(--ink2);letter-spacing:.08em;font-weight:700}
+  .card .time{font-size:11px;color:var(--ink2);float:right;font-weight:600}
+  .card .telop{margin-top:8px;font-size:14px;color:var(--ink);background:rgba(232,137,58,.14);padding:8px 10px;border-left:3px solid var(--accent);border-radius:4px;min-height:34px}
+  .card .nare{margin-top:8px;font-size:12.5px;color:var(--warm);font-style:italic}
+  .card .desc{margin-top:8px;font-size:12.5px;color:var(--ink2)}
+  .card .motion{margin-top:8px;font-size:11.5px;color:#caa483;background:#2e2018;padding:6px 8px;border-radius:6px}
+  .points{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-top:8px}
+  .points li{font-size:13.5px;color:var(--ink);margin:6px 0 6px 22px}
+  .points li b{color:var(--accent)}
+  .check li{margin:8px 0 8px 22px;color:var(--ink2);font-size:13.5px}
+  .check b{color:var(--ink);font-weight:600}
+  .nb{font-size:11px;color:var(--ink2);margin-top:32px;text-align:center}
+  .legend{display:inline-flex;gap:14px;font-size:11.5px;color:var(--ink2);margin-top:10px;flex-wrap:wrap}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+  .pending{background:#2e2018;border:1px dashed var(--accent);padding:10px 16px;border-radius:10px;margin:12px 0;color:#f0c89a;font-size:13px}
+  .pending b{color:var(--accent)}
+  table.cta-tbl{width:100%;border-collapse:collapse;margin-top:8px}
+  table.cta-tbl td{padding:6px 10px;border-bottom:1px solid var(--line);font-size:13px}
+  table.cta-tbl td:first-child{color:var(--ink2);width:120px;font-weight:600}
+  a{color:var(--warm)}
+</style>
+</head>
+<body>
+<header>
+  <h1>AI動画 v1 ストーリーボード — <span class="brand">炭火焼肉たなか屋</span><span class="ver">v1 / 2026-06-16</span></h1>
+  <div class="meta">
+    <span>業態：<b>炭火焼肉店</b>（福井県越前市）</span>
+    <span>尺：<b>約45秒</b>（12シーン構成）</span>
+    <span>画風：<b>新海誠風アニメ（炭火を美しく魅せる飯テロ調）</b></span>
+    <span>主役：<b>50代サラリーマン（仕事終わり）</b>＋サブ：40代カップル</span>
+    <span>構成比：<b>焼肉7 : 飲み物3</b></span>
+    <span>CTA：<b>電話 ＋ Instagram ＋ 住所（クレカ/QR決済OK）</b></span>
+  </div>
+  <div class="legend">
+    <span><i style="background:var(--cool)"></i>HOOK／問題（夜・疲れ・寒色）</span>
+    <span><i style="background:var(--ember)"></i>焼肉カット（飯テロ）</span>
+    <span><i style="background:var(--warm)"></i>来店・雰囲気・飲み物</span>
+    <span><i style="background:var(--accent)"></i>CTA</span>
+  </div>
+  <div class="pending"><b>⚠️ 仮置き項目（要確認）</b>：尺45秒 ／ ナレーション＝落ち着いた男性ナレ ／ BGM＝夜の大人向けインスト（ジャズ/アコギ寄り） ／ CTA誘導先＝電話・Instagram・住所。違うご希望があればお知らせください。</div>
+</header>
+
+<h2>🎯 動画コンセプト</h2>
+<div class="points">
+  <ul>
+    <li><b>「仕事終わりの疲れたサラリーマンが、炭火焼肉を求めてたなか屋へ」</b>という王道ストーリー（ヒアリングどおりランバード一任で構成）</li>
+    <li><b>前半=夜の寒色（疲れ）→ 後半=炭火の赤・肉の照りの暖色</b>へ色味を転換し、満たされていく流れを演出</li>
+    <li><b>カウンター席＝主役の特等席。目の前で炭火</b>という、たなか屋最大の特徴を中盤の軸に</li>
+    <li><b>炭火と肉のクローズアップ（脂のはじけ・煙・熾火）</b>を主役級に配置 ＝ 焼肉7割・飲み物3割の比率</li>
+    <li>画風参考：<a href="https://youtube.com/shorts/aL4_eWy-0ig" target="_blank">「アニメで観る炭火焼肉」</a>（クライアント提供）の新海誠調テイストに準拠</li>
+  </ul>
+</div>
+
+<h2>📽 シーン構成 全12カット</h2>
+<div class="grid">
+
+  <div class="card cta"><div class="ph"><span class="lbl">S1</span><span class="num">S1</span></div><div class="body"><span class="scene">S1 ロゴ</span><span class="time">0:00–0:03</span><div class="telop">炭火焼肉 たなか屋（ロゴ fade in）</div><div class="desc">暗闇に炭火の熾火がほのかに赤く明滅 → 店名ロゴが浮かぶ</div><div class="motion">▶ ffmpegでfade in／熾火ループ</div></div></div>
+
+  <div class="card hook"><div class="ph"><span class="lbl">S2</span><span class="num">S2</span></div><div class="body"><span class="scene">S2 仕事終わりの疲れ</span><span class="time">0:03–0:08</span><div class="telop">今日も、おつかれさま。</div><div class="nare">N：「今日も一日、おつかれさまでした。」</div><div class="desc">夜の街をひとり歩く50代サラリーマン（スーツ・ネクタイ緩め・肩が少し落ちる）。寒色・ネオンbokeh</div><div class="motion">▶ 後ろ姿スロー追従／ネオン揺らぎ</div></div></div>
+
+  <div class="card warm"><div class="ph"><span class="lbl">S3</span><span class="num">S3</span></div><div class="body"><span class="scene">S3 たなか屋 外観</span><span class="time">0:08–0:12</span><div class="telop">福井・越前 炭火焼肉 たなか屋</div><div class="nare">N：「がんばった日こそ、ご褒美がいる。」</div><div class="desc">暖簾とあたたかい灯りの店先。漂う煙に引き寄せられる。夜の青×入口の暖色の対比</div><div class="motion">▶ 入口へslow push-in／暖簾・煙ふわり</div></div></div>
+
+  <div class="card warm"><div class="ph"><span class="lbl">S4</span><span class="num">S4</span></div><div class="body"><span class="scene">S4 カウンターに座る</span><span class="time">0:12–0:16</span><div class="telop">目の前で、炭火。</div><div class="nare">N：「カウンターの特等席。目の前には、真っ赤な炭火。」</div><div class="desc">主役がカウンター席へ。上着を脱ぎ、目の前の真っ赤な炭火を前に安堵の表情。暖色の光</div><div class="motion">▶ 横顔へ5%ドリーイン／熾火明滅</div></div></div>
+
+  <div class="card meat"><div class="ph"><span class="lbl">S5</span><span class="num">S5</span></div><div class="body"><span class="scene">S5 炭火に肉をのせる</span><span class="time">0:16–0:20</span><div class="telop">炭火が、肉を呼ぶ。</div><div class="nare">N：「いい肉を、炭火でじっくり。」</div><div class="desc">サシの入った肉を網へ。じゅっと最初の煙、下で熾火がオレンジに輝く。シネマティック寄り</div><div class="motion">▶ 最初の煙がゆっくり立つ／embers明滅</div></div></div>
+
+  <div class="card meat"><div class="ph"><span class="lbl">S6</span><span class="num">S6</span></div><div class="body"><span class="scene">S6 脂がはじける焼きアップ</span><span class="time">0:20–0:25</span><div class="telop">じゅわっと、香ばしく。</div><div class="nare">N：「じゅわっと脂がはじけて、香ばしい煙が立ちのぼる。」</div><div class="desc">焼き目・照り・はじける脂・滴る肉汁のマクロ。動画一番の“飯テロ”カット</div><div class="motion">▶ 脂ふつふつ／煙が巻き上がる（マクロ固定）</div></div></div>
+
+  <div class="card warm"><div class="ph"><span class="lbl">S7</span><span class="num">S7</span></div><div class="body"><span class="scene">S7 飲み物（ビール/ハイボール）</span><span class="time">0:25–0:29</span><div class="telop">キンッと、冷えた一杯。</div><div class="nare">N：「そこへ、キンッと冷えた一杯を。」</div><div class="desc">結露したグラスの黄金のビール（orハイボール）。白い泡・のぼる気泡。主役の手が伸びる ＝ 飲み物3割枠</div><div class="motion">▶ 気泡がのぼる／結露の雫が一滴</div></div></div>
+
+  <div class="card meat"><div class="ph"><span class="lbl">S8</span><span class="num">S8</span></div><div class="body"><span class="scene">S8 至福の一口</span><span class="time">0:29–0:33</span><div class="telop">この一口のために。</div><div class="nare">N：「——この一口のために、今日があった。」</div><div class="desc">焼けた肉を頬張り、目を閉じて至福の表情。暖色の光・湯気。「今日がんばったご褒美」感</div><div class="motion">▶ ゆっくり噛みしめ目を閉じる／湯気ゆらぎ</div></div></div>
+
+  <div class="card warm"><div class="ph"><span class="lbl">S9</span><span class="num">S9</span></div><div class="body"><span class="scene">S9 サブ：40代カップル</span><span class="time">0:33–0:37</span><div class="telop">大切な人と、ゆっくり。</div><div class="nare">N：「ひとりでも、大切な人とでも。」</div><div class="desc">スマートな40代カップルが炭火越しに乾杯。一人客だけでなくカップルにも合う、を提示（INDEPENDENT FACE）</div><div class="motion">▶ 乾杯のグラスが軽く触れる／炭火明滅</div></div></div>
+
+  <div class="card meat"><div class="ph"><span class="lbl">S10</span><span class="num">S10</span></div><div class="body"><span class="scene">S10 焼き上がりの盛り</span><span class="time">0:37–0:41</span><div class="telop">炭火焼肉 たなか屋</div><div class="nare">N：「炭火が育てる、極上のひととき。」</div><div class="desc">照り・湯気・焼き目の効いた焼肉のヒーローショット。豊かで旨そうな“締め”の一枚</div><div class="motion">▶ 湯気がゆっくり立つ（固定 or 5% push-in）</div></div></div>
+
+  <div class="card warm"><div class="ph"><span class="lbl">S11</span><span class="num">S11</span></div><div class="body"><span class="scene">S11 満たされて店を出る（After）</span><span class="time">0:41–0:43</span><div class="telop">また明日も、がんばれる。</div><div class="nare">N：「また明日から、がんばれる。」</div><div class="desc">暖簾をくぐり、満足げで活力を取り戻した表情で夜へ。姿勢はまっすぐ・S2と対比</div><div class="motion">▶ 暖簾をくぐって一歩／夜風</div></div></div>
+
+  <div class="card cta"><div class="ph"><span class="lbl">S12</span><span class="num">S12</span></div><div class="body"><span class="scene">S12 CTA エンドカード</span><span class="time">0:43–0:45</span><div class="telop">電話 ／ Instagram ／ 住所（後合成）</div><div class="nare">N：「ご予約・お問い合わせはお気軽に。」</div><div class="desc">あたたかい夜の外観。片側に連絡先用のクリーンな余白を確保（後合成）</div><table class="cta-tbl">
+    <tr><td>電話</td><td>090-3292-1516</td></tr>
+    <tr><td>Instagram</td><td>@takayu2929</td></tr>
+    <tr><td>住所</td><td>福井県越前市押田1丁目4-7</td></tr>
+    <tr><td>決済</td><td>クレジットカード・QRコード決済 OK</td></tr>
+  </table></div></div>
+
+</div>
+
+<h2>✅ ご確認いただきたい点</h2>
+<div class="points">
+  <ul class="check">
+    <li><b>全体の構成・流れ</b>：仕事終わり→たなか屋→炭火・焼肉→満足、の王道ストーリーでこの方向性で問題ないか</li>
+    <li><b>尺</b>：45秒で構成しました。30秒短縮版／60秒拡張版のご希望があればお知らせください</li>
+    <li><b>主役のお顔・体型</b>：50代・少しふくよか・がっつり肉好きそうなサラリーマンで作成（特定の有名人には似せず INDEPENDENT FACE）。ご希望があれば調整します</li>
+    <li><b>飲み物</b>：ビール想定で作成（ハイボールに変更／両方入れる も可能）</li>
+    <li><b>ナレーション・BGM</b>：落ち着いた男性ナレ＋夜の大人向けインストで仮置き。トーンのご希望があれば差し替えます</li>
+    <li><b>CTA（誘導先）</b>：電話・Instagram・住所で構成。公式LINE等があれば追加します</li>
+    <li><b>仕上げ用の素材</b>：店内（カウンター・炭火）・外観・暖簾の実物写真をいただければ、該当カットを実店舗に寄せて差し替えます（任意・スマホは横向き撮影でお願いします）</li>
+  </ul>
+</div>
+
+<h2>🛠 制作フロー</h2>
+<div class="points">
+  <ul>
+    <li>① 本構成・台本を確定（このページの内容）</li>
+    <li>② Lovartで12シーン分の画像生成 → 5秒の動画クリップに動画化（Kling／Veo2）</li>
+    <li>③ ナレ・BGMを生成（落ち着いた男性ナレ＋夜の大人向けインスト）</li>
+    <li>④ ffmpegで結合＋テロップ／店名／電話／Instagram／住所／決済アイコン／BGM合成 → 1本のMP4に</li>
+    <li>⑤ 確認用MP4をLINE WORKSで共有 → 修正1回まで → 完成版を <b>ギガファイル便</b> で納品</li>
+  </ul>
+</div>
+
+<p class="nb">※ このページはモックアップ（構成・台本）の確認用です。各カットの画像はこれから新海誠風アニメで生成します。最終納品物は動画化→ffmpeg合成したMP4になります。</p>
+
+</body>
+</html>
