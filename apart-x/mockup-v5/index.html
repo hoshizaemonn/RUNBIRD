@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アパート建築の方程式 v1.2 ── LPモックアップ v5</title>
+<meta name="description" content="apart-x.jp v1.2 リニューアルモックアップ。アイケンジャパン構造を踏襲し、福岡ビルドのコンテンツに置換した10セクション。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--yellow:#fcb900;--red:#c41e24;--dark:#1a2540;--ink:#1c1917;--cream:#faf6ef;--border:#e5e7eb}
+body{font-family:"Noto Sans JP",sans-serif;background:#f1f5f9;color:var(--ink);line-height:1.7}
+.topbar{background:var(--dark);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.12);position:sticky;top:0;z-index:100}
+.topbar .left{display:flex;align-items:center;gap:14px}
+.topbar .badge{background:var(--yellow);color:var(--ink);padding:4px 10px;border-radius:4px;font-size:10px;font-weight:900;letter-spacing:.15em}
+.topbar h1{font-family:"Noto Serif JP",serif;font-size:14px;font-weight:700;margin:0}
+.topbar .meta{display:flex;gap:14px;font-size:11px;color:#cbd5e1}
+.section-label{background:rgba(252,185,0,.95);color:var(--ink);padding:8px 16px;font-size:11px;font-weight:900;letter-spacing:.1em;position:absolute;top:12px;left:12px;border-radius:4px;z-index:5;font-family:"Inter",sans-serif}
+.lp-container{max-width:1280px;margin:0 auto;background:#fff;box-shadow:0 4px 32px rgba(0,0,0,.08)}
+.lp-section{position:relative;width:100%}
+.lp-section img{display:block;width:100%;height:auto}
+.intro{max-width:1280px;margin:24px auto;padding:20px 24px;background:#fff;border-radius:8px;font-size:13px;line-height:1.9;color:#475569}
+.intro h2{font-size:15px;color:var(--ink);margin-bottom:10px;font-weight:700}
+.intro .meta-row{display:grid;grid-template-columns:110px 1fr;gap:6px;font-size:12px;margin:4px 0}
+.intro .meta-row .k{color:#94a3b8;font-weight:700}
+.intro a{color:var(--red);text-decoration:none;border-bottom:1px solid var(--red)}
+.footer-note{max-width:1280px;margin:24px auto 48px;padding:20px 24px;background:var(--dark);color:#cbd5e1;border-radius:8px;font-size:12px;line-height:1.9}
+.footer-note .name{color:#fff;font-weight:900;font-size:14px;margin-bottom:6px}
+.thumb-nav{position:fixed;right:20px;bottom:20px;background:rgba(26,37,64,.92);color:#fff;padding:12px;border-radius:10px;display:flex;flex-direction:column;gap:4px;font-size:10px;z-index:99;max-height:480px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.thumb-nav a{color:#cbd5e1;text-decoration:none;padding:4px 10px;border-radius:3px;font-family:"Inter",sans-serif}
+.thumb-nav a:hover{background:var(--yellow);color:var(--ink)}
+.thumb-nav .title{font-size:9px;color:var(--yellow);letter-spacing:.15em;font-weight:900;margin-bottom:4px}
+@media(max-width:700px){.thumb-nav{display:none}.topbar h1{font-size:12px}.topbar .meta{display:none}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="left">
+    <span class="badge">MOCKUP v5</span>
+    <h1>アパート建築の方程式 v1.2 — apart-x.jp リニューアル提案</h1>
+  </div>
+  <div class="meta">
+    <span>参考: aikenjapan.jp</span>
+    <span>10セクション</span>
+    <span>2026-06-16</span>
+  </div>
+</div>
+
+<div class="intro">
+  <h2>このページについて</h2>
+  <div class="meta-row"><span class="k">対象</span><span>apart-x.jp v1.2 リニューアル</span></div>
+  <div class="meta-row"><span class="k">参考サイト</span><span>アイケンジャパン (aikenjapan.jp) の構造を踏襲</span></div>
+  <div class="meta-row"><span class="k">ペルソナ</span><span>A: 地主 / B: 建替え / C: 投資家（設計書v1.2準拠）</span></div>
+  <div class="meta-row"><span class="k">作成</span><span>株式会社 斗 / 2026-06-16</span></div>
+  <div class="meta-row"><span class="k">関連資料</span><span><a href="../analysis.html">現状分析レポート</a> ／ <a href="../index.html">apart-x 資料一覧</a></span></div>
+  <p style="margin-top:12px">下記10セクションを縦に並べて、実際のLPとしてのスクロール感を再現しています。各セクションはChatGPT Image 2.0でアイケンジャパンの構造を学習させた上で生成しました。HTMLとして実装する際の最終デザインカンプとしてご確認ください。</p>
+</div>
+
+<div class="lp-container">
+  <div class="lp-section" id="sec-01"><div class="section-label">#01 / HERO</div><img src="images/1.png" alt="FV"></div>
+  <div class="lp-section" id="sec-02"><div class="section-label">#02 / ADVANTAGE</div><img src="images/2.png" alt="5つの理由"></div>
+  <div class="lp-section" id="sec-03"><div class="section-label">#03 / 商品シリーズ</div><img src="images/3.png" alt="商品シリーズ"></div>
+  <div class="lp-section" id="sec-04"><div class="section-label">#04 / A 地主</div><img src="images/4.png" alt="A地主"></div>
+  <div class="lp-section" id="sec-05"><div class="section-label">#05 / B 建替え</div><img src="images/5.png" alt="B建替え"></div>
+  <div class="lp-section" id="sec-06"><div class="section-label">#06 / C 投資家</div><img src="images/6.png" alt="C投資家"></div>
+  <div class="lp-section" id="sec-07"><div class="section-label">#07 / オーナーボイス</div><img src="images/7.png" alt="オーナーボイス"></div>
+  <div class="lp-section" id="sec-08"><div class="section-label">#08 / セミナー誘導</div><img src="images/8.png" alt="セミナー誘導"></div>
+  <div class="lp-section" id="sec-09"><div class="section-label">#09 / 会社情報</div><img src="images/9.png" alt="会社情報"></div>
+  <div class="lp-section" id="sec-10"><div class="section-label">#10 / 最終CTA</div><img src="images/10.png" alt="最終CTA"></div>
+</div>
+
+<div class="footer-note">
+  <div class="name">補足事項</div>
+  <p>● 画像はChatGPT Image 2.0で生成。最終実装ではHTML/CSSで動的に組み直し、コピー・数値・物件情報は最新版で精査します。</p>
+  <p>● 日本語テキストの一部が崩れているのは画像生成AIの限界によるものです。HTML実装時には正確な文言で出力します。</p>
+  <p>● アイケンジャパンの構造を「アパート建築版」に翻案。ペルソナ別セクション(A地主/B建替え/C投資家)は v1.2 設計書準拠で独自追加。</p>
+  <p style="margin-top:12px;color:#94a3b8;font-size:11px">© 2026 株式会社 斗 — apart-x.jp v1.2 mockup v5</p>
+</div>
+
+<nav class="thumb-nav">
+  <div class="title">SECTIONS</div>
+  <a href="#sec-01">#01 FV</a>
+  <a href="#sec-02">#02 ADVANTAGE</a>
+  <a href="#sec-03">#03 商品シリーズ</a>
+  <a href="#sec-04">#04 A 地主</a>
+  <a href="#sec-05">#05 B 建替え</a>
+  <a href="#sec-06">#06 C 投資家</a>
+  <a href="#sec-07">#07 オーナーボイス</a>
+  <a href="#sec-08">#08 セミナー誘導</a>
+  <a href="#sec-09">#09 会社情報</a>
+  <a href="#sec-10">#10 最終CTA</a>
+</nav>
+</body>
+</html>
