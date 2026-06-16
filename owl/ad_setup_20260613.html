@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OWL福祉事業 広告設定レポート 2026-06-13</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Noto Sans JP",sans-serif;
+  background:#faf6ef;color:#0f172a;line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+  font-feature-settings:"palt";
+}
+.wrap{max-width:980px;margin:0 auto;padding:32px 20px 80px}
+
+/* HEADER */
+header.top{padding:24px 0 36px;border-bottom:3px solid #14213d;margin-bottom:32px}
+.kicker{font-family:"Inter";font-weight:700;font-size:11px;letter-spacing:.32em;color:#ff7a35;margin-bottom:10px}
+h1{font-family:"Noto Serif JP";font-weight:900;font-size:clamp(24px,4vw,34px);letter-spacing:.04em;line-height:1.4}
+.lead{font-size:13px;color:#5a5a5a;margin-top:14px;line-height:2}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.meta .tag{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:#fff;border:1px solid #14213d;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.04em}
+.meta .tag.ok{background:#dcfce7;border-color:#15803d;color:#15803d}
+.meta .tag.wait{background:#fef3c7;border-color:#d97706;color:#92400e}
+.meta .tag.todo{background:#f3f4f6;border-color:#6b7280;color:#374151}
+
+/* SECTION */
+section{margin-bottom:48px}
+h2{font-family:"Noto Serif JP";font-weight:900;font-size:22px;letter-spacing:.04em;padding:10px 14px;background:#14213d;color:#fff;border-radius:6px;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+h2 .n{font-family:"Inter";font-weight:900;font-size:14px;background:#ff7a35;padding:3px 10px;border-radius:4px;letter-spacing:.04em}
+h3{font-family:"Noto Serif JP";font-weight:900;font-size:18px;margin:24px 0 12px;padding-bottom:6px;border-bottom:2px solid #14213d}
+h4{font-family:"Noto Sans JP";font-weight:900;font-size:15px;margin:18px 0 8px;color:#14213d}
+
+/* STATUS PANEL */
+.status-panel{background:#fff;border:2px solid #14213d;border-radius:8px;padding:20px;margin-bottom:28px;box-shadow:4px 4px 0 #14213d}
+.status-row{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:10px 0;border-bottom:1px dashed #e5e7eb}
+.status-row:last-child{border-bottom:0}
+.status-row .lbl{font-family:"Noto Sans JP";font-weight:900;font-size:13px;color:#14213d}
+.status-row .val{font-size:13px;color:#374151;line-height:1.85}
+.status-row .badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:900;margin-right:6px}
+.status-row .badge.ok{background:#dcfce7;color:#15803d}
+.status-row .badge.wait{background:#fef3c7;color:#92400e}
+.status-row .badge.todo{background:#f3f4f6;color:#374151}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #e5e7eb;font-size:13px;margin-bottom:14px}
+th{background:#14213d;color:#fff;padding:10px;text-align:left;font-weight:900;font-size:12px;letter-spacing:.04em}
+td{padding:10px;border-bottom:1px solid #e5e7eb;vertical-align:top;line-height:1.7}
+td.center{text-align:center}
+td.num{font-family:"Inter";font-weight:700;text-align:right}
+tr:last-child td{border-bottom:0}
+.tbl-cap{font-size:11px;color:#64748b;margin-top:6px;margin-bottom:14px}
+
+/* CARD */
+.cp-card{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:20px;margin-bottom:14px;box-shadow:2px 2px 0 #14213d}
+.cp-card .cp-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #e5e7eb}
+.cp-card .cp-name{font-family:"Noto Serif JP";font-weight:900;font-size:16px;letter-spacing:.04em}
+.cp-card .cp-budget{font-family:"Inter";font-weight:700;color:#ff7a35;font-size:14px;letter-spacing:.04em}
+
+/* CODE BLOCK */
+.code{background:#0f172a;color:#e2e8f0;padding:14px 16px;border-radius:6px;font-family:"Inter","SF Mono",Menlo,monospace;font-size:12px;line-height:1.8;overflow-x:auto;margin:8px 0}
+.code.small{font-size:11px;padding:10px 14px}
+.code .num{color:#ff7a35;font-weight:700}
+
+/* CALLOUT BOX */
+.callout{padding:16px 18px;border-radius:6px;margin:14px 0;font-size:13px;line-height:1.85}
+.callout.ok{background:#dcfce7;border-left:4px solid #15803d}
+.callout.warn{background:#fef3c7;border-left:4px solid #d97706}
+.callout.info{background:#dbeafe;border-left:4px solid #2563eb}
+.callout.note{background:#f3f4f6;border-left:4px solid #6b7280}
+.callout strong{font-weight:900}
+
+/* LINK */
+.link-ext{color:#ff7a35;text-decoration:none;font-weight:700;border-bottom:1px dotted #ff7a35}
+.link-ext:hover{border-bottom-style:solid}
+
+/* NEXT STEPS */
+.next-steps{background:#fff;border:2px dashed #ff7a35;border-radius:8px;padding:20px;margin:20px 0}
+.next-steps ol{padding-left:22px}
+.next-steps li{margin-bottom:8px;font-size:13px}
+.next-steps li strong{color:#14213d}
+
+footer{margin-top:48px;padding-top:24px;border-top:1px solid #e5e7eb;font-size:11px;color:#64748b;text-align:center;line-height:1.85}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="kicker">REPORT / 2026-06-13</div>
+  <h1>OWL福祉事業<br>広告 設定レポート</h1>
+  <p class="lead">本日（2026-06-13）に実施した広告設定の全記録。Google広告A版完了、Yahoo広告は未着手。配信開始は嶋田社長承認＋Pixel発火テスト後。</p>
+  <div class="meta">
+    <span class="tag ok">✓ Google広告 A版 完了</span>
+    <span class="tag wait">⏳ Yahoo広告 未着手</span>
+    <span class="tag todo">📋 B版コーディング 待機</span>
+    <span class="tag ok">✓ LP アンカー埋め込み完了</span>
+  </div>
+</header>
+
+<!-- ====================== STATUS PANEL ====================== -->
+<div class="status-panel">
+  <div class="status-row">
+    <div class="lbl">Google広告</div>
+    <div class="val">
+      <span class="badge ok">完了</span>
+      A版3キャンペーン（CP01/CP02/CP03）の上書き設定完了。<strong>全キャンペーン一時停止状態で保存</strong>。
+    </div>
+  </div>
+  <div class="status-row">
+    <div class="lbl">Yahoo広告</div>
+    <div class="val">
+      <span class="badge wait">未着手</span>
+      既存3キャンペーン（CP01/CP02/CP03）あり。明日以降に上書き予定。設定内容はGoogleと同じ内容を流用。
+    </div>
+  </div>
+  <div class="status-row">
+    <div class="lbl">配信開始</div>
+    <div class="val">
+      <span class="badge todo">条件付き待機</span>
+      嶋田社長承認 → Pixel発火テスト → 配信開始（最短2026-06-16）
+    </div>
+  </div>
+  <div class="status-row">
+    <div class="lbl">A/Bテスト</div>
+    <div class="val">
+      <span class="badge wait">B版コーディング待機</span>
+      モックアップ2案OK済。功有会風（案B）から本番コーディング予定。
+    </div>
+  </div>
+  <div class="status-row">
+    <div class="lbl">LP対応</div>
+    <div class="val">
+      <span class="badge ok">完了</span>
+      ライブLP（lp_zero-plan-g_v2）に4箇所のアンカーID埋め込み済（#solve / #revenue / #flow / #voices）
+    </div>
+  </div>
+</div>
+
+<!-- ====================== ACCOUNT ====================== -->
+<section>
+  <h2><span class="n">01</span>アカウント情報</h2>
+  <table>
+    <tr><th width="35%">項目</th><th>値</th></tr>
+    <tr><td>Google広告 アカウント</td><td>OWL福祉事業GH（ID: 667-681-6290）</td></tr>
+    <tr><td>Yahoo広告 アカウント</td><td>株式会社ランバード（検索広告 1441736 / ID: tufty4091whelp）</td></tr>
+    <tr><td>配信先LP（A版）</td><td><a href="https://owl-fukushi.net/lp_zero-plan-g_v2/" class="link-ext" target="_blank">https://owl-fukushi.net/lp_zero-plan-g_v2/</a></td></tr>
+    <tr><td>配信先LP（B版・予定）</td><td>未確定（嶋田社長承認・コーディング後）</td></tr>
+    <tr><td>運営</td><td>株式会社RUNBIRD</td></tr>
+  </table>
+</section>
+
+<!-- ====================== GOOGLE ADS ====================== -->
+<section>
+  <h2><span class="n">02</span>Google広告 A版 設定（完了）</h2>
+
+  <h3>3キャンペーン構成</h3>
+  <table>
+    <tr><th>キャンペーンID</th><th>キャンペーン名</th><th>日予算</th><th>KW方針</th><th>ステータス</th></tr>
+    <tr><td>CP01</td><td>OWL本命_フランチャイズ</td><td class="num">¥7,000/日</td><td>本命KW・フレーズ一致</td><td><span class="badge wait">一時停止</span></td></tr>
+    <tr><td>CP02</td><td>OWL派生_開業全般</td><td class="num">¥5,000/日</td><td>派生KW・部分一致</td><td><span class="badge wait">一時停止</span></td></tr>
+    <tr><td>CP03</td><td>OWLテスト_新規KW</td><td class="num">¥2,000/日</td><td>新規テストKW</td><td><span class="badge wait">一時停止</span></td></tr>
+    <tr><td colspan="2"><strong>合計</strong></td><td class="num"><strong>¥14,000/日</strong></td><td colspan="2">月換算 ¥420,000</td></tr>
+  </table>
+
+  <h3>各キャンペーン詳細</h3>
+
+  <!-- CP01 -->
+  <div class="cp-card">
+    <div class="cp-head">
+      <div class="cp-name">CP01_本命_フランチャイズ</div>
+      <div class="cp-budget">¥7,000/日</div>
+    </div>
+    <h4>表示パス</h4>
+    <div class="code small">owl-fukushi.net/franchise/welfare</div>
+
+    <h4>RSA見出し（15本）</h4>
+    <div class="code small">1. 加盟金0円｜障がい福祉のFC
+2. 未経験率95%・福祉事業を始める
+3. 月次黒字化最短4ヶ月の実績
+4. 最短3ヶ月で障がい者GH開業
+5. 福祉業界初のフランチャイズ
+6. 月額固定のみ・ロイヤリティなし
+7. 開業後も継続サポート｜OWL
+8. 年間営業利益1,200万円規模
+9. 無料で資料請求はこちら
+10. WEB説明会で詳しく聞ける
+11. 障がい者グループホーム FC
+12. 加盟金0円で福祉事業を開業
+13. 5名の加盟オーナー実績あり
+14. 8〜10居室で年700万円実績
+15. OWL福祉事業｜株式会社RUNBIRD</div>
+
+    <h4>RSA説明文（4本・45文字以内）</h4>
+    <div class="code small">1. 加盟金0円・月額固定のみ。福祉業界初の障がい者グループホームFC、OWL福祉事業。
+2. 加盟者の95%が未経験。OWLマニュアルと専属スタッフが行政対応から運営まで全面サポート。
+3. 最短3ヶ月で開設、開設後2.5ヶ月で満床。月次黒字化最短4ヶ月のストック型事業。
+4. 無料資料請求・オンライン説明会を実施中。詳細は今すぐWEBから。お気軽にお問い合わせください。</div>
+  </div>
+
+  <!-- CP02 -->
+  <div class="cp-card">
+    <div class="cp-head">
+      <div class="cp-name">CP02_派生_開業全般</div>
+      <div class="cp-budget">¥5,000/日</div>
+    </div>
+    <h4>表示パス</h4>
+    <div class="code small">owl-fukushi.net/welfare-fc/start</div>
+
+    <h4>RSA見出し（15本）</h4>
+    <div class="code small">1. 福祉ビジネスを始めるなら
+2. 加盟金0円・開業サポート充実
+3. 未経験から福祉事業を開業
+4. 障害福祉で社会貢献＋収益
+5. 未経験から本格事業として開業 ★審査対応で修正
+6. 月次黒字化最短4ヶ月の実績
+7. 福祉×経営、地域に必要な仕事
+8. 障害者グループホーム経営
+9. 国の制度ビジネスで安定
+10. 無料で資料請求できる
+11. WEB説明会・予約受付中
+12. 福祉業界初のFC・OWL
+13. 月額固定のみ・透明な料金
+14. 5名のオーナー実績あり
+15. 株式会社RUNBIRD運営</div>
+
+    <h4>RSA説明文（4本・45文字以内）</h4>
+    <div class="code small">1. 障害福祉で開業を検討中の方へ。加盟金0円・月額固定のみのOWL福祉事業FC。
+2. 売上9割が国の給付費の安定ビジネス。長期入居型のストック収益モデル。
+3. 開業後も伴走サポート。月次黒字化最短4ヶ月、年間1,200万円規模の実績。
+4. 無料で資料請求・WEB説明会受付中。詳細はお気軽にお問い合わせください。 ★審査対応で電話番号削除</div>
+  </div>
+
+  <!-- CP03 -->
+  <div class="cp-card">
+    <div class="cp-head">
+      <div class="cp-name">CP03_テスト_新規KW</div>
+      <div class="cp-budget">¥2,000/日</div>
+    </div>
+    <h4>表示パス</h4>
+    <div class="code small">owl-fukushi.net/gh-business/test</div>
+
+    <h4>RSA見出し（15本）</h4>
+    <div class="code small">1. 障害福祉のフランチャイズ
+2. 加盟金0円で開業できる
+3. グループホーム経営を始める
+4. 未経験から福祉事業を開業
+5. 月額固定の福祉FC
+6. 障害者居住支援を事業化
+7. 国の制度で安定した収益
+8. 未経験から本格事業として開業
+9. 開業サポート充実のOWL
+10. 月次黒字化最短4ヶ月
+11. 加盟オーナー5名の実績
+12. 無料資料請求はこちら
+13. WEB説明会の予約受付
+14. 福祉業界初のフランチャイズ
+15. 株式会社RUNBIRD運営</div>
+
+    <h4>RSA説明文（4本・45文字以内）</h4>
+    <div class="code small">1. 障害福祉のフランチャイズをお探しの方へ。加盟金0円・月額固定のみ。
+2. 障害者グループホーム経営は国の制度に基づく安定収益モデル。
+3. 開業後も継続サポート。月次黒字化最短4ヶ月、年間1,200万円規模の実績。
+4. 無料で資料請求・WEB説明会受付中。お気軽にお問い合わせください。</div>
+  </div>
+
+  <h3>共通アセット（3CP共有）</h3>
+
+  <h4>① サイトリンク 4本（アンカー付き）</h4>
+  <table>
+    <tr><th>テキスト</th><th>リンク先URL</th></tr>
+    <tr><td>加盟金0円の仕組み</td><td><code>https://owl-fukushi.net/lp_zero-plan-g_v2/#solve</code></td></tr>
+    <tr><td>収益シミュレーション</td><td><code>https://owl-fukushi.net/lp_zero-plan-g_v2/#revenue</code></td></tr>
+    <tr><td>開業までの流れ</td><td><code>https://owl-fukushi.net/lp_zero-plan-g_v2/#flow</code></td></tr>
+    <tr><td>加盟オーナーの声</td><td><code>https://owl-fukushi.net/lp_zero-plan-g_v2/#voices</code></td></tr>
+  </table>
+  <p class="tbl-cap">※ サイトリンクの説明文は未設定（テキストとURLのみ）</p>
+
+  <h4>② コールアウト 6本</h4>
+  <div class="code small">加盟金0円
+未経験率95%
+月次黒字化最短4ヶ月
+最短3ヶ月で開業
+月額固定のみ
+開業後も継続サポート</div>
+
+  <h4>③ 構造化スニペット</h4>
+  <table>
+    <tr><th width="30%">ヘッダー</th><td><strong>プラン</strong></td></tr>
+    <tr><th>値1</th><td>8〜10居室</td></tr>
+    <tr><th>値2</th><td>12〜14居室</td></tr>
+    <tr><th>値3</th><td>16〜20居室</td></tr>
+  </table>
+
+  <h4>④ 電話番号アセット</h4>
+  <table>
+    <tr><th width="30%">電話番号</th><td><code>0120-540-522</code></td></tr>
+    <tr><th>国</th><td>日本</td></tr>
+    <tr><th>通話のみ広告</th><td>OFF</td></tr>
+    <tr><th>通話レポート</th><td>ON</td></tr>
+    <tr><th>表示スケジュール</th><td>月〜金 9:00〜18:00</td></tr>
+  </table>
+
+  <h3>河合さん修正5項目 反映確認</h3>
+  <div class="callout ok">
+    <strong>✓ 全て反映済み</strong><br>
+    ① 「最短1.5ヶ月」削除 → 「最短3ヶ月」<br>
+    ② 「投資回収」削除 → 「月次黒字化最短4ヶ月」<br>
+    ③ 収益数字：8-10居室700万 / 12-14居室1,200万 / 16-20居室1,800万<br>
+    ④ 初期投資項目は表に含めず<br>
+    ⑤ 加盟オーナーの声：本番5件（大阪/千葉/愛知/福島/三重）
+  </div>
+
+  <h3>Google審査対応で修正した項目</h3>
+  <table>
+    <tr><th>項目</th><th>元</th><th>修正後</th></tr>
+    <tr><td>CP02 見出し5</td><td>副業から本業まで対応可</td><td>未経験から本格事業として開業</td></tr>
+    <tr><td>CP02 説明文4</td><td>〜0120-540-522（平日9-18時）</td><td>〜お気軽にお問い合わせください</td></tr>
+  </table>
+</section>
+
+<!-- ====================== YAHOO ADS ====================== -->
+<section>
+  <h2><span class="n">03</span>Yahoo広告 A版 設定（未着手）</h2>
+
+  <div class="callout warn">
+    <strong>⏳ 未着手</strong> ─ 明日以降に上書き予定。設定内容はGoogle広告と同じ内容を流用する方針。
+  </div>
+
+  <h3>既存3キャンペーン構成</h3>
+  <table>
+    <tr><th>キャンペーンID</th><th>キャンペーン名</th><th>予算</th><th>状態</th></tr>
+    <tr><td>CP01</td><td>OWL本命_フランチャイズ</td><td class="num">¥7,000/日</td><td><span class="badge wait">配信停止（キャンペーンがオフ）</span></td></tr>
+    <tr><td>CP02</td><td>OWL派生_開業全般</td><td class="num">¥5,000/日</td><td><span class="badge wait">配信停止（キャンペーンがオフ）</span></td></tr>
+    <tr><td>CP03</td><td>OWLテスト_新規KW</td><td class="num">¥2,000/日</td><td><span class="badge wait">配信停止（キャンペーンがオフ）</span></td></tr>
+  </table>
+
+  <h3>Google→Yahoo 名称対応表</h3>
+  <table>
+    <tr><th>Google広告</th><th>Yahoo広告</th></tr>
+    <tr><td>レスポンシブ検索広告（RSA）</td><td>レスポンシブ検索広告</td></tr>
+    <tr><td>見出し（30文字）</td><td>タイトル（30文字）</td></tr>
+    <tr><td>説明文（90文字）</td><td>説明文（90文字）</td></tr>
+    <tr><td>サイトリンク</td><td>クイックリンク</td></tr>
+    <tr><td>コールアウト</td><td>テキスト補足</td></tr>
+    <tr><td>構造化スニペット</td><td>カテゴリ補足</td></tr>
+    <tr><td>電話番号アセット</td><td>電話番号</td></tr>
+  </table>
+  <p class="tbl-cap">仕様はほぼ同じ。Google設定の内容をそのまま流用可能。</p>
+
+  <div class="callout warn">
+    <strong>⚠️ Yahoo広告 過去事故の注意（ミチル案件）</strong><br>
+    Yahoo CV値は二重計上事故あり（CSV値÷2が実数）。配信開始前に必ずYahooタグ発火を確認すること。
+  </div>
+</section>
+
+<!-- ====================== LP ANCHORS ====================== -->
+<section>
+  <h2><span class="n">04</span>LP対応：アンカーID埋め込み（完了）</h2>
+
+  <p style="margin-bottom:14px;font-size:13px;color:#374151">サイトリンク／クイックリンクから各セクションへ直接ジャンプできるよう、Cowork（Claude Desktop）が4箇所のアンカーIDをLP本体に埋め込み済み。</p>
+
+  <table>
+    <tr><th>アンカーID</th><th>ジャンプ先セクション</th><th>動作確認</th></tr>
+    <tr><td><code>#solve</code></td><td>そのお悩み、OWL福祉事業が解決します</td><td><span class="badge ok">✓ OK</span></td></tr>
+    <tr><td><code>#revenue</code></td><td>収益シミュレーション</td><td><span class="badge ok">✓ OK</span></td></tr>
+    <tr><td><code>#flow</code></td><td>開業までの流れ</td><td><span class="badge ok">✓ OK</span></td></tr>
+    <tr><td><code>#voices</code></td><td>加盟オーナーの声</td><td><span class="badge ok">✓ OK</span></td></tr>
+  </table>
+
+  <div class="callout info">
+    <strong>実施内容</strong><br>
+    固定ページ「lp_zero-plan-g_v2」のカスタムHTML内で、各セクション画像 &lt;img&gt; の直前に <code>&lt;div id="xxx" style="position:relative;top:-80px"&gt;&lt;/div&gt;</code> を挿入。<br>
+    画像・テキスト・既存HTMLは一切無変更（文字数差分 +234文字＝4divぶんのみ）。
+  </div>
+</section>
+
+<!-- ====================== B VERSION ====================== -->
+<section>
+  <h2><span class="n">05</span>B版 LP（コーディング待機）</h2>
+
+  <p style="margin-bottom:14px;font-size:13px;color:#374151">嶋田社長承認済の2モックアップ案をベースに、案B（功有会風）から本番コーディング着手予定。</p>
+
+  <table>
+    <tr><th>案</th><th>デザイン方向性</th><th>状態</th></tr>
+    <tr><td>案A（檸檬会風）</td><td>カラフル・ポップ。数字訴求軸。</td><td><span class="badge ok">モックアップOK</span></td></tr>
+    <tr><td>案B（功有会風）</td><td>温かみ・ストーリー軸。共感訴求。</td><td><span class="badge ok">モックアップOK</span></td></tr>
+  </table>
+
+  <p style="font-size:12px;color:#64748b;margin-top:10px">
+    モックアップ確認URL：
+    <a href="https://hoshizaemonn.github.io/RUNBIRD/owl/mockup_20260613/" class="link-ext" target="_blank">https://hoshizaemonn.github.io/RUNBIRD/owl/mockup_20260613/</a>
+  </p>
+</section>
+
+<!-- ====================== NEXT STEPS ====================== -->
+<section>
+  <h2><span class="n">06</span>次のステップ</h2>
+
+  <div class="next-steps">
+    <ol>
+      <li><strong>Yahoo広告 A版 上書き作業</strong> — Google同等内容で3CP上書き（一時停止のまま）</li>
+      <li><strong>B版 LP コーディング</strong> — 案B（功有会風）モックアップを画像LPとして実装、WP下書きで保存</li>
+      <li><strong>Pixel発火テスト</strong> — A版・B版両方でGA4・Google Tag Assistant・Yahooタグ確認</li>
+      <li><strong>嶋田社長 最終承認</strong> — 配信開始判断</li>
+      <li><strong>配信開始</strong> — Google A版＋Yahoo A版 同時稼働</li>
+      <li><strong>B版広告キャンペーン作成</strong> — A版を複製してB版用に修正</li>
+      <li><strong>A/B テスト 50/50 分割配信</strong> — 最低2週間モニタリング</li>
+      <li><strong>勝者判定・拡大配信</strong> — CV・CVR・CPAで判定</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ====================== SUZUKI RULES ====================== -->
+<section>
+  <h2><span class="n">07</span>鈴木さんルール 遵守事項</h2>
+
+  <div class="callout ok">
+    <strong>✓ 配信開始していない</strong> ─ Google広告3CPとも一時停止のまま保存。Yahoo広告も配信停止のまま。
+  </div>
+  <div class="callout ok">
+    <strong>✓ 嶋田社長承認なしに配信しない</strong> ─ Pixel発火テスト + 承認後にのみ配信開始。
+  </div>
+  <div class="callout ok">
+    <strong>✓ 既存LP・既存ライブ広告に手を入れていない</strong> ─ A版LPはアンカー追加のみで本文無変更。
+  </div>
+  <div class="callout ok">
+    <strong>✓ 河合さん修正5項目を反映</strong> ─ 「最短1.5ヶ月」「投資回収」表現は全削除。
+  </div>
+  <div class="callout warn">
+    <strong>⏳ Pixel発火テスト</strong> ─ 配信開始直前に必ず実施。GA4リアルタイム / Google Tag Assistant / Yahooタグ。
+  </div>
+</section>
+
+<footer>
+  <p><strong>OWL福祉事業 広告設定レポート</strong></p>
+  <p>担当：星崎 ／ 株式会社RUNBIRD<br>
+  作成日：2026-06-13 ／ 関連URL：<a href="https://hoshizaemonn.github.io/RUNBIRD/owl/" class="link-ext" target="_blank">OWL マスターindex</a></p>
+</footer>
+
+</div>
+</body>
+</html>
