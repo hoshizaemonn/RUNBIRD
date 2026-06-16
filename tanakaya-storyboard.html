@@ -23,8 +23,13 @@
   .card.meat::before{content:"焼肉";position:absolute;top:8px;right:10px;background:var(--ember);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.1em;z-index:2}
   .card.warm{border-top:4px solid var(--warm)}
   .card.cta{border-top:4px solid var(--accent)}
-  .card .ph{aspect-ratio:16/9;background:linear-gradient(135deg,#2a1c14 0%,#5a2c18 50%,#d2402a 110%);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+  .card .ph{aspect-ratio:1/1;background:linear-gradient(135deg,#2a1c14 0%,#5a2c18 50%,#d2402a 110%);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center}
+  .card .ph img{width:100%;height:100%;object-fit:cover;display:block}
   .card .ph .num{font-size:38px;font-weight:800;color:rgba(245,233,223,.22);letter-spacing:.05em}
+  .refgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:8px}
+  .refgrid figure{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .refgrid img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover}
+  .refgrid figcaption{font-size:12px;color:var(--ink2);padding:8px 10px}
   .card .ph .lbl{position:absolute;top:8px;left:10px;background:rgba(0,0,0,.5);color:var(--ink);font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.05em}
   .card .body{padding:14px 16px 16px}
   .card .scene{font-size:11px;color:var(--ink2);letter-spacing:.08em;font-weight:700}
@@ -80,32 +85,40 @@
   </ul>
 </div>
 
+<h2>🎭 キャラクター＆店舗イメージ（全カット共通の固定素材）</h2>
+<div class="refgrid">
+  <figure><img src="tanakaya-images/R01_salaryman.jpg" alt="主役"><figcaption>主役：50代サラリーマン（3表情・全カットで顔を固定）</figcaption></figure>
+  <figure><img src="tanakaya-images/R02_counter_charcoal.jpg" alt="店内"><figcaption>店内：カウンター席＋炭火（七輪）</figcaption></figure>
+  <figure><img src="tanakaya-images/R03_exterior.jpg" alt="外観"><figcaption>外観：暖簾＋あたたかい灯りの店先（夜）</figcaption></figure>
+  <figure><img src="tanakaya-images/R04_couple.jpg" alt="カップル"><figcaption>サブ：40代カップル（S9で登場）</figcaption></figure>
+</div>
+
 <h2>📽 シーン構成 全12カット</h2>
 <div class="grid">
 
-  <div class="card cta"><div class="ph"><span class="lbl">S1</span><span class="num">S1</span></div><div class="body"><span class="scene">S1 ロゴ</span><span class="time">0:00–0:03</span><div class="telop">炭火焼肉 たなか屋（ロゴ fade in）</div><div class="desc">暗闇に炭火の熾火がほのかに赤く明滅 → 店名ロゴが浮かぶ</div><div class="motion">▶ ffmpegでfade in／熾火ループ</div></div></div>
+  <div class="card cta"><div class="ph"><span class="lbl">S1</span><img src="tanakaya-images/S01_logo_ember.jpg" alt="S1"></div><div class="body"><span class="scene">S1 ロゴ</span><span class="time">0:00–0:03</span><div class="telop">炭火焼肉 たなか屋（ロゴ fade in）</div><div class="desc">暗闇に炭火の熾火がほのかに赤く明滅 → 店名ロゴが浮かぶ</div><div class="motion">▶ ffmpegでfade in／熾火ループ</div></div></div>
 
-  <div class="card hook"><div class="ph"><span class="lbl">S2</span><span class="num">S2</span></div><div class="body"><span class="scene">S2 仕事終わりの疲れ</span><span class="time">0:03–0:08</span><div class="telop">今日も、おつかれさま。</div><div class="nare">N：「今日も一日、おつかれさまでした。」</div><div class="desc">夜の街をひとり歩く50代サラリーマン（スーツ・ネクタイ緩め・肩が少し落ちる）。寒色・ネオンbokeh</div><div class="motion">▶ 後ろ姿スロー追従／ネオン揺らぎ</div></div></div>
+  <div class="card hook"><div class="ph"><span class="lbl">S2</span><img src="tanakaya-images/S02_tired_night_walk.jpg" alt="S2"></div><div class="body"><span class="scene">S2 仕事終わりの疲れ</span><span class="time">0:03–0:08</span><div class="telop">今日も、おつかれさま。</div><div class="nare">N：「今日も一日、おつかれさまでした。」</div><div class="desc">夜の街をひとり歩く50代サラリーマン（スーツ・ネクタイ緩め・肩が少し落ちる）。寒色・ネオンbokeh</div><div class="motion">▶ 後ろ姿スロー追従／ネオン揺らぎ</div></div></div>
 
-  <div class="card warm"><div class="ph"><span class="lbl">S3</span><span class="num">S3</span></div><div class="body"><span class="scene">S3 たなか屋 外観</span><span class="time">0:08–0:12</span><div class="telop">福井・越前 炭火焼肉 たなか屋</div><div class="nare">N：「がんばった日こそ、ご褒美がいる。」</div><div class="desc">暖簾とあたたかい灯りの店先。漂う煙に引き寄せられる。夜の青×入口の暖色の対比</div><div class="motion">▶ 入口へslow push-in／暖簾・煙ふわり</div></div></div>
+  <div class="card warm"><div class="ph"><span class="lbl">S3</span><img src="tanakaya-images/S03_exterior_drawn_in.jpg" alt="S3"></div><div class="body"><span class="scene">S3 たなか屋 外観</span><span class="time">0:08–0:12</span><div class="telop">福井・越前 炭火焼肉 たなか屋</div><div class="nare">N：「がんばった日こそ、ご褒美がいる。」</div><div class="desc">暖簾とあたたかい灯りの店先。漂う煙に引き寄せられる。夜の青×入口の暖色の対比</div><div class="motion">▶ 入口へslow push-in／暖簾・煙ふわり</div></div></div>
 
-  <div class="card warm"><div class="ph"><span class="lbl">S4</span><span class="num">S4</span></div><div class="body"><span class="scene">S4 カウンターに座る</span><span class="time">0:12–0:16</span><div class="telop">目の前で、炭火。</div><div class="nare">N：「カウンターの特等席。目の前には、真っ赤な炭火。」</div><div class="desc">主役がカウンター席へ。上着を脱ぎ、目の前の真っ赤な炭火を前に安堵の表情。暖色の光</div><div class="motion">▶ 横顔へ5%ドリーイン／熾火明滅</div></div></div>
+  <div class="card warm"><div class="ph"><span class="lbl">S4</span><img src="tanakaya-images/S04_sit_counter.jpg" alt="S4"></div><div class="body"><span class="scene">S4 カウンターに座る</span><span class="time">0:12–0:16</span><div class="telop">目の前で、炭火。</div><div class="nare">N：「カウンターの特等席。目の前には、真っ赤な炭火。」</div><div class="desc">主役がカウンター席へ。上着を脱ぎ、目の前の真っ赤な炭火を前に安堵の表情。暖色の光</div><div class="motion">▶ 横顔へ5%ドリーイン／熾火明滅</div></div></div>
 
-  <div class="card meat"><div class="ph"><span class="lbl">S5</span><span class="num">S5</span></div><div class="body"><span class="scene">S5 炭火に肉をのせる</span><span class="time">0:16–0:20</span><div class="telop">炭火が、肉を呼ぶ。</div><div class="nare">N：「いい肉を、炭火でじっくり。」</div><div class="desc">サシの入った肉を網へ。じゅっと最初の煙、下で熾火がオレンジに輝く。シネマティック寄り</div><div class="motion">▶ 最初の煙がゆっくり立つ／embers明滅</div></div></div>
+  <div class="card meat"><div class="ph"><span class="lbl">S5</span><img src="tanakaya-images/S05_meat_on_grill.jpg" alt="S5"></div><div class="body"><span class="scene">S5 炭火に肉をのせる</span><span class="time">0:16–0:20</span><div class="telop">炭火が、肉を呼ぶ。</div><div class="nare">N：「いい肉を、炭火でじっくり。」</div><div class="desc">サシの入った肉を網へ。じゅっと最初の煙、下で熾火がオレンジに輝く。シネマティック寄り</div><div class="motion">▶ 最初の煙がゆっくり立つ／embers明滅</div></div></div>
 
-  <div class="card meat"><div class="ph"><span class="lbl">S6</span><span class="num">S6</span></div><div class="body"><span class="scene">S6 脂がはじける焼きアップ</span><span class="time">0:20–0:25</span><div class="telop">じゅわっと、香ばしく。</div><div class="nare">N：「じゅわっと脂がはじけて、香ばしい煙が立ちのぼる。」</div><div class="desc">焼き目・照り・はじける脂・滴る肉汁のマクロ。動画一番の“飯テロ”カット</div><div class="motion">▶ 脂ふつふつ／煙が巻き上がる（マクロ固定）</div></div></div>
+  <div class="card meat"><div class="ph"><span class="lbl">S6</span><img src="tanakaya-images/S06_meat_macro.jpg" alt="S6"></div><div class="body"><span class="scene">S6 脂がはじける焼きアップ</span><span class="time">0:20–0:25</span><div class="telop">じゅわっと、香ばしく。</div><div class="nare">N：「じゅわっと脂がはじけて、香ばしい煙が立ちのぼる。」</div><div class="desc">焼き目・照り・はじける脂・滴る肉汁のマクロ。動画一番の“飯テロ”カット</div><div class="motion">▶ 脂ふつふつ／煙が巻き上がる（マクロ固定）</div></div></div>
 
-  <div class="card warm"><div class="ph"><span class="lbl">S7</span><span class="num">S7</span></div><div class="body"><span class="scene">S7 飲み物（ビール/ハイボール）</span><span class="time">0:25–0:29</span><div class="telop">キンッと、冷えた一杯。</div><div class="nare">N：「そこへ、キンッと冷えた一杯を。」</div><div class="desc">結露したグラスの黄金のビール（orハイボール）。白い泡・のぼる気泡。主役の手が伸びる ＝ 飲み物3割枠</div><div class="motion">▶ 気泡がのぼる／結露の雫が一滴</div></div></div>
+  <div class="card warm"><div class="ph"><span class="lbl">S7</span><img src="tanakaya-images/S07_drink.jpg" alt="S7"></div><div class="body"><span class="scene">S7 飲み物（ビール/ハイボール）</span><span class="time">0:25–0:29</span><div class="telop">キンッと、冷えた一杯。</div><div class="nare">N：「そこへ、キンッと冷えた一杯を。」</div><div class="desc">結露したグラスの黄金のビール（orハイボール）。白い泡・のぼる気泡。主役の手が伸びる ＝ 飲み物3割枠</div><div class="motion">▶ 気泡がのぼる／結露の雫が一滴</div></div></div>
 
-  <div class="card meat"><div class="ph"><span class="lbl">S8</span><span class="num">S8</span></div><div class="body"><span class="scene">S8 至福の一口</span><span class="time">0:29–0:33</span><div class="telop">この一口のために。</div><div class="nare">N：「——この一口のために、今日があった。」</div><div class="desc">焼けた肉を頬張り、目を閉じて至福の表情。暖色の光・湯気。「今日がんばったご褒美」感</div><div class="motion">▶ ゆっくり噛みしめ目を閉じる／湯気ゆらぎ</div></div></div>
+  <div class="card meat"><div class="ph"><span class="lbl">S8</span><img src="tanakaya-images/S08_first_bite.jpg" alt="S8"></div><div class="body"><span class="scene">S8 至福の一口</span><span class="time">0:29–0:33</span><div class="telop">この一口のために。</div><div class="nare">N：「——この一口のために、今日があった。」</div><div class="desc">焼けた肉を頬張り、目を閉じて至福の表情。暖色の光・湯気。「今日がんばったご褒美」感</div><div class="motion">▶ ゆっくり噛みしめ目を閉じる／湯気ゆらぎ</div></div></div>
 
-  <div class="card warm"><div class="ph"><span class="lbl">S9</span><span class="num">S9</span></div><div class="body"><span class="scene">S9 サブ：40代カップル</span><span class="time">0:33–0:37</span><div class="telop">大切な人と、ゆっくり。</div><div class="nare">N：「ひとりでも、大切な人とでも。」</div><div class="desc">スマートな40代カップルが炭火越しに乾杯。一人客だけでなくカップルにも合う、を提示（INDEPENDENT FACE）</div><div class="motion">▶ 乾杯のグラスが軽く触れる／炭火明滅</div></div></div>
+  <div class="card warm"><div class="ph"><span class="lbl">S9</span><img src="tanakaya-images/S09_couple.jpg" alt="S9"></div><div class="body"><span class="scene">S9 サブ：40代カップル</span><span class="time">0:33–0:37</span><div class="telop">大切な人と、ゆっくり。</div><div class="nare">N：「ひとりでも、大切な人とでも。」</div><div class="desc">スマートな40代カップルが炭火越しに乾杯。一人客だけでなくカップルにも合う、を提示（INDEPENDENT FACE）</div><div class="motion">▶ 乾杯のグラスが軽く触れる／炭火明滅</div></div></div>
 
-  <div class="card meat"><div class="ph"><span class="lbl">S10</span><span class="num">S10</span></div><div class="body"><span class="scene">S10 焼き上がりの盛り</span><span class="time">0:37–0:41</span><div class="telop">炭火焼肉 たなか屋</div><div class="nare">N：「炭火が育てる、極上のひととき。」</div><div class="desc">照り・湯気・焼き目の効いた焼肉のヒーローショット。豊かで旨そうな“締め”の一枚</div><div class="motion">▶ 湯気がゆっくり立つ（固定 or 5% push-in）</div></div></div>
+  <div class="card meat"><div class="ph"><span class="lbl">S10</span><img src="tanakaya-images/S10_food_hero.jpg" alt="S10"></div><div class="body"><span class="scene">S10 焼き上がりの盛り</span><span class="time">0:37–0:41</span><div class="telop">炭火焼肉 たなか屋</div><div class="nare">N：「炭火が育てる、極上のひととき。」</div><div class="desc">照り・湯気・焼き目の効いた焼肉のヒーローショット。豊かで旨そうな“締め”の一枚</div><div class="motion">▶ 湯気がゆっくり立つ（固定 or 5% push-in）</div></div></div>
 
-  <div class="card warm"><div class="ph"><span class="lbl">S11</span><span class="num">S11</span></div><div class="body"><span class="scene">S11 満たされて店を出る（After）</span><span class="time">0:41–0:43</span><div class="telop">また明日も、がんばれる。</div><div class="nare">N：「また明日から、がんばれる。」</div><div class="desc">暖簾をくぐり、満足げで活力を取り戻した表情で夜へ。姿勢はまっすぐ・S2と対比</div><div class="motion">▶ 暖簾をくぐって一歩／夜風</div></div></div>
+  <div class="card warm"><div class="ph"><span class="lbl">S11</span><img src="tanakaya-images/S11_leaving_satisfied.jpg" alt="S11"></div><div class="body"><span class="scene">S11 満たされて店を出る（After）</span><span class="time">0:41–0:43</span><div class="telop">また明日も、がんばれる。</div><div class="nare">N：「また明日から、がんばれる。」</div><div class="desc">暖簾をくぐり、満足げで活力を取り戻した表情で夜へ。姿勢はまっすぐ・S2と対比</div><div class="motion">▶ 暖簾をくぐって一歩／夜風</div></div></div>
 
-  <div class="card cta"><div class="ph"><span class="lbl">S12</span><span class="num">S12</span></div><div class="body"><span class="scene">S12 CTA エンドカード</span><span class="time">0:43–0:45</span><div class="telop">電話 ／ Instagram ／ 住所（後合成）</div><div class="nare">N：「ご予約・お問い合わせはお気軽に。」</div><div class="desc">あたたかい夜の外観。片側に連絡先用のクリーンな余白を確保（後合成）</div><table class="cta-tbl">
+  <div class="card cta"><div class="ph"><span class="lbl">S12</span><img src="tanakaya-images/S12_endcard.jpg" alt="S12"></div><div class="body"><span class="scene">S12 CTA エンドカード</span><span class="time">0:43–0:45</span><div class="telop">電話 ／ Instagram ／ 住所（後合成）</div><div class="nare">N：「ご予約・お問い合わせはお気軽に。」</div><div class="desc">あたたかい夜の外観。片側に連絡先用のクリーンな余白を確保（後合成）</div><table class="cta-tbl">
     <tr><td>電話</td><td>090-3292-1516</td></tr>
     <tr><td>Instagram</td><td>@takayu2929</td></tr>
     <tr><td>住所</td><td>福井県越前市押田1丁目4-7</td></tr>
@@ -138,7 +151,7 @@
   </ul>
 </div>
 
-<p class="nb">※ このページはモックアップ（構成・台本）の確認用です。各カットの画像はこれから新海誠風アニメで生成します。最終納品物は動画化→ffmpeg合成したMP4になります。</p>
+<p class="nb">※ 各カットの画像は新海誠風アニメで生成したイメージ（v1）です。正方形で生成しているため本番では16:9にトリミング＆動画化します。最終納品物は各カットを動かし、テロップ・ナレ・BGM・連絡先を合成したMP4になります。</p>
 
 </body>
 </html>
