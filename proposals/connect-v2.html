@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告 運用 再提案書 — コネクト Connect 様</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #cc0000;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 28px;
+        }
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* KPI cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+        .kpi-card {
+            background: linear-gradient(135deg,#fff5f5,#ffeaea);
+            border: 2px solid #ffcdd2;
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .kpi-label { font-size: 12px; color: #666; margin-bottom: 6px; }
+        .kpi-value { font-size: 22px; font-weight: 700; color: #cc0000; }
+        .kpi-sub { font-size: 11px; color: #888; margin-top: 4px; }
+
+        /* tables */
+        table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+        th, td { padding: 10px 12px; border-bottom: 1px solid #eee; text-align: center; }
+        th { background: #f8f9fa; font-weight: 700; color: #555; }
+        td.kw { text-align: left; font-weight: 600; }
+        tr.good { background: #f1f8e9; }
+        tr.bad { background: #ffebee; }
+        tr.middle { background: #fff8e1; }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .badge-good { background: #c8e6c9; color: #2e7d32; }
+        .badge-bad { background: #ffcdd2; color: #c62828; }
+        .badge-mid { background: #fff9c4; color: #f57c00; }
+
+        .area-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 14px;
+        }
+        .area-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 16px;
+        }
+        .area-card.up { border-color: #66bb6a; background: #f1f8e9; }
+        .area-card.down { border-color: #ef5350; background: #ffebee; }
+        .area-card h4 { font-size: 14px; margin-bottom: 10px; }
+
+        .proposal-card {
+            background: linear-gradient(135deg,#e3f2fd,#f3e5f5);
+            border-left: 5px solid #1976d2;
+            border-radius: 8px;
+            padding: 18px 22px;
+            margin-bottom: 14px;
+        }
+        .proposal-card h3 {
+            font-size: 16px;
+            color: #1565c0;
+            margin-bottom: 8px;
+        }
+        .proposal-card .meta {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+        .proposal-card p { font-size: 13px; color: #333; }
+
+        .alert-banner {
+            background: #fff3e0;
+            border-left: 5px solid #ef6c00;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 28px;
+        }
+        .alert-banner h3 {
+            font-size: 15px;
+            color: #ef6c00;
+            margin-bottom: 6px;
+        }
+
+        .note-bar {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 18px 22px;
+            margin-bottom: 28px;
+        }
+        .note-bar h3 { font-size: 14px; margin-bottom: 10px; color: #555; }
+        .note-bar ul { padding-left: 20px; font-size: 13px; color: #555; }
+        .note-bar li { margin-bottom: 6px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 運用 再提案書</h1>
+    <p class="subtitle">コネクト Connect 様｜株式会社ランバード｜2026/6/17</p>
+
+    <!-- アラートバナー -->
+    <div class="alert-banner">
+        <h3>📊 配信開始からの実績データ（2026/5/1 〜 6/17）を基に、設定の最適化を再提案いたします</h3>
+        <p style="font-size:13px;color:#5d4037;">配信ボリュームに月次で変化が見られるため、勝ちパターンへの集中・無駄削減・エリア配分の見直しをご提案します。</p>
+    </div>
+
+    <!-- ① 実績サマリー -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">1</span>
+            配信実績サマリー（2026/5/1 〜 6/17｜48日間）
+        </div>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">表示回数</div>
+                <div class="kpi-value">5,240</div>
+                <div class="kpi-sub">回</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">視聴回数</div>
+                <div class="kpi-value">3,092</div>
+                <div class="kpi-sub">回</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">視聴率</div>
+                <div class="kpi-value">59.0%</div>
+                <div class="kpi-sub">業界平均 25-30% を大幅超</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">平均CPV</div>
+                <div class="kpi-value">¥1.1</div>
+                <div class="kpi-sub">良好水準</div>
+            </div>
+        </div>
+
+        <h4 style="font-size:14px;margin-top:24px;margin-bottom:10px;color:#555;">📅 月別推移</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>月</th>
+                    <th>表示回数</th>
+                    <th>視聴回数</th>
+                    <th>視聴率</th>
+                    <th>平均CPV</th>
+                    <th>比較</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>2026年5月</strong></td>
+                    <td>3,260</td>
+                    <td>1,904</td>
+                    <td>58.4%</td>
+                    <td>¥1.1</td>
+                    <td><span class="badge badge-good">基準</span></td>
+                </tr>
+                <tr>
+                    <td><strong>2026年6月（17日時点）</strong></td>
+                    <td>1,980</td>
+                    <td>1,188</td>
+                    <td>60.0%</td>
+                    <td>¥1.0</td>
+                    <td><span class="badge badge-mid">CPV改善・配信は低下</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:12px;color:#666;margin-top:10px;">
+            ※ 視聴率は <strong>5月58.4% → 6月60.0%（+1.6pt）</strong>と改善。視聴単価も <strong>¥1.1 → ¥1.0</strong>と良化。<br>
+            ※ 一方、配信ボリュームは月次ベースで縮小傾向（6月は5月対比のペース換算で約60%）。
+        </p>
+    </div>
+
+    <!-- ② キーワード別パフォーマンス -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#2e7d32;">2</span>
+            キーワード別パフォーマンス
+        </div>
+        <p style="font-size:13px;color:#666;margin-bottom:14px;">
+            ✅ <strong>残す/強化したいKW（高ボリューム・低CPV）</strong>と、❌ <strong>停止候補KW（ほぼ配信なし）</strong>を整理しました。
+        </p>
+
+        <h4 style="font-size:14px;margin-bottom:10px;color:#2e7d32;">🚀 A. 残したい / 強化したい（勝ちKW）</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>キーワード</th>
+                    <th>表示</th>
+                    <th>視聴</th>
+                    <th>視聴率</th>
+                    <th>CPV</th>
+                    <th>費用</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="good">
+                    <td class="kw">ドライブ 趣味</td>
+                    <td>1,288</td>
+                    <td>689</td>
+                    <td>53.5%</td>
+                    <td>¥1.3</td>
+                    <td>¥912</td>
+                </tr>
+                <tr class="good">
+                    <td class="kw">タイヤ 処分</td>
+                    <td>993</td>
+                    <td>606</td>
+                    <td>61.0%</td>
+                    <td>¥0.9</td>
+                    <td>¥550</td>
+                </tr>
+                <tr class="good">
+                    <td class="kw">車 メンテナンス</td>
+                    <td>750</td>
+                    <td>469</td>
+                    <td>62.5%</td>
+                    <td>¥1.0</td>
+                    <td>¥459</td>
+                </tr>
+                <tr class="good">
+                    <td class="kw">タイヤ 買取</td>
+                    <td>741</td>
+                    <td>434</td>
+                    <td>58.6%</td>
+                    <td>¥1.2</td>
+                    <td>¥526</td>
+                </tr>
+                <tr class="good">
+                    <td class="kw">車 カスタム</td>
+                    <td>722</td>
+                    <td>429</td>
+                    <td>59.4%</td>
+                    <td>¥1.0</td>
+                    <td>¥423</td>
+                </tr>
+                <tr class="good">
+                    <td class="kw">ホイール 買取</td>
+                    <td>657</td>
+                    <td>411</td>
+                    <td>62.6%</td>
+                    <td>¥0.9</td>
+                    <td>¥383</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:12px;color:#666;margin-top:8px;">
+            👉 この6KWで <strong>表示の97% / 費用の97%</strong> を占めています。Google AIがこれらを軸に配信学習中。
+        </p>
+
+        <h4 style="font-size:14px;margin-top:24px;margin-bottom:10px;color:#c62828;">❌ B. 停止候補（ほぼ配信なし・KWヒント不発）</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>キーワード</th>
+                    <th>表示</th>
+                    <th>視聴</th>
+                    <th>判定</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="bad"><td class="kw">スタッドレス 処分</td><td>3</td><td>2</td><td><span class="badge badge-bad">配信ほぼなし</span></td></tr>
+                <tr class="bad"><td class="kw">タイヤ交換 古いタイヤ</td><td>5</td><td>2</td><td><span class="badge badge-bad">配信ほぼなし</span></td></tr>
+                <tr class="bad"><td class="kw">ホイール 交換</td><td>8</td><td>6</td><td><span class="badge badge-bad">配信少</span></td></tr>
+                <tr class="bad"><td class="kw">ホイール 売れる</td><td>11</td><td>6</td><td><span class="badge badge-bad">配信少</span></td></tr>
+                <tr class="bad"><td class="kw">バッテリー 処分</td><td>15</td><td>7</td><td><span class="badge badge-bad">配信少</span></td></tr>
+                <tr class="bad"><td class="kw">タイヤ交換 時期</td><td>3</td><td>3</td><td><span class="badge badge-bad">配信ほぼなし</span></td></tr>
+                <tr class="bad"><td class="kw">タイヤ 廃棄 費用</td><td>5</td><td>3</td><td><span class="badge badge-bad">配信ほぼなし</span></td></tr>
+                <tr class="bad"><td class="kw">車好き</td><td>20</td><td>12</td><td><span class="badge badge-bad">配信少</span></td></tr>
+                <tr class="bad"><td class="kw">アルミホイール 買取</td><td>2</td><td>1</td><td><span class="badge badge-bad">配信ほぼなし</span></td></tr>
+                <tr class="bad"><td class="kw">ホイール 出張買取</td><td>4</td><td>1</td><td><span class="badge badge-bad">配信ほぼなし</span></td></tr>
+                <tr class="bad"><td class="kw">ホイール 査定</td><td>9</td><td>8</td><td><span class="badge badge-bad">配信少・CPV¥5.2と割高</span></td></tr>
+                <tr class="bad"><td class="kw">タイヤホイール 売りたい</td><td>4</td><td>3</td><td><span class="badge badge-bad">配信ほぼなし</span></td></tr>
+            </tbody>
+        </table>
+        <p style="font-size:12px;color:#666;margin-top:8px;">
+            👉 これら12KWは合計でも <strong>表示89回</strong>のみ。整理することでAIが勝ちKWに学習リソースを集中できます。
+        </p>
+    </div>
+
+    <!-- ③ 地域別パフォーマンス -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#1976d2;">3</span>
+            地域別パフォーマンス
+        </div>
+        <p style="font-size:13px;color:#666;margin-bottom:14px;">配信エリア別の月次推移をご確認ください。</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>エリア</th>
+                    <th>5月表示</th>
+                    <th>6月表示</th>
+                    <th>5月視聴</th>
+                    <th>6月視聴</th>
+                    <th>5月CPV</th>
+                    <th>6月CPV</th>
+                    <th>所感</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="good">
+                    <td class="kw">横浜市（神奈川）</td>
+                    <td>575</td>
+                    <td>332</td>
+                    <td>351</td>
+                    <td>205</td>
+                    <td>¥1.1</td>
+                    <td>¥1.0</td>
+                    <td><span class="badge badge-good">最大ボリューム</span></td>
+                </tr>
+                <tr class="good">
+                    <td class="kw">川崎市（神奈川）</td>
+                    <td>209</td>
+                    <td>124</td>
+                    <td>134</td>
+                    <td>79</td>
+                    <td>¥1.1</td>
+                    <td>¥1.0</td>
+                    <td><span class="badge badge-good">安定</span></td>
+                </tr>
+                <tr class="good">
+                    <td class="kw">相模原市（神奈川）</td>
+                    <td>114</td>
+                    <td>64</td>
+                    <td>53</td>
+                    <td>41</td>
+                    <td>¥1.6</td>
+                    <td>¥0.7</td>
+                    <td><span class="badge badge-good">CPV改善</span></td>
+                </tr>
+                <tr class="middle">
+                    <td class="kw">八王子市（東京）</td>
+                    <td>72</td>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>27</td>
+                    <td>¥1.1</td>
+                    <td>¥1.2</td>
+                    <td><span class="badge badge-mid">中規模</span></td>
+                </tr>
+                <tr class="middle">
+                    <td class="kw">町田市（東京）</td>
+                    <td>49</td>
+                    <td>34</td>
+                    <td>30</td>
+                    <td>18</td>
+                    <td>¥0.9</td>
+                    <td>¥1.1</td>
+                    <td><span class="badge badge-mid">中規模</span></td>
+                </tr>
+                <tr class="middle">
+                    <td class="kw">大和市（神奈川）</td>
+                    <td>46</td>
+                    <td>27</td>
+                    <td>30</td>
+                    <td>17</td>
+                    <td>¥1.1</td>
+                    <td>¥1.3</td>
+                    <td><span class="badge badge-mid">店舗近隣</span></td>
+                </tr>
+                <tr class="middle">
+                    <td class="kw">厚木市（神奈川）</td>
+                    <td>36</td>
+                    <td>21</td>
+                    <td>23</td>
+                    <td>11</td>
+                    <td>¥1.4</td>
+                    <td>¥0.9</td>
+                    <td><span class="badge badge-mid">CPV改善</span></td>
+                </tr>
+                <tr class="middle">
+                    <td class="kw">海老名市（神奈川）</td>
+                    <td>21</td>
+                    <td>16</td>
+                    <td>13</td>
+                    <td>9</td>
+                    <td>¥3.1</td>
+                    <td>¥0.6</td>
+                    <td><span class="badge badge-mid">CPV大幅改善</span></td>
+                </tr>
+                <tr class="middle">
+                    <td class="kw">座間市（神奈川）</td>
+                    <td>20</td>
+                    <td>14</td>
+                    <td>16</td>
+                    <td>9</td>
+                    <td>¥1.2</td>
+                    <td>¥0.4</td>
+                    <td><span class="badge badge-mid">CPV大幅改善</span></td>
+                </tr>
+                <tr>
+                    <td class="kw"><strong>東京都（広域）</strong></td>
+                    <td>2,118</td>
+                    <td>1,298</td>
+                    <td>1,204</td>
+                    <td>772</td>
+                    <td>¥1.1</td>
+                    <td>¥1.0</td>
+                    <td>広域配信</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:12px;color:#666;margin-top:10px;">
+            👉 横浜市・川崎市が圧倒的なボリューム。店舗近隣（大和・座間・海老名・厚木）は<strong>6月でCPVが大幅改善</strong>しており、ここをもう少し押せる余地があります。
+        </p>
+    </div>
+
+    <!-- ④ 再提案 -->
+    <div class="section" style="border-color:#1976d2;">
+        <div class="section-title">
+            <span class="icon" style="background:#1976d2;">4</span>
+            次サイクル 改善提案（3案）
+        </div>
+
+        <div class="proposal-card">
+            <h3>提案 ①：停止候補KWの整理（無駄削減 → AI学習の集中）</h3>
+            <p class="meta">対象：12KW（表示89回 / 全体の1.7%）</p>
+            <p>配信ほぼなし／CPV割高のKWを整理し、Google AIが勝ちKW（ドライブ趣味・タイヤ処分・車メンテナンス等）に学習リソースを集中できる状態にします。<br>
+            <strong>狙い：</strong> 残ったKWへの配信比率を上げ、視聴単価をさらに引き下げます。</p>
+        </div>
+
+        <div class="proposal-card">
+            <h3>提案 ②：店舗近隣エリアの入札最適化（大和・座間・海老名・厚木）</h3>
+            <p class="meta">対象：店舗周辺4エリア</p>
+            <p>6月時点でCPVが大幅改善している店舗近隣エリア（座間¥0.4／海老名¥0.6／厚木¥0.9）は、<strong>「店舗に近い＝来店確度の高い視聴者」</strong>です。<br>
+            <strong>狙い：</strong> 単価が下がっているうちにこのエリアでの配信比率を高め、来店動機の強い層へのリーチを増やします。</p>
+        </div>
+
+        <div class="proposal-card">
+            <h3>提案 ③：勝ちKW群への動画訴求アライン強化</h3>
+            <p class="meta">対象：勝ち6KW（表示97%占有）</p>
+            <p>現在配信されているドライブ趣味・タイヤ処分・買取・カスタム・メンテナンスの5テーマは、<strong>「車を大切にする」「メンテ・買取ニーズ」</strong>に集約されます。<br>
+            動画クリエイティブのCTA・サムネを<strong>これらキーワードと文脈一致させる</strong>ことで、視聴後の来店行動率を高めます。<br>
+            <strong>狙い：</strong> 視聴 → 来店 への転換率向上。</p>
+        </div>
+    </div>
+
+    <!-- 補足事項 -->
+    <div class="note-bar">
+        <h3>補足事項</h3>
+        <ul>
+            <li>本提案は <strong>2026/5/1 〜 6/17（48日間）</strong> の実績データに基づいています</li>
+            <li>視聴率59.0%・CPV¥1.1は<strong>業界平均を大幅に上回る良好水準</strong>です（業界平均：視聴率25-30%／CPV¥3〜7）</li>
+            <li>停止候補KWは <strong>「削除」ではなく「一時停止」</strong>とし、効果がなければ復活も可能です</li>
+            <li>ご不明な点・ご要望がございましたら、お気軽にお申し付けください</li>
+        </ul>
+    </div>
+
+    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
+        株式会社ランバード｜広告運用サポート窓口｜2026/6/17 作成
+    </div>
+
+</div>
+</body>
+</html>
