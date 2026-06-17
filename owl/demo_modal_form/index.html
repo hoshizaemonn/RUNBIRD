@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OWL 資料請求モーダル — レビュー用デモ</title>
+<style>
+/* ===== レビュー用デモ画面の枠（本番には入りません） ===== */
+:root{ --owl-orange:#f5821f; --owl-orange-dark:#e0700f; --owl-navy:#1f3b63; --owl-ink:#333; }
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--owl-ink);background:#fbf6ee}
+.demo-wrap{max-width:430px;margin:0 auto;padding:24px 16px 80px}
+.demo-note{background:#fff7e6;border:1px solid #f3d488;border-radius:10px;padding:12px 14px;font-size:13px;line-height:1.7;margin-bottom:22px}
+.demo-note b{color:var(--owl-orange-dark)}
+.demo-section{margin:28px 0;text-align:center}
+.demo-section h2{font-size:14px;color:#888;font-weight:600;margin:0 0 12px}
+
+/* 本番のボタン見た目に寄せたデモ用トリガー（本番では既存 a.owl-btn を流用） */
+.owl-btn{display:block;width:100%;max-width:360px;margin:10px auto;padding:16px 20px;border-radius:999px;
+  background:var(--owl-orange);color:#fff;font-size:18px;font-weight:700;text-decoration:none;border:none;cursor:pointer;
+  box-shadow:0 4px 0 var(--owl-orange-dark);text-align:center}
+.owl-btn:active{transform:translateY(2px);box-shadow:0 2px 0 var(--owl-orange-dark)}
+.owl-btn.delay{background:var(--owl-navy);box-shadow:0 4px 0 #142a47}
+
+/* =======================================================================
+   ここから下が本番に組み込む想定の owl-modal- 一式（HTML/CSS/JS）
+   ======================================================================= */
+.owl-modal-overlay{
+  position:fixed;inset:0;z-index:99990;display:none;
+  background:rgba(20,28,40,.55);
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+  padding:16px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.owl-modal-overlay.is-open{display:flex;align-items:flex-start;justify-content:center}
+.owl-modal{
+  position:relative;width:100%;max-width:420px;margin:24px auto;background:#fff;border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,.3);animation:owlModalIn .22s ease-out}
+@keyframes owlModalIn{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.owl-modal-header{
+  position:relative;background:var(--owl-orange);color:#fff;border-radius:16px 16px 0 0;padding:18px 48px 16px 20px}
+.owl-modal-title{margin:0;font-size:19px;font-weight:800;letter-spacing:.02em}
+.owl-modal-sub{margin:4px 0 0;font-size:12px;opacity:.95}
+.owl-modal-close{
+  position:absolute;top:10px;right:10px;width:34px;height:34px;border:none;border-radius:50%;
+  background:rgba(255,255,255,.2);color:#fff;font-size:22px;line-height:34px;cursor:pointer;padding:0}
+.owl-modal-close:hover{background:rgba(255,255,255,.35)}
+.owl-modal-body{padding:18px 20px 22px}
+.owl-modal-field{margin-bottom:16px}
+.owl-modal-label{display:block;font-size:14px;font-weight:700;margin-bottom:7px}
+.owl-modal-req{color:#e23b3b;font-size:11px;font-weight:700;margin-left:6px;vertical-align:1px}
+.owl-modal-opt{color:#999;font-size:11px;font-weight:600;margin-left:6px}
+.owl-modal-checks{display:flex;flex-direction:column;gap:8px}
+.owl-modal-check{display:flex;align-items:center;gap:10px;border:1.5px solid #e2e2e2;border-radius:10px;
+  padding:11px 13px;font-size:15px;cursor:pointer;transition:border-color .15s,background .15s}
+.owl-modal-check input{width:19px;height:19px;accent-color:var(--owl-orange);margin:0;flex:none}
+.owl-modal-check:has(input:checked){border-color:var(--owl-orange);background:#fff6ec}
+.owl-modal-input,.owl-modal-textarea,.owl-modal-select{
+  width:100%;border:1.5px solid #d9d9d9;border-radius:10px;padding:12px 13px;font-size:16px;font-family:inherit;color:var(--owl-ink);background:#fff}
+.owl-modal-input:focus,.owl-modal-textarea:focus,.owl-modal-select:focus{outline:none;border-color:var(--owl-orange);box-shadow:0 0 0 3px rgba(245,130,31,.15)}
+.owl-modal-textarea{min-height:90px;resize:vertical}
+/* ご希望の日程（WEB説明会選択時のみ表示） */
+.owl-modal-schedule{display:none;background:#f7faff;border:1px solid #dde7f5;border-radius:12px;padding:13px 13px 4px}
+.owl-modal-schedule.is-visible{display:block}
+.owl-modal-sched-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.owl-modal-sched-no{flex:none;width:52px;font-size:12px;font-weight:700;color:var(--owl-navy)}
+.owl-modal-sched-row .owl-modal-input,.owl-modal-sched-row .owl-modal-select{padding:9px 10px;font-size:14px}
+.owl-modal-sched-row .owl-modal-input[type=date]{flex:1.2;min-width:0}
+.owl-modal-sched-row .owl-modal-select{flex:1;min-width:0}
+.owl-modal-error{display:none;color:#e23b3b;font-size:12px;margin-top:5px;font-weight:600}
+.owl-modal-field.has-error .owl-modal-input,
+.owl-modal-field.has-error .owl-modal-textarea,
+.owl-modal-field.has-error .owl-modal-checks{border-color:#e23b3b}
+.owl-modal-field.has-error .owl-modal-error{display:block}
+.owl-modal-submit{
+  width:100%;border:none;border-radius:999px;background:var(--owl-orange);color:#fff;font-size:18px;font-weight:800;
+  padding:16px;cursor:pointer;box-shadow:0 4px 0 var(--owl-orange-dark);margin-top:4px}
+.owl-modal-submit:active{transform:translateY(2px);box-shadow:0 2px 0 var(--owl-orange-dark)}
+.owl-modal-submit:disabled{opacity:.6;cursor:default}
+.owl-modal-privacy{font-size:11px;color:#999;text-align:center;margin:12px 0 0;line-height:1.6}
+/* 送信完了表示 */
+.owl-modal-done{display:none;padding:46px 24px 50px;text-align:center}
+.owl-modal-done .owl-modal-done-icon{width:64px;height:64px;border-radius:50%;background:#eaf7ec;color:#34a853;
+  font-size:34px;line-height:64px;margin:0 auto 16px}
+.owl-modal-done h3{margin:0 0 8px;font-size:19px;color:var(--owl-navy)}
+.owl-modal-done p{margin:0;font-size:14px;color:#666;line-height:1.7}
+.owl-modal.is-done .owl-modal-body{display:none}
+.owl-modal.is-done .owl-modal-done{display:block}
+.owl-modal.is-done .owl-modal-header{border-radius:16px}
+body.owl-modal-lock{overflow:hidden}
+</style>
+</head>
+<body>
+
+<div class="demo-wrap">
+  <div class="demo-note">
+    <b>レビュー用デモです（本番ページには未反映）。</b><br>
+    下の各ボタンを押すとモーダルが開きます。<br>
+    確認ポイント：①4ボタンで開く ②「無料資料請求」→「資料請求」自動チェック／「WEB説明会」→「WEB説明会」自動チェック
+    ③<b>WEB説明会を選ぶと「ご希望の日程」が出現</b>（第1・第2希望／日付＋時間帯）
+    ④✕・ESC・背景クリックで閉じる ⑤必須バリデーション ⑥送信→「お問い合わせを受け付けました」表示。<br>
+    ※送信は<b>デモ動作（実送信なし）</b>です。CF7フォーム確定後に実送信を接続します。
+  </div>
+
+  <div class="demo-section">
+    <h2>FV上部ボタン（href="#cta" を置換）</h2>
+    <a href="#" class="owl-btn owl-modal-trigger" data-owl-inquiry="資料請求">無料資料請求</a>
+    <a href="#" class="owl-btn delay owl-modal-trigger" data-owl-inquiry="WEB説明会">WEB説明会</a>
+  </div>
+
+  <div class="demo-section">
+    <h2>CTA下ボタン（href="#" を置換）</h2>
+    <a href="#" class="owl-btn owl-modal-trigger" data-owl-inquiry="資料請求">無料資料請求</a>
+    <a href="#" class="owl-btn delay owl-modal-trigger" data-owl-inquiry="WEB説明会">WEB説明会</a>
+  </div>
+</div>
+
+
+<!-- ============ 本番では <body> 末尾に追加する想定 ============ -->
+<div class="owl-modal-overlay" id="owlModalOverlay" role="dialog" aria-modal="true" aria-labelledby="owlModalTitle">
+  <div class="owl-modal" id="owlModal">
+    <div class="owl-modal-header">
+      <h2 class="owl-modal-title" id="owlModalTitle">無料お問い合わせ</h2>
+      <p class="owl-modal-sub">加盟金0円・障がい者グループホームFC</p>
+      <button type="button" class="owl-modal-close" id="owlModalClose" aria-label="閉じる">&times;</button>
+    </div>
+
+    <div class="owl-modal-body">
+      <form id="owlModalForm" novalidate>
+        <div class="owl-modal-field" data-field="inquiry">
+          <span class="owl-modal-label">ご希望の内容<span class="owl-modal-req">必須・複数選択可</span></span>
+          <div class="owl-modal-checks">
+            <label class="owl-modal-check"><input type="checkbox" name="inquiry[]" value="資料請求"><span>資料請求</span></label>
+            <label class="owl-modal-check"><input type="checkbox" name="inquiry[]" value="WEB説明会"><span>WEB説明会</span></label>
+          </div>
+          <span class="owl-modal-error">いずれか1つ以上を選択してください。</span>
+        </div>
+
+        <!-- ご希望の日程：WEB説明会を選んだときだけ表示 -->
+        <div class="owl-modal-field owl-modal-schedule" id="owlSchedule" data-field="schedule">
+          <span class="owl-modal-label">ご希望の日程<span class="owl-modal-opt">任意</span></span>
+          <div class="owl-modal-sched-row">
+            <span class="owl-modal-sched-no">第1希望</span>
+            <input class="owl-modal-input" type="date" name="date1" aria-label="第1希望の日付">
+            <select class="owl-modal-select" name="time1" aria-label="第1希望の時間帯">
+              <option value="">時間帯</option>
+              <option value="午前（9:00-12:00）">午前（9:00-12:00）</option>
+              <option value="午後（12:00-17:00）">午後（12:00-17:00）</option>
+              <option value="夕方（17:00-19:00）">夕方（17:00-19:00）</option>
+            </select>
+          </div>
+          <div class="owl-modal-sched-row">
+            <span class="owl-modal-sched-no">第2希望</span>
+            <input class="owl-modal-input" type="date" name="date2" aria-label="第2希望の日付">
+            <select class="owl-modal-select" name="time2" aria-label="第2希望の時間帯">
+              <option value="">時間帯</option>
+              <option value="午前（9:00-12:00）">午前（9:00-12:00）</option>
+              <option value="午後（12:00-17:00）">午後（12:00-17:00）</option>
+              <option value="夕方（17:00-19:00）">夕方（17:00-19:00）</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="owl-modal-field" data-field="name-l">
+          <label class="owl-modal-label" for="owlNameL">お名前<span class="owl-modal-req">必須</span></label>
+          <input class="owl-modal-input" type="text" id="owlNameL" name="name-l" autocomplete="name" placeholder="山田 太郎">
+          <span class="owl-modal-error">お名前を入力してください。</span>
+        </div>
+
+        <div class="owl-modal-field" data-field="name-s">
+          <label class="owl-modal-label" for="owlNameS">ふりがな<span class="owl-modal-req">必須</span></label>
+          <input class="owl-modal-input" type="text" id="owlNameS" name="name-s" placeholder="やまだ たろう">
+          <span class="owl-modal-error">ふりがなを入力してください。</span>
+        </div>
+
+        <div class="owl-modal-field" data-field="company">
+          <label class="owl-modal-label" for="owlCompany">会社名<span class="owl-modal-opt">任意</span></label>
+          <input class="owl-modal-input" type="text" id="owlCompany" name="company" autocomplete="organization" placeholder="株式会社〇〇">
+        </div>
+
+        <div class="owl-modal-field" data-field="tel">
+          <label class="owl-modal-label" for="owlTel">電話番号<span class="owl-modal-req">必須</span></label>
+          <input class="owl-modal-input" type="tel" id="owlTel" name="tel" autocomplete="tel" inputmode="tel" placeholder="09012345678">
+          <span class="owl-modal-error">正しい電話番号を入力してください。</span>
+        </div>
+
+        <div class="owl-modal-field" data-field="email">
+          <label class="owl-modal-label" for="owlEmail">メールアドレス<span class="owl-modal-req">必須</span></label>
+          <input class="owl-modal-input" type="email" id="owlEmail" name="email" autocomplete="email" inputmode="email" placeholder="example@owl.jp">
+          <span class="owl-modal-error">正しいメールアドレスを入力してください。</span>
+        </div>
+
+        <div class="owl-modal-field" data-field="message">
+          <label class="owl-modal-label" for="owlMessage">お問い合わせ内容<span class="owl-modal-opt">任意</span></label>
+          <textarea class="owl-modal-textarea" id="owlMessage" name="message" placeholder="ご質問・ご希望などがあればご記入ください。"></textarea>
+        </div>
+
+        <button type="submit" class="owl-modal-submit" id="owlModalSubmit">送信する</button>
+        <p class="owl-modal-privacy">送信いただいた情報はお問い合わせ対応のために利用します。</p>
+      </form>
+    </div>
+
+    <div class="owl-modal-done">
+      <div class="owl-modal-done-icon">&#10003;</div>
+      <h3>お問い合わせを受け付けました</h3>
+      <p>担当者より折り返しご連絡いたします。<br>ありがとうございました。</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var overlay  = document.getElementById('owlModalOverlay');
+  var modal    = document.getElementById('owlModal');
+  var form     = document.getElementById('owlModalForm');
+  var closeBtn = document.getElementById('owlModalClose');
+  var submitBtn= document.getElementById('owlModalSubmit');
+  var schedule = document.getElementById('owlSchedule');
+  var webBox   = form.querySelector('input[name="inquiry[]"][value="WEB説明会"]');
+  var lastFocus = null;
+
+  function syncSchedule(){
+    if(schedule){ schedule.classList.toggle('is-visible', !!(webBox && webBox.checked)); }
+  }
+
+  function openModal(inquiry){
+    resetForm();
+    if(inquiry){
+      var box = form.querySelector('input[name="inquiry[]"][value="'+inquiry+'"]');
+      if(box){ box.checked = true; }
+    }
+    syncSchedule();
+    lastFocus = document.activeElement;
+    overlay.classList.add('is-open');
+    document.body.classList.add('owl-modal-lock');
+    var first = form.querySelector('input[name="name-l"]');
+    if(first){ setTimeout(function(){ first.focus(); }, 60); }
+  }
+  function closeModal(){
+    overlay.classList.remove('is-open');
+    document.body.classList.remove('owl-modal-lock');
+    if(lastFocus && lastFocus.focus){ lastFocus.focus(); }
+  }
+  function resetForm(){
+    modal.classList.remove('is-done');
+    form.reset();
+    form.querySelectorAll('.has-error').forEach(function(el){ el.classList.remove('has-error'); });
+    syncSchedule();
+    submitBtn.disabled = false;
+    submitBtn.textContent = '送信する';
+  }
+
+  // --- トリガー（本番では既存 a.owl-btn を流用：data-owl-inquiry 付与 or クラス追加） ---
+  document.querySelectorAll('.owl-modal-trigger').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      openModal(btn.getAttribute('data-owl-inquiry'));
+    });
+  });
+
+  // --- WEB説明会の選択で日程欄を出し入れ ---
+  form.addEventListener('change', syncSchedule);
+
+  // --- 閉じる：✕ / 背景クリック / ESC ---
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay){ closeModal(); } });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('is-open')){ closeModal(); }
+  });
+
+  // --- バリデーション ---
+  function setError(name, on){
+    var f = form.querySelector('[data-field="'+name+'"]');
+    if(f){ f.classList.toggle('has-error', !!on); }
+  }
+  function validate(){
+    var ok = true;
+    var inquiry = form.querySelectorAll('input[name="inquiry[]"]:checked').length > 0;
+    setError('inquiry', !inquiry); if(!inquiry) ok = false;
+
+    var nameL = form.querySelector('[name="name-l"]').value.trim();
+    setError('name-l', !nameL); if(!nameL) ok = false;
+
+    var nameS = form.querySelector('[name="name-s"]').value.trim();
+    setError('name-s', !nameS); if(!nameS) ok = false;
+
+    var tel = form.querySelector('[name="tel"]').value.trim();
+    var telOk = /^[0-9+\-()\s]{8,}$/.test(tel);
+    setError('tel', !telOk); if(!telOk) ok = false;
+
+    var email = form.querySelector('[name="email"]').value.trim();
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    setError('email', !emailOk); if(!emailOk) ok = false;
+
+    return ok;
+  }
+
+  // --- 送信 ---
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!validate()){
+      var firstErr = form.querySelector('.has-error');
+      if(firstErr){ firstErr.scrollIntoView({behavior:'smooth', block:'center'}); }
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = '送信中…';
+
+    /* =====================================================================
+       本番ではこの部分を Contact Form 7 REST 送信に差し替えます（フォーム確定後）：
+
+       var data = new FormData(form);
+       data.append('_wpcf7_unit_tag', 'owl-modal');
+       fetch('/wp-json/contact-form-7/v1/contact-forms/<FORM_ID>/feedback', {
+         method:'POST', body:data
+       })
+       .then(function(r){ return r.json(); })
+       .then(function(res){
+         if(res.status === 'mail_sent'){ showDone(); }
+         else { showFailure(res); }
+       })
+       .catch(showFailure);
+
+       ※CF7側に Turnstile/reCAPTCHA がある場合はトークン付与を追加。
+       ===================================================================== */
+
+    // デモ：実送信せず成功表示
+    setTimeout(showDone, 600);
+  });
+
+  function showDone(){
+    modal.classList.add('is-done');
+    modal.scrollIntoView({block:'start'});
+    // 自動で閉じたい場合：setTimeout(closeModal, 2500);
+  }
+  window.__owlOpenModal = openModal; // デバッグ用
+})();
+</script>
+</body>
+</html>
