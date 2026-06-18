@@ -3,45 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>資金繰り表（24ヶ月）v5ドラフト（¥600万） — 一般社団法人SGパートナーズ</title>
+<title>資金繰り表（24ヶ月）v5・横スライド版（¥600万） — 一般社団法人SGパートナーズ</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;font-size:11px;background:#fff;padding:18px;color:#1a1a1a;line-height:1.5}
 h1{font-size:16px;text-align:center;margin-bottom:2px;font-weight:700}
 .sub{text-align:center;font-size:10.5px;color:#555;margin-bottom:4px}
-.note-top{text-align:center;font-size:10px;color:#2c4a6e;margin-bottom:10px}
+.note-top{text-align:center;font-size:10px;color:#1a5c2e;margin-bottom:10px}
 .badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 12px;border-radius:4px;margin:0 4px 10px}
-.badge-main{background:#2e7d32;color:#fff}
+.badge-main{background:#1a5c2e;color:#fff}
 .badge-hozen{background:#2c4a6e;color:#fff}
-.ptitle{font-size:13px;font-weight:700;margin:20px 0 6px;border-left:4px solid #2e7d32;padding-left:8px}
+.ptitle{font-size:13px;font-weight:700;margin:20px 0 4px;border-left:4px solid #1a5c2e;padding-left:8px}
+.unit{text-align:right;font-size:10px;color:#555;margin-bottom:3px}
+.slidehint{font-size:10px;color:#1a5c2e;margin:0 0 4px;font-weight:600}
+
+/* 横スクロール（横スライド）コンテナ */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid #ccc;border-radius:4px;margin-bottom:8px}
+.scroll table{margin-bottom:0;border:none}
+
 table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:10px}
-th,td{border:1px solid #999;padding:3px 5px;text-align:right;white-space:nowrap}
-th{background:#2c4a6e;color:#fff;text-align:center;font-weight:700}
-td.lbl{text-align:left;background:#f4f7fb;font-weight:600;min-width:120px}
-td.topic{font-size:9px;text-align:center;background:#3a6590;color:#fff;white-space:normal;line-height:1.25;max-width:60px}
-tr.carry td{background:#2c4a6e;color:#fff;font-weight:700}
-tr.carry td.lbl{background:#2c4a6e;color:#fff}
-tr.full td{background:#fff4cc;font-weight:700}
-tr.full td.lbl{background:#fff4cc}
+th,td{border:1px solid #999;padding:4px 6px;text-align:right;white-space:nowrap}
+th{background:#1a5c2e;color:#fff;text-align:center;font-weight:700}
+/* 項目列を固定（横スライドしても見出しが残る） */
+td.lbl,th.lbl{position:sticky;left:0;z-index:3;text-align:left;background:#f4f7fb;font-weight:600;min-width:200px;box-shadow:2px 0 3px rgba(0,0,0,.08)}
+th.lbl{background:#0f3d1e;color:#fff;z-index:4}
+td.sec{position:sticky;left:0;z-index:3;text-align:center;background:#c8d8c8;font-weight:700;font-size:10px;width:18px;writing-mode:vertical-rl;box-shadow:none}
+/* sec があるときは lbl を sec の右へずらす */
+td.sec + td.lbl,th.sec + th.lbl{left:18px}
+th.sec{position:sticky;left:0;z-index:4;background:#0f3d1e;color:#fff;width:18px}
+td.topic{font-size:9px;text-align:center;background:#2a7a42;color:#fff;white-space:normal;line-height:1.25;max-width:62px}
+tr.total td{background:#fff4cc;font-weight:700}
+tr.total td.lbl{background:#fff4cc}
+tr.fund td{background:#e8f4e8}
+tr.fund td.lbl{background:#e8f4e8;font-weight:700}
+tr.balance td{background:#e8eef5;font-weight:700}
+tr.balance td.lbl{background:#e8eef5}
+tr.carry td{background:#1a5c2e;color:#fff;font-weight:700}
+tr.carry td.lbl{background:#1a5c2e;color:#fff}
+tr.full-col{background:#fff4cc}
 .neg{color:#cc0000;font-weight:700}
 .pos{color:#276749;font-weight:700}
 .note{font-size:9.5px;color:#555;margin:4px 0 14px}
 .section{background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;margin:16px 0}
 .section h2{font-size:13px;font-weight:700;margin-bottom:8px;color:#2c4a6e}
 .kv td{padding:5px 10px;font-size:10.5px}
-.kv td.lbl{min-width:150px}
+.kv td.lbl{min-width:150px;position:static;box-shadow:none}
 .result-box{background:#e8f5e9;border:2px solid #2e7d32;border-radius:8px;padding:14px 16px;margin:14px 0}
 .result-box .big{font-size:20px;font-weight:700;color:#1b5e20}
 .lever td:first-child{text-align:left}
+.lever td.lbl{position:static;box-shadow:none}
 .lever tr.hl td{background:#fff4cc;font-weight:700}
-@media print{body{padding:8mm}table{page-break-inside:auto}tr{page-break-inside:avoid}}
+@media print{body{padding:8mm}.scroll{overflow:visible;border:none}table{page-break-inside:auto}tr{page-break-inside:avoid}td.lbl,td.sec,th.lbl,th.sec{position:static;box-shadow:none}}
 </style>
 </head>
 <body>
 
-<h1>資金繰り表（24ヶ月）v5ドラフト — Royal準拠版（融資¥600万）</h1>
+<h1>資金繰り表（24ヶ月）v5・横スライド版 — Royal準拠（融資¥600万）</h1>
 <p class="sub">一般社団法人SGパートナーズ｜障がい者グループホーム α-cupid（岡崎ハイツⅠ・定員4名）｜作成日：2026年6月12日（v5ドラフト・¥600万）</p>
-<p class="note-top">合同会社Royal（ロイヤルホーム船越）と同方式 — <b>給付費＝翌々月入金／役員報酬¥0計上／代表者が管理者兼務</b></p>
+<p class="note-top">合同会社Royal（ロイヤルホーム船越）と同方式・同レイアウト — <b>項目＝行／月＝列（右へ横スライド）／給付費＝翌々月入金／役員報酬¥0計上</b></p>
 <p style="text-align:center;margin-bottom:8px">
   <span class="badge badge-main">メイン：区分3中心（平均3.0）</span>
   <span class="badge badge-hozen">保守：区分2中心（平均2.5）</span>
@@ -76,72 +95,166 @@ tr.full td.lbl{background:#fff4cc}
 <p class="note">報酬単価（神奈川4級地 ¥10.96/単位・月額）：区分2 ¥145,980／区分3 ¥196,620／区分4 ¥238,050。処遇改善加算Ⅲ＝基本の約12.8%、医療連携体制加算Ⅶ＝満室¥40,000/月を別途加算。4名定員のため大規模住居減算なし。</p>
 </div>
 
-<!-- 月次収支モデル -->
-<p class="ptitle">満室時 月次収支モデル（発生ベース・役員報酬¥0）</p>
+<!-- ===== 第1期（横スライド） ===== -->
+<p class="ptitle">資金繰り表 年度1（2026年7月〜2027年6月）／メイン・区分3中心・給付費翌々月入金</p>
+<p class="slidehint">▶ 表は右へ横スライドして各月をご覧ください（項目＝行／月＝列・左の項目名は固定表示）</p>
+<p class="unit">（単位：円）</p>
+<div class="scroll">
+<table>
+<thead>
+<tr>
+  <th class="sec">　</th><th class="lbl">項目</th>
+  <th>2026年<br>7月</th><th>2026年<br>8月</th><th>2026年<br>9月</th><th>2026年<br>10月</th>
+  <th>2026年<br>11月</th><th>2026年<br>12月</th><th>2027年<br>1月</th><th>2027年<br>2月</th>
+  <th>2027年<br>3月</th><th>2027年<br>4月</th><th>2027年<br>5月</th><th>2027年<br>6月</th>
+  <th>年度1<br>合計</th>
+</tr>
+<tr>
+  <td class="sec">　</td><td class="lbl">TOPIC</td>
+  <td class="topic">開設・投入</td><td class="topic">1名</td><td class="topic">2名</td><td class="topic">3名</td>
+  <td class="topic">満室4名</td><td class="topic">消防検査</td><td class="topic">返済開始</td><td class="topic">満室</td>
+  <td class="topic">満室</td><td class="topic">満室</td><td class="topic">満室</td><td class="topic">処遇払出・検査</td>
+  <td class="topic">　</td>
+</tr>
+<tr>
+  <td class="sec">　</td><td class="lbl">入居者数</td>
+  <td>0</td><td>1</td><td>2</td><td>3</td>
+  <td>4</td><td>4</td><td>4</td><td>4</td>
+  <td>4</td><td>4</td><td>4</td><td>4</td>
+  <td>—</td>
+</tr>
+</thead>
+<tbody>
+<tr class="carry">
+  <td class="sec">　</td><td class="lbl">前月繰越（A）</td>
+  <td>0</td><td>5,517,142</td><td>4,817,284</td><td>4,100,426</td>
+  <td>3,675,089</td><td>3,465,255</td><td>3,455,208</td><td>3,565,227</td>
+  <td>3,675,246</td><td>3,785,265</td><td>3,895,284</td><td>4,005,303</td>
+  <td>—</td>
+</tr>
+<tr>
+  <td class="sec" rowspan="4">収入</td><td class="lbl">給付費入金（翌々月）</td>
+  <td>0</td><td>0</td><td>0</td><td>308,521</td>
+  <td>530,308</td><td>752,095</td><td>916,761</td><td>916,761</td>
+  <td>916,761</td><td>916,761</td><td>916,761</td><td>916,761</td>
+  <td>7,091,490</td>
+</tr>
+<tr>
+  <td class="lbl">利用者負担（¥83,000×名）</td>
+  <td>0</td><td>83,000</td><td>166,000</td><td>249,000</td>
+  <td>332,000</td><td>332,000</td><td>332,000</td><td>332,000</td>
+  <td>332,000</td><td>332,000</td><td>332,000</td><td>332,000</td>
+  <td>3,154,000</td>
+</tr>
+<tr class="fund">
+  <td class="lbl">自己資金＋借入（資金調達）</td>
+  <td>8,000,000</td><td>0</td><td>0</td><td>0</td>
+  <td>0</td><td>0</td><td>0</td><td>0</td>
+  <td>0</td><td>0</td><td>0</td><td>0</td>
+  <td>8,000,000</td>
+</tr>
+<tr class="total">
+  <td class="lbl">収入合計（B）</td>
+  <td>8,000,000</td><td>83,000</td><td>166,000</td><td>557,521</td>
+  <td>862,308</td><td>1,084,095</td><td>1,248,761</td><td>1,248,761</td>
+  <td>1,248,761</td><td>1,248,761</td><td>1,248,761</td><td>1,248,761</td>
+  <td>18,245,490</td>
+</tr>
+<tr>
+  <td class="sec" rowspan="2">支出</td><td class="lbl">うち設備投資（開業時）</td>
+  <td class="neg">1,800,000</td><td>0</td><td>0</td><td>0</td>
+  <td>0</td><td>0</td><td>0</td><td>0</td>
+  <td>0</td><td>0</td><td>0</td><td>0</td>
+  <td>1,800,000</td>
+</tr>
+<tr class="total">
+  <td class="lbl">支出合計（C／運営＋設備＋返済）</td>
+  <td>2,482,858</td><td>782,858</td><td>882,858</td><td>982,858</td>
+  <td>1,072,142</td><td>1,094,142</td><td>1,138,742</td><td>1,138,742</td>
+  <td>1,138,742</td><td>1,138,742</td><td>1,138,742</td><td>1,560,742</td>
+  <td>14,552,168</td>
+</tr>
+<tr class="balance">
+  <td class="sec">　</td><td class="lbl">当月収支（B−C）</td>
+  <td class="pos">+5,517,142</td><td class="neg">▲699,858</td><td class="neg">▲716,858</td><td class="neg">▲425,337</td>
+  <td class="neg">▲209,834</td><td class="neg">▲10,047</td><td class="pos">+110,019</td><td class="pos">+110,019</td>
+  <td class="pos">+110,019</td><td class="pos">+110,019</td><td class="pos">+110,019</td><td class="neg">▲311,981</td>
+  <td class="pos">+3,693,322</td>
+</tr>
+<tr class="carry">
+  <td class="sec">　</td><td class="lbl">月末残高（翌月繰越）</td>
+  <td>5,517,142</td><td>4,817,284</td><td>4,100,426</td><td>3,675,089</td>
+  <td>3,465,255</td><td>3,455,208</td><td>3,565,227</td><td>3,675,246</td>
+  <td>3,785,265</td><td>3,895,284</td><td>4,005,303</td><td>3,693,322</td>
+  <td>—</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="note">※年度1末残高 <b>¥3,693,322</b>／資金繰りボトム 約¥346万（2026年12月）。資金ショートなし。給付費は提供月の翌々月入金（7月提供分→9月入金）で反映。</p>
+<p class="note">※2026年7月の支出合計¥2,482,858には<b>設備投資¥1,800,000</b>（消防工事・内装・家具家電備品）を含む。差額¥682,858が開業準備の運営費。</p>
+<p class="note">※支出合計の満室時内訳（区分3中心）：人件費¥584,392＋地代家賃¥204,000＋食材費¥108,000＋水道光熱費¥65,000＋OWLサポート・保険・採用・事務等¥100,750＋借入返済（据置後）¥76,600＝¥1,138,742。据置中（〜2026年12月）は返済が利息¥10,000のみ。2026年12月は消防検査+¥22,000、2027年6月は処遇改善払出・検査で+¥422,000。</p>
+
+<!-- ===== 第2期（横スライド） ===== -->
+<p class="ptitle">資金繰り表 年度2（2027年7月〜2028年6月・満室通年）／メイン</p>
+<p class="slidehint">▶ 表は右へ横スライドして各月をご覧ください</p>
+<p class="unit">（単位：円）</p>
+<div class="scroll">
+<table>
+<thead>
+<tr>
+  <th class="lbl">項目</th>
+  <th>2027年<br>7月</th><th>2027年<br>8月</th><th>2027年<br>9月</th><th>2027年<br>10月</th>
+  <th>2027年<br>11月</th><th>2027年<br>12月</th><th>2028年<br>1月</th><th>2028年<br>2月</th>
+  <th>2028年<br>3月</th><th>2028年<br>4月</th><th>2028年<br>5月</th><th>2028年<br>6月</th>
+</tr>
+</thead>
+<tbody>
+<tr class="balance">
+  <td class="lbl">当月収支</td>
+  <td class="pos">+110,019</td><td class="pos">+110,019</td><td class="pos">+110,019</td><td class="pos">+110,019</td>
+  <td class="pos">+110,019</td><td class="pos">+88,019</td><td class="pos">+110,019</td><td class="pos">+110,019</td>
+  <td class="pos">+110,019</td><td class="pos">+110,019</td><td class="pos">+110,019</td><td class="neg">▲311,981</td>
+</tr>
+<tr class="carry">
+  <td class="lbl">月末残高</td>
+  <td>3,803,341</td><td>3,913,360</td><td>4,023,379</td><td>4,133,398</td>
+  <td>4,243,417</td><td>4,331,436</td><td>4,441,455</td><td>4,551,474</td>
+  <td>4,661,493</td><td>4,771,512</td><td>4,881,531</td><td>4,569,550</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="note">年度2末残高：<b>¥4,569,550</b>／年度2 年間収支：約<b>+¥87.6万の黒字</b>。累積欠損¥6,060,659はこの黒字から段階充当（1棟目単独で6〜7年、2棟目展開で短縮見込み）。2027年12月は処遇改善の事業主負担分で+¥88,019、2028年6月は処遇改善払出・検査で▲¥311,981。</p>
+
+<!-- 満室時月次収支モデル -->
+<p class="ptitle">参考：満室時 月次収支モデル（発生ベース・役員報酬¥0）</p>
 <table style="width:auto;min-width:620px">
-<tr><th style="min-width:220px">項目</th><th>メイン（区分3中心）</th><th>保守（区分2中心）</th></tr>
+<tr><th class="lbl" style="min-width:240px">項目</th><th>メイン（区分3中心）</th><th>保守（区分2中心）</th></tr>
 <tr><td class="lbl">訓練等給付費（基本）</td><td>¥777,270</td><td>¥685,200</td></tr>
 <tr><td class="lbl">処遇改善加算（Ⅲ）</td><td>¥99,491</td><td>¥87,706</td></tr>
 <tr><td class="lbl">医療連携体制加算Ⅶ</td><td>¥40,000</td><td>¥40,000</td></tr>
 <tr><td class="lbl">利用者負担金（¥83,000×4）</td><td>¥332,000</td><td>¥332,000</td></tr>
-<tr class="full"><td class="lbl">売上合計</td><td>¥1,248,761</td><td>¥1,144,906</td></tr>
+<tr class="total"><td class="lbl">売上合計</td><td>¥1,248,761</td><td>¥1,144,906</td></tr>
 <tr><td class="lbl">人件費（サビ管・夜間・支援員＋法定福利／代表・配偶者¥0）</td><td>¥584,392</td><td>¥584,392</td></tr>
 <tr><td class="lbl">地代家賃（4室＋共用）</td><td>¥204,000</td><td>¥204,000</td></tr>
 <tr><td class="lbl">食材費（¥27,000×4）</td><td>¥108,000</td><td>¥108,000</td></tr>
 <tr><td class="lbl">水道光熱費</td><td>¥65,000</td><td>¥65,000</td></tr>
 <tr><td class="lbl">OWLサポート費・保険・採用・事務等</td><td>¥100,750</td><td>¥100,750</td></tr>
 <tr><td class="lbl">借入返済（据置後）</td><td>¥76,600</td><td>¥76,600</td></tr>
-<tr class="full"><td class="lbl">支出合計</td><td>¥1,138,742</td><td>¥1,138,742</td></tr>
-<tr class="full"><td class="lbl">月間利益（役員報酬前）</td><td class="pos">+¥110,019</td><td class="pos">+¥6,164</td></tr>
+<tr class="total"><td class="lbl">支出合計</td><td>¥1,138,742</td><td>¥1,138,742</td></tr>
+<tr class="total"><td class="lbl">月間利益（役員報酬前）</td><td class="pos">+¥110,019</td><td class="pos">+¥6,164</td></tr>
 </table>
-
-<!-- 24ヶ月資金繰り（年度1）-->
-<p class="ptitle">資金繰り表 年度1（2026年7月〜2027年6月）／メイン・区分3中心・給付費翌々月入金</p>
-<table>
-<tr><th style="min-width:38px">月</th><th>TOPIC</th><th>入居</th><th>前月繰越</th><th>給付費入金</th><th>利用者負担</th><th>自己/借入</th><th>収入計</th><th>支出計</th><th>月収支</th><th>月末残高</th></tr>
-<tr><td>26/7</td><td class="topic">開設・投入</td><td>0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥8,000,000</td><td>¥8,000,000</td><td>¥2,482,858</td><td class="pos">+¥5,517,142</td><td><b>¥5,517,142</b></td></tr>
-<tr><td>26/8</td><td class="topic">1名</td><td>1</td><td>¥5,517,142</td><td>¥0</td><td>¥83,000</td><td>¥0</td><td>¥83,000</td><td>¥782,858</td><td class="neg">▲¥699,858</td><td><b>¥4,817,284</b></td></tr>
-<tr><td>26/9</td><td class="topic">2名</td><td>2</td><td>¥4,817,284</td><td>¥0</td><td>¥166,000</td><td>¥0</td><td>¥166,000</td><td>¥882,858</td><td class="neg">▲¥716,858</td><td><b>¥4,100,426</b></td></tr>
-<tr><td>26/10</td><td class="topic">3名</td><td>3</td><td>¥4,100,426</td><td>¥308,521</td><td>¥249,000</td><td>¥0</td><td>¥557,521</td><td>¥982,858</td><td class="neg">▲¥425,337</td><td><b>¥3,675,089</b></td></tr>
-<tr class="full"><td>26/11</td><td class="topic">満室4名</td><td>4</td><td>¥3,675,089</td><td>¥530,308</td><td>¥332,000</td><td>¥0</td><td>¥862,308</td><td>¥1,072,142</td><td class="neg">▲¥209,834</td><td><b>¥3,465,255</b></td></tr>
-<tr><td>26/12</td><td class="topic">消防検査</td><td>4</td><td>¥3,465,255</td><td>¥752,095</td><td>¥332,000</td><td>¥0</td><td>¥1,084,095</td><td>¥1,094,142</td><td class="neg">▲¥10,047</td><td><b>¥3,455,208</b></td></tr>
-<tr><td>27/1</td><td class="topic">返済開始</td><td>4</td><td>¥3,455,208</td><td>¥916,761</td><td>¥332,000</td><td>¥0</td><td>¥1,248,761</td><td>¥1,138,742</td><td class="pos">+¥110,019</td><td><b>¥3,565,227</b></td></tr>
-<tr><td>27/2</td><td class="topic">満室</td><td>4</td><td>¥3,565,227</td><td>¥916,761</td><td>¥332,000</td><td>¥0</td><td>¥1,248,761</td><td>¥1,138,742</td><td class="pos">+¥110,019</td><td><b>¥3,675,246</b></td></tr>
-<tr><td>27/3</td><td class="topic">満室</td><td>4</td><td>¥3,675,246</td><td>¥916,761</td><td>¥332,000</td><td>¥0</td><td>¥1,248,761</td><td>¥1,138,742</td><td class="pos">+¥110,019</td><td><b>¥3,785,265</b></td></tr>
-<tr><td>27/4</td><td class="topic">満室</td><td>4</td><td>¥3,785,265</td><td>¥916,761</td><td>¥332,000</td><td>¥0</td><td>¥1,248,761</td><td>¥1,138,742</td><td class="pos">+¥110,019</td><td><b>¥3,895,284</b></td></tr>
-<tr><td>27/5</td><td class="topic">満室</td><td>4</td><td>¥3,895,284</td><td>¥916,761</td><td>¥332,000</td><td>¥0</td><td>¥1,248,761</td><td>¥1,138,742</td><td class="pos">+¥110,019</td><td><b>¥4,005,303</b></td></tr>
-<tr><td>27/6</td><td class="topic">処遇払出・検査</td><td>4</td><td>¥4,005,303</td><td>¥916,761</td><td>¥332,000</td><td>¥0</td><td>¥1,248,761</td><td>¥1,560,742</td><td class="neg">▲¥311,981</td><td><b>¥3,693,322</b></td></tr>
-</table>
-<p class="note">年度1末残高：<b>¥3,693,322</b>／資金繰りボトム：約¥346万（2026年12月）。給付費は提供月の翌々月入金で正しく反映（7月提供分→9月入金）。</p>
-
-<!-- 年度2 -->
-<p class="ptitle">資金繰り表 年度2（2027年7月〜2028年6月・満室通年）／メイン</p>
-<table style="width:auto;min-width:380px">
-<tr><th style="min-width:60px">月</th><th>月収支</th><th>月末残高</th></tr>
-<tr><td>27/7</td><td class="pos">+¥110,019</td><td>¥3,803,341</td></tr>
-<tr><td>27/8</td><td class="pos">+¥110,019</td><td>¥3,913,360</td></tr>
-<tr><td>27/9</td><td class="pos">+¥110,019</td><td>¥4,023,379</td></tr>
-<tr><td>27/10</td><td class="pos">+¥110,019</td><td>¥4,133,398</td></tr>
-<tr><td>27/11</td><td class="pos">+¥110,019</td><td>¥4,243,417</td></tr>
-<tr><td>27/12</td><td class="pos">+¥88,019</td><td>¥4,331,436</td></tr>
-<tr><td>28/1</td><td class="pos">+¥110,019</td><td>¥4,441,455</td></tr>
-<tr><td>28/2</td><td class="pos">+¥110,019</td><td>¥4,551,474</td></tr>
-<tr><td>28/3</td><td class="pos">+¥110,019</td><td>¥4,661,493</td></tr>
-<tr><td>28/4</td><td class="pos">+¥110,019</td><td>¥4,771,512</td></tr>
-<tr><td>28/5</td><td class="pos">+¥110,019</td><td>¥4,881,531</td></tr>
-<tr><td>28/6</td><td class="neg">▲¥311,981</td><td>¥4,569,550</td></tr>
-</table>
-<p class="note">年度2末残高：<b>¥4,569,550</b>／年度2 年間収支：約<b>+¥87.6万の黒字</b>。累積欠損¥6,060,659はこの黒字から段階充当（1棟目単独で6〜7年、2棟目展開で短縮見込み）。</p>
 
 <!-- 黒字化の鍵 -->
 <div class="section">
 <h2>★黒字化の鍵：入居者の「区分構成」</h2>
 <table class="lever" style="width:auto;min-width:460px">
-<tr><th style="min-width:280px;text-align:left">区分構成（4名）</th><th>満室月次収支</th></tr>
-<tr><td>区分2×4（軽度のみ）</td><td>微赤字</td></tr>
-<tr><td>区分2×2＋区分3×2（平均2.5）</td><td>+¥6,164（薄利）</td></tr>
-<tr class="hl"><td>区分4×1＋区分3×2＋区分2×1（平均3.0）★推奨</td><td>+¥110,019（安定黒字）</td></tr>
-<tr><td>区分3×2＋区分4×2（平均3.5）</td><td>+¥19万超</td></tr>
+<tr><th class="lbl" style="min-width:280px;text-align:left">区分構成（4名）</th><th>満室月次収支</th></tr>
+<tr><td class="lbl">区分2×4（軽度のみ）</td><td>微赤字</td></tr>
+<tr><td class="lbl">区分2×2＋区分3×2（平均2.5）</td><td>+¥6,164（薄利）</td></tr>
+<tr class="hl"><td class="lbl">区分4×1＋区分3×2＋区分2×1（平均3.0）★推奨</td><td>+¥110,019（安定黒字）</td></tr>
+<tr><td class="lbl">区分3×2＋区分4×2（平均3.5）</td><td>+¥19万超</td></tr>
 </table>
 <p class="note" style="margin-top:8px">
 ・<b>厚木市障がい福祉課は「区分の重い方の受入を歓迎」と回答済み</b>（収益面でも追い風）。<br>
@@ -164,7 +277,7 @@ tr.full td.lbl{background:#fff4cc}
 </ol>
 </div>
 
-<p style="text-align:center;font-size:9.5px;color:#888;margin-top:20px">作成：株式会社斗 鈴木北斗／2026年6月12日（v5ドラフト・¥600万）／Royal（ロイヤルホーム船越）方式準拠　※社内検討版（外部提出前に要・最終確認）</p>
+<p style="text-align:center;font-size:9.5px;color:#888;margin-top:20px">作成：株式会社斗 鈴木北斗／2026年6月12日（v5・横スライド版・¥600万）／Royal（ロイヤルホーム船越）方式・銀行提出レイアウト準拠　※社内検討版（外部提出前に要・最終確認）</p>
 
 </body>
 </html>
