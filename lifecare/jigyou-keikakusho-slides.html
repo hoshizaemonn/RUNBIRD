@@ -2,99 +2,880 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ライフケアはーと 事業計画書（融資1,000万・打ち合わせ版）</title>
+<meta name="viewport" content="width=1456, initial-scale=1.0">
+<title>ライフケアはーと合同会社 事業計画書 — 障がい者グループホーム みんなのいえ羽坂どおり</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;background:#f7fafc;color:#1a202c;line-height:1.8;padding:20px}
-.container{max-width:960px;margin:0 auto;background:#fff;padding:36px 42px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
-h1{font-size:24px;color:#1a365d;margin-bottom:6px;border-bottom:3px solid #1a365d;padding-bottom:10px}
-.lead{font-size:13px;color:#718096;margin-bottom:22px}
-h2{font-size:18px;color:#1a365d;margin:30px 0 12px;padding-left:10px;border-left:5px solid #2b6cb0}
-p{font-size:14px;margin:8px 0}
-.card{background:#f7fafc;border:1px solid #e2e8f0;border-radius:8px;padding:14px 18px;margin:12px 0}
-.kpi{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}
-.kpi div{flex:1;min-width:150px;background:#1a365d;color:#fff;border-radius:8px;padding:14px;text-align:center}
-.kpi .n{font-size:22px;font-weight:800}.kpi .t{font-size:11.5px;opacity:.85}
-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px}
-th,td{border:1px solid #e2e8f0;padding:8px 10px;text-align:left}
-th{background:#1a365d;color:#fff;font-weight:600}tr:nth-child(even){background:#f7fafc}
-.qa{background:#ebf8ff;border-left:5px solid #2b6cb0;padding:12px 16px;margin:10px 0;border-radius:0 8px 8px 0;font-size:13.5px}
-.qa b{color:#1a365d}
-.footer{margin-top:36px;padding-top:18px;border-top:1px solid #e2e8f0;font-size:12px;color:#718096;text-align:center}
-.tag{display:inline-block;background:#2e7d32;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;margin-left:8px}
-.nav{font-size:12.5px;margin-bottom:18px}.nav a{color:#2b6cb0;text-decoration:none;margin-right:14px}
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --navy:#0a1929;
+    --navy-2:#1a365d;
+    --navy-3:#2c4870;
+    --gold:#c9a961;
+    --gold-2:#daa520;
+    --bg:#f5f7fa;
+    --white:#ffffff;
+    --gray:#e2e8f0;
+    --gray-2:#718096;
+    --text:#1a1a1a;
+    --red:#c53030;
+    --green:#2f855a;
+  }
+  html,body{font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;background:#cfd8e3;color:var(--text);line-height:1.6}
+  .slide{
+    width:1456px;height:819px;margin:24px auto;background:var(--bg);
+    position:relative;overflow:hidden;
+    box-shadow:0 4px 20px rgba(0,0,0,0.15);
+    page-break-after:always;
+  }
+  /* Header bar */
+  .slide-header{
+    height:80px;background:var(--bg);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 56px;border-bottom:3px solid var(--gold);
+  }
+  .slide-title{
+    font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;
+    font-size:30px;color:var(--navy);font-weight:600;letter-spacing:4px;
+    border-left:6px solid var(--gold);padding-left:16px;
+  }
+  .slide-meta{font-size:13px;color:var(--gray-2)}
+  .pagenum{position:absolute;bottom:20px;right:40px;font-size:13px;color:var(--gray-2);z-index:20}
+
+  /* Body */
+  .slide-body{padding:32px 56px;height:calc(100% - 80px);overflow:hidden}
+
+  /* Common card */
+  .card{background:var(--white);border-radius:8px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+
+  /* COVER */
+  .cover{background:var(--navy);color:var(--white);height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative}
+  .cover::before,.cover::after{
+    content:"";position:absolute;width:80px;height:80px;border:1px solid var(--gold);
+  }
+  .cover::before{top:48px;left:48px;border-right:none;border-bottom:none}
+  .cover::after{bottom:48px;right:48px;border-left:none;border-top:none}
+  .cover-corner-tr{position:absolute;top:48px;right:48px;width:80px;height:80px;border:1px solid var(--gold);border-left:none;border-bottom:none}
+  .cover-corner-bl{position:absolute;bottom:48px;left:48px;width:80px;height:80px;border:1px solid var(--gold);border-right:none;border-top:none}
+  .cover-eyebrow{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:32px;letter-spacing:8px;font-weight:300;color:#cbd5e0;margin-bottom:24px}
+  .cover-title{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:64px;letter-spacing:6px;color:var(--white);font-weight:500;text-align:center;line-height:1.4}
+  .cover-company{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:24px;letter-spacing:6px;color:var(--gold);margin-top:24px;border-bottom:1px solid var(--gold);padding-bottom:8px}
+  .cover-info{margin-top:80px;background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,97,0.3);border-radius:8px;padding:24px 40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;width:880px}
+  .cover-info-row{display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(255,255,255,0.1);padding:8px 0}
+  .cover-info-label{font-size:13px;color:#a0aec0;min-width:80px}
+  .cover-info-value{font-size:16px;color:var(--white);font-weight:500}
+
+  /* Profile */
+  .profile-grid{display:grid;grid-template-columns:340px 1fr;gap:32px;height:100%}
+  .profile-card{background:var(--white);border:1px solid var(--gray);border-radius:8px;padding:32px 24px}
+  .profile-avatar{width:160px;height:160px;border-radius:50%;background:#edf2f7;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;color:#a0aec0;font-size:64px}
+  .profile-name{font-family:'Hiragino Mincho ProN','Noto Serif JP',serif;font-size:32px;text-align:center;color:var(--navy);margin-bottom:6px}
+  .profile-sub{text-align:center;font-size:13px;color:var(--gray-2);margin-bottom:14px}
+  .profile-badges{display:flex;justify-content:center;gap:8px;margin-bottom:20px}
+  .badge{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600}
+  .badge-navy{background:var(--navy);color:var(--white)}
+  .badge-gold{background:var(--gold);color:var(--navy)}
+  .profile-meta{border-top:1px solid var(--gray);padding-top:14px;font-size:13px;line-height:1.8}
+  .profile-meta-label{color:var(--gray-2);font-size:11px;margin-top:8px}
+  .profile-cert-card{margin-top:20px;background:var(--white);border:1px solid var(--gray);border-radius:8px;padding:16px;border-top:3px solid var(--gold)}
+  .profile-cert-title{font-size:14px;color:var(--navy);font-weight:700;margin-bottom:12px}
+  .cert-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .cert-tag{padding:5px 12px;border:1px solid var(--gray);border-radius:4px;font-size:12px;color:#2d3748;background:#f7fafc}
+  .career-list{padding-left:0}
+  .career-item{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:16px 0;border-left:2px solid var(--navy);padding-left:20px;position:relative;margin-bottom:4px}
+  .career-item::before{content:"";position:absolute;left:-7px;top:24px;width:12px;height:12px;background:var(--navy);border-radius:50%}
+  .career-period{font-size:13px;color:var(--gold-2);font-weight:600}
+  .career-company{font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
+  .career-role{font-size:13px;color:var(--gray-2)}
+  .career-highlight{display:inline-block;margin-top:6px;padding:3px 10px;background:#fef5e7;border-left:3px solid var(--gold);font-size:12px;color:#744210}
+  .career-highlight-success{background:#f0fff4;border-left-color:var(--green);color:#22543d}
+
+  /* TOC */
+  .toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;padding:8px 0}
+  .toc-item{display:grid;grid-template-columns:48px 1fr 32px;align-items:center;padding:14px 0;border-bottom:1px solid var(--gray);font-size:15px}
+  .toc-item.active{background:var(--navy);color:var(--white);border-radius:4px;padding:14px 16px;border-bottom:none}
+  .toc-num{font-family:'Hiragino Mincho ProN',serif;color:var(--gold);font-weight:600}
+  .toc-item.active .toc-num{color:var(--gold)}
+
+  /* 4-card grid */
+  .grid-2x2{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:24px;height:100%}
+  .info-card{background:var(--white);border-radius:8px;padding:28px;border-left:5px solid var(--navy);box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .info-card.gold{border-left-color:var(--gold)}
+  .info-card.green{border-left-color:var(--green)}
+  .info-card.red{border-left-color:var(--red)}
+  .info-card-icon{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:var(--navy);color:var(--white);border-radius:50%;margin-bottom:14px;font-weight:700}
+  .info-card.gold .info-card-icon{background:var(--gold)}
+  .info-card.green .info-card-icon{background:var(--green)}
+  .info-card.red .info-card-icon{background:var(--red)}
+  .info-card-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .info-card-body{font-size:13.5px;color:#2d3748;line-height:1.8}
+  .quote-strip{position:absolute;bottom:32px;left:56px;right:56px;background:var(--navy);color:var(--white);padding:18px 28px;border-left:6px solid var(--gold);border-radius:4px;font-size:14px}
+
+  /* Service overview */
+  .service-top{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;margin-bottom:20px}
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .service-card{background:var(--white);border-radius:8px;padding:22px;border:1px solid var(--gray)}
+  .service-icon{width:36px;height:36px;background:#edf2f7;color:var(--navy);border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+  .service-name{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .service-desc{font-size:12px;color:#4a5568;line-height:1.7}
+
+  /* Location */
+  .loc-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;height:100%}
+  .loc-map{background:#e2e8f0;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);font-size:14px;position:relative;overflow:hidden;min-height:680px}
+  .loc-map-pin{
+    position:absolute;top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    background:var(--navy);color:var(--white);
+    padding:14px 22px;border:3px solid var(--gold);
+    border-radius:8px;font-size:14px;font-weight:700;
+    box-shadow:0 8px 24px rgba(0,0,0,0.25),0 0 0 8px rgba(201,169,97,0.15);
+    text-align:center;line-height:1.5;z-index:5;
+  }
+  .loc-map-label{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    background:rgba(255,255,255,0.92);
+    padding:4px 10px;border-radius:4px;
+    font-size:11px;color:#4a5568;font-weight:600;
+    box-shadow:0 1px 3px rgba(0,0,0,0.1);
+  }
+  .loc-detail{padding-top:16px}
+  .loc-detail-title{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--navy);border-left:4px solid var(--gold);padding-left:12px;margin-bottom:18px}
+  .loc-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:18px}
+  .loc-table th,.loc-table td{padding:10px 12px;border-bottom:1px solid var(--gray);text-align:left;vertical-align:top}
+  .loc-table th{background:#f7fafc;color:var(--navy);width:130px;font-weight:600}
+  .loc-bullet{display:flex;align-items:start;gap:10px;font-size:13px;margin:8px 0}
+  .loc-bullet::before{content:"●";color:var(--gold);font-size:10px;margin-top:6px}
+
+  /* Partner */
+  .partner-grid{display:grid;grid-template-columns:300px 1fr;gap:32px;height:100%}
+  .partner-card{background:var(--navy);color:var(--white);border-radius:8px;padding:32px 28px}
+  .partner-eyebrow{display:inline-block;background:rgba(201,169,97,0.2);color:var(--gold);font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:3px;margin-bottom:16px}
+  .partner-name{font-family:'Hiragino Mincho ProN',serif;font-size:24px;color:var(--white);margin-bottom:6px}
+  .partner-en{font-size:12px;color:var(--gold);font-style:italic;margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.15);padding-bottom:16px}
+  .partner-meta-label{font-size:11px;color:#a0aec0;margin-top:14px}
+  .partner-meta-value{font-size:14px;color:var(--white);margin-top:2px;line-height:1.6}
+  .partner-feature{margin-bottom:18px}
+  .partner-feature-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+  .partner-feature-en{font-size:11px;color:var(--gray-2);font-style:italic}
+  .partner-feature-desc{font-size:13px;color:#2d3748;line-height:1.7;background:var(--white);padding:18px;border-radius:6px;border:1px solid var(--gray);margin-top:6px}
+  .partner-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+  /* Philosophy */
+  .philo-mission{background:var(--white);border-radius:8px;padding:32px 40px;display:flex;align-items:center;gap:32px;margin-bottom:28px}
+  .philo-icon{width:80px;height:80px;background:var(--gold);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:32px;flex-shrink:0}
+  .philo-mission-text{flex:1}
+  .philo-mission-eyebrow{font-size:11px;letter-spacing:3px;color:var(--gold-2);font-weight:600;margin-bottom:8px}
+  .philo-mission-title{font-family:'Hiragino Mincho ProN',serif;font-size:28px;color:var(--navy);margin-bottom:8px}
+  .philo-mission-desc{font-size:14px;color:#4a5568;line-height:1.8}
+  .philo-policies{display:flex;flex-direction:column;gap:12px}
+  .philo-policy{display:flex;align-items:center;gap:18px;padding:14px 24px;background:var(--white);border-radius:8px;border-left:4px solid var(--navy);font-size:13.5px}
+  .philo-policy-num{width:32px;height:32px;background:var(--navy);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+  .philo-policy-title{font-weight:700;color:var(--navy);margin-right:16px;min-width:160px}
+
+  /* Cash flow */
+  .cf-diagram{background:var(--white);border-radius:8px;padding:40px 32px;margin-bottom:28px}
+  .cf-eyebrow{font-size:11px;letter-spacing:3px;color:var(--gray-2);margin-bottom:20px}
+  .cf-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .cf-node{flex:1;background:var(--white);border:2px solid var(--gray);border-radius:8px;padding:18px 12px;text-align:center}
+  .cf-node.center{background:var(--navy);color:var(--white);border-color:var(--navy)}
+  .cf-node.gold{background:#fef5e7;border-color:var(--gold)}
+  .cf-node-icon{font-size:24px;color:var(--navy);margin-bottom:8px}
+  .cf-node.center .cf-node-icon{color:var(--gold)}
+  .cf-node.gold .cf-node-icon{color:var(--gold-2)}
+  .cf-node-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:2px}
+  .cf-node.center .cf-node-title{color:var(--white)}
+  .cf-node-sub{font-size:11px;color:var(--gray-2)}
+  .cf-arrow{font-size:11px;color:var(--gray-2);min-width:48px;text-align:center}
+  .cf-arrow strong{display:block;color:var(--navy);font-size:11px;margin-bottom:2px}
+  .cf-features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .cf-feature{background:var(--white);border-left:4px solid var(--gold);border-radius:4px;padding:18px 22px}
+  .cf-feature-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+
+  /* Rate table */
+  .rate-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;height:100%}
+  .rate-section-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;justify-content:space-between}
+  .rate-region{background:#fef5e7;color:var(--navy);font-size:12px;padding:6px 14px;border-radius:4px;font-weight:700}
+  .rate-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .rate-table th{background:#edf2f7;color:var(--navy);font-size:13px;font-weight:600;padding:14px 16px;text-align:left;border-bottom:2px solid var(--gold)}
+  .rate-table td{padding:18px 16px;border-bottom:1px solid var(--gray);font-size:14px}
+  .rate-table tr.featured td{background:#fef5e7}
+  .rate-table .rate-num{display:inline-flex;width:24px;height:24px;border-radius:50%;background:#cbd5e0;color:#4a5568;font-size:11px;align-items:center;justify-content:center;margin-right:8px}
+  .rate-table tr.featured .rate-num{background:var(--gold);color:var(--white)}
+  .rate-amount{font-family:'Hiragino Mincho ProN',serif;font-size:20px;color:var(--navy);font-weight:700;text-align:right}
+  .rate-table tr.featured .rate-amount{color:var(--gold-2);font-size:24px}
+  .rate-addons{margin-top:18px;background:var(--white);border:1px dashed var(--gray);border-radius:8px;padding:14px}
+  .rate-addons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+  .rate-addon{text-align:center;padding:12px;background:#f7fafc;border-radius:6px}
+  .rate-addon-label{font-size:11px;color:var(--gray-2)}
+  .rate-addon-value{font-size:18px;font-weight:700;color:var(--navy);margin-top:4px}
+  .rate-burden-card{background:var(--navy);color:var(--white);border-radius:8px;padding:24px;text-align:center;margin-bottom:14px}
+  .rate-burden-label{font-size:12px;color:#cbd5e0;margin-bottom:8px}
+  .rate-burden-value{font-family:'Hiragino Mincho ProN',serif;font-size:54px;font-weight:300;letter-spacing:1px}
+  .rate-burden-value span{font-size:24px}
+  .rate-burden-note{font-size:10px;color:#a0aec0;margin-top:6px}
+  .rate-burden-list{font-size:13px}
+  .rate-burden-list-row{display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-bottom:1px solid var(--gray)}
+  .rate-burden-list-row:last-child{border-bottom:none}
+  .rate-burden-list-row-label{display:flex;align-items:center;gap:10px;color:#2d3748}
+  .rate-burden-list-row-value{font-weight:700;color:var(--navy)}
+  .rate-info-note{font-size:11px;color:var(--gray-2);background:#f7fafc;padding:10px;border-radius:6px;margin-top:10px;line-height:1.6}
+  .rate-info-note strong{color:var(--gold-2)}
+
+  /* Staff */
+  .staff-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:28px;height:100%}
+  .staff-table{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);border-radius:8px;overflow:hidden;font-size:13px}
+  .staff-table th{background:#edf2f7;padding:8px 10px;text-align:left;color:var(--navy);font-weight:600;font-size:11px}
+  .staff-table td{padding:8px 10px;border-bottom:1px solid var(--gray);vertical-align:middle;font-size:12px}
+  .staff-tag{display:inline-block;padding:3px 10px;background:#fef5e7;color:#744210;font-size:11px;border-radius:3px;font-weight:600}
+  .staff-tag.full{background:#1a365d;color:#fff}
+  .staff-tag.part{background:#fef5e7;color:#744210}
+  .staff-tag.fixed{background:#e2e8f0;color:#2d3748}
+  .staff-amount{text-align:right;font-weight:700;color:var(--navy)}
+  .staff-amount-sub{display:block;font-size:10px;color:var(--gray-2);font-weight:400}
+  .staff-amount-warn{color:var(--red);font-size:10px;font-weight:600;display:block;margin-top:2px}
+  .staff-summary{margin-top:10px;background:var(--white);border-radius:8px;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;border-top:3px solid var(--gold)}
+  .staff-summary-left{font-size:12px;color:var(--gray-2)}
+  .staff-summary-left strong{display:block;color:var(--navy);font-size:14px;margin-bottom:2px}
+  .staff-summary-total{font-family:'Hiragino Mincho ProN',serif;font-size:32px;font-weight:700;color:var(--gold-2);text-align:right}
+  .staff-summary-total span{font-size:14px}
+  .staff-strategy-card{background:var(--white);border-radius:8px;padding:20px;border:1px solid var(--gray);margin-bottom:14px}
+  .staff-strategy-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .staff-strategy-desc{font-size:12.5px;color:#2d3748;line-height:1.7}
+  .staff-strategy-pill{display:inline-block;background:#f0fff4;color:var(--green);padding:5px 10px;border-radius:4px;font-size:11px;font-weight:600;margin-top:8px}
+  .staff-variable{background:linear-gradient(135deg,#1a365d 0%,#2c4870 100%);color:var(--white);border-radius:8px;padding:18px}
+  .staff-variable-head{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:12px;margin-bottom:12px}
+  .staff-variable-label{font-size:13px;font-weight:600}
+  .staff-variable-sub{font-size:10px;color:#cbd5e0}
+  .staff-variable-amount{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--gold)}
+  .staff-variable-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:12px}
+  .staff-variable-row-name{display:flex;align-items:center;gap:8px}
+
+  /* Strengths */
+  .strengths-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .strength-card{background:var(--white);border-radius:8px;padding:28px;border-top:4px solid var(--navy);position:relative;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .strength-card.gold{border-top-color:var(--gold)}
+  .strength-card.green{border-top-color:var(--green)}
+  .strength-card.red{border-top-color:var(--red)}
+  .strength-card.purple{border-top-color:#805ad5}
+  .strength-num{position:absolute;top:16px;right:24px;font-family:'Hiragino Mincho ProN',serif;font-size:30px;color:#cbd5e0;font-weight:300}
+  .strength-icon{width:52px;height:52px;background:#edf2f7;color:var(--navy);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:14px}
+  .strength-title{font-size:17px;font-weight:700;color:var(--navy);margin-bottom:10px}
+  .strength-desc{font-size:13px;color:#2d3748;line-height:1.7}
+  .strength-desc strong{color:var(--gold-2)}
+
+  /* Funding / Capital */
+  .fund-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;height:100%}
+  .fund-table{width:100%;border-collapse:separate;border-spacing:0;font-size:11.5px}
+  .fund-table th{background:#edf2f7;padding:6px 10px;text-align:left;color:var(--navy);font-weight:600}
+  .fund-table td{padding:6px 10px;border-bottom:1px solid var(--gray);background:var(--white)}
+  .fund-section-row td{background:#f7fafc;font-weight:700;color:var(--navy);padding:5px 10px;font-size:11px}
+  .fund-amount{text-align:right;font-weight:700;color:var(--navy)}
+  .fund-amount-sub{font-size:10px;color:var(--gray-2);font-weight:400}
+  .fund-subtotal{background:var(--navy);color:var(--white);padding:9px 14px;display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:10px;border-radius:4px}
+  .fund-subtotal .yen{font-family:'Hiragino Mincho ProN',serif;font-size:18px;color:var(--gold)}
+  .fund-total-card{background:var(--white);border-radius:8px;padding:32px;text-align:center;height:100%;display:flex;flex-direction:column;justify-content:center;border-top:4px solid var(--gold)}
+  .fund-total-icon{width:72px;height:72px;background:#fef5e7;color:var(--gold-2);border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:32px}
+  .fund-total-eyebrow{font-size:11px;letter-spacing:3px;color:var(--gray-2);margin-bottom:8px}
+  .fund-total-amount{font-family:'Hiragino Mincho ProN',serif;font-size:54px;font-weight:300;color:var(--navy)}
+  .fund-total-amount span{font-size:24px}
+  .fund-total-yen{font-size:13px;color:var(--gray-2);margin-top:6px}
+  .fund-strategy{margin-top:20px;background:#f7fafc;border-left:4px solid var(--gold);padding:14px 18px;text-align:left}
+  .fund-strategy-title{font-size:11px;letter-spacing:2px;color:var(--gold-2);font-weight:700;margin-bottom:8px}
+  .fund-strategy-row{display:flex;align-items:start;gap:8px;font-size:12px;color:#2d3748;margin:6px 0}
+  .fund-strategy-row::before{content:"✓";color:var(--green);font-weight:700;margin-top:1px}
+  .fund-strategy-row strong{color:var(--navy);display:block;font-size:12.5px}
+
+  /* P&L */
+  .pl-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:24px;height:100%}
+  .pl-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:8px;overflow:hidden;font-size:11.5px}
+  .pl-table th{background:var(--navy);color:var(--white);padding:7px 10px;text-align:right;font-weight:600;font-size:11px}
+  .pl-table th:first-child{text-align:left}
+  .pl-table th.phase1{background:#7b341e}
+  .pl-table th.phase2{background:#22543d}
+  .pl-table td{padding:5px 10px;border-bottom:1px solid var(--gray);font-size:11px;text-align:right;line-height:1.4}
+  .pl-table td:first-child{text-align:left;font-weight:600;color:#2d3748}
+  .pl-table td:last-child{text-align:left;font-size:10px;color:var(--gray-2);font-weight:400}
+  .pl-table tr.section td{background:#edf2f7;font-weight:700;color:var(--navy);font-size:10.5px;padding:4px 10px}
+  .pl-table tr.subtotal td{background:#fef5e7;color:#744210;font-weight:700}
+  .pl-table tr.total td{background:var(--navy);color:var(--white);font-weight:700;font-size:12.5px;padding:8px 10px}
+  .pl-table tr.total td:last-child{background:var(--navy);color:#cbd5e0;font-size:10px;font-weight:400}
+  .pl-table .delta-up{color:var(--green);font-weight:600}
+  .pl-table .delta-down{color:var(--red);font-weight:600}
+  .pl-side-card{background:var(--white);border-radius:8px;padding:18px;margin-bottom:14px}
+  .pl-side-title{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .pl-phase{display:flex;gap:12px;align-items:start;margin-bottom:10px;padding:10px;border-radius:6px;background:#f7fafc}
+  .pl-phase-num{width:36px;height:36px;background:#7b341e;color:var(--white);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-weight:700;line-height:1.2;flex-direction:column}
+  .pl-phase-num.p2{background:#22543d}
+  .pl-phase-num small{font-size:8px;font-weight:400}
+  .pl-phase-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+  .pl-phase-desc{font-size:11px;color:#4a5568;line-height:1.6}
+  .pl-phase-desc strong{color:var(--red)}
+  .pl-summary{background:var(--navy);color:var(--white);border-radius:8px;padding:18px;margin-top:auto}
+  .pl-summary-eyebrow{font-size:10px;color:#cbd5e0;letter-spacing:1px;margin-bottom:4px}
+  .pl-summary-row{display:flex;justify-content:space-between;align-items:end}
+  .pl-summary-label{font-size:13px}
+  .pl-summary-amount{font-family:'Hiragino Mincho ProN',serif;font-size:36px;color:var(--gold);font-weight:700}
+  .pl-summary-amount span{font-size:14px}
+  .pl-summary-rate{text-align:right;font-size:10px;color:#cbd5e0;margin-top:2px}
+  .pl-summary-rate strong{color:var(--white);font-size:18px}
+
+  /* Chart */
+  .chart-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:24px;height:100%}
+  .chart-card{background:var(--white);border-radius:8px;padding:24px;display:flex;flex-direction:column}
+  .chart-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:10px;justify-content:space-between}
+  .chart-legend{display:flex;gap:14px;font-size:11px;color:var(--gray-2)}
+  .chart-legend span::before{content:"";display:inline-block;width:10px;height:10px;margin-right:6px;border-radius:2px;vertical-align:middle}
+  .chart-legend .leg-rev::before{background:var(--gold)}
+  .chart-legend .leg-cost::before{background:var(--navy)}
+  .chart-area{flex:1;display:flex;align-items:end;justify-content:space-around;padding:16px 0;border-bottom:1px solid var(--gray);border-left:1px solid var(--gray);position:relative;height:340px;gap:6px}
+  .chart-grid-line{position:absolute;left:0;right:0;border-top:1px dashed #edf2f7;font-size:9px;color:var(--gray-2)}
+  .chart-grid-line span{position:absolute;left:-32px;top:-6px}
+  .chart-month{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1;height:100%;justify-content:end;position:relative;z-index:1}
+  .chart-bars{display:flex;align-items:end;gap:3px;height:calc(100% - 22px);width:100%;justify-content:center}
+  .chart-bar{width:18px;border-radius:2px 2px 0 0}
+  .chart-bar.rev{background:var(--gold)}
+  .chart-bar.cost{background:var(--navy)}
+  .chart-month-label{font-size:10px;color:var(--gray-2);margin-top:4px}
+  .chart-divider{position:absolute;top:0;bottom:32px;border-left:2px dashed var(--red);z-index:2}
+  .chart-note{font-size:10px;color:var(--gray-2);text-align:center;margin-top:8px}
+
+  /* 3 Patterns */
+  .pat-bar{display:flex;justify-content:center;gap:14px;margin-bottom:14px;font-size:11px;color:var(--gray-2)}
+  .pat-bar-tag{background:var(--white);padding:5px 12px;border-radius:20px;border:1px solid var(--gray)}
+  .pat-bar-tag::before{content:"✓ ";color:var(--green);font-weight:700}
+  .pat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;height:calc(100% - 130px)}
+  .pat-card{background:var(--white);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .pat-card-head{padding:24px 20px;text-align:center;color:var(--white)}
+  .pat-card.a .pat-card-head{background:#4a5568}
+  .pat-card.b .pat-card-head{background:var(--navy)}
+  .pat-card.c .pat-card-head{background:var(--green)}
+  .pat-card-title{font-family:'Hiragino Mincho ProN',serif;font-size:22px;font-weight:600}
+  .pat-card-en{font-size:11px;font-style:italic;color:rgba(255,255,255,0.7);margin-top:4px}
+  .pat-card-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;gap:14px}
+  .pat-section{background:#f7fafc;border-radius:6px;padding:12px;text-align:center}
+  .pat-section-label{font-size:11px;color:var(--gray-2);margin-bottom:4px}
+  .pat-section-value{font-size:14px;font-weight:700;color:var(--navy)}
+  .pat-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px dashed var(--gray);font-size:12px}
+  .pat-row:last-child{border-bottom:none}
+  .pat-row-label{color:var(--gray-2)}
+  .pat-row-value{font-weight:700;color:var(--navy)}
+  .pat-result{margin-top:auto;background:#fef5e7;border-radius:6px;padding:14px;display:flex;justify-content:space-between;align-items:center}
+  .pat-card.b .pat-result{background:#fef5e7;border:2px solid var(--gold)}
+  .pat-result-label{font-size:11px;color:var(--gray-2)}
+  .pat-result-value{font-family:'Hiragino Mincho ProN',serif;font-size:22px;color:var(--gold-2);font-weight:700}
+  .pat-card.b .pat-result-value{font-size:26px;color:var(--gold-2)}
+
+  /* Year2+ */
+  .year-list{display:flex;flex-direction:column;gap:18px;padding:20px 0}
+  .year-card{display:flex;align-items:start;gap:24px;background:var(--white);border-radius:8px;padding:24px 28px;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .year-icon{width:48px;height:48px;background:var(--navy);color:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .year-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .year-title strong{color:var(--gold-2)}
+  .year-desc{font-size:13px;color:#2d3748;line-height:1.8}
+
+  /* Risk */
+  .risk-intro{font-size:13px;color:var(--gray-2);margin-bottom:18px;line-height:1.7}
+  .risk-list{display:flex;flex-direction:column;gap:14px}
+  .risk-row{display:grid;grid-template-columns:280px 1fr;gap:24px;background:var(--white);border-radius:8px;padding:20px 24px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.05)}
+  .risk-left{display:flex;align-items:center;gap:14px}
+  .risk-icon{width:42px;height:42px;background:#fed7d7;color:var(--red);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .risk-num{font-size:11px;color:var(--gray-2);font-weight:600;letter-spacing:1px}
+  .risk-tag{display:inline-block;background:var(--red);color:var(--white);font-size:10px;padding:2px 8px;border-radius:3px;font-weight:600;margin-left:6px}
+  .risk-tag.mid{background:#dd6b20}
+  .risk-title{font-size:16px;font-weight:700;color:var(--navy);margin-top:4px}
+  .risk-sub{font-size:11px;color:var(--gray-2)}
+  .risk-content{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .risk-content-col-title{font-size:12px;color:var(--green);font-weight:700;margin-bottom:6px}
+  .risk-content-col-title::before{content:"● ";color:var(--green)}
+  .risk-content-col-desc{font-size:12px;color:#2d3748;line-height:1.7}
+  .risk-content-col-desc strong{color:var(--gold-2)}
+
+  /* Map */
+  .map-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;height:100%}
+  .map-frame{background:#eef2f7;border-radius:8px;position:relative;overflow:hidden;border:1px solid var(--gray);min-height:680px}
+  .map-frame-head{position:absolute;top:12px;left:16px;right:16px;font-size:13px;color:var(--navy);font-weight:700;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.92);padding:8px 14px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.06);z-index:10}
+  .map-legend{display:flex;gap:14px}
+  .map-legend span{font-size:10.5px;color:#4a5568;display:flex;align-items:center;gap:4px;font-weight:600}
+  .map-legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%}
+  .map-legend .lg-blue::before{background:#3182ce}
+  .map-legend .lg-green::before{background:#38a169}
+  .map-legend .lg-red::before{background:#e53e3e}
+  .map-legend .lg-purple::before{background:#805ad5}
+  .map-pin{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    background:var(--white);
+    padding:6px 11px;border-radius:18px;
+    font-size:10.5px;font-weight:700;color:var(--text);
+    white-space:nowrap;
+    box-shadow:0 3px 10px rgba(0,0,0,0.18);
+    border:2px solid;
+    z-index:3;
+    display:inline-flex;align-items:center;gap:4px;
+    line-height:1.2;
+  }
+  .map-pin::before{
+    content:"";
+    width:8px;height:8px;border-radius:50%;
+    flex-shrink:0;
+  }
+  .map-pin.center{
+    background:var(--navy);color:var(--white);border-color:var(--gold);
+    padding:10px 18px;font-size:13px;z-index:9;border-width:3px;
+    box-shadow:0 6px 16px rgba(0,0,0,0.3),0 0 0 6px rgba(201,169,97,0.18);
+  }
+  .map-pin.center::before{display:none}
+  .map-pin.blue{border-color:#3182ce;color:#2b6cb0}
+  .map-pin.blue::before{background:#3182ce}
+  .map-pin.green{border-color:#38a169;color:#22543d}
+  .map-pin.green::before{background:#38a169}
+  .map-pin.red{border-color:#e53e3e;color:#9b2c2c}
+  .map-pin.red::before{background:#e53e3e}
+  .map-pin.purple{border-color:#805ad5;color:#553c9a}
+  .map-pin.purple::before{background:#805ad5}
+  .map-circles{position:absolute;top:55%;left:50%;width:0;height:0;z-index:1}
+  .map-circles::before,.map-circles::after{
+    content:"";position:absolute;top:0;left:0;
+    border:1px dashed #b8c4d2;border-radius:50%;
+    transform:translate(-50%,-50%);
+  }
+  .map-circles::before{width:260px;height:260px}
+  .map-circles::after{width:440px;height:440px}
+  .net-summary{display:flex;flex-direction:column;gap:14px;padding:0}
+  .net-card{background:var(--white);border-radius:8px;padding:14px 18px;display:flex;align-items:center;gap:14px;border-left:4px solid;box-shadow:0 1px 3px rgba(0,0,0,0.05)}
+  .net-card.blue{border-left-color:#3182ce}
+  .net-card.green{border-left-color:#38a169}
+  .net-card.red{border-left-color:#e53e3e}
+  .net-card.purple{border-left-color:#805ad5}
+  .net-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:14px;flex-shrink:0}
+  .net-card.blue .net-icon{background:#3182ce}
+  .net-card.green .net-icon{background:#38a169}
+  .net-card.red .net-icon{background:#e53e3e}
+  .net-card.purple .net-icon{background:#805ad5}
+  .net-content{flex:1}
+  .net-eyebrow{font-size:10px;color:var(--gray-2);margin-bottom:2px}
+  .net-name{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
+  .net-tags{display:flex;flex-wrap:wrap;gap:4px}
+  .net-tag{font-size:10px;color:#4a5568;background:#edf2f7;padding:2px 6px;border-radius:3px}
+  .net-count{font-family:'Hiragino Mincho ProN',serif;font-size:24px;color:var(--navy);font-weight:700;margin-left:10px}
+  .net-count span{font-size:10px;color:var(--gray-2)}
+  .map-key-message{position:absolute;bottom:14px;left:18px;right:18px;background:var(--navy);color:var(--white);padding:14px 18px;border-radius:6px;font-size:12px;border-left:3px solid var(--gold)}
+  .map-key-message strong{color:var(--gold)}
+
+  /* Schedule */
+  .sched-intro{font-size:13px;color:#4a5568;margin-bottom:32px;line-height:1.8}
+  .sched-track{position:relative;padding:40px 0 0;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+  .sched-track::before{content:"";position:absolute;top:60px;left:8%;right:8%;height:1px;background:var(--gray);z-index:0}
+  .sched-step{position:relative;text-align:center;z-index:1}
+  .sched-date{font-family:'Hiragino Mincho ProN',serif;font-size:20px;color:var(--navy);font-weight:600;margin-bottom:14px}
+  .sched-step.active .sched-date{font-size:24px;color:var(--gold-2)}
+  .sched-icon{width:42px;height:42px;border-radius:50%;background:var(--white);border:2px solid var(--gray);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:var(--gray-2);position:relative;z-index:2}
+  .sched-step.done .sched-icon{background:var(--gold);border-color:var(--gold);color:var(--white)}
+  .sched-step.active .sched-icon{background:var(--navy);border-color:var(--gold);color:var(--gold);box-shadow:0 0 0 6px rgba(201,169,97,0.15)}
+  .sched-step.target .sched-icon{background:var(--white);border-color:var(--gold);color:var(--gold-2)}
+  .sched-card{background:var(--white);border-radius:8px;padding:18px 16px;border-top:3px solid var(--gray);min-height:160px;text-align:left}
+  .sched-step.done .sched-card{border-top-color:var(--gold)}
+  .sched-step.active .sched-card{border-top-color:var(--navy);background:#f7fafc}
+  .sched-step.target .sched-card{background:#fffaf0;border:2px solid var(--gold)}
+  .sched-card-title{font-size:14px;font-weight:700;color:var(--navy);text-align:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--gray)}
+  .sched-card-list{font-size:11.5px;color:#2d3748;line-height:1.8}
+  .sched-card-list li{list-style:none;display:flex;align-items:start;gap:6px;margin:3px 0}
+  .sched-card-list li::before{content:"●";color:var(--gold);font-size:8px;margin-top:6px}
+  .sched-tag{display:inline-block;background:var(--gold);color:var(--white);font-size:10px;padding:3px 8px;border-radius:3px;margin-top:8px;font-weight:600}
+  .sched-step.done .sched-tag{background:var(--gold);color:var(--white)}
+  .sched-step.active .sched-tag{background:var(--navy);color:var(--white)}
+
+  /* Summary */
+  .summ-intro{font-size:13px;color:#4a5568;margin-bottom:24px;line-height:1.8}
+  .summ-grid-1{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:18px}
+  .summ-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:75%;margin:0 auto}
+  .summ-card{background:var(--white);border-radius:8px;padding:24px;border-top:4px solid var(--navy);position:relative;min-height:200px}
+  .summ-card.s1{border-top-color:#3182ce}
+  .summ-card.s2{border-top-color:#38a169}
+  .summ-card.s3{border-top-color:var(--gold)}
+  .summ-card.s4{border-top-color:#e53e3e}
+  .summ-card.s5{border-top-color:#805ad5}
+  .summ-num{position:absolute;top:14px;right:20px;font-family:'Hiragino Mincho ProN',serif;font-size:30px;color:#cbd5e0;font-weight:300}
+  .summ-icon{width:46px;height:46px;border-radius:10px;background:#edf2f7;color:var(--navy);display:inline-flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:12px}
+  .summ-card.s1 .summ-icon{background:#bee3f8;color:#2b6cb0}
+  .summ-card.s2 .summ-icon{background:#c6f6d5;color:#22543d}
+  .summ-card.s3 .summ-icon{background:#fef5e7;color:var(--gold-2)}
+  .summ-card.s4 .summ-icon{background:#fed7d7;color:#9b2c2c}
+  .summ-card.s5 .summ-icon{background:#e9d8fd;color:#553c9a}
+  .summ-title{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .summ-desc{font-size:12.5px;color:#2d3748;line-height:1.7}
+  .summ-desc strong{color:var(--gold-2)}
+  .summ-footer{margin-top:auto;background:var(--navy);color:var(--white);padding:18px 28px;border-radius:6px;font-size:14px;text-align:center;letter-spacing:1px;border-left:6px solid var(--gold)}
+
+  @media print{
+    html,body{background:#fff}
+    .slide{margin:0;box-shadow:none;page-break-after:always;page-break-inside:avoid}
+    @page{size:1456px 819px;margin:0}
+  }
 </style>
 </head>
 <body>
-<div class="container">
-<div class="nav"><a href="index.html">← 資料トップ</a><a href="shikingurihyou-24months.html">資金繰り表24ヶ月</a><a href="shikinkeikakusho-3patterns.html">資金計画書3パターン</a></div>
-<h1>事業計画書<span class="tag">融資1,000万・打ち合わせ版</span></h1>
-<div class="lead">
-ライフケアはーと合同会社／障がい者グループホーム「みんなのいえ 羽坂どおり」<br>
-6/12会議の方針（総額1,000万・管理者の事業専念・FC加盟金・区分3中心）を反映／作成：株式会社斗 星崎・2026-06-19
-</div>
+<section class="slide cover">
+  <div class="cover-corner-tr"></div><div class="cover-corner-bl"></div>
+  <div class="pagenum" style="color:#cbd5e0;bottom:20px;right:40px">1 / 14</div>
+  <div class="cover-eyebrow">障 が い 者 グ ル ー プ ホ ー ム</div>
+  <h1 class="cover-title">みんなのいえ 羽坂どおり 事業計画書</h1>
+  <div class="cover-company">ラ イ フ ケ ア は ー と 合 同 会 社</div>
+  <div class="cover-info">
+    <div>
+      <div class="cover-info-row"><div class="cover-info-label">代表社員</div><div class="cover-info-value">寺田 信彦</div></div>
+      <div class="cover-info-row"><div class="cover-info-label">管理者</div><div class="cover-info-value">寺田 美絵（看護師）</div></div>
+      <div class="cover-info-row"><div class="cover-info-label">法人番号</div><div class="cover-info-value">7140003023358</div></div>
+    </div>
+    <div>
+      <div class="cover-info-row"><div class="cover-info-label">事業内容</div><div class="cover-info-value">共同生活援助（介護サービス包括型）</div></div>
+      <div class="cover-info-row"><div class="cover-info-label">OWLパートナー</div><div class="cover-info-value">株式会社ランバード</div></div>
+      <div class="cover-info-row"><div class="cover-info-label">開設予定</div><div class="cover-info-value">2026年8月1日</div></div>
+    </div>
+  </div>
+</section>
 
-<div class="kpi">
-<div><div class="n">定員4名</div><div class="t">介護サービス包括型GH</div></div>
-<div><div class="n">2026/8/1</div><div class="t">開設予定</div></div>
-<div><div class="n">¥1,000万</div><div class="t">希望融資額</div></div>
-<div><div class="n">約10%</div><div class="t">返済比率（健全圏）</div></div>
-</div>
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">運営の中核・代表者プロフィール</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">2 / 14</div>
+  <div class="slide-body">
+    <div class="profile-grid">
+      <div>
+        <div class="profile-card">
+          <div class="profile-avatar">👩‍⚕️</div>
+          <div class="profile-name">寺田 美絵</div>
+          <div class="profile-sub">業務執行社員・管理者 兼 看護師 / 52歳</div>
+          <div class="profile-badges"><span class="badge badge-navy">看護師30年</span><span class="badge badge-gold">看護師長10年</span></div>
+          <div class="profile-meta">
+            <div class="profile-meta-label">役割</div>事業運営の中核。管理者兼看護職員を内製
+            <div class="profile-meta-label">現職</div>公益財団法人甲南会 六甲アイランド甲南病院 看護師（<strong>7月末退職→8/1事業専念</strong>）
+            <div class="profile-meta-label">出資</div>5万円（業務執行社員）
+          </div>
+        </div>
+        <div class="profile-cert-card">
+          <div class="profile-cert-title">⭐ 保有資格</div>
+          <div class="cert-tags">
+            <span class="cert-tag" style="background:#fef5e7;border-color:var(--gold);color:#744210">看護師</span>
+            <span class="cert-tag">准看護婦</span>
+            <span class="cert-tag">訪問介護員2級</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:17px;color:var(--navy);margin-bottom:18px;display:flex;align-items:center;gap:10px"><span style="background:var(--navy);color:#fff;width:30px;height:30px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:14px">📋</span>職務経歴（看護・福祉 30年超）</h3>
+        <div class="career-list">
+          <div class="career-item"><div class="career-period">1993/4〜2004/9<br>看護補助〜看護師</div><div><div class="career-company">湊川病院・整形外科医院・六甲病院</div><div class="career-role">看護補助・准看護婦・看護師として研鑽</div></div></div>
+          <div class="career-item"><div class="career-period">2004/10〜2018/7<br>14年</div><div><div class="career-company">医療法人社団 大池病院</div><div class="career-role">看護師。うち<strong>看護師長として10年</strong>、看護部門のマネジメントに従事</div><span class="career-highlight career-highlight-success">★ 看護師長10年＝運営・人材マネジメント経験</span></div></div>
+          <div class="career-item"><div class="career-period">2019/4〜現在<br>本業所得あり</div><div><div class="career-company">公益財団法人甲南会 六甲アイランド甲南病院</div><div class="career-role">看護師（7月末退職し8/1から事業に専念）</div></div></div>
+          <div class="career-item"><div class="career-period">（代表社員）</div><div><div class="career-company">寺田 信彦 — 代表社員・連帯保証人</div><div class="career-role">明石市役所に<strong>28年勤続</strong>し令和7年退職。<strong>退職金を自己資金の原資</strong>に出資500万。現在は株式会社KidsDeveloperに勤務</div><span class="career-highlight">★ 安定した公務員28年の経歴＋退職金で自己資金の裏付け</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>1. 創業の動機</h2>
-<p>代表社員 寺田信彦と、業務執行社員であり管理者・看護師を務める妻 寺田美絵を中心に、家族・親族一丸で運営する障がい者グループホームです。管理者の美絵は准看護婦・看護師として30年超、看護師長として10年のマネジメント経験を持ち、医療・看護の専門性をそのまま障がい者の生活支援に活かします。</p>
-<p>施設入所から地域生活への移行、「親亡き後」を見据えた居住基盤の確保という社会的ニーズを背景に、共同生活援助の運営を志しました。看護師資格を事業所内で内製し、健康管理・服薬支援・医療連携を開設時から高水準で行える体制を整えます。</p>
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">目次</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">3 / 14</div>
+  <div class="slide-body"><div class="toc-grid">
+<div class="toc-item"><div class="toc-num">01</div><div>表紙</div><div></div></div>
+<div class="toc-item"><div class="toc-num">02</div><div>運営の中核・代表者プロフィール</div><div></div></div>
+<div class="toc-item active"><div class="toc-num">03</div><div>目次</div><div>‹</div></div>
+<div class="toc-item"><div class="toc-num">04</div><div>創業の動機</div><div></div></div>
+<div class="toc-item"><div class="toc-num">05</div><div>事業概要（共同生活援助とは）</div><div></div></div>
+<div class="toc-item"><div class="toc-num">06</div><div>出店場所</div><div></div></div>
+<div class="toc-item"><div class="toc-num">07</div><div>経営理念・基本方針</div><div></div></div>
+<div class="toc-item"><div class="toc-num">08</div><div>報酬単価テーブル</div><div></div></div>
+<div class="toc-item"><div class="toc-num">09</div><div>人員体制・経費構造</div><div></div></div>
+<div class="toc-item"><div class="toc-num">10</div><div>事業の強み</div><div></div></div>
+<div class="toc-item"><div class="toc-num">11</div><div>必要資金</div><div></div></div>
+<div class="toc-item"><div class="toc-num">12</div><div>資金調達計画（3パターン）</div><div></div></div>
+<div class="toc-item"><div class="toc-num">13</div><div>月次収支シミュレーション</div><div></div></div>
+<div class="toc-item"><div class="toc-num">14</div><div>スケジュール・まとめ</div><div></div></div>
+  </div></div>
+</section>
 
-<h2>2. 事業概要</h2>
-<table>
-<tr><th>項目</th><th>内容</th></tr>
-<tr><td>法人</td><td>ライフケアはーと合同会社（本店：神戸市東灘区向洋町中）</td></tr>
-<tr><td>サービス種別</td><td>共同生活援助（介護サービス包括型）</td></tr>
-<tr><td>事業所</td><td>みんなのいえ 羽坂どおり（神戸市兵庫区羽坂通2-1-11・暁ビル・鉄骨3階建・専有120.33㎡）</td></tr>
-<tr><td>定員</td><td>4名（居室4室）</td></tr>
-<tr><td>対象者</td><td>知的・精神・身体（内部障害）。3階建ての構造上、区分3を中心とした受入</td></tr>
-<tr><td>開設</td><td>2026年8月1日（神戸市に指定申請中）</td></tr>
-<tr><td>物件賃料</td><td>月¥151,200（通信費0円・固定費が軽い）</td></tr>
-</table>
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">創業の動機</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">4 / 14</div>
+  <div class="slide-body" style="position:relative;padding-bottom:90px">
+    <div class="grid-2x2">
+      <div class="info-card gold"><div class="info-card-icon">①</div><div class="info-card-title">家族で挑む、看護師管理者のグループホーム</div><div class="info-card-body">代表社員 寺田信彦と、管理者・看護師を務める妻 寺田美絵を中心に、家族・親族一丸で運営。美絵は<strong>看護師30年・看護師長10年</strong>の専門性を、そのまま障がい者の生活支援に活かします。</div></div>
+      <div class="info-card"><div class="info-card-icon">②</div><div class="info-card-title">地域生活・親亡き後を支える住まい</div><div class="info-card-body">施設入所から地域生活への移行、「親亡き後」を見据えた居住基盤の確保という社会的ニーズを背景に、神戸市兵庫区で共同生活援助の運営を志しました。</div></div>
+      <div class="info-card green"><div class="info-card-icon">③</div><div class="info-card-title">国の給付費が支える事業安定性</div><div class="info-card-body">売上の約7割が国（国保連）からの給付費で景気変動に強い。<strong>神戸市は障害福祉2級地</strong>で単価が相対的に高く、堅実な収益設計が可能です。</div></div>
+      <div class="info-card red"><div class="info-card-icon">④</div><div class="info-card-title">看護師内製という差別化</div><div class="info-card-body">看護師である管理者が常駐し、<strong>医療連携体制加算を内製で算定</strong>。医療的ケアが必要な方の受け皿として優位に立ち、区分3〜4中心の入居で安定運営を図ります。</div></div>
+    </div>
+    <div class="quote-strip">💬 看護師30年・看護師長10年の専門性を核に、神戸市兵庫区で「医療と生活支援が一体になった」グループホームを実現します。</div>
+  </div>
+</section>
 
-<h2>3. 運営体制（家族＋外部専門職）</h2>
-<table>
-<tr><th>役割</th><th>担当</th><th>強み</th></tr>
-<tr><td>代表社員・連帯保証人</td><td>寺田 信彦</td><td>明石市役所28年勤続の安定経歴。出資・資金面の責任主体</td></tr>
-<tr><td>業務執行社員・管理者・看護師</td><td>寺田 美絵</td><td>看護師30年・看護師長10年。<b>7月末で現職を退職し8/1から事業に専念</b></td></tr>
-<tr><td>サービス管理責任者</td><td>天野 様（外部・確保済）</td><td>実務経験証明書 提出済</td></tr>
-<tr><td>世話人</td><td>甥（親族・8/1〜）</td><td>人件費を内製で圧縮、中核人材を内部育成</td></tr>
-</table>
-<p>創業期は人件費を月約70万（従業員＋管理者報酬）に締め、看護師内製・通信費0円で固定費を抑える設計。</p>
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">事業概要（共同生活援助とは）</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">5 / 14</div>
+  <div class="slide-body">
+    <div class="service-top">
+      <div class="card" style="border-left:5px solid var(--gold)"><div style="display:flex;align-items:start;gap:14px"><div style="font-size:24px">🏠</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px">障害者総合支援法に基づく 支援付き住まい</div><div style="font-size:13px;color:#2d3748;line-height:1.7">障がいのある方が共同生活を営む住まい。世話人・看護師等の支援を受けながら、地域で自立した生活を送ることを目的とします。</div></div></div></div>
+      <div class="card" style="border-left:5px solid var(--navy)"><div style="display:flex;align-items:start;gap:14px"><div style="font-size:24px">👥</div><div><div style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px">入居対象者</div><div style="font-size:13px;color:#2d3748;line-height:1.7"><strong style="font-size:18px;color:var(--gold-2)">知的・精神・身体（内部障害）</strong>の方。3階建ての構造上、<strong>区分3を中心</strong>に受入（定員4名）</div></div></div></div>
+    </div>
+    <h3 style="font-size:15px;color:var(--navy);margin-bottom:14px;border-left:4px solid var(--navy);padding-left:10px">提供サービス（看護師常駐の包括的支援）</h3>
+    <div class="service-grid">
+      <div class="service-card"><div class="service-icon">🍴</div><div class="service-name">食事の提供</div><div class="service-desc">朝食・夕食を中心に提供。栄養・体調に配慮した食事支援。</div></div>
+      <div class="service-card"><div class="service-icon">💊</div><div class="service-name">服薬・健康管理</div><div class="service-desc"><strong>看護師である管理者</strong>が服薬確認・健康観察を毎日実施。</div></div>
+      <div class="service-card"><div class="service-icon">🏥</div><div class="service-name">医療機関連携</div><div class="service-desc">通院同行・医療連携体制加算を内製で算定。医療的ケアにも対応。</div></div>
+      <div class="service-card"><div class="service-icon">🧹</div><div class="service-name">生活支援</div><div class="service-desc">清掃・洗濯・金銭管理など日常生活の援助。</div></div>
+      <div class="service-card"><div class="service-icon">🌙</div><div class="service-name">夜間支援</div><div class="service-desc">夜間支援員を配置し、夜間も安心して暮らせる体制。</div></div>
+      <div class="service-card"><div class="service-icon">❤️</div><div class="service-name">相談・自立支援</div><div class="service-desc">日々の相談対応と、自立に向けた見守り・支援。</div></div>
+    </div>
+  </div>
+</section>
 
-<h2>4. 市場・差別化</h2>
-<p>神戸市の障がい者GHは需要に対し供給不足で、施設入所から地域生活への移行は国の政策方針。差別化は<b>看護師である管理者の常駐</b>で、医療連携体制加算を内製で算定でき、医療的ケアが必要な方の受け皿として優位。神戸市は障害福祉2級地で単価が相対的に高く、収益面で有利。集客は相談支援事業所・医療機関ネットワーク・FC本部RUNBIRD（OWL）の紹介を活用。</p>
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">出店場所</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">6 / 14</div>
+  <div class="slide-body">
+    <div class="loc-grid">
+      <div class="loc-map" style="padding:0;overflow:hidden;border:1px solid var(--gray)">
+        <iframe src="https://maps.google.com/maps?q=%E7%A5%9E%E6%88%B8%E5%B8%82%E5%85%B5%E5%BA%AB%E5%8C%BA%E7%BE%BD%E5%9D%82%E9%80%9A2-1-11&t=&z=16&ie=UTF8&iwloc=&output=embed" style="width:100%;height:100%;border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div style="position:absolute;top:14px;left:14px;background:var(--navy);color:#fff;padding:8px 14px;border-radius:4px;font-size:12px;font-weight:700;border-left:3px solid var(--gold);z-index:10;box-shadow:0 2px 8px rgba(0,0,0,0.2)">📍 神戸市兵庫区羽坂通2-1-11 暁ビル</div>
+      </div>
+      <div class="loc-detail">
+        <div class="loc-detail-title">障がい者GH「みんなのいえ 羽坂どおり」</div>
+        <table class="loc-table">
+          <tr><th>ブランド</th><td><strong style="color:var(--gold-2)">みんなのいえ 羽坂どおり</strong>（OWL FCブランド）</td></tr>
+          <tr><th>所在地</th><td>兵庫県神戸市兵庫区羽坂通2丁目1-11 暁ビル1号室</td></tr>
+          <tr><th>家賃</th><td><strong style="font-size:18px;color:var(--gold-2)">151,200円</strong>/月（家賃150,000＋共益1,200・通信費0円で固定費が軽い）</td></tr>
+          <tr><th>定員</th><td><strong>4名（4居室確定）</strong>／専有120.33㎡・鉄骨3階建</td></tr>
+          <tr><th>取得形態</th><td><strong style="color:var(--green)">✅ 賃貸</strong>（R8/5/1〜R10/4/29・2年）</td></tr>
+          <tr><th>対象・防災</th><td>市街化区域（第7種高度地区）／土砂・洪水とも非該当／消防 査察結果通知書あり</td></tr>
+        </table>
+        <div class="loc-bullet">2026/5/30 地域住民へGH開設の説明を実施済</div>
+        <div class="loc-bullet">神戸市（監査指導課）へ指定申請中。提出期限6/18・補正対応済</div>
+        <div class="loc-bullet">神戸市は障害福祉2級地で単価が相対的に高く、収益面で有利</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>5. 収支計画（要点・詳細は資金繰り表）</h2>
-<div class="card">
-・満室時 月次（区分3.5中心）：<b>+約1.5万の黒字</b>（区分4中心なら+約5.5万）。役員報酬を抑え、返済込みで黒字構造。<br>
-・資金繰りボトム：<b>約630万（2027年1月）</b> — 融資1,000万・8月実行前提で一度もマイナスにならない。<br>
-・返済比率：<b>約10%</b>（健全圏）。売上の約7割は国の訓練等給付費（国保連経由・回収リスクほぼゼロ）。<br>
-・黒字の条件：区分3〜4中心の入居方針。軽度（区分2）のみだと満室でも赤字。
-</div>
-<p><a href="shikingurihyou-24months.html">→ 24ヶ月の資金繰り表で「回る」を月次で確認</a></p>
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">経営理念・基本方針</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">7 / 14</div>
+  <div class="slide-body">
+    <div class="philo-mission"><div class="philo-icon">⭐</div><div class="philo-mission-text"><div class="philo-mission-eyebrow">MISSION / 経営理念</div><div class="philo-mission-title">医療と生活支援が一体の、安心の住まい</div><div class="philo-mission-desc">看護の専門性を活かし、障がいのある方が地域で安心して暮らせる「住まい」と自立支援を提供。利用者一人ひとりが「自分の家」と感じられる温かなグループホームを実現する。</div></div></div>
+    <div style="text-align:center;margin-bottom:16px;font-size:12px;color:var(--gray-2);letter-spacing:2px">基本方針 / POLICY</div>
+    <div class="philo-policies">
+      <div class="philo-policy"><div class="philo-policy-num">1</div><div class="philo-policy-title">健康と安全の確保</div><div>看護師である管理者が常駐し、健康管理・服薬・医療連携を高い水準で行います。</div></div>
+      <div class="philo-policy"><div class="philo-policy-num">2</div><div class="philo-policy-title">利用者ファースト</div><div>一人ひとりの障がい特性に寄り添い、その人らしい生活を支援します。</div></div>
+      <div class="philo-policy"><div class="philo-policy-num">3</div><div class="philo-policy-title">自立支援の見守り</div><div>安心して日常生活を送り、自立に向かう姿を見守ります。</div></div>
+      <div class="philo-policy"><div class="philo-policy-num">4</div><div class="philo-policy-title">地域社会への貢献</div><div>障がい者理解を深め、誰もが認め合う温かい地域社会づくりに努めます。</div></div>
+    </div>
+  </div>
+</section>
 
-<h2>6. 資金計画</h2>
-<div class="card">
-・<b>希望融資額：¥1,000万</b>（公庫）。使途＝FC加盟金残220万＋室内改造工事54万＋立ち上げ運転資金 約600万＋予備費 約126万。<br>
-・<b>自己資金：退職金を原資とする厚い自己資金</b>（現預金＋生命保険解約余力）。消防・備品・物件初期費用・設立費等はすでに自己資金で支払済（通帳で確認可）。<br>
-・FC加盟金は総額440万のうち半額220万を支払済、残220万を融資で充当。
-</div>
-<p><a href="shikinkeikakusho-3patterns.html">→ 資金計画書3パターン（600万／1,000万推奨／協調）で比較</a></p>
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">報酬単価テーブル</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">8 / 14</div>
+  <div class="slide-body">
+    <div class="rate-grid">
+      <div>
+        <div class="rate-section-title"><span>💰 基本報酬単価</span><span class="rate-region">地域区分（神戸市・障害福祉2級地）上乗せ16%</span></div>
+        <table class="rate-table"><thead><tr><th>障害支援区分</th><th>給付費の目安</th><th style="text-align:right">月額（4名満室時の構成）</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rate-num">2</span>区分2中心</td><td>軽度</td><td class="rate-amount">583,920 <span style="font-size:12px">円</span></td></tr>
+          <tr class="featured"><td><span class="rate-num">3</span>区分3中心</td><td>標準</td><td class="rate-amount">916,761 <span style="font-size:12px">円</span></td></tr>
+          <tr><td><span class="rate-num">3.5</span>区分3.5中心</td><td>やや重め</td><td class="rate-amount">960,000 <span style="font-size:12px">円</span></td></tr>
+          <tr><td><span class="rate-num">4</span>区分4中心</td><td>重め</td><td class="rate-amount">1,000,000 <span style="font-size:12px">円</span></td></tr>
+        </tbody></table>
+        <div class="rate-addons"><div style="font-size:12px;color:var(--navy);font-weight:600">🎁 適用加算 <span style="font-size:10px;color:var(--gray-2);font-weight:400">※上の給付費に含む</span></div>
+        <div class="rate-addons-grid">
+          <div class="rate-addon"><div class="rate-addon-label">処遇改善加算</div><div class="rate-addon-value">12.8 <span style="font-size:11px">%</span></div></div>
+          <div class="rate-addon"><div class="rate-addon-label">夜間支援等体制加算</div><div class="rate-addon-value" style="font-size:14px">あり</div></div>
+          <div class="rate-addon"><div class="rate-addon-label">医療連携体制加算</div><div class="rate-addon-value" style="font-size:14px">内製</div></div>
+        </div></div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div class="rate-section-title"><span>💼 利用者負担額</span><span style="font-size:11px;color:var(--gray-2)">（月額）</span></div>
+        <div class="rate-burden-card"><div class="rate-burden-label">利用者負担額（1名）</div><div class="rate-burden-value">88,000<span>円</span></div><div class="rate-burden-note">運営規程第9条</div></div>
+        <div class="rate-burden-list" style="background:var(--white);border-radius:8px;padding:8px 16px;flex:1">
+          <div class="rate-burden-list-row"><div class="rate-burden-list-row-label">🏠 家賃</div><div class="rate-burden-list-row-value">35,000円</div></div>
+          <div class="rate-burden-list-row"><div class="rate-burden-list-row-label">🍴 食費</div><div class="rate-burden-list-row-value">33,000円</div></div>
+          <div class="rate-burden-list-row"><div class="rate-burden-list-row-label">💡 水光熱費</div><div class="rate-burden-list-row-value">15,000円</div></div>
+          <div class="rate-burden-list-row"><div class="rate-burden-list-row-label">🧴 日用品費</div><div class="rate-burden-list-row-value">5,000円</div></div>
+        </div>
+        <div class="rate-info-note"><strong>👥 定員4名で利用者負担合計 ¥352,000/月（¥88,000×4名）。通信費0円。</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>7. 想定Q&A（面談用）</h2>
-<div class="qa"><b>Q. 創業実績がないが運営できるのか？</b><br>管理者の寺田美絵は看護師30年・看護師長10年。サビ管も確保済で、開設時点で指定要件と運営体制が整っている。FC本部RUNBIRD（OWL）の開設・運営支援も受ける。</div>
-<div class="qa"><b>Q. 4名1棟で収支は成り立つのか？</b><br>区分3〜4中心の入居で満室時に黒字構造。返済比率は約10%。物件賃料が月15万と低く、看護師内製・通信費0円で固定費を抑えている。</div>
-<div class="qa"><b>Q. 返済の確実性は？</b><br>売上の約7割は国の訓練等給付費（国保連経由で回収リスク実質ゼロ）。加えて退職金を原資とする厚い自己資金が立ち上げ・不測時のバッファー。</div>
-<div class="qa"><b>Q. 代表者の収入が少ないのでは？</b><br>転職により給与収入は控えめだが、明石市役所28年勤続の退職金を自己資金として事業に投じており、自己資金の裏付けは明確。家計は退職金のクッション＋事業が生む管理者報酬で支える。</div>
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">人員体制・経費構造</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">9 / 14</div>
+  <div class="slide-body">
+    <div class="staff-grid">
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">👥 人員配置・固定経費（4名満室時／人件費を実態化）</div>
+        <table class="staff-table"><thead><tr><th>職種</th><th>区分</th><th>確保状況</th><th style="text-align:right">月額費用・備考</th></tr></thead>
+        <tbody>
+          <tr><td>👩‍⚕️ 管理者 兼 看護師</td><td><span class="staff-tag full">業務執行社員</span></td><td>◎</td><td class="staff-amount">報酬<span class="staff-amount-sub">寺田美絵／看護師常駐・医療連携を内製</span></td></tr>
+          <tr><td>📋 サービス管理責任者</td><td><span class="staff-tag part">外部</span></td><td>◎ 確保済</td><td class="staff-amount">—<span class="staff-amount-sub">天野氏／実務経験証明書 提出済</span></td></tr>
+          <tr><td>🌟 世話人</td><td><span class="staff-tag fixed">親族</span></td><td>◎ 8/1〜</td><td class="staff-amount">—<span class="staff-amount-sub">甥（坂本様）で内製＝人件費圧縮</span></td></tr>
+          <tr><td>🌙 夜間支援・生活支援員</td><td><span class="staff-tag part">パート</span></td><td>○</td><td class="staff-amount">—<span class="staff-amount-sub">必要最小限の配置で固定費を抑制</span></td></tr>
+        </tbody></table>
+        <div class="staff-summary"><div class="staff-summary-left"><strong>月次人件費合計（4名満室時）</strong>従業員＋管理者報酬を実態に締めた水準（法定福利込）</div><div class="staff-summary-total">約70万<span>円</span></div></div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:8px">🎯 人件費を締めるのが黒字の生命線</div>
+        <div class="staff-strategy-card"><div class="staff-strategy-title">✅ サビ管 確保済（SG等との差別化）</div><div class="staff-strategy-desc">サービス管理責任者（天野氏）を<strong>開設前に外部確保済</strong>。指定要件をクリアし、開設リスクが低い。</div><span class="staff-strategy-pill">✅ 開設可否の前提条件をクリア</span></div>
+        <div class="staff-strategy-card"><div class="staff-strategy-title">👨‍👩‍👦 世話人は親族で内製</div><div class="staff-strategy-desc">甥（坂本まなと様）が8/1から世話人として就業。<strong>人件費を圧縮</strong>しつつ中核人材を内部育成。将来サビ管取得を目指す。</div></div>
+        <div class="staff-variable"><div class="staff-variable-head"><div><div class="staff-variable-label">その他固定経費</div><div class="staff-variable-sub">満室4名時</div></div><div class="staff-variable-amount">約25万<span style="font-size:12px">円/月</span></div></div>
+          <div class="staff-variable-row"><div class="staff-variable-row-name">🏠 家賃（4部屋＋共用）</div><div>151,200円</div></div>
+          <div class="staff-variable-row"><div class="staff-variable-row-name">🤝 OWL・税理士・事務・保険</div><div>約100,750円</div></div>
+        </div>
+        <div style="background:#fffaf0;border-radius:8px;padding:12px 16px;margin-top:12px;border-left:4px solid var(--gold);font-size:12px;color:#744210">⚠️ 人件費を月100万に膨らませると4名定員では満室でも赤字。<strong>月約70万に締めることが黒字の条件</strong>。</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="footer">株式会社斗 ／ ライフケアはーと合同会社 融資支援 ／ 打ち合わせ版 2026-06-19<br>個人の財務詳細（給与・残高・借入）は公開資料には記載せず、公庫様式創業計画書・ローカル資料で管理。</div>
-</div>
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">事業の強み</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">10 / 14</div>
+  <div class="slide-body">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;height:100%">
+      <div class="strength-card"><div class="strength-num">01</div><div class="strength-icon">👩‍⚕️</div><div class="strength-title">看護師30年・看護師長10年の管理者</div><div class="strength-desc">管理者 寺田美絵は<strong>看護師30年・看護師長10年</strong>。新設法人の実績ゼロを管理者の専門性が補完し、健康管理・服薬・医療連携を高水準で内製。</div></div>
+      <div class="strength-card gold"><div class="strength-num">02</div><div class="strength-icon">🏥</div><div class="strength-title">医療連携体制加算を内製で算定</div><div class="strength-desc">看護師が事業所内に常駐するため<strong>医療連携体制加算を内製</strong>。医療的ケアが必要な方の受け皿として競合と差別化できる。</div></div>
+      <div class="strength-card green"><div class="strength-num">03</div><div class="strength-icon">✅</div><div class="strength-title">サビ管 確保済・世話人は親族で内製</div><div class="strength-desc">サービス管理責任者（天野氏）を<strong>開設前に外部確保済</strong>。世話人は親族（甥）で内製し人件費を圧縮。開設リスクが低く固定費が軽い。</div></div>
+      <div class="strength-card red"><div class="strength-num">04</div><div class="strength-icon">💰</div><div class="strength-title">退職金を原資とする厚い自己資金</div><div class="strength-desc">代表者 寺田信彦は明石市役所に<strong>28年勤続</strong>し令和7年退職。<strong>退職金を原資</strong>に資本金505万・FC加盟金（半額）等を投下済。現預金＋生命保険の解約余力もあり、自己資金の裏付けが明確。</div></div>
+      <div class="strength-card purple"><div class="strength-num">05</div><div class="strength-icon">🏠</div><div class="strength-title">固定費が軽い・神戸2級地の単価優位</div><div class="strength-desc">物件賃料 月15.1万と低く、<strong>通信費0円・看護師内製</strong>で固定費が軽い。神戸市は障害福祉2級地で単価が相対的に高く、区分3〜4中心で黒字化を図る。</div></div>
+      <div class="strength-card"><div class="strength-num">06</div><div class="strength-icon">🤝</div><div class="strength-title">FC本部RUNBIRD（OWL）の伴走支援</div><div class="strength-desc">開設準備〜運営安定まで<strong>RUNBIRD（OWL）の支援</strong>を受ける。指定申請・人材・運営マニュアルを活用し、新規開設の不確実性を低減。</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">必要資金</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">11 / 14</div>
+  <div class="slide-body">
+    <div class="fund-grid">
+      <div>
+        <div class="fund-subtotal"><span>設備資金</span><span class="yen">約 294 万円</span></div>
+        <table class="fund-table"><tbody>
+          <tr><td>室内改造工事（鬼村工務店・未払／借入充当）</td><td class="fund-amount">540,000</td></tr>
+          <tr><td>消防設備（稲荷防災・自己資金で既払）</td><td class="fund-amount">1,067,000</td></tr>
+          <tr><td>備品・家電・什器（既払）</td><td class="fund-amount">220,000</td></tr>
+          <tr><td>物件初期費用 敷金・礼金等（既払）</td><td class="fund-amount">981,000</td></tr>
+        </tbody></table>
+        <div class="fund-subtotal"><span>開業・運転資金</span><span class="yen">約 706 万円</span></div>
+        <table class="fund-table"><tbody>
+          <tr><td>FC加盟金 残額（総額440万の残半額／借入充当）</td><td class="fund-amount">2,200,000</td></tr>
+          <tr><td>立ち上げ運転資金（給付費入金前の人件費・家賃／借入充当）</td><td class="fund-amount">約6,000,000</td></tr>
+          <tr><td>法人設立・FC開設支援・保険等（既払）</td><td class="fund-amount">約420,000</td></tr>
+        </tbody></table>
+      </div>
+      <div class="fund-total-card">
+        <div class="fund-total-icon">💰</div>
+        <div class="fund-total-eyebrow">うち 公庫 希望融資額</div>
+        <div class="fund-total-amount">1,000<span>万円</span></div>
+        <div class="fund-total-yen">¥10,000,000（設備100万＋運転900万）</div>
+        <div class="fund-strategy">
+          <div class="fund-strategy-title">FUNDING POINT</div>
+          <div class="fund-strategy-row"><strong>借入の使途</strong>FC加盟金残220万＋改修54万＋立ち上げ運転資金＋予備費</div>
+          <div class="fund-strategy-row"><strong>自己資金</strong>消防・備品・物件初期費用・設立費は自己資金で支払済（通帳で確認可）</div>
+          <div class="fund-strategy-row"><strong>原資</strong>代表者の退職金を原資とする厚い自己資金</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">資金調達計画（3パターン）</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">12 / 14</div>
+  <div class="slide-body">
+    <div class="pat-bar"><span class="pat-bar-tag">6/12会議で総額1,000万方針を確定</span><span class="pat-bar-tag">返済比率 約10%で健全</span></div>
+    <div class="pat-grid">
+      <div class="pat-card a"><div class="pat-card-head"><div class="pat-card-title">パターンA</div><div class="pat-card-en">公庫 600万</div></div>
+        <div class="pat-card-body">
+          <div class="pat-section"><div class="pat-section-label">借入総額</div><div class="pat-section-value">600万</div></div>
+          <div class="pat-row"><div class="pat-row-label">月返済</div><div class="pat-row-value">約77,000円</div></div>
+          <div class="pat-row"><div class="pat-row-label">クッション</div><div class="pat-row-value">薄め</div></div>
+          <div class="pat-result"><div class="pat-result-label">立ち上げ安全性</div><div class="pat-result-value">△</div></div>
+        </div>
+      </div>
+      <div class="pat-card b"><div class="pat-card-head"><div class="pat-card-title">パターンB</div><div class="pat-card-en">公庫 1,000万（推奨・6/12確定）</div></div>
+        <div class="pat-card-body">
+          <div class="pat-section"><div class="pat-section-label">借入総額</div><div class="pat-section-value">1,000万</div></div>
+          <div class="pat-row"><div class="pat-row-label">月返済</div><div class="pat-row-value">約127,600円</div></div>
+          <div class="pat-row"><div class="pat-row-label">資金繰りボトム</div><div class="pat-row-value">約630万</div></div>
+          <div class="pat-result"><div class="pat-result-label">立ち上げ安全性</div><div class="pat-result-value">◎</div></div>
+        </div>
+      </div>
+      <div class="pat-card c"><div class="pat-card-head"><div class="pat-card-title">パターンC</div><div class="pat-card-en">協調 1,000万（公庫700＋信金300）</div></div>
+        <div class="pat-card-body">
+          <div class="pat-section"><div class="pat-section-label">借入総額</div><div class="pat-section-value">1,000万</div></div>
+          <div class="pat-row"><div class="pat-row-label">構成</div><div class="pat-row-value">公庫＋信金</div></div>
+          <div class="pat-row"><div class="pat-row-label">利点</div><div class="pat-row-value">リスク分散</div></div>
+          <div class="pat-result"><div class="pat-result-label">立ち上げ安全性</div><div class="pat-result-value">◎</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">月次収支シミュレーション（満室・区分3.5中心）</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">13 / 14</div>
+  <div class="slide-body">
+    <div class="pl-grid">
+      <div>
+        <table class="pl-table">
+          <thead><tr><th>項目</th><th>金額</th><th>備考</th></tr></thead>
+          <tbody>
+            <tr class="section"><td colspan="3">収入</td></tr>
+            <tr><td>訓練等給付費（基本＋処遇＋医療連携）</td><td>960,000</td><td>国保連・翌々月入金</td></tr>
+            <tr><td>利用者負担金（¥88,000×4名）</td><td>352,000</td><td>当月</td></tr>
+            <tr class="subtotal"><td>収入計</td><td>1,312,000</td><td></td></tr>
+            <tr class="section"><td colspan="3">支出</td></tr>
+            <tr><td>人件費（従業員＋管理者報酬）</td><td>700,000</td><td>実態に締めた水準</td></tr>
+            <tr><td>家賃</td><td>151,200</td><td>通信費0円</td></tr>
+            <tr><td>食材・光熱・日用（利用者負担と相殺）</td><td>217,000</td><td></td></tr>
+            <tr><td>OWL・税理士・事務・保険</td><td>100,750</td><td></td></tr>
+            <tr><td>借入返済（据置後）</td><td>127,600</td><td>1,000万・7年・2.0%</td></tr>
+            <tr class="subtotal"><td>支出計</td><td>1,296,550</td><td></td></tr>
+            <tr class="total"><td>月次損益</td><td>+15,450</td><td>区分4中心なら+55,450</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div class="pl-side-card"><div class="pl-side-title">📊 資金繰り（24ヶ月）</div>
+          <div class="pl-phase"><div class="pl-phase-num">立ち<br><small>上げ</small></div><div><div class="pl-phase-title">8〜1月：据置・入居積み上げ</div><div class="pl-phase-desc">融資1,000万で運転資金を確保。給付費は翌々月入金のため<strong>立ち上げは融資でしのぐ</strong>。</div></div></div>
+          <div class="pl-phase"><div class="pl-phase-num p2">黒字<br><small>定常</small></div><div><div class="pl-phase-title">2月〜：返済開始・満室黒字</div><div class="pl-phase-desc">区分3.5中心で<strong>満室黒字</strong>。返済比率は約10%で健全。</div></div></div>
+        </div>
+        <div class="pl-summary"><div class="pl-summary-eyebrow">資金繰りボトム（2027年1月）</div><div class="pl-summary-row"><div class="pl-summary-label">一度もマイナスにならない</div><div class="pl-summary-amount">約630<span>万</span></div></div><div class="pl-summary-rate">返済比率 <strong>約10%</strong></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="slide-header"><div class="slide-title">スケジュール・まとめ</div><div class="slide-meta">ライフケアはーと合同会社 事業計画書</div></div>
+  <div class="pagenum">14 / 14</div>
+  <div class="slide-body">
+    <div class="sched-track" style="margin-bottom:24px">
+      <div class="sched-step done"><div class="sched-date">6/18</div><div class="sched-icon">✓</div><div class="sched-card"><div class="sched-card-title">指定申請</div><ul class="sched-card-list"><li>神戸市へ本申請（補正対応済）</li></ul></div></div>
+      <div class="sched-step done"><div class="sched-date">6/19</div><div class="sched-icon">✓</div><div class="sched-card"><div class="sched-card-title">書類・資金計画</div><ul class="sched-card-list"><li>事業計画・資金繰り完成</li><li>公庫オンライン申込</li></ul></div></div>
+      <div class="sched-step active"><div class="sched-date">6/26</div><div class="sched-icon">★</div><div class="sched-card"><div class="sched-card-title">信金・地銀 面談</div><ul class="sched-card-list"><li>日新信金ほか訪問</li></ul><span class="sched-tag">同行</span></div></div>
+      <div class="sched-step target"><div class="sched-date">6/29-30</div><div class="sched-icon">◎</div><div class="sched-card"><div class="sched-card-title">公庫 面談</div><ul class="sched-card-list"><li>神戸支店・1,000万</li></ul><span class="sched-tag">本命</span></div></div>
+      <div class="sched-step target"><div class="sched-date">8/1</div><div class="sched-icon">🏠</div><div class="sched-card"><div class="sched-card-title">開設</div><ul class="sched-card-list"><li>みんなのいえ羽坂どおり</li></ul></div></div>
+    </div>
+    <div class="summ-grid-1">
+      <div class="summ-card s1"><div class="summ-num">01</div><div class="summ-icon">👩‍⚕️</div><div class="summ-title">看護師管理者が運営の核</div><div class="summ-desc">看護師30年・看護師長10年。<strong>医療連携を内製</strong>し、新設の実績ゼロを専門性で補完。サビ管も確保済。</div></div>
+      <div class="summ-card s3"><div class="summ-num">02</div><div class="summ-icon">💰</div><div class="summ-title">回る資金計画</div><div class="summ-desc">融資1,000万・人件費を実態化し、<strong>資金繰りボトム約630万・満室黒字・返済比率約10%</strong>。退職金原資の厚い自己資金が裏付け。</div></div>
+      <div class="summ-card s2"><div class="summ-num">03</div><div class="summ-icon">🎯</div><div class="summ-title">黒字の条件</div><div class="summ-desc"><strong>人件費 月約70万＋区分3.5〜4中心</strong>を握ることが生命線。神戸2級地の単価優位を活かす。</div></div>
+    </div>
+    <div class="summ-footer">看護師管理者 × 退職金原資の自己資金 × 回る資金計画 — 公庫1,000万でみんなのいえ羽坂どおりを実現する</div>
+  </div>
+</section>
+
 </body>
 </html>
