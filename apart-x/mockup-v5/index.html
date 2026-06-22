@@ -3,747 +3,141 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>地主様の土地に、広めの木造アパートという選択肢を。｜福岡ビルド株式会社</title>
-<meta name="description" content="福岡・佐賀の郊外に土地をお持ちの地主様へ。広め・ロフト対応の規格型木造アパート建築。土地診断・建物工事費ベースの概算収支まで分かりやすくご提案します。無料土地診断受付中。創業1973年。">
+<title>アパート建築の方程式 v1.2 ── LPモックアップ v14（#5画像差替済）</title>
+<meta name="description" content="apart-x.jp v1.2 リニューアルモックアップ v8。HP(f-build.co.jp)とLP(apart-x.jp)の役割棲み分けを明示し、設計書v1.2の3層構造(地主A/建替えB/投資家C)を実装。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --navy:#1b3a5b;
-    --navy-deep:#14293f;
-    --accent:#1f8a70;        /* アクセント（信頼の木目調グリーン） */
-    --accent-d:#166953;
-    --cta:#e58a1f;           /* CTAオレンジ */
-    --cta-dark:#c9740f;
-    --line-g:#06C755;        /* LINE緑 */
-    --ink:#243240;
-    --ink-soft:#54616e;
-    --line:#e4e8ec;
-    --bg:#ffffff;
-    --bg-soft:#f5f7f8;
-    --bg-tint:#eef4f2;
-    --radius:14px;
-    --shadow:0 8px 30px rgba(20,41,63,.08);
-    --shadow-sm:0 3px 12px rgba(20,41,63,.06);
-    --maxw:1080px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:72px}
-  body{
-    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,sans-serif;
-    color:var(--ink);line-height:1.8;background:var(--bg);
-    -webkit-font-smoothing:antialiased;font-size:16px;
-  }
-  img{max-width:100%;display:block}
-  a{color:inherit;text-decoration:none}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
-  .ph{ /* プレースホルダ画像 */
-    background:repeating-linear-gradient(45deg,#e9eef0,#e9eef0 12px,#eff3f4 12px,#eff3f4 24px);
-    display:flex;align-items:center;justify-content:center;color:#8a99a5;font-size:.82rem;
-    text-align:center;border-radius:10px;border:1px dashed #c4ced5;padding:10px;min-height:120px;letter-spacing:.02em;
-  }
-  .sec{padding:74px 0}
-  .sec.tint{background:var(--bg-soft)}
-  .sec.tint2{background:var(--bg-tint)}
-  .eyebrow{color:var(--accent-d);font-weight:700;font-size:.86rem;letter-spacing:.14em;margin-bottom:10px}
-  h2.sec-title{font-size:1.85rem;line-height:1.45;font-weight:800;color:var(--navy);margin-bottom:14px;letter-spacing:.01em}
-  .sec-lead{color:var(--ink-soft);max-width:760px;margin-bottom:34px}
-  @media(max-width:640px){h2.sec-title{font-size:1.45rem}.sec{padding:52px 0}}
-
-  /* ===== Header ===== */
-  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .nav-in{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{display:flex;flex-direction:column;line-height:1.2}
-  .brand b{font-size:1.05rem;color:var(--navy);font-weight:800;letter-spacing:.02em}
-  .brand span{font-size:.68rem;color:var(--ink-soft)}
-  .nav-links{display:flex;gap:22px;align-items:center}
-  .nav-links a{font-size:.9rem;color:var(--ink-soft);font-weight:600}
-  .nav-links a:hover{color:var(--accent-d)}
-  .nav-cta{background:var(--cta);color:#fff !important;padding:9px 18px;border-radius:999px;font-weight:700;font-size:.88rem;box-shadow:var(--shadow-sm)}
-  .nav-cta:hover{background:var(--cta-dark)}
-  @media(max-width:860px){.nav-links a:not(.nav-cta){display:none}}
-
-  /* ===== Hero ===== */
-  .hero{position:relative;background:linear-gradient(160deg,#1b3a5b 0%,#14293f 100%);color:#fff;overflow:hidden}
-  .hero::after{content:"";position:absolute;right:-120px;top:-80px;width:480px;height:480px;background:radial-gradient(circle,rgba(31,138,112,.35),transparent 65%);border-radius:50%}
-  .hero-in{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;padding:64px 0 70px;position:relative;z-index:2}
-  .hero .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
-  .hero .tags span{font-size:.74rem;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);padding:5px 12px;border-radius:999px;letter-spacing:.04em}
-  .hero h1{font-size:2.5rem;line-height:1.4;font-weight:800;letter-spacing:.01em;margin-bottom:20px}
-  .hero h1 em{font-style:normal;color:#7fd9c0}
-  .hero .sub{font-size:1rem;color:#d3dde6;margin-bottom:14px;line-height:1.9}
-  .hero .note{font-size:.86rem;color:#9fb2c2;margin-bottom:30px}
-  .hero-cta{display:flex;flex-wrap:wrap;gap:12px}
-  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;border-radius:999px;padding:14px 26px;font-size:.98rem;transition:.15s;cursor:pointer;border:none}
-  .btn-cta{background:var(--cta);color:#fff;box-shadow:0 6px 18px rgba(229,138,31,.4)}
-  .btn-cta:hover{background:var(--cta-dark);transform:translateY(-1px)}
-  .btn-line{background:var(--line-g);color:#fff}
-  .btn-line:hover{filter:brightness(.94)}
-  .btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.3)}
-  .btn-ghost:hover{background:rgba(255,255,255,.18)}
-  .hero-visual{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1.3fr 1fr;gap:12px}
-  .hero-visual .ph{min-height:0;color:#aebac4;background:repeating-linear-gradient(45deg,rgba(255,255,255,.08),rgba(255,255,255,.08) 12px,rgba(255,255,255,.04) 12px,rgba(255,255,255,.04) 24px);border-color:rgba(255,255,255,.22)}
-  .hero-visual .big{grid-column:1/3}
-  @media(max-width:860px){.hero-in{grid-template-columns:1fr;gap:30px;padding:46px 0 52px}.hero h1{font-size:1.85rem}.hero-visual{height:300px}}
-
-  /* trust bar */
-  .trust{background:#fff;border-bottom:1px solid var(--line)}
-  .trust-in{display:flex;flex-wrap:wrap;justify-content:space-around;gap:18px;padding:22px 0;text-align:center}
-  .trust .it b{display:block;color:var(--accent-d);font-size:1.45rem;font-weight:800}
-  .trust .it span{font-size:.8rem;color:var(--ink-soft)}
-
-  /* ===== 悩みチェック ===== */
-  .checks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
-  .check{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow-sm)}
-  .check .mk{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--bg-tint);color:var(--accent-d);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem}
-  .check p{font-size:.94rem;margin:0}
-  @media(max-width:640px){.checks{grid-template-columns:1fr}}
-
-  /* ===== cards / plans ===== */
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-  @media(max-width:860px){.grid-3{grid-template-columns:1fr 1fr}}
-  @media(max-width:640px){.grid-3,.grid-2{grid-template-columns:1fr}}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:.18s;display:flex;flex-direction:column}
-  .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
-  .card .ph{min-height:160px;border-radius:0;border:none;border-bottom:1px solid var(--line)}
-  .card .body{padding:18px 20px}
-  .card .body{display:flex;flex-direction:column;gap:8px}
-  .pill{align-self:flex-start;font-size:.72rem;font-weight:700;color:var(--accent-d);background:var(--bg-tint);padding:4px 11px;border-radius:999px}
-  .card h3{font-size:1.12rem;color:var(--navy);font-weight:800}
-  .card .area{font-size:.84rem;color:var(--ink-soft);font-weight:600}
-  .card p{font-size:.9rem;color:var(--ink-soft);margin:0}
-
-  /* feature icons */
-  .feat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;box-shadow:var(--shadow-sm)}
-  .feat .ico{width:48px;height:48px;border-radius:12px;background:var(--bg-tint);display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:1.5rem}
-  .feat h3{font-size:1.12rem;color:var(--navy);margin-bottom:8px}
-  .feat p{font-size:.92rem;color:var(--ink-soft)}
-
-  /* ===== table ===== */
-  .tbl-wrap{overflow-x:auto;border-radius:var(--radius);box-shadow:var(--shadow-sm);border:1px solid var(--line)}
-  table.cmp{width:100%;border-collapse:collapse;background:#fff;min-width:560px}
-  table.cmp th,table.cmp td{padding:15px 16px;text-align:left;font-size:.92rem;border-bottom:1px solid var(--line);vertical-align:top}
-  table.cmp thead th{background:var(--navy);color:#fff;font-weight:700;font-size:.9rem}
-  table.cmp thead th.us{background:var(--accent-d)}
-  table.cmp tbody th{font-weight:700;color:var(--ink);background:var(--bg-soft);white-space:nowrap}
-  table.cmp td.us{background:#f1f8f5;font-weight:600;color:var(--accent-d)}
-
-  /* ===== 収支 ===== */
-  .pl{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
-  .pl-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-  .pl-card .head{background:var(--navy);color:#fff;padding:14px 22px;font-weight:700;font-size:.95rem}
-  .pl-row{display:flex;justify-content:space-between;padding:13px 22px;border-bottom:1px solid var(--line);font-size:.95rem}
-  .pl-row span:first-child{color:var(--ink-soft)}
-  .pl-row span:last-child{font-weight:700}
-  .pl-row.total{background:var(--bg-tint)}
-  .pl-row.total span:last-child{color:var(--accent-d);font-size:1.25rem}
-  @media(max-width:760px){.pl{grid-template-columns:1fr}}
-
-  /* ===== steps ===== */
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:st}
-  .step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 20px 22px;box-shadow:var(--shadow-sm);position:relative}
-  .step::before{counter-increment:st;content:counter(st);position:absolute;top:-14px;left:20px;width:34px;height:34px;background:var(--accent-d);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;box-shadow:0 4px 10px rgba(22,105,83,.3)}
-  .step h3{font-size:1.02rem;color:var(--navy);margin:10px 0 6px}
-  .step p{font-size:.86rem;color:var(--ink-soft)}
-  @media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
-  @media(max-width:480px){.steps{grid-template-columns:1fr}}
-
-  /* 360 */
-  .v360{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
-  .v360 .ph{min-height:280px;position:relative}
-  .v360 .badge360{position:absolute;background:rgba(27,58,91,.9);color:#fff;border-radius:999px;padding:10px 20px;font-weight:700;font-size:.95rem}
-  @media(max-width:760px){.v360{grid-template-columns:1fr}}
-
-  /* voices */
-  .voices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  @media(max-width:860px){.voices{grid-template-columns:1fr}}
-  .voice .ph{min-height:150px;border-radius:0;border:none;border-bottom:1px solid var(--line)}
-  .voice .who{font-size:.82rem;color:var(--accent-d);font-weight:700;margin-bottom:6px}
-  .voice h4{font-size:1.02rem;color:var(--navy);margin-bottom:8px;line-height:1.5}
-  .voice p{font-size:.9rem;color:var(--ink-soft)}
-
-  /* reasons */
-  .reasons{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-  @media(max-width:640px){.reasons{grid-template-columns:1fr}}
-
-  /* FAQ */
-  .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;box-shadow:var(--shadow-sm);overflow:hidden}
-  .faq summary{cursor:pointer;list-style:none;padding:18px 22px;font-weight:700;color:var(--navy);display:flex;justify-content:space-between;gap:14px;align-items:center;font-size:1rem}
-  .faq summary::-webkit-details-marker{display:none}
-  .faq summary .q{display:flex;gap:12px;align-items:flex-start}
-  .faq summary .q b{color:var(--cta);font-weight:800}
-  .faq summary .ar{flex:0 0 auto;transition:.2s;color:var(--accent-d);font-size:1.2rem}
-  .faq details[open] summary .ar{transform:rotate(45deg)}
-  .faq .a{padding:0 22px 20px 52px;color:var(--ink-soft);font-size:.94rem}
-
-  /* contact / form */
-  .contact{background:linear-gradient(160deg,#1b3a5b,#14293f);color:#fff}
-  .contact .sec-title{color:#fff}
-  .contact .sec-lead{color:#cdd9e3}
-  .ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start}
-  .quick{display:flex;flex-direction:column;gap:14px}
-  .qbox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:20px 22px;display:flex;gap:16px;align-items:center}
-  .qbox .ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex:0 0 auto;background:rgba(255,255,255,.12)}
-  .qbox .tx b{display:block;font-size:1.1rem}
-  .qbox .tx span{font-size:.84rem;color:#bccad6}
-  .qbox.tel b{font-size:1.5rem;letter-spacing:.02em}
-  form.lp{background:#fff;border-radius:var(--radius);padding:26px;color:var(--ink);box-shadow:var(--shadow)}
-  form.lp .fld{margin-bottom:15px}
-  form.lp label{display:block;font-size:.86rem;font-weight:700;margin-bottom:6px;color:var(--navy)}
-  form.lp label .req{color:#d23b3b;font-size:.74rem;margin-left:6px}
-  form.lp label .opt{color:var(--ink-soft);font-size:.74rem;margin-left:6px;font-weight:600}
-  form.lp input,form.lp select,form.lp textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;font-size:.94rem;font-family:inherit;background:var(--bg-soft);color:var(--ink)}
-  form.lp input:focus,form.lp select:focus,form.lp textarea:focus{outline:none;border-color:var(--accent);background:#fff}
-  form.lp textarea{resize:vertical;min-height:90px}
-  form.lp .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  form.lp .submit{width:100%;justify-content:center;margin-top:6px}
-  .formnote{font-size:.78rem;color:var(--ink-soft);margin-top:12px;text-align:center}
-  @media(max-width:760px){.ct-grid{grid-template-columns:1fr}form.lp .row{grid-template-columns:1fr}}
-
-  /* disclaimer note */
-  .disc{font-size:.8rem;color:var(--ink-soft);background:var(--bg-soft);border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;margin-top:22px;line-height:1.7}
-
-  /* footer */
-  footer{background:var(--navy-deep);color:#c4d0db;padding:48px 0 28px;font-size:.88rem}
-  footer .f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;margin-bottom:30px}
-  footer h4{color:#fff;font-size:1.05rem;margin-bottom:10px}
-  footer .corp span{display:block;color:#9fb0bd;font-size:.82rem;line-height:1.9}
-  footer a:hover{color:#fff}
-  footer .f-links{display:flex;flex-direction:column;gap:7px}
-  footer .copy{border-top:1px solid rgba(255,255,255,.12);padding-top:18px;font-size:.78rem;color:#8295a3;text-align:center}
-  @media(max-width:760px){footer .f-top{grid-template-columns:1fr}}
-
-  /* sticky mobile cta */
-  .mcta{position:fixed;bottom:0;left:0;right:0;z-index:60;display:none;gap:8px;padding:10px 12px;background:rgba(255,255,255,.97);border-top:1px solid var(--line);box-shadow:0 -4px 16px rgba(0,0,0,.08)}
-  .mcta a{flex:1;justify-content:center;padding:12px 8px;font-size:.86rem;border-radius:10px}
-  @media(max-width:860px){.mcta{display:flex}body{padding-bottom:70px}}
-
-  /* float line cta (PC) */
-  .float-line{position:fixed;right:20px;bottom:24px;z-index:55;background:var(--line-g);color:#fff;padding:13px 20px;border-radius:999px;font-weight:700;font-size:.92rem;box-shadow:0 8px 22px rgba(6,199,85,.4)}
-  @media(max-width:860px){.float-line{display:none}}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--yellow:#fcb900;--red:#c41e24;--dark:#1a2540;--ink:#1c1917;--cream:#faf6ef;--border:#e5e7eb}
+body{font-family:"Noto Sans JP",sans-serif;background:#f1f5f9;color:var(--ink);line-height:1.7}
+.topbar{background:var(--dark);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,.12);position:sticky;top:0;z-index:100}
+.topbar .left{display:flex;align-items:center;gap:14px}
+.topbar .badge{background:var(--yellow);color:var(--ink);padding:4px 10px;border-radius:4px;font-size:10px;font-weight:900;letter-spacing:.15em}
+.topbar h1{font-family:"Noto Serif JP",serif;font-size:14px;font-weight:700;margin:0}
+.topbar .meta{display:flex;gap:14px;font-size:11px;color:#cbd5e1}
+.section-label{background:rgba(252,185,0,.95);color:var(--ink);padding:8px 16px;font-size:11px;font-weight:900;letter-spacing:.1em;position:absolute;top:12px;left:12px;border-radius:4px;z-index:5;font-family:"Inter",sans-serif}
+.review-warning{position:absolute;top:12px;right:12px;background:#dc2626;color:#fff;padding:8px 14px;font-size:11px;font-weight:900;letter-spacing:.05em;border-radius:4px;z-index:5;box-shadow:0 2px 8px rgba(220,38,38,.4)}
+.review-warning .sub{display:block;font-size:9px;font-weight:500;opacity:.95;margin-top:2px}
+.lp-container{max-width:1280px;margin:0 auto;background:#fff;box-shadow:0 4px 32px rgba(0,0,0,.08)}
+.lp-section{position:relative;width:100%}
+.lp-section img{display:block;width:100%;height:auto}
+.intro{max-width:1280px;margin:24px auto;padding:20px 24px;background:#fff;border-radius:8px;font-size:13px;line-height:1.9;color:#475569}
+.intro h2{font-size:15px;color:var(--ink);margin-bottom:10px;font-weight:700}
+.intro .meta-row{display:grid;grid-template-columns:110px 1fr;gap:6px;font-size:12px;margin:4px 0}
+.intro .meta-row .k{color:#94a3b8;font-weight:700}
+.intro a{color:var(--red);text-decoration:none;border-bottom:1px solid var(--red)}
+.footer-note{max-width:1280px;margin:24px auto 48px;padding:20px 24px;background:var(--dark);color:#cbd5e1;border-radius:8px;font-size:12px;line-height:1.9}
+.footer-note .name{color:#fff;font-weight:900;font-size:14px;margin-bottom:6px}
+.thumb-nav{position:fixed;right:20px;bottom:20px;background:rgba(26,37,64,.92);color:#fff;padding:12px;border-radius:10px;display:flex;flex-direction:column;gap:4px;font-size:10px;z-index:99;max-height:480px;overflow-y:auto;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.thumb-nav a{color:#cbd5e1;text-decoration:none;padding:4px 10px;border-radius:3px;font-family:"Inter",sans-serif}
+.thumb-nav a:hover{background:var(--yellow);color:var(--ink)}
+.thumb-nav .title{font-size:9px;color:var(--yellow);letter-spacing:.15em;font-weight:900;margin-bottom:4px}
+@media(max-width:700px){.thumb-nav{display:none}.topbar h1{font-size:12px}.topbar .meta{display:none}}
 </style>
 </head>
 <body>
-
-<!-- ===== HEADER ===== -->
-<header class="nav">
-  <div class="wrap nav-in">
-    <a class="brand" href="#top">
-      <b>福岡ビルド株式会社</b>
-      <span>創業1973年｜郊外型・木造規格型アパート建築</span>
-    </a>
-    <nav class="nav-links">
-      <a href="#plans">商品プラン</a>
-      <a href="#diff">大手との違い</a>
-      <a href="#shushi">収支の考え方</a>
-      <a href="#flow">土地診断の流れ</a>
-      <a href="#faq">よくある質問</a>
-      <a class="nav-cta" href="#contact">無料土地診断を依頼する</a>
-    </nav>
+<div class="topbar">
+  <div class="left">
+    <span class="badge">MOCKUP v14 / #5画像差替済</span>
+    <h1>アパート建築の方程式 v1.2 — apart-x.jp リニューアル提案</h1>
   </div>
-</header>
-
-<!-- ===== HERO ===== -->
-<section class="hero" id="top">
-  <div class="wrap hero-in">
-    <div class="hero-text">
-      <div class="tags">
-        <span>地主特化</span><span>郊外型</span><span>木造アパート</span>
-        <span>広めの床面積</span><span>ロフト対応</span><span>土地診断</span>
-      </div>
-      <h1>地主様の土地に、<br><em>広めの木造アパート</em>という選択肢を。</h1>
-      <p class="sub">福岡・佐賀の郊外で土地活用をご検討の地主様へ。都市部向けのコンパクト賃貸ではなく、郊外で選ばれる広さ・駐車場・収納・ロフトまで考えた規格型木造アパートをご提案します。</p>
-      <p class="note">土地条件と周辺家賃を確認し、建物工事費ベースの概算収支まで分かりやすく整理します。創業1973年・福岡/佐賀で30棟超の施工実績。</p>
-      <div class="hero-cta">
-        <a class="btn btn-cta" href="#contact">無料土地診断を依頼する</a>
-        <a class="btn btn-line" href="https://lin.ee/f0ZKqnj">LINEで相談する</a>
-        <a class="btn btn-ghost" href="tel:0927101180">電話で相談する</a>
-      </div>
-    </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="ph big">郊外型アパート外観写真<br>（駐車場付き全景）</div>
-      <div class="ph">広めの室内</div>
-      <div class="ph">ロフト付き住戸</div>
-    </div>
-  </div>
-</section>
-
-<!-- trust bar -->
-<div class="trust">
-  <div class="wrap trust-in">
-    <div class="it"><b>創業1973年</b><span>福岡・佐賀の地場建設会社</span></div>
-    <div class="it"><b>30棟超</b><span>郊外型木造アパートの施工実績</span></div>
-    <div class="it"><b>自社施工</b><span>設計・施工・資金計画を一体で</span></div>
-    <div class="it"><b>オリナス連携</b><span>一級建築士事務所と協働</span></div>
+  <div class="meta">
+    <span>参考: aikenjapan.jp</span>
+    <span>10セクション</span>
+    <span>2026-06-16</span>
   </div>
 </div>
 
-<!-- ===== 土地をお持ちの方へ ===== -->
-<section class="sec" id="land">
-  <div class="wrap">
-    <p class="eyebrow">土地をお持ちの方へ</p>
-    <h2 class="sec-title">その土地、今のままで十分に活かせていますか。</h2>
-    <p class="sec-lead">空き地、駐車場、郊外の宅地や広い土地。ひとつでも当てはまる方は、まず一度ご相談ください。地元の会社として、分かりやすくご説明します。</p>
-    <div class="checks">
-      <div class="check"><span class="mk">✓</span><p>空き地のままになっている</p></div>
-      <div class="check"><span class="mk">✓</span><p>駐車場収入が思ったより少ない</p></div>
-      <div class="check"><span class="mk">✓</span><p>郊外の土地をどう使えばよいか分からない</p></div>
-      <div class="check"><span class="mk">✓</span><p>アパートが建つ土地か知りたい</p></div>
-      <div class="check"><span class="mk">✓</span><p>金利が上がっているので建ててよいか不安</p></div>
-      <div class="check"><span class="mk">✓</span><p>大手に相談したが、提案が合わなかった</p></div>
-      <div class="check"><span class="mk">✓</span><p>固定資産税だけを払い続けている</p></div>
-      <div class="check"><span class="mk">✓</span><p>地元の会社に一度見てもらいたい</p></div>
-    </div>
+<div class="intro">
+  <h2>このページについて</h2>
+  <div class="meta-row"><span class="k">対象</span><span>apart-x.jp v1.2 リニューアル</span></div>
+  <div class="meta-row"><span class="k">参考サイト</span><span>アイケンジャパン (aikenjapan.jp) の構造を踏襲</span></div>
+  <div class="meta-row"><span class="k">ペルソナ</span><span>A: 地主 / B: 建替え / C: 投資家（設計書v1.2準拠）</span></div>
+  <div class="meta-row"><span class="k">作成</span><span>株式会社 斗 / 2026-06-16</span></div>
+  <div class="meta-row"><span class="k">関連資料</span><span><a href="../analysis.html">現状分析レポート</a> ／ <a href="../index.html">apart-x 資料一覧</a></span></div>
+  <p style="margin-top:12px">下記10セクションを縦に並べて、実際のLPとしてのスクロール感を再現しています。各セクションはChatGPT Image 2.0でアイケンジャパンの構造を学習させた上で生成しました。HTMLとして実装する際の最終デザインカンプとしてご確認ください。</p>
+
+  <div style="margin-top:18px;padding:14px 18px;background:#ecfdf5;border-left:4px solid #047857;border-radius:4px;font-size:12px;line-height:1.85">
+    <strong style="color:#065f46;display:block;margin-bottom:8px">🎯 HP(f-build.co.jp) と LP(apart-x.jp) の役割棲み分け</strong>
+    <p style="margin:4px 0 8px;color:#064e3b">本モックアップは <strong>apart-x.jp（LP）のリニューアル提案</strong> です。HPとLPは役割が違います：</p>
+    <table style="width:100%;margin-top:6px;font-size:11.5px;border-collapse:collapse">
+      <tr style="background:#fff"><th style="padding:6px 10px;text-align:left;border:1px solid #a7f3d0">項目</th><th style="padding:6px 10px;text-align:left;border:1px solid #a7f3d0">f-build.co.jp (HP)</th><th style="padding:6px 10px;text-align:left;border:1px solid #a7f3d0">apart-x.jp (LP)</th></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #a7f3d0">役割</td><td style="padding:6px 10px;border:1px solid #a7f3d0">コーポレートサイト（建築会社の全体像）</td><td style="padding:6px 10px;border:1px solid #a7f3d0"><strong>LP（アパート経営訴求に特化）</strong></td></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #a7f3d0">メインコピー</td><td style="padding:6px 10px;border:1px solid #a7f3d0">人と街に、息づく建築を</td><td style="padding:6px 10px;border:1px solid #a7f3d0"><strong>あなたの賃貸経営はじまる</strong></td></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #a7f3d0">訴求対象</td><td style="padding:6px 10px;border:1px solid #a7f3d0">投資家+施主+地主+採用 全方位</td><td style="padding:6px 10px;border:1px solid #a7f3d0"><strong>会社員・公務員のアパート投資（→v1.2で3層に拡張）</strong></td></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #a7f3d0">物件紹介</td><td style="padding:6px 10px;border:1px solid #a7f3d0">施工実績一覧（全カタログ）</td><td style="padding:6px 10px;border:1px solid #a7f3d0"><strong>360°VIEW で厳選3棟内見</strong></td></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #a7f3d0">事業範囲</td><td style="padding:6px 10px;border:1px solid #a7f3d0">5事業（AP/マンション/店舗/住宅/分譲）</td><td style="padding:6px 10px;border:1px solid #a7f3d0"><strong>アパート投資のみ</strong></td></tr>
+    </table>
+    <p style="margin-top:10px;color:#064e3b">▶ <strong>方針</strong>: LPは「絞り込み」が役割なのでHP内容を全部入れず、必要に応じてHPへリンク誘導します。</p>
   </div>
-</section>
 
-<!-- ===== 規格型木造アパート ===== -->
-<section class="sec tint" id="product">
-  <div class="wrap">
-    <p class="eyebrow">福岡ビルドの規格型木造アパート</p>
-    <h2 class="sec-title">標準プランがあるから、土地活用の検討が早く進みます。</h2>
-    <p class="sec-lead">完全自由設計ではなく、地主様が検討しやすい「規格型アパート」としてご用意。標準プランをもとに、土地形状・道路・用途地域・建ぺい率・容積率・駐車場・地盤などの条件に応じて最適化します。完全な定額商品ではありませんが、建物規模・概算費用・家賃・収支のイメージがつかみやすくなります。</p>
-    <div class="grid-3">
-      <div class="feat">
-        <div class="ico">📐</div>
-        <h3>広めの床面積</h3>
-        <p>都市部向けのコンパクト賃貸ではなく、二人暮らしも想定できるゆとりを重視。広さで選ばれる郊外型の賃貸住宅を目指します。</p>
-      </div>
-      <div class="feat">
-        <div class="ico">🪜</div>
-        <h3>ロフト対応</h3>
-        <p>収納、趣味、在宅ワーク、季節物の保管など、使い方に幅を持たせる空間。ただ広いだけではなく、使える空間を増やすプランです。</p>
-      </div>
-      <div class="feat">
-        <div class="ico">🚗</div>
-        <h3>駐車場重視</h3>
-        <p>郊外では駐車場計画が入居判断に直結します。1戸1台以上を基本に、初期段階から駐車場を考えた配置を検討します。</p>
-      </div>
-    </div>
+  <div style="margin-top:14px;padding:14px 18px;background:#fef3c7;border-left:4px solid #d97706;border-radius:4px;font-size:12px;line-height:1.85">
+    <strong style="color:#92400e;display:block;margin-bottom:6px">⚠ v8（v1.2設計書準拠）の差分一覧</strong>
+    <p style="margin:4px 0 8px;color:#78350f;font-size:11px"><strong>※ 注記</strong>: 本モックアップは <strong>apart-x.jp（LP本体）</strong> のリニューアル提案です。f-build.co.jp（コーポレートサイト）とは別物。コンテンツは apart-x.jp 由来で統一します。</p>
+    <table style="width:100%;margin-top:8px;font-size:11.5px;border-collapse:collapse">
+      <tr style="background:#fff"><th style="padding:6px 10px;text-align:left;border:1px solid #fde68a">項目</th><th style="padding:6px 10px;text-align:left;border:1px solid #fde68a">画像内表記</th><th style="padding:6px 10px;text-align:left;border:1px solid #fde68a">apart-x.jp 実態 / 修正方針</th></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #fde68a">創業年数</td><td style="padding:6px 10px;border:1px solid #fde68a">53年</td><td style="padding:6px 10px;border:1px solid #fde68a"><strong>49年</strong>（apart-x.jp現サイト表記）</td></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #fde68a">#03 セクション名</td><td style="padding:6px 10px;border:1px solid #fde68a">画像内: 「PRODUCT SERIES / 福岡ビルドのアパート商品シリーズ」<br><span style="color:#dc2626;font-size:10.5px">※ アイケンジャパンのREGALEST等の概念を流用してしまった残骸</span></td><td style="padding:6px 10px;border:1px solid #fde68a"><strong>「360°VIEWで見る代表物件」</strong>に変更<br><span style="color:#78350f;font-size:10.5px">※ apart-x.jp は「シリーズ展開」ではなく「360°VIEWで代表物件を見せる」構造。実装時にこの呼称に統一</span></td></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #fde68a">#03 実物件名</td><td style="padding:6px 10px;border:1px solid #fde68a">TRUSS / GARDEN / BrancNoir<br><span style="color:#dc2626;font-size:10.5px">※ これはf-build.co.jp由来で混入</span></td><td style="padding:6px 10px;border:1px solid #fde68a"><strong>ルシアスI / THE ROM 和泉 / プロンプト飯町</strong><br><span style="color:#78350f;font-size:10.5px">apart-x.jp 360°VIEW掲載の3物件</span></td></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #fde68a">物件エリア</td><td style="padding:6px 10px;border:1px solid #fde68a">嘉麻市・みやき町・筑後市</td><td style="padding:6px 10px;border:1px solid #fde68a"><strong>田川市川宮 / 筑後市和泉 / 佐賀県神埼市</strong></td></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #fde68a">#07 オーナーボイス</td><td style="padding:6px 10px;border:1px solid #fde68a">K / S / J / T 様（4名）</td><td style="padding:6px 10px;border:1px solid #fde68a"><strong>S / J / T / K / M 様（5名）</strong>（apart-x.jp 実掲載順）</td></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #fde68a">実態価格</td><td style="padding:6px 10px;border:1px solid #fde68a">利回り6〜8%のみ</td><td style="padding:6px 10px;border:1px solid #fde68a"><strong>1棟10室1LDK(35㎡) / 1室400万円〜</strong> 併記</td></tr>
+    </table>
+    <p style="margin-top:10px;color:#78350f">📷 Phase 2 で実物件写真（ルシアスI / THE ROM 和泉 / プロンプト飯町）への差し替えを行います。</p>
   </div>
-</section>
 
-<!-- ===== 郊外で選ばれる間取り（プラン） ===== -->
-<section class="sec" id="plans">
-  <div class="wrap">
-    <p class="eyebrow">郊外で選ばれる間取り</p>
-    <h2 class="sec-title">1LDK・2LDK・ロフト・駐車場。郊外の暮らしに合わせた標準プラン。</h2>
-    <p class="sec-lead">標準モデルをご紹介します。価格は土地条件により変動するため、固定価格ではなく概算目安としてご提示します。</p>
-    <div class="grid-3">
-      <div class="card">
-        <div class="ph">1LDK広めプラン<br>室内イメージ</div>
-        <div class="body">
-          <span class="pill">単身・二人暮らし</span>
-          <h3>1LDK 広めプラン</h3>
-          <p class="area">専有面積：40㎡前後〜</p>
-          <p>単身でも二人暮らしでも使いやすい広さ。郊外で長く住んでいただける居住面積を重視しています。</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ph">1LDK＋ロフト<br>室内イメージ</div>
-        <div class="body">
-          <span class="pill">収納・在宅ワーク</span>
-          <h3>1LDK＋ロフトプラン</h3>
-          <p class="area">専有面積：40㎡前後＋ロフト</p>
-          <p>収納、趣味、在宅ワークに使えるプラス空間。体感面積を高め、入居者の使い方に幅が広がります。</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ph">2LDK郊外プラン<br>室内イメージ</div>
-        <div class="body">
-          <span class="pill">カップル・小家族</span>
-          <h3>2LDK 郊外プラン</h3>
-          <p class="area">専有面積：55〜60㎡前後</p>
-          <p>カップルや小家族が郊外で長く住みやすいプラン。広さと収納で選ばれる住まいを目指します。</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ph">2LDK＋ロフト<br>室内イメージ</div>
-        <div class="body">
-          <span class="pill">収納力重視</span>
-          <h3>2LDK＋ロフトプラン</h3>
-          <p class="area">専有面積：55〜60㎡前後＋ロフト</p>
-          <p>収納力と体感面積をさらに高めたプラン。家族の荷物や趣味の物もゆとりを持って収められます。</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ph">駐車場付き<br>全景イメージ</div>
-        <div class="body">
-          <span class="pill">郊外の車社会対応</span>
-          <h3>駐車場重視プラン</h3>
-          <p class="area">1戸1台以上を基本検討</p>
-          <p>郊外の車社会に対応しやすい駐車場計画。敷地条件に応じて必要台数を確保し、入居のしやすさを高めます。</p>
-        </div>
-      </div>
-      <div class="card" style="background:var(--bg-tint);border-style:dashed;justify-content:center;align-items:center;text-align:center">
-        <div class="body" style="align-items:center">
-          <h3 style="color:var(--accent-d)">あなたの土地に<br>合うプランは？</h3>
-          <p>土地条件によって、最適なプランや戸数は変わります。まずは無料土地診断でご確認ください。</p>
-          <a class="btn btn-cta" href="#contact" style="margin-top:6px">土地診断を依頼する</a>
-        </div>
-      </div>
-    </div>
-    <p class="disc">価格はLP上で固定価格として断定していません。地盤改良、造成、上下水道、外構、道路条件等により変動するため、「標準モデル価格」「概算目安」「土地条件により変動」としてご提示します。ロフトの設置可否は、用途地域、建物高さ、天井高さ、採光、換気、避難、確認申請上の取扱いにより異なります。<br><strong>※専有面積・戸数・価格帯の数値は標準モデルの目安です。確定の実数値は角田代表にご確認のうえ差し替えます。</strong></p>
+  <div style="margin-top:14px;padding:14px 18px;background:#eff6ff;border-left:4px solid #1d4ed8;border-radius:4px;font-size:12px;line-height:1.85">
+    <strong style="color:#1e3a8a;display:block;margin-bottom:6px">📐 ペルソナ別セクション(#04 A / #05 B / #06 C) の根拠と主従</strong>
+    <p style="margin:4px 0 6px;color:#1e3a8a">現状apart-x.jpはC(投資家)のみ。<strong>v1.2設計書(角田代表作成39頁)で「地主A・建替えB・投資家Cの3層に拡張」</strong>を提案している。本モックアップはこの方針を実装。<br><strong style="color:#dc2626">▶ 主軸は「A 地主への土地活用提案」。B建替えは"従"の位置づけで欄として残す（鈴木さん指示 2026-06-19）。</strong></p>
+    <table style="width:100%;margin-top:6px;font-size:11.5px;border-collapse:collapse">
+      <tr style="background:#fff"><th style="padding:6px 10px;text-align:left;border:1px solid #bfdbfe">ペルソナ</th><th style="padding:6px 10px;text-align:left;border:1px solid #bfdbfe">現状apart-x.jp</th><th style="padding:6px 10px;text-align:left;border:1px solid #bfdbfe">v1.2設計書での位置づけ</th></tr>
+      <tr style="background:#dbeafe"><td style="padding:6px 10px;border:1px solid #93c5fd"><strong>A 地主 (60〜75歳)</strong></td><td style="padding:6px 10px;border:1px solid #93c5fd">❌ 無</td><td style="padding:6px 10px;border:1px solid #93c5fd"><strong>新規追加（★主軸）</strong>土地活用提案・相続税対策</td></tr>
+      <tr style="background:#fee2e2"><td style="padding:6px 10px;border:1px solid #fca5a5"><strong>B 築古アパートをお持ちの方 (55〜70歳)</strong><br><span style="color:#dc2626;font-size:10.5px">⚠ 要事業体制確認</span></td><td style="padding:6px 10px;border:1px solid #fca5a5">❌ 無（従の位置づけ）</td><td style="padding:6px 10px;border:1px solid #fca5a5"><strong>設計から施工まで自社一貫の建替え</strong><br><span style="color:#1e3a8a;font-size:10.5px">福岡ビルドは「設計〜施工 自社一貫」の木造アパート建築会社。築古アパートの『解体→新築』をまとめて引き受け、新築投資物件と同じ体制で建替えを提案。退去スケジュールに合わせた工事計画と、家賃・利回り・工事期間中収支まで事業計画に織り込んでシミュレーション。</span><br><span style="color:#dc2626;font-size:10.5px;font-weight:700">▶ 鈴木さん経由で角田代表に確認:<br>　・「建替え（解体＋新築）」をLPの商品として正式に打ち出してよいか<br>　（買取資金・立退き弁護士・客付け管理 などのワンストップ表現はv13で全削除済み）</span></td></tr>
+      <tr><td style="padding:6px 10px;border:1px solid #bfdbfe">C 投資家 (35〜55歳)</td><td style="padding:6px 10px;border:1px solid #bfdbfe">✅ 主軸</td><td style="padding:6px 10px;border:1px solid #bfdbfe">既存継続（年収800万+、会社員・公務員）</td></tr>
+    </table>
   </div>
-</section>
-
-<!-- ===== 大手規格商品との違い ===== -->
-<section class="sec tint" id="diff">
-  <div class="wrap">
-    <p class="eyebrow">大手規格商品との違い</p>
-    <h2 class="sec-title">大手規格商品と比較しても、ゆとりある居住面積を目指した郊外型プラン。</h2>
-    <p class="sec-lead">全国一律の効率重視ではなく、福岡・佐賀の郊外という地域に合わせた設計。営業・設計・施工・資金計画を一体で確認できることが、地場建設会社ならではの強みです。</p>
-    <div class="tbl-wrap">
-      <table class="cmp">
-        <thead>
-          <tr><th>項目</th><th>一般的な大手規格商品</th><th class="us">福岡ビルドの郊外型木造アパート</th></tr>
-        </thead>
-        <tbody>
-          <tr><th>対象</th><td>全国対応</td><td class="us">福岡・佐賀の郊外地主様</td></tr>
-          <tr><th>間取り</th><td>効率重視</td><td class="us">広さ・収納・暮らしやすさ重視</td></tr>
-          <tr><th>駐車場</th><td>敷地条件により調整</td><td class="us">郊外前提で重視</td></tr>
-          <tr><th>ロフト</th><td>商品により限定</td><td class="us">対応可能</td></tr>
-          <tr><th>設計</th><td>規格優先</td><td class="us">規格型＋敷地個別対応</td></tr>
-          <tr><th>相談体制</th><td>営業中心になりやすい</td><td class="us">営業・設計・施工・資金計画を一体で確認</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 建物工事費ベースの収支 ===== -->
-<section class="sec" id="shushi">
-  <div class="wrap">
-    <p class="eyebrow">建物工事費ベースの収支</p>
-    <h2 class="sec-title">土地をお持ちなら、建物工事費ベースで収支を確認できます。</h2>
-    <p class="sec-lead">土地をすでにお持ちの場合、土地取得費を含めず、建物工事費に対する年間家賃収入の割合で土地活用としての事業性を検討できます。計画内容によっては、建物工事費ベースで表面収益性10％以上を検討できるケースもあります。</p>
-    <div class="pl">
-      <div class="pl-card">
-        <div class="head">説明用の簡易例</div>
-        <div class="pl-row"><span>住戸数</span><span>8戸</span></div>
-        <div class="pl-row"><span>想定家賃</span><span>75,000円／戸</span></div>
-        <div class="pl-row"><span>年間満室賃料</span><span>7,200,000円</span></div>
-        <div class="pl-row"><span>建物工事費</span><span>72,000,000円</span></div>
-        <div class="pl-row total"><span>建物工事費ベース<br>表面収益性</span><span>10.0％</span></div>
-      </div>
-      <div>
-        <h3 style="color:var(--navy);font-size:1.2rem;margin-bottom:10px">金利上昇時代の資金計画もご一緒に</h3>
-        <p style="color:var(--ink-soft);font-size:.95rem">返済額、自己資金、家賃、事業収支まで整理し、金融機関へのご相談の準備をサポートします。無理のない計画かどうかを、家賃の目安とあわせて確認します。</p>
-        <p class="disc" style="margin-top:18px">上記は説明用の簡易例です。実際の収支は土地条件、建物仕様、外構、地盤改良、融資条件、空室率、管理費、修繕費、税金等により異なります。収益性を保証するものではありません。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 土地診断の流れ ===== -->
-<section class="sec tint" id="flow">
-  <div class="wrap">
-    <p class="eyebrow">土地診断の流れ</p>
-    <h2 class="sec-title">敷地・法規・家賃・概算プラン・概算収支まで確認します。</h2>
-    <p class="sec-lead">無料土地診断では、お持ちの土地に何がどのくらい建てられるか、周辺家賃はいくらか、概算でどのような収支になるかを整理してご提示します。</p>
-    <div class="steps">
-      <div class="step">
-        <h3>敷地・インフラ確認</h3>
-        <p>面積、形状、高低差、接道に加え、上下水道・電気・ガス・排水を確認します。</p>
-      </div>
-      <div class="step">
-        <h3>法規確認</h3>
-        <p>用途地域、建ぺい率、容積率、高さ制限、防火規制を確認します。</p>
-      </div>
-      <div class="step">
-        <h3>家賃・建物計画</h3>
-        <p>周辺相場・競合・間取り別賃料を確認し、戸数と間取りを計画します。</p>
-      </div>
-      <div class="step">
-        <h3>概算収支のご提示</h3>
-        <p>建物工事費、年間賃料、返済イメージをまとめ、概算収支をご提示します。</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:38px">
-      <a class="btn btn-cta" href="#contact">無料土地診断を依頼する</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 施工事例（実績一覧へ誘導：実データ） ===== -->
-<section class="sec" id="works">
-  <div class="wrap">
-    <p class="eyebrow">施工事例</p>
-    <h2 class="sec-title">福岡・佐賀で30棟超。広め・ロフト・郊外立地の施工実績。</h2>
-    <p class="sec-lead">福岡ビルドが手がけた郊外型木造アパートの事例です。広さ、ロフト、駐車場、立地の特徴ごとにご紹介します。実物件の一覧は公式サイトの実績ページでご覧いただけます。</p>
-    <div class="grid-3">
-      <div class="card">
-        <div class="ph">施工事例 写真<br>（f-build.co.jp 実績写真を活用）</div>
-        <div class="body">
-          <span class="pill">郊外・駐車場付き</span>
-          <h3>2階建て 木造アパート</h3>
-          <p class="area">福岡県郊外エリア｜全戸駐車場</p>
-          <p>広めの1LDKと駐車場を組み合わせ、郊外の入居需要に合わせた計画。</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ph">施工事例 写真<br>（f-build.co.jp 実績写真を活用）</div>
-        <div class="body">
-          <span class="pill">ロフト付き</span>
-          <h3>ロフト付き 1LDK</h3>
-          <p class="area">佐賀県郊外エリア｜ロフト対応</p>
-          <p>収納・趣味に使えるロフトで体感面積を高めた事例。</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ph">施工事例 写真<br>（f-build.co.jp 実績写真を活用）</div>
-        <div class="body">
-          <span class="pill">2LDK・広め</span>
-          <h3>2LDK 郊外プラン</h3>
-          <p class="area">福岡県郊外エリア｜小家族向け</p>
-          <p>長く住みやすい広さと収納を確保した郊外型プラン。</p>
-        </div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:34px">
-      <a class="btn btn-cta" href="https://f-build.co.jp/achievement-list/" target="_blank" rel="noopener">全30棟以上の実績を見る →</a>
-    </div>
-    <p class="disc">※施工事例の写真・物件名・戸数は、f-build.co.jp の実績ページの実物件に差し替えます。掲載内容は実データで最終確定します。</p>
-  </div>
-</section>
-
-<!-- ===== 360 VIEW ===== -->
-<section class="sec tint2" id="v360">
-  <div class="wrap v360">
-    <div class="ph">
-      <span class="badge360">360°VIEW｜実物内覧</span>
-    </div>
-    <div>
-      <p class="eyebrow">360°VIEW</p>
-      <h2 class="sec-title">広さ・ロフト・間取りを、その場で体感。</h2>
-      <p class="sec-lead" style="margin-bottom:22px">実物内覧の360°VIEWで、広めの居室やロフトの使い勝手、間取りの感覚を画面の上で体感いただけます。遠方の地主様やご親族との検討にもご活用ください。</p>
-      <a class="btn btn-cta" href="#contact">360°VIEWを見たい方はこちら</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== お客様の声（実データ差し替え枠） ===== -->
-<section class="sec" id="voices">
-  <div class="wrap">
-    <p class="eyebrow">お客様の声</p>
-    <h2 class="sec-title">福岡・佐賀で土地活用を始めた、オーナー様の声。</h2>
-    <p class="sec-lead">郊外の土地に広めの木造アパートを建てた地主様の体験談です。</p>
-    <div class="voices">
-      <div class="voice card">
-        <div class="ph">オーナー様 写真</div>
-        <div class="body">
-          <div class="who">地主様 / 福岡県郊外</div>
-          <h4>（実際のお客様の声に差し替え）</h4>
-          <p>※ f-build.co.jp 掲載・取材済みの実オーナー様コメントに差し替えます。</p>
-        </div>
-      </div>
-      <div class="voice card">
-        <div class="ph">オーナー様 写真</div>
-        <div class="body">
-          <div class="who">地主様 / 佐賀県郊外</div>
-          <h4>（実際のお客様の声に差し替え）</h4>
-          <p>※ 投資・利回り訴求の旧テキストは使わず、地主の土地活用視点の実コメントに統一します。</p>
-        </div>
-      </div>
-      <div class="voice card">
-        <div class="ph">オーナー様 写真</div>
-        <div class="body">
-          <div class="who">地主様 / 福岡県郊外</div>
-          <h4>（実際のお客様の声に差し替え）</h4>
-          <p>※ 掲載可否・実名/イニシャル・写真の有無は角田代表に確認のうえ反映します。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 選ばれる理由 ===== -->
-<section class="sec tint" id="reasons">
-  <div class="wrap">
-    <p class="eyebrow">福岡ビルドが選ばれる理由</p>
-    <h2 class="sec-title">地域密着・自社施工・一体対応。</h2>
-    <div class="reasons">
-      <div class="feat"><div class="ico">📍</div><h3>地域密着・創業1973年</h3><p>福岡・佐賀の郊外エリアに根ざし、地域の入居需要に合わせてご提案します。</p></div>
-      <div class="feat"><div class="ico">🔨</div><h3>自社施工</h3><p>設計・施工・資金計画までを一体で確認。営業任せにしない相談体制です。</p></div>
-      <div class="feat"><div class="ico">🏛️</div><h3>オリナス連携</h3><p>グループの一級建築士事務所オリナス株式会社と協働し、設計面を支えます。</p></div>
-      <div class="feat"><div class="ico">🏦</div><h3>金融機関対応</h3><p>返済額・自己資金・事業収支を整理し、金融機関へのご相談の準備をサポートします。</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="sec" id="faq">
-  <div class="wrap">
-    <p class="eyebrow">よくある質問</p>
-    <h2 class="sec-title">費用・広さ・ロフト・融資・工期について。</h2>
-    <div class="faq">
-      <details>
-        <summary><span class="q"><b>Q</b>建築費はどのくらいかかりますか。</span><span class="ar">＋</span></summary>
-        <div class="a">標準モデル価格を目安としてご提示しますが、固定価格ではありません。地盤改良、造成、上下水道、外構、道路条件等により変動するため、土地診断のうえで概算目安をご提示します。</div>
-      </details>
-      <details>
-        <summary><span class="q"><b>Q</b>本当に広いのですか。大手と比べてどうですか。</span><span class="ar">＋</span></summary>
-        <div class="a">都市部向けのコンパクト賃貸ではなく、二人暮らしも想定できるゆとりある居住面積を目指した郊外型プランです。比較は専有面積や条件によって異なるため、土地ごとにプランをご提示してご確認いただきます。</div>
-      </details>
-      <details>
-        <summary><span class="q"><b>Q</b>ロフトはどの土地でも付けられますか。</span><span class="ar">＋</span></summary>
-        <div class="a">ロフト付きプランに対応可能です。ただし設置可否は、用途地域、建物高さ、天井高さ、採光、換気、避難、確認申請上の取扱いにより異なります。土地条件を確認のうえでご提案します。</div>
-      </details>
-      <details>
-        <summary><span class="q"><b>Q</b>融資・資金計画の相談もできますか。</span><span class="ar">＋</span></summary>
-        <div class="a">返済額、自己資金、家賃、事業収支を整理し、金融機関へのご相談の準備をサポートします。金利上昇も踏まえ、無理のない計画かどうかを一緒に確認します。</div>
-      </details>
-      <details>
-        <summary><span class="q"><b>Q</b>土地診断や概算収支の相談は有料ですか。</span><span class="ar">＋</span></summary>
-        <div class="a">無料土地診断を承っています。敷地・法規・家賃・概算プラン・概算収支まで整理してご提示します。お気軽にご相談ください。</div>
-      </details>
-      <details>
-        <summary><span class="q"><b>Q</b>工期はどのくらいかかりますか。</span><span class="ar">＋</span></summary>
-        <div class="a">規模・仕様・土地条件・確認申請の状況により異なります。計画の内容に応じて、目安の工程をご提示します。</div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section class="sec contact" id="contact">
-  <div class="wrap">
-    <p class="eyebrow" style="color:#7fd9c0">お問い合わせ</p>
-    <h2 class="sec-title">まずは一度、土地を見てもらいませんか。</h2>
-    <p class="sec-lead">無料土地診断・概算プラン・概算収支のご相談を承ります。お電話・LINE・フォームからお気軽にどうぞ。</p>
-    <div class="ct-grid">
-      <div class="quick">
-        <div class="qbox tel">
-          <div class="ic">📞</div>
-          <div class="tx"><b>092（710）1180</b><span>受付時間：平日 9:00〜18:00（高齢の地主様はお電話が確実です）</span></div>
-        </div>
-        <a class="qbox" href="https://lin.ee/f0ZKqnj" target="_blank" rel="noopener" style="cursor:pointer">
-          <div class="ic" style="background:rgba(6,199,85,.25)">💬</div>
-          <div class="tx"><b>LINEで写真を送って相談する</b><span>土地の写真や公図を送るだけ。相談のハードルを下げる導線です。</span></div>
-        </a>
-        <div class="qbox">
-          <div class="ic">📋</div>
-          <div class="tx"><b>こんなご相談ができます</b><span>この土地で建つか／概算費用／概算収支／ロフト対応 など</span></div>
-        </div>
-        <div class="qbox" style="background:rgba(255,255,255,.04)">
-          <div class="ic">🏢</div>
-          <div class="tx"><b>福岡ビルド株式会社</b><span>福岡県那珂川市今光一丁目56番地<br>建設業許可：福岡県知事（特－3）第73084号</span></div>
-        </div>
-      </div>
-
-      <form class="lp" onsubmit="return lpSubmit(event)">
-        <div class="fld">
-          <label>お名前<span class="req">必須</span></label>
-          <input type="text" name="name" placeholder="例：山田 太郎" required>
-        </div>
-        <div class="row">
-          <div class="fld">
-            <label>電話番号<span class="req">必須</span></label>
-            <input type="tel" name="tel" placeholder="例：090-0000-0000" required>
-          </div>
-          <div class="fld">
-            <label>メールアドレス<span class="opt">任意</span></label>
-            <input type="email" name="email" placeholder="例：name@example.com">
-          </div>
-        </div>
-        <div class="row">
-          <div class="fld">
-            <label>土地の所在地<span class="opt">市町村まででも可</span></label>
-            <input type="text" name="area" placeholder="例：福岡県那珂川市">
-          </div>
-          <div class="fld">
-            <label>土地面積<span class="opt">分かる範囲で</span></label>
-            <input type="text" name="size" placeholder="例：約200坪 / 約660㎡">
-          </div>
-        </div>
-        <div class="row">
-          <div class="fld">
-            <label>土地の現況<span class="opt">任意</span></label>
-            <select name="status">
-              <option value="">選択してください</option>
-              <option>空き地</option>
-              <option>駐車場</option>
-              <option>宅地</option>
-              <option>農地</option>
-              <option>その他</option>
-            </select>
-          </div>
-          <div class="fld">
-            <label>ご相談内容<span class="opt">任意</span></label>
-            <select name="topic">
-              <option value="">選択してください</option>
-              <option>建築可否</option>
-              <option>概算費用</option>
-              <option>概算収支</option>
-              <option>ロフト</option>
-              <option>その他</option>
-            </select>
-          </div>
-        </div>
-        <div class="fld">
-          <label>ご質問・ご要望<span class="opt">任意</span></label>
-          <textarea name="msg" placeholder="土地の状況やご相談内容をご記入ください。公図・測量図・写真などの資料は、お問い合わせ後に送付いただけます。"></textarea>
-        </div>
-        <button type="submit" class="btn btn-cta submit">無料土地診断を依頼する</button>
-        <p class="formnote">ご入力いただいた情報は、お問い合わせ対応の目的にのみ使用します。<br>※本フォームはデモ用です。送信機能は実装時に設定します。</p>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="wrap">
-    <div class="f-top">
-      <div>
-        <h4>福岡ビルド株式会社</h4>
-        <div class="corp">
-          <span>〒811-1211 福岡県那珂川市今光一丁目56番地</span>
-          <span>TEL：092（710）1180　／　創業：1973年（昭和48年）</span>
-          <span>建設業許可番号：福岡県知事（特－3）第73084号</span>
-          <span>宅地建物取引業：福岡県知事（4）第16710号</span>
-        </div>
-      </div>
-      <div>
-        <h4>コンテンツ</h4>
-        <div class="f-links">
-          <a href="#product">規格型木造アパート</a>
-          <a href="#plans">商品プラン</a>
-          <a href="#diff">大手規格商品との違い</a>
-          <a href="#shushi">建物工事費ベースの収支</a>
-          <a href="#flow">土地診断の流れ</a>
-          <a href="#works">施工事例</a>
-          <a href="#faq">よくある質問</a>
-        </div>
-      </div>
-      <div>
-        <h4>グループ会社</h4>
-        <div class="corp">
-          <span><b style="color:#fff">オリナス株式会社</b>（設計事務所）</span>
-          <span>福岡市博多区博多駅東一丁目14番25号<br>新幹線ビル2号館4F</span>
-          <span>一級建築士事務所：福岡県知事登録 第1-62087号</span>
-        </div>
-      </div>
-    </div>
-    <p class="copy">© 福岡ビルド株式会社 Fukuoka Build Co., Ltd. All Rights Reserved.　｜　※FAX番号は要確認（角田代表案=092-710-1181／既存資料=092-804-0140）</p>
-  </div>
-</footer>
-
-<!-- sticky mobile cta -->
-<div class="mcta">
-  <a class="btn btn-cta" href="#contact">土地診断</a>
-  <a class="btn btn-line" href="https://lin.ee/f0ZKqnj">LINE相談</a>
-  <a class="btn btn-ghost" style="background:var(--navy);color:#fff" href="tel:0927101180">電話</a>
 </div>
 
-<!-- float line cta (PC) -->
-<a class="float-line" href="https://lin.ee/f0ZKqnj" target="_blank" rel="noopener">💬 LINEで相談</a>
+<div class="lp-container">
+  <div class="lp-section" id="sec-01"><div class="section-label">#01 / HERO</div><img src="images/1.webp" alt="FV"></div>
+  <div class="lp-section" id="sec-02"><div class="section-label">#02 / ADVANTAGE</div><img src="images/2.webp" alt="5つの理由"></div>
+  <div class="lp-section" id="sec-03"><div class="section-label">#03 / 360°VIEWで見る代表物件</div><img src="images/3.webp" alt="360°VIEWで見る代表物件"></div>
+  <div class="lp-section" id="sec-04"><div class="section-label">#04 / A 地主</div><img src="images/4.webp" alt="A地主"></div>
+  <div class="lp-section" id="sec-05">
+    <div class="section-label">#05 / B 築古アパート建替え</div>
+    <div class="review-warning">⚠ 要事業体制確認<span class="sub">建替え（解体＋新築）を商品として打ち出してよいか</span></div>
+    <img src="images/5.webp" alt="B 築古アパートをお持ちの方へ（設計から施工まで、自社一貫の建替え）">
+  </div>
+  <div class="lp-section" id="sec-06"><div class="section-label">#06 / C 投資家</div><img src="images/6.webp" alt="C投資家"></div>
+  <div class="lp-section" id="sec-07"><div class="section-label">#07 / オーナーボイス</div><img src="images/7.webp" alt="オーナーボイス"></div>
+  <div class="lp-section" id="sec-08"><div class="section-label">#08 / セミナー誘導</div><img src="images/8.webp" alt="セミナー誘導"></div>
+  <div class="lp-section" id="sec-09"><div class="section-label">#09 / 会社情報</div><img src="images/9.webp" alt="会社情報"></div>
+  <div class="lp-section" id="sec-10"><div class="section-label">#10 / 最終CTA</div><img src="images/10.webp" alt="最終CTA"></div>
+</div>
 
-<script>
-  function lpSubmit(e){
-    e.preventDefault();
-    alert("お問い合わせありがとうございます。\n\n※本ページはデモ用です。実際の送信機能は公開時に設定します。");
-    return false;
-  }
-</script>
+<div class="footer-note">
+  <div class="name">補足事項</div>
+  <p>● 画像はChatGPT Image 2.0で生成。最終実装ではHTML/CSSで動的に組み直し、コピー・数値・物件情報は最新版で精査します。</p>
+  <p>● 日本語テキストの一部が崩れているのは画像生成AIの限界によるものです。HTML実装時には正確な文言で出力します。</p>
+  <p>● アイケンジャパンの構造を「アパート建築版」に翻案。ペルソナ別セクション(A地主/B建替え/C投資家)は v1.2 設計書準拠で独自追加。<strong>主軸は A 地主、B は従の位置づけ（鈴木さん指示 2026-06-19）。</strong></p>
+  <p style="margin-top:6px"><strong style="color:#fbbf24">● v13(2026-06-19)更新:</strong> 鈴木さん指示により、福岡ビルドが実体として行っていない「不動産買取・立退き対応・弁護士/社労士提携・客付け・賃貸管理」表現を全削除。「設計〜施工 自社一貫の建替え」のみ訴求。フロー図も「①入居者の退去（オーナー様）→②解体→③新築工事→④お引渡し」に修正想定。</p>
+  <p style="margin-top:12px;color:#94a3b8;font-size:11px">© 2026 株式会社 斗 — apart-x.jp v1.2 mockup v14 (#5画像差替済 / 鈴木さん指示完全反映)</p>
+</div>
+
+<nav class="thumb-nav">
+  <div class="title">SECTIONS</div>
+  <a href="#sec-01">#01 FV</a>
+  <a href="#sec-02">#02 ADVANTAGE</a>
+  <a href="#sec-03">#03 360°VIEW代表物件</a>
+  <a href="#sec-04">#04 A 地主</a>
+  <a href="#sec-05">#05 B 築古建替え</a>
+  <a href="#sec-06">#06 C 投資家</a>
+  <a href="#sec-07">#07 オーナーボイス</a>
+  <a href="#sec-08">#08 セミナー誘導</a>
+  <a href="#sec-09">#09 会社情報</a>
+  <a href="#sec-10">#10 最終CTA</a>
+</nav>
 </body>
 </html>
