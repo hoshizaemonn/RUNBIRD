@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アパート建築の方程式｜福岡ビルド株式会社</title>
+<meta name="description" content="「建築力」と「土地活用力」で選ばれている堅実なアパート経営の方程式。福岡・佐賀で創業53年、累計500棟超の建築実績。土地活用・築古建替え・アパート投資の3つの入口からご相談いただけます。">
+<meta property="og:title" content="アパート建築の方程式｜福岡ビルド株式会社">
+<meta property="og:description" content="「建築力」と「土地活用力」で選ばれている、堅実なアパート経営の方程式。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e1a2e;
+  --navy-2:#152339;
+  --navy-3:#1d2d48;
+  --gold:#c9a961;
+  --gold-dark:#a8893f;
+  --line-g:#06C755;
+  --ink:#1a1a1a;
+  --ink-soft:#525a66;
+  --grey:#f4f5f7;
+  --grey-dark:#dde0e4;
+  --white:#ffffff;
+  --shadow:0 6px 28px rgba(14,26,46,.10);
+  --shadow-lg:0 14px 48px rgba(14,26,46,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:80px;}
+body{
+  font-family:'Noto Sans JP',-apple-system,sans-serif;
+  color:var(--ink);line-height:1.85;background:var(--white);font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.serif{font-family:'Noto Serif JP',serif;}
+.num{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.02em;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+.section{padding:90px 0;}
+.eyebrow{
+  display:inline-block;color:var(--gold);font-weight:700;font-size:.78rem;
+  letter-spacing:.22em;font-family:'Inter',sans-serif;margin-bottom:14px;
+}
+h2.sec-title{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.6rem,3.6vw,2.3rem);font-weight:900;line-height:1.45;
+  margin-bottom:18px;letter-spacing:.02em;
+}
+
+/* ===== Header ===== */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(8px);
+  box-shadow:0 1px 0 rgba(0,0,0,.06);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.logo{display:flex;flex-direction:column;line-height:1.2;}
+.logo .brand{font-family:'Noto Serif JP',serif;font-weight:900;font-size:1.05rem;color:var(--navy);letter-spacing:.04em;}
+.logo .sub{font-size:.62rem;color:var(--ink-soft);letter-spacing:.18em;font-family:'Inter',sans-serif;font-weight:600;}
+.gnav{display:flex;align-items:center;gap:26px;}
+.gnav a{font-size:.86rem;font-weight:600;color:var(--ink);transition:color .2s;}
+.gnav a:hover{color:var(--gold-dark);}
+.header-tel{display:flex;align-items:center;gap:8px;background:var(--navy);color:#fff;padding:10px 18px;border-radius:6px;}
+.header-tel .ht-icon{color:var(--gold);font-size:1.1rem;}
+.header-tel .ht-num{font-family:'Inter',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:.02em;}
+.header-tel .ht-time{font-size:.6rem;color:rgba(255,255,255,.7);margin-left:4px;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
+.hamburger span{width:24px;height:2px;background:var(--ink);transition:.3s;}
+
+/* ===== Side Floating Nav (right) ===== */
+.side-nav{
+  position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:900;
+  display:flex;flex-direction:column;gap:1px;background:rgba(14,26,46,.96);
+  border-radius:8px 0 0 8px;overflow:hidden;
+}
+.side-nav a{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:14px 8px;color:#fff;font-size:.66rem;font-weight:700;letter-spacing:.08em;
+  writing-mode:vertical-rl;text-orientation:upright;min-height:90px;
+  border-bottom:1px solid rgba(255,255,255,.08);transition:background .2s;
+  text-align:center;
+}
+.side-nav a:hover{background:rgba(201,169,97,.18);}
+.side-nav a .sn-icon{writing-mode:horizontal-tb;font-size:1.1rem;color:var(--gold);margin-bottom:6px;}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:140px 0 0;color:#fff;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    linear-gradient(180deg,rgba(14,26,46,.55) 0%,rgba(14,26,46,.35) 40%,rgba(14,26,46,.75) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='900'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23d4cbb5'/%3E%3Cstop offset='0.6' stop-color='%23a8997a'/%3E%3Cstop offset='1' stop-color='%236d5d44'/%3E%3C/linearGradient%3E%3ClinearGradient id='bld' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23423424'/%3E%3Cstop offset='1' stop-color='%231d1610'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='900' fill='url(%23sky)'/%3E%3Crect x='0' y='420' width='1600' height='480' fill='url(%23bld)'/%3E%3Cg fill='%23000' opacity='0.18'%3E%3Crect x='180' y='460' width='30' height='220'/%3E%3Crect x='240' y='460' width='30' height='220'/%3E%3Crect x='300' y='460' width='30' height='220'/%3E%3Crect x='420' y='460' width='30' height='220'/%3E%3Crect x='480' y='460' width='30' height='220'/%3E%3Crect x='540' y='460' width='30' height='220'/%3E%3Crect x='660' y='460' width='30' height='220'/%3E%3Crect x='720' y='460' width='30' height='220'/%3E%3Crect x='780' y='460' width='30' height='220'/%3E%3Crect x='900' y='460' width='30' height='220'/%3E%3Crect x='960' y='460' width='30' height='220'/%3E%3Crect x='1020' y='460' width='30' height='220'/%3E%3Crect x='1140' y='460' width='30' height='220'/%3E%3Crect x='1200' y='460' width='30' height='220'/%3E%3Crect x='1260' y='460' width='30' height='220'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:cover;background-position:center;
+}
+.hero-inner{position:relative;z-index:1;padding-bottom:50px;}
+.hero-copy{padding:0 0 40px;}
+.hero-copy .h-line1{font-family:'Noto Serif JP',serif;font-size:clamp(1.05rem,2.4vw,1.4rem);font-weight:700;letter-spacing:.06em;margin-bottom:14px;}
+.hero-copy .h-line1 .pill{
+  display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+  color:#fff;padding:2px 12px;margin:0 4px;font-weight:900;border-radius:4px;
+}
+.hero-copy h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,5.2vw,3.4rem);font-weight:900;line-height:1.4;letter-spacing:.04em;
+  margin:6px 0 14px;text-shadow:0 2px 22px rgba(0,0,0,.5);
+}
+.hero-copy h1 .gold{color:var(--gold);}
+.hero-copy .h-line3{font-family:'Noto Serif JP',serif;font-size:clamp(1rem,2.2vw,1.3rem);font-weight:600;color:rgba(255,255,255,.92);}
+.hero-event{
+  display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,.95);color:var(--navy);
+  padding:14px 22px;border-radius:8px;margin-top:24px;font-weight:700;
+}
+.hero-event .he-tag{background:var(--gold);color:#fff;padding:3px 10px;font-size:.7rem;border-radius:3px;font-family:'Inter',sans-serif;}
+.hero-event .he-date{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:900;}
+.hero-event .he-btn{background:var(--navy);color:#fff;padding:6px 14px;border-radius:4px;font-size:.78rem;}
+.hero-stats{
+  background:rgba(255,255,255,.97);color:var(--ink);
+  display:grid;grid-template-columns:repeat(4,1fr);
+  margin:0 -24px;padding:30px 24px;border-top:3px solid var(--gold);
+}
+.hero-stat{text-align:center;padding:8px 12px;border-right:1px solid var(--grey-dark);}
+.hero-stat:last-child{border-right:none;}
+.hero-stat .hs-icon{font-size:1.6rem;color:var(--gold-dark);margin-bottom:4px;}
+.hero-stat .hs-label{font-size:.78rem;color:var(--ink-soft);}
+.hero-stat .hs-num{font-family:'Inter',sans-serif;font-weight:900;font-size:1.7rem;color:var(--navy);line-height:1.1;}
+.hero-stat .hs-num small{font-size:.8rem;font-weight:700;}
+.hero-stat .hs-note{font-size:.6rem;color:var(--ink-soft);margin-top:2px;}
+
+/* ===== ADVANTAGE ===== */
+.advantage{background:var(--navy);color:#fff;padding:100px 0;}
+.advantage .eyebrow{color:var(--gold);font-size:1.4rem;letter-spacing:.3em;font-family:'Noto Serif JP',serif;font-weight:700;}
+.advantage h2.sec-title{color:#fff;}
+.adv-lead{color:rgba(255,255,255,.78);max-width:780px;margin-bottom:50px;font-size:.95rem;}
+.adv-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+.adv-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(201,169,97,.25);
+  border-radius:10px;padding:28px 18px;text-align:center;transition:background .2s,transform .2s;
+}
+.adv-card:hover{background:rgba(201,169,97,.08);transform:translateY(-3px);}
+.adv-card .ac-no{font-family:'Inter',sans-serif;font-weight:800;font-size:2rem;color:var(--gold);margin-bottom:10px;letter-spacing:.02em;}
+.adv-card .ac-icon{font-size:1.6rem;margin:8px 0;color:var(--gold);}
+.adv-card h3{font-size:1.05rem;font-weight:900;margin:6px 0 10px;line-height:1.4;}
+.adv-card p{font-size:.78rem;color:rgba(255,255,255,.7);line-height:1.7;}
+
+/* ===== PRODUCT SERIES ===== */
+.product{padding:100px 0;background:var(--grey);}
+.product-lead{color:var(--ink-soft);max-width:780px;margin-bottom:50px;}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.product-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s;}
+.product-card:hover{transform:translateY(-5px);}
+.product-thumb{
+  height:220px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);
+  background:linear-gradient(135deg,#5c4a32,#2e2519);font-size:.78rem;
+  position:relative;
+}
+.product-card.c-truss .product-thumb{background:linear-gradient(135deg,#3a4a5c,#1d2a3c);}
+.product-card.c-garden .product-thumb{background:linear-gradient(135deg,#5c5238,#2e2718);}
+.product-card.c-bnoir .product-thumb{background:linear-gradient(135deg,#2d2d2d,#0d0d0d);}
+.product-body{padding:24px;}
+.product-body h3{font-family:'Noto Serif JP',serif;font-size:1.5rem;font-weight:900;margin-bottom:4px;letter-spacing:.06em;}
+.product-body .p-en{font-family:'Inter',sans-serif;font-size:.7rem;letter-spacing:.22em;color:var(--gold-dark);margin-bottom:14px;text-transform:uppercase;}
+.product-body .p-tag{font-size:.78rem;color:var(--ink-soft);font-weight:700;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--grey-dark);}
+.product-body p{font-size:.84rem;color:var(--ink-soft);}
+.product-body .p-link{display:inline-block;margin-top:16px;color:var(--gold-dark);font-weight:700;font-size:.84rem;border-bottom:1px solid var(--gold);padding-bottom:2px;}
+
+/* ===== Persona sections ===== */
+.persona{padding:100px 0;}
+.persona.bg-light{background:#fff;}
+.persona.bg-grey{background:var(--grey);}
+.persona.bg-navy{background:var(--navy);color:#fff;}
+.persona.bg-navy .eyebrow{color:var(--gold);}
+.persona.bg-navy h2.sec-title{color:#fff;}
+.persona-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.persona-eyebrow .pe-label{font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.22em;color:var(--gold);font-weight:700;}
+.persona-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:900;line-height:1.5;margin-bottom:14px;}
+.persona-title .alpha{color:var(--gold);font-family:'Inter',sans-serif;margin-right:4px;}
+.persona-sub{font-size:.95rem;color:var(--ink-soft);margin-bottom:38px;}
+.persona.bg-navy .persona-sub{color:rgba(255,255,255,.78);}
+
+/* A section: 土地評価 */
+.land-eval{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:36px;}
+.land-eval-item{background:#fff;border:1px solid var(--grey-dark);border-radius:10px;padding:22px 18px;text-align:center;}
+.land-eval-item .le-tag{font-size:.7rem;font-weight:700;color:var(--ink-soft);margin-bottom:6px;}
+.land-eval-item .le-num{font-family:'Inter',sans-serif;font-weight:900;color:var(--navy);font-size:2.2rem;line-height:1.1;}
+.land-eval-item .le-num small{font-size:1rem;font-weight:700;color:var(--ink-soft);}
+.land-eval-item .le-note{font-size:.7rem;color:var(--ink-soft);margin-top:6px;}
+.land-eval-item.highlight{border-color:var(--gold);background:linear-gradient(180deg,#fff,#fef9ed);}
+.land-eval-item.highlight .le-num{color:var(--gold-dark);}
+
+.persona-imgrow{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;margin-bottom:36px;}
+.persona-img{height:280px;background:linear-gradient(135deg,#dcd5c4,#9b8d6f);border-radius:10px;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.32);font-size:.8rem;}
+
+.pitfall-box{background:#fff;border:1px solid var(--grey-dark);border-left:4px solid var(--gold);border-radius:8px;padding:24px 28px;}
+.pitfall-box h4{font-size:1.05rem;font-weight:900;margin-bottom:14px;color:var(--navy);}
+.pitfall-box ol{padding-left:22px;}
+.pitfall-box ol li{font-size:.9rem;color:var(--ink-soft);margin-bottom:6px;}
+
+.cta-strip{
+  background:var(--navy);color:#fff;border-radius:10px;padding:24px;margin-top:36px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;
+}
+.cta-strip .cs-text{font-weight:700;font-size:1.05rem;}
+.cta-strip .cs-text small{display:block;font-size:.78rem;font-weight:400;color:rgba(255,255,255,.7);}
+.cta-strip-btns{display:flex;gap:10px;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-weight:700;border-radius:6px;padding:13px 22px;font-size:.92rem;cursor:pointer;
+  border:none;transition:transform .15s,box-shadow .2s,background .2s;text-align:center;text-decoration:none;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+.btn-line{background:var(--line-g);color:#fff;}
+.btn-gold{background:var(--gold);color:#fff;}
+.btn-gold:hover{background:var(--gold-dark);color:#fff;}
+.btn-white{background:#fff;color:var(--navy);}
+.btn-navy{background:var(--navy);color:#fff;}
+.btn small{font-size:.7rem;display:block;font-weight:500;}
+
+/* B section: 比較表 */
+.compare-box{background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:30px;}
+.compare-head{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:20px;padding:30px;background:linear-gradient(135deg,#1d2d48,#0e1a2e);color:#fff;
+}
+.compare-head .ch-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:20px;text-align:center;position:relative;}
+.compare-head .ch-card.before .ch-label{color:#e85a5a;}
+.compare-head .ch-card.after .ch-label{color:var(--gold);}
+.compare-head .ch-img{height:120px;background:linear-gradient(135deg,#4a4030,#2a2218);border-radius:6px;margin-bottom:12px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:.74rem;}
+.compare-head .ch-card.after .ch-img{background:linear-gradient(135deg,#5c4a32,#2e2519);}
+.compare-head .ch-label{font-family:'Noto Serif JP',serif;font-weight:900;font-size:1.05rem;}
+.compare-arrow{text-align:center;font-size:1.8rem;color:var(--gold);margin:-10px 0;font-weight:900;}
+.compare-table{width:100%;border-collapse:collapse;}
+.compare-table th,.compare-table td{padding:16px 14px;text-align:center;border-bottom:1px solid var(--grey-dark);font-size:.86rem;}
+.compare-table thead th{background:var(--navy);color:#fff;font-weight:700;font-size:.78rem;letter-spacing:.04em;}
+.compare-table th:first-child,.compare-table td:first-child{text-align:left;font-weight:700;background:var(--grey);}
+.compare-table tr.highlight td{background:#fef9ed;font-weight:700;color:var(--gold-dark);}
+.compare-table tr.highlight th{background:var(--gold);color:#fff;}
+
+/* C section: investor */
+.invest-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:36px;}
+.invest-stat{background:rgba(255,255,255,.06);border:1px solid rgba(201,169,97,.3);border-radius:8px;padding:20px 14px;text-align:center;}
+.invest-stat .is-num{font-family:'Inter',sans-serif;font-weight:900;font-size:2rem;color:var(--gold);line-height:1.1;}
+.invest-stat .is-num small{font-size:.85rem;}
+.invest-stat .is-label{font-size:.74rem;color:rgba(255,255,255,.8);margin-top:6px;}
+
+.invest-features{display:grid;gap:14px;}
+.invest-feat{
+  display:flex;gap:18px;align-items:center;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:18px 22px;
+}
+.invest-feat .if-no{font-family:'Inter',sans-serif;font-weight:800;font-size:1.4rem;color:var(--gold);min-width:50px;}
+.invest-feat .if-text{flex-grow:1;}
+.invest-feat .if-text strong{display:block;font-size:1rem;font-weight:700;color:#fff;margin-bottom:2px;}
+.invest-feat .if-text span{font-size:.78rem;color:rgba(255,255,255,.7);}
+
+/* ===== Owner Voices ===== */
+.voices{background:var(--grey);padding:100px 0;}
+.voice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.voice-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:var(--shadow);display:grid;grid-template-columns:160px 1fr;}
+.voice-photo{background:linear-gradient(135deg,#c5b9a0,#7a6c52);display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.3);font-size:.75rem;}
+.voice-content{padding:22px 24px;}
+.voice-meta{display:flex;gap:8px;margin-bottom:10px;}
+.voice-meta span{font-size:.68rem;background:var(--grey);color:var(--ink-soft);padding:3px 10px;border-radius:12px;font-weight:700;}
+.voice-meta .vm-tag{background:var(--gold);color:#fff;}
+.voice-content h4{font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:900;margin-bottom:8px;line-height:1.5;}
+.voice-content p{font-size:.82rem;color:var(--ink-soft);}
+.voice-link{display:inline-block;margin-top:10px;font-size:.78rem;color:var(--gold-dark);font-weight:700;border-bottom:1px solid var(--gold);}
+
+/* ===== Seminar & Doc ===== */
+.semdoc{background:linear-gradient(135deg,#152339,#0e1a2e);color:#fff;padding:80px 0;}
+.semdoc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;align-items:center;}
+.semdoc-copy h3{font-family:'Noto Serif JP',serif;font-size:1.6rem;font-weight:900;line-height:1.55;margin-bottom:14px;}
+.semdoc-copy h3 .gold{color:var(--gold);}
+.semdoc-copy p{font-size:.86rem;color:rgba(255,255,255,.78);}
+.semdoc-card{background:#fff;color:var(--ink);border-radius:10px;padding:26px 24px;text-align:center;box-shadow:var(--shadow-lg);}
+.semdoc-card .sc-icon{font-size:1.8rem;color:var(--gold-dark);margin-bottom:10px;}
+.semdoc-card h4{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:900;margin-bottom:10px;}
+.semdoc-card .sc-date{font-family:'Inter',sans-serif;font-weight:900;font-size:1.5rem;color:var(--navy);margin:8px 0;}
+.semdoc-card .sc-place{font-size:.8rem;color:var(--ink-soft);margin-bottom:14px;}
+.semdoc-card .sc-btn{display:block;background:var(--navy);color:#fff;padding:12px;border-radius:6px;font-weight:700;font-size:.88rem;margin-top:10px;}
+.semdoc-card .sc-note{font-size:.7rem;color:var(--ink-soft);margin-top:8px;}
+
+/* ===== ABOUT US ===== */
+.about{padding:100px 0;background:#fff;}
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:center;}
+.about-photo{background:linear-gradient(135deg,#e3dcc8,#a59781);border-radius:10px;height:380px;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.3);font-size:.85rem;position:relative;overflow:hidden;}
+.about-photo::after{content:"FUKUOKA BUILD CO.";position:absolute;bottom:24px;left:24px;font-family:'Inter',sans-serif;font-weight:800;font-size:.78rem;color:rgba(0,0,0,.4);letter-spacing:.12em;}
+.about-content .eyebrow{color:var(--gold-dark);}
+.about-content h3{font-family:'Noto Serif JP',serif;font-size:1.8rem;font-weight:900;margin-bottom:24px;line-height:1.5;}
+.about-list{display:grid;gap:12px;margin-bottom:24px;}
+.about-list li{display:flex;gap:12px;align-items:flex-start;font-size:.92rem;}
+.about-list .al-icon{flex-shrink:0;width:24px;height:24px;background:var(--gold);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;}
+.about-list li strong{font-weight:700;color:var(--navy);}
+.about-list li span{color:var(--ink-soft);font-size:.78rem;display:block;}
+.about-content p.about-text{font-size:.88rem;color:var(--ink-soft);margin-bottom:24px;}
+
+/* ===== Final CTA ===== */
+.final{background:var(--navy);color:#fff;padding:90px 0;}
+.final-copy{text-align:center;margin-bottom:40px;}
+.final-copy h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.4;letter-spacing:.04em;}
+.final-copy h2 .gold{color:var(--gold);}
+.final-copy p{margin-top:18px;font-size:.95rem;color:rgba(255,255,255,.78);}
+.final-ctas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:920px;margin:0 auto;}
+.final-cta{background:#fff;color:var(--ink);border-radius:10px;padding:24px;text-align:center;}
+.final-cta.line-bg{background:var(--line-g);color:#fff;}
+.final-cta.line-bg .fc-icon{color:#fff;}
+.final-cta .fc-icon{font-size:1.8rem;margin-bottom:8px;color:var(--navy);}
+.final-cta h4{font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:900;margin-bottom:6px;}
+.final-cta .fc-note{font-size:.74rem;color:var(--ink-soft);margin-top:6px;}
+.final-cta.line-bg .fc-note{color:rgba(255,255,255,.85);}
+.final-cta .fc-num{font-family:'Inter',sans-serif;font-weight:900;font-size:1.7rem;margin-top:6px;color:var(--navy);}
+.final-cta .fc-confidential{font-size:.7rem;color:var(--ink-soft);margin-top:4px;}
+.final-extras{display:flex;justify-content:center;gap:24px;margin-top:28px;font-size:.82rem;color:rgba(255,255,255,.7);}
+.final-extras span::before{content:"✓ ";color:var(--gold);}
+
+/* ===== Footer ===== */
+footer{background:#070d18;color:rgba(255,255,255,.62);padding:50px 0 30px;font-size:.82rem;}
+footer .ft-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:30px;}
+footer .ft-brand-wrap{display:flex;flex-direction:column;line-height:1.3;}
+footer .ft-brand{font-family:'Noto Serif JP',serif;font-weight:900;color:#fff;font-size:1.15rem;letter-spacing:.04em;}
+footer .ft-sub{font-size:.6rem;color:rgba(255,255,255,.5);letter-spacing:.18em;font-family:'Inter',sans-serif;}
+footer .ft-info{font-size:.78rem;line-height:1.8;color:rgba(255,255,255,.7);}
+footer .ft-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-size:.7rem;color:rgba(255,255,255,.45);text-align:center;}
+
+/* ===== responsive ===== */
+@media(max-width:1000px){
+  .gnav{
+    position:fixed;top:72px;right:0;width:76%;max-width:340px;height:calc(100vh - 72px);
+    background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:24px;
+    box-shadow:-4px 0 30px rgba(0,0,0,.12);transform:translateX(110%);transition:transform .3s;overflow-y:auto;
+  }
+  .gnav.open{transform:translateX(0);}
+  .gnav a{padding:14px 8px;border-bottom:1px solid var(--grey);}
+  .hamburger{display:flex;}
+  .header-tel{display:none;}
+  .side-nav{display:none;}
+  .adv-grid{grid-template-columns:repeat(2,1fr);}
+  .product-grid{grid-template-columns:1fr;}
+  .persona-imgrow{grid-template-columns:1fr;}
+  .land-eval,.invest-stats{grid-template-columns:repeat(3,1fr);}
+  .compare-table{font-size:.74rem;}
+  .compare-table th,.compare-table td{padding:10px 6px;}
+  .voice-grid{grid-template-columns:1fr;}
+  .voice-card{grid-template-columns:120px 1fr;}
+  .semdoc-grid{grid-template-columns:1fr;}
+  .about-grid{grid-template-columns:1fr;}
+  .final-ctas{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);}
+  .hero-stat{border-right:none;border-bottom:1px solid var(--grey-dark);padding:14px;}
+  .section,.advantage,.product,.persona,.voices,.semdoc,.about,.final{padding:60px 0;}
+}
+@media(max-width:560px){
+  .adv-grid{grid-template-columns:1fr 1fr;}
+  .invest-stats{grid-template-columns:1fr 1fr;}
+  .land-eval{grid-template-columns:1fr;}
+  .voice-card{grid-template-columns:1fr;}
+  .voice-photo{height:160px;}
+  .hero-stat .hs-num{font-size:1.3rem;}
+  .hero-stats{padding:18px 12px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="wrap header-inner">
+    <a href="#hero" class="logo">
+      <span class="brand">アパート建築の方程式</span>
+      <span class="sub">by Fukuoka Build</span>
+    </a>
+    <nav class="gnav" id="gnav">
+      <a href="#advantage">会社の強み</a>
+      <a href="#about">企業情報</a>
+      <a href="#product">事業内容</a>
+      <a href="#voices">施工実績</a>
+      <a href="#final">お問い合わせ</a>
+    </nav>
+    <a href="tel:0927101180" class="header-tel">
+      <span class="ht-icon">📞</span>
+      <span class="ht-num">092-710-1180</span>
+      <span class="ht-time">受付平日9:00-18:00</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== Side Nav (PC only) ===== -->
+<aside class="side-nav">
+  <a href="#final"><span class="sn-icon">📄</span>資料請求</a>
+  <a href="#product"><span class="sn-icon">🏢</span>物件販売情報</a>
+  <a href="#semdoc"><span class="sn-icon">🎤</span>セミナー申込</a>
+  <a href="#final"><span class="sn-icon">🔑</span>内見会案内</a>
+</aside>
+
+<!-- ===== Hero ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <p class="h-line1"><span class="pill">建築力</span>と<span class="pill">土地活用力</span>で選ばれている</p>
+      <h1>堅実な<span class="gold">アパート経営</span>の<br>アパート建築の方程式です。</h1>
+      <div class="hero-event">
+        <span class="he-tag">SEMINAR</span>
+        <span class="he-date">6/28 10:00-12:00</span>
+        <span>不動産投資戦略</span>
+        <a href="#semdoc" class="he-btn">申込はこちら</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hs-label">福岡での建築実績</div>
+        <div class="hs-num">53<small>年</small></div>
+        <div class="hs-note">※1972年創業</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-label">累計建築棟数</div>
+        <div class="hs-num">500<small>棟超</small></div>
+        <div class="hs-note">※2024年12月時点</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-label">年間着工棟数</div>
+        <div class="hs-num">30<small>棟/年</small></div>
+        <div class="hs-note">※直近実績</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-label">年間想定利回り</div>
+        <div class="hs-num">6〜8<small>%</small></div>
+        <div class="hs-note">※エリア・条件により異なります</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ADVANTAGE ===== -->
+<section class="advantage" id="advantage">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <span class="eyebrow">ADVANTAGE</span>
+      <h2 class="sec-title">アパート建築の方程式が選ばれる5つの理由</h2>
+      <p class="adv-lead" style="margin-left:auto;margin-right:auto;">創業53年、福岡・佐賀でアパート建築500棟超。土地・建築・管理を自社で一貫対応する福岡ビルドだからこそ提供できる5つの強み。</p>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card"><div class="ac-no">01</div><h3>53年の建築力</h3><p>福岡で長年の現場経験に裏付けされた高品質のアパート建築。</p></div>
+      <div class="adv-card"><div class="ac-no">02</div><h3>自社一貫体制</h3><p>設計・施工・管理まで自社対応で中間マージンゼロ。</p></div>
+      <div class="adv-card"><div class="ac-no">03</div><h3>土地ネットワーク</h3><p>福岡市・福岡郊外・佐賀を中心に優良な土地情報網。</p></div>
+      <div class="adv-card"><div class="ac-no">04</div><h3>高い入居率</h3><p>30棟/年のデータと長年で培った入居者目線の設計力。</p></div>
+      <div class="adv-card"><div class="ac-no">05</div><h3>相続税対策</h3><p>地主・建築・税理士事務所の連携で資産承継までサポート。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCT SERIES ===== -->
+<section class="product" id="product">
+  <div style="text-align:center;" class="wrap">
+    <span class="eyebrow">PRODUCT SERIES</span>
+    <h2 class="sec-title">福岡ビルドのアパート商品シリーズ</h2>
+    <p class="product-lead" style="margin-left:auto;margin-right:auto;">地域・予算・ターゲットに応じて、3つのシリーズから最適な設計をご提案します。</p>
+  </div>
+  <div class="wrap">
+    <div class="product-grid">
+      <div class="product-card c-truss">
+        <div class="product-thumb">TRUSS 外観イメージ</div>
+        <div class="product-body">
+          <h3>TRUSS</h3>
+          <div class="p-en">トラス</div>
+          <p class="p-tag">単身特化・1LDK中心の安定型</p>
+          <p>都市部や駅近に向く、1LDK・1Kを中心にした単身者ターゲット型のアパート。</p>
+          <a href="#final" class="p-link">詳しく見る ›</a>
+        </div>
+      </div>
+      <div class="product-card c-garden">
+        <div class="product-thumb">GARDEN 外観イメージ</div>
+        <div class="product-body">
+          <h3>GARDEN</h3>
+          <div class="p-en">ガーデン</div>
+          <p class="p-tag">ファミリー向け2LDKメゾネット</p>
+          <p>郊外を中心とした2LDKメゾネット型。ファミリー・カップル層に選ばれる広めの設計。</p>
+          <a href="#final" class="p-link">詳しく見る ›</a>
+        </div>
+      </div>
+      <div class="product-card c-bnoir">
+        <div class="product-thumb">BrancNoir 外観イメージ</div>
+        <div class="product-body">
+          <h3>BrancNoir</h3>
+          <div class="p-en">ブラン・ノアール</div>
+          <p class="p-tag">ダーク基調・高密度で堅持型</p>
+          <p>ダーク基調のシックなデザインで、高密度・高採算を狙う堅実投資型のアパート。</p>
+          <a href="#final" class="p-link">詳しく見る ›</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== A. FOR LANDOWNERS ===== -->
+<section class="persona bg-light" id="landowners">
+  <div class="wrap">
+    <div class="persona-eyebrow"><span class="pe-label">FOR LANDOWNERS</span></div>
+    <h2 class="persona-title"><span class="alpha">A.</span>土地をお持ちの方へ</h2>
+    <p class="persona-sub">「建てるか・売るか・持ち続けるか」を、家族で考える材料を揃えました。</p>
+
+    <div class="land-eval">
+      <div class="land-eval-item"><div class="le-tag">更地</div><div class="le-num">100</div><div class="le-note">相続税評価のイメージ</div></div>
+      <div class="land-eval-item highlight"><div class="le-tag">貸家建付地</div><div class="le-num">約79</div><div class="le-note">アパート建築後（目安）</div></div>
+      <div class="land-eval-item"><div class="le-tag">小規模宅地特例</div><div class="le-num">最大<small>▲</small>50</div><div class="le-note">適用時の追加軽減（目安）</div></div>
+    </div>
+
+    <div class="persona-imgrow">
+      <div class="persona-img">家族で土地活用を考える写真</div>
+      <div class="pitfall-box">
+        <h4>土地活用で後悔しないよう、よくある5つの落とし穴</h4>
+        <ol>
+          <li>提案だけで判断してしまう</li>
+          <li>家族会議をしないまま進む</li>
+          <li>建てる前提で土地活用を考える</li>
+          <li>建築会社1社だけの提案で決める</li>
+          <li>やめ時・タイミングを誤る</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="cta-strip">
+      <div class="cs-text">あなたの土地で、どれくらい頑張れるかお試算します<small>所要時間 約48時間／秘密厳守</small></div>
+      <div class="cta-strip-btns">
+        <a href="https://lin.ee/f0ZKqnj" class="btn btn-line" target="_blank" rel="noopener">LINEで土地相談</a>
+        <a href="#final" class="btn btn-white">無料相談フォーム</a>
+        <a href="tel:0927101180" class="btn btn-gold">📞 092-710-1180</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== B. FOR REBUILDERS ===== -->
+<section class="persona bg-grey" id="rebuilders">
+  <div class="wrap">
+    <div class="persona-eyebrow"><span class="pe-label">FOR REBUILDERS</span></div>
+    <h2 class="persona-title"><span class="alpha">B.</span>築古アパートをお持ちの方へ</h2>
+    <p class="persona-sub">修繕か・建替えか・売却か ── 3案を数字で並べると答えが見えます。</p>
+
+    <div class="compare-box">
+      <div class="compare-head">
+        <div class="ch-card before">
+          <div class="ch-img">既存物件 写真</div>
+          <div class="ch-label">築35年・空室率35%</div>
+        </div>
+        <div class="ch-card after">
+          <div class="ch-img">建替え後 完成イメージ</div>
+          <div class="ch-label">新築・想定利回り 7.2%</div>
+        </div>
+      </div>
+      <div class="compare-arrow">↓ 3つの選択肢を数字で比較 ↓</div>
+      <table class="compare-table">
+        <thead>
+          <tr><th>案</th><th>初期費用</th><th>30年CF</th><th>相続時評価</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>修繕</th><td>約 1,000万円</td><td>+ 1,200万円</td><td>約 3,500万円</td></tr>
+          <tr class="highlight"><th>建替え</th><td>約 1億2,000万円</td><td>+ 1億6,800万円</td><td>約 1億4,200万円</td></tr>
+          <tr><th>売却</th><td>0円</td><td>+ 6,500万円（売却益）</td><td>約 2,200万円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.74rem;color:var(--ink-soft);text-align:center;margin-bottom:24px;">※上記数字は一般的なモデルケースの目安です。実際の試算は物件条件により大きく変動します。</p>
+
+    <div class="cta-strip">
+      <div class="cs-text">あなたの物件で、建替えの数字を試算します<small>写真・住所を送るだけ／所要約48時間</small></div>
+      <div class="cta-strip-btns">
+        <a href="https://lin.ee/f0ZKqnj" class="btn btn-line" target="_blank" rel="noopener">LINEで物件情報を送る</a>
+        <a href="#final" class="btn btn-navy">無料相談フォーム</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== C. FOR INVESTORS ===== -->
+<section class="persona bg-navy" id="investors">
+  <div class="wrap">
+    <div class="persona-eyebrow"><span class="pe-label">FOR INVESTORS</span></div>
+    <h2 class="persona-title" style="color:#fff;"><span class="alpha">C.</span>アパート投資をお考えの方へ</h2>
+    <p class="persona-sub">福岡・佐賀郊外特化、年間30棟のデータから「勝てる物件」を設計。</p>
+
+    <div class="invest-stats">
+      <div class="invest-stat"><div class="is-num">53<small>年</small></div><div class="is-label">創業</div></div>
+      <div class="invest-stat"><div class="is-num">500<small>+棟</small></div><div class="is-label">累計実績</div></div>
+      <div class="invest-stat"><div class="is-num">30<small>+棟/年</small></div><div class="is-label">年間着工</div></div>
+      <div class="invest-stat"><div class="is-num">6〜8<small>%</small></div><div class="is-label">想定利回り</div></div>
+    </div>
+
+    <div class="invest-features">
+      <div class="invest-feat"><div class="if-no">01</div><div class="if-text"><strong>中間マージンゼロの自社施工</strong><span>設計・施工・管理まで自社対応でコストを最適化。</span></div></div>
+      <div class="invest-feat"><div class="if-no">02</div><div class="if-text"><strong>福岡・佐賀の土地ネットワーク</strong><span>長年蓄積した土地情報網から、立地厳選で提案。</span></div></div>
+      <div class="invest-feat"><div class="if-no">03</div><div class="if-text"><strong>30棟/年のデータに基づく事業計画</strong><span>サブリース前提ではない、実建築費ベースの収支計画。</span></div></div>
+    </div>
+
+    <div class="cta-strip" style="background:rgba(201,169,97,.15);border:1px solid rgba(201,169,97,.35);">
+      <div class="cs-text">あなたの予算で、福岡郊外でどの物件が組めるか試算します<small>所要約48時間／秘密厳守</small></div>
+      <div class="cta-strip-btns">
+        <a href="https://lin.ee/f0ZKqnj" class="btn btn-line" target="_blank" rel="noopener">LINEで予算を送る</a>
+        <a href="#final" class="btn btn-gold">無料相談フォーム</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Owner Voices ===== -->
+<section class="voices" id="voices">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <span class="eyebrow">OWNER VOICES</span>
+      <h2 class="sec-title">アパート建築の方程式で経営を始めた、オーナーの声</h2>
+    </div>
+    <div class="voice-grid" style="margin-top:40px;">
+      <div class="voice-card">
+        <div class="voice-photo">K様 ポートレート</div>
+        <div class="voice-content">
+          <div class="voice-meta"><span class="vm-tag">A 地主</span><span>K様 / 60代 / 福岡市東区</span></div>
+          <h4>3代続けた土地を、子供代に残せる形にできた</h4>
+          <p>家族会議の場に同席いただいて、押し付けない説明をしてもらえたのが安心でした。</p>
+          <a href="#" class="voice-link">続きを読む ›</a>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-photo">H様 ポートレート</div>
+        <div class="voice-content">
+          <div class="voice-meta"><span class="vm-tag">B 築古</span><span>H様 / 50代 / 福岡県郊外</span></div>
+          <h4>築35年の建替えか、3案並べて決められた</h4>
+          <p>修繕・建替え・売却の3案を数字で比較してもらえたので、家族と判断できました。</p>
+          <a href="#" class="voice-link">続きを読む ›</a>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-photo">T様 ポートレート</div>
+        <div class="voice-content">
+          <div class="voice-meta"><span class="vm-tag">C 投資</span><span>T様 / 30代 / 福岡市東区</span></div>
+          <h4>サラリーマンの自分で、福岡で実利6.8%が組めた</h4>
+          <p>立地・土地・建物まで一気通貫で提案いただき、初めての投資が成立しました。</p>
+          <a href="#" class="voice-link">続きを読む ›</a>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-photo">I様 ポートレート</div>
+        <div class="voice-content">
+          <div class="voice-meta"><span class="vm-tag">C 投資</span><span>I様 / 60代 / 福岡県郊外</span></div>
+          <h4>物件持ちならではの提案を、初めての投資で受けられた</h4>
+          <p>過去に建てた物件と新規物件を組み合わせた提案が決め手でした。</p>
+          <a href="#" class="voice-link">続きを読む ›</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Seminar & Document ===== -->
+<section class="semdoc" id="semdoc">
+  <div class="wrap">
+    <div class="semdoc-grid">
+      <div class="semdoc-copy">
+        <h3>現金や土地を<br>そのままにしていませんか？<br><br>今ある資産を<span class="gold">次世代へつなぐ</span><br>アパート建築戦略</h3>
+        <p>土地活用の第一歩は、正しい情報とプロの視点から。</p>
+      </div>
+      <div class="semdoc-card">
+        <div class="sc-icon">🎤</div>
+        <h4>セミナー参加</h4>
+        <div class="sc-date">6/28(土) 10:00-12:00</div>
+        <div class="sc-place">福岡市内会場・無料</div>
+        <a href="#" class="sc-btn">セミナーに参加する</a>
+      </div>
+      <div class="semdoc-card">
+        <div class="sc-icon">📄</div>
+        <h4>無料資料請求</h4>
+        <div class="sc-place" style="margin-top:8px;">土地活用診断レポート同封</div>
+        <a href="#final" class="sc-btn">資料を請求する</a>
+        <div class="sc-note">毎月10名様限定／個別相談無料</div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:34px;font-size:.82rem;color:rgba(255,255,255,.7);">経験豊富な専門スタッフが、土地のポテンシャルを最大限に活かすご提案をいたします。</p>
+  </div>
+</section>
+
+<!-- ===== ABOUT US ===== -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-photo">福岡ビルド 社員集合写真</div>
+      <div class="about-content">
+        <span class="eyebrow">ABOUT US</span>
+        <h3>福岡ビルド × オリナス株式会社</h3>
+        <ul class="about-list">
+          <li><span class="al-icon">✓</span><div><strong>建設会社 福岡ビルド株式会社</strong><span>創業1973年／53年</span></div></li>
+          <li><span class="al-icon">✓</span><div><strong>一級建築士事務所 オリナス株式会社</strong><span>グループ会社</span></div></li>
+          <li><span class="al-icon">✓</span><div><strong>連携体制で2025年法改正にも対応</strong><span>4号特例の縮小に適正な構造設計で対応</span></div></li>
+        </ul>
+        <p class="about-text">創業から半世紀にわたり、建築の専門知識を持つグループ会社との連携で、安心と信頼のアパート建築をご提供します。設計から施工、アフターフォローまでワンストップでサポートしています。</p>
+        <a href="https://f-build.co.jp/" target="_blank" rel="noopener" class="btn btn-navy">詳しく会社案内を見る ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="final" id="final">
+  <div class="wrap">
+    <div class="final-copy">
+      <h2>その土地で、何ができるか。<br>まず<span class="gold">数字で見て</span>みませんか。</h2>
+      <p>LINEで土地住所・物件住所・予算を送るだけ。48時間以内に試算プランを返します。</p>
+    </div>
+    <div class="final-ctas">
+      <a href="https://lin.ee/f0ZKqnj" target="_blank" rel="noopener" class="final-cta line-bg">
+        <div class="fc-icon">💬</div>
+        <h4>LINEで無料診断</h4>
+        <div class="fc-note">最速48時間でご返答</div>
+      </a>
+      <a href="https://f-build.co.jp/contact/" target="_blank" rel="noopener" class="final-cta">
+        <div class="fc-icon">📝</div>
+        <h4>無料相談フォーム</h4>
+        <div class="fc-note">詳しい条件を入力して、専門家に相談</div>
+      </a>
+      <a href="tel:0927101180" class="final-cta">
+        <div class="fc-icon">📞</div>
+        <div class="fc-num">092-710-1180</div>
+        <div class="fc-confidential">秘密厳守／平日9:00-18:00</div>
+      </a>
+    </div>
+    <div class="final-extras">
+      <span>48時間以内のご返答</span>
+      <span>秘密厳守</span>
+      <span>無料診断</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-brand-wrap">
+        <span class="ft-brand">アパート建築の方程式</span>
+        <span class="ft-sub">by Fukuoka Build</span>
+      </div>
+      <div class="ft-info">
+        〒811-1271 福岡県那珂川市仲丸三丁目56番地<br>
+        TEL：092-710-1180 ／ FAX：092-710-1181<br>
+        創業1973年（昭和48年）／一級建築士事務所 オリナス株式会社（グループ会社）
+      </div>
+    </div>
+    <div class="ft-bottom">© 2026 Fukuoka Build Co., Ltd. ／ 建設業許可：福岡県知事（特）3 第73084号 ／ 宅地建物取引業：福岡県知事（4）第16710号</div>
+  </div>
+</footer>
+
+<script>
+const hb=document.getElementById('hamburger'),gn=document.getElementById('gnav');
+hb.addEventListener('click',()=>{gn.classList.toggle('open');});
+gn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>gn.classList.remove('open')));
+</script>
+
+</body>
+</html>
