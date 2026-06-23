@@ -64,21 +64,18 @@ header{
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
 .hamburger span{width:24px;height:2px;background:var(--ink);transition:.3s;}
 
-/* ===== Side Floating Nav (PC right) ===== */
-.side-nav{
-  position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:900;
-  display:flex;flex-direction:column;gap:1px;background:rgba(14,26,46,.96);
-  border-radius:8px 0 0 8px;overflow:hidden;
+/* ===== Side Floating CTA (PC right circle buttons) ===== */
+.floating-pc{position:fixed;right:20px;bottom:24px;z-index:900;display:flex;flex-direction:column;gap:10px;}
+.floating-pc a{
+  width:66px;height:66px;border-radius:50%;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;color:#fff;font-size:.62rem;font-weight:700;box-shadow:var(--shadow-lg);
+  transition:transform .2s;text-align:center;line-height:1.2;
 }
-.side-nav a{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:14px 10px;color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.06em;
-  writing-mode:vertical-rl;text-orientation:upright;min-height:100px;
-  border-bottom:1px solid rgba(255,255,255,.08);transition:background .2s;
-  text-align:center;
-}
-.side-nav a:hover{background:rgba(201,169,97,.18);}
-.side-nav a .sn-icon{writing-mode:horizontal-tb;font-size:1.15rem;color:var(--gold);margin-bottom:6px;}
+.floating-pc a:hover{transform:scale(1.08);}
+.floating-pc .f-form{background:var(--red-light);}
+.floating-pc .f-line{background:var(--line-g);}
+.floating-pc .f-tel{background:#2E75B6;}
+.floating-pc a .fi{font-size:1.35rem;margin-bottom:2px;}
 
 /* ===== Hero ===== */
 .hero{
@@ -89,7 +86,7 @@ header{
 
 /* ===== Section base ===== */
 .section{padding:0;width:100%;}
-.section.tools-section,.section.faq-section,.section.works-section,.section.final-cta-section{padding:80px 0;}
+.section.tools-section,.section.faq-section,.section.works-section,.section.contact-section{padding:80px 0;}
 
 /* ===== Tools / Simulation ===== */
 .tools-section{background:var(--cream);position:relative;}
@@ -203,25 +200,42 @@ header{
 .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s;padding:0 24px;color:var(--ink-sub);font-size:.92rem;}
 .faq-item.open .faq-a{max-height:500px;padding:0 24px 24px 24px;}
 
-/* ===== Final CTA ===== */
-.final-cta-section{background:var(--navy);color:#fff;padding:90px 0;}
-.final-copy{text-align:center;margin-bottom:40px;}
-.final-copy h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;line-height:1.4;letter-spacing:.03em;}
-.final-copy h2 .gold{color:var(--gold);}
-.final-copy p{margin-top:18px;font-size:.96rem;color:rgba(255,255,255,.82);}
-.final-ctas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:980px;margin:0 auto;}
-.final-cta{background:#fff;color:var(--ink);border-radius:10px;padding:24px;text-align:center;transition:transform .15s;}
-.final-cta:hover{transform:translateY(-3px);}
-.final-cta.line-bg{background:var(--line-g);color:#fff;}
-.final-cta.line-bg .fc-icon{color:#fff;}
-.final-cta .fc-icon{font-size:1.8rem;margin-bottom:8px;color:var(--navy);}
-.final-cta h4{font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:900;margin-bottom:6px;}
-.final-cta .fc-note{font-size:.74rem;color:var(--ink-sub);margin-top:6px;}
-.final-cta.line-bg .fc-note{color:rgba(255,255,255,.92);}
-.final-cta .fc-num{font-family:'Inter',sans-serif;font-weight:900;font-size:1.7rem;margin-top:6px;color:var(--navy);}
-.final-cta .fc-confidential{font-size:.7rem;color:var(--ink-sub);margin-top:4px;}
-.final-extras{display:flex;justify-content:center;gap:28px;margin-top:30px;font-size:.84rem;color:rgba(255,255,255,.72);flex-wrap:wrap;}
-.final-extras span::before{content:"✓ ";color:var(--gold);font-weight:700;}
+/* ===== Contact section (with form) ===== */
+.contact-section{background:linear-gradient(160deg,#1F2940,#151C2A);color:#fff;padding:80px 0;}
+.contact-section .c-eyebrow{display:inline-block;color:#FFD54A;font-weight:700;font-size:.78rem;letter-spacing:.22em;font-family:'Inter',sans-serif;margin-bottom:14px;}
+.contact-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:14px;}
+.contact-section .c-lead{color:rgba(255,255,255,.85);font-size:.95rem;margin-bottom:36px;max-width:760px;}
+.contact-cta-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:36px;}
+.contact-cta{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;text-align:center;}
+.contact-cta .cc-icon{font-size:1.8rem;}
+.contact-cta h4{font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:900;margin:8px 0;}
+.contact-cta .cc-num{display:inline-block;font-size:1.7rem;color:#FFD54A;font-family:'Inter',sans-serif;font-weight:800;margin-top:4px;}
+.contact-cta p{font-size:.82rem;color:rgba(255,255,255,.78);margin-top:6px;}
+.btn-line-inline{display:inline-block;background:var(--line-g);color:#fff;padding:12px 24px;border-radius:8px;font-weight:700;margin-top:8px;font-size:.95rem;}
+.form-card{background:#fff;border-radius:16px;padding:40px;color:var(--ink);max-width:780px;margin:0 auto;}
+.form-card h3{font-family:'Noto Serif JP',serif;font-size:1.35rem;font-weight:900;margin-bottom:6px;text-align:center;color:var(--navy);}
+.form-card .req{color:var(--red-light);font-size:.72rem;font-weight:700;margin-left:6px;}
+.form-card textarea{width:100%;padding:12px 14px;border:2px solid var(--grey-dark);border-radius:8px;font-family:inherit;font-size:1rem;resize:vertical;min-height:100px;}
+.form-card textarea:focus{outline:none;border-color:var(--gold);}
+.radio-row{display:flex;gap:22px;flex-wrap:wrap;}
+.radio-row label{display:flex;align-items:center;gap:6px;font-weight:500;font-size:.92rem;cursor:pointer;}
+.form-submit{width:100%;margin-top:12px;font-size:1.05rem;padding:18px;background:var(--red-light);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;transition:background .2s,transform .15s;}
+.form-submit:hover{background:#A8000D;transform:translateY(-2px);}
+.form-msg{display:none;background:#E8F7EC;border:1px solid var(--line-g);color:#1A7A3C;padding:16px;border-radius:8px;margin-top:16px;font-weight:700;text-align:center;}
+.form-msg.show{display:block;}
+
+/* ===== Popup (scroll trigger) ===== */
+.popup{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(160%);
+  background:#fff;box-shadow:var(--shadow-lg);border-radius:14px;padding:18px 22px;z-index:950;
+  max-width:440px;width:calc(100% - 32px);border-top:4px solid var(--red-light);transition:transform .4s;
+  display:flex;gap:14px;align-items:center;
+}
+.popup.show{transform:translateX(-50%) translateY(0);}
+.popup .pp-txt{font-size:.9rem;font-weight:700;flex-grow:1;color:var(--ink);line-height:1.5;}
+.popup .pp-txt small{display:block;font-weight:400;color:var(--ink-sub);font-size:.78rem;margin-top:2px;}
+.popup .pp-btn{background:var(--red-light);color:#fff;padding:10px 16px;border-radius:8px;font-weight:700;font-size:.84rem;white-space:nowrap;}
+.popup .pp-close{position:absolute;top:6px;right:10px;cursor:pointer;color:#999;font-size:1.2rem;background:none;border:none;line-height:1;}
 
 /* ===== Footer ===== */
 footer{background:#070D18;color:rgba(255,255,255,.62);padding:50px 0 30px;font-size:.82rem;}
@@ -247,10 +261,15 @@ footer .ft-bottom{margin-top:18px;font-size:.7rem;color:rgba(255,255,255,.4);tex
   .gnav a{padding:14px 8px;border-bottom:1px solid var(--grey);}
   .gnav .nav-cta{text-align:center;margin-top:14px;border-bottom:none;}
   .hamburger{display:flex;}
-  .side-nav{display:none;}
+  .floating-pc{display:none;}
   .work-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
   .final-ctas{grid-template-columns:1fr;}
-  .section.tools-section,.section.faq-section,.section.works-section,.section.final-cta-section{padding:60px 0;}
+  .section.tools-section,.section.faq-section,.section.works-section,.section.contact-section{padding:60px 0;}
+  .contact-cta-row{grid-template-columns:1fr;}
+  .form-card{padding:24px 18px;}
+  .field-row{grid-template-columns:1fr;}
+  .popup{padding:14px 16px;}
+  .popup .pp-txt{font-size:.82rem;}
   .floating-sp{
     display:grid;grid-template-columns:1fr 1fr 1fr;left:0;right:0;bottom:0;width:100%;
     position:fixed;z-index:900;
@@ -298,13 +317,12 @@ footer .ft-bottom{margin-top:18px;font-size:.7rem;color:rgba(255,255,255,.4);tex
   </div>
 </header>
 
-<!-- ===== Side Nav (PC only) ===== -->
-<aside class="side-nav">
-  <a href="#final"><span class="sn-icon">📄</span>資料請求</a>
-  <a href="#works"><span class="sn-icon">🏢</span>実例物件</a>
-  <a href="#tools"><span class="sn-icon">🎯</span>無料診断</a>
-  <a href="#final"><span class="sn-icon">💬</span>無料相談</a>
-</aside>
+<!-- ===== Floating CTA (PC right circle buttons) ===== -->
+<div class="floating-pc">
+  <a href="#final" class="f-form"><span class="fi">✉</span>無料相談</a>
+  <a href="#" onclick="alert('LINE公式アカウントへ接続します');return false;" class="f-line"><span class="fi">💬</span>LINE</a>
+  <a href="tel:0927101180" class="f-tel"><span class="fi">📞</span>電話</a>
+</div>
 
 <!-- ===== Hero ===== -->
 <section class="hero" id="hero">
@@ -497,34 +515,66 @@ footer .ft-bottom{margin-top:18px;font-size:.7rem;color:rgba(255,255,255,.4);tex
   </div>
 </section>
 
-<!-- ===== Final CTA ===== -->
-<section class="section final-cta-section" id="final">
+<!-- ===== Contact (with form) ===== -->
+<section class="section contact-section" id="final">
   <div class="wrap">
-    <div class="final-copy">
-      <h2>その土地で、何ができるか。<br>まず<span class="gold">数字で見て</span>みませんか。</h2>
-      <p>LINEで土地住所・物件住所・予算を送るだけ。48時間以内に試算プランを返します。</p>
+    <span class="c-eyebrow">CONTACT</span>
+    <h2>無料相談・お問い合わせ</h2>
+    <p class="c-lead">電話・LINE・フォームの3つから、お好きな方法でご相談いただけます。資料のみのお渡しも可能です。</p>
+
+    <div class="contact-cta-row">
+      <div class="contact-cta">
+        <div class="cc-icon">📞</div>
+        <h4>お電話で相談</h4>
+        <a href="tel:0927101180" class="cc-num">092-710-1180</a>
+        <p>受付：平日 9:00〜18:00</p>
+      </div>
+      <div class="contact-cta">
+        <div class="cc-icon">💬</div>
+        <h4>LINEで気軽に相談</h4>
+        <a href="#" class="btn-line-inline" onclick="alert('LINE公式アカウントへ接続します（設定後にリンクを差し替えてください）');return false;">LINEで相談する</a>
+        <p>登録者限定・無料現地調査も</p>
+      </div>
     </div>
-    <div class="final-ctas">
-      <a href="#" onclick="alert('LINE公式アカウントへ接続します（設定後にリンクを差し替えてください）');return false;" class="final-cta line-bg">
-        <div class="fc-icon">💬</div>
-        <h4>LINEで無料診断</h4>
-        <div class="fc-note">最速48時間でご返答</div>
-      </a>
-      <a href="#" onclick="alert('お問い合わせフォームへ接続します');return false;" class="final-cta">
-        <div class="fc-icon">📝</div>
-        <h4>無料相談フォーム</h4>
-        <div class="fc-note">詳しい条件を入力して、専門家に相談</div>
-      </a>
-      <a href="tel:0927101180" class="final-cta">
-        <div class="fc-icon">📞</div>
-        <div class="fc-num">092-710-1180</div>
-        <div class="fc-confidential">秘密厳守／平日9:00-18:00</div>
-      </a>
-    </div>
-    <div class="final-extras">
-      <span>48時間以内のご返答</span>
-      <span>ご相談無料</span>
-      <span>秘密厳守</span>
+
+    <div class="form-card">
+      <h3>お問い合わせフォーム</h3>
+      <p style="text-align:center;color:var(--ink-sub);font-size:.88rem;margin-bottom:24px;">必須項目は6つ以内。お気軽にご記入ください。</p>
+      <form id="contact-form" onsubmit="return submitForm(event)">
+        <div class="field-row">
+          <div class="field"><label>お名前<span class="req">必須</span></label><input type="text" required placeholder="例：角田 芳博"></div>
+          <div class="field"><label>電話番号<span class="req">必須</span></label><input type="tel" required placeholder="例：092-710-1180"></div>
+        </div>
+        <div class="field"><label>メールアドレス<span class="req">必須</span></label><input type="email" required placeholder="例：sample@example.com"></div>
+        <div class="field"><label>ご相談の種類<span class="req">必須</span></label>
+          <select required>
+            <option value="">選択してください</option>
+            <option>① 土地活用のご相談</option>
+            <option>② 建替えのご相談</option>
+            <option>③ アパート建築のご相談</option>
+            <option>④ 収益物件の購入ご相談</option>
+            <option>⑤ 無料土地活用診断</option>
+            <option>⑥ その他</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>土地の有無<span class="req">必須</span></label>
+            <select required><option value="">選択してください</option><option>あり</option><option>なし</option><option>検討中</option></select>
+          </div>
+          <div class="field"><label>土地のエリア<span style="font-size:.7rem;color:#999;margin-left:6px;">任意</span></label><input type="text" placeholder="市区町村まで（例：那珂川市）"></div>
+        </div>
+        <div class="field">
+          <label>ご希望の連絡方法<span class="req">必須</span></label>
+          <div class="radio-row">
+            <label><input type="radio" name="contact-method" required>電話</label>
+            <label><input type="radio" name="contact-method">メール</label>
+            <label><input type="radio" name="contact-method">LINE</label>
+          </div>
+        </div>
+        <div class="field"><label>ご相談内容<span style="font-size:.7rem;color:#999;margin-left:6px;">任意</span></label><textarea placeholder="ご相談内容をご自由にご記入ください。"></textarea></div>
+        <button type="submit" class="form-submit">この内容で無料相談を申し込む</button>
+        <div class="form-msg" id="form-msg">お問い合わせありがとうございます。担当者より折り返しご連絡いたします。<br><small>（これはデモ動作です。実装時に送信処理を接続してください）</small></div>
+      </form>
     </div>
   </div>
 </section>
@@ -558,6 +608,13 @@ footer .ft-bottom{margin-top:18px;font-size:.7rem;color:rgba(255,255,255,.4);tex
   <a href="tel:0927101180" class="s-tel"><span class="si">📞</span>電話</a>
   <a href="#" onclick="alert('LINE公式アカウントへ接続します');return false;" class="s-line"><span class="si">💬</span>LINE</a>
   <a href="#final" class="s-form"><span class="si">✉</span>無料相談</a>
+</div>
+
+<!-- ===== Popup (scroll trigger) ===== -->
+<div class="popup" id="popup">
+  <button class="pp-close" onclick="document.getElementById('popup').classList.remove('show')">×</button>
+  <div class="pp-txt">無料の土地活用診断、お試しください<small>3〜5分で、あなたの土地に最適な活用法をスコア診断</small></div>
+  <a href="#tools" class="pp-btn" onclick="document.getElementById('popup').classList.remove('show')">診断する</a>
 </div>
 
 <script>
@@ -703,6 +760,17 @@ const faqs=[
 document.getElementById('faq-list').innerHTML=faqs.map(f=>`
   <div class="faq-item"><div class="faq-q">${f[0]}<span class="fq-icon">＋</span></div><div class="faq-a">${f[1]}</div></div>`).join('');
 document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
+
+/* form submit (demo) */
+function submitForm(e){e.preventDefault();document.getElementById('form-msg').classList.add('show');e.target.querySelector('.form-submit').scrollIntoView({behavior:'smooth',block:'center'});return false;}
+
+/* popup on 30% scroll (once) */
+let popShown=false;
+window.addEventListener('scroll',()=>{
+  const sc=(window.scrollY)/(document.body.scrollHeight-window.innerHeight);
+  if(sc>0.3&&!popShown){popShown=true;document.getElementById('popup').classList.add('show');
+    setTimeout(()=>document.getElementById('popup').classList.remove('show'),12000);}
+});
 </script>
 
 </body>
