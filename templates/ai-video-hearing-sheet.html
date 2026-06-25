@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI動画制作 ヒアリングシート</title>
+<style>
+  :root {
+    --brand: #0b3d91;
+    --brand-light: #2a64c8;
+    --bg: #f5f7fb;
+    --text: #1a1a1a;
+    --muted: #666;
+    --border: #d8dde6;
+    --error: #c0392b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  header h1 {
+    color: var(--brand);
+    font-size: 28px;
+    margin: 0 0 8px;
+  }
+  header p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 15px;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  }
+  .card h2 {
+    font-size: 18px;
+    color: var(--brand);
+    margin: 0 0 4px;
+    border-left: 4px solid var(--brand);
+    padding-left: 12px;
+  }
+  .card .section-desc {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0 0 20px;
+    padding-left: 16px;
+  }
+  .field {
+    margin-bottom: 20px;
+  }
+  .field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+  .field .required {
+    color: var(--error);
+    font-size: 12px;
+    margin-left: 4px;
+  }
+  .field .help {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #fff;
+  }
+  textarea { min-height: 80px; resize: vertical; }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--brand-light);
+    box-shadow: 0 0 0 3px rgba(42,100,200,0.15);
+  }
+  .row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .radio-group label {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 400;
+    margin-right: 16px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .radio-group input { margin-right: 6px; }
+  .notice {
+    background: #fff8e1;
+    border-left: 4px solid #f5b400;
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  .notice strong { color: #b67800; }
+  .pattern-select {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .pattern-card {
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: #fff;
+  }
+  .pattern-card:hover { border-color: var(--brand-light); }
+  .pattern-card.selected {
+    border-color: var(--brand);
+    background: #eaf1ff;
+  }
+  .pattern-card .num {
+    display: inline-block;
+    width: 28px; height: 28px;
+    line-height: 28px;
+    border-radius: 50%;
+    background: var(--brand);
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .pattern-card .name { font-weight: 700; font-size: 14px; }
+  .pattern-card .desc { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .requires-pattern { display: none; }
+  body.pattern-selected .requires-pattern { display: block; }
+  .pattern-block { display: none; }
+  .pattern-block.active { display: block; }
+  .submit-area {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+  .submit-area.requires-pattern { display: none; }
+  body.pattern-selected .submit-area.requires-pattern { display: flex; }
+  button {
+    padding: 14px 32px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: var(--brand);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--brand-light); }
+  .btn-secondary {
+    background: #fff;
+    color: var(--brand);
+    border: 2px solid var(--brand);
+  }
+  @media (max-width: 640px) {
+    .row-2 { grid-template-columns: 1fr; }
+    .pattern-select { grid-template-columns: 1fr; }
+    .card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>AI動画制作 ヒアリングシート</h1>
+    <p>AI動画事業</p>
+  </header>
+
+  <form id="hearing-form">
+
+    <!-- ============ 1. パターン選択 ============ -->
+    <div class="card">
+      <h2>1. 動画のタイプ</h2>
+      <p class="section-desc">制作する動画のタイプを選んでください。</p>
+      <div class="pattern-select">
+        <div class="pattern-card" data-pattern="photo">
+          <div class="num">A</div>
+          <div class="name">写真ベース動画</div>
+          <div class="desc">お客さまの写真をもとに<br>実写風 or アニメ風で制作</div>
+        </div>
+        <div class="pattern-card" data-pattern="talent">
+          <div class="num">B</div>
+          <div class="name">AIタレント動画</div>
+          <div class="desc">AIナレーターが<br>事業内容を説明する動画</div>
+        </div>
+      </div>
+      <input type="hidden" id="pattern" name="pattern">
+    </div>
+
+    <!-- ============ 2. 基本情報 ============ -->
+    <div class="card requires-pattern">
+      <h2>2. 基本情報</h2>
+      <p class="section-desc">お客さま情報の確認です。</p>
+
+      <div class="row-2">
+        <div class="field">
+          <label>会社名・店舗名<span class="required">必須</span></label>
+          <input type="text" name="company" required>
+        </div>
+        <div class="field">
+          <label>ご担当者名<span class="required">必須</span></label>
+          <input type="text" name="contact_name" required>
+        </div>
+      </div>
+
+      <div class="row-2">
+        <div class="field">
+          <label>メールアドレス<span class="required">必須</span></label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="field">
+          <label>電話番号</label>
+          <input type="tel" name="phone">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>ホームページURL</label>
+        <input type="url" name="website" placeholder="https://">
+      </div>
+    </div>
+
+    <!-- ============ 3. 事業内容 ============ -->
+    <div class="card requires-pattern">
+      <h2>3. 事業について</h2>
+      <p class="section-desc">事業に合った動画を制作するための情報です。</p>
+
+      <div class="field">
+        <label>業種<span class="required">必須</span></label>
+        <select name="industry" id="industry-select" required>
+          <option value="">選択してください</option>
+          <option value="飲食">飲食（居酒屋・レストラン・カフェ等）</option>
+          <option value="ジム・フィットネス">ジム・フィットネス</option>
+          <option value="美容・サロン">美容・サロン</option>
+          <option value="医療・クリニック">医療・クリニック</option>
+          <option value="不動産">不動産</option>
+          <option value="建設・工務店">建設・工務店</option>
+          <option value="福祉・介護">福祉・介護</option>
+          <option value="教育・スクール">教育・スクール</option>
+          <option value="士業（税理士・弁護士等）">士業（税理士・弁護士等）</option>
+          <option value="EC・通販">EC・通販</option>
+          <option value="その他">その他</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>事業・サービスの概要<span class="required">必須</span></label>
+        <textarea name="business_description" placeholder="どんな事業か、どんなサービスを提供しているかを簡単に教えてください。" required></textarea>
+      </div>
+
+      <div class="field">
+        <label>他社と比べた強み・特徴<span class="required">必須</span></label>
+        <textarea name="strengths" placeholder="例：創業30年の老舗 / 個室完備 / 駅徒歩1分 / 価格が地域最安 / 有資格者が在籍&#10;数字を入れていただけると動画の説得力が上がります。" required></textarea>
+      </div>
+    </div>
+
+    <!-- ============ 3.5. 動画の中身（ズレ防止の核心） ============ -->
+    <div class="card requires-pattern">
+      <h2>3.5. この動画で何を見せるか</h2>
+      <p class="section-desc">制作物のズレを防ぐために、お客さまの言葉でそのまま記録してください。</p>
+
+      <div class="notice">
+        <strong>営業メモ：</strong>ここは営業が解釈せず、お客さまの言葉をそのまま書いてください。<br>
+        「ネイルチップを宣伝したい」と言われたらそのまま記入。「布小物も売りたい」と追加で言われたらそれも書く。<br>
+        電話録音と突き合わせて確認する項目です。
+      </div>
+
+      <div class="field">
+        <label>この動画で何を宣伝しますか？<span class="required">必須</span></label>
+        <textarea name="promotion_target" placeholder="例：ネイルチップのオーダーメイド販売&#10;例：布小物（ポーチ・巾着）の新作ライン&#10;例：店舗全体の認知度アップ&#10;&#10;※事業全体ではなく「この動画で推したいもの」を具体的に。&#10;複数あれば全部書いてください。" rows="4" required></textarea>
+        <span class="help">事業概要と違う場合があります。「事業はネイルチップだけど、今回宣伝したいのは布小物」のようなケースを見逃さないための項目です。</span>
+      </div>
+
+      <div class="field">
+        <label>動画の主役は誰（何）ですか？<span class="required">必須</span></label>
+        <textarea name="main_subject" placeholder="例：商品（ネイルチップ）そのもの&#10;例：オリジナルキャラクター（猫のまろん・犬のシフォン）&#10;例：オーナー本人&#10;例：お店の雰囲気・空間&#10;&#10;※「キャラクターを主役にしてほしい」と「テイスト参考にしてほしい」は全く違います。&#10;お客さまがどちらの意味で言っているか確認してください。" rows="4" required></textarea>
+        <span class="help">キャラクターやマスコットがいる場合、「動画に出す＝主役」なのか「テイストの参考」なのかを必ず確認してください。</span>
+      </div>
+
+      <div class="field">
+        <label>お客さまが描いているイメージ・ストーリー<span class="required">必須</span></label>
+        <textarea name="customer_vision" placeholder="例：猫のまろんが画面に登場して、商品を紹介していくストーリー&#10;例：お店の1日をドキュメンタリー風に追いかける感じ&#10;例：特にイメージはない、おまかせしたい&#10;&#10;※「おまかせ」の場合もそのまま書いてください。&#10;お客さまが具体的なイメージを持っている場合は、できるだけ詳しく。" rows="5" required></textarea>
+        <span class="help">お客さまの頭の中にある完成イメージを引き出してください。「こんな感じの動画にしたい」を自由に話してもらい、そのまま記録します。</span>
+      </div>
+    </div>
+
+    <!-- ============ 4. 動画のゴール ============ -->
+    <div class="card requires-pattern">
+      <h2>4. 動画のゴール</h2>
+      <p class="section-desc">動画で達成したいことを教えてください。</p>
+
+      <div class="field">
+        <label>この動画で何を達成したいですか？<span class="required">必須</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="goal" value="問い合わせ・予約を増やしたい" required>問い合わせ・予約を増やしたい</label>
+          <label><input type="radio" name="goal" value="来店・集客を増やしたい">来店・集客を増やしたい</label>
+          <label><input type="radio" name="goal" value="認知度を上げたい">認知度を上げたい</label>
+          <label><input type="radio" name="goal" value="採用したい">採用したい</label>
+          <label><input type="radio" name="goal" value="商品を売りたい">商品を売りたい</label>
+          <label><input type="radio" name="goal" value="説明会・セミナーに集客したい">説明会・セミナーに集客したい</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 5-A. 写真ベース動画 ============ -->
+    <div class="card pattern-block" id="block-photo">
+      <h2>5. 動画スタイルと写真のご準備</h2>
+      <p class="section-desc">スタイルを選んで、必要な写真をご用意ください。</p>
+
+      <div class="field">
+        <label>動画のスタイル<span class="required">必須</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="style" value="実写風" required>実写風</label>
+          <label><input type="radio" name="style" value="アニメ風（新海誠風）">アニメ風（新海誠風）</label>
+        </div>
+      </div>
+
+      <div id="anime-option" style="display:none;">
+        <div class="field">
+          <label>他のアニメテイストをご希望であれば</label>
+          <textarea name="anime_preference" placeholder="例：ジブリ風にしたい / 水彩画っぽい感じがいい / もう少しポップなタッチで&#10;特になければ空欄でOKです。新海誠風で制作します。" rows="3"></textarea>
+        </div>
+      </div>
+
+      <div class="notice" id="photo-guide">
+        <strong>ご用意いただきたい写真：</strong><br>
+        <span id="photo-guide-default">
+          ・横向きの写真を<strong>15〜20枚</strong>程度<br>
+          ・スマホ撮影でOK。明るく、ピントが合っているものを選んでください<br>
+          ・ロゴ画像（あれば）も一緒にお送りください<br>
+          <em style="color:var(--muted);">※「業種」を選択すると、業種別の推奨写真リストが表示されます。</em>
+        </span>
+        <span id="photo-guide-industry" style="display:none;"></span>
+      </div>
+    </div>
+
+    <!-- ============ 5-B. AIタレント動画 ============ -->
+    <div class="card pattern-block" id="block-talent">
+      <h2>5. AIタレント動画について</h2>
+      <p class="section-desc">事業内容をもとに、ナレーション・構成はこちらで制作します。</p>
+
+      <div class="notice">
+        <strong>写真について：</strong>写真素材があれば動画の背景やカット素材として活用します。必須ではありませんが、あるとクオリティが上がります。お持ちであれば業種に合った写真をお送りください。
+      </div>
+
+      <div class="field">
+        <label>動画内で特に伝えたいことがあれば</label>
+        <textarea name="talent_emphasis" placeholder="例：創業の想いを入れてほしい / 最近始めた新サービスを推したい / この数字は必ず使ってほしい など&#10;特になければ空欄でOKです。事業内容をもとにこちらで構成します。" rows="3"></textarea>
+      </div>
+    </div>
+
+    <!-- ============ 6. その他 ============ -->
+    <div class="card requires-pattern">
+      <h2>6. その他</h2>
+
+      <div class="field">
+        <label>参考にしたい動画があれば</label>
+        <input type="url" name="reference_url" placeholder="YouTubeやInstagramのURL">
+        <span class="help">「こんな雰囲気にしたい」という参考があればお送りください。</span>
+      </div>
+
+      <div class="field">
+        <label>その他ご要望</label>
+        <textarea name="notes" placeholder="何かあればご自由にお書きください。" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div class="submit-area requires-pattern">
+      <button type="button" class="btn-secondary" onclick="downloadJSON()">JSONをダウンロード</button>
+      <button type="submit" class="btn-primary">送信する</button>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  // パターン選択
+  const patternCards = document.querySelectorAll('.pattern-card');
+  const patternInput = document.getElementById('pattern');
+  patternCards.forEach(card => {
+    card.addEventListener('click', () => {
+      patternCards.forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      const p = card.dataset.pattern;
+      patternInput.value = p;
+      document.querySelectorAll('.pattern-block').forEach(b => b.classList.remove('active'));
+      document.getElementById('block-' + p).classList.add('active');
+      document.body.classList.add('pattern-selected');
+    });
+  });
+
+  // アニメ風選択時にテイスト入力欄を表示
+  document.querySelectorAll('input[name="style"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('anime-option').style.display =
+        r.value === 'アニメ風（新海誠風）' ? 'block' : 'none';
+    });
+  });
+
+  // 業種別の推奨写真リスト
+  const photoGuides = {
+    '飲食': [
+      '店舗の外観（看板が見える角度で）',
+      '店内の雰囲気がわかる写真（カウンター・テーブル席）',
+      '看板メニュー・人気メニューのアップ（3〜5品）',
+      '調理中の様子（炎・煙・手元など臨場感のあるもの）',
+      'お客さまが食事を楽しんでいる様子',
+      '店主・シェフのポートレート（正面＋調理中）',
+      'ドリンク・お酒の写真',
+      'ロゴ・看板のアップ',
+    ],
+    'ジム・フィットネス': [
+      '施設の外観',
+      'トレーニングエリア全体（広さが伝わる角度で）',
+      'マシン・器具のアップ',
+      'トレーニング中の様子（指導シーン含む）',
+      'トレーナーのポートレート（正面＋指導中）',
+      'ビフォーアフターの写真（許可済みのもの）',
+      '更衣室・シャワー等の設備',
+      'ロゴ',
+    ],
+    '美容・サロン': [
+      '店舗の外観',
+      '店内の雰囲気（席・鏡・照明が見える角度で）',
+      '施術中の様子（カット・カラー・ネイル等）',
+      '仕上がりの写真（ビフォーアフター）',
+      'スタイリスト・スタッフのポートレート',
+      '使用する商材・化粧品のアップ',
+      '受付・待合スペース',
+      'ロゴ',
+    ],
+    '医療・クリニック': [
+      '建物・入口の外観',
+      '受付・待合室',
+      '診察室・治療室',
+      '医師・スタッフのポートレート（白衣着用）',
+      '診察・カウンセリングの様子',
+      '設備・機器のアップ',
+      '院内の清潔感が伝わる写真',
+      'ロゴ',
+    ],
+    '不動産': [
+      '物件の外観（複数物件あれば代表的なもの）',
+      '室内写真（リビング・キッチン・水回り）',
+      '周辺環境（駅・商業施設・公園）',
+      'オフィスの外観・内装',
+      'スタッフのポートレート',
+      '接客・案内中の様子',
+      'ロゴ',
+    ],
+    '建設・工務店': [
+      '完成物件の外観（3〜5件）',
+      '内装の写真（リビング・キッチン等）',
+      '施工中の現場写真',
+      '職人が作業している様子',
+      '代表・スタッフのポートレート',
+      'お引き渡し時の写真（お客さまと一緒のもの）',
+      'ロゴ',
+    ],
+    '福祉・介護': [
+      '施設の外観',
+      '施設内（リビング・居室・食堂等）',
+      '利用者さまとスタッフの交流の様子',
+      'レクリエーション・活動中の写真',
+      'スタッフのポートレート',
+      '食事の写真',
+      '周辺環境',
+      'ロゴ',
+    ],
+    '教育・スクール': [
+      '教室・校舎の外観',
+      '授業・レッスン中の様子',
+      '講師のポートレート',
+      '生徒が学んでいる様子',
+      '教材・設備のアップ',
+      '発表会・イベントの写真',
+      'ロゴ',
+    ],
+    '士業（税理士・弁護士等）': [
+      '事務所の外観',
+      '相談室・オフィス内装',
+      '代表のポートレート（正面・デスクワーク中）',
+      'スタッフのポートレート',
+      '相談中の様子',
+      '書籍・資格証書などの信頼感が伝わるもの',
+      'ロゴ',
+    ],
+    'EC・通販': [
+      '商品写真（正面・斜め・使用シーン）',
+      '商品のアップ・ディテール',
+      '梱包・発送の様子',
+      '製造・制作過程',
+      '使っている人の写真（モデル or 実際のお客さま）',
+      '代表・スタッフのポートレート',
+      'ロゴ',
+    ],
+  };
+
+  document.getElementById('industry-select').addEventListener('change', function() {
+    const v = this.value;
+    const defaultEl = document.getElementById('photo-guide-default');
+    const industryEl = document.getElementById('photo-guide-industry');
+    if (photoGuides[v]) {
+      defaultEl.style.display = 'none';
+      industryEl.style.display = 'block';
+      industryEl.innerHTML = '<strong>【' + v + '】で推奨する写真（横向き15〜20枚程度）：</strong><br>' +
+        photoGuides[v].map((item, i) => '　' + (i + 1) + '. ' + item).join('<br>') +
+        '<br><br><em style="color:#666;">スマホ撮影でOK。明るく、ピントが合っているものを選んでください。ロゴ画像も一緒にお送りください。</em>';
+    } else {
+      defaultEl.style.display = 'block';
+      industryEl.style.display = 'none';
+    }
+  });
+
+  function collectFormData() {
+    const form = document.getElementById('hearing-form');
+    const fd = new FormData(form);
+    const data = {};
+    for (const [key, value] of fd.entries()) {
+      if (data[key]) {
+        if (Array.isArray(data[key])) data[key].push(value);
+        else data[key] = [data[key], value];
+      } else {
+        data[key] = value;
+      }
+    }
+    data._submitted_at = new Date().toISOString();
+    return data;
+  }
+
+  function downloadJSON() {
+    const data = collectFormData();
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'hearing_' + (data.company || 'untitled') + '_' + Date.now() + '.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  // GAS WebアプリのURL
+  const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzwjXkqiEk7TdnNOPx8D4FQleWjmdRSYJ59MrrjCAPUUaUSQ7nPiEVyShdtMDy0Zd0/exec';
+
+  document.getElementById('hearing-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!patternInput.value) {
+      alert('動画のタイプを選択してください。');
+      return;
+    }
+    const data = collectFormData();
+    const submitBtn = e.target.querySelector('.btn-primary');
+    submitBtn.textContent = '送信中…';
+    submitBtn.disabled = true;
+
+    // JSONダウンロード（バックアップ）
+    downloadJSON();
+
+    // スプレッドシートに送信
+    if (GAS_ENDPOINT) {
+      try {
+        await fetch(GAS_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        alert('スプレッドシートに保存しました。JSONもダウンロード済みです。');
+      } catch (err) {
+        console.error('送信エラー:', err);
+        alert('スプレッドシートへの送信に失敗しました。\nJSONファイルはダウンロード済みです。手動でスプシに入力してください。');
+      }
+    } else {
+      alert('GAS未設定のためJSONダウンロードのみ完了しました。');
+    }
+
+    submitBtn.textContent = '送信する';
+    submitBtn.disabled = false;
+  });
+</script>
+</body>
+</html>
