@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEBサイト制作 ヒアリングシート</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #f5f3f0;
+    color: #333;
+    line-height: 1.8;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 2px solid #c9a96e;
+  }
+
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c2c2c;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  header p.subtitle {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 16px;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .header-meta label {
+    font-weight: 500;
+    color: #333;
+  }
+
+  .header-meta input {
+    border: none;
+    border-bottom: 1px solid #aaa;
+    background: transparent;
+    padding: 2px 8px;
+    font-size: 14px;
+    width: 160px;
+  }
+
+  .purpose-box {
+    background: #fff;
+    border-left: 4px solid #c9a96e;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .purpose-box h2 {
+    font-size: 15px;
+    color: #c9a96e;
+    margin-bottom: 8px;
+  }
+
+  .purpose-box p {
+    font-size: 13px;
+    color: #666;
+  }
+
+  section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2c2c2c;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #e8e4de;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  section h2 .num {
+    background: #c9a96e;
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .q-group {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #e8e4de;
+  }
+
+  .q-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .q-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 4px;
+  }
+
+  .q-label .required {
+    background: #d94f4f;
+    color: #fff;
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-left: 6px;
+    font-weight: 500;
+  }
+
+  .q-hint {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 8px;
+  }
+
+  .q-sub {
+    font-size: 13px;
+    color: #666;
+    margin-left: 16px;
+    margin-bottom: 4px;
+  }
+
+  .q-sub::before {
+    content: "▸ ";
+    color: #c9a96e;
+  }
+
+  .q-example {
+    background: #faf8f5;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #888;
+    margin-top: 8px;
+  }
+
+  .q-example strong {
+    color: #666;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 13px;
+    font-family: inherit;
+    resize: vertical;
+    margin-top: 6px;
+  }
+
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .options label {
+    font-size: 13px;
+    padding: 6px 14px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+  .options label:hover {
+    border-color: #c9a96e;
+    background: #fdf9f3;
+  }
+
+  .options input[type="checkbox"],
+  .options input[type="radio"] {
+    display: none;
+  }
+
+  .options input:checked + span {
+    color: #c9a96e;
+    font-weight: 700;
+  }
+
+  .options label:has(input:checked) {
+    border-color: #c9a96e;
+    background: #fdf9f3;
+  }
+
+  .domain-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .domain-grid .slot {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .domain-grid .slot label {
+    font-size: 11px;
+    color: #999;
+  }
+
+  .domain-grid .slot input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    width: 100%;
+    padding: 4px;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .ai-note {
+    background: linear-gradient(135deg, #f0ebe4, #faf8f5);
+    border: 1px solid #d4c9b5;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: #7a6f60;
+  }
+
+  .ai-note strong {
+    color: #c9a96e;
+  }
+
+  .section-divider {
+    text-align: center;
+    color: #ccc;
+    font-size: 24px;
+    margin: 12px 0;
+    letter-spacing: 8px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .two-col, .domain-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .ref-sites {
+    margin-top: 12px;
+  }
+
+  .ref-site {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .ref-site .num-badge {
+    background: #e8e4de;
+    color: #666;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .ref-site input {
+    flex: 1;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 4px;
+    font-size: 13px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    font-size: 12px;
+    color: #bbb;
+  }
+
+  @media print {
+    body { background: #fff; }
+    section { box-shadow: none; border: 1px solid #eee; }
+    .container { padding: 20px; }
+    textarea { border: 1px solid #ccc; }
+    .action-bar { display: none !important; }
+  }
+
+  .action-bar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #fff;
+    border: 1px solid #d4c9b5;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    padding: 12px 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 100;
+  }
+
+  .action-bar .save-status {
+    font-size: 11px;
+    color: #888;
+    margin-right: 8px;
+    min-width: 90px;
+  }
+
+  .action-bar .save-status.saved { color: #4a9d6a; }
+
+  .action-bar button {
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .action-bar button.primary {
+    background: #c9a96e;
+    color: #fff;
+  }
+
+  .action-bar button.primary:hover {
+    background: #b3935a;
+  }
+
+  .action-bar button.secondary {
+    background: #f5f3f0;
+    color: #555;
+    border: 1px solid #ddd;
+  }
+
+  .action-bar button.secondary:hover {
+    background: #ebe7e0;
+  }
+
+  @media (max-width: 600px) {
+    .action-bar {
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>WEBサイト制作 ヒアリングシート</h1>
+  <p class="subtitle">Zoom面談でこのシートに沿ってお話を伺います。録画データからサイト原稿を自動生成します。</p>
+  <div class="header-meta">
+    <div><label>担当者：</label><input type="text" placeholder="" value=""></div>
+    <div><label>クライアント名：</label><input type="text" placeholder="" value=""></div>
+    <div><label>面談日：</label><input type="date" value=""></div>
+  </div>
+</header>
+
+<div class="purpose-box">
+  <h2>このシートの使い方</h2>
+  <p>
+    ① Zoom面談前にこのシートを開いておく<br>
+    ② セクション順に質問していく（録画ON）<br>
+    ③ 面談後、録画の文字起こしをAIに読ませ、サイトの文章を自動生成<br>
+    ④ 制作共有シート（JPクレスト様式）に転記
+  </p>
+</div>
+
+<!-- ========== 1. 基本情報 ========== -->
+<section>
+  <h2><span class="num">1</span>基本情報・サイト設定</h2>
+
+  <div class="q-group">
+    <div class="q-label">店舗名 / 屋号 <span class="required">必須</span></div>
+    <div class="q-hint">正式名称とフリガナ</div>
+    <textarea placeholder="例: 〇〇サロン △△（フリガナ）"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">代表者名 <span class="required">必須</span></div>
+    <textarea placeholder="例: 山田 太郎（ヤマダ タロウ）"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="two-col">
+      <div>
+        <div class="q-label">住所 <span class="required">必須</span></div>
+        <textarea placeholder="例: 東京都渋谷区〇〇1-2-3"></textarea>
+      </div>
+      <div>
+        <div class="q-label">電話番号 <span class="required">必須</span></div>
+        <textarea placeholder="例: 03-1234-5678"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="two-col">
+      <div>
+        <div class="q-label">メールアドレス</div>
+        <textarea placeholder="連絡用 / Gmailアドレス"></textarea>
+      </div>
+      <div>
+        <div class="q-label">営業時間・定休日 <span class="required">必須</span></div>
+        <textarea placeholder="例: 10:00-19:00 / 日曜定休"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">希望ドメイン <span class="required">必須</span></div>
+    <div class="q-hint">新規ドメイン（.com / .net のみ）。3つまで候補を出してください。短くて覚えやすいものがおすすめです。</div>
+    <div class="domain-grid">
+      <div class="slot">
+        <label>第1候補</label>
+        <input type="text" placeholder="例: salon-name.com" value="">
+      </div>
+      <div class="slot">
+        <label>第2候補</label>
+        <input type="text" placeholder="例: my-salon.com" value="">
+      </div>
+      <div class="slot">
+        <label>第3候補</label>
+        <input type="text" placeholder="例: name-beauty.net" value="">
+      </div>
+    </div>
+    <div class="ai-note">
+      <strong>ドメインのコツ：</strong>店舗名の英語表記 / サービス名+地域名 / 覚えやすい短い単語。
+      お客様が口頭で伝えられるくらいシンプルなものがベスト。
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">現在のWEBサイト・SNS</div>
+    <div class="q-hint">既にお持ちの場合はURLを教えてください</div>
+    <textarea placeholder="ホームページURL / Instagram / LINE公式 / ホットペッパー 等"></textarea>
+  </div>
+</section>
+
+<!-- ========== 2. 事業・サービス ========== -->
+<section>
+  <h2><span class="num">2</span>事業内容・サービス</h2>
+
+  <div class="q-group">
+    <div class="q-label">どんなお仕事をされていますか？ <span class="required">必須</span></div>
+    <div class="q-hint">お客様に説明するように、分かりやすく教えてください</div>
+    <div class="q-sub">具体的に何をするサービスですか？</div>
+    <div class="q-sub">施術の流れはどんな感じですか？（来店→カウンセリング→施術→アフターケアなど）</div>
+    <div class="q-sub">1回あたりの所要時間はどれくらいですか？</div>
+    <textarea></textarea>
+    <div class="q-example">
+      <strong>AIが生成するページ：</strong>「サービス紹介」「ご利用の流れ」
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">メニュー・料金 <span class="required">必須</span></div>
+    <div class="q-hint">主要なメニューと価格帯を教えてください</div>
+    <div class="q-sub">メインメニューの名前と料金は？</div>
+    <div class="q-sub">コース期間はありますか？（例: 3ヶ月コース）</div>
+    <div class="q-sub">初回お試し料金やキャンペーンはありますか？</div>
+    <div class="q-sub">支払い方法は？（現金・カード・分割など）</div>
+    <textarea></textarea>
+    <div class="q-example">
+      <strong>AIが生成するページ：</strong>「メニュー・料金表」
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">取り入れている手法・資格</div>
+    <div class="q-hint">所属団体、取得資格、採用している施術法など</div>
+    <div class="q-sub">どの団体・協会の手法を取り入れていますか？</div>
+    <div class="q-sub">お持ちの資格を教えてください</div>
+    <div class="q-sub">その手法を選んだ理由は？</div>
+    <textarea></textarea>
+  </div>
+</section>
+
+<!-- ========== 3. 強み・差別化 ========== -->
+<section>
+  <h2><span class="num">3</span>強み・選ばれる理由</h2>
+
+  <div class="q-group">
+    <div class="q-label">他のお店と比べて、ここが違う！というポイントは？ <span class="required">必須</span></div>
+    <div class="q-hint">3つ以上挙げてもらえると、サイトの説得力が上がります</div>
+    <div class="q-sub">なぜお客様はあなたのお店を選ぶと思いますか？</div>
+    <div class="q-sub">お客様からよく言われる褒め言葉はありますか？</div>
+    <div class="q-sub">競合と明確に違う点は何ですか？</div>
+    <textarea></textarea>
+    <div class="q-example">
+      <strong>AIが生成するページ：</strong>「選ばれる理由」「サービスの強み」
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">開業のきっかけ・想い <span class="required">必須</span></div>
+    <div class="q-hint">代表挨拶ページに使います。ストーリーがあるほど共感されやすいです</div>
+    <div class="q-sub">なぜこの仕事を始めようと思ったんですか？</div>
+    <div class="q-sub">以前はどんなお仕事をされていましたか？</div>
+    <div class="q-sub">この仕事を通じてお客様にどうなってほしいですか？</div>
+    <div class="q-sub">今後の夢・目標はありますか？</div>
+    <textarea></textarea>
+    <div class="q-example">
+      <strong>AIが生成するページ：</strong>「代表あいさつ」「コンセプト」
+    </div>
+  </div>
+</section>
+
+<!-- ========== 4. ターゲット・お客様像 ========== -->
+<section>
+  <h2><span class="num">4</span>ターゲット・お客様像</h2>
+
+  <div class="q-group">
+    <div class="q-label">どんなお客様が多いですか？ <span class="required">必須</span></div>
+    <div class="q-sub">性別・年齢層は？</div>
+    <div class="q-sub">どんな悩みを持って来店されますか？</div>
+    <div class="q-sub">来店のきっかけは何が多いですか？（検索、紹介、チラシ、SNSなど）</div>
+    <textarea></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">お客様がよく抱えている悩み・不安 <span class="required">必須</span></div>
+    <div class="q-hint">サイトの「よくある悩み」セクションに使います</div>
+    <div class="q-sub">来店前にお客様が感じている不安は？</div>
+    <div class="q-sub">「こういう人にこそ来てほしい」というお客様像は？</div>
+    <div class="q-sub">逆に「うちには合わないかも」というケースはありますか？</div>
+【想定される悩み】
+・足腰が弱くて美容室に行けない
+・施設に入っていて外出が難しい
+・家族が高齢で美容室に連れていくのが大変
+・寝たきり・車椅子で外出できない
+・施設として入居者の理美容ケアをきちんとした業者に任せたい
+・「お顔剃り」までしっかりやってくれる業者が見つからない（美容師免許のみの業者では不可）
+
+【こんな方におすすめ】
+・介護施設の運営者で、信頼できる訪問理美容パートナーを探している方
+・在宅介護中で家族の身だしなみをきれいに保ちたい方
+・サロン品質の仕上がりを訪問でも受けたい方</textarea>
+    <div class="q-example">
+      <strong>AIが生成するページ：</strong>「よくある悩み」「こんな方におすすめ」
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">商圏エリア <span class="required">必須</span></div>
+    <div class="q-hint">お客様が通ってくるエリアの範囲</div>
+    <div class="q-sub">主にどのあたりからお客様が来ていますか？</div>
+    <div class="q-sub">対策したい地域キーワードはありますか？</div>
+    <textarea placeholder="例: 〇〇市を中心に、近隣の△△市からも来店あり"></textarea>
+  </div>
+</section>
+
+<!-- ========== 5. お客様の声・実績 ========== -->
+<section>
+  <h2><span class="num">5</span>お客様の声・実績</h2>
+
+  <div class="q-group">
+    <div class="q-label">印象に残っているお客様のエピソード</div>
+    <div class="q-hint">具体的なエピソードほどサイトで説得力が出ます（個人情報は伏せてOK）</div>
+    <div class="q-sub">ビフォーアフターで印象的だった事例は？</div>
+    <div class="q-sub">お客様から言われて嬉しかった言葉は？</div>
+    <div class="q-sub">リピーターさんはどのくらいいますか？</div>
+    <textarea></textarea>
+    <div class="q-example">
+      <strong>AIが生成するページ：</strong>「お客様の声」「事例紹介」
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">実績・数字</div>
+    <div class="q-hint">「〇〇人施術」「満足度〇%」など、使える数字があれば</div>
+    <textarea placeholder="例: 累計施術500名以上、リピート率85%、開業3年目"></textarea>
+  </div>
+</section>
+
+<!-- ========== 6. よくある質問 ========== -->
+<section>
+  <h2><span class="num">6</span>よくある質問</h2>
+
+  <div class="q-group">
+    <div class="q-label">お客様からよく聞かれる質問 <span class="required">必須</span></div>
+    <div class="q-hint">最低5個は欲しいです。電話やLINEでよく聞かれることを思い出してください</div>
+    <div class="q-sub">予約方法・キャンセルについて</div>
+    <div class="q-sub">施術に関する不安（痛い？副作用は？）</div>
+    <div class="q-sub">効果について（何回で変わる？どのくらい持つ？）</div>
+    <div class="q-sub">持ち物・服装について</div>
+    <div class="q-sub">支払い方法について</div>
+    <div class="q-sub">お子様連れ・駐車場について</div>
+想定される質問（サイト掲載候補）：
+・対応エリアはどこまでですか？ → 相模原市・町田市が中心。応相談で近隣も対応可能（過去：八王子・川崎）
+・寝たきりや車椅子のままでも施術してもらえますか？ → 対応可能（機材を持ち込んで対応）
+・施設へまとまった人数の訪問もお願いできますか？ → 可能。共有スペースでの集中施術も対応
+・支払い方法は？ → 銀行振込が基本。現金も柔軟に対応
+・電話に出られない時間帯はありますか？ → 施術中は電話に出られません。お問い合わせフォームをご利用ください
+・お顔剃りもできますか？ → 理容師免許保持者なので可能（女性のお顔剃り・男性のヒゲ剃り両方対応）
+・男性スタッフですが大丈夫ですか？／女性も対応してもらえますか？
+・キャンセルはどうすればいいですか？
+
+※具体的な詳細は次回ヒアリングで確認</textarea>
+    <div class="q-example">
+      <strong>AIが生成するページ：</strong>「よくある質問（FAQ）」
+    </div>
+  </div>
+</section>
+
+<!-- ========== 7. デザイン・雰囲気 ========== -->
+<section>
+  <h2><span class="num">7</span>サイトのデザイン・雰囲気</h2>
+
+  <div class="q-group">
+    <div class="q-label">サイト全体の印象 <span class="required">必須</span></div>
+    <div class="q-hint">制作共有シートの「サイトイメージ」欄に転記します</div>
+
+    <p style="font-size:13px; color:#666; margin: 8px 0 4px;">印象（複数OK）</p>
+    <div class="options">
+      <label><input type="checkbox"><span>誠実</span></label>
+      <label><input type="checkbox"><span>親しみ・優しい</span></label>
+      <label><input type="checkbox"><span>清潔</span></label>
+      <label><input type="checkbox"><span>高級感</span></label>
+      <label><input type="checkbox"><span>力強い</span></label>
+    </div>
+
+    <p style="font-size:13px; color:#666; margin: 12px 0 4px;">スタイル（複数OK）</p>
+    <div class="options">
+      <label><input type="checkbox"><span>シンプル</span></label>
+      <label><input type="checkbox"><span>スタイリッシュ</span></label>
+      <label><input type="checkbox"><span>カジュアル</span></label>
+      <label><input type="checkbox"><span>ナチュラル</span></label>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">店舗カラー / アクセントカラー</div>
+    <div class="q-hint">お店のロゴや内装で使っている色があれば教えてください</div>
+    <div class="options">
+      <label><input type="checkbox"><span>青</span></label>
+      <label><input type="checkbox"><span>水色</span></label>
+      <label><input type="checkbox"><span>翠玉色</span></label>
+      <label><input type="checkbox"><span>緑</span></label>
+      <label><input type="checkbox"><span>黄緑</span></label>
+      <label><input type="checkbox"><span>黄</span></label>
+      <label><input type="checkbox"><span>橙</span></label>
+      <label><input type="checkbox"><span>赤</span></label>
+      <label><input type="checkbox"><span>えんじ</span></label>
+      <label><input type="checkbox"><span>紫</span></label>
+      <label><input type="checkbox"><span>ピンク</span></label>
+      <label><input type="checkbox"><span>灰</span></label>
+      <label><input type="checkbox"><span>黒</span></label>
+      <label><input type="checkbox"><span>ベージュ</span></label>
+      <label><input type="checkbox"><span>ブラウン</span></label>
+    </div>
+    <textarea placeholder="その他、具体的な色のイメージがあれば"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">参考にしたいサイト</div>
+    <div class="q-hint">「こんな雰囲気がいい」というサイトがあれば教えてください</div>
+    <div class="ref-sites">
+      <div class="ref-site">
+        <span class="num-badge">1</span>
+        <input type="text" placeholder="URLまたは検索ワード" value="">
+      </div>
+      <div class="ref-site">
+        <span class="num-badge">2</span>
+        <input type="text" placeholder="URLまたは検索ワード" value="">
+      </div>
+      <div class="ref-site">
+        <span class="num-badge">3</span>
+        <input type="text" placeholder="URLまたは検索ワード" value="">
+      </div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">写真・素材について</div>
+    <div class="options">
+      <label><input type="radio" name="photo"><span>写真提供なし</span></label>
+      <label><input type="radio" name="photo"><span>写真提供あり</span></label>
+      <label><input type="radio" name="photo"><span>撮影あり</span></label>
+      <label><input type="radio" name="photo"><span>フリー素材10点迄</span></label>
+      <label><input type="radio" name="photo"><span>フリー素材20点迄</span></label>
+    </div>
+    <textarea placeholder="補足"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">動画について</div>
+    <div class="options">
+      <label><input type="radio" name="video"><span>動画提供なし</span></label>
+      <label><input type="radio" name="video"><span>動画提供あり</span></label>
+      <label><input type="radio" name="video"><span>撮影・編集あり</span></label>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 8. ページ構成 ========== -->
+<section>
+  <h2><span class="num">8</span>ページ構成・機能</h2>
+
+  <div class="q-group">
+    <div class="q-label">サイト種別</div>
+    <div class="options">
+      <label><input type="radio" name="sitetype"><span>通常サイト（6-8P）</span></label>
+      <label><input type="radio" name="sitetype"><span>ランディングページ</span></label>
+      <label><input type="radio" name="sitetype"><span>求人サイト</span></label>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">作りたいページ <span class="required">必須</span></div>
+    <div class="q-hint">基本プラン（トップ+ブログ込み 6-8ページ）</div>
+    <div class="options">
+      <label><input type="checkbox"><span>トップページ</span></label>
+      <label><input type="checkbox"><span>ブログ</span></label>
+      <label><input type="checkbox"><span>事業・サービス紹介</span></label>
+      <label><input type="checkbox"><span>会社概要・企業情報</span></label>
+      <label><input type="checkbox"><span>スタッフ紹介</span></label>
+      <label><input type="checkbox"><span>メニュー・料金表</span></label>
+      <label><input type="checkbox"><span>アクセス</span></label>
+      <label><input type="checkbox"><span>実績紹介</span></label>
+      <label><input type="checkbox"><span>メディア掲載・受賞歴</span></label>
+      <label><input type="checkbox"><span>事例紹介・お客様の声</span></label>
+      <label><input type="checkbox"><span>採用情報</span></label>
+      <label><input type="checkbox"><span>お問い合わせフォーム&プライバシーポリシー</span></label>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">パーツ（ページ内セクション）</div>
+    <div class="options">
+      <label><input type="checkbox"><span>よくある悩み</span></label>
+      <label><input type="checkbox"><span>サービスの強み</span></label>
+      <label><input type="checkbox"><span>ご利用の流れ</span></label>
+      <label><input type="checkbox"><span>コンセプト</span></label>
+      <label><input type="checkbox"><span>代表あいさつ</span></label>
+      <label><input type="checkbox"><span>プロモーション動画</span></label>
+      <label><input type="checkbox"><span>よくある質問</span></label>
+      <label><input type="checkbox"><span>お見積もり無料</span></label>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">お問い合わせ方法</div>
+    <div class="options">
+      <label><input type="checkbox"><span>電話</span></label>
+      <label><input type="checkbox"><span>お問い合わせフォーム（メール）</span></label>
+      <label><input type="checkbox"><span>公式LINE</span></label>
+      <label><input type="checkbox"><span>外部サイト（ホットペッパー等）</span></label>
+    </div>
+    <textarea placeholder="外部サイトの場合はURLを記入"></textarea>
+  </div>
+</section>
+
+<!-- ========== 9. 集客・今後 ========== -->
+<section>
+  <h2><span class="num">9</span>集客・今後の展望</h2>
+
+  <div class="q-group">
+    <div class="q-label">ホームページで一番達成したいことは？</div>
+    <div class="q-sub">新規のお客様を増やしたい？</div>
+    <div class="q-sub">信頼感を持ってもらいたい？</div>
+    <div class="q-sub">予約の電話を増やしたい？</div>
+    <div class="q-sub">求人を集めたい？</div>
+    <textarea></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">今後の事業展開</div>
+    <div class="q-hint">将来の計画があればサイト設計に反映できます</div>
+    <div class="q-sub">店舗移転や新店舗の予定はありますか？</div>
+    <div class="q-sub">新しいメニューの追加予定は？</div>
+    <div class="q-sub">事業規模の拡大は考えていますか？</div>
+2024年7月に完全独立。今後は介護施設・老人ホームとの提携を主軸に事業拡大を目指す。
+キャンペーン施策（初回お試し1〜2名無料 or 全体◯％OFF など）を他社調査の上で検討中。</textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">ユーザーに知ってほしいこと</div>
+    <div class="q-hint">「これだけは伝えたい」ということがあれば</div>
+    <textarea placeholder="例: このサービスの認知度がまだ低いので、まず知ってもらいたい"></textarea>
+  </div>
+</section>
+
+<!-- ========== 10. MEO/SEO ========== -->
+<section>
+  <h2><span class="num">10</span>対策キーワード・MEO設定</h2>
+
+  <div class="q-group">
+    <div class="q-label">検索で見つけてもらいたいキーワード</div>
+    <div class="q-hint">「〇〇（地域名）+〇〇（サービス名）」の形で考えてみてください</div>
+    <textarea placeholder="例:&#10;〇〇市 サービス名&#10;〇〇市 業種名&#10;△△ 地域名"></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">Googleビジネスプロフィール（GBP）</div>
+    <div class="q-sub">すでに登録していますか？</div>
+    <div class="q-sub">口コミは何件くらいありますか？</div>
+    <textarea></textarea>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">SNSアカウント</div>
+    <div class="two-col">
+      <div>
+        <div class="q-hint">Instagram</div>
+        <textarea placeholder="@アカウント名 / パスワード"></textarea>
+      </div>
+      <div>
+        <div class="q-hint">Facebook</div>
+        <textarea placeholder="ページURL / 管理権限の有無"></textarea>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== AI生成ガイド ========== -->
+<section style="background: linear-gradient(135deg, #faf8f5, #f0ebe4); border: 1px solid #d4c9b5;">
+  <h2 style="border-bottom-color: #d4c9b5;"><span class="num" style="background:#8a7a65;">AI</span>Zoom録画 → サイト文章 自動生成ガイド</h2>
+
+  <div class="q-group">
+    <div class="q-label">AIに渡すプロンプト例</div>
+    <div class="ai-note" style="background: #fff;">
+      以下はZoom面談の文字起こしです。この内容をもとに、WEBサイトの各ページの文章を作成してください。<br><br>
+
+      <strong>【生成してほしいページ】</strong><br>
+      ① トップページ（キャッチコピー + 導入文 + 各セクションの要約）<br>
+      ② コンセプト / 代表あいさつ<br>
+      ③ サービス紹介（施術内容 + 流れ）<br>
+      ④ メニュー・料金表<br>
+      ⑤ よくある悩み / こんな方におすすめ<br>
+      ⑥ 選ばれる理由（強み3つ以上）<br>
+      ⑦ お客様の声<br>
+      ⑧ よくある質問（FAQ）5個以上<br>
+      ⑨ アクセス情報<br><br>
+
+      <strong>【トーン】</strong><br>
+      - ターゲットは[年齢層]の[性別]<br>
+      - [親しみやすい / 高級感のある / 誠実な]雰囲気で<br>
+      - 専門用語は使わず、分かりやすい言葉で<br>
+      - 各ページ300〜500文字程度<br><br>
+
+      <strong>【文字起こしデータ】</strong><br>
+      （ここにZoom録画の文字起こしを貼り付け）
+    </div>
+  </div>
+</section>
+
+<footer>
+  WEBサイト制作 ヒアリングシート
+</footer>
+
+</div>
+
+<div class="action-bar">
+  <span class="save-status" id="saveStatus">未保存</span>
+  <button type="button" class="primary" onclick="downloadFilledHtml()">HTMLとして保存</button>
+  <button type="button" class="secondary" onclick="document.getElementById('importFile').click()">読み込み</button>
+  <button type="button" class="secondary" onclick="clearForm()">クリア</button>
+  <input type="file" id="importFile" accept=".html,.htm" style="display:none" onchange="importHtml(event)">
+</div>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'hp_hearing_sheet_saruru_20260327';
+  const status = document.getElementById('saveStatus');
+  const fields = Array.from(document.querySelectorAll('input, textarea')).filter(el => el.id !== 'importFile');
+  let dirty = false;
+  let downloaded = false;
+
+  fields.forEach((el, i) => {
+    if (!el.dataset.fid) el.dataset.fid = 'f' + i;
+  });
+
+  function loadSaved() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      fields.forEach(el => {
+        const v = data[el.dataset.fid];
+        if (v === undefined) return;
+        if (el.type === 'checkbox' || el.type === 'radio') {
+          el.checked = !!v;
+        } else {
+          el.value = v;
+        }
+      });
+      if (data.__savedAt) {
+        status.textContent = '保存済 ' + new Date(data.__savedAt).toLocaleString('ja-JP', {month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
+        status.classList.add('saved');
+      }
+    } catch (e) { console.error(e); }
+  }
+
+  function save() {
+    const data = { __savedAt: Date.now() };
+    fields.forEach(el => {
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        data[el.dataset.fid] = el.checked;
+      } else {
+        data[el.dataset.fid] = el.value;
+      }
+    });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      status.textContent = '保存済 ' + new Date().toLocaleTimeString('ja-JP', {hour:'2-digit', minute:'2-digit'});
+      status.classList.add('saved');
+    } catch (e) { console.error(e); }
+  }
+
+  let saveTimer = null;
+  function scheduleSave() {
+    dirty = true;
+    downloaded = false;
+    status.textContent = '入力中...';
+    status.classList.remove('saved');
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(save, 600);
+  }
+
+  fields.forEach(el => {
+    el.addEventListener('input', scheduleSave);
+    el.addEventListener('change', scheduleSave);
+  });
+
+  loadSaved();
+
+  window.addEventListener('beforeunload', function(e) {
+    if (dirty && !downloaded) {
+      e.preventDefault();
+      e.returnValue = '入力内容がHTMLとして保存されていません。「HTMLとして保存」を押してから閉じてください。';
+      return e.returnValue;
+    }
+  });
+
+  window.downloadFilledHtml = function() {
+    save();
+    fields.forEach(el => {
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        if (el.checked) el.setAttribute('checked', 'checked');
+        else el.removeAttribute('checked');
+      } else if (el.tagName === 'TEXTAREA') {
+        el.textContent = el.value;
+      } else {
+        el.setAttribute('value', el.value);
+        if (el.type === 'date' && el.value) el.setAttribute('value', el.value);
+      }
+    });
+    const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+    const clientName = (document.querySelectorAll('.header-meta input')[1] || {}).value || 'クライアント';
+    const date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const filename = `ヒアリングシート_${clientName}_${date}.html`;
+    const blob = new Blob([html], {type: 'text/html;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    downloaded = true;
+  };
+
+  window.importHtml = function(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      try {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(e.target.result, 'text/html');
+        const importedFields = Array.from(doc.querySelectorAll('input, textarea')).filter(el => el.id !== 'importFile');
+        let count = 0;
+        importedFields.forEach((src, i) => {
+          const target = fields[i];
+          if (!target) return;
+          if (src.type === 'checkbox' || src.type === 'radio') {
+            target.checked = src.hasAttribute('checked') || src.checked;
+          } else if (src.tagName === 'TEXTAREA') {
+            target.value = src.textContent || src.value || '';
+          } else {
+            target.value = src.getAttribute('value') || src.value || '';
+          }
+          count++;
+        });
+        save();
+        downloaded = true;
+        alert(count + '項目を読み込みました。');
+      } catch (err) {
+        alert('読み込みに失敗しました: ' + err.message);
+      }
+      event.target.value = '';
+    };
+    reader.readAsText(file);
+  };
+
+  window.clearForm = function() {
+    if (!confirm('入力内容をすべてクリアします。よろしいですか？')) return;
+    fields.forEach(el => {
+      if (el.type === 'checkbox' || el.type === 'radio') el.checked = false;
+      else el.value = '';
+    });
+    localStorage.removeItem(STORAGE_KEY);
+    status.textContent = '未保存';
+    status.classList.remove('saved');
+  };
+})();
+</script>
+
+</body>
+</html>
