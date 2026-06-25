@@ -45,6 +45,19 @@
   .playbook-box{background:#fff5f5;border:2px solid #e53e3e;border-radius:8px;padding:14px 18px;margin:16px 0}
   .conservative-box{background:#ebf8ff;border:2px solid #2b6cb0;border-radius:8px;padding:14px 18px;margin:16px 0}
   .confirm-note{background:#fffbeb;border:1px dashed #d69e2e;border-radius:6px;padding:10px 14px;margin:10px 0;font-size:11px;color:#744210}
+
+  /* ★ページ分割制御 — 各章（h2）を新ページから始め、カード・表が途中で切れないように */
+  h2{page-break-before:always;break-before:always;page-break-after:avoid;break-after:avoid;margin-top:0}
+  h2:first-of-type{page-break-before:auto;break-before:auto}
+  h3{page-break-after:avoid;break-after:avoid}
+  .section-card,.summary-box,.change-log,.playbook-box,.conservative-box,.confirm-note,table,.pattern-title{
+    page-break-inside:avoid;
+    break-inside:avoid;
+  }
+  @media print{
+    body{padding:10px}
+    @page{size:A4;margin:10mm}
+  }
 </style>
 </head>
 <body>

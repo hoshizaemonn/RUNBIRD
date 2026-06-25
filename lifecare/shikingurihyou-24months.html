@@ -35,6 +35,17 @@
   .positive-box{background:#f0fff4;border:2px solid #38a169;border-radius:8px;padding:14px;margin:16px 0}
   .pre-open-box{background:#fff5f5;border:2px solid #e53e3e;border-radius:8px;padding:14px 18px;margin:16px 0}
   .confirm-note{background:#fffbeb;border:1px dashed #d69e2e;border-radius:6px;padding:10px 14px;margin:10px 0;font-size:11px;color:#744210}
+
+  /* ページ分割回避 — 強調ボックスが途中で切れないように */
+  .pre-open-box,.positive-box,.grand-total-box,.assumptions,.change-log,.confirm-note,table,h2{
+    page-break-inside:avoid;
+    break-inside:avoid;
+  }
+  h2{page-break-after:avoid;break-after:avoid}
+  @media print{
+    body{padding:8px}
+    @page{size:A4 landscape;margin:8mm}
+  }
 </style>
 </head>
 <body>
