@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>.look シン・レンタルサーバー契約＋ドメイン取得 手順ガイド</title>
+<style>
+:root {
+  --primary: #2563eb;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --bg: #f8fafc;
+  --card: #fff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 20px;
+}
+.container { max-width: 900px; margin: 0 auto; }
+header {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  color: white;
+  padding: 32px 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+header h1 { font-size: 1.6rem; margin-bottom: 8px; }
+header .subtitle { opacity: 0.9; font-size: 0.95rem; }
+.meta-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+  font-size: 0.85rem;
+}
+.meta-bar span {
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.overview {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+}
+.overview h2 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: var(--primary);
+}
+.diagram {
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.ng-box {
+  background: #fef2f2;
+  border-left: 4px solid var(--danger);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+.ng-box .label { color: var(--danger); font-weight: 700; margin-bottom: 8px; }
+.ok-box {
+  background: #f0fdf4;
+  border-left: 4px solid var(--success);
+  padding: 16px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+.ok-box .label { color: var(--success); font-weight: 700; margin-bottom: 8px; }
+.step {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+.step-num {
+  background: var(--primary);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.step-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.step-time {
+  margin-left: auto;
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.action {
+  background: #eff6ff;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 12px 0;
+  border-left: 4px solid var(--primary);
+}
+.action strong { color: var(--primary); }
+.choice-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--border);
+}
+.choice-table th, .choice-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.choice-table th {
+  background: #f1f5f9;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.choice-table tr:last-child td { border-bottom: none; }
+.choice-table .selected { background: #f0fdf4; font-weight: 600; }
+.choice-table .selected::before { content: "✅ "; }
+.choice-table .rejected { color: var(--muted); }
+.choice-table .rejected::before { content: "❌ "; }
+.checklist {
+  background: #fffbeb;
+  border: 2px dashed var(--warning);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.checklist h4 {
+  color: #92400e;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+.checklist ul { list-style: none; padding: 0; }
+.checklist li {
+  padding: 6px 0;
+  padding-left: 28px;
+  position: relative;
+}
+.checklist li::before {
+  content: "□";
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  color: #92400e;
+}
+.cost-box {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  border: 1px solid #10b981;
+}
+.cost-box .amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #047857;
+}
+.cost-box .note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.report-template {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 0.85rem;
+  position: relative;
+  margin: 16px 0;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+.copy-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.copy-btn:hover { background: #1d4ed8; }
+.copy-btn.copied { background: var(--success); }
+.next-steps {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+}
+.next-steps h2 {
+  color: var(--primary);
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+}
+.next-steps ol { padding-left: 24px; }
+.next-steps li { padding: 6px 0; }
+.contact {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 24px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.contact a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn-link {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 8px 0;
+}
+.btn-link:hover { background: #1d4ed8; }
+.alert {
+  background: #fef2f2;
+  border-left: 4px solid var(--danger);
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+.alert strong { color: var(--danger); }
+@media (max-width: 600px) {
+  body { padding: 12px; }
+  header { padding: 24px 16px; }
+  header h1 { font-size: 1.3rem; }
+  .step { padding: 18px; }
+  .step-header { flex-wrap: wrap; }
+  .step-time { margin-left: 0; margin-top: 4px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>.look シン・レンタルサーバー契約 ＋<br>dotlook.com ドメイン取得</h1>
+  <div class="subtitle">RUNBIRD ご担当者様向け 図解ガイド</div>
+  <div class="meta-bar">
+    <span>📅 期限：6/27（金）17:00</span>
+    <span>⏱ 所要時間：約15分</span>
+    <span>💰 約 ¥27,720</span>
+  </div>
+</header>
+
+<div class="overview">
+  <h2>🎯 ゴール</h2>
+  <p>シン・レンタルサーバー1社で「サーバー契約」と「dotlook.comドメイン取得」を<strong>同時完結</strong>させます。</p>
+
+  <div class="diagram">┌────────────────────────────────────────────┐
+│       シン・レンタルサーバー 1社で完結       │
+├────────────────────────────────────────────┤
+│                                              │
+│   ┌──────────────┐    ┌──────────────┐       │
+│   │ サーバー契約  │ + │ ドメイン取得  │       │
+│   │ アダルト対応 │    │ dotlook.com │       │
+│   └──────────────┘    └──────────────┘       │
+│            ↓                  ↓              │
+│         同じ申込フォーム内で完結              │
+│                  ↓                           │
+│         36ヶ月契約 → ドメイン永久無料        │
+│                                              │
+└────────────────────────────────────────────┘</div>
+
+  <div class="ng-box">
+    <div class="label">❌ 絶対NG：別々の会社で取得</div>
+    <p>サーバー＝シン、ドメイン＝お名前.com など別会社で取ると、ネームサーバー設定が複雑化し、永久無料特典も消えます。</p>
+  </div>
+
+  <div class="ok-box">
+    <div class="label">✅ OK：シンで両方同時取得</div>
+    <p>申込フォーム内で「ドメインも同時取得」にチェック → dotlook.com を入力するだけで完了。</p>
+  </div>
+</div>
+
+<!-- STEP 1 -->
+<div class="step">
+  <div class="step-header">
+    <div class="step-num">1</div>
+    <div class="step-title">申込ページにアクセス</div>
+    <div class="step-time">⏱ 1分</div>
+  </div>
+
+  <div class="action">
+    <strong>URL：</strong><br>
+    <a href="https://www.shin-server.jp/" target="_blank" class="btn-link">シン・レンタルサーバー公式サイト</a>
+  </div>
+
+  <p>📍 トップページ右上の「<strong>お申し込み</strong>」ボタンをクリック<br>
+  📍 「<strong>初めてご利用のお客様</strong>」を選択</p>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <div class="step-header">
+    <div class="step-num">2</div>
+    <div class="step-title">プラン選択（重要）</div>
+    <div class="step-time">⏱ 2分</div>
+  </div>
+
+  <table class="choice-table">
+    <thead><tr><th>プラン</th><th>選択</th></tr></thead>
+    <tbody>
+      <tr><td class="rejected">ベーシック（通常）</td><td>成人向け商材NG</td></tr>
+      <tr><td class="selected">ベーシック（アダルト対応）</td><td><strong>これを選択</strong></td></tr>
+      <tr><td class="rejected">スタンダード（アダルト対応）</td><td>過剰スペック</td></tr>
+      <tr><td class="rejected">プレミアム（アダルト対応）</td><td>過剰スペック</td></tr>
+    </tbody>
+  </table>
+
+  <div class="alert">
+    <strong>⚠️ 絶対チェック：</strong>「アダルト対応」表記があるプランを必ず選択。通常プランは成人向け商材取扱いNGです。
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <div class="step-header">
+    <div class="step-num">3</div>
+    <div class="step-title">契約期間＋ドメイン同時申込（最重要）</div>
+    <div class="step-time">⏱ 3分</div>
+  </div>
+
+  <h4 style="margin: 12px 0 8px; color: var(--primary);">3-1. 契約期間</h4>
+
+  <table class="choice-table">
+    <thead><tr><th>期間</th><th>判定</th></tr></thead>
+    <tbody>
+      <tr><td class="rejected">3 / 6 / 12 / 24 ヶ月</td><td>ドメイン無料特典なし</td></tr>
+      <tr><td class="selected">36ヶ月</td><td><strong>ドメイン永久無料</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h4 style="margin: 16px 0 8px; color: var(--primary);">3-2. ドメイン同時取得</h4>
+
+  <div class="diagram">┌──────────────────────────────────────┐
+│ ☑ 独自ドメインを同時申し込み（永久無料）│
+│                                        │
+│ 取得するドメイン名 ↓                    │
+│ ┌────────────────────────┐             │
+│ │ dotlook . com  ▼      │             │
+│ └────────────────────────┘             │
+│ ※「.com」をプルダウンで選択             │
+└──────────────────────────────────────┘</div>
+
+  <div class="checklist">
+    <h4>✅ STEP 3 チェック項目</h4>
+    <ul>
+      <li>契約期間「36ヶ月」を選んだ</li>
+      <li>「独自ドメイン同時申し込み」にチェック</li>
+      <li>ドメイン名に「dotlook」と入力</li>
+      <li>TLDで「.com」を選択</li>
+      <li>WordPressクイックスタートは<strong>チェックしない</strong>（手動移行のため）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <div class="step-header">
+    <div class="step-num">4</div>
+    <div class="step-title">契約者情報・支払い</div>
+    <div class="step-time">⏱ 5分</div>
+  </div>
+
+  <div class="action">
+    <strong>契約者情報（RUNBIRD名義）</strong>
+    <ul style="padding-left: 20px; margin-top: 8px;">
+      <li>法人名：株式会社ランバード</li>
+      <li>担当者名：（ご担当者）</li>
+      <li>電話：（RUNBIRD代表）</li>
+      <li>メール：（RUNBIRDアドレス）</li>
+      <li>住所：（RUNBIRD所在地）</li>
+    </ul>
+  </div>
+
+  <div class="action">
+    <strong>支払い方法</strong>
+    <ul style="padding-left: 20px; margin-top: 8px;">
+      <li>✅ クレジットカード（即時開通・推奨）</li>
+      <li>○ 銀行振込（入金確認後開通）</li>
+    </ul>
+  </div>
+
+  <div class="cost-box">
+    <div class="amount">💰 約 ¥27,720</div>
+    <div class="note">¥770/月 × 36ヶ月＋初期費用¥0＋ドメイン代¥0（永久無料特典）</div>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step">
+  <div class="step-header">
+    <div class="step-num">5</div>
+    <div class="step-title">申込確定 → 開通</div>
+    <div class="step-time">⏱ 即時〜数分</div>
+  </div>
+
+  <p>📍 最終確認画面で内容を確認<br>
+  📍 「<strong>お申し込みを確定する</strong>」ボタン<br>
+  📍 完了！</p>
+
+  <div class="ok-box">
+    <div class="label">📧 受信メール（2通）</div>
+    <ul style="padding-left: 20px; margin-top: 8px;">
+      <li>サーバーアカウント設定完了のお知らせ</li>
+      <li>ドメイン取得完了のお知らせ</li>
+    </ul>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step">
+  <div class="step-header">
+    <div class="step-num">6</div>
+    <div class="step-title">完了報告（星崎へChatWork）</div>
+    <div class="step-time">⏱ 2分</div>
+  </div>
+
+  <p>下記テンプレートをコピー → ChatWorkで星崎にお送りください。</p>
+
+  <div class="report-template" id="reportTemplate">
+<button class="copy-btn" onclick="copyTemplate()">📋 コピー</button>
+[info][title].look サーバー＆ドメイン契約完了[/title]
+星崎様
+
+下記のとおり契約完了しました。
+
+■ シン・レンタルサーバー
+　管理画面URL：https://www.shin-server.jp/login/
+　サーバーID：
+　契約メールアドレス：
+　契約期間：36ヶ月（満了：YYYY/MM/DD）
+
+■ パスワード
+　※セキュアな別経路（LINE WORKS等）で送付します
+
+■ ドメイン
+　取得済み：dotlook.com
+　管理：シン・アカウント内で操作可
+
+■ 添付
+　・サーバー開通メールスクショ
+　・ドメイン取得完了メールスクショ
+[/info]
+  </div>
+</div>
+
+<!-- 次のステップ -->
+<div class="next-steps">
+  <h2>🔄 契約後の作業フロー（斗側で実施）</h2>
+  <ol>
+    <li>シンレンタルに WordPress 新規インストール</li>
+    <li>現行 WP（hidemo.rb-demo.net）からデータ移行</li>
+    <li>dotlook.com を WordPress に紐付け＋SSL化</li>
+    <li>カラーミーEC独自ドメイン設定（shop.dotlook.com）</li>
+    <li>全動作確認・本番リリース</li>
+  </ol>
+  <p style="margin-top: 12px; color: var(--muted); font-size: 0.9rem;">
+    ※ 契約完了報告いただいた後、3〜4日かけて斗側で進行します。
+  </p>
+</div>
+
+<!-- トラブル対応 -->
+<div class="step">
+  <div class="step-header">
+    <div class="step-num">⚠</div>
+    <div class="step-title">トラブル対応</div>
+  </div>
+  <ul style="padding-left: 20px;">
+    <li><strong>アダルト対応プランが見つからない</strong><br>→ シン公式チャットサポートに「アダルトサイト運営のためアダルト対応プランで契約したい」と問合せ</li>
+    <li style="margin-top: 8px;"><strong>dotlook.com が既に取得済みと表示</strong><br>→ スクショ送付の上、星崎に連絡（個人取得済みの可能性あり）</li>
+  </ul>
+</div>
+
+<div class="contact">
+  <p>ご不明点ありましたらお気軽にご連絡ください</p>
+  <p style="margin-top: 8px;">斗 星崎 ｜ <a href="mailto:andan.39.2106@gmail.com">andan.39.2106@gmail.com</a></p>
+</div>
+
+</div>
+
+<script>
+function copyTemplate() {
+  const tpl = document.getElementById('reportTemplate').innerText.replace('📋 コピー\n', '').trim();
+  navigator.clipboard.writeText(tpl).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✅ コピーしました';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '📋 コピー';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
