@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>.look 簡易仕様書＆運用ガイド｜浅川様向け</title>
+<style>
+:root {
+  --primary: #2563eb;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --bg: #f8fafc;
+  --card: #fff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #B8E6CE;
+  --accent2: #B4CDF2;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 16px;
+}
+.container { max-width: 920px; margin: 0 auto; }
+header {
+  background: linear-gradient(135deg, #B8E6CE 0%, #B4CDF2 100%);
+  color: #1f2937;
+  padding: 36px 24px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+header h1 {
+  font-size: 1.7rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+header .subtitle {
+  font-size: 1rem;
+  color: #374151;
+}
+header .meta {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+.toc {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+}
+.toc h3 {
+  margin-bottom: 12px;
+  color: var(--primary);
+  font-size: 1rem;
+}
+.toc ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+.toc a {
+  display: block;
+  padding: 6px 12px;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: #f8fafc;
+  transition: background 0.2s;
+}
+.toc a:hover { background: #e0e7ff; color: var(--primary); }
+section {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  scroll-margin-top: 20px;
+}
+h2 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+h3 {
+  font-size: 1.05rem;
+  margin: 20px 0 10px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--border);
+  font-size: 0.9rem;
+}
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+th {
+  background: #f1f5f9;
+  font-weight: 600;
+  width: 30%;
+}
+tr:last-child td { border-bottom: none; }
+.info-box {
+  background: #eff6ff;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 12px 0;
+}
+.success-box {
+  background: #f0fdf4;
+  border-left: 4px solid var(--success);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 12px 0;
+}
+.warning-box {
+  background: #fffbeb;
+  border-left: 4px solid var(--warning);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 12px 0;
+}
+.support-card {
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+  border: 2px solid var(--success);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 16px 0;
+  text-align: center;
+}
+.support-card .tel {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--success);
+  margin: 12px 0;
+  letter-spacing: 1px;
+}
+.support-card .hours {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.flow-step {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  border-left: 4px solid var(--primary);
+}
+.step-num {
+  background: var(--primary);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.step-content { flex: 1; }
+.step-content strong { display: block; margin-bottom: 4px; }
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 4px;
+}
+.badge-blue { background: #dbeafe; color: var(--primary); }
+.badge-green { background: #d1fae5; color: var(--success); }
+.badge-orange { background: #fed7aa; color: #c2410c; }
+.url-card {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+.url-card .label {
+  font-family: -apple-system, sans-serif;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  header { padding: 24px 16px; }
+  header h1 { font-size: 1.3rem; }
+  section { padding: 18px; }
+  table { font-size: 0.82rem; }
+  th, td { padding: 10px 12px; }
+  th { width: 35%; }
+  .support-card .tel { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>.look（ドットルック）<br>簡易仕様書 ＆ 運用ガイド</h1>
+  <div class="subtitle">浅川 雄史 様 向け 納品資料</div>
+  <div class="meta">
+    📅 制定日：2026年6月30日<br>
+    🏢 制作：株式会社ランバード ／ 株式会社JPクレスト
+  </div>
+</header>
+
+<div class="toc">
+  <h3>📑 目次</h3>
+  <ul>
+    <li><a href="#overview">1. サイト概要</a></li>
+    <li><a href="#urls">2. URL構成</a></li>
+    <li><a href="#tech">3. 技術仕様</a></li>
+    <li><a href="#features">4. 機能一覧</a></li>
+    <li><a href="#payment">5. 決済・配送</a></li>
+    <li><a href="#admin">6. 管理画面</a></li>
+    <li><a href="#support">7. カラーミーサポート</a></li>
+    <li><a href="#operation">8. 運用開始の流れ</a></li>
+    <li><a href="#contact">9. 困った時は</a></li>
+  </ul>
+</div>
+
+<!-- 1. サイト概要 -->
+<section id="overview">
+  <h2>1️⃣ サイト概要</h2>
+  <table>
+    <tbody>
+      <tr><th>屋号</th><td>.look（ドットルック）</td></tr>
+      <tr><th>事業者</th><td>淺川 雄史</td></tr>
+      <tr><th>事業内容</th><td>古本・古物・骨董・成人向け商材の買取販売</td></tr>
+      <tr><th>本番サイトURL</th><td>https://dotlook.net/</td></tr>
+      <tr><th>ECショップURL</th><td>https://dotlook.shop-pro.jp/</td></tr>
+      <tr><th>納品日</th><td>2026年6月30日</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <strong>サイト構成のコンセプト</strong><br>
+    買取LPサイト（WordPress）と販売ECサイト（カラーミー）の2軸構成。
+    買取の予約から販売まで一気通貫で対応できる設計です。
+  </div>
+</section>
+
+<!-- 2. URL構成 -->
+<section id="urls">
+  <h2>2️⃣ URL構成</h2>
+
+  <h3>📌 本番サイト</h3>
+  <div class="url-card">
+    <div class="label">買取・コーポレートサイト（WordPress）</div>
+    https://dotlook.net/
+  </div>
+  <div class="url-card">
+    <div class="label">ECショップ（カラーミーショップ）</div>
+    https://dotlook.shop-pro.jp/
+  </div>
+
+  <h3>🔧 管理画面URL</h3>
+  <div class="url-card">
+    <div class="label">WordPress管理画面</div>
+    https://dotlook.net/wp-login.php
+  </div>
+  <div class="url-card">
+    <div class="label">カラーミーショップ管理画面</div>
+    https://manager.shop-pro.jp/
+  </div>
+
+  <div class="warning-box">
+    <strong>※ ログインID・パスワード</strong><br>
+    管理画面のログイン情報は別途セキュアな経路でお渡しします。<br>
+    第三者と共有しないようご注意ください。
+  </div>
+</section>
+
+<!-- 3. 技術仕様 -->
+<section id="tech">
+  <h2>3️⃣ 技術仕様</h2>
+
+  <h3>📦 サーバー・ドメイン</h3>
+  <table>
+    <tbody>
+      <tr><th>ドメイン</th><td>dotlook.net（シンレンタルサーバー取得）</td></tr>
+      <tr><th>サーバー</th><td>シン・レンタルサーバー（アダルト対応プラン）</td></tr>
+      <tr><th>SSL</th><td>無料SSL（Let's Encrypt）有効</td></tr>
+      <tr><th>契約期間</th><td>36ヶ月</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🎨 WordPress（買取サイト）</h3>
+  <table>
+    <tbody>
+      <tr><th>CMS</th><td>WordPress 最新版</td></tr>
+      <tr><th>テーマ</th><td>Lightning＋VK Blocks Pro</td></tr>
+      <tr><th>レスポンシブ</th><td>対応（PC／スマホ／タブレット）</td></tr>
+      <tr><th>お問い合わせフォーム</th><td>Contact Form 7</td></tr>
+      <tr><th>SEO</th><td>Yoast SEO 設定済み</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🛒 カラーミーショップ（ECサイト）</h3>
+  <table>
+    <tbody>
+      <tr><th>プラン</th><td>レギュラープラン</td></tr>
+      <tr><th>R18対応</th><td>あり（7区分カテゴリ構築済み）</td></tr>
+      <tr><th>商品登録方法</th><td>管理画面から個別登録／CSV一括登録</td></tr>
+      <tr><th>注文管理</th><td>管理画面で受注確認・発送処理</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 4. 機能一覧 -->
+<section id="features">
+  <h2>4️⃣ 機能一覧</h2>
+
+  <h3>🌐 買取サイト（dotlook.net）</h3>
+  <ul>
+    <li><span class="badge badge-blue">トップ</span>FV 3枚スライド・買取訴求</li>
+    <li><span class="badge badge-blue">買取の流れ</span>予約 → 出張査定 → 現金支払い</li>
+    <li><span class="badge badge-blue">取扱商材</span>古本・玩具・骨董・ブランド品・成人向け</li>
+    <li><span class="badge badge-blue">買取例</span>査定相場の参考表示</li>
+    <li><span class="badge badge-blue">お問い合わせ</span>Contact Form 7・電話・LINE</li>
+    <li><span class="badge badge-blue">SNS連携</span>Instagram・Yahoo!オク・LINE</li>
+    <li><span class="badge badge-blue">R18ページ</span>成人向け商材専用導線</li>
+  </ul>
+
+  <h3>🛍 ECショップ（dotlook.shop-pro.jp）</h3>
+  <ul>
+    <li><span class="badge badge-green">商品販売</span>古本・DVD等の販売</li>
+    <li><span class="badge badge-green">カート機能</span>注文・購入手続き</li>
+    <li><span class="badge badge-green">R18 7区分</span>雑誌/コミック/写真集/DVD/ゲーム/フィギュア/その他</li>
+    <li><span class="badge badge-green">年齢認証</span>R18商品の購入時</li>
+    <li><span class="badge badge-green">受注管理</span>注文・発送処理</li>
+    <li><span class="badge badge-green">在庫管理</span>商品ごとの在庫数</li>
+  </ul>
+</section>
+
+<!-- 5. 決済・配送 -->
+<section id="payment">
+  <h2>5️⃣ 決済・配送</h2>
+
+  <h3>💳 決済方法</h3>
+  <table>
+    <thead><tr><th>決済種別</th><th>対応カード/方法</th><th>状態</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>クレジットカード（一般）</td>
+        <td>VISA／Mastercard</td>
+        <td><span class="badge badge-orange">イプシロン審査中</span></td>
+      </tr>
+      <tr>
+        <td>クレジットカード（成人向け）</td>
+        <td>JCB／AMEX／Diners</td>
+        <td><span class="badge badge-orange">テレコム審査中</span></td>
+      </tr>
+      <tr>
+        <td>銀行振込</td>
+        <td>注文後7日以内</td>
+        <td><span class="badge badge-green">対応</span></td>
+      </tr>
+      <tr>
+        <td>代金引換</td>
+        <td>商品受取時／手数料¥330</td>
+        <td><span class="badge badge-green">対応</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>🚚 配送</h3>
+  <table>
+    <tbody>
+      <tr><th>送料</th><td>全国一律 ¥800（北海道・沖縄・離島 ¥1,500）</td></tr>
+      <tr><th>発送目安</th><td>入金確認後 3〜7営業日以内</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🔄 返品・交換</h3>
+  <table>
+    <tbody>
+      <tr><th>お客様都合</th><td>商品到着後7日以内・未開封のみ／返送料お客様負担</td></tr>
+      <tr><th>不良品・誤発送</th><td>商品到着後7日以内連絡／弊社送料負担</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 6. 管理画面 -->
+<section id="admin">
+  <h2>6️⃣ 管理画面の使い方</h2>
+
+  <h3>🛒 カラーミーショップ管理画面でできること</h3>
+  <ul>
+    <li><strong>商品登録：</strong>新しい商品の追加・編集・削除</li>
+    <li><strong>受注管理：</strong>注文確認・発送処理・キャンセル対応</li>
+    <li><strong>在庫管理：</strong>在庫数の更新</li>
+    <li><strong>顧客管理：</strong>購入者情報の確認</li>
+    <li><strong>売上レポート：</strong>日別／月別の売上確認</li>
+    <li><strong>クーポン・割引：</strong>セール設定</li>
+    <li><strong>デザイン編集：</strong>ショップの見た目変更</li>
+  </ul>
+
+  <h3>🌐 WordPress管理画面でできること</h3>
+  <ul>
+    <li><strong>固定ページ編集：</strong>トップ・買取の流れ等の修正</li>
+    <li><strong>お問い合わせ確認：</strong>フォーム送信内容の確認</li>
+    <li><strong>SNSリンク変更：</strong>Instagram・Yahoo!オク等URL更新</li>
+  </ul>
+</section>
+
+<!-- 7. カラーミーサポート -->
+<section id="support">
+  <h2>7️⃣ カラーミーショップ 公式サポート</h2>
+
+  <div class="success-box">
+    <strong>🎉 朗報：操作で困ったら、カラーミー公式の無料サポートが利用できます！</strong><br>
+    電話・Zoom・メールで丁寧に教えてくれます。
+  </div>
+
+  <div class="support-card">
+    <div style="font-size: 1.1rem; font-weight: 600;">📞 電話サポート</div>
+    <div class="tel">03-6831-2480</div>
+    <div class="hours">平日 10:00〜13:00 ／ 14:00〜18:00</div>
+    <div style="margin-top: 12px; font-size: 0.9rem; color: var(--muted);">
+      ※全プラン共通・無料
+    </div>
+  </div>
+
+  <h3>🆓 利用できる無料サポート</h3>
+  <table>
+    <thead><tr><th>サポート</th><th>内容</th></tr></thead>
+    <tbody>
+      <tr><td><strong>電話相談</strong></td><td>操作方法・運用相談・トラブル対応</td></tr>
+      <tr><td><strong>Zoom レクチャー</strong></td><td>1on1で使い方を画面共有で教えてもらえる</td></tr>
+      <tr><td><strong>開店ガイド配布</strong></td><td>新規ショップ向けスタートガイド</td></tr>
+      <tr><td><strong>メール／チャット</strong></td><td>24時間受付（返信は営業時間内）</td></tr>
+      <tr><td><strong>カラーミーキャンプ</strong></td><td>月1〜のオンライン勉強会</td></tr>
+      <tr><td><strong>ヘルプセンター</strong></td><td>https://help.shop-pro.jp/ FAQ完備</td></tr>
+    </tbody>
+  </table>
+
+  <div class="info-box">
+    <strong>💡 利用のコツ</strong><br>
+    最初の運用立ち上げ時は <strong>Zoomレクチャー</strong> がおすすめ。<br>
+    画面共有しながら丁寧に教えてくれるので、いきなり1人で操作するより圧倒的に効率的です。<br>
+    納品後、まずは03-6831-2480に「Zoomレクチャー希望」とお電話ください。
+  </div>
+</section>
+
+<!-- 8. 運用開始の流れ -->
+<section id="operation">
+  <h2>8️⃣ 運用開始の流れ</h2>
+
+  <div class="flow-step">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <strong>納品受領（6/30）</strong>
+      管理画面ログイン情報・本資料を受領
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <strong>カラーミーZoomレクチャー予約</strong>
+      03-6831-2480 に電話 → 操作レクチャー日程セット
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <strong>商品登録</strong>
+      ECショップに販売したい商品を登録（Zoomレクチャー時に教わる）
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="step-num">4</div>
+    <div class="step-content">
+      <strong>イプシロン・テレコム審査結果確認</strong>
+      審査通過 → クレジットカード決済が有効化
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="step-num">5</div>
+    <div class="step-content">
+      <strong>テスト購入</strong>
+      ご自身でテスト購入し、受注確認・発送フローを実機確認
+    </div>
+  </div>
+
+  <div class="flow-step">
+    <div class="step-num">6</div>
+    <div class="step-content">
+      <strong>本番公開・運用開始</strong>
+      SNS等で告知 → 注文受付開始
+    </div>
+  </div>
+</section>
+
+<!-- 9. 困った時は -->
+<section id="contact">
+  <h2>9️⃣ 困った時の連絡先</h2>
+
+  <h3>🛒 カラーミーショップの操作について</h3>
+  <div class="support-card" style="margin: 10px 0;">
+    <div style="font-weight: 600;">カラーミーショップ 公式サポート</div>
+    <div class="tel" style="font-size: 1.5rem;">03-6831-2480</div>
+    <div class="hours">平日 10:00〜18:00（13-14時休）</div>
+  </div>
+
+  <h3>🌐 WordPressサイトの修正・SNSリンク変更</h3>
+  <div class="info-box">
+    <strong>株式会社ランバード</strong><br>
+    担当：鈴木<br>
+    ※ サイトの文言修正・画像差替・新規ページ追加など
+  </div>
+
+  <h3>💳 決済（イプシロン・テレコム）について</h3>
+  <div class="info-box">
+    <strong>株式会社ランバード経由でご相談ください</strong><br>
+    審査状況・決済に関するトラブルは弊社からカラーミー・テレコムに確認します。
+  </div>
+
+  <div class="warning-box" style="margin-top: 24px;">
+    <strong>⚠️ 緊急時の対応</strong><br>
+    ・サイトが表示されない／障害発生時 → ランバードへ連絡<br>
+    ・お客様からのクレーム対応 → まずカラーミー公式サポートに相談
+  </div>
+</section>
+
+<!-- フッター -->
+<section style="text-align: center; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);">
+  <p style="color: var(--muted); font-size: 0.9rem;">
+    本書は2026年6月30日時点の仕様です。<br>
+    今後の機能追加・変更については別途ご案内いたします。
+  </p>
+  <p style="margin-top: 16px; font-weight: 600;">
+    .look（ドットルック）<br>
+    制作：株式会社ランバード ／ 株式会社JPクレスト
+  </p>
+</section>
+
+</div>
+</body>
+</html>
