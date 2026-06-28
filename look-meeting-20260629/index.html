@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>.look 6/29 打ち合わせ資料｜鈴木さん用</title>
+<style>
+:root {
+  --primary: #2563eb;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --bg: #f8fafc;
+  --card: #fff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  padding: 16px;
+}
+.container { max-width: 980px; margin: 0 auto; }
+header {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  color: white;
+  padding: 32px 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+header h1 { font-size: 1.6rem; margin-bottom: 8px; }
+header .subtitle { opacity: 0.9; font-size: 0.95rem; }
+.meta-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+  font-size: 0.8rem;
+}
+.meta-bar span {
+  background: rgba(255,255,255,0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+section {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+h2 {
+  font-size: 1.25rem;
+  color: var(--primary);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+h3 {
+  font-size: 1.05rem;
+  margin: 16px 0 10px;
+  color: var(--text);
+}
+.flow {
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+  font-family: "SF Mono", Monaco, monospace;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--border);
+  font-size: 0.9rem;
+}
+th, td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+th {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+tr:last-child td { border-bottom: none; }
+.status-done { color: var(--success); font-weight: 600; }
+.status-progress { color: var(--warning); font-weight: 600; }
+.status-pending { color: var(--muted); }
+.status-block { color: var(--danger); font-weight: 600; }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 4px;
+}
+.badge-red { background: #fef2f2; color: var(--danger); }
+.badge-yellow { background: #fef3c7; color: #92400e; }
+.badge-green { background: #f0fdf4; color: #047857; }
+.badge-blue { background: #eff6ff; color: var(--primary); }
+.confirm-box {
+  background: #fffbeb;
+  border-left: 4px solid var(--warning);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.confirm-box .label {
+  color: #92400e;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.info-box {
+  background: #eff6ff;
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.success-box {
+  background: #f0fdf4;
+  border-left: 4px solid var(--success);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+ul, ol { padding-left: 24px; margin: 8px 0; }
+li { padding: 4px 0; }
+.agenda-item {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  border-left: 3px solid var(--primary);
+}
+.agenda-num {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 28px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+.time {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 8px;
+}
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0;
+}
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  header { padding: 20px 14px; }
+  header h1 { font-size: 1.2rem; }
+  section { padding: 18px; }
+  table { font-size: 0.82rem; }
+  th, td { padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>.look 案件まとめ</h1>
+  <div class="subtitle">6/29（月）10:00 浅川様打ち合わせ用｜鈴木さん向け</div>
+  <div class="meta-bar">
+    <span>📅 納品予定：2026/6/30</span>
+    <span>🏢 ディレクター：鈴木さん</span>
+    <span>👨‍💻 実装：星崎</span>
+  </div>
+</header>
+
+<!-- 全体進捗 -->
+<section>
+  <h2>📊 全体進捗サマリ</h2>
+
+  <h3>✅ 完了済み</h3>
+  <table>
+    <tbody>
+      <tr><td><span class="badge badge-green">完了</span>WordPress移行</td><td>hidemo → dotlook.net</td></tr>
+      <tr><td><span class="badge badge-green">完了</span>カラーミー商品整理</td><td>実商品3点・サンプル/買取例 非公開化</td></tr>
+      <tr><td><span class="badge badge-green">完了</span>AI画像差替</td><td>FV/R18ヘッダー/フィギュア/買取シーン</td></tr>
+      <tr><td><span class="badge badge-green">完了</span>イプシロン審査返信</td><td>追加保留対応・返信済み</td></tr>
+      <tr><td><span class="badge badge-green">完了</span>テレコムJCB申込</td><td>VISA/Master見送り・JCBのみ申込済</td></tr>
+      <tr><td><span class="badge badge-green">完了</span>SUI 取下げ</td><td>申込見送り</td></tr>
+      <tr><td><span class="badge badge-green">完了</span>シンサーバー契約</td><td>dotlook.net取得・WP移行完了</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🔄 審査・申込中（こちらの対応不要・結果待ち）</h3>
+  <table>
+    <tbody>
+      <tr><td><span class="badge badge-yellow">待ち</span>イプシロン審査</td><td>追加対応返信済 → 結果待ち</td></tr>
+      <tr><td><span class="badge badge-yellow">待ち</span>テレコムJCB審査</td><td>申込完了 → 結果待ち</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 明日の打ち合わせ -->
+<section>
+  <h2>🎯 6/29 10:00 打ち合わせ アジェンダ</h2>
+
+  <div class="info-box">
+    <strong>所要時間目安：35〜45分</strong><br>
+    主な目的：法令書類の数字承認・SNS情報収集・運用準備
+  </div>
+
+  <div class="agenda-item">
+    <span class="agenda-num">1</span><strong>進捗共有</strong>
+    <span class="time">⏱ 5分</span>
+    <ul>
+      <li>サイト dotlook.net 移行完了</li>
+      <li>カラーミー dotlook.shop-pro.jp 整理完了</li>
+      <li>イプシロン・テレコム 審査中</li>
+    </ul>
+  </div>
+
+  <div class="agenda-item">
+    <span class="agenda-num">2</span><strong>法令3書類の数字確認</strong>
+    <span class="time">⏱ 15分</span>
+    <div style="color: var(--muted); font-size: 0.85rem; margin: 6px 0 10px;">
+      ※下記「浅川様確認事項」セクション参照
+    </div>
+  </div>
+
+  <div class="agenda-item">
+    <span class="agenda-num">3</span><strong>SNSリンク情報ヒアリング</strong>
+    <span class="time">⏱ 5分</span>
+    <ul>
+      <li>Instagram URL</li>
+      <li>Yahoo!オク 出品者ページ URL</li>
+      <li>公式LINE @ドットルック 認証状況</li>
+    </ul>
+  </div>
+
+  <div class="agenda-item">
+    <span class="agenda-num">4</span><strong>カラーミー操作レクチャー</strong>
+    <span class="time">⏱ 5分</span>
+    <div style="color: var(--muted); font-size: 0.85rem; margin: 6px 0 10px;">
+      ※下記「カラーミー公式サポート案内」セクション参照
+    </div>
+  </div>
+
+  <div class="agenda-item">
+    <span class="agenda-num">5</span><strong>納品スケジュール確認</strong>
+    <span class="time">⏱ 5分</span>
+    <ul>
+      <li>6/30 納品予定</li>
+      <li>本番ドメイン切替タイミング</li>
+      <li>運用開始日</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 浅川様確認事項 -->
+<section>
+  <h2>❓ 浅川様 確認事項リスト（11項目）</h2>
+
+  <div class="info-box">
+    <strong>確認の目的：</strong>法令書類の数字を浅川様事業実態に合わせて確定する
+  </div>
+
+  <h3>📋 カラーミー側に入力する項目（8件）</h3>
+  <table>
+    <thead><tr><th>#</th><th>確認内容</th><th>提案値</th><th>用途</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>送料</strong></td>
+        <td>全国¥800<br>北海道沖縄離島¥1,500</td>
+        <td>特商法＋配送設定</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>代引手数料</strong>（淺川様→お客様徴収）</td>
+        <td>¥330</td>
+        <td>特商法＋決済設定</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>銀行振込期限</strong></td>
+        <td>注文後7日以内</td>
+        <td>特商法</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>発送目安</strong></td>
+        <td>入金確認後3〜7営業日</td>
+        <td>特商法</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>管轄裁判所</strong></td>
+        <td>大阪地方裁判所</td>
+        <td>利用規約</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>お問い合わせメアド</strong></td>
+        <td>a.look2025@outlook.jp</td>
+        <td>特商法・プラポリ</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>古物商交付日</strong></td>
+        <td>令和6年10月4日</td>
+        <td>特商法（許可証で再確認）</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>個人事業主表記</strong>でOKか</td>
+        <td>淺川 雄史（屋号：.look）</td>
+        <td>特商法</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>🌐 WordPress側に入力する項目（3件）</h3>
+  <table>
+    <thead><tr><th>#</th><th>確認内容</th><th>現状</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>9</td>
+        <td><strong>Instagram URL</strong></td>
+        <td>サイトに「準備中」プレースホルダ設置済<br>URLもらい次第差替</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><strong>Yahoo!オク 出品者ページURL</strong></td>
+        <td>フッターにリンク設置済<br>URLもらい次第差替</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td><strong>公式LINE @ドットルック 認証状況</strong></td>
+        <td>認証申請済か／完了か<br>完了後 URL統合</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 入力場所 -->
+<section>
+  <h2>🗺 入力場所マップ</h2>
+
+  <div class="flow">┌─────────────────────────────────────────────────┐
+│         浅川様確認後の入力フロー                 │
+├─────────────────────────────────────────────────┤
+│                                                  │
+│  ┌──────────────────┐    ┌──────────────────┐   │
+│  │ カラーミーショップ │    │   WordPress      │   │
+│  │  dotlook.shop-pro │    │   dotlook.net    │   │
+│  │       .jp         │    │                  │   │
+│  ├──────────────────┤    ├──────────────────┤   │
+│  │ ・特商法表記     │    │ ・Instagram URL   │   │
+│  │ ・利用規約       │    │ ・Yahoo!オク URL  │   │
+│  │ ・プラポリ       │    │ ・公式LINE        │   │
+│  │ ・配送設定（送料）│    │                  │   │
+│  │ ・決済設定（代引）│    │                  │   │
+│  └──────────────────┘    └──────────────────┘   │
+│           ↓                       ↓              │
+│    星崎 + cowork           cowork（情報受領後） │
+│                                                  │
+└─────────────────────────────────────────────────┘</div>
+</section>
+
+<!-- カラーミーサポート -->
+<section>
+  <h2>📞 カラーミー公式サポート案内（浅川様へ）</h2>
+
+  <div class="success-box">
+    <strong>朗報：カラーミーから既にレクチャー案内の電話あり</strong><br>
+    浅川様にはカラーミー公式の無料サポートを利用いただきます。<br>
+    星崎側で個別マニュアル作成は不要。
+  </div>
+
+  <h3>カラーミー無料サポート</h3>
+  <table>
+    <thead><tr><th>サポート</th><th>内容</th><th>料金</th></tr></thead>
+    <tbody>
+      <tr><td>電話相談</td><td>操作方法・運用相談</td><td>無料</td></tr>
+      <tr><td>Zoom レクチャー</td><td>1on1で使い方説明</td><td>無料</td></tr>
+      <tr><td>開店ガイド配布</td><td>新規ショップ向け資料</td><td>無料</td></tr>
+      <tr><td>メール/チャット</td><td>24h受付</td><td>無料</td></tr>
+    </tbody>
+  </table>
+
+  <h3>連絡先</h3>
+  <ul>
+    <li><strong>TEL：</strong>03-6831-2480</li>
+    <li><strong>受付時間：</strong>平日 10:00-13:00／14:00-18:00</li>
+    <li><strong>ヘルプ：</strong>https://help.shop-pro.jp/</li>
+  </ul>
+
+  <div class="info-box">
+    <strong>浅川様への案内文例：</strong><br>
+    「先日カラーミーさんから操作レクチャーのお電話があったかと思います。
+    そちらでZoomレクチャーを受けていただくのが一番効率的です。
+    納品後、カラーミーさんと日程を調整してください。
+    分からないことが出てきたら、いつでもカラーミーの電話サポート（03-6831-2480）に
+    お問い合わせいただけます。」
+  </div>
+</section>
+
+<!-- 残作業 -->
+<section>
+  <h2>📝 打ち合わせ後の残作業</h2>
+
+  <h3>🔴 6/29 中（打ち合わせ後）</h3>
+  <table>
+    <thead><tr><th>担当</th><th>タスク</th><th>所要</th></tr></thead>
+    <tbody>
+      <tr><td>星崎/cowork</td><td>3書類修正→カラーミー入稿</td><td>30分</td></tr>
+      <tr><td>cowork</td><td>WPサイトのSNSリンク反映</td><td>15分</td></tr>
+      <tr><td>星崎</td><td>SMTP設定（noreply@dotlook.net）</td><td>15分</td></tr>
+      <tr><td>cowork</td><td>お問い合わせ送信テスト</td><td>5分</td></tr>
+      <tr><td>浅川様</td><td>スマホ実機チェック</td><td>30分</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🟡 6/30 納品日</h3>
+  <table>
+    <thead><tr><th>担当</th><th>タスク</th><th>所要</th></tr></thead>
+    <tbody>
+      <tr><td>星崎</td><td>サイト総合動作テスト</td><td>1時間</td></tr>
+      <tr><td>星崎</td><td>納品書類作成</td><td>1時間</td></tr>
+      <tr><td>星崎</td><td>カラーミー公式サポート案内資料</td><td>30分</td></tr>
+      <tr><td>鈴木さん</td><td>納品連絡（浅川様）</td><td>-</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🟢 納品後（運用フェーズ）</h3>
+  <table>
+    <tbody>
+      <tr><td>浅川様 → カラーミー</td><td>Zoomレクチャー予約・受講</td></tr>
+      <tr><td>結果待ち</td><td>イプシロン審査結果</td></tr>
+      <tr><td>結果待ち</td><td>テレコムJCB審査結果</td></tr>
+      <tr><td>浅川様</td><td>商品登録・運用開始</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- サイトURL一覧 -->
+<section>
+  <h2>🔗 サイト・アカウントURL一覧</h2>
+
+  <table>
+    <thead><tr><th>用途</th><th>URL</th><th>状態</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>本番サイト（WP）</td>
+        <td>https://dotlook.net/</td>
+        <td><span class="status-done">✅ 公開中</span></td>
+      </tr>
+      <tr>
+        <td>ECショップ（カラーミー）</td>
+        <td>https://dotlook.shop-pro.jp/</td>
+        <td><span class="status-done">✅ 公開中</span></td>
+      </tr>
+      <tr>
+        <td>旧デモサイト（保管）</td>
+        <td>https://hidemo.rb-demo.net/06/</td>
+        <td><span class="status-pending">バックアップ</span></td>
+      </tr>
+      <tr>
+        <td>WP管理画面</td>
+        <td>https://dotlook.net/wp-login.php</td>
+        <td>dotlook / dotlook951</td>
+      </tr>
+      <tr>
+        <td>カラーミー管理画面</td>
+        <td>https://manager.shop-pro.jp/</td>
+        <td>※ID/PASS 別途</td>
+      </tr>
+      <tr>
+        <td>シンサーバー管理画面</td>
+        <td>https://www.shin-server.jp/login/</td>
+        <td>creative.web@runbird.net</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 連絡先 -->
+<section style="text-align: center; background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);">
+  <h2 style="border: none; justify-content: center;">🆘 困ったら</h2>
+  <p>実装・技術関連：星崎</p>
+  <p>クライアント連絡・全体ディレクション：鈴木さん</p>
+  <p>カラーミー操作：03-6831-2480（公式サポート）</p>
+</section>
+
+</div>
+</body>
+</html>
