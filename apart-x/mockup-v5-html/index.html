@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アパート建築の方程式｜土地活用・資産承継・賃貸経営の最適解｜福岡ビルド株式会社</title>
+<meta name="description" content="福岡県・佐賀県で創業53年。土地活用・相続税対策・アパート建替えなら福岡ビルド。自由設計・自社施工・自社一級建築士事務所連携。無料の土地活用診断・相続税試算・建替えシミュレーションをご用意しています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E1A2E;
+  --navy-2:#152339;
+  --navy-3:#1D2D48;
+  --gold:#C9A961;
+  --gold-light:#E8D9B3;
+  --gold-dark:#A8893F;
+  --red:#C2000F;
+  --red-light:#E60012;
+  --line-g:#06C755;
+  --cream:#F7F4EE;
+  --ink:#1A1A1A;
+  --ink-sub:#5A6573;
+  --grey:#F4F4F4;
+  --grey-dark:#E2E2E2;
+  --white:#FFFFFF;
+  --shadow:0 4px 20px rgba(14,26,46,.08);
+  --shadow-lg:0 14px 48px rgba(14,26,46,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:80px;}
+body{
+  font-family:'Noto Sans JP',-apple-system,sans-serif;
+  color:var(--ink);line-height:1.85;background:var(--white);font-size:15px;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.serif{font-family:'Noto Serif JP',serif;}
+.num{font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.02em;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+.section-img-wrap{width:100%;display:block;}
+.section-img-wrap img{width:100%;height:auto;display:block;}
+
+/* ===== Header ===== */
+header{
+  position:fixed;top:0;left:0;width:100%;z-index:1000;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(10px);
+  box-shadow:0 1px 0 rgba(0,0,0,.06);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 24px;max-width:1340px;margin:0 auto;}
+.logo{display:flex;flex-direction:column;line-height:1.2;}
+.logo .brand{font-family:'Noto Serif JP',serif;font-weight:900;font-size:1.1rem;color:var(--navy);letter-spacing:.04em;}
+.logo .brand .dot{color:var(--red);}
+.logo .sub{font-size:.6rem;color:var(--ink-sub);letter-spacing:.04em;font-weight:500;}
+.gnav{display:flex;align-items:center;gap:24px;}
+.gnav a{font-size:.88rem;font-weight:600;color:var(--ink);transition:color .2s;}
+.gnav a:hover{color:var(--red);}
+.gnav .nav-cta{
+  background:var(--red);color:#fff;padding:10px 22px;border-radius:6px;font-weight:700;
+}
+.gnav .nav-cta:hover{background:#A8000D;color:#fff;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
+.hamburger span{width:24px;height:2px;background:var(--ink);transition:.3s;}
+
+/* ===== Side Floating CTA (PC right circle buttons) ===== */
+.floating-pc{position:fixed;right:20px;bottom:24px;z-index:900;display:flex;flex-direction:column;gap:10px;}
+.floating-pc a{
+  width:66px;height:66px;border-radius:50%;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;color:#fff;font-size:.62rem;font-weight:700;box-shadow:var(--shadow-lg);
+  transition:transform .2s;text-align:center;line-height:1.2;
+}
+.floating-pc a:hover{transform:scale(1.08);}
+.floating-pc .f-form{background:var(--red-light);}
+.floating-pc .f-line{background:var(--line-g);}
+.floating-pc .f-tel{background:#2E75B6;}
+.floating-pc a .fi{font-size:1.35rem;margin-bottom:2px;}
+
+/* ===== Hero (HTML/CSS版・完コピ) ===== */
+.hero{
+  position:relative;width:100%;padding-top:72px;background:var(--navy);overflow:hidden;
+}
+.hero-bg{position:absolute;inset:72px 0 0 0;z-index:1;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:right center;display:block;}
+.hero-overlay{
+  position:absolute;inset:72px 0 0 0;z-index:2;
+  background:linear-gradient(90deg, rgba(14,26,46,.92) 0%, rgba(14,26,46,.78) 38%, rgba(14,26,46,.35) 68%, rgba(14,26,46,.08) 100%);
+}
+.hero-content{
+  position:relative;z-index:3;padding:64px 24px 72px;
+  max-width:1180px;margin:0 auto;color:#fff;
+}
+.hero-badge{
+  display:inline-block;background:var(--red);color:#fff;
+  padding:9px 22px;border-radius:30px;font-size:.78rem;font-weight:700;
+  letter-spacing:.04em;margin-bottom:36px;
+}
+.hero-title{
+  font-family:'Noto Serif JP',serif;font-weight:900;
+  font-size:clamp(2rem,5.6vw,3.9rem);line-height:1.22;
+  margin-bottom:26px;text-shadow:0 2px 18px rgba(0,0,0,.45);
+  letter-spacing:.01em;
+}
+.hero-title .gold{color:var(--gold-light);font-size:1.15em;display:inline-block;}
+.hero-sub{
+  font-family:'Noto Serif JP',serif;font-weight:700;
+  font-size:clamp(1.05rem,1.85vw,1.45rem);
+  margin-bottom:20px;letter-spacing:.02em;
+}
+.hero-body{
+  font-size:.93rem;line-height:1.85;color:rgba(255,255,255,.92);
+  max-width:580px;margin-bottom:42px;
+}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:680px;
+  margin-bottom:36px;
+}
+.stat-card{
+  background:rgba(20,32,55,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.12);border-radius:14px;
+  padding:18px 14px 16px;color:#fff;
+}
+.stat-card .stat-icon{font-size:1rem;color:var(--gold);margin-bottom:8px;display:block;}
+.stat-card .stat-num{font-family:'Inter',sans-serif;font-weight:800;font-size:clamp(1.6rem,2.4vw,2.1rem);color:var(--gold);line-height:1;letter-spacing:-.02em;}
+.stat-card .stat-num .stat-unit{font-size:.62em;color:#fff;margin-left:3px;font-weight:700;}
+.stat-card .stat-label{font-size:.68rem;color:rgba(255,255,255,.88);margin-top:10px;line-height:1.5;font-weight:500;}
+.stat-card .stat-note{font-size:.6rem;color:rgba(255,255,255,.55);display:block;margin-top:2px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+.hero-cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 28px;border-radius:8px;font-weight:700;font-size:.95rem;
+  box-shadow:0 8px 24px rgba(0,0,0,.28);transition:transform .2s,box-shadow .2s;
+  min-height:54px;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.4);}
+.cta-red{background:var(--red);color:#fff;}
+.cta-red:hover{background:#A8000D;color:#fff;}
+.cta-line{background:var(--line-g);color:#fff;}
+.cta-line:hover{background:#05B14C;color:#fff;}
+.cta-tel{background:#fff;color:var(--ink);padding:14px 24px;}
+.cta-tel .tel-num{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:800;letter-spacing:.01em;}
+.cta-tel .tel-icon{font-size:1.1rem;}
+.cta-tel small{font-size:.68rem;color:var(--ink-sub);font-weight:500;margin-left:6px;}
+
+@media(max-width:768px){
+  .hero-content{padding:36px 18px 48px;}
+  .hero-badge{font-size:.7rem;padding:7px 16px;margin-bottom:24px;}
+  .hero-title{font-size:1.8rem;margin-bottom:18px;}
+  .hero-sub{font-size:1rem;margin-bottom:14px;}
+  .hero-body{font-size:.85rem;margin-bottom:28px;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:28px;}
+  .stat-card{padding:14px 10px;}
+  .stat-card .stat-num{font-size:1.6rem;}
+  .hero-ctas{flex-direction:column;align-items:stretch;width:100%;}
+  .hero-cta{justify-content:center;width:100%;}
+  .cta-tel small{display:block;margin-left:0;margin-top:2px;}
+}
+
+/* ===== Section base ===== */
+.section{padding:0;width:100%;}
+.section.tools-section,.section.faq-section,.section.works-section,.section.contact-section{padding:80px 0;}
+
+/* ===== Tools / Simulation ===== */
+.tools-section{background:var(--cream);position:relative;}
+.tools-section::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.tools-head{text-align:center;margin-bottom:48px;}
+.tools-eyebrow{
+  display:inline-block;color:var(--gold-dark);font-weight:700;font-size:.78rem;
+  letter-spacing:.22em;font-family:'Inter',sans-serif;margin-bottom:14px;
+}
+.tools-title{
+  font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,3.6vw,2.3rem);
+  font-weight:900;color:var(--navy);margin-bottom:14px;
+}
+.tools-title .accent{color:var(--red);}
+.tools-lead{color:var(--ink-sub);font-size:.95rem;max-width:760px;margin:0 auto;}
+.tool-tabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:36px 0 28px;}
+.tool-tab{
+  padding:13px 26px;border-radius:30px;border:2px solid var(--grey-dark);background:#fff;
+  font-weight:700;font-size:.92rem;cursor:pointer;transition:.2s;color:var(--ink);
+}
+.tool-tab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.tool-panel{display:none;background:#fff;border-radius:16px;padding:40px;box-shadow:var(--shadow-lg);max-width:820px;margin:0 auto;}
+.tool-panel.active{display:block;animation:fade .3s;}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.tool-panel h3{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:900;margin-bottom:8px;color:var(--navy);}
+.tool-panel .tp-desc{color:var(--ink-sub);font-size:.92rem;margin-bottom:28px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:8px;}
+.field select,.field input{
+  width:100%;padding:12px 14px;border:2px solid var(--grey-dark);border-radius:8px;
+  font-size:1rem;font-family:inherit;background:#fff;
+}
+.field select:focus,.field input:focus{outline:none;border-color:var(--gold);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.tool-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:16px;font-weight:700;font-size:1.02rem;cursor:pointer;
+  border:none;border-radius:8px;background:var(--navy);color:#fff;
+  transition:transform .15s,box-shadow .2s,background .2s;margin-top:8px;
+}
+.tool-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);background:#1a3055;}
+.tool-result{margin-top:28px;padding:24px;border-radius:12px;background:var(--cream);display:none;}
+.tool-result.show{display:block;animation:fade .4s;}
+.tool-result .tr-score{font-size:1.1rem;font-weight:900;margin-bottom:14px;color:var(--navy);}
+.tool-result .tr-score .badge{
+  display:inline-block;width:42px;height:42px;line-height:42px;text-align:center;border-radius:50%;
+  background:var(--gold);color:#fff;font-size:1.4rem;margin-right:10px;vertical-align:middle;font-family:'Inter';font-weight:800;
+}
+.tr-rank{background:#fff;border-radius:8px;padding:14px 18px;margin-bottom:10px;border-left:4px solid var(--gold);}
+.tr-rank .rk{font-weight:900;color:var(--gold-dark);margin-right:8px;font-family:'Inter';}
+.tr-figures{display:flex;flex-wrap:wrap;gap:18px;margin:16px 0;}
+.tr-fig{background:#fff;border-radius:8px;padding:14px 18px;flex:1;min-width:140px;text-align:center;}
+.tr-fig .tf-num{font-size:1.6rem;color:var(--navy);display:block;font-family:'Inter';font-weight:800;}
+.tr-fig .tf-label{font-size:.78rem;color:var(--ink-sub);}
+.disclaimer{
+  background:#FFF8E6;border:1px solid #F0D488;border-radius:8px;padding:12px 16px;
+  font-size:.78rem;color:#7A5B00;margin-top:18px;line-height:1.6;
+}
+
+/* ===== Works Gallery ===== */
+.works-section{background:#fff;}
+.works-head{text-align:left;margin-bottom:32px;}
+.works-eyebrow{
+  display:inline-block;color:var(--red);font-weight:700;font-size:.78rem;
+  letter-spacing:.22em;font-family:'Inter',sans-serif;margin-bottom:12px;
+}
+.works-title{
+  font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,3.6vw,2.3rem);
+  font-weight:900;color:var(--navy);margin-bottom:14px;
+}
+.works-title .accent{color:var(--red);}
+.works-lead{color:var(--ink-sub);font-size:.95rem;max-width:760px;}
+.work-filter{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0;}
+.work-filter button{
+  padding:8px 20px;border-radius:24px;border:2px solid var(--grey-dark);background:#fff;
+  font-weight:600;font-size:.86rem;cursor:pointer;transition:.2s;
+}
+.work-filter button.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;}
+.work-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);transition:transform .2s;border:1px solid var(--grey-dark);}
+.work-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+.work-thumb{height:180px;display:flex;align-items:flex-end;padding:14px;color:#fff;font-weight:700;
+  background:linear-gradient(135deg,#3A4A63,#1F2940);position:relative;}
+.work-thumb .wt-vr{position:absolute;top:12px;right:12px;background:rgba(201,169,97,.95);color:#fff;font-size:.68rem;padding:4px 10px;border-radius:20px;font-weight:700;}
+.work-body{padding:18px;}
+.work-body h4{font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:900;margin-bottom:8px;color:var(--navy);}
+.work-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.work-meta span{font-size:.72rem;background:var(--grey);padding:3px 10px;border-radius:14px;color:var(--ink-sub);}
+.work-body .yield{font-weight:700;color:var(--gold-dark);font-size:.9rem;}
+
+/* ===== FAQ ===== */
+.faq-section{background:var(--cream);}
+.faq-head{text-align:left;margin-bottom:36px;}
+.faq-eyebrow{
+  display:inline-block;color:var(--red);font-weight:700;font-size:.78rem;
+  letter-spacing:.22em;font-family:'Inter',sans-serif;margin-bottom:12px;
+}
+.faq-title{
+  font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,3.6vw,2.3rem);
+  font-weight:900;color:var(--navy);margin-bottom:14px;
+}
+.faq-lead{color:var(--ink-sub);font-size:.95rem;}
+.faq-item{background:#fff;border-radius:10px;margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden;}
+.faq-q{padding:20px 24px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:.98rem;color:var(--navy);}
+.faq-q::before{content:"Q";color:var(--gold);font-weight:900;font-family:'Inter';margin-right:12px;font-size:1.1rem;}
+.faq-q .fq-icon{flex-shrink:0;transition:transform .3s;color:var(--gold);font-size:1.3rem;font-weight:700;}
+.faq-item.open .fq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s;padding:0 24px;color:var(--ink-sub);font-size:.92rem;}
+.faq-item.open .faq-a{max-height:500px;padding:0 24px 24px 24px;}
+
+/* ===== Contact section (with form) ===== */
+.contact-section{background:linear-gradient(160deg,#1F2940,#151C2A);color:#fff;padding:80px 0;}
+.contact-section .c-eyebrow{display:inline-block;color:#FFD54A;font-weight:700;font-size:.78rem;letter-spacing:.22em;font-family:'Inter',sans-serif;margin-bottom:14px;}
+.contact-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:900;color:#fff;margin-bottom:14px;}
+.contact-section .c-lead{color:rgba(255,255,255,.85);font-size:.95rem;margin-bottom:36px;max-width:760px;}
+.contact-cta-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:36px;}
+.contact-cta{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:28px;text-align:center;}
+.contact-cta .cc-icon{font-size:1.8rem;}
+.contact-cta h4{font-family:'Noto Serif JP',serif;font-size:1.15rem;font-weight:900;margin:8px 0;}
+.contact-cta .cc-num{display:inline-block;font-size:1.7rem;color:#FFD54A;font-family:'Inter',sans-serif;font-weight:800;margin-top:4px;}
+.contact-cta p{font-size:.82rem;color:rgba(255,255,255,.78);margin-top:6px;}
+.btn-line-inline{display:inline-block;background:var(--line-g);color:#fff;padding:12px 24px;border-radius:8px;font-weight:700;margin-top:8px;font-size:.95rem;}
+.form-card{background:#fff;border-radius:16px;padding:40px;color:var(--ink);max-width:780px;margin:0 auto;}
+.form-card h3{font-family:'Noto Serif JP',serif;font-size:1.35rem;font-weight:900;margin-bottom:6px;text-align:center;color:var(--navy);}
+.form-card .req{color:var(--red-light);font-size:.72rem;font-weight:700;margin-left:6px;}
+.form-card textarea{width:100%;padding:12px 14px;border:2px solid var(--grey-dark);border-radius:8px;font-family:inherit;font-size:1rem;resize:vertical;min-height:100px;}
+.form-card textarea:focus{outline:none;border-color:var(--gold);}
+.radio-row{display:flex;gap:22px;flex-wrap:wrap;}
+.radio-row label{display:flex;align-items:center;gap:6px;font-weight:500;font-size:.92rem;cursor:pointer;}
+.form-submit{width:100%;margin-top:12px;font-size:1.05rem;padding:18px;background:var(--red-light);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;transition:background .2s,transform .15s;}
+.form-submit:hover{background:#A8000D;transform:translateY(-2px);}
+.form-msg{display:none;background:#E8F7EC;border:1px solid var(--line-g);color:#1A7A3C;padding:16px;border-radius:8px;margin-top:16px;font-weight:700;text-align:center;}
+.form-msg.show{display:block;}
+
+/* ===== Popup (scroll trigger) ===== */
+.popup{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(160%);
+  background:#fff;box-shadow:var(--shadow-lg);border-radius:14px;padding:18px 22px;z-index:950;
+  max-width:440px;width:calc(100% - 32px);border-top:4px solid var(--red-light);transition:transform .4s;
+  display:flex;gap:14px;align-items:center;
+}
+.popup.show{transform:translateX(-50%) translateY(0);}
+.popup .pp-txt{font-size:.9rem;font-weight:700;flex-grow:1;color:var(--ink);line-height:1.5;}
+.popup .pp-txt small{display:block;font-weight:400;color:var(--ink-sub);font-size:.78rem;margin-top:2px;}
+.popup .pp-btn{background:var(--red-light);color:#fff;padding:10px 16px;border-radius:8px;font-weight:700;font-size:.84rem;white-space:nowrap;}
+.popup .pp-close{position:absolute;top:6px;right:10px;cursor:pointer;color:#999;font-size:1.2rem;background:none;border:none;line-height:1;}
+
+/* ===== Footer ===== */
+footer{background:#070D18;color:rgba(255,255,255,.62);padding:50px 0 30px;font-size:.82rem;}
+footer .ft-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:30px;}
+footer .ft-brand-wrap{display:flex;flex-direction:column;line-height:1.3;}
+footer .ft-brand{font-family:'Noto Serif JP',serif;font-weight:900;color:#fff;font-size:1.15rem;letter-spacing:.04em;}
+footer .ft-sub{font-size:.6rem;color:rgba(255,255,255,.5);letter-spacing:.18em;font-family:'Inter',sans-serif;margin-top:2px;}
+footer .ft-info{font-size:.78rem;line-height:1.85;color:rgba(255,255,255,.7);max-width:520px;}
+footer .ft-compliance{font-size:.7rem;color:rgba(255,255,255,.48);line-height:1.8;border-top:1px solid rgba(255,255,255,.1);padding-top:22px;margin-top:24px;}
+footer .ft-bottom{margin-top:18px;font-size:.7rem;color:rgba(255,255,255,.4);text-align:center;}
+
+/* ===== Mobile Floating ===== */
+.floating-sp{display:none;}
+
+/* ===== responsive ===== */
+@media(max-width:1000px){
+  .gnav{
+    position:fixed;top:72px;right:0;width:76%;max-width:340px;height:calc(100vh - 72px);
+    background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:24px;
+    box-shadow:-4px 0 30px rgba(0,0,0,.12);transform:translateX(110%);transition:transform .3s;overflow-y:auto;
+  }
+  .gnav.open{transform:translateX(0);}
+  .gnav a{padding:14px 8px;border-bottom:1px solid var(--grey);}
+  .gnav .nav-cta{text-align:center;margin-top:14px;border-bottom:none;}
+  .hamburger{display:flex;}
+  .floating-pc{display:none;}
+  .work-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));}
+  .final-ctas{grid-template-columns:1fr;}
+  .section.tools-section,.section.faq-section,.section.works-section,.section.contact-section{padding:60px 0;}
+  .contact-cta-row{grid-template-columns:1fr;}
+  .form-card{padding:24px 18px;}
+  .field-row{grid-template-columns:1fr;}
+  .popup{padding:14px 16px;}
+  .popup .pp-txt{font-size:.82rem;}
+  .floating-sp{
+    display:grid;grid-template-columns:1fr 1fr 1fr;left:0;right:0;bottom:0;width:100%;
+    position:fixed;z-index:900;
+  }
+  .floating-sp a{padding:14px 6px;text-align:center;color:#fff;font-weight:700;font-size:.84rem;display:flex;flex-direction:column;gap:3px;align-items:center;}
+  .floating-sp .s-tel{background:var(--navy);}
+  .floating-sp .s-line{background:var(--line-g);}
+  .floating-sp .s-form{background:var(--red);}
+  .floating-sp a .si{font-size:1.2rem;}
+  footer{padding-bottom:80px;}
+}
+@media(max-width:560px){
+  .wrap{padding:0 18px;}
+  .tool-panel{padding:24px 18px;}
+  .field-row{grid-template-columns:1fr;}
+  .header-inner{height:64px;}
+  .hero{padding-top:64px;}
+  .logo .brand{font-size:.95rem;}
+  .logo .sub{font-size:.55rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="header-inner">
+    <a href="#hero" class="logo">
+      <span class="brand">アパート建築の方程式<span class="dot">.</span></span>
+      <span class="sub">土地活用・資産承継・賃貸経営の最適解／福岡ビルド株式会社</span>
+    </a>
+    <nav class="gnav" id="gnav">
+      <a href="#jinushi">土地活用</a>
+      <a href="#tatekae">建替え</a>
+      <a href="#toushi">投資</a>
+      <a href="#promises">選ばれる理由</a>
+      <a href="#works">実績</a>
+      <a href="#voices">オーナーの声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#final" class="nav-cta">無料相談</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== Floating CTA (PC right circle buttons) ===== -->
+<div class="floating-pc">
+  <a href="#final" class="f-form"><span class="fi">✉</span>無料相談</a>
+  <a href="#" onclick="alert('LINE公式アカウントへ接続します');return false;" class="f-line"><span class="fi">💬</span>LINE</a>
+  <a href="tel:0927101180" class="f-tel"><span class="fi">📞</span>電話</a>
+</div>
+
+<!-- ===== Hero (HTML/CSS版) ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="images/01_hero.jpg" alt="アパート建築の方程式｜「建築力」と「土地活用力」で選ばれる堅実なアパート経営" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge">福岡・佐賀 創業53年 ｜ 土地活用・資産承継・賃貸経営</span>
+    <h1 class="hero-title">その土地、次の<span class="num gold">50年</span>を<br>どう活かすか。</h1>
+    <p class="hero-sub">「アパート建築の方程式」が、答えを出します。</p>
+    <p class="hero-body">相続税対策・遊休地の活用・築古アパートの建替え。あなたの土地・家族・資産に最適な「方程式」を、地元密着53年の福岡ビルドが解き明かします。</p>
+
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-icon">🏢</span>
+        <div class="stat-num"><span>53</span><span class="stat-unit">年</span></div>
+        <div class="stat-label">福岡・佐賀での<br>創業実績</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">🏠</span>
+        <div class="stat-num"><span>8.5</span><span class="stat-unit">%</span></div>
+        <div class="stat-label">平均利回り目安<span class="stat-note">※要確認・実績ベース</span></div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">📈</span>
+        <div class="stat-num"><span>98</span><span class="stat-unit">%</span></div>
+        <div class="stat-label">満室稼働率<span class="stat-note">※要確認</span></div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-icon">🏘</span>
+        <div class="stat-num"><span>120</span><span class="stat-unit">棟</span></div>
+        <div class="stat-label">累計建築実績<span class="stat-note">※要確認</span></div>
+      </div>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="#final" class="hero-cta cta-red">無料相談はこちら</a>
+      <a href="https://lin.ee/f0ZKqnj" class="hero-cta cta-line" target="_blank" rel="noopener">LINEで気軽に相談</a>
+      <a href="tel:0927101180" class="hero-cta cta-tel">
+        <span class="tel-icon">📞</span>
+        <span class="tel-num">092-710-1180</span>
+        <small>受付 平日9:00-18:00</small>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY NOW ===== -->
+<section class="section" id="market">
+  <div class="section-img-wrap">
+    <img src="images/03_whynow.jpg" alt="なぜ今、動くべきなのか｜2025-2026年の制度変化" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== 3 Entries (YOUR ENTRANCE) ===== -->
+<section class="section" id="entries">
+  <div class="section-img-wrap">
+    <img src="images/02_entrance.jpg" alt="あなたに合った3つの入口から｜土地お持ち・建替え・投資" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== A. 地主 ===== -->
+<section class="section" id="jinushi">
+  <div class="section-img-wrap">
+    <img src="images/04_jinushi.jpg" alt="A. 土地をお持ちの方へ｜相続税対策・遊休地の活用" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== B. 築古 ===== -->
+<section class="section" id="tatekae">
+  <div class="section-img-wrap">
+    <img src="images/05_tatekae.jpg" alt="B. 築古アパートをお持ちの方へ｜リフォームか建替えか" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== C. 投資 ===== -->
+<section class="section" id="toushi">
+  <div class="section-img-wrap">
+    <img src="images/06_toushi.jpg" alt="C. アパート投資をお考えの方へ｜次の1棟でポートフォリオを完成" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== Tools (FREE SIMULATION) — HTML/CSS interactive ===== -->
+<section class="section tools-section" id="tools">
+  <div class="wrap">
+    <div class="tools-head">
+      <span class="tools-eyebrow">FREE SIMULATION</span>
+      <h2 class="tools-title">無料の<span class="accent">診断・シミュレーション</span></h2>
+      <p class="tools-lead">かんたんな設問にお答えいただくだけで、目安をその場で確認できます。詳細なプランは無料相談で個別にご提案します。</p>
+    </div>
+
+    <div class="tool-tabs">
+      <button class="tool-tab active" data-tool="t1">土地活用診断</button>
+      <button class="tool-tab" data-tool="t2">相続税 試算</button>
+      <button class="tool-tab" data-tool="t3">建替え シミュレーション</button>
+    </div>
+
+    <div class="tool-panel active" id="t1">
+      <h3>土地活用診断</h3>
+      <p class="tp-desc">あなたの土地に向いた活用方法を3ステップでその場で診断します。</p>
+      <div class="field"><label>土地のエリア</label>
+        <select id="t1-area"><option value="urban">福岡都市圏（福岡市・春日市・那珂川市・糟屋郡）</option><option value="fukuoka">福岡県その他</option><option value="saga">佐賀県</option></select>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>土地の広さ（坪）</label>
+          <select id="t1-size"><option value="s">〜100坪</option><option value="m">100〜300坪</option><option value="l">300〜800坪</option><option value="xl">800坪〜</option></select>
+        </div>
+        <div class="field"><label>土地の状況</label>
+          <select id="t1-state"><option value="empty">更地</option><option value="house">古家あり</option><option value="park">駐車場</option><option value="farm">農地（市街化区域内）</option></select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>活用の目的</label>
+          <select id="t1-goal"><option value="tax">相続税対策</option><option value="income">収入確保</option><option value="keep">子に残したい</option><option value="sell">売却も検討</option></select>
+        </div>
+        <div class="field"><label>検討の温度感</label>
+          <select id="t1-temp"><option value="now">すぐ動きたい</option><option value="year">1年以内</option><option value="someday">いつかは</option></select>
+        </div>
+      </div>
+      <button class="tool-btn" onclick="runT1()">診断する</button>
+      <div class="tool-result" id="t1-result"></div>
+      <p class="disclaimer">※本診断は一般的な傾向に基づく簡易的な目安です。活用適否や収益を保証するものではありません。具体的なご提案は現地調査・個別プランニングのうえお渡しします。</p>
+    </div>
+
+    <div class="tool-panel" id="t2">
+      <h3>相続税 簡易試算</h3>
+      <p class="tp-desc">「現状のまま」と「アパート建築後」の相続税の目安を比較します。</p>
+      <div class="field-row">
+        <div class="field"><label>相続財産の総額（おおよそ・万円）</label><input type="number" id="t2-asset" placeholder="例：15000" value="15000"></div>
+        <div class="field"><label>うち建築予定の土地評価額（万円）</label><input type="number" id="t2-land" placeholder="例：8000" value="8000"></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>法定相続人の人数</label>
+          <select id="t2-heirs"><option value="1">1人</option><option value="2" selected>2人</option><option value="3">3人</option><option value="4">4人</option></select>
+        </div>
+        <div class="field"><label>建築予定の概算（万円）</label><input type="number" id="t2-build" placeholder="例：6000" value="6000"></div>
+      </div>
+      <button class="tool-btn" onclick="runT2()">試算する</button>
+      <div class="tool-result" id="t2-result"></div>
+      <p class="disclaimer">※本試算は「貸家建付地評価減」「家屋評価減」を簡略化した概算で、実際の税額とは大きく異なる場合があります。小規模宅地等の特例の適用を含め、必ず税理士による個別試算をご確認ください。</p>
+    </div>
+
+    <div class="tool-panel" id="t3">
+      <h3>建替え シミュレーション</h3>
+      <p class="tp-desc">現状の物件情報から「リフォーム vs 建替え vs 売却」の方向性の目安を出します。</p>
+      <div class="field-row">
+        <div class="field"><label>築年数</label>
+          <select id="t3-age"><option value="15">築15年</option><option value="25" selected>築25年</option><option value="35">築35年</option><option value="40">築40年以上</option></select>
+        </div>
+        <div class="field"><label>戸数</label>
+          <select id="t3-units"><option value="6">6戸</option><option value="8">8戸</option><option value="12">12戸</option></select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label>現在の入居率</label>
+          <select id="t3-occ"><option value="90">90%以上</option><option value="70" selected>60〜80%</option><option value="50">50%前後</option><option value="30">30%以下</option></select>
+        </div>
+        <div class="field"><label>現在の平均家賃（円/戸・月）</label><input type="number" id="t3-rent" placeholder="例：45000" value="45000"></div>
+      </div>
+      <button class="tool-btn" onclick="runT3()">シミュレーションする</button>
+      <div class="tool-result" id="t3-result"></div>
+      <p class="disclaimer">※本シミュレーションは概算の目安です。建築費・諸経費・現地条件は物件により大きく変動します。30年キャッシュフローの精査は個別の現地調査・プランニングが必要です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5 PROMISES ===== -->
+<section class="section" id="promises">
+  <div class="section-img-wrap">
+    <img src="images/07_promises.jpg" alt="福岡ビルドが選ばれる5つの理由" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== Works Gallery — HTML/CSS ===== -->
+<section class="section works-section" id="works">
+  <div class="wrap">
+    <div class="works-head">
+      <span class="works-eyebrow">WORKS</span>
+      <h2 class="works-title">実績・<span class="accent">施工事例</span></h2>
+      <p class="works-lead">福岡・佐賀エリアでの代表的な施工事例です。各物件は360°VIEW（VR内覧）でご覧いただけます。<br><span style="font-size:.82rem;color:#999;">※掲載の戸数・利回り等の数値はすべて仮の値です（要確認）。</span></p>
+    </div>
+    <div class="work-filter">
+      <button class="active" data-filter="all">すべて</button>
+      <button data-filter="fukuoka">福岡市</button>
+      <button data-filter="kogai">福岡市外</button>
+      <button data-filter="saga">佐賀県</button>
+    </div>
+    <div class="work-grid" id="work-grid"></div>
+  </div>
+</section>
+
+<!-- ===== Owner Voices ===== -->
+<section class="section" id="voices">
+  <div class="section-img-wrap">
+    <img src="images/08_voices.jpg" alt="アパート建築の方程式で経営を始めた、オーナーの声" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== Flow ===== -->
+<section class="section" id="flow">
+  <div class="section-img-wrap">
+    <img src="images/09_flow.jpg" alt="ご相談の流れ｜8ステップ" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== Price ===== -->
+<section class="section" id="price">
+  <div class="section-img-wrap">
+    <img src="images/11_price.jpg" alt="料金・利回りの目安" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== FAQ — HTML/CSS ===== -->
+<section class="section faq-section" id="faq">
+  <div class="wrap">
+    <div class="faq-head">
+      <span class="faq-eyebrow">FAQ</span>
+      <h2 class="faq-title">よくあるご質問</h2>
+      <p class="faq-lead">土地活用・相続税・建替え・投資に関するよくいただく質問をまとめました。</p>
+    </div>
+    <div id="faq-list"></div>
+  </div>
+</section>
+
+<!-- ===== Company ===== -->
+<section class="section" id="company">
+  <div class="section-img-wrap">
+    <img src="images/10_company.jpg" alt="会社概要｜福岡ビルド株式会社 × オリナス株式会社" loading="lazy">
+  </div>
+</section>
+
+<!-- ===== Contact (with form) ===== -->
+<section class="section contact-section" id="final">
+  <div class="wrap">
+    <span class="c-eyebrow">CONTACT</span>
+    <h2>無料相談・お問い合わせ</h2>
+    <p class="c-lead">電話・LINE・フォームの3つから、お好きな方法でご相談いただけます。資料のみのお渡しも可能です。</p>
+
+    <div class="contact-cta-row">
+      <div class="contact-cta">
+        <div class="cc-icon">📞</div>
+        <h4>お電話で相談</h4>
+        <a href="tel:0927101180" class="cc-num">092-710-1180</a>
+        <p>受付：平日 9:00〜18:00</p>
+      </div>
+      <div class="contact-cta">
+        <div class="cc-icon">💬</div>
+        <h4>LINEで気軽に相談</h4>
+        <a href="#" class="btn-line-inline" onclick="alert('LINE公式アカウントへ接続します（設定後にリンクを差し替えてください）');return false;">LINEで相談する</a>
+        <p>登録者限定・無料現地調査も</p>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h3>お問い合わせフォーム</h3>
+      <p style="text-align:center;color:var(--ink-sub);font-size:.88rem;margin-bottom:24px;">必須項目は6つ以内。お気軽にご記入ください。</p>
+      <form id="contact-form" onsubmit="return submitForm(event)">
+        <div class="field-row">
+          <div class="field"><label>お名前<span class="req">必須</span></label><input type="text" required placeholder="例：角田 芳博"></div>
+          <div class="field"><label>電話番号<span class="req">必須</span></label><input type="tel" required placeholder="例：092-710-1180"></div>
+        </div>
+        <div class="field"><label>メールアドレス<span class="req">必須</span></label><input type="email" required placeholder="例：sample@example.com"></div>
+        <div class="field"><label>ご相談の種類<span class="req">必須</span></label>
+          <select required>
+            <option value="">選択してください</option>
+            <option>① 土地活用のご相談</option>
+            <option>② 建替えのご相談</option>
+            <option>③ アパート建築のご相談</option>
+            <option>④ 収益物件の購入ご相談</option>
+            <option>⑤ 無料土地活用診断</option>
+            <option>⑥ その他</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>土地の有無<span class="req">必須</span></label>
+            <select required><option value="">選択してください</option><option>あり</option><option>なし</option><option>検討中</option></select>
+          </div>
+          <div class="field"><label>土地のエリア<span style="font-size:.7rem;color:#999;margin-left:6px;">任意</span></label><input type="text" placeholder="市区町村まで（例：那珂川市）"></div>
+        </div>
+        <div class="field">
+          <label>ご希望の連絡方法<span class="req">必須</span></label>
+          <div class="radio-row">
+            <label><input type="radio" name="contact-method" required>電話</label>
+            <label><input type="radio" name="contact-method">メール</label>
+            <label><input type="radio" name="contact-method">LINE</label>
+          </div>
+        </div>
+        <div class="field"><label>ご相談内容<span style="font-size:.7rem;color:#999;margin-left:6px;">任意</span></label><textarea placeholder="ご相談内容をご自由にご記入ください。"></textarea></div>
+        <button type="submit" class="form-submit">この内容で無料相談を申し込む</button>
+        <div class="form-msg" id="form-msg">お問い合わせありがとうございます。担当者より折り返しご連絡いたします。<br><small>（これはデモ動作です。実装時に送信処理を接続してください）</small></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-brand-wrap">
+        <span class="ft-brand">アパート建築の方程式</span>
+        <span class="ft-sub">by Fukuoka Build</span>
+      </div>
+      <div class="ft-info">
+        アパート建築の方程式 by 福岡ビルド株式会社<br>
+        〒811-1211 福岡県那珂川市今光1丁目56番地 ／ TEL：092-710-1180 ／ FAX：092-710-1181<br>
+        創業1973年（昭和48年）／一級建築士事務所オリナス株式会社グループ
+      </div>
+    </div>
+    <div class="ft-compliance">
+      ※ 本サイトに掲載の「利回り」「満室稼働率」「累計建築棟数」等の数値は、本モック等では仮の値（要確認）です。実装時には実績ベースの数値と算定根拠を明記してください。<br>
+      ※ 「相続税対策」「節税」に関する内容は、税理士監修のもと適切な保留を付けています。適用可否は個別の状況により異なり、必ず専門家にご確認ください。<br>
+      ※ 当社は「絶対に割らない」「必ず満室」等の断定的表現を用いません（景品表示法・不動産の表示に関する公正競争規約に基づく）。<br>
+      ※ オーナー様の声・施工事例の掲載は、ご本人の同意およびプライバシーへの配慮のもとで行います。
+    </div>
+    <div class="ft-bottom">© 2026 Fukuoka Build Co., Ltd. ／ 建設業許可：福岡県知事（特ー3）第73084号 ／ 宅地建物取引業：福岡県知事（4）第16710号</div>
+  </div>
+</footer>
+
+<!-- ===== Mobile floating ===== -->
+<div class="floating-sp">
+  <a href="tel:0927101180" class="s-tel"><span class="si">📞</span>電話</a>
+  <a href="#" onclick="alert('LINE公式アカウントへ接続します');return false;" class="s-line"><span class="si">💬</span>LINE</a>
+  <a href="#final" class="s-form"><span class="si">✉</span>無料相談</a>
+</div>
+
+<!-- ===== Popup (scroll trigger) ===== -->
+<div class="popup" id="popup">
+  <button class="pp-close" onclick="document.getElementById('popup').classList.remove('show')">×</button>
+  <div class="pp-txt">無料の土地活用診断、お試しください<small>3〜5分で、あなたの土地に最適な活用法をスコア診断</small></div>
+  <a href="#tools" class="pp-btn" onclick="document.getElementById('popup').classList.remove('show')">診断する</a>
+</div>
+
+<script>
+/* nav toggle */
+const hb=document.getElementById('hamburger'),gn=document.getElementById('gnav');
+hb.addEventListener('click',()=>gn.classList.toggle('open'));
+gn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>gn.classList.remove('open')));
+
+/* tool tabs */
+document.querySelectorAll('.tool-tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tool-tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.tool-panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.tool).classList.add('active');
+  });
+});
+
+/* Tool 1: 土地活用診断 */
+function runT1(){
+  const area=document.getElementById('t1-area').value,
+        size=document.getElementById('t1-size').value,
+        state=document.getElementById('t1-state').value,
+        goal=document.getElementById('t1-goal').value;
+  let score=0;
+  score+=({urban:30,fukuoka:20,saga:14})[area];
+  score+=({s:10,m:22,l:26,xl:20})[size];
+  score+=({empty:18,house:14,park:16,farm:12})[state];
+  score+=({tax:18,income:16,keep:14,sell:8})[goal];
+  let grade=score>=78?'A':score>=62?'B':score>=46?'C':'D';
+  let ranks;
+  if(size==='s'){ranks=['戸建賃貸','駐車場経営','アパート建築（小規模）'];}
+  else if(goal==='sell'){ranks=['売却＋一部活用','アパート建築','駐車場経営'];}
+  else if(area==='saga'){ranks=['アパート建築（立地厳選）','戸建賃貸','駐車場経営'];}
+  else {ranks=['アパート建築','戸建賃貸','駐車場経営'];}
+  const reasons=['立地・需要・相続税対策のバランスが良く、長期安定を見込めます','初期費用を抑えつつ堅実な活用が可能です','まずは低リスクで土地を遊ばせない選択肢です'];
+  let html=`<div class="tr-score"><span class="badge">${grade}</span>あなたの土地の活用ポテンシャル：<b>${grade}ランク</b>（目安スコア ${score}/100）</div>`;
+  ranks.forEach((r,i)=>{html+=`<div class="tr-rank"><span class="rk num">${i+1}位</span><b>${r}</b><br><span style="font-size:.84rem;color:#5A6573">${reasons[i]}</span></div>`;});
+  html+=`<div style="margin-top:18px;text-align:center;"><a href="#final" class="tool-btn" style="display:inline-flex;width:auto;padding:14px 28px;text-decoration:none;">この土地の詳細プランを無料相談する</a></div>`;
+  showResult('t1-result',html);
+}
+function runT2(){
+  const asset=+document.getElementById('t2-asset').value||0,
+        land=+document.getElementById('t2-land').value||0,
+        build=+document.getElementById('t2-build').value||0,
+        heirs=+document.getElementById('t2-heirs').value||1;
+  const basic=3000+600*heirs;
+  const taxableNow=Math.max(0,asset-basic);
+  const taxNow=estTax(taxableNow,heirs);
+  const landAfter=land*0.79;
+  const buildAfter=build*0.5;
+  const assetAfter=asset-land-build+landAfter+buildAfter;
+  const taxableAfter=Math.max(0,assetAfter-basic);
+  const taxAfter=estTax(taxableAfter,heirs);
+  const diff=Math.max(0,taxNow-taxAfter);
+  let html=`<div class="tr-figures">
+    <div class="tr-fig"><span class="tf-num">${fmt(taxNow)}</span><span class="tf-label">現状の相続税（目安・万円）</span></div>
+    <div class="tr-fig"><span class="tf-num">${fmt(taxAfter)}</span><span class="tf-label">アパート建築後（目安・万円）</span></div>
+    <div class="tr-fig"><span class="tf-num" style="color:#C2000F">▲${fmt(diff)}</span><span class="tf-label">差額（軽減額の目安）</span></div>
+  </div>
+  <p style="font-size:.86rem;color:#5A6573;">貸家建付地評価減・家屋評価減を簡略適用した概算です。小規模宅地等の特例を併用できる場合、軽減幅はさらに大きくなる可能性があります。</p>
+  <div style="margin-top:14px;text-align:center;"><a href="#final" class="tool-btn" style="display:inline-flex;width:auto;padding:14px 28px;text-decoration:none;">税理士による詳細試算を無料相談で</a></div>`;
+  showResult('t2-result',html);
+}
+function estTax(taxable,heirs){
+  if(taxable<=0)return 0;
+  const per=taxable/heirs;
+  let r,d;
+  if(per<=1000){r=.10;d=0;}else if(per<=3000){r=.15;d=50;}
+  else if(per<=5000){r=.20;d=200;}else if(per<=10000){r=.30;d=700;}
+  else if(per<=20000){r=.40;d=1700;}else if(per<=30000){r=.45;d=2700;}
+  else if(per<=60000){r=.50;d=4200;}else{r=.55;d=7200;}
+  return Math.round((per*r-d)*heirs);
+}
+function runT3(){
+  const age=+document.getElementById('t3-age').value,
+        units=+document.getElementById('t3-units').value,
+        occ=+document.getElementById('t3-occ').value,
+        rent=+document.getElementById('t3-rent').value||0;
+  const incomeNow=Math.round(rent*units*(occ/100)*12/10000);
+  const incomeNew=Math.round(rent*1.45*units*0.95*12/10000);
+  let rec,recColor,recNote;
+  if(age>=35||occ<=50){rec='建替え';recColor='#C2000F';recNote='築年数・空室状況から、建替えによる収益改善メリットが大きいと見込まれます。';}
+  else if(age>=25&&occ<=70){rec='建替え（要精査）';recColor='#C2000F';recNote='建替えとリフォームの比較精査をおすすめします。立地が弱い場合は売却も選択肢です。';}
+  else{rec='リフォーム優先';recColor='#0E1A2E';recNote='現状はリフォームでの延命が有効。将来の建替えに向けた計画もご提案します。';}
+  let html=`<div class="tr-score" style="font-size:1.15rem;">おすすめの方向性：<b style="color:${recColor}">${rec}</b></div>
+  <p style="font-size:.88rem;color:#5A6573;margin-bottom:14px;">${recNote}</p>
+  <div class="tr-figures">
+    <div class="tr-fig"><span class="tf-num">${fmt(incomeNow)}</span><span class="tf-label">現状の年間家賃収入（目安・万円）</span></div>
+    <div class="tr-fig"><span class="tf-num" style="color:#C2000F">${fmt(incomeNew)}</span><span class="tf-label">建替え後の想定（目安・万円）</span></div>
+    <div class="tr-fig"><span class="tf-num" style="color:#0E1A2E">+${fmt(Math.max(0,incomeNew-incomeNow))}</span><span class="tf-label">年間増加の目安</span></div>
+  </div>
+  <p style="font-size:.84rem;color:#5A6573;">立退き費用・解体費用・建築費は別途必要です。30年キャッシュフローでの比較は個別シミュレーションで精査します。</p>
+  <div style="margin-top:14px;text-align:center;"><a href="#final" class="tool-btn" style="display:inline-flex;width:auto;padding:14px 28px;text-decoration:none;">建替えの詳細を無料相談する</a></div>`;
+  showResult('t3-result',html);
+}
+function showResult(id,html){const el=document.getElementById(id);el.innerHTML=html;el.classList.add('show');el.scrollIntoView({behavior:'smooth',block:'nearest'});}
+function fmt(n){return n.toLocaleString('ja-JP');}
+
+/* Works gallery */
+const works=[
+  {name:'カシアスⅢ',area:'fukuoka',areaL:'福岡市',units:'木造3階・8戸',type:'ファミリー',yield:'8.7%',year:'2022年完成'},
+  {name:'THE ROM南庄',area:'kogai',areaL:'福岡市外',units:'木造2階・6戸',type:'単身',yield:'8.4%',year:'2021年完成'},
+  {name:'ブロンテ飯町',area:'fukuoka',areaL:'福岡市',units:'木造3階・12戸',type:'単身',yield:'9.1%',year:'2023年完成'},
+  {name:'グランメゾン春日',area:'kogai',areaL:'福岡市外',units:'木造2階・8戸',type:'ファミリー',yield:'8.2%',year:'2020年完成'},
+  {name:'レジデンス鳥栖',area:'saga',areaL:'佐賀県',units:'木造2階・6戸',type:'単身',yield:'8.0%',year:'2022年完成'},
+  {name:'コートヒルズ南庄',area:'fukuoka',areaL:'福岡市',units:'木造3階・10戸',type:'単身',yield:'8.9%',year:'2024年完成'}
+];
+function renderWorks(filter){
+  const g=document.getElementById('work-grid');
+  g.innerHTML=works.filter(w=>filter==='all'||w.area===filter).map(w=>`
+    <div class="work-card">
+      <div class="work-thumb">${w.name}<span class="wt-vr">360° VR内覧</span></div>
+      <div class="work-body">
+        <h4>${w.name}</h4>
+        <div class="work-meta"><span>${w.areaL}</span><span>${w.units}</span><span>${w.type}</span></div>
+        <div style="font-size:.8rem;color:#888;margin-bottom:4px;">${w.year}</div>
+        <div class="yield">想定利回り ${w.yield} <span style="font-size:.7rem;color:#999;font-weight:400;">※要確認</span></div>
+      </div>
+    </div>`).join('');
+}
+renderWorks('all');
+document.querySelectorAll('.work-filter button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.work-filter button').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');renderWorks(b.dataset.filter);
+  });
+});
+
+/* FAQ */
+const faqs=[
+  ['土地活用にアパート建築以外の選択肢はありますか？比較を教えてください','戸建賃貸・駐車場・売却・トランクルームなど複数の選択肢があります。土地の広さ・立地・目的により最適解は異なるため、無料の土地活用診断で傾向をご確認のうえ、個別にご提案します。'],
+  ['相続税対策にアパート建築はどの程度効果がありますか？','貸家建付地としての評価減・家屋評価減により、相続税評価額を圧縮できる場合があります。効果は土地評価額・資産構成・特例適用の有無で大きく変わるため、税理士監修のもと個別試算でご確認ください。'],
+  ['築何年から建替えを検討すべきですか？','一般に築25年を超えると修繕費の増加・空室率の上昇が顕著になります。築20年を目安に、建替え・リフォーム・売却の比較を始めることをおすすめします。'],
+  ['入居者の立退きはどう進めればいいですか？','正当事由・立退料・スケジュールの設計が重要です。当社は顧問弁護士・社会保険労務士と連携し、適正な手順で立退きから新築・客付けまでサポートします。'],
+  ['建替え期間中の家賃収入の空白はどう補填すればいいですか？','工程の最適化で空白期間を短縮するほか、資金計画の中で空白期間を織り込んだキャッシュフロー設計をご提案します。'],
+  ['2025年の建築基準法改正で何が変わりましたか？','木造2階建て等の「4号特例」が縮小され、構造計算等の審査対象が拡大しました。当社は自社グループの一級建築士事務所（オリナス）と連携し、適正な構造設計で対応します。'],
+  ['省エネ義務化で家賃や入居率はどう影響しますか？','2025年4月から新築賃貸の省エネ基準適合が義務化されました。光熱費高騰下で省エネ性能は入居者の選定基準になりつつあり、より長期の入居率維持に有利に働きます。'],
+  ['2026年税制改正の「5年ルール」は私の土地にも影響しますか？','主に不動産小口化商品に関する見込みの改正です。実物の土地・建物による土地活用への直接の影響は限定的とされますが、個別の状況は税理士にご確認ください（※制度は要確認）。'],
+  ['家族（妻・子）と一緒に相談に行ってもいいですか？','もちろんです。土地活用・相続は家族の合意形成が重要ですので、家族・税理士同席でのご相談を歓迎します。'],
+  ['税理士・銀行・JAからの紹介でも対応していただけますか？','はい、税理士・金融機関・JA等からのご紹介にも対応しています。第三者を交えた検討も安心して進めていただけます。']
+];
+document.getElementById('faq-list').innerHTML=faqs.map(f=>`
+  <div class="faq-item"><div class="faq-q">${f[0]}<span class="fq-icon">＋</span></div><div class="faq-a">${f[1]}</div></div>`).join('');
+document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
+
+/* form submit (demo) */
+function submitForm(e){e.preventDefault();document.getElementById('form-msg').classList.add('show');e.target.querySelector('.form-submit').scrollIntoView({behavior:'smooth',block:'center'});return false;}
+
+/* popup on 30% scroll (once) */
+let popShown=false;
+window.addEventListener('scroll',()=>{
+  const sc=(window.scrollY)/(document.body.scrollHeight-window.innerHeight);
+  if(sc>0.3&&!popShown){popShown=true;document.getElementById('popup').classList.add('show');
+    setTimeout(()=>document.getElementById('popup').classList.remove('show'),12000);}
+});
+</script>
+
+</body>
+</html>
