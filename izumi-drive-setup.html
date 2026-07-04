@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Googleドライブ設定手順書 — イズミー様（新しいパソコン用）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    padding: 40px 20px 80px;
+    line-height: 1.8;
+    -webkit-text-size-adjust: 100%;
+  }
+  .page { max-width: 820px; margin: 0 auto; }
+  h1 { font-size: 1.7rem; font-weight: 900; text-align: center; margin-bottom: 8px; line-height: 1.4; }
+  .subtitle { text-align: center; color: #94a3b8; font-size: 0.95rem; margin-bottom: 12px; }
+
+  /* まず結論ボックス */
+  .lead {
+    background: linear-gradient(135deg, #0ea5e9, #6366f1);
+    color: #fff;
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 28px 0 40px;
+    box-shadow: 0 8px 24px rgba(99,102,241,0.25);
+  }
+  .lead .big { font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; }
+  .lead p { font-size: 0.95rem; opacity: 0.95; }
+  .lead .flow {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; align-items: center;
+  }
+  .lead .chip {
+    background: rgba(255,255,255,0.2);
+    border-radius: 999px; padding: 6px 14px; font-size: 0.85rem; font-weight: 700;
+    white-space: nowrap;
+  }
+  .lead .arw { font-weight: 900; opacity: 0.8; }
+
+  /* 事前準備 */
+  .prep {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+  .prep h3 { font-size: 1.05rem; color: #92400e; margin-bottom: 12px; }
+  .prep h3::before { content: "🔑 "; }
+  .prep ul { list-style: none; }
+  .prep li { padding: 6px 0 6px 26px; position: relative; font-size: 0.92rem; color: #78350f; }
+  .prep li::before { content: "✔"; position: absolute; left: 0; color: #d97706; font-weight: 900; }
+
+  /* タブ */
+  .tabs { display: flex; gap: 10px; margin-bottom: 24px; }
+  .tab-btn {
+    flex: 1;
+    padding: 16px;
+    border: 2px solid #e2e8f0;
+    background: #fff;
+    border-radius: 14px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .tab-btn .os-ico { font-size: 1.4rem; display: block; margin-bottom: 4px; }
+  .tab-btn.active { border-color: #3b82f6; color: #1e40af; background: #eff6ff; box-shadow: 0 4px 12px rgba(59,130,246,0.15); }
+  .tab-btn.active.mac { border-color: #8b5cf6; color: #6d28d9; background: #f5f3ff; box-shadow: 0 4px 12px rgba(139,92,246,0.15); }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* ステップ */
+  .step {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px 26px 26px;
+    margin-bottom: 26px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    position: relative;
+    border-left: 5px solid #e2e8f0;
+  }
+  .step.blue { border-left-color: #3b82f6; }
+  .step.purple { border-left-color: #8b5cf6; }
+  .step.green { border-left-color: #059669; }
+  .step.yellow { border-left-color: #f59e0b; }
+
+  .step-num {
+    position: absolute;
+    top: -14px; left: 20px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; font-weight: 900; color: #fff;
+  }
+  .step.blue .step-num { background: #3b82f6; }
+  .step.purple .step-num { background: #8b5cf6; }
+  .step.green .step-num { background: #059669; }
+  .step.yellow .step-num { background: #f59e0b; }
+
+  .step h2 { font-size: 1.15rem; margin-bottom: 6px; padding-top: 6px; }
+  .step p { font-size: 0.94rem; color: #475569; margin-bottom: 10px; }
+  .step b { color: #1e293b; }
+
+  /* ダウンロードURLボックス */
+  .cmd {
+    background: #1e293b; color: #e2e8f0;
+    border-radius: 10px; padding: 14px 18px;
+    font-family: "Consolas", "SF Mono", monospace;
+    font-size: 0.85rem; line-height: 1.7;
+    margin: 12px 0; overflow-x: auto; word-break: break-all;
+  }
+  .cmd .url { color: #34d399; }
+
+  /* 画面イメージ（擬似スクショ） */
+  .mock {
+    border-radius: 12px; margin: 14px 0; overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .mock-bar {
+    background: #f1f5f9; padding: 8px 12px; display: flex; gap: 6px; align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .mock-bar .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .mock-bar .r { background: #f87171; } .mock-bar .y { background: #fbbf24; } .mock-bar .g { background: #34d399; }
+  .mock-bar .title { font-size: 0.75rem; color: #94a3b8; margin-left: 8px; }
+  .mock-body { background: #fff; padding: 16px; }
+
+  /* Finder/エクスプローラー風のサイドバー */
+  .filepane { display: flex; font-size: 0.85rem; min-height: 120px; }
+  .filepane .side { width: 42%; border-right: 1px solid #eef2f6; padding-right: 12px; }
+  .filepane .main { flex: 1; padding-left: 14px; }
+  .filepane .row { padding: 5px 8px; border-radius: 6px; color: #475569; display: flex; align-items: center; gap: 7px; }
+  .filepane .row.hl { background: #dbeafe; color: #1e40af; font-weight: 700; }
+  .filepane .row.hl.mac { background: #ede9fe; color: #6d28d9; }
+  .filepane .ico { font-size: 1rem; }
+  .filepane .folder { padding: 5px 8px; border-radius: 6px; color: #334155; display: flex; align-items: center; gap: 7px; }
+  .filepane .folder.target { background: #dcfce7; color: #166534; font-weight: 800; border: 1px dashed #4ade80; }
+
+  /* 右クリックメニュー風 */
+  .ctx {
+    display: inline-block; background: #fff; border: 1px solid #e2e8f0;
+    border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    padding: 6px; font-size: 0.85rem; min-width: 220px; margin: 12px 0;
+  }
+  .ctx .item { padding: 7px 12px; border-radius: 6px; color: #475569; }
+  .ctx .item.pick { background: #059669; color: #fff; font-weight: 700; }
+  .ctx .sep { height: 1px; background: #f1f5f9; margin: 4px 0; }
+
+  .note {
+    background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px;
+    padding: 12px 16px; font-size: 0.86rem; color: #92400e; margin: 12px 0;
+  }
+  .note::before { content: "⚠️ "; }
+  .tip {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px;
+    padding: 12px 16px; font-size: 0.86rem; color: #1e40af; margin: 12px 0;
+  }
+  .tip::before { content: "💡 "; }
+
+  .sub-steps { list-style: none; margin: 10px 0; font-size: 0.93rem; }
+  .sub-steps li { padding: 7px 0 7px 30px; position: relative; color: #475569; }
+  .sub-steps li .n {
+    position: absolute; left: 0; top: 6px; width: 20px; height: 20px; border-radius: 50%;
+    background: #e2e8f0; color: #475569; font-size: 0.72rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* 共有セクション（共通） */
+  .share {
+    background: #fff; border-radius: 16px; padding: 30px 26px 26px;
+    margin: 40px 0 26px; box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border-left: 5px solid #059669; position: relative;
+  }
+  .share .step-num { background: #059669; }
+
+  .footer { text-align: center; color: #cbd5e1; font-size: 0.8rem; margin-top: 40px; }
+
+  @media (max-width: 560px) {
+    .lead .flow { flex-direction: column; align-items: stretch; }
+    .lead .arw { transform: rotate(90deg); text-align: center; }
+    .filepane { flex-direction: column; }
+    .filepane .side { width: 100%; border-right: none; border-bottom: 1px solid #eef2f6; padding: 0 0 10px; margin-bottom: 10px; }
+    .filepane .main { padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Googleドライブ 設定手順書</h1>
+  <p class="subtitle">イズミー様 — 新しいパソコン用（写真共有フォルダの再設定）</p>
+
+  <div class="lead">
+    <div class="big">✅ 新しいPCでやることは、たった3つだけ</div>
+    <p>フォルダの中身も共有設定も「Googleのクラウド」に残っています。<br>新しいパソコンでは、以下を順番にやるだけで元通りになります。</p>
+    <div class="flow">
+      <span class="chip">① ドライブを入れる</span>
+      <span class="arw">→</span>
+      <span class="chip">② 同じアカウントでログイン</span>
+      <span class="arw">→</span>
+      <span class="chip">③ デスクトップにショートカット</span>
+    </div>
+  </div>
+
+  <div class="prep">
+    <h3>始める前に用意するもの</h3>
+    <ul>
+      <li>会社のGoogleアカウントの <b>メールアドレス</b>（前回と同じもの）</li>
+      <li>そのアカウントの <b>パスワード</b>（PCを買い替えた直後は忘れがち！事前にご確認を）</li>
+      <li>インターネットにつながっていること</li>
+    </ul>
+  </div>
+
+  <!-- タブ -->
+  <div class="tabs">
+    <button class="tab-btn win active" onclick="showTab('win')">
+      <span class="os-ico">🪟</span>Windows版
+    </button>
+    <button class="tab-btn mac" onclick="showTab('mac')">
+      <span class="os-ico">🍎</span>Mac版
+    </button>
+  </div>
+
+  <!-- ===================== Windows ===================== -->
+  <div class="panel win active" id="panel-win">
+
+    <div class="step blue">
+      <div class="step-num">1</div>
+      <h2>Googleドライブ（パソコン版）をインストール</h2>
+      <p>下のページを開いて「<b>ダウンロード</b>」ボタンを押し、ダウンロードされたファイルを開いてインストールします。</p>
+      <div class="cmd"><span class="url">https://workspace.google.com/intl/ja_jp/products/drive/#download</span></div>
+      <p>ファイル名は <b>GoogleDriveSetup.exe</b> のようなものです。ダブルクリックして、画面の指示どおり「はい／インストール」を押していけばOK。</p>
+    </div>
+
+    <div class="step purple">
+      <div class="step-num">2</div>
+      <h2>会社のGoogleアカウントでログイン</h2>
+      <p>インストールが終わると、ログイン画面（ブラウザ）が自動で開きます。<br><b>前回と同じ会社のアカウント</b>でログインしてください。</p>
+      <div class="note">ここが一番大事です。違うアカウントで入ると「フォルダが無い！」となります。必ず前回と同じメールアドレスで。</div>
+    </div>
+
+    <div class="step green">
+      <div class="step-num">3</div>
+      <h2>「Google Drive」ドライブが出てくるのを確認</h2>
+      <p>ログインが終わると、<b>エクスプローラー（PC）</b>の中に「Google Drive（G:）」という新しい場所が現れます。その中の「<b>マイドライブ</b>」に、前に作った「SNS用の箱」フォルダがそのまま入っています。</p>
+      <div class="mock">
+        <div class="mock-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="title">エクスプローラー</span></div>
+        <div class="mock-body">
+          <div class="filepane">
+            <div class="side">
+              <div class="row"><span class="ico">💻</span>PC</div>
+              <div class="row hl"><span class="ico">🅶</span>Google Drive (G:)</div>
+              <div class="row"><span class="ico">⬇️</span>ダウンロード</div>
+            </div>
+            <div class="main">
+              <div class="folder"><span class="ico">📁</span>マイドライブ</div>
+              <div class="folder target" style="margin-left:16px;"><span class="ico">📦</span>SNS用の箱</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tip">もし「SNS用の箱」が見当たらない場合は、ログインしたアカウントが違う可能性大。手順2をやり直してください。</div>
+    </div>
+
+    <div class="step yellow">
+      <div class="step-num">4</div>
+      <h2>デスクトップにショートカットを作る</h2>
+      <p>「SNS用の箱」フォルダを <b>右クリック</b> → メニューから作ります。</p>
+      <ul class="sub-steps">
+        <li><span class="n">1</span>「SNS用の箱」フォルダを右クリック</li>
+        <li><span class="n">2</span>「その他のオプションを表示」→「<b>送る</b>」を選ぶ</li>
+        <li><span class="n">3</span>「<b>デスクトップ（ショートカットを作成）</b>」をクリック</li>
+      </ul>
+      <div class="ctx">
+        <div class="item">開く</div>
+        <div class="item">コピー</div>
+        <div class="sep"></div>
+        <div class="item pick">送る ▸ デスクトップ（ショートカットを作成）</div>
+      </div>
+      <p>これでデスクトップに「SNS用の箱」の入口ができました。写真はこの箱に入れるだけで自動で共有されます。</p>
+    </div>
+
+  </div>
+
+  <!-- ===================== Mac ===================== -->
+  <div class="panel mac" id="panel-mac">
+
+    <div class="step blue">
+      <div class="step-num">1</div>
+      <h2>Googleドライブ（パソコン版）をインストール</h2>
+      <p>下のページを開いて「<b>ダウンロード</b>」ボタンを押し、ダウンロードされたファイルを開いてインストールします。</p>
+      <div class="cmd"><span class="url">https://workspace.google.com/intl/ja_jp/products/drive/#download</span></div>
+      <p>ファイル名は <b>GoogleDrive.dmg</b> です。ダブルクリックで開き、中の「Google Drive」アイコンを「アプリケーション」フォルダにドラッグします。</p>
+      <div class="note">初回起動時に「ダウンロードしたアプリを開きますか？」と聞かれたら「開く」を、ファイルへのアクセス許可を聞かれたら「OK」を押してください。</div>
+    </div>
+
+    <div class="step purple">
+      <div class="step-num">2</div>
+      <h2>会社のGoogleアカウントでログイン</h2>
+      <p>インストール後にログイン画面（ブラウザ）が開きます。<br><b>前回と同じ会社のアカウント</b>でログインしてください。</p>
+      <div class="note">ここが一番大事です。違うアカウントで入ると「フォルダが無い！」となります。必ず前回と同じメールアドレスで。</div>
+    </div>
+
+    <div class="step green">
+      <div class="step-num">3</div>
+      <h2>「Google Drive」が Finder に出てくるのを確認</h2>
+      <p>ログインが終わると、<b>Finder</b> の左側（サイドバー）に「Google Drive」が現れます。その中の「<b>マイドライブ</b>」に、前に作った「SNS用の箱」フォルダがそのまま入っています。</p>
+      <div class="mock">
+        <div class="mock-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="title">Finder</span></div>
+        <div class="mock-body">
+          <div class="filepane">
+            <div class="side">
+              <div class="row"><span class="ico">🖥️</span>デスクトップ</div>
+              <div class="row hl mac"><span class="ico">🅶</span>Google Drive</div>
+              <div class="row"><span class="ico">⬇️</span>ダウンロード</div>
+            </div>
+            <div class="main">
+              <div class="folder"><span class="ico">📁</span>マイドライブ</div>
+              <div class="folder target" style="margin-left:16px;"><span class="ico">📦</span>SNS用の箱</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tip">もし「SNS用の箱」が見当たらない場合は、ログインしたアカウントが違う可能性大。手順2をやり直してください。</div>
+    </div>
+
+    <div class="step yellow">
+      <div class="step-num">4</div>
+      <h2>デスクトップにショートカット（エイリアス）を作る</h2>
+      <p>「SNS用の箱」フォルダを <b>右クリック（またはcontrol＋クリック）</b> して作ります。</p>
+      <ul class="sub-steps">
+        <li><span class="n">1</span>「SNS用の箱」フォルダを右クリック</li>
+        <li><span class="n">2</span>メニューから「<b>エイリアスを作成</b>」をクリック</li>
+        <li><span class="n">3</span>できた「SNS用の箱のエイリアス」を <b>デスクトップにドラッグ</b>で移動</li>
+      </ul>
+      <div class="ctx">
+        <div class="item">開く</div>
+        <div class="item">情報を見る</div>
+        <div class="sep"></div>
+        <div class="item pick">エイリアスを作成</div>
+      </div>
+      <p>これでデスクトップに「SNS用の箱」の入口ができました。写真はこの箱に入れるだけで自動で共有されます。</p>
+    </div>
+
+  </div>
+
+  <!-- ===================== 共有（共通） ===================== -->
+  <div class="share">
+    <div class="step-num">★</div>
+    <h2>【たぶん不要】共有設定について</h2>
+    <p>前回すでに担当者のメールアドレスを「<b>編集者</b>」で共有済みです。<br><b>同じアカウントでログインする限り、共有はそのまま生きています</b>ので、作り直す必要はありません。</p>
+    <p style="margin-top:14px;"><b>もし共有が切れていた場合だけ</b>、以下をやり直してください：</p>
+    <ul class="sub-steps">
+      <li><span class="n">1</span>「SNS用の箱」フォルダを右クリック →「Google Driveで共有」を選ぶ</li>
+      <li><span class="n">2</span>担当者のメールアドレスを入力</li>
+      <li><span class="n">3</span>権限を「<b>編集者</b>」にして「送信／完了」を押す</li>
+    </ul>
+  </div>
+
+  <div class="tip" style="font-size:0.9rem;">
+    <b>使い方（イズミー様へ）：</b> 以降は、SNSに使ってほしい写真を、デスクトップの「SNS用の箱」に入れるだけ。自動でクラウドに上がり、こちらから見られるようになります。
+  </div>
+
+  <div class="footer">RUNBIRD — Googleドライブ設定サポート資料</div>
+
+</div>
+
+<script>
+  function showTab(os) {
+    document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById('panel-' + os).classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelector('.tab-btn.' + os).classList.add('active');
+  }
+</script>
+</body>
+</html>
