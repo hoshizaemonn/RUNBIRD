@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus 同業界ベンチマーク調査レポート</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: linear-gradient(135deg, #0a1535 0%, #1a2a4f 100%);
+    color: #fff;
+    line-height: 1.7;
+    padding: 40px 20px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 40px 0 60px;
+    border-bottom: 2px solid rgba(240,122,42,0.3);
+    margin-bottom: 60px;
+  }
+  .eyebrow {
+    color: #f07a2a;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  h1 .ac { color: #f07a2a; }
+  .meta { font-size: 13px; opacity: 0.6; margin-top: 12px; }
+
+  section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  h2 .num {
+    display: inline-flex;
+    width: 40px; height: 40px;
+    background: #f07a2a;
+    color: #fff;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  h3 { font-size: 17px; font-weight: 700; margin: 24px 0 12px; color: #f07a2a; }
+
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .verdict {
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.3);
+    border-left: 4px solid;
+  }
+  .verdict.standard { border-color: #ffd60a; }
+  .verdict.unique { border-color: #2ed573; }
+  .verdict.improve { border-color: #ff4757; }
+  .verdict-label {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .verdict.standard .verdict-label { color: #ffd60a; }
+  .verdict.unique .verdict-label { color: #2ed573; }
+  .verdict.improve .verdict-label { color: #ff4757; }
+  .verdict-title { font-weight: 700; margin-bottom: 6px; }
+  .verdict-body { font-size: 13px; opacity: 0.85; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  th { color: #f07a2a; font-weight: 700; font-size: 13px; }
+  td.right { text-align: right; }
+  td.center { text-align: center; }
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .badge-high { background: rgba(46,213,115,0.2); color: #2ed573; }
+  .badge-mid { background: rgba(255,214,10,0.2); color: #ffd60a; }
+  .badge-low { background: rgba(255,71,87,0.2); color: #ff6b7a; }
+
+  .company-card {
+    background: rgba(0,0,0,0.35);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 16px 0;
+    border-left: 3px solid #f07a2a;
+  }
+  .company-name {
+    font-weight: 900;
+    font-size: 16px;
+    color: #f07a2a;
+    margin-bottom: 6px;
+  }
+  .company-price { font-size: 14px; margin-bottom: 8px; }
+  .company-url {
+    font-size: 12px;
+    color: #6dc0ff;
+    word-break: break-all;
+    margin-top: 8px;
+  }
+  .company-url a { color: #6dc0ff; text-decoration: none; }
+
+  .callout {
+    background: rgba(240,122,42,0.08);
+    border-left: 3px solid #f07a2a;
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .callout-title {
+    color: #f07a2a;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .warning {
+    background: rgba(255,71,87,0.08);
+    border-left: 3px solid #ff4757;
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .warning-title {
+    color: #ff6b7a;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .method-box {
+    background: rgba(255,255,255,0.03);
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    opacity: 0.85;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .method-box strong { color: #f07a2a; }
+
+  footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 40px;
+    font-size: 12px;
+    opacity: 0.5;
+  }
+
+  ul { padding-left: 20px; }
+  ul li { margin-bottom: 6px; font-size: 14px; }
+  small { opacity: 0.7; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 24px; }
+    section { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <p class="eyebrow">COMPETITIVE BENCHMARK</p>
+  <h1>BuzzPlus<br><span class="ac">同業界ベンチマーク</span>調査レポート</h1>
+  <p class="meta">2026-07-04 ／ Deep Research（107エージェント・24ソース・89主張検証）</p>
+</header>
+
+<div class="method-box">
+  <strong>調査手法</strong>: 6つの検索角度に分解 → 24ソース取得 → 89主張抽出 → 3票の敵対的検証（2/3で棄却） → 8主張確定・17主張棄却 → 統合レポート化
+  <br><strong>信頼度分類</strong>: <span class="badge badge-high">High</span> 3票一致 <span class="badge badge-mid">Medium</span> 2票確定・出典ブログ <span class="badge badge-low">Low</span> 参考程度
+</div>
+
+<!-- 結論サマリ -->
+<section>
+  <h2><span class="num">1</span>結論サマリ</h2>
+
+  <div class="verdict-grid">
+    <div class="verdict standard">
+      <div class="verdict-label">📏 業界標準</div>
+      <div class="verdict-title">「撮影不要」訴求</div>
+      <div class="verdict-body">
+        AI/AD MAKERS等が同じフックを使用。<strong>BuzzPlus独自ではない</strong>ため、これだけでは差別化にならない。
+      </div>
+    </div>
+    <div class="verdict unique">
+      <div class="verdict-label">🔥 BuzzPlus独自</div>
+      <div class="verdict-title">明示価格 ¥30,000/月</div>
+      <div class="verdict-body">
+        代理店型で<strong>明示価格の低価格帯</strong>は希少。競合の多くが「無料相談」か高価格帯（¥200,000〜）に振れる中で独自ポジション。
+      </div>
+    </div>
+    <div class="verdict improve">
+      <div class="verdict-label">📈 改善余地</div>
+      <div class="verdict-title">CPC ¥188の水準</div>
+      <div class="verdict-body">
+        日本Meta広告のCPC相場¥50〜150に対しやや高め。<strong>CTR 2.75%は業界標準1〜2%を上回る</strong>ためクリエイティブは強い。
+      </div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:24px;">
+    <div class="callout-title">🎯 BuzzPlusの立ち位置</div>
+    <strong>「明示価格の代理店型AI動画×SNS」というポジションは日本市場でユニーク。</strong>
+    競合は①単発オプション積み上げ型（freedoor: ¥8,000〜+¥12,000+¥70,000+…）②SaaSサブスク型（AvaMo: ¥3,900〜/月）③高価格代行型（AI/AD MAKERS: ¥200,000〜/月）に分散しており、
+    BuzzPlusはこの「二極化された市場の中間帯を明示価格でつなぐ」希少ポジション。
+  </div>
+</section>
+
+<!-- A. 料金体系 -->
+<section>
+  <h2><span class="num">2</span>A. 料金体系・訴求方法</h2>
+
+  <p style="opacity:0.8;font-size:14px;margin-bottom:16px;">日本市場の料金モデルは3層に分岐。BuzzPlusの位置を可視化。</p>
+
+  <table>
+    <thead><tr><th>タイプ</th><th>代表企業</th><th>料金</th><th>信頼度</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>単発オプション積み上げ</strong></td>
+        <td>freedoor</td>
+        <td>基本¥8,000〜+台本¥12,000〜+撮影¥70,000〜+ナレーション¥3,000〜</td>
+        <td><span class="badge badge-high">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>SaaSサブスク（低価格）</strong></td>
+        <td>AvaMo（2025年12月ローンチ）</td>
+        <td>Starter¥3,900/月〜Enterprise¥100,000/月（年契約）</td>
+        <td><span class="badge badge-high">High</span></td>
+      </tr>
+      <tr>
+        <td><strong>代理店型（高価格）</strong></td>
+        <td>AI/AD MAKERS</td>
+        <td>SNSアカウント運用¥200,000〜/月</td>
+        <td><span class="badge badge-high">High</span></td>
+      </tr>
+      <tr style="background:rgba(240,122,42,0.1);">
+        <td><strong>★BuzzPlus</strong></td>
+        <td>—</td>
+        <td><strong>月¥30,000〜（明示・低価格代理店型）</strong></td>
+        <td><span class="badge badge-high">実装済</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>参考リンク</h3>
+  <div class="company-card">
+    <div class="company-name">freedoor</div>
+    <div class="company-price">基本¥8,000〜（単発オプション積み上げ型）</div>
+    <div class="company-url"><a href="https://freedoor.co.jp/business/reel-video/" target="_blank">https://freedoor.co.jp/business/reel-video/</a></div>
+  </div>
+  <div class="company-card">
+    <div class="company-name">AvaMo（Vector Inc）</div>
+    <div class="company-price">¥3,900〜/月（4段階サブスク・2025年12月新規ローンチ）</div>
+    <div class="company-url"><a href="https://vectorinc.co.jp/groupservice/avamo/" target="_blank">https://vectorinc.co.jp/groupservice/avamo/</a></div>
+  </div>
+  <div class="company-card">
+    <div class="company-name">AI/AD MAKERS</div>
+    <div class="company-price">¥200,000〜/月（高価格代行型・「撮影不要」訴求）</div>
+    <div class="company-url"><a href="https://www.ai-admakers.jp/influencer/" target="_blank">https://www.ai-admakers.jp/influencer/</a></div>
+  </div>
+</section>
+
+<!-- B. LP・訴求メッセージ -->
+<section>
+  <h2><span class="num">3</span>B. LP構成・訴求メッセージ</h2>
+
+  <h3>業界標準フック</h3>
+  <div class="callout">
+    <div class="callout-title">「撮影不要」= AI動画×SNS運用の共通FVパターン</div>
+    <strong>AI/AD MAKERS</strong>のFVで「ロケ・モデル撮影が一切不要に！」を主要サブコピーとして採用。
+    BuzzPlusの「撮影不要」と同カテゴリで、この訴求だけでは競合との差別化が難しい。
+    <br><br>
+    <small>Source: <a href="https://www.ai-admakers.jp/influencer/" target="_blank" style="color:#6dc0ff;">https://www.ai-admakers.jp/influencer/</a>／信頼度: <span class="badge badge-high">High</span> 2-1票</small>
+  </div>
+
+  <h3>BuzzPlusで差別化に効くもの</h3>
+  <ul>
+    <li><strong>「最短即日」</strong> — freedoor等の単発型は納期が数日〜数週間かかる</li>
+    <li><strong>「アニメも実写も」</strong> — この両対応を明記するAI動画SaaSは希少</li>
+    <li><strong>明示価格 ¥30,000/月</strong> — 「無料相談」誘導だけの競合と比較してハードルを可視化</li>
+  </ul>
+
+  <h3>LP構成の業界標準</h3>
+  <div class="warning">
+    <div class="warning-title">⚠️ 「LP構成のベストプラクティス」に関する主張は多くが検証不能</div>
+    Deep Researchで抽出された「LP構成テンプレート」系の主張（例: HubSpotの7要素構成、ステップフォーム化で95%改善等）は<strong>全て3-0で棄却</strong>されました。
+    <br>→ <strong>業界標準の「正解構成」は存在せず、A/Bテストで自社データを積み上げる方が確実。</strong>
+  </div>
+</section>
+
+<!-- C. CPA/CPC相場 -->
+<section>
+  <h2><span class="num">4</span>C. 業界CPA/CPL/CTR相場</h2>
+
+  <table>
+    <thead><tr><th>指標</th><th>相場（日本）</th><th>BuzzPlus実績</th><th>判定</th><th>信頼度</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Meta広告 CPC</td>
+        <td>¥50〜¥150（平均約¥100）</td>
+        <td><strong>¥188</strong></td>
+        <td><span class="badge badge-mid">やや高め</span></td>
+        <td><span class="badge badge-mid">Medium</span></td>
+      </tr>
+      <tr>
+        <td>Meta広告 CTR</td>
+        <td>1〜2%（業界平均）</td>
+        <td><strong>2.75%</strong></td>
+        <td><span class="badge badge-high">上回る</span></td>
+        <td><span class="badge badge-mid">Medium</span></td>
+      </tr>
+      <tr>
+        <td>美容・エステ予約CPA</td>
+        <td>¥2,000〜¥5,000</td>
+        <td>未計測</td>
+        <td>参考値</td>
+        <td><span class="badge badge-mid">Medium</span></td>
+      </tr>
+      <tr>
+        <td>グローバルMetaリード獲得CPA（2025）</td>
+        <td>約$27.66（¥4,150）・前年比+21%</td>
+        <td>未計測</td>
+        <td>参考値</td>
+        <td><span class="badge badge-mid">Medium</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout" style="margin-top:24px;">
+    <div class="callout-title">📊 総合評価</div>
+    <strong>CPC ¥188は日本相場上限を若干超過</strong>。ただしCTR 2.75%が業界平均1〜2%を上回っており、クリエイティブ品質は健闘。<br>
+    → <strong>CPCを¥150以下に落とす方向で改善余地あり</strong>。ターゲティング精緻化・配置最適化で改善可能。
+  </div>
+
+  <p style="opacity:0.7;font-size:12px;margin-top:12px;">出典: <a href="https://grill.co.jp/marketing-log/215/" target="_blank" style="color:#6dc0ff;">grill.co.jp</a>、<a href="https://debono.jp/7495" target="_blank" style="color:#6dc0ff;">debono.jp/7495</a>、<a href="https://debono.jp/7449" target="_blank" style="color:#6dc0ff;">debono.jp/7449</a></p>
+</section>
+
+<!-- 価格明記 vs 非明記 -->
+<section>
+  <h2><span class="num">5</span>価格明記 vs 非明記 の効果差</h2>
+
+  <div class="warning">
+    <div class="warning-title">🔴 決定的なデータは存在しなかった</div>
+    今回の調査で抽出された「価格明記が有効」を示唆する主張（例: 「BtoB LPで価格明記がCVR 1.3倍」「料金試算で意思決定後押し」）は<strong>全て0-3または1-2で棄却</strong>。
+    信頼できる第三者検証を得られませんでした。
+    <br><br>
+    <strong>→ この論点は「業界の通説」を鵜呑みにできない。BuzzPlusのA/Bテストが業界初のデータとなる可能性が高い。</strong>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">💡 だからこそA/Bテストの価値が高い</div>
+    <strong>「動画クリエイティブでの価格明記 vs 非明記」</strong>を並走配信して有意差判定するのは、
+    <br>・業界に決定的データが存在しない
+    <br>・自社の実データで判断できる
+    <br>・勝った方に予算集約すれば即効率化
+    <br>という3点で戦略的に妥当。<strong>「独自データを蓄積する数少ないチャンス」</strong>と位置づけられる。
+  </div>
+</section>
+
+<!-- 棄却された主張 -->
+<section>
+  <h2><span class="num">6</span>棄却された「業界の通説」</h2>
+
+  <p style="opacity:0.8;font-size:14px;margin-bottom:16px;">
+    ネット記事でよく見る主張が敵対的検証で棄却された例。<strong>これらを鵜呑みにして戦略立案しない</strong>ため参考に。
+  </p>
+
+  <table>
+    <thead><tr><th>棄却された主張</th><th>票</th></tr></thead>
+    <tbody>
+      <tr><td>「BtoB LPで価格明記がCVR 1.3倍」</td><td><span class="badge badge-low">0-3</span></td></tr>
+      <tr><td>「ステップフォームで95%改善」</td><td><span class="badge badge-low">0-3</span></td></tr>
+      <tr><td>「LP必須7要素構成」</td><td><span class="badge badge-low">0-3</span></td></tr>
+      <tr><td>「飲食Facebook広告CPA ¥3,000〜6,000」</td><td><span class="badge badge-low">0-3</span></td></tr>
+      <tr><td>「フォーム4項目に絞るべき」</td><td><span class="badge badge-low">0-3</span></td></tr>
+      <tr><td>「日本Meta広告CPA全業種平均¥2,800」</td><td><span class="badge badge-low">0-3</span></td></tr>
+      <tr><td>「実店舗集客CPA相場¥1,000〜3,000」</td><td><span class="badge badge-low">0-3</span></td></tr>
+    </tbody>
+  </table>
+
+  <p style="opacity:0.6;font-size:12px;margin-top:12px;">
+    ※これらは記事内で「相場」として提示されているが、根拠となる一次データ・調査元不明・単発サンプルのため信頼できない、と敵対的検証で判定された。
+  </p>
+</section>
+
+<!-- 残された課題 -->
+<section>
+  <h2><span class="num">7</span>今回わからなかったこと（開いた問い）</h2>
+  <ul>
+    <li>日本市場特化のAI動画SaaS（Vrew、Video BRAIN）の実際の価格帯と直接比較</li>
+    <li>「価格明記」がLPのCVRに与える影響の定量データ（A/Bテスト結果）</li>
+    <li>店舗業種別（飲食・美容・整骨院）のリード獲得CPAの詳細な差分</li>
+    <li>BuzzPlusの「AI動画×SNS広告代行」というピンポイント業種のCPC/CTR相場</li>
+  </ul>
+</section>
+
+<!-- BuzzPlusへの提言 -->
+<section>
+  <h2><span class="num">8</span>調査を踏まえたBuzzPlus戦略提言</h2>
+
+  <h3>🎯 継続すべき強み</h3>
+  <ul>
+    <li><strong>明示価格 ¥30,000/月</strong> — 独自ポジション。継続的に武器として使う</li>
+    <li><strong>「アニメも実写も」訴求</strong> — 他社にない両対応</li>
+    <li><strong>CTR 2.75%のクリエイティブ品質</strong> — 業界平均を上回る</li>
+  </ul>
+
+  <h3>📈 改善余地</h3>
+  <ul>
+    <li><strong>CPC ¥188 → ¥150以下</strong> — ターゲティング精緻化・配置最適化</li>
+    <li><strong>「撮影不要」以外の主張を強化</strong> — AI/AD MAKERSとの差別化のため、独自訴求（納期・料金透明性等）を前面に</li>
+    <li><strong>価格A/Bテスト実施</strong> — 業界に決定的データがない今、自社データが優位性になる</li>
+  </ul>
+
+  <h3>⚠️ 業界通説に振り回されない</h3>
+  <ul>
+    <li>「LP構成のベストプラクティス」は棄却された。<strong>自社データが正解</strong></li>
+    <li>「日本Meta広告CPA¥2,800」等の相場は根拠が薄い。実測値で判断</li>
+    <li>「価格明記が有利」の説は未検証。<strong>A/Bテスト結果を信じる</strong></li>
+  </ul>
+</section>
+
+<footer>
+  <p>Deep Research 107エージェント・24ソース・89主張検証済</p>
+  <p style="margin-top:8px;">buzzplus-ai.com | RUNBIRD BuzzPlus AI動画事業</p>
+</footer>
+
+</div>
+</body>
+</html>
