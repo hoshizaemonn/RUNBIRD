@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>【淺川様向け】預金口座振替依頼書 記入ガイド</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    line-height: 1.7;
+    padding: 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  header {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  header h1 { font-size: 26px; margin-bottom: 8px; }
+  header p { opacity: 0.95; font-size: 14px; }
+
+  section {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  section h2 {
+    font-size: 22px;
+    padding: 10px 16px;
+    background: #48bb78;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+
+  /* 概要ボックス */
+  .intro-box {
+    background: #f0fff4;
+    border-left: 5px solid #48bb78;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  .intro-box strong { color: #22543d; }
+
+  /* 記入項目カード */
+  .field-card {
+    background: #f7fafc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 2px solid #e2e8f0;
+  }
+  .field-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .field-num {
+    background: #f56565;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .field-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2d3748;
+  }
+  .field-body {
+    padding-left: 52px;
+  }
+  .example-box {
+    background: white;
+    border: 2px dashed #48bb78;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 12px 0;
+    font-family: monospace;
+    font-size: 16px;
+  }
+  .example-label {
+    display: inline-block;
+    background: #48bb78;
+    color: white;
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .warn {
+    background: #fff5f5;
+    border-left: 4px solid #f56565;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .warn strong { color: #742a2a; }
+
+  .tip {
+    background: #fffaf0;
+    border-left: 4px solid #ed8936;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  /* チェックリスト */
+  .checklist {
+    background: #f7fafc;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 12px 0;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 14px;
+  }
+  .checkbox-mark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #48bb78;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* 郵送手順 */
+  .mail-steps {
+    display: grid;
+    gap: 12px;
+  }
+  .mail-step {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #edf2f7;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  .mail-step-num {
+    background: #667eea;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  .address-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #667eea;
+    margin: 12px 0;
+    font-family: monospace;
+    line-height: 1.9;
+    font-size: 15px;
+  }
+
+  /* 2枚目のフォーム説明 */
+  .page2-check {
+    background: #fef3c7;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 12px 0;
+  }
+  .page2-item {
+    background: white;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+  }
+  .check-square {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #333;
+    display: inline-block;
+    flex-shrink: 0;
+    text-align: center;
+    line-height: 18px;
+    font-weight: bold;
+  }
+  .check-square.checked {
+    background: #48bb78;
+    color: white;
+    border-color: #48bb78;
+  }
+  .check-square.checked::after {
+    content: "✓";
+  }
+
+  .highlight-yellow {
+    background: #fef3c7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: #718096;
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    .field-body { padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>📄 預金口座振替依頼書 記入ガイド</h1>
+    <p>淺川様向け・イプシロン提出用 / 2026-07-04作成</p>
+  </header>
+
+  <!-- 概要 -->
+  <section>
+    <h2>📌 はじめに（この書類は何？）</h2>
+    <div class="intro-box">
+      <p><strong>この書類は</strong>、GMOイプシロン（決済代行会社）の利用料金の <strong>引き落とし口座</strong> を登録するためのものです。</p>
+      <br>
+      <p>💡 <strong>安心ポイント</strong>：<br>
+      売上から利用料金が相殺されるので、<span class="highlight-yellow">通常は口座から引き落としは発生しません</span>。<br>
+      売上が少なかった月だけ、この口座から引き落とされます。</p>
+      <br>
+      <p>👉 <strong>登録する口座は「売上入金口座と同じ」がおすすめ</strong>です。<br>
+      通帳一本で管理できて、残高不足の心配もありません。</p>
+    </div>
+  </section>
+
+  <!-- 記入する4項目 -->
+  <section>
+    <h2>✏️ 記入する項目（4つだけ）</h2>
+
+    <!-- ① 契約コード -->
+    <div class="field-card">
+      <div class="field-header">
+        <div class="field-num">①</div>
+        <div class="field-title">契約コード（数字8桁）</div>
+      </div>
+      <div class="field-body">
+        <p>GMOイプシロンから発行された<strong>8桁の数字</strong>を記入します。</p>
+        <div class="example-box">
+          <span class="example-label">記入例</span><br>
+          1 2 3 4 5 6 7 8
+        </div>
+        <div class="tip">
+          💡 <strong>契約コードはどこで確認？</strong><br>
+          ・GMOイプシロン契約完了メール<br>
+          ・GMOイプシロン管理画面のマイページ
+        </div>
+      </div>
+    </div>
+
+    <!-- ② 口座名義人 -->
+    <div class="field-card">
+      <div class="field-header">
+        <div class="field-num">②</div>
+        <div class="field-title">口座名義人（フリガナ＋名前）</div>
+      </div>
+      <div class="field-body">
+        <p><strong>個人契約の場合</strong>（.lookは個人契約想定）：</p>
+        <div class="example-box">
+          <span class="example-label">記入例（個人契約）</span><br>
+          フリガナ　： アサカワ ユウシ<br>
+          預金者名 ： 淺川 雄史
+        </div>
+        <div class="warn">
+          ⚠️ <strong>重要</strong>：<br>
+          「通帳に書いてある名義」ではなく<br>
+          <strong>「金融機関に登録されている正式な名義」</strong>を書いてください。<br>
+          （通帳と登録名義が違うことがあります）
+        </div>
+        <div class="tip">
+          💡 分からない場合は、ご利用の銀行に「私の口座の正式な名義は何ですか？」とお問い合わせください。
+        </div>
+        <details style="margin-top:12px;background:#edf2f7;padding:12px;border-radius:6px;">
+          <summary style="cursor:pointer;font-weight:bold;">法人契約の場合（該当する方のみ）</summary>
+          <div class="example-box" style="margin-top:12px;">
+            <span class="example-label">記入例（法人契約）</span><br>
+            フリガナ　： カブシキガイシャ〇〇 ダイヒョウトリシマリヤク アサカワユウシ<br>
+            預金者名 ： 株式会社〇〇 代表取締役 淺川 雄史
+          </div>
+          <div class="warn">
+            ⚠️ 法人契約の場合は <strong>「会社名＋肩書き＋代表者名」まで全部</strong>書いてください。<br>
+            通帳に会社名しか書いてなくても、登録名義は「代表者名まで」の場合が多いです。
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ③ 銀行口座 -->
+    <div class="field-card">
+      <div class="field-header">
+        <div class="field-num">③</div>
+        <div class="field-title">銀行口座の情報</div>
+      </div>
+      <div class="field-body">
+        <p><strong>ゆうちょ銀行以外の場合</strong>：</p>
+        <div class="example-box">
+          <span class="example-label">記入例（普通の銀行）</span><br>
+          銀行名　　： みずほ<br>
+          支店名　　： 東京中央<br>
+          種別　　　： <span class="highlight-yellow">普通預金</span> or 当座預金 に○<br>
+          支店区分　： <span class="highlight-yellow">本店</span> / 支店 / 出張所 に○<br>
+          店番号　　： 123<br>
+          口座番号　： 1234567
+        </div>
+        <p style="margin-top:16px;"><strong>ゆうちょ銀行の場合</strong>：</p>
+        <div class="example-box">
+          <span class="example-label">記入例（ゆうちょ）</span><br>
+          通帳記号　： 12340<br>
+          通帳番号　： &nbsp;&nbsp;&nbsp;&nbsp;12345678（右詰めで記入）
+        </div>
+        <div class="warn">
+          ⚠️ <strong>ネット銀行は登録できない場合あり</strong><br>
+          特に <strong>GMOあおぞらネット銀行は登録不可</strong> です。
+        </div>
+        <div class="tip">
+          💡 <strong>通帳番号が8桁より少ない場合</strong><br>
+          右詰めで書いてください（左は空欄）。
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ 銀行印 -->
+    <div class="field-card">
+      <div class="field-header">
+        <div class="field-num">④</div>
+        <div class="field-title">金融機関お届け印（銀行印）</div>
+      </div>
+      <div class="field-body">
+        <p><strong>その口座を作った時に銀行に登録した印鑑</strong>を押します。</p>
+        <div class="warn">
+          ⚠️ <strong>絶対に注意</strong>：<br>
+          ・「認印」ではなく <strong>「銀行お届け印」</strong>を押してください<br>
+          ・複数の印鑑を押さないでください<br>
+          ・かすれ・にじみに注意（<strong>鮮明に</strong>押す）<br>
+          ・印鑑不鮮明で <strong>再提出が多発</strong>しています！
+        </div>
+        <div class="tip">
+          💡 印鑑の登録がない口座の場合は空欄でOK
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 修正時の注意 -->
+  <section>
+    <h2>✍️ 記入ミスした時の直し方</h2>
+    <div class="warn">
+      ❌ <strong>修正液・修正テープ は絶対NG</strong>
+    </div>
+    <p>✅ <strong>正しい直し方</strong>：</p>
+    <ol style="padding-left:24px;line-height:2;">
+      <li>間違えた部分に<strong>二重線</strong>を引く</li>
+      <li>その上に<strong>訂正印（銀行お届け印と同じ印鑑）</strong>を押す</li>
+      <li>正しい内容を近くに書く</li>
+    </ol>
+  </section>
+
+  <!-- 2枚目のフォーム -->
+  <section>
+    <h2>📋 もう1枚のフォーム「料金支払い方法登録依頼書」</h2>
+    <p>1枚目（振替依頼書）と一緒に、<strong>2枚目のフォーム</strong>も記入して郵送します。</p>
+
+    <div class="page2-check">
+      <h3 style="margin-bottom:12px;color:#7c2d12;">✏️ 記入する内容</h3>
+
+      <div class="page2-item">
+        <div style="flex:1;">
+          <strong>1. 基本情報</strong><br>
+          <small>記入日 / 契約コード（8桁） / 会社名または個人名</small>
+        </div>
+      </div>
+
+      <div class="page2-item">
+        <div class="check-square checked"></div>
+        <div>
+          <strong>2. 提出理由</strong> → <span class="highlight-yellow">「新規契約」にチェック</span>
+        </div>
+      </div>
+
+      <div class="page2-item">
+        <div class="check-square checked"></div>
+        <div>
+          <strong>3. 口座名義の確認</strong> →<br>
+          「金融機関に登録している正式な口座名義であることを確認しています」にチェック
+        </div>
+      </div>
+
+      <div class="page2-item">
+        <div>
+          <strong>4. 法人契約の場合のみ</strong> →<br>
+          <small>個人契約の淺川様は<strong>4はチェック不要</strong>です</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 郵送手順 -->
+  <section>
+    <h2>📮 郵送手順</h2>
+
+    <div class="mail-steps">
+      <div class="mail-step">
+        <div class="mail-step-num">1</div>
+        <div><strong>1枚目（振替依頼書）と2枚目（登録依頼書）を用意</strong></div>
+      </div>
+      <div class="mail-step">
+        <div class="mail-step-num">2</div>
+        <div><strong>両方の原本を封筒に入れる</strong>（コピーではなく<span class="highlight-yellow">原本</span>）</div>
+      </div>
+      <div class="mail-step">
+        <div class="mail-step-num">3</div>
+        <div><strong>下記の郵送先に送付</strong>（郵便局窓口で <span class="highlight-yellow">特定記録</span> or <span class="highlight-yellow">簡易書留</span> がオススメ）</div>
+      </div>
+      <div class="mail-step">
+        <div class="mail-step-num">4</div>
+        <div><strong>管理画面から書類PDFのアップロード</strong>もお忘れなく（新規契約の場合必要）</div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:24px;color:#2d3748;">📬 郵送先</h3>
+    <div class="address-box">
+      〒880-0801<br>
+      宮崎県宮崎市老松2丁目2-1<br>
+      GMOインターネットグループ総合配送センター<br>
+      <strong>GMOイプシロン株式会社 申込受付係</strong>
+    </div>
+
+    <div class="warn">
+      ⚠️ <strong>重要書類なので配達追跡できる方法（特定記録・簡易書留）を推奨</strong>します。<br>
+      郵送中の紛失・遅延について、GMOイプシロン側では責任を負わないとのことです。
+    </div>
+  </section>
+
+  <!-- 最終チェック -->
+  <section>
+    <h2>✅ 発送前 最終チェックリスト</h2>
+    <div class="checklist">
+      <div class="checklist-item"><div class="checkbox-mark"></div><span>① 契約コード（8桁）記入した</span></div>
+      <div class="checklist-item"><div class="checkbox-mark"></div><span>② 口座名義人（フリガナ＋名前）記入した</span></div>
+      <div class="checklist-item"><div class="checkbox-mark"></div><span>③ 銀行口座情報（銀行名・支店・口座番号）記入した</span></div>
+      <div class="checklist-item"><div class="checkbox-mark"></div><span>④ 銀行お届け印を鮮明に押した（認印ではない）</span></div>
+      <div class="checklist-item"><div class="checkbox-mark"></div><span>2枚目のフォーム（登録依頼書）も記入した</span></div>
+      <div class="checklist-item"><div class="checkbox-mark"></div><span>1枚目・2枚目の <strong>原本</strong> を封筒に入れた（コピーではない）</span></div>
+      <div class="checklist-item"><div class="checkbox-mark"></div><span>郵送先住所を確認した（宮崎県宮崎市）</span></div>
+      <div class="checklist-item"><div class="checkbox-mark"></div><span>特定記録 or 簡易書留 で発送する</span></div>
+      <div class="checklist-item"><div class="checkbox-mark"></div><span>管理画面から書類PDFのアップロードもする</span></div>
+    </div>
+  </section>
+
+  <!-- 困った時 -->
+  <section>
+    <h2>🆘 困った時は</h2>
+    <div class="intro-box">
+      <p><strong>ご不明点があれば、いつでもお気軽にご相談ください。</strong></p>
+      <br>
+      <p>よくあるお問い合わせ：</p>
+      <ul style="padding-left:24px;line-height:2;">
+        <li>契約コードが分からない</li>
+        <li>個人契約か法人契約か迷う</li>
+        <li>口座の正式名義が分からない</li>
+        <li>ネット銀行の口座しかない</li>
+      </ul>
+      <br>
+      <p>→ 分からないところは<strong>そのまま空欄</strong>にせず、事前にご相談ください🙏</p>
+    </div>
+  </section>
+
+  <footer>
+    .look（どっとるっく） / 2026-07-04作成
+  </footer>
+
+</div>
+</body>
+</html>
