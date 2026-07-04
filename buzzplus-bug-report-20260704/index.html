@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus LP 重大バグ発覚と修正完了 報告書</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: linear-gradient(135deg, #0a1535 0%, #1a2a4f 100%);
+    color: #fff;
+    line-height: 1.7;
+    padding: 40px 20px;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 40px 0 60px;
+    border-bottom: 2px solid rgba(240,122,42,0.3);
+    margin-bottom: 60px;
+  }
+  .eyebrow {
+    color: #f07a2a;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  h1 .ac { color: #f07a2a; }
+  .meta { font-size: 13px; opacity: 0.6; margin-top: 12px; }
+
+  .alert {
+    background: linear-gradient(135deg, #4a1f2c 0%, #3a1424 100%);
+    border-left: 4px solid #ff4757;
+    padding: 20px 24px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+  }
+  .alert-title {
+    color: #ff6b7a;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .alert-body { font-size: 15px; }
+
+  section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  h2 .num {
+    display: inline-flex;
+    width: 40px; height: 40px;
+    background: #f07a2a;
+    color: #fff;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  h3 { font-size: 16px; font-weight: 700; margin: 24px 0 12px; color: #f07a2a; }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .kpi {
+    background: rgba(0,0,0,0.3);
+    padding: 20px 16px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .kpi.bad { border-color: rgba(255,71,87,0.4); background: rgba(74,31,44,0.4); }
+  .kpi.good { border-color: rgba(46,213,115,0.4); background: rgba(31,74,46,0.4); }
+  .kpi.warn { border-color: rgba(240,122,42,0.4); background: rgba(74,42,20,0.4); }
+  .kpi-label { font-size: 11px; opacity: 0.7; margin-bottom: 6px; }
+  .kpi-value { font-size: 22px; font-weight: 900; color: #fff; }
+  .kpi.bad .kpi-value { color: #ff6b7a; }
+  .kpi.good .kpi-value { color: #2ed573; }
+  .kpi.warn .kpi-value { color: #f07a2a; }
+  .kpi-sub { font-size: 11px; opacity: 0.5; margin-top: 4px; }
+
+  .funnel {
+    margin: 24px 0;
+  }
+  .funnel-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 80px;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .funnel-label { font-size: 13px; }
+  .funnel-bar-wrap {
+    background: rgba(0,0,0,0.4);
+    border-radius: 4px;
+    height: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .funnel-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #f07a2a 0%, #ff8f44 100%);
+    border-radius: 4px;
+    transition: width 0.5s;
+  }
+  .funnel-bar.bad { background: linear-gradient(90deg, #ff4757 0%, #ff6b7a 100%); }
+  .funnel-value { text-align: right; font-weight: 700; }
+  .funnel-value.bad { color: #ff6b7a; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  th { color: #f07a2a; font-weight: 700; }
+  td.center { text-align: center; }
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .badge-ok { background: rgba(46,213,115,0.2); color: #2ed573; }
+  .badge-bad { background: rgba(255,71,87,0.2); color: #ff6b7a; }
+  .badge-warn { background: rgba(240,122,42,0.2); color: #f07a2a; }
+
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+    margin: 24px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(240,122,42,0.3);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: #f07a2a;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(240,122,42,0.2);
+  }
+  .timeline-date { font-size: 12px; opacity: 0.7; }
+  .timeline-title { font-weight: 700; margin: 4px 0; }
+  .timeline-body { font-size: 13px; opacity: 0.85; }
+
+  .callout {
+    background: rgba(240,122,42,0.08);
+    border-left: 3px solid #f07a2a;
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .callout-title {
+    color: #f07a2a;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .priority-grid { display: grid; gap: 16px; margin: 20px 0; }
+  .priority-card {
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid;
+  }
+  .priority-card.p0 { border-color: #ff4757; }
+  .priority-card.p1 { border-color: #f07a2a; }
+  .priority-card.p2 { border-color: #ffd60a; }
+  .priority-card.p3 { border-color: #2ed573; }
+  .priority-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 900;
+    margin-bottom: 8px;
+  }
+  .priority-card.p0 .priority-tag { background: #ff4757; color: #fff; }
+  .priority-card.p1 .priority-tag { background: #f07a2a; color: #fff; }
+  .priority-card.p2 .priority-tag { background: #ffd60a; color: #000; }
+  .priority-card.p3 .priority-tag { background: #2ed573; color: #000; }
+  .priority-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .priority-body { font-size: 13px; opacity: 0.85; }
+
+  footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 40px;
+    font-size: 12px;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 24px; }
+    .funnel-row { grid-template-columns: 100px 1fr 60px; }
+    .funnel-label { font-size: 11px; }
+    section { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <p class="eyebrow">INCIDENT REPORT</p>
+  <h1>BuzzPlus LP<br><span class="ac">重大バグ発覚</span>と修正完了</h1>
+  <p class="meta">2026-07-04 ／ 星崎 → 鈴木さん</p>
+</header>
+
+<div class="alert">
+  <div class="alert-title">🚨 一言サマリ</div>
+  <div class="alert-body">
+    LP公開後の広告配信期間（6/5〜7/4）に、<strong>実ユーザーがフォームに文字を打てない状態</strong>だった。
+    自動テストでは正常に見えたため見逃していた。<strong>広告費 ¥4,107 消化・実申込 0件</strong>。
+    Clarity導入で「フォーム手前まで18人到達・入力欄タップ 0人」の異常データから発覚。<strong>修正完了・実ユーザー操作でLead発火まで確認済み。</strong>
+  </div>
+</div>
+
+<!-- 事故サマリ -->
+<section>
+  <h2><span class="num">1</span>事故サマリ</h2>
+
+  <div class="kpi-grid">
+    <div class="kpi bad">
+      <div class="kpi-label">広告費消化</div>
+      <div class="kpi-value">¥4,107</div>
+      <div class="kpi-sub">機会損失</div>
+    </div>
+    <div class="kpi bad">
+      <div class="kpi-label">実申込</div>
+      <div class="kpi-value">0件</div>
+      <div class="kpi-sub">物理的に不可能</div>
+    </div>
+    <div class="kpi warn">
+      <div class="kpi-label">影響期間</div>
+      <div class="kpi-value">3日</div>
+      <div class="kpi-sub">6/5〜7/4</div>
+    </div>
+    <div class="kpi good">
+      <div class="kpi-label">修正状態</div>
+      <div class="kpi-value">✓完了</div>
+      <div class="kpi-sub">7/4 修正</div>
+    </div>
+  </div>
+
+  <h3>バグの症状</h3>
+  <div class="callout">
+    <div class="callout-title">物理的にフォーム操作不可</div>
+    LPフォームに文字を打つと<strong>即座に消える</strong>／ラジオ選択・送信ボタンも反応せず／
+    キーボード入力イベント自体は発火するが、直後に値が空に上書きされていた。
+  </div>
+
+  <h3>技術的原因</h3>
+  <div class="callout">
+    <div class="callout-title">Claude Design生成LPのランタイム構造</div>
+    Claude Design生成のLPが <strong>React系ランタイム（runtime.js）でページ全体を管理</strong>していた。
+    フォームも「制御されたコンポーネント」として扱われ、内部状態（空）でDOMの入力値を毎回上書きしていた。
+    フォームをランタイム管理外に移動して解消。
+  </div>
+</section>
+
+<!-- Clarity実データ -->
+<section>
+  <h2><span class="num">2</span>Clarity で捉えた実ユーザー行動</h2>
+  <p style="opacity:0.7;font-size:13px;margin-bottom:16px;">過去3日間・モバイル45PVの全数分析。フォーム手前まで18人が読んで到達しているのに、入力欄に触れた人はゼロ。</p>
+
+  <div class="funnel">
+    <div class="funnel-row">
+      <div class="funnel-label">LP表示</div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:100%"></div></div>
+      <div class="funnel-value">45人</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">閲覧開始（15%通過）</div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:68%"></div></div>
+      <div class="funnel-value">31人</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">比較〜CTA（65%到達）</div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:48%"></div></div>
+      <div class="funnel-value">21人</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label">フォーム手前（85%到達）</div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar" style="width:41%"></div></div>
+      <div class="funnel-value">18人</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label"><strong>CTAボタンタップ</strong></div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar bad" style="width:2.2%"></div></div>
+      <div class="funnel-value bad">1人</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label"><strong>フォーム入力欄タップ</strong></div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar bad" style="width:0%"></div></div>
+      <div class="funnel-value bad">0人</div>
+    </div>
+    <div class="funnel-row">
+      <div class="funnel-label"><strong>実ユーザー送信</strong></div>
+      <div class="funnel-bar-wrap"><div class="funnel-bar bad" style="width:0%"></div></div>
+      <div class="funnel-value bad">0件</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">💡 なぜ「バグの証拠」と断定できたか</div>
+    フォーム手前まで<strong>18人が読み進めているのに、入力欄に触れられなかった</strong>のは異常。
+    タップ全30回中13回（43%）はFAQに集中しており、ユーザーは真剣に検討していた証拠。
+    「触れなかった」のではなく「触れても入力できなかった」が実態。
+  </div>
+</section>
+
+<!-- 広告数値 -->
+<section>
+  <h2><span class="num">3</span>Meta広告のパフォーマンス（実は良好）</h2>
+  <p style="opacity:0.7;font-size:13px;margin-bottom:16px;">流入効率自体は業界平均を上回っている。LP側さえ機能すれば申込は発生する見込み。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi good">
+      <div class="kpi-label">CTR</div>
+      <div class="kpi-value">2.71%</div>
+      <div class="kpi-sub">業界平均 0.9%</div>
+    </div>
+    <div class="kpi good">
+      <div class="kpi-label">CPC</div>
+      <div class="kpi-value">¥171</div>
+      <div class="kpi-sub">業界平均 ¥300〜500</div>
+    </div>
+    <div class="kpi good">
+      <div class="kpi-label">LPビュー率</div>
+      <div class="kpi-value">71%</div>
+      <div class="kpi-sub">クリック→表示</div>
+    </div>
+    <div class="kpi warn">
+      <div class="kpi-label">Lead</div>
+      <div class="kpi-value">0件</div>
+      <div class="kpi-sub">バグにより不可</div>
+    </div>
+  </div>
+
+  <table>
+    <thead><tr><th>指標</th><th>DM広告（旧）</th><th>LP広告（新）</th><th>判定</th></tr></thead>
+    <tbody>
+      <tr><td>消化金額</td><td>¥7,672</td><td>¥4,107</td><td>—</td></tr>
+      <tr><td>リンククリック</td><td>19</td><td>24</td><td>—</td></tr>
+      <tr><td>LPビュー</td><td>—</td><td>17</td><td class="center"><span class="badge badge-ok">LP◎</span></td></tr>
+      <tr><td>CTR</td><td>0.16%</td><td>2.71%</td><td class="center"><span class="badge badge-ok">17倍</span></td></tr>
+      <tr><td>CPC</td><td>¥404</td><td>¥171</td><td class="center"><span class="badge badge-ok">58%減</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 経緯 -->
+<section>
+  <h2><span class="num">4</span>発覚〜修正までの経緯</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">7/2</div>
+      <div class="timeline-title">LP本番公開・広告切替</div>
+      <div class="timeline-body">buzzplus-ai.com にWordPressデプロイ、Meta Pixel設置、新規Leadsキャンペーン開始</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">7/3</div>
+      <div class="timeline-title">Pixelテスト送信で「Lead発火OK」を確認</div>
+      <div class="timeline-body">JS経由（値の直接設定）テストで送信成功・Lead発火確認。<strong>この時点でバグを見逃した</strong>。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">7/4 朝</div>
+      <div class="timeline-title">「クリックあるのに申込ない」異常に気づく</div>
+      <div class="timeline-body">Meta広告のクリック数は伸びるが、Lead 0件が続く。星崎から違和感を報告。</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">7/4 午後</div>
+      <div class="timeline-title">GA4・Clarity導入 → 異常データ発見</div>
+      <div class="timeline-body">Clarityで<strong>「フォーム手前まで18人到達・入力欄タップ 0人」</strong>という致命的な異常を確認</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">7/4 夜</div>
+      <div class="timeline-title">バグ再現・原因特定・修正・実ユーザーテスト完走</div>
+      <div class="timeline-body">実キーボード入力で再現 → runtime原因特定 → フォームをランタイム外へ移動 → 実操作でLead発火まで完走確認</div>
+    </div>
+  </div>
+</section>
+
+<!-- 現状 -->
+<section>
+  <h2><span class="num">5</span>現状（すべて稼働中）</h2>
+  <table>
+    <tbody>
+      <tr><td>LP表示</td><td class="center"><span class="badge badge-ok">✓ 正常</span></td><td>https://buzzplus-ai.com/</td></tr>
+      <tr><td>フォーム入力</td><td class="center"><span class="badge badge-ok">✓ 修正済</span></td><td>実ユーザー操作でLead発火まで完走</td></tr>
+      <tr><td>CF7メール受信</td><td class="center"><span class="badge badge-ok">✓ 動作</span></td><td>3宛先着信テスト完了</td></tr>
+      <tr><td>Meta広告配信</td><td class="center"><span class="badge badge-ok">✓ 継続中</span></td><td>CTR 2.71%・CPC ¥171 の効率で稼働</td></tr>
+      <tr><td>Meta Pixel</td><td class="center"><span class="badge badge-ok">✓ 稼働</span></td><td>ID: 1643482093412242</td></tr>
+      <tr><td>GA4</td><td class="center"><span class="badge badge-ok">✓ 稼働</span></td><td>ID: G-ZGCHVH7DRC</td></tr>
+      <tr><td>Microsoft Clarity</td><td class="center"><span class="badge badge-ok">✓ 稼働</span></td><td>プロジェクト: BuzzPlus LP</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 今後 -->
+<section>
+  <h2><span class="num">6</span>今週の改善アクション</h2>
+
+  <div class="priority-grid">
+    <div class="priority-card p0">
+      <span class="priority-tag">P0 今すぐ</span>
+      <div class="priority-title">LP表示速度改善（LCP 33秒 → 3秒目標）</div>
+      <div class="priority-body">
+        画像WebP化＋モバイル幅リサイズ（445KB→50-80KB）／runtime.js `defer`化／Google Fontsサブセット化／XServer「Xアクセラレータ」有効化
+      </div>
+    </div>
+    <div class="priority-card p1">
+      <span class="priority-tag">P1 高</span>
+      <div class="priority-title">フォーム転換の一押し</div>
+      <div class="priority-body">
+        FAQ直後にCTAボタン増設／フォーム項目 6→3〜4に削減（「悩み」「時間帯」はZoomで聞く）／送信ボタン上に「30秒で完了・営業電話なし」の再保証
+      </div>
+    </div>
+    <div class="priority-card p2">
+      <span class="priority-tag">P2 中</span>
+      <div class="priority-title">デッドクリック解消</div>
+      <div class="priority-body">
+        FV装飾の押し込みリスク調整（6セッション/10%が経験）／フッター「株式会社RUNBIRD」に会社概要リンク付与（信頼性確認ニーズ）
+      </div>
+    </div>
+    <div class="priority-card p3">
+      <span class="priority-tag">P3 低</span>
+      <div class="priority-title">料金関心への回答</div>
+      <div class="priority-body">
+        比較表の「¥30,000〜」タップから料金関心強い → 料金プラン簡易セクション or FAQ「料金の内訳は？」追加
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 反省と再発防止 -->
+<section>
+  <h2><span class="num">7</span>反省と再発防止（星崎から）</h2>
+
+  <div class="callout">
+    <div class="callout-title">見逃した理由</div>
+    Pixel発火テストを「JS経由・自動化テスト」だけで満足していた。<br>
+    実ユーザー相当のキーボード入力・タップテストをやっていなかった。<br>
+    Claude Design生成HTMLの「React系ランタイムでフォームが吸われる」リスクを認識していなかった。
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">再発防止ルール</div>
+    ① LP公開後は必ず<strong>シークレット・モバイル実機</strong>でフォームまで実操作テスト<br>
+    ② Clarity（またはセッション録画ツール）を<strong>公開日に必ず導入</strong>（今回は後付けだった）<br>
+    ③ Claude Design生成HTMLはフォームを<strong>ランタイム外に配置</strong>するテンプレート化
+  </div>
+</section>
+
+<!-- 監視ポイント -->
+<section>
+  <h2><span class="num">8</span>24〜48時間で見るポイント</h2>
+  <ul style="padding-left:20px;line-height:2;">
+    <li>実ユーザーからの Lead 発生（バグ解消後の初申込）</li>
+    <li>Clarityでフォーム入力欄タップ・送信ボタンタップの発生</li>
+    <li>Meta広告のCV最適化学習の進行</li>
+    <li>広告CPA が判定できる水準まで継続監視</li>
+  </ul>
+</section>
+
+<footer>
+  <p>報告: 星崎 ／ 2026-07-04</p>
+  <p style="margin-top:8px;">buzzplus-ai.com | RUNBIRD BuzzPlus AI動画事業</p>
+</footer>
+
+</div>
+</body>
+</html>
