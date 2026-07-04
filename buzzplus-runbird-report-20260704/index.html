@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus 事業状況レポート | 2週間集中テスト計画</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: linear-gradient(135deg, #0a1535 0%, #1a2a4f 100%);
+    color: #fff;
+    line-height: 1.7;
+    padding: 40px 20px;
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 40px 0 60px;
+    border-bottom: 2px solid rgba(240,122,42,0.3);
+    margin-bottom: 60px;
+  }
+  .eyebrow {
+    color: #f07a2a;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-size: 34px;
+    font-weight: 900;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  h1 .ac { color: #f07a2a; }
+  .meta { font-size: 13px; opacity: 0.6; margin-top: 12px; }
+
+  .hero-kpi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 40px;
+  }
+  .kpi-card {
+    text-align: center;
+    padding: 12px;
+    background: rgba(0,0,0,0.25);
+    border-radius: 8px;
+  }
+  .kpi-label { font-size: 11px; opacity: 0.7; margin-bottom: 6px; letter-spacing: 1px; }
+  .kpi-value { font-size: 28px; font-weight: 900; color: #f07a2a; }
+  .kpi-sub { font-size: 11px; opacity: 0.5; margin-top: 4px; }
+
+  section {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  h2 .num {
+    display: inline-flex;
+    width: 40px; height: 40px;
+    background: #f07a2a;
+    color: #fff;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  h3 { font-size: 17px; font-weight: 700; margin: 24px 0 12px; color: #f07a2a; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  th { color: #f07a2a; font-weight: 700; font-size: 13px; }
+  td.center { text-align: center; }
+  td.right { text-align: right; }
+  .highlight-row { background: rgba(240,122,42,0.1); }
+
+  .callout {
+    background: rgba(240,122,42,0.08);
+    border-left: 3px solid #f07a2a;
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .callout-title {
+    color: #f07a2a;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .success {
+    background: rgba(46,213,115,0.08);
+    border-left: 3px solid #2ed573;
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .success-title {
+    color: #2ed573;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .badge-good { background: rgba(46,213,115,0.2); color: #2ed573; }
+  .badge-warn { background: rgba(255,214,10,0.2); color: #ffd60a; }
+  .badge-bad { background: rgba(255,71,87,0.2); color: #ff6b7a; }
+
+  .plan-grid { display: grid; gap: 16px; margin: 20px 0; }
+  .plan-card {
+    background: rgba(0,0,0,0.3);
+    padding: 24px;
+    border-radius: 10px;
+    border-left: 5px solid;
+  }
+  .plan-card.a { border-color: #ff4757; }
+  .plan-card.b { border-color: #f07a2a; }
+  .plan-card.c { border-color: #ffd60a; }
+  .plan-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  .plan-card.a .plan-tag { background: #ff4757; }
+  .plan-card.b .plan-tag { background: #f07a2a; }
+  .plan-card.c .plan-tag { background: #ffd60a; color: #000; }
+  .plan-title { font-weight: 900; font-size: 17px; margin-bottom: 8px; }
+  .plan-body { font-size: 14px; opacity: 0.9; }
+
+  .timeline {
+    position: relative;
+    padding-left: 40px;
+    margin: 24px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(240,122,42,0.3);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: #f07a2a;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(240,122,42,0.2);
+  }
+  .timeline-date { font-size: 12px; opacity: 0.7; color: #f07a2a; font-weight: 700; }
+  .timeline-title { font-weight: 700; margin: 4px 0; }
+  .timeline-body { font-size: 13px; opacity: 0.85; }
+
+  .goal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .goal-card {
+    padding: 18px;
+    background: rgba(46,213,115,0.08);
+    border: 1px solid rgba(46,213,115,0.3);
+    border-radius: 10px;
+    text-align: center;
+  }
+  .goal-label { font-size: 11px; opacity: 0.7; margin-bottom: 6px; }
+  .goal-current { font-size: 13px; opacity: 0.6; }
+  .goal-arrow { color: #2ed573; font-size: 20px; margin: 4px 0; }
+  .goal-target { font-size: 24px; font-weight: 900; color: #2ed573; }
+
+  footer {
+    text-align: center;
+    padding: 40px 0 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 40px;
+    font-size: 12px;
+    opacity: 0.5;
+  }
+
+  ul { padding-left: 20px; }
+  ul li { margin-bottom: 8px; font-size: 14px; }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 24px; }
+    section { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <p class="eyebrow">RUNBIRD 事業状況共有</p>
+  <h1>BuzzPlus<br><span class="ac">2週間集中テスト</span>実行計画</h1>
+  <p class="meta">2026-07-04 ／ 株式会社ランバード様 御中</p>
+</header>
+
+<!-- 現状KPI -->
+<div class="hero-kpi">
+  <div class="kpi-card">
+    <div class="kpi-label">CTR</div>
+    <div class="kpi-value">2.75%</div>
+    <div class="kpi-sub">業界平均の3倍</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">CPC</div>
+    <div class="kpi-value">¥188</div>
+    <div class="kpi-sub">改善余地あり</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">LP到達率</div>
+    <div class="kpi-value">71%</div>
+    <div class="kpi-sub">正常水準</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">計測基盤</div>
+    <div class="kpi-value">100%</div>
+    <div class="kpi-sub">Pixel/GA4/Clarity</div>
+  </div>
+</div>
+
+<!-- 現状サマリ -->
+<section>
+  <h2><span class="num">1</span>現状サマリと重要事象</h2>
+
+  <div class="success">
+    <div class="success-title">✅ 良い数字（広告クリエイティブは業界標準を超える）</div>
+    <strong>CTR 2.75%</strong>は業界平均1〜2%の約3倍。「AI×動画×店舗集客」という訴求軸が反応を得ている証拠。
+    <strong>LP到達率71%</strong>も正常水準で、広告→LP誘導のファネルは機能している。
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">⚠️ 発見された事象と対処（7/4完了）</div>
+    公開後の広告配信中に、LP側にフォーム入力不能バグを発見しました。
+    <br>実ユーザーがフォームに文字を打っても即消える状態で、Clarityの録画分析で判明。
+    <br><strong>7/4修正完了・実ユーザー操作でLead発火まで確認済み</strong>です。
+    <br>詳細: <a href="https://hoshizaemonn.github.io/RUNBIRD/buzzplus-bug-report-20260704/" target="_blank" style="color:#6dc0ff;">障害レポート</a>
+  </div>
+
+  <p style="font-size:14px;opacity:0.85;">
+    現在は<strong>「良質な集客ができているLPが本格稼働する」状態</strong>にあり、
+    ここから2週間で市場からの反応（実申込数・A/Bテスト結果）を集中的に取得します。
+  </p>
+</section>
+
+<!-- 競合ベンチマーク -->
+<section>
+  <h2><span class="num">2</span>競合ベンチマーク調査結果</h2>
+
+  <p style="opacity:0.85;font-size:14px;margin-bottom:16px;">
+    Deep Research（AIによる107エージェント並列調査・24ソース・89主張の敵対的検証）で、
+    国内AI動画SaaS・動画代理店市場を俯瞰しました。
+  </p>
+
+  <h3>BuzzPlusのユニークポジション</h3>
+
+  <table>
+    <thead><tr><th>タイプ</th><th>代表企業</th><th>料金</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>単発オプション積み上げ</td>
+        <td>freedoor</td>
+        <td>基本¥8,000〜+台本¥12,000+撮影¥70,000+ナレーション¥3,000</td>
+      </tr>
+      <tr>
+        <td>SaaSサブスク（低価格）</td>
+        <td>AvaMo（2025年12月ローンチ）</td>
+        <td>¥3,900〜/月（年契約）</td>
+      </tr>
+      <tr>
+        <td>代理店型（高価格）</td>
+        <td>AI/AD MAKERS</td>
+        <td>¥200,000〜/月</td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>★BuzzPlus</strong></td>
+        <td>—</td>
+        <td><strong>月¥30,000〜（明示・低価格代理店型）</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="success">
+    <div class="success-title">🔥 独自ポジション</div>
+    <strong>「明示価格の代理店型AI動画×SNS」というポジションは日本市場で希少</strong>。
+    競合が「無料相談」誘導か高価格帯（¥200,000〜/月）に振れる中で、BuzzPlusはこの中間帯を明示価格でつなぐ独自の立ち位置。
+  </div>
+
+  <div class="callout">
+    <div class="callout-title">💡 業界通説を鵜呑みにできない</div>
+    調査では「価格明記でCVR 1.3倍」「LP必須7要素構成」等の"業界通説"が
+    <strong>信頼できるデータで裏付けられていない</strong>ことが判明しました。
+    <br>→ <strong>自社の実データが最も信頼できる判断材料。A/Bテストで独自データを取りに行く価値が高い。</strong>
+    <br><br>
+    詳細: <a href="https://hoshizaemonn.github.io/RUNBIRD/buzzplus-competitor-analysis-20260704/" target="_blank" style="color:#6dc0ff;">競合ベンチマーク詳細レポート</a>
+  </div>
+</section>
+
+<!-- 2週間実行計画 -->
+<section>
+  <h2><span class="num">3</span>今後2週間の実行計画</h2>
+
+  <p style="opacity:0.85;font-size:14px;margin-bottom:16px;">
+    現在の「良質な広告→機能するLP→計測基盤あり」の状態を活かし、
+    <strong>2週間で市場からのフィードバックを最大限に取得</strong>します。
+  </p>
+
+  <div class="plan-grid">
+    <div class="plan-card a">
+      <span class="plan-tag">A・広告拡大</span>
+      <div class="plan-title">配信ボリューム増加</div>
+      <div class="plan-body">
+        現行¥3,500/日ペースを維持しつつ、A/Bテスト用の新規動画配信を追加。
+        高効率な広告セット（CTR 2.75%）を軸に、市場からの反応数を稼ぐ。
+        Meta広告の学習期間短縮にも寄与。
+      </div>
+    </div>
+
+    <div class="plan-card b">
+      <span class="plan-tag">B・動画A/Bテスト</span>
+      <div class="plan-title">「価格なし」動画バージョン投入</div>
+      <div class="plan-body">
+        現行動画は「月¥30,000〜」の価格訴求あり。
+        新バージョンは価格表記を削除し、「無料相談」「撮影不要」等の体験訴求に振る。
+        <strong>業界に決定的データがないため、独自の一次データを取得できる戦略的テスト</strong>。
+        並走配信で4〜7日で有意差判定。
+      </div>
+    </div>
+
+    <div class="plan-card c">
+      <span class="plan-tag">C・LP改善</span>
+      <div class="plan-title">表示速度改善＋フォーム最適化</div>
+      <div class="plan-body">
+        LCP 33秒 → 3秒目標（画像WebP化・fetchpriority・遅延読み込み）。
+        Clarity分析でLP離脱の29%が「読み込み前」と判明したため、速度改善だけでCV率向上見込み。
+        フォーム項目6→4程度に削減も並行検討。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- タイムライン -->
+<section>
+  <h2><span class="num">4</span>2週間タイムライン</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">Week 1（7/5〜7/11）</div>
+      <div class="timeline-title">LP速度改善 → 「価格なし」動画制作 → A/Bテスト開始</div>
+      <div class="timeline-body">
+        WebP化・fetchpriority・defer導入（LP速度改善）／新動画制作 → 配信開始／Meta広告の学習期間を経る
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Week 1中盤（7/8〜9）</div>
+      <div class="timeline-title">初回中間チェック</div>
+      <div class="timeline-body">
+        Lead発火状況の初期観察／LP速度改善の効果測定（PageSpeed Insights・Clarity）／広告CPC・CTRの変化観察
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Week 2（7/12〜7/18）</div>
+      <div class="timeline-title">A/Bテスト有意差判定 → 勝ちパターンに集中投下</div>
+      <div class="timeline-body">
+        現行動画 vs 価格なし動画のCTR/CVR比較／勝った方に予算集約／敗者は停止／CPCの改善状況を評価
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">7/18終了時点</div>
+      <div class="timeline-title">2週間結果レポート・次期戦略決定</div>
+      <div class="timeline-body">
+        実申込数／CPA実測／勝ちパターン確定／次期予算・訴求方向決定
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 目標 -->
+<section>
+  <h2><span class="num">5</span>2週間の到達目標</h2>
+
+  <div class="goal-grid">
+    <div class="goal-card">
+      <div class="goal-label">CPC</div>
+      <div class="goal-current">現状 ¥188</div>
+      <div class="goal-arrow">↓</div>
+      <div class="goal-target">¥150以下</div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-label">CTR</div>
+      <div class="goal-current">現状 2.75%</div>
+      <div class="goal-arrow">↑</div>
+      <div class="goal-target">3.0%以上</div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-label">LPスコア</div>
+      <div class="goal-current">現状 31/100</div>
+      <div class="goal-arrow">↑</div>
+      <div class="goal-target">80/100以上</div>
+    </div>
+    <div class="goal-card">
+      <div class="goal-label">実申込</div>
+      <div class="goal-current">現状 0件</div>
+      <div class="goal-arrow">↑</div>
+      <div class="goal-target">10件以上</div>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:24px;">
+    <div class="callout-title">🎯 2週間で得られるもの</div>
+    ・実申込データ = 業界CPA相場を「自社実測」で確定<br>
+    ・A/Bテスト結果 = 「価格明記の効果」の独自データ（業界初）<br>
+    ・LP速度改善の効果 = Lead発火率の変化を定量化<br>
+    ・勝ちパターン確定 = 次月以降の予算配分の意思決定材料
+  </div>
+</section>
+
+<!-- 計測基盤 -->
+<section>
+  <h2><span class="num">6</span>計測基盤（すべて稼働中）</h2>
+
+  <table>
+    <thead><tr><th>ツール</th><th>用途</th><th>状態</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Meta Pixel</strong></td>
+        <td>広告CV最適化・Lead発火計測</td>
+        <td><span class="badge badge-good">✓ 稼働</span></td>
+      </tr>
+      <tr>
+        <td><strong>Google Analytics 4</strong></td>
+        <td>流入元別・行動フロー・離脱率分析</td>
+        <td><span class="badge badge-good">✓ 稼働</span></td>
+      </tr>
+      <tr>
+        <td><strong>Microsoft Clarity</strong></td>
+        <td>セッション録画・ヒートマップ・ユーザー行動目視</td>
+        <td><span class="badge badge-good">✓ 稼働</span></td>
+      </tr>
+      <tr>
+        <td><strong>Contact Form 7 + Flamingo</strong></td>
+        <td>フォーム受信・履歴管理</td>
+        <td><span class="badge badge-good">✓ 稼働</span></td>
+      </tr>
+      <tr>
+        <td><strong>広告データ自動同期</strong></td>
+        <td>Meta広告CSV → Googleスプシ日次自動反映</td>
+        <td><span class="badge badge-good">✓ 稼働</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:14px;opacity:0.85;margin-top:16px;">
+    <strong>全ての意思決定を実データで行える体制が整っています。</strong>
+    2週間の中で発生する数値変化を全て捉え、Week 2終了時点で明確な次期戦略を提示できます。
+  </p>
+</section>
+
+<!-- リンク集 -->
+<section>
+  <h2><span class="num">7</span>関連リンク</h2>
+  <ul>
+    <li><strong>公開LP</strong>: <a href="https://buzzplus-ai.com/" target="_blank" style="color:#6dc0ff;">https://buzzplus-ai.com/</a></li>
+    <li><strong>障害レポート（7/4フォームバグ）</strong>: <a href="https://hoshizaemonn.github.io/RUNBIRD/buzzplus-bug-report-20260704/" target="_blank" style="color:#6dc0ff;">buzzplus-bug-report-20260704</a></li>
+    <li><strong>競合ベンチマーク詳細</strong>: <a href="https://hoshizaemonn.github.io/RUNBIRD/buzzplus-competitor-analysis-20260704/" target="_blank" style="color:#6dc0ff;">buzzplus-competitor-analysis-20260704</a></li>
+    <li><strong>広告データスプシ（4日分反映済）</strong>: <a href="https://docs.google.com/spreadsheets/d/11cSCQTTmJNuHjf6lLUhz6zK_cVHG4nIMA8J-U4onJf8/" target="_blank" style="color:#6dc0ff;">Google Sheets</a></li>
+  </ul>
+</section>
+
+<footer>
+  <p>2026-07-04 ／ 株式会社ランバード様 御中</p>
+  <p style="margin-top:8px;">BuzzPlus AI動画事業 事業状況共有・2週間集中テスト実行計画</p>
+</footer>
+
+</div>
+</body>
+</html>
