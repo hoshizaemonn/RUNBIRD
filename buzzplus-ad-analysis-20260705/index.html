@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus 広告分析レポート｜2026-07-05</title>
+<style>
+:root { --primary:#0A1535; --accent:#FF6B35; --muted:#6b7280; --bg:#fafaf7; --card:#fff; --border:#e5e5e5; --success:#059669; --danger:#dc2626; --warn:#d97706; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;background:var(--bg);color:#1a1a1a;line-height:1.7}
+.wrap{max-width:960px;margin:0 auto;padding:40px 24px}
+header{background:linear-gradient(135deg,var(--primary),#1a2a5f);color:#fff;padding:48px 24px;text-align:center;margin-bottom:40px;border-radius:16px}
+header h1{font-size:32px;font-weight:900;letter-spacing:1px}
+header .sub{font-size:14px;opacity:.85;margin-top:8px}
+header .badge{display:inline-block;background:var(--accent);color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;margin-top:16px}
+h2{font-size:24px;font-weight:900;margin:48px 0 20px;padding-left:16px;border-left:6px solid var(--accent)}
+h3{font-size:18px;font-weight:800;margin:24px 0 12px;color:var(--primary)}
+h4{font-size:15px;font-weight:700;margin:16px 0 8px;color:#333}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,.03)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:640px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.metric .label{font-size:11px;color:var(--muted);letter-spacing:.5px}
+.metric .value{font-size:28px;font-weight:900;color:var(--primary);margin:6px 0}
+.metric .note{font-size:11px;color:var(--muted)}
+.metric.good .value{color:var(--success)}
+.metric.bad .value{color:var(--danger)}
+.metric.warn .value{color:var(--warn)}
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.03);margin:12px 0}
+th,td{padding:12px;border-bottom:1px solid var(--border);text-align:left;font-size:13.5px;vertical-align:top}
+th{background:#f6f6f0;font-weight:700;font-size:12px;color:#555}
+tr:last-child td{border-bottom:none}
+.badge-good{background:#d1fae5;color:#065f46;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.badge-bad{background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.badge-warn{background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700}
+.hilite{background:#fff5e6;border-left:4px solid var(--accent);padding:16px 20px;margin:16px 0;border-radius:4px}
+.hilite strong{color:var(--accent)}
+.quote{background:#f3f4f6;padding:12px 16px;border-left:3px solid #9ca3af;margin:8px 0;font-family:"Hiragino Mincho",serif;font-size:14px;color:#374151}
+.action-list{background:linear-gradient(135deg,#fff5e6,#ffe4c4);border-radius:12px;padding:24px;margin:16px 0}
+.action-list h4{color:var(--primary);margin-top:0}
+.action-list ol{padding-left:24px}
+.action-list li{margin:8px 0;line-height:1.6}
+footer{margin-top:64px;padding:24px;text-align:center;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
+.link-list a{color:var(--accent);text-decoration:none;font-weight:600;font-size:13px}
+.link-list a:hover{text-decoration:underline}
+.pill{display:inline-block;background:var(--primary);color:#fff;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700;margin-right:6px}
+.tag-a{background:#dbeafe;color:#1e40af}
+.tag-b{background:#fce7f3;color:#9f1239}
+.tag-c{background:#d1fae5;color:#065f46}
+.tag-d{background:#fef3c7;color:#92400e}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<div class="badge">競合分析＋自社広告解析</div>
+<h1>BuzzPlus 広告クリエイティブ分析</h1>
+<p class="sub">おさる系AI教育広告 × アニメる（直接競合） × Claude Code集客AI × BuzzPlus現行広告　の4本比較</p>
+<p class="sub">2026-07-05 実施 ／ 音声文字起こし＋映像フレーム解析</p>
+</header>
+
+<h2>📊 まずは今週のBuzzPlusパフォーマンス（7/4-7/5）</h2>
+
+<div class="grid4">
+<div class="metric good"><div class="label">CTR (すべて)</div><div class="value">4.51%</div><div class="note">業界平均1-2%の2倍以上 🔥</div></div>
+<div class="metric good"><div class="label">CPC (リンク)</div><div class="value">¥211</div><div class="note">業界標準以下</div></div>
+<div class="metric good"><div class="label">LPV率</div><div class="value">67.7%</div><div class="note">LP離脱少なめ</div></div>
+<div class="metric warn"><div class="label">リード数</div><div class="value">-</div><div class="note">CSVに含まれず要確認</div></div>
+</div>
+
+<div class="hilite">
+<strong>結論：上流（クリック獲得）は絶好調。ただしフォームバグ修正が7/4なので、"CV獲得"の本当の実力はこれから2週間の観測が必要。</strong>
+</div>
+
+<h2>🎯 分析対象4本の概要</h2>
+
+<table>
+<tr><th>#</th><th>広告</th><th>尺</th><th>音声</th><th>タイプ</th><th>売る商品</th></tr>
+<tr><td>1</td><td><span class="pill tag-a">BuzzPlus</span> 現行（v1）</td><td>22秒</td><td>BGMのみ</td><td>静音アニメ型</td><td>店舗向けAI動画制作</td></tr>
+<tr><td>2</td><td><span class="pill tag-b">アニメる</span>（直接競合）</td><td>24秒</td><td>BGMのみ</td><td>静音アニメ型</td><td>AIアニメ動画制作</td></tr>
+<tr><td>3</td><td><span class="pill tag-c">Claude Code集客AI</span></td><td>57秒</td><td>本人ナレーション</td><td>本人語り数字連発型</td><td>AI広告運用の情報商材</td></tr>
+<tr><td>4</td><td><span class="pill tag-d">おさる</span> Ad1</td><td>92秒</td><td>本人ナレーション</td><td>本人語り数字連発型</td><td>SNS×講座販売AI</td></tr>
+<tr><td>5</td><td><span class="pill tag-d">おさる</span> Ad2</td><td>148秒</td><td>本人ナレーション</td><td>本人語り数字連発型</td><td>SNS×講座販売AI</td></tr>
+</table>
+
+<h2>🔍 BuzzPlus現行広告 詳細分析（22秒）</h2>
+
+<div class="card">
+<h4>シーン展開</h4>
+<table>
+<tr><th>秒数</th><th>ビジュアル</th><th>テロップ</th></tr>
+<tr><td>0-3</td><td>建設現場アニメ（男性）</td><td>店舗オーナーの皆様へ</td></tr>
+<tr><td>3-5</td><td>介護シーン（女性介護士）</td><td>動画広告、つくれてますか？</td></tr>
+<tr><td>5-7</td><td>焼き鳥屋アニメ（職人）</td><td>撮影は高い</td></tr>
+<tr><td>7-10</td><td>アパレル店員（笑顔）</td><td>（テロップ判読不能）</td></tr>
+<tr><td>10-12</td><td>少年+スマホ（涙）</td><td>すべてAIが作りました</td></tr>
+<tr><td>12-14</td><td>クリエイターPC作業</td><td>撮影なし・素材なし・モデルなし</td></tr>
+<tr><td>15-17</td><td>都市夜景+成長グラフ</td><td>（テロップ薄い）</td></tr>
+<tr><td>20-22</td><td>サンセット + BUZZ+ロゴ</td><td>詳しくはDMから</td></tr>
+</table>
+</div>
+
+<div class="hilite">
+<strong>重要な発見:</strong> 動画本体には価格テロップは入っていない。<br>
+「フロントで価格を出してしまっている」問題は<strong>LP側（buzzplus-ai.com の¥30,000〜表示）とMeta広告のキャプション文</strong>にある可能性が高い。動画クリエ自体は"価格ゼロ"の状態。
+</div>
+
+<h3>強み・弱み評価</h3>
+<div class="grid2">
+<div class="card">
+<h4>✅ 強み</h4>
+<ul style="padding-left:20px">
+<li>AIアニメのビジュアルクオリティが高い</li>
+<li>「撮影なし・素材なし・モデルなし」の訴求が明確</li>
+<li>業種を6シーンで見せる（建設・介護・焼き鳥・アパレル・少年・クリエ）</li>
+<li>短尺（22秒）でリテンション取りやすい</li>
+</ul>
+</div>
+<div class="card">
+<h4>❌ 弱み</h4>
+<ul style="padding-left:20px">
+<li><strong>ナレーションゼロ</strong>（BGMのみ）→ 信頼構築ができない</li>
+<li><strong>本人（顔出し）ゼロ</strong>→ 誰が作ってるか分からない</li>
+<li><strong>社会的証明ゼロ</strong>（受講生数・実績数字なし）</li>
+<li><strong>「詳しくはDMから」</strong>= 弱いCTA（LP誘導じゃない）</li>
+<li>おさる系と比較して情報量が圧倒的に少ない</li>
+</ul>
+</div>
+</div>
+
+<h2>🐒 参考① おさる Ad1&2（本人語り＋数字連発型）</h2>
+
+<div class="card">
+<h4>Ad1（92秒）冒頭コピー抜粋</h4>
+<div class="quote">
+「インスタグラムのフォロワーが1000人以上いるなら今すぐ講座販売をスタートしてください。<br>
+こんにちは、マーケターおさるです。私はYouTubeチャンネル登録者数50万人、SNSフォロワーは100万人を超える講座販売者です。<strong>これまでSNS集客だけで累計100億円以上の講座販売に成功してきました</strong>」
+</div>
+<h4>使われている数字（一部）</h4>
+<div class="grid3" style="margin-top:12px">
+<div class="metric"><div class="label">おさる累計売上</div><div class="value">100億円</div></div>
+<div class="metric"><div class="label">受講生実績</div><div class="value">月430万</div><div class="note">YT登録者114人でも達成</div></div>
+<div class="metric"><div class="label">対応ジャンル</div><div class="value">150+</div></div>
+</div>
+</div>
+
+<h2>💻 参考② Claude Code集客AI（57秒）</h2>
+
+<div class="card">
+<h4>広告冒頭コピー</h4>
+<div class="quote">
+「<strong>広告費100万円以下の会社は、代理店ではなくAIに任せてください。</strong><br>
+CPAは9000円から3分の1に、外置費を30万円から3万円に。広告運用をクロードコードで自動化して1ヶ月目の成果です」
+</div>
+<h4>本人経緯</h4>
+<div class="quote">
+「もともと私の会社も広告費は月100万円程度。代理店に任せても新入社員がつけられたり、クリエイティブ更新が2ヶ月に1回と完全に後回し案件にされてました」
+</div>
+<h4>手間ゼロ訴求</h4>
+<div class="quote">
+「私がやるのは<strong>毎日AIが送ってくるレポートを確認するだけ</strong>。月3万のクロードコードのサブスクで本当にCPAが3分の1に」
+</div>
+<h4>CTA</h4>
+<div class="quote">
+「動画書籍『AI自動運転時代の集客完全攻略』を公式LINEで無料配布しているので、AI自動運転時代の新しい集客法をこの目で確かめてください」
+</div>
+</div>
+
+<h2>🤖 参考③ アニメる（BuzzPlus直接競合・24秒）</h2>
+
+<div class="card">
+<h4>シーン展開</h4>
+<table>
+<tr><th>秒数</th><th>ビジュアル</th><th>テロップ</th></tr>
+<tr><td>0-3</td><td>アニメ美少女+星空</td><td>実写を超える表現力を</td></tr>
+<tr><td>10-15</td><td>アニメ男性キャラ+バトル</td><td>自由自在な世界観で提案の常識を変える / Unique</td></tr>
+<tr><td>20-24</td><td>アニメ魔女キャラ</td><td>詳しくはフォームへ</td></tr>
+</table>
+</div>
+
+<div class="hilite">
+<strong>💥 衝撃の事実：BuzzPlusと構造がほぼ完全に同じ</strong><br>
+- 尺（22秒 vs 24秒）<br>
+- ナレーションなし（BGMのみ）<br>
+- AIアニメビジュアル<br>
+- 弱いCTA（「詳しくはフォームへ」）<br>
+- 数字・社会的証明・本人語り、すべてなし<br><br>
+つまり BuzzPlus は今 <strong>「アニメる」との差別化が不明確</strong>。同じ土俵で殴り合っている状態。
+</div>
+
+<h2>🎯 4本比較マトリクス</h2>
+
+<table>
+<tr><th>要素</th><th>BuzzPlus</th><th>アニメる</th><th>Claude Code集客</th><th>おさる</th></tr>
+<tr><td>ナレーション</td><td><span class="badge-bad">なし</span></td><td><span class="badge-bad">なし</span></td><td><span class="badge-good">あり</span></td><td><span class="badge-good">あり</span></td></tr>
+<tr><td>本人（顔出し）</td><td><span class="badge-bad">なし</span></td><td><span class="badge-bad">なし</span></td><td><span class="badge-good">あり</span></td><td><span class="badge-good">あり</span></td></tr>
+<tr><td>具体数字</td><td><span class="badge-bad">なし</span></td><td><span class="badge-bad">なし</span></td><td><span class="badge-good">連発</span></td><td><span class="badge-good">連発</span></td></tr>
+<tr><td>受講生実績</td><td><span class="badge-bad">なし</span></td><td><span class="badge-bad">なし</span></td><td><span class="badge-good">具体名</span></td><td><span class="badge-good">複数</span></td></tr>
+<tr><td>ペイン特定</td><td><span class="badge-warn">弱い</span></td><td><span class="badge-warn">弱い</span></td><td><span class="badge-good">明確</span></td><td><span class="badge-good">明確</span></td></tr>
+<tr><td>CTA</td><td>詳しくはDMから</td><td>詳しくはフォームへ</td><td>公式LINE無料配布</td><td>無料オンライン講座</td></tr>
+<tr><td>CTAの強度</td><td><span class="badge-warn">弱</span></td><td><span class="badge-warn">弱</span></td><td><span class="badge-good">強</span></td><td><span class="badge-good">強</span></td></tr>
+<tr><td>尺</td><td>22秒</td><td>24秒</td><td>57秒</td><td>92-148秒</td></tr>
+<tr><td>ターゲット単価</td><td>店舗¥30k/月</td><td>不明</td><td>情報商材（数十万？）</td><td>情報商材（数十万〜）</td></tr>
+</table>
+
+<h2>💡 発見された勝ちパターン（本人語り型）</h2>
+
+<div class="grid2">
+<div class="card">
+<h4>🎯 パターン1: 数字フックで始める</h4>
+<div class="quote">「フォロワー1000人以上いるなら」（おさる）<br>「広告費100万円以下の会社は」（Claude Code）</div>
+<p style="font-size:13px;color:#555;margin-top:8px">数字条件で"自分ごと"と認識させる</p>
+</div>
+<div class="card">
+<h4>🎯 パターン2: 大→小→大の数字並べ</h4>
+<div class="quote">大：累計100億円<br>小：YouTube登録者114人でも月430万<br>大：月9400万・年商1.2億</div>
+<p style="font-size:13px;color:#555;margin-top:8px">駆け出しでもいける感 → 夢を見せる</p>
+</div>
+<div class="card">
+<h4>🎯 パターン3: 本人経緯で権威</h4>
+<div class="quote">「元手取り18万円の英語教師→月商3.65億」（おさる）<br>「私の会社も月100万→3分の1」（Claude Code）</div>
+<p style="font-size:13px;color:#555;margin-top:8px">出発点を低く見せる→今との差で権威演出</p>
+</div>
+<div class="card">
+<h4>🎯 パターン4: 手間ゼロ訴求</h4>
+<div class="quote">「あなたは月2回30分動画出すだけ」（おさる）<br>「毎日レポート確認するだけ」（Claude Code）</div>
+<p style="font-size:13px;color:#555;margin-top:8px">労働からの解放 = 最大の欲求</p>
+</div>
+<div class="card">
+<h4>🎯 パターン5: 業界横断で自分事化</h4>
+<div class="quote">「ダイエット・語学・恋愛・スピリチュアル・150ジャンル以上」（おさる）</div>
+<p style="font-size:13px;color:#555;margin-top:8px">"どの業種でも自分に当てはまる"と思わせる</p>
+</div>
+<div class="card">
+<h4>🎯 パターン6: 無料オファー1本勝負</h4>
+<div class="quote">「無料オンライン講座」（おさる）<br>「動画書籍を公式LINEで無料配布」（Claude Code）</div>
+<p style="font-size:13px;color:#555;margin-top:8px">売らない・情報だけ渡す→ステップメールで教育</p>
+</div>
+</div>
+
+<h2>⚠️ BuzzPlusの現状課題（3つ）</h2>
+
+<div class="card">
+<h4>❌ 課題1: アニメるとの差別化が不明確</h4>
+<p>両方とも <strong>静音アニメ + テロップ + 弱いCTA</strong>。ユーザー視点で「どっちを選ぶ理由」が分からない。<br>
+Metaのオークションで同じキーワードを取り合うと、単純に予算勝負になる。</p>
+</div>
+
+<div class="card">
+<h4>❌ 課題2: フルファネル（動画→LP）で"価格見せる vs 見せない"が不整合</h4>
+<p>動画本体には価格なし ✅<br>
+だがLP（buzzplus-ai.com）に「¥30,000〜」表示あり ❌<br>
+→ 現在進行中のA/BテストはLP側の差だけで、広告動画からLPに来る前の情報濃度が両者で違う。<br>
+おさる式なら<strong>広告〜LP〜メール講座〜本商品まで全部"無料"で貫く</strong>のが常道。</p>
+</div>
+
+<div class="card">
+<h4>❌ 課題3: 情報量の圧倒的な不足</h4>
+<p>おさる 148秒 vs BuzzPlus 22秒。<br>
+短尺で興味喚起はできるが「なぜこれを選ぶべきか」の理由付けができていない。<br>
+=リード獲得はできてもCV率が低い可能性が高い。</p>
+</div>
+
+<h2>🚀 提案：3段階の改善プラン</h2>
+
+<div class="action-list">
+<h4>Phase 1（今すぐ・A/Bテスト同時実行）: 動画の価格削除版を作らず、LPだけ差でA/B</h4>
+<p style="font-size:13px">動画に価格が入ってなかったので、動画は現行のままA案・B案両セットで使う。LP側の¥30k表示 vs なし の比較に純化。<strong>本日中にA/Bテスト開始OK</strong>。</p>
+<h4>Phase 2（14日後・A/Bテスト結果を見て）: 本人語り型の新規動画を制作</h4>
+<ol>
+<li><strong>尺60秒版を作る</strong>（22秒→60秒で情報量3倍）</li>
+<li><strong>ナレーションを入れる</strong>（AI音声OK・音読さんAdvanced TTS Beta推奨）</li>
+<li><strong>数字連発</strong>：「16業種以上・累計〇本制作・〇店舗導入」</li>
+<li><strong>店主実例</strong>：「焼肉店で予約〇件」「美容室で新規〇人」の具体成果（要データ収集）</li>
+<li><strong>強いCTA</strong>：「詳しくはDMから」→「無料相談を今すぐ」</li>
+</ol>
+<h4>Phase 3（1ヶ月後）: フルファネル刷新（おさる式）</h4>
+<ol>
+<li>広告 → 無料PDF「店舗経営者のためのAI動画活用ガイド」ダウンロード</li>
+<li>LINEステップ配信（3-5日）で教育コンテンツ配信</li>
+<li>後半で価格提示 → 無料相談への誘導</li>
+<li>これで <strong>「価格を見せずにリード獲得」＋「教育後に成約」</strong> の直販ダイレクトマーケが完成</li>
+</ol>
+</div>
+
+<h2>🎯 直近の意思決定事項（鈴木さんご判断）</h2>
+
+<table>
+<tr><th>#</th><th>判断項目</th><th>推奨</th><th>備考</th></tr>
+<tr><td>1</td><td>A/Bテスト開始</td><td><span class="badge-good">今すぐGO</span></td><td>広告=現行のまま両セット使用・LPだけ差でOK</td></tr>
+<tr><td>2</td><td>本人語り新規動画</td><td><span class="badge-warn">14日後判断</span></td><td>A/B結果を見てから追加投資判断</td></tr>
+<tr><td>3</td><td>店主実成果データ収集</td><td><span class="badge-good">並行実施</span></td><td>導入店舗（松井・こもれび・GARAGE226等）にヒアリング</td></tr>
+<tr><td>4</td><td>フルファネル刷新</td><td><span class="badge-warn">1ヶ月後</span></td><td>PDFガイド作成＋LINEステップ配信設計</td></tr>
+</table>
+
+<h2>📎 分析ソース</h2>
+
+<div class="link-list card">
+<h4>参考広告</h4>
+<ul style="padding-left:20px">
+<li><a href="https://www.facebook.com/ads/library/?id=1730620108183228" target="_blank">BuzzPlus_AI動画_v1（現行広告）</a></li>
+<li><a href="https://www.facebook.com/ads/library/?id=1543372190792795" target="_blank">アニメる（直接競合）</a></li>
+<li><a href="https://instagram.com/p/DaIdkY4sRnh/" target="_blank">Claude Code集客AI</a></li>
+<li><a href="https://www.facebook.com/ads/library/?id=1005606298862632" target="_blank">おさる Ad1</a></li>
+<li><a href="https://www.facebook.com/ads/library/?id=2611564012608986" target="_blank">おさる Ad2</a></li>
+<li><a href="https://marketing.osaru01.jp/p/opt_j" target="_blank">おさるLP</a></li>
+</ul>
+</div>
+
+<footer>
+株式会社ランバード｜BuzzPlus 広告分析レポート｜2026-07-05<br>
+分析: 音声書き起こし(Whisper) + 映像フレーム解析 + 競合LP調査
+</footer>
+
+</div>
+</body>
+</html>
