@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASGUARD（アスガード）WEBサイト制作 ヒアリングシート — 2026/7/3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #eef1f5; color: #2a2f3a; line-height: 1.8; }
+  .container { max-width: 920px; margin: 0 auto; padding: 40px 24px; }
+
+  header { text-align: center; margin-bottom: 32px; padding-bottom: 28px; border-bottom: 2px solid #2b5a8f; }
+  header .badge { display:inline-block; background:#2b5a8f; color:#fff; font-size:12px; padding:3px 12px; border-radius:14px; margin-bottom:10px; letter-spacing:.05em; }
+  header h1 { font-size: 26px; font-weight: 700; color: #1c2531; letter-spacing: 0.04em; margin-bottom: 6px; }
+  header p.subtitle { font-size: 13px; color: #7a8494; }
+
+  .meta-table { width:100%; background:#fff; border-radius:10px; overflow:hidden; margin-bottom:28px; box-shadow:0 1px 4px rgba(0,0,0,.06); font-size:13px; }
+  .meta-table td { padding:9px 14px; border-bottom:1px solid #eef0f3; vertical-align:top; }
+  .meta-table tr:last-child td { border-bottom:none; }
+  .meta-table td.k { background:#f4f6f9; font-weight:700; color:#4a5568; width:170px; white-space:nowrap; }
+
+  .name-alert { background:#fdf2f2; border:1px solid #e8b4b4; border-left:5px solid #cc3b3b; border-radius:0 10px 10px 0; padding:16px 22px; margin-bottom:22px; }
+  .name-alert h2 { font-size:15px; color:#b3261e; margin-bottom:8px; }
+  .name-alert p { font-size:13px; color:#7a3a35; }
+  .name-alert .big { font-size:20px; font-weight:700; color:#1c2531; letter-spacing:.06em; }
+
+  .alert { background:#fff7ed; border:1px solid #f0c896; border-left:5px solid #e08a2b; border-radius:0 10px 10px 0; padding:18px 22px; margin-bottom:28px; }
+  .alert h2 { font-size:15px; color:#c2701a; margin-bottom:10px; }
+  .alert ul { margin:0 0 0 18px; font-size:13px; color:#7a5520; }
+  .alert ul li { margin-bottom:5px; }
+
+  .purpose-box { background:#fff; border-left:4px solid #2b5a8f; padding:18px 22px; margin-bottom:32px; border-radius:0 8px 8px 0; font-size:13px; color:#5a6270; }
+  .purpose-box h2 { font-size:14px; color:#2b5a8f; margin-bottom:6px; }
+
+  section { background:#fff; border-radius:12px; padding:30px; margin-bottom:22px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+  section h2 { font-size:18px; font-weight:700; color:#1c2531; padding-bottom:12px; margin-bottom:22px; border-bottom:2px solid #e4e8ee; display:flex; align-items:center; gap:10px; }
+  section h2 .num { background:#2b5a8f; color:#fff; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+
+  .q-group { margin-bottom:18px; padding-bottom:18px; border-bottom:1px dashed #e4e8ee; }
+  .q-group:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .q-label { font-size:14px; font-weight:700; color:#1c2531; margin-bottom:4px; }
+  .q-label .tag { font-size:10px; padding:1px 7px; border-radius:3px; margin-left:6px; font-weight:500; color:#fff; vertical-align:middle; }
+  .tag.ask { background:#e08a2b; }
+  .tag.have { background:#2b7a4b; }
+  .tag.req  { background:#d94f4f; }
+  .q-hint { font-size:12px; color:#98a1af; margin-bottom:6px; }
+  .q-sub { font-size:13px; color:#5a6270; margin-left:14px; margin-bottom:3px; }
+  .q-sub::before { content:"▸ "; color:#2b5a8f; }
+
+  .known { background:#eef5ef; border:1px solid #cfe3d5; border-radius:6px; padding:8px 12px; font-size:13px; color:#2b6e44; margin-top:6px; }
+  .known strong { color:#1f5532; }
+  .note-line { display:block; margin-top:8px; border-bottom:1px dotted #bbb; height:26px; }
+  textarea { width:100%; min-height:54px; border:1px solid #d6dbe2; border-radius:6px; padding:9px; font-size:13px; font-family:inherit; resize:vertical; margin-top:6px; }
+  .pill-row { display:flex; flex-wrap:wrap; gap:7px; margin-top:8px; }
+  .pill { font-size:12px; padding:5px 12px; border:1px solid #d6dbe2; border-radius:18px; color:#5a6270; }
+  footer { text-align:center; padding:36px 0 20px; font-size:12px; color:#aab2bf; }
+  @media print { body{background:#fff;} section{box-shadow:none;border:1px solid #eee;} }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <span class="badge">WEBサイト制作（通常サイト）</span>
+  <h1>ASGUARD（アスガード）ヒアリングシート</h1>
+  <p class="subtitle">藤沢市の軽自動車 販売・買取・整備専門店 ／ 受注日 2026年6月30日</p>
+</header>
+
+<div class="name-alert">
+  <h2>🚩 お名前・社名（最優先で正確に。読み間違い厳禁）</h2>
+  <p>代表者名は <span class="big">柳本 大賀（ヤナギモト タイガ）</span> ／ 屋号は <strong>ASGUARD（アスガード）</strong></p>
+  <p style="margin-top:6px;">※この氏名・屋号は <strong>JPクレスト「受注内容共有シート」の記載が正</strong>。打ち合わせ録画の文字起こしは氏名を誤変換しやすいため、原稿・制作共有シート・公開文言では必ずこの表記に統一する。当日は口頭で最終確認のみ。</p>
+</div>
+
+<table class="meta-table">
+  <tr><td class="k">案件名</td><td>ASGUARD（アスガード）／ HP制作</td></tr>
+  <tr><td class="k">営業会社</td><td>株式会社JPクレスト（営業担当：冨田 幸樹）／ 制作：株式会社ランバード</td></tr>
+  <tr><td class="k">法人名・屋号</td><td>ASGUARD（アスガード）</td></tr>
+  <tr><td class="k">代表者名</td><td><strong>柳本 大賀（ヤナギモト タイガ）</strong></td></tr>
+  <tr><td class="k">店舗／法人住所</td><td>〒252-0816 神奈川県藤沢市遠藤 3223-1</td></tr>
+  <tr><td class="k">電話（架電優先・携帯）</td><td>090-5203-0134</td></tr>
+  <tr><td class="k">メール</td><td>asguard.carsales@gmail.com（連絡用・WPログイン・サーチコンソール・アナリティクス共通）</td></tr>
+  <tr><td class="k">希望ドメイン</td><td>新規ドメイン（.com／.netのみ）／候補は未定 → 当日確認</td></tr>
+  <tr><td class="k">サイト種別</td><td>通常サイト</td></tr>
+  <tr><td class="k">受注日</td><td>2026年6月30日（共有シート作成 7月3日）</td></tr>
+  <tr><td class="k">GBP権限付与先</td><td>runbird.web@gmail.com</td></tr>
+</table>
+
+<div class="alert">
+  <h2>⚠️ 当日 最優先で埋める「未ヒアリング」項目</h2>
+  <p style="font-size:12px;color:#9a6b2a;margin-bottom:8px;">共有シートで「ヒアリングできておりません」となっている箇所。ここが埋まらないとサイト原稿・デザインが進められません。</p>
+  <ul>
+    <li>希望ドメインの候補（.com／.net、例：asguard-car.com など）</li>
+    <li>料金・在庫の見せ方（中古車の在庫掲載方法／車検・整備・カスタム・買取の料金レンジ）</li>
+    <li>サイトイメージ（誠実／親しみ／清潔／高級感／力強い ＋ シンプル／スタイリッシュ／カジュアル／ナチュラル）</li>
+    <li>店舗カラー・アクセントカラー（ロゴ・看板の色）</li>
+    <li>ターゲットの詳細（どんな人に・どんな悩みで軽自動車を探している人に届けたいか）</li>
+    <li>ユーザーに一番知ってほしいこと・HPで達成したいゴール</li>
+    <li>ご利用の流れ（来店〜納車、買取査定の流れ）</li>
+    <li>写真の提供有無／動画の提供・撮影の要否</li>
+    <li>お問い合わせ・予約方法（電話／フォーム／公式LINE）</li>
+    <li>営業時間・定休日（現状は火・土のみ。本業化後の想定も）</li>
+  </ul>
+</div>
+
+<div class="purpose-box">
+  <h2>このシートの使い方 ／ 代表への接し方</h2>
+  ① 面談前に開いておく（録画ON）　② 上の「未ヒアリング項目」を優先しながら順に質問　③ <strong>緑＝確定済み（共有シート記載）</strong>／<strong>橙＝当日ヒアリング</strong>　④ 面談後、録画文字起こしをAIに渡してサイト原稿を自動生成 → 制作共有シートへ転記<br>
+  <span style="color:#b3261e;font-weight:700;">※代表は「細かいタイプ」。ヒアリングは丁寧目に、話したいことを気持ちよく話してもらうスタンスで進める（JPクレスト申し送り）。</span>
+</div>
+
+<!-- 1 -->
+<section>
+  <h2><span class="num">1</span>基本情報・サイト設定</h2>
+  <div class="q-group">
+    <div class="q-label">屋号・読み方の最終確認<span class="tag have">確定</span></div>
+    <div class="known"><strong>ASGUARD（アスガード）</strong>／ 藤沢市の軽自動車 販売・買取・整備専門店</div>
+    <div class="q-sub">英字ロゴ・カナ表記（アスガード）で正しいか／ロゴデータの有無</div>
+  </div>
+  <div class="q-group">
+    <div class="q-label">代表者名・フリガナ<span class="tag have">確定（正本）</span><span class="tag ask">最終確認のみ</span></div>
+    <div class="known"><strong>柳本 大賀（ヤナギモト タイガ）</strong></div>
+    <div class="q-sub">受注内容共有シート（正）どおり。当日は念のため口頭で読みの最終確認のみ（文字起こしの誤変換に注意）</div>
+    <span class="note-line"></span>
+  </div>
+  <div class="q-group">
+    <div class="q-label">事業のフェーズ・営業時間<span class="tag have">一部確定</span><span class="tag req">必須</span></div>
+    <div class="known">現在は<strong>副業</strong>で運営、将来本業化予定（早くて<strong>2026年10〜12月</strong>）。それまでは<strong>火曜・土曜のみ</strong>営業。</div>
+    <div class="q-sub">HP公開時点で載せる営業時間・定休日をどう表記するか（「火・土営業」と明記 or 「予約制」表記など）</div>
+    <div class="q-sub">本業化のタイミングでサイト情報を更新する前提でよいか</div>
+    <textarea placeholder="例: 火・土 10:00-18:00 / 完全予約制 など"></textarea>
+  </div>
+  <div class="q-group">
+    <div class="q-label">希望ドメイン<span class="tag ask">当日確認</span><span class="tag req">必須</span></div>
+    <div class="known">新規ドメイン（<strong>.com／.netのみ</strong>）</div>
+    <div class="q-sub">第1〜第3候補を確認（例：asguard-car.com / asguard-carsales.com など提案でも可）</div>
+    <span class="note-line"></span>
+  </div>
+  <div class="q-group">
+    <div class="q-label">現在のWEB・SNS<span class="tag ask">当日確認</span></div>
+    <div class="q-hint">共有シートは「ZOOM済＆Googlechrom済」＝既存サイトなしと想定</div>
+    <div class="q-sub">既存HP・Instagram・Googleビジネスプロフィール・グーネット/カーセンサー等の掲載有無</div>
+    <textarea placeholder="既存HP / SNS / 中古車ポータル掲載 など"></textarea>
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <h2><span class="num">2</span>事業内容・取扱・料金</h2>
+  <div class="q-group">
+    <div class="q-label">事業内容・取扱<span class="tag have">確定</span></div>
+    <div class="known"><strong>中古車販売。軽自動車メインで、特に「ミラココア」に絞って伸ばしていきたい</strong>意向。ご依頼があれば軽自動車以外も対応。</div>
+    <div class="q-sub">サービス範囲：<strong>販売・カスタム・買取・車検・部品持込作業</strong>（対策KWより）</div>
+    <div class="q-sub">「ミラココア専門」を前面に出すか／軽全般＋ミラココア強化のどちらの見せ方にするか</div>
+    <div class="q-sub">主な仕入れ・在庫の規模感（常時何台くらい？）</div>
+    <textarea></textarea>
+  </div>
+  <div class="q-group">
+    <div class="q-label">在庫（中古車）の掲載方法<span class="tag ask">当日確認</span><span class="tag req">必須</span></div>
+    <div class="q-hint">中古車販売サイトの肝。在庫をどう見せるかで構成が大きく変わる</div>
+    <div class="q-sub">HP内に在庫一覧を作るか（手動更新）／ブログ機能で1台ずつ紹介する運用か</div>
+    <div class="q-sub">グーネット・カーセンサー等ポータルへ誘導するか（既に掲載があればリンク連携）</div>
+    <div class="q-sub">1台あたりの掲載項目（車種・年式・走行距離・車検・価格・写真枚数）</div>
+    <textarea></textarea>
+  </div>
+  <div class="q-group">
+    <div class="q-label">料金表・価格帯<span class="tag ask">当日確認</span><span class="tag req">必須</span></div>
+    <div class="q-hint">共有シート「料金表はまだございません。ヒアリングお願いします」</div>
+    <div class="q-sub">車検・整備・カスタム・部品持込作業の料金の目安（「◯◯円〜」で掲載可能か）</div>
+    <div class="q-sub">買取査定の流れ・費用感／支払い方法（現金・ローン・カード）</div>
+    <textarea></textarea>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <h2><span class="num">3</span>強み・選ばれる理由</h2>
+  <div class="q-group">
+    <div class="q-label">事業の強み<span class="tag have">確定</span></div>
+    <div class="known"><strong>一級整備士</strong>の資格を持つ。<strong>整備のクオリティ</strong>が強み。</div>
+    <div class="q-sub">「一級整備士が販売から整備・車検まで一貫」を看板メッセージにしてよいか</div>
+    <div class="q-sub">他の中古車店・カーショップとの違い（保証・アフター・カスタム対応など）を3つ以上</div>
+    <textarea></textarea>
+  </div>
+  <div class="q-group">
+    <div class="q-label">代表の経歴・お店に込めた想い<span class="tag ask">当日確認</span></div>
+    <div class="q-sub">整備士としての経歴・独立のきっかけ／ASGUARD（守護＝アスガルド）の由来</div>
+    <div class="q-sub">「ミラココアに絞る」理由・こだわり（人気車種／扱いやすさ／得意分野 など）</div>
+    <textarea></textarea>
+  </div>
+</section>
+
+<!-- 4 -->
+<section>
+  <h2><span class="num">4</span>ターゲット・お客様像</h2>
+  <div class="q-group">
+    <div class="q-label">想定ターゲット<span class="tag have">確定</span></div>
+    <div class="known">性別：<strong>男女両方</strong>／年代：<strong>10代〜60代（全年代）</strong></div>
+    <div class="q-hint">→ 当日、実際に多い層・伸ばしたい層に優先順位を付けたい（例：おしゃれな軽を探す若い女性／セカンドカー needs 等）</div>
+  </div>
+  <div class="q-group">
+    <div class="q-label">ターゲットの詳細<span class="tag ask">当日確認</span><span class="tag req">必須</span></div>
+    <div class="q-hint">共有シート「ヒアリングできておりません」。対策KW「おしゃれな軽自動車」から、デザイン重視層が想定される</div>
+    <div class="q-sub">どんな人に届けたい？（初めての車／通勤・買い物の足／おしゃれな軽が欲しい層／カスタム好き）</div>
+    <div class="q-sub">来店・問い合わせのきっかけ（検索・ポータル・紹介・SNS）</div>
+    <textarea></textarea>
+  </div>
+  <div class="q-group">
+    <div class="q-label">商圏エリア・対策キーワード<span class="tag have">確定（5枠）</span></div>
+    <div class="known">
+      ① 藤沢市 中古車販売　② 藤沢市 ミラココア　③ 藤沢市 おしゃれな軽自動車　④ 藤沢市 軽自動車整備　⑤ 藤沢市 ダイハツ軽自動車
+    </div>
+    <div class="q-sub">bizクラウドは最大7枠。残り2枠に入れたいKW・地域（近隣市／車検・買取系KW）を当日確認</div>
+    <span class="note-line"></span>
+  </div>
+</section>
+
+<!-- 5 -->
+<section>
+  <h2><span class="num">5</span>デザイン・雰囲気<span style="font-size:12px;color:#e08a2b;font-weight:500;">（全項目 当日確認）</span></h2>
+  <div class="q-group">
+    <div class="q-label">サイト全体の印象<span class="tag ask">当日確認</span><span class="tag req">必須</span></div>
+    <div class="q-hint">共有シート未記入。「おしゃれな軽自動車」を掲げるなら、無骨な中古車店より洗練・清潔方向が候補</div>
+    <div class="pill-row">
+      <span class="pill">誠実</span><span class="pill">親しみ・優しい</span><span class="pill">清潔</span><span class="pill">高級感</span><span class="pill">力強い</span>
+    </div>
+    <div class="pill-row" style="margin-top:6px;">
+      <span class="pill">シンプル</span><span class="pill">スタイリッシュ</span><span class="pill">カジュアル</span><span class="pill">ナチュラル</span>
+    </div>
+  </div>
+  <div class="q-group">
+    <div class="q-label">店舗カラー / アクセントカラー<span class="tag ask">当日確認</span></div>
+    <div class="q-hint">ロゴ・看板・のぼりで使っている色があれば</div>
+    <textarea placeholder="店舗カラー（メイン）/ アクセントカラー / 具体的な色イメージ"></textarea>
+  </div>
+  <div class="q-group">
+    <div class="q-label">参考にしたいサイト（同業・軽/中古車専門店）<span class="tag ask">当日確認</span></div>
+    <div class="q-hint">細かいタイプの代表向けに、ゼロから聞かず下を画面共有して「どれが近いですか／どこが好き・苦手ですか」と反応を引き出す。いずれも<strong>白基調で清潔感・洗練された、在庫と料金（コミコミ価格）が分かりやすい同業サイト</strong>。ASGUARDの方向性に近い。すべて実在・稼働確認済み（2026/7/4時点）。</div>
+
+    <div class="ref-card" style="border:2px solid #2b5a8f;border-radius:8px;padding:12px 14px;margin-top:10px;background:#f3f7fb;">
+      <div style="font-weight:700;color:#1f4a78;font-size:13px;">① 軽自動車館（在庫・料金・買取が明快） <span style="background:#2b5a8f;color:#fff;font-size:10px;padding:1px 7px;border-radius:3px;">本命方向</span></div>
+      <div style="font-size:13px;margin:3px 0;"><a href="https://keijidousyakan.com/" style="color:#2b5a8f;">https://keijidousyakan.com/</a></div>
+      <div style="font-size:12px;color:#777;">「コミコミ価格（諸費用・保証込）」で価格を明示、人気車TOP10、販売と買取を均等に配置。清潔感のあるレイアウトで、在庫と料金の載せ方の見本。</div>
+    </div>
+
+    <div class="ref-card" style="border:2px solid #2b5a8f;border-radius:8px;padding:12px 14px;margin-top:8px;background:#f3f7fb;">
+      <div style="font-weight:700;color:#1f4a78;font-size:13px;">② トータス（神奈川・同エリアの軽/未使用車専門店） <span style="background:#2b5a8f;color:#fff;font-size:10px;padding:1px 7px;border-radius:3px;">同エリア</span></div>
+      <div style="font-size:13px;margin:3px 0;"><a href="https://www.tortoise-k-carlife.com/" style="color:#2b5a8f;">https://www.tortoise-k-carlife.com/</a></div>
+      <div style="font-size:12px;color:#777;">大和・厚木・相模原・平塚に展開する神奈川の軽専門店。カフェのような温かみのある雰囲気で、在庫・週替りチラシ・試乗・ローン・アフターまで網羅。<strong>藤沢に近い同エリアの同業</strong>として立ち位置の参考に。</div>
+    </div>
+
+    <div class="ref-card" style="border:1px solid #cfe3d5;border-radius:8px;padding:12px 14px;margin-top:8px;background:#fbfdfb;">
+      <div style="font-weight:700;color:#2b6e44;font-size:13px;">③ 軽スタジオ（神戸明石・爽やかモダン）</div>
+      <div style="font-size:13px;margin:3px 0;"><a href="https://www.kobe-car.co.jp/" style="color:#2b7a4b;">https://www.kobe-car.co.jp/</a></div>
+      <div style="font-size:12px;color:#777;">白基調に青・オレンジのアクセントで爽やか＆親しみやすい、統一感のあるモダンな作り。人気車ランキング＋YouTube/Instagram連携で"透明性のあるお店"を演出。①②に近いきれいめ路線。</div>
+    </div>
+
+    <div class="q-sub" style="margin-top:10px;">代表が既に「いいな」と思うお店・Instagram・他業種サイトがあれば（メモ）：</div>
+    <span class="note-line"></span><span class="note-line"></span>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">デザイン参考（大手・メーカー・住宅）<span class="tag ask">当日確認</span></div>
+    <div class="q-hint">直接の競合ではなく<strong>「見せ方の幅」を代表に見てもらう</strong>ための引き出し。①上質・写真主役／②理念・哲学の語り方／③悩み・不安訴求でトップを充実、の3方向を実例で提示。ASGUARDの「一級整備士＝品質・こだわり」をどう魅せるかの参考。すべて実在・稼働確認済み（2026/7/6時点）。</div>
+
+    <div class="ref-card" style="border:1px solid #d6dbe2;border-radius:8px;padding:12px 14px;margin-top:10px;background:#f7f9fb;">
+      <div style="font-weight:700;color:#1f4a78;font-size:13px;">Ⓐ 積水ハウス（上質・写真主役・余白）</div>
+      <div style="font-size:13px;margin:3px 0;"><a href="https://www.sekisuihouse.co.jp/" style="color:#2b5a8f;">https://www.sekisuihouse.co.jp/</a></div>
+      <div style="font-size:12px;color:#777;">余白を活かした大判写真と明快な情報階層。"上質さ・信頼感"を写真とレイアウトで伝える住宅最大手の見本。</div>
+    </div>
+
+    <div class="ref-card" style="border:1px solid #d6dbe2;border-radius:8px;padding:12px 14px;margin-top:8px;background:#f7f9fb;">
+      <div style="font-weight:700;color:#1f4a78;font-size:13px;">Ⓑ 一条工務店（理念・哲学の伝え方）</div>
+      <div style="font-size:13px;margin:3px 0;"><a href="https://www.ichijo.co.jp/philosophy/" style="color:#2b5a8f;">https://www.ichijo.co.jp/philosophy/</a></div>
+      <div style="font-size:12px;color:#777;">「暮らしの質は住まいの性能で変わる」など、こだわり・理念を1ページで語る作り。ASGUARDの"整備品質への信念"を語るページの参考に。</div>
+    </div>
+
+    <div class="ref-card" style="border:2px solid #2b5a8f;border-radius:8px;padding:12px 14px;margin-top:8px;background:#f3f7fb;">
+      <div style="font-weight:700;color:#1f4a78;font-size:13px;">Ⓒ ガリバー（悩み・不安訴求でトップ充実） <span style="background:#2b5a8f;color:#fff;font-size:10px;padding:1px 7px;border-radius:3px;">本命方向</span></div>
+      <div style="font-size:13px;margin:3px 0;"><a href="https://221616.com/" style="color:#2b5a8f;">https://221616.com/</a></div>
+      <div style="font-size:12px;color:#777;">在庫の羅列でなく、選ばれる理由・お客様の声・安心の約束でトップを構成。<strong>小規模店が"安心"で戦うASGUARDに最も直結する型</strong>。</div>
+    </div>
+
+    <div class="ref-card" style="border:1px solid #d6dbe2;border-radius:8px;padding:12px 14px;margin-top:8px;background:#f7f9fb;">
+      <div style="font-weight:700;color:#1f4a78;font-size:13px;">Ⓓ マツダ（デザイン哲学・世界観で魅せる）</div>
+      <div style="font-size:13px;margin:3px 0;"><a href="https://www.mazda.co.jp/" style="color:#2b5a8f;">https://www.mazda.co.jp/</a></div>
+      <div style="font-size:12px;color:#777;">「魂動」デザイン哲学。大面積の高品質写真＋感情に訴える言葉で"クルマへのこだわり"を世界観として表現。車ブランド版の理念サイト。</div>
+    </div>
+
+    <div class="ref-card" style="border:1px solid #d6dbe2;border-radius:8px;padding:12px 14px;margin-top:8px;background:#f7f9fb;">
+      <div style="font-weight:700;color:#1f4a78;font-size:13px;">Ⓔ レクサス（余白×高解像度の上質・クラフト感）</div>
+      <div style="font-size:13px;margin:3px 0;"><a href="https://lexus.jp/" style="color:#2b5a8f;">https://lexus.jp/</a></div>
+      <div style="font-size:12px;color:#777;">余白と高解像度ビジュアル中心の上質な設計。プレミアム感・クラフト感の演出の到達点。"おしゃれ・上質"に振る場合の上限イメージ。</div>
+    </div>
+  </div>
+
+  <div class="q-group">
+    <div class="q-label">写真・動画素材<span class="tag ask">当日確認</span><span class="tag req">必須</span></div>
+    <div class="q-hint">共有シート：写真＝フリー素材10点まで／動画＝未ヒアリング。中古車は現車写真の質が命 → 提供素材の有無を必ず確定</div>
+    <div class="pill-row">
+      <span class="pill">写真：提供なし</span><span class="pill">提供あり</span><span class="pill">撮影あり</span><span class="pill" style="border-color:#2b7a4b;background:#eef5ef;color:#2b6e44;font-weight:700;">フリー素材10点（共有シート選択）</span>
+    </div>
+    <div class="pill-row" style="margin-top:6px;">
+      <span class="pill">動画：なし</span><span class="pill">提供あり</span><span class="pill">撮影・編集あり</span>
+    </div>
+    <div class="q-sub" style="margin-top:8px;">在庫車・店舗・整備風景・代表の写真を提供できるか（信頼感に直結）</div>
+  </div>
+</section>
+
+<!-- 6 -->
+<section>
+  <h2><span class="num">6</span>ページ構成・機能</h2>
+  <div class="q-group">
+    <div class="q-label">作りたいページ<span class="tag have">共有シート選択済</span></div>
+    <div class="known">
+      <strong>選択済：</strong>トップ ／ ブログ ／ 事業・サービス紹介 ／ 会社概要・企業情報 ／ スタッフ紹介 ／ お問い合わせフォーム＆プライバシーポリシー
+      <br><span style="font-size:12px;">※通常サイト＝トップ＋下層6ページが目安</span>
+    </div>
+    <div class="q-sub">追加検討：在庫一覧／買取・査定案内／車検・整備メニュー／お客様の声／アクセス（地図）</div>
+    <div class="q-sub">「事業・サービス紹介」に 販売・買取・車検・整備・カスタム をどう配置するか</div>
+    <textarea></textarea>
+  </div>
+  <div class="q-group">
+    <div class="q-label">お問い合わせ・予約方法<span class="tag ask">当日確認</span></div>
+    <div class="q-hint">共有シート未記入</div>
+    <div class="pill-row">
+      <span class="pill">電話</span><span class="pill">お問い合わせフォーム</span><span class="pill">公式LINE</span><span class="pill">外部サイト</span>
+    </div>
+    <div class="q-sub" style="margin-top:8px;">在庫問い合わせ・査定依頼の主な受付方法（電話／フォーム／LINE）をどうしたいか</div>
+  </div>
+  <div class="q-group">
+    <div class="q-label">パーツ（よくある悩み／強み／利用の流れ／代表あいさつ／FAQ 等）<span class="tag ask">当日確認</span></div>
+    <div class="q-hint">共有シート未記入。トップに載せる要素を当日選定</div>
+    <div class="q-sub">「ご利用の流れ」（来店〜納車、買取査定の流れ）は入れたいか</div>
+    <span class="note-line"></span>
+  </div>
+  <div class="q-group">
+    <div class="q-label">自動ブログ投稿機能<span class="tag ask">当日確認</span></div>
+    <div class="q-hint">在庫紹介・整備事例をブログで発信する運用と相性が良い。GBP連携・口コミ対応の方針も確認</div>
+    <span class="note-line"></span>
+  </div>
+</section>
+
+<!-- 7 -->
+<section>
+  <h2><span class="num">7</span>集客・ゴール</h2>
+  <div class="q-group">
+    <div class="q-label">HPで一番達成したいこと<span class="tag ask">当日確認</span><span class="tag req">必須</span></div>
+    <div class="q-hint">共有シート「ユーザーに知って欲しいこと＝ヒアリングできておりません」</div>
+    <div class="q-sub">在庫の問い合わせを増やしたい／整備・車検の依頼を増やしたい／買取を増やしたい／信頼感を伝えたい？</div>
+    <div class="q-sub">「これだけは伝えたい」というメッセージ（例：一級整備士が見た安心の一台）</div>
+    <textarea></textarea>
+  </div>
+  <div class="q-group">
+    <div class="q-label">今後の展開<span class="tag ask">当日確認</span></div>
+    <div class="q-sub">本業化（10〜12月予定）に向けた拡大計画・取扱車種の広げ方をサイト設計に反映</div>
+    <textarea></textarea>
+  </div>
+</section>
+
+<!-- 8 -->
+<section>
+  <h2><span class="num">8</span>MEO・SEO・連携</h2>
+  <div class="q-group">
+    <div class="q-label">対策キーワード（確定済）<span class="tag have">確定</span></div>
+    <div class="known">① 藤沢市 中古車販売　② 藤沢市 ミラココア　③ 藤沢市 おしゃれな軽自動車　④ 藤沢市 軽自動車整備　⑤ 藤沢市 ダイハツ軽自動車</div>
+    <div class="q-sub">残り2枠（最大7枠）・各設定3KWまで → 当日追加分を聞く</div>
+  </div>
+  <div class="q-group">
+    <div class="q-label">Googleビジネスプロフィール（GBP）<span class="tag ask">当日確認</span></div>
+    <div class="known">権限付与先：<strong>runbird.web@gmail.com</strong></div>
+    <div class="q-sub">当日：runbird.web@gmail.com への管理権限付与をその場で実施（オーナー側操作のサポート）</div>
+    <div class="q-sub">GBP登録の有無・口コミ件数／NAP（店名・住所・電話）がHPと一致しているか</div>
+    <span class="note-line"></span>
+  </div>
+  <div class="q-group">
+    <div class="q-label">アクセス解析<span class="tag have">確定</span></div>
+    <div class="known">あり（asguard.carsales@gmail.com で設定）</div>
+  </div>
+  <div class="q-group">
+    <div class="q-label">SNS連携ID<span class="tag ask">当日確認</span></div>
+    <div class="q-sub">Instagram / Facebook の ID・パスワード（MEOクラウド連携が必要な場合）</div>
+    <textarea></textarea>
+  </div>
+</section>
+
+<footer>
+  ASGUARD（アスガード）WEBサイト制作 ヒアリングシート — 株式会社ランバード ／ 営業：株式会社JPクレスト（冨田 幸樹） ／ 受注日 2026年6月30日
+</footer>
+
+</div>
+</body>
+</html>
