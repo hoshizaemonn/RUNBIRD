@@ -345,6 +345,46 @@ LP本体の離脱は少ないが、モーダル(<code>#owlModalClose</code>)閉�
 → <strong>新LPの「月商¥130万・8ヶ月黒字化」等をより強調</strong>
 </div>
 
+<!-- ========== 7/9会議TODO反映 ========== -->
+<h2>🔄 7/9会議で決定した対応方針（今週着手）</h2>
+
+<div class="note" style="background:#eef4ff; border-color:#4a90e2;">
+<strong>📎 会議TODO実行ボード（全24項目・6カテゴリ）</strong><br>
+→ <a href="../meeting-todo-20260709.html" target="_blank">https://hoshizaemonn.github.io/RUNBIRD/meeting-todo-20260709.html</a>
+</div>
+
+<h3>OWL関連 最高優先度TODO（星崎担当・今週）</h3>
+<table>
+<tr><th>カテゴリ</th><th>項目</th><th>状況</th></tr>
+<tr><td rowspan="3">A. 広告クリエイティブ</td><td>現行広告停止→新動画4-5本制作</td><td class="bad">🔴 新規</td></tr>
+<tr><td>事例動画CTA強化＋ダミー表記化</td><td class="bad">🔴 新規</td></tr>
+<tr><td>動画尺を31秒以上へ延長</td><td class="bad">🔴 新規</td></tr>
+<tr><td rowspan="3">B. KW戦略</td><td><strong>★除外KWをGitHub共有し統一運用</strong></td><td class="bad">🔴 最優先</td></tr>
+<tr><td>KW A/B 2群で効果測定</td><td class="bad">🔴 新規</td></tr>
+<tr><td>面取り用5アカウント構成案</td><td class="bad">🔴 新規</td></tr>
+<tr><td>D. 動画プレゼント</td><td>LP仮実装→ABテスト</td><td class="bad">🔴 新規</td></tr>
+<tr><td>E. コスト削減</td><td>AI動画生成コスト1000円以下化</td><td class="bad">🔴 新規</td></tr>
+</table>
+
+<h3>★除外KW GitHub共有 運用フロー（構想）</h3>
+<div class="action-box">
+<strong>目的</strong>：星崎(TO)・河合(RB)・鈴木さんが同じ除外KWリストを見て、重複作業ゼロ・除外抜け漏れゼロで運用する<br>
+<br>
+<strong>仕組み</strong>：<br>
+1. GitHub リポジトリに <code>owl-negative-keywords.txt</code> を配置<br>
+2. 誰かが除外KW追加 → PR作成 → レビュー → main merge<br>
+3. Google広告スクリプト（<code>auto_negative_keywords.js</code> 拡張版）が毎朝GitHubから最新リストを取得→自動で除外KW反映<br>
+4. Yahoo広告は同リストを手動反映（Yahoo APIはスクリプト非対応）<br>
+<br>
+<strong>参考</strong>：ニコニコカーローン向け <code>auto_negative_keywords.js</code>（自動化スクリプト）をベースにOWL用に改修<br>
+<br>
+<strong>次のアクション</strong>：<br>
+・GitHubに <code>hoshizaemonn/owl-negative-keywords</code> リポジトリ新規作成<br>
+・現行の除外KWリスト（TO側・RB側・Yahoo側）をエクスポート→統合<br>
+・Google Adsスクリプトを改修（GitHub Raw URL からfetch）<br>
+・鈴木さん・河合さんに閲覧/PR権限付与
+</div>
+
 <!-- ========== 来週以降 ========== -->
 <h2>🟢 今後の推奨アクション</h2>
 
