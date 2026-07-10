@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【1ヶ月経過レポート】YouTube広告 運用結果ご報告 — フジサワオート 様</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #cc0000;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .decision-card {
+            background: #f8f9fa;
+            border-left: 5px solid #2e7d32;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 12px;
+        }
+        .decision-card.hold {
+            border-left-color: #ff8800;
+            background: #fff8f0;
+        }
+        .decision-card h4 {
+            font-size: 15px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+        .decision-card .status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+        .status-done { background: #2e7d32; color: #fff; }
+        .status-hold { background: #ff8800; color: #fff; }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .summary-card {
+            background: #fff0f0;
+            border: 2px solid #cc0000;
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .summary-card.green { background: #e8f5e9; border-color: #2e7d32; }
+        .summary-card.blue { background: #e3f2fd; border-color: #1976d2; }
+        .summary-card .label { font-size: 11px; font-weight: 700; margin-bottom: 4px; }
+        .summary-card .value { font-size: 28px; font-weight: 800; }
+        .summary-card .sub { font-size: 11px; color: #555; margin-top: 4px; }
+        .summary-card.red .label, .summary-card.red .value { color: #cc0000; }
+        .summary-card.green .label, .summary-card.green .value { color: #2e7d32; }
+        .summary-card.blue .label, .summary-card.blue .value { color: #1976d2; }
+
+        table.data {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin: 12px 0;
+        }
+        table.data th {
+            background: #2e7d32;
+            color: #fff;
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        table.data td {
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+        table.data tr.highlight { background: #fff8e1; }
+        table.data tr.good { background: #e8f5e9; }
+        table.data tr.warn { background: #fff3e0; }
+        table.data tr.stop { background: #f5f5f5; color: #888; }
+
+        .eval-box {
+            background: #f8f9fa;
+            border-left: 4px solid #2e7d32;
+            padding: 14px 16px;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #333;
+            margin-top: 12px;
+            border-radius: 4px;
+        }
+
+        .verify-banner {
+            background: linear-gradient(135deg, #2e7d32, #1b5e20);
+            color: #fff;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 28px;
+        }
+        .verify-banner h2 {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .verify-banner .sub {
+            text-align: center;
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .kw-eval-box {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 14px;
+        }
+        .kw-eval-box.a { border-color: #cc0000; background: #fff0f0; }
+        .kw-eval-box.b { border-color: #757575; background: #f5f5f5; }
+        .kw-eval-box.c { border-color: #1976d2; background: #e3f2fd; }
+        .kw-eval-box h4 {
+            font-size: 15px;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .kw-eval-box.a h4 { color: #cc0000; }
+        .kw-eval-box.b h4 { color: #424242; }
+        .kw-eval-box.c h4 { color: #1976d2; }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .summary-grid { grid-template-columns: 1fr; }
+            table.data { font-size: 11px; }
+            table.data th, table.data td { padding: 6px 4px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>【1ヶ月経過レポート】YouTube広告 運用結果ご報告</h1>
+    <p class="subtitle">フジサワオート 様｜株式会社ランバード<br>対象期間：2026年6月8日 〜 2026年7月8日（31日間）</p>
+
+    <!-- 検証バナー -->
+    <div class="verify-banner">
+        <h2>🔍 6/8打ち合わせ 決定事項の効果検証</h2>
+        <p class="sub">「キーワード組み直し」「倉敷市エリア追加」「スマホ配信は保留」— 3つの決定が実データでどう表れたかをまとめました。</p>
+    </div>
+
+    <!-- ① 決定事項と実施状況 -->
+    <div class="section" style="border-color:#2e7d32;">
+        <div class="section-title">
+            <span class="icon" style="background:#2e7d32;">1</span>
+            6/8打ち合わせの決定事項と実施状況
+        </div>
+
+        <div class="decision-card hold">
+            <h4><span class="status status-hold">保留</span>① スマホ配信比率の変更</h4>
+            <div style="font-size:13px;color:#444;">
+                4月→5月でスマホの視聴率が悪化していたため、配信比率の見直しを検討 → <strong>現状維持で様子見と決定</strong>。1ヶ月経過データでもスマホ視聴率29.15%（他デバイスの約6割）と傾向は変わらず、<strong>保留判断は妥当</strong>だったことがデータで裏付けられました（後述）。
+            </div>
+        </div>
+
+        <div class="decision-card">
+            <h4><span class="status status-done">実施済み</span>② キーワードの組み直し（強化・除外・追加）</h4>
+            <div style="font-size:13px;color:#444;line-height:1.9;">
+                <strong style="color:#cc0000;">A強化：</strong> 愛車 メンテナンス／ドライブ 岡山／エンジン リフレッシュ／車 乗り換え 迷う（「迷いから」を「迷う」に修正）<br>
+                <strong style="color:#424242;">B除外：</strong> 10万キロ 車／車 コンディション／エンジン パワーダウン<br>
+                <strong style="color:#1976d2;">C追加：</strong> 車 メンテ 岡山／中古車 整備／エンジンオイル 交換／車 燃費 落ちた
+            </div>
+        </div>
+
+        <div class="decision-card">
+            <h4><span class="status status-done">実施済み</span>③ 倉敷市を配信エリアとして追加</h4>
+            <div style="font-size:13px;color:#444;">
+                既存の岡山市4区＋赤磐市に、倉敷市を拡張エリアとして追加。1ヶ月で <strong>倉敷市が全エリア中最大の表示ボリューム</strong> を獲得（後述）。
+            </div>
+        </div>
+    </div>
+
+    <!-- ② 全体サマリー -->
+    <div class="section" style="border-color:#cc0000;">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">2</span>
+            1ヶ月経過 全体サマリー
+        </div>
+
+        <div class="summary-grid">
+            <div class="summary-card red">
+                <div class="label">表示回数</div>
+                <div class="value">1,931<span style="font-size:16px;">回</span></div>
+                <div class="sub">動画が画面に届いた数</div>
+            </div>
+            <div class="summary-card blue">
+                <div class="label">視聴回数</div>
+                <div class="value">885<span style="font-size:16px;">回</span></div>
+                <div class="sub">30秒以上見ていただいた数</div>
+            </div>
+            <div class="summary-card green">
+                <div class="label">視聴率</div>
+                <div class="value">45.83<span style="font-size:18px;">%</span></div>
+                <div class="sub">業界平均25%の <strong>約1.8倍</strong></div>
+            </div>
+        </div>
+
+        <div class="eval-box" style="margin-top:20px;">
+            <strong>💡 総括:</strong> 6/8のキーワード組み直し・倉敷市追加の直後1ヶ月でも、視聴率45.83%と業界平均の約1.8倍を維持。特に新規追加した倉敷市が最大リーチ源に育ち、キーワードC群（追加）2語が視聴率50%超えと好スタート。<strong>6/8決定は全体として狙い通り機能しています。</strong>
+        </div>
+    </div>
+
+    <!-- ③ デバイス別 -->
+    <div class="section" style="border-color:#1976d2;">
+        <div class="section-title">
+            <span class="icon" style="background:#1976d2;">3</span>
+            デバイス別 実施結果 — スマホ保留判断の妥当性検証
+        </div>
+
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>デバイス</th>
+                    <th>視聴回数</th>
+                    <th>視聴率</th>
+                    <th>100%完視率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="good">
+                    <td><strong>🥇 テレビ画面</strong></td>
+                    <td style="text-align:right;"><strong>536</strong></td>
+                    <td style="text-align:right;"><strong>49.36%</strong></td>
+                    <td style="text-align:right;"><strong>39.23%</strong></td>
+                </tr>
+                <tr>
+                    <td>タブレット</td>
+                    <td style="text-align:right;">159</td>
+                    <td style="text-align:right;">43.44%</td>
+                    <td style="text-align:right;">29.23%</td>
+                </tr>
+                <tr>
+                    <td>コンピュータ</td>
+                    <td style="text-align:right;">125</td>
+                    <td style="text-align:right;">48.83%</td>
+                    <td style="text-align:right;">33.73%</td>
+                </tr>
+                <tr class="warn">
+                    <td>⚠️ スマートフォン</td>
+                    <td style="text-align:right;">65</td>
+                    <td style="text-align:right;color:#cc0000;"><strong>29.15%</strong></td>
+                    <td style="text-align:right;color:#cc0000;">19.82%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="eval-box">
+            <strong>💡 検証結果：スマホ保留判断は妥当</strong><br>
+            ① <strong>テレビ画面が主戦場として引き続き安定</strong>。視聴回数の約6割（536/885）がリビングのテレビで再生され、視聴率49.36%・完視率39.23%と高水準を維持。<br>
+            ② <strong>スマホは視聴率29.15%と依然として低め</strong>（他デバイスの約6割）。6/8時点で気にされていた傾向は継続。<br>
+            ③ 現時点で無理にスマホ比率をいじらず <strong>「視聴率の高いテレビ・タブレット・PCに自然に届く現状の運用」を優先</strong> することが、映像が刺さる方に確実に届ける最適解と判断できます。<br>
+            ④ 引き続き次サイクル（8月上旬 2ヶ月定期レポート）でスマホの動きを継続観測します。
+        </div>
+    </div>
+
+    <!-- ④ キーワード別（メインセクション） -->
+    <div class="section" style="border-color:#cc0000;">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">4</span>
+            キーワード別 実施結果 — 強化・除外・追加それぞれの効果検証
+        </div>
+
+        <!-- A群 -->
+        <div class="kw-eval-box a">
+            <h4>★ A群：強化したキーワード（6/8決定）— 想定通り主軸として機能</h4>
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;">キーワード</th>
+                        <th>表示</th>
+                        <th>視聴</th>
+                        <th>視聴率</th>
+                        <th style="text-align:left;">評価</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td><strong>車 乗り換え 迷う</strong></td>
+                        <td style="text-align:right;"><strong>486</strong></td>
+                        <td style="text-align:right;"><strong>228</strong></td>
+                        <td style="text-align:right;"><strong>46.91%</strong></td>
+                        <td>★ 大ボリューム主軸化</td>
+                    </tr>
+                    <tr class="good">
+                        <td>ドライブ 岡山</td>
+                        <td style="text-align:right;">69</td>
+                        <td style="text-align:right;">38</td>
+                        <td style="text-align:right;"><strong>55.07%</strong></td>
+                        <td>★ 視聴率好調</td>
+                    </tr>
+                    <tr class="good">
+                        <td>エンジン リフレッシュ</td>
+                        <td style="text-align:right;">35</td>
+                        <td style="text-align:right;">18</td>
+                        <td style="text-align:right;"><strong>51.43%</strong></td>
+                        <td>★ 視聴率好調</td>
+                    </tr>
+                    <tr>
+                        <td>愛車 メンテナンス</td>
+                        <td style="text-align:right;">62</td>
+                        <td style="text-align:right;">22</td>
+                        <td style="text-align:right;">35.48%</td>
+                        <td>視聴率やや低め</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="eval-box">
+                「車 乗り換え 迷う」は表示486回で <strong>全キーワード中トップクラスのボリューム</strong> を出しつつ視聴率46.91%と質も維持。「迷う」への修正が奏功しています。「ドライブ 岡山」「エンジン リフレッシュ」は視聴率50%超え。<strong>強化判断は成功</strong>と評価できます。
+            </div>
+        </div>
+
+        <!-- B群 -->
+        <div class="kw-eval-box b">
+            <h4>★ B群：除外したキーワード（6/8決定）— 想定通り停止確認</h4>
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;">キーワード</th>
+                        <th style="text-align:left;">ステータス</th>
+                        <th style="text-align:left;">実績</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="stop">
+                        <td>車 コンディション</td>
+                        <td>一時停止中</td>
+                        <td>表示0（想定通り）</td>
+                    </tr>
+                    <tr class="stop">
+                        <td>10万キロ 車</td>
+                        <td>一時停止中</td>
+                        <td>表示0（想定通り）</td>
+                    </tr>
+                    <tr class="stop">
+                        <td>エンジン パワーダウン</td>
+                        <td>一時停止中</td>
+                        <td>表示0（想定通り）</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="eval-box">
+                3語すべて表示0で停止確認完了。<strong>無駄な露出を止めて、A群・C群の優良キーワードに枠を集中させる整理</strong> が正しく反映されています。
+            </div>
+        </div>
+
+        <!-- C群 -->
+        <div class="kw-eval-box c">
+            <h4>★ C群：追加したキーワード（6/8決定）— 2語が視聴率50%超えで好スタート</h4>
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;">キーワード</th>
+                        <th>表示</th>
+                        <th>視聴</th>
+                        <th>視聴率</th>
+                        <th style="text-align:left;">評価</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="good">
+                        <td><strong>エンジンオイル 交換</strong></td>
+                        <td style="text-align:right;">57</td>
+                        <td style="text-align:right;">32</td>
+                        <td style="text-align:right;"><strong>56.14%</strong></td>
+                        <td>★ 視聴率トップクラス</td>
+                    </tr>
+                    <tr class="good">
+                        <td><strong>中古車 整備</strong></td>
+                        <td style="text-align:right;">50</td>
+                        <td style="text-align:right;">26</td>
+                        <td style="text-align:right;"><strong>52.00%</strong></td>
+                        <td>★ 好調</td>
+                    </tr>
+                    <tr>
+                        <td>車 メンテ 岡山</td>
+                        <td style="text-align:right;">0</td>
+                        <td style="text-align:right;">0</td>
+                        <td style="text-align:right;">--</td>
+                        <td>検索ボリューム不足</td>
+                    </tr>
+                    <tr>
+                        <td>車 燃費 落ちた</td>
+                        <td style="text-align:right;">1</td>
+                        <td style="text-align:right;">0</td>
+                        <td style="text-align:right;">0.00%</td>
+                        <td>検索ボリューム不足</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="eval-box">
+                4語中2語（エンジンオイル 交換／中古車 整備）が <strong>視聴率50%超え</strong> と好スタート。特に「エンジンオイル 交換」は視聴率56.14%と全キーワード中トップクラス。<strong>愛車メンテ意識層の掘り起こしに成功</strong>しています。<br>
+                残り2語（車 メンテ 岡山／車 燃費 落ちた）は検索ボリュームが少なく現状ほぼ表示なし。競合の少ない優良キーワードとして継続待機させます。
+            </div>
+        </div>
+
+        <!-- 既存主要KW参考 -->
+        <h3 style="font-size:14px;color:#555;margin:20px 0 8px;">📋 参考：既存の主要キーワード実績</h3>
+        <table class="data">
+            <thead>
+                <tr>
+                    <th style="text-align:left;">キーワード</th>
+                    <th>表示</th>
+                    <th>視聴</th>
+                    <th>視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight">
+                    <td><strong>車 整備</strong></td>
+                    <td style="text-align:right;"><strong>864</strong></td>
+                    <td style="text-align:right;"><strong>367</strong></td>
+                    <td style="text-align:right;">42.48%</td>
+                </tr>
+                <tr>
+                    <td>車好き</td>
+                    <td style="text-align:right;">175</td>
+                    <td style="text-align:right;">87</td>
+                    <td style="text-align:right;">49.71%</td>
+                </tr>
+                <tr>
+                    <td>エンジン洗浄</td>
+                    <td style="text-align:right;">81</td>
+                    <td style="text-align:right;">37</td>
+                    <td style="text-align:right;">45.68%</td>
+                </tr>
+                <tr class="good">
+                    <td>エンジン 不調</td>
+                    <td style="text-align:right;">36</td>
+                    <td style="text-align:right;">21</td>
+                    <td style="text-align:right;"><strong>58.33%</strong></td>
+                </tr>
+                <tr>
+                    <td>エンジン 異音</td>
+                    <td style="text-align:right;">3</td>
+                    <td style="text-align:right;">1</td>
+                    <td style="text-align:right;">33.33%</td>
+                </tr>
+                <tr class="good">
+                    <td>カーボン除去</td>
+                    <td style="text-align:right;">7</td>
+                    <td style="text-align:right;">5</td>
+                    <td style="text-align:right;"><strong>71.43%</strong></td>
+                </tr>
+                <tr>
+                    <td>走行距離 多い</td>
+                    <td style="text-align:right;">2</td>
+                    <td style="text-align:right;">1</td>
+                    <td style="text-align:right;">50.00%</td>
+                </tr>
+                <tr>
+                    <td>車 長く乗る</td>
+                    <td style="text-align:right;">0</td>
+                    <td style="text-align:right;">0</td>
+                    <td style="text-align:right;">--</td>
+                </tr>
+                <tr class="good">
+                    <td>旧車 維持</td>
+                    <td style="text-align:right;">3</td>
+                    <td style="text-align:right;">2</td>
+                    <td style="text-align:right;"><strong>66.67%</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ⑤ 地域別 -->
+    <div class="section" style="border-color:#ff6b00;">
+        <div class="section-title">
+            <span class="icon" style="background:#ff6b00;">5</span>
+            地域別 実施結果 — 倉敷市追加の効果検証（★重要）
+        </div>
+
+        <table class="data">
+            <thead>
+                <tr>
+                    <th style="text-align:left;">地域</th>
+                    <th>表示</th>
+                    <th>視聴</th>
+                    <th>視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight">
+                    <td><strong>🚀 倉敷市（新規追加）</strong></td>
+                    <td style="text-align:right;"><strong>785</strong></td>
+                    <td style="text-align:right;"><strong>352</strong></td>
+                    <td style="text-align:right;"><strong>44.84%</strong></td>
+                </tr>
+                <tr class="good">
+                    <td>岡山市 中区</td>
+                    <td style="text-align:right;">355</td>
+                    <td style="text-align:right;">178</td>
+                    <td style="text-align:right;"><strong>50.14%</strong></td>
+                </tr>
+                <tr>
+                    <td>岡山市 南区</td>
+                    <td style="text-align:right;">306</td>
+                    <td style="text-align:right;">125</td>
+                    <td style="text-align:right;">40.85%</td>
+                </tr>
+                <tr>
+                    <td>岡山市 北区</td>
+                    <td style="text-align:right;">282</td>
+                    <td style="text-align:right;">133</td>
+                    <td style="text-align:right;">47.16%</td>
+                </tr>
+                <tr>
+                    <td>岡山市 東区</td>
+                    <td style="text-align:right;">144</td>
+                    <td style="text-align:right;">70</td>
+                    <td style="text-align:right;">48.61%</td>
+                </tr>
+                <tr>
+                    <td>赤磐市</td>
+                    <td style="text-align:right;">59</td>
+                    <td style="text-align:right;">27</td>
+                    <td style="text-align:right;">45.76%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="eval-box" style="border-left-color:#ff6b00;">
+            <strong>💡 検証結果：倉敷市追加は大正解</strong><br>
+            ① <strong>倉敷市が表示785回で全エリア中トップ</strong>。既存主戦場の岡山市中区（355）・南区（306）・北区（282）を大きく上回るリーチを獲得しました。<br>
+            ② 視聴率も44.84%と業界平均25%の1.8倍で、<strong>ボリュームだけでなく質もしっかり伴っている</strong> のがポイントです。<br>
+            ③ 岡山市の隣接エリアで愛車を大切にされているオーナー層にしっかり刺さっている手応え。<strong>藤澤様のエリア拡張ご判断が、リーチの新規開拓に直結しました。</strong><br>
+            ④ 岡山市 中区が視聴率50.14%と引き続き最強エリア。倉敷市＋岡山市中区の2枚看板が動画の主な受け皿になっています。
+        </div>
+    </div>
+
+    <!-- ⑥ 曜日別 -->
+    <div class="section" style="border-color:#9c27b0;">
+        <div class="section-title">
+            <span class="icon" style="background:#9c27b0;">6</span>
+            曜日別 参考データ
+        </div>
+
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>曜日</th>
+                    <th>表示</th>
+                    <th>視聴</th>
+                    <th>視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>火曜日</td>
+                    <td style="text-align:right;">348</td>
+                    <td style="text-align:right;">157</td>
+                    <td style="text-align:right;">45.11%</td>
+                </tr>
+                <tr>
+                    <td>月曜日</td>
+                    <td style="text-align:right;">302</td>
+                    <td style="text-align:right;">138</td>
+                    <td style="text-align:right;">45.70%</td>
+                </tr>
+                <tr>
+                    <td>日曜日</td>
+                    <td style="text-align:right;">282</td>
+                    <td style="text-align:right;">124</td>
+                    <td style="text-align:right;">43.97%</td>
+                </tr>
+                <tr>
+                    <td>土曜日</td>
+                    <td style="text-align:right;">275</td>
+                    <td style="text-align:right;">124</td>
+                    <td style="text-align:right;">45.09%</td>
+                </tr>
+                <tr>
+                    <td>水曜日</td>
+                    <td style="text-align:right;">260</td>
+                    <td style="text-align:right;">121</td>
+                    <td style="text-align:right;">46.54%</td>
+                </tr>
+                <tr>
+                    <td>金曜日</td>
+                    <td style="text-align:right;">241</td>
+                    <td style="text-align:right;">114</td>
+                    <td style="text-align:right;">47.30%</td>
+                </tr>
+                <tr>
+                    <td>木曜日</td>
+                    <td style="text-align:right;">223</td>
+                    <td style="text-align:right;">107</td>
+                    <td style="text-align:right;">47.98%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="eval-box" style="border-left-color:#9c27b0;">
+            全曜日ほぼ同水準（44〜48%）で偏りなし。表示は火曜日・月曜日が上位、視聴率は木曜日・金曜日がやや高め。<strong>週を通して安定的に届いており、曜日単位でのテコ入れは現時点で不要</strong>と判断します。
+        </div>
+    </div>
+
+    <!-- ⑦ 総評 -->
+    <div class="section" style="border-color:#1a1a2e; background:#f8f9ff;">
+        <div class="section-title">
+            <span class="icon" style="background:#1a1a2e;">7</span>
+            総評・次サイクル方針
+        </div>
+
+        <h3 style="font-size:16px;color:#1a1a2e;margin-bottom:12px;">■ 6/8決定 3施策の効果まとめ</h3>
+
+        <div style="display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:20px;">
+            <div style="background:#fff;border-left:5px solid #cc0000;border-radius:8px;padding:14px 18px;">
+                <div style="font-size:14px;font-weight:700;color:#cc0000;margin-bottom:4px;">① キーワード組み直し → 想定通り機能</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    A強化群の「車 乗り換え 迷う」が表示486回の主軸に育ち、C追加群の「エンジンオイル 交換」「中古車 整備」が視聴率50%超え。B除外群3語も想定通り停止。<strong>組み直しは全体として狙い通り。</strong>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-left:5px solid #ff6b00;border-radius:8px;padding:14px 18px;">
+                <div style="font-size:14px;font-weight:700;color:#ff6b00;margin-bottom:4px;">② 倉敷市追加 → 大正解</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    表示785回で全エリアトップ、視聴率44.84%で質も伴う。<strong>藤澤様の拡張ご判断が新規リーチ源の獲得に直結しました。</strong>
+                </div>
+            </div>
+
+            <div style="background:#fff;border-left:5px solid #2e7d32;border-radius:8px;padding:14px 18px;">
+                <div style="font-size:14px;font-weight:700;color:#2e7d32;margin-bottom:4px;">③ スマホ保留 → 妥当な判断</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    スマホ視聴率29.15%は他デバイスの約6割で傾向継続。<strong>テレビ画面・タブレット・PCといった落ち着いて視聴される環境に自然に届く現状の運用が最適</strong>とデータが示しました。
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-size:16px;color:#1a1a1a;margin-bottom:12px;">■ 8月上旬 2ヶ月定期レポートに向けて</h3>
+
+        <div style="background:#fff;border:2px solid #1a1a2e;border-radius:10px;padding:18px 20px;">
+            <div style="font-size:13px;color:#333;line-height:1.9;">
+                6/8決定の3施策すべてが1ヶ月時点で狙い通り機能していることが確認できました。次回2ヶ月定期レポート（8月上旬）では、下記を継続観測します。<br><br>
+                ・A強化群のうち「愛車 メンテナンス」（視聴率35.48%）の推移<br>
+                ・C追加群 上位2語「エンジンオイル 交換」「中古車 整備」の量的拡張余地<br>
+                ・倉敷市の質（視聴率）が引き続き維持されるか<br>
+                ・スマホ視聴率の中長期トレンド<br><br>
+                <strong>現在の運用は「量」も「質」も安定期に入っており、当面は現状の設計を維持しながらキーワード群の推移を精査していきます。</strong>次回2ヶ月レポートで改めてご報告いたします。
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        株式会社ランバード｜YouTube広告運用担当<br>
+        レポート作成日：2026年7月8日
+    </div>
+
+</div>
+</body>
+</html>

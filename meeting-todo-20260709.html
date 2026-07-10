@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUNBIRD 7/9会議 TODO 実行ボード（2026-07-10）</title>
+<style>
+  :root{--brand:#1f6feb;--bg:#f6f8fa;--line:#d0d7de;--ink:#1f2328;--mut:#656d76;
+        --done:#1a7f37;--super:#8250df;--prog:#bf8700;--wait:#656d76;--open:#cf222e;
+        --mine:#0969da;}
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;color:var(--ink);background:var(--bg);margin:0;line-height:1.65}
+  .wrap{max-width:1040px;margin:0 auto;padding:24px 16px 80px}
+  h1{font-size:1.5rem;margin:0 0 4px}
+  .lead{color:var(--mut);font-size:.92rem;margin:0 0 8px}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 22px}
+  .tag{display:inline-block;font-size:.74rem;font-weight:700;padding:2px 9px;border-radius:20px;color:#fff;white-space:nowrap}
+  .t-done{background:var(--done)}.t-super{background:var(--super)}.t-prog{background:var(--prog)}
+  .t-wait{background:var(--wait)}.t-open{background:var(--open)}
+  .who{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:5px;white-space:nowrap;border:1px solid}
+  .w-mine{color:var(--mine);border-color:var(--mine);background:#ddf4ff}
+  .w-run{color:#8250df;border-color:#8250df;background:#fbefff}
+  .w-suzu{color:#bf8700;border-color:#bf8700;background:#fff8e5}
+  .summary{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:0 0 22px}
+  .summary b{color:var(--open)}
+  section{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:0 0 16px}
+  section h2{font-size:1.1rem;margin:0 0 12px;border-left:4px solid var(--brand);padding-left:10px}
+  table{width:100%;border-collapse:collapse;font-size:.9rem}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--mut);font-size:.8rem;font-weight:700}
+  td.task{font-weight:600;width:30%}
+  td.stat{width:12%;white-space:nowrap}
+  td.who{width:10%;white-space:nowrap}
+  td.note{color:var(--ink)}
+  .open-box{border:2px solid var(--open);border-radius:12px;padding:18px 20px;margin:0 0 16px;background:#fff8f8}
+  .open-box h2{border-left-color:var(--open)}
+  .open-box ol{margin:6px 0 0;padding-left:22px}
+  .open-box li{margin:9px 0}
+  .src{color:var(--mut);font-size:.78rem}
+  .foot{font-size:.82rem;color:var(--mut);text-align:center;margin-top:30px}
+  code{background:var(--bg);padding:1px 5px;border-radius:5px;font-size:.85em}
+  .note-box{background:#fff8e5;border:1px solid #d4a72c;border-radius:8px;padding:10px 14px;font-size:.82rem;color:#4d3800;margin:0 0 20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>RUNBIRD 7/9会議 TODO 実行ボード</h1>
+  <p class="lead">7/9週次会議（広告運用改善・新規顧客獲得戦略）の議事録から抽出した約24項目を、2026/7/10時点の実状況に突き合わせて再分類。<strong>会議翌日のため大半は新規着手（🔴）</strong>。星崎が手を動かす項目（<span class="who w-mine">星崎</span>）を最優先で赤抽出した。</p>
+
+  <div class="legend">
+    <span class="tag t-done">✅ 完了</span>
+    <span class="tag t-prog">🔄 進行中（既存資産あり）</span>
+    <span class="tag t-wait">⏳ 相手待ち／要決定</span>
+    <span class="tag t-open">🔴 新規着手</span>
+    <span class="who w-mine">星崎</span>
+    <span class="who w-run">RUNBIRD側</span>
+    <span class="who w-suzu">鈴木/斗側</span>
+  </div>
+
+  <div class="note-box">
+    ※議事録は話者匿名（Speaker 1〜6）。担当（星崎／RUNBIRD側／鈴木・斗側）は文脈からの<strong>推定</strong>。特に「Speaker 4＝ツール・動画テンプレ・広告数値担当」は鈴木さん想定だが、実担当は要確認。固有名詞・数値は自動文字起こし由来のため実物照合前提。
+  </div>
+
+  <div class="summary">
+    <p style="margin:0 0 6px"><strong>結論：星崎が今週着手すべきは <b>7項目</b>。</strong>うち2つ（新LP・広告数値基盤）は既存資産があり🔄進行中、残り5つが完全新規。</p>
+    <p style="margin:0;font-size:.88rem;color:var(--mut)">会議の骨子＝<strong>①現行広告を一旦停止し、集客/採用/アニメ特化の4〜5本＋価格あり/なしLPで A/Bテスト再設計 ②除外KWをGitHub共有しキャンペーン統一（露出重複回避）③キーワードA/B群でLP出し分け ④面取り（複数フロントブランドで5アカウント分散）⑤商談ログ共有で顧客質を上げる ⑥動画1本プレゼント施策 ⑦AI動画生成コストを1本1000円以下に</strong>。9月Metaテスト→11月本番。</p>
+  </div>
+
+  <!-- 星崎の真の空き -->
+  <div class="open-box">
+    <h2>🔴 星崎が今週着手すべき7項目</h2>
+    <ol>
+      <li><strong>現行広告を一旦停止 → 新バリエーション動画4〜5本（集客用／採用用／アニメーション特化）を制作し来週再開</strong> <span class="who w-mine">星崎</span>
+        <div class="src">A/Bテスト再設計の中核。LPは<strong>価格提示あり／なしの2種</strong>で継続検証。広告動画は<strong>尺を31秒以上へ延長</strong>（30秒未満不可の可能性への対応）。→ 既存の <code>福祉事業/新LP_独立起業向け/</code> と <code>福祉事業/対談動画/</code> を素材ベースに。</div></li>
+      <li><strong>制作事例動画：CTA強化＋顧客名をダミー表記へ変更</strong> <span class="who w-mine">星崎</span>
+        <div class="src">「クオリティは高いがCTAが弱い」との指摘。→ <code>福祉事業/対談動画/</code>（加盟オーナー対談）ほか事例動画のエンドカード／CTA差し込みと、実名→ダミー名の一括置換。</div></li>
+      <li><strong>除外キーワードリストをGitHubで共有し、キャンペーン設定を統一（露出重複回避）</strong> <span class="who w-mine">星崎</span>
+        <div class="src">Speaker1とSpeaker4のキャンペーンで露出が重複しないよう設定統一。→ 既存 <code>福祉事業/広告データ自動取得/google_ads_script.js</code> の除外KWをリポジトリで共有可能な形に切り出す。</div></li>
+      <li><strong>キーワードをA/B 2群に分け、LPを出し分けて質比較</strong> <span class="who w-mine">星崎</span>
+        <div class="src">A群＝「障害者グループホーム 経営」「〜 フランチャイズ」／B群＝「開設」「開業」などA以外。<strong>A/B群でLPを分けて運用</strong>し質を比較、B群の質が低ければテコ入れ。</div></li>
+      <li><strong>面取り用フロント広告アカウント構成案（5アカウント想定）を作成</strong> <span class="who w-mine">星崎</span>
+        <div class="src">複数フロントブランド（ランバード／クレバー／ワンバック／磁石／チェック 等）で出稿し5アカウント程度に分散。表層を分け中身は同一で比較母集団を自社占有する構成案を1枚に。<strong>※同一運営の多ブランド出稿は広告ポリシー／適法性の事前チェックが必要</strong>（下記「留意点」参照）。</div></li>
+      <li><strong>LPに「商談で動画1本プレゼント」バナーを仮実装 → ABテスト</strong> <span class="who w-mine">星崎</span>
+        <div class="src">無料提供は「質を抑えた試供版」前提でアップセル設計。提供条件（契約後付与／二段階商談の2回目参加で付与 等）は要決定→バナー文言に反映。</div></li>
+      <li><strong>AI動画生成コスト削減ツールの選定（1本2000〜3000円 → 1000円以下目標）</strong> <span class="who w-mine">星崎</span>
+        <div class="src">現行はクレジットで1本2000〜3000円。1000円以下の代替ツールを比較選定。商談ログ・ヒアリングから即時生成できる仕組みも検討。</div></li>
+    </ol>
+  </div>
+
+  <!-- A. 広告運用・クリエイティブ再設計 -->
+  <section>
+    <h2>A. 広告運用・クリエイティブ再設計</h2>
+    <table>
+      <tr><th>TODO</th><th>状況</th><th>担当</th><th>根拠・次の一手</th></tr>
+      <tr><td class="task">現行広告を一旦停止し、新バリエーション（集客/採用/アニメ特化4〜5本）＋LPを制作し来週再開</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">A/Bテスト再設計の中核。停止判断はRUNBIRD側と合意の上で。</td></tr>
+      <tr><td class="task">LPは価格提示あり/なしの2種で継続検証</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">現状価格は非開示方針。価格提示ありLPの見せ方を要設計。</td></tr>
+      <tr><td class="task">広告動画を31秒以上へ尺延長</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">30秒未満は配信不可の可能性への対応。既存動画の再編集＋新規は最初から31秒以上で。</td></tr>
+      <tr><td class="task">制作事例動画のCTA強化</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">「クオリティ高いがCTA弱い」。エンドカード／予約導線を差し込む。</td></tr>
+      <tr><td class="task">制作事例動画の顧客名をダミー表記へ変更</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">実名→ダミー名の一括置換。<code>福祉事業/対談動画/</code> ほか。</td></tr>
+      <tr><td class="task">新LP（独立・投資関連）を作成し細かいKWに対応</td><td class="stat"><span class="tag t-prog">🔄進行中</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">既存 <code>福祉事業/新LP_独立起業向け/</code>（画像・マスコット・モックアップ多数）を継続。以前のアウル広告のビジュアル問題は監修・修正済。</td></tr>
+      <tr><td class="task">既存LPごとの来訪客層の整理・取りまとめ</td><td class="stat"><span class="tag t-wait">⏳要決定</span></td><td class="who"><span class="who w-run">RUNBIRD側</span></td><td class="note">担当者・期限が未設定（AI提案でも指摘）。星崎はデータ提供で協力。</td></tr>
+    </table>
+  </section>
+
+  <!-- B. キーワード戦略・面取り -->
+  <section>
+    <h2>B. キーワード戦略・面取り</h2>
+    <table>
+      <tr><th>TODO</th><th>状況</th><th>担当</th><th>根拠・次の一手</th></tr>
+      <tr><td class="task">Google広告でコンバージョン計測を設定</td><td class="stat"><span class="tag t-prog">🔄進行中</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">問い合わせ件数の認識齟齬（9件 vs 14〜15件）の是正が起点。CV計測を正しく設定。</td></tr>
+      <tr><td class="task">除外KWリストをGitHubで共有しキャンペーン設定を統一</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">Speaker1×Speaker4の露出重複回避。既存 <code>google_ads_script.js</code> から切り出し。</td></tr>
+      <tr><td class="task">KWをA/B 2群に分けた広告設定へ再構築し効果測定開始</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">A群＝経営/FC系、B群＝開設/開業系。LP出し分けで質比較。</td></tr>
+      <tr><td class="task">面取り用フロント広告アカウント構成案（5アカウント想定）を作成</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">複数ブランド分散・中身同一で比較母集団を自社占有。<strong>法務/ポリシー確認とセット</strong>。</td></tr>
+    </table>
+  </section>
+
+  <!-- C. 商談ログ・顧客質向上 -->
+  <section>
+    <h2>C. 商談ログ・顧客質向上</h2>
+    <table>
+      <tr><th>TODO</th><th>状況</th><th>担当</th><th>根拠・次の一手</th></tr>
+      <tr><td class="task">営業含むグループを作成し商談ログ（Zoom録画・文字起こし）共有体制を構築</td><td class="stat"><span class="tag t-wait">⏳相手待ち</span></td><td class="who"><span class="who w-run">RUNBIRD側</span></td><td class="note">Speaker1が主導。共有方法・権限付与・手順の最終決定が未了（AI提案で指摘）。斗のボイスメモ文字起こし基盤を横展開できる。</td></tr>
+      <tr><td class="task">LP・キーワード起点で商談を紐付け、顧客ニーズとのズレを分析</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">低質問い合わせの主因＝情報収集目的＋自己資金不足。LP表現が「融資期待」を助長→自己資金なし層が流入。LP文言のトーン調整が要。</td></tr>
+      <tr><td class="task">顧客教育用の動画コンテンツを検討（LP埋め込み or 別段階挿入）</td><td class="stat"><span class="tag t-wait">⏳要決定</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">具体内容・埋め込み方法・タイミングが未定（AI提案で指摘）。</td></tr>
+      <tr><td class="task">Buzz+のROI計測継続とレポート化</td><td class="stat"><span class="tag t-prog">🔄進行中</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">クリック・滞在・ヒートマップ・QAは良好だが問い合わせ転換が弱い。フック（プレゼント）・商品性・価格提示を検証。<code>/buzzplus-daily</code> 運用中。</td></tr>
+      <tr><td class="task">商談動線＝タイムレックス予約→Zoom確定（商談数最大化・工数最小化）</td><td class="stat"><span class="tag t-wait">⏳要決定</span></td><td class="who"><span class="who w-run">RUNBIRD側</span></td><td class="note">2段階商談の条件設定含む。星崎はLP側の予約導線実装で協力。</td></tr>
+    </table>
+  </section>
+
+  <!-- D. 動画プレゼント施策 -->
+  <section>
+    <h2>D. 動画プレゼント施策</h2>
+    <table>
+      <tr><th>TODO</th><th>状況</th><th>担当</th><th>根拠・次の一手</th></tr>
+      <tr><td class="task">「商談で動画1本プレゼント」バナーをLPに仮実装しABテスト</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">無料＝試供版前提でアップセル設計。</td></tr>
+      <tr><td class="task">提供条件の最終決定（契約後付与／二段階商談の2回目参加で付与 等）</td><td class="stat"><span class="tag t-wait">⏳要決定</span></td><td class="who"><span class="who w-run">RUNBIRD側</span></td><td class="note">商談率・成約率KPIに基づく選定案の作成を推奨（AI提案）。</td></tr>
+      <tr><td class="task">商談ログ・ヒアリングから動画を即時生成できる仕組みを検討</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">生成コスト削減ツールと一体で設計。</td></tr>
+    </table>
+  </section>
+
+  <!-- E. コスト削減・体制・データ共有 -->
+  <section>
+    <h2>E. コスト削減・運用体制・データ共有</h2>
+    <table>
+      <tr><th>TODO</th><th>状況</th><th>担当</th><th>根拠・次の一手</th></tr>
+      <tr><td class="task">AI動画生成コスト削減ツールの選定（1本1000円以下目標）</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">現行2000〜3000円/本（クレジット）。比較選定。</td></tr>
+      <tr><td class="task">Speaker4がテンプレート（型）作成→人物素材を当てはめる方式で動画制作・統一フォーマット継続</td><td class="stat"><span class="tag t-prog">🔄進行中</span></td><td class="who"><span class="who w-suzu">鈴木/斗側</span></td><td class="note">既存のLovart一発生成フロー（型＋人物素材当てはめ）と整合。テンプレ送付待ち。</td></tr>
+      <tr><td class="task">システム一式共有と環境導入（準備済み端末にインストール、設置場所は必要に応じ移動）</td><td class="stat"><span class="tag t-wait">⏳相手待ち</span></td><td class="who"><span class="who w-suzu">鈴木/斗側</span></td><td class="note">Speaker4主導・手動導入。</td></tr>
+      <tr><td class="task">約52万→26万円のコスト削減 具体策を当日検証</td><td class="stat"><span class="tag t-wait">⏳相手待ち</span></td><td class="who"><span class="who w-suzu">鈴木/斗側</span></td><td class="note">対象費目・比較条件・継続コストの明文化が必要（AI提案で指摘）。無償化情報は不確定。</td></tr>
+      <tr><td class="task">LineWorksマーケグループにSpeaker4・星崎を追加し日々データ共有</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">追加は相手作業。追加後、日次データ（CPC 211・CTR 4.51%・LP閲覧維持率70% 等）はSpeaker4→Speaker1へ直接送付。星崎は共有の型づくり。</td></tr>
+      <tr><td class="task">共同開発環境（GitHub）を整備し関係者アクセス可能化（まずフロント部分を上げ双方で修正可能に）</td><td class="stat"><span class="tag t-prog">🔄進行中</span></td><td class="who"><span class="who w-mine">星崎</span></td><td class="note">既存の福祉Cursor/GitHub運用を横展開。チェック体制強化とセット。</td></tr>
+      <tr><td class="task">阿部氏を広告運用・データ取得・指摘役として参画（役割定義と開始）</td><td class="stat"><span class="tag t-wait">⏳相手待ち</span></td><td class="who"><span class="who w-run">RUNBIRD側</span></td><td class="note">LPは星崎に任せ、運用面のデータ取得・改善を阿部氏が主導。連絡・確認頻度とRACIの簡易設定が必要（AI提案）。</td></tr>
+      <tr><td class="task">ディレクション担当（例:中羽氏）とクローザーの分業体制を試験運用</td><td class="stat"><span class="tag t-wait">⏳相手待ち</span></td><td class="who"><span class="who w-run">RUNBIRD側</span></td><td class="note">NP（与信）・情報取得フローは簡素化を志向。</td></tr>
+      <tr><td class="task">鈴木氏の担当業務を河合氏へ共有</td><td class="stat"><span class="tag t-wait">⏳相手待ち</span></td><td class="who"><span class="who w-suzu">鈴木/斗側</span></td><td class="note">引き継ぎ資料化。</td></tr>
+    </table>
+  </section>
+
+  <!-- F. 助成金・IT商材 -->
+  <section>
+    <h2>F. 助成金・IT商材化</h2>
+    <table>
+      <tr><th>TODO</th><th>状況</th><th>担当</th><th>根拠・次の一手</th></tr>
+      <tr><td class="task">リスキリング助成金の適用可能性を検討（AI研修プラットフォーム200〜500本・月5万＋AIコンサル松竹梅）</td><td class="stat"><span class="tag t-wait">⏳要調査</span></td><td class="who"><span class="who w-suzu">鈴木/斗側</span></td><td class="note">対象範囲（研修 vs システム）が不明点多数。適用可否・要件・必要書類の整備が必要（AI提案）。<strong>費用調査はエビデンス＋確実性が担保されるまで出さない（鈴木ルール#58）</strong>。</td></tr>
+      <tr><td class="task">IT助成金：会社登録済だが商品登録に販売実績が必要→テレアポシステムの納品実績化（請求含む）で提携商品化</td><td class="stat"><span class="tag t-open">🔴新規</span></td><td class="who"><span class="who w-suzu">鈴木/斗側</span></td><td class="note">契約/納品/請求の整備＋適法性・コンプラ確認（AI提案）。研修の助成金対象化は未確定、IT助成金は基本システム対象との見解。</td></tr>
+    </table>
+  </section>
+
+  <!-- G. スケジュール・媒体方針 -->
+  <section>
+    <h2>G. スケジュール・媒体方針</h2>
+    <table>
+      <tr><th>項目</th><th>内容</th></tr>
+      <tr><td class="task">8月</td><td class="note">動画2本撮影、Zoom素材3本獲得予定。</td></tr>
+      <tr><td class="task">Meta広告</td><td class="note">過去は量取れたが質が悪い。6〜8月は質低下傾向 → <strong>9月テスト・11月本番運用開始</strong>を目標。長期休暇中（お盆等）も広告は流し続ける。</td></tr>
+      <tr><td class="task">ミーティング頻度</td><td class="note">走り出し期は月1以上、軌道に乗れば頻度を減らす。</td></tr>
+      <tr><td class="task">Zoom再日程</td><td class="note">Speaker4の体調回復後に再調整。</td></tr>
+    </table>
+  </section>
+
+  <!-- 留意点（AI提案・未決事項） -->
+  <section style="border-color:#d4a72c;background:#fffdf5">
+    <h2 style="border-left-color:#d4a72c">⚠ 着手前に潰すべき留意点（AI提案の未決事項）</h2>
+    <ul style="margin:0;padding-left:20px;font-size:.9rem">
+      <li><strong>面取り戦略の法務・ブランドリスク</strong>：同一運営の多ブランド出稿は Google/Meta 広告ポリシー・適法性の事前チェック必須。構成案と同時に確認する。</li>
+      <li><strong>助成金の確実性</strong>：適用可否・要件が不明確なまま提案しない（鈴木ルール#58）。実通過可否・過去事例・必要書類・期間まで詰める。</li>
+      <li><strong>生成コストの上限・月次予算枠</strong>：急増時のスケール対応計画と停止基準が未設定。</li>
+      <li><strong>担当・期限の明確化</strong>：LP別流入客層の分析担当、動画5本の進行管理（優先順位・締切・品質基準）、リソース配分・案件優先順位が未設定。</li>
+      <li><strong>ヒアリング項目の標準化</strong>：商談ログ必須項目と入力フローが未整備。事前フォーム導線の試験導入を推奨。</li>
+    </ul>
+  </section>
+
+  <p class="foot">出典：7/9週次会議 議事録（広告運用改善・新規顧客獲得戦略）＋RUNBIRD福祉事業 実状況突合。2026-07-10作成。<br>※話者は匿名（Speaker 1〜6）。担当割当は文脈からの推定。固有名詞・数値は実物照合前提。</p>
+</div>
+</body>
+</html>
