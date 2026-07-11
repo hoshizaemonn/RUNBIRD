@@ -1,0 +1,820 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【B案モック】OWL 独立起業向け新LP — 温かみ・親しみ系</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf6ef;         /* オフホワイト・生成り */
+    --cream-2:#f2ebde;        /* ベージュ */
+    --paper:#fffdf7;
+    --sage:#7a8f6a;           /* セージグリーン */
+    --sage-2:#a7b898;         /* 淡いセージ */
+    --sage-3:#e6ede0;         /* 極淡セージ */
+    --terra:#d97a4a;          /* くすみオレンジ／テラコッタ */
+    --terra-2:#e89e7a;
+    --terra-3:#fbe6d6;
+    --ink:#3a352c;            /* 温かみのある濃茶 */
+    --ink-2:#6b6558;
+    --line:#e2d8c4;
+    --gold:#c9a44c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{
+    background:var(--cream);color:var(--ink);
+    font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN",sans-serif;
+    line-height:1.85;font-size:15px;-webkit-text-size-adjust:100%;
+    font-feature-settings:"palt";
+  }
+  img{max-width:100%;height:auto;display:block}
+  a{color:inherit}
+
+  .serif{font-family:"Noto Serif JP","游明朝","Yu Mincho",serif;font-weight:700}
+  .hand{font-family:"Caveat",cursive;font-weight:700;color:var(--terra)}
+
+  .wrap{max-width:820px;margin:0 auto;padding:0 22px;position:relative}
+
+  h1,h2,h3{font-family:"Noto Serif JP","游明朝","Yu Mincho",serif}
+  h1{font-size:32px;line-height:1.45;font-weight:900;letter-spacing:.03em}
+  h2{font-size:24px;line-height:1.5;font-weight:800;margin-bottom:18px;letter-spacing:.04em;color:var(--ink)}
+  h2 .eyebrow{display:block;font-family:"Caveat",cursive;color:var(--terra);font-size:22px;letter-spacing:.02em;margin-bottom:4px;font-weight:600}
+  h3{font-size:17px;font-weight:800;margin-bottom:10px;color:var(--sage)}
+  p{margin-bottom:14px}
+  small{font-size:12px;color:var(--ink-2)}
+  .lead{font-size:16px;line-height:2}
+
+  /* Section base — wave/V dividers */
+  .sec{padding:80px 0 88px;position:relative}
+  .sec.tinted{background:var(--sage-3)}
+  .sec.paper{background:var(--paper)}
+  .sec.beige{background:var(--cream-2)}
+  .sec.dark{background:var(--sage);color:#fff}
+  .sec.dark h2,.sec.dark h3{color:#fff}
+  .sec.dark .lead{color:#eef1e8}
+  .sec.dark .eyebrow{color:#f7d9c2}
+
+  /* Wave divider between sections (top) */
+  .wave-top,.wave-bot{position:absolute;left:0;right:0;height:40px;overflow:hidden;line-height:0}
+  .wave-top{top:-1px;transform:rotate(180deg)}
+  .wave-bot{bottom:-1px}
+  .wave-top svg,.wave-bot svg{width:100%;height:100%;display:block}
+
+  /* V-cut divider */
+  .v-cut-bot{clip-path:polygon(0 0,100% 0,100% calc(100% - 32px),50% 100%,0 calc(100% - 32px));padding-bottom:120px}
+  .v-cut-top{clip-path:polygon(0 32px,50% 0,100% 32px,100% 100%,0 100%);padding-top:100px;margin-top:-32px}
+
+  /* Slanted */
+  .slant-bot{clip-path:polygon(0 0,100% 0,100% calc(100% - 40px),0 100%);padding-bottom:110px}
+  .slant-top{clip-path:polygon(0 40px,100% 0,100% 100%,0 100%);padding-top:100px;margin-top:-40px}
+
+  /* ==== Draft header ==== */
+  .draft-bar{background:var(--ink);color:var(--cream);padding:10px 20px;font-size:12px;text-align:center;letter-spacing:.05em;font-family:"Noto Sans JP",sans-serif}
+  .draft-bar b{color:var(--terra-2)}
+
+  /* ==== Handwritten decorations ==== */
+  .hand-underline{position:relative;display:inline-block}
+  .hand-underline::after{
+    content:"";position:absolute;left:-4%;right:-4%;bottom:-6px;height:10px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10' preserveAspectRatio='none'><path d='M2 7 Q 50 -2 100 5 T 198 6' stroke='%23d97a4a' stroke-width='3' fill='none' stroke-linecap='round'/></svg>") center/100% 100% no-repeat;
+  }
+  .hand-circle{position:relative;display:inline-block;padding:0 8px}
+  .hand-circle::before{
+    content:"";position:absolute;inset:-6px -4px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 44'><ellipse cx='50' cy='22' rx='46' ry='19' stroke='%23d97a4a' stroke-width='2.5' fill='none' stroke-dasharray='0'/></svg>") center/100% 100% no-repeat;
+    pointer-events:none;
+  }
+  .hand-arrow{display:inline-block;color:var(--terra);font-family:"Caveat",cursive;font-size:22px}
+  .hand-arrow::before{content:"↷ "}
+
+  /* Speech bubble */
+  .bubble{
+    position:relative;background:var(--paper);border:2px solid var(--ink);
+    padding:16px 20px;border-radius:22px;font-family:"Caveat",cursive;
+    font-size:22px;line-height:1.4;color:var(--ink);display:inline-block;
+    max-width:520px;box-shadow:4px 4px 0 var(--terra-3);
+  }
+  .bubble::after{
+    content:"";position:absolute;left:38px;bottom:-14px;
+    width:22px;height:22px;background:var(--paper);
+    border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);
+    transform:rotate(45deg);
+  }
+  .bubble.sage{background:var(--sage-3);box-shadow:4px 4px 0 var(--sage-2)}
+  .bubble.sage::after{background:var(--sage-3)}
+
+  /* Sticky note (post-it) */
+  .sticky{background:#fff6c8;padding:14px 16px;box-shadow:2px 3px 8px rgba(0,0,0,.08);
+    transform:rotate(-1.2deg);border-left:3px solid #e5c14a;font-size:13px;color:#5a4a1a;
+    font-family:"Caveat",cursive;font-size:18px;line-height:1.5;max-width:360px;margin:14px 0}
+
+  /* Callout — natural feel */
+  .callout{background:var(--paper);border:1.5px dashed var(--terra);
+    padding:16px 18px;margin-top:20px;font-size:14px;color:var(--ink);
+    border-radius:14px;position:relative}
+  .callout::before{
+    content:"♡";position:absolute;top:-14px;left:16px;background:var(--cream);
+    color:var(--terra);padding:0 10px;font-size:18px;
+  }
+
+  /* ==== FV ==== */
+  .fv{
+    background:
+      radial-gradient(circle at 15% 20%, var(--terra-3) 0%, transparent 42%),
+      radial-gradient(circle at 90% 80%, var(--sage-3) 0%, transparent 45%),
+      var(--cream);
+    padding:70px 0 100px;position:relative;overflow:hidden;
+  }
+  .fv::before{
+    /* soft leaf illustration */
+    content:"";position:absolute;top:20px;right:-40px;width:220px;height:220px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><path d='M100 20 Q 40 60 30 130 Q 90 170 130 130 Q 180 80 100 20 Z' fill='none' stroke='%23a7b898' stroke-width='2' stroke-linecap='round'/><path d='M100 20 Q 90 100 50 150' fill='none' stroke='%23a7b898' stroke-width='1.5'/><path d='M75 60 L 90 75 M 65 90 L 90 100 M 60 120 L 85 125' stroke='%23a7b898' stroke-width='1.2' fill='none'/></svg>") center/contain no-repeat;
+    opacity:.55;pointer-events:none;
+  }
+  .fv::after{
+    content:"";position:absolute;bottom:60px;left:-30px;width:160px;height:160px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='30' fill='none' stroke='%23d97a4a' stroke-width='1.5' stroke-dasharray='3 6'/><circle cx='50' cy='50' r='18' fill='none' stroke='%23d97a4a' stroke-width='1'/></svg>") center/contain no-repeat;
+    opacity:.4;pointer-events:none;
+  }
+  .fv .eyebrow-hand{font-family:"Caveat",cursive;color:var(--terra);font-size:26px;margin-bottom:8px;display:block;letter-spacing:.02em}
+  .fv h1{color:var(--ink);font-size:36px;line-height:1.5}
+  .fv h1 em{font-style:normal;color:var(--terra);position:relative;padding:0 4px}
+  .fv h1 em::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:12px;
+    background:linear-gradient(transparent 50%, rgba(217,122,74,.25) 50%);
+    z-index:-1;
+  }
+  .fv .sub{color:var(--ink-2);margin-top:22px;font-size:16px;max-width:640px;line-height:2}
+  .fv .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;position:relative;z-index:2}
+  .badge{
+    background:var(--paper);border:1.5px solid var(--sage);color:var(--sage);
+    font-size:12px;padding:7px 14px;border-radius:100px;font-weight:600;
+  }
+  .badge.hot{background:var(--terra);border-color:var(--terra);color:#fff}
+  .badge.gold{background:#fff;border-color:var(--gold);color:#8f7228}
+  .fv .cta-wrap{margin-top:34px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .fv .cta{
+    display:inline-block;background:var(--terra);color:#fff;font-weight:700;
+    padding:18px 34px;border-radius:100px;text-decoration:none;font-size:16px;
+    box-shadow:0 8px 0 #b56238,0 12px 20px rgba(180,90,50,.2);
+    transition:transform .15s;
+  }
+  .fv .cta:hover{transform:translateY(2px);box-shadow:0 6px 0 #b56238,0 10px 16px rgba(180,90,50,.2)}
+  .fv .cta-hand{font-family:"Caveat",cursive;color:var(--terra);font-size:20px;transform:rotate(-6deg);display:inline-block}
+
+  /* ==== Screening ==== */
+  .screen-list{margin-top:20px;display:grid;gap:14px}
+  .screen-list li{
+    list-style:none;background:var(--paper);padding:16px 18px 16px 56px;
+    border-radius:14px;position:relative;font-size:15px;line-height:1.7;
+    box-shadow:0 2px 0 var(--cream-2);
+  }
+  .screen-list li::before{
+    content:"";position:absolute;left:16px;top:50%;transform:translateY(-50%);
+    width:28px;height:28px;border-radius:50%;background:var(--sage-3);
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M4 12 L10 18 L20 6' stroke='%237a8f6a' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat:no-repeat;background-position:center;background-size:18px 18px;
+  }
+  .screen-list li b{color:var(--terra)}
+
+  /* ==== Urgency (dark sage) ==== */
+  .urg-cards{display:grid;gap:14px;margin-top:20px}
+  .urg-card{
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+    padding:18px 20px;border-radius:14px;
+  }
+  .urg-card h3{color:#fbe6d6;font-size:15px;margin-bottom:6px;font-family:"Noto Serif JP",serif}
+  .urg-card h3 .num{font-family:"Caveat",cursive;color:var(--terra-2);font-size:24px;margin-right:8px}
+  .urg-card p{color:#eef1e8;font-size:14px;margin-bottom:0}
+  .map-area{background:rgba(0,0,0,.15);padding:20px;border-radius:14px;color:#eef1e8;font-size:13px;margin-top:20px}
+
+  /* ==== Revenue table ==== */
+  .rev-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:18px;background:var(--paper);font-size:14px;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(58,53,44,.06)}
+  .rev-table th,.rev-table td{padding:14px 10px;text-align:center;border-bottom:1px solid var(--line)}
+  .rev-table th{background:var(--sage);color:#fff;font-weight:700;font-family:"Noto Serif JP",serif;letter-spacing:.05em}
+  .rev-table tr:last-child td{border-bottom:none}
+  .rev-table td.highlight{background:var(--terra-3);font-weight:900;color:var(--terra);font-size:15px}
+  .rev-note{font-size:11px;color:var(--ink-2);margin-top:10px;padding-left:14px}
+
+  /* ==== Cost ==== */
+  .cost-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+  .cost-card{
+    background:var(--paper);padding:20px 12px;border-radius:18px;text-align:center;
+    border:1.5px solid var(--line);position:relative;
+  }
+  .cost-card:nth-child(1){transform:rotate(-1.2deg)}
+  .cost-card:nth-child(2){transform:rotate(.6deg)}
+  .cost-card:nth-child(3){transform:rotate(-.4deg)}
+  .cost-card .area{font-size:13px;color:var(--sage);margin-bottom:6px;font-family:"Noto Serif JP",serif;font-weight:700}
+  .cost-card .amt{font-size:22px;font-weight:900;color:var(--ink);font-family:"Noto Serif JP",serif}
+  .cost-card .amt small{font-size:12px;color:var(--ink-2);font-weight:400}
+  .cost-total{
+    background:var(--sage);color:#fff;padding:24px;border-radius:18px;margin-top:22px;text-align:center;
+    position:relative;
+  }
+  .cost-total::before{
+    content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+    background:var(--terra);color:#fff;font-family:"Caveat",cursive;
+    content:"合計目安";padding:4px 18px;border-radius:100px;font-size:16px;
+  }
+  .cost-total .lbl{font-size:12px;color:#dfe6d6;margin-bottom:6px;letter-spacing:.05em}
+  .cost-total .amt{font-size:30px;font-weight:900;font-family:"Noto Serif JP",serif}
+  .cost-total .sub{font-size:13px;color:#eef1e8;margin-top:6px}
+
+  /* ==== Plan compare ==== */
+  .plan-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+  .plan-card{
+    background:var(--paper);border:1.5px solid var(--line);border-radius:20px;padding:22px 20px;
+    position:relative;
+  }
+  .plan-card.recommend{
+    border:2px solid var(--terra);background:#fff;
+    box-shadow:6px 6px 0 var(--terra-3);
+  }
+  .plan-card.recommend::before{
+    content:"おすすめ ♡";position:absolute;top:-14px;right:16px;background:var(--terra);
+    color:#fff;font-family:"Caveat",cursive;font-size:18px;padding:2px 16px;border-radius:100px;
+  }
+  .plan-card h3{color:var(--sage);font-size:17px;font-family:"Noto Serif JP",serif}
+  .plan-card .fee{font-size:24px;font-weight:900;color:var(--ink);margin:10px 0;font-family:"Noto Serif JP",serif}
+  .plan-card .total{font-size:12px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:10px;margin-top:12px;line-height:1.7}
+  .plan-card .total b{color:var(--terra)}
+
+  /* ==== Personas ==== */
+  .persona-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px}
+  .persona-card{
+    background:var(--paper);padding:22px 20px;border-radius:20px;
+    border:1px solid var(--line);position:relative;
+  }
+  .persona-card .icon{
+    width:52px;height:52px;background:var(--sage-3);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;margin-bottom:12px;
+    font-size:26px;color:var(--sage);
+  }
+  .persona-card:nth-child(2n) .icon{background:var(--terra-3);color:var(--terra)}
+  .persona-card h3{font-size:15px;color:var(--ink);font-family:"Noto Serif JP",serif;margin-bottom:6px}
+  .persona-card p{font-size:13px;color:var(--ink-2);margin-bottom:0;line-height:1.75}
+
+  /* ==== Cases — asymmetric layout ==== */
+  .case-card{
+    background:var(--paper);padding:26px 24px;border-radius:20px;margin-bottom:20px;
+    display:grid;grid-template-columns:120px 1fr;gap:20px;align-items:start;
+    box-shadow:0 3px 10px rgba(58,53,44,.06);
+  }
+  .case-card:nth-child(even){grid-template-columns:1fr 120px}
+  .case-card:nth-child(even) .avatar{order:2}
+  .case-card:nth-child(even) .body{order:1;text-align:left}
+  .case-card .avatar{
+    width:120px;height:120px;border-radius:50%;background:var(--sage-3);
+    display:flex;align-items:center;justify-content:center;font-family:"Noto Serif JP",serif;
+    font-size:44px;color:var(--sage);position:relative;
+  }
+  .case-card:nth-child(2n) .avatar{background:var(--terra-3);color:var(--terra)}
+  .case-card:nth-child(3n) .avatar{background:#e6dcc4;color:#8a7940}
+  .case-card .avatar::after{
+    content:"";position:absolute;inset:-6px;border:2px dashed currentColor;border-radius:50%;opacity:.35;
+  }
+  .case-card .who{font-size:12px;color:var(--ink-2);margin-bottom:6px}
+  .case-card h3{color:var(--ink);font-size:17px;font-family:"Noto Serif JP",serif;margin-bottom:8px}
+  .case-card p{font-size:14px;color:var(--ink-2);margin-bottom:12px;line-height:1.8}
+  .case-card .quote{
+    background:var(--cream-2);padding:14px 18px;border-radius:14px;
+    font-family:"Noto Serif JP",serif;font-size:15px;color:var(--ink);
+    line-height:1.7;position:relative;
+  }
+  .case-card .quote::before{
+    content:"“";position:absolute;left:6px;top:-6px;font-size:40px;color:var(--terra);
+    font-family:"Georgia",serif;line-height:1;
+  }
+
+  /* ==== FAQ — accordion feel ==== */
+  .faq-item{
+    background:var(--paper);border-radius:16px;padding:20px 22px;margin-bottom:12px;
+    border:1px solid var(--line);
+  }
+  .faq-item h3{color:var(--ink);font-size:15px;margin-bottom:8px;font-family:"Noto Serif JP",serif;padding-left:32px;position:relative}
+  .faq-item h3::before{
+    content:"Q";position:absolute;left:0;top:-2px;background:var(--terra);color:#fff;
+    width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:"Caveat",cursive;font-size:16px;
+  }
+  .faq-item p{font-size:14px;color:var(--ink-2);margin-bottom:0;padding-left:32px;position:relative;line-height:1.85}
+  .faq-item p::before{
+    content:"A";position:absolute;left:0;top:0;background:var(--sage);color:#fff;
+    width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:"Caveat",cursive;font-size:16px;
+  }
+
+  /* ==== Trust ==== */
+  .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+  .trust-card{
+    background:var(--paper);padding:24px 12px;border-radius:20px;text-align:center;
+    border:1.5px solid var(--line);
+  }
+  .trust-card .num{font-size:32px;font-weight:900;color:var(--terra);font-family:"Noto Serif JP",serif;line-height:1.2}
+  .trust-card .lbl{font-size:12px;color:var(--ink-2);margin-top:6px;line-height:1.5}
+
+  /* ==== Steps — hand-drawn path ==== */
+  .step-list{margin-top:22px;position:relative}
+  .step{
+    background:var(--paper);padding:18px 20px 18px 72px;border-radius:16px;margin-bottom:14px;
+    position:relative;border:1px solid var(--line);
+  }
+  .step::before{
+    content:counter(step);counter-increment:step;
+    position:absolute;left:20px;top:20px;
+    background:var(--sage);color:#fff;width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:900;
+    font-family:"Noto Serif JP",serif;font-size:16px;
+    box-shadow:0 3px 0 var(--sage-2);
+  }
+  .step:nth-child(even)::before{background:var(--terra);box-shadow:0 3px 0 #b56238}
+  .step-list{counter-reset:step}
+  .step h3{color:var(--ink);font-size:15px;margin-bottom:4px;font-family:"Noto Serif JP",serif}
+  .step p{font-size:13px;color:var(--ink-2);margin-bottom:0;line-height:1.75}
+
+  /* ==== Form ==== */
+  .form-section{
+    background:
+      radial-gradient(circle at 90% 15%, var(--terra-3) 0%, transparent 40%),
+      radial-gradient(circle at 10% 85%, var(--sage-3) 0%, transparent 40%),
+      var(--cream);
+  }
+  .form-box{
+    background:var(--paper);color:var(--ink);padding:32px 28px;border-radius:24px;margin-top:20px;
+    box-shadow:0 8px 24px rgba(58,53,44,.08);border:1px solid var(--line);
+  }
+  .form-row{margin-bottom:18px}
+  .form-row label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;color:var(--sage);font-family:"Noto Serif JP",serif}
+  .form-row .req{color:var(--terra);font-size:11px;margin-left:6px;font-family:"Caveat",cursive;font-size:14px}
+  .form-row input,.form-row select,.form-row textarea{
+    width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;
+    font-size:14px;font-family:inherit;background:var(--cream);color:var(--ink);
+  }
+  .form-row input:focus,.form-row select:focus,.form-row textarea:focus{
+    outline:none;border-color:var(--terra);background:#fff;
+  }
+  .form-row .radio-group{display:flex;flex-direction:column;gap:10px;font-size:13px}
+  .form-row .radio-group label{font-weight:400;color:var(--ink);cursor:pointer;font-family:inherit;padding:8px 12px;background:var(--cream);border-radius:10px}
+  .form-submit{
+    background:var(--terra);color:#fff;border:none;padding:18px;width:100%;
+    border-radius:100px;font-size:16px;font-weight:700;cursor:pointer;margin-top:14px;
+    font-family:"Noto Serif JP",serif;letter-spacing:.05em;
+    box-shadow:0 6px 0 #b56238;transition:transform .15s;
+  }
+  .form-submit:hover{transform:translateY(2px);box-shadow:0 4px 0 #b56238}
+
+  /* ==== Sticky CTA ==== */
+  .sticky-cta{
+    position:fixed;bottom:0;left:0;right:0;background:var(--paper);
+    padding:12px 20px;box-shadow:0 -4px 16px rgba(58,53,44,.12);z-index:100;display:none;
+  }
+  .sticky-cta a{
+    background:var(--terra);color:#fff;text-decoration:none;
+    padding:14px 20px;border-radius:100px;display:block;text-align:center;font-weight:700;
+    font-family:"Noto Serif JP",serif;
+  }
+
+  /* ==== Mid CTAs ==== */
+  .mid-cta{text-align:center;margin-top:32px}
+  .mid-cta a{
+    display:inline-block;background:var(--paper);color:var(--terra);font-weight:700;
+    padding:14px 32px;border-radius:100px;text-decoration:none;font-size:14px;
+    border:1.5px solid var(--terra);font-family:"Noto Serif JP",serif;
+    box-shadow:4px 4px 0 var(--terra-3);
+  }
+  .mid-cta a::before{content:"♡ "}
+
+  /* ==== Placeholder ==== */
+  .placeholder{
+    background:repeating-linear-gradient(45deg,rgba(122,143,106,.08),rgba(122,143,106,.08) 8px,transparent 8px,transparent 16px);
+    border:1.5px dashed var(--sage-2);padding:20px;color:var(--sage);font-size:13px;border-radius:14px;margin:16px 0;
+  }
+  .placeholder::before{content:"▽ 実コンテンツ挿入予定：";display:block;color:var(--sage-2);font-size:11px;margin-bottom:6px;letter-spacing:.05em}
+
+  /* ==== Footer ==== */
+  footer{background:var(--ink);color:#c4bfb4;padding:36px 0;font-size:12px;text-align:center}
+  footer a{color:var(--terra-2)}
+
+  /* ==== Responsive ==== */
+  @media(max-width:640px){
+    body{font-size:14px}
+    .cost-grid{grid-template-columns:1fr}
+    .plan-compare{grid-template-columns:1fr}
+    .persona-grid{grid-template-columns:1fr}
+    .trust-grid{grid-template-columns:repeat(3,1fr);gap:8px}
+    .trust-card{padding:16px 6px}
+    .trust-card .num{font-size:22px}
+    .fv h1{font-size:26px;line-height:1.5}
+    .fv::before{width:140px;height:140px}
+    h1{font-size:24px}
+    h2{font-size:20px}
+    h2 .eyebrow{font-size:18px}
+    .sec{padding:60px 0 70px}
+    .case-card{grid-template-columns:1fr;text-align:center}
+    .case-card:nth-child(even){grid-template-columns:1fr}
+    .case-card .avatar{margin:0 auto}
+    .case-card:nth-child(even) .body{order:2;text-align:center}
+    .case-card:nth-child(even) .avatar{order:1}
+    .sticky-cta{display:block}
+    body{padding-bottom:80px}
+    .v-cut-bot{padding-bottom:90px}
+    .v-cut-top{padding-top:80px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== Draft header ==================== -->
+<div class="draft-bar">B案 &mdash; 温かみ・親しみ系（2026-07-11）</div>
+
+<!-- ==================== 1. FV ==================== -->
+<section class="fv">
+  <div class="wrap">
+    <span class="eyebrow-hand">— for the ones who care —</span>
+    <div class="badges" style="margin-bottom:20px">
+      <span class="badge hot">月5社限定</span>
+      <span class="badge gold">加盟実績180社</span>
+    </div>
+    <h1>福祉・医療で培った経験を、<br><em>月60万・年720万</em>の<br>やさしい事業へ。</h1>
+    <p class="sub">看護師・介護経験者・特別支援教員・当事者ご家族 &mdash; あなたのこれまでのキャリアが、そのまま「障がい者グループホーム経営」に活きます。</p>
+    <div class="badges">
+      <span class="badge">売上の85%が国給付</span>
+      <span class="badge">2棟で回収 約1.5〜2年</span>
+      <span class="badge">未経験でも運営体制構築</span>
+      <span class="badge">融資支援あり</span>
+    </div>
+    <div class="cta-wrap">
+      <a class="cta" href="#form">資料請求（無料）</a>
+      <span class="cta-hand">↷ まずは3分でOK</span>
+    </div>
+    <small style="display:block;margin-top:14px;color:var(--ink-2)">資金計画サンプル・エリア別開設費・オーナー声を送付します。</small>
+  </div>
+</section>
+
+<!-- ==================== 2. スクリーニング ==================== -->
+<section class="sec paper">
+  <div class="wrap">
+    <h2><span class="eyebrow">who is this for?</span>このLPは、こんな方に向けて書いています</h2>
+    <p class="lead">情報収集段階の方には少し不向きかもしれません。<br>以下のいずれかに当てはまる方に、開設エリア・収支・スケジュールの<span class="hand-underline">実データ</span>をお渡しします。</p>
+    <ul class="screen-list">
+      <li><b>1年以内に独立・新規事業</b>として着手したい方</li>
+      <li>自己資金 <b>300万円以上</b>（不足分は融資でカバー可）を用意できる方</li>
+      <li>福祉・医療・介護の<b>実務経験</b>、または<b>ご家族に当事者</b>がいる方</li>
+      <li>不動産・経営・営業のキャリアを<b>次の事業に活かしたい</b>方</li>
+    </ul>
+    <div class="callout">
+      <b>資金の目安について</b><br>
+      加盟金0円プランでも、物件費・改修費・運転資金で <b>約300〜400万円</b> の自己資金が必要です。融資（700〜800万）と組み合わせて、総額 1,100〜1,200万円 で1棟目を立ち上げるのが標準です。
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. なぜ「今」動くべきか ==================== -->
+<section class="sec dark">
+  <div class="wrap">
+    <h2><span class="eyebrow" style="color:#f7d9c2;">— why now —</span>なぜ「今年度」動くべきか</h2>
+    <p class="lead">障がい者グループホーム市場は、来年度から参入ハードルが一段上がります。</p>
+
+    <div class="urg-cards">
+      <div class="urg-card">
+        <h3><span class="num">01</span>総量規制の波が関東全域へ</h3>
+        <p>町田市・八王子市はすでに新規開設不可。木更津・横浜も総量に達しつつあり、希望エリアで開設できなくなるリスクがあります。</p>
+      </div>
+      <div class="urg-card">
+        <h3><span class="num">02</span>来年4月から管理者要件が「実務3年＋研修必須」に</h3>
+        <p>2026年度受付分までは現行ルール適用。今年度中の申請なら未経験者でも管理者兼務スキームが使えます。</p>
+      </div>
+      <div class="urg-card">
+        <h3><span class="num">03</span>軽度メイン層の報酬引き下げ改定</h3>
+        <p>来年度の報酬改定で軽度メイン運営はさらに厳しくなる見通し。開設タイミングで利益カーブが大きく変わります。</p>
+      </div>
+    </div>
+
+    <div class="map-area">
+      <div class="placeholder" style="border-color:rgba(255,255,255,.3);color:#eef1e8">総量規制マップ（関東・東海の該当エリア色分け）</div>
+      <small style="color:#dfe6d6">※ 最新の総量規制状況は資料請求後に個別エリアで詳細ご案内します。</small>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. 収益カーブ ==================== -->
+<section class="sec">
+  <div class="wrap">
+    <h2><span class="eyebrow">revenue curve</span>1棟目→2棟目で、本格収益化する事業設計</h2>
+    <p class="lead">売上の <span class="hand-circle"><b>85%が国給付</b></span>（貸し倒れリスクゼロ）／入居は7〜10年の長期安定型。1棟目は投資回収期、2棟目以降で本格的な収益になります。</p>
+
+    <table class="rev-table">
+      <tr><th>棟数</th><th>月利益（目安）</th><th>年間換算</th></tr>
+      <tr><td>1棟</td><td>6〜15万円</td><td>72〜180万円</td></tr>
+      <tr><td class="highlight">2棟 ♡</td><td class="highlight">約60万円</td><td class="highlight">約720万円</td></tr>
+      <tr><td>3棟</td><td>80〜100万円</td><td>960〜1,200万円</td></tr>
+      <tr><td>4棟</td><td>140〜150万円</td><td>1,680〜1,800万円</td></tr>
+    </table>
+    <div class="rev-note">※ エリア（東京都加算等）・稼働率・運営体制で変動します。詳細は資料請求後の個別シミュにて。</div>
+    <div class="mid-cta"><a href="#form">エリア別シミュレーションを受け取る</a></div>
+  </div>
+</section>
+
+<!-- ==================== 5. 初期費用 ==================== -->
+<section class="sec beige">
+  <div class="wrap">
+    <h2><span class="eyebrow">initial cost</span>初期費用の全体像（エリア別）</h2>
+    <p class="lead">「実は300万で足りない」商談後半のギャップをなくすため、開設1棟あたりの実費目安を<span class="hand-underline">先に</span>お伝えします。</p>
+
+    <div class="cost-grid">
+      <div class="cost-card"><div class="area">千葉</div><div class="amt">約370<small>万</small></div></div>
+      <div class="cost-card"><div class="area">茨城</div><div class="amt">約260<small>万</small></div></div>
+      <div class="cost-card"><div class="area">東京</div><div class="amt">約700<small>万</small></div></div>
+    </div>
+    <small style="display:block;margin-top:10px">※ 内訳：物件費／エアコン／消防設備／中古備品／運転資金／会社設立費</small>
+
+    <div class="cost-total">
+      <div class="lbl">融資込み総投下額（1棟目・標準）</div>
+      <div class="amt">1,100〜1,200万円</div>
+      <div class="sub">自己資金 300〜400万円 ＋ 融資 700〜800万円</div>
+    </div>
+
+    <div class="callout">
+      <b>在職のまま融資申請ルート</b><br>
+      現職を辞める前に融資申請することで、開業前の資金枠を最大化できます。（金井様事例より）
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 6. 2プラン比較 ==================== -->
+<section class="sec">
+  <div class="wrap">
+    <h2><span class="eyebrow">two plans</span>2つのプランから選択（差額 約180〜200万）</h2>
+    <p class="lead">自己資金の余力に応じて、2プランからお選びいただけます。</p>
+
+    <div class="plan-compare">
+      <div class="plan-card">
+        <h3>0円プラン</h3>
+        <div class="fee">加盟金 ¥0</div>
+        <p style="font-size:13px;color:var(--ink-2)">月額サポート費 16.5万円 × 36ヶ月</p>
+        <div class="total">総額目安：約800万円<br>初期投下を最小化したい方向け</div>
+      </div>
+      <div class="plan-card recommend">
+        <h3>加盟金プラン</h3>
+        <div class="fee">加盟金 ¥440万</div>
+        <p style="font-size:13px;color:var(--ink-2)">半金 220万＋残金 220万（分割可）</p>
+        <div class="total">総額目安：約536〜650万円<br><b>差額 約180〜200万円お得</b></div>
+      </div>
+    </div>
+    <div class="callout">
+      <b>加盟金プランの分割対応</b><br>
+      220万＋残金分割の柔軟な対応が可能です。実務経験（サビ管等）がある方向けの<b>減額提案</b>も別途ご相談ください。
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 7. ペルソナ4象限 ==================== -->
+<section class="sec tinted">
+  <div class="wrap">
+    <h2><span class="eyebrow">your background</span>あなたのキャリアが、そのまま強みになります</h2>
+    <p class="lead">実際に商談が進んでいる方は、いずれも福祉・医療の実務経験者、もしくは当事者ご家族です。</p>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="icon">✚</div>
+        <h3>看護師・医療従事者の方</h3>
+        <p>基礎研修要件を満たしやすく、サビ管ルートが最短。奥様・ご家族の同意サポートも重視します。</p>
+      </div>
+      <div class="persona-card">
+        <div class="icon">✎</div>
+        <h3>特別支援教員・公務員の方</h3>
+        <p>年度末退職前提の逆算スケジュール（9〜10月着手）で、副業規定に触れず進められます。</p>
+      </div>
+      <div class="persona-card">
+        <div class="icon">◈</div>
+        <h3>介護・福祉業界勤務者の方</h3>
+        <p>制度理解が速く、資金計画に集中できます。実務経験者向けの減額プランあり。</p>
+      </div>
+      <div class="persona-card">
+        <div class="icon">♡</div>
+        <h3>当事者ご家族・親御様</h3>
+        <p>「親なき後」を事業として設計。ご家族の未来と収益の両立を実現します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 8. 事例 ==================== -->
+<section class="sec">
+  <div class="wrap">
+    <h2><span class="eyebrow">real stories</span>実際にご検討いただいている方の声</h2>
+    <p class="lead">※ プライバシー保護のため仮名・匿名化しています。数字と背景は実際の商談内容に基づきます。</p>
+
+    <div class="case-card">
+      <div class="avatar">A</div>
+      <div class="body">
+        <div class="who">A様（40代・営業職・横浜／自己資金2,000万・お子さん重度障害）</div>
+        <h3>「親なき後」を、事業で解決する。</h3>
+        <p>3回の面談を経て、加盟金の分割・在職融資のスキームで具体化。「もう腹決めてきてる」との言葉で本格検討に。</p>
+        <div class="quote">息子の将来を、事業として設計できるのは大きい</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="avatar">B</div>
+      <div class="body">
+        <div class="who">B様（30代・特別支援学校教員・茨城）</div>
+        <h3>年度末退職 → 4月開設の逆算。</h3>
+        <p>副業禁止規定を踏まえ、9〜10月着手で来春開設のスケジュール設計。制度理解の速さで初回商談から具体案に。</p>
+        <div class="quote">2年で回収できるのが見えて、少し安心しました</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="avatar">C</div>
+      <div class="body">
+        <div class="who">C様（40代・看護師・愛知）</div>
+        <h3>厚労省データを自主リサーチ済みの慎重派。</h3>
+        <p>四日市の既存オーナー見学＋奥様同席のZoom質疑を経て、実地見学の段取りへ。</p>
+        <div class="quote">素人が精神障害の方を見れるのか、その不安がやっと解消できた</div>
+      </div>
+    </div>
+
+    <div class="placeholder">対談動画埋め込み枠（既存オーナー×代表 30秒×3本）</div>
+    <div class="mid-cta"><a href="#form">もっと詳しい事例集を受け取る</a></div>
+  </div>
+</section>
+
+<!-- ==================== 9. FAQ ==================== -->
+<section class="sec beige">
+  <div class="wrap">
+    <h2><span class="eyebrow">FAQ</span>よくあるご質問</h2>
+
+    <div class="faq-item">
+      <h3>サビ管（サービス管理責任者）の資格はどうすればいい？</h3>
+      <p>看護師・教員・介護経験者の多くが基礎研修要件を満たします。基礎研修→OJT半年→実践研修が最短ルート。個別の職歴で該当可否を診断します。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>1棟目は本当に赤字期があるの？</h3>
+      <p>入居5名満床までの数ヶ月間は月6〜15万の利益と控えめです。2棟目を1年以内に立ち上げることで、合算で月60万の安定収益に到達します。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>福祉未経験でも運営できる？</h3>
+      <p>管理者兼務＋サビ管外部委託＋相談支援事業所への挨拶回りの3点セットで、未経験者でも運営体制を構築できます。加盟180社の実績で確立したノウハウです。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>入居者は本当に集まる？</h3>
+      <p>売上の85%が国給付＝入居者募集は行政・相談支援経由が中心。エリアの相談支援事業所への挨拶回りが集客の要です。同行サポートあり。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>公務員・教員の副業規定に触れない？</h3>
+      <p>年度末退職前提で、開設準備は在職中に融資申請まで完了させるルートを推奨。個別の勤務先規定は事前にご確認をお願いします。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>失敗パターン・撤退時のコストは？</h3>
+      <p>加盟180社の失敗パターン・撤退時実費（設備原状回復・スタッフ引き継ぎ等）は資料請求で個別開示します。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>助成金は使える？</h3>
+      <p>障がい者GH開設に直接使える助成金は現状ありません（廣瀬様事例）。資金計画は融資＋自己資金前提で組みます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 10. 信頼 ==================== -->
+<section class="sec">
+  <div class="wrap">
+    <h2><span class="eyebrow">trust</span>加盟180社の運営実績</h2>
+    <div class="trust-grid">
+      <div class="trust-card"><div class="num">180<small>+</small></div><div class="lbl">加盟社数</div></div>
+      <div class="trust-card"><div class="num">85<small>%</small></div><div class="lbl">売上の国給付比率</div></div>
+      <div class="trust-card"><div class="num">7-10<small>年</small></div><div class="lbl">平均入居期間</div></div>
+    </div>
+    <div class="placeholder">既存オーナー見学同行（四日市・関東数拠点）／行政折衝の法令遵守サポート／サビ管人材ネットワーク</div>
+    <div class="mid-cta"><a href="#form">見学同行つき資料請求</a></div>
+  </div>
+</section>
+
+<!-- ==================== 11. 開業ステップ ==================== -->
+<section class="sec tinted">
+  <div class="wrap">
+    <h2><span class="eyebrow">steps</span>資料請求から開業まで</h2>
+    <p class="lead">4月開設なら9〜10月着手、東京都なら開設まで8〜9ヶ月の<span class="hand-underline">逆算スケジュール</span>です。</p>
+
+    <div class="step-list">
+      <div class="step"><h3>資料請求（本日）</h3><p>資金計画サンプル・エリア別開設費・オーナー声をお送りします</p></div>
+      <div class="step"><h3>初回Zoom面談</h3><p>ご希望エリア・自己資金・スケジュール感の擦り合わせ（60分）</p></div>
+      <div class="step"><h3>収支シミュ・エリア調査</h3><p>希望エリアの総量規制状況・物件相場・収支表を個別作成</p></div>
+      <div class="step"><h3>既存オーナー見学</h3><p>四日市 or 関東の既存GHに同行見学（半日）</p></div>
+      <div class="step"><h3>融資申請サポート</h3><p>3パターンの資金計画書＋銀行想定Q&A</p></div>
+      <div class="step"><h3>物件契約→開業</h3><p>物件選定・改修・スタッフ採用・行政届出まで同行サポート</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 12. フォーム ==================== -->
+<section class="sec form-section" id="form">
+  <div class="wrap">
+    <span class="hand" style="font-size:26px;display:block;margin-bottom:6px">— まずはここから —</span>
+    <h2 style="font-size:28px">資料請求フォーム</h2>
+    <p class="lead">頂いた情報をもとに、あなたのケースに合わせた資金計画サンプルをお送りします。<br>営業電話は行いません。</p>
+
+    <div class="form-box">
+      <div class="form-row">
+        <label>お名前<span class="req">＊必須</span></label>
+        <input type="text" placeholder="山田 太郎">
+      </div>
+      <div class="form-row">
+        <label>メールアドレス<span class="req">＊必須</span></label>
+        <input type="email" placeholder="example@example.com">
+      </div>
+      <div class="form-row">
+        <label>電話番号<span class="req">＊必須</span></label>
+        <input type="tel" placeholder="090-0000-0000">
+      </div>
+      <div class="form-row">
+        <label>ご希望エリア（都道府県・市区町村）<span class="req">＊必須</span></label>
+        <input type="text" placeholder="例：東京都八王子市／千葉県木更津市">
+      </div>
+      <div class="form-row">
+        <label>ご準備可能な自己資金<span class="req">＊必須</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="fund"> 300万円未満</label>
+          <label><input type="radio" name="fund"> 300〜500万円</label>
+          <label><input type="radio" name="fund"> 500〜1,000万円</label>
+          <label><input type="radio" name="fund"> 1,000万円以上</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>現在のご職業<span class="req">＊必須</span></label>
+        <select>
+          <option>選択してください</option>
+          <option>看護師・医療従事者</option>
+          <option>介護・福祉業界勤務</option>
+          <option>教員・公務員</option>
+          <option>会社員</option>
+          <option>経営者・事業主</option>
+          <option>不動産・投資業</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>福祉関連の資格・実務経験</label>
+        <div class="radio-group">
+          <label><input type="checkbox"> サビ管（サービス管理責任者）実務経験あり</label>
+          <label><input type="checkbox"> 介護福祉士・社会福祉士等の資格あり</label>
+          <label><input type="checkbox"> 医療系資格あり（看護師等）</label>
+          <label><input type="checkbox"> ご家族に当事者がいる</label>
+          <label><input type="checkbox"> なし・未経験</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>開業ご希望時期<span class="req">＊必須</span></label>
+        <select>
+          <option>選択してください</option>
+          <option>3ヶ月以内</option>
+          <option>半年以内</option>
+          <option>1年以内</option>
+          <option>1〜2年以内</option>
+          <option>情報収集段階</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>ご検討の動機・状況<span class="req">＊必須</span></label>
+        <textarea rows="4" placeholder="例：現職からの独立検討／親なき後の設計／既存事業の新規軸／等"></textarea>
+      </div>
+      <div class="form-row">
+        <label>OWLをどこで知りましたか</label>
+        <select>
+          <option>選択してください</option>
+          <option>Google検索</option>
+          <option>Yahoo検索</option>
+          <option>SNS広告</option>
+          <option>ご紹介</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <button class="form-submit" type="button">資料請求を送信する</button>
+      <small style="display:block;margin-top:12px;color:var(--ink-2);text-align:center">送信後、24時間以内に担当より資料と初回面談日程をご連絡します。</small>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Sticky CTA (mobile only) ==================== -->
+<div class="sticky-cta"><a href="#form">資料請求（無料）</a></div>
+
+<footer>
+  <div class="wrap">
+    <p>OWL福祉事業 独立起業向けLP（B案モック・温かみ系）</p>
+    <p>© RUNBIRD Inc.</p>
+  </div>
+</footer>
+
+</body>
+</html>

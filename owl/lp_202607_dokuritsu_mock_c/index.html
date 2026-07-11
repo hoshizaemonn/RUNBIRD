@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>OWL INDEPENDENT | 障がい福祉サービス独立起業プログラム</title>
+<style>
+:root{
+  --bg:#0a0a0a;
+  --bg-1:#0f1e1a;
+  --bg-2:#141414;
+  --panel:#161a19;
+  --panel-2:#1a201e;
+  --line:#2a332f;
+  --line-2:#1f2622;
+  --ink:#e8ecea;
+  --ink-dim:#8a938f;
+  --ink-mute:#5a615e;
+  --emerald:#00d97e;
+  --emerald-2:#22c55e;
+  --emerald-dim:#0d5c3a;
+  --gold:#f5c542;
+  --red:#ef4444;
+  --blue:#3b82f6;
+  --mono:'JetBrains Mono','Roboto Mono','SF Mono','Menlo',monospace;
+  --serif:'Playfair Display','Times New Roman',serif;
+  --jp:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--jp);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{
+  background-image:
+    linear-gradient(rgba(42,51,47,.25) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(42,51,47,.25) 1px,transparent 1px);
+  background-size:48px 48px;
+  background-position:-1px -1px;
+}
+.draft-bar{
+  background:var(--gold);color:#111;font-family:var(--mono);font-size:11px;padding:6px 14px;
+  letter-spacing:.12em;text-align:center;font-weight:700;position:sticky;top:0;z-index:100;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+.mono{font-family:var(--mono);letter-spacing:.02em}
+.upper{text-transform:uppercase;letter-spacing:.18em}
+.dim{color:var(--ink-dim)}
+.mute{color:var(--ink-mute)}
+.em{color:var(--emerald)}
+.gd{color:var(--gold)}
+hr.line{border:0;border-top:1px solid var(--line);margin:0}
+
+/* ===== TOP NAV BAR ===== */
+.topbar{
+  border-bottom:1px solid var(--line);background:rgba(10,10,10,.85);backdrop-filter:blur(8px);
+  padding:12px 0;font-family:var(--mono);font-size:11px;
+}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.topbar .brand{color:var(--emerald);font-weight:700;letter-spacing:.2em}
+.topbar .ticker{display:flex;gap:22px;color:var(--ink-dim);flex-wrap:wrap}
+.topbar .ticker span b{color:var(--ink);font-weight:600}
+.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--emerald);margin-right:6px;box-shadow:0 0 0 0 rgba(0,217,126,.7);animation:pulse 2s infinite}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(0,217,126,.7)}
+  70%{box-shadow:0 0 0 8px rgba(0,217,126,0)}
+  100%{box-shadow:0 0 0 0 rgba(0,217,126,0)}
+}
+
+/* ===== SECTION SHELL ===== */
+section{padding:80px 0;position:relative}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:36px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.sec-num{font-family:var(--mono);font-size:12px;color:var(--emerald);letter-spacing:.2em}
+.sec-label{font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:.22em;text-transform:uppercase;margin-left:auto}
+.sec-title{font-family:var(--serif);font-size:32px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.sec-title small{display:block;font-family:var(--jp);font-size:13px;color:var(--ink-dim);font-weight:400;margin-top:8px;letter-spacing:0}
+
+/* ===== FV ===== */
+.fv{padding:60px 0 90px;background:linear-gradient(180deg,var(--bg-1) 0%,var(--bg) 70%);position:relative;overflow:hidden}
+.fv::before{
+  content:"";position:absolute;inset:0;background:
+    radial-gradient(600px 400px at 85% 20%,rgba(0,217,126,.08),transparent 60%),
+    radial-gradient(500px 300px at 10% 80%,rgba(245,197,66,.05),transparent 60%);
+  pointer-events:none;
+}
+.fv-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--emerald);border:1px solid var(--emerald-dim);padding:6px 12px;border-radius:2px;letter-spacing:.18em;margin-bottom:24px}
+.fv-h{font-family:var(--serif);font-size:52px;font-weight:600;line-height:1.1;letter-spacing:-.02em;margin-bottom:20px}
+.fv-h .accent{color:var(--emerald);font-family:var(--mono);font-weight:500}
+.fv-sub{font-size:16px;color:var(--ink-dim);max-width:640px;line-height:1.8;margin-bottom:40px}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:32px}
+.kpi{background:var(--panel);padding:22px 18px}
+.kpi .lbl{font-family:var(--mono);font-size:9.5px;color:var(--ink-mute);letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}
+.kpi .val{font-family:var(--mono);font-size:28px;font-weight:600;color:var(--emerald);line-height:1;letter-spacing:-.02em}
+.kpi .val small{font-size:12px;color:var(--ink-dim);font-weight:400;margin-left:3px;letter-spacing:0}
+.kpi .delta{font-family:var(--mono);font-size:10px;color:var(--ink-dim);margin-top:8px;letter-spacing:.05em}
+.kpi .delta.up{color:var(--emerald)}
+.kpi .delta.gd{color:var(--gold)}
+
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;font-family:var(--mono);font-size:12px;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all .2s;font-weight:600}
+.btn-primary{background:var(--emerald);color:#0a0a0a;border:1px solid var(--emerald)}
+.btn-primary:hover{background:var(--emerald-2);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--emerald);color:var(--emerald)}
+.btn .arrow{transition:transform .2s}
+.btn:hover .arrow{transform:translateX(3px)}
+.warn-strip{display:flex;align-items:center;gap:10px;margin-top:20px;padding:10px 14px;background:rgba(245,197,66,.06);border-left:2px solid var(--gold);font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.05em}
+
+/* ===== SCREENING ===== */
+.screen-list{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.screen-item{background:var(--panel);padding:26px 22px}
+.screen-item .no{font-family:var(--mono);font-size:11px;color:var(--emerald);letter-spacing:.15em;margin-bottom:8px}
+.screen-item h4{font-family:var(--jp);font-size:16px;font-weight:600;margin-bottom:8px}
+.screen-item p{font-size:13px;color:var(--ink-dim);line-height:1.7}
+.screen-item .check{font-family:var(--mono);font-size:11px;color:var(--emerald);margin-top:12px;letter-spacing:.1em}
+
+/* ===== WHY NOW ===== */
+.why-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.why-card{background:var(--panel);border:1px solid var(--line);padding:24px}
+.why-card .badge{display:inline-block;font-family:var(--mono);font-size:10px;background:rgba(0,217,126,.12);color:var(--emerald);padding:3px 8px;letter-spacing:.15em;margin-bottom:14px}
+.why-card h4{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:10px;line-height:1.3}
+.why-card p{font-size:13px;color:var(--ink-dim);line-height:1.75}
+.why-card .stat{font-family:var(--mono);font-size:14px;color:var(--gold);margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+
+/* ===== REVENUE CURVE ===== */
+.chart-panel{background:var(--panel);border:1px solid var(--line);padding:28px;margin-bottom:20px}
+.chart-hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;font-family:var(--mono)}
+.chart-hd .title{font-size:12px;color:var(--ink);letter-spacing:.15em}
+.chart-hd .axis{font-size:10px;color:var(--ink-mute);letter-spacing:.1em}
+.bar-chart{display:grid;grid-template-columns:60px 1fr 100px;gap:14px;align-items:center;font-family:var(--mono);font-size:12px}
+.bar-chart .lbl{color:var(--ink-dim)}
+.bar-chart .track{background:var(--bg);border:1px solid var(--line-2);height:32px;position:relative;overflow:hidden}
+.bar-chart .fill{height:100%;background:linear-gradient(90deg,var(--emerald-dim) 0%,var(--emerald) 100%);position:relative;transition:width 1.5s cubic-bezier(.2,.8,.2,1)}
+.bar-chart .fill::after{content:"";position:absolute;top:0;bottom:0;right:0;width:2px;background:var(--emerald)}
+.bar-chart .val{text-align:right;color:var(--emerald);font-weight:600}
+.bar-chart .row{display:contents}
+.bar-chart .row + .row{margin-top:10px}
+.bar-gap{height:10px}
+.rev-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12.5px}
+.rev-table th,.rev-table td{padding:12px 14px;text-align:right;border-bottom:1px solid var(--line-2)}
+.rev-table th{background:var(--bg-1);color:var(--ink-dim);font-weight:500;font-size:10.5px;letter-spacing:.15em;text-transform:uppercase;text-align:right}
+.rev-table th:first-child,.rev-table td:first-child{text-align:left;color:var(--emerald)}
+.rev-table tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+.rev-table td.highlight{color:var(--emerald);font-weight:600}
+.rev-table td.gd{color:var(--gold);font-weight:600}
+.rev-note{font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);margin-top:12px;letter-spacing:.05em}
+
+/* ===== COST ===== */
+.cost-book{background:var(--panel);border:1px solid var(--line)}
+.cost-hd{display:flex;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--ink-mute);text-transform:uppercase}
+.cost-hd .region{color:var(--emerald)}
+.cost-row{display:grid;grid-template-columns:1fr 130px 130px;padding:14px 22px;border-bottom:1px solid var(--line-2);font-family:var(--mono);font-size:13px;align-items:center}
+.cost-row:last-child{border-bottom:0}
+.cost-row .name{color:var(--ink)}
+.cost-row .name small{color:var(--ink-mute);font-size:10.5px;margin-left:8px;letter-spacing:.05em}
+.cost-row .fig{text-align:right;color:var(--ink-dim)}
+.cost-row .fig.hi{color:var(--emerald);font-weight:600}
+.cost-total{display:grid;grid-template-columns:1fr 130px 130px;padding:18px 22px;background:var(--bg-1);border-top:2px solid var(--emerald);font-family:var(--mono);font-size:14px;font-weight:600}
+.cost-total .lbl{color:var(--emerald);letter-spacing:.1em}
+.cost-total .fig{text-align:right;color:var(--emerald)}
+.cost-legend{display:flex;gap:20px;font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);margin-top:14px;letter-spacing:.08em}
+.cost-legend .dot{display:inline-block;width:8px;height:8px;background:var(--emerald);margin-right:6px;vertical-align:middle}
+.cost-legend .dot.gd{background:var(--gold)}
+
+/* ===== PLANS ===== */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.plan{background:var(--panel);border:1px solid var(--line);padding:28px;position:relative}
+.plan.recommended{border-color:var(--emerald);box-shadow:0 0 0 1px rgba(0,217,126,.3),inset 0 0 60px rgba(0,217,126,.03)}
+.plan .tag{position:absolute;top:-1px;right:-1px;background:var(--emerald);color:#0a0a0a;font-family:var(--mono);font-size:10px;padding:5px 10px;letter-spacing:.15em;font-weight:700}
+.plan .code{font-family:var(--mono);font-size:11px;color:var(--emerald);letter-spacing:.2em;margin-bottom:10px}
+.plan h3{font-family:var(--serif);font-size:26px;font-weight:600;margin-bottom:6px}
+.plan .sub{font-size:12.5px;color:var(--ink-dim);margin-bottom:20px}
+.plan .price{font-family:var(--mono);font-size:32px;color:var(--ink);margin-bottom:4px;letter-spacing:-.02em}
+.plan .price small{font-size:12px;color:var(--ink-dim);margin-left:6px}
+.plan .price-note{font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);letter-spacing:.05em;margin-bottom:22px}
+.plan ul{list-style:none;border-top:1px solid var(--line-2);padding-top:16px}
+.plan ul li{padding:8px 0;font-size:13px;color:var(--ink-dim);display:flex;gap:10px;line-height:1.6}
+.plan ul li::before{content:"→";color:var(--emerald);font-family:var(--mono);font-size:12px;flex-shrink:0}
+.plan .foot{margin-top:20px;padding-top:16px;border-top:1px solid var(--line-2);font-family:var(--mono);font-size:10.5px;color:var(--gold);letter-spacing:.05em}
+
+/* ===== PERSONA ===== */
+.persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.persona{background:var(--panel);padding:26px}
+.persona .idx{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.2em;margin-bottom:8px}
+.persona h4{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:6px}
+.persona .meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);letter-spacing:.1em;margin-bottom:14px;text-transform:uppercase}
+.persona p{font-size:13px;color:var(--ink-dim);line-height:1.75}
+.persona .fit{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line-2);font-family:var(--mono);font-size:11px;color:var(--emerald);letter-spacing:.05em}
+.persona .fit b{color:var(--gold);margin-right:6px}
+
+/* ===== CASES ===== */
+.case{background:var(--panel);border:1px solid var(--line);padding:26px;margin-bottom:16px;display:grid;grid-template-columns:110px 1fr 180px;gap:22px;align-items:start}
+.case .id{font-family:var(--mono);font-size:11px;color:var(--emerald);letter-spacing:.2em}
+.case .id .code{display:block;font-size:24px;color:var(--ink);margin-top:4px;font-weight:600;letter-spacing:.05em}
+.case .body h4{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:6px}
+.case .body .who{font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:.1em;margin-bottom:12px;text-transform:uppercase}
+.case .body p{font-size:13px;color:var(--ink-dim);line-height:1.75}
+.case .stat{background:var(--bg-1);border:1px solid var(--line-2);padding:14px;font-family:var(--mono)}
+.case .stat .lbl{font-size:9.5px;color:var(--ink-mute);letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px}
+.case .stat .val{font-size:22px;color:var(--emerald);font-weight:600;letter-spacing:-.02em}
+.case .stat .val small{font-size:11px;color:var(--ink-dim);margin-left:3px}
+.case .stat + .stat{margin-top:8px}
+.case .stat .val.gd{color:var(--gold)}
+
+/* ===== FAQ ===== */
+.faq{border:1px solid var(--line);background:var(--panel)}
+.faq-item{border-bottom:1px solid var(--line-2)}
+.faq-item:last-child{border-bottom:0}
+.faq-q{padding:18px 22px;cursor:pointer;display:flex;gap:14px;align-items:baseline;font-size:14.5px;font-weight:500;transition:background .2s;list-style:none}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q:hover{background:rgba(0,217,126,.03)}
+.faq-q .q-no{font-family:var(--mono);font-size:11px;color:var(--emerald);letter-spacing:.15em;flex-shrink:0;min-width:38px}
+.faq-q .q-plus{margin-left:auto;font-family:var(--mono);color:var(--emerald);transition:transform .2s;flex-shrink:0}
+details[open] .q-plus{transform:rotate(45deg)}
+.faq-a{padding:0 22px 22px 74px;color:var(--ink-dim);font-size:13.5px;line-height:1.85}
+
+/* ===== TRUST ===== */
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.trust{background:var(--panel);padding:32px 24px;text-align:center;position:relative}
+.trust .val{font-family:var(--mono);font-size:44px;color:var(--emerald);font-weight:600;letter-spacing:-.02em;line-height:1}
+.trust .val small{font-size:14px;color:var(--ink-dim);margin-left:4px}
+.trust .lbl{font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);letter-spacing:.18em;text-transform:uppercase;margin-top:14px}
+.trust .note{font-size:11.5px;color:var(--ink-dim);margin-top:10px;line-height:1.5}
+.trust::after{content:"";position:absolute;bottom:0;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--emerald),transparent);opacity:.4}
+
+/* ===== STEPS ===== */
+.steps{position:relative;padding-left:36px}
+.steps::before{content:"";position:absolute;left:14px;top:8px;bottom:8px;width:1px;background:var(--line);}
+.step{position:relative;padding:16px 0 20px 24px;margin-bottom:6px}
+.step::before{content:"";position:absolute;left:-26px;top:22px;width:11px;height:11px;background:var(--emerald);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--emerald)}
+.step .head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+.step .no{font-family:var(--mono);font-size:12px;color:var(--emerald);letter-spacing:.15em}
+.step h4{font-family:var(--serif);font-size:18px;font-weight:600}
+.step .dur{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--gold);letter-spacing:.1em;background:rgba(245,197,66,.08);padding:3px 8px}
+.step p{font-size:13px;color:var(--ink-dim);line-height:1.75}
+
+/* ===== FORM ===== */
+.form-panel{background:var(--panel);border:1px solid var(--line);padding:36px}
+.form-lead{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--line-2)}
+.form-lead .code{font-family:var(--mono);font-size:11px;color:var(--emerald);letter-spacing:.2em;margin-bottom:8px}
+.form-lead h3{font-family:var(--serif);font-size:24px;font-weight:600;margin-bottom:6px}
+.form-lead p{font-size:13px;color:var(--ink-dim)}
+.field{margin-bottom:18px}
+.field label{display:block;font-family:var(--mono);font-size:10.5px;color:var(--ink-dim);letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px}
+.field label .req{color:var(--emerald);margin-left:6px}
+.field input,.field select,.field textarea{
+  width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:12px 14px;
+  font-family:var(--mono);font-size:13px;border-radius:2px;transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--emerald)}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%2300d97e' stroke-width='1.5' fill='none'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:34px}
+.field textarea{min-height:100px;resize:vertical;font-family:var(--jp)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-foot{margin-top:24px;padding-top:20px;border-top:1px solid var(--line-2);font-family:var(--mono);font-size:10.5px;color:var(--ink-mute);letter-spacing:.05em;line-height:1.8}
+.submit{width:100%;background:var(--emerald);color:#0a0a0a;border:0;padding:16px;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:10px}
+.submit:hover{background:var(--emerald-2)}
+
+/* ===== FOOTER ===== */
+footer{padding:40px 0 60px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--ink-mute);letter-spacing:.08em}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer .brand-f{color:var(--emerald);letter-spacing:.2em}
+footer a{color:var(--ink-dim);text-decoration:none;margin-left:20px}
+footer a:hover{color:var(--emerald)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:760px){
+  .fv{padding:40px 0 60px}
+  .fv-h{font-size:36px}
+  .sec-title{font-size:24px}
+  .kpi-grid{grid-template-columns:1fr 1fr}
+  .screen-list,.why-grid,.trust-grid{grid-template-columns:1fr}
+  .plans,.persona-grid,.grid-2{grid-template-columns:1fr}
+  .case{grid-template-columns:1fr}
+  .cost-row,.cost-total{grid-template-columns:1fr 90px 90px;padding-left:16px;padding-right:16px;font-size:11.5px}
+  .cost-hd{padding-left:16px;padding-right:16px}
+  .bar-chart{grid-template-columns:50px 1fr 80px;font-size:11px}
+  section{padding:56px 0}
+  .topbar .ticker{font-size:10px;gap:14px}
+}
+</style>
+</head>
+<body>
+
+<div class="draft-bar">C案 — ダーク・数字強調系（2026-07-11）</div>
+
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand mono"><span class="pulse"></span>OWL INDEPENDENT / TICKER: OWL-2607</div>
+    <div class="ticker mono">
+      <span>ROI <b class="em">+38.2%</b></span>
+      <span>ANNUAL <b class="em">¥7.20M</b></span>
+      <span>PORTFOLIO <b>180</b></span>
+      <span class="dim">LAST_UPDATE 2026.07.11</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FV / SECTION 01 ===== -->
+<section class="fv">
+  <div class="wrap">
+    <div class="fv-tag"><span class="pulse"></span>SEC.01 &nbsp;/&nbsp; INDEPENDENT LAUNCH PROGRAM</div>
+    <h1 class="fv-h">
+      障がい福祉、<br>
+      <span class="accent">¥7,200,000</span> / 年間キャッシュフロー。<br>
+      2棟目で初期投資回収。
+    </h1>
+    <p class="fv-sub">
+      グループホーム（共同生活援助）による独立開業パッケージ。売上の <span class="em mono">85%</span> は国庫からの給付金。景気に左右されない事業構造で、月次収入 <span class="em mono">¥600,000</span> ／ 年間 <span class="em mono">¥7,200,000</span> のキャッシュフローを設計します。募集は <span class="gd mono">月5社限定</span>。
+    </p>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="lbl">Monthly Cashflow</div>
+        <div class="val" data-count="60"><span class="counter">0</span><small>万円/月</small></div>
+        <div class="delta up">▲ vs 一般事業 +187%</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Annual Yield</div>
+        <div class="val" data-count="720"><span class="counter">0</span><small>万円/年</small></div>
+        <div class="delta up">▲ IRR 38.2%</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Portfolio (Total)</div>
+        <div class="val" data-count="180"><span class="counter">0</span><small>社</small></div>
+        <div class="delta">independent operators</div>
+      </div>
+      <div class="kpi">
+        <div class="lbl">Gov. Subsidy Ratio</div>
+        <div class="val" data-count="85"><span class="counter">0</span><small>%</small></div>
+        <div class="delta gd">state-backed revenue</div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="#form" class="btn btn-primary">Book a Briefing <span class="arrow">→</span></a>
+      <a href="#revenue" class="btn btn-ghost">View Revenue Model <span class="arrow">↓</span></a>
+    </div>
+
+    <div class="warn-strip">
+      <span>⚠</span>
+      <span>ALERT: 2026-07 月内残り <b>5</b> 枠 / 次回募集 2026-08。予約優先。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SEC 02 / SCREENING ===== -->
+<section id="screen">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">02</span>
+      <h2 class="sec-title">まず3項目、スクリーニング。<small>候補者の90%は、この時点で自分の適性を判別できます。</small></h2>
+      <span class="sec-label mono">/ eligibility check</span>
+    </div>
+
+    <div class="screen-list">
+      <div class="screen-item">
+        <div class="no mono">01 / CAPITAL</div>
+        <h4>自己資金 300万円以上</h4>
+        <p>不足分は日本政策金融公庫の融資を組み合わせて調達します。300万円未満の場合は準備フェーズをご案内。</p>
+        <div class="check mono">✓ REQUIRED</div>
+      </div>
+      <div class="screen-item">
+        <div class="no mono">02 / EXPERIENCE</div>
+        <h4>実務経験 or 資格</h4>
+        <p>介護福祉士・看護師・保育士・社会福祉士等の資格、または福祉現場での実務経験があると開業スピードが速まります。</p>
+        <div class="check mono">✓ RECOMMENDED</div>
+      </div>
+      <div class="screen-item">
+        <div class="no mono">03 / TIMELINE</div>
+        <h4>開業時期 6〜12ヶ月以内</h4>
+        <p>物件仕入れ・指定申請・人員採用を逆算すると、判断から開業まで最短 6ヶ月、標準 8〜12ヶ月です。</p>
+        <div class="check mono">✓ TARGET RANGE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="line">
+
+<!-- ===== SEC 03 / WHY NOW ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">03</span>
+      <h2 class="sec-title">なぜ、いま参入するのか。<small>3つの外部環境変化が、参入コストを引き下げています。</small></h2>
+      <span class="sec-label mono">/ market timing</span>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="badge mono">FACTOR 01</span>
+        <h4>総量規制の議論</h4>
+        <p>グループホームの新規指定に対する総量規制導入が地域単位で議論されはじめている。「今のうちに指定を取る」判断が最終フェーズ。</p>
+        <div class="stat mono">WINDOW: ~2027 Q2</div>
+      </div>
+      <div class="why-card">
+        <span class="badge mono">FACTOR 02</span>
+        <h4>2027年 報酬改定</h4>
+        <p>3年に1度の報酬改定が2027年に予定。既存事業者への加算要件が強化される見込みで、早期指定取得と体制整備が優位に働く。</p>
+        <div class="stat mono">NEXT REVISION: 2027.04</div>
+      </div>
+      <div class="why-card">
+        <span class="badge mono">FACTOR 03</span>
+        <h4>需要ギャップ拡大</h4>
+        <p>入所待機は全国で慢性化。都市部・関東エリアでは 1事業所あたり平均待機7〜12名の状態が続いており、稼働率90%超が短期で見込める。</p>
+        <div class="stat mono">OCCUPANCY: 90%+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="line">
+
+<!-- ===== SEC 04 / REVENUE CURVE ===== -->
+<section id="revenue">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">04</span>
+      <h2 class="sec-title">収益カーブ / 1棟 → 4棟。<small>棟数を増やすほど、固定費が分散し、営業利益率が上がる構造です。</small></h2>
+      <span class="sec-label mono">/ revenue projection</span>
+    </div>
+
+    <div class="chart-panel">
+      <div class="chart-hd">
+        <div class="title mono">MONTHLY OPERATING PROFIT (万円/月)</div>
+        <div class="axis mono">SCALE 0 ─────── 240</div>
+      </div>
+      <div class="bar-chart">
+        <div class="row">
+          <div class="lbl">1棟</div>
+          <div class="track"><div class="fill" style="width:25%"></div></div>
+          <div class="val">60万</div>
+        </div>
+        <div style="height:8px"></div>
+        <div class="row">
+          <div class="lbl">2棟</div>
+          <div class="track"><div class="fill" style="width:50%"></div></div>
+          <div class="val">120万</div>
+        </div>
+        <div style="height:8px"></div>
+        <div class="row">
+          <div class="lbl">3棟</div>
+          <div class="track"><div class="fill" style="width:75%"></div></div>
+          <div class="val">180万</div>
+        </div>
+        <div style="height:8px"></div>
+        <div class="row">
+          <div class="lbl">4棟</div>
+          <div class="track"><div class="fill" style="width:100%"></div></div>
+          <div class="val">240万</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-panel" style="padding:0">
+      <table class="rev-table">
+        <thead>
+          <tr>
+            <th>Portfolio</th>
+            <th>Monthly Rev.</th>
+            <th>Op. Profit</th>
+            <th>Annual CF</th>
+            <th>Payback</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1棟目</td>
+            <td>¥2,400,000</td>
+            <td class="highlight">¥600,000</td>
+            <td class="highlight">¥7,200,000</td>
+            <td>~24ヶ月</td>
+          </tr>
+          <tr>
+            <td>2棟目</td>
+            <td>¥4,800,000</td>
+            <td class="highlight">¥1,200,000</td>
+            <td class="highlight">¥14,400,000</td>
+            <td class="gd">回収完了</td>
+          </tr>
+          <tr>
+            <td>3棟目</td>
+            <td>¥7,200,000</td>
+            <td class="highlight">¥1,800,000</td>
+            <td class="highlight">¥21,600,000</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>4棟目</td>
+            <td>¥9,600,000</td>
+            <td class="highlight">¥2,400,000</td>
+            <td class="highlight">¥28,800,000</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="rev-note mono">*標準モデル：定員10名・稼働率90%・区分3-5想定。実績180社の中央値ベース。エリア・報酬区分により変動あり。</div>
+  </div>
+</section>
+
+<hr class="line">
+
+<!-- ===== SEC 05 / COST ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">05</span>
+      <h2 class="sec-title">初期費用の内訳。<small>エリア別・不動産取得スキーム別に、必要資金レンジを開示します。</small></h2>
+      <span class="sec-label mono">/ capex breakdown</span>
+    </div>
+
+    <div class="cost-book">
+      <div class="cost-hd">
+        <div>ITEM</div>
+        <div><span class="region">CHIBA</span> / IBARAKI</div>
+        <div>TOKYO 23WARDS</div>
+      </div>
+      <div class="cost-row">
+        <div class="name">物件取得費 <small>戸建 / 中古</small></div>
+        <div class="fig">¥2,600,000</div>
+        <div class="fig">¥7,000,000</div>
+      </div>
+      <div class="cost-row">
+        <div class="name">改修・原状変更 <small>用途変更含む</small></div>
+        <div class="fig">¥1,800,000</div>
+        <div class="fig">¥2,400,000</div>
+      </div>
+      <div class="cost-row">
+        <div class="name">什器・備品 <small>10名分</small></div>
+        <div class="fig">¥900,000</div>
+        <div class="fig">¥900,000</div>
+      </div>
+      <div class="cost-row">
+        <div class="name">指定申請・法定手続 <small>行政書士込</small></div>
+        <div class="fig">¥600,000</div>
+        <div class="fig">¥600,000</div>
+      </div>
+      <div class="cost-row">
+        <div class="name">開業前運転資金 <small>3ヶ月分</small></div>
+        <div class="fig">¥1,800,000</div>
+        <div class="fig">¥1,800,000</div>
+      </div>
+      <div class="cost-total">
+        <div class="lbl mono">TOTAL CAPEX</div>
+        <div class="fig">¥7,700,000</div>
+        <div class="fig">¥12,700,000</div>
+      </div>
+    </div>
+    <div class="cost-legend">
+      <div><span class="dot"></span>自己資金 300万 + 公庫融資 800〜1,000万の標準構成</div>
+      <div><span class="dot gd"></span>茨城モデルは総額 <b class="gd">¥2,600,000〜</b> から着手可能</div>
+    </div>
+  </div>
+</section>
+
+<hr class="line">
+
+<!-- ===== SEC 06 / PLANS ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">06</span>
+      <h2 class="sec-title">2プラン比較。<small>キャッシュフロー優先か、初期資金ゼロ着手か。</small></h2>
+      <span class="sec-label mono">/ program options</span>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="code mono">PLAN A / ZERO-CAPEX</div>
+        <h3>0円プラン</h3>
+        <div class="sub">加盟金ゼロ・初期費用最小構成</div>
+        <div class="price mono">¥0<small>加盟金</small></div>
+        <div class="price-note mono">MONTHLY ROYALTY 8% OF REVENUE</div>
+        <ul>
+          <li>初期投資リスクを最小化</li>
+          <li>月次売上の一定率をロイヤリティで支払う</li>
+          <li>自己資金 300万円で着手可能</li>
+          <li>キャッシュフロー安定後に切替可</li>
+        </ul>
+        <div class="foot mono">→ 資金より時間を優先する方向け</div>
+      </div>
+
+      <div class="plan recommended">
+        <div class="tag mono">RECOMMENDED</div>
+        <div class="code mono">PLAN B / EQUITY MODEL</div>
+        <h3>加盟金 220万＋分割220万</h3>
+        <div class="sub">キャッシュフロー最大化・保守サポート付</div>
+        <div class="price mono">¥2,200,000<small>+ ¥2,200,000 分割</small></div>
+        <div class="price-note mono">MONTHLY ROYALTY 0% / FLAT SUPPORT FEE</div>
+        <ul>
+          <li>月次ロイヤリティなし＝営業利益フル取り</li>
+          <li>物件選定・指定申請・採用まで包括支援</li>
+          <li>2棟目展開時の資金設計まで伴走</li>
+          <li>回収完了後の <span class="em">IRR 38.2%</span> は標準モデル</li>
+        </ul>
+        <div class="foot mono">→ 長期キャッシュフローを最大化したい方向け</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="line">
+
+<!-- ===== SEC 07 / PERSONA ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">07</span>
+      <h2 class="sec-title">向いている4象限。<small>過去180社の分析から、独立で成功した層をパターン化しました。</small></h2>
+      <span class="sec-label mono">/ target segments</span>
+    </div>
+
+    <div class="persona-grid">
+      <div class="persona">
+        <div class="idx mono">SEGMENT 01</div>
+        <h4>看護師 / 医療職</h4>
+        <div class="meta mono">age 35-55 / avg. income ¥6.5M</div>
+        <p>夜勤で疲弊、時給の天井を感じている層。医療知識を活かして「支援 × 医療」の差別化ができ、区分の高い利用者を受け入れやすい。</p>
+        <div class="fit mono"><b>FIT</b>SCORE 94/100</div>
+      </div>
+      <div class="persona">
+        <div class="idx mono">SEGMENT 02</div>
+        <h4>教員 / 元教員</h4>
+        <div class="meta mono">age 40-60 / avg. income ¥5.5M</div>
+        <p>特別支援・生徒指導の経験を持つ層。関係機関との連携が得意で、地域の学校・行政からの紹介ルートを構築しやすい。</p>
+        <div class="fit mono"><b>FIT</b>SCORE 88/100</div>
+      </div>
+      <div class="persona">
+        <div class="idx mono">SEGMENT 03</div>
+        <h4>介護経験者</h4>
+        <div class="meta mono">age 30-55 / avg. income ¥4.0M</div>
+        <p>介護福祉士等の資格保有者。「雇われで一生」を脱したい実力派。開業時の運営リスクが構造的に低く、スケールしやすい。</p>
+        <div class="fit mono"><b>FIT</b>SCORE 92/100</div>
+      </div>
+      <div class="persona">
+        <div class="idx mono">SEGMENT 04</div>
+        <h4>当事者家族</h4>
+        <div class="meta mono">age 45-65 / avg. capital ¥8.0M+</div>
+        <p>障がい児/者の親族。「うちの子が入れる場所を、自分で作る」動機。金融資産に余裕があるケースが多く、複数棟展開が視野に。</p>
+        <div class="fit mono"><b>FIT</b>SCORE 96/100</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="line">
+
+<!-- ===== SEC 08 / CASES ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">08</span>
+      <h2 class="sec-title">事例 A / B / C。<small>プロフィール・投下資本・現在のキャッシュフロー実績（匿名化済み）。</small></h2>
+      <span class="sec-label mono">/ portfolio holdings</span>
+    </div>
+
+    <div class="case">
+      <div class="id mono">CASE_A<span class="code">K.M</span></div>
+      <div class="body">
+        <h4>元看護師 → 3棟目展開中</h4>
+        <div class="who mono">FEMALE / 47 / KANTO / TENURE 3.2Y</div>
+        <p>大学病院で夜勤の限界を感じ、看護資格を活かしてグループホームを開業。1棟目稼働率100%を6ヶ月で達成、2棟目を14ヶ月で回収。現在3棟目の指定申請中。</p>
+      </div>
+      <div>
+        <div class="stat">
+          <div class="lbl mono">MONTHLY CF</div>
+          <div class="val mono">¥1.8M<small>/月</small></div>
+        </div>
+        <div class="stat">
+          <div class="lbl mono">IRR</div>
+          <div class="val mono gd">41.2%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="id mono">CASE_B<span class="code">I.T</span></div>
+      <div class="body">
+        <h4>元公立教員 → 1棟安定運営</h4>
+        <div class="who mono">MALE / 52 / SHUTOKEN / TENURE 2.1Y</div>
+        <p>特別支援学校の元教員。学校・行政ネットワークから利用者紹介が安定。1棟目のみでも年商 <span class="em">¥28.8M</span>、営業利益率 25% を維持。</p>
+      </div>
+      <div>
+        <div class="stat">
+          <div class="lbl mono">MONTHLY CF</div>
+          <div class="val mono">¥600K<small>/月</small></div>
+        </div>
+        <div class="stat">
+          <div class="lbl mono">IRR</div>
+          <div class="val mono">32.4%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div class="id mono">CASE_C<span class="code">U.N</span></div>
+      <div class="body">
+        <h4>当事者家族 → 4棟目計画中</h4>
+        <div class="who mono">MALE / 58 / CHIBA / TENURE 4.5Y</div>
+        <p>自身の子どもの受け入れ先確保を起点に着手。金融資産の一部を組み替え、公庫融資と組み合わせて 4棟の展開を計画。純資産ベースで最大成長。</p>
+      </div>
+      <div>
+        <div class="stat">
+          <div class="lbl mono">MONTHLY CF</div>
+          <div class="val mono">¥2.4M<small>/月</small></div>
+        </div>
+        <div class="stat">
+          <div class="lbl mono">IRR</div>
+          <div class="val mono gd">38.7%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="line">
+
+<!-- ===== SEC 09 / FAQ ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">09</span>
+      <h2 class="sec-title">FAQ.<small>資本・運営・リスクに関する上位7問。</small></h2>
+      <span class="sec-label mono">/ frequently asked</span>
+    </div>
+
+    <div class="faq">
+      <details class="faq-item" open>
+        <summary class="faq-q"><span class="q-no mono">Q.01</span><span>未経験でも本当に開業できますか？</span><span class="q-plus mono">+</span></summary>
+        <div class="faq-a">可能です。180社のうち約40%は福祉未経験からの参入。管理者・サービス管理責任者は資格保有者を採用する形で人員要件を満たします。運営ノウハウは開業時研修＋伴走支援でカバー。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="q-no mono">Q.02</span><span>報酬改定で収益が悪化するリスクは？</span><span class="q-plus mono">+</span></summary>
+        <div class="faq-a">2024年改定では基本報酬は微減、加算項目は増加。加算取得体制を整えている事業所は増収基調。2027年改定は現時点で基本方針が公表されており、影響レンジを事前試算した資料を面談時に提示します。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="q-no mono">Q.03</span><span>入居者が集まらないリスクは？</span><span class="q-plus mono">+</span></summary>
+        <div class="faq-a">全国的な待機需要と、相談支援事業所ネットワークからの紹介モデルにより、開業6ヶ月以内の稼働率90%達成は180社中162社。エリア選定を誤らなければ集客は最大の課題になりません。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="q-no mono">Q.04</span><span>物件はどうやって探しますか？</span><span class="q-plus mono">+</span></summary>
+        <div class="faq-a">加盟後、条件に合致する戸建・アパートを提携不動産ルートで提示。用途変更・消防・建築基準法の要件を先に判定した上で候補を絞り込むため、時間ロスなく指定申請へ進めます。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="q-no mono">Q.05</span><span>従業員採用は難しくないですか？</span><span class="q-plus mono">+</span></summary>
+        <div class="faq-a">採用支援も含む標準パッケージ。求人設計・面接同席・初期研修まで対応。開業前3ヶ月で最低人員要件を満たす採用スキームを標準化しています。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="q-no mono">Q.06</span><span>公庫融資が通らないケースは？</span><span class="q-plus mono">+</span></summary>
+        <div class="faq-a">自己資金300万・信用情報に大きな瑕疵がなければ、標準的なグループホーム事業計画で融資承認率は高水準。事業計画書作成を伴走し、必要書類を揃えた上での申込となります。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span class="q-no mono">Q.07</span><span>1棟目で失敗した事業者はいますか？</span><span class="q-plus mono">+</span></summary>
+        <div class="faq-a">「稼働率が伸びず1棟撤退」の事例は5%未満。共通するのは、物件選定の妥協・管理者との関係悪化・地域との連携不足のいずれか。面談時に想定リスクを事前開示します。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<hr class="line">
+
+<!-- ===== SEC 10 / TRUST ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">10</span>
+      <h2 class="sec-title">実績と信頼の証拠。<small>「未来の話」ではなく、既に稼働している数字。</small></h2>
+      <span class="sec-label mono">/ track record</span>
+    </div>
+
+    <div class="trust-grid">
+      <div class="trust">
+        <div class="val mono" data-count="180"><span class="counter">0</span><small>社</small></div>
+        <div class="lbl mono">Independent Operators</div>
+        <div class="note">7年間で開業を支援した実績（2019-2026）</div>
+      </div>
+      <div class="trust">
+        <div class="val mono" data-count="85"><span class="counter">0</span><small>%</small></div>
+        <div class="lbl mono">State-Backed Revenue</div>
+        <div class="note">売上の85%が国庫からの給付金<br>景気変動リスク低</div>
+      </div>
+      <div class="trust">
+        <div class="val mono">7<span class="dim">-</span>10<small>年</small></div>
+        <div class="lbl mono">Support Tenure</div>
+        <div class="note">開業後の伴走期間・実績中央値</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="line">
+
+<!-- ===== SEC 11 / STEPS ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">11</span>
+      <h2 class="sec-title">開業までの 6 ステップ。<small>個別面談から開業まで、標準 8〜12ヶ月のロードマップ。</small></h2>
+      <span class="sec-label mono">/ execution roadmap</span>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="head"><span class="no mono">STEP 01</span><h4>個別面談 / エリア初期判定</h4><span class="dur mono">WEEK 1</span></div>
+        <p>ご希望エリア・資金・キャリアをヒアリング。開業ポテンシャルとリスクを提示。</p>
+      </div>
+      <div class="step">
+        <div class="head"><span class="no mono">STEP 02</span><h4>事業計画・資金設計</h4><span class="dur mono">MONTH 1-2</span></div>
+        <p>収支計画・公庫融資申込書類の作成。必要に応じて税理士連携。</p>
+      </div>
+      <div class="step">
+        <div class="head"><span class="no mono">STEP 03</span><h4>物件選定・法定要件チェック</h4><span class="dur mono">MONTH 2-4</span></div>
+        <p>用途変更・消防・建築基準法を先行判定。契約前に指定可否を確認。</p>
+      </div>
+      <div class="step">
+        <div class="head"><span class="no mono">STEP 04</span><h4>指定申請 / 人員採用</h4><span class="dur mono">MONTH 4-7</span></div>
+        <p>行政書士連携で指定申請、管理者・サビ管の採用支援。</p>
+      </div>
+      <div class="step">
+        <div class="head"><span class="no mono">STEP 05</span><h4>開業前研修 / 相談支援連携</h4><span class="dur mono">MONTH 7-9</span></div>
+        <p>入居者紹介ルート構築、初期運営マニュアル整備、行政連携。</p>
+      </div>
+      <div class="step">
+        <div class="head"><span class="no mono">STEP 06</span><h4>開業 / 稼働率フォロー</h4><span class="dur mono">MONTH 9-12</span></div>
+        <p>6ヶ月以内の稼働率90%達成を目標に伴走。翌年 2棟目展開の資金設計。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="line">
+
+<!-- ===== SEC 12 / FORM ===== -->
+<section id="form">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num mono">12</span>
+      <h2 class="sec-title">個別面談のお申し込み。<small>月5社限定。折り返し3営業日以内にご連絡します。</small></h2>
+      <span class="sec-label mono">/ request briefing</span>
+    </div>
+
+    <form class="form-panel" onsubmit="event.preventDefault();alert('モックです（実際は送信されません）');">
+      <div class="form-lead">
+        <div class="code mono">FORM / OWL-BRIEFING-2607</div>
+        <h3>Book a Private Briefing</h3>
+        <p>お送りいただいた内容をもとに、面談前に事業計画のたたき台を作成します。</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>ご氏名<span class="req">*</span></label>
+          <input type="text" placeholder="山田 太郎" required>
+        </div>
+        <div class="field">
+          <label>ふりがな</label>
+          <input type="text" placeholder="やまだ たろう">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>メール<span class="req">*</span></label>
+          <input type="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label>電話番号</label>
+          <input type="tel" placeholder="090-0000-0000">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>自己資金レンジ<span class="req">*</span></label>
+        <select required>
+          <option value="">選択してください</option>
+          <option>〜300万円</option>
+          <option>300万〜500万円</option>
+          <option>500万〜1,000万円</option>
+          <option>1,000万円以上</option>
+        </select>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>現職 / 職種<span class="req">*</span></label>
+          <input type="text" placeholder="例：看護師 / 会社員 / 経営者" required>
+        </div>
+        <div class="field">
+          <label>保有資格</label>
+          <input type="text" placeholder="例：介護福祉士・看護師">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="field">
+          <label>希望開業エリア</label>
+          <select>
+            <option value="">選択してください</option>
+            <option>東京23区</option>
+            <option>東京多摩・神奈川</option>
+            <option>千葉</option>
+            <option>茨城</option>
+            <option>埼玉</option>
+            <option>その他</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>本ページを知ったきっかけ</label>
+          <select>
+            <option value="">選択してください</option>
+            <option>Web検索</option>
+            <option>YouTube</option>
+            <option>紹介</option>
+            <option>その他</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>ご質問・ご要望</label>
+        <textarea placeholder="想定している開業時期、質問等ございましたらご記入ください。"></textarea>
+      </div>
+
+      <button type="submit" class="submit">Submit Application →</button>
+
+      <div class="form-foot mono">
+        NOTE: 送信情報は個別面談のご案内以外の目的では使用しません。<br>
+        RESPONSE_TIME: 3 business days / SLOTS_LEFT: 5 in 2026-07
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="brand-f mono">OWL INDEPENDENT / RUNBIRD Inc.</div>
+    <div>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Contact</a>
+      <span class="dim" style="margin-left:20px">© 2026 RUNBIRD</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Animated counters (fires when element enters viewport)
+(function(){
+  var els=document.querySelectorAll('[data-count]');
+  var animate=function(el){
+    var target=parseFloat(el.getAttribute('data-count'));
+    var counter=el.querySelector('.counter');
+    if(!counter||el.dataset.done)return;
+    el.dataset.done="1";
+    var start=0,dur=1400,startT=null;
+    var step=function(ts){
+      if(!startT)startT=ts;
+      var p=Math.min((ts-startT)/dur,1);
+      var eased=1-Math.pow(1-p,3);
+      var v=Math.floor(start+(target-start)*eased);
+      counter.textContent=v.toLocaleString();
+      if(p<1)requestAnimationFrame(step);
+      else counter.textContent=target.toLocaleString();
+    };
+    requestAnimationFrame(step);
+  };
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting)animate(e.target);});
+    },{threshold:.3});
+    els.forEach(function(el){io.observe(el);});
+  }else{
+    els.forEach(animate);
+  }
+})();
+// Bar chart fill animation on intersect
+(function(){
+  var fills=document.querySelectorAll('.bar-chart .fill');
+  fills.forEach(function(f){f.dataset.w=f.style.width;f.style.width="0";});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.querySelectorAll('.fill').forEach(function(f){f.style.width=f.dataset.w;});
+          io.unobserve(e.target);
+        }
+      });
+    },{threshold:.3});
+    document.querySelectorAll('.bar-chart').forEach(function(c){io.observe(c);});
+  }else{
+    fills.forEach(function(f){f.style.width=f.dataset.w;});
+  }
+})();
+</script>
+
+</body>
+</html>
