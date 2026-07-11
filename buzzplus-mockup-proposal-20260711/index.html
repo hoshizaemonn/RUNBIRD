@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus 次期モックアップ骨組み提案｜2026-07-11</title>
+<style>
+:root {
+  --bg: #0f1419;
+  --card: #1a2028;
+  --border: #2a3441;
+  --text: #e8ecf0;
+  --sub: #8a9ba8;
+  --accent: #ff8b47;
+  --good: #4ade80;
+  --bad: #f87171;
+  --warn: #facc15;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding: 24px; max-width: 1100px; margin: 0 auto; }
+h1 { font-size: 26px; margin-bottom: 8px; border-left: 5px solid var(--accent); padding-left: 12px; }
+h2 { font-size: 20px; margin: 40px 0 12px; padding: 8px 12px; background: var(--card); border-left: 4px solid var(--accent); }
+h3 { font-size: 16px; margin: 20px 0 8px; color: var(--accent); }
+.meta { color: var(--sub); font-size: 13px; margin-bottom: 24px; }
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 12px 0; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+@media (max-width: 720px) { .grid, .grid3 { grid-template-columns: 1fr; } }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #22303c; }
+.bad { color: var(--bad); }
+.good { color: var(--good); }
+.warn { color: var(--warn); }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; }
+.tag-bad { background: #4a1e1e; color: var(--bad); }
+.tag-good { background: #1e4a2e; color: var(--good); }
+.tag-warn { background: #4a3c1e; color: var(--warn); }
+.wireframe { border: 2px dashed var(--sub); border-radius: 8px; padding: 12px; margin: 8px 0; background: #0a0e12; font-family: monospace; font-size: 12px; color: var(--sub); white-space: pre-wrap; line-height: 1.4; }
+.wf-title { color: var(--accent); font-weight: bold; }
+.footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--sub); font-size: 12px; }
+ul { margin-left: 20px; }
+li { margin: 4px 0; }
+.big { font-size: 22px; font-weight: bold; }
+.hl { background: linear-gradient(transparent 60%, rgba(255,139,71,0.3) 60%); padding: 0 4px; }
+</style>
+</head>
+<body>
+
+<h1>BuzzPlus 次期モックアップ骨組み提案</h1>
+<p class="meta">2026-07-11 作成 ｜ 対象: 嶋田社長・鈴木さん共有用 ｜ 骨組みフェーズ（デザイン確定前）</p>
+
+<div class="card">
+<strong>この資料の目的</strong><br>
+競合「アニメる」LP・Instagram・広告の分析結果を踏まえて、<span class="hl">BuzzPlusの次期 広告動画 + LP の骨組み</span>を提示します。デザイン確定前の設計図として、方向性のGO/NG判断をいただく用です。
+</div>
+
+<h2>1｜現状の課題（何が起きているか）</h2>
+
+<div class="grid">
+<div class="card">
+<h3>Meta広告（配信中）</h3>
+<ul>
+<li><span class="tag tag-warn">課題</span> 動画の完了率が低い（B案 10.2% / A案 18.2%）</li>
+<li><span class="tag tag-warn">課題</span> LP到達後のCV 0件（配信5日+バグ3日、期待値0-1件）</li>
+<li><span class="tag tag-bad">却下歴</span> 7/8朝「誤解を招くビジネス手法」判定→修正で解除</li>
+<li><span class="tag tag-good">堅調</span> CTR 2.75% / CPC ¥188 は業界標準以上</li>
+</ul>
+</div>
+<div class="card">
+<h3>LP（A案・B案）</h3>
+<ul>
+<li><span class="tag tag-warn">課題</span> A案は「¥30k〜」を出しているが、フックが弱い</li>
+<li><span class="tag tag-warn">課題</span> B案は価格非公開だが、動画との世界観断絶</li>
+<li><span class="tag tag-warn">課題</span> 「なぜ月額なのか」の理由訴求がない</li>
+<li><span class="tag tag-good">堅調</span> 「撮影不要・最短即日・アニメも実写も」は独自</li>
+</ul>
+</div>
+</div>
+
+<h2>2｜競合「アニメる」から学んだこと</h2>
+
+<h3>LPで真似すべき点</h3>
+<table>
+<tr><th>要素</th><th>アニメるの実装</th><th>BuzzPlusでの応用</th></tr>
+<tr><td>価格比較の可視化</td><td class="good">棒グラフで「¥200万 vs ¥20万 vs ¥3万」</td><td>「制作会社¥50万 vs 単発¥10万 vs BuzzPlus月¥3万」</td></tr>
+<tr><td>制作フロー図解</td><td class="good">6ステップのカードグリッド</td><td>「相談→ヒアリング→制作→配信→改善」の5ステップ</td></tr>
+<tr><td>FAQ 事前クロージング</td><td class="good">商用OK/丸投げOK/短納期を明示</td><td>「継続前提の月額とは？」等を追加</td></tr>
+<tr><td>1回無料修正の明記</td><td class="good">プランに含めて明記</td><td>月額プランに「毎月1本無料差替え」明記</td></tr>
+</table>
+
+<h3>アニメるの弱点＝BuzzPlusの差別化ポイント</h3>
+<table>
+<tr><th>論点</th><th>アニメる</th><th>BuzzPlus</th></tr>
+<tr><td>常設CTA</td><td class="bad">ハンバーガーメニュー内のみ</td><td class="good">追従CTA・FV常設で優位</td></tr>
+<tr><td>月額サブスク</td><td class="bad">単発+パックのみ</td><td class="good">月¥30k継続課金モデル（業界内独自）</td></tr>
+<tr><td>Instagram運用</td><td class="bad">5/16以降8週間停止・キャラ非統一</td><td class="good">週3投稿・キャラ統一で差別化可</td></tr>
+<tr><td>広告配信サポート</td><td class="bad">制作のみ</td><td class="good">動画+SNS広告配信セット（同カテゴリ唯一）</td></tr>
+</table>
+
+<h3>広告で真似すべき訴求パターン</h3>
+<ul>
+<li><strong>おさる式のフック文体</strong>: 「〜な店舗経営者の方へ」で1秒目に呼びかけ</li>
+<li><strong>ビフォー・アフター訴求</strong>: 「動画制作¥50万 → BuzzPlus月¥3万」の対比</li>
+<li><strong>業種別事例の見せ方</strong>: 焼肉/美容/整骨院/採用 の4パターン横並び</li>
+<li><strong>「まずは無料相談から」CTA</strong>: 価格を出さず相談誘導</li>
+</ul>
+
+<h2>3｜モックアップ骨組み（新広告 + 新LP）</h2>
+
+<h3>3-1｜新広告（15秒版）の骨組み</h3>
+
+<div class="wireframe">
+<span class="wf-title">【新広告 15秒版 構成案】</span>
+
+0-2秒 ┃ フック
+      ┃ 「集客がうまくいっていない、そんな店舗経営者の方へ」
+      ┃ ※おさる式フック・実写風カット
+
+2-5秒 ┃ 問題提起
+      ┃ 「動画広告はやりたい、でも制作¥50万は高い…」
+      ┃ ※価格比較テロップ
+
+5-10秒┃ 解決策
+      ┃ 「BuzzPlus なら 月¥3万で動画制作+広告配信まで」
+      ┃ ※業種別事例4パターン早見せ（焼肉/美容/整骨/採用）
+
+10-13秒┃ 差別化
+       ┃ 「撮影不要・最短即日・毎月新作」
+       ┃ ※アニメも実写もOK
+
+13-15秒┃ CTA
+       ┃ 「まずは無料相談から」
+       ┃ ※プロフィール/LPへの誘導
+</div>
+
+<h3>3-2｜新LP（C案）の骨組み</h3>
+
+<div class="wireframe">
+<span class="wf-title">【新LP C案 セクション構成】</span>
+
+━━ FV（ファーストビュー） ━━━━━━━━━━━━━━━
+ 見出し: 「動画制作+SNS広告配信 月¥30,000〜」
+ サブ:   「撮影不要・最短即日・毎月新作」
+ CTA:    [無料相談する] [料金を見る]
+ 常設:   右上に「無料相談」ボタン固定表示
+
+━━ 課題提起 ━━━━━━━━━━━━━━━━━━━
+ 「動画広告やりたいけど、¥50万は高い…」
+ 「制作会社に頼むと1本しかもらえない」
+ 「広告配信のノウハウがない」
+
+━━ ★棒グラフ訴求（アニメる式）★ ━━━━━━━
+ 制作会社  ¥500,000 ████████████████████
+ 単発AI    ¥100,000 ████
+ BuzzPlus  ¥ 30,000 █     ← しかも配信込み
+
+━━ BuzzPlusの3つの強み ━━━━━━━━━━━━
+ ① 動画制作+広告配信セット（同カテゴリ唯一）
+ ② 撮影不要・最短即日
+ ③ 月額サブスク・毎月新作
+
+━━ 業種別事例（サムネ4本） ━━━━━━━━━━
+ 焼肉 / 美容室 / 整骨院 / 採用 の実績動画
+
+━━ 料金プラン（月¥30,000〜） ━━━━━━━━
+ プラン内容・含まれるもの・追加オプション
+
+━━ 制作フロー 5ステップ（アニメる式） ━━━
+ 相談 → ヒアリング → 制作 → 配信 → 改善
+
+━━ FAQ 5-7問 ━━━━━━━━━━━━━━━━━━
+ 継続前提とは？ / 途中解約 / 業種OK範囲 / 修正 / 納期
+
+━━ 問い合わせフォーム（7項目） ━━━━━━━
+ お名前・会社名・メール・電話・業種・希望・本文
+
+━━ 追従CTA（常設） ━━━━━━━━━━━━━━
+ スクロール中も画面下に「無料相談する」を固定
+</div>
+
+<h2>4｜想定効果（仮説）</h2>
+
+<div class="grid3">
+<div class="card">
+<h3>新広告</h3>
+<p><span class="big good">CTR</span><br>
+現状 2.75% → 目標 3.5%<br>
+（おさる式フック採用）</p>
+<p><span class="big good">完了率</span><br>
+現状 10-18% → 目標 25%<br>
+（15秒短尺化）</p>
+</div>
+<div class="card">
+<h3>新LP</h3>
+<p><span class="big good">CVR</span><br>
+現状 0% → 目標 1.5-2%<br>
+（棒グラフ訴求＋常設CTA）</p>
+<p><span class="big good">LP滞在</span><br>
+現状 短 → 目標 60秒+<br>
+（Clarity計測）</p>
+</div>
+<div class="card">
+<h3>2週間検証</h3>
+<p><span class="big warn">Lead</span><br>
+月10-20件を目標<br>
+（配信予算¥3,500/日維持）</p>
+<p><span class="big warn">CPA</span><br>
+¥3,000-5,000/件<br>
+（業界平均域）</p>
+</div>
+</div>
+
+<h2>5｜提案する進め方</h2>
+
+<div class="card">
+<h3>フェーズ1（今週）：GO/NG判断</h3>
+<ul>
+<li>本骨組みで嶋田社長・鈴木さんに方向性GO</li>
+<li>広告訴求パターン・LP棒グラフ訴求の承認</li>
+</ul>
+
+<h3>フェーズ2（来週前半）：モックアップ本制作</h3>
+<ul>
+<li>新広告動画（15秒）Claude Design → Veo3で制作</li>
+<li>新LP（C案）Claude Design でビジュアル制作</li>
+</ul>
+
+<h3>フェーズ3（来週後半）：A/B/Cテスト開始</h3>
+<ul>
+<li>現行 A案・B案 vs 新C案 の3本並行</li>
+<li>予算配分：A ¥1,000 / B ¥1,000 / C ¥1,500</li>
+<li>2週間で最も CVR 高いパターンに一本化</li>
+</ul>
+</div>
+
+<h2>6｜確認事項（嶋田社長・鈴木さんへ）</h2>
+
+<div class="card">
+<ul>
+<li>☐ 棒グラフ訴求（¥50万 vs ¥10万 vs ¥3万）の見せ方でOK？</li>
+<li>☐ 「動画制作+広告配信セット」の訴求を強く出してOK？</li>
+<li>☐ おさる式フック（呼びかけ型）の採用でOK？</li>
+<li>☐ C案は価格公開型（A案寄り）で進めてOK？</li>
+<li>☐ 2週間A/B/Cテスト開始（今月中着手）でOK？</li>
+</ul>
+</div>
+
+<div class="footer">
+BuzzPlus 次期モックアップ骨組み提案 ｜ 2026-07-11 ｜ 株式会社ランバード<br>
+本資料はデザイン確定前の骨組みフェーズです。GO後にClaude Designで本モックアップ制作へ進みます。
+</div>
+
+</body>
+</html>
