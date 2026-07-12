@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>【骨組みモック v2】OWL 独立起業向け新LP — B案+A案FV移植+OWLくん装飾</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="福祉未経験から、月60万・年720万の安定事業へ。障がい者グループホーム経営・独立起業支援。看護師・介護経験者・教員・当事者ご家族向け。">
+<meta name="keywords" content="障がい者グループホーム 開業,グループホーム 開設,共同生活援助 開業,福祉 独立,介護 独立,起業 福祉,起業 介護">
+<style>
+  :root{
+    --cream:#faf6ef;
+    --cream-2:#f2ebde;
+    --sage:#a8c6a0;
+    --sage-2:#c8dcc0;
+    --sage-3:#e5f0e0;
+    --orange:#f5942a;
+    --orange-2:#ffb968;
+    --owl-brown:#7b4e31;
+    --owl-brown-2:#a67856;
+    --sky:#7ec8dc;
+    --text:#3a352c;
+    --muted:#6b625a;
+    --line:#e5dfd0;
+    --alert:#c0392b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--text);
+    font-family:"Hiragino Kaku Gothic ProN","ヒラギノ角ゴ ProN","Noto Sans JP",-apple-system,sans-serif;
+    line-height:1.85;font-size:15px;-webkit-text-size-adjust:100%}
+  img{max-width:100%;height:auto;display:block}
+  a{color:inherit}
+  .serif{font-family:"Hiragino Mincho ProN","游明朝","Noto Serif JP",serif}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+
+  /* draft */
+  .draft-bar{background:#2a2a2a;color:#fff;padding:8px 20px;font-size:11px;text-align:center;letter-spacing:.05em}
+  .draft-bar b{color:var(--orange-2)}
+
+  /* header */
+  header.site{background:var(--cream);border-bottom:1px solid var(--line);padding:12px 0;position:sticky;top:0;z-index:50}
+  header.site .wrap{display:flex;justify-content:space-between;align-items:center}
+  header.site .logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:14px}
+  header.site .logo img{height:28px;width:auto}
+  header.site .head-cta{background:var(--orange);color:#fff;padding:9px 18px;border-radius:100px;
+    text-decoration:none;font-weight:800;font-size:13px}
+
+  h1{font-size:34px;line-height:1.4;font-weight:900;letter-spacing:.02em;color:var(--owl-brown)}
+  h2{font-size:26px;line-height:1.4;font-weight:800;margin-bottom:22px;letter-spacing:.03em;color:var(--owl-brown)}
+  h3{font-size:16px;font-weight:800;margin-bottom:10px;color:var(--owl-brown)}
+  p{margin-bottom:14px}
+  small{font-size:12px;color:var(--muted)}
+  .lead{font-size:17px;line-height:2}
+  .sec{padding:72px 0;position:relative}
+
+  /* wave dividers */
+  .wave-top{position:absolute;top:0;left:0;right:0;height:40px;overflow:hidden}
+  .wave-top svg{width:100%;height:100%}
+
+  /* ===== 1. FV ===== */
+  .fv{background:linear-gradient(180deg,#faf6ef 0%,#fdf6e8 100%);padding:44px 0 68px;position:relative;overflow:hidden}
+  .fv .eyebrow{display:inline-block;background:var(--sage-3);color:var(--owl-brown);
+    padding:6px 16px;border-radius:100px;font-size:12px;font-weight:800;margin-bottom:16px;letter-spacing:.05em}
+  .fv h1 .accent{color:var(--orange);position:relative}
+  .fv h1 .accent::after{content:"";position:absolute;bottom:2px;left:0;right:0;height:8px;
+    background:rgba(245,148,42,.25);z-index:-1}
+  .fv .target-line{margin-top:14px;font-size:14px;color:var(--muted);font-weight:700}
+  .fv .sub{font-size:16px;color:var(--muted);margin-top:18px;line-height:2}
+  .fv-image{margin:28px auto 24px;border-radius:16px;overflow:hidden;box-shadow:0 12px 32px rgba(123,78,49,.12)}
+  .fv .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .badge{background:#fff;border:1.5px solid var(--sage);color:var(--owl-brown);
+    font-size:12px;padding:7px 14px;border-radius:100px;font-weight:700}
+  .badge.hot{background:var(--orange);border-color:var(--orange);color:#fff}
+  .cta-block{margin-top:32px;text-align:center}
+  .cta{display:inline-block;background:var(--orange);color:#fff;font-weight:800;
+    padding:18px 44px;border-radius:100px;text-decoration:none;font-size:17px;
+    box-shadow:0 8px 0 #d97a1a,0 12px 24px rgba(217,122,26,.25);transition:transform .1s}
+  .cta:active{transform:translateY(2px);box-shadow:0 6px 0 #d97a1a}
+  .cta-note{font-size:12px;color:var(--muted);margin-top:12px}
+  .scr-line{background:#fff;border:2px solid var(--sage-2);color:var(--owl-brown);
+    display:inline-block;padding:8px 20px;border-radius:100px;font-size:13px;margin-top:14px;font-weight:700}
+
+  /* ===== 2. スクリーニング ===== */
+  .screen{background:var(--cream-2);position:relative}
+  .screen .callout{background:#fff;border-left:5px solid var(--orange);
+    padding:18px 22px;border-radius:8px;margin-top:22px;box-shadow:0 4px 12px rgba(0,0,0,.04)}
+  .screen ul.check{list-style:none;margin-top:16px;background:#fff;padding:22px 22px 22px 22px;border-radius:12px}
+  .screen ul.check li{padding:12px 0 12px 40px;position:relative;border-bottom:1px dashed var(--line);font-weight:600}
+  .screen ul.check li:last-child{border-bottom:none}
+  .screen ul.check li::before{content:"✓";position:absolute;left:6px;top:14px;
+    background:var(--sage);color:#fff;width:22px;height:22px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px}
+  .screen ul.check li b{color:var(--orange)}
+  .warn-box{background:#fff5e6;border:2px solid var(--orange-2);border-radius:12px;
+    padding:20px;margin-top:22px;font-size:14px}
+  .warn-box strong{color:var(--orange);display:block;margin-bottom:6px}
+
+  /* ===== 3. 期限訴求 ===== */
+  .urgency{background:linear-gradient(160deg,#3d2f22 0%,#5d4632 100%);color:#faf6ef}
+  .urgency h2{color:#fff}
+  .urgency .lead{color:#d8ccb8}
+  .urgency .cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:22px}
+  .urgency .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    padding:20px;border-radius:12px;position:relative}
+  .urgency .card .num{position:absolute;top:-14px;left:16px;background:var(--orange);
+    width:36px;height:36px;border-radius:50%;color:#fff;font-weight:900;
+    display:flex;align-items:center;justify-content:center;font-size:14px}
+  .urgency .card h3{color:var(--orange-2);font-size:14px;margin-top:4px;margin-bottom:8px}
+  .urgency .card p{color:#e0d5c0;font-size:13px;margin-bottom:0;line-height:1.8}
+
+  /* ===== 4. 収益カーブ ===== */
+  .rev-image{margin:20px 0;border-radius:16px;overflow:hidden;
+    background:var(--cream);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+  .rev-table{width:100%;border-collapse:collapse;margin-top:20px;background:#fff;
+    font-size:14px;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.04)}
+  .rev-table th,.rev-table td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:center}
+  .rev-table th{background:var(--owl-brown);color:#fff;font-weight:700}
+  .rev-table tr.high td{background:#fff5e6;font-weight:900;color:var(--orange)}
+  .rev-table tr.high td:first-child{color:var(--owl-brown)}
+  .rev-note{font-size:12px;color:var(--muted);margin-top:10px}
+  .highlight-emphasis{display:inline-block;background:var(--sage-3);padding:2px 10px;
+    border-radius:6px;font-weight:800;color:var(--owl-brown)}
+
+  /* ===== 5. 初期費用 ===== */
+  .cost{background:var(--cream-2)}
+  .cost-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+  .cost-card{background:#fff;padding:22px 16px;border:1px solid var(--line);
+    border-radius:12px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.04);
+    position:relative;transition:transform .1s}
+  .cost-card .area{font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:700}
+  .cost-card .amt{font-size:24px;font-weight:900;color:var(--owl-brown);font-family:"Hiragino Mincho ProN",serif}
+  .cost-card .yen{font-size:15px;color:var(--muted)}
+  .cost-total{background:linear-gradient(135deg,var(--owl-brown) 0%,var(--owl-brown-2) 100%);
+    color:#fff;padding:26px;border-radius:16px;margin-top:20px;text-align:center;
+    box-shadow:0 8px 24px rgba(123,78,49,.2)}
+  .cost-total .lbl{font-size:13px;color:#e5d5c0;margin-bottom:6px}
+  .cost-total .amt{font-size:32px;font-weight:900;font-family:"Hiragino Mincho ProN",serif}
+  .cost-total .sub{font-size:13px;color:#e5d5c0;margin-top:8px}
+  .cost .callout{background:var(--sage-3);border-left:5px solid var(--sage);
+    padding:18px 22px;border-radius:8px;margin-top:22px}
+  .cost .callout strong{color:var(--sage);display:block;margin-bottom:6px}
+
+  /* ===== 6. 2プラン ===== */
+  .plan-compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+  .plan-card{background:#fff;border:2px solid var(--line);border-radius:16px;padding:24px;
+    position:relative;box-shadow:0 4px 12px rgba(0,0,0,.04)}
+  .plan-card.recommend{border-color:var(--orange);
+    box-shadow:0 8px 24px rgba(245,148,42,.15)}
+  .plan-card.recommend::before{content:"おすすめ";position:absolute;top:-12px;right:14px;
+    background:var(--orange);color:#fff;font-size:11px;padding:5px 12px;border-radius:100px;font-weight:800}
+  .plan-card h3{color:var(--owl-brown);font-size:16px;margin-bottom:6px}
+  .plan-card .fee{font-size:26px;font-weight:900;color:var(--owl-brown);margin:8px 0;
+    font-family:"Hiragino Mincho ProN",serif}
+  .plan-card .total{font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px;margin-top:12px}
+  .plan-card .diff{color:var(--orange);font-weight:800;font-size:14px}
+
+  /* ===== 7. ペルソナ ===== */
+  .personas{background:var(--sage-3)}
+  .persona-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:20px}
+  .persona-card{background:#fff;border-radius:16px;overflow:hidden;
+    box-shadow:0 4px 16px rgba(0,0,0,.06);transition:transform .15s}
+  .persona-card:hover{transform:translateY(-4px)}
+  .persona-card img{width:100%;aspect-ratio:1;object-fit:cover;background:var(--cream)}
+  .persona-card .body{padding:18px 20px 22px}
+  .persona-card h3{font-size:15px;color:var(--owl-brown);margin-bottom:6px}
+  .persona-card p{font-size:13px;color:var(--muted);margin-bottom:0;line-height:1.7}
+
+  /* ===== 8. CASE ===== */
+  .case-list{margin-top:20px}
+  .case-card{background:#fff;border-radius:16px;overflow:hidden;margin-bottom:18px;
+    box-shadow:0 4px 16px rgba(0,0,0,.06);display:grid;grid-template-columns:200px 1fr;gap:0}
+  .case-card img{width:100%;height:100%;object-fit:cover;min-height:200px;background:var(--cream)}
+  .case-card .body{padding:22px 24px}
+  .case-card .who{font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:700}
+  .case-card h3{color:var(--owl-brown);font-size:16px;margin-bottom:8px}
+  .case-card p{font-size:13px;color:var(--muted);margin-bottom:10px}
+  .case-card .quote{background:var(--sage-3);padding:12px 14px;border-radius:10px;
+    font-size:13px;color:var(--owl-brown);font-style:italic;border-left:4px solid var(--orange)}
+  .case-card .quote::before{content:"「";color:var(--orange);font-size:20px;vertical-align:top}
+  .case-card .quote::after{content:"」";color:var(--orange);font-size:20px}
+
+  /* ===== 9. FAQ ===== */
+  .faq{background:var(--cream-2)}
+  .faq-item{background:#fff;border-radius:12px;padding:20px 22px;margin-bottom:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .faq-item h3{color:var(--owl-brown);font-size:15px;margin-bottom:8px;line-height:1.5}
+  .faq-item h3::before{content:"Q. ";color:var(--orange);font-weight:900;font-size:16px}
+  .faq-item p{font-size:14px;color:var(--muted);margin-bottom:0;line-height:1.8}
+  .faq-item p::before{content:"A. ";color:var(--sage);font-weight:900}
+
+  /* ===== 10. 信頼 ===== */
+  .trust{background:linear-gradient(180deg,var(--cream) 0%,var(--sage-3) 100%)}
+  .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+  .trust-card{background:#fff;padding:24px 14px;border-radius:16px;text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.06)}
+  .trust-card .num{font-size:32px;font-weight:900;color:var(--orange);
+    font-family:"Hiragino Mincho ProN",serif;letter-spacing:-.02em}
+  .trust-card .lbl{font-size:12px;color:var(--muted);margin-top:6px;font-weight:600}
+  .trust-features{display:grid;grid-template-columns:1fr;gap:10px;margin-top:20px}
+  .trust-feature{background:#fff;padding:16px 20px;border-radius:12px;
+    display:flex;gap:14px;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .trust-feature .icon{width:36px;height:36px;background:var(--sage);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;flex-shrink:0}
+  .trust-feature .txt{font-size:13px;color:var(--owl-brown);font-weight:600}
+
+  /* ===== 11. ステップ ===== */
+  .steps{background:var(--cream-2)}
+  .step-list{margin-top:22px}
+  .step{background:#fff;padding:20px 20px 20px 76px;border-radius:14px;margin-bottom:12px;
+    position:relative;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .step-num{position:absolute;left:18px;top:18px;
+    background:var(--orange);color:#fff;width:44px;height:44px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:900;
+    font-family:"Hiragino Mincho ProN",serif;font-size:20px;box-shadow:0 4px 8px rgba(245,148,42,.3)}
+  .step h3{color:var(--owl-brown);font-size:15px;margin-bottom:4px}
+  .step p{font-size:13px;color:var(--muted);margin-bottom:0;line-height:1.7}
+
+  /* ===== 12. フォーム ===== */
+  .form-section{background:linear-gradient(160deg,var(--owl-brown) 0%,#4d3020 100%);color:#fff}
+  .form-section h2{color:#fff}
+  .form-section .lead{color:#e5d5c0}
+  .form-recap{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);
+    border-radius:12px;padding:18px 22px;margin-top:20px;font-size:13px;line-height:1.9}
+  .form-recap b{color:var(--orange-2)}
+  .form-box{background:var(--cream);color:var(--text);padding:28px 26px;border-radius:16px;
+    margin-top:20px;box-shadow:0 12px 32px rgba(0,0,0,.15)}
+  .form-row{margin-bottom:18px}
+  .form-row label{display:block;font-size:13px;font-weight:700;margin-bottom:8px;color:var(--owl-brown)}
+  .form-row .req{color:var(--alert);font-size:11px;margin-left:6px;font-weight:600}
+  .form-row input,.form-row select,.form-row textarea{
+    width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;
+    font-size:14px;font-family:inherit;background:#fff;color:var(--text)}
+  .form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--orange)}
+  .form-row .radio-group{display:flex;flex-direction:column;gap:10px;font-size:13px}
+  .form-row .radio-group label{font-weight:500;color:var(--text);cursor:pointer;margin-bottom:0;
+    display:flex;align-items:center;gap:8px}
+  .form-submit{background:var(--orange);color:#fff;border:none;
+    padding:18px;width:100%;border-radius:100px;font-size:16px;font-weight:800;cursor:pointer;
+    margin-top:8px;box-shadow:0 6px 0 #d97a1a}
+  .form-submit:active{transform:translateY(2px);box-shadow:0 4px 0 #d97a1a}
+  .form-note{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
+
+  /* mid CTA */
+  .mid-cta{text-align:center;margin-top:28px}
+  .mid-cta a{display:inline-block;background:#fff;color:var(--owl-brown);
+    border:2px solid var(--orange);font-weight:800;padding:14px 32px;border-radius:100px;
+    text-decoration:none;font-size:14px}
+
+  /* sticky mobile CTA */
+  .sticky-cta{position:fixed;bottom:14px;left:14px;right:14px;
+    background:var(--orange);border-radius:100px;padding:14px;text-align:center;
+    box-shadow:0 8px 24px rgba(0,0,0,.2);z-index:100;display:none}
+  .sticky-cta a{color:#fff;text-decoration:none;font-weight:800;font-size:14px}
+
+  /* footer */
+  footer{background:#3d2f22;color:#a8988a;padding:36px 0 28px;font-size:12px;text-align:center}
+  footer img{height:32px;margin:0 auto 12px}
+  footer a{color:var(--orange-2)}
+
+  /* ===== responsive ===== */
+  @media(max-width:640px){
+    .cost-grid{grid-template-columns:1fr}
+    .plan-compare{grid-template-columns:1fr}
+    .persona-grid{grid-template-columns:1fr}
+    .urgency .cards{grid-template-columns:1fr}
+    .trust-grid{grid-template-columns:1fr 1fr 1fr;gap:8px}
+    .trust-card .num{font-size:24px}
+    .case-card{grid-template-columns:1fr}
+    .case-card img{aspect-ratio:1;min-height:auto}
+    .fv h1{font-size:26px}
+    h1{font-size:26px}
+    h2{font-size:21px}
+    .sec{padding:52px 0}
+    .fv{padding:24px 0 48px}
+    .sticky-cta{display:block}
+    body{padding-bottom:80px}
+    .cta{padding:16px 32px;font-size:15px}
+  }
+</style>
+</head>
+<body>
+
+<div class="draft-bar">
+  <b>骨組みモック v2</b> — 2026-07-13｜B案+A案FV移植+OWLくん装飾｜商談9社分析反映｜レビュー用（本番非公開）
+</div>
+
+<!-- ==================== header ==================== -->
+<header class="site">
+  <div class="wrap">
+    <div class="logo">
+      <img src="assets/owl_logo.png" alt="OWL 福祉事業">
+    </div>
+    <a class="head-cta" href="#form">▶ 資料請求</a>
+  </div>
+</header>
+
+<!-- ==================== 1. FV ==================== -->
+<section class="fv">
+  <div class="wrap">
+    <span class="eyebrow">◆ 独立・起業を検討されている方へ</span>
+    <h1>
+      福祉・医療の実務経験を、<br>
+      月<span class="accent">60</span>万・年<span class="accent">720</span>万の<br>
+      安定事業へ。
+    </h1>
+    <p class="target-line">看護師・介護経験者・特別支援教員・当事者ご家族の方へ</p>
+    <p class="sub">
+      あなたのこれまでのキャリアが、そのまま「障がい者グループホーム経営」に活きます。<br>
+      福祉未経験でも、1棟目から着実に黒字化する事業設計です。
+    </p>
+
+    <div class="fv-image">
+      <img src="assets/fv.png" alt="看護師と特別支援教員とOWLくん" loading="eager">
+    </div>
+
+    <div class="badges">
+      <span class="badge hot">今月枠 残り5社</span>
+      <span class="badge">加盟180社の実運営ノウハウ</span>
+      <span class="badge">売上の85%が国給付</span>
+      <span class="badge">2棟で回収 約1.5〜2年</span>
+      <span class="badge">融資支援あり</span>
+    </div>
+
+    <div class="cta-block">
+      <a class="cta" href="#form">▶ 資料請求（無料）</a>
+      <div class="cta-note">資金計画サンプル・エリア別開設費・オーナー声を送付／営業電話なし</div>
+      <div class="scr-line">✓ 自己資金 300万円〜・1年以内着手の方向け</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 2. スクリーニング ==================== -->
+<section class="sec screen">
+  <div class="wrap">
+    <h2>このLPは、こんな方に向けて書いています</h2>
+    <p class="lead">情報収集段階の方には不向きです。<br>
+    以下のいずれかに当てはまる方に、開設エリア・収支・スケジュールの実データをお渡しします。</p>
+
+    <ul class="check">
+      <li><b>1年以内</b>に独立・新規事業として着手したい方</li>
+      <li>自己資金 <b>300万円以上</b>（不足分は融資でカバー可）を用意できる方</li>
+      <li>福祉・医療・介護の<b>実務経験</b>、または<b>ご家族に当事者</b>がいる方</li>
+      <li>不動産・経営・営業のキャリアを<b>次の事業に活かしたい</b>方</li>
+    </ul>
+
+    <div class="warn-box">
+      <strong>⚠️ 「0円プラン」の期待値ギャップについて</strong>
+      加盟金0円プランでも、物件費・改修費・運転資金で <b>約300〜400万円</b> の自己資金が必要です。
+      融資（700〜800万）と組み合わせて総額 1,100〜1,200万円 で1棟目を立ち上げるのが標準です。
+      商談の後半で驚かないよう、最初にお伝えしています。
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. 期限訴求 ==================== -->
+<section class="sec urgency">
+  <div class="wrap">
+    <h2>なぜ「今年度」動くべきか</h2>
+    <p class="lead">障がい者グループホーム市場は、来年度から参入ハードルが一段上がります。</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="num">1</div>
+        <h3>総量規制の波が関東全域へ</h3>
+        <p>町田市・八王子市はすでに新規開設不可。木更津・横浜も総量に達しつつあり、希望エリアで開設できなくなるリスクがあります。</p>
+      </div>
+      <div class="card">
+        <div class="num">2</div>
+        <h3>2026年4月から管理者要件強化</h3>
+        <p>実務3年＋研修必須に。今年度受付分までは現行ルール適用。未経験者でも管理者兼務スキームが使えるのは今年度中まで。</p>
+      </div>
+      <div class="card">
+        <div class="num">3</div>
+        <h3>報酬改定で軽度メインが厳しく</h3>
+        <p>来年度の報酬改定で軽度メイン運営はさらに厳しく。開設タイミングで利益カーブが大きく変わります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. 収益カーブ ==================== -->
+<section class="sec">
+  <div class="wrap">
+    <h2>1棟目→2棟目で本格収益化する事業設計</h2>
+    <p class="lead">売上の <span class="highlight-emphasis">85%が国給付</span>（貸し倒れリスクゼロ）／入居は7〜10年の長期安定型。1棟目は投資回収期、2棟目以降で本格的な収益になります。</p>
+
+    <div class="rev-image">
+      <img src="assets/revenue.png" alt="収益カーブ - 1棟から4棟までの成長" loading="lazy">
+    </div>
+
+    <table class="rev-table">
+      <tr><th>棟数</th><th>月利益（目安）</th><th>年間換算</th></tr>
+      <tr><td><b>1棟</b></td><td>6〜15万円</td><td>72〜180万円</td></tr>
+      <tr class="high"><td><b>2棟</b></td><td>約60万円</td><td>約720万円</td></tr>
+      <tr><td><b>3棟</b></td><td>80〜100万円</td><td>960〜1,200万円</td></tr>
+      <tr><td><b>4棟</b></td><td>140〜150万円</td><td>1,680〜1,800万円</td></tr>
+    </table>
+    <div class="rev-note">※ エリア（東京都加算等）・稼働率・運営体制で変動します。詳細は資料請求後の個別シミュにて。</div>
+
+    <div class="mid-cta"><a href="#form">▶ エリア別シミュレーションを受け取る</a></div>
+  </div>
+</section>
+
+<!-- ==================== 5. 初期費用 ==================== -->
+<section class="sec cost">
+  <div class="wrap">
+    <h2>初期費用の全体像（エリア別・実費）</h2>
+    <p class="lead">「実は300万で足りない」商談後半のギャップをなくすため、開設1棟あたりの実費目安を先にお伝えします。</p>
+
+    <div class="cost-grid">
+      <div class="cost-card"><div class="area">千葉</div><div class="amt">約370<span class="yen">万</span></div></div>
+      <div class="cost-card"><div class="area">茨城</div><div class="amt">約260<span class="yen">万</span></div></div>
+      <div class="cost-card"><div class="area">東京</div><div class="amt">約700<span class="yen">万</span></div></div>
+    </div>
+    <small>※ 内訳：物件費／エアコン／消防設備／中古備品／運転資金／会社設立費</small>
+
+    <div class="cost-total">
+      <div class="lbl">融資込み総投下額（1棟目・標準）</div>
+      <div class="amt">1,100〜1,200万円</div>
+      <div class="sub">自己資金 300〜400万円 ＋ 融資 700〜800万円</div>
+    </div>
+
+    <div class="callout">
+      <strong>💡 在職のまま融資申請ルート</strong>
+      現職を辞める前に融資申請することで、開業前の資金枠を最大化できます。
+      公務員・教員・看護師の方の年度末退職スケジュールと相性が良い実例が多数あります。
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 6. 2プラン ==================== -->
+<section class="sec">
+  <div class="wrap">
+    <h2>2つのプランから選択</h2>
+    <p class="lead">自己資金の余力に応じて、2プランからお選びいただけます。<br>実務経験（サビ管等）がある方向けの<b>減額提案</b>も別途ご相談ください。</p>
+
+    <div class="plan-compare">
+      <div class="plan-card">
+        <h3>加盟金0円プラン</h3>
+        <div class="fee">¥0<span style="font-size:14px;color:#666;">/加盟金</span></div>
+        <p style="font-size:13px;color:var(--muted)">月額サポート費 16.5万円 × 36ヶ月</p>
+        <div class="total">総額目安：約800万円<br>初期投下を最小化したい方向け</div>
+      </div>
+      <div class="plan-card recommend">
+        <h3>加盟金プラン</h3>
+        <div class="fee">¥440<span style="font-size:14px;color:#666;">万/加盟金</span></div>
+        <p style="font-size:13px;color:var(--muted)">半金 220万＋残金 220万（分割可）</p>
+        <div class="total">総額目安：約536〜650万円<br><span class="diff">差額 約180〜200万円お得</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 7. ペルソナ ==================== -->
+<section class="sec personas">
+  <div class="wrap">
+    <h2>あなたのキャリアが、そのまま強みになります</h2>
+    <p class="lead">実際に商談が進んでいる方の多くは、福祉・医療の実務経験者、もしくは当事者ご家族です。</p>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <img src="assets/persona_nurse.png" alt="看護師・医療従事者の方">
+        <div class="body">
+          <h3>看護師・医療従事者の方</h3>
+          <p>基礎研修要件を満たしやすく、サビ管ルートが最短。ご家族の同意サポートも重視します。</p>
+        </div>
+      </div>
+      <div class="persona-card">
+        <img src="assets/case_b.png" alt="特別支援教員・公務員の方">
+        <div class="body">
+          <h3>特別支援教員・公務員の方</h3>
+          <p>年度末退職前提の逆算スケジュール（9〜10月着手）で、副業規定に触れず進められます。</p>
+        </div>
+      </div>
+      <div class="persona-card">
+        <img src="assets/persona_care.png" alt="介護・福祉業界勤務者の方">
+        <div class="body">
+          <h3>介護・福祉業界勤務者の方</h3>
+          <p>制度理解が速く、資金計画に集中できます。実務経験者向けの減額プランあり。</p>
+        </div>
+      </div>
+      <div class="persona-card">
+        <img src="assets/persona_family.png" alt="当事者ご家族・親御様">
+        <div class="body">
+          <h3>当事者ご家族・親御様</h3>
+          <p>「親なき後」を事業として設計。ご家族の未来と収益の両立を実現します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 8. CASE ==================== -->
+<section class="sec">
+  <div class="wrap">
+    <h2>実際にご検討いただいている方の声</h2>
+    <p class="lead">※ プライバシー保護のため仮名・匿名化しています。数字と背景は実際の商談内容に基づきます。</p>
+
+    <div class="case-list">
+      <div class="case-card">
+        <img src="assets/case_a.png" alt="A様事例">
+        <div class="body">
+          <div class="who">A様（40代・営業職・横浜／自己資金2,000万・お子さん重度障害）</div>
+          <h3>「親なき後」を事業で解決する</h3>
+          <p>3回の面談を経て、加盟金の分割・在職融資のスキームで具体化。「もう腹決めてきてる」との言葉で本格検討に。</p>
+          <div class="quote">息子の将来を、事業として設計できるのは大きい</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <img src="assets/case_b.png" alt="B様事例">
+        <div class="body">
+          <div class="who">B様（30代・特別支援学校教員・茨城）</div>
+          <h3>年度末退職→4月開設の逆算</h3>
+          <p>副業禁止規定を踏まえ、9〜10月着手で来春開設のスケジュール設計。制度理解の速さで初回商談から具体案に。</p>
+          <div class="quote">2年で回収できるのが見えて、少し安心しました</div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <img src="assets/persona_nurse.png" alt="C様事例">
+        <div class="body">
+          <div class="who">C様（40代・看護師・愛知）</div>
+          <h3>厚労省データを自主リサーチ済みの慎重派</h3>
+          <p>四日市の既存オーナー見学＋ご家族同席のZoom質疑を経て、実地見学の段取りへ。</p>
+          <div class="quote">素人が精神障害の方を見れるのか、その不安がやっと解消できた</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 9. FAQ ==================== -->
+<section class="sec faq">
+  <div class="wrap">
+    <h2>よくあるご質問</h2>
+
+    <div class="faq-item">
+      <h3>サビ管（サービス管理責任者）の資格はどうすればいい？</h3>
+      <p>看護師・教員・介護経験者の多くが基礎研修要件を満たします。基礎研修→OJT半年→実践研修が最短ルート。個別の職歴で該当可否を診断します。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>1棟目は本当に赤字期があるの？</h3>
+      <p><b>入居5名満床までの数ヶ月間は月6〜15万の利益と控えめです。</b>2棟目を1年以内に立ち上げることで、合算で月60万の安定収益に到達します。誠実にお伝えしています。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>福祉未経験でも運営できる？</h3>
+      <p>管理者兼務＋サビ管外部委託＋相談支援事業所への挨拶回りの3点セットで、未経験者でも運営体制を構築できます。加盟180社の実績で確立したノウハウです。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>入居者は本当に集まる？</h3>
+      <p>売上の85%が国給付＝入居者募集は行政・相談支援経由が中心。エリアの相談支援事業所への挨拶回りが集客の要です。同行サポートあり。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>公務員・教員の副業規定に触れない？</h3>
+      <p>年度末退職前提で、開設準備は在職中に融資申請まで完了させるルートを推奨。個別の勤務先規定は事前にご確認をお願いします。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>失敗パターン・撤退時のコストは？</h3>
+      <p>加盟180社の失敗パターン・撤退時実費（設備原状回復・スタッフ引き継ぎ等）は資料請求で個別開示します。誠実にお伝えします。</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>助成金は使える？</h3>
+      <p>障がい者GH開設に直接使える助成金は現状ありません。資金計画は融資＋自己資金前提で組みます。（過去、期待していた助成金なしが判明して驚かれた例があるため、最初にお伝えしています）</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 10. 信頼 ==================== -->
+<section class="sec trust">
+  <div class="wrap">
+    <h2>加盟180社の運営実績</h2>
+
+    <div class="trust-grid">
+      <div class="trust-card"><div class="num">180+</div><div class="lbl">加盟社数</div></div>
+      <div class="trust-card"><div class="num">85%</div><div class="lbl">売上の国給付比率</div></div>
+      <div class="trust-card"><div class="num">7-10年</div><div class="lbl">平均入居期間</div></div>
+    </div>
+
+    <div class="trust-features">
+      <div class="trust-feature">
+        <div class="icon">✓</div>
+        <div class="txt">既存オーナー見学同行（四日市・関東数拠点）</div>
+      </div>
+      <div class="trust-feature">
+        <div class="icon">✓</div>
+        <div class="txt">行政折衝の法令遵守サポート（本人＋同行）</div>
+      </div>
+      <div class="trust-feature">
+        <div class="icon">✓</div>
+        <div class="txt">サビ管人材ネットワーク・採用支援</div>
+      </div>
+      <div class="trust-feature">
+        <div class="icon">✓</div>
+        <div class="txt">融資 3パターン計画書＋銀行想定Q&A</div>
+      </div>
+    </div>
+
+    <div class="mid-cta"><a href="#form">▶ 見学同行つき資料請求</a></div>
+  </div>
+</section>
+
+<!-- ==================== 11. ステップ ==================== -->
+<section class="sec steps">
+  <div class="wrap">
+    <h2>資料請求から開業まで</h2>
+    <p class="lead">4月開設なら9〜10月着手、東京都なら開設まで8〜9ヶ月の逆算スケジュールです。</p>
+
+    <div class="step-list">
+      <div class="step"><div class="step-num">1</div><h3>資料請求（本日）</h3><p>資金計画サンプル・エリア別開設費・オーナー声をお送りします</p></div>
+      <div class="step"><div class="step-num">2</div><h3>初回Zoom面談</h3><p>ご希望エリア・自己資金・スケジュール感の擦り合わせ（60分）</p></div>
+      <div class="step"><div class="step-num">3</div><h3>収支シミュ・エリア調査</h3><p>希望エリアの総量規制状況・物件相場・収支表を個別作成</p></div>
+      <div class="step"><div class="step-num">4</div><h3>既存オーナー見学</h3><p>四日市 or 関東の既存GHに同行見学（半日）</p></div>
+      <div class="step"><div class="step-num">5</div><h3>融資申請サポート</h3><p>3パターンの資金計画書＋銀行想定Q&A</p></div>
+      <div class="step"><div class="step-num">6</div><h3>物件契約→開業</h3><p>物件選定・改修・スタッフ採用・行政届出まで同行サポート</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 12. フォーム ==================== -->
+<section class="sec form-section" id="form">
+  <div class="wrap">
+    <h2>まずは資料請求から</h2>
+    <p class="lead">頂いた情報をもとに、あなたのケースに合わせた資金計画サンプルをお送りします。営業電話は行いません。</p>
+
+    <div class="form-recap">
+      改めてご確認ください：<br>
+      ✓ 自己資金 <b>300万円以上</b>（不足分は融資でカバー可）<br>
+      ✓ <b>1年以内</b>に独立・新規事業として着手したい方<br>
+      ✓ 情報収集段階の方は「資料のみ送付」を選択可能
+    </div>
+
+    <div class="form-box">
+      <div class="form-row">
+        <label>お名前<span class="req">必須</span></label>
+        <input type="text" placeholder="山田 太郎">
+      </div>
+      <div class="form-row">
+        <label>メールアドレス<span class="req">必須</span></label>
+        <input type="email" placeholder="example@example.com">
+      </div>
+      <div class="form-row">
+        <label>電話番号<span class="req">必須</span></label>
+        <input type="tel" placeholder="090-0000-0000">
+      </div>
+      <div class="form-row">
+        <label>ご希望エリア（都道府県・市区町村）<span class="req">必須</span></label>
+        <input type="text" placeholder="例：東京都八王子市／千葉県木更津市">
+      </div>
+      <div class="form-row">
+        <label>ご準備可能な自己資金<span class="req">必須</span></label>
+        <div class="radio-group">
+          <label><input type="radio" name="fund"> 300万円未満</label>
+          <label><input type="radio" name="fund"> 300〜500万円</label>
+          <label><input type="radio" name="fund"> 500〜1,000万円</label>
+          <label><input type="radio" name="fund"> 1,000万円以上</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>現在のご職業<span class="req">必須</span></label>
+        <select>
+          <option>選択してください</option>
+          <option>看護師・医療従事者</option>
+          <option>介護・福祉業界勤務</option>
+          <option>教員・公務員</option>
+          <option>会社員</option>
+          <option>経営者・事業主</option>
+          <option>不動産・投資業</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>福祉関連の資格・実務経験</label>
+        <div class="radio-group">
+          <label><input type="checkbox"> サビ管（サービス管理責任者）実務経験あり</label>
+          <label><input type="checkbox"> 介護福祉士・社会福祉士等の資格あり</label>
+          <label><input type="checkbox"> 医療系資格あり（看護師等）</label>
+          <label><input type="checkbox"> ご家族に当事者がいる</label>
+          <label><input type="checkbox"> なし・未経験</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>開業ご希望時期<span class="req">必須</span></label>
+        <select>
+          <option>選択してください</option>
+          <option>3ヶ月以内</option>
+          <option>半年以内</option>
+          <option>1年以内</option>
+          <option>1〜2年以内</option>
+          <option>情報収集段階（資料のみ希望）</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>ご検討の動機・状況<span class="req">必須</span></label>
+        <textarea rows="4" placeholder="例：現職からの独立検討／親なき後の設計／既存事業の新規軸／等"></textarea>
+      </div>
+      <div class="form-row">
+        <label>OWLをどこで知りましたか</label>
+        <select>
+          <option>選択してください</option>
+          <option>Google検索</option>
+          <option>Yahoo検索</option>
+          <option>SNS広告</option>
+          <option>ご紹介</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <button class="form-submit" type="button">▶ 資料請求を送信する</button>
+      <div class="form-note">送信後、24時間以内に担当より資料と初回面談日程をご連絡します。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== sticky CTA ==================== -->
+<div class="sticky-cta"><a href="#form">▶ 資料請求（無料）</a></div>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/owl_logo.png" alt="OWL 福祉事業">
+    <p>OWL福祉事業 独立起業向けLP（骨組みモック v2）</p>
+    <p>株式会社ランバード × 株式会社 斗（hishaku）</p>
+    <p style="margin-top:8px;font-size:11px">© RUNBIRD Inc.</p>
+  </div>
+</footer>
+
+</body>
+</html>
