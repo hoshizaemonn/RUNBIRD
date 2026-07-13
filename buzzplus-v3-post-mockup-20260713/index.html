@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus v3 投稿イメージ｜2026-07-13</title>
+<style>
+:root {
+  --bg: #0a0e12;
+  --card: #1a2028;
+  --border: #2a3441;
+  --text: #e8ecf0;
+  --sub: #8a9ba8;
+  --accent: #ff8b47;
+  --meta-blue: #1877f2;
+  --meta-red: #f02849;
+  --meta-green: #42b72a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; background: var(--bg); color: var(--text); padding: 24px; line-height: 1.5; }
+.container { max-width: 1400px; margin: 0 auto; }
+h1 { font-size: 26px; margin-bottom: 6px; border-left: 5px solid var(--accent); padding-left: 12px; }
+.meta { color: var(--sub); font-size: 13px; margin-bottom: 24px; }
+h2 { font-size: 18px; margin: 32px 0 12px; padding: 8px 12px; background: var(--card); border-left: 4px solid var(--accent); }
+
+/* Instagram feed style preview grid */
+.feed-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin: 20px 0; }
+@media (max-width: 1200px) { .feed-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .feed-grid { grid-template-columns: 1fr; } }
+
+.post {
+  background: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  position: relative;
+  aspect-ratio: 9/16;
+  min-height: 480px;
+}
+.post-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 12px;
+  background: rgba(0,0,0,0.5);
+  position: absolute; top: 0; left: 0; right: 0;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+.avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(45deg, #f09433, #dc2743, #cc2366); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: bold; color: white; }
+.username { font-size: 13px; font-weight: 600; color: white; }
+.sponsored { font-size: 10px; color: rgba(255,255,255,0.7); }
+.post-image { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
+.post-overlay { position: absolute; bottom: 60px; left: 12px; right: 12px; z-index: 5; }
+.telop-big { font-size: 18px; font-weight: 900; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.9); margin-bottom: 8px; line-height: 1.3; background: linear-gradient(90deg, rgba(0,0,0,0.6), transparent); padding: 4px 8px; border-radius: 4px; display: inline-block; }
+.telop-small { font-size: 13px; color: white; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
+.badge-price { display: inline-block; background: var(--accent); color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 14px; margin-top: 6px; }
+.post-cta { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); padding: 10px 12px; display: flex; align-items: center; justify-content: space-between; z-index: 10; }
+.cta-btn { background: var(--meta-blue); color: white; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+.cta-text { font-size: 11px; color: white; }
+.post-label { position: absolute; top: 12px; right: 12px; background: var(--accent); color: white; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; z-index: 10; }
+
+/* Card info under each post */
+.post-info { background: var(--card); border-radius: 10px; padding: 12px; margin-top: 12px; font-size: 12px; }
+.post-info h3 { font-size: 14px; color: var(--accent); margin-bottom: 6px; }
+.post-info ul { list-style: none; padding: 0; }
+.post-info li { margin: 3px 0; color: var(--sub); }
+.post-info li strong { color: var(--text); }
+
+/* Spec cards */
+.spec-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 20px 0; }
+@media (max-width: 900px) { .spec-grid { grid-template-columns: repeat(2, 1fr); } }
+.spec-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+.spec-card h3 { color: var(--accent); font-size: 14px; margin-bottom: 8px; }
+.spec-card table { width: 100%; font-size: 12px; border-collapse: collapse; }
+.spec-card td { padding: 3px 6px; border-bottom: 1px solid var(--border); }
+.spec-card td:first-child { color: var(--sub); width: 40%; }
+
+.timeline { background: var(--card); border-radius: 10px; padding: 20px; margin: 20px 0; }
+.timeline-row { display: grid; grid-template-columns: 100px 1fr; gap: 12px; margin: 10px 0; align-items: center; }
+.week-badge { background: var(--accent); color: white; padding: 6px 12px; border-radius: 6px; font-weight: bold; font-size: 13px; text-align: center; }
+.week-content { font-size: 13px; }
+
+.footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--sub); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>BuzzPlus v3 投稿イメージ｜Meta広告 フィード表示プレビュー</h1>
+<p class="meta">2026-07-13 ｜ 4本×2オファー=8入稿の投稿イメージを Instagram/Facebook フィード風に可視化</p>
+
+<h2>📱 4本の投稿イメージ（Meta広告 フィード風）</h2>
+
+<div class="feed-grid">
+
+  <!-- ①集客特化 -->
+  <div>
+    <div class="post">
+      <img src="frames/v1_food.jpg" class="post-image" alt="集客">
+      <div class="post-label">①集客</div>
+      <div class="post-header">
+        <div class="avatar">B+</div>
+        <div>
+          <div class="username">buzzplus_ai</div>
+          <div class="sponsored">Sponsored</div>
+        </div>
+      </div>
+      <div class="post-overlay">
+        <div class="telop-big">その集客、月3万で回り出す。</div>
+        <div class="telop-small">動画も配信も丸ごとBuzzPlus</div>
+        <div class="badge-price">¥30,000 / 月</div>
+      </div>
+      <div class="post-cta">
+        <div class="cta-text">今月5社限定｜無料相談</div>
+        <div class="cta-btn">詳しくはこちら</div>
+      </div>
+    </div>
+    <div class="post-info">
+      <h3>①集客特化 31秒</h3>
+      <ul>
+        <li><strong>Who</strong>: 飲食/美容/小売店主</li>
+        <li><strong>ベネフィット</strong>: 「集客が回り始める」</li>
+        <li><strong>主素材</strong>: scene_03/04/05 + 焼鳥v3</li>
+        <li><strong>優先度</strong>: ★★★★★ 主力</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ②採用特化 -->
+  <div>
+    <div class="post">
+      <img src="frames/v2_recruit.jpg" class="post-image" alt="採用">
+      <div class="post-label">②採用</div>
+      <div class="post-header">
+        <div class="avatar">B+</div>
+        <div>
+          <div class="username">buzzplus_ai</div>
+          <div class="sponsored">Sponsored</div>
+        </div>
+      </div>
+      <div class="post-overlay">
+        <div class="telop-big">応募が集まる採用動画、月3万。</div>
+        <div class="telop-small">撮影不要、AIが働く姿を描きます</div>
+        <div class="badge-price">¥30,000 / 月</div>
+      </div>
+      <div class="post-cta">
+        <div class="cta-text">今月5社限定｜無料相談</div>
+        <div class="cta-btn">詳しくはこちら</div>
+      </div>
+    </div>
+    <div class="post-info">
+      <h3>②採用特化 31秒</h3>
+      <ul>
+        <li><strong>Who</strong>: 中小企業採用担当</li>
+        <li><strong>ベネフィット</strong>: 「応募が集まる」</li>
+        <li><strong>主素材</strong>: scene_09/08 + 新海誠系</li>
+        <li><strong>優先度</strong>: ★★★★★ 主力</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ③アニメ特化 -->
+  <div>
+    <div class="post">
+      <img src="frames/v3_anime.png" class="post-image" alt="アニメ">
+      <div class="post-label">③アニメ</div>
+      <div class="post-header">
+        <div class="avatar">B+</div>
+        <div>
+          <div class="username">buzzplus_ai</div>
+          <div class="sponsored">Sponsored</div>
+        </div>
+      </div>
+      <div class="post-overlay">
+        <div class="telop-big">プロ制作アニメが、月3万で。</div>
+        <div class="telop-small">シネマ品質AIアニメ×SNS配信</div>
+        <div class="badge-price">¥30,000 / 月</div>
+      </div>
+      <div class="post-cta">
+        <div class="cta-text">今月5社限定｜無料相談</div>
+        <div class="cta-btn">詳しくはこちら</div>
+      </div>
+    </div>
+    <div class="post-info">
+      <h3>③アニメ特化 31秒</h3>
+      <ul>
+        <li><strong>Who</strong>: 予算重視BtoB</li>
+        <li><strong>ベネフィット</strong>: 「プロ品質を安く」</li>
+        <li><strong>主素材</strong>: 新海誠系15枚 + anime_PV</li>
+        <li><strong>優先度</strong>: ★★★★ サブ</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ④総合ブランディング -->
+  <div>
+    <div class="post">
+      <img src="frames/v4_brand.jpg" class="post-image" alt="総合">
+      <div class="post-label">④総合</div>
+      <div class="post-header">
+        <div class="avatar">B+</div>
+        <div>
+          <div class="username">buzzplus_ai</div>
+          <div class="sponsored">Sponsored</div>
+        </div>
+      </div>
+      <div class="post-overlay">
+        <div class="telop-big">事業が動き出す、月3万から。</div>
+        <div class="telop-small">動画×配信×改善を継続でサポート</div>
+        <div class="badge-price">¥30,000 / 月</div>
+      </div>
+      <div class="post-cta">
+        <div class="cta-text">リタゲ用（LP到達済み層）</div>
+        <div class="cta-btn">再検討する</div>
+      </div>
+    </div>
+    <div class="post-info">
+      <h3>④総合ブランディング 31秒</h3>
+      <ul>
+        <li><strong>Who</strong>: 経営層全般（リタゲ用）</li>
+        <li><strong>ベネフィット</strong>: 「事業が動く」</li>
+        <li><strong>主素材</strong>: scene_12/07/10</li>
+        <li><strong>優先度</strong>: ★★ 8月中旬〜</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<h2>🎯 各動画のオファー X/Y 差替（8入稿の作り方）</h2>
+
+<div class="spec-grid">
+  <div class="spec-card">
+    <h3>オファーX（無料相談のみ）</h3>
+    <table>
+      <tr><td>25-28秒テロップ</td><td>「今月5社限定｜無料相談」</td></tr>
+      <tr><td>CTAボタン</td><td>「詳しくはこちら」</td></tr>
+      <tr><td>訴求軸</td><td>限定感＋気軽さ</td></tr>
+    </table>
+  </div>
+  <div class="spec-card">
+    <h3>オファーY（+動画1本プレゼント）</h3>
+    <table>
+      <tr><td>25-28秒テロップ</td><td>「今月5社限定｜相談で動画1本プレゼント」</td></tr>
+      <tr><td>CTAボタン</td><td>「無料相談する」</td></tr>
+      <tr><td>訴求軸</td><td>限定感＋お得感</td></tr>
+    </table>
+  </div>
+  <div class="spec-card">
+    <h3>共通仕様</h3>
+    <table>
+      <tr><td>尺</td><td>31秒</td></tr>
+      <tr><td>アスペクト比</td><td>9:16 縦型</td></tr>
+      <tr><td>音声</td><td>BGMのみ（ナレなし）</td></tr>
+      <tr><td>解像度</td><td>1080×1920</td></tr>
+    </table>
+  </div>
+  <div class="spec-card">
+    <h3>投稿本数</h3>
+    <table>
+      <tr><td>4本 × 2オファー</td><td>= 8入稿</td></tr>
+      <tr><td>編集方式</td><td>Premiere Pro テロップレイヤー切替</td></tr>
+      <tr><td>入稿タイミング</td><td>W0 (7/14-15) に一括審査</td></tr>
+      <tr><td>配信タイミング</td><td>W1〜段階投下</td></tr>
+    </table>
+  </div>
+</div>
+
+<h2>📅 投下スケジュール（Fable 5 推奨 C案）</h2>
+
+<div class="timeline">
+  <div class="timeline-row">
+    <div class="week-badge">W0<br>7/14-15</div>
+    <div class="week-content">
+      <strong>審査提出フェーズ</strong>：8入稿すべて停止状態でMeta広告に一括提出。却下対策済み。LP勝者を A/B から確定。
+    </div>
+  </div>
+  <div class="timeline-row">
+    <div class="week-badge">W1<br>7/16-22</div>
+    <div class="week-content">
+      <strong>配信開始</strong>：<span style="color:var(--accent);">①集客 + ②採用</span> の2本を1広告セット（ブロード・問い合わせ最適化）で配信。7日間触らない（学習リセット回避）。
+    </div>
+  </div>
+  <div class="timeline-row">
+    <div class="week-badge">W2</div>
+    <div class="week-content">
+      <strong>週次判定</strong>：負け1本OFF・<span style="color:var(--accent);">③アニメON</span>。変更は週1バッチに集約。
+    </div>
+  </div>
+  <div class="timeline-row">
+    <div class="week-badge">W3-4</div>
+    <div class="week-content">
+      <strong>X/Y比較</strong>：勝者2本体制で <span style="color:var(--accent);">オファーY（プレゼント版）</span> を追加投入し、X vs Y の効果比較。
+    </div>
+  </div>
+  <div class="timeline-row">
+    <div class="week-badge">8月<br>中旬〜</div>
+    <div class="week-content">
+      <strong>リタゲ開始</strong>：<span style="color:var(--accent);">④総合ブランディング</span> をリタゲ専用（LP到達1,000人以上蓄積後）で投入。予算¥350-700/日。
+    </div>
+  </div>
+</div>
+
+<h2>🎬 各動画の31秒 タイムライン（共通骨格）</h2>
+
+<div class="spec-grid" style="grid-template-columns: repeat(6, 1fr);">
+  <div class="spec-card"><h3>0-3秒</h3><p style="font-size:12px;">フック<br>Who+What+ベネフィット</p></div>
+  <div class="spec-card"><h3>3-8秒</h3><p style="font-size:12px;">共感<br>悩み3連打</p></div>
+  <div class="spec-card"><h3>8-18秒</h3><p style="font-size:12px;">★棒グラフ<br>¥500k/¥30k単発/¥30k月額</p></div>
+  <div class="spec-card"><h3>18-25秒</h3><p style="font-size:12px;">根拠<br>実績カウンター</p></div>
+  <div class="spec-card"><h3>25-28秒</h3><p style="font-size:12px;">オファーX/Y<br>限定枠+期限</p></div>
+  <div class="spec-card"><h3>28-31秒</h3><p style="font-size:12px;">CTA<br>BuzzPlusエンドカード</p></div>
+</div>
+
+<div class="footer">
+  BuzzPlus v3 投稿イメージ ｜ 2026-07-13 ｜ 株式会社ランバード<br>
+  ★このページはモックアップです。実制作前の投稿イメージ確認用。<br>
+  関連: <a href="../buzzplus-v3-proposal-20260713/" style="color:var(--accent);">v3提案プレゼン(13枚)</a> ｜ <a href="../buzzplus-mockup-proposal-20260711/" style="color:var(--accent);">モックアップ骨組み提案</a>
+</div>
+
+</div>
+</body>
+</html>
