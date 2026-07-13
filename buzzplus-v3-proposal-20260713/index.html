@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus 広告動画 v3 提案書</title>
+<style>
+  :root{
+    --bg:#0a0e1a; --surface:#10182b; --surface2:#182238; --line:#243352;
+    --ink:#f3f6fc; --ink2:#aab8d4; --muted:#7385a6;
+    --orange:#ff8b47; --orange-dim:rgba(255,139,71,.14); --gold:#ffc457;
+    --good:#4ade80; --warn:#fbbf24; --bad:#f87171; --blue:#7db8f0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;background:var(--bg);overflow:hidden;
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
+    color:var(--ink);}
+  #stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;}
+  .slide{width:1920px;height:1080px;flex:0 0 auto;position:absolute;
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(255,139,71,.08), transparent 60%),
+      radial-gradient(900px 500px at -5% 110%, rgba(70,110,200,.10), transparent 60%),
+      var(--bg);
+    display:none;padding:80px 100px;overflow:hidden;}
+  .slide.active{display:block;}
+  .stars{position:absolute;inset:0;pointer-events:none;opacity:.5;}
+  .stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#cfe0ff;}
+
+  .kicker{font-size:21px;letter-spacing:.26em;color:var(--orange);font-weight:700;text-transform:uppercase;}
+  .kicker .dim{color:var(--muted);letter-spacing:.16em;font-weight:600;}
+  h1{font-size:74px;font-weight:800;line-height:1.25;}
+  h2{font-size:48px;font-weight:800;line-height:1.3;}
+  .accent{color:var(--orange);}
+  .rule{width:88px;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--orange),var(--gold));margin:20px 0 24px;}
+
+  .badge{display:inline-flex;align-items:center;gap:12px;background:var(--orange-dim);
+    border:1px solid rgba(255,139,71,.4);color:var(--orange);border-radius:999px;
+    padding:10px 26px;font-size:24px;font-weight:700;}
+
+  table{border-collapse:collapse;width:100%;}
+  th{font-size:20px;color:var(--muted);font-weight:700;text-align:left;
+    padding:10px 14px;border-bottom:2px solid var(--line);letter-spacing:.04em;white-space:nowrap;}
+  td{font-size:21px;color:var(--ink2);padding:11px 14px;border-bottom:1px solid var(--line);
+    vertical-align:top;line-height:1.45;}
+  td b{color:var(--ink);font-weight:700;}
+  tr.hl td{background:rgba(255,139,71,.07);}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 30px;}
+  .tag{display:inline-block;font-size:18px;font-weight:800;border-radius:8px;padding:3px 12px;letter-spacing:.04em;white-space:nowrap;}
+  .t-orange{background:var(--orange-dim);color:var(--orange);border:1px solid rgba(255,139,71,.35);}
+  .t-blue{background:rgba(125,184,240,.12);color:var(--blue);border:1px solid rgba(125,184,240,.3);}
+  .t-gray{background:rgba(115,133,166,.14);color:var(--muted);border:1px solid rgba(115,133,166,.3);}
+  .t-good{background:rgba(74,222,128,.12);color:var(--good);border:1px solid rgba(74,222,128,.3);}
+
+  .g-good{color:var(--good);font-weight:800;}
+  .g-warn{color:var(--warn);font-weight:800;}
+  .g-bad{color:var(--bad);font-weight:800;}
+
+  /* storyboard slide layout */
+  .sb-head{display:flex;align-items:baseline;gap:26px;flex-wrap:wrap;margin-bottom:14px;}
+  .sb-copy{font-size:38px;font-weight:800;color:var(--orange);}
+  .sb-meta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+  .timebar{display:flex;height:13px;border-radius:7px;overflow:hidden;gap:3px;margin-bottom:5px;}
+  .timelabels{display:flex;font-size:15px;color:var(--muted);margin-bottom:14px;gap:3px;}
+  .sbt td{font-size:19px;padding:9px 13px;line-height:1.42;}
+  .sbt th{font-size:18px;padding:8px 13px;}
+
+  .foot{position:absolute;left:100px;right:100px;bottom:30px;display:flex;justify-content:space-between;
+    font-size:17px;color:var(--muted);letter-spacing:.06em;}
+
+  #nav{position:fixed;right:26px;bottom:22px;display:flex;gap:10px;align-items:center;z-index:50;}
+  #nav button{background:#182238;border:1px solid #2a3a5e;color:#cdd9f0;width:46px;height:46px;
+    border-radius:12px;font-size:20px;cursor:pointer;}
+  #nav button:hover{background:#223052;}
+  #dots{position:fixed;left:50%;transform:translateX(-50%);bottom:30px;display:flex;gap:10px;z-index:50;}
+  #dots span{width:11px;height:11px;border-radius:50%;background:#33456e;cursor:pointer;}
+  #dots span.on{background:var(--orange);}
+  #pageno{color:#8fa2c6;font-size:16px;margin-right:8px;font-variant-numeric:tabular-nums;}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- ============ SLIDE 1 : 表紙 ============ -->
+<section class="slide active">
+  <div class="stars" data-stars="70"></div>
+  <div style="height:100%;display:flex;flex-direction:column;justify-content:center;position:relative;">
+    <div class="kicker">RUNBIRD × BUZZPLUS <span class="dim">｜ AI動画事業・集客フロント設計</span></div>
+    <div style="height:40px"></div>
+    <h1>BuzzPlus 広告動画 <span class="accent">v3</span> 提案書</h1>
+    <div class="rule" style="margin:30px 0;"></div>
+    <div style="font-size:31px;color:var(--ink2);line-height:1.7;">
+      <b style="color:var(--ink)">31秒 × 4本セット ＋ オファーA/B（計8入稿）</b><br>
+      v2の弱点3つ（①ベネフィット・④根拠・⑤オファー）を全本で構造的に充填
+    </div>
+    <div style="height:52px"></div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <div class="badge">① 集客特化</div>
+      <div class="badge">② 採用特化</div>
+      <div class="badge">③ アニメ特化</div>
+      <div class="badge" style="opacity:.75;">④ 総合（少予算）</div>
+      <div class="badge" style="background:rgba(125,184,240,.1);border-color:rgba(125,184,240,.35);color:var(--blue);">⑤プレゼント版 → 全本のオファーA/Bに統合</div>
+    </div>
+    <div style="height:52px"></div>
+    <div style="font-size:22px;color:var(--muted);letter-spacing:.08em;">2026.07.12 ｜ 7/9会議決定準拠 ｜ 仲野メソッド5要素・全本充足設計 ｜ Veo本制作GO判断依頼つき</div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 2 : 7/9決定 → v3反映 ============ -->
+<section class="slide">
+  <div class="kicker">01 <span class="dim">｜ FROM 7/9 MEETING</span></div>
+  <div style="height:20px"></div>
+  <h2>7/9会議の決定事項 → v3への反映</h2>
+  <div class="rule"></div>
+
+  <table style="margin-bottom:26px;">
+    <tr><th style="width:30%;">7/9 決定事項</th><th>v3での反映（忖度なし判断込み）</th></tr>
+    <tr><td><b>1. 尺を31秒以上に延長</b></td><td>31秒・6ブロック共通構成（フック3s→共感5s→解決10s→<b style="color:var(--orange)">根拠7s</b>→オファー3s→CTA3s）。v2で置き場がなかった「④根拠」に7秒を確保</td></tr>
+    <tr><td><b>2. 4-5本セット制作</b></td><td><b>4本＋オファーA/B（計8入稿）</b>。⑤プレゼント特化版は不採用→全本の25-28秒に統合（プレゼントはWhoの軸でなくオファーの軸のため。独立させると冒頭Who/Whatが崩れv2の失敗を再演）</td></tr>
+    <tr><td><b>3. 顧客名匿名化・CTA強化</b></td><td>事例は「都内焼肉A店」「地方建設B社」「治療院C院」表記。<b>競合実名「アニメる」も「単発制作サービス」へ一般化</b>（Metaポリシー・比較広告リスク回避）。CTAは「▶ 詳しくはこちら」行動文言へ</td></tr>
+    <tr><td><b>4. プレゼントでのCV改善検証</b></td><td>オファーX「今月5社限定｜無料相談」vs Y「＋動画サンプル1本プレゼント」を<b>同一動画のテロップ差し替え</b>で比較 → プレゼント効果を純粋に実測</td></tr>
+    <tr><td><b>5. CV弱の改善</b></td><td>クリック◎滞在◎CV弱＝<b>行動する理由の不足</b>。v2弱点3つ（①4点・④6点・⑤9点）を全本で充填し構造で解決</td></tr>
+  </table>
+
+  <div style="display:flex;gap:20px;">
+    <div class="card" style="flex:1;background:var(--orange-dim);border-color:rgba(255,139,71,.35);">
+      <div style="font-size:22px;color:var(--ink);line-height:1.6;"><b style="color:var(--orange)">v2→v3の本質：</b>「良い動画を1本」から「<b>検証できるセットを8入稿</b>」へ。業種軸4本×オファー軸2種で、どのWhoとどのオファーが刺さるかを同時に判定する。</div>
+    </div>
+    <div class="card" style="flex:1;">
+      <div style="font-size:22px;color:var(--ink2);line-height:1.6;"><b style="color:var(--ink)">配信優先度：</b>①集客 ★1 ／ ②採用 ★2 ／ ③アニメ ★3 ／ ④総合 ★4（リタゲ・2次接触用に少予算。Who「経営層全般」は単独CVには最弱のため）</div>
+    </div>
+  </div>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 3 : ①集客特化 ============ -->
+<section class="slide">
+  <div class="kicker">02 <span class="dim">｜ STORYBOARD 1/4</span></div>
+  <div style="height:16px"></div>
+  <div class="sb-head"><h2>① 集客特化版</h2><span class="sb-copy">「その集客、月3万で回り出す。」</span></div>
+  <div class="sb-meta">
+    <span class="tag t-orange">配信優先度 ★1（主力）</span>
+    <span class="tag t-blue">Who：飲食・美容・小売の店舗オーナー</span>
+    <span class="tag t-gray">主素材：scene_03焼肉 / 04美容 / 05小売 ＋ 夜景店主画像</span>
+  </div>
+  <div class="timebar">
+    <div style="flex:3;background:var(--orange);"></div><div style="flex:5;background:#33456e;"></div>
+    <div style="flex:10;background:#3b4c78;"></div><div style="flex:7;background:#c96f39;"></div>
+    <div style="flex:3;background:var(--gold);"></div><div style="flex:3;background:#33456e;"></div>
+  </div>
+  <div class="timelabels"><div style="flex:3">0-3 フック</div><div style="flex:5">3-8 共感</div><div style="flex:10">8-18 解決</div><div style="flex:7">18-25 根拠★</div><div style="flex:3">25-28</div><div style="flex:3">28-31</div></div>
+
+  <table class="sbt">
+    <tr><th style="width:8%;">時間</th><th style="width:12%;">シーン</th><th style="width:28%;">映像</th><th style="width:40%;">テロップ</th><th>5要素</th></tr>
+    <tr><td><b>0-3</b></td><td><b>フック</b></td><td>夜景×店主画像(1s)→scene_03焼肉シズル(2s)</td><td>「<b style="color:var(--orange)">その集客、月3万で回り出す。</b>」→「動画も配信も丸ごと BuzzPlus」</td><td><span class="tag t-orange">①③ Who+What</span></td></tr>
+    <tr><td><b>3-8</b></td><td><b>共感3連</b></td><td>scene_09経営者（グレースケール）</td><td>「広告費が高い…」「制作会社は¥500,000/月」「配信のやり方が分からない…」</td><td><span class="tag t-blue">②</span></td></tr>
+    <tr><td><b>8-13</b></td><td><b>解決1</b></td><td>棒グラフ2段階アニメ＋下半分に焼肉映像</td><td>¥500,000/月 ／ 単発 ¥30,000/本 ／ <b>BuzzPlus ¥30,000/月（配信込み）</b>「同じ¥3万でも、中身が違う」</td><td><span class="tag t-orange">③</span></td></tr>
+    <tr><td><b>13-18</b></td><td><b>解決2</b></td><td>焼肉→美容→小売（各1.6s）</td><td>「作って終わりじゃない。配信して、直して、回す。」</td><td><span class="tag t-orange">③</span></td></tr>
+    <tr class="hl"><td><b>18-25</b></td><td><b>根拠★</b></td><td>業種映像＋実績カウンター重畳</td><td>「制作ジャンル7業種」「企画→制作→配信 ワンチーム」「都内焼肉A店の広告も、この品質」</td><td><span class="tag t-good">④</span></td></tr>
+    <tr><td><b>25-28</b></td><td><b>オファー</b></td><td>scene_12夜明け</td><td>X:「今月5社限定｜無料相談」／ Y: ＋「動画サンプル1本プレゼント」</td><td><span class="tag t-orange">⑤</span></td></tr>
+    <tr><td><b>28-31</b></td><td><b>CTA</b></td><td>エンドカード（BuzzPlusロゴ差替）</td><td>「BuzzPlus｜buzzplus-ai.com」「▶ 詳しくはこちら」</td><td><span class="tag t-gray">⑤</span></td></tr>
+  </table>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 4 : ②採用特化 ============ -->
+<section class="slide">
+  <div class="kicker">03 <span class="dim">｜ STORYBOARD 2/4</span></div>
+  <div style="height:16px"></div>
+  <div class="sb-head"><h2>② 採用特化版</h2><span class="sb-copy">「求人に、応募が来る会社へ。」</span></div>
+  <div class="sb-meta">
+    <span class="tag t-orange">配信優先度 ★2</span>
+    <span class="tag t-blue">Who：中小企業の経営者・採用担当（建設・介護など人手不足業種）</span>
+    <span class="tag t-gray">主素材：scene_01建設 / 02介護 / 08クリエイター / 09経営者</span>
+  </div>
+  <div class="timebar">
+    <div style="flex:3;background:var(--orange);"></div><div style="flex:5;background:#33456e;"></div>
+    <div style="flex:10;background:#3b4c78;"></div><div style="flex:7;background:#c96f39;"></div>
+    <div style="flex:3;background:var(--gold);"></div><div style="flex:3;background:#33456e;"></div>
+  </div>
+  <div class="timelabels"><div style="flex:3">0-3 フック</div><div style="flex:5">3-8 共感</div><div style="flex:10">8-18 解決</div><div style="flex:7">18-25 根拠★</div><div style="flex:3">25-28</div><div style="flex:3">28-31</div></div>
+
+  <table class="sbt">
+    <tr><th style="width:8%;">時間</th><th style="width:12%;">シーン</th><th style="width:28%;">映像</th><th style="width:40%;">テロップ</th><th>5要素</th></tr>
+    <tr><td><b>0-3</b></td><td><b>フック</b></td><td>scene_01建設（働く姿・逆光）</td><td>「<b style="color:var(--orange)">求人に、応募が来る会社へ。</b>」→「採用動画＋配信 月3万 BuzzPlus」</td><td><span class="tag t-orange">①③ Who+What</span></td></tr>
+    <tr><td><b>3-8</b></td><td><b>共感3連</b></td><td>scene_09経営者</td><td>「求人媒体に載せても応募ゼロ…」「採用動画は¥500,000〜…」「若い世代に届かない…」</td><td><span class="tag t-blue">②</span></td></tr>
+    <tr><td><b>8-13</b></td><td><b>解決1</b></td><td>棒グラフ＋下半分に建設現場</td><td>共通比較「同じ¥3万でも、中身が違う」</td><td><span class="tag t-orange">③</span></td></tr>
+    <tr><td><b>13-18</b></td><td><b>解決2</b></td><td>建設→介護→オフィス（各1.6s）</td><td>「求人票では伝わらない"働く姿"を、動画で」</td><td><span class="tag t-orange">③</span></td></tr>
+    <tr class="hl"><td><b>18-25</b></td><td><b>根拠★</b></td><td>業種映像＋カウンター</td><td>「建設・介護・ITなど7業種で制作」「SNS世代に届くMeta配信込み」「地方建設B社の採用動画も、この品質」</td><td><span class="tag t-good">④</span></td></tr>
+    <tr><td><b>25-28</b></td><td><b>オファー</b></td><td>scene_12夜明け</td><td>オファーX/Y（共通差し替え式）</td><td><span class="tag t-orange">⑤</span></td></tr>
+    <tr><td><b>28-31</b></td><td><b>CTA</b></td><td>エンドカード</td><td>「BuzzPlus｜buzzplus-ai.com」「▶ 詳しくはこちら」</td><td><span class="tag t-gray">⑤</span></td></tr>
+  </table>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 5 : ③アニメ特化 ============ -->
+<section class="slide">
+  <div class="kicker">04 <span class="dim">｜ STORYBOARD 3/4</span></div>
+  <div style="height:16px"></div>
+  <div class="sb-head"><h2>③ アニメ特化版</h2><span class="sb-copy">「撮影ゼロで、この映像。」</span></div>
+  <div class="sb-meta">
+    <span class="tag t-orange">配信優先度 ★3</span>
+    <span class="tag t-blue">Who：撮影素材がない業種（治療院・士業・コンサル等）＋予算重視層</span>
+    <span class="tag t-gray">主素材：新海誠系静止画15枚 ＋ クリエイター夜景</span>
+  </div>
+  <div class="timebar">
+    <div style="flex:3;background:var(--orange);"></div><div style="flex:5;background:#33456e;"></div>
+    <div style="flex:10;background:#3b4c78;"></div><div style="flex:7;background:#c96f39;"></div>
+    <div style="flex:3;background:var(--gold);"></div><div style="flex:3;background:#33456e;"></div>
+  </div>
+  <div class="timelabels"><div style="flex:3">0-3 フック</div><div style="flex:5">3-8 共感</div><div style="flex:10">8-18 解決</div><div style="flex:7">18-25 根拠★</div><div style="flex:3">25-28</div><div style="flex:3">28-31</div></div>
+
+  <table class="sbt">
+    <tr><th style="width:8%;">時間</th><th style="width:12%;">シーン</th><th style="width:28%;">映像</th><th style="width:40%;">テロップ</th><th>5要素</th></tr>
+    <tr><td><b>0-3</b></td><td><b>フック</b></td><td>新海誠系静止画3枚パララックス（各1s）</td><td>「<b style="color:var(--orange)">撮影ゼロで、この映像。</b>」→「アニメ広告 月3万・配信込み BuzzPlus」</td><td><span class="tag t-orange">①③ Who+What</span></td></tr>
+    <tr><td><b>3-8</b></td><td><b>共感3連</b></td><td>クリエイター夜景画像</td><td>「見せられる素材がない…」「制作会社に頼むと¥500,000/月…」「作っても配信の仕方が…」</td><td><span class="tag t-blue">②</span></td></tr>
+    <tr><td><b>8-13</b></td><td><b>解決1</b></td><td>棒グラフ（この本が最も刺さる）</td><td>「<b>単発で終わるか、月3万で回り続けるか</b>」</td><td><span class="tag t-orange">③</span></td></tr>
+    <tr><td><b>13-18</b></td><td><b>解決2</b></td><td>静止画モンタージュ＋アニメ調カット</td><td>「新海誠系シネマ品質を、そのまま広告に」</td><td><span class="tag t-orange">③</span></td></tr>
+    <tr class="hl"><td><b>18-25</b></td><td><b>根拠★</b></td><td>静止画＋カウンター</td><td>「撮影・モデル・スタジオ 全部不要」「制作ジャンル7業種」「治療院C院のアニメ広告も、この品質」</td><td><span class="tag t-good">④</span></td></tr>
+    <tr><td><b>25-28</b></td><td><b>オファー</b></td><td>夜明け or 星空</td><td>オファーX/Y（共通差し替え式）</td><td><span class="tag t-orange">⑤</span></td></tr>
+    <tr><td><b>28-31</b></td><td><b>CTA</b></td><td>エンドカード</td><td>「BuzzPlus｜buzzplus-ai.com」「▶ 詳しくはこちら」</td><td><span class="tag t-gray">⑤</span></td></tr>
+  </table>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 6 : ④総合 ============ -->
+<section class="slide">
+  <div class="kicker">05 <span class="dim">｜ STORYBOARD 4/4</span></div>
+  <div style="height:16px"></div>
+  <div class="sb-head"><h2>④ 総合ブランディング版</h2><span class="sb-copy">「広告を、経営の武器に。」</span></div>
+  <div class="sb-meta">
+    <span class="tag t-gray">配信優先度 ★4（少予算・リタゲ/2次接触用）</span>
+    <span class="tag t-blue">Who：経営層全般（①〜③接触済みの比較検討層）</span>
+    <span class="tag t-gray">主素材：scene_10成長 / 07感情 / 12夜明け ＋ 6業種高速モンタージュ</span>
+  </div>
+  <div class="timebar">
+    <div style="flex:3;background:var(--orange);"></div><div style="flex:5;background:#33456e;"></div>
+    <div style="flex:10;background:#3b4c78;"></div><div style="flex:7;background:#c96f39;"></div>
+    <div style="flex:3;background:var(--gold);"></div><div style="flex:3;background:#33456e;"></div>
+  </div>
+  <div class="timelabels"><div style="flex:3">0-3 フック</div><div style="flex:5">3-8 共感</div><div style="flex:10">8-18 解決</div><div style="flex:7">18-25 根拠★</div><div style="flex:3">25-28</div><div style="flex:3">28-31</div></div>
+
+  <table class="sbt">
+    <tr><th style="width:8%;">時間</th><th style="width:12%;">シーン</th><th style="width:28%;">映像</th><th style="width:40%;">テロップ</th><th>5要素</th></tr>
+    <tr><td><b>0-3</b></td><td><b>フック</b></td><td>scene_10成長</td><td>「<b style="color:var(--orange)">広告を、経営の武器に。</b>」→「動画×配信 月3万から BuzzPlus」</td><td><span class="tag t-orange">①③ Who+What</span></td></tr>
+    <tr><td><b>3-8</b></td><td><b>共感3連</b></td><td>scene_07感情→09経営者</td><td>「何から手を付ければ…」「代理店は高い…」「自社運用は続かない…」</td><td><span class="tag t-blue">②</span></td></tr>
+    <tr><td><b>8-13</b></td><td><b>解決1</b></td><td>棒グラフ</td><td>共通比較「同じ¥3万でも、中身が違う」</td><td><span class="tag t-orange">③</span></td></tr>
+    <tr><td><b>13-18</b></td><td><b>解決2</b></td><td>建設→介護→飲食→美容→小売→コンサル（各0.8s）</td><td>「どの業種でも、この品質」</td><td><span class="tag t-orange">③</span></td></tr>
+    <tr class="hl"><td><b>18-25</b></td><td><b>根拠★</b></td><td>モンタージュ＋カウンター</td><td>「制作ジャンル7業種」「企画→制作→配信→改善 ワンチーム」</td><td><span class="tag t-good">④</span></td></tr>
+    <tr><td><b>25-28</b></td><td><b>オファー</b></td><td>scene_12夜明け</td><td>オファーX/Y（共通差し替え式）</td><td><span class="tag t-orange">⑤</span></td></tr>
+    <tr><td><b>28-31</b></td><td><b>CTA</b></td><td>エンドカード</td><td>「BuzzPlus｜buzzplus-ai.com」「▶ 詳しくはこちら」</td><td><span class="tag t-gray">⑤</span></td></tr>
+  </table>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 7 : 実績数字・限定枠 ============ -->
+<section class="slide">
+  <div class="kicker">06 <span class="dim">｜ EVIDENCE & OFFER</span></div>
+  <div style="height:20px"></div>
+  <h2>実績数字・限定枠の推奨値 <span style="font-size:27px;color:var(--muted);font-weight:600;">— 確度厳守（鈴木ルール#58：数字捏造NG）</span></h2>
+  <div class="rule"></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:36px;">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="card" style="border-left:6px solid var(--good);">
+        <div style="font-size:21px;color:var(--good);font-weight:800;margin-bottom:8px;">✓ 今すぐ使える（事実ベース）</div>
+        <div style="font-size:22px;color:var(--ink2);line-height:1.65;">「新海誠系シネマ品質」／「企画→制作→配信 ワンチーム」／「<b>制作ジャンル7業種</b>」<span style="color:var(--warn);">※数え方＝素材6業種＋実案件の治療院。カウント方法は要確認（確定まで「6業種以上」が安全）</span></div>
+      </div>
+      <div class="card" style="border-left:6px solid var(--warn);">
+        <div style="font-size:21px;color:var(--warn);font-weight:800;margin-bottom:8px;">？ 要ヒアリング（回答あれば18-25秒に差し込み）</div>
+        <div style="font-size:22px;color:var(--ink2);line-height:1.75;">0. 「7業種」の数え方確定（確定まで「6業種以上」）<br>1. 累計制作本数（「◯本以上」のレンジ表記可）<br>2. 実案件数・掲載許諾の取れる事例数<br>3. Meta広告の運用歴・運用実績</div>
+      </div>
+      <div class="card" style="border-left:6px solid var(--bad);">
+        <div style="font-size:21px;color:var(--bad);font-weight:800;margin-bottom:8px;">✗ 使わない（捏造NG）</div>
+        <div style="font-size:22px;color:var(--ink2);line-height:1.65;">来店率・応募数・CV率などの<b>効果数字</b>（実測データなし）。「導入◯店舗」も実数確認まで使用不可。</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="card" style="background:var(--orange-dim);border-color:rgba(255,139,71,.4);">
+        <div style="font-size:23px;font-weight:800;color:var(--orange);margin-bottom:10px;">限定枠：「今月5社限定」型を推奨</div>
+        <div style="font-size:22px;color:var(--ink);line-height:1.65;">「7月末まで」型は毎月テロップ改版が必要。<b>「今月◯社」型は月次リセットで使い回し可能</b>。枠数5社＝無料相談の対応負荷として現実的（最終決定はランバード側）。</div>
+      </div>
+      <div class="card">
+        <div style="font-size:21px;color:var(--muted);font-weight:700;margin-bottom:10px;">オファーA/B（全本共通・25-28秒差し替え式）</div>
+        <div style="font-size:22px;color:var(--ink2);line-height:1.75;">
+          <b>X</b>：「今月5社限定｜無料相談」<br>
+          <b>Y</b>：「今月5社限定｜無料相談で<b style="color:var(--orange)">動画サンプル1本プレゼント</b>」<br>
+          <span style="color:var(--muted);font-size:20px;">※ Yの納品ガード（契約後納品 or 相談時提示）は設計書§5「剥がれ問題」と同論点 → ランバード判断</span>
+        </div>
+      </div>
+      <div class="card">
+        <div style="font-size:21px;color:var(--muted);font-weight:700;margin-bottom:10px;">競合表記の一般化（推奨）</div>
+        <div style="font-size:22px;color:var(--ink2);line-height:1.65;">棒グラフの「アニメる」実名 → 「<b>単発制作サービス ¥30,000/本</b>」へ。Meta広告ポリシー・比較広告リスクを回避しつつ、「単発 vs 月額配信込み」の対比力は維持。</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 8 : 投下戦略（結論） ============ -->
+<section class="slide">
+  <div class="kicker">07 <span class="dim">｜ LAUNCH STRATEGY</span></div>
+  <div style="height:20px"></div>
+  <h2>投下戦略：<span class="accent">C案</span>「審査は一括・投下は段階・学習は1点集中」</h2>
+  <div class="rule"></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:18px;margin-bottom:20px;">
+    <div class="card" style="border-top:5px solid var(--bad);padding:20px 26px;">
+      <div style="font-size:23px;font-weight:800;margin-bottom:8px;"><span class="g-bad">A案：4本一気同時投下 ✗</span></div>
+      <div style="font-size:20px;color:var(--ink2);line-height:1.55;">¥3,500/日を業種別4セットに分割→<b>¥875/日/セット</b>。学習に必要な「50最適化イベント/週/セット」（Meta公式・確度A）にどの構成でも届かず<b>全セット共倒れ</b>。</div>
+    </div>
+    <div class="card" style="border-top:5px solid var(--warn);padding:20px 26px;">
+      <div style="font-size:23px;font-weight:800;margin-bottom:8px;"><span class="g-warn">B案：1本ずつ段階投下 △</span></div>
+      <div style="font-size:20px;color:var(--ink2);line-height:1.55;">方向は正しいが、Metaの<b>広告間自動配分（勝ちに予算が寄る）を使えず比較が2倍遅い</b>。審査を逐次通すと却下（7/8実績あり）のたび停止。</div>
+    </div>
+    <div class="card" style="border-top:5px solid var(--good);padding:20px 26px;background:var(--orange-dim);border-color:rgba(255,139,71,.4);">
+      <div style="font-size:23px;font-weight:800;margin-bottom:8px;"><span class="g-good">C案：集約ハイブリッド ◎ 推奨</span></div>
+      <div style="font-size:20px;color:var(--ink);line-height:1.55;"><b>審査＝4本+X/Y全部を停止状態で一括提出</b>／<b>配信＝①集客+②採用の2本から</b>1広告セットで開始→週次で負け入替（③投入）→④は8月までリタゲ保留。</div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:18px;">
+    <div class="card" style="padding:20px 28px;">
+      <div style="font-size:20px;color:var(--muted);font-weight:700;margin-bottom:8px;">予算の数理（なぜ集約か）</div>
+      <div style="font-size:21px;color:var(--ink2);line-height:1.6;">¥3,500/日＝週¥24,500 → CPC¥188で<b>約130クリック/週</b>。問い合わせ最適化で50件/週はCVR38%相当＝不可能 → <b>Learning Limited前提</b>。だから広告セットは割らず<b>1セットにシグナルを集約</b>し、同時2本（Meta推奨3-5本の少額側）で回す。業種の出し分けはオーディエンス分割でなく<b>冒頭テロップのWho明示</b>で行う（ブロード配信が主流・確度B）。</div>
+    </div>
+    <div class="card" style="padding:20px 28px;">
+      <div style="font-size:20px;color:var(--muted);font-weight:700;margin-bottom:8px;">配信構成</div>
+      <div style="font-size:20px;color:var(--ink2);line-height:1.7;font-family:monospace;">
+        キャンペーン（問い合わせ最適化）<br>
+        └ 広告セット×1（ブロード・¥3,500/日）<br>
+        　├ ①集客特化（LP勝者1本に固定）<br>
+        　├ ②採用特化（同上）<br>
+        　├ W2〜 ③アニメ（負け枠と入替）<br>
+        　└ W3〜 オファーY版を追加
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 9 : 週次プラン + KPI ============ -->
+<section class="slide">
+  <div class="kicker">08 <span class="dim">｜ WEEKLY PLAN & KPI</span></div>
+  <div style="height:20px"></div>
+  <h2>週次投下プラン ＋ KPI閾値</h2>
+  <div class="rule"></div>
+
+  <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:36px;">
+    <div>
+      <table>
+        <tr><th style="width:22%;">週</th><th>実施内容</th></tr>
+        <tr><td><b>W0</b> 7/14-15</td><td><b>全パターン停止状態で一括入稿→審査提出</b>＋現行A/B配信データで<b>LP勝者を確定</b>（8パターン化はNG・変数は1つずつ）</td></tr>
+        <tr><td><b>W1</b> 7/16-22</td><td>①＋②をONで配信開始→<b>7日間触らない</b>（編集は学習リセット・確度A）。現行広告は新広告の安定を確認してから停止（一気に止めない：鈴木ルール#35）</td></tr>
+        <tr><td><b>W2</b> 7/23-29</td><td>週次判定①：負け1本OFF→<b>③アニメON</b>（変更はこの1回にまとめる）</td></tr>
+        <tr><td><b>W3-4</b> 7/30-8/12</td><td>勝者2本体制→<b>オファーY（プレゼント）版を追加</b>しX/Y比較（同一動画・変数はオファーのみ）</td></tr>
+        <tr class="hl"><td><b>8月中旬〜</b></td><td>ピクセル母数≥1,000で<b>リタゲ広告セット追加（¥350-700/日＝全体の10-20%）</b>。④総合は<b>15秒短縮版に再編集して投入</b>（31秒のままは非推奨・経験則）</td></tr>
+      </table>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="card" style="padding:20px 26px;">
+        <div style="font-size:20px;color:var(--muted);font-weight:700;margin-bottom:8px;">KPI閾値（出典明示）</div>
+        <div style="font-size:20px;color:var(--ink2);line-height:1.7;">
+          足切り：消化¥5,000/本で <b>CTR&lt;2.0%</b>→入替（自社ベンチ2.75%の7割・経験則）<br>
+          勝ち：<b>CTR≥2.75% かつ CPC≤¥188</b>＋問い合わせ≥1件（自社実績基準）<br>
+          初期目標：<b>問い合わせ週2件（CPA≤¥12,250）</b>＝週予算の逆算値。<span class="g-warn">外部根拠なし→嶋田社長と合意して設定</span><br>
+          学習保護：変更は週1バッチ・予算±20%以内（確度A）／ CVはGA4クロスチェック（#35）
+        </div>
+      </div>
+      <div class="card" style="padding:20px 26px;">
+        <div style="font-size:20px;color:var(--muted);font-weight:700;margin-bottom:8px;">④リタゲ保留の根拠（試算）</div>
+        <div style="font-size:20px;color:var(--ink2);line-height:1.65;">LP到達 約17-18人/日 → <b>30日で約500-550人</b>。1,000人未満のカスタムオーディエンスは配信不安定（確度B）→ <b>90日窓で約1,600人が貯まる8月中旬が開始ライン</b>。新規:リタゲ＝70-80:20-30が小規模の定石（4,000広告分析・確度B）。</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 10 : 素材マッピング ============ -->
+<section class="slide">
+  <div class="kicker">09 <span class="dim">｜ ASSET MAP</span></div>
+  <div style="height:18px"></div>
+  <h2>素材マッピング <span style="font-size:27px;color:var(--muted);font-weight:600;">— 4本とも既存素材で制作可能（唯一の必須生成＝棒グラフ）</span></h2>
+  <div class="rule"></div>
+
+  <table style="table-layout:fixed;">
+    <tr>
+      <th style="width:9%;">時間</th><th style="width:23%;">① 集客特化</th><th style="width:23%;">② 採用特化</th><th style="width:23%;">③ アニメ特化</th><th>④ 総合</th>
+    </tr>
+    <tr style="font-size:19px;">
+      <td><b>0-3</b></td><td style="font-size:19px;">夜景店主PNG(11_10_33)→焼肉シズル(scene_03_v2)</td><td style="font-size:19px;">scene_01建設（働く姿・逆光）</td><td style="font-size:19px;">静止画3枚パララックス(11_10_33/11_11_59/11_26系)</td><td style="font-size:19px;">scene_10成長</td>
+    </tr>
+    <tr>
+      <td><b>3-8</b></td><td style="font-size:19px;">scene_09経営者（グレー調）</td><td style="font-size:19px;">scene_09の別カット※トリム位置を変える</td><td style="font-size:19px;">11_11_59（夜のPC作業）ズーム</td><td style="font-size:19px;">scene_07感情→scene_09（第3カット）</td>
+    </tr>
+    <tr class="hl">
+      <td><b>8-13</b></td><td colspan="4" style="font-size:19px;"><b style="color:var(--orange)">★生成棒グラフ（全本共用・指示書C-1）</b>＋下半分のみ本別（①焼肉 ②建設 ③静止画パン ④モンタージュ予告）</td>
+    </tr>
+    <tr>
+      <td><b>13-18</b></td><td style="font-size:19px;">焼肉→美容(scene_04_v2)→小売(scene_05_v3) 各1.6s</td><td style="font-size:19px;">建設→介護(scene_02)→scene_08creator</td><td style="font-size:19px;">anime_PV_30secからハイライト3カット⚠️</td><td style="font-size:19px;">6業種×0.8s（scene_01/02/03/04/05/06）</td>
+    </tr>
+    <tr>
+      <td><b>18-25</b></td><td style="font-size:19px;">スノーグース⚠️許諾＋居酒屋generated＋カウンター</td><td style="font-size:19px;">モンタージュ続き＋🟡生成C-2（任意）</td><td style="font-size:19px;">anime_PV_60sec別カット＋creator（制作過程の代替）</td><td style="font-size:19px;">グレーディング暗→明で「変化」表現</td>
+    </tr>
+    <tr>
+      <td><b>25-28</b></td><td colspan="4" style="font-size:19px;">scene_12_sunrise（③のみ星空静止画・ロゴなし）＋オファーX/Yテロップ差し替え式</td>
+    </tr>
+    <tr>
+      <td><b>28-31</b></td><td colspan="4" style="font-size:19px;"><b>buzz_plus_endcard_video.mp4</b> — BuzzPlus版完成品が既にあるため<b style="color:var(--good)">ロゴ差替作業は不要</b>（11_29_35.png / scene_13_endcard.mp4 は使用禁止）</td>
+    </tr>
+  </table>
+  <div style="height:14px"></div>
+  <div style="font-size:19px;color:var(--muted);">全素材: 音声除去→統一BGM（ffmpeg一括下ごしらえ）／テロップは全て編集で後載せ（生成に文字を書かせない）／⚠️＝要目視確認（詳細は素材マッピングMD）</div>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 11 : 不足素材 ============ -->
+<section class="slide">
+  <div class="kicker">10 <span class="dim">｜ MISSING ASSETS</span></div>
+  <div style="height:18px"></div>
+  <h2>不足素材と対応 <span style="font-size:27px;color:var(--muted);font-weight:600;">— 撮影が必要なものはゼロ</span></h2>
+  <div class="rule"></div>
+
+  <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:32px;">
+    <div style="display:flex;flex-direction:column;gap:13px;">
+      <div class="card" style="border-left:6px solid var(--bad);padding:16px 26px;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:5px;"><span class="g-bad">🔴 必須生成①</span>　棒グラフアニメ（全本8-13秒）</div>
+        <div style="font-size:20px;color:var(--ink2);line-height:1.5;">どのフォルダにも存在しない＝<b>無いと4本とも組めない</b>。HTML/CSSアニメ→画面収録で生成（1個作り4本共用）。Fable/Veoに文字・価格を書かせるのはNG（数字化けリスク）。仕様書C-1添付・<b>次依頼で実装可能</b></div>
+      </div>
+      <div class="card" style="border-left:6px solid var(--warn);padding:16px 26px;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:5px;"><span class="g-warn">🟡 あれば強い</span>　②採用「スマホで動画を見る20代」</div>
+        <div style="font-size:20px;color:var(--ink2);line-height:1.5;">応募者・面接シーンは手元にゼロ。ただし絵コンテは「働く姿」設計のため<b>無くても成立</b>。入れる場合はVeo 3 Fast指示書C-2（プロンプト付き・実写風ルール準拠）で1カットのみ</div>
+      </div>
+      <div class="card" style="border-left:6px solid var(--good);padding:16px 26px;">
+        <div style="font-size:22px;font-weight:800;margin-bottom:5px;"><span class="g-good">🟢 代替で足りる（生成不要）</span></div>
+        <div style="font-size:20px;color:var(--ink2);line-height:1.6;">③制作過程 → scene_08_creator＋11_11_59で「作る人」の画 ／ ④経営者の変化 → scene_10_growth＋グレーディング暗→明 ／ ①小売 → scene_05_retail_v3で足りる（使用計2.4秒）</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:13px;">
+      <div class="card" style="padding:16px 26px;">
+        <div style="font-size:20px;color:var(--muted);font-weight:700;margin-bottom:6px;">⚠️ 制作前の要目視確認（3点）</div>
+        <div style="font-size:20px;color:var(--ink2);line-height:1.65;">1. `videos/scene_01〜20`（19本）は中身未確認→使えるカットがあれば昇格<br>2. <b>スノーグース＝実在店舗名</b>→掲載許諾確認まで事例枠に使わない<br>3. 11_26系8枚から③フック用の1枚選定</div>
+      </div>
+      <div class="card" style="background:var(--orange-dim);border-color:rgba(255,139,71,.4);padding:16px 26px;">
+        <div style="font-size:20px;color:var(--orange);font-weight:800;margin-bottom:6px;">🚫 使用禁止素材</div>
+        <div style="font-size:20px;color:var(--ink);line-height:1.6;">11_29_35.png／scene_13_endcard.mp4（RUNBIRDロゴ入り）→ <b>buzz_plus_endcard_video.mp4</b>があるためロゴ差替という作業自体が消滅</div>
+      </div>
+      <div class="card" style="padding:16px 26px;">
+        <div style="font-size:20px;color:var(--muted);font-weight:700;margin-bottom:6px;">共通下ごしらえ</div>
+        <div style="font-size:20px;color:var(--ink2);line-height:1.6;">全素材: ffmpegで音声除去＋1080×1920＋30fps統一 → BGMはフリー音源1曲を4本で共用（世界観統一・ナレーションなし方針維持）</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 12 : 制作パス ============ -->
+<section class="slide">
+  <div class="kicker">11 <span class="dim">｜ PRODUCTION PATH</span></div>
+  <div style="height:18px"></div>
+  <h2>制作パス比較 → <span class="accent">パスD（ハイブリッド）推奨</span></h2>
+  <div class="rule"></div>
+
+  <table style="margin-bottom:18px;">
+    <tr><th style="width:20%;">パス</th><th style="width:31%;">メリット</th><th style="width:31%;">デメリット</th><th>所要目安※経験則</th></tr>
+    <tr><td><b>A: Premiere単独</b></td><td style="font-size:20px;">テロップ精度・品質最高。X/Yはレイヤー切替で確実</td><td style="font-size:20px;">手作業量が最大</td><td style="font-size:20px;">0.5-1日/本×4＝2-4日</td></tr>
+    <tr><td><b>B: Fable単独</b></td><td style="font-size:20px;">最速・構成反復が楽</td><td style="font-size:20px;">秒単位テロップ精度・13素材の取り回し・8入稿の整合性管理が苦手</td><td style="font-size:20px;">0.5-1日＋修正往復</td></tr>
+    <tr><td><b>C: Python自動化</b></td><td style="font-size:20px;">再現性最強・8入稿量産をパラメータ化</td><td style="font-size:20px;">初期実装コスト・細部はPremiereに劣る</td><td style="font-size:20px;">実装1日＋量産数分</td></tr>
+    <tr class="hl"><td><b style="color:var(--orange)">D: ハイブリッド ◎</b></td><td style="font-size:20px;">品質と整合性の両立・既存.prproj資産活用</td><td style="font-size:20px;">工程が3種にまたがる（各工程は単純）</td><td style="font-size:20px;"><b>計2-3日で8入稿完成</b></td></tr>
+  </table>
+
+  <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px;">
+    <div class="card" style="background:var(--orange-dim);border-color:rgba(255,139,71,.4);padding:20px 28px;">
+      <div style="font-size:21px;color:var(--ink);line-height:1.65;"><b style="color:var(--orange)">パスDの流れ：</b>①ffmpegで全素材下ごしらえ（音声除去・正規化）→ ②棒グラフはHTML生成→収録 → ③Premiere（縦動画.prproj）で4本組み・テロップ → ④X/Y差はテロップレイヤー切替のみ→8回書き出し。<b>8入稿の差し替えミスが最大リスク</b>なので、差分をレイヤー1枚に閉じ込めるのが肝。</div>
+    </div>
+    <div class="card" style="padding:20px 28px;">
+      <div style="font-size:20px;color:var(--muted);font-weight:700;margin-bottom:8px;">スケジュール整合</div>
+      <div style="font-size:20px;color:var(--ink2);line-height:1.65;">W0（7/14-15）一括審査提出に向け: 7/13夜 棒グラフ生成 → 7/14 ①②組み → 7/15 ③④組み＋X/Y書き出し。月次運用が始まったらパスCへの移行を8月以降に検討。</div>
+    </div>
+  </div>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書</span></div>
+</section>
+
+<!-- ============ SLIDE 13 : スケジュール + GO ============ -->
+<section class="slide">
+  <div class="kicker">12 <span class="dim">｜ SCHEDULE & GO</span></div>
+  <div style="height:20px"></div>
+  <h2>Veo本制作スケジュール ＋ <span class="accent">GO判断依頼</span></h2>
+  <div class="rule"></div>
+
+  <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:40px;">
+    <div>
+      <table>
+        <tr><th style="width:22%;">日程</th><th>作業</th></tr>
+        <tr><td><b>7/14</b></td><td>テロップ・構成FIX（<b>鈴木さん承認</b>）＋実績ヒアリング回答反映</td></tr>
+        <tr><td><b>7/15-18</b></td><td><b>①②③ 優先3本を制作</b>（Veo/Fable・既存素材組み込み）</td></tr>
+        <tr><td><b>7/19-20</b></td><td>④制作＋全本レビュー（鈴木ルール照合・匿名化最終チェック）</td></tr>
+        <tr class="hl"><td><b>7/21〜</b></td><td><b>配信開始（投下戦略スライド07-08準拠）</b>。審査は全パターン一括提出済み→①②の2本から段階投下、④はリタゲ母数が貯まる8月中旬まで保留</td></tr>
+      </table>
+      <div style="height:20px"></div>
+      <div class="card" style="background:var(--orange-dim);border-color:rgba(255,139,71,.4);">
+        <div style="font-size:22px;color:var(--ink);line-height:1.6;"><b style="color:var(--orange)">期待値：</b>v2は仲野メソッド採点50/100。v3は①④⑤を構造で充填し<b>全本80点超の設計</b>。CV弱（クリック◎滞在◎）に対し「行動する理由」＝根拠7秒＋限定オファーで直接応答。</div>
+      </div>
+    </div>
+
+    <div class="card" style="align-self:start;">
+      <div style="font-size:23px;color:var(--muted);font-weight:700;margin-bottom:14px;">GO判断で決めていただきたいこと（鈴木さん）</div>
+      <div style="font-size:23px;color:var(--ink2);line-height:2.0;">
+        <b>0.</b> 投下戦略C案（2本開始・週次入替・④保留）の承認<br>
+        <b>1.</b> 4本構成（⑤はオファーA/Bに統合）の承認<br>
+        <b>2.</b> 限定枠「今月5社」の数字確定<br>
+        <b>3.</b> 実績ヒアリング3問の回答<br>
+        　　（制作本数／実案件数／運用歴）<br>
+        <b>4.</b> プレゼントYの納品ガード方針<br>
+        　　（契約後納品 or 相談時提示）
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>BuzzPlus 広告動画 v3 提案書 ｜ 仲野メソッド5要素・全本充足設計</span></div>
+</section>
+
+</div>
+
+<div id="dots"></div>
+<div id="nav">
+  <span id="pageno">1 / 8</span>
+  <button id="prev" aria-label="前へ">←</button>
+  <button id="next" aria-label="次へ">→</button>
+</div>
+
+<script>
+document.querySelectorAll(".stars").forEach(el=>{
+  const n=+el.dataset.stars||50;
+  for(let i=0;i<n;i++){
+    const s=document.createElement("i");
+    const r=(i*2654435761)%1000/1000, r2=(i*40503)%1000/1000, r3=(i*9973)%1000/1000;
+    s.style.left=(r*100)+"%"; s.style.top=(r2*100)+"%";
+    s.style.opacity=(0.15+r3*0.6).toFixed(2);
+    s.style.transform="scale("+(0.6+r3*1.4).toFixed(2)+")";
+    el.appendChild(s);
+  }
+});
+const slides=[...document.querySelectorAll(".slide")];
+let cur=0;
+const dots=document.getElementById("dots");
+slides.forEach((_,i)=>{const d=document.createElement("span");d.onclick=()=>go(i);dots.appendChild(d);});
+function fit(){
+  const sc=Math.min(innerWidth/1920, innerHeight/1080);
+  slides.forEach(s=>{s.style.transform="scale("+sc+")";s.style.transformOrigin="center center";});
+}
+function go(i){
+  cur=Math.max(0,Math.min(slides.length-1,i));
+  slides.forEach((s,j)=>s.classList.toggle("active",j===cur));
+  [...dots.children].forEach((d,j)=>d.classList.toggle("on",j===cur));
+  document.getElementById("pageno").textContent=(cur+1)+" / "+slides.length;
+}
+document.getElementById("prev").onclick=()=>go(cur-1);
+document.getElementById("next").onclick=()=>go(cur+1);
+addEventListener("keydown",e=>{
+  if(e.key==="ArrowRight"||e.key==="PageDown"||e.key===" ")go(cur+1);
+  if(e.key==="ArrowLeft"||e.key==="PageUp")go(cur-1);
+});
+addEventListener("resize",fit);
+fit();go(0);
+</script>
+</body>
+</html>
