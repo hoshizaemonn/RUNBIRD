@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus ②採用 動画→3ステップ問い合わせ フローモックアップ</title>
+<style>
+:root {
+  --bg: #0a0e12;
+  --card: #1a2028;
+  --border: #2a3441;
+  --text: #e8ecf0;
+  --sub: #8a9ba8;
+  --accent: #ff8b47;
+  --meta-blue: #1877f2;
+  --meta-purple: #833ab4;
+  --meta-orange: #f77737;
+  --meta-red: #f02849;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; background: var(--bg); color: var(--text); padding: 20px 12px; min-height: 100vh; }
+.container { max-width: 900px; margin: 0 auto; }
+h1 { font-size: 22px; margin-bottom: 6px; border-left: 5px solid var(--accent); padding-left: 12px; }
+.meta { color: var(--sub); font-size: 12px; margin-bottom: 20px; }
+.instructions { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 16px; font-size: 13px; color: var(--sub); margin-bottom: 20px; }
+.instructions strong { color: var(--accent); }
+
+/* Phone mockup */
+.phone-container { display: flex; justify-content: center; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
+.phone {
+  width: 375px;
+  height: 750px;
+  background: #000;
+  border: 8px solid #1a1a1a;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 2px #2a2a2a;
+  flex-shrink: 0;
+}
+.notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 24px; background: #000; border-radius: 0 0 16px 16px; z-index: 100; }
+.status-bar { position: absolute; top: 0; left: 0; right: 0; height: 40px; padding: 12px 24px 0; display: flex; justify-content: space-between; align-items: center; z-index: 50; font-size: 12px; color: white; font-weight: 600; }
+
+/* Instagram Feed style */
+.ig-header { position: absolute; top: 40px; left: 0; right: 0; padding: 10px 12px; display: flex; align-items: center; gap: 10px; z-index: 40; background: rgba(0,0,0,0.4); backdrop-filter: blur(6px); }
+.ig-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(45deg, var(--meta-purple), var(--meta-orange), var(--meta-red)); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 11px; }
+.ig-name { color: white; font-weight: 600; font-size: 13px; }
+.ig-sponsored { color: rgba(255,255,255,0.7); font-size: 10px; }
+
+/* Video */
+.video-wrap { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+video { width: 100%; height: 100%; object-fit: cover; background: #000; }
+
+/* Bottom CTA */
+.cta-bar {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 12px;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(10px);
+  z-index: 60;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.cta-btn {
+  background: var(--meta-blue);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  transition: transform 0.15s, background 0.15s;
+  animation: pulse-cta 2s ease-in-out infinite;
+}
+.cta-btn:hover, .cta-btn:active { background: #0d5cbd; transform: scale(0.98); }
+@keyframes pulse-cta {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(24,119,242,0.5); }
+  50% { box-shadow: 0 0 0 10px rgba(24,119,242,0); }
+}
+
+/* Form Modal */
+.modal-overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 200;
+  display: none;
+  align-items: flex-end;
+  animation: fade-in 0.3s ease-out;
+}
+.modal-overlay.active { display: flex; }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+.form-panel {
+  width: 100%;
+  height: 92%;
+  background: white;
+  border-radius: 20px 20px 0 0;
+  color: #111;
+  padding: 20px;
+  animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+@keyframes slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+.form-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px;
+}
+.back-btn, .close-btn {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(0,0,0,0.05);
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  transition: background 0.15s;
+}
+.back-btn:hover, .close-btn:hover { background: rgba(0,0,0,0.1); }
+
+.progress-bar { display: flex; gap: 4px; flex: 1; margin: 0 12px; }
+.progress-seg { flex: 1; height: 3px; background: #e0e0e0; border-radius: 2px; overflow: hidden; position: relative; }
+.progress-seg.active::after {
+  content: '';
+  position: absolute; top: 0; left: 0; bottom: 0;
+  width: 100%;
+  background: linear-gradient(90deg, var(--meta-orange), var(--meta-red), var(--meta-purple));
+  animation: progress-fill 0.4s ease-out;
+}
+@keyframes progress-fill { from { width: 0; } to { width: 100%; } }
+
+.form-content { flex: 1; overflow-y: auto; }
+.form-title { font-size: 17px; font-weight: 700; margin-bottom: 16px; line-height: 1.4; }
+.form-title .required { font-size: 12px; color: var(--meta-red); margin-left: 4px; }
+.form-subtitle { font-size: 13px; color: #666; margin-bottom: 16px; line-height: 1.5; }
+
+.radio-option {
+  padding: 14px 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: border-color 0.15s, background 0.15s;
+  font-size: 14px;
+  animation: option-in 0.35s ease-out both;
+}
+.radio-option:nth-child(1) { animation-delay: 0.05s; }
+.radio-option:nth-child(2) { animation-delay: 0.1s; }
+.radio-option:nth-child(3) { animation-delay: 0.15s; }
+.radio-option:nth-child(4) { animation-delay: 0.2s; }
+.radio-option:nth-child(5) { animation-delay: 0.25s; }
+@keyframes option-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.radio-option:hover { border-color: var(--meta-blue); background: #f5faff; }
+.radio-option.selected { border-color: var(--meta-blue); background: #eef5ff; }
+.radio-circle {
+  width: 20px; height: 20px; border-radius: 50%; border: 2px solid #ccc;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.radio-option.selected .radio-circle {
+  border-color: var(--meta-blue);
+}
+.radio-option.selected .radio-circle::after {
+  content: '';
+  width: 10px; height: 10px; border-radius: 50%; background: var(--meta-blue);
+}
+
+.text-input {
+  width: 100%;
+  padding: 16px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+  animation: option-in 0.3s ease-out both;
+}
+.text-input:focus { border-color: var(--meta-blue); }
+.text-input.filled {
+  border-color: #22c55e;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='9' fill='%2322c55e'/%3E%3Cpath d='M6 10l3 3 5-6' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+
+.input-label { font-size: 11px; color: #999; margin-bottom: 4px; padding-left: 4px; }
+.input-wrap { margin-bottom: 12px; animation: option-in 0.3s ease-out both; }
+.input-wrap:nth-child(2) { animation-delay: 0.08s; }
+.input-wrap:nth-child(3) { animation-delay: 0.16s; }
+
+.privacy-text {
+  font-size: 11px;
+  color: #666;
+  line-height: 1.6;
+  margin-top: 12px;
+  padding: 0 4px;
+}
+.privacy-text a { color: var(--meta-blue); text-decoration: none; }
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--meta-blue);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background 0.15s;
+}
+.submit-btn:hover { background: #0d5cbd; }
+.submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+/* Success state */
+.success-panel {
+  padding: 40px 20px;
+  text-align: center;
+  animation: option-in 0.5s ease-out;
+}
+.success-icon {
+  width: 80px; height: 80px; border-radius: 50%;
+  background: #22c55e;
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px; color: white;
+  animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+@keyframes pop-in {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+.success-title { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #111; }
+.success-msg { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 20px; }
+
+/* Info panel */
+.info-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 340px;
+  flex-shrink: 0;
+}
+.info-panel h2 { font-size: 15px; color: var(--accent); margin-bottom: 12px; }
+.info-panel ul { list-style: none; padding: 0; }
+.info-panel li { font-size: 12px; color: var(--sub); margin: 8px 0; padding-left: 18px; position: relative; }
+.info-panel li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+.info-panel .step { display: flex; align-items: center; gap: 10px; padding: 10px; background: rgba(255,139,71,0.1); border-radius: 8px; margin: 8px 0; font-size: 12px; }
+.step-num { background: var(--accent); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; flex-shrink: 0; }
+
+@media (max-width: 900px) {
+  .info-panel { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>BuzzPlus ②採用 動画 → 3ステップ問い合わせ フローモックアップ</h1>
+<p class="meta">2026-07-14 ｜ Meta広告 Instant Forms 導線イメージ（アニメる方式トレース）</p>
+
+<div class="instructions">
+<strong>💡 使い方</strong> ： 下のスマホ画面で動画が自動再生されます。「詳しくはこちら」をタップすると、アニメる方式の3ステップフォームが下からポンっと出てきます。実際のMeta広告 Instant Formsの UX を再現しています。
+</div>
+
+<div class="phone-container">
+
+  <!-- Phone mockup -->
+  <div class="phone">
+    <div class="notch"></div>
+    <div class="status-bar">
+      <span>14:08</span>
+      <span>•••</span>
+    </div>
+
+    <!-- Instagram header -->
+    <div class="ig-header">
+      <div class="ig-avatar">B+</div>
+      <div>
+        <div class="ig-name">buzzplus_ai</div>
+        <div class="ig-sponsored">Sponsored</div>
+      </div>
+    </div>
+
+    <!-- Video -->
+    <div class="video-wrap">
+      <video id="feed-video" autoplay muted loop playsinline>
+        <source src="recruit_video.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="cta-bar" id="cta-bar">
+      <div class="cta-btn" onclick="openForm()">詳しくはこちら ▶</div>
+    </div>
+
+    <!-- Form Modal -->
+    <div class="modal-overlay" id="form-modal">
+      <div class="form-panel">
+
+        <!-- STEP 1 -->
+        <div class="form-view" id="step-1">
+          <div class="form-header">
+            <div style="width:32px;"></div>
+            <div class="progress-bar">
+              <div class="progress-seg active"></div>
+              <div class="progress-seg"></div>
+              <div class="progress-seg"></div>
+            </div>
+            <button class="close-btn" onclick="closeForm()">✕</button>
+          </div>
+          <div class="form-content">
+            <div class="form-title">現在の動画広告における一番の課題を教えてください <span class="required">（必須）</span></div>
+            <div class="radio-option" onclick="selectOption(this, '制作コストを抑えたい')">
+              <span>動画制作の予算を抑えたい</span>
+              <div class="radio-circle"></div>
+            </div>
+            <div class="radio-option" onclick="selectOption(this, '撮影不要で作りたい')">
+              <span>撮影不要で作りたい</span>
+              <div class="radio-circle"></div>
+            </div>
+            <div class="radio-option" onclick="selectOption(this, '制作+配信をまとめて')">
+              <span>動画制作+SNS広告配信をまとめて任せたい</span>
+              <div class="radio-circle"></div>
+            </div>
+            <div class="radio-option" onclick="selectOption(this, 'アニメも実写も')">
+              <span>アニメも実写も両方試したい</span>
+              <div class="radio-circle"></div>
+            </div>
+            <div class="radio-option" onclick="selectOption(this, 'その他')">
+              <span>その他（情報収集など）</span>
+              <div class="radio-circle"></div>
+            </div>
+            <button class="submit-btn" id="step1-next" disabled onclick="goStep(2)">次へ</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="form-view" id="step-2" style="display:none;">
+          <div class="form-header">
+            <button class="back-btn" onclick="goStep(1)">‹</button>
+            <div class="progress-bar">
+              <div class="progress-seg active"></div>
+              <div class="progress-seg active"></div>
+              <div class="progress-seg"></div>
+            </div>
+            <button class="close-btn" onclick="closeForm()">✕</button>
+          </div>
+          <div class="form-content">
+            <div class="form-title">業種を教えてください（任意）</div>
+            <div class="radio-option" onclick="selectOption(this, '飲食')"><span>飲食</span><div class="radio-circle"></div></div>
+            <div class="radio-option" onclick="selectOption(this, '美容')"><span>美容</span><div class="radio-circle"></div></div>
+            <div class="radio-option" onclick="selectOption(this, '小売')"><span>小売</span><div class="radio-circle"></div></div>
+            <div class="radio-option" onclick="selectOption(this, '治療院')"><span>治療院・整骨院</span><div class="radio-circle"></div></div>
+            <div class="radio-option" onclick="selectOption(this, '採用')"><span>採用（BtoB）</span><div class="radio-circle"></div></div>
+            <div class="radio-option" onclick="selectOption(this, 'その他業種')"><span>その他</span><div class="radio-circle"></div></div>
+            <button class="submit-btn" id="step2-next" onclick="goStep(3)">次へ</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="form-view" id="step-3" style="display:none;">
+          <div class="form-header">
+            <button class="back-btn" onclick="goStep(2)">‹</button>
+            <div class="progress-bar">
+              <div class="progress-seg active"></div>
+              <div class="progress-seg active"></div>
+              <div class="progress-seg active"></div>
+            </div>
+            <button class="close-btn" onclick="closeForm()">✕</button>
+          </div>
+          <div class="form-content">
+            <div class="form-title">連絡先情報</div>
+            <div class="form-subtitle">ご入力いただいた情報は、担当者からのご連絡およびお見積りの作成にのみ使用いたします。</div>
+            <div class="input-wrap">
+              <div class="input-label">会社名</div>
+              <input type="text" class="text-input" placeholder="株式会社◯◯" oninput="checkFilled(this)">
+            </div>
+            <div class="input-wrap">
+              <div class="input-label">名前</div>
+              <input type="text" class="text-input filled" value="d.hoshizaki">
+            </div>
+            <div class="input-wrap">
+              <div class="input-label">仕事用メールアドレス</div>
+              <input type="email" class="text-input" placeholder="you@example.com" oninput="checkFilled(this)">
+            </div>
+            <div class="privacy-text">
+              次に進むことで、BuzzPlusにあなたの情報を送信することに同意し、弊社の<a href="#">プライバシーポリシー</a>に同意するものとします。
+            </div>
+            <button class="submit-btn" onclick="submitForm()">送信する</button>
+          </div>
+        </div>
+
+        <!-- Success -->
+        <div class="form-view" id="step-success" style="display:none;">
+          <div class="form-header">
+            <div style="width:32px;"></div>
+            <div style="flex:1;"></div>
+            <button class="close-btn" onclick="closeForm()">✕</button>
+          </div>
+          <div class="success-panel">
+            <div class="success-icon">✓</div>
+            <div class="success-title">お問い合わせ<br>ありがとうございました！</div>
+            <div class="success-msg">
+              2営業日以内にBuzzPlus担当者よりご連絡します。<br><br>
+              まずは資料ダウンロードもどうぞ。
+            </div>
+            <button class="submit-btn" style="background:var(--accent);" onclick="closeForm()">サービス紹介資料をダウンロード</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Info panel -->
+  <div class="info-panel">
+    <h2>📱 フロー説明</h2>
+    <div class="step"><div class="step-num">1</div>動画視聴 → 「詳しくはこちら」タップ</div>
+    <div class="step"><div class="step-num">2</div>STEP1: 課題選択（5択・必須）</div>
+    <div class="step"><div class="step-num">3</div>STEP2: 業種選択（任意）</div>
+    <div class="step"><div class="step-num">4</div>STEP3: 会社名・氏名・メール</div>
+    <div class="step"><div class="step-num">5</div>送信 → サンキュー</div>
+
+    <h2 style="margin-top:20px;">🎯 アニメる方式との違い</h2>
+    <ul>
+      <li>STEP2「業種選択」を追加（動画別の集客業種を計測）</li>
+      <li>STEP1選択肢をBuzzPlus用にカスタマイズ</li>
+      <li>サンキュー画面に資料DL導線を追加</li>
+    </ul>
+
+    <h2 style="margin-top:20px;">💡 期待効果（仮説・要実測）</h2>
+    <ul>
+      <li>LP離脱ゼロ（広告内で完結）</li>
+      <li>Meta自動入力でユーザー入力最小化</li>
+      <li>アニメる本家も採用中の業界標準UX</li>
+    </ul>
+  </div>
+
+</div>
+
+<div style="max-width:900px; margin:32px auto 0; padding:16px; background:var(--card); border-radius:8px; font-size:12px; color:var(--sub);">
+  <strong style="color:var(--accent);">⚠️ 注意</strong> — これはUX確認用モックアップです。実配信では Meta広告マネージャの Instant Forms 機能を使います。動画は ②採用 案（v3_03_anime.mp4）を配置しています。
+</div>
+
+</div>
+
+<script>
+const modal = document.getElementById('form-modal');
+let currentStep = 1;
+
+function openForm() {
+  modal.classList.add('active');
+  goStep(1);
+}
+
+function closeForm() {
+  modal.classList.remove('active');
+  setTimeout(() => {
+    // Reset
+    document.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+    document.getElementById('step1-next').disabled = true;
+    goStep(1);
+  }, 300);
+}
+
+function goStep(step) {
+  document.querySelectorAll('.form-view').forEach(v => v.style.display = 'none');
+  if (step === 'success') {
+    document.getElementById('step-success').style.display = 'block';
+  } else {
+    document.getElementById('step-' + step).style.display = 'block';
+    currentStep = step;
+  }
+}
+
+function selectOption(el, value) {
+  // Only within current step
+  const parent = el.parentElement;
+  parent.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+
+  if (currentStep === 1) {
+    document.getElementById('step1-next').disabled = false;
+  }
+}
+
+function checkFilled(input) {
+  if (input.value.trim().length > 0) {
+    input.classList.add('filled');
+  } else {
+    input.classList.remove('filled');
+  }
+}
+
+function submitForm() {
+  goStep('success');
+}
+</script>
+
+</body>
+</html>
