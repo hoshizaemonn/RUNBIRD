@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>hair salon TUMURIBI 集客診断図解 | ランバード</title>
+<title>hair salon TUMURIBI 集客診断図解 v2 | ランバード</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7fa; color: #222; line-height: 1.7; padding: 20px; }
@@ -12,50 +12,67 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
 .hero h1 { font-size: 28px; margin-bottom: 12px; letter-spacing: 0.02em; }
 .hero .subtitle { font-size: 16px; opacity: 0.9; }
 .hero .date { font-size: 14px; opacity: 0.8; margin-top: 12px; }
+.hero .badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 12px; font-size: 12px; margin-top: 10px; }
 
 .section { background: white; padding: 30px; border-radius: 14px; margin-bottom: 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
 .section-title { font-size: 22px; font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid #0d47a1; display: flex; align-items: center; gap: 12px; }
 .section-title .num { background: #0d47a1; color: white; width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 18px; }
 
+/* 店舗プロフィール */
+.profile-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 12px; }
+.profile-item { background: #f9fbfd; padding: 12px 14px; border-radius: 8px; border-left: 3px solid #1976d2; font-size: 14px; }
+.profile-item .label { color: #666; font-size: 12px; display: block; margin-bottom: 2px; }
+.profile-item .value { font-weight: 600; }
+.profile-item .ok { color: #2e7d32; }
+.profile-item .warn { color: #e65100; }
+.profile-item .bad { color: #c62828; }
+
 /* 結論バナー */
 .conclusion-banner { background: linear-gradient(135deg, #e3f2fd 0%, #fff 100%); border-left: 6px solid #0d47a1; padding: 24px; border-radius: 10px; margin-bottom: 20px; }
 .conclusion-banner h2 { color: #0d47a1; font-size: 20px; margin-bottom: 14px; }
-.conclusion-banner .point { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+.conclusion-banner .point { display: flex; gap: 12px; margin-bottom: 12px; align-items: flex-start; }
 .conclusion-banner .point-num { background: #0d47a1; color: white; min-width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; }
 .conclusion-banner .point-text { flex: 1; font-size: 15px; }
 
 /* ファネル図（動線断絶） */
 .funnel { display: flex; flex-direction: column; align-items: center; margin: 20px 0; }
-.funnel-step { width: 100%; max-width: 700px; padding: 18px 24px; margin-bottom: 8px; border-radius: 10px; font-weight: 600; text-align: center; position: relative; }
+.funnel-step { width: 100%; max-width: 720px; padding: 18px 24px; margin-bottom: 8px; border-radius: 10px; font-weight: 600; text-align: center; }
 .funnel-good { background: linear-gradient(90deg, #43a047 0%, #66bb6a 100%); color: white; }
 .funnel-mid { background: linear-gradient(90deg, #fdd835 0%, #ffee58 100%); color: #333; }
-.funnel-bad { background: linear-gradient(90deg, #e53935 0%, #ef5350 100%); color: white; }
 .funnel-arrow { font-size: 24px; color: #999; margin: 4px 0; }
 .funnel-step .metric { display: block; font-size: 13px; font-weight: 400; margin-top: 4px; opacity: 0.95; }
-.funnel-break { border: 3px dashed #e53935; background: #ffebee; color: #c62828; padding: 20px; border-radius: 10px; margin: 10px 0; text-align: center; font-weight: 700; }
-.funnel-break .big { font-size: 20px; display: block; margin-bottom: 6px; }
-.funnel-loss { background: #fce4ec; color: #ad1457; padding: 14px; border-radius: 8px; text-align: center; font-weight: 600; margin-top: 8px; }
+.funnel-break { border: 3px dashed #e53935; background: #ffebee; color: #c62828; padding: 20px; border-radius: 10px; margin: 10px 0; text-align: center; font-weight: 700; width: 100%; max-width: 720px; }
+.funnel-break .big { font-size: 20px; display: block; margin-bottom: 8px; }
+.funnel-break ul { text-align: left; margin: 10px 20px 0; font-weight: 500; font-size: 14px; }
+.funnel-break li { margin: 4px 0; }
+.funnel-loss { background: #fce4ec; color: #ad1457; padding: 14px; border-radius: 8px; text-align: center; font-weight: 600; margin-top: 8px; width: 100%; max-width: 720px; }
+
+/* 4つの詰まり */
+.blocker-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 20px 0; }
+.blocker-card { background: #fff8f6; border: 2px solid #ffab91; padding: 16px 18px; border-radius: 10px; }
+.blocker-card .rank { display: inline-block; background: #d84315; color: white; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+.blocker-card h4 { color: #bf360c; font-size: 15px; margin-bottom: 6px; }
+.blocker-card .desc { font-size: 13px; color: #555; line-height: 1.6; }
+.blocker-card .fix { background: #e8f5e9; color: #2e7d32; padding: 8px 10px; border-radius: 6px; font-size: 12px; margin-top: 8px; font-weight: 600; }
 
 /* 競合ベンチマーク表 */
 .bench-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
 .bench-table th, .bench-table td { padding: 12px 10px; text-align: center; border: 1px solid #e0e0e0; }
 .bench-table th { background: #0d47a1; color: white; font-weight: 600; }
-.bench-table .highlight { background: #fff3e0; }
+.bench-table .highlight { background: #fff3e0; font-weight: 700; }
 .bench-table .tumuribi-row { background: #ffebee; }
 .bench-table .tumuribi-row td { font-weight: 700; }
-.bench-table .empty { color: #e53935; font-weight: 700; }
 .bench-table .weakpoint { color: #c62828; }
+.bench-table .strongpoint { color: #2e7d32; font-weight: 700; }
 
-/* 入口マップ */
-.entry-map { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
-.entry-col { padding: 20px; border-radius: 10px; }
-.entry-current { background: #ffebee; border: 2px solid #e53935; }
-.entry-target { background: #e8f5e9; border: 2px solid #43a047; }
-.entry-col h3 { font-size: 16px; margin-bottom: 12px; text-align: center; padding-bottom: 8px; border-bottom: 2px solid; }
-.entry-current h3 { color: #c62828; border-color: #e53935; }
-.entry-target h3 { color: #2e7d32; border-color: #43a047; }
-.entry-item { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 14px; }
-.entry-item .status { min-width: 24px; }
+/* EARTH被せカード */
+.earth-alert { background: #fff3e0; border: 2px solid #ff9800; padding: 20px; border-radius: 10px; margin: 20px 0; }
+.earth-alert h4 { color: #e65100; margin-bottom: 10px; font-size: 16px; }
+.earth-alert .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 12px 0; }
+.earth-alert .compare-box { background: white; padding: 12px; border-radius: 8px; text-align: center; }
+.earth-alert .compare-box .name { font-weight: 700; color: #333; margin-bottom: 4px; }
+.earth-alert .compare-box .price { font-size: 20px; font-weight: 700; color: #d84315; }
+.earth-alert .diff-strategy { background: #e8f5e9; padding: 12px; border-radius: 6px; margin-top: 12px; color: #2e7d32; font-weight: 600; font-size: 14px; }
 
 /* 冷やしシャンプー機会窓 */
 .opportunity { background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%); padding: 24px; border-radius: 12px; margin: 20px 0; border-left: 6px solid #0288d1; }
@@ -69,7 +86,9 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
 /* 打ち手ロードマップ */
 .roadmap { margin: 20px 0; }
 .roadmap-item { display: grid; grid-template-columns: 100px 1fr auto; gap: 16px; align-items: center; padding: 14px 16px; margin-bottom: 10px; background: #f9fbfd; border-radius: 8px; border-left: 4px solid #0d47a1; }
+.roadmap-item.priority { border-left-color: #d32f2f; background: #ffebee; }
 .roadmap-week { background: #0d47a1; color: white; padding: 8px 12px; border-radius: 6px; text-align: center; font-weight: 700; font-size: 13px; }
+.roadmap-item.priority .roadmap-week { background: #d32f2f; }
 .roadmap-action { font-size: 14px; }
 .roadmap-cost { font-size: 12px; padding: 6px 10px; border-radius: 12px; font-weight: 700; }
 .cost-zero { background: #e8f5e9; color: #2e7d32; }
@@ -82,13 +101,17 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
 .tune-card ul { margin-left: 20px; font-size: 14px; }
 .tune-card li { margin-bottom: 4px; }
 
-/* 確認事項 */
-.questions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
-.q-item { background: #fff8e1; padding: 12px; border-radius: 8px; font-size: 13px; border-left: 3px solid #ffa000; }
-.q-item .q-num { font-weight: 700; color: #ff6f00; margin-right: 4px; }
+/* KPI目標 */
+.kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+.kpi-card { background: #f3e5f5; padding: 18px; border-radius: 10px; text-align: center; border-top: 4px solid #7b1fa2; }
+.kpi-card .kpi-label { font-size: 13px; color: #6a1b9a; margin-bottom: 6px; font-weight: 600; }
+.kpi-card .kpi-current { font-size: 14px; color: #999; }
+.kpi-card .kpi-arrow { color: #7b1fa2; font-size: 20px; margin: 4px 0; }
+.kpi-card .kpi-target { font-size: 20px; color: #4a148c; font-weight: 700; }
 
 @media (max-width: 700px) {
-  .entry-map, .tune-grid, .opportunity-grid, .questions { grid-template-columns: 1fr; }
+  .profile-grid, .blocker-grid, .tune-grid, .opportunity-grid, .kpi-grid { grid-template-columns: 1fr; }
+  .earth-alert .compare { grid-template-columns: 1fr; }
   .roadmap-item { grid-template-columns: 1fr; }
   .bench-table { font-size: 12px; }
   .hero h1 { font-size: 22px; }
@@ -100,61 +123,147 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
 
 <!-- ヒーロー -->
 <div class="hero">
-  <h1>hair salon TUMURIBI 集客診断 図解サマリー</h1>
-  <div class="subtitle">なぜYouTube広告が"見られている"のに"来店"に繋がらないのか</div>
+  <h1>hair salon TUMURIBI 集客診断 図解サマリー v2</h1>
+  <div class="subtitle">実データ調査版：YouTube広告は好調・"開業6ヶ月フェーズの受け皿"に4つの詰まり</div>
   <div class="date">2026年7月14日 / 株式会社ランバード 広告運用サポート窓口</div>
+  <div class="badge">📊 実データ調査完了版</div>
+</div>
+
+<!-- 店舗プロフィール -->
+<div class="section">
+  <div class="section-title"><span class="num">📍</span>店舗プロフィール（調査で確定）</div>
+  <div class="profile-grid">
+    <div class="profile-item"><span class="label">店舗名</span><span class="value">hair salon TUMURIBI</span></div>
+    <div class="profile-item"><span class="label">オーナー</span><span class="value">サカイシンヤ 様</span></div>
+    <div class="profile-item"><span class="label">住所</span><span class="value">市川市八幡1-22-8（鬼越駅寄り／コルトンプラザ近く）</span></div>
+    <div class="profile-item"><span class="label">開業</span><span class="value">2026年1月4日（<span class="warn">開業6ヶ月の新店</span>）</span></div>
+    <div class="profile-item"><span class="label">Google口コミ</span><span class="value ok">★5.0</span> / 16件 <span class="warn">（直近3ヶ月ゼロ）</span></div>
+    <div class="profile-item"><span class="label">GBPカテゴリ</span><span class="value bad">⚠️ 理容店 で登録</span>（美容室検索から漏れ）</div>
+    <div class="profile-item"><span class="label">Instagram</span><span class="value">フォロワー418 / リール3本 / 直近投稿はグルメ混在</span></div>
+    <div class="profile-item"><span class="label">公式HP</span><span class="value bad">1cs.jp系PWA・サイト名が「カミングスーン」放置</span></div>
+    <div class="profile-item"><span class="label">Hot Pepper Beauty</span><span class="value bad">❌ 未掲載</span></div>
+    <div class="profile-item"><span class="label">冷やしシャンプー</span><span class="value">marbb × Mintvell 冷やしナノバブル ¥5,500</span></div>
+    <div class="profile-item"><span class="label">「本八幡 冷やしシャンプー」検索順位</span><span class="value ok">✅ 1位</span></div>
+    <div class="profile-item"><span class="label">YouTube広告視聴率</span><span class="value ok">63〜65%（業界平均の2.5倍）</span></div>
+  </div>
 </div>
 
 <!-- 結論TOP3 -->
 <div class="section">
-  <div class="section-title"><span class="num">🎯</span>結論TOP3（一目でわかる真因）</div>
+  <div class="section-title"><span class="num">🎯</span>結論TOP3（開業6ヶ月フェーズの本当のボトルネック）</div>
   <div class="conclusion-banner">
     <div class="point">
       <span class="point-num">1</span>
-      <div class="point-text"><strong>動画は完璧に届いている</strong>（視聴率63〜65% = 業界平均の2.5倍）。動画のクオリティに手を入れる必要は無い。</div>
+      <div class="point-text"><strong>動画は完璧に届いている</strong>（視聴率63〜65% = 業界平均の2.5倍）。新店で最も難しい「認知」は既に成功。動画のクオリティに手を入れる必要はゼロ。</div>
     </div>
     <div class="point">
       <span class="point-num">2</span>
-      <div class="point-text"><strong>視聴後の"受け皿"が細すぎる</strong>。Hot Pepper・Instagram・楽天・OZmall のどこにもTUMURIBIが載っていない → 視聴した瞬間に競合へ流出。</div>
+      <div class="point-text"><strong>受け皿に"4つの詰まり"</strong>：①GBPが「理容店」登録で美容室検索から漏れ ②HPが「カミングスーン」放置＋ポップアップが予約導線を塞ぐ ③Hot Pepper未掲載 ④Instagramがグルメ混在。開業6ヶ月フェーズで整えるべき土台が未整備の状態。</div>
     </div>
     <div class="point">
       <span class="point-num">3</span>
-      <div class="point-text"><strong>冷やしシャンプーは差別化の絶好機</strong>。本八幡エリアで明示訴求している競合はゼロ。「本八幡 冷やしシャンプー」で1位独占が現実的。</div>
+      <div class="point-text"><strong>冷やしシャンプーは"技術訴求"で差別化余地大</strong>。「本八幡 冷やしシャンプー」検索は1位獲得中 ✅ 一方でEARTH本八幡が¥5,280で価格帯を被せてきている ⚠️ → 価格ではなく<strong>「marbb×Mintvell 冷やしナノバブル」の技術差</strong>で勝ちに行ける。</div>
     </div>
   </div>
 </div>
 
-<!-- 導線断絶ファネル図 -->
+<!-- 動線断絶ファネル図 -->
 <div class="section">
-  <div class="section-title"><span class="num">1</span>集客導線の断絶図</div>
-  <p style="margin-bottom:16px;color:#555;">YouTube広告 → 検索 → 予約 の流れのどこで離脱しているか可視化します。</p>
+  <div class="section-title"><span class="num">1</span>集客導線のどこで詰まっているか</div>
+  <p style="margin-bottom:16px;color:#555;">YouTube広告 → 検索・比較 → 予約 の流れを実データで検証しました。</p>
 
   <div class="funnel">
     <div class="funnel-step funnel-good">
-      ✅ YouTube広告が表示される
-      <span class="metric">視聴率 63〜65%（業界平均の2.5倍・完璧に届いている）</span>
+      ✅ YouTube広告が届いている
+      <span class="metric">視聴率 63〜65%（業界平均の2.5倍・開業6ヶ月の新店として異例の好調）</span>
     </div>
     <div class="funnel-arrow">▼</div>
     <div class="funnel-step funnel-mid">
-      🔍 「本八幡 メンズ 美容室」等で検索される
+      🔍 「本八幡 メンズ 美容室」等で検索・比較される
       <span class="metric">興味を持ったユーザーが最終確認しに動く</span>
     </div>
     <div class="funnel-arrow">▼</div>
     <div class="funnel-break">
-      <span class="big">❌ ここで断絶</span>
-      Hot Pepper・Instagram・楽天ビューティ・OZmall・BIGLOBE のどこにもTUMURIBIが出てこない
+      <span class="big">❌ ここで4つの詰まりが同時発生</span>
+      <ul>
+        <li>① GBPカテゴリが「理容店」→「本八幡 美容室」検索で表示されない</li>
+        <li>② 公式HPを開いても「カミングスーン」表示＋ポップアップで予約導線が塞がれる</li>
+        <li>③ Hot Pepper Beauty未掲載 → 新規客55〜70%の主要経路で見えない</li>
+        <li>④ Instagramでグルメ投稿混在 → 美容室として指名されにくい</li>
+      </ul>
     </div>
     <div class="funnel-arrow">▼</div>
     <div class="funnel-loss">
-      💸 Larus（★4.82／303件）・GRAND（¥1,870）・EARTH（大手）に総取り
+      💸 Larus（★4.75／301件）・Uit（733件）・EARTH（205件）に総取り
+    </div>
+  </div>
+</div>
+
+<!-- 4つの詰まり詳細カード -->
+<div class="section">
+  <div class="section-title"><span class="num">2</span>4つの詰まり × 解消アクション</div>
+  <p style="margin-bottom:16px;color:#555;">全て<strong>0円〜低コスト・数日〜1週間で解消可能</strong>。順に潰していきます。</p>
+
+  <div class="blocker-grid">
+    <div class="blocker-card">
+      <span class="rank">最優先 #1</span>
+      <h4>⚠️ GBPカテゴリが「理容店」</h4>
+      <div class="desc">「本八幡 メンズ美容室」でMEO検索されても表示されない。Google公式管理画面から1クリックで変更可能。</div>
+      <div class="fix">✅ 「美容室」に変更＋副カテゴリで「メンズ美容室」追加</div>
+    </div>
+    <div class="blocker-card">
+      <span class="rank">最優先 #2</span>
+      <h4>⚠️ 公式HPが「カミングスーン」放置</h4>
+      <div class="desc">1cs.jp系PWAでサイトタイトルが「カミングスーン」のまま。訪問のたびに全画面ポップアップが予約ボタンを塞ぐ。YouTube広告の着地先として致命的。</div>
+      <div class="fix">✅ サイトタイトル修正＋ポップアップOFF＋LINE予約導線設置</div>
+    </div>
+    <div class="blocker-card">
+      <span class="rank">重要 #3</span>
+      <h4>⚠️ Hot Pepper Beauty未掲載</h4>
+      <div class="desc">本八幡エリアのメンズ新規客の55〜70%が使う主要経路。競合は全店掲載済み。掲載料はかかるが投資対効果は高い。</div>
+      <div class="fix">✅ 掲載検討・見積依頼から着手</div>
+    </div>
+    <div class="blocker-card">
+      <span class="rank">重要 #4</span>
+      <h4>⚠️ Instagramにグルメ混在</h4>
+      <div class="desc">フォロワー418に対しリール3本のみ。直近3投稿中2件がグルメ投稿で美容室と認識されにくい状態。冷やしシャンプーはリール映え◎の絶好のネタ。</div>
+      <div class="fix">✅ グルメ投稿は別アカに分離／冷やしリール週1本ペース</div>
+    </div>
+  </div>
+</div>
+
+<!-- EARTH被せ対策 -->
+<div class="section">
+  <div class="section-title"><span class="num">3</span>EARTH本八幡の冷やしシャンプー被せ問題</div>
+
+  <div class="earth-alert">
+    <h4>⚠️ EARTH本八幡が「冷×冷×冷 ¥5,280」で被せてきている</h4>
+    <p style="font-size:14px;">価格帯がTUMURIBIとほぼ同じ。価格勝負では負けやすい。</p>
+
+    <div class="compare">
+      <div class="compare-box">
+        <div class="name">EARTH本八幡</div>
+        <div class="price">¥5,280</div>
+        <div style="font-size:12px;color:#666;">冷×冷×冷（HPB掲載中）</div>
+      </div>
+      <div class="compare-box">
+        <div class="name">TUMURIBI</div>
+        <div class="price">¥5,500</div>
+        <div style="font-size:12px;color:#666;">marbb × Mintvell 冷やしナノバブル</div>
+      </div>
+    </div>
+
+    <div class="diff-strategy">
+      💡 <strong>差別化戦略：価格ではなく"技術"で勝つ</strong><br>
+      「marbb × Mintvell 冷やしナノバブル」は EARTH の一般的な冷やしシャンプーと物理的に別物。ナノバブルの毛穴洗浄力・持続する冷感を訴求ポイントに。「¥220差 = ナノバブル体験の価値」を明確に打ち出す。
     </div>
   </div>
 </div>
 
 <!-- 競合ベンチマーク -->
 <div class="section">
-  <div class="section-title"><span class="num">2</span>本八幡メンズ美容室 競合ベンチマーク</div>
-  <p style="margin-bottom:16px;color:#555;">TUMURIBIは上下横から挟撃されている状態。掲載媒体の空白が最大の弱点。</p>
+  <div class="section-title"><span class="num">4</span>本八幡メンズ美容室 競合ベンチマーク</div>
+  <p style="margin-bottom:16px;color:#555;">開業6ヶ月フェーズなので口コミ数差は当然。ただし成長カーブに乗せるための土台整備が急務。</p>
 
   <div style="overflow-x:auto;">
   <table class="bench-table">
@@ -162,9 +271,9 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
       <tr>
         <th>店舗</th>
         <th>カット単価</th>
-        <th>Google/HPB口コミ</th>
+        <th>口コミ数</th>
         <th>Instagram</th>
-        <th>Hot Pepper掲載</th>
+        <th>Hot Pepper</th>
         <th>ポジション</th>
       </tr>
     </thead>
@@ -172,94 +281,55 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
       <tr>
         <td><strong>Larus</strong></td>
         <td>¥4,950</td>
-        <td class="highlight">★4.82 / 303件</td>
+        <td class="highlight">★4.75 / 301件</td>
         <td>あり</td>
         <td>あり</td>
         <td>権威で総取り</td>
       </tr>
       <tr>
-        <td><strong>GRAND</strong></td>
-        <td class="highlight"><strong>¥1,870</strong></td>
-        <td>年中無休</td>
-        <td>あり（+X+lit.link）</td>
+        <td><strong>Uit</strong></td>
+        <td>¥5,000</td>
+        <td class="highlight">733件</td>
         <td>あり</td>
-        <td>低単価で総取り</td>
+        <td>あり</td>
+        <td>口コミ圧倒</td>
       </tr>
       <tr>
         <td><strong>EARTH</strong></td>
-        <td>¥5,000</td>
-        <td>大手ブランド</td>
+        <td>¥5,000（冷やし¥5,280）</td>
+        <td>205件</td>
         <td>あり</td>
         <td>あり</td>
-        <td>ブランド力</td>
+        <td>大手ブランド＋冷やし被せ</td>
       </tr>
       <tr>
-        <td><strong>hairdo</strong></td>
-        <td>¥5,000</td>
-        <td>髪質改善で差別化</td>
+        <td><strong>GRAND</strong></td>
+        <td class="highlight"><strong>¥1,870</strong></td>
+        <td>年中無休</td>
         <td>あり</td>
         <td>あり</td>
-        <td>技術特化</td>
-      </tr>
-      <tr>
-        <td><strong>Uit</strong></td>
-        <td>¥5,000</td>
-        <td>メンズ強め</td>
-        <td>あり</td>
-        <td>あり</td>
-        <td>メンズ特化</td>
+        <td>低単価で総取り</td>
       </tr>
       <tr class="tumuribi-row">
         <td><strong>TUMURIBI</strong></td>
-        <td class="empty">未確認</td>
-        <td class="empty">未確認 / 少数</td>
-        <td class="empty">見つからず</td>
-        <td class="empty">未掲載</td>
-        <td class="weakpoint">挟撃状態</td>
+        <td>¥5,500（冷やしナノバブル）</td>
+        <td class="strongpoint">★5.0 / 16件</td>
+        <td class="weakpoint">418・グルメ混在</td>
+        <td class="weakpoint">未掲載</td>
+        <td class="strongpoint">技術差別化の余地</td>
       </tr>
     </tbody>
   </table>
   </div>
 </div>
 
-<!-- 入口マップ -->
-<div class="section">
-  <div class="section-title"><span class="num">3</span>集客の"入口"マップ：現状 vs 目標</div>
-  <p style="margin-bottom:16px;color:#555;">現状は1つの入口だけ。目標は5つに広げて視聴者を確実に受け止める。</p>
-
-  <div class="entry-map">
-    <div class="entry-col entry-current">
-      <h3>❌ 現状（入口1つのみ）</h3>
-      <div class="entry-item"><span class="status">✅</span>Googleビジネス（MEO）</div>
-      <div class="entry-item"><span class="status">❌</span>Hot Pepper Beauty</div>
-      <div class="entry-item"><span class="status">❌</span>Instagram（公式アカウント）</div>
-      <div class="entry-item"><span class="status">❌</span>LINE公式アカウント</div>
-      <div class="entry-item"><span class="status">❌</span>動画別ランディングページ</div>
-      <div style="margin-top:12px;padding-top:10px;border-top:1px dashed #c62828;font-size:13px;color:#c62828;text-align:center;font-weight:700;">
-        新規客の55〜70%を取りこぼし
-      </div>
-    </div>
-    <div class="entry-col entry-target">
-      <h3>✅ 目標（入口5つ）</h3>
-      <div class="entry-item"><span class="status">✅</span>Googleビジネス（MEO）強化</div>
-      <div class="entry-item"><span class="status">🆕</span>Hot Pepper Beauty掲載</div>
-      <div class="entry-item"><span class="status">🆕</span>Instagram開設＋冷やしリール</div>
-      <div class="entry-item"><span class="status">🆕</span>LINE公式（初回¥500 OFF）</div>
-      <div class="entry-item"><span class="status">🆕</span>冷やしシャンプー専用LP</div>
-      <div style="margin-top:12px;padding-top:10px;border-top:1px dashed #2e7d32;font-size:13px;color:#2e7d32;text-align:center;font-weight:700;">
-        視聴後の熱量を全方位で受け止める
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- 冷やしシャンプー機会窓 -->
 <div class="section">
-  <div class="section-title"><span class="num">4</span>冷やしシャンプーの"機会窓"</div>
+  <div class="section-title"><span class="num">5</span>冷やしシャンプーの機会窓</div>
 
   <div class="opportunity">
-    <h3>❄️ 本八幡エリアで冷やしシャンプー訴求している競合は検索で0件</h3>
-    <p style="font-size:14px;">= 「本八幡 冷やしシャンプー」で1位独占が現実的。しかも今は年間ピークの季節。</p>
+    <h3>❄️ 「本八幡 冷やしシャンプー」検索1位獲得中 ✅</h3>
+    <p style="font-size:14px;">EARTHの価格被せは脅威だが、TUMURIBIのナノバブル技術は上位互換。技術訴求で勝てる。</p>
 
     <div class="opportunity-grid">
       <div class="opportunity-card">
@@ -269,30 +339,57 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
       </div>
       <div class="opportunity-card">
         <div class="icon">🥇</div>
-        <div class="label">競合状況</div>
-        <div class="value">本八幡エリア0件</div>
+        <div class="label">検索順位</div>
+        <div class="value">現在1位</div>
       </div>
       <div class="opportunity-card">
         <div class="icon">🎬</div>
-        <div class="label">SNS親和性</div>
-        <div class="value">リール映え◎</div>
+        <div class="label">技術差別化</div>
+        <div class="value">ナノバブル×冷感</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- KPI目標 -->
+<div class="section">
+  <div class="section-title"><span class="num">6</span>開業6ヶ月フェーズのKPI目標</div>
+  <p style="margin-bottom:16px;color:#555;">"新店の土台整備"として、次の3つを重点KPIに。</p>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label">Google口コミ件数</div>
+      <div class="kpi-current">現状 16件</div>
+      <div class="kpi-arrow">▼</div>
+      <div class="kpi-target">50件 / 5ヶ月</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Instagramフォロワー</div>
+      <div class="kpi-current">現状 418</div>
+      <div class="kpi-arrow">▼</div>
+      <div class="kpi-target">1,000 / 3ヶ月</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">HP経由予約率</div>
+      <div class="kpi-current">現状 ポップアップで阻害</div>
+      <div class="kpi-arrow">▼</div>
+      <div class="kpi-target">導線改善で回復</div>
     </div>
   </div>
 </div>
 
 <!-- YouTube広告調整 -->
 <div class="section">
-  <div class="section-title"><span class="num">5</span>YouTube広告側の調整（追加費用ゼロ）</div>
-  <p style="margin-bottom:16px;color:#555;">予算は据え置き。現行の高視聴率を活かしたまま、"届く先"と"着地先"だけ切り替える。</p>
+  <div class="section-title"><span class="num">7</span>YouTube広告側の調整（予算据え置き）</div>
+  <p style="margin-bottom:16px;color:#555;">現行の高視聴率を活かしたまま、"届く先"と"着地先"だけ切り替える。</p>
 
   <div class="tune-grid">
     <div class="tune-card">
       <h4>🎯 キーワード追加</h4>
       <ul>
-        <li>冷やしシャンプー / 頭皮スッキリ</li>
+        <li>冷やしシャンプー / ナノバブル シャンプー</li>
         <li>本八幡 メンズ美容室</li>
-        <li>Larus 本八幡（競合指名）</li>
+        <li>市川 メンズカット</li>
         <li>就活 髪型 メンズ</li>
         <li>ビジネスマン 清潔感</li>
       </ul>
@@ -300,7 +397,7 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
     <div class="tune-card">
       <h4>📍 ターゲティング絞り込み</h4>
       <ul>
-        <li>本八幡駅から半径2.5km</li>
+        <li>本八幡駅から半径2.5km（八幡・鬼高・菅野・京成八幡）</li>
         <li>男性・25〜44歳メイン</li>
         <li>世帯収入 上位30〜50%</li>
         <li>平日18〜23時／土日9〜21時</li>
@@ -308,19 +405,19 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
       </ul>
     </div>
     <div class="tune-card">
-      <h4>🎬 クリエイティブ（頭2秒だけ調整）</h4>
+      <h4>🎬 クリエイティブ（頭2秒のみ調整）</h4>
       <ul>
-        <li>冒頭：冷やしシャンプーの水音＋テロップ</li>
-        <li>末尾：オファー明示（初回¥◯）</li>
+        <li>冒頭：ナノバブル冷やしシャンプーの水音＋テロップ</li>
+        <li>末尾：初回オファー明示</li>
         <li>3本ローテ（冷やし／シェービング／清潔感）</li>
-        <li>本編は現行のまま維持</li>
+        <li>本編は現行維持（動画クオリティ◎）</li>
       </ul>
     </div>
     <div class="tune-card">
       <h4>🔀 CTA変更（HPトップ着地廃止）</h4>
       <ul>
         <li>第一：LINE友だち追加＋初回クーポン</li>
-        <li>第二：Hot Pepper予約ページ</li>
+        <li>第二：修正後HPの予約フォーム直リンク</li>
         <li>第三：Googleビジネスプロフィール</li>
         <li>動画テーマ別の専用LPに着地</li>
       </ul>
@@ -330,37 +427,47 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
 
 <!-- 打ち手ロードマップ -->
 <div class="section">
-  <div class="section-title"><span class="num">6</span>打ち手ロードマップ</div>
-  <p style="margin-bottom:16px;color:#555;">費用ゼロ〜低コストの施策を優先順位順に。</p>
+  <div class="section-title"><span class="num">8</span>打ち手ロードマップ（優先順位付き）</div>
+  <p style="margin-bottom:16px;color:#555;">赤枠は"最優先で今週やる"。順に潰していきます。</p>
 
   <div class="roadmap">
-    <div class="roadmap-item">
-      <div class="roadmap-week">第1週</div>
-      <div class="roadmap-action"><strong>GBPプロフィール整備</strong>：広告動画をGBP「動画」タブに転載／写真15枚追加／冷やしシャンプー投稿</div>
+    <div class="roadmap-item priority">
+      <div class="roadmap-week">今週</div>
+      <div class="roadmap-action"><strong>🚨 GBPカテゴリを「理容店」→「美容室」に変更</strong>：Google管理画面から1クリック。副カテゴリで「メンズ美容室」追加</div>
+      <div class="roadmap-cost cost-zero">0円</div>
+    </div>
+    <div class="roadmap-item priority">
+      <div class="roadmap-week">今週</div>
+      <div class="roadmap-action"><strong>🚨 公式HPの「カミングスーン」修正＋ポップアップOFF</strong>：サイトタイトル修正・LINE予約導線設置</div>
       <div class="roadmap-cost cost-zero">0円</div>
     </div>
     <div class="roadmap-item">
-      <div class="roadmap-week">第1週</div>
+      <div class="roadmap-week">今週</div>
       <div class="roadmap-action"><strong>LINE公式アカウント開設</strong>：初回¥500 OFFクーポン発行＋YouTube CTAをLINEに変更</div>
       <div class="roadmap-cost cost-zero">0円</div>
     </div>
     <div class="roadmap-item">
-      <div class="roadmap-week">第2週</div>
-      <div class="roadmap-action"><strong>Instagram公式アカウント開設</strong>：冷やしシャンプーリール3本先行投稿</div>
+      <div class="roadmap-week">今週</div>
+      <div class="roadmap-action"><strong>GBP動画タブに広告動画を転載＋冷やしシャンプー投稿</strong></div>
       <div class="roadmap-cost cost-zero">0円</div>
     </div>
     <div class="roadmap-item">
       <div class="roadmap-week">第2週</div>
-      <div class="roadmap-action"><strong>冷やしシャンプー専用LP制作</strong>：YouTube広告の着地先として</div>
+      <div class="roadmap-action"><strong>Instagram整備</strong>：グルメ投稿を別アカに分離／冷やしナノバブルリール週1本ペース</div>
+      <div class="roadmap-cost cost-zero">0円</div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-week">第2週</div>
+      <div class="roadmap-action"><strong>冷やしナノバブル専用LP制作</strong>：YouTube広告の着地先として。技術訴求で差別化</div>
       <div class="roadmap-cost cost-low">制作費のみ</div>
     </div>
     <div class="roadmap-item">
       <div class="roadmap-week">第3週</div>
-      <div class="roadmap-action"><strong>YouTube広告の地域・KW・CTA調整</strong>：本八幡2.5km・冷やしKW追加・LINE CTA</div>
+      <div class="roadmap-action"><strong>YouTube広告の地域・KW・CTA調整</strong>：本八幡2.5km・ナノバブルKW追加・LINE CTA</div>
       <div class="roadmap-cost cost-zero">0円</div>
     </div>
     <div class="roadmap-item">
-      <div class="roadmap-week">第4週</div>
+      <div class="roadmap-week">第4週〜</div>
       <div class="roadmap-action"><strong>施術後QRで口コミ促進</strong>：月10件×5ヶ月で口コミ50件を目標に</div>
       <div class="roadmap-cost cost-zero">0円</div>
     </div>
@@ -369,30 +476,6 @@ body { font-family: 'Hiragino Sans', 'Yu Gothic', sans-serif; background: #f5f7f
       <div class="roadmap-action"><strong>Hot Pepper Beauty掲載検討</strong>：新規客55%が流れる経路の確保</div>
       <div class="roadmap-cost cost-low">掲載料</div>
     </div>
-  </div>
-</div>
-
-<!-- 確認事項 -->
-<div class="section">
-  <div class="section-title"><span class="num">7</span>酒井様に確認したいこと（15項目）</div>
-  <p style="margin-bottom:16px;color:#555;">より精緻な打ち手のために、下記をお聞かせください。</p>
-
-  <div class="questions">
-    <div class="q-item"><span class="q-num">Q1</span>正式店舗名・住所・電話</div>
-    <div class="q-item"><span class="q-num">Q2</span>公式HPのURL</div>
-    <div class="q-item"><span class="q-num">Q3</span>Hot Pepper掲載の有無</div>
-    <div class="q-item"><span class="q-num">Q4</span>Google Maps★平均・件数</div>
-    <div class="q-item"><span class="q-num">Q5</span>GBP投稿の直近頻度</div>
-    <div class="q-item"><span class="q-num">Q6</span>GBP動画タブへの転載有無</div>
-    <div class="q-item"><span class="q-num">Q7</span>公式IGアカウントURL</div>
-    <div class="q-item"><span class="q-num">Q8</span>IG投稿・リール直近本数</div>
-    <div class="q-item"><span class="q-num">Q9</span>使用中ハッシュタグ一覧</div>
-    <div class="q-item"><span class="q-num">Q10</span>冷やしシャンプー専用ページ</div>
-    <div class="q-item"><span class="q-num">Q11</span>予約導線の内訳</div>
-    <div class="q-item"><span class="q-num">Q12</span>実来店客の男女比・年代</div>
-    <div class="q-item"><span class="q-num">Q13</span>月間新規客数と目標</div>
-    <div class="q-item"><span class="q-num">Q14</span>冷やしシャンプー訴求の同業認識</div>
-    <div class="q-item"><span class="q-num">Q15</span>過去3ヶ月広告経由問合せ数</div>
   </div>
 </div>
 
