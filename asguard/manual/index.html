@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ホームページ操作マニュアル｜アスガードカーセールス様</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EDE6DC; --card:#FFFFFF; --ink:#3E3730; --muted:#8A7F72;
+    --gold:#9C8560; --gold-soft:#C9B695; --line:#E0D6C8; --dark:#3E3730;
+    --r:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif;
+    font-weight:400; line-height:1.9; letter-spacing:.02em;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* 日本語を文節単位で折り返す（対応ブラウザのみ。非対応でも通常の折返しに戻るだけ） */
+  p,li,h1,h2,h3,.lead,.sec-note,.cap,.t,.d{word-break:auto-phrase}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:"Zen Maru Gothic",sans-serif;font-weight:500;line-height:1.5;letter-spacing:.04em}
+
+  /* header */
+  header{padding:64px 0 48px;text-align:center}
+  .brand{font-size:.8rem;letter-spacing:.28em;color:var(--gold);margin-bottom:18px}
+  h1{font-size:1.9rem;margin-bottom:14px}
+  .lead{color:var(--muted);font-size:.95rem}
+
+  /* section */
+  section{margin-bottom:64px}
+  .sec-label{
+    display:inline-block;font-size:.72rem;letter-spacing:.18em;color:#fff;
+    background:var(--gold);padding:5px 14px;border-radius:999px;margin-bottom:16px;
+  }
+  h2{font-size:1.35rem;margin-bottom:8px}
+  .sec-note{color:var(--muted);font-size:.9rem;margin-bottom:26px}
+
+  /* card */
+  .card{background:var(--card);border-radius:var(--r);padding:32px;margin-bottom:20px}
+
+  /* できること 3つ */
+  .can{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .can .card{text-align:center;padding:30px 20px;margin:0;display:flex;flex-direction:column}
+  .can .ico{font-size:2rem;margin-bottom:14px;line-height:1}
+  .can h3{font-size:1rem;margin-bottom:8px;min-height:3em;display:flex;align-items:center;justify-content:center}
+  .can p{font-size:.82rem;color:var(--muted);line-height:1.75;margin-top:auto}
+
+  /* フロー図解 */
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+  .step{
+    flex:1 1 0;min-width:0;background:#FAF7F2;border:1px solid var(--line);
+    border-radius:14px;padding:22px 16px;text-align:center;
+  }
+  .step .n{
+    width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;
+    font-size:.85rem;display:flex;align-items:center;justify-content:center;
+    margin:0 auto 12px;font-weight:700;
+  }
+  .step .t{font-size:.9rem;font-weight:500;margin-bottom:6px}
+  .step .d{font-size:.78rem;color:var(--muted);line-height:1.7;word-break:break-all}
+  .arrow{
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold-soft);font-size:1.3rem;padding:0 8px;flex:0 0 auto;
+  }
+
+  /* 動画 */
+  .movie{margin-bottom:22px}
+  .ratio{position:relative;width:100%;padding-top:56.25%;border-radius:14px;overflow:hidden;background:#000}
+  .ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .cap{font-size:.8rem;color:var(--muted);margin-top:10px;text-align:center}
+
+  /* 手順リスト */
+  ul.pt{list-style:none;display:flex;flex-direction:column;gap:10px}
+  ul.pt li{
+    background:#FAF7F2;border-radius:12px;padding:14px 18px 14px 38px;font-size:.9rem;
+    position:relative;
+  }
+  ul.pt li::before{
+    content:"●";color:var(--gold-soft);font-size:.7rem;
+    position:absolute;left:18px;top:14px;line-height:1.9;
+  }
+
+  /* 注意 */
+  .warn{background:#FFF8E8;border:1px solid #E8D9AE;border-radius:14px;padding:22px 24px}
+  .warn h3{font-size:.98rem;margin-bottom:10px;color:#8A6D2F}
+  .warn p{font-size:.88rem;line-height:1.85}
+
+  /* 大事なひとこと */
+  .tip{
+    background:var(--dark);color:#F5EFE6;border-radius:var(--r);
+    padding:30px 32px;text-align:center;
+  }
+  .tip .big{font-family:"Zen Maru Gothic",sans-serif;font-size:1.15rem;margin-bottom:8px}
+  .tip p{font-size:.87rem;opacity:.85}
+
+  footer{text-align:center;padding:48px 0 64px;color:var(--muted);font-size:.8rem;line-height:2}
+
+  @media (max-width:820px){
+    .can{grid-template-columns:1fr;gap:12px}
+    .can h3{min-height:auto}
+    .flow{flex-direction:column}
+    .arrow{transform:rotate(90deg);padding:6px 0}
+  }
+  @media (max-width:430px){
+    .wrap{padding:0 16px}
+    header{padding:44px 0 34px}
+    h1{font-size:1.45rem}
+    h2{font-size:1.15rem}
+    .card{padding:22px 18px}
+    .tip{padding:24px 20px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">ASGUARD CAR SALES</div>
+  <h1>ホームページ操作マニュアル</h1>
+  <p class="lead">柳本様ご自身で、写真・文章・在庫を更新していただけます。<br>動画を見ながら、実際に触ってみてください。</p>
+</header>
+
+<!-- できること -->
+<section>
+  <span class="sec-label">このマニュアルでできること</span>
+  <h2>3つの操作をご案内します</h2>
+  <p class="sec-note">やりたいことから選んで、動画をご覧ください。</p>
+  <div class="can">
+    <div class="card">
+      <div class="ico">🖼️</div>
+      <h3>写真・文章を<br>変える</h3>
+      <p>ページの中の写真を差し替えたり、文章を書き替えたりします。</p>
+    </div>
+    <div class="card">
+      <div class="ico">✨</div>
+      <h3>トップページの<br>「新着」を編集する</h3>
+      <p>トップに出る新着のクルマを入れ替えます。</p>
+    </div>
+    <div class="card">
+      <div class="ico">🚗</div>
+      <h3>在庫を<br>追加・削除する</h3>
+      <p>新しく入ったクルマを追加。売れたクルマを消します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ログイン -->
+<section>
+  <span class="sec-label">STEP 0</span>
+  <h2>まずはログイン</h2>
+  <p class="sec-note">すべての操作は、この管理画面から行います。</p>
+  <div class="card">
+    <div class="flow">
+      <div class="step">
+        <div class="n">1</div>
+        <div class="t">管理画面を開く</div>
+        <div class="d">asguard-carsales.com<br>/wp-admin/</div>
+      </div>
+      <div class="arrow">▶</div>
+      <div class="step">
+        <div class="n">2</div>
+        <div class="t">ID・パスワードを入力</div>
+        <div class="d">別途お送りした<br>ログイン情報をご利用ください</div>
+      </div>
+      <div class="arrow">▶</div>
+      <div class="step">
+        <div class="n">3</div>
+        <div class="t">管理画面が開きます</div>
+        <div class="d">ここから写真・文章・在庫を<br>編集できます</div>
+      </div>
+    </div>
+  </div>
+  <div class="warn">
+    <h3>ログイン情報について</h3>
+    <p>ID・パスワードは、安全のためこのページには記載しておりません。別途お送りしたご案内をご確認ください。もし見当たらない場合は、お気軽にご連絡ください。</p>
+  </div>
+</section>
+
+<!-- ① -->
+<section>
+  <span class="sec-label">操作 ①</span>
+  <h2>写真・文章を変える</h2>
+  <p class="sec-note">「この写真を差し替えたい」「この文章を直したい」というときに。</p>
+  <div class="card">
+    <div class="movie">
+      <div class="ratio">
+        <iframe src="https://www.youtube-nocookie.com/embed/WfbQ5iNiPNE" title="ASGUARD様 画像と文章を変える方法" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="cap">動画：画像と文章を変える方法</p>
+    </div>
+    <ul class="pt">
+      <li>変えたい<strong>写真</strong>や<strong>文章</strong>のあるページを開きます</li>
+      <li>動画のとおりに差し替え・打ち替えをします</li>
+      <li>最後に必ず<strong>「更新」</strong>を押して保存します</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ② -->
+<section>
+  <span class="sec-label">操作 ②</span>
+  <h2>トップページの「新着」を編集する</h2>
+  <p class="sec-note">トップページに大きく出る、新着のクルマを入れ替えます。</p>
+  <div class="card">
+    <div class="movie">
+      <div class="ratio">
+        <iframe src="https://www.youtube-nocookie.com/embed/z_kghQTBkSg" title="新着編集方法" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="cap">動画：新着編集方法</p>
+    </div>
+    <ul class="pt">
+      <li>トップページは、お店の<strong>第一印象</strong>になる場所です</li>
+      <li>新しいクルマが入ったら、ここを入れ替えると効果的です</li>
+      <li>最後に必ず<strong>「更新」</strong>を押して保存します</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ③ -->
+<section>
+  <span class="sec-label">操作 ③</span>
+  <h2>在庫を追加・削除する</h2>
+  <p class="sec-note">新しく入ったクルマを追加。売れたクルマを消します。</p>
+  <div class="card">
+    <div class="movie">
+      <div class="ratio">
+        <iframe src="https://www.youtube-nocookie.com/embed/iBKd9HeNMyA" title="在庫を加える方法と削除方法" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <p class="cap">動画：在庫を加える方法と削除方法</p>
+    </div>
+    <ul class="pt">
+      <li>管理画面の左メニュー<strong>「在庫車両」</strong>から操作します</li>
+      <li>クルマが入ったら<strong>追加</strong>、売れたら<strong>削除</strong>します</li>
+      <li>最後に必ず<strong>「更新」</strong>を押して保存します</li>
+    </ul>
+  </div>
+  <div class="warn">
+    <h3>売れたクルマは、早めに消してください</h3>
+    <p>すでに売れたクルマを「販売中」のまま載せておくと、お問い合わせいただいたお客様をがっかりさせてしまいます。売れたら早めに消していただくのがおすすめです。</p>
+  </div>
+</section>
+
+<!-- コツ -->
+<section>
+  <div class="tip">
+    <div class="big">迷ったら、これだけ覚えてください</div>
+    <p>編集したら、最後に必ず右上の「更新」ボタンを押す。<br>これを押さないと、変更が保存されません。</p>
+  </div>
+</section>
+
+<!-- 困ったら -->
+<section>
+  <span class="sec-label">困ったときは</span>
+  <h2>お気軽にご連絡ください</h2>
+  <div class="card">
+    <ul class="pt">
+      <li><strong>操作がわからない</strong> … 動画をもう一度ご覧いただき、それでも不明なときはご連絡ください</li>
+      <li><strong>間違えて消してしまった</strong> … 慌てず、そのままの状態でご連絡ください。復旧できる場合があります</li>
+      <li><strong>ログインできない</strong> … ID・パスワードをご確認のうえ、ご連絡ください</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  アスガードカーセールス様 ホームページ操作マニュアル<br>
+  制作・運用サポート：株式会社ランバード
+</footer>
+
+</div>
+</body>
+</html>
