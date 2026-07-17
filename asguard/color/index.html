@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ボディカラーの入れ方｜アスガードカーセールス様</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EDE6DC; --card:#FFF; --ink:#3E3730; --muted:#8A7F72;
+    --gold:#9C8560; --gold-soft:#C9B695; --line:#E0D6C8; --dark:#3E3730;
+    --blue:#5B7A9C; --blue-bg:#EAF0F6; --green:#6F8F6B; --green-bg:#EDF3EC;
+    --r:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif;
+    line-height:1.9; letter-spacing:.02em; -webkit-font-smoothing:antialiased;
+  }
+  p,li,h1,h2,h3,.lead,.sec-note,.d,.t{word-break:auto-phrase}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:"Zen Maru Gothic",sans-serif;font-weight:500;line-height:1.5;letter-spacing:.04em}
+
+  header{padding:60px 0 44px;text-align:center}
+  .brand{font-size:.8rem;letter-spacing:.28em;color:var(--gold);margin-bottom:16px}
+  h1{font-size:1.8rem;margin-bottom:14px}
+  .lead{color:var(--muted);font-size:.94rem}
+
+  section{margin-bottom:60px}
+  .sec-label{display:inline-block;font-size:.72rem;letter-spacing:.18em;color:#fff;
+    background:var(--gold);padding:5px 14px;border-radius:999px;margin-bottom:16px}
+  h2{font-size:1.3rem;margin-bottom:8px}
+  .sec-note{color:var(--muted);font-size:.9rem;margin-bottom:24px}
+  .card{background:var(--card);border-radius:var(--r);padding:30px;margin-bottom:18px}
+
+  /* 結論ボックス */
+  .answer{background:var(--dark);color:#F5EFE6;border-radius:var(--r);padding:30px 32px}
+  .answer h3{font-size:1.1rem;margin-bottom:12px}
+  .answer p{font-size:.9rem;opacity:.88}
+  .answer strong{color:#F0D9A8}
+
+  /* 分岐図 */
+  .tree{display:flex;flex-direction:column;align-items:center;gap:0}
+  .node{
+    background:#FAF7F2;border:1px solid var(--line);border-radius:14px;
+    padding:18px 24px;text-align:center;max-width:440px;width:100%;
+  }
+  .node .t{font-size:.95rem;font-weight:500;margin-bottom:4px}
+  .node .d{font-size:.8rem;color:var(--muted);line-height:1.7}
+  .stem{width:2px;height:22px;background:var(--gold-soft)}
+  /* PC: 縦線→横線→各枝へ の連結を描く */
+  .split{display:flex;gap:16px;width:100%;align-items:stretch;position:relative;padding-top:22px}
+  .split::before{
+    content:"";position:absolute;top:0;left:25%;right:25%;height:2px;background:var(--gold-soft);
+  }
+  .branch{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;position:relative}
+  .branch::before{
+    content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;
+    background:var(--gold-soft);
+  }
+  .cond{
+    font-size:.78rem;padding:6px 14px;border-radius:999px;margin-bottom:10px;
+    font-weight:500;white-space:nowrap;
+  }
+  .cond--blue{background:var(--blue-bg);color:var(--blue);border:1px solid #C9D8E6}
+  .cond--green{background:var(--green-bg);color:var(--green);border:1px solid #CBDCC7}
+  .dest{
+    border-radius:14px;padding:20px 18px;text-align:center;width:100%;flex:1;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .dest--blue{background:var(--blue-bg);border:1px solid #C9D8E6}
+  .dest--green{background:var(--green-bg);border:1px solid #CBDCC7}
+  .dest .ico{font-size:1.6rem;margin-bottom:8px;line-height:1}
+  .dest .t{font-size:.92rem;font-weight:500;margin-bottom:6px}
+  .dest .d{font-size:.78rem;color:var(--muted);line-height:1.75}
+  .dest .n{font-size:.72rem;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);color:var(--muted)}
+
+  /* 画面イメージ */
+  .shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+  .shot-bar{background:#F0EBE3;padding:8px 14px;font-size:.72rem;color:var(--muted);
+    border-bottom:1px solid var(--line);font-family:ui-monospace,monospace;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .shot-body{padding:16px}
+  table.spec{width:100%;border-collapse:collapse;font-size:.82rem}
+  table.spec th,table.spec td{padding:9px 12px;text-align:left;border-bottom:1px solid #F0EBE3}
+  table.spec th{color:var(--muted);font-weight:400;width:40%}
+  table.spec tr:last-child th,table.spec tr:last-child td{border-bottom:0}
+  .hl{background:#FFF8E8;font-weight:700;color:#8A6D2F}
+
+  /* 入力欄イメージ */
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:.78rem;margin-bottom:5px;color:var(--ink)}
+  .field .box{border:1px solid var(--line);border-radius:8px;padding:9px 12px;
+    background:#fff;font-size:.82rem;color:var(--muted)}
+  .field .box--filled{color:var(--ink)}
+  .field--hl label{color:#8A6D2F;font-weight:700}
+  .field--hl .box{border-color:var(--gold);background:#FFFDF7}
+
+  ul.pt{list-style:none;display:flex;flex-direction:column;gap:10px}
+  ul.pt li{background:#FAF7F2;border-radius:12px;padding:14px 18px 14px 38px;
+    font-size:.88rem;position:relative}
+  ul.pt li::before{content:"●";color:var(--gold-soft);font-size:.7rem;
+    position:absolute;left:18px;top:14px;line-height:1.9}
+
+  .warn{background:#FFF8E8;border:1px solid #E8D9AE;border-radius:14px;padding:20px 24px}
+  .warn h3{font-size:.95rem;margin-bottom:8px;color:#8A6D2F}
+  .warn p{font-size:.86rem;line-height:1.85}
+
+  .now{display:flex;gap:12px}
+  .now .b{flex:1;background:#FAF7F2;border-radius:14px;padding:18px;text-align:center}
+  .now .num{font-family:"Zen Maru Gothic",sans-serif;font-size:2rem;color:var(--gold);line-height:1.2}
+  .now .lb{font-size:.78rem;color:var(--muted);margin-top:4px;line-height:1.6}
+
+  footer{text-align:center;padding:44px 0 60px;color:var(--muted);font-size:.78rem;line-height:2}
+
+  @media (max-width:720px){
+    /* SPは縦積み。PC用のコネクタ線は消す */
+    .split{flex-direction:column;gap:22px;padding-top:0}
+    .split::before{display:none}
+    .branch::before{display:none}
+    .now{flex-direction:column}
+  }
+  @media (max-width:430px){
+    .wrap{padding:0 16px}
+    header{padding:42px 0 32px}
+    h1{font-size:1.4rem}
+    h2{font-size:1.12rem}
+    .card{padding:20px 16px}
+    .answer{padding:22px 20px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">ASGUARD CAR SALES</div>
+  <h1>ボディカラーの入れ方について</h1>
+  <p class="lead">ご質問いただいた件、ご案内いたします。</p>
+</header>
+
+<!-- 結論 -->
+<section>
+  <div class="answer">
+    <h3>まず、大変申し訳ございませんでした</h3>
+    <p>ボディカラーを<strong>入力する欄がございませんでした</strong>。こちらの作り込み漏れです。<br>
+    <strong>すでに追加いたしました</strong>ので、今すぐご入力いただけます。</p>
+  </div>
+</section>
+
+<!-- 入力場所 -->
+<section>
+  <span class="sec-label">STEP 1</span>
+  <h2>入力する場所</h2>
+  <p class="sec-note">在庫車両の編集画面 → 下の「車両情報」の中、「車検」のすぐ下に追加しました。</p>
+  <div class="card">
+    <div class="shot">
+      <div class="shot-bar">車両情報（カード・詳細ページに表示されます）</div>
+      <div class="shot-body">
+        <div class="field"><label>年式（西暦）</label><div class="box box--filled">2012</div></div>
+        <div class="field"><label>走行距離（万km）</label><div class="box box--filled">17.2</div></div>
+        <div class="field"><label>支払総額（万円）</label><div class="box box--filled">25</div></div>
+        <div class="field"><label>車検</label><div class="box box--filled">整備付</div></div>
+        <div class="field field--hl"><label>★ ボディカラー ← ここに追加しました</label><div class="box">例: パールホワイト / ミルクティーベージュ</div></div>
+      </div>
+    </div>
+    <ul class="pt" style="margin-top:18px">
+      <li>色の名前は<strong>そのまま自由に</strong>お書きください（「ブラック」「ミルクティーベージュ」など）</li>
+      <li>最後に必ず<strong>「更新」</strong >を押して保存してください</li>
+      <li><strong>空のままでも大丈夫です。</strong>その場合「ボディカラー」の行そのものが表示されません</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ★分岐 -->
+<section>
+  <span class="sec-label">STEP 2 ★大事なところ</span>
+  <h2>実は、色が表示される車と、されない車があります</h2>
+  <p class="sec-note">「車選び.comのURL」を入れているかどうかで、お客様が見るページが変わるためです。</p>
+
+  <div class="card">
+    <div class="tree">
+      <div class="node">
+        <div class="t">お客様が在庫一覧で「詳細を見る」を押す</div>
+        <div class="d">asguard-carsales.com/stock/</div>
+      </div>
+      <div class="stem"></div>
+      <div class="split">
+        <div class="branch">
+          <div class="cond cond--blue">車選び.comのURL：入れている</div>
+          <div class="dest dest--blue">
+            <div class="ico">🔗</div>
+            <div class="t">車選び.com へ直接移動</div>
+            <div class="d">ホームページの詳細ページは<strong>通りません</strong>。<br>色は車選び.comの「車体色」が表示されます。</div>
+            <div class="n">→ ボディカラー欄は<strong>使われません</strong></div>
+          </div>
+        </div>
+        <div class="branch">
+          <div class="cond cond--green">車選び.comのURL：空</div>
+          <div class="dest dest--green">
+            <div class="ico">🚗</div>
+            <div class="t">ホームページの詳細ページ</div>
+            <div class="d">asguard-carsales.com/car/…<br>「車両情報」の表が表示されます。</div>
+            <div class="n">→ <strong>ここにボディカラーが出ます</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn">
+    <h3>つまり、こういうことです</h3>
+    <p><strong>車選び.comのURLを入れている車は、そちらの「車体色」が使われる</strong>ため、ホームページ側のボディカラーを入れても表示されません。<br>
+    <strong>URLを入れていない車</strong>だけ、ホームページの詳細ページが開き、ボディカラーが表示されます。</p>
+  </div>
+</section>
+
+<!-- 現在の状況 -->
+<section>
+  <span class="sec-label">現在の在庫</span>
+  <h2>今どうなっているか</h2>
+  <p class="sec-note">2026年7月17日時点</p>
+  <div class="card">
+    <div class="now">
+      <div class="b">
+        <div class="num">6</div>
+        <div class="lb">在庫台数</div>
+      </div>
+      <div class="b">
+        <div class="num">5</div>
+        <div class="lb">車選び.comのURLあり<br>→ 車選び.comへ直接移動</div>
+      </div>
+      <div class="b">
+        <div class="num">1</div>
+        <div class="lb">URLなし（ミラココア プラスX）<br>→ ホームページの詳細ページ</div>
+      </div>
+    </div>
+    <ul class="pt" style="margin-top:18px">
+      <li>今すぐボディカラーが表示されるのは<strong>「ミラココア プラスX」の1台</strong>です</li>
+      <li>他の5台も入力しておいていただいて<strong>問題ありません</strong>（車選び.comのURLを外した際に、そのまま表示されます）</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 表示イメージ -->
+<section>
+  <span class="sec-label">表示イメージ</span>
+  <h2>入力すると、こう表示されます</h2>
+  <p class="sec-note">ホームページの詳細ページ（車選び.comのURLが空の車）</p>
+  <div class="card">
+    <div class="shot">
+      <div class="shot-bar">asguard-carsales.com/car/… — 車両情報</div>
+      <div class="shot-body">
+        <table class="spec">
+          <tr><th>年式</th><td>2012年</td></tr>
+          <tr><th>走行距離</th><td>17.2万km</td></tr>
+          <tr><th>車検</th><td>整備付</td></tr>
+          <tr><th class="hl">ボディカラー</th><td class="hl">ブラック</td></tr>
+          <tr><th>支払総額</th><td><strong>25万円（諸費用込み）</strong></td></tr>
+        </table>
+      </div>
+    </div>
+    <p style="font-size:.82rem;color:var(--muted);margin-top:14px;text-align:center">
+      ※ ボディカラーが空のときは、この行そのものが表示されません
+    </p>
+  </div>
+</section>
+
+<!-- 注意 -->
+<section>
+  <span class="sec-label">1点だけお願い</span>
+  <h2>「車種カテゴリ」には色を追加しないでください</h2>
+  <div class="card">
+    <div class="shot">
+      <div class="shot-bar">編集画面 右側 — 車種カテゴリ</div>
+      <div class="shot-body">
+        <p style="font-size:.84rem;line-height:2">
+          ☑ ミラココア<br>
+          ☐ その他自動車<br>
+          <span style="color:var(--blue)">カテゴリーを追加</span> ← <span style="color:#B45454">ここに「ブラック」等を足さないでください</span>
+        </p>
+      </div>
+    </div>
+    <div class="warn" style="margin-top:16px">
+      <h3>理由</h3>
+      <p>「車種カテゴリ」は<strong>在庫一覧の絞り込みボタン</strong>（すべて／ミラココア／その他自動車）に使われています。ここに色を足すと、絞り込みボタンに色が混ざって正しく動かなくなります。<br>
+      <strong>色は必ず「ボディカラー」欄にご入力ください。</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 困ったら -->
+<section>
+  <div class="answer">
+    <h3>ご不明な点がございましたら</h3>
+    <p>お気軽にご連絡ください。<br>色で絞り込めるようにしたい等のご要望も、承ります。</p>
+  </div>
+</section>
+
+<footer>
+  アスガードカーセールス様 ボディカラーの入れ方<br>
+  制作・運用サポート：株式会社ランバード
+</footer>
+
+</div>
+</body>
+</html>
