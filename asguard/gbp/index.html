@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Googleマップ オーナー確認が進まない件｜ASGUARD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EDE6DC; --card:#FFF; --ink:#3E3730; --muted:#8A7F72;
+    --gold:#9C8560; --gold-soft:#C9B695; --line:#E0D6C8; --dark:#3E3730;
+    --red:#B4544A; --red-bg:#FBEEEC; --green:#5F8A5B; --green-bg:#EDF4EC;
+    --r:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif;
+    line-height:1.9;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+  p,li,h1,h2,h3,td,th,.d,.t{word-break:auto-phrase}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:"Zen Maru Gothic",sans-serif;font-weight:500;line-height:1.5;letter-spacing:.04em}
+
+  header{padding:56px 0 40px;text-align:center}
+  .brand{font-size:.78rem;letter-spacing:.26em;color:var(--gold);margin-bottom:14px}
+  h1{font-size:1.7rem;margin-bottom:12px}
+  .lead{color:var(--muted);font-size:.92rem}
+
+  section{margin-bottom:56px}
+  .sec-label{display:inline-block;font-size:.72rem;letter-spacing:.16em;color:#fff;
+    background:var(--gold);padding:5px 14px;border-radius:999px;margin-bottom:14px}
+  .sec-label--red{background:var(--red)}
+  h2{font-size:1.28rem;margin-bottom:8px}
+  .sec-note{color:var(--muted);font-size:.88rem;margin-bottom:22px}
+  .card{background:var(--card);border-radius:var(--r);padding:28px;margin-bottom:18px}
+
+  .answer{background:var(--dark);color:#F5EFE6;border-radius:var(--r);padding:28px 30px}
+  .answer h3{font-size:1.05rem;margin-bottom:10px}
+  .answer p{font-size:.88rem;opacity:.88}
+  .answer strong{color:#F0D9A8}
+
+  table.t{width:100%;border-collapse:collapse;font-size:.84rem}
+  table.t th,table.t td{padding:11px 12px;text-align:left;border-bottom:1px solid #F0EBE3;vertical-align:top}
+  table.t th{color:var(--muted);font-weight:400;white-space:nowrap;width:32%}
+  table.t tr:last-child th,table.t tr:last-child td{border-bottom:0}
+  .bad{background:var(--red-bg);color:var(--red);font-weight:700;padding:2px 7px;border-radius:5px;display:inline-block}
+  .ok{background:var(--green-bg);color:var(--green);font-weight:700;padding:2px 7px;border-radius:5px;display:inline-block}
+
+  ul.pt{list-style:none;display:flex;flex-direction:column;gap:10px}
+  ul.pt li{background:#FAF7F2;border-radius:12px;padding:14px 18px 14px 38px;font-size:.86rem;position:relative}
+  ul.pt li::before{content:"●";color:var(--gold-soft);font-size:.7rem;position:absolute;left:18px;top:14px;line-height:1.9}
+
+  .warn{background:#FFF8E8;border:1px solid #E8D9AE;border-radius:14px;padding:20px 24px}
+  .warn h3{font-size:.94rem;margin-bottom:8px;color:#8A6D2F}
+  .warn p{font-size:.85rem;line-height:1.85}
+  .danger{background:var(--red-bg);border:1px solid #E8C4BE;border-radius:14px;padding:20px 24px}
+  .danger h3{font-size:.94rem;margin-bottom:8px;color:var(--red)}
+  .danger p{font-size:.85rem;line-height:1.85}
+
+  /* 手順 */
+  .steps{counter-reset:s;display:flex;flex-direction:column;gap:14px}
+  .step{background:#FAF7F2;border:1px solid var(--line);border-radius:14px;padding:18px 20px 18px 58px;position:relative}
+  .step::before{counter-increment:s;content:counter(s);
+    position:absolute;left:18px;top:18px;width:26px;height:26px;border-radius:50%;
+    background:var(--gold);color:#fff;font-size:.8rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:.95rem;margin-bottom:5px}
+  .step p{font-size:.83rem;color:var(--muted);line-height:1.85}
+  .step .why{font-size:.78rem;color:var(--gold);margin-top:7px}
+
+  .quote{background:#F4F0E9;border-left:3px solid var(--gold-soft);
+    padding:14px 18px;font-size:.83rem;line-height:1.9;border-radius:0 8px 8px 0;margin:12px 0}
+  .quote cite{display:block;font-size:.74rem;color:var(--muted);margin-top:8px;font-style:normal}
+  a{color:var(--gold);word-break:break-all}
+
+  footer{text-align:center;padding:40px 0 56px;color:var(--muted);font-size:.76rem;line-height:2}
+
+  @media (max-width:430px){
+    .wrap{padding:0 16px}
+    header{padding:40px 0 30px}
+    h1{font-size:1.32rem}
+    h2{font-size:1.1rem}
+    .card{padding:20px 16px}
+    .answer{padding:22px 18px}
+    table.t th{width:38%;padding:9px 6px}
+    table.t td{padding:9px 6px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">ASGUARD CAR SALES</div>
+  <h1>Googleマップのオーナー確認が<br>進まない件</h1>
+  <p class="lead">原因の特定と、今やるべきこと（2026年7月17日 調査）</p>
+</header>
+
+<!-- 結論 -->
+<section>
+  <div class="answer">
+    <h3>結論：動画を撮り直しても、また落ちます</h3>
+    <p>「他に利用できる確認方法はありません」は<strong>詰みではなく、順番の問題</strong>です。<br>
+    <strong>Googleが照合できる材料が揃っていない</strong>ので、まずそこを直します。<br>
+    しかも今のビジネス名は<strong>Googleのガイドライン違反</strong>で、放置すると停止の恐れがあります。</p>
+  </div>
+</section>
+
+<!-- 原因1 -->
+<section>
+  <span class="sec-label sec-label--red">原因 ① 最優先</span>
+  <h2>ビジネス名がガイドライン違反です</h2>
+  <p class="sec-note">これが未対応のまま何度出しても、通らないどころか停止リスクがあります。</p>
+
+  <div class="card">
+    <table class="t">
+      <tr><th>現在のビジネス名</th><td><span class="bad">ミラココア買取・販売専門店 ASGUARD</span></td></tr>
+      <tr><th>問題</th><td>「ミラココア買取・販売専門店」＝<strong>サービス内容の付け足し</strong>。Googleが禁止しています</td></tr>
+      <tr><th>あるべき名前</th><td><span class="ok">ASGUARD</span> など、<strong>看板に出ている実際のブランド名だけ</strong></td></tr>
+    </table>
+
+    <div class="quote">
+      「実際のビジネスで一貫して使用し、認知されている（<strong>看板やビジネスレターなどで使用している</strong>）ブランド名を使用します」<br>
+      「ビジネス名に<strong>不要な情報を含めることはできません。含めると、ビジネス プロフィールが停止される場合があります</strong>」
+      <cite>Google公式「ビジネス名の表記ルール」 support.google.com/business/answer/3038177</cite>
+    </div>
+
+    <div class="danger">
+      <h3>Googleから見ると、こう見えています</h3>
+      <p>看板は「軽自動車買取・販売専門店 ASGUARD CAR SALES」なのに、登録名は「<strong>ミラ</strong>ココア買取・販売専門店 ASGUARD」。<strong>看板と一致していません。</strong>動画で店舗を撮っても、名前が合わないので照合できません。<br>
+      <strong>動画審査が落ち続けている直接の原因は、これである可能性が高いです。</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 原因2 -->
+<section>
+  <span class="sec-label sec-label--red">原因 ② 見落とされていました</span>
+  <h2>ホームページに、お店の電話番号が1つも載っていません</h2>
+  <p class="sec-note">全ページの電話が「車選び.comの無料通話番号」になっています。</p>
+
+  <div class="card">
+    <table class="t">
+      <tr><th>サイトの電話（全ページ）</th><td><span class="bad">0078-6015-18148</span><br><span style="font-size:.78rem;color:var(--muted)">＝ 車選び.comが発行した転送番号。お店の番号ではありません</span></td></tr>
+      <tr><th>Googleに登録した電話</th><td>お店の実番号（のはず）</td></tr>
+      <tr><th>結果</th><td><strong>両者が一致しないので、Googleは「同じ店」と判定できません</strong></td></tr>
+    </table>
+
+    <div class="warn">
+      <h3>なぜこれが致命的か</h3>
+      <p>Googleは <strong>店名・住所・電話（NAP）の3点セット</strong>がネット上で一致しているかで実在性を判断します。<br>
+      住所は一致していますが、<strong>店名も電話も一致していません</strong>。3点のうち2点が合っていない状態です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 現状の食い違い -->
+<section>
+  <span class="sec-label">食い違いの全体像</span>
+  <h2>今、4か所で名前がバラバラです</h2>
+  <p class="sec-note">Googleはこれらを突き合わせて実在確認をしています。</p>
+  <div class="card">
+    <table class="t">
+      <tr><th>① 看板・ロゴ</th><td>軽自動車買取・販売専門店 ASGUARD CAR SALES</td></tr>
+      <tr><th>② ホームページ</th><td>アスガードカーセールス</td></tr>
+      <tr><th>③ 車選び.com</th><td>ASGUARD</td></tr>
+      <tr><th>④ Googleビジネス</th><td><span class="bad">ミラココア買取・販売専門店 ASGUARD</span></td></tr>
+    </table>
+    <p style="font-size:.84rem;margin-top:14px;text-align:center;color:var(--red);font-weight:700">
+      4つとも違います。Googleから見ると「どれが本当の店名か分からない」状態です。
+    </p>
+  </div>
+  <div class="card">
+    <table class="t">
+      <tr><th>住所</th><td><span class="ok">神奈川県藤沢市遠藤3223-1</span>（サイト・車選び.com 一致）</td></tr>
+      <tr><th>電話</th><td><span class="bad">サイトは車選び.comの転送番号のみ</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- やること -->
+<section>
+  <span class="sec-label">対応</span>
+  <h2>この順番でやります</h2>
+  <p class="sec-note">先に材料を揃えてから、最後に動画を出し直します。逆にすると、また落ちます。</p>
+
+  <div class="card">
+    <div class="steps">
+      <div class="step">
+        <h3>実際の店名を1つに決める（柳本様に確認）</h3>
+        <p>看板に出ている名前は何か。登記や名刺、請求書に使っている正式名称は何か。<strong>ここが決まらないと何も進みません。</strong></p>
+        <p class="why">→ 候補：「ASGUARD」／「ASGUARD CAR SALES」／「アスガードカーセールス」</p>
+      </div>
+      <div class="step">
+        <h3>お店の実際の電話番号を教えていただく</h3>
+        <p>車選び.comの転送番号ではなく、<strong>店舗にかかる番号</strong>。Googleに登録している番号と同じものを。</p>
+        <p class="why">→ これがないとサイトに載せられず、照合材料が作れません</p>
+      </div>
+      <div class="step">
+        <h3>Googleのビジネス名を、実際の店名だけに直す</h3>
+        <p>「ミラココア買取・販売専門店」を外します。<strong>ガイドライン違反の解消が先です。</strong></p>
+        <p class="why">→ 検索されたい言葉は「説明」欄に書けば良く、店名に入れる必要はありません</p>
+      </div>
+      <div class="step">
+        <h3>サイト・車選び.com・Googleの3か所を1文字違わず揃える</h3>
+        <p>店名・住所・電話の3点セットを完全一致させます。<strong>ここがGoogleの照合材料になります。</strong></p>
+        <p class="why">→ サイトは弊社で対応します</p>
+      </div>
+      <div class="step">
+        <h3>数日おいてから、Googleサポートに連絡する</h3>
+        <p>「他に利用できる確認方法はありません」の場合、<strong>Google公式もサポート問い合わせを案内しています。</strong>名前を直したこと・サイトで実在確認できることを伝えます。</p>
+        <p class="why">→ support.google.com/business/gethelp</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote">
+    「確認方法は Google によって自動的に決定されるため、変更できません」<br>
+    「それでもビジネスのオーナー確認ができない場合は、<strong>サポートにお問い合わせください</strong>」
+    <cite>Google公式「オーナー確認に関するよくある質問」 support.google.com/business/answer/7107242</cite>
+  </div>
+</section>
+
+<!-- 補足 -->
+<section>
+  <span class="sec-label">補足</span>
+  <h2>なぜ動画確認しか出ないのか</h2>
+  <div class="card">
+    <ul class="pt">
+      <li><strong>確認方法はGoogleが自動で決めており、こちらでは選べません</strong>（公式明記）</li>
+      <li>業種（中古車販売）＝不正登録が多く、Googleが厳格に見る分野です</li>
+      <li>公開情報が少ないほど厳しい方法になります。<strong>サイトは公開済みですが、店名も電話も一致していないため、照合材料として機能していません</strong></li>
+      <li>名前と電話を揃えると、確認方法が緩和される（電話確認等が出る）可能性があります</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  ASGUARD様 Googleマップ オーナー確認 調査結果（2026-07-17）<br>
+  株式会社ランバード
+</footer>
+
+</div>
+</body>
+</html>
