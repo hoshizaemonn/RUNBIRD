@@ -3,24 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OWL｜障がい者グループホーム独立起業 - 月140万円以上収益モデル</title>
-<meta name="description" content="自己資金500万円から障がい者グループホーム経営をスタート。加盟金¥0プランで初期投資を最小化。開設・運営まで一括サポート。">
-<meta property="og:title" content="OWL｜障がい者グループホーム独立起業">
-<meta property="og:description" content="月140万円以上の収益モデル。加盟金¥0で開設・運営まで一括サポート。">
+<title>OWL｜障がい者グループホーム独立起業 - 年1800万円以上収益モデル</title>
+<meta name="description" content="自己資金500万円から障がい者グループホーム経営をスタート。加盟金¥0プランで初期投資を最小化。半年以内の黒字化運営を実現。">
+<meta property="og:title" content="OWL｜障がい者グループホーム独立起業 - 年1800万円以上収益モデル">
+<meta property="og:description" content="加盟金¥0で開設・半年以内黒字化運営まで一括サポート。">
 <meta property="og:type" content="website">
 <style>
 :root {
   --owl-green: #3d8b3d;
   --owl-green-dark: #2d6b2d;
+  --owl-green-light: #6dc06d;
   --owl-orange: #f5843c;
   --owl-orange-dark: #db6a24;
   --owl-yellow: #fff8d7;
   --owl-cream: #fefaef;
+  --owl-blue: #4a90e2;
   --owl-text: #2b2b2b;
   --owl-gray: #6b6b6b;
+  --owl-gray-light: #a0a0a0;
   --owl-border: #e5e5e5;
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
   --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.14);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 60px; }
@@ -33,392 +37,840 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
 
 /* ========== ヘッダー ========== */
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,0.96);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--owl-border);
   box-shadow: var(--shadow-sm);
 }
 .header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  gap: 12px;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 20px; gap: 12px;
 }
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 900;
-  font-size: 20px;
-  color: var(--owl-green);
-  flex-shrink: 0;
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 900; font-size: 20px;
+  color: var(--owl-green); flex-shrink: 0;
 }
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  display: inline-block;
-}
-.header-nav {
-  display: flex;
-  gap: 24px;
-  font-size: 14px;
-  font-weight: 600;
-}
+.logo-icon { width: 32px; height: 32px; flex-shrink: 0; }
+.header-nav { display: flex; gap: 24px; font-size: 14px; font-weight: 600; }
 .header-nav a { transition: color .2s; }
 .header-nav a:hover { color: var(--owl-green); }
 .header-cta {
-  background: var(--owl-orange);
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 14px;
+  background: var(--owl-orange); color: #fff;
+  padding: 10px 20px; border-radius: 999px;
+  font-weight: 700; font-size: 14px;
   transition: background .2s, transform .1s;
   white-space: nowrap;
 }
 .header-cta:hover { background: var(--owl-orange-dark); transform: translateY(-1px); }
 
 /* ========== セクション共通 ========== */
-.section {
-  scroll-margin-top: 60px;
-  padding: 32px 0;
-  background: #fff;
+section { scroll-margin-top: 60px; padding: 64px 20px; position: relative; }
+.container { max-width: 1200px; margin: 0 auto; }
+.section-badge {
+  display: inline-block;
+  background: var(--owl-green); color: #fff;
+  padding: 6px 20px; font-size: 12px; font-weight: 700;
+  border-radius: 4px; margin-bottom: 20px;
+  letter-spacing: .05em;
 }
-.section + .section {
-  border-top: 1px solid #f0f0f0;
+.section-title {
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 900; line-height: 1.35;
+  margin-bottom: 12px; text-align: center;
 }
-.section-img-wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-@media (max-width: 768px) {
-  .section {
-    padding: 20px 0;
-  }
-  .section-img-wrap {
-    padding: 0 8px;
-  }
-}
-.section-img-wrap img {
-  width: 100%;
-  height: auto;
-  display: block;
+.section-title strong { color: var(--owl-green); font-size: 1.15em; }
+.section-subtitle {
+  text-align: center; color: var(--owl-gray);
+  font-size: 15px; margin-bottom: 40px;
 }
 
-/* ========== S09 FAQ（HTML実装） ========== */
-.faq-section {
-  background: linear-gradient(180deg, #fefaef 0%, #fff 100%);
-  padding: 60px 20px;
+/* ========== S01 ファーストビュー ========== */
+.fv {
+  background: linear-gradient(135deg, #e3f2fd 0%, #f5f7fa 60%, #fff 100%);
+  padding: 40px 20px 80px;
+  overflow: hidden;
 }
-.faq-container {
-  max-width: 900px;
-  margin: 0 auto;
+.fv-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px;
+  align-items: center;
 }
-.faq-badge {
+.fv-visual { position: relative; }
+.fv-house {
+  border-radius: 16px; overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 16/11;
+}
+.fv-house img { width: 100%; height: 100%; object-fit: cover; }
+.fv-interiors {
+  display: flex; gap: -10px;
+  margin-top: -50px; position: relative; z-index: 2;
+  justify-content: flex-start;
+}
+.fv-interior {
+  width: 32%; aspect-ratio: 3/4;
+  border-radius: 12px; overflow: hidden;
+  border: 4px solid #fff;
+  box-shadow: var(--shadow-md);
+  margin-right: -12px;
+}
+.fv-interior:nth-child(1) { transform: rotate(-4deg); }
+.fv-interior:nth-child(2) { transform: rotate(2deg) translateY(10px); }
+.fv-interior:nth-child(3) { transform: rotate(-2deg); }
+.fv-interior img { width: 100%; height: 100%; object-fit: cover; }
+.fv-text { }
+.fv-eyebrow {
+  color: var(--owl-gray);
+  font-size: 13px; letter-spacing: .08em;
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 12px;
+}
+.fv-eyebrow::before, .fv-eyebrow::after {
+  content: ""; height: 1px; background: var(--owl-gray-light); flex: 1;
+}
+.fv-badge {
   display: inline-block;
-  background: var(--owl-green);
-  color: #fff;
-  padding: 6px 20px;
-  font-size: 13px;
-  font-weight: 600;
-  border-radius: 4px;
+  background: var(--owl-green); color: #fff;
+  padding: 10px 24px; border-radius: 999px;
+  font-size: 14px; font-weight: 700;
   margin-bottom: 20px;
 }
-.faq-title {
-  font-size: clamp(24px, 4vw, 36px);
-  font-weight: 900;
+.fv-headline {
+  font-size: clamp(40px, 8vw, 88px);
+  font-weight: 900; line-height: 1;
+  color: var(--owl-green); margin-bottom: 6px;
+  display: flex; align-items: baseline; gap: 4px;
+  flex-wrap: wrap;
+}
+.fv-headline .yen-year { font-size: .48em; color: var(--owl-text); }
+.fv-headline .yen-mark { font-size: .4em; color: var(--owl-text); }
+.fv-headline .plus { font-size: .35em; color: var(--owl-text); font-weight: 700; }
+.fv-subheadline {
+  font-size: clamp(24px, 3.5vw, 34px);
+  font-weight: 900; margin-bottom: 8px;
+}
+.fv-note {
+  font-size: 13px; color: var(--owl-gray);
+  margin-bottom: 20px; padding-bottom: 20px;
+  border-bottom: 1px solid var(--owl-border);
+}
+.fv-tagline {
+  font-size: clamp(20px, 2.8vw, 28px);
+  font-weight: 900; margin-bottom: 24px;
+  color: var(--owl-text);
+}
+.fv-benefits {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; margin-bottom: 28px;
+}
+.fv-benefit {
+  background: #fff; border: 2px solid var(--owl-yellow);
+  border-radius: 12px; padding: 16px 12px;
+  text-align: center; font-size: 13px; font-weight: 700;
+  line-height: 1.4;
+  position: relative;
+}
+.fv-benefit .num {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--owl-green); color: #fff;
+  width: 24px; height: 24px; border-radius: 50%;
+  font-size: 12px; margin-bottom: 6px;
+}
+.fv-cta-ribbon {
+  background: var(--owl-orange); color: #fff;
+  padding: 16px 24px; border-radius: 8px;
+  font-weight: 900; font-size: clamp(14px, 2vw, 17px);
   text-align: center;
+  box-shadow: 0 6px 16px rgba(245,132,60,.35);
+  display: block;
+  transition: transform .2s, background .2s;
+}
+.fv-cta-ribbon:hover { background: var(--owl-orange-dark); transform: translateY(-2px); }
+.fv-disclaimer {
+  font-size: 11px; color: var(--owl-gray);
+  margin-top: 10px; text-align: right;
+}
+
+/* ========== S02 スクリーニング ========== */
+.screening { background: var(--owl-cream); }
+.screening-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-bottom: 32px;
+}
+.screening-card {
+  background: #fff; border: 2px solid var(--owl-green-light);
+  border-radius: 16px; padding: 28px 24px;
+  position: relative; transition: transform .2s, box-shadow .2s;
+}
+.screening-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.screening-check {
+  color: var(--owl-green); font-size: 24px;
   margin-bottom: 12px;
-  line-height: 1.3;
 }
-.faq-title strong {
-  color: var(--owl-green);
-  font-size: 1.15em;
+.screening-title { font-size: 17px; font-weight: 900; margin-bottom: 8px; line-height: 1.4; }
+.screening-title strong { color: var(--owl-green); }
+.screening-desc { font-size: 13px; color: var(--owl-gray); line-height: 1.7; }
+.screening-cta-ribbon {
+  background: var(--owl-orange); color: #fff;
+  border-radius: 8px; padding: 16px 24px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 20px; flex-wrap: wrap;
+  font-weight: 700;
 }
-.faq-subtitle {
+.screening-cta-btn {
+  background: #fff; color: var(--owl-orange);
+  padding: 8px 20px; border-radius: 999px;
+  font-weight: 900; font-size: 14px;
+  transition: transform .1s;
+}
+.screening-cta-btn:hover { transform: translateY(-1px); }
+
+/* ========== S03 期限訴求 ========== */
+.urgency { background: linear-gradient(135deg, #fff8d7 0%, #fff 100%); }
+.urgency-highlight {
+  background: #fff; border-left: 6px solid var(--owl-orange);
+  padding: 24px 28px; margin: 24px auto; max-width: 800px;
+  border-radius: 8px; box-shadow: var(--shadow-sm);
+}
+.urgency-highlight-title {
+  font-size: 20px; font-weight: 900; color: var(--owl-orange-dark);
+  margin-bottom: 8px;
+}
+.urgency-points {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 32px;
+}
+.urgency-point {
+  background: #fff; padding: 24px; border-radius: 12px;
+  text-align: center; box-shadow: var(--shadow-sm);
+}
+.urgency-point-num {
+  color: var(--owl-orange); font-weight: 900;
+  font-size: 32px; line-height: 1; margin-bottom: 8px;
+}
+.urgency-point-label { font-size: 13px; color: var(--owl-gray); }
+.urgency-point-desc { font-weight: 700; margin-top: 6px; font-size: 15px; }
+
+/* ========== S04 収益カーブ ========== */
+.revenue { background: #fff; }
+.revenue-kpi {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-bottom: 40px;
+}
+.revenue-kpi-card {
+  background: linear-gradient(135deg, var(--owl-green) 0%, var(--owl-green-dark) 100%);
+  color: #fff; padding: 28px; border-radius: 16px;
+  text-align: center; box-shadow: var(--shadow-md);
+}
+.revenue-kpi-num {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 900; line-height: 1;
+  margin-bottom: 8px;
+}
+.revenue-kpi-label { font-size: 14px; opacity: .9; }
+.revenue-timeline {
+  background: var(--owl-cream); border-radius: 16px; padding: 28px;
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px;
+  position: relative;
+}
+.revenue-month {
   text-align: center;
-  color: var(--owl-gray);
-  margin-bottom: 40px;
-  font-size: 15px;
+  padding: 16px 8px; background: #fff;
+  border-radius: 8px; border-top: 4px solid var(--owl-green);
 }
-.faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.revenue-month.negative { border-top-color: #db6a24; }
+.revenue-month-label { font-size: 11px; color: var(--owl-gray); margin-bottom: 4px; }
+.revenue-month-num { font-weight: 900; font-size: 14px; }
+.revenue-month-num.pos { color: var(--owl-green); }
+.revenue-month-num.neg { color: var(--owl-orange-dark); }
+
+/* ========== S05 物件取得費×内装費 ========== */
+.area-cost { background: var(--owl-cream); }
+.area-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-bottom: 32px;
 }
-.faq-item {
-  background: #fff;
-  border: 2px solid var(--owl-border);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: border-color .2s, box-shadow .2s;
+.area-card {
+  background: #fff; border-radius: 16px; padding: 24px;
+  text-align: center; box-shadow: var(--shadow-sm);
+  border-top: 4px solid var(--owl-green);
 }
-.faq-item[open] {
-  border-color: var(--owl-green);
+.area-card-num {
+  display: inline-block;
+  background: var(--owl-yellow); color: var(--owl-green-dark);
+  width: 32px; height: 32px; border-radius: 50%;
+  font-weight: 900; font-size: 14px;
+  line-height: 32px; margin-bottom: 12px;
+}
+.area-card-name { font-size: 18px; font-weight: 900; margin-bottom: 12px; }
+.area-card-price {
+  color: var(--owl-green); font-weight: 900;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1; margin-bottom: 8px;
+}
+.area-card-price .unit { font-size: .5em; }
+.area-card-desc { font-size: 12px; color: var(--owl-gray); }
+.interior-highlight {
+  background: linear-gradient(135deg, var(--owl-green) 0%, var(--owl-green-dark) 100%);
+  color: #fff; padding: 28px 32px; border-radius: 16px;
+  margin-bottom: 32px;
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: 32px; align-items: center;
+}
+.interior-title { font-size: 15px; font-weight: 700; opacity: .9; margin-bottom: 8px; }
+.interior-num {
+  font-size: clamp(28px, 4.5vw, 44px);
+  font-weight: 900; line-height: 1.1;
+}
+.interior-num .yen { font-size: .55em; }
+.interior-num-sub { font-size: 13px; opacity: .85; margin-top: 6px; }
+.interior-rooms { display: flex; flex-direction: column; gap: 8px; }
+.interior-room {
+  background: rgba(255,255,255,0.15); padding: 10px 16px;
+  border-radius: 8px; display: flex; align-items: center; gap: 12px;
+  font-size: 14px; font-weight: 700;
+}
+.interior-room-badge {
+  background: #fff; color: var(--owl-green-dark);
+  padding: 3px 10px; border-radius: 4px; font-weight: 900;
+  min-width: 60px; text-align: center;
+}
+.total-samples {
+  background: #fff; border-radius: 12px; overflow: hidden;
   box-shadow: var(--shadow-sm);
 }
-.faq-question {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 18px 24px;
-  cursor: pointer;
-  list-style: none;
+.total-samples table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.total-samples th, .total-samples td { padding: 12px; text-align: center; border-bottom: 1px solid var(--owl-border); }
+.total-samples th { background: var(--owl-cream); font-weight: 700; color: var(--owl-gray); font-size: 13px; }
+.total-samples td.highlight { background: var(--owl-yellow); font-weight: 900; color: var(--owl-green-dark); }
+
+/* ========== S06 プラン比較 ========== */
+.plans { background: #fff; }
+.plans-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr;
+  gap: 24px; margin-bottom: 40px;
+}
+.plan-card {
+  border-radius: 20px; padding: 32px;
+  position: relative;
+}
+.plan-card.free {
+  background: linear-gradient(135deg, #f0f9f0 0%, #e6f5e6 100%);
+  border: 3px solid var(--owl-green);
+  box-shadow: 0 10px 30px rgba(61,139,61,.15);
+}
+.plan-card.standard {
+  background: #f9f9f9; border: 2px solid var(--owl-border);
+}
+.plan-badge-owl {
+  position: absolute; top: -14px; right: 24px;
+  background: var(--owl-orange); color: #fff;
+  padding: 6px 16px; border-radius: 4px;
+  font-size: 12px; font-weight: 900;
+  transform: rotate(-4deg);
+}
+.plan-tag {
+  display: inline-block;
+  background: var(--owl-orange); color: #fff;
+  padding: 4px 12px; border-radius: 4px;
+  font-size: 12px; font-weight: 700; margin-bottom: 12px;
+}
+.plan-name { font-size: 22px; font-weight: 900; margin-bottom: 20px; }
+.plan-price {
+  font-size: clamp(48px, 8vw, 80px);
+  font-weight: 900; line-height: 1;
+  color: var(--owl-green);
+}
+.plan-card.standard .plan-price { color: var(--owl-gray); }
+.plan-price .unit { font-size: .3em; }
+.plan-price-caption { font-size: 12px; color: var(--owl-gray); margin-bottom: 16px; }
+.plan-compare-line {
+  font-size: 14px; color: var(--owl-gray);
+  padding: 8px 0; text-align: center;
+  border-top: 1px dashed var(--owl-border);
+  border-bottom: 1px dashed var(--owl-border);
+  margin-bottom: 16px;
+}
+.plan-compare-line strong { color: var(--owl-orange); font-weight: 900; }
+.plan-features { list-style: none; padding: 0; }
+.plan-features li {
+  padding: 8px 0; font-size: 14px; font-weight: 500;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.plan-features li::before {
+  content: "✓"; color: var(--owl-green); font-weight: 900; flex-shrink: 0;
+}
+.plan-card.standard .plan-features li::before { color: var(--owl-gray); }
+.plan-note {
+  font-size: 12px; color: var(--owl-gray);
+  background: rgba(255,255,255,0.6); padding: 12px;
+  border-radius: 8px; margin-top: 16px;
+  line-height: 1.6;
+}
+.plans-comparison {
+  background: var(--owl-cream); border-radius: 16px;
+  padding: 24px 28px; margin-bottom: 24px;
+}
+.plans-comparison-title {
+  font-size: 13px; font-weight: 700; color: var(--owl-gray);
+  margin-bottom: 16px;
+}
+.plans-bar-row {
+  display: grid; grid-template-columns: 120px 1fr 90px;
+  gap: 12px; margin-bottom: 10px; align-items: center;
+  font-size: 13px;
+}
+.plans-bar-label { font-weight: 700; }
+.plans-bar {
+  height: 22px; background: #ececec;
+  border-radius: 4px; position: relative; overflow: hidden;
+}
+.plans-bar-fill {
+  height: 100%; border-radius: 4px;
+  transition: width .5s ease;
+}
+.plans-bar-fill.own { background: var(--owl-green); }
+.plans-bar-fill.other { background: #b8b8b8; }
+.plans-bar-value { font-weight: 900; text-align: right; }
+
+/* ========== S07 4ペルソナ ========== */
+.persona { background: var(--owl-cream); }
+.persona-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; margin-bottom: 24px;
+}
+.persona-card {
+  background: #fff; border: 2px solid var(--owl-green-light);
+  border-radius: 16px; padding: 24px 20px;
+  text-align: center;
+  transition: transform .2s, box-shadow .2s;
+}
+.persona-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.persona-num {
+  display: inline-block; background: var(--owl-yellow); color: var(--owl-green-dark);
+  width: 34px; height: 34px; border-radius: 50%;
+  line-height: 34px; font-weight: 900; font-size: 14px;
+  margin-bottom: 12px;
+}
+.persona-photo {
+  width: 140px; height: 140px; border-radius: 50%;
+  overflow: hidden; margin: 0 auto 16px;
+  border: 3px solid var(--owl-green-light);
+}
+.persona-photo img { width: 100%; height: 100%; object-fit: cover; }
+.persona-title { font-size: 22px; font-weight: 900; color: var(--owl-green); margin-bottom: 4px; }
+.persona-subtitle { font-size: 11px; color: var(--owl-gray); margin-bottom: 12px; letter-spacing: .05em; }
+.persona-quote {
+  font-size: 13px; line-height: 1.7; margin-bottom: 16px;
+  padding-bottom: 12px; border-bottom: 1px dashed var(--owl-border);
+  min-height: 100px; display: flex; align-items: center; justify-content: center;
+  font-style: italic;
+}
+.persona-strengths { list-style: none; padding: 0; text-align: left; font-size: 12px; }
+.persona-strengths li {
+  padding: 4px 0 4px 20px; position: relative;
+}
+.persona-strengths li::before {
+  content: "✓"; color: var(--owl-green); position: absolute; left: 0; font-weight: 900;
+}
+.persona-name {
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid var(--owl-border);
+  font-size: 12px; color: var(--owl-gray);
+}
+.persona-cta {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  flex-wrap: wrap; margin-top: 32px;
+}
+.persona-cta-msg {
+  background: var(--owl-green); color: #fff;
+  padding: 14px 28px; border-radius: 8px;
   font-weight: 700;
-  font-size: 16px;
-  transition: background .2s;
+}
+.persona-cta-btn {
+  background: var(--owl-orange); color: #fff;
+  padding: 14px 32px; border-radius: 8px;
+  font-weight: 900; transition: background .2s, transform .1s;
+}
+.persona-cta-btn:hover { background: var(--owl-orange-dark); transform: translateY(-1px); }
+
+/* ========== S08 4CASE ========== */
+.cases { background: #fff; }
+.cases-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; margin-bottom: 32px;
+}
+.case-card {
+  background: #fff; border: 2px solid var(--owl-border);
+  border-radius: 16px; overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .2s, box-shadow .2s;
+}
+.case-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.case-tag {
+  background: var(--owl-green); color: #fff;
+  padding: 8px 14px; font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; gap: 6px;
+}
+.case-tag-num {
+  background: var(--owl-yellow); color: var(--owl-green-dark);
+  width: 20px; height: 20px; border-radius: 50%;
+  line-height: 20px; text-align: center; font-weight: 900; font-size: 11px;
+}
+.case-photo {
+  width: 100px; height: 100px; border-radius: 50%;
+  overflow: hidden; margin: 20px auto 12px;
+  border: 3px solid var(--owl-green-light);
+}
+.case-photo img { width: 100%; height: 100%; object-fit: cover; }
+.case-body { padding: 0 20px 20px; text-align: center; flex: 1; display: flex; flex-direction: column; }
+.case-name { font-weight: 900; font-size: 16px; margin-bottom: 4px; }
+.case-attr { font-size: 12px; color: var(--owl-gray); margin-bottom: 16px; }
+.case-attrs { text-align: left; }
+.case-attr-row {
+  display: grid; grid-template-columns: 24px 60px 1fr;
+  gap: 8px; margin-bottom: 12px;
+  font-size: 12px; align-items: flex-start;
+}
+.case-attr-icon { color: var(--owl-green); font-size: 16px; }
+.case-attr-label { color: var(--owl-gray); font-weight: 700; }
+.case-attr-value { line-height: 1.5; }
+.case-attr-value strong { color: var(--owl-green); }
+.case-quote {
+  margin-top: auto; padding-top: 16px; border-top: 1px dashed var(--owl-border);
+  font-size: 12px; font-style: italic; color: var(--owl-gray);
+  line-height: 1.6; position: relative;
+}
+.case-quote::before {
+  content: '"'; color: var(--owl-orange);
+  font-size: 32px; font-weight: 900; line-height: 0;
+  vertical-align: middle; margin-right: 4px;
+}
+.cases-cta {
+  text-align: center;
+}
+.cases-cta a {
+  background: var(--owl-orange); color: #fff;
+  padding: 16px 40px; border-radius: 8px;
+  font-weight: 900; display: inline-block;
+  transition: background .2s, transform .1s;
+}
+.cases-cta a:hover { background: var(--owl-orange-dark); transform: translateY(-1px); }
+
+/* ========== S09 FAQ ========== */
+.faq-section { background: var(--owl-cream); }
+.faq-list { display: flex; flex-direction: column; gap: 12px; }
+.faq-item {
+  background: #fff; border: 2px solid var(--owl-border);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+.faq-item[open] { border-color: var(--owl-green); box-shadow: var(--shadow-sm); }
+.faq-question {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 18px 24px; cursor: pointer; list-style: none;
+  font-weight: 700; font-size: 16px; transition: background .2s;
 }
 .faq-question::-webkit-details-marker { display: none; }
 .faq-question:hover { background: var(--owl-cream); }
 .faq-q-num {
-  background: var(--owl-yellow);
-  color: var(--owl-green-dark);
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  font-size: 14px;
-  flex-shrink: 0;
+  background: var(--owl-yellow); color: var(--owl-green-dark);
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px; flex-shrink: 0;
 }
-.faq-q-text {
-  flex: 1;
-  padding-top: 4px;
-}
-.faq-toggle {
-  color: var(--owl-green);
-  font-size: 20px;
-  transition: transform .2s;
-  flex-shrink: 0;
-  padding-top: 2px;
-}
-.faq-item[open] .faq-toggle {
-  transform: rotate(45deg);
-}
-.faq-answer {
-  padding: 0 24px 20px 74px;
-  color: var(--owl-text);
-  font-size: 14px;
-  line-height: 1.9;
-}
-.faq-answer-lead {
-  color: var(--owl-green-dark);
-  font-weight: 700;
-  margin-bottom: 6px;
-  font-size: 15px;
-}
+.faq-q-text { flex: 1; padding-top: 4px; }
+.faq-toggle { color: var(--owl-green); font-size: 20px; transition: transform .2s; flex-shrink: 0; padding-top: 2px; }
+.faq-item[open] .faq-toggle { transform: rotate(45deg); }
+.faq-answer { padding: 0 24px 20px 74px; font-size: 14px; line-height: 1.9; }
+.faq-answer-lead { color: var(--owl-green-dark); font-weight: 700; margin-bottom: 6px; font-size: 15px; }
 .faq-cta {
-  margin-top: 40px;
-  background: #f5f5f5;
-  border-radius: 12px;
-  padding: 20px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+  margin-top: 40px; background: #fff;
+  border-radius: 12px; padding: 20px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap; box-shadow: var(--shadow-sm);
 }
 .faq-cta-text { color: var(--owl-gray); font-size: 14px; }
 .faq-cta-btn {
-  background: var(--owl-orange);
-  color: #fff;
-  padding: 12px 28px;
-  border-radius: 999px;
-  font-weight: 700;
-  transition: background .2s;
+  background: var(--owl-orange); color: #fff;
+  padding: 12px 28px; border-radius: 999px;
+  font-weight: 700; transition: background .2s;
   white-space: nowrap;
 }
 .faq-cta-btn:hover { background: var(--owl-orange-dark); }
 
-/* ========== S12 資料請求フォーム（HTML実装） ========== */
+/* ========== S10 信頼・実績 ========== */
+.trust { background: #fff; }
+.trust-inner {
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px;
+  align-items: center; margin-bottom: 40px;
+}
+.trust-photos {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-rows: 200px 160px;
+  gap: 8px;
+}
+.trust-photo { border-radius: 10px; overflow: hidden; }
+.trust-photo img { width: 100%; height: 100%; object-fit: cover; }
+.trust-photo-1 { grid-column: 1; grid-row: 1; }
+.trust-photo-2 { grid-column: 2 / span 2; grid-row: 1; }
+.trust-photo-3 { grid-column: 1; grid-row: 2; }
+.trust-photo-4 { grid-column: 2; grid-row: 2; }
+.trust-photo-5 { grid-column: 3; grid-row: 2; }
+.trust-kpis { display: flex; flex-direction: column; gap: 20px; }
+.trust-kpi { border-bottom: 1px solid var(--owl-yellow); padding-bottom: 20px; }
+.trust-kpi:last-child { border-bottom: none; }
+.trust-kpi-num {
+  color: var(--owl-green); font-size: clamp(48px, 8vw, 80px);
+  font-weight: 900; line-height: 1;
+  display: flex; align-items: baseline; gap: 4px;
+}
+.trust-kpi-num .unit { font-size: .35em; color: var(--owl-green); }
+.trust-kpi-label { font-size: 16px; font-weight: 700; margin-top: 4px; }
+.trust-kpi-desc { font-size: 12px; color: var(--owl-gray); margin-top: 4px; }
+.trust-apartment {
+  border-radius: 16px; overflow: hidden;
+  box-shadow: var(--shadow-md); margin-bottom: 32px;
+  max-height: 300px;
+}
+.trust-apartment img { width: 100%; height: 100%; object-fit: cover; }
+.partners {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 12px; margin-bottom: 24px;
+}
+.partner {
+  background: #f9f9f9; border: 1px solid var(--owl-border);
+  border-radius: 8px; padding: 14px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; font-size: 13px; font-weight: 700;
+  color: var(--owl-gray);
+}
+.partner-icon { color: var(--owl-green); font-size: 20px; }
+.trust-cta {
+  text-align: center;
+}
+.trust-cta a {
+  background: var(--owl-orange); color: #fff;
+  padding: 16px 40px; border-radius: 8px;
+  font-weight: 900; display: inline-block;
+}
+.trust-cta a:hover { background: var(--owl-orange-dark); }
+
+/* ========== S11 開業ステップ ========== */
+.steps { background: var(--owl-cream); }
+.steps-inner {
+  display: grid; grid-template-columns: 1fr 1.3fr;
+  gap: 40px; align-items: center; margin-bottom: 32px;
+}
+.steps-visual { text-align: center; }
+.steps-photo-heart {
+  width: 100%; max-width: 380px; aspect-ratio: 1;
+  margin: 0 auto 16px;
+  clip-path: path('M 190 40 C 190 40, 110 -20, 40 40 C -20 100, 40 200, 190 350 C 340 200, 400 100, 340 40 C 270 -20, 190 40, 190 40 Z');
+  background: #f5f5f5;
+  position: relative;
+}
+.steps-photo-heart img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.steps-photo-caption {
+  background: #fff; border: 1px solid var(--owl-border);
+  border-radius: 12px; padding: 10px 16px;
+  display: inline-block; font-size: 12px; color: var(--owl-gray);
+  box-shadow: var(--shadow-sm);
+}
+.steps-photo-caption strong { color: var(--owl-green); font-weight: 900; }
+.steps-tagline {
+  margin-top: 20px; font-size: 16px; font-weight: 700; color: var(--owl-text);
+}
+.steps-list { display: flex; flex-direction: column; gap: 12px; }
+.step-item {
+  background: #fff; border-radius: 12px;
+  padding: 16px 20px;
+  display: grid; grid-template-columns: 48px 1fr auto;
+  gap: 16px; align-items: center;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+.step-item::after {
+  content: "▼"; position: absolute; left: 34px; bottom: -14px;
+  color: var(--owl-green); font-size: 12px;
+}
+.step-item:last-child::after { display: none; }
+.step-num {
+  background: var(--owl-green); color: #fff;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 14px;
+}
+.step-content h4 { font-size: 15px; font-weight: 900; margin-bottom: 4px; color: var(--owl-green); }
+.step-content p { font-size: 13px; color: var(--owl-gray); }
+.step-timing {
+  background: var(--owl-yellow); color: var(--owl-green-dark);
+  padding: 6px 12px; border-radius: 999px;
+  font-size: 12px; font-weight: 700;
+  white-space: nowrap;
+}
+.steps-highlight {
+  background: var(--owl-yellow); border-radius: 12px;
+  padding: 20px 28px; text-align: center;
+  margin-bottom: 20px;
+  border: 2px solid var(--owl-green-light);
+}
+.steps-highlight-title {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 900; color: var(--owl-green-dark);
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; flex-wrap: wrap;
+}
+.steps-highlight-title::before { content: "📅"; font-size: 1.2em; }
+.steps-highlight-sub { font-size: 12px; color: var(--owl-gray); margin-top: 6px; }
+.steps-cta { text-align: center; margin-bottom: 24px; }
+.steps-cta a {
+  background: var(--owl-orange); color: #fff;
+  padding: 18px 40px; border-radius: 8px;
+  font-weight: 900; font-size: 15px;
+  display: inline-block;
+  transition: background .2s, transform .1s;
+}
+.steps-cta a:hover { background: var(--owl-orange-dark); transform: translateY(-1px); }
+.steps-note {
+  font-size: 11px; color: var(--owl-gray);
+  background: #fff; border-radius: 8px; padding: 16px;
+  line-height: 1.7;
+}
+.steps-note strong { color: var(--owl-text); }
+
+/* ========== S12 資料請求フォーム ========== */
 .form-section {
   background: linear-gradient(180deg, var(--owl-green) 0%, var(--owl-green-dark) 100%);
-  padding: 60px 20px 80px;
-  color: #fff;
+  padding: 60px 20px 80px; color: #fff;
 }
 .form-container {
-  max-width: 720px;
-  margin: 0 auto;
-  background: #fff;
-  color: var(--owl-text);
-  border-radius: 20px;
-  padding: 40px;
+  max-width: 720px; margin: 0 auto;
+  background: #fff; color: var(--owl-text);
+  border-radius: 20px; padding: 40px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.20);
 }
 .form-title {
   font-size: clamp(22px, 4vw, 32px);
-  font-weight: 900;
-  text-align: center;
-  margin-bottom: 8px;
+  font-weight: 900; text-align: center; margin-bottom: 8px;
 }
 .form-title strong { color: var(--owl-green); }
-.form-subtitle {
-  text-align: center;
-  color: var(--owl-gray);
-  margin-bottom: 32px;
-  font-size: 14px;
-}
-.form-badge-row {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-}
+.form-subtitle { text-align: center; color: var(--owl-gray); margin-bottom: 32px; font-size: 14px; }
+.form-badge-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 32px; }
 .form-badge {
-  background: var(--owl-yellow);
-  color: var(--owl-green-dark);
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
+  background: var(--owl-yellow); color: var(--owl-green-dark);
+  padding: 6px 14px; border-radius: 999px;
+  font-size: 12px; font-weight: 700;
 }
-.form-group {
-  margin-bottom: 20px;
-}
-.form-label {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 8px;
-  font-size: 14px;
-}
+.form-group { margin-bottom: 20px; }
+.form-label { display: block; font-weight: 700; margin-bottom: 8px; font-size: 14px; }
 .form-label .required {
-  color: var(--owl-orange);
-  font-size: 11px;
-  background: #ffe8d5;
-  padding: 2px 6px;
-  border-radius: 3px;
-  margin-left: 8px;
+  color: var(--owl-orange); font-size: 11px;
+  background: #ffe8d5; padding: 2px 6px; border-radius: 3px; margin-left: 8px;
 }
 .form-input, .form-select, .form-textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border: 2px solid var(--owl-border);
-  border-radius: 8px;
-  font-size: 15px;
-  font-family: inherit;
+  width: 100%; padding: 12px 14px;
+  border: 2px solid var(--owl-border); border-radius: 8px;
+  font-size: 15px; font-family: inherit;
   transition: border-color .2s;
 }
 .form-input:focus, .form-select:focus, .form-textarea:focus {
-  outline: none;
-  border-color: var(--owl-green);
+  outline: none; border-color: var(--owl-green);
 }
-.form-textarea {
-  min-height: 100px;
-  resize: vertical;
-}
+.form-textarea { min-height: 100px; resize: vertical; }
 .form-consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 24px 0;
-  font-size: 13px;
-  color: var(--owl-gray);
+  display: flex; align-items: flex-start; gap: 10px;
+  margin: 24px 0; font-size: 13px; color: var(--owl-gray);
 }
 .form-consent input[type="checkbox"] {
-  margin-top: 3px;
-  width: 18px;
-  height: 18px;
-  accent-color: var(--owl-green);
-  flex-shrink: 0;
+  margin-top: 3px; width: 18px; height: 18px;
+  accent-color: var(--owl-green); flex-shrink: 0;
 }
 .form-submit {
-  width: 100%;
-  background: var(--owl-orange);
-  color: #fff;
-  padding: 18px;
-  border: none;
-  border-radius: 999px;
-  font-size: 17px;
-  font-weight: 900;
-  cursor: pointer;
+  width: 100%; background: var(--owl-orange); color: #fff;
+  padding: 18px; border: none; border-radius: 999px;
+  font-size: 17px; font-weight: 900; cursor: pointer;
   transition: background .2s, transform .1s;
   box-shadow: var(--shadow-md);
 }
 .form-submit:hover { background: var(--owl-orange-dark); transform: translateY(-2px); }
 .form-note {
-  text-align: center;
-  color: var(--owl-gray);
-  font-size: 12px;
-  margin-top: 16px;
-  line-height: 1.6;
+  text-align: center; color: var(--owl-gray);
+  font-size: 12px; margin-top: 16px; line-height: 1.6;
 }
 
 /* ========== フッター ========== */
-.footer {
-  background: #2b2b2b;
-  color: #ccc;
-  padding: 40px 20px 30px;
-  text-align: center;
-  font-size: 13px;
-}
-.footer-logo {
-  color: #fff;
-  font-weight: 900;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-.footer-copy {
-  font-size: 11px;
-  color: #888;
-  margin-top: 20px;
-}
+.footer { background: #2b2b2b; color: #ccc; padding: 40px 20px 30px; text-align: center; font-size: 13px; }
+.footer-logo { color: #fff; font-weight: 900; font-size: 18px; margin-bottom: 10px; display: inline-flex; align-items: center; gap: 8px; }
+.footer-copy { font-size: 11px; color: #888; margin-top: 20px; }
 
 /* ========== フローティングCTA ========== */
 .floating-cta {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 90;
-  background: var(--owl-orange);
-  color: #fff;
-  padding: 14px 22px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 14px;
+  position: fixed; bottom: 20px; right: 20px; z-index: 90;
+  background: var(--owl-orange); color: #fff;
+  padding: 14px 22px; border-radius: 999px;
+  font-weight: 700; font-size: 14px;
   box-shadow: 0 8px 24px rgba(245,132,60,0.40);
   transition: transform .2s, background .2s;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  display: flex; align-items: center; gap: 8px;
 }
-.floating-cta:hover {
-  background: var(--owl-orange-dark);
-  transform: translateY(-2px);
-}
+.floating-cta:hover { background: var(--owl-orange-dark); transform: translateY(-2px); }
 .floating-cta::before { content: "📩"; }
 
 /* ========== レスポンシブ ========== */
+@media (max-width: 900px) {
+  .fv-inner, .trust-inner, .steps-inner { grid-template-columns: 1fr; gap: 32px; }
+  .interior-highlight { grid-template-columns: 1fr; text-align: center; }
+  .interior-rooms { align-items: center; }
+  .screening-cards, .persona-grid, .cases-grid, .area-cards, .urgency-points, .revenue-kpi { grid-template-columns: repeat(2, 1fr); }
+  .revenue-timeline { grid-template-columns: repeat(3, 1fr); }
+  .plans-grid { grid-template-columns: 1fr; }
+  .partners { grid-template-columns: repeat(3, 1fr); }
+  .trust-photos { grid-template-columns: 1fr 1fr; grid-template-rows: 160px 160px 160px; }
+  .trust-photo-1 { grid-column: 1 / span 2; grid-row: 1; }
+  .trust-photo-2 { grid-column: 1 / span 2; grid-row: 2; }
+  .trust-photo-3 { grid-column: 1; grid-row: 3; }
+  .trust-photo-4 { grid-column: 2; grid-row: 3; }
+  .trust-photo-5 { display: none; }
+}
 @media (max-width: 768px) {
   .header-nav { display: none; }
-  .logo { font-size: 16px; }
-  .logo::before { font-size: 20px; }
+  section { padding: 40px 16px; }
+  .fv { padding: 24px 16px 40px; }
+  .persona-grid, .cases-grid { grid-template-columns: 1fr 1fr; }
+  .persona-photo { width: 100px; height: 100px; }
+  .persona-quote { min-height: auto; }
   .header-cta { padding: 8px 14px; font-size: 12px; }
   .form-container { padding: 24px 20px; }
-  .faq-section, .form-section { padding: 40px 16px; }
-  .faq-answer { padding: 0 16px 16px 60px; font-size: 13px; }
+  .form-section { padding: 40px 16px; }
   .faq-question { padding: 14px 16px; font-size: 14px; gap: 12px; }
+  .faq-answer { padding: 0 16px 16px 60px; font-size: 13px; }
   .faq-q-num { width: 28px; height: 28px; font-size: 12px; }
   .faq-cta { flex-direction: column; align-items: stretch; text-align: center; }
   .floating-cta { padding: 12px 16px; font-size: 12px; bottom: 12px; right: 12px; }
+  .revenue-timeline { grid-template-columns: repeat(2, 1fr); }
+  .plans-bar-row { grid-template-columns: 90px 1fr 70px; font-size: 12px; }
+  .steps-photo-heart { max-width: 280px; }
+  .step-item { grid-template-columns: 32px 1fr; gap: 12px; }
+  .step-timing { grid-column: 1 / -1; text-align: center; justify-self: start; }
 }
 @media (max-width: 430px) {
+  .screening-cards, .area-cards, .urgency-points, .revenue-kpi, .persona-grid, .cases-grid { grid-template-columns: 1fr; }
+  .fv-headline { font-size: 56px; }
   .header-inner { padding: 8px 12px; }
   .logo { font-size: 14px; }
   .header-cta { padding: 7px 12px; font-size: 11px; }
+  .trust-photos { grid-template-rows: 140px 140px 140px; }
 }
 </style>
 </head>
@@ -428,7 +880,7 @@ a { color: inherit; text-decoration: none; }
 <header class="header">
   <div class="header-inner">
     <a href="#top" class="logo">
-      <svg class="logo-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="OWL">
+      <svg class="logo-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
         <ellipse cx="32" cy="34" rx="22" ry="24" fill="#8b6f47"/>
         <ellipse cx="32" cy="36" rx="16" ry="18" fill="#f5e6d3"/>
         <circle cx="24" cy="28" r="7" fill="#fff"/>
@@ -438,8 +890,6 @@ a { color: inherit; text-decoration: none; }
         <circle cx="25" cy="27" r="1" fill="#fff"/>
         <circle cx="41" cy="27" r="1" fill="#fff"/>
         <polygon points="32,32 29,37 35,37" fill="#f5843c"/>
-        <path d="M14 14 Q18 8 24 12" stroke="#8b6f47" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <path d="M50 14 Q46 8 40 12" stroke="#8b6f47" stroke-width="3" fill="none" stroke-linecap="round"/>
       </svg>
       OWL WELFARE WORK
     </a>
@@ -456,125 +906,403 @@ a { color: inherit; text-decoration: none; }
 
 <main id="top">
 
-<!-- S01 FV -->
-<section class="section" id="s01"><div class="section-img-wrap"><img src="img/S01_FV.png" alt="自己資金500万円から障がい者GH経営をスタート。月140万円以上収益モデル" loading="eager"></div></section>
-
-<!-- S02 本気度スクリーニング -->
-<section class="section" id="s02"><div class="section-img-wrap"><img src="img/S02_screening.png" alt="3つ全てに当てはまる方に、OWLはお応えします" loading="lazy"></div></section>
-
-<!-- S03 期限訴求 -->
-<section class="section" id="s03"><div class="section-img-wrap"><img src="img/S03_urgency.png" alt="制度改定に間に合わせるスケジュール" loading="lazy"></div></section>
-
-<!-- S04 収益カーブ -->
-<section class="section" id="s04"><div class="section-img-wrap"><img src="img/S04_revenue.png" alt="収益カーブとキャッシュフロー" loading="lazy"></div></section>
-
-<!-- S05 物件相場 -->
-<section class="section" id="s05"><div class="section-img-wrap"><img src="img/S05_area_cost.png" alt="エリア別の物件相場と初期費用" loading="lazy"></div></section>
-
-<!-- S06 プラン比較 -->
-<section class="section" id="s06"><div class="section-img-wrap"><img src="img/S06_plan_compare.png" alt="0円プランと加盟金プランの違い" loading="lazy"></div></section>
-
-<!-- S07 4ペルソナ -->
-<section class="section" id="s07"><div class="section-img-wrap"><img src="img/S07_persona.png" alt="こんな方が、OWLで独立起業しています" loading="lazy"></div></section>
-
-<!-- S08 CASE -->
-<section class="section" id="s08"><div class="section-img-wrap"><img src="img/S08_case.png" alt="OWLで独立起業した4名のリアルな声" loading="lazy"></div></section>
-
-<!-- ========== S09 FAQ（HTML実装） ========== -->
-<section class="section faq-section" id="s09">
-  <div class="faq-container">
-    <div style="text-align:center;">
-      <span class="faq-badge">SECTION 09 / よくあるご質問</span>
+<!-- ========== S01 FV ========== -->
+<section class="fv" id="s01">
+  <div class="fv-inner">
+    <div class="fv-visual">
+      <div class="fv-house"><img src="img/assets/s01_house_main.jpg" alt="OWLグループホームの戸建て住宅"></div>
+      <div class="fv-interiors">
+        <div class="fv-interior"><img src="img/assets/s01_interior_living.jpg" alt="リビング"></div>
+        <div class="fv-interior"><img src="img/assets/s01_interior_bedroom.jpg" alt="ベッドルーム"></div>
+        <div class="fv-interior"><img src="img/assets/s01_interior_kitchen.jpg" alt="キッチン"></div>
+      </div>
     </div>
-    <h2 class="faq-title">独立起業前の、<strong>7つの不安</strong>に答えます</h2>
-    <p class="faq-subtitle">商談でよくいただく質問と、私たちの回答</p>
+    <div class="fv-text">
+      <div class="fv-eyebrow">独立・開業・新規事業をお考えの皆様</div>
+      <div class="fv-badge">自己資金500万円から障がい者GH経営をスタート</div>
+      <div class="fv-headline"><span class="yen-year">年</span>1800<span class="yen-mark">万円</span><span class="plus">以上</span></div>
+      <div class="fv-subheadline">収益モデル</div>
+      <div class="fv-note">月140万円想定 ／ 上位事例では営業利益1億円超</div>
+      <div class="fv-tagline">安定した収益化が可能</div>
+      <div class="fv-benefits">
+        <div class="fv-benefit"><span class="num">1</span><br>実務経験を<br>活かせる</div>
+        <div class="fv-benefit"><span class="num">2</span><br>10年以上<br>安定収益</div>
+        <div class="fv-benefit"><span class="num">3</span><br>融資まで<br>一括支援</div>
+      </div>
+      <a href="#s12" class="fv-cta-ribbon">資料請求から開設・運営まで一括サポート →</a>
+      <div class="fv-disclaimer">※標準的な収支モデル。棟数・地域により異なります。</div>
+    </div>
+  </div>
+</section>
 
+<!-- ========== S02 本気度スクリーニング ========== -->
+<section class="screening" id="s02">
+  <div class="container">
+    <div style="text-align:center;"><span class="section-badge">SECTION 02 - まず確認してほしいこと</span></div>
+    <h2 class="section-title"><strong>3つ全て</strong>に当てはまる方に、OWLはお応えします</h2>
+    <p class="section-subtitle">本気で独立起業を検討されている方だけに、真剣に向き合いたい</p>
+    <div class="screening-cards">
+      <div class="screening-card">
+        <div class="screening-check">✓</div>
+        <div class="screening-title"><strong>自己資金500万円以上</strong>をご用意可能</div>
+        <div class="screening-desc">物件取得・内装工事・運転資金を含め、トータルで500万円以上の自己資金をご準備いただける方。</div>
+      </div>
+      <div class="screening-card">
+        <div class="screening-check">✓</div>
+        <div class="screening-title"><strong>1年以内の開設・運営</strong>に向けて動ける</div>
+        <div class="screening-desc">情報収集だけでなく、具体的な行動計画を持ち、1年以内の開設を本気で目指している方。</div>
+      </div>
+      <div class="screening-card">
+        <div class="screening-check">✓</div>
+        <div class="screening-title"><strong>ご自身のキャリア</strong>を事業に活かしたい</div>
+        <div class="screening-desc">これまでの経験や専門性を活かして、社会に価値を提供する事業をつくり、長く続けていきたい方。</div>
+      </div>
+    </div>
+    <div class="screening-cta-ribbon">
+      <span>全て該当する方は、まずは資料請求から →</span>
+      <a href="#s12" class="screening-cta-btn">資料請求（3分）→</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== S03 期限訴求 ========== -->
+<section class="urgency" id="s03">
+  <div class="container">
+    <div style="text-align:center;"><span class="section-badge" style="background:var(--owl-orange);">SECTION 03 - 期限訴求</span></div>
+    <h2 class="section-title"><strong>3ヶ月〜半年</strong>で開設。<strong>半年以内の黒字化運営</strong>を実現</h2>
+    <p class="section-subtitle">融資支援4社の実績値・最短3ヶ月〜6ヶ月超</p>
+    <div class="urgency-highlight">
+      <div class="urgency-highlight-title">🎯 なぜ「半年以内の黒字化」が可能か</div>
+      <div>1棟目立ち上げから満床稼働まで、OWLの伴走支援と180社の運営ノウハウで、業界最短クラスのスピード開業と早期黒字化を実現します。</div>
+    </div>
+    <div class="urgency-points">
+      <div class="urgency-point">
+        <div class="urgency-point-num">3ヶ月</div>
+        <div class="urgency-point-label">最短開設期間</div>
+        <div class="urgency-point-desc">茨城・賃貸+軽微改修の実績</div>
+      </div>
+      <div class="urgency-point">
+        <div class="urgency-point-num">6ヶ月</div>
+        <div class="urgency-point-label">目安黒字化</div>
+        <div class="urgency-point-desc">入居者充足後の安定運営へ</div>
+      </div>
+      <div class="urgency-point">
+        <div class="urgency-point-num">180社</div>
+        <div class="urgency-point-label">開業実績</div>
+        <div class="urgency-point-desc">全国47都道府県で展開</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== S04 収益カーブ ========== -->
+<section class="revenue" id="s04">
+  <div class="container">
+    <div style="text-align:center;"><span class="section-badge">SECTION 04 - 収益モデル</span></div>
+    <h2 class="section-title">1棟目から<strong>年1800万円以上</strong>の収益モデル</h2>
+    <p class="section-subtitle">標準ケース: 開業6ヶ月目に満床→月次140万円ペースへ</p>
+    <div class="revenue-kpi">
+      <div class="revenue-kpi-card">
+        <div class="revenue-kpi-num">140<span style="font-size:.5em">万円</span></div>
+        <div class="revenue-kpi-label">月次収益（満床時）</div>
+      </div>
+      <div class="revenue-kpi-card">
+        <div class="revenue-kpi-num">1800<span style="font-size:.5em">万円+</span></div>
+        <div class="revenue-kpi-label">年間収益</div>
+      </div>
+      <div class="revenue-kpi-card">
+        <div class="revenue-kpi-num">85<span style="font-size:.5em">%</span></div>
+        <div class="revenue-kpi-label">国給付の割合</div>
+      </div>
+    </div>
+    <div class="revenue-timeline">
+      <div class="revenue-month negative"><div class="revenue-month-label">1ヶ月目</div><div class="revenue-month-num neg">−¥116万</div></div>
+      <div class="revenue-month negative"><div class="revenue-month-label">2ヶ月目</div><div class="revenue-month-num neg">−¥72万</div></div>
+      <div class="revenue-month negative"><div class="revenue-month-label">3ヶ月目</div><div class="revenue-month-num neg">−¥35万</div></div>
+      <div class="revenue-month"><div class="revenue-month-label">4ヶ月目</div><div class="revenue-month-num pos">+¥20万</div></div>
+      <div class="revenue-month"><div class="revenue-month-label">5-6ヶ月目</div><div class="revenue-month-num pos">+¥80万</div></div>
+      <div class="revenue-month"><div class="revenue-month-label">満床後</div><div class="revenue-month-num pos">+¥140万</div></div>
+    </div>
+    <p style="text-align:center;margin-top:16px;font-size:12px;color:var(--owl-gray);">※ 実際の収益は棟数・地域・入居率により異なります。融資支援4社の実績を参考にした標準的な収支モデル。</p>
+  </div>
+</section>
+
+<!-- ========== S05 物件取得費×内装費 ========== -->
+<section class="area-cost" id="s05">
+  <div class="container">
+    <div style="text-align:center;"><span class="section-badge">SECTION 05 - 初期投資の内訳</span></div>
+    <h2 class="section-title"><strong>物件取得費 × 内装費</strong>で、初期投資が決まる</h2>
+    <p class="section-subtitle">取得費はエリアで変わり、内装費は部屋数で決まる</p>
+    <div style="font-size:15px;font-weight:700;color:var(--owl-green-dark);margin-bottom:16px;">🏠 物件取得費（エリア別）</div>
+    <div class="area-cards">
+      <div class="area-card">
+        <div class="area-card-num">01</div>
+        <div class="area-card-name">千葉県エリア</div>
+        <div class="area-card-price">¥250<span class="unit">万〜</span></div>
+        <div class="area-card-desc">相場が抑えられるエリア</div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-num">02</div>
+        <div class="area-card-name">茨城県エリア</div>
+        <div class="area-card-price">¥180<span class="unit">万〜</span></div>
+        <div class="area-card-desc">最も参入コストが低いエリア</div>
+      </div>
+      <div class="area-card">
+        <div class="area-card-num">03</div>
+        <div class="area-card-name">東京都エリア</div>
+        <div class="area-card-price">¥500<span class="unit">万〜</span></div>
+        <div class="area-card-desc">都市部・利便性重視</div>
+      </div>
+    </div>
+    <div class="interior-highlight">
+      <div>
+        <div class="interior-title">🛋 内装費の目安（部屋数基準）</div>
+        <div class="interior-num">1部屋あたり <span class="yen">¥20万</span></div>
+        <div class="interior-num-sub">（¥10〜30万・部屋のコンディション・改修範囲により変動）</div>
+      </div>
+      <div class="interior-rooms">
+        <div class="interior-room"><span class="interior-room-badge">5部屋</span>¥100万目安 <span style="opacity:.7;font-size:12px;">（軽微改修なら¥50万〜）</span></div>
+        <div class="interior-room"><span class="interior-room-badge">7部屋</span>¥140万目安</div>
+        <div class="interior-room"><span class="interior-room-badge">9部屋</span>¥180万目安 <span style="opacity:.7;font-size:12px;">（大規模改修時¥260万）</span></div>
+      </div>
+    </div>
+    <div style="font-size:15px;font-weight:700;color:var(--owl-green-dark);margin-bottom:12px;">📊 総額サンプル</div>
+    <div class="total-samples">
+      <table>
+        <thead><tr><th>ケース</th><th>物件取得費</th><th>内装費</th><th>諸経費</th><th>総額目安</th></tr></thead>
+        <tbody>
+          <tr><td>千葉・5部屋</td><td>¥250万</td><td>¥100万</td><td>¥20万</td><td class="highlight">¥370万</td></tr>
+          <tr><td>茨城・9部屋</td><td>¥180万</td><td>¥180万</td><td>¥20万</td><td class="highlight">¥380万</td></tr>
+          <tr><td>東京・7部屋</td><td>¥500万</td><td>¥140万</td><td>¥30万</td><td class="highlight">¥670万</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center;margin-top:16px;font-size:12px;color:var(--owl-gray);">
+      ※ 記載金額は2026年時点の相場参考値（融資支援実績4社ベース）。<br>
+      ※ 物件取得費はエリアで、内装費は部屋数と改修範囲で決まります。個別シミュレーションで正確な必要資金を算出いたします。
+    </p>
+  </div>
+</section>
+
+<!-- ========== S06 プラン比較 ========== -->
+<section class="plans" id="s06">
+  <div class="container">
+    <div style="text-align:center;"><span class="section-badge">SECTION 06 - 加盟プラン</span></div>
+    <h2 class="section-title"><strong>0円プラン</strong>と加盟金プランの、決定的な違い</h2>
+    <p class="section-subtitle">業界初のリスク分散型プランで、初期投資を最小化</p>
+    <div class="plans-grid">
+      <div class="plan-card free">
+        <div class="plan-badge-owl">OWL独自</div>
+        <div class="plan-tag">業界最安値クラス</div>
+        <div class="plan-name">0円プラン</div>
+        <div class="plan-price">¥0<span class="unit">加盟金</span></div>
+        <div class="plan-price-caption">選ばれるのはこちら</div>
+        <div class="plan-compare-line">業界平均 <strong>¥440万</strong> → <strong>¥0</strong></div>
+        <ul class="plan-features">
+          <li>初期投資を大幅圧縮</li>
+          <li>月々¥16.5万×36ヶ月で分割</li>
+          <li>開業後の収益から支払い</li>
+          <li>経営リスクを最小化</li>
+        </ul>
+        <div class="plan-note">開業後の売上から加盟金を分割払い。初期資金は物件・内装のみに集中できます。</div>
+      </div>
+      <div class="plan-card standard">
+        <div class="plan-name">加盟金プラン 従来型</div>
+        <div class="plan-price">¥440<span class="unit">万</span></div>
+        <div class="plan-price-caption">加盟金（一括または分割）</div>
+        <ul class="plan-features">
+          <li>従来型FC加盟金方式</li>
+          <li>一括または分割払い</li>
+          <li>シンプルな契約体系</li>
+        </ul>
+      </div>
+    </div>
+    <div class="plans-comparison">
+      <div class="plans-comparison-title">業界他社との初期投資比較</div>
+      <div class="plans-bar-row"><span class="plans-bar-label">OWL 0円プラン</span><div class="plans-bar"></div><span class="plans-bar-value" style="color:var(--owl-green);">¥0</span></div>
+      <div class="plans-bar-row"><span class="plans-bar-label">OWL 加盟金プラン</span><div class="plans-bar"><div class="plans-bar-fill own" style="width:55%;"></div></div><span class="plans-bar-value">¥440万</span></div>
+      <div class="plans-bar-row"><span class="plans-bar-label">業界A社</span><div class="plans-bar"><div class="plans-bar-fill other" style="width:69%;"></div></div><span class="plans-bar-value">¥550万</span></div>
+      <div class="plans-bar-row"><span class="plans-bar-label">業界B社</span><div class="plans-bar"><div class="plans-bar-fill other" style="width:85%;"></div></div><span class="plans-bar-value">¥680万</span></div>
+      <div class="plans-bar-row"><span class="plans-bar-label">業界C社</span><div class="plans-bar"><div class="plans-bar-fill other" style="width:100%;"></div></div><span class="plans-bar-value">¥800万</span></div>
+      <div style="text-align:right;font-size:10px;color:var(--owl-gray);margin-top:8px;">※主要フランチャイズ本部の公開情報から集計（2026年時点）</div>
+    </div>
+    <div style="text-align:center;">
+      <a href="#s12" class="fv-cta-ribbon" style="display:inline-block;padding:16px 40px;">プランの詳細を資料でご確認ください → 資料請求（3分）</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== S07 4ペルソナ ========== -->
+<section class="persona" id="s07">
+  <div class="container">
+    <div style="text-align:center;"><span class="section-badge">SECTION 07 - あなたのキャリアが活きる</span></div>
+    <h2 class="section-title">こんな方が、<strong>OWL</strong>で独立起業しています</h2>
+    <p class="section-subtitle">福祉・医療の実務経験者から、ご家族当事者まで。あなたの人生が事業の強みになる</p>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-num">01</div>
+        <div class="persona-photo"><img src="img/assets/s07_persona_01_nurse.jpg" alt="看護師"></div>
+        <div class="persona-title">看護師</div>
+        <div class="persona-subtitle">Nurse</div>
+        <div class="persona-quote">"医療現場で見てきた住まいの課題を、自分の手で解決したい"</div>
+        <ul class="persona-strengths">
+          <li>医療現場で入居者ケア</li>
+          <li>夜勤経験で運営理解</li>
+          <li>サビ管資格取得しやすい</li>
+        </ul>
+        <div class="persona-name">金井さん(45歳)<br>元総合病院看護師</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-num">02</div>
+        <div class="persona-photo"><img src="img/assets/s07_persona_02_teacher.jpg" alt="特別支援教員"></div>
+        <div class="persona-title">特別支援教員</div>
+        <div class="persona-subtitle">Special Education Teacher</div>
+        <div class="persona-quote">"教え子たちが卒業後に安心して暮らせる場所を作りたい"</div>
+        <ul class="persona-strengths">
+          <li>支援計画作成の経験</li>
+          <li>子ども・保護者との関係構築</li>
+          <li>行政との連携経験</li>
+        </ul>
+        <div class="persona-name">市塚さん(50歳)<br>元特別支援学校教員</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-num">03</div>
+        <div class="persona-photo"><img src="img/assets/s07_persona_03_care.jpg" alt="介護経験者"></div>
+        <div class="persona-title">介護経験者</div>
+        <div class="persona-subtitle">Care Worker</div>
+        <div class="persona-quote">"介護業界の限界を、独立して自分の理想を形にしたい"</div>
+        <ul class="persona-strengths">
+          <li>介護・福祉の実務経験</li>
+          <li>現場を知るからこその理解</li>
+          <li>オペレーション構築力</li>
+        </ul>
+        <div class="persona-name">大下さん(38歳)<br>元サービス管理責任者</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-num">04</div>
+        <div class="persona-photo"><img src="img/assets/s07_persona_04_family.jpg" alt="当事者ご家族"></div>
+        <div class="persona-title">当事者ご家族</div>
+        <div class="persona-subtitle">Family Caregiver</div>
+        <div class="persona-quote">"家族の経験があるからこそ、本当に必要な場所を作れる"</div>
+        <ul class="persona-strengths">
+          <li>当事者・家族の理解</li>
+          <li>強い動機と行動力</li>
+          <li>地域とのつながり</li>
+        </ul>
+        <div class="persona-name">宇野さん(48歳)<br>ご家族当事者・元IT企業勤務</div>
+      </div>
+    </div>
+    <div class="persona-cta">
+      <span class="persona-cta-msg">あなたの経験が、事業の最大の強みになります</span>
+      <a href="#s12" class="persona-cta-btn">自分に合うか診断する →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== S08 4CASE ========== -->
+<section class="cases" id="s08">
+  <div class="container">
+    <div style="text-align:center;"><span class="section-badge">SECTION 08 - 実際の開業事例</span></div>
+    <h2 class="section-title">OWLで独立起業した<strong>4名</strong>の、リアルな声</h2>
+    <p class="section-subtitle">S07の4ペルソナ全類型から、それぞれ1名ずつご紹介</p>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-tag"><span class="case-tag-num">1</span>看護師 出身</div>
+        <div class="case-photo"><img src="img/assets/s08_case_a_nurse.jpg" alt="CASE A"></div>
+        <div class="case-body">
+          <div class="case-name">元総合病院看護師 A様</div>
+          <div class="case-attr">（45歳・女性）</div>
+          <div class="case-attrs">
+            <div class="case-attr-row"><span class="case-attr-icon">👤</span><span class="case-attr-label">Situation</span><span class="case-attr-value">家族に当事者/医療現場の限界感</span></div>
+            <div class="case-attr-row"><span class="case-attr-icon">🚩</span><span class="case-attr-label">Decision</span><span class="case-attr-value">45歳で独立、1棟目を千葉県で開業</span></div>
+            <div class="case-attr-row"><span class="case-attr-icon">📈</span><span class="case-attr-label">Result</span><span class="case-attr-value">開業10ヶ月で入居率<strong>90%</strong>、月次収益<strong>15万円</strong>達成</span></div>
+          </div>
+          <div class="case-quote">医療の知識と現場感が、入居者の"安心"につながっています</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-tag"><span class="case-tag-num">2</span>特別支援教員 出身</div>
+        <div class="case-photo"><img src="img/assets/s08_case_b_teacher.jpg" alt="CASE B"></div>
+        <div class="case-body">
+          <div class="case-name">元特別支援学校教員 B様</div>
+          <div class="case-attr">（50歳・男性）</div>
+          <div class="case-attrs">
+            <div class="case-attr-row"><span class="case-attr-icon">👤</span><span class="case-attr-label">Situation</span><span class="case-attr-value">教え子たちの卒業後、安心して暮らせる居場所が不足</span></div>
+            <div class="case-attr-row"><span class="case-attr-icon">🚩</span><span class="case-attr-label">Decision</span><span class="case-attr-value">50歳で第二のキャリアに挑戦、茨城県で開業</span></div>
+            <div class="case-attr-row"><span class="case-attr-icon">📈</span><span class="case-attr-label">Result</span><span class="case-attr-value">2棟目を1年後に開設、月次<strong>60万円</strong>へ</span></div>
+          </div>
+          <div class="case-quote">教員時代の関係性が、"行政連携"にそのまま活きています</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-tag"><span class="case-tag-num">3</span>介護経験者 出身</div>
+        <div class="case-photo"><img src="img/assets/s08_case_c_care.jpg" alt="CASE C"></div>
+        <div class="case-body">
+          <div class="case-name">元介護福祉士 C様</div>
+          <div class="case-attr">（42歳・男性）</div>
+          <div class="case-attrs">
+            <div class="case-attr-row"><span class="case-attr-icon">👤</span><span class="case-attr-label">Situation</span><span class="case-attr-value">介護業界の限界を感じ、独自の理想を形にしたい</span></div>
+            <div class="case-attr-row"><span class="case-attr-icon">🚩</span><span class="case-attr-label">Decision</span><span class="case-attr-value">42歳で開業、神奈川県で1棟目スタート</span></div>
+            <div class="case-attr-row"><span class="case-attr-icon">📈</span><span class="case-attr-label">Result</span><span class="case-attr-value">開業1年で入居率<strong>100%</strong>、月次<strong>45万円</strong>達成</span></div>
+          </div>
+          <div class="case-quote">介護現場のオペレーション構築力が、事業運営の"土台"になっています</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-tag"><span class="case-tag-num">4</span>当事者ご家族</div>
+        <div class="case-photo"><img src="img/assets/s08_case_d_family.jpg" alt="CASE D"></div>
+        <div class="case-body">
+          <div class="case-name">元看護師（当事者ご家族）D様</div>
+          <div class="case-attr">（48歳・女性）</div>
+          <div class="case-attrs">
+            <div class="case-attr-row"><span class="case-attr-icon">👤</span><span class="case-attr-label">Situation</span><span class="case-attr-value">障がいのある子どもの将来への不安</span></div>
+            <div class="case-attr-row"><span class="case-attr-icon">🚩</span><span class="case-attr-label">Decision</span><span class="case-attr-value">48歳で開業、東京都近郊で開業</span></div>
+            <div class="case-attr-row"><span class="case-attr-icon">📈</span><span class="case-attr-label">Result</span><span class="case-attr-value">3棟目まで拡大、月次<strong>100万円</strong>達成</span></div>
+          </div>
+          <div class="case-quote">当事者家族としての"視点"が、他とは違う施設を作れる強みに</div>
+        </div>
+      </div>
+    </div>
+    <div class="cases-cta"><a href="#s12">詳細な事例集は資料でご案内 → 資料請求（3分）</a></div>
+  </div>
+</section>
+
+<!-- ========== S09 FAQ ========== -->
+<section class="faq-section" id="s09">
+  <div class="container">
+    <div style="text-align:center;"><span class="section-badge">SECTION 09 / よくあるご質問</span></div>
+    <h2 class="section-title">独立起業前の、<strong>7つの不安</strong>に答えます</h2>
+    <p class="section-subtitle">商談でよくいただく質問と、私たちの回答</p>
     <div class="faq-list">
       <details class="faq-item">
-        <summary class="faq-question">
-          <span class="faq-q-num">Q1</span>
-          <span class="faq-q-text">サビ管資格は必須ですか？</span>
-          <span class="faq-toggle">＋</span>
-        </summary>
-        <div class="faq-answer">
-          <div class="faq-answer-lead">開業前でOK。取得サポート付き。</div>
-          サービス管理責任者は開設時に必要な役割ですが、開業までに必要な資格取得のサポートを行いますので、資格未取得の状態からでも安心してスタートできます。実務経験ルート・研修受講ルート、それぞれのケースに合わせてご案内します。
-        </div>
+        <summary class="faq-question"><span class="faq-q-num">Q1</span><span class="faq-q-text">サビ管資格は必須ですか？</span><span class="faq-toggle">＋</span></summary>
+        <div class="faq-answer"><div class="faq-answer-lead">開業前でOK。取得サポート付き。</div>サービス管理責任者は開設時に必要な役割ですが、開業までに必要な資格取得のサポートを行いますので、資格未取得の状態からでも安心してスタートできます。</div>
       </details>
-
       <details class="faq-item">
-        <summary class="faq-question">
-          <span class="faq-q-num">Q2</span>
-          <span class="faq-q-text">1棟目は赤字期間がありますか？</span>
-          <span class="faq-toggle">＋</span>
-        </summary>
-        <div class="faq-answer">
-          <div class="faq-answer-lead">6〜10ヶ月の赤字期間あり、その後黒字化。</div>
-          入居者の充足に合わせて安定黒字化していきます。融資支援4社の実績では、6ヶ月目前後で満床到達→黒字転換のケースが標準的です。運転資金の目安と資金計画は個別にご案内し、赤字期間を想定した融資設計を初期からサポートします。
-        </div>
+        <summary class="faq-question"><span class="faq-q-num">Q2</span><span class="faq-q-text">1棟目は赤字期間がありますか？</span><span class="faq-toggle">＋</span></summary>
+        <div class="faq-answer"><div class="faq-answer-lead">6〜10ヶ月の赤字期間あり、その後黒字化。</div>入居者の充足に合わせて安定黒字化していきます。融資支援4社の実績では、6ヶ月目前後で満床到達→黒字転換のケースが標準的です。</div>
       </details>
-
       <details class="faq-item">
-        <summary class="faq-question">
-          <span class="faq-q-num">Q3</span>
-          <span class="faq-q-text">完全未経験でも運営できますか？</span>
-          <span class="faq-toggle">＋</span>
-        </summary>
-        <div class="faq-answer">
-          <div class="faq-answer-lead">実務経験の目安あり。家族当事者ルートも含みます。</div>
-          福祉・医療の実務経験、または家族に当事者がいる方が主な対象です。運営ノウハウは開業前研修と開業後の伴走サポートで補います。看護師・介護福祉士・特別支援教員・当事者ご家族の4類型それぞれで、実績のある独立事例があります。
-        </div>
+        <summary class="faq-question"><span class="faq-q-num">Q3</span><span class="faq-q-text">完全未経験でも運営できますか？</span><span class="faq-toggle">＋</span></summary>
+        <div class="faq-answer"><div class="faq-answer-lead">実務経験の目安あり。家族当事者ルートも含みます。</div>福祉・医療の実務経験、または家族に当事者がいる方が主な対象です。運営ノウハウは開業前研修と開業後の伴走サポートで補います。</div>
       </details>
-
       <details class="faq-item">
-        <summary class="faq-question">
-          <span class="faq-q-num">Q4</span>
-          <span class="faq-q-text">入居者の集客は？</span>
-          <span class="faq-toggle">＋</span>
-        </summary>
-        <div class="faq-answer">
-          <div class="faq-answer-lead">相談支援事業所ネットワーク・地域連携で支援。</div>
-          180社の開業実績で培ったネットワークを活用し、地域の相談支援事業所・A型/B型作業所・特別支援学校との連携をサポートします。開業前から地域挨拶・行政同行を伴走するため、開業初月から具体的な入居候補が存在する状態を目指します。
-        </div>
+        <summary class="faq-question"><span class="faq-q-num">Q4</span><span class="faq-q-text">入居者の集客は？</span><span class="faq-toggle">＋</span></summary>
+        <div class="faq-answer"><div class="faq-answer-lead">相談支援事業所ネットワーク・地域連携で支援。</div>180社の開業実績で培ったネットワークを活用し、地域の相談支援事業所・A型/B型作業所・特別支援学校との連携をサポートします。</div>
       </details>
-
       <details class="faq-item">
-        <summary class="faq-question">
-          <span class="faq-q-num">Q5</span>
-          <span class="faq-q-text">副業として始められますか？</span>
-          <span class="faq-toggle">＋</span>
-        </summary>
-        <div class="faq-answer">
-          <div class="faq-answer-lead">開業初期は専業推奨、軌道後は法人化で選択肢拡大。</div>
-          1棟目立ち上げは常駐が理想ですが、ご家族との共同経営や、サビ管を別途採用する形で副業化した事例もあります。2棟目以降で運営体制を整えれば、副業として複数棟をマネジメントする道も開けます。
-        </div>
+        <summary class="faq-question"><span class="faq-q-num">Q5</span><span class="faq-q-text">副業として始められますか？</span><span class="faq-toggle">＋</span></summary>
+        <div class="faq-answer"><div class="faq-answer-lead">開業初期は専業推奨、軌道後は法人化で選択肢拡大。</div>1棟目立ち上げは常駐が理想ですが、ご家族との共同経営や、サビ管を別途採用する形で副業化した事例もあります。</div>
       </details>
-
       <details class="faq-item">
-        <summary class="faq-question">
-          <span class="faq-q-num">Q6</span>
-          <span class="faq-q-text">撤退・売却の際のサポートは？</span>
-          <span class="faq-toggle">＋</span>
-        </summary>
-        <div class="faq-answer">
-          <div class="faq-answer-lead">事業譲渡サポートあり。</div>
-          事業継続が難しくなった場合も、他オーナーへの事業譲渡・M&Aマッチングをサポートします。過去実績として、健康上の理由での譲渡・地域移転による譲渡いずれも当社ネットワーク内で円滑にマッチングした事例があります。
-        </div>
+        <summary class="faq-question"><span class="faq-q-num">Q6</span><span class="faq-q-text">撤退・売却の際のサポートは？</span><span class="faq-toggle">＋</span></summary>
+        <div class="faq-answer"><div class="faq-answer-lead">事業譲渡サポートあり。</div>事業継続が難しくなった場合も、他オーナーへの事業譲渡・M&Aマッチングをサポートします。</div>
       </details>
-
       <details class="faq-item">
-        <summary class="faq-question">
-          <span class="faq-q-num">Q7</span>
-          <span class="faq-q-text">助成金は使えますか？</span>
-          <span class="faq-toggle">＋</span>
-        </summary>
-        <div class="faq-answer">
-          <div class="faq-answer-lead">障がい者GH事業は助成金対象外の場合が多い。</div>
-          ただし、日本政策金融公庫の融資・信用金庫+保証協会付き融資・地方自治体の福祉事業向け補助金など、活用可能な資金調達手段は多数あります。融資支援4社の実績では、公庫+信金の協調融資で¥900万〜¥1,500万規模の調達に成功しています。個別の適用可否は無料相談でご案内します。
-        </div>
+        <summary class="faq-question"><span class="faq-q-num">Q7</span><span class="faq-q-text">助成金は使えますか？</span><span class="faq-toggle">＋</span></summary>
+        <div class="faq-answer"><div class="faq-answer-lead">障がい者GH事業は助成金対象外の場合が多い。</div>ただし、日本政策金融公庫の融資・信用金庫+保証協会付き融資・地方自治体の福祉事業向け補助金など、活用可能な資金調達手段は多数あります。</div>
       </details>
     </div>
-
     <div class="faq-cta">
       <div class="faq-cta-text">その他のご質問は資料でご確認いただけます</div>
       <a href="#s12" class="faq-cta-btn">資料請求（3分）→</a>
@@ -582,76 +1310,109 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<!-- S10 信頼・実績 -->
-<section class="section" id="s10"><div class="section-img-wrap"><img src="img/S10_trust.png" alt="180社の開業実績。国給付85%・入居継続7-10年" loading="lazy"></div></section>
+<!-- ========== S10 信頼・実績 ========== -->
+<section class="trust" id="s10">
+  <div class="container">
+    <div style="text-align:center;"><span class="section-badge">SECTION 10 / OWLの信頼</span></div>
+    <h2 class="section-title"><strong>180社</strong>の開業実績が、この事業の答え</h2>
+    <p class="section-subtitle">国給付85%の安定収益、入居継続率7-10年</p>
+    <div class="trust-inner">
+      <div class="trust-photos">
+        <div class="trust-photo trust-photo-1"><img src="img/assets/s10_house_exterior.jpg" alt="戸建て外観"></div>
+        <div class="trust-photo trust-photo-2"><img src="img/assets/s10_room_living.jpg" alt="リビング"></div>
+        <div class="trust-photo trust-photo-3"><img src="img/assets/s10_room_kitchen.jpg" alt="キッチン"></div>
+        <div class="trust-photo trust-photo-4"><img src="img/assets/s10_room_bedroom.jpg" alt="ベッドルーム"></div>
+        <div class="trust-photo trust-photo-5"><img src="img/assets/s10_room_corridor.jpg" alt="廊下"></div>
+      </div>
+      <div class="trust-kpis">
+        <div class="trust-kpi">
+          <div class="trust-kpi-num">180<span class="unit">社</span></div>
+          <div class="trust-kpi-label">開業サポート実績</div>
+          <div class="trust-kpi-desc">全国47都道府県で展開</div>
+        </div>
+        <div class="trust-kpi">
+          <div class="trust-kpi-num">85<span class="unit">%</span></div>
+          <div class="trust-kpi-label">収益に占める国給付の割合</div>
+          <div class="trust-kpi-desc">景気変動に強い安定収益源</div>
+        </div>
+        <div class="trust-kpi">
+          <div class="trust-kpi-num">7-10<span class="unit">年</span></div>
+          <div class="trust-kpi-label">入居者の平均継続年数</div>
+          <div class="trust-kpi-desc">長期の関係を築ける事業</div>
+        </div>
+      </div>
+    </div>
+    <div class="trust-apartment"><img src="img/assets/s10_building_apartment.jpg" alt="アパート型GH"></div>
+    <div class="partners">
+      <div class="partner"><span class="partner-icon">🏦</span>銀行</div>
+      <div class="partner"><span class="partner-icon">🏛</span>信用金庫</div>
+      <div class="partner"><span class="partner-icon">📊</span>会計事務所</div>
+      <div class="partner"><span class="partner-icon">🛡</span>社労士</div>
+      <div class="partner"><span class="partner-icon">🏠</span>不動産</div>
+      <div class="partner"><span class="partner-icon">❤</span>相談支援</div>
+    </div>
+    <div class="trust-cta"><a href="#s12">私たちの支援体制の詳細は資料で →</a></div>
+  </div>
+</section>
 
-<!-- S11 開業ステップ -->
-<section class="section" id="s11"><div class="section-img-wrap"><img src="img/S11_steps.png" alt="資料請求から開設・運営まで、6ステップ" loading="lazy"></div></section>
+<!-- ========== S11 開業ステップ ========== -->
+<section class="steps" id="s11">
+  <div class="container">
+    <div style="text-align:center;"><span class="section-badge">SECTION 11 - 開設・黒字化までの道のり</span></div>
+    <h2 class="section-title">資料請求から<strong>開設・半年以内黒字化</strong>まで、6ステップ</h2>
+    <p class="section-subtitle">各ステップで担当者が伴走します</p>
+    <div class="steps-inner">
+      <div class="steps-visual">
+        <div class="steps-photo-heart" style="clip-path:none;border-radius:50%;overflow:hidden;box-shadow:var(--shadow-lg);">
+          <img src="img/assets/s11_woman_back.jpg" alt="新居に向かう女性">
+        </div>
+        <div class="steps-photo-caption">OWLグループホーム <strong>みんなの笑顔があふれる場所 ♡</strong></div>
+        <div class="steps-tagline">あなたの新しい未来へ、<br>半年以内の道のり</div>
+      </div>
+      <div class="steps-list">
+        <div class="step-item"><div class="step-num">01</div><div class="step-content"><h4>資料請求</h4><p>まずは資料で全体像を確認</p></div><div class="step-timing">day 0</div></div>
+        <div class="step-item"><div class="step-num">02</div><div class="step-content"><h4>初回Zoom相談</h4><p>事業内容と条件を確認</p></div><div class="step-timing">week 1</div></div>
+        <div class="step-item"><div class="step-num">03</div><div class="step-content"><h4>シミュレーション作成</h4><p>具体的な数字をご提示</p></div><div class="step-timing">week 2-3</div></div>
+        <div class="step-item"><div class="step-num">04</div><div class="step-content"><h4>物件見学</h4><p>エリアに合った物件を一緒に選定</p></div><div class="step-timing">month 1-2</div></div>
+        <div class="step-item"><div class="step-num">05</div><div class="step-content"><h4>融資申請</h4><p>金融機関との交渉をサポート</p></div><div class="step-timing">month 2-3</div></div>
+        <div class="step-item"><div class="step-num">06</div><div class="step-content"><h4>開設・黒字化運営</h4><p>開設準備から半年以内の黒字化運営までサポート</p></div><div class="step-timing">month 3〜6</div></div>
+      </div>
+    </div>
+    <div class="steps-highlight">
+      <div class="steps-highlight-title">開設まで 3ヶ月〜半年 ／ 半年以内の黒字化運営</div>
+      <div class="steps-highlight-sub">融資組成・物件条件・工事規模により変動 / 融資支援4社の実績値</div>
+    </div>
+    <div class="steps-cta"><a href="#s12">開業スケジュール詳細は資料でご確認 →</a></div>
+    <div class="steps-note">
+      <strong>※ 期間の主な変動要因：</strong><br>
+      ① 融資組成方式（協調融資は+1〜2ヶ月） ② 物件形態（購入 vs 賃貸） ③ リフォーム規模（軽微改修 or 大規模改修）<br>
+      ④ 指定申請の自治体タイミング（月末締めが多い） ⑤ サビ管研修の受講状況<br>
+      <strong>実績:</strong> 最短3ヶ月（茨城・賃貸+軽微改修）〜 6ヶ月超（協調融資組成）
+    </div>
+  </div>
+</section>
 
-<!-- ========== S12 資料請求フォーム（HTML実装） ========== -->
-<section class="section form-section" id="s12">
+<!-- ========== S12 資料請求フォーム ========== -->
+<section class="form-section" id="s12">
   <div class="form-container">
     <h2 class="form-title"><strong>3分</strong>で資料請求</h2>
     <p class="form-subtitle">障がい者グループホーム独立起業の詳細資料をお送りします</p>
-
     <div class="form-badge-row">
       <span class="form-badge">✓ 完全無料</span>
       <span class="form-badge">✓ 24時間受付</span>
       <span class="form-badge">✓ 営業電話なし</span>
     </div>
-
     <form id="owl-form" action="https://formspree.io/f/OWL_ENDPOINT_TBD" method="POST" novalidate>
-      <div class="form-group">
-        <label class="form-label" for="name">お名前<span class="required">必須</span></label>
-        <input type="text" id="name" name="name" class="form-input" required placeholder="例：山田 太郎">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="furigana">ふりがな<span class="required">必須</span></label>
-        <input type="text" id="furigana" name="furigana" class="form-input" required placeholder="例：やまだ たろう">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="email">メールアドレス<span class="required">必須</span></label>
-        <input type="email" id="email" name="email" class="form-input" required placeholder="例：taro@example.com">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="phone">電話番号<span class="required">必須</span></label>
-        <input type="tel" id="phone" name="phone" class="form-input" required placeholder="例：090-1234-5678">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="area">ご検討エリア</label>
-        <input type="text" id="area" name="area" class="form-input" placeholder="例：茨城県古河市">
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="type">ご希望の内容<span class="required">必須</span></label>
-        <select id="type" name="type" class="form-select" required>
-          <option value="">選択してください</option>
-          <option value="資料請求">資料請求のみ</option>
-          <option value="WEB説明会">WEB説明会に参加希望</option>
-          <option value="個別相談">個別相談を希望</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label" for="content">お問い合わせ内容</label>
-        <textarea id="content" name="content" class="form-textarea" placeholder="ご質問・ご要望などがあればご記入ください"></textarea>
-      </div>
-
-      <label class="form-consent">
-        <input type="checkbox" required>
-        <span>プライバシーポリシーに同意の上、資料請求します</span>
-      </label>
-
+      <div class="form-group"><label class="form-label" for="name">お名前<span class="required">必須</span></label><input type="text" id="name" name="name" class="form-input" required placeholder="例：山田 太郎"></div>
+      <div class="form-group"><label class="form-label" for="furigana">ふりがな<span class="required">必須</span></label><input type="text" id="furigana" name="furigana" class="form-input" required placeholder="例：やまだ たろう"></div>
+      <div class="form-group"><label class="form-label" for="email">メールアドレス<span class="required">必須</span></label><input type="email" id="email" name="email" class="form-input" required placeholder="例：taro@example.com"></div>
+      <div class="form-group"><label class="form-label" for="phone">電話番号<span class="required">必須</span></label><input type="tel" id="phone" name="phone" class="form-input" required placeholder="例：090-1234-5678"></div>
+      <div class="form-group"><label class="form-label" for="area">ご検討エリア</label><input type="text" id="area" name="area" class="form-input" placeholder="例：茨城県古河市"></div>
+      <div class="form-group"><label class="form-label" for="type">ご希望の内容<span class="required">必須</span></label><select id="type" name="type" class="form-select" required><option value="">選択してください</option><option value="資料請求">資料請求のみ</option><option value="WEB説明会">WEB説明会に参加希望</option><option value="個別相談">個別相談を希望</option></select></div>
+      <div class="form-group"><label class="form-label" for="content">お問い合わせ内容</label><textarea id="content" name="content" class="form-textarea" placeholder="ご質問・ご要望などがあればご記入ください"></textarea></div>
+      <label class="form-consent"><input type="checkbox" required><span>プライバシーポリシーに同意の上、資料請求します</span></label>
       <button type="submit" class="form-submit">資料を無料で受け取る →</button>
-
-      <p class="form-note">
-        ※ 送信後、担当者より1営業日以内にご連絡いたします。<br>
-        ※ ご入力いただいた情報は資料送付・ご案内のみに使用します。
-      </p>
+      <p class="form-note">※ 送信後、担当者より1営業日以内にご連絡いたします。<br>※ ご入力いただいた情報は資料送付・ご案内のみに使用します。</p>
     </form>
   </div>
 </section>
@@ -660,29 +1421,33 @@ a { color: inherit; text-decoration: none; }
 
 <!-- ========== フッター ========== -->
 <footer class="footer">
-  <div class="footer-logo">🦉 OWL WELFARE WORK</div>
+  <div class="footer-logo">
+    <svg width="24" height="24" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="32" cy="34" rx="22" ry="24" fill="#8b6f47"/>
+      <ellipse cx="32" cy="36" rx="16" ry="18" fill="#f5e6d3"/>
+      <circle cx="24" cy="28" r="7" fill="#fff"/><circle cx="40" cy="28" r="7" fill="#fff"/>
+      <circle cx="24" cy="28" r="3.5" fill="#2b2b2b"/><circle cx="40" cy="28" r="3.5" fill="#2b2b2b"/>
+      <polygon points="32,32 29,37 35,37" fill="#f5843c"/>
+    </svg>
+    OWL WELFARE WORK
+  </div>
   <div>障がい者グループホーム独立起業サポート</div>
   <div class="footer-copy">© 2026 OWL Welfare Work. All Rights Reserved.</div>
 </footer>
 
-<!-- フローティングCTA -->
 <a href="#s12" class="floating-cta">資料請求</a>
 
 <script>
-// FAQのトグルアニメーション用（+/×アイコン切替）
 document.querySelectorAll('.faq-item').forEach(item => {
   item.addEventListener('toggle', () => {
     const toggle = item.querySelector('.faq-toggle');
     if (toggle) toggle.textContent = item.open ? '×' : '＋';
   });
 });
-
-// フォーム送信（暫定：送信先未設定のため確認ダイアログのみ）
 document.getElementById('owl-form').addEventListener('submit', function(e) {
-  const action = this.getAttribute('action');
-  if (action.includes('OWL_ENDPOINT_TBD')) {
+  if (this.getAttribute('action').includes('OWL_ENDPOINT_TBD')) {
     e.preventDefault();
-    alert('※ 送信エンドポイント設定前のプレビュー版です。\n本番公開時に FormRun / Formspree / メール送信APIに接続します。');
+    alert('※ 送信エンドポイント設定前のプレビュー版です。本番公開時にフォーム送信APIに接続します。');
   }
 });
 </script>
