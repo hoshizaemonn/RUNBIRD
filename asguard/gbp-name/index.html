@@ -88,6 +88,19 @@
   .warn h3{font-size:.94rem;margin-bottom:8px;color:#8A6D2F}
   .warn p{font-size:.86rem;line-height:1.85}
 
+  /* コピーボックス */
+  .copybox{margin-top:20px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#FAF7F2}
+  .copybox-head{display:flex;justify-content:space-between;align-items:center;gap:10px;
+    background:#F0EBE3;padding:11px 14px;border-bottom:1px solid var(--line)}
+  .copybox-head span{font-size:.8rem;color:var(--muted);font-weight:500}
+  .copybtn{background:var(--gold);color:#fff;border:0;border-radius:999px;
+    padding:8px 18px;font-size:.8rem;font-family:inherit;cursor:pointer;
+    white-space:nowrap;letter-spacing:.04em}
+  .copybtn:hover{background:#8A7452}
+  .copybtn.done{background:var(--green)}
+  .copybox pre{margin:0;padding:18px 16px;font-family:inherit;font-size:.84rem;
+    line-height:1.95;white-space:pre-wrap;word-break:break-word;color:var(--ink)}
+
   footer{text-align:center;padding:40px 0 56px;color:var(--muted);font-size:.76rem;line-height:2}
 
   @media (max-width:640px){
@@ -207,20 +220,83 @@
   </div>
 </section>
 
-<!-- そのあと -->
+<!-- 返信 -->
+<section>
+  <span class="sec-label">名前を変えたら</span>
+  <h2>Googleのご担当者様へご返信ください</h2>
+  <p class="sec-note">Googleから届いたメールに「返信」して、下記の文章を貼り付けて送信してください。</p>
+
+  <div class="card">
+    <div class="steps">
+      <div class="step">
+        <h3>Googleから届いたメールを開く</h3>
+        <p>「Laxmi」様からのメールです。下の方にある<strong>「返信」</strong>をタップしてください。</p>
+      </div>
+      <div class="step">
+        <h3>下の文章をコピーして貼り付ける</h3>
+        <p>ボタンを押すとコピーされます。そのままメールに貼り付けてください。</p>
+      </div>
+      <div class="step">
+        <h3>送信</h3>
+        <p>以上で完了です。Googleからの返事をお待ちください。</p>
+      </div>
+    </div>
+
+    <div class="copybox">
+      <div class="copybox-head">
+        <span>Googleへの返信文</span>
+        <button class="copybtn" id="cbtn" type="button">コピーする</button>
+      </div>
+      <pre id="mailtext">Laxmi様
+
+ご連絡いただきありがとうございます。
+
+ご指摘いただきましたビジネスプロフィールの名前について、
+「ダイハツ ミラココア売買専門店」の文言を削除し、
+実際の店舗で使用している名称「ASGUARD CAR SALES」に
+変更いたしました。
+
+つきましては、オーナー確認の手続きを進めていただけますでしょうか。
+
+なお、動画によるオーナー確認を送信いたしましたが不承認となり、
+管理画面には「他に利用できる確認方法はありません」と表示され、
+動画の再提出ができない状態が続いております。
+
+当店の実在は下記でご確認いただけます。
+
+・店舗名：ASGUARD CAR SALES
+・所在地：〒252-0816 神奈川県藤沢市遠藤3223-1
+・営業時間：10:00〜19:00（水曜定休）
+・公式サイト：https://asguard-carsales.com/
+
+書類の提出など、必要な手続きがございましたら
+ご指示いただけますでしょうか。すぐにご用意いたします。
+
+お手数をおかけいたしますが、
+何卒よろしくお願い申し上げます。</pre>
+    </div>
+
+    <div class="warn" style="margin-top:18px">
+      <h3>ポイント</h3>
+      <p>「名前を直しました」と伝えるだけでなく、<strong>「確認方法がありません」で止まっていることも一緒に伝える</strong>のが大切です。名前の修正だけで話が終わってしまうと、また同じ画面で止まってしまうためです。</p>
+    </div>
+  </div>
+</section>
+
+<!-- サポート -->
 <section>
   <span class="sec-label">そのあと</span>
-  <h2>こちらで手続きを進めます</h2>
+  <h2>ここから先はお任せください</h2>
   <div class="card">
     <ul class="pt">
-      <li>名前の変更が終わりましたら、<strong>ご一報ください</strong></li>
-      <li>Googleのご担当者様へ「変更しました、確認を進めてください」と<strong>こちらからご返信いたします</strong></li>
-      <li>書類の提出などを求められた場合も、<strong>こちらで対応いたします</strong></li>
+      <li>Googleからお返事が届きましたら、<strong>内容をお知らせください</strong></li>
+      <li>書類の提出などを求められた場合、<strong>どう対応すべきかこちらでご案内いたします</strong></li>
+      <li>ご不明な点は、いつでもお気軽にご連絡ください</li>
     </ul>
     <div class="warn" style="margin-top:16px">
       <h3>ご安心ください</h3>
       <p>今回、Googleのご担当者様と直接やり取りができる状態になっております。<br>
-      これまでのように「確認方法がありません」で止まってしまうことは、もうありません。</p>
+      これまでのように「確認方法がありません」で完全に止まってしまうことは、もうありません。</p>
     </div>
   </div>
 </section>
@@ -245,5 +321,30 @@
 </footer>
 
 </div>
+
+<script>
+(function(){
+  var btn=document.getElementById('cbtn'), src=document.getElementById('mailtext');
+  if(!btn||!src) return;
+  btn.addEventListener('click',function(){
+    var t=src.innerText;
+    function done(){
+      btn.textContent='コピーしました';
+      btn.classList.add('done');
+      setTimeout(function(){btn.textContent='コピーする';btn.classList.remove('done');},2200);
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(done).catch(fallback);
+    } else { fallback(); }
+    function fallback(){
+      // クリップボードAPIが使えない環境用：文章を選択状態にする
+      var r=document.createRange(); r.selectNodeContents(src);
+      var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try{ document.execCommand('copy'); done(); }
+      catch(e){ btn.textContent='長押しでコピー'; }
+    }
+  });
+})();
+</script>
 </body>
 </html>
