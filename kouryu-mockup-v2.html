@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>腸活Labo Kouryu 光琉有 様｜AI動画 構成・台本（訂正反映版）</title>
+<style>
+  :root{ --ink:#2a2620; --green:#4b7a52; --green-d:#375c3d; --amber:#c98a3c; --red:#c0553f;
+         --soft:#f5f2ec; --line:#e5ddd0; --sub:#857b6c; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  img{ max-width:100%; }
+  body{ font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; background:var(--soft);
+        color:var(--ink); line-height:1.8; -webkit-text-size-adjust:100%; }
+
+  header{ text-align:center; padding:46px 18px 34px; background:linear-gradient(160deg,#3a5540,#26362a); color:#fff; }
+  header .tag{ font-size:.78rem; letter-spacing:.16em; color:#bcd6bf; }
+  header h1{ font-size:1.5rem; letter-spacing:.04em; margin-top:8px; line-height:1.5; }
+  header p{ margin-top:12px; color:#d7e6d8; font-size:.9rem; }
+  .badge{ display:inline-block; margin-top:14px; padding:6px 15px; border-radius:4px;
+          background:var(--amber); color:#2a2620; font-size:.78rem; font-weight:700; letter-spacing:.05em; }
+
+  .wrap{ max-width:860px; margin:0 auto; padding:28px 16px 60px; }
+
+  .meta{ background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin-bottom:20px; font-size:.9rem; }
+  .meta div{ margin:5px 0; }
+  .meta b{ color:var(--green-d); }
+
+  .policy{ background:#eef3ea; border:1px solid #d6e2d3; border-radius:8px; padding:16px 18px; margin-bottom:20px; }
+  .policy h3{ font-size:.92rem; color:var(--green-d); margin-bottom:8px; }
+  .policy ul{ margin:0; padding-left:1.1em; }
+  .policy li{ font-size:.86rem; margin:5px 0; }
+
+  .alert{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--red);
+          border-radius:8px; padding:18px 20px; margin-bottom:24px; font-size:.9rem; }
+  .alert h3{ font-size:1rem; color:var(--red); margin-bottom:8px; }
+  .alert .tbl{ overflow-x:auto; margin:12px 0; }
+  .alert table{ border-collapse:collapse; width:100%; min-width:420px; font-size:.84rem; background:#fbf9f5; }
+  .alert th,.alert td{ border:1px solid var(--line); padding:7px 10px; text-align:left; }
+  .alert th{ background:#f0ebe0; color:var(--ink); white-space:nowrap; }
+  .alert .fix{ background:#f4f7f2; border-radius:6px; padding:11px 13px; margin-top:10px; font-size:.86rem; }
+  .alert .fix b{ color:var(--green-d); }
+
+  .scene{ background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden;
+          margin-bottom:22px; box-shadow:0 6px 20px rgba(40,40,20,.06); }
+  .frame{ position:relative; aspect-ratio:16/9; background:#ddd7c9; }
+  .frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+  /* 1ブロックで2枚（引き→手元アップ）を見せるカット */
+  .dual{ display:grid; grid-template-columns:1fr; gap:3px; background:#c9c1b0; }
+  @media(min-width:640px){ .dual{ grid-template-columns:1fr 1fr; } }
+  .num{ position:absolute; top:10px; left:12px; background:rgba(0,0,0,.62); color:#fff;
+        font-size:.74rem; padding:3px 10px; border-radius:4px; letter-spacing:.04em; }
+  .flag{ position:absolute; top:10px; right:12px; background:var(--amber); color:#2a2620;
+         font-size:.7rem; font-weight:700; padding:3px 9px; border-radius:4px; }
+  .flag.recv{ background:#5b8fc9; color:#fff; }
+  .telop{ position:absolute; left:0; right:0; bottom:8%; text-align:center; color:#fff;
+          font-size:1.08rem; font-weight:700; letter-spacing:.02em; padding:0 20px;
+          text-shadow:0 2px 12px rgba(0,0,0,.92),0 0 5px rgba(0,0,0,.8); }
+  .telop.top{ bottom:auto; top:9%; }
+  /* 狭い画面ではテロップが秒数バッジ・フラグに重なるため、下へ逃がして小さくする */
+  @media(max-width:600px){
+    .telop{ font-size:.82rem; padding:0 12px; bottom:7%; }
+    .telop.top{ top:26%; }
+    .num,.flag{ font-size:.64rem; padding:2px 7px; }
+  }
+  .desc{ padding:13px 18px 15px; }
+  .desc .lab{ font-size:.72rem; color:var(--amber); letter-spacing:.07em; font-weight:700; }
+  .desc .naru{ font-size:.94rem; margin-top:3px; font-weight:600; }
+  .desc .note{ font-size:.78rem; color:var(--sub); margin-top:6px; }
+
+  .end{ background:#fff; border:1px dashed var(--green); border-radius:12px; padding:22px; margin-top:28px; font-size:.89rem; }
+  .end h3{ color:var(--green-d); margin-bottom:10px; }
+  .end ul{ margin-left:18px; } .end li{ margin:5px 0; }
+  footer{ text-align:center; color:var(--sub); font-size:.78rem; padding:32px 16px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tag">腸活Labo Kouryu 光琉有 様</div>
+  <h1>AI動画 構成・台本<br>― 訂正内容の反映版 ―</h1>
+  <p>いただいた訂正指示をすべて反映し、各カットのイメージを作成いたしました。<br>実際の動画の仕上がりをご確認ください。</p>
+  <span class="badge">制作：株式会社ランバード</span>
+</header>
+
+<div class="wrap">
+
+  <div class="meta">
+    <div><b>尺</b>：58秒／11カット（いただいた秒数指示の合計がちょうど58秒でしたので、そのまま割り付けました）</div>
+    <div><b>画面</b>：16:9（1920×1080）</div>
+    <div><b>主役</b>：新しい主役 A案（40代後半・上品で落ち着いた・知性と透明感／AIオリジナルの顔）で<b>全カット統一</b></div>
+    <div><b>院長さま</b>：いただいたホームページのトップ写真をもとに動画化。0:26〜0:38 で正面から顔出し</div>
+    <div><b>施術ルーム</b>：いただいた添付画像を使用（0:15-0:20／0:26-0:38／0:53-0:58）</div>
+  </div>
+
+  <div class="policy">
+    <h3>■ 基本方針、承りました</h3>
+    <ul>
+      <li>訴求テーマは <b>「便秘・お腹の張り」の1点のみ</b></li>
+      <li><b>冒頭5秒は「強く刺す」設計</b>（該当しない視聴者の方には早めに離脱いただく）</li>
+      <li><b>ダイエット・痩身・肌荒れ・睡眠</b>の表現は全カットから除外（該当2カットは削除）</li>
+      <li>効能表現は <b>「整える」「スッキリ」「軽やかに」</b>のみ。「治る」「改善する」「解消する」不使用</li>
+      <li><b>「今だけ」「期間限定」</b>など視聴時点に依存する表現は不使用（1年以上の放映のため）</li>
+      <li>院長さまは<b>マスク不着用</b>・男性であることを隠さない／手袋は<b>0:32-0:38 のみ</b></li>
+      <li>「小腸ファーストケア」を <b>0:32〜 と 0:53〜 の2箇所</b>で音声・テロップ両方に</li>
+    </ul>
+  </div>
+
+  <!-- ===== 各カット ===== -->
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B01_hook_bedroom.jpg" alt="0:00-0:05 朝の寝室">
+      <span class="num">0:00-0:05</span><span class="flag">★最重要フック</span>
+      <div class="telop top">また、今日も出なかった</div>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru">また、今日も出なかった。お腹だけが、膨らんでいく。</div>
+      <div class="note">朝の寝室。服の上からお腹に手を当て、浮かない表情。冒頭5秒で「自分のことだ」と感じていただく設計です。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B02_mirror_sigh.jpg" alt="0:05-0:10 鏡の前でため息">
+      <span class="num">0:05-0:10</span>
+      <div class="telop">そのお腹の張り、繰り返していませんか</div>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru">気をつけても、また張って苦しい。終わらない繰り返し。</div>
+      <div class="note">鏡の前でお腹周りを気にして、ため息をつく。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B03_outside_heavy.jpg" alt="0:10-0:15 外出先">
+      <span class="num">0:10-0:15</span>
+      <div class="telop top">そのガンコな不調、小腸からかもしれません</div>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru">その不調、原因は小腸かもしれません。</div>
+      <div class="note">外出先で気が重そうな様子。ここで「小腸」という答えを提示します。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B04_room.jpg" alt="0:15-0:20 施術ルーム">
+      <span class="num">0:15-0:20</span><span class="flag recv">いただいた画像</span>
+      <div class="telop">一時しのぎではなく、根本から見直す</div>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru">一時しのぎではなく、根本から見直す。</div>
+      <div class="note">いただいた施術ルームのお写真をそのまま使用しております。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B05_info.jpg" alt="0:20-0:26 インフォグラフィック">
+      <span class="num">0:20-0:26</span><span class="flag recv">いただいた画像</span>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru">小腸が整えば、お腹の巡りも整います。</div>
+      <div class="note">
+        テロップは<b>非表示</b>（画像内の文字と重複するため）。<br>
+        いただいたインフォグラフィックは<b>元のデータがちょうど16:9でしたので、トリミング・配色変更・要素の追加削除は一切しておりません</b>。
+      </div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B06_counseling_v2.jpg" alt="0:26-0:32 院長 顔出し">
+      <span class="num">0:26-0:32</span><span class="flag">★院長さま 顔出し</span>
+      <div class="telop">選択理論心理学を学んだ院長が、あなたの心と体に向き合う</div>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru">選択理論心理学を学んだ院長が、寄り添います。</div>
+      <div class="note">
+        いただいた施術ルームで、<b>お客さまと対面でお話しするカウンセリングシーン</b>。院長さまのお顔がはっきり分かります。<b>マスク・手袋ともに不着用</b>（会話シーンのため）。<br>
+        ホームページのトップ写真と<b>同じ明るいブルーの術衣・同じ雰囲気</b>になるよう合わせております。
+      </div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B07b_hands.jpg" alt="0:32-0:38 施術（手元アップ）">
+      <span class="num">0:32-0:38</span><span class="flag">★メソッド名・性別の開示</span>
+      <div class="telop top">男性施術者ですが、服を着たまま</div>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru">男性施術者ですが、<b>小腸ファーストケア</b>なら、服を着たまま。</div>
+      <div class="note">
+        施術は<b>手元のアップ</b>で丁寧さを見せます（院長さまのお顔は直前の 0:26-0:32 のカウンセリングで確認いただけます）。<br>
+        ご指示を4点とも反映しております。①<b>お洋服の上からさらに厚手のタオル</b>を重ね、肌への接触が生じないことを視覚的に二重に明示
+        ②<b>揉みほぐさず、手のひら全体で深部にじんわり圧をかける</b>描写 ③施術者はマスク不着用
+        ④<b>薄手で肌馴染みの良い手袋</b>を着用
+      </div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B08_mirror_smile.jpg" alt="0:38-0:43 鏡の前で笑顔">
+      <span class="num">0:38-0:43</span>
+      <div class="telop">お腹まわりがスッキリ、毎日が軽やかに</div>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru">お腹まわりがスッキリして、毎日が軽やかに。</div>
+      <div class="note">鏡の前で笑顔。ここから色味があたたかく転換します。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B09_dining_happy.jpg" alt="0:43-0:48 食卓">
+      <span class="num">0:43-0:48</span>
+      <div class="telop">好きなものを楽しみ、やりたいことができる日々へ</div>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru">心も体も軽くなれば、やりたいことができる。</div>
+      <div class="note">食卓を囲み、笑顔で食事をする様子（新規で作成いたしました）。</div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B10_refund_card.jpg" alt="0:48-0:53 全額返金保証">
+      <span class="num">0:48-0:53</span>
+      <div class="telop" style="display:none"></div>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru">ご満足いただけなければ、全額返金いたします。</div>
+      <div class="note">
+        落ち着いたトーンの<b>金色の縁取り</b>のテキストカード。返金の注記は、ご指示どおり<b>この後の締めカット（0:58）まで表示し続けます</b>。<br>
+        ※ナレーションの「<b>効果</b>を実感いただけなければ」は、広告審査で指摘を受ける可能性があるため
+        「<b>ご満足</b>いただけなければ」に変更してご提案しております（意味は変わりません）。
+      </div>
+    </div>
+  </div>
+
+  <div class="scene">
+    <div class="frame">
+      <img src="kouryu-v2-img/B11_endcard.jpg" alt="0:53-0:58 CTA">
+      <span class="num">0:53-0:58</span><span class="flag">★締め・CTA（5秒固定）</span>
+    </div>
+    <div class="desc">
+      <div class="lab">ナレーション</div>
+      <div class="naru"><b>小腸ファーストケア</b>、腸活Labo 光琉有。</div>
+      <div class="note">
+        いただいた施術ルームを背景に、QRコード（WEBからのご予約はこちら）／小腸ファーストケア 腸活Labo Kouryu 光琉有／
+        <b>TEL 070-9131-1228</b>／ご住所／<b>「まずはホームページへ」</b>を表示。
+        <b>QRコードは実際に読み取り可能なものを埋め込み、ホームページに繋がることを確認済みです。</b><br>
+        画面の情報が多いため、ナレーションは店名までに留めております（読み上げなくても伝わるため）。
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 末尾 ===== -->
+  <div class="end">
+    <h3>ご確認をお願いしたい点</h3>
+    <ul>
+      <li><b>各カットのナレーション</b>（テロップはご指定のまま。ナレーションは尺に収まるよう調整しております）</li>
+      <li>ホームページの「小腸から整える腸活ケア」を、締めに小さく併記してよいか</li>
+      <li>ホームページの「食事制限や過度な運動に頼らない」は、<b>ダイエット表現の不使用</b>のご指示に従い今回は入れておりません。この理解で相違ないか</li>
+      <li>冒頭「また、今日も出なかった」の踏み込み具合（以前「便秘のイメージが直結しすぎないように」とのお話をいただいていたため）</li>
+      <li>0:15〜0:26 が静止画で11秒続くため、ごくゆるやかな動きを加えてよいか（<b>画像の内容・配色・要素は一切変えません</b>）</li>
+      <li>全額返金保証の条件が、ホームページに記載されているか</li>
+      <li>「選択理論心理学を学んだ院長」の裏付け</li>
+      <li>施術シーンの手袋（以前いただいたお写真では素手に拝見したため、実際の施術との整合）</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  腸活Labo Kouryu 光琉有 様｜AI動画 構成・台本（訂正反映版）<br>
+  制作：株式会社ランバード
+</footer>
+
+</body>
+</html>
