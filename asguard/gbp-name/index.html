@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Googleマップ お店の名前の変更について｜ASGUARD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EDE6DC; --card:#FFF; --ink:#3E3730; --muted:#8A7F72;
+    --gold:#9C8560; --gold-soft:#C9B695; --line:#E0D6C8; --dark:#3E3730;
+    --red:#B4544A; --red-bg:#FBEEEC; --green:#5F8A5B; --green-bg:#EDF4EC;
+    --r:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans JP",system-ui,sans-serif;
+    line-height:1.9;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+  p,li,h1,h2,h3,td,th,.d,.t{word-break:auto-phrase}
+  .wrap{max-width:900px;margin:0 auto;padding:0 20px}
+  h1,h2,h3{font-family:"Zen Maru Gothic",sans-serif;font-weight:500;line-height:1.5;letter-spacing:.04em}
+
+  header{padding:56px 0 40px;text-align:center}
+  .brand{font-size:.78rem;letter-spacing:.26em;color:var(--gold);margin-bottom:14px}
+  h1{font-size:1.66rem;margin-bottom:12px}
+  .lead{color:var(--muted);font-size:.92rem}
+
+  section{margin-bottom:54px}
+  .sec-label{display:inline-block;font-size:.72rem;letter-spacing:.16em;color:#fff;
+    background:var(--gold);padding:5px 14px;border-radius:999px;margin-bottom:14px}
+  h2{font-size:1.26rem;margin-bottom:8px}
+  .sec-note{color:var(--muted);font-size:.88rem;margin-bottom:22px}
+  .card{background:var(--card);border-radius:var(--r);padding:28px;margin-bottom:18px}
+
+  .answer{background:var(--dark);color:#F5EFE6;border-radius:var(--r);padding:28px 30px}
+  .answer h3{font-size:1.05rem;margin-bottom:10px}
+  .answer p{font-size:.9rem;opacity:.9}
+  .answer strong{color:#F0D9A8}
+
+  /* Google引用 */
+  .quote{background:#F4F0E9;border-left:3px solid var(--gold-soft);
+    padding:16px 20px;font-size:.86rem;line-height:1.95;border-radius:0 8px 8px 0;margin:14px 0}
+  .quote cite{display:block;font-size:.75rem;color:var(--muted);margin-top:10px;font-style:normal}
+
+  /* before after */
+  .ba{display:flex;gap:14px;align-items:stretch}
+  .ba .b{flex:1 1 0;min-width:0;border-radius:14px;padding:20px 18px;text-align:center}
+  .ba .b--old{background:var(--red-bg);border:1px solid #E8C4BE}
+  .ba .b--new{background:var(--green-bg);border:1px solid #CBDCC7}
+  .ba .lb{font-size:.74rem;letter-spacing:.1em;margin-bottom:10px}
+  .ba .b--old .lb{color:var(--red)}
+  .ba .b--new .lb{color:var(--green)}
+  .ba .nm{font-family:"Zen Maru Gothic",sans-serif;font-size:1rem;line-height:1.6;font-weight:500}
+  .ba .b--old .nm{text-decoration:line-through;text-decoration-color:#D6928A;color:#6B5F58}
+  .ba .note{font-size:.76rem;color:var(--muted);margin-top:10px;line-height:1.7}
+  .arrowdown{display:flex;align-items:center;justify-content:center;color:var(--gold-soft);font-size:1.4rem}
+
+  /* 手順 */
+  .steps{counter-reset:s;display:flex;flex-direction:column;gap:14px}
+  .step{background:#FAF7F2;border:1px solid var(--line);border-radius:14px;padding:18px 20px 18px 58px;position:relative}
+  .step::before{counter-increment:s;content:counter(s);
+    position:absolute;left:18px;top:18px;width:26px;height:26px;border-radius:50%;
+    background:var(--gold);color:#fff;font-size:.8rem;font-weight:700;
+    display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:.95rem;margin-bottom:5px}
+  .step p{font-size:.84rem;color:var(--muted);line-height:1.85}
+
+  /* 画面イメージ */
+  .shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;margin-top:12px}
+  .shot-bar{background:#F0EBE3;padding:8px 14px;font-size:.72rem;color:var(--muted);
+    border-bottom:1px solid var(--line)}
+  .shot-body{padding:16px}
+  .field{display:flex;justify-content:space-between;align-items:center;
+    padding:12px 0;border-bottom:1px solid #F0EBE3}
+  .field:last-child{border-bottom:0}
+  .field .k{font-size:.8rem;color:var(--muted)}
+  .field .v{font-size:.86rem;font-weight:500;text-align:right;max-width:62%}
+  .pen{color:var(--gold);font-size:.9rem}
+
+  ul.pt{list-style:none;display:flex;flex-direction:column;gap:10px}
+  ul.pt li{background:#FAF7F2;border-radius:12px;padding:14px 18px 14px 38px;font-size:.86rem;position:relative}
+  ul.pt li::before{content:"●";color:var(--gold-soft);font-size:.7rem;position:absolute;left:18px;top:14px;line-height:1.9}
+
+  .warn{background:#FFF8E8;border:1px solid #E8D9AE;border-radius:14px;padding:20px 24px}
+  .warn h3{font-size:.94rem;margin-bottom:8px;color:#8A6D2F}
+  .warn p{font-size:.86rem;line-height:1.85}
+
+  footer{text-align:center;padding:40px 0 56px;color:var(--muted);font-size:.76rem;line-height:2}
+
+  @media (max-width:640px){
+    .ba{flex-direction:column;gap:8px}
+    .arrowdown{transform:rotate(90deg);padding:4px 0}
+  }
+  @media (max-width:430px){
+    .wrap{padding:0 16px}
+    header{padding:40px 0 30px}
+    h1{font-size:1.3rem}
+    h2{font-size:1.1rem}
+    .card{padding:20px 16px}
+    .answer{padding:22px 18px}
+    .field{flex-direction:column;align-items:flex-start;gap:4px}
+    .field .v{text-align:left;max-width:100%}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="brand">ASGUARD CAR SALES</div>
+  <h1>Googleマップ<br>お店の名前の変更について</h1>
+  <p class="lead">Googleサポートからの回答と、お願いしたいこと</p>
+</header>
+
+<!-- 結論 -->
+<section>
+  <div class="answer">
+    <h3>原因が分かりました</h3>
+    <p>動画の撮り方の問題ではありませんでした。<br>
+    <strong>Googleに登録しているお店の名前が、Googleのルールに合っていない</strong>ことが理由でした。<br>
+    <strong>名前を直せば、手続きを進めてもらえます。</strong></p>
+  </div>
+</section>
+
+<!-- Googleの回答 -->
+<section>
+  <span class="sec-label">Googleサポートからの回答</span>
+  <h2>名前から余分な言葉を消してください、とのことです</h2>
+  <div class="card">
+    <div class="quote">
+      「お客様のビジネス プロフィールの名前に<strong>（ダイハツ ミラココアの売買専門店）が追加されている</strong>ことを確認いたしました。<strong>これはガイドラインに沿ったものではございません。</strong>ビジネスプロフィールの名前から、この文言を<strong>削除してください</strong>」<br><br>
+      「<strong>看板、標識、バナー、事務用品など、実際の店舗で使用されている名称と完全に一致するように</strong>、ビジネス プロフィールの名前を更新してください」
+      <cite>Google ビジネスプロフィール サポート ご担当者様より</cite>
+    </div>
+    <ul class="pt" style="margin-top:16px">
+      <li>Googleは、お店の名前に<strong>サービス内容や宣伝文句を入れることを禁止</strong>しています</li>
+      <li>「ダイハツ ミラココア売買専門店」の部分が、これに当たると判断されました</li>
+      <li><strong>実際の看板と同じ名前</strong>でなければ、実在の確認ができないためです</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 変更内容 -->
+<section>
+  <span class="sec-label">お願いしたいこと</span>
+  <h2>お店の名前を、この形に変更してください</h2>
+  <div class="card">
+    <div class="ba">
+      <div class="b b--old">
+        <div class="lb">現在</div>
+        <div class="nm">ミラココア買取・販売専門店<br>ASGUARD</div>
+        <div class="note">この部分がルール違反と<br>指摘されています</div>
+      </div>
+      <div class="arrowdown">▶</div>
+      <div class="b b--new">
+        <div class="lb">変更後</div>
+        <div class="nm">ASGUARD CAR SALES</div>
+        <div class="note">看板のロゴと同じ表記<br>余分な言葉なし</div>
+      </div>
+    </div>
+
+    <div class="warn" style="margin-top:20px">
+      <h3>なぜ「ASGUARD CAR SALES」なのか</h3>
+      <p>・<strong>看板のロゴに一番大きく書かれている名前</strong>だからです<br>
+      ・ホームページのアドレス（asguard-<strong>carsales</strong>.com）とも一致します<br>
+      ・「専門店」などの言葉が入っていないため、再び指摘される心配がありません</p>
+    </div>
+  </div>
+</section>
+
+<!-- 手順 -->
+<section>
+  <span class="sec-label">変更のしかた</span>
+  <h2>3ステップで完了します</h2>
+  <div class="card">
+    <div class="steps">
+      <div class="step">
+        <h3>Googleビジネスプロフィールを開く</h3>
+        <p>いつもご覧になっている、お店の情報を編集する画面です。</p>
+      </div>
+      <div class="step">
+        <h3>「ビジネス名」の鉛筆マークをタップ</h3>
+        <p>「ビジネスの概要」の一番上にあります。</p>
+        <div class="shot">
+          <div class="shot-bar">ビジネス情報 — 概要</div>
+          <div class="shot-body">
+            <div class="field">
+              <span class="k">ビジネス名</span>
+              <span class="v">ミラココア買取・販売専門店 ASGUARD <span class="pen">✎</span></span>
+            </div>
+            <div class="field">
+              <span class="k">ビジネス カテゴリ</span>
+              <span class="v">自動車販売店</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="step">
+        <h3>名前を書き換えて保存</h3>
+        <p>「<strong>ASGUARD CAR SALES</strong>」に書き換えて保存してください。<br>
+        ※半角の英字・スペースでご入力ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- そのあと -->
+<section>
+  <span class="sec-label">そのあと</span>
+  <h2>こちらで手続きを進めます</h2>
+  <div class="card">
+    <ul class="pt">
+      <li>名前の変更が終わりましたら、<strong>ご一報ください</strong></li>
+      <li>Googleのご担当者様へ「変更しました、確認を進めてください」と<strong>こちらからご返信いたします</strong></li>
+      <li>書類の提出などを求められた場合も、<strong>こちらで対応いたします</strong></li>
+    </ul>
+    <div class="warn" style="margin-top:16px">
+      <h3>ご安心ください</h3>
+      <p>今回、Googleのご担当者様と直接やり取りができる状態になっております。<br>
+      これまでのように「確認方法がありません」で止まってしまうことは、もうありません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 補足 -->
+<section>
+  <span class="sec-label">補足</span>
+  <h2>検索されたい言葉について</h2>
+  <div class="card">
+    <p style="font-size:.88rem;line-height:2">
+      「ミラココア」で検索して見つけてもらいたい、というお考えかと思います。<br><br>
+      お店の<strong>名前</strong>に入れることはできませんが、Googleビジネスプロフィールの<strong>「説明」欄</strong>や、<strong>投稿・写真</strong>には自由に書いていただけます。そちらでしっかり伝えていけますので、ご心配なさらないでください。<br><br>
+      また、ホームページの方も先日、幅広い車種に対応している内容へ変更させていただいております。
+    </p>
+  </div>
+</section>
+
+<footer>
+  ASGUARD CAR SALES 様<br>
+  Googleマップ お店の名前の変更について（2026-07-18）<br>
+  株式会社ランバード
+</footer>
+
+</div>
+</body>
+</html>
