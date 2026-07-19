@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OWL福祉事業 現状レポート 2026-07-19</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;line-height:1.75;color:#2b2b2b;background:#f5f5f7;padding:24px}
+.wrap{max-width:1080px;margin:0 auto;background:#fff;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.06);overflow:hidden}
+h1{background:linear-gradient(135deg,#3d8b3d 0%,#2d6b2d 100%);color:#fff;padding:32px 40px;font-size:26px;line-height:1.4}
+h1 .sub{display:block;font-size:14px;font-weight:400;opacity:.9;margin-top:6px}
+.section{padding:36px 40px;border-bottom:1px solid #eee}
+.section:last-child{border-bottom:none}
+h2{color:#2b2b2b;font-size:22px;margin-bottom:16px;padding-left:14px;border-left:5px solid #3d8b3d;line-height:1.3}
+h3{color:#3d8b3d;font-size:17px;margin:20px 0 10px}
+p{margin-bottom:12px}
+.conclusion{background:linear-gradient(135deg,#fff5e6 0%,#ffefcc 100%);border:2px solid #f5843c;border-radius:10px;padding:24px;margin-bottom:20px}
+.conclusion h2{border-left-color:#f5843c;color:#c65f10}
+.conclusion-item{background:#fff;border-radius:8px;padding:16px 20px;margin-top:12px;border-left:4px solid #f5843c}
+.conclusion-item .rank{color:#f5843c;font-weight:800;font-size:13px;letter-spacing:.1em;margin-bottom:4px}
+.conclusion-item .title{font-weight:700;font-size:16px;margin-bottom:6px}
+.conclusion-item .desc{font-size:14px;color:#555}
+.uncertain{background:#fff5f5;border:2px dashed #e15;border-radius:10px;padding:20px;margin-bottom:20px}
+.uncertain h3{color:#e15;margin-top:0}
+.uncertain ul{margin-left:20px;font-size:14px;color:#555}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{background:#3d8b3d;color:#fff;padding:12px 10px;text-align:left;font-weight:700}
+td{padding:12px 10px;border-bottom:1px solid #eaeaea;background:#fff}
+tr:nth-child(even) td{background:#f9fafa}
+.good{color:#3d8b3d;font-weight:700}
+.bad{color:#e15;font-weight:700}
+.warn{color:#f5843c;font-weight:700}
+.data-card{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.card{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:16px;text-align:center}
+.card .label{font-size:11px;color:#888;margin-bottom:6px}
+.card .val{font-size:22px;font-weight:800;color:#2b2b2b}
+.card .val.bad{color:#e15}
+.card .val.good{color:#3d8b3d}
+.pro-con{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.pro-con-box{padding:20px;border-radius:8px}
+.pro-box{background:#f0f9f0;border-left:4px solid #3d8b3d}
+.con-box{background:#fff5f5;border-left:4px solid #e15}
+.pro-box h4{color:#3d8b3d}
+.con-box h4{color:#e15}
+.pro-con-box ul{margin-left:20px;font-size:14px;margin-top:10px}
+.pro-con-box li{margin-bottom:6px}
+.competitor-table th{background:#666}
+.competitor-table td:first-child{font-weight:700}
+.owl-row td{background:#fff9e6 !important;font-weight:700}
+.action-item{background:#f5f9ff;border-left:4px solid #3b82f6;padding:14px 18px;margin-bottom:10px;border-radius:6px}
+.action-item .prio{display:inline-block;padding:2px 10px;border-radius:99px;font-size:11px;font-weight:800;margin-right:8px;color:#fff}
+.prio-p0{background:#e15}
+.prio-p1{background:#f5843c}
+.prio-p2{background:#3b82f6}
+.action-item .desc{font-size:14px;color:#555;margin-top:4px}
+.source{font-size:13px;color:#666}
+.source a{color:#3b82f6;text-decoration:none}
+.source a:hover{text-decoration:underline}
+.footer{background:#2b2b2b;color:#ccc;padding:20px 40px;font-size:12px}
+.footer a{color:#f5843c}
+.chart{background:#fafafa;padding:16px;border-radius:8px;margin:12px 0;font-family:'SF Mono',Monaco,monospace;font-size:13px;line-height:1.6;white-space:pre;overflow-x:auto}
+.evidence{display:inline-block;background:#e8f4e8;color:#2d6b2d;font-size:11px;padding:2px 8px;border-radius:4px;margin-left:6px}
+@media(max-width:720px){
+  body{padding:12px}
+  .section{padding:24px 20px}
+  h1{padding:24px 20px;font-size:20px}
+  h2{font-size:18px}
+  .data-card{grid-template-columns:repeat(2,1fr)}
+  .pro-con{grid-template-columns:1fr}
+  table{font-size:12px}
+  th,td{padding:8px 6px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>OWL福祉事業 現状レポート<span class="sub">2026-07-19 08:55 / 配信 day32（6/17〜7/18）/ 星崎</span></h1>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 【最上部】結論TOP3 と 未確定論点 -->
+<!-- 鈴木ルール #54 #58 準拠 -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="section">
+
+<div class="conclusion">
+<h2>🎯 結論 TOP3（鈴木様に一番知っていただきたい点）</h2>
+
+<div class="conclusion-item">
+<div class="rank">#1 最優先・今日中に判断</div>
+<div class="title">Yahoo予算¥13,300/日を半減またはゼロ化。Google集中へ</div>
+<div class="desc">4日連続CV=0（Gmail問合せ）で¥84,000垂れ流し。Yahoo CTR 8.87%・CPC¥868はGoogle比で明確に効率悪い（Google CTR 13.37%・CPC¥437）。予算再配分だけで理論CPA▲40%。</div>
+</div>
+
+<div class="conclusion-item">
+<div class="rank">#2 今週中に着手</div>
+<div class="title">現行LP「加盟金0円」訴求は業界最安ではない。競合比較の見直しが必要</div>
+<div class="desc">GOOD HOME 1事業=55万円、わんずらいふ 2棟=350万円で、OWL加盟金440万円は<strong>中間〜高値</strong>ゾーン。「業界最安値クラス」の主張は根拠薄い。代わりに「0円プラン（月16.5万×36ヶ月）」の独自性で勝負すべき。</div>
+</div>
+
+<div class="conclusion-item">
+<div class="rank">#3 来週中に実装</div>
+<div class="title">LP中間セクション（15〜90%）でAttention時間ゼロ。読まれていない</div>
+<div class="desc">Clarity実データ：スクロールは22%が100%到達するが、中間セクションのAttention時間0%。「見てるが読んでない」状態。tocotoco式「投資回収12ヶ月」やGOOD HOME式「未経験でも安心」訴求の追加が必要。</div>
+</div>
+
+</div>
+
+<div class="uncertain">
+<h3>⚠️ 未確定論点（要判断）</h3>
+<ul>
+<li><strong>tocotoco 加盟金額</strong>：非公開。個別問合せ未実施 → 実費用感が競合比較で不明</li>
+<li><strong>OWL 実際の CV 経路</strong>：Gmail問合せ以外に、電話・LINE等の別チャネル問合せがあるか未確認</li>
+<li><strong>Yahoo予算減額の影響範囲</strong>：Yahoo広告からのブランド認知への副次効果は未計測</li>
+<li><strong>新LP v3（A/B案）</strong>：鈴木様の承認・意見が本レポートと並行して必要</li>
+<li><strong>SEO記事による流入経路</strong>：構築コスト・工数の試算未実施</li>
+</ul>
+</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 現状データ -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="section">
+<h2>📊 現状データ（配信32日目）</h2>
+
+<h3>直近1日（7/18）のパフォーマンス</h3>
+<div class="data-card">
+<div class="card"><div class="label">Google TO CTR</div><div class="val good">13.37%</div></div>
+<div class="card"><div class="label">Yahoo TO CTR</div><div class="val warn">8.87%</div></div>
+<div class="card"><div class="label">Google TO CPC</div><div class="val good">¥437</div></div>
+<div class="card"><div class="label">Yahoo TO CPC</div><div class="val bad">¥868</div></div>
+</div>
+
+<h3>7/18 詳細</h3>
+<table>
+<tr><th>媒体</th><th>IMP</th><th>Click</th><th>Cost</th><th>CTR</th><th>CPC</th><th>CV</th></tr>
+<tr><td>Google TO-CP01</td><td>202</td><td>27</td><td>¥11,788</td><td class="good">13.37%</td><td class="good">¥437</td><td class="bad">0</td></tr>
+<tr><td>Yahoo TO-CP01</td><td>124</td><td>11</td><td>¥9,550</td><td class="warn">8.87%</td><td class="bad">¥868</td><td class="bad">0</td></tr>
+<tr style="background:#f0f9f0"><td><strong>TO合計</strong></td><td><strong>326</strong></td><td><strong>38</strong></td><td><strong>¥21,338</strong></td><td>11.66%</td><td>¥561</td><td class="bad"><strong>0</strong></td></tr>
+<tr><td>Google RB（河合さん）</td><td>54</td><td>1</td><td>¥588</td><td class="bad">1.85%</td><td>¥588</td><td>別集計</td></tr>
+<tr><td>Yahoo RB（河合さん）</td><td>178</td><td>4</td><td>¥1,097</td><td class="bad">2.25%</td><td>¥274</td><td>別集計</td></tr>
+</table>
+
+<h3>CV件数（Gmail問合せ実件数）推移</h3>
+<div class="chart">7/13 ██████ 1件
+7/14 ██████ 1件
+7/15 ─ 0件
+7/16 ─ 0件
+7/17 ─ 0件
+7/18 ─ 0件   ← <span style="color:#e15;font-weight:800">4日連続CV=0</span>
+─────────────────────
+過去4日投下額: 約 ¥84,000（Yahoo¥40K / Google¥44K）</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- LP分析（Clarity） -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="section">
+<h2>🔍 現行LP分析（Microsoft Clarity 96セッション・モバイル）</h2>
+<p class="source">対象URL：<a href="https://owl-fukushi.net/lp_zero-plan-g_v2/">https://owl-fukushi.net/lp_zero-plan-g_v2/</a>／期間：2026-07-17〜2026-07-19</p>
+
+<div class="pro-con">
+<div class="pro-con-box pro-box">
+<h4>✅ 良いところ</h4>
+<ul>
+<li>スクロール率は健全（22%が100%到達／一般LP平均15%）</li>
+<li>早期離脱少ない（50%地点でまだ71/96残存）</li>
+<li>0円プランがFVで前面化されている</li>
+<li>Google CTR 13.37% は広告文の刺さり方が良好</li>
+</ul>
+</div>
+<div class="pro-con-box con-box">
+<h4>❌ 悪いところ</h4>
+<ul>
+<li><strong>Attention 15〜90% がほぼ0%</strong>（読まずスクロールだけ）</li>
+<li>タップの45%が非リンク画像に集中（CTAボタン3%のみ）</li>
+<li>実顔・実名・実売上ボイスなし → Trust不足</li>
+<li>FVは情報訴求のみで感情フック弱い</li>
+<li>Yahoo効率が Google比で明確に悪い</li>
+</ul>
+</div>
+</div>
+
+<h3>Attention時間・スクロール率（Clarity実データ）</h3>
+<div class="chart">スクロール%   訪問者数   Attention時間   意味
+─────────────────────────────────────────────
+    5%      96人       00:00:04    ヘッドライン読んでる
+   10%      85人       00:00:02    やや読んでる
+   15%      83人       00:00:00    <span style="color:#e15;font-weight:800">読まなくなる</span>
+   30%      78人       00:00:00    完全にスクロールだけ
+   50%      71人       00:00:00    まだ見てるが読んでない
+   80%      50人       00:00:00    死の区間
+   95%      33人       00:00:03    フォーム見てる
+  100%      21人       00:00:01    離脱</div>
+
+<p style="margin-top:12px;font-size:14px;color:#e15;font-weight:700">
+💡 星崎の分析：スクロールは達成しているが「読まれていない」。<br>
+→ 「見せる」から「読ませる」への転換が必要。文章の削減・画像内文字の大型化・視線誘導の再設計。
+</p>
+
+<h3>タップランキング（Clarity・33タップ）</h3>
+<table>
+<tr><th>順位</th><th>対象要素</th><th>タップ数</th><th>意味</th></tr>
+<tr><td>1位</td><td>画像 #8番目</td><td>15（45%）</td><td class="warn">リンクじゃない画像を触ってる</td></tr>
+<tr><td>2位</td><td>画像 #1番目</td><td>5（15%）</td><td class="warn">同上</td></tr>
+<tr><td>3位</td><td>画像 #9番目</td><td>4（12%）</td><td class="warn">同上</td></tr>
+<tr><td>4位</td><td>#cta &gt; IMG</td><td>1（3%）</td><td class="bad">CTAボタン</td></tr>
+<tr><td>5位</td><td>A.owl-btn</td><td>1（3%）</td><td class="bad">CTAリンク</td></tr>
+</table>
+<p style="margin-top:12px;font-size:14px;color:#e15;font-weight:700">
+💡 star崎の分析：33タップのうち<strong>29タップ（88%）が非リンクの画像</strong>。<br>
+→ ユーザーは「触りたい」意欲を持っているが受け皿がない。<strong>全画像を &lt;a href="#form"&gt; でラップするだけで CV率改善の余地大</strong>。
+</p>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 競合分析 -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="section">
+<h2>🏢 競合分析（障がい者GH開設支援FC・一次情報）</h2>
+<p class="source">出典：フランチャイズWEBリポート、フランチャイズの窓口、FCオーナーズ他（URL末尾参照）</p>
+
+<h3>主要競合 料金比較</h3>
+<table class="competitor-table">
+<tr><th>会社</th><th>加盟金</th><th>特徴</th><th>訴求軸</th></tr>
+<tr class="owl-row"><td>OWL（RUNBIRD）</td><td>440万円 / <strong>0円プラン</strong>（月16.5万×36ヶ月）</td><td>実績180社・年商1800万モデル</td><td>実績数字</td></tr>
+<tr><td>GOOD HOME</td><td class="good">55万円/事業</td><td>3事業で385万・商標利用料無料プランあり</td><td>「未経験でも安心」</td></tr>
+<tr><td>わんずらいふ</td><td>350万円（2棟分）</td><td>+実費約300万 / 総額約780万</td><td>透明性・費用内訳</td></tr>
+<tr><td>tocotoco</td><td>非公開</td><td>5事業モデル・投資回収最短12ヶ月・運営代行あり</td><td>投資回収スピード</td></tr>
+<tr><td>イグルー</td><td>400万円（350万+開業支援50万）</td><td>シンプル価格</td><td>価格明快</td></tr>
+<tr><td>アニスピHD</td><td>-</td><td>コラム記事メイン</td><td>SEO・教育</td></tr>
+</table>
+
+<h3>⚠️ OWLの競合ポジションの真実</h3>
+<div class="uncertain" style="background:#fff5e6;border-color:#f5843c">
+<ul style="color:#c65f10">
+<li>加盟金<strong>440万円は業界最安ではない</strong>：GOOD HOME 55万/事業（OWLの1/8）、わんずらいふ 350万、イグルー 400万すべて OWL より安い</li>
+<li>ただし「加盟金0円プラン」は業界初レベルの独自性あり</li>
+<li>投資回収期間の明示不足：tocotoco は「12ヶ月」を強く訴求</li>
+<li>未経験サポート訴求が弱い：GOOD HOME・tocotoco は明確に前面化</li>
+</ul>
+</div>
+
+<h3>💡 OWLに取り入れるべき勝ちパターン</h3>
+<div class="chart">競合パターン                    OWLへの示唆
+──────────────────────────────────────────────
+tocotoco「投資回収12ヶ月」       → 「初期500万→8ヶ月回収」等の数字化
+GOOD HOME「未経験でも安心」       → 180社実績＝「6割が未経験」を追記
+わんずらいふ「費用内訳の明示」    → 他社比較表を S06 に追加
+tocotoco「運営代行プラン」        → 「完全お任せプラン」を差別化
+アニスピHD「SEO記事」             → 広告依存脱却・記事流入を構築</div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 提案アクション -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="section">
+<h2>🚀 提案アクション（工数と投資回収の分離）</h2>
+<p class="source">鈴木ルール#57 準拠：開発費（初期投資）と月額運用費を分けて記載</p>
+
+<h3>🔥 P0（今日中・低リスク・鈴木様承認で即実装）</h3>
+
+<div class="action-item">
+<span class="prio prio-p0">P0</span><strong>Yahoo予算を¥13,300→¥5,000に減額</strong>
+<div class="desc">開発費：¥0 ／ 月額削減：<span class="good">▲¥249,000/月</span>（¥8,300×30日）／ 実装：5分／ 根拠：4日連続CV0で Yahoo CTR/CPC が Google比で明確に劣後</div>
+</div>
+
+<div class="action-item">
+<span class="prio prio-p0">P0</span><strong>現行LP全画像をクリック可能に（&lt;a&gt;タグでラップ）</strong>
+<div class="desc">開発費：¥0（星崎工数1時間）／ 月額：¥0 ／ Clarity実データ：非リンク画像へのタップ29件を#formに転送できれば CVR改善の余地大</div>
+</div>
+
+<h3>🔴 P1（今週中）</h3>
+
+<div class="action-item">
+<span class="prio prio-p1">P1</span><strong>新LP v3（A/B案）本番切替判断</strong>
+<div class="desc">開発費：既実装済 ／ 月額：¥0 ／ 現行LPで4日連続CV0なら、変えた方が学びが早い。鈴木様承認待ち</div>
+</div>
+
+<div class="action-item">
+<span class="prio prio-p1">P1</span><strong>FV刷新：「加盟金0円」→ 感情フック追加</strong>
+<div class="desc">開発費：¥0（星崎工数2時間）／ 月額：¥0 ／ 案：「50歳・未経験でも半年で月商250万」「180社の6割が未経験からスタート」（GOOD HOME対抗）</div>
+</div>
+
+<div class="action-item">
+<span class="prio prio-p1">P1</span><strong>お客様の声セクション実装</strong>
+<div class="desc">開発費：¥0（星崎工数4時間）／ 月額：¥0 ／ 現LPには実顔・実名・実売上のリアルボイスなし。実開業者インタビュー3〜4名の許諾を取得できるか要確認</div>
+</div>
+
+<h3>🟡 P2（来週以降）</h3>
+
+<div class="action-item">
+<span class="prio prio-p2">P2</span><strong>SEO記事による流入経路構築（広告依存脱却）</strong>
+<div class="desc">開発費：¥0（既存WordPress活用）／ 月額：記事外注費 ¥30,000〜¥50,000/月（4本ペース想定）／ 効果発現まで3〜6ヶ月／ アニスピHD対抗</div>
+</div>
+
+<div class="action-item">
+<span class="prio prio-p2">P2</span><strong>投資回収期間バッジ・他社比較表を追加</strong>
+<div class="desc">開発費：¥0（星崎工数2時間）／ 月額：¥0 ／ tocotoco「12ヶ月」対抗</div>
+</div>
+
+<div class="action-item">
+<span class="prio prio-p2">P2</span><strong>お客様の声動画コンテンツ</strong>
+<div class="desc">開発費：¥50,000〜¥150,000（外部撮影・編集）／ 月額：¥0 ／ Trust向上とAttention 0%区間の解消に寄与</div>
+</div>
+
+<h3>💰 想定投資対効果（試算）</h3>
+<table>
+<tr><th>対策</th><th>初期投資</th><th>月額</th><th>想定効果</th></tr>
+<tr><td>Yahoo予算減額</td><td class="good">¥0</td><td class="good">▲¥249,000</td><td>広告費適正化・CPA改善</td></tr>
+<tr><td>画像リンク化</td><td class="good">¥0</td><td class="good">¥0</td><td>CVR +30〜100%（推定）</td></tr>
+<tr><td>FV刷新・お客様の声</td><td class="good">¥0</td><td class="good">¥0</td><td>CVR +50〜200%（推定）</td></tr>
+<tr><td>SEO記事</td><td>¥0</td><td>¥30〜50K</td><td>3〜6ヶ月後に月10〜50セッション/日流入</td></tr>
+<tr><td>お客様の声動画</td><td>¥50〜150K</td><td>¥0</td><td>Trust向上（数値化困難）</td></tr>
+</table>
+
+<p style="margin-top:12px;font-size:14px;color:#3d8b3d;font-weight:700">
+💡 星崎の推奨：<strong>P0の2件（Yahoo予算減額・画像リンク化）はコスト0円・工数1時間で即実装可能</strong>。まずここから鈴木様承認をいただければ、来週の結果を見て次の判断が可能になります。
+</p>
+
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- インフラ確認（鈴木ルール #55） -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="section">
+<h2>🔧 インフラ確認（既存環境で動くか）</h2>
+<table>
+<tr><th>項目</th><th>現状</th><th>互換性</th></tr>
+<tr><td>本番サーバー</td><td>Xserver（WordPress）</td><td class="good">◯ 継続利用</td></tr>
+<tr><td>現行LP</td><td>owl-fukushi.net/lp_zero-plan-g_v2/</td><td class="good">◯ 引き続き稼働</td></tr>
+<tr><td>新LP v3 A/B案</td><td>GitHub Pages preview（プレビュー中）</td><td class="warn">△ 本番切替はXserverへ再アップ必要</td></tr>
+<tr><td>Google Ads/Yahoo Ads</td><td>既存アカウント</td><td class="good">◯ 予算調整のみ</td></tr>
+<tr><td>Microsoft Clarity</td><td>導入済</td><td class="good">◯ 継続活用</td></tr>
+<tr><td>CV計測</td><td>Gmail問合せベース（自動タグなし）</td><td class="warn">△ GTM導入で自動化余地あり</td></tr>
+<tr><td>SEO記事</td><td>既存WordPress + WPプラグイン</td><td class="good">◯ 追加コスト不要</td></tr>
+</table>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 参考ソース（鈴木ルール #58 準拠：一次情報URL） -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="section">
+<h2>📚 参考ソース（一次情報URL）</h2>
+
+<h3>広告データ</h3>
+<ul class="source">
+<li>Google Ads 管理画面（TO-CP01 / RB-OWL経営者向け202606）</li>
+<li>Yahoo Ads 管理画面（TO-OWL-GH-Yahoo-CP01 / RB-OWL経営者向けyahoo-202606）</li>
+</ul>
+
+<h3>LP分析</h3>
+<ul class="source">
+<li>Microsoft Clarity プロジェクト「OWL福祉事業LP」（96セッション・モバイル・2026-07-17〜19）</li>
+</ul>
+
+<h3>競合分析</h3>
+<ul class="source">
+<li><a href="https://web-repo.jp/dokuritsu/business_06/119">障がい者福祉FC独立開業まとめ | フランチャイズWEBリポート</a></li>
+<li><a href="https://www.fc-mado.com/detail/3868">わんずらいふ グループホーム | フランチャイズの窓口</a></li>
+<li><a href="https://www.fc-mado.com/detail/3651">障がい者グループホームGOOD HOME | フランチャイズの窓口</a></li>
+<li><a href="https://web-repo.jp/fc/49157/viewpoint/1654">tocotoco 5つの事業モデル | フランチャイズWEBリポート</a></li>
+<li><a href="https://fc-owners.com/franchise/brand-detail?b=503">障がい者グループホーム イグルー | FCオーナーズ</a></li>
+<li><a href="https://anispi.co.jp/column/post-0-10/">障害者グループホーム開業のポイント | アニスピHD</a></li>
+<li><a href="https://fc-kamei.net/fc-column/fc-column/group_home_franchise_for_people_with_disabilities">障害者グループホーム開業FC比較 | フランチャイズ加盟募集.net</a></li>
+</ul>
+
+<h3>新LP v3 プレビュー（前送付済）</h3>
+<ul class="source">
+<li><a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_v3_a/">A案：診断型（緑・S07=4ペルソナ前面）</a></li>
+<li><a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_v3_b/">B案：資料請求型（オレンジ・S08=4CASE前面）</a></li>
+</ul>
+
+</div>
+
+<div class="footer">
+星崎 / 2026-07-19 08:55 作成 ／ 本レポートは鈴木ルール#54-58に基づき、結論TOP3を最上部・未確定論点明示・一次情報URL付きで作成しています。
+</div>
+
+</div>
+</body>
+</html>
