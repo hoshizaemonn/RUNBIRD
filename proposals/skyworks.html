@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告 運用提案書 — Sky Works 株式会社 様（スカイダイブ日本）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #0288d1;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .goal-banner {
+            background: linear-gradient(135deg, #01579b, #0288d1);
+            color: #fff;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+        }
+        .goal-banner h2 {
+            color: #ffeb3b;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .goal-banner .goal-sub {
+            text-align: center;
+            font-size: 14px;
+            color: #e1f5fe;
+            margin-bottom: 24px;
+        }
+        .goal-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .gf-box {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            min-width: 160px;
+        }
+        .gf-box .gf-step { font-size: 11px; color: #ffeb3b; font-weight: 700; margin-bottom: 4px; }
+        .gf-box .gf-title { font-size: 15px; font-weight: 700; }
+        .gf-box .gf-desc { font-size: 12px; color: #e1f5fe; margin-top: 4px; }
+        .gf-arrow { color: #ffeb3b; font-size: 24px; font-weight: 700; padding: 0 10px; }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .target-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+        .target-card .t-icon { font-size: 28px; margin-bottom: 8px; }
+        .target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+        .target-card .t-value { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.5; }
+
+        .area-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .area-box { border-radius: 10px; padding: 18px; }
+        .area-box.primary { background: #e1f5fe; border: 2px solid #0288d1; }
+        .area-box.secondary { background: #e8eaf6; border: 2px solid #3f51b5; }
+        .area-box h4 { font-size: 14px; margin-bottom: 10px; }
+        .area-box .area-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 3px 4px;
+        }
+        .area-box.primary .area-tag { background: #b3e5fc; color: #01579b; }
+        .area-box.secondary .area-tag { background: #c5cae9; color: #1a237e; }
+
+        .kw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .kw-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+        }
+        .kw-box h4 {
+            font-size: 13px;
+            color: #0288d1;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #eee;
+        }
+        .kw-tag {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 12px;
+            margin: 2px;
+            color: #333;
+        }
+
+        .note-bar {
+            background: #fff3e0;
+            border: 2px solid #ff8800;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+        }
+        .note-bar h3 { color: #e65100; font-size: 15px; margin-bottom: 10px; }
+        .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
+        .note-bar li { margin-bottom: 6px; }
+        .note-bar li strong { color: #0288d1; }
+
+        @media (max-width: 768px) {
+            .target-grid { grid-template-columns: repeat(2, 1fr); }
+            .area-section { grid-template-columns: 1fr; }
+            .kw-grid { grid-template-columns: 1fr; }
+            .goal-flow { flex-direction: column; }
+            .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 運用提案書</h1>
+    <p class="subtitle">Sky Works 株式会社 様（スカイダイブ日本）｜株式会社ランバード</p>
+
+    <!-- ① 目的・ゴール -->
+    <div class="goal-banner">
+        <h2>広告配信の目的</h2>
+        <p class="goal-sub">首都圏を中心に「非日常の体験・冒険」を探している方に、東京から一番近いドロップゾーン「スカイダイブ日本」を知ってもらい、体験予約・ライセンス受講につなげる</p>
+        <div class="goal-flow">
+            <div class="gf-box">
+                <div class="gf-step">STEP 1</div>
+                <div class="gf-title">認知</div>
+                <div class="gf-desc">YouTube広告で<br>「スカイダイブ日本」を届ける</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 2</div>
+                <div class="gf-title">興味</div>
+                <div class="gf-desc">動画を30秒以上見た方に<br>フリーフォールの迫力を伝える</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 3</div>
+                <div class="gf-title">予約</div>
+                <div class="gf-desc">公式サイトから<br>体験予約</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">GOAL</div>
+                <div class="gf-title">体験・受講</div>
+                <div class="gf-desc">タンデム体験／<br>ライセンス取得</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ② ターゲティング設定 -->
+    <div class="section" style="border-color:#0288d1;">
+        <div class="section-title">
+            <span class="icon" style="background:#0288d1;">1</span>
+            ターゲティング設定
+        </div>
+
+        <div class="target-grid">
+            <div class="target-card">
+                <div class="t-icon">👤</div>
+                <div class="t-label">性別</div>
+                <div class="t-value">男女</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📅</div>
+                <div class="t-label">年齢</div>
+                <div class="t-value">20〜49歳</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📍</div>
+                <div class="t-label">エリア</div>
+                <div class="t-value">首都圏中心＋<br>全国主要都市</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">🕐</div>
+                <div class="t-label">配信時間</div>
+                <div class="t-value">8:00〜23:00</div>
+            </div>
+        </div>
+
+        <div class="area-section">
+            <div class="area-box primary">
+                <h4 style="color:#01579b;">重点エリア（首都圏）</h4>
+                <span class="area-tag">東京都</span>
+                <span class="area-tag">埼玉県</span>
+                <span class="area-tag">神奈川県</span>
+                <span class="area-tag">千葉県</span>
+            </div>
+            <div class="area-box secondary">
+                <h4 style="color:#1a237e;">拡張エリア（旅行需要）</h4>
+                <span class="area-tag">大阪</span>
+                <span class="area-tag">名古屋</span>
+                <span class="area-tag">福岡</span>
+                <span class="area-tag">札幌</span>
+                <span class="area-tag">仙台</span>
+                <span class="area-tag">京都</span>
+            </div>
+        </div>
+
+        <div style="background:#fff3e0;border-radius:8px;padding:14px 18px;font-size:13px;color:#e65100;">
+            <strong>ターゲット設定の理由：</strong>ドロップゾーンが「東京から一番近い」立地のため、首都圏1都3県を重点エリアに設定。加えて、旅行・体験目的で来場される全国主要都市の20〜40代アクティブ層にもリーチします。
+        </div>
+    </div>
+
+    <!-- ③ 関連キーワード設定 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#3f51b5;">2</span>
+            関連キーワード設定
+        </div>
+        <p style="font-size:13px;color:#666;margin-bottom:16px;">設定したキーワードに関心がある視聴者に優先的に広告が表示されます。</p>
+
+        <div class="kw-grid">
+            <div class="kw-box">
+                <h4>直接ニーズ（スカイダイビングを探している人）</h4>
+                <span class="kw-tag">スカイダイビング</span>
+                <span class="kw-tag">スカイダイビング 体験</span>
+                <span class="kw-tag">スカイダイビング 東京</span>
+                <span class="kw-tag">スカイダイビング 埼玉</span>
+                <span class="kw-tag">タンデムジャンプ</span>
+                <span class="kw-tag">パラシュート 体験</span>
+            </div>
+            <div class="kw-box">
+                <h4>検討ニーズ（絶叫・アクティビティ層）</h4>
+                <span class="kw-tag">絶叫 アクティビティ</span>
+                <span class="kw-tag">バンジージャンプ</span>
+                <span class="kw-tag">空を飛ぶ 体験</span>
+                <span class="kw-tag">スリル 体験</span>
+                <span class="kw-tag">パラグライダー</span>
+                <span class="kw-tag">一生に一度</span>
+            </div>
+            <div class="kw-box">
+                <h4>ライフスタイル（潜在層）</h4>
+                <span class="kw-tag">新しい挑戦</span>
+                <span class="kw-tag">一生の思い出</span>
+                <span class="kw-tag">大人 冒険</span>
+                <span class="kw-tag">週末 アクティビティ</span>
+                <span class="kw-tag">記念日 プレゼント</span>
+                <span class="kw-tag">東京 レジャー</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ④ 広告配信設定まとめ -->
+    <div class="section" style="border-color:#0288d1;">
+        <div class="section-title">
+            <span class="icon" style="background:#0288d1;">3</span>
+            広告配信設定まとめ
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #0288d1;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">広告形式</div>
+                <div style="font-size:16px;font-weight:700;">インストリーム広告（スキップ可能）</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">動画再生前に流れる広告。5秒後にスキップ可能。興味のある方だけに費用が発生します。</div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #3f51b5;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">フリークエンシーキャップ</div>
+                <div style="font-size:16px;font-weight:700;">週3回まで</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">同じ方に何度も広告が出ないよう制限。限られた予算でより多くの方にリーチします。</div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">リンク先（公式サイト）</div>
+                <div style="font-size:14px;font-weight:700;word-break:break-all;">https://skydivenippon.com/home</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">広告をクリックした際の遷移先。体験メニュー・料金・ご予約が確認できます。</div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
+                <div style="font-size:16px;font-weight:700;">2026年9月1日〜</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">審査通過次第、配信を開始いたします。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ⑤ 参考リンク -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#2e7d32;">4</span>
+            参考リンク
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <a href="https://skydivenippon.com/home" target="_blank" style="display:block;background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;text-decoration:none;color:#1a1a1a;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">公式ホームページ</div>
+                <div style="font-size:15px;font-weight:700;">skydivenippon.com</div>
+            </a>
+            <a href="https://youtu.be/J-qtu5VhoJo" target="_blank" style="display:block;background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #cc0000;text-decoration:none;color:#1a1a1a;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">YouTube広告動画</div>
+                <div style="font-size:15px;font-weight:700;">広告動画を見る →</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 補足事項 -->
+    <div class="note-bar">
+        <h3>補足事項</h3>
+        <ul>
+            <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
+            <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
+            <li>ご不明な点やご要望がございましたら、お気軽にお申し付けください</li>
+        </ul>
+    </div>
+
+    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
+        株式会社ランバード｜広告運用サポート窓口
+    </div>
+
+</div>
+</body>
+</html>
