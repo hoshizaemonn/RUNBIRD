@@ -31,7 +31,15 @@
   th.n { background:var(--amber); color:#fff; }
   .scenes { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:14px; }
   .scene { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 3px 10px rgba(0,0,0,.06); border:1px solid #ecd9be; display:grid; grid-template-columns:130px 1fr; gap:0; min-height:140px; }
-  .scene-visual { color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; padding:10px; text-align:center; font-weight:700; }
+  .scene-visual { color:#fff; display:flex; align-items:center; justify-content:center; font-size:12px; padding:10px; text-align:center; font-weight:700; background-size:cover; background-position:center; position:relative; }
+  .scene-visual::after { content:attr(data-label); position:absolute; bottom:6px; left:0; right:0; background:rgba(0,0,0,.55); padding:3px 6px; font-size:10px; letter-spacing:.05em; }
+  .scene-visual.has-image { color:transparent; }
+  .hero { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 24px; }
+  .hero-card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 14px rgba(0,0,0,.1); }
+  .hero-card img { width:100%; display:block; }
+  .hero-card .cap { padding:10px 14px; font-size:13px; font-weight:700; }
+  .hero-card.a .cap { color:var(--pink); }
+  .hero-card.b .cap { color:var(--green); }
   .scene-body { padding:12px 14px; }
   .scene-time { font-weight:700; font-size:11px; letter-spacing:.1em; }
   .scene-time.a { color:var(--pink); }
@@ -75,6 +83,18 @@
     </ol>
   </div>
 
+  <h2 style="color:var(--amber); border-color:var(--amber);">🖼 サンプル画像で見比べ（同じ「花屋×花贈り」でこれだけトーンが違う）</h2>
+  <div class="hero">
+    <div class="hero-card a">
+      <img src="kanairo-anime-images/a_s10_grandma_recieve.jpg" alt="A案 花に心 感動ピーク">
+      <div class="cap">A案：花に心 — 祖母の涙、感動ピーク（SCENE 10）</div>
+    </div>
+    <div class="hero-card b">
+      <img src="kanairo-anime-images/b_s8_arranging.jpg" alt="B案 マルコメ 生ける">
+      <div class="cap">B案：マルコメ — 花を生ける、静かな日常（SCENE 8）</div>
+    </div>
+  </div>
+
   <h2 style="color:var(--amber); border-color:var(--amber);">📊 2案 比較サマリ</h2>
   <table>
     <tr><th class="n">項目</th><th class="a">A案：花に心テイスト</th><th class="b">B案：マルコメ料亭の味テイスト</th></tr>
@@ -97,16 +117,16 @@
 
   <div class="scenes">
     <div class="scene"><div class="scene-visual bg-a1">S1<br>朝の街</div><div class="scene-body"><div class="scene-time a">0:00 – 0:03</div><div class="scene-title">あびこの朝</div><div class="scene-desc">40代娘と小学生の孫、手をつないで街を歩く</div><div class="scene-telop">🎼 ピアノ静かにイン</div></div></div>
-    <div class="scene"><div class="scene-visual bg-a1">S2<br>店先発見</div><div class="scene-body"><div class="scene-time a">0:03 – 0:06</div><div class="scene-title">colorful の看板</div><div class="scene-desc">孫「あ、お花屋さんだ！」娘、店に目を向ける</div><div class="scene-telop">テロップ：「街の、小さな花屋さん」</div></div></div>
+    <div class="scene"><div class="scene-visual has-image" data-label="S2 店先発見" style="background-image:url('kanairo-anime-images/a_s2_storefront.jpg')">.</div><div class="scene-body"><div class="scene-time a">0:03 – 0:06</div><div class="scene-title">colorful の看板</div><div class="scene-desc">孫「あ、お花屋さんだ！」娘、店に目を向ける</div><div class="scene-telop">テロップ：「街の、小さな花屋さん」</div></div></div>
     <div class="scene"><div class="scene-visual bg-a2">S3<br>入店</div><div class="scene-body"><div class="scene-time a">0:06 – 0:09</div><div class="scene-title">店内、色とりどりの花</div><div class="scene-desc">木の梁、レトロな店内。花に囲まれる二人</div><div class="scene-telop">🎼 ピアノに弦楽そっと重なる</div></div></div>
-    <div class="scene"><div class="scene-visual bg-a2">S4<br>森岡さん</div><div class="scene-body"><div class="scene-time a">0:09 – 0:12</div><div class="scene-title">森岡さん、笑顔で迎える</div><div class="scene-desc">「今日はどんな花を？」穏やかな笑顔</div><div class="scene-telop">—</div></div></div>
+    <div class="scene"><div class="scene-visual has-image" data-label="S4 森岡さん" style="background-image:url('kanairo-anime-images/a_s4_moriokasan.jpg')">.</div><div class="scene-body"><div class="scene-time a">0:09 – 0:12</div><div class="scene-title">森岡さん、笑顔で迎える</div><div class="scene-desc">「今日はどんな花を？」穏やかな笑顔</div><div class="scene-telop">—</div></div></div>
     <div class="scene"><div class="scene-visual bg-a3">S5<br>会話</div><div class="scene-body"><div class="scene-time a">0:12 – 0:15</div><div class="scene-title">娘「祖母の還暦なんです」</div><div class="scene-desc">孫、大きく頷く。森岡さん、目を細める</div><div class="scene-telop">テロップ：「大切な人へ、花を」</div></div></div>
     <div class="scene"><div class="scene-visual bg-a3">S6<br>花選び</div><div class="scene-body"><div class="scene-time a">0:15 – 0:18</div><div class="scene-title">森岡さんの手元</div><div class="scene-desc">ピンクのダリア・カーネーションを丁寧に選ぶ</div><div class="scene-telop">—</div></div></div>
     <div class="scene"><div class="scene-visual bg-a3">S7<br>包む</div><div class="scene-body"><div class="scene-time a">0:18 – 0:21</div><div class="scene-title">花束を包む手元マクロ</div><div class="scene-desc">ペーパーで丁寧に包み、リボンを結ぶ</div><div class="scene-telop">テロップ：「想いを、花に込めて」</div></div></div>
     <div class="scene"><div class="scene-visual bg-a4">S8<br>受け取り</div><div class="scene-body"><div class="scene-time a">0:21 – 0:24</div><div class="scene-title">娘と孫、店を出る</div><div class="scene-desc">花束を大切に抱えて。夕方の光</div><div class="scene-telop">🎼 弦楽 盛り上がり</div></div></div>
     <div class="scene"><div class="scene-visual bg-a4">S9<br>実家玄関</div><div class="scene-body"><div class="scene-time a">0:24 – 0:27</div><div class="scene-title">祖母、扉を開ける</div><div class="scene-desc">60代祖母（グレーヘア）、驚く</div><div class="scene-telop">—</div></div></div>
-    <div class="scene"><div class="scene-visual bg-a4">S10<br>渡す瞬間</div><div class="scene-body"><div class="scene-time a">0:27 – 0:31</div><div class="scene-title">孫「おばあちゃん、還暦おめでとう！」</div><div class="scene-desc">祖母、涙ぐみながら花束を受け取る</div><div class="scene-telop">テロップ：「還暦、おめでとう」</div></div></div>
-    <div class="scene"><div class="scene-visual bg-a5">S11<br>3世代</div><div class="scene-body"><div class="scene-time a">0:31 – 0:34</div><div class="scene-title">3人で笑顔。花束が中心</div><div class="scene-desc">夕方の琥珀色の光。祖母の涙と笑顔</div><div class="scene-telop">🎼 弦楽最高潮</div></div></div>
+    <div class="scene"><div class="scene-visual has-image" data-label="S10 渡す瞬間" style="background-image:url('kanairo-anime-images/a_s10_grandma_recieve.jpg')">.</div><div class="scene-body"><div class="scene-time a">0:27 – 0:31</div><div class="scene-title">孫「おばあちゃん、還暦おめでとう！」</div><div class="scene-desc">祖母、涙ぐみながら花束を受け取る</div><div class="scene-telop">テロップ：「還暦、おめでとう」</div></div></div>
+    <div class="scene"><div class="scene-visual has-image" data-label="S11 3世代" style="background-image:url('kanairo-anime-images/a_s11_3generations.jpg')">.</div><div class="scene-body"><div class="scene-time a">0:31 – 0:34</div><div class="scene-title">3人で笑顔。花束が中心</div><div class="scene-desc">夕方の琥珀色の光。祖母の涙と笑顔</div><div class="scene-telop">🎼 弦楽最高潮</div></div></div>
     <div class="scene"><div class="scene-visual bg-a6">S12<br>メッセージ</div><div class="scene-body"><div class="scene-time a">0:34 – 0:37</div><div class="scene-title">花束クローズアップ</div><div class="scene-desc">光にきらめく花びら</div><div class="scene-telop">テロップ：「花のある暮らしを、あなたへ」</div></div></div>
     <div class="scene"><div class="scene-visual bg-cta">CTA<br>店舗情報</div><div class="scene-body"><div class="scene-time a">0:37 – 0:40</div><div class="scene-title">colorful Flower shop</div><div class="scene-desc">ロゴ／TEL／住所／営業時間／QR×2</div><div class="scene-telop">既存完成版CTAを流用</div></div></div>
   </div>
@@ -118,18 +138,18 @@
   </div>
 
   <div class="scenes">
-    <div class="scene"><div class="scene-visual bg-b1">S1<br>朝の光</div><div class="scene-body"><div class="scene-time b">0:00 – 0:03</div><div class="scene-title">キッチンの朝</div><div class="scene-desc">60代女性、お湯を沸かす。窓から柔らかい光</div><div class="scene-telop">🎼 ピアノソロ、終始一定</div></div></div>
+    <div class="scene"><div class="scene-visual has-image" data-label="S1 朝の光" style="background-image:url('kanairo-anime-images/b_s1_morning_kitchen.jpg')">.</div><div class="scene-body"><div class="scene-time b">0:00 – 0:03</div><div class="scene-title">キッチンの朝</div><div class="scene-desc">60代女性、お湯を沸かす。窓から柔らかい光</div><div class="scene-telop">🎼 ピアノソロ、終始一定</div></div></div>
     <div class="scene"><div class="scene-visual bg-b1">S2<br>玄関チャイム</div><div class="scene-body"><div class="scene-time b">0:03 – 0:06</div><div class="scene-title">ピンポーン</div><div class="scene-desc">誰かな？と扉を開ける</div><div class="scene-telop">—</div></div></div>
-    <div class="scene"><div class="scene-visual bg-b2">S3<br>花束が届く</div><div class="scene-body"><div class="scene-time b">0:06 – 0:09</div><div class="scene-title">花束が置かれていた</div><div class="scene-desc">娘からのメッセージカード「ありがとう」</div><div class="scene-telop">テロップ：「今日も、いい日になりそう」</div></div></div>
+    <div class="scene"><div class="scene-visual has-image" data-label="S3 花束が届く" style="background-image:url('kanairo-anime-images/b_s3_bouquet_delivered.jpg')">.</div><div class="scene-body"><div class="scene-time b">0:06 – 0:09</div><div class="scene-title">花束が置かれていた</div><div class="scene-desc">娘からのメッセージカード「ありがとう」</div><div class="scene-telop">テロップ：「今日も、いい日になりそう」</div></div></div>
     <div class="scene"><div class="scene-visual bg-b1">S4<br>回想</div><div class="scene-body"><div class="scene-time b">0:09 – 0:12</div><div class="scene-title">回想：叶色 店内</div><div class="scene-desc">娘が花を選ぶ、森岡さんが笑顔で対応</div><div class="scene-telop">—</div></div></div>
     <div class="scene"><div class="scene-visual bg-b2">S5<br>回想②</div><div class="scene-body"><div class="scene-time b">0:12 – 0:15</div><div class="scene-title">森岡さんの手元</div><div class="scene-desc">花束を包む手元マクロ、丁寧に</div><div class="scene-telop">テロップ：「街の、小さな花屋さん」</div></div></div>
     <div class="scene"><div class="scene-visual bg-b3">S6<br>戻る</div><div class="scene-body"><div class="scene-time b">0:15 – 0:18</div><div class="scene-title">現在、玄関で花束を抱える母</div><div class="scene-desc">微笑む、目を細める</div><div class="scene-telop">—</div></div></div>
     <div class="scene"><div class="scene-visual bg-b3">S7<br>花瓶</div><div class="scene-body"><div class="scene-time b">0:18 – 0:21</div><div class="scene-title">花瓶を用意する</div><div class="scene-desc">水を注ぐ、いつもの手つき</div><div class="scene-telop">—</div></div></div>
-    <div class="scene"><div class="scene-visual bg-b3">S8<br>生ける</div><div class="scene-body"><div class="scene-time b">0:21 – 0:24</div><div class="scene-title">1本ずつ生ける</div><div class="scene-desc">花と対話するような手元</div><div class="scene-telop">テロップ：「花のある暮らし」</div></div></div>
+    <div class="scene"><div class="scene-visual has-image" data-label="S8 生ける" style="background-image:url('kanairo-anime-images/b_s8_arranging.jpg')">.</div><div class="scene-body"><div class="scene-time b">0:21 – 0:24</div><div class="scene-title">1本ずつ生ける</div><div class="scene-desc">花と対話するような手元</div><div class="scene-telop">テロップ：「花のある暮らし」</div></div></div>
     <div class="scene"><div class="scene-visual bg-b3">S9<br>食卓</div><div class="scene-body"><div class="scene-time b">0:24 – 0:27</div><div class="scene-title">食卓に花瓶を置く</div><div class="scene-desc">朝食の準備、花が中央に</div><div class="scene-telop">—</div></div></div>
     <div class="scene"><div class="scene-visual bg-b4">S10<br>コーヒー</div><div class="scene-body"><div class="scene-time b">0:27 – 0:30</div><div class="scene-title">コーヒーを淹れる</div><div class="scene-desc">花を見ながら、微笑む</div><div class="scene-telop">—</div></div></div>
     <div class="scene"><div class="scene-visual bg-b4">S11<br>電話</div><div class="scene-body"><div class="scene-time b">0:30 – 0:33</div><div class="scene-title">娘に電話「ありがとう」</div><div class="scene-desc">短い会話、静かな声</div><div class="scene-telop">テロップ：「あなたの誰かに、花を」</div></div></div>
-    <div class="scene"><div class="scene-visual bg-b4">S12<br>花のマクロ</div><div class="scene-body"><div class="scene-time b">0:33 – 0:37</div><div class="scene-title">花瓶の花のクローズアップ</div><div class="scene-desc">光がゆっくり移ろう。日常が続く</div><div class="scene-telop">🎼 ピアノ余韻を残す</div></div></div>
+    <div class="scene"><div class="scene-visual has-image" data-label="S12 花のマクロ" style="background-image:url('kanairo-anime-images/b_s12_vase_macro.jpg')">.</div><div class="scene-body"><div class="scene-time b">0:33 – 0:37</div><div class="scene-title">花瓶の花のクローズアップ</div><div class="scene-desc">光がゆっくり移ろう。日常が続く</div><div class="scene-telop">🎼 ピアノ余韻を残す</div></div></div>
     <div class="scene"><div class="scene-visual bg-cta">CTA<br>店舗情報</div><div class="scene-body"><div class="scene-time b">0:37 – 0:40</div><div class="scene-title">colorful Flower shop</div><div class="scene-desc">ロゴ／TEL／住所／営業時間／QR×2</div><div class="scene-telop">既存完成版CTAを流用</div></div></div>
   </div>
 
