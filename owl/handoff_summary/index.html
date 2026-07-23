@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OWL広告 引き継ぎ対応まとめ（図解・確認用）</title>
+<style>
+:root{--ink:#33475b;--muted:#8a938f;--line:#e8ece9;--teal:#1f97a3;--teal-l:#e7f6f7;
+--green:#3d8b3d;--green-l:#eef8ee;--orange:#e2842a;--orange-l:#fef3e5;--red:#d9534f;--red-l:#fdecea;--bg:#f4f7f6}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;padding:26px 14px}
+.wrap{max-width:1080px;margin:0 auto}
+h1{font-size:clamp(20px,4vw,28px);font-weight:900;text-align:center}
+.sub{text-align:center;color:var(--muted);font-size:13px;font-weight:700;margin-top:4px}
+.sec{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 22px;margin-top:18px;box-shadow:0 8px 22px rgba(0,0,0,.04)}
+.sec h2{font-size:16px;font-weight:900;color:var(--teal);border-left:5px solid var(--teal);padding-left:10px;margin-bottom:14px}
+/* 体制フロー */
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center}
+.pill{background:var(--teal-l);color:var(--teal);font-weight:800;font-size:13px;padding:8px 14px;border-radius:99px}
+.arw{color:var(--muted);font-weight:900}
+.owns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media(max-width:680px){.owns{grid-template-columns:1fr}}
+.own{border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13px}
+.own b{color:var(--ink)}
+.own.hoshi{background:var(--teal-l)}.own.suzu{background:var(--orange-l)}
+/* before after */
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch}
+@media(max-width:680px){.ba{grid-template-columns:1fr}}
+.box{border-radius:14px;padding:16px 18px}
+.box.bad{background:var(--red-l);border:1px solid #f3c6c2}
+.box.good{background:var(--green-l);border:1px solid #c3e6c3}
+.box .t{font-weight:900;font-size:13px;margin-bottom:8px}
+.box.bad .t{color:var(--red)}.box.good .t{color:var(--green)}
+.box .row{display:flex;justify-content:space-between;font-size:14px;font-weight:700;padding:3px 0;border-bottom:1px dashed rgba(0,0,0,.08)}
+.box .row b{font-weight:900}
+.arrow2{display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--muted);font-weight:900}
+@media(max-width:680px){.arrow2{transform:rotate(90deg)}}
+.karak{background:#fff7ea;border:1px dashed var(--orange);border-radius:12px;padding:12px 16px;margin-top:14px;font-size:13px;font-weight:700;color:#7a5a1e}
+.karak b{color:var(--orange)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{font-size:12px;font-weight:800;padding:5px 12px;border-radius:99px;background:#eef1ef;color:#5a625e}
+/* 成果物カード */
+.deliv{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:680px){.deliv{grid-template-columns:1fr}}
+.dcard{border:1px solid var(--line);border-radius:14px;padding:16px;position:relative;background:#fff}
+.dcard .no{position:absolute;top:14px;right:14px;font-weight:900;color:var(--muted);font-size:12px}
+.dcard .dt{font-weight:900;font-size:14.5px;margin-bottom:6px}
+.dcard .dd{font-size:12.5px;color:#5a625e;font-weight:600}
+.dcard .st{display:inline-block;margin-top:8px;font-size:11px;font-weight:900;padding:3px 10px;border-radius:99px;background:var(--green-l);color:var(--green)}
+.dcard img{width:100%;border-radius:8px;margin-top:10px;border:1px solid var(--line)}
+/* KPI mini */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:680px){.kpis{grid-template-columns:1fr 1fr}}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:14px 10px;text-align:center}
+.kpi .k{font-size:11px;font-weight:800;color:var(--muted)}
+.kpi .v{font-size:26px;font-weight:900;margin-top:2px}
+.kpi.k1 .v{color:var(--teal)}.kpi.k2 .v{color:var(--orange)}.kpi.k3 .v{color:var(--green)}.kpi.k4 .v{color:var(--red)}
+.kpi .j{font-size:10.5px;font-weight:800;margin-top:3px}
+/* 確認ボックス */
+.confirm{background:#fffdf5;border:2px solid var(--orange)}
+.confirm h2{color:var(--orange);border-left-color:var(--orange)}
+.ci{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.ci:last-child{border-bottom:none}
+.ci .num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--orange);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:14px}
+.ci .tx{font-size:13.5px;font-weight:700}
+.ci .tx b{color:var(--ink)}
+.ci .tag{display:inline-block;font-size:11px;font-weight:900;padding:2px 8px;border-radius:99px;background:var(--red-l);color:var(--red);margin-left:6px}
+.foot{text-align:center;color:var(--muted);font-size:12px;margin-top:18px}
+</style></head>
+<body>
+<div class="wrap">
+  <h1>OWL広告 引き継ぎ対応まとめ（図解）</h1>
+  <div class="sub">鈴木さん引き継ぎ（2026-07-23）への対応・確認用 ／ 星崎</div>
+
+  <!-- 1. 体制と分担 -->
+  <div class="sec">
+    <h2>① 体制と分担（誰が何を）</h2>
+    <div class="flow">
+      <span class="pill">鈴木さんの結論</span><span class="arw">→</span>
+      <span class="pill">切替で悪化の証拠なし</span><span class="arw">→</span>
+      <span class="pill">課題は「①リードの質」「②資金の壁」</span>
+    </div>
+    <div class="owns">
+      <div class="own hoshi"><b>星崎（広告・LP側）</b><br>#1 LP自己資金明示 ／ #2 フォーム計測正本化 ／ #3 ベースライン監視 ／ #5 スプシ再計算</div>
+      <div class="own suzu"><b>鈴木さん（融資・商談側）</b><br>#4 融資支援を商談に組み込む（前田/嶋田さんと）</div>
+    </div>
+  </div>
+
+  <!-- 2. 数字の正本化 -->
+  <div class="sec">
+    <h2>② 数字の正本化（乱立の正体 → 解決）＝ #5</h2>
+    <div class="ba">
+      <div class="box bad">
+        <div class="t">❌ 旧サマリー（誤・凍結値）</div>
+        <div class="row"><span>資料請求</span><b>5件</b></div>
+        <div class="row"><span>CVR</span><b>0.39%</b></div>
+        <div class="row"><span>CPA</span><b>¥192,002</b></div>
+      </div>
+      <div class="arrow2">→</div>
+      <div class="box good">
+        <div class="t">✅ 正（生データ再計算）</div>
+        <div class="row"><span>資料請求（送信数）</span><b>17件</b></div>
+        <div class="row"><span>CVR</span><b>1.31%</b></div>
+        <div class="row"><span>CPA</span><b>¥56,500</b></div>
+      </div>
+    </div>
+    <div class="karak">🔎 <b>¥192,002のカラクリ</b>：サマリーは<b>件数が6/24の「5」で凍結</b>したまま<b>コストだけ¥960,012に更新</b>され続けた → ¥960,012 ÷ 5 = ¥192,002 に膨張。正しくは ¥960,012 ÷ 17 = ¥56,500。</div>
+    <div class="chips">
+      <span class="chip">19 = 全行数</span>
+      <span class="chip">−テスト2 → 17 = 送信数（CVR/CPA正本）</span>
+      <span class="chip">−重複2 → 15 = ユニーク人数（質分析用）</span>
+      <span class="chip">5 = 6/24凍結の誤値（使わない）</span>
+    </div>
+  </div>
+
+  <!-- 3. 成果物 -->
+  <div class="sec">
+    <h2>③ 作った成果物（星崎側4タスク）</h2>
+    <div class="deliv">
+      <div class="dcard">
+        <span class="no">#1</span>
+        <div class="dt">LP「自己資金の早期明示」セクション</div>
+        <div class="dd">FV直下に追加。加盟金0円／自己資金の目安 約230〜560万円／融資は伴走。「正直→安心」で質の低い資料請求をフィルタ。</div>
+        <span class="st">モック完成・鈴木確認待ち</span>
+        <img src="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_wide_proof/shikin.jpg" alt="自己資金セクション">
+      </div>
+      <div class="dcard">
+        <span class="no">#2</span>
+        <div class="dt">フォーム計測の正本1本化</div>
+        <div class="dd">汚れを実データで特定：<b>テスト2・重複2・内容空欄6・表記ゆれ</b>。コンバージョン定義を「送信数(テスト除外)＝17」に固定。テスト除外＋必須項目化を提案。</div>
+        <span class="st">診断＋ルール完成</span>
+      </div>
+      <div class="dcard">
+        <span class="no">#3</span>
+        <div class="dt">ベースライン4指標ダッシュボード</div>
+        <div class="dd">CVR/CPA/◎○△比率/資金頓挫率を1画面で週次監視。斗データだけで完結（GA4認証不要）。アラート基準つき。</div>
+        <span class="st">HTML完成</span>
+      </div>
+      <div class="dcard">
+        <span class="no">#5</span>
+        <div class="dt">スプシ サマリー再計算</div>
+        <div class="dd">古い「5件」を「17件/CVR1.31%/CPA¥56,500」に上書きする正表を用意。凍結事故の再発防止＝自動集計化も提案。</div>
+        <span class="st">正表完成・本番書込みは承認後</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 4指標 -->
+  <div class="sec">
+    <h2>④ ベースライン4指標（現在値）</h2>
+    <div class="kpis">
+      <div class="kpi k1"><div class="k">① CVR</div><div class="v">1.31<span style="font-size:.5em">%</span></div><div class="j" style="color:var(--green)">✅ 業界内</div></div>
+      <div class="kpi k2"><div class="k">② CPA</div><div class="v">¥56,500</div><div class="j" style="color:var(--orange)">△ やや高</div></div>
+      <div class="kpi k3"><div class="k">③ 有望比率</div><div class="v">47<span style="font-size:.5em">%</span></div><div class="j" style="color:var(--orange)">◎4/○3/△8</div></div>
+      <div class="kpi k4"><div class="k">④ 資金頓挫率</div><div class="v">約12<span style="font-size:.5em">%</span></div><div class="j" style="color:var(--red)">🔴 最大失注</div></div>
+    </div>
+  </div>
+
+  <!-- 5. 鈴木さん確認事項 -->
+  <div class="sec confirm">
+    <h2>⑤ 鈴木さんに確認したい2点（本番反映を伴うもの）</h2>
+    <div class="ci">
+      <div class="num">1</div>
+      <div class="tx"><b>#1 LPの自己資金セクションを本番反映してよいか</b><span class="tag">融資文言</span><br>
+      特に「融資のご相談まで一緒に／活用オーナー多数」の掲載可否（融資支援は#4＝鈴木さん領域のため）。数値（自己資金 約230〜560万円）はこれでOKか。</div>
+    </div>
+    <div class="ci">
+      <div class="num">2</div>
+      <div class="tx"><b>#5 スプシのサマリー欄を上書きしてよいか</b><span class="tag">本番書込み</span><br>
+      「5件/0.39%/¥192,002」→「17件/1.31%/¥56,500」に修正。本番スプレッドシートへの書き込みのため承認をお願いしたい。</div>
+    </div>
+    <div class="ci">
+      <div class="num">3</div>
+      <div class="tx"><b>（共有）#2 フォーム計測ルール・#3 ダッシュボード</b><br>
+      内容確認のみ。フォーム必須項目化・テスト除外の方針でOKか。CVRは一時的に下がりうるので「4指標セットで見る」合意をしたい。</div>
+    </div>
+  </div>
+
+  <div class="foot">OWL福祉事業 広告運用 引き継ぎ対応まとめ（社内・確認用）／ 2026-07-23</div>
+</div>
+</body></html>
