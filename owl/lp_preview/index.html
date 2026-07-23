@@ -64,21 +64,32 @@ a{color:inherit;text-decoration:none}
   .hd__tel,.hd__cta{display:none}.hd__bg{display:flex}.hd-sp{height:58px}
 }
 
-/* ============ FV ============ */
-.fv{background:linear-gradient(180deg,#eef8f8 0%,#ffffff 100%);padding:56px 22px 64px}
-.fv__in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center}
+/* ============ FV（横長ヒーロー＋左に実テキスト重ね） ============ */
+.fv{background:#f7f3ea}
+.fv__hero{position:relative;background-image:var(--hero);background-position:right center;background-size:cover;background-repeat:no-repeat;background-color:#f7f3ea;min-height:clamp(440px,44vw,600px);display:flex;align-items:center}
+.fv__hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(250,247,240,.97) 0%,rgba(250,247,240,.92) 26%,rgba(250,247,240,.55) 44%,rgba(250,247,240,0) 56%);pointer-events:none}
+.fv__pic{display:none}
+.fv__overlay{position:relative;z-index:1;width:100%;max-width:1200px;margin:0 auto;padding:0 40px}
+.fv__copy{max-width:520px}
 .fv .eyebrow{color:var(--orange)}
-.fv h1{font-size:clamp(28px,5.8vw,44px);font-weight:800;line-height:1.4;letter-spacing:.01em;color:var(--navy)}
+.fv h1{font-size:clamp(28px,5vw,44px);font-weight:800;line-height:1.4;letter-spacing:.01em;color:var(--navy)}
 .fv h1 .z{color:var(--orange);font-size:1.25em}
 .fv h1 .m{color:var(--orange)}
-.fv__lead{margin-top:16px;color:#5a625e;font-size:15px;font-weight:700}
+.fv__lead{margin-top:16px;color:#4a534e;font-size:15px;font-weight:700}
 .fv__stats{display:flex;gap:22px;margin-top:22px}
-.fv__stat .n{font-size:clamp(24px,5vw,32px);font-weight:900;color:var(--teal-d);line-height:1}
+.fv__stat .n{font-size:clamp(24px,4vw,32px);font-weight:900;color:var(--teal-d);line-height:1}
 .fv__stat .n small{font-size:.42em;font-weight:800}
 .fv__stat .l{font-size:12px;color:var(--muted);font-weight:700;margin-top:4px}
-.fv__photo{border-radius:24px;overflow:hidden;box-shadow:0 20px 40px rgba(43,179,192,.14);aspect-ratio:4/3;background:#dfeceb center/cover no-repeat}
 .fv .btns{justify-content:flex-start;margin-top:28px}
-@media(max-width:768px){.fv__in{grid-template-columns:1fr;gap:24px}.fv__photo{order:-1;aspect-ratio:16/10}.fv .btns{justify-content:stretch}.fv__stats{justify-content:space-between;gap:10px}}
+@media(max-width:768px){
+  .fv__hero{background-image:none !important;min-height:0;display:block}
+  .fv__hero::before{display:none}
+  .fv__pic{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+  .fv__overlay{padding:24px 18px 8px}
+  .fv__copy{max-width:none}
+  .fv .btns{justify-content:stretch}
+  .fv__stats{justify-content:space-between;gap:10px}
+}
 
 /* ============ 部品 ============ */
 .grid{display:grid;gap:20px}
@@ -232,22 +243,24 @@ a{color:inherit;text-decoration:none}
 
 <!-- ===== FV ===== -->
 <section class="fv">
-  <div class="fv__in">
-    <div>
-      <span class="eyebrow">FOR FRANCHISE OWNERS</span>
-      <h1>加盟金<span class="z">0</span>円で、<br>月商<span class="m">¥300万</span>モデルへ。</h1>
-      <p class="fv__lead">障がい者グループホームの開業・独立を、10年以上の実績でワンストップ支援。</p>
-      <div class="fv__stats">
-        <div class="fv__stat"><div class="n">400<small>件</small></div><div class="l">開設実績</div></div>
-        <div class="fv__stat"><div class="n">47</div><div class="l">対応都道府県</div></div>
-        <div class="fv__stat"><div class="n">10年+</div><div class="l">独立支援歴</div></div>
-      </div>
-      <div class="btns">
-        <a href="#" class="btn btn--doc owl-btn">無料で資料請求<span class="arw">→</span></a>
-        <a href="#" class="btn btn--web owl-btn">WEB説明会<span class="arw">→</span></a>
+  <div class="fv__hero" style="--hero:url('https://hoshizaemonn.github.io/RUNBIRD/owl/lp_preview/hero_A_illust.jpg')">
+    <img class="fv__pic" src="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_preview/hero_A_illust.jpg" alt="OWL福祉事業 障がい者グループホーム">
+    <div class="fv__overlay">
+      <div class="fv__copy">
+        <span class="eyebrow">FOR FRANCHISE OWNERS</span>
+        <h1>加盟金<span class="z">0</span>円で、<br>月商<span class="m">¥300万</span>モデルへ。</h1>
+        <p class="fv__lead">障がい者グループホームの開業・独立を、10年以上の実績でワンストップ支援。</p>
+        <div class="fv__stats">
+          <div class="fv__stat"><div class="n">400<small>件</small></div><div class="l">開設実績</div></div>
+          <div class="fv__stat"><div class="n">47</div><div class="l">対応都道府県</div></div>
+          <div class="fv__stat"><div class="n">10年+</div><div class="l">独立支援歴</div></div>
+        </div>
+        <div class="btns">
+          <a href="#" class="btn btn--doc owl-btn">無料で資料請求<span class="arw">→</span></a>
+          <a href="#" class="btn btn--web owl-btn">WEB説明会<span class="arw">→</span></a>
+        </div>
       </div>
     </div>
-    <div class="fv__photo" style="background-image:url('https://owl-fukushi.net/wp-content/uploads/2024/10/P1012355-3.jpg')"></div>
   </div>
 </section>
 
