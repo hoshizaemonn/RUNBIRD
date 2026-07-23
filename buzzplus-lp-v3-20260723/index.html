@@ -13,6 +13,7 @@
 :root{
   --accent:#ff8b47;
   --accent-dark:#e56e2b;
+  --accent-light:#ffd4b8;
   --navy:#1a2b5c;
   --black:#111114;
   --white:#fff;
@@ -21,68 +22,216 @@
   --text:#111114;
   --sub:#666;
   --border:#e5e5e5;
+  --gold:#c9a961;
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
   font-family:'Noto Sans JP',-apple-system,'Hiragino Sans',sans-serif;
   background:var(--white);
   color:var(--text);
-  line-height:1.75;
-  font-size:15px;
+  line-height:1.85;
+  font-size:14px;
   padding-bottom:90px;
   overflow-x:hidden;
-  letter-spacing:0.02em;
+  letter-spacing:0.03em;
 }
 img{max-width:100%;display:block}
 .container{max-width:600px;margin:0 auto;padding:0 24px}
-.eng{font-family:'Alata',serif;letter-spacing:0.06em}
-.mont{font-family:'Montserrat',sans-serif;letter-spacing:0.04em}
 
-/* Section head (hibimiru signature) */
-.section-head{
-  margin-bottom:40px;
+/* Header - Fixed */
+.header{
+  position:fixed;
+  top:0;left:0;right:0;
+  background:var(--white);
+  padding:12px 20px;
+  z-index:99;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+.header .brand{display:flex;align-items:center;gap:8px}
+.header .brand .tag{font-size:8px;color:var(--sub);letter-spacing:0.15em}
+.header .logo{
+  font-family:'Alata',serif;
+  font-size:22px;
+  color:var(--navy);
+  letter-spacing:0.02em;
+}
+.header .logo .plus{color:var(--accent);font-weight:700}
+.header .cta{
+  background:var(--accent);
+  color:var(--white);
+  padding:12px 22px;
+  font-size:12px;
+  font-weight:700;
+  text-decoration:none;
+  border-top-left-radius:16px;
+}
+
+/* =============== SECTION HEAD (hibimiru signature) =============== */
+.sec-head{
+  text-align:center;
+  margin-bottom:56px;
   position:relative;
 }
-.section-head .roma{
-  font-family:'Alata',serif;
-  font-size:44px;
-  font-weight:400;
-  color:var(--black);
-  line-height:1.1;
-  letter-spacing:0.04em;
-  margin-bottom:12px;
-}
-.section-head .roma span{
+.sec-head .eng{
+  display:inline-block;
   background:var(--black);
   color:var(--white);
-  padding:2px 14px 4px;
-  display:inline-block;
+  padding:6px 40px;
+  font-family:'Alata',serif;
+  font-size:42px;
+  letter-spacing:0.08em;
+  line-height:1.2;
+  margin-bottom:16px;
 }
-.section-head .jp{
+.sec-head .jp{
   font-size:14px;
   font-weight:700;
   color:var(--black);
+  letter-spacing:0.1em;
 }
-.section-head.center{text-align:center}
-.section-head.center .roma{font-size:36px}
 
-/* Watermark huge number (hibimiru signature) */
-.section-num{
-  font-family:'Montserrat',sans-serif;
-  font-weight:900;
-  font-size:120px;
-  color:var(--accent);
-  opacity:0.1;
+/* Watermark English word (background decoration) */
+.watermark{
   position:absolute;
-  top:-30px;
-  right:-10px;
-  line-height:1;
+  bottom:20px;
+  right:-30px;
+  font-family:'Alata',serif;
+  font-size:140px;
+  color:rgba(0,0,0,0.03);
+  letter-spacing:0.02em;
   pointer-events:none;
+  line-height:1;
 }
 
-/* Button (hibimiru style: rectangular, white or black) */
-.btn{
+/* =============== FV =============== */
+.fv{
+  padding:70px 0 60px;
+  background:linear-gradient(180deg,#c9e5f4 0%,#e8f2f8 50%,#f5f0e8 100%);
+  position:relative;
+  overflow:hidden;
+  min-height:600px;
+}
+.fv-tag{
   display:inline-block;
+  background:var(--black);
+  color:var(--white);
+  padding:8px 20px;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:24px;
+  letter-spacing:0.05em;
+}
+.fv-title{
+  font-family:'Alata',serif;
+  font-size:56px;
+  color:var(--white);
+  text-shadow:0 4px 12px rgba(0,0,0,0.15);
+  line-height:1;
+  margin-bottom:12px;
+  letter-spacing:0.02em;
+}
+.fv-title .plus{color:var(--accent)}
+.fv-sub{
+  font-size:14px;
+  color:var(--navy);
+  margin-bottom:32px;
+  font-weight:500;
+  letter-spacing:0.05em;
+}
+.fv-phone{
+  width:200px;
+  aspect-ratio:9/19.5;
+  background:var(--black);
+  border-radius:32px;
+  padding:8px;
+  margin:0 auto 32px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.2);
+  position:relative;
+}
+.fv-phone::before{
+  content:"";
+  position:absolute;
+  top:12px;left:50%;
+  transform:translateX(-50%);
+  width:80px;height:20px;
+  background:var(--black);
+  border-radius:0 0 12px 12px;
+  z-index:2;
+}
+.fv-phone-inner{
+  width:100%;
+  height:100%;
+  background-image:url('img/case_petsalon.jpg');
+  background-size:cover;
+  background-position:center;
+  border-radius:24px;
+}
+
+/* Achievement cards (実績1・2・3 with gold ribbons) */
+.fv-achievements{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin:0 0 24px;
+}
+.fv-ach{
+  background:var(--white);
+  padding:20px 8px 12px;
+  border-radius:10px;
+  text-align:center;
+  position:relative;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+.fv-ach .ribbon{
+  position:absolute;
+  top:-12px;left:50%;
+  transform:translateX(-50%);
+  background:var(--gold);
+  color:var(--white);
+  width:40px;height:40px;
+  border-radius:50%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  font-size:8px;
+  font-weight:700;
+  border:2px solid var(--white);
+  box-shadow:0 2px 6px rgba(0,0,0,0.15);
+}
+.fv-ach .ribbon .num{
+  font-family:'Alata',serif;
+  font-size:14px;
+  line-height:1;
+}
+.fv-ach .label{
+  font-size:9px;
+  color:var(--sub);
+  margin-top:8px;
+  margin-bottom:4px;
+  letter-spacing:0.05em;
+}
+.fv-ach .value{
+  font-family:'Alata',serif;
+  font-size:20px;
+  color:var(--navy);
+  line-height:1;
+  margin-bottom:4px;
+}
+.fv-ach .value .accent{color:var(--accent)}
+.fv-ach .unit{font-size:9px;color:var(--sub);letter-spacing:0.05em}
+.fv-notice{
+  font-size:11px;
+  color:var(--navy);
+  text-align:center;
+  margin-top:8px;
+  letter-spacing:0.05em;
+}
+
+/* Button */
+.btn{
+  display:block;
   background:var(--accent);
   color:var(--white) !important;
   text-align:center;
@@ -90,240 +239,182 @@ img{max-width:100%;display:block}
   font-size:16px;
   font-weight:900;
   text-decoration:none;
-  border:2px solid var(--accent);
   border-radius:4px;
   transition:all 0.2s;
-  min-width:280px;
   letter-spacing:0.05em;
 }
-.btn:hover,.btn:active{background:var(--accent-dark);border-color:var(--accent-dark)}
-.btn.white{background:var(--white);color:var(--black) !important;border-color:var(--white)}
-.btn.white:hover{background:var(--accent);color:var(--white) !important;border-color:var(--accent)}
-.btn.outline{background:transparent;color:var(--black) !important;border-color:var(--black)}
-.btn.outline:hover{background:var(--black);color:var(--white) !important}
+.btn:hover,.btn:active{background:var(--accent-dark)}
 .btn small{display:block;font-size:11px;font-weight:500;margin-top:6px;opacity:0.9;letter-spacing:0.1em}
+.btn.white{background:var(--white);color:var(--black) !important}
+.btn.white:hover{background:var(--accent);color:var(--white) !important}
 
-/* Header */
-.header{
-  position:fixed;
-  top:0;left:0;right:0;
-  background:var(--white);
-  padding:14px 24px;
-  z-index:99;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--border);
-}
-.header .logo{
-  font-family:'Alata',serif;
-  font-size:22px;
-  font-weight:400;
-  color:var(--black);
-  letter-spacing:0.02em;
-}
-.header .logo .plus{color:var(--accent);font-weight:700}
-.header .cta{
-  background:var(--accent);
-  color:var(--white);
-  padding:10px 20px;
-  font-size:12px;
-  font-weight:700;
-  border-radius:4px;
-  text-decoration:none;
-}
-
-/* FV */
-.fv{
-  padding:80px 0 60px;
+/* =============== SECTION ABOUT =============== */
+.about{
+  padding:80px 0;
   background:var(--white);
   position:relative;
   overflow:hidden;
 }
-.fv::before{
-  content:"BUZZ+";
-  font-family:'Alata',serif;
-  font-size:200px;
-  color:var(--accent);
-  opacity:0.05;
-  position:absolute;
-  top:80px;
-  right:-40px;
-  line-height:1;
-  letter-spacing:-0.05em;
-  pointer-events:none;
-}
-.fv .container{position:relative;z-index:1}
-.fv .fv-eng{
-  font-family:'Alata',serif;
-  font-size:14px;
-  color:var(--accent);
-  letter-spacing:0.3em;
-  margin-bottom:16px;
-}
-.fv h1{
-  font-size:36px;
+.about-content{margin-bottom:40px}
+.about-content h3{
+  font-size:22px;
   font-weight:900;
-  line-height:1.4;
   color:var(--black);
-  margin-bottom:20px;
+  margin-bottom:16px;
+  line-height:1.5;
   letter-spacing:0.02em;
 }
-.fv h1 .accent{
-  color:var(--accent);
-  background:var(--black);
-  padding:0 12px;
-  display:inline-block;
-  color:var(--white);
+.about-content p{
+  font-size:13px;
+  color:var(--text);
+  line-height:2;
+  margin-bottom:16px;
 }
-.fv h1 .orange{color:var(--accent)}
-.fv .sub{
-  font-size:15px;
-  color:var(--sub);
-  margin-bottom:32px;
-  line-height:1.9;
-}
-.fv .fv-stats{
+.about-imgs{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:0;
-  margin:32px 0;
-  border-top:1px solid var(--border);
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.about-img{
+  aspect-ratio:3/4;
+  background:linear-gradient(135deg,var(--accent-light),var(--bg-warm));
+  border-radius:4px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+}
+
+/* =============== ACHIEVEMENTS =============== */
+.achievements{
+  padding:80px 0;
+  background:var(--bg);
+  position:relative;
+}
+.ach-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+}
+.ach-card{
+  background:var(--white);
+  padding:32px 24px;
+  border-radius:8px;
+  position:relative;
+  text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,0.04);
+}
+.ach-card .ach-badge{
+  position:absolute;
+  top:-16px;left:24px;
+  background:var(--gold);
+  color:var(--white);
+  width:52px;height:52px;
+  border-radius:50%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  border:3px solid var(--white);
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+.ach-card .ach-badge small{font-size:9px;font-weight:700;letter-spacing:0.05em}
+.ach-card .ach-badge .n{font-family:'Alata',serif;font-size:20px;line-height:1;margin-top:2px}
+.ach-card h3{
+  font-size:14px;
+  color:var(--sub);
+  margin-bottom:12px;
+  margin-top:20px;
+  font-weight:700;
+  letter-spacing:0.05em;
+}
+.ach-card .val{
+  font-family:'Alata',serif;
+  font-size:56px;
+  color:var(--navy);
+  line-height:1;
+  margin-bottom:8px;
+}
+.ach-card .val .accent{color:var(--accent)}
+.ach-card .val-unit{
+  font-size:14px;
+  color:var(--sub);
+  font-weight:700;
+  letter-spacing:0.05em;
+}
+
+/* =============== MERIT (交互レイアウト) =============== */
+.merits{
+  padding:80px 0;
+  background:var(--white);
+  position:relative;
+}
+.merit-item{
+  margin-bottom:60px;
+}
+.merit-item:last-child{margin-bottom:0}
+.merit-img{
+  aspect-ratio:16/9;
+  background-size:cover;
+  background-position:center;
+  border-radius:4px;
+  margin-bottom:24px;
+  background-color:var(--bg);
+}
+.merit-num-line{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:16px;
+  padding-bottom:16px;
   border-bottom:1px solid var(--border);
 }
-.fv .fv-stats .stat{
-  padding:20px 8px;
-  text-align:center;
-  border-right:1px solid var(--border);
-}
-.fv .fv-stats .stat:last-child{border-right:none}
-.fv .fv-stats .stat .num{
-  font-family:'Alata',serif;
-  font-size:24px;
-  color:var(--accent);
-  display:block;
-  line-height:1;
-  margin-bottom:6px;
-}
-.fv .fv-stats .stat .label{font-size:10px;color:var(--sub);letter-spacing:0.1em}
-
-/* Section common */
-section{padding:80px 0;position:relative}
-
-/* 業種 */
-.industries{background:var(--bg)}
-.industry-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  background:var(--border);
-  border:1px solid var(--border);
-}
-.industry-card{
-  aspect-ratio:1;
-  background:var(--white);
+.merit-num{
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
-  gap:6px;
-  font-size:11px;
+  min-width:64px;
+}
+.merit-num small{
+  font-family:'Montserrat',sans-serif;
+  font-size:10px;
+  color:var(--sub);
+  letter-spacing:0.15em;
+  font-weight:700;
+}
+.merit-num .n{
+  font-family:'Alata',serif;
+  font-size:44px;
   color:var(--black);
-  font-weight:700;
-  padding:8px;
-}
-.industry-card .emoji{font-size:28px}
-
-/* 悩み */
-.pains{background:var(--white)}
-.pain-list{
-  border-top:1px solid var(--black);
-}
-.pain-list li{
-  list-style:none;
-  padding:20px 0;
-  border-bottom:1px solid var(--border);
-  font-size:15px;
-  color:var(--text);
-  font-weight:700;
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-}
-.pain-list li::before{
-  content:"✕";
-  color:var(--accent);
-  font-weight:900;
-  font-size:20px;
-  flex-shrink:0;
   line-height:1;
-  margin-top:2px;
 }
-.pain-solve{
-  margin-top:40px;
-  padding:32px 24px;
-  background:var(--black);
-  color:var(--white);
-  text-align:center;
-  font-size:15px;
-  font-weight:700;
-}
-.pain-solve strong{
-  color:var(--accent);
-  display:block;
-  font-size:24px;
-  margin-top:8px;
+.merit-title{
+  flex:1;
+  font-size:18px;
+  font-weight:900;
+  color:var(--black);
   letter-spacing:0.02em;
 }
+.merit-desc{
+  font-size:13px;
+  color:var(--text);
+  line-height:2;
+}
 
-/* 選ばれる理由 */
-.reasons{background:var(--bg)}
-.reason-card{
-  background:var(--white);
-  padding:40px 24px;
-  margin-bottom:20px;
-  border:1px solid var(--border);
+/* =============== VS OTHERS =============== */
+.compare{
+  padding:80px 0;
+  background:var(--bg);
   position:relative;
 }
-.reason-card .num-wm{
-  font-family:'Montserrat',sans-serif;
-  font-weight:900;
-  font-size:100px;
-  color:var(--accent);
-  opacity:0.1;
-  position:absolute;
-  top:10px;
-  right:20px;
-  line-height:1;
-  pointer-events:none;
-}
-.reason-card .badge{
-  font-family:'Alata',serif;
-  color:var(--accent);
-  font-size:14px;
-  letter-spacing:0.3em;
-  margin-bottom:8px;
-  display:block;
-}
-.reason-card h3{
-  color:var(--black);
-  font-size:22px;
-  margin-bottom:14px;
-  font-weight:900;
-  letter-spacing:0.02em;
-  line-height:1.4;
-}
-.reason-card p{font-size:14px;color:var(--sub);line-height:1.9}
-
-/* 比較 */
-.compare{background:var(--white)}
 .compare-table{
   border-top:2px solid var(--black);
-  overflow-x:auto;
+  background:var(--white);
+  border-radius:0 0 8px 8px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,0.06);
 }
 .compare-table table{width:100%;border-collapse:collapse}
 .compare-table th,.compare-table td{
-  padding:16px 12px;
+  padding:16px 8px;
   text-align:center;
   font-size:13px;
   border-bottom:1px solid var(--border);
@@ -331,34 +422,38 @@ section{padding:80px 0;position:relative}
 .compare-table th{
   background:var(--black);
   color:var(--white);
-  font-weight:700;
-  font-size:12px;
+  font-size:11px;
   letter-spacing:0.05em;
 }
-.compare-table th.us{
-  background:var(--accent);
-}
+.compare-table th.us{background:var(--accent)}
 .compare-table td:first-child{
   text-align:left;
+  padding-left:16px;
   font-weight:700;
   color:var(--black);
   background:var(--bg);
+  font-size:12px;
 }
 .compare-table td.us{
   color:var(--accent);
   font-weight:900;
   background:var(--bg-warm);
 }
-.compare-table td .check{color:var(--accent);font-weight:900;font-size:16px}
-.compare-table td .cross{color:#999;font-weight:900;font-size:16px}
+.compare-table .check{color:var(--accent);font-weight:900;font-size:16px}
+.compare-table .cross{color:#bbb;font-weight:900;font-size:16px}
 
-/* 事例 */
-.cases{background:var(--bg)}
+/* =============== CASES =============== */
+.cases{
+  padding:80px 0;
+  background:var(--white);
+  position:relative;
+}
 .case-list{display:grid;gap:24px}
 .case-card{
-  background:var(--white);
   border:1px solid var(--border);
   overflow:hidden;
+  border-radius:4px;
+  background:var(--white);
 }
 .case-card .thumb{
   aspect-ratio:4/5;
@@ -373,26 +468,26 @@ section{padding:80px 0;position:relative}
   transform:translate(-50%,-50%);
   background:var(--accent);
   color:var(--white);
-  width:60px;height:60px;
+  width:56px;height:56px;
   border-radius:50%;
   display:flex;align-items:center;justify-content:center;
   font-size:20px;
   padding-left:4px;
 }
 .case-card .caption{padding:20px}
-.case-card .num-eng{
+.case-card .case-num{
   font-family:'Alata',serif;
   color:var(--accent);
-  font-size:14px;
+  font-size:12px;
   letter-spacing:0.3em;
   margin-bottom:8px;
 }
 .case-card .meta{
   display:flex;
-  gap:10px;
-  font-size:11px;
+  gap:8px;
+  font-size:10px;
   color:var(--sub);
-  margin-bottom:8px;
+  margin-bottom:10px;
   font-weight:600;
 }
 .case-card .meta span{
@@ -401,73 +496,45 @@ section{padding:80px 0;position:relative}
   background:var(--bg);
 }
 .case-card .title{
-  font-size:16px;
+  font-size:15px;
   font-weight:900;
   color:var(--black);
   line-height:1.5;
   letter-spacing:0.02em;
 }
 
-/* 数字実績 */
-.numbers{
-  background:var(--black);
-  color:var(--white);
+/* =============== PRICE =============== */
+.price{
   padding:80px 0;
+  background:linear-gradient(180deg,#c9e5f4 0%,#e8f2f8 100%);
+  position:relative;
 }
-.numbers .section-head .roma{color:var(--white)}
-.numbers .section-head .roma span{background:var(--accent);color:var(--white)}
-.numbers .section-head .jp{color:var(--white)}
-.number-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-  margin-top:32px;
-}
-.number-card{
-  text-align:center;
-  padding:24px 8px;
-  border:1px solid rgba(255,255,255,0.2);
-}
-.number-card .n{
-  font-family:'Alata',serif;
-  font-size:48px;
-  color:var(--accent);
-  display:block;
-  line-height:1;
-  margin-bottom:8px;
-}
-.number-card .u{
-  font-size:11px;
-  color:rgba(255,255,255,0.7);
-  letter-spacing:0.1em;
-  display:block;
-}
-
-/* 料金 */
-.price{background:var(--white)}
 .price-card{
-  border:2px solid var(--black);
+  background:var(--white);
   padding:40px 24px;
+  border-radius:8px;
   text-align:center;
+  box-shadow:0 12px 40px rgba(0,0,0,0.1);
   position:relative;
 }
 .price-card .plan-eng{
   font-family:'Alata',serif;
   color:var(--accent);
-  font-size:16px;
-  letter-spacing:0.3em;
+  font-size:14px;
+  letter-spacing:0.4em;
   margin-bottom:8px;
 }
 .price-card .plan-name{
-  font-size:26px;
+  font-size:22px;
   font-weight:900;
   color:var(--black);
-  margin-bottom:8px;
+  margin-bottom:12px;
+  letter-spacing:0.02em;
 }
 .price-card .plan-name .plus{color:var(--accent)}
 .price-card .amount{margin:24px 0;line-height:1}
 .price-card .amount .prefix{
-  font-size:16px;
+  font-size:14px;
   color:var(--sub);
   vertical-align:top;
   line-height:2.5;
@@ -479,13 +546,13 @@ section{padding:80px 0;position:relative}
   letter-spacing:0;
 }
 .price-card .amount .unit{
-  font-size:22px;
+  font-size:20px;
   color:var(--sub);
   margin-left:4px;
   font-weight:700;
 }
 .price-card .amount .tax{
-  font-size:11px;
+  font-size:10px;
   color:var(--sub);
   display:block;
   margin-top:12px;
@@ -494,22 +561,22 @@ section{padding:80px 0;position:relative}
 .price-card .includes{
   text-align:left;
   margin:24px 0;
-  padding:24px;
+  padding:20px;
   background:var(--bg);
-  border:1px solid var(--border);
+  border-radius:4px;
 }
 .price-card .includes h4{
   font-family:'Alata',serif;
-  font-size:14px;
+  font-size:12px;
   color:var(--accent);
-  margin-bottom:16px;
+  margin-bottom:12px;
   letter-spacing:0.3em;
   text-align:center;
 }
 .price-card .includes li{
   list-style:none;
   padding:10px 0;
-  font-size:14px;
+  font-size:13px;
   font-weight:600;
   color:var(--black);
   display:flex;
@@ -522,74 +589,84 @@ section{padding:80px 0;position:relative}
   content:"✓";
   color:var(--accent);
   font-weight:900;
-  font-size:18px;
+  font-size:16px;
   flex-shrink:0;
 }
 .price-card .options{
   font-size:11px;
   color:var(--sub);
   text-align:left;
-  margin-top:16px;
-  padding:14px;
+  padding:12px;
   background:var(--bg-warm);
-  letter-spacing:0.02em;
+  border-radius:4px;
 }
 
-/* 3ステップ */
-.steps{background:var(--bg)}
-.step-card{
+/* =============== FLOW (3 STEPS) =============== */
+.flow{
+  padding:80px 0;
+  background:var(--white);
+  position:relative;
+}
+.flow-item{
   display:flex;
   gap:20px;
   align-items:flex-start;
-  padding:28px 20px;
-  background:var(--white);
-  margin-bottom:16px;
-  border:1px solid var(--border);
-  position:relative;
+  padding:24px 20px;
+  background:var(--bg);
+  margin-bottom:12px;
+  border-left:4px solid var(--accent);
+  border-radius:4px;
 }
-.step-card .step-num{
+.flow-item .flow-num{
   flex-shrink:0;
+  min-width:56px;
+}
+.flow-item .flow-num .n{
   font-family:'Alata',serif;
-  font-size:32px;
+  font-size:36px;
   color:var(--accent);
   line-height:1;
-  min-width:50px;
 }
-.step-card .step-num small{
+.flow-item .flow-num small{
   display:block;
-  font-size:10px;
+  font-family:'Montserrat',sans-serif;
+  font-size:9px;
   color:var(--sub);
   letter-spacing:0.2em;
   margin-top:4px;
-  font-family:'Montserrat',sans-serif;
 }
-.step-card h4{
+.flow-item h4{
   color:var(--black);
-  font-size:18px;
+  font-size:16px;
   font-weight:900;
   margin-bottom:6px;
   letter-spacing:0.02em;
 }
-.step-card p{font-size:13px;color:var(--sub);line-height:1.7}
+.flow-item p{font-size:12px;color:var(--sub);line-height:1.8}
 
-/* FAQ */
-.faq{background:var(--white)}
+/* =============== FAQ =============== */
+.faq{
+  padding:80px 0;
+  background:var(--bg);
+  position:relative;
+}
 .faq-item{
+  background:var(--white);
   border-bottom:1px solid var(--border);
 }
 .faq-item:first-child{border-top:1px solid var(--border)}
 .faq-item summary{
-  padding:22px 0;
+  padding:22px 20px;
   cursor:pointer;
   font-weight:700;
   color:var(--black);
-  font-size:15px;
+  font-size:14px;
   list-style:none;
   display:flex;
   gap:16px;
   align-items:flex-start;
   position:relative;
-  padding-right:40px;
+  padding-right:50px;
 }
 .faq-item summary::-webkit-details-marker{display:none}
 .faq-item summary::before{
@@ -605,8 +682,8 @@ section{padding:80px 0;position:relative}
 .faq-item summary::after{
   content:"+";
   position:absolute;
-  right:0;top:22px;
-  font-size:24px;
+  right:20px;top:22px;
+  font-size:22px;
   color:var(--black);
   font-weight:400;
   transition:transform 0.2s;
@@ -614,10 +691,10 @@ section{padding:80px 0;position:relative}
 }
 .faq-item[open] summary::after{transform:rotate(45deg)}
 .faq-item .answer{
-  padding:0 0 24px 38px;
-  font-size:14px;
+  padding:0 20px 22px 60px;
+  font-size:13px;
   color:var(--sub);
-  line-height:1.9;
+  line-height:2;
   display:flex;
   gap:16px;
   align-items:flex-start;
@@ -631,29 +708,32 @@ section{padding:80px 0;position:relative}
   line-height:1;
   flex-shrink:0;
   margin-top:-2px;
+  margin-left:-42px;
 }
 
-/* Form */
-.form-section{
+/* =============== CONTACT =============== */
+.contact-section{
+  padding:80px 0;
   background:var(--black);
   color:var(--white);
-  padding:80px 0;
+  position:relative;
 }
-.form-section .section-head .roma{color:var(--white)}
-.form-section .section-head .roma span{background:var(--accent)}
-.form-section .section-head .jp{color:var(--white)}
-.form-section .section-lead{
-  color:rgba(255,255,255,0.7);
+.contact-section .sec-head .eng{background:var(--accent)}
+.contact-section .sec-head .jp{color:var(--white)}
+.contact-section .lead{
   text-align:center;
-  font-size:13px;
+  color:rgba(255,255,255,0.7);
+  font-size:12px;
   margin-bottom:32px;
+  letter-spacing:0.05em;
 }
 .form-embed{
   background:var(--white);
   color:var(--text);
-  padding:36px 24px;
+  padding:32px 22px;
+  border-radius:4px;
 }
-.form-field{margin-bottom:20px}
+.form-field{margin-bottom:18px}
 .form-field label{
   display:block;
   font-size:12px;
@@ -662,24 +742,23 @@ section{padding:80px 0;position:relative}
   margin-bottom:8px;
   letter-spacing:0.05em;
 }
-.form-field label .required{
-  color:var(--accent);
-  margin-left:4px;
-  background:var(--accent);
+.form-field .required{
   color:var(--white);
+  margin-left:6px;
+  background:var(--accent);
   padding:2px 6px;
-  font-size:10px;
+  font-size:9px;
   border-radius:2px;
+  vertical-align:middle;
 }
 .form-field input,.form-field textarea,.form-field select{
   width:100%;
-  padding:14px 16px;
+  padding:12px 14px;
   border:1px solid var(--border);
   border-radius:4px;
-  font-size:15px;
+  font-size:14px;
   font-family:inherit;
   background:var(--white);
-  transition:border 0.15s;
 }
 .form-field input:focus,.form-field textarea:focus,.form-field select:focus{
   outline:none;
@@ -698,12 +777,13 @@ section{padding:80px 0;position:relative}
   cursor:pointer;
   letter-spacing:0.05em;
   border-radius:4px;
+  margin-top:8px;
 }
 .form-note{
   text-align:center;
-  font-size:11px;
+  font-size:10px;
   color:var(--sub);
-  margin-top:16px;
+  margin-top:12px;
   letter-spacing:0.05em;
 }
 
@@ -713,29 +793,29 @@ footer{
   color:var(--black);
   padding:40px 20px;
   text-align:center;
-  font-size:12px;
+  font-size:11px;
   line-height:2;
   border-top:1px solid var(--border);
 }
 footer .logo{
   font-family:'Alata',serif;
-  font-size:26px;
-  margin-bottom:12px;
-  color:var(--black);
+  font-size:24px;
+  margin-bottom:8px;
+  color:var(--navy);
 }
 footer .logo .plus{color:var(--accent);font-weight:700}
 footer .tagline{
-  font-size:11px;
+  font-size:10px;
   color:var(--sub);
-  letter-spacing:0.2em;
+  letter-spacing:0.3em;
   margin-bottom:20px;
 }
-footer a{color:var(--black);text-decoration:none;margin:0 12px;font-size:11px}
+footer a{color:var(--black);text-decoration:none;margin:0 12px;font-size:10px}
 footer .company{
   margin-top:24px;
   color:var(--sub);
-  font-size:10px;
-  letter-spacing:0.1em;
+  font-size:9px;
+  letter-spacing:0.15em;
 }
 
 /* Floating CTA */
@@ -745,151 +825,171 @@ footer .company{
   background:var(--white);
   padding:12px 16px;
   z-index:100;
-  border-top:1px solid var(--border);
-  box-shadow:0 -4px 20px rgba(0,0,0,0.08);
+  box-shadow:0 -4px 20px rgba(0,0,0,0.1);
 }
-.floating .btn{
-  display:block;
-  min-width:auto;
-  padding:16px;
-  font-size:15px;
-  min-width:100%;
-}
+.floating .btn{padding:14px;font-size:14px}
 
 /* PC */
 @media (min-width: 768px){
-  body{font-size:16px}
-  .container{max-width:960px;padding:0 40px}
-  .fv h1{font-size:52px}
-  .section-head .roma{font-size:64px}
-  .section-head.center .roma{font-size:56px}
-  .industry-grid{grid-template-columns:repeat(8,1fr)}
+  body{font-size:15px}
+  .container{max-width:1000px;padding:0 40px}
+  .fv{padding:100px 0 80px}
+  .fv-title{font-size:96px}
+  .sec-head .eng{font-size:64px;padding:6px 60px}
+  .about-content{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .merit-item{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .merit-item.reverse{direction:rtl}
+  .merit-item.reverse > *{direction:ltr}
+  .merit-img{margin-bottom:0}
+  .ach-grid{grid-template-columns:repeat(3,1fr)}
   .case-list{grid-template-columns:repeat(3,1fr)}
-  .number-grid gap:32px}
-  .number-card .n{font-size:64px}
-  .price-card{padding:60px 40px}
-  .price-card .amount .num{font-size:96px}
+  .watermark{font-size:220px}
 }
 </style>
 </head>
 <body>
 
 <header class="header">
-  <div class="logo">BUZZ<span class="plus">+</span></div>
-  <a href="#form" class="cta">無料相談</a>
+  <div class="brand">
+    <div>
+      <div class="tag">AI動画×SNS広告配信サービス</div>
+      <div class="logo">BUZZ<span class="plus">+</span></div>
+    </div>
+  </div>
+  <a href="#form" class="cta">お問い合わせ</a>
 </header>
 
 <!-- FV -->
 <section class="fv">
   <div class="container">
-    <div class="fv-eng">FOR SHOP OWNERS</div>
-    <h1>
-      <span class="orange">月30,000円</span>で、<br>
-      AI動画×SNS広告配信、<br>
-      <span class="accent">ぜんぶ込み。</span>
-    </h1>
-    <p class="sub">
-      撮影不要・最短即日・配信込みで、<br>
-      あなたの店舗の集客と採用を、<br>
-      「回るまで」お届けします。
-    </p>
-    <div class="fv-stats">
-      <div class="stat">
-        <span class="num">¥30,000</span>
-        <span class="label">MONTHLY</span>
+    <div style="text-align:center">
+      <div class="fv-tag">店舗集客のプロが作るAI動画</div>
+      <h1 class="fv-title">BUZZ<span class="plus">+</span></h1>
+      <p class="fv-sub">AI動画制作 × SNS広告配信 by RUNBIRD</p>
+    </div>
+    <div class="fv-phone">
+      <div class="fv-phone-inner"></div>
+    </div>
+    <div class="fv-achievements">
+      <div class="fv-ach">
+        <div class="ribbon"><small>実績</small><span class="num">1</span></div>
+        <div class="label">月額料金</div>
+        <div class="value"><span class="accent">30,000</span></div>
+        <div class="unit">円〜/月</div>
       </div>
-      <div class="stat">
-        <span class="num">1日</span>
-        <span class="label">DELIVERY</span>
+      <div class="fv-ach">
+        <div class="ribbon"><small>実績</small><span class="num">2</span></div>
+        <div class="label">納品スピード</div>
+        <div class="value"><span class="accent">最短</span></div>
+        <div class="unit">即日納品</div>
       </div>
-      <div class="stat">
-        <span class="num">0</span>
-        <span class="label">FILMING</span>
+      <div class="fv-ach">
+        <div class="ribbon"><small>実績</small><span class="num">3</span></div>
+        <div class="label">撮影スタッフ</div>
+        <div class="value"><span class="accent">0</span></div>
+        <div class="unit">撮影不要</div>
       </div>
     </div>
-    <a href="#form" class="btn" style="display:block;min-width:100%">まずは無料で相談する<small>30秒・電話不要</small></a>
-    <p style="text-align:center;margin-top:24px;font-size:12px;color:var(--sub);letter-spacing:0.1em">📢 今月あと5社限定</p>
+    <p class="fv-notice">＜今月あと5社限定・無料相談受付中＞</p>
   </div>
 </section>
 
-<!-- 業種 -->
-<section class="industries">
+<!-- ABOUT -->
+<section class="about">
   <div class="container">
-    <div class="section-head">
-      <div class="section-num">01</div>
-      <div class="roma"><span>INDUSTRIES</span></div>
-      <div class="jp">導入業種</div>
+    <div class="sec-head">
+      <div class="eng">ABOUT</div>
+      <div class="jp">BuzzPlusとは？</div>
     </div>
-    <div class="industry-grid">
-      <div class="industry-card"><span class="emoji">🍜</span>飲食店</div>
-      <div class="industry-card"><span class="emoji">✂️</span>美容室</div>
-      <div class="industry-card"><span class="emoji">🐕</span>ペット</div>
-      <div class="industry-card"><span class="emoji">💆</span>整骨院</div>
-      <div class="industry-card"><span class="emoji">🏠</span>不動産</div>
-      <div class="industry-card"><span class="emoji">🏫</span>スクール</div>
-      <div class="industry-card"><span class="emoji">🌿</span>農業</div>
-      <div class="industry-card"><span class="emoji">🏗️</span>建設</div>
+    <div class="about-content">
+      <div>
+        <h3>AI動画制作×SNS広告配信を<br>月30,000円で。</h3>
+        <p>撮影も編集も、広告運用も。動画マーケティングの全工程を、月額固定でワンストップにお届けします。</p>
+        <p>「動画は作ったけどその後どうする？」で止まらない、"回るまで伴走する"サービスです。</p>
+      </div>
+      <div class="about-imgs">
+        <div class="about-img">🎬</div>
+        <div class="about-img">📱</div>
+      </div>
     </div>
   </div>
+  <div class="watermark">ABOUT</div>
 </section>
 
-<!-- 悩み -->
-<section class="pains">
+<!-- ACHIEVEMENTS -->
+<section class="achievements">
   <div class="container">
-    <div class="section-head">
-      <div class="section-num">02</div>
-      <div class="roma"><span>PAINS</span></div>
-      <div class="jp">こんなお悩み、ありませんか？</div>
+    <div class="sec-head">
+      <div class="eng">ACHIEVEMENTS</div>
+      <div class="jp">BuzzPlusの実績</div>
     </div>
-    <ul class="pain-list">
-      <li>動画を作りたいけど、撮影が面倒</li>
-      <li>編集に何ヶ月もかけていられない</li>
-      <li>SNS広告の運用は誰かに任せたい</li>
-      <li>予算は月3万円くらいが限界</li>
-      <li>動画作っても、その後どう回すか分からない</li>
-    </ul>
-    <div class="pain-solve">
-      そのお悩み、全部
-      <strong>BuzzPlusで解決できます</strong>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-badge"><small>実績</small><span class="n">1</span></div>
+        <h3>動画制作コスト</h3>
+        <div class="val"><span class="accent">85</span><span class="val-unit">%削減</span></div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-badge"><small>実績</small><span class="n">2</span></div>
+        <h3>最短納品</h3>
+        <div class="val"><span class="accent">1日</span></div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-badge"><small>実績</small><span class="n">3</span></div>
+        <h3>月額固定</h3>
+        <div class="val"><span class="accent">¥30k</span></div>
+      </div>
     </div>
   </div>
+  <div class="watermark">RESULTS</div>
 </section>
 
-<!-- 選ばれる理由 -->
-<section class="reasons">
+<!-- MERIT -->
+<section class="merits">
   <div class="container">
-    <div class="section-head">
-      <div class="section-num">03</div>
-      <div class="roma"><span>WHY BUZZ+</span></div>
-      <div class="jp">選ばれる3つの理由</div>
+    <div class="sec-head">
+      <div class="eng">MERIT</div>
+      <div class="jp">メリット</div>
     </div>
-    <div class="reason-card">
-      <div class="num-wm">01</div>
-      <span class="badge">REASON 01</span>
-      <h3>撮影、一切不要。</h3>
-      <p>AIが全部つくります。カメラマンも役者も、天候待ちもゼロ。あなたはお店の業務に集中してください。</p>
+    <div class="merit-item">
+      <div class="merit-img" style="background-image:url('img/case_petsalon.jpg')"></div>
+      <div>
+        <div class="merit-num-line">
+          <div class="merit-num"><small>MERIT</small><span class="n">01</span></div>
+          <div class="merit-title">撮影、一切不要。</div>
+        </div>
+        <p class="merit-desc">AIが全部つくります。カメラマンも役者も、天候待ちもゼロ。あなたはお店の業務に集中してください。</p>
+      </div>
     </div>
-    <div class="reason-card">
-      <div class="num-wm">02</div>
-      <span class="badge">REASON 02</span>
-      <h3>最短、即日納品。</h3>
-      <p>ご相談から早ければ翌日には動画が届きます。「今すぐ告知したい」に応えるスピードで。</p>
+    <div class="merit-item reverse">
+      <div class="merit-img" style="background-image:url('img/case_counseling.jpg')"></div>
+      <div>
+        <div class="merit-num-line">
+          <div class="merit-num"><small>MERIT</small><span class="n">02</span></div>
+          <div class="merit-title">最短、即日納品。</div>
+        </div>
+        <p class="merit-desc">ご相談から早ければ翌日には動画が届きます。「今すぐ告知したい」に応えるスピードで。</p>
+      </div>
     </div>
-    <div class="reason-card">
-      <div class="num-wm">03</div>
-      <span class="badge">REASON 03</span>
-      <h3>配信まで、全部込み。</h3>
-      <p>Meta広告（Instagram / Facebook）の運用・改善提案までワンストップ。<strong style="color:var(--accent)">作って終わり、じゃありません。</strong></p>
+    <div class="merit-item">
+      <div class="merit-img" style="background-image:url('img/case_farm.jpg')"></div>
+      <div>
+        <div class="merit-num-line">
+          <div class="merit-num"><small>MERIT</small><span class="n">03</span></div>
+          <div class="merit-title">配信まで、全部込み。</div>
+        </div>
+        <p class="merit-desc">Meta広告（Instagram / Facebook）の運用・改善提案までワンストップ。作って終わり、じゃありません。</p>
+      </div>
     </div>
   </div>
+  <div class="watermark">MERIT</div>
 </section>
 
-<!-- 比較 -->
+<!-- VS OTHERS -->
 <section class="compare">
   <div class="container">
-    <div class="section-head">
-      <div class="section-num">04</div>
-      <div class="roma"><span>VS OTHERS</span></div>
+    <div class="sec-head">
+      <div class="eng">VS OTHERS</div>
       <div class="jp">従来の動画制作と、何が違うのか？</div>
     </div>
     <div class="compare-table">
@@ -929,19 +1029,18 @@ footer .company{
   </div>
 </section>
 
-<!-- 事例 -->
+<!-- CASES -->
 <section class="cases" id="cases">
   <div class="container">
-    <div class="section-head">
-      <div class="section-num">05</div>
-      <div class="roma"><span>CASES</span></div>
-      <div class="jp">制作事例（すべて撮影不要・月30,000円）</div>
+    <div class="sec-head">
+      <div class="eng">CASES</div>
+      <div class="jp">制作事例</div>
     </div>
     <div class="case-list">
       <div class="case-card">
         <div class="thumb" style="background-image:url('img/case_petsalon.jpg')"></div>
         <div class="caption">
-          <div class="num-eng">CASE 01</div>
+          <div class="case-num">CASE 01</div>
           <div class="meta"><span>ペットサロン</span><span>47秒</span></div>
           <div class="title">「愛犬とオーナー様の特別な時間」を映像化</div>
         </div>
@@ -949,7 +1048,7 @@ footer .company{
       <div class="case-card">
         <div class="thumb" style="background-image:url('img/case_counseling.jpg')"></div>
         <div class="caption">
-          <div class="num-eng">CASE 02</div>
+          <div class="case-num">CASE 02</div>
           <div class="meta"><span>カウンセリング</span><span>44秒</span></div>
           <div class="title">言葉にしづらいサービスを、静かな映像で</div>
         </div>
@@ -957,36 +1056,21 @@ footer .company{
       <div class="case-card">
         <div class="thumb" style="background-image:url('img/case_farm.jpg')"></div>
         <div class="caption">
-          <div class="num-eng">CASE 03</div>
+          <div class="case-num">CASE 03</div>
           <div class="meta"><span>観光農園</span><span>39秒</span></div>
           <div class="title">大自然のブルーベリー狩りを爽やかに</div>
         </div>
       </div>
     </div>
   </div>
+  <div class="watermark">CASES</div>
 </section>
 
-<!-- 数字実績 -->
-<section class="numbers">
-  <div class="container">
-    <div class="section-head center">
-      <div class="roma"><span>RESULTS</span></div>
-      <div class="jp">BuzzPlusの実績</div>
-    </div>
-    <div class="number-grid">
-      <div class="number-card"><span class="n">85%</span><span class="u">COST DOWN</span></div>
-      <div class="number-card"><span class="n">1日</span><span class="u">FAST DELIVERY</span></div>
-      <div class="number-card"><span class="n">¥30,000</span><span class="u">MONTHLY FLAT</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 料金 -->
+<!-- PRICE -->
 <section class="price">
   <div class="container">
-    <div class="section-head">
-      <div class="section-num">06</div>
-      <div class="roma"><span>PRICE</span></div>
+    <div class="sec-head">
+      <div class="eng">PRICE</div>
       <div class="jp">料金プラン</div>
     </div>
     <div class="price-card">
@@ -1006,35 +1090,33 @@ footer .company{
         </ul>
       </div>
       <div class="options">※ 動画追加は1本 20,000円〜／アニメ動画・実写風動画どちらも対応可</div>
-      <a href="#form" class="btn" style="margin-top:24px;display:block;min-width:100%">無料で相談する</a>
     </div>
   </div>
 </section>
 
-<!-- 3ステップ -->
-<section class="steps">
+<!-- FLOW -->
+<section class="flow">
   <div class="container">
-    <div class="section-head">
-      <div class="section-num">07</div>
-      <div class="roma"><span>3 STEPS</span></div>
+    <div class="sec-head">
+      <div class="eng">FLOW</div>
       <div class="jp">3ステップで開始</div>
     </div>
-    <div class="step-card">
-      <div class="step-num">01<small>STEP</small></div>
+    <div class="flow-item">
+      <div class="flow-num"><span class="n">01</span><small>STEP</small></div>
       <div>
         <h4>無料相談を送信</h4>
         <p>下のフォームに5項目・30秒で送信。電話不要です。</p>
       </div>
     </div>
-    <div class="step-card">
-      <div class="step-num">02<small>STEP</small></div>
+    <div class="flow-item">
+      <div class="flow-num"><span class="n">02</span><small>STEP</small></div>
       <div>
         <h4>ヒアリング（Zoom 15分）</h4>
         <p>業種・目的・希望のトーンをお聞きします。無理な営業はしません。</p>
       </div>
     </div>
-    <div class="step-card">
-      <div class="step-num">03<small>STEP</small></div>
+    <div class="flow-item">
+      <div class="flow-num"><span class="n">03</span><small>STEP</small></div>
       <div>
         <h4>最短翌日から動画納品開始</h4>
         <p>1本目の動画が届き、そのままSNS広告配信スタート。</p>
@@ -1046,9 +1128,8 @@ footer .company{
 <!-- FAQ -->
 <section class="faq">
   <div class="container">
-    <div class="section-head">
-      <div class="section-num">08</div>
-      <div class="roma"><span>FAQ</span></div>
+    <div class="sec-head">
+      <div class="eng">FAQ</div>
       <div class="jp">よくあるご質問</div>
     </div>
     <details class="faq-item">
@@ -1074,14 +1155,14 @@ footer .company{
   </div>
 </section>
 
-<!-- Form -->
-<section class="form-section" id="form">
+<!-- CONTACT -->
+<section class="contact-section" id="form">
   <div class="container">
-    <div class="section-head center">
-      <div class="roma"><span>CONTACT</span></div>
+    <div class="sec-head">
+      <div class="eng">CONTACT</div>
       <div class="jp">無料相談フォーム</div>
     </div>
-    <p class="section-lead">30秒で送信・電話不要・強引な営業なし</p>
+    <p class="lead">30秒で送信・電話不要・強引な営業なし</p>
     <div class="form-embed">
       <form action="mailto:info@buzzplus-ai.com" method="post" enctype="text/plain">
         <div class="form-field">
@@ -1141,7 +1222,7 @@ footer .company{
 
 <!-- Floating CTA -->
 <div class="floating">
-  <a href="#form" class="btn">今月あと5枠｜無料で相談する →</a>
+  <a href="#form" class="btn">今月あと5枠｜🎬 無料で相談する →</a>
 </div>
 
 </body>
