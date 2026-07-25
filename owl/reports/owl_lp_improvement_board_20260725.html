@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>OWL 0円プランLP 改善作戦ボード</title>
+</head>
+<body>
+<style>
+  :root{
+    --bg:#fbf4e4; --panel:#ffffff; --panel2:#fdf8ee; --ink:#1e3a5f; --ink2:#5a6b7a; --ink3:#8a97a5;
+    --line:#ecdfc4; --line2:#f3e9d3;
+    --orange:#f5843c; --orange-d:#e8731f; --teal:#2bb3c0; --teal-d:#1e8a94; --green:#46a046;
+    --red:#ea5b3a; --warn:#fff3df; --warn-line:#f0d9a8; --ok:#e6f4ec; --ok-ink:#2f7d4d;
+    --shadow:0 10px 34px rgba(30,58,95,.10);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0f1f2e; --panel:#17293b; --panel2:#1c3247; --ink:#eaf1f7; --ink2:#a6b7c7; --ink3:#748899;
+      --line:#264056; --line2:#20364b;
+      --warn:#3a2d17; --warn-line:#6b5424; --ok:#183a29; --ok-ink:#7fd6a2;
+      --shadow:0 12px 34px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0f1f2e; --panel:#17293b; --panel2:#1c3247; --ink:#eaf1f7; --ink2:#a6b7c7; --ink3:#748899;
+    --line:#264056; --line2:#20364b;
+    --warn:#3a2d17; --warn-line:#6b5424; --ok:#183a29; --ok-ink:#7fd6a2; --shadow:0 12px 34px rgba(0,0,0,.45);
+  }
+  :root[data-theme="light"]{
+    --bg:#fbf4e4; --panel:#ffffff; --panel2:#fdf8ee; --ink:#1e3a5f; --ink2:#5a6b7a; --ink3:#8a97a5;
+    --line:#ecdfc4; --line2:#f3e9d3; --warn:#fff3df; --warn-line:#f0d9a8; --ok:#e6f4ec; --ok-ink:#2f7d4d;
+    --shadow:0 10px 34px rgba(30,58,95,.10);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+      radial-gradient(1200px 480px at 80% -10%, color-mix(in srgb,var(--orange) 12%, transparent), transparent 60%),
+      var(--bg);
+    color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+    line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1120px;margin:0 auto;padding:34px 20px 64px}
+  .tnum{font-variant-numeric:tabular-nums}
+
+  /* header */
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.14em;
+    color:var(--teal-d);text-transform:uppercase}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--orange)}
+  h1{font-size:clamp(26px,4.6vw,40px);line-height:1.2;margin:.35em 0 .15em;font-weight:900;letter-spacing:.01em;text-wrap:balance}
+  h1 b{color:var(--orange)}
+  .sub{color:var(--ink2);font-size:14px;max-width:64ch}
+  .metaline{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tag{font-size:11.5px;font-weight:700;color:var(--ink2);background:var(--panel);border:1px solid var(--line);
+    border-radius:999px;padding:5px 12px}
+
+  /* KPI strip */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0 8px}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow)}
+  .kpi .k{font-size:11.5px;font-weight:800;color:var(--ink3);letter-spacing:.02em}
+  .kpi .v{font-size:24px;font-weight:900;margin-top:2px;letter-spacing:.01em}
+  .kpi .u{font-size:12px;color:var(--ink2);font-weight:700}
+  .kpi.bad .v{color:var(--red)} .kpi.good .v{color:var(--teal-d)} .kpi.warn .v{color:var(--orange-d)}
+
+  .grid{display:grid;grid-template-columns:minmax(280px,360px) 1fr;gap:22px;margin-top:26px;align-items:start}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+  .card .hd{padding:16px 18px 0}
+  .card .bd{padding:14px 18px 18px}
+  .kicker{font-size:12px;font-weight:900;letter-spacing:.1em;color:var(--teal-d);text-transform:uppercase}
+  h2{font-size:19px;font-weight:900;margin:3px 0 2px}
+  .lede{font-size:13px;color:var(--ink2);margin:0}
+
+  /* phone map */
+  .phone{margin:14px auto 4px;width:100%;max-width:300px;border:2px solid var(--line);border-radius:26px;
+    background:var(--panel2);padding:10px;box-shadow:inset 0 0 0 4px color-mix(in srgb,var(--line) 40%,transparent)}
+  .screen{display:flex;flex-direction:column;gap:5px;border-radius:16px;overflow:hidden}
+  .band{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;
+    padding:8px 11px;border-radius:9px;color:#12233b;font-weight:800;font-size:12px;min-height:0}
+  .band .bh{font-size:6.5px;font-weight:800;color:var(--ink3);letter-spacing:.04em;position:absolute;right:9px;top:6px}
+  .band .lbl{display:flex;align-items:center;gap:7px;line-height:1.2}
+  .band .st{font-size:14px;line-height:1;flex:0 0 auto}
+  .b-fv{background:linear-gradient(120deg,#dfeaf2,#eaf1f6);flex:0 0 46px}
+  .b-cost{background:var(--warn);border:1.5px solid var(--warn-line);flex:0 0 44px}
+  .b-worry{background:#f2ece0;flex:0 0 40px}
+  .b-solve{background:linear-gradient(120deg,#e9f4f0,#f0f6ee);flex:0 0 96px}
+  .b-sim{background:#e9f3ee;flex:0 0 66px}
+  .b-flow{background:#f2ece0;flex:0 0 40px}
+  .b-voices{background:linear-gradient(120deg,#fdeede,#f6efe0);flex:0 0 84px}
+  .b-cta{background:linear-gradient(120deg,var(--orange),var(--orange-d));color:#fff;flex:0 0 30px}
+  .b-bar{background:#1e3a5f;color:#fff;flex:0 0 22px}
+  :root[data-theme="dark"] .band,:root:not([data-theme="light"]) .band{color:#0e1c29}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .band{color:#0e1c29}}
+  .band.dark-txt{color:#12233b}
+  .heat{position:absolute;left:-9px;top:50%;transform:translateY(-50%);font-size:15px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.2))}
+  .flag{position:absolute;right:-8px;top:50%;transform:translateY(-50%);background:var(--red);color:#fff;
+    font-size:9px;font-weight:900;border-radius:6px;padding:2px 6px;white-space:nowrap;box-shadow:0 3px 8px rgba(234,91,58,.5)}
+  .phone-cap{text-align:center;font-size:11px;color:var(--ink3);font-weight:700;margin-top:6px}
+
+  /* findings list */
+  .find{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+  .fitem{display:flex;gap:11px;align-items:flex-start;padding:12px 14px;border-radius:13px;background:var(--panel2);
+    border:1px solid var(--line2)}
+  .fitem .ic{flex:0 0 26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:14px;font-weight:900;color:#fff}
+  .ic.real{background:var(--red)} .ic.ok{background:var(--green)} .ic.sig{background:var(--teal-d)}
+  .fitem .tx{font-size:13px;color:var(--ink2)}
+  .fitem .tx b{color:var(--ink)}
+
+  /* attack angle */
+  .angle{background:
+      linear-gradient(180deg,color-mix(in srgb,var(--teal) 10%,var(--panel)),var(--panel));
+    border:1px solid color-mix(in srgb,var(--teal) 35%,var(--line))}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{font-size:12px;font-weight:800;color:var(--teal-d);background:color-mix(in srgb,var(--teal) 14%,transparent);
+    border:1px solid color-mix(in srgb,var(--teal) 40%,transparent);border-radius:999px;padding:6px 12px}
+  .angle ul{margin:12px 0 0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+  .angle li{position:relative;padding-left:22px;font-size:13.5px;color:var(--ink2)}
+  .angle li b{color:var(--ink)}
+  .angle li::before{content:"▸";position:absolute;left:2px;top:0;color:var(--orange);font-weight:900}
+
+  /* roadmap */
+  .road{margin-top:26px}
+  .roadhead{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:14px}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow);
+    display:flex;flex-direction:column;gap:7px;position:relative;overflow:hidden}
+  .step::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px}
+  .step.fix::before{background:var(--red)} .step.add::before{background:var(--orange)}
+  .step .num{font-size:11px;font-weight:900;letter-spacing:.08em;color:var(--ink3)}
+  .step .badge{align-self:flex-start;font-size:10px;font-weight:900;letter-spacing:.04em;border-radius:6px;padding:3px 8px;color:#fff}
+  .badge.fix{background:var(--red)} .badge.add{background:var(--orange-d)}
+  .step h3{font-size:14.5px;font-weight:900;margin:0;line-height:1.35}
+  .step p{font-size:12px;color:var(--ink2);margin:0}
+  .step .meta{margin-top:auto;font-size:10.5px;font-weight:800;color:var(--teal-d)}
+
+  .foot{margin-top:26px;font-size:11.5px;color:var(--ink3);border-top:1px solid var(--line);padding-top:14px;line-height:1.7}
+
+  @media (max-width:860px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:520px){ .steps{grid-template-columns:1fr} }
+</style>
+
+<div class="wrap">
+
+  <header>
+    <span class="eyebrow"><span class="dot"></span>RUNBIRD ／ OWL 福祉事業</span>
+    <h1>0円プランLP <b>改善作戦ボード</b></h1>
+    <p class="sub">現行LP（<span class="tnum">owl-fukushi.net/lp_zero-plan-g_v2</span>）を実測。<b>構造は健全</b>で、直すべき表示崩れは1点のみ。あとは反応が出ている所を<b>少しずつ足して</b>問い合わせを取りにいく。</p>
+    <div class="metaline">
+      <span class="tag">2026-07-25 作成</span>
+      <span class="tag">DOM実測（390px・全10,473px）</span>
+      <span class="tag">Clarity 7/24</span>
+      <span class="tag">広告CSV 7/24（TO側・RB除外）</span>
+    </div>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi warn"><div class="k">7/24 広告費（TO側）</div><div class="v tnum">¥34,944</div><div class="u">Google¥29,784＋Yahoo¥5,160</div></div>
+    <div class="kpi bad"><div class="k">当日CV（広告計測）</div><div class="v tnum">0</div><div class="u">※タグ未連携の計測ギャップ</div></div>
+    <div class="kpi good"><div class="k">累計 実問合せ（37日）</div><div class="v tnum">16<span style="font-size:14px">件</span></div><div class="u">◎4 ／ ○3 ／ △9</div></div>
+    <div class="kpi"><div class="k">Clarity スクロール到達</div><div class="v tnum">42<span style="font-size:14px">%</span></div><div class="u">50%地点まで（本LP・57PV）</div></div>
+  </section>
+
+  <div class="grid">
+
+    <!-- LEFT: phone structure map -->
+    <div class="card">
+      <div class="hd">
+        <span class="kicker">現状マップ</span>
+        <h2>スマホLPの中身</h2>
+        <p class="lede">バンドの高さ＝実測の縦幅。崩れは<b style="color:var(--red)">1バンドだけ</b>。</p>
+      </div>
+      <div class="bd">
+        <div class="phone">
+          <div class="screen">
+            <div class="band b-fv"><span class="bh">622px</span><span class="lbl"><span class="st">✅</span>FV 顔写真＋実績＋CTA</span></div>
+            <div class="band b-cost dark-txt"><span class="bh">588px</span><span class="lbl"><span class="st">⚠️</span>費用のめやす</span><span class="flag">見出し禁則崩れ</span></div>
+            <div class="band b-worry"><span class="bh">693px</span><span class="lbl"><span class="st">✅</span>悩み 02</span></div>
+            <div class="band b-solve"><span class="heat">👆</span><span class="bh">2,859px</span><span class="lbl"><span class="st">✅</span>解決・実績「未経験でも」03</span></div>
+            <div class="band b-sim"><span class="bh">1,798px</span><span class="lbl"><span class="st">✅</span>収益シミュ（プラン）</span></div>
+            <div class="band b-flow"><span class="bh">693px</span><span class="lbl"><span class="st">✅</span>開業の流れ 08</span></div>
+            <div class="band b-voices"><span class="bh">2,368px</span><span class="lbl"><span class="st">✅</span>オーナーの声 09</span></div>
+            <div class="band b-cta"><span class="lbl"><span class="st">✅</span>最終CTA 12</span></div>
+            <div class="band b-bar"><span class="lbl">下部固定バー</span></div>
+          </div>
+        </div>
+        <p class="phone-cap">👆＝Clarityでタップ集中／⚠️＝要修正</p>
+      </div>
+    </div>
+
+    <!-- RIGHT: findings + angle -->
+    <div style="display:flex;flex-direction:column;gap:22px">
+
+      <div class="card">
+        <div class="hd">
+          <span class="kicker">わかったこと</span>
+          <h2>実測の結論</h2>
+        </div>
+        <div class="bd">
+          <div class="find">
+            <div class="fitem"><div class="ic real">!</div><div class="tx"><b>本物の崩れは1点だけ</b> — 「費用のめやす」見出しで <span class="tnum">先に正直</span> が改行し、助詞「に」が次行頭に落ちる（禁則）。<br>→ <b>&lt;br&gt;位置調整／nowrap</b> で即修正。</div></div>
+            <div class="fitem"><div class="ic ok">✓</div><div class="tx"><b>「空白だらけ」は誤検知だった</b> — 前回の巨大空白・FV重複は、スクショのlazy画像未読込によるもの。DOM実測では<b>全体が隙間なく連続</b>（本物のバグではない）。</div></div>
+            <div class="fitem"><div class="ic sig">◎</div><div class="tx"><b>「未経験でも」に反応</b> — Clarityのタップが<b>実績・未経験の画像帯（03）に集中</b>、「未経験でも」の問いは3クリック。関心の出どころが見えている。</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card angle">
+        <div class="hd">
+          <span class="kicker" style="color:var(--orange-d)">今日の攻め筋</span>
+          <h2>「未経験でも」を前に出す</h2>
+          <p class="lede">反応が出ている一言を、迷わせず問い合わせに繋ぐ。</p>
+        </div>
+        <div class="bd">
+          <div class="chips">
+            <span class="chip">開設実績 400件</span>
+            <span class="chip">未経験率 95%</span>
+            <span class="chip">全国 47都道府県</span>
+          </div>
+          <ul>
+            <li><b>FV直下フォームの見出し</b>に「未経験でも開設できる仕組み」を明記（安心の一言＋最小項目）。</li>
+            <li><b>声・FAQを1本厚く</b>：「未経験 → 開設できた」の実話で、クリックされている問いに答え切る。</li>
+            <li><b>A/Bの当て所</b>を"未経験でも大丈夫"へ寄せて検証。</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <section class="road">
+    <div class="roadhead">
+      <div>
+        <span class="kicker" style="color:var(--orange-d)">進め方</span>
+        <h2 style="font-size:22px">少しずつ直して、足す</h2>
+      </div>
+      <div style="font-size:12px;color:var(--ink2);font-weight:700">🟥 直す（軽・確実）　🟧 足す（反応の出た所から）</div>
+    </div>
+    <div class="steps">
+      <div class="step fix">
+        <span class="num">STEP 1</span><span class="badge fix">直す</span>
+        <h3>費用のめやす<br>見出しの禁則</h3>
+        <p>唯一の実バグ。改行位置を調整して読みやすく。</p>
+        <span class="meta">工数：小 ／ 今日</span>
+      </div>
+      <div class="step add">
+        <span class="num">STEP 2</span><span class="badge add">足す</span>
+        <h3>FV直下フォーム<br>＋項目削減</h3>
+        <p>A/B（4651 フォーム／4652 費用大）。Clarityのフォーム離脱に効かせる。</p>
+        <span class="meta">承認待ち：鈴木さん</span>
+      </div>
+      <div class="step add">
+        <span class="num">STEP 3</span><span class="badge add">足す</span>
+        <h3>「未経験でも」<br>訴求の強化</h3>
+        <p>FV直下・FAQ・声に集約。反応の出た一言を前面に。</p>
+        <span class="meta">工数：小〜中</span>
+      </div>
+      <div class="step add">
+        <span class="num">STEP 4</span><span class="badge add">足す</span>
+        <h3>選べる<br>6つのプラン</h3>
+        <p>実数字＋初期投資の目安＝自己資金を早期に明示。</p>
+        <span class="meta">作成済み・投入待ち</span>
+      </div>
+      <div class="step add">
+        <span class="num">STEP 5</span><span class="badge add">足す</span>
+        <h3>実在Map＋<br>資料DL</h3>
+        <p>競合勝ちパターン。本部の実在で不安を潰し、初期層をリード化。</p>
+        <span class="meta">設計済み・段階投入</span>
+      </div>
+    </div>
+  </section>
+
+  <p class="foot">
+    出典：DOM実測（Playwright・390px）／ Microsoft Clarity 2026-07-24 ／ 広告CSV 2026-07-24（Google・Yahoo、RB=河合分を除外）／ 問合せログ（配信37日・実件数）。<br>
+    ※広告CPA相場の比較値はスプシ掲載の想定値（確度：中／一次ソース未確認）。数字（自己資金・利益等）は本番反映前に鈴木さん・OWL確認。CV0は「CF7送信が広告側へ返っていない計測ギャップ」で、問い合わせゼロの意味ではない。
+  </p>
+
+</div>
+
+</body>
+</html>
