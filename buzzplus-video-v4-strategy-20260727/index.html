@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BuzzPlus 動画v4 戦略 (Fable 5準拠版) / 2026-07-27</title>
+<style>
+:root{--nav:#1b2a63;--or:#f5820b;--or2:#ff8b47;--ink:#1a1d29;--mut:#6b7280;--bg:#f6f7fb;--line:#e3e6ef;--red:#d92d20;--amb:#b54708;--grn:#067647;--pur:#6366f1}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;padding:24px 16px 60px}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font-size:24px;color:var(--nav);margin-bottom:6px}
+.sub{color:var(--mut);font-size:13px;margin-bottom:24px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(20,30,70,.04)}
+.card h2{font-size:17px;color:var(--nav);margin-bottom:14px;border-left:5px solid var(--or);padding-left:10px}
+.fable{background:#eff6ff;border-left:5px solid #3b82f6;padding:14px 18px;margin:10px 0;font-size:13px}
+.fable strong{color:#1e40af}
+.fable .k{font-size:11px;font-weight:800;color:#1e40af;letter-spacing:.1em;margin-bottom:6px}
+.strat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}
+.strat .c{border-radius:12px;padding:16px 18px;border:2px solid}
+.strat .c.core{border-color:var(--grn);background:#ecfdf5}
+.strat .c.ab1{border-color:var(--or);background:#fff8f0}
+.strat .c.ab2{border-color:var(--pur);background:#f0f5ff}
+.strat .c .tag{display:inline-block;font-size:10px;font-weight:800;padding:2px 8px;border-radius:99px;color:#fff;letter-spacing:.05em;margin-bottom:6px}
+.strat .c.core .tag{background:var(--grn)}
+.strat .c.ab1 .tag{background:var(--or)}
+.strat .c.ab2 .tag{background:var(--pur)}
+.strat .c h3{font-size:15px;color:var(--nav);margin-bottom:6px;font-weight:800;line-height:1.4}
+.strat .c .st{font-size:11px;color:var(--mut);margin-bottom:8px}
+.strat .c ul{list-style:none;padding:0;font-size:12px;line-height:1.7}
+.strat .c li{padding:1px 0}
+.k4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0}
+.k4 div{background:#f7f9fd;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center}
+.k4 .n{font-size:11px;color:var(--mut);font-weight:700;margin-bottom:4px}
+.k4 .v{font-size:18px;font-weight:800;color:var(--nav);line-height:1.2}
+.k4 .lbl{font-size:11px;color:var(--mut);margin-top:2px}
+.scene{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:8px;background:#fcfcfe}
+.scene .t{font-weight:800;color:var(--nav);font-size:14px;margin-bottom:4px}
+.scene .d{font-size:13px;color:#333}
+.tl{display:grid;grid-template-columns:80px 1fr 1fr 1fr;gap:0;margin:14px 0;background:#f7f9fd;border-radius:12px;overflow:hidden}
+.tl .hd{background:var(--nav);color:#fff;padding:10px;font-weight:800;font-size:12px;text-align:center}
+.tl .day{padding:12px 8px;text-align:center;font-weight:800;color:var(--nav);border-bottom:1px solid var(--line);font-size:12px;background:#fff}
+.tl .cell{padding:12px 10px;border-bottom:1px solid var(--line);font-size:12px;background:#fff}
+.tl .cell.hot{background:#fff8f0}
+.tl .cell.a{border-left:4px solid var(--grn)}
+.tl .cell.b{border-left:4px solid var(--or)}
+.tl .cell.c{border-left:4px solid var(--pur)}
+.decide{background:#fff8f0;border:2px dashed var(--or);border-radius:12px;padding:18px 20px}
+.decide h3{color:var(--or);font-size:15px;margin-bottom:10px}
+.decide .row{display:grid;grid-template-columns:170px 1fr;gap:12px;padding:8px 0;border-bottom:1px dashed #ffd9b0;font-size:13.5px}
+.decide .row:last-child{border:0}
+.decide .row strong{color:var(--nav)}
+.change{background:#fef1f1;border:1px solid #fecaca;border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:13px}
+.change .lbl{font-size:10px;font-weight:800;color:var(--red);letter-spacing:.1em;margin-bottom:4px}
+@media(max-width:720px){.strat,.k4{grid-template-columns:1fr}.tl{grid-template-columns:60px 1fr 1fr 1fr;font-size:10px}.decide .row{grid-template-columns:1fr}}
+</style></head>
+<body>
+<div class="wrap">
+
+<h1>🎬 動画v4 戦略（Fable 5準拠 修正版）</h1>
+<p class="sub">2026-07-27 / 前版から軌道修正 — 「路線多様性で2本目の勝ち筋を探す」に立ち返る</p>
+
+<div class="card">
+<h2>🔄 前版からの修正</h2>
+<div class="change">
+<div class="lbl">MISMATCH FOUND</div>
+前企画（C-5監督くん + D-7静止画動画化）は<strong>アニメ路線に偏りすぎ</strong>で、Fable 5の「路線多様性で2本目の勝ち筋を探す」意図とズレていた
+</div>
+<div class="fable">
+<div class="k">FABLE 5 Q3 引用</div>
+「② 新クリエイティブ テスト（<strong>実写版動画 or 新規静止画（hibimiru風）</strong>）／1本しか勝ち筋がない状態は危険。<strong>2本目の勝ち筋を探す枠</strong>。CPLは悪くて当然、判定はクリック率で」
+</div>
+</div>
+
+<div class="card">
+<h2>📽 8月クリエ 3本体制（修正版）</h2>
+<div class="strat">
+<div class="c core">
+<span class="tag">主軸</span>
+<h3>v3 アニメ動画（既存）</h3>
+<div class="st">7月唯一の勝ち筋・クリック21件独占</div>
+<ul>
+<li>制作: 完了済</li>
+<li>投入: 8/1〜継続</li>
+<li>予算: ¥27,000 (45%)</li>
+<li>目的: 主軸として稼ぐ</li>
+</ul>
+</div>
+<div class="c ab1">
+<span class="tag">A/B ①</span>
+<h3>実写風動画（新規）</h3>
+<div class="st">v3と対極の路線でA/B確保</div>
+<ul>
+<li>制作: 3日</li>
+<li>投入: 8/4</li>
+<li>予算: ¥8,000 (13%)</li>
+<li>目的: 2本目の勝ち筋探し</li>
+</ul>
+</div>
+<div class="c ab2">
+<span class="tag">A/B ②</span>
+<h3>hibimiru風 静止画（既存）</h3>
+<div class="st">動画化せず<strong>静止画のまま</strong>配信</div>
+<ul>
+<li>制作: 完了済</li>
+<li>投入: 8/1即</li>
+<li>予算: ¥4,000 (7%)</li>
+<li>目的: 静止画路線再検証</li>
+</ul>
+</div>
+</div>
+<div class="fable">
+<div class="k">重要変更点</div>
+<strong>① C-5 監督くんは保留</strong>（アニメ強化用に9月以降で再検討）<br>
+<strong>② hibimiru風静止画は動画化しない</strong>（Fable 5の言う「静止画のまま」テストに戻す）<br>
+<strong>③ 8月は「路線多様性」を最優先</strong>（アニメ / 実写 / 静止画 の3路線でA/B）
+</div>
+</div>
+
+<div class="card">
+<h2>🎥 実写風動画の企画詳細</h2>
+<h3 style="font-size:14px;color:var(--nav);margin-bottom:8px">15秒・9:16縦・AI実写風生成</h3>
+<div class="scene">
+<div class="t">0-3秒: 店主の困り顔（実写風）</div>
+<div class="d">30代小規模店舗オーナー（美容室 or 整骨院）がPCの前で頭を抱える。テロップ「動画マーケ、どうすれば…」</div>
+</div>
+<div class="scene">
+<div class="t">3-7秒: BuzzPlus登場（画面キャプチャ実写風）</div>
+<div class="d">iPhone画面にBuzzPlusサイト表示 → AI動画が自動生成される様子。テロップ「制作も配信も全部お任せ」</div>
+</div>
+<div class="scene">
+<div class="t">7-11秒: 数字が動く（グラフ・アニメ実写ミックス）</div>
+<div class="d">「フォロワー数」「予約数」の折れ線グラフが右上がりに。実際の効果を数字で示す。テロップ「月30,000円・配信込み」</div>
+</div>
+<div class="scene">
+<div class="t">11-15秒: 店主の笑顔 + CTA</div>
+<div class="d">最初と同じ店主が笑顔。テロップ「無料相談はこちら」+ロゴ着地</div>
+</div>
+<h3 style="font-size:14px;color:var(--nav);margin:14px 0 8px">制作方法</h3>
+<ul style="padding-left:20px;font-size:13px;line-height:1.8">
+<li>GPT Image で店主/オフィス実写風静止画生成（4シーン分）</li>
+<li>Pixverse or Kling で各シーン5秒動画化</li>
+<li>PC画面部分はScreenStudio or 手動キャプチャ</li>
+<li>ffmpeg合成 + Claude Desktopで最終テロップ・BGM</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>📅 8月配信スケジュール（3本並列）</h2>
+<div class="tl">
+<div class="hd">日付</div><div class="hd">v3 アニメ（主軸）</div><div class="hd">実写風（A/B①）</div><div class="hd">hibimiru静止画（A/B②）</div>
+<div class="day">7/28-31</div><div class="cell a">準備完了</div><div class="cell b">制作</div><div class="cell c">準備完了</div>
+<div class="day">8/1</div><div class="cell a hot">🚀 配信</div><div class="cell b">制作継続</div><div class="cell c hot">🚀 配信</div>
+<div class="day">8/4</div><div class="cell a">継続</div><div class="cell b hot">🚀 配信</div><div class="cell c">継続</div>
+<div class="day">8/15</div><div class="cell a">A/B判定</div><div class="cell b">A/B判定</div><div class="cell c">A/B判定</div>
+<div class="day">8/16〜</div><div class="cell a hot" colspan="3">勝ってるクリエに予算集約 / 負けクリエは即停止</div><div class="cell">-</div><div class="cell">-</div>
+</div>
+</div>
+
+<div class="card">
+<h2>💰 予算配分（Fable 5 Q3準拠・¥60,000）</h2>
+<div class="k4">
+<div><div class="n">v3 アニメ主軸</div><div class="v" style="color:var(--grn)">¥27,000</div><div class="lbl">45%</div></div>
+<div><div class="n">実写風A/B</div><div class="v" style="color:var(--or)">¥8,000</div><div class="lbl">13%</div></div>
+<div><div class="n">静止画A/B</div><div class="v" style="color:var(--pur)">¥4,000</div><div class="lbl">7%</div></div>
+<div><div class="n">1段目認知+リタゲ</div><div class="v">¥21,000</div><div class="lbl">35%</div></div>
+</div>
+<div class="fable">
+<div class="k">FABLE 5 のテスト枠設計（原文引用）</div>
+「新クリエイティブ テスト 20% ¥12,000」→ 私は<strong>実写風 ¥8,000 + 静止画 ¥4,000 = 計 ¥12,000</strong>に分解して2種類同時にテスト
+</div>
+</div>
+
+<div class="card">
+<h2>🎯 判定基準</h2>
+<div class="k4">
+<div><div class="n">目標CTR</div><div class="v">v3同等以上</div><div class="lbl">クリック率で判定</div></div>
+<div><div class="n">早期停止</div><div class="v" style="color:var(--red)">3日でクリック0</div><div class="lbl">即中止</div></div>
+<div><div class="n">勝者判定</div><div class="v" style="color:var(--grn)">8/15</div><div class="lbl">2週で結論</div></div>
+<div><div class="n">勝者処遇</div><div class="v">予算集約</div><div class="lbl">負けクリエ停止</div></div>
+</div>
+</div>
+
+<div class="decide">
+<h3>🚀 決めてほしい 2点</h3>
+<div class="row"><strong>① 実写風の主役</strong>
+<div>a) 美容室オーナー（女性30代）／b) 整骨院院長（男性40代）／c) カフェ店主（男女どちらか）</div></div>
+<div class="row"><strong>② BGM方向</strong>
+<div>a) 落ち着き・信頼感（実写のドキュメンタリー調）／b) 明るく前向き（ポップな解決訴求）</div></div>
+</div>
+
+</div>
+</body></html>
