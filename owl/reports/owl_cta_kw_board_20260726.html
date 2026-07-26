@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OWL LP改善 図解ボード｜CTA最適化＋広告キーワード（2026-07-26）</title>
+<style>
+  :root{--navy:#173a5e;--ink:#2f3b47;--sub:#68757f;--green:#2e9e57;--gd:#1f7a44;
+    --orange:#ff6f1c;--orange2:#f5843c;--blue:#2f74c0;--red:#d8452a;--amber:#c9901f;
+    --bg:#eef2f5;--card:#ffffff;--line:#dde5ec;--cream:#f7fbff}
+  *{box-sizing:border-box}
+  html,body{max-width:100%;overflow-x:hidden;margin:0}
+  body{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:20px 16px 60px}
+  .hero{background:linear-gradient(135deg,var(--navy),#0f2740);color:#fff;border-radius:20px;padding:26px 26px 24px;
+    box-shadow:0 16px 40px rgba(23,58,94,.25)}
+  .hero .tag{display:inline-block;background:rgba(255,255,255,.16);font-size:12px;font-weight:800;
+    padding:5px 14px;border-radius:999px;letter-spacing:.06em}
+  .hero h1{margin:12px 0 6px;font-size:clamp(21px,4.6vw,30px);font-weight:900;line-height:1.3}
+  .hero p{margin:0;font-size:13px;opacity:.92}
+  .hero .links{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .hero .links a{background:var(--orange);color:#fff;text-decoration:none;font-size:12.5px;font-weight:800;
+    padding:8px 15px;border-radius:10px}
+  .hero .links a.g{background:#2e9e57}
+
+  .sect{margin-top:34px}
+  .sh{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+  .sh .no{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;
+    display:grid;place-items:center;font-size:16px;font-weight:900}
+  .sh h2{margin:0;font-size:clamp(18px,3.8vw,23px);font-weight:900;color:var(--navy)}
+  .sh .cap{font-size:12px;color:var(--sub);font-weight:700}
+
+  /* 結論カード */
+  .concl{display:grid;grid-template-columns:1fr;gap:12px}
+  @media(min-width:760px){.concl{grid-template-columns:repeat(3,1fr)}}
+  .cc{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 16px 14px;
+    box-shadow:0 8px 22px rgba(23,58,94,.07);border-top:5px solid var(--green)}
+  .cc .n{font-size:12px;font-weight:900;color:var(--green);letter-spacing:.05em}
+  .cc h3{margin:6px 0 5px;font-size:15.5px;font-weight:900;color:var(--navy);line-height:1.4}
+  .cc p{margin:0;font-size:12.5px;color:var(--sub);font-weight:600}
+
+  /* Before/After */
+  .ba{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:760px){.ba{grid-template-columns:1fr auto 1fr;align-items:center}}
+  .bx{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 8px 22px rgba(23,58,94,.06)}
+  .bx.before{border-left:5px solid var(--red)} .bx.after{border-left:5px solid var(--green)}
+  .bx .lab{font-size:12px;font-weight:900;padding:3px 12px;border-radius:999px;display:inline-block;margin-bottom:10px;color:#fff}
+  .bx.before .lab{background:var(--red)} .bx.after .lab{background:var(--green)}
+  .bx ul{margin:0;padding-left:2px;list-style:none;display:flex;flex-direction:column;gap:8px}
+  .bx li{font-size:12.8px;font-weight:600;padding-left:22px;position:relative;line-height:1.55}
+  .bx.before li::before{content:"✕";position:absolute;left:0;color:var(--red);font-weight:900}
+  .bx.after li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:900}
+  .bx li b{color:var(--navy);font-weight:900}
+  .arrow{text-align:center;font-size:30px;color:var(--orange);font-weight:900}
+  @media(max-width:759px){.arrow{transform:rotate(90deg)}}
+
+  /* ミチル参考 CTAモック */
+  .ref{display:grid;grid-template-columns:1fr;gap:16px;align-items:center}
+  @media(min-width:760px){.ref{grid-template-columns:280px 1fr}}
+  .ctademo{background:linear-gradient(180deg,#f4f9fe,#e9f1fa);border:1px solid var(--line);border-radius:16px;
+    padding:22px 18px;text-align:center}
+  .ctabtn{display:block;background:linear-gradient(135deg,var(--orange2),var(--orange));color:#fff;font-size:16px;
+    font-weight:900;padding:15px 10px;border-radius:14px;box-shadow:0 10px 22px rgba(255,111,28,.35);position:relative}
+  .ctabtn .gl{position:absolute;top:5px;left:12px;right:12px;height:38%;border-radius:12px;
+    background:linear-gradient(180deg,rgba(255,255,255,.4),rgba(255,255,255,0))}
+  .ctalink{display:block;margin-top:12px;color:var(--blue);font-size:12.5px;font-weight:800;text-decoration:none}
+  .ctamicro{margin-top:8px;font-size:11px;color:var(--sub);font-weight:700}
+  .refnote{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 8px 22px rgba(23,58,94,.06)}
+  .refnote h4{margin:0 0 10px;font-size:14px;font-weight:900;color:var(--navy)}
+  .refnote ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:7px}
+  .refnote li{font-size:12.8px;font-weight:600}
+  .refnote li b{color:var(--gd);font-weight:900}
+
+  /* 設置マップ */
+  .maps{display:grid;grid-template-columns:1fr;gap:18px}
+  @media(min-width:760px){.maps{grid-template-columns:1fr 1fr}}
+  .lp{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 10px 26px rgba(23,58,94,.08)}
+  .lp .lphd{padding:13px 16px;color:#fff;font-weight:900;font-size:14.5px;display:flex;align-items:center;justify-content:space-between}
+  .lp.d .lphd{background:linear-gradient(135deg,#c96a1c,var(--orange))}
+  .lp.z .lphd{background:linear-gradient(135deg,var(--blue),#245ea0)}
+  .lp .lphd small{font-size:11px;font-weight:700;opacity:.9}
+  .lp .body{padding:14px 14px 18px;position:relative}
+  .blk{display:flex;align-items:center;gap:10px;background:var(--cream);border:1px solid var(--line);
+    border-radius:11px;padding:10px 12px;margin-bottom:8px;font-size:12.5px;font-weight:700;color:var(--navy)}
+  .blk.fv{background:linear-gradient(135deg,#fff2e2,#ffe6cc);border-color:#f2caa0}
+  .blk .cta{margin-left:auto;flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+    background:var(--orange);color:#fff;font-size:10.5px;font-weight:900;padding:4px 9px;border-radius:999px;white-space:nowrap}
+  .blk .cta.z{background:var(--blue)}
+  .blk .num{flex:0 0 22px;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;
+    font-size:11px;font-weight:900;display:grid;place-items:center}
+  .whyrow{font-size:10.5px;color:var(--sub);font-weight:700;margin:-4px 0 10px 32px}
+  .stick{margin-top:6px;text-align:center;font-size:11px;font-weight:900;color:var(--gd);
+    background:#e6f5ec;border:1px dashed var(--green);border-radius:10px;padding:7px}
+  .subl{margin:-4px 0 10px 32px;font-size:10.5px;color:var(--blue);font-weight:700}
+
+  /* KW 3分類 */
+  .kw{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:760px){.kw{grid-template-columns:repeat(3,1fr)}}
+  .kc{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 22px rgba(23,58,94,.07)}
+  .kc .khd{padding:12px 14px;color:#fff;font-weight:900;font-size:14px;display:flex;align-items:center;gap:8px}
+  .kc.stop .khd{background:var(--red)} .kc.excl .khd{background:var(--amber)} .kc.add .khd{background:var(--green)}
+  .kc .kbd{padding:12px 14px 14px;display:flex;flex-direction:column;gap:9px}
+  .ki{font-size:12.3px;font-weight:700}
+  .ki .t{font-weight:900;color:var(--navy)}
+  .ki .r{display:block;font-size:10.8px;color:var(--sub);font-weight:600;margin-top:1px}
+  .chip{display:inline-block;background:#eef3f7;border:1px solid var(--line);border-radius:7px;
+    padding:2px 8px;font-size:11px;font-weight:800;color:var(--ink);margin:2px 3px 0 0}
+
+  .warn{margin-top:18px;background:#fffaf0;border:1px solid #f0d9a8;border-radius:14px;padding:14px 16px;
+    font-size:12.5px;color:#8a6d1a;font-weight:700;line-height:1.7}
+  .warn b{color:#b4560f}
+  .foot{margin-top:26px;text-align:center;font-size:11px;color:var(--sub)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <span class="tag">OWL福祉事業 ｜ LP改善 図解ボード</span>
+    <h1>CTA最適化 ＋ 広告キーワード提案</h1>
+    <p>2026-07-26｜Clarity・商談9社・7月広告データにもとづく改善案。ミチルLPのCTA設計を参考。</p>
+    <div class="links">
+      <a href="./owl_lp_kaizen_preview_20260726.html">▶ デザイン改善プレビュー（#about・比較＋サポート）</a>
+    </div>
+  </div>
+
+  <!-- CTA 結論 -->
+  <div class="sect">
+    <div class="sh"><span class="no">1</span><h2>CTA最適化：結論</h2><span class="cap">数・文言・設置箇所を整える</span></div>
+    <div class="concl">
+      <div class="cc"><span class="n">POINT 1</span><h3>文言を1つに統一</h3><p>資料CTAをLPごとに1種類へ。独立=「無料で資料を受け取る」／0円=「無料で資料請求」</p></div>
+      <div class="cc"><span class="n">POINT 2</span><h3>競合CTAは小リンクに降格</h3><p>お問い合わせ・WEB説明会を大ボタンから外し、主CTA直下の小リンクへ（ミチル方式）</p></div>
+      <div class="cc"><span class="n">POINT 3</span><h3>各ブロック直後に反復</h3><p>独立5〜7・0円5〜6箇所＋追従1本。全部同じ文言＋不安解消コピー</p></div>
+    </div>
+  </div>
+
+  <!-- Before/After -->
+  <div class="sect">
+    <div class="sh"><span class="no">2</span><h2>現状 → あるべき姿</h2><span class="cap">実測 2026-07-26</span></div>
+    <div class="ba">
+      <div class="bx before">
+        <span class="lab">現状の問題</span>
+        <ul>
+          <li>0円LPは1アクションなのに<b>文言が4種類</b>バラバラ</li>
+          <li>独立LPの<b>「資料ダウンロード」</b>は"即DL"を連想（実態はフォーム）</li>
+          <li><b>お問い合わせ・WEB説明会</b>が主導線と競合＝行動が分散</li>
+          <li>全長11,000px超なのに<b>押したい位置にボタンが無い</b></li>
+        </ul>
+      </div>
+      <div class="arrow">➜</div>
+      <div class="bx after">
+        <span class="lab">あるべき姿</span>
+        <ul>
+          <li><b>主CTAは資料請求1本</b>・全箇所同一文言</li>
+          <li>やわらかい動詞＋オファー＋矢印（<b>▶ 無料で資料を受け取る</b>）</li>
+          <li>競合CTAは<b>下の小リンク</b>に降格（受け皿は残す）</li>
+          <li>各説得ブロック直後に反復＋<b>追従バー</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ミチル参考 -->
+  <div class="sect">
+    <div class="sh"><span class="no">3</span><h2>ミチルLPの型（参考）</h2><span class="cap">1アクションに絞り反復して成果</span></div>
+    <div class="ref">
+      <div class="ctademo">
+        <div class="ctabtn"><span class="gl"></span>▶ 無料で資料を受け取る →</div>
+        <a class="ctalink" href="#">▶ 個別相談を希望の方はこちら</a>
+        <div class="ctamicro">1分で入力完了／しつこい営業はありません</div>
+      </div>
+      <div class="refnote">
+        <h4>OWLへの応用ポイント</h4>
+        <ul>
+          <li>大ボタンに<b>"オファー"</b>を入れる（無料）＋<b>やわらかい動詞</b>（受け取る）＋矢印</li>
+          <li>大ボタンの下に<b>"別ルートの小リンク"</b>（ミチル＝代引き／OWL＝個別相談・WEB説明会）</li>
+          <li>各ブロック直後に<b>同じCTAを繰り返す</b>（文言完全統一）</li>
+          <li><b>光沢のある目立つボタン</b>で統一（色・角丸・矢印）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 設置マップ -->
+  <div class="sect">
+    <div class="sh"><span class="no">4</span><h2>設置マップ：現行LPのどこに入れるか</h2><span class="cap">★=大ボタン／青緑=追従</span></div>
+    <div class="maps">
+
+      <div class="lp d">
+        <div class="lphd"><span>独立LP（202607dokuritsu）</span><small>主CTA 5〜7＋追従</small></div>
+        <div class="body">
+          <div class="blk fv"><span class="num">①</span>FV｜年1800万 収益モデル<span class="cta">▶ 資料を受け取る</span></div>
+          <div class="blk"><span class="num">②</span>3つ当てはまる方に<span class="cta">▶ 資料</span></div>
+          <div class="whyrow">自分ごと化の直後</div>
+          <div class="blk"><span class="num">③</span>業界の転換点（今動くべき理由）<span class="cta">▶ 資料</span></div>
+          <div class="whyrow">緊急性の直後＝最も押しやすい</div>
+          <div class="blk"><span class="num">④</span>収益シミュレーション<span class="cta">▶ 資料</span></div>
+          <div class="blk"><span class="num">⑤</span>初期投資の内訳<span class="cta">▶ 資料</span></div>
+          <div class="blk"><span class="num">⑥</span>よくあるご質問<span class="cta">▶ 資料</span></div>
+          <div class="whyrow">不安解消の直後</div>
+          <div class="blk"><span class="num">⑦</span>最終｜資料でお届け<span class="cta">▶ 受け取る</span></div>
+          <div class="subl">↳ 各ボタン下に小リンク「▶ 個別相談を希望の方はこちら」</div>
+          <div class="stick">＋ 画面下に追従（スティッキー）CTA 常時</div>
+        </div>
+      </div>
+
+      <div class="lp z">
+        <div class="lphd"><span>0円LP（lp_zero-plan-g_v2）</span><small>主CTA 5〜6＋追従</small></div>
+        <div class="body">
+          <div class="blk fv"><span class="num">①</span>FV｜加盟金0円・月商300万<span class="cta z">▶ 資料請求</span></div>
+          <div class="blk"><span class="num">②</span>費用のめやす（0円/自己資金/融資）<span class="cta z">▶ 資料</span></div>
+          <div class="whyrow">費用の正直開示の直後</div>
+          <div class="blk"><span class="num">③</span>そのお悩みOWLが解決<span class="cta z">▶ 資料</span></div>
+          <div class="blk"><span class="num">④</span>他社との違い＋サポート体制<span class="cta z">▶ 資料</span></div>
+          <div class="whyrow">優位性を見せた直後（今回追加）</div>
+          <div class="blk"><span class="num">⑤</span>収益シミュレーション<span class="cta z">▶ 資料</span></div>
+          <div class="blk"><span class="num">⑥</span>最終｜資料請求<span class="cta z">▶ 資料請求</span></div>
+          <div class="subl">↳ 各ボタン下に小リンク「▶ WEB説明会の日程を見る方はこちら」</div>
+          <div class="stick">＋ 画面下に追従（スティッキー）CTA 常時</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- KW -->
+  <div class="sect">
+    <div class="sh"><span class="no">5</span><h2>広告キーワード：止める・除外・追加</h2><span class="cap">7/1-26 GH¥348k／独立¥42k・全CV0</span></div>
+    <div class="kw">
+      <div class="kc stop">
+        <div class="khd">🔴 止める（既存停止）</div>
+        <div class="kbd">
+          <div class="ki"><span class="t">障害者支援 事業 開業</span><span class="r">CTR9.2%・¥56,380・広語で意図ズレ＝最大のムダ</span></div>
+          <div class="ki"><span class="t">介護 独立 / 福祉 独立</span><span class="r">品質1・¥19,229。転職意図が混在しLP不一致</span></div>
+        </div>
+      </div>
+      <div class="kc excl">
+        <div class="khd">🟡 除外KW（負のKW）</div>
+        <div class="kbd">
+          <div class="ki"><span class="t">求職者</span><br><span class="chip">求人</span><span class="chip">転職</span><span class="chip">パート</span><span class="chip">給料</span><span class="chip">年収</span></div>
+          <div class="ki"><span class="t">利用者・家族</span><br><span class="chip">入居</span><span class="chip">空き</span><span class="chip">体験入居</span></div>
+          <div class="ki"><span class="t">他サービス</span><br><span class="chip">就労継続支援</span><span class="chip">相談支援</span><span class="chip">放課後等デイ</span></div>
+          <div class="ki"><span class="t">既存運営者・情報のみ</span><br><span class="chip">加算</span><span class="chip">報酬改定</span><span class="chip">とは</span><span class="chip">口コミ</span></div>
+        </div>
+      </div>
+      <div class="kc add">
+        <div class="khd">🟢 追加KW（勝ち筋と同意図）</div>
+        <div class="kbd">
+          <div class="ki"><span class="t">GHキャンペーン</span><br><span class="chip">GH 開業 費用</span><span class="chip">開業 資金</span><span class="chip">開業 未経験</span><span class="chip">始め方</span><span class="chip">指定申請</span></div>
+          <div class="ki"><span class="t">独立キャンペーン</span><br><span class="chip">起業 障害福祉</span><span class="chip">開業 福祉</span><span class="chip">未経験 起業</span><span class="chip">資格なし 起業</span></div>
+          <div class="ki"><span class="r">※勝ち＝起業 介護(CPC¥124)・起業 福祉(¥195)・GH経営/開業(品質4-5)に予算を寄せる</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warn">
+    ⚠️ <b>大前提＝CVタグ修正</b>：現在 全KWがCV0＝資料請求完了が広告に返っていない計測ギャップ（問い合わせ自体は来ている）。これを直さないと除外・追加の効果が数字で測れない。／
+    <b>FC・フランチャイズ系KWは今回入れない</b>（河合さん(RB)配信との重複回避・足すなら要確認）。
+  </div>
+
+  <p class="foot">OWL福祉事業 LP改善 図解ボード ／ 2026-07-26 作成 ／ レビュー用（本番公開ではありません）</p>
+
+</div>
+</body>
+</html>
