@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BuzzPlus 戦略サマリ 図解 / 2026-07-27（訂正版）</title>
+<title>BuzzPlus 戦略サマリ 図解 / 2026-07-27</title>
 <style>
 :root{--nav:#1b2a63;--or:#f5820b;--or2:#ff8b47;--ink:#1a1d29;--mut:#6b7280;--bg:#f6f7fb;--line:#e3e6ef;--red:#d92d20;--amb:#b54708;--grn:#067647}
 *{box-sizing:border-box;margin:0}
@@ -11,9 +11,6 @@ h1{font-size:24px;color:var(--nav);margin-bottom:6px}
 .sub{color:var(--mut);font-size:13px;margin-bottom:24px}
 .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(20,30,70,.04)}
 .card h2{font-size:17px;color:var(--nav);margin-bottom:14px;border-left:5px solid var(--or);padding-left:10px}
-.correction{background:#fef1f1;border:2px solid var(--red);border-radius:14px;padding:20px 22px;margin-bottom:18px}
-.correction h2{color:var(--red);font-size:18px;margin-bottom:10px;border-left:5px solid var(--red);padding-left:10px}
-.correction p{font-size:14px;margin-bottom:6px}
 .kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:10px}
 .kpi div{background:#f7f9fd;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
 .kpi .k{font-size:11px;color:var(--mut);font-weight:700;letter-spacing:.03em}
@@ -43,58 +40,95 @@ h1{font-size:24px;color:var(--nav);margin-bottom:6px}
 .tl .col li:last-child{border:0}
 .big{background:#111114;color:#fff;border-radius:14px;padding:24px;text-align:center;margin-bottom:18px}
 .big .t1{font-size:12px;letter-spacing:.15em;color:#ff8b47;font-weight:800;margin-bottom:8px}
-.big .t2{font-size:26px;font-weight:900;line-height:1.4}
+.big .t2{font-size:24px;font-weight:900;line-height:1.4}
 .big .t2 strong{color:#ff8b47}
 .big .t3{font-size:13px;color:#aaa;margin-top:10px}
-@media(max-width:720px){.tl{grid-template-columns:1fr}.big .t2{font-size:20px}}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.cmp .c{border-radius:12px;padding:14px 16px}
+.cmp .c.a{background:#f0f5ff;border:1px solid #c7d7fe}
+.cmp .c.b{background:#ecfdf5;border:2px solid var(--grn)}
+.cmp .c .n{font-size:11px;font-weight:800;color:var(--mut);letter-spacing:.05em;margin-bottom:6px}
+.cmp .c .p{font-size:22px;font-weight:900;color:var(--nav);line-height:1.15;margin-bottom:6px}
+.cmp .c .p small{display:block;font-size:11px;font-weight:600;color:var(--mut);margin-top:2px}
+.cmp .c ul{list-style:none;padding:0;font-size:12.5px;line-height:1.7}
+.cmp .c li{padding:1px 0}
+@media(max-width:720px){.tl,.cmp{grid-template-columns:1fr}.big .t2{font-size:20px}}
 </style></head>
 <body>
 <div class="wrap">
 
-<h1>📊 BuzzPlus 戦略サマリ（訂正版）</h1>
-<p class="sub">2026-07-27 / <span style="color:var(--red);font-weight:700">前回送付の「リード3件」は誤り。実質0件でした（訂正）</span></p>
-
-<div class="correction">
-<h2>🔴 重大訂正: リードは実質「0件」でした</h2>
-<p><strong>前回サマリで「リード3件・CPL ¥7,993」と報告しましたが、その3件は星崎さんがテストクリックで送信した分</strong>でした。実際のクライアントからのリードは <strong>0件</strong>です。</p>
-<p>広告マネージャの数字だけを見て「機能中」と判断してしまったのが誤り。データが汚染されていました。</p>
-</div>
+<h1>📊 BuzzPlus 戦略サマリ</h1>
+<p class="sub">2026-07-27</p>
 
 <div class="big">
 <div class="t1">CURRENT STATUS</div>
-<div class="t2"><strong>全キャンペーン停止中</strong><br>7月消化 ¥41,243 / 実質リード <strong>0件</strong></div>
+<div class="t2"><strong>全キャンペーン停止中</strong><br>7月消化 ¥41,243 / 実質リード 0件</div>
 <div class="t3">現状のまま回すのはダメ → 全部止めて仕切り直し</div>
 </div>
 
 <div class="card">
-<h2>📌 何が起きていたか（実態）</h2>
+<h2>📌 実態</h2>
 <div class="kpi">
 <div><div class="k">動画完走率</div><div class="v" style="color:var(--grn)">67%</div><div class="n">🟢 動画は見られてる</div></div>
 <div><div class="k">クリック</div><div class="v" style="color:var(--grn)">21件</div><div class="n">🟢 BP_ANIME_v3のみ</div></div>
 <div><div class="k">LP到達</div><div class="v warn">ほぼ0</div><div class="n">🔴 LPまで来ない</div></div>
-<div><div class="k">実顧客リード</div><div class="v warn">0件</div><div class="n">🔴 問い合わせなし</div></div>
+<div><div class="k">リード</div><div class="v warn">0件</div><div class="n">🔴 問い合わせなし</div></div>
 </div>
-<div class="hi"><strong>結論: 動画は見てもらえてる。でも問い合わせに繋がらない。</strong> 導線・LP・訴求のどこかに根本問題がある状態。¥41,243 を突っ込んでも1件も取れなかったのはこの構造のせい。</div>
+<div class="hi"><strong>動画は見てもらえてる。でも問い合わせに繋がらない。</strong> 導線・LP・訴求のどこかに根本問題がある状態。¥41,243を突っ込んでも1件も取れなかったのはこの構造のせい。</div>
 </div>
 
 <div class="card">
-<h2>🎯 今後の方針（3ステップ）</h2>
+<h2>💡 昨日会議の方針 — アニメるLPを真似する</h2>
+<p style="font-size:14px;margin-bottom:10px">昨日の会議で方針決定: 競合<strong>「アニメる」（ネオマチ運営）</strong>のLPを参考にBuzzPlusのLPを作り直す。</p>
+<div class="cmp">
+<div class="c a">
+<div class="n">アニメる（参考）</div>
+<div class="p">¥33,000<small>税別 / 15秒1本</small></div>
+<ul>
+<li>FV主見出しに<strong>価格</strong></li>
+<li>プラン3段階（15/30/60秒）</li>
+<li>「通常料金（9割こちら）」</li>
+<li>納期「1週間待ち」（稀少性）</li>
+<li>フォーム=プラン選択式</li>
+<li>実績「一流メーカーの案件を陰で支える」</li>
+</ul>
+</div>
+<div class="c b">
+<div class="n">BUZZ+（新LP設計）</div>
+<div class="p">¥30,000<small>税込 / 毎月 配信込み</small></div>
+<ul>
+<li>FV主見出しに<strong>「配信込みで月30,000円」</strong></li>
+<li>プラン3段階（¥30k/¥50k/¥80k）</li>
+<li>「まずはここから」等のガイド</li>
+<li>「今月あと◯社」を運用ルール付で残す</li>
+<li>フォーム=プラン+開始時期の選択式</li>
+<li>実績動画スライダー継続</li>
+</ul>
+</div>
+</div>
+<div class="hi"><strong>核心: アニメる = ¥30,000で1本きり買切 / BUZZ+ = ¥30,000で毎月配信込み。</strong>同じ「¥30,000」に見えるがBUZZ+は月換算¥83,000相当。この差を金額でLPに書き切る。</div>
+</div>
+
+<div class="card">
+<h2>🎯 3ステップの方針</h2>
 <ol class="step">
 <li>
 <div class="t">完全停止して温存<span class="when">今</span></div>
 <div>全キャンペーン停止済み ✅ 残¥8,750は8月に温存。<strong>7月は何もしない = 正解</strong>（現状のまま回すと傷が広がるだけ）。</div>
 </li>
 <li>
-<div class="t">LP・訴求・フォームを本気で作り直す<span class="when">今週〜7月末</span></div>
+<div class="t">アニメるLPを参考にBuzzPlusのLPを作り直す<span class="when">今週〜7月末</span></div>
 <ul>
-<li>LP実績カード「制作 30,000円」→「月額 30,000円 <strong>配信込み</strong>」</li>
-<li>「配信込み」を金額で見せる（他で揃えると月¥83,000 → BUZZ+¥30,000）</li>
-<li>フォーム質問追加（プラン・開始時期の必須2問）</li>
+<li>FVを「動画も、広告配信も、改善提案も、ぜんぶ込みで月30,000円」に</li>
+<li>プラン3段階（¥30k/¥50k/¥80k）で「¥30k=入口」に見せる</li>
+<li>「他で揃えると月¥83,000」比較ブロックを新設</li>
+<li>実績カード「制作 30,000円」→「月額 30,000円 配信込み」</li>
+<li>フォームにプラン・開始時期の必須質問追加</li>
 <li>本番LPにv3反映＋Pixel Lead 発火の実テスト</li>
 </ul>
 </li>
 <li>
-<div class="t">LP直った状態で8月に本気配信<span class="when aug">8/1〜</span></div>
+<div class="t">新LPが完成した状態で8月に本気配信<span class="when aug">8/1〜</span></div>
 <ul>
 <li>予算 ¥58,750（8月新規¥50,000＋7月繰越¥8,750）</li>
 <li><strong>目的変更</strong>: 「動画視聴」→「リード獲得」</li>
@@ -113,14 +147,14 @@ h1{font-size:24px;color:var(--nav);margin-bottom:6px}
 <h3>🔴 いま</h3>
 <ul>
 <li>全停止済み維持</li>
-<li>鈴木さん電話→訂正報告</li>
-<li>5点確認（粗利率・成約実績・修正回数等）</li>
+<li>アニメる分析まとめ</li>
+<li>新LP設計スタート</li>
 </ul>
 </div>
 <div class="col week">
 <h3>🟡 今週〜7月末</h3>
 <ul>
-<li>LP改修3点</li>
+<li>新LP実装（アニメる参考）</li>
 <li>本番v3反映＋Pixel実テスト</li>
 <li>Instant Form質問改修</li>
 <li>新クリエ準備（hibimiru風静止画）</li>
@@ -148,18 +182,6 @@ h1{font-size:24px;color:var(--nav);margin-bottom:6px}
 </ul>
 <div class="hi"><strong>「使い切る」より「LP直してから8月にまとめて投下」する方が意味のあるデータが取れる</strong>。撤退判断もできるようになる。</div>
 </div>
-</div>
-
-<div class="card">
-<h2>📞 鈴木さんに確認したい5点</h2>
-<ol style="font-size:13.5px;line-height:1.9;padding-left:22px">
-<li>BuzzPlus 1件あたりの粗利率（試算60%仮置き中）</li>
-<li>これまでの問い合わせ→成約実績（何件中何件か）</li>
-<li>LPの「今月あと5社限定」は運用ルール決めて残していい？</li>
-<li>「¥30,000〜」の「〜」は外して言い切っていい？</li>
-<li>動画の修正回数の上限（アニメるは1回明記）</li>
-</ol>
-<div class="hi">この5点が埋まると「そもそもBuzzPlusがCPL幾らまで払えるビジネスか」が仮置きなしで判定できます。</div>
 </div>
 
 </div>
