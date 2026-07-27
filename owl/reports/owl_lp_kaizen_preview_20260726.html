@@ -110,6 +110,16 @@ body{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;backgroun
       padding:10px 12px;line-height:1.7;font-weight:700}
     .owlabt .note b{color:#b4560f}
 
+    /* 詳細アコーディオン（クリックで図解を開く／JS不要） */
+    .owlabt details.more{border:1px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
+    .owlabt details.more>summary{list-style:none;cursor:pointer;padding:11px 14px;font-size:12.5px;
+      font-weight:900;color:var(--gd);display:flex;align-items:center;justify-content:center;gap:8px;background:#f4f8f0}
+    .owlabt details.more>summary::-webkit-details-marker{display:none}
+    .owlabt details.more>summary .chev{font-size:10px;transition:transform .2s}
+    .owlabt details.more[open]>summary .chev{transform:rotate(180deg)}
+    .owlabt details.more>summary:hover{background:#eaf2e3}
+    .owlabt details.more .inner{padding:13px 13px 5px;display:flex;flex-direction:column;gap:14px}
+
     /* 締め帯 */
     .owlabt .close{position:relative;z-index:1;max-width:1120px;margin:20px auto 0;
       background:linear-gradient(135deg,var(--navy),#122842);color:#fff;
@@ -164,22 +174,27 @@ body{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;backgroun
         <div class="cbd">
           <p>各自治体は「障害福祉計画」で<b>地域ごとの整備目標</b>を持ち、<b>目標に達した地域では新規開設が認められにくく</b>なります。</p>
 
-          <div class="gauge">
-            <p class="gt">エリア別・新規開設の「埋まり具合」イメージ</p>
-            <div class="grow r1"><span class="gl">関東（都市部）</span><div class="gbar"><div class="gfill">ほぼ満</div></div></div>
-            <div class="grow r2"><span class="gl">首都圏 近郊</span><div class="gbar"><div class="gfill">広がり中</div></div></div>
-            <div class="grow r3"><span class="gl">地方・郊外</span><div class="gbar"><div class="gfill">まだ余地</div></div></div>
-            <p class="gcap">※空き枠は地域差が大きく、早い者勝ちの傾向</p>
-          </div>
+          <details class="more">
+            <summary>詳細を見る：エリア別の埋まり具合・お金の流れ <span class="chev">▼</span></summary>
+            <div class="inner">
+              <div class="gauge">
+                <p class="gt">エリア別・新規開設の「埋まり具合」イメージ</p>
+                <div class="grow r1"><span class="gl">関東（都市部）</span><div class="gbar"><div class="gfill">ほぼ満</div></div></div>
+                <div class="grow r2"><span class="gl">首都圏 近郊</span><div class="gbar"><div class="gfill">広がり中</div></div></div>
+                <div class="grow r3"><span class="gl">地方・郊外</span><div class="gbar"><div class="gfill">まだ余地</div></div></div>
+                <p class="gcap">※空き枠は地域差が大きく、早い者勝ちの傾向</p>
+              </div>
 
-          <div class="flow">
-            <p class="ft">なぜ「枠」が減るのか（お金の流れ）</p>
-            <div class="fstep"><span class="fn">1</span><span class="fx">利用者1人につき、市区町村が<b>月約3万円</b>を負担</span></div>
-            <div class="farrow">▼</div>
-            <div class="fstep"><span class="fn">2</span><span class="fx">事業所が増えるほど<b>自治体の財政を圧迫</b></span></div>
-            <div class="farrow">▼</div>
-            <div class="fstep"><span class="fn">3</span><span class="fx">一定ラインで<b>新規開設に「線引き」</b>＝空き枠が減少</span></div>
-          </div>
+              <div class="flow">
+                <p class="ft">なぜ「枠」が減るのか（お金の流れ）</p>
+                <div class="fstep"><span class="fn">1</span><span class="fx">利用者1人につき、市区町村が<b>月約3万円</b>を負担</span></div>
+                <div class="farrow">▼</div>
+                <div class="fstep"><span class="fn">2</span><span class="fx">事業所が増えるほど<b>自治体の財政を圧迫</b></span></div>
+                <div class="farrow">▼</div>
+                <div class="fstep"><span class="fn">3</span><span class="fx">一定ラインで<b>新規開設に「線引き」</b>＝空き枠が減少</span></div>
+              </div>
+            </div>
+          </details>
         </div>
       </div>
 
@@ -192,17 +207,22 @@ body{font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;backgroun
         <div class="cbd">
           <p>障害福祉サービスは<b>3年に1度の報酬・制度改定</b>があり、次は<b>2027年度</b>。この改定で開設・運営の要件が<b>厳しくなる見込み</b>です。</p>
 
-          <div class="tl">
-            <div class="tnode past"><span class="dot">✓</span><span class="ty">2024年度</span><span class="tx">前回改定</span></div>
-            <div class="tnode past"><span class="dot"></span><span class="ty">現在</span><span class="tx">今のルールで<br>開業できる</span></div>
-            <div class="tnode now"><span class="dot">!</span><span class="ty">2027年度</span><span class="tx">改定で<br>要件UP見込み</span></div>
-          </div>
+          <details class="more">
+            <summary>詳細を見る：改定スケジュールと要件の変化 <span class="chev">▼</span></summary>
+            <div class="inner">
+              <div class="tl">
+                <div class="tnode past"><span class="dot">✓</span><span class="ty">2024年度</span><span class="tx">前回改定</span></div>
+                <div class="tnode past"><span class="dot"></span><span class="ty">現在</span><span class="tx">今のルールで<br>開業できる</span></div>
+                <div class="tnode now"><span class="dot">!</span><span class="ty">2027年度</span><span class="tx">改定で<br>要件UP見込み</span></div>
+              </div>
 
-          <div class="plan">
-            <div class="pi">管理者・職員の<b>実務経験要件が追加</b>される見込み<span class="yotei">予定</span></div>
-            <div class="pi">軽度中心の運営は<b>報酬が下がる</b>方向で、中重度対応へシフトの流れ</div>
-            <div class="pi"><b>今の（現行）ルールで開業しておく方が有利</b>になりやすい</div>
-          </div>
+              <div class="plan">
+                <div class="pi">管理者・職員の<b>実務経験要件が追加</b>される見込み<span class="yotei">予定</span></div>
+                <div class="pi">軽度中心の運営は<b>報酬が下がる</b>方向で、中重度対応へシフトの流れ</div>
+                <div class="pi"><b>今の（現行）ルールで開業しておく方が有利</b>になりやすい</div>
+              </div>
+            </div>
+          </details>
 
           <div class="note">※制度改定の詳細は<b>国から正式決定・公表されていません</b>（2026年時点の見通し）。確定情報は説明会・資料でご案内します。</div>
         </div>
