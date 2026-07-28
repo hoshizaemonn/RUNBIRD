@@ -6,65 +6,53 @@
   :root{
     --bg:#eef2f5; --card:#ffffff; --ink:#1f2d3d; --sub:#63707e; --line:#e2e8ee;
     --navy:#1e3a5f; --green:#2e7d32; --green2:#4aa14e; --gd:#215d34; --track:#e9eef2;
-    --orange:#f5843c; --orange2:#ff6f1c; --amber:#f0b429; --warn:#d9822b; --warnbg:#fff5e9; --warnbd:#f2caa0;
+    --stopbg:#fdeeee; --stopbd:#f2c4c4; --stop:#c0392b;
   }
   @media (prefers-color-scheme:dark){
-    :root{--bg:#0f1720;--card:#18222e;--ink:#e7edf3;--sub:#9aa8b6;--line:#26323f;--navy:#8db4e0;--track:#222e3b;}
+    :root{--bg:#0f1720;--card:#18222e;--ink:#e7edf3;--sub:#9aa8b6;--line:#26323f;--navy:#8db4e0;--track:#222e3b;
+      --stopbg:#2a1a1a;--stopbd:#5a3030;--stop:#e88b7d;}
   }
-  :root[data-theme="dark"]{--bg:#0f1720;--card:#18222e;--ink:#e7edf3;--sub:#9aa8b6;--line:#26323f;--navy:#8db4e0;--track:#222e3b;}
-  :root[data-theme="light"]{--bg:#eef2f5;--card:#fff;--ink:#1f2d3d;--sub:#63707e;--line:#e2e8ee;--navy:#1e3a5f;--track:#e9eef2;}
+  :root[data-theme="dark"]{--bg:#0f1720;--card:#18222e;--ink:#e7edf3;--sub:#9aa8b6;--line:#26323f;--navy:#8db4e0;--track:#222e3b;--stopbg:#2a1a1a;--stopbd:#5a3030;--stop:#e88b7d;}
+  :root[data-theme="light"]{--bg:#eef2f5;--card:#fff;--ink:#1f2d3d;--sub:#63707e;--line:#e2e8ee;--navy:#1e3a5f;--track:#e9eef2;--stopbg:#fdeeee;--stopbd:#f2c4c4;--stop:#c0392b;}
   *{box-sizing:border-box;margin:0}
   html,body{max-width:100%;overflow-x:hidden}
   body{background:var(--bg);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
     line-height:1.6;font-feature-settings:"palt";padding:20px 14px 48px}
   .wrap{max-width:940px;margin:0 auto}
-  .hd{background:linear-gradient(135deg,var(--gd),#2e7d32);color:#fff;border-radius:16px;padding:20px 22px;margin-bottom:14px;
+  .hd{background:linear-gradient(135deg,var(--gd),#2e7d32);color:#fff;border-radius:16px;padding:20px 22px;margin-bottom:16px;
     box-shadow:0 10px 26px rgba(30,58,95,.18)}
   .hd h1{font-size:clamp(18px,4.4vw,23px);font-weight:900;letter-spacing:.01em}
   .hd p{font-size:12.5px;opacity:.94;margin-top:6px;line-height:1.7}
   .hd .who{display:inline-block;background:rgba(255,255,255,.18);border-radius:999px;padding:3px 12px;font-size:11.5px;font-weight:800;margin-top:8px}
 
-  .why{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:16px;display:grid;gap:8px}
-  .why b{color:var(--green)}
-  .why .r{display:flex;gap:9px;font-size:12.8px;align-items:flex-start}
-  .why .n{flex:0 0 22px;height:22px;border-radius:50%;background:var(--green);color:#fff;font-weight:900;font-size:12px;display:grid;place-items:center}
-
-  .sec{margin:22px 0 10px;display:flex;align-items:center;gap:10px}
-  .sec .tag{background:var(--navy);color:#fff;font-weight:900;font-size:13px;padding:7px 15px;border-radius:9px}
+  .sec{margin:22px 0 10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .sec .tag{color:#fff;font-weight:900;font-size:13px;padding:7px 15px;border-radius:9px}
+  .sec .tag.stop{background:var(--stop)}
+  .sec .tag.add{background:var(--navy)}
   .sec .desc{font-size:12px;color:var(--sub);font-weight:700}
 
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-  /* 勝ちKW バー */
-  .rows{padding:8px 14px}
-  .kw{padding:12px 0;border-bottom:1px dashed var(--line)}
-  .kw:last-child{border-bottom:none}
-  .kw .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin-bottom:7px}
-  .kw .name{font-size:15px;font-weight:900;color:var(--ink)}
-  .kw .best{font-size:10.5px;font-weight:900;color:#fff;background:var(--orange2);border-radius:6px;padding:2px 8px}
-  .kw .cpc{margin-left:auto;font-size:12.5px;font-weight:800;color:var(--sub);font-variant-numeric:tabular-nums}
-  .kw .cpc b{color:var(--green);font-size:14px}
-  .bar{display:flex;align-items:center;gap:9px}
-  .track{flex:1;height:15px;background:var(--track);border-radius:999px;overflow:hidden}
-  .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--green2),var(--green))}
-  .fill.top{background:linear-gradient(90deg,#ffb057,var(--orange2))}
-  .ctr{flex:0 0 62px;text-align:right;font-size:13.5px;font-weight:900;color:var(--navy);font-variant-numeric:tabular-nums}
-  .axis{font-size:10.5px;color:var(--sub);text-align:right;padding:2px 14px 10px;font-weight:600}
+  /* 停止KW */
+  .stopcard{background:var(--stopbg);border:1px solid var(--stopbd);border-radius:14px;padding:6px 15px}
+  .stoprow{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--stopbd)}
+  .stoprow:last-child{border-bottom:none}
+  .stoprow .x{flex:0 0 24px;height:24px;border-radius:50%;background:var(--stop);color:#fff;font-weight:900;display:grid;place-items:center;font-size:13px;margin-top:1px}
+  .stoprow .body{flex:1}
+  .stoprow .kw{font-size:14.5px;font-weight:900;color:var(--ink)}
+  .stoprow .rz{font-size:12px;color:var(--sub);font-weight:700;margin-top:3px;line-height:1.6}
+  .stoprow .rz b{color:var(--stop)}
 
   /* 追加KW グループ */
   .grid{display:grid;grid-template-columns:1fr;gap:12px}
   @media(min-width:680px){.grid{grid-template-columns:1fr 1fr}}
   .gcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px}
-  .gcard.warn{border-color:var(--warnbd);background:var(--warnbg)}
-  .gcard .gt{font-size:12px;font-weight:900;color:var(--gd);margin-bottom:9px;display:flex;align-items:center;gap:7px}
-  .gcard.warn .gt{color:var(--warn)}
-  .gcard .ic{width:22px;height:22px;border-radius:7px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:900;flex:0 0 22px}
-  .gcard.warn .ic{background:var(--warn)}
-  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
-  .chip{background:var(--track);border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:12.5px;font-weight:800;color:var(--ink)}
-  .gcard.warn .chip{background:#fff;border-color:var(--warnbd)}
-  .rz{font-size:12px;color:var(--sub);font-weight:700;line-height:1.65}
+  .gcard .gt{font-size:12.5px;font-weight:900;color:var(--gd);margin-bottom:9px;display:flex;align-items:center;gap:8px}
+  .gcard .ic{width:24px;height:24px;border-radius:8px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:900;flex:0 0 24px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+  .chip{background:var(--track);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:800;color:var(--ink)}
+  .rz{font-size:12.5px;color:var(--sub);font-weight:700;line-height:1.66}
   .rz b{color:var(--green)}
-  .gcard.warn .rz b{color:var(--warn)}
+  .why{display:flex;gap:7px;align-items:flex-start;margin-top:2px}
+  .why .lb{flex:0 0 auto;font-size:10.5px;font-weight:900;color:#fff;background:var(--green2);border-radius:6px;padding:2px 7px;margin-top:1px}
 
   .note{margin-top:18px;background:var(--card);border:1px dashed var(--green2);border-radius:12px;padding:12px 15px;font-size:12px;color:var(--sub);font-weight:700;line-height:1.7}
   .note b{color:var(--green)}
@@ -73,79 +61,55 @@
 <body><div class="wrap">
 
   <div class="hd">
-    <h1>OWL広告｜TO側キーワード（寄せる＋追加する）</h1>
-    <p>実績データ（Google 6/1–7/26・Yahoo 6/1–7/27 実測）をもとに、効率の良い軸に予算を寄せ、同じ意図の隣接語を追加します。</p>
-    <span class="who">河合さん 確認用 ／ 被りチェックのお願い ／ 2026-07-28</span>
+    <h1>OWL広告｜TO側キーワードの整理</h1>
+    <p>実績データ（Google 6/1–7/26・Yahoo 6/1–7/27 実測）をもとに、効かないキーワードを止め、代わりに入れたいキーワードをまとめました。</p>
+    <span class="who">河合さん 確認用 ／ 2026-07-28</span>
   </div>
 
-  <div class="why">
-    <div class="r"><span class="n">1</span><div><b>寄せる理由</b>：CTR・CPCの実績が良い＝すでに勝っている軸。ここに予算を集中する。</div></div>
-    <div class="r"><span class="n">2</span><div><b>追加する理由</b>：勝ち筋と「同じ検索意図の隣接語」を足し、顕在層の取りこぼしを拾う。</div></div>
-  </div>
-
-  <div class="sec"><span class="tag">① 予算を寄せる 勝ちキーワード</span><span class="desc">CTR＝棒／CPC＝右</span></div>
-  <div class="card">
-    <div class="rows">
-      <div class="kw">
-        <div class="top"><span class="name">起業 介護</span><span class="best">最優秀</span><span class="cpc">CPC <b>¥120</b></span></div>
-        <div class="bar"><span class="track"><span class="fill top" style="width:98%"></span></span><span class="ctr">31.6%</span></div>
-      </div>
-      <div class="kw">
-        <div class="top"><span class="name">起業 福祉</span><span class="cpc">CPC <b>¥190</b></span></div>
-        <div class="bar"><span class="track"><span class="fill top" style="width:63%"></span></span><span class="ctr">20.4%</span></div>
-      </div>
-      <div class="kw">
-        <div class="top"><span class="name">障害者GH 開業</span><span class="best">最高CTR帯</span><span class="cpc">CPC <b>¥411</b></span></div>
-        <div class="bar"><span class="track"><span class="fill" style="width:59%"></span></span><span class="ctr">19.0%</span></div>
-      </div>
-      <div class="kw">
-        <div class="top"><span class="name">グループホーム 開業</span><span class="cpc">CPC <b>¥428</b></span></div>
-        <div class="bar"><span class="track"><span class="fill" style="width:56%"></span></span><span class="ctr">18.0%</span></div>
-      </div>
-      <div class="kw">
-        <div class="top"><span class="name">グループホーム 経営</span><span class="best">TO主力</span><span class="cpc">CPC <b>¥362</b></span></div>
-        <div class="bar"><span class="track"><span class="fill" style="width:51%"></span></span><span class="ctr">16.5%</span></div>
-      </div>
-      <div class="kw">
-        <div class="top"><span class="name">障害者GH 経営</span><span class="cpc">CPC <b>¥410</b></span></div>
-        <div class="bar"><span class="track"><span class="fill" style="width:43%"></span></span><span class="ctr">13.8%</span></div>
+  <div class="sec"><span class="tag stop">① 止めたキーワード</span><span class="desc">効率が悪く、予算のムダになっていたもの（反映済み）</span></div>
+  <div class="stopcard">
+    <div class="stoprow">
+      <span class="x">×</span>
+      <div class="body">
+        <div class="kw">障害者／障がい者 支援 事業 開業</div>
+        <div class="rz">両媒体で<b>最低CTR</b>（Google 9.1%・Yahoo 3.3%）、合計<b>約¥72,000の空振り</b>。意図が広すぎて、就労支援・相談支援など“開業したい人”以外まで拾ってしまうため。</div>
       </div>
     </div>
-    <div class="axis">0% ─────────── CTR ─────────── 32%　／　※CPCが低いほど1クリック単価が安い</div>
+    <div class="stoprow">
+      <span class="x">×</span>
+      <div class="body">
+        <div class="kw">介護 独立 ／ 福祉 独立</div>
+        <div class="rz"><b>品質スコア1</b>でCPCが高く、検索意図がLP（GH開業・経営）とズレていたため。</div>
+      </div>
+    </div>
   </div>
 
-  <div class="sec"><span class="tag">② 新しく追加したいキーワード</span><span class="desc">意図別 ／ ⚠＝被り確認をお願いしたい</span></div>
+  <div class="sec"><span class="tag add">② 新しく入れたいキーワード</span><span class="desc">なぜ入れるか＝理由つき</span></div>
   <div class="grid">
     <div class="gcard">
-      <div class="gt"><span class="ic">¥</span>お金の意図（顕在度が高い）</div>
+      <div class="gt"><span class="ic">¥</span>お金・資金の悩み</div>
       <div class="chips"><span class="chip">GH開業 費用</span><span class="chip">GH開業 資金</span></div>
-      <div class="rz">「開業」の勝ち筋に<b>“お金”の悩み</b>を掛け合わせ。資金を調べる＝今すぐ動く層。</div>
+      <div class="why"><span class="lb">理由</span><div class="rz">お金を調べている人は<b>開業を本気で検討している“今すぐ動く層”</b>。問い合わせにつながりやすい。</div></div>
     </div>
     <div class="gcard">
       <div class="gt"><span class="ic">◎</span>未経験ニーズ</div>
       <div class="chips"><span class="chip">障害者GH 未経験</span><span class="chip">未経験 開業</span></div>
-      <div class="rz">未経験は<b>LPの訴求と一致</b>（受け皿がある）。刺さりやすい。</div>
+      <div class="why"><span class="lb">理由</span><div class="rz">「未経験でも始められる」は<b>LPの一番の売り＝訴求と一致</b>。受け皿があるので刺さりやすい。</div></div>
     </div>
     <div class="gcard">
-      <div class="gt"><span class="ic">→</span>開業プロセス（今すぐ層）</div>
+      <div class="gt"><span class="ic">→</span>開業の進め方</div>
       <div class="chips"><span class="chip">指定申請</span><span class="chip">立ち上げ</span><span class="chip">始め方</span></div>
-      <div class="rz">開業の<b>手続き・進め方</b>を調べる＝行動直前の顕在KW。</div>
+      <div class="why"><span class="lb">理由</span><div class="rz">手続き・進め方を調べている＝<b>行動の直前段階</b>。情報だけの人より問い合わせが近い。</div></div>
     </div>
     <div class="gcard">
-      <div class="gt"><span class="ic">制</span>制度名での開業意図</div>
+      <div class="gt"><span class="ic">制</span>制度名で調べる層</div>
       <div class="chips"><span class="chip">共同生活援助 開業</span></div>
-      <div class="rz">制度名で調べる<b>本気度の高い層</b>。品質は広告文で底上げ。</div>
-    </div>
-    <div class="gcard warn">
-      <div class="gt"><span class="ic">⚠</span>障害福祉軸への拡張（要・被り確認）</div>
-      <div class="chips"><span class="chip">障害福祉 開業</span><span class="chip">起業 障害福祉</span></div>
-      <div class="rz">「起業 介護/福祉」の高効率を<b>“障害福祉”軸へ拡張</b>したい。ただし<b>河合さんの経営者向け軸と近い</b>ので、被り確認をお願いします。近ければTOは見送ります。</div>
+      <div class="why"><span class="lb">理由</span><div class="rz">正式な制度名（＝グループホームの制度名）で調べる人は<b>知識があり本気度が高い</b>。質は広告文で底上げ。</div></div>
     </div>
   </div>
 
   <div class="note">
-    <b>お願い：</b>②の追加について OK / NG（特に ⚠「障害福祉 開業」「起業 障害福祉」の被り）だけいただければ、こちらで<b>同日反映</b>します。<br>
-    ※①の勝ちKWは SSOT上 RB側で既に除外済み（起業介護/福祉・障がい者GH経営 等）のため被りは無い認識です。不要KW・除外はTO側で反映済みです。
+    <b>共有まで：</b>②はTO側で追加予定です。もし河合さん側のキーワードと<b>被りがあれば</b>教えてください（なければこのまま反映します）。①の止めたKW・除外はTO側で反映済みです。
   </div>
 
   <div class="foot">TO＝斗（星崎）担当キャンペーン ／ 数値は各媒体レポート実測 ／ 内部確認用（未公開・noindex）</div>
