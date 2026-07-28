@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>株式会社花庄 様｜AI動画 構成案 v1（新海誠風／宮崎駿風）</title>
+<style>
+:root{
+  --a:#4a7ec7; --b:#4f9d69; --ink:#22201f; --sub:#6b6360;
+  --line:#e6e0da; --bg:#faf7f4; --card:#fff; --accent:#c94f6d;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;
+ line-height:1.75;-webkit-text-size-adjust:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 80px}
+header.hero{background:linear-gradient(135deg,#2f3d52,#4a5f74);color:#fff;padding:44px 20px 38px;margin-bottom:34px}
+header.hero .inner{max-width:1180px;margin:0 auto}
+header.hero .eyebrow{font-size:13px;letter-spacing:.14em;opacity:.8;margin:0 0 10px}
+header.hero h1{font-size:clamp(21px,3.4vw,32px);margin:0 0 14px;line-height:1.4}
+header.hero p{margin:0;font-size:15px;opacity:.92}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.meta span{background:rgba(255,255,255,.16);border-radius:100px;padding:5px 14px;font-size:13px}
+h2{font-size:20px;margin:52px 0 8px;padding-left:13px;border-left:5px solid var(--accent);line-height:1.5}
+h2+.lead{margin:0 0 22px;color:var(--sub);font-size:14.5px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 26px;font-size:14px}
+.legend b{display:inline-block;width:13px;height:13px;border-radius:3px;vertical-align:-1px;margin-right:7px}
+.legend .la b{background:var(--a)} .legend .lb b{background:var(--b)}
+.flow{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:12px}
+.flow ol{margin:0;padding-left:20px}
+.flow li{margin:7px 0}
+.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
+th,td{padding:11px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#f2ede8;font-weight:600;white-space:nowrap}
+td.n{font-weight:700;color:var(--accent);white-space:nowrap}
+td.d{white-space:nowrap;color:var(--sub)}
+.scene,.model{background:var(--card);border:1px solid var(--line);border-radius:14px;
+ padding:18px;margin-bottom:22px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.scene-head,.model-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.num{background:var(--accent);color:#fff;border-radius:7px;padding:4px 12px;font-weight:700;font-size:15px}
+.role{font-weight:600;font-size:15px}
+.dur,.age{margin-left:auto;color:var(--sub);font-size:13.5px}
+.model-head h3{margin:0;font-size:17px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pair figure{margin:0;position:relative;border-radius:9px;overflow:hidden;background:#eee}
+.pair img{display:block;width:100%;height:auto}
+.tag{position:absolute;top:9px;left:9px;color:#fff;font-size:12px;font-weight:700;
+ padding:3px 11px;border-radius:100px;letter-spacing:.03em;z-index:1}
+.tag-a{background:var(--a)} .tag-b{background:var(--b)}
+.scene-body,.model-body{margin-top:13px}
+.desc{margin:0 0 9px;font-size:14.5px}
+.telop{margin:0;background:#f4efe9;border-radius:8px;padding:10px 13px;font-size:15px;font-weight:600}
+.telop span{display:inline-block;background:var(--ink);color:#fff;font-size:11px;font-weight:700;
+ border-radius:4px;padding:2px 8px;margin-right:10px;vertical-align:2px}
+.ref{margin:0 0 7px;font-size:14.5px}
+.model-body p{font-size:14.5px}
+.warn{color:var(--accent);font-weight:600}
+.note{background:#fff9ef;border:1px solid #f0d9ae;border-radius:12px;padding:18px 22px;margin:16px 0}
+.note h3{margin:0 0 10px;font-size:16px}
+.note ul{margin:0;padding-left:20px} .note li{margin:6px 0;font-size:14.5px}
+.endcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;font-size:15px}
+.endcard dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px}
+.endcard dt{color:var(--sub);white-space:nowrap} .endcard dd{margin:0;font-weight:600}
+footer{margin-top:60px;padding-top:22px;border-top:1px solid var(--line);color:var(--sub);font-size:13px}
+@media(max-width:720px){
+  .pair{grid-template-columns:1fr}
+  .dur,.age{margin-left:0;width:100%}
+  h2{font-size:18px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="inner">
+    <p class="eyebrow">株式会社ランバード ／ AI動画制作</p>
+    <h1>株式会社花庄 様<br>AI動画 構成案 v1</h1>
+    <p>ヒアリング内容をもとに、アニメのテイスト違いで2パターン作成いたしました。<br>
+       同じ構成・同じシーンを、<b>新海誠風</b>と<b>宮崎駿風</b>で並べています。</p>
+    <div class="meta">
+      <span>全13カット</span><span>約45秒</span><span>16:9 横型</span>
+      <span>テロップ＋BGM（ナレーションなし）</span><span>2026-07-28</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2>この動画のねらい</h2>
+  <p class="lead">目的は「ロピアモール滝ノ水店への集客（お問い合わせ・ご来店）」です。</p>
+  <div class="flow">
+    <ol>
+      <li><b>前半（S01〜S05）一般のお客様へ</b>：贈り物に迷う → お花に決める → 受け取った方が喜ぶ、までを見せます。<br>
+        母の日に限定せず「贈り物に迷っている方」への訴求にすることで、<b>お誕生日・父の日・敬老の日などにも使い回せる</b>作りにしています。</li>
+      <li><b>中盤（S06〜S09）法人のお客様へ</b>：胡蝶蘭とスタンド花で「ここは法人ギフトもやっているお店だ」と一目で伝えます。</li>
+      <li><b>後半（S10〜S12）お値打ちの理由</b>：昭和53年創業・愛知県内 約70店舗への卸・自社便21台。<br>
+        「なぜ良いお花をお値打ちに出せるのか」の裏付けとして置いています。最後にスタッフ募集を一言。</li>
+      <li><b>ラスト（S13）ご案内</b>：店舗情報とInstagramのQRコード。</li>
+    </ol>
+  </div>
+
+  <h2>構成一覧</h2>
+  <p class="lead">尺の合計は45.5秒です。</p>
+  <div class="tblwrap">
+  <table>
+    <thead><tr><th>#</th><th>尺</th><th>役割</th><th>映像</th><th>テロップ</th></tr></thead>
+    <tbody>
+      <tr><td class="n">S01</td><td class="d">3.0秒</td><td class="d">悩みの共感</td><td>雑貨店の棚の前。贈り物を選びあぐねて小さくため息。手にはスマホ</td><td><b>贈りもの、何にしよう。</b></td></tr><tr><td class="n">S02</td><td class="d">3.0秒</td><td class="d">解決との出会い</td><td>モール内の花売場。赤・黄・ピンクの花がぎっしり並び、表情がぱっと明るくなる</td><td><b>——そうだ、花にしよう。</b></td></tr><tr><td class="n">S03</td><td class="d">3.5秒</td><td class="d">解決（選ぶ）</td><td>店内でスタッフに相談しながら花を選ぶ</td><td><b>誰に、どんな日に。おまかせください。</b></td></tr><tr><td class="n">S04</td><td class="d">3.5秒</td><td class="d">根拠＋シズル</td><td>スタッフの手元アップ。赤・ピンク・黄の花を束ねてラッピング</td><td><b>昭和53年創業。目利きが選ぶ、旬の花。</b></td></tr><tr><td class="n">S05</td><td class="d">4.0秒</td><td class="d">ベネフィット回収</td><td>自宅の玄関先。受け取ったお母様が花束を抱えて笑顔</td><td><b>&ldquo;ありがとう&rdquo;は、花がいちばん伝わる。</b></td></tr><tr><td class="n">S06</td><td class="d">3.0秒</td><td class="d">悩みの共感（法人）</td><td>銀行／保険のオフィス。上司と部下が顧客リストを前に思案</td><td><b>お取引先へ贈るもの、迷っていませんか。</b></td></tr><tr><td class="n">S07</td><td class="d">3.5秒</td><td class="d">解決（法人）</td><td>店内、白の大輪の胡蝶蘭がずらりと並ぶ</td><td><b>法人ギフトは、白の大輪 胡蝶蘭。</b></td></tr><tr><td class="n">S08</td><td class="d">4.0秒</td><td class="d">ベネフィット回収（法人）</td><td>町工場へ2人で届け、社長が笑顔で受け取る</td><td><b>贈った人の顔まで、立てる。</b></td></tr><tr><td class="n">S09</td><td class="d">4.0秒</td><td class="d">解決（法人②）</td><td>夕暮れ。居酒屋の開店祝い。入口の両サイドに4基＋4基＝計8基（立て札なし）</td><td><b>開店祝いのスタンド花も、おまかせ。</b></td></tr><tr><td class="n">S10</td><td class="d">3.0秒</td><td class="d">根拠</td><td>早朝の卸の現場。花のケースが山積み</td><td><b>メインは、卸売。愛知県内 約70店舗へ。</b></td></tr><tr><td class="n">S11</td><td class="d">3.0秒</td><td class="d">根拠</td><td>自社トラックがずらりと並ぶ</td><td><b>自社便21台。だから、いい花をお値打ちに。</b></td></tr><tr><td class="n">S12</td><td class="d">3.0秒</td><td class="d">採用</td><td>店頭で笑顔で働くスタッフ</td><td><b>スタッフ募集中／販売スタッフ・お花の配送スタッフ</b></td></tr><tr><td class="n">S13</td><td class="d">5.0秒</td><td class="d">オファー（CTA）</td><td>ロピアモール滝ノ水の店先。情報とInstagram QRを合成</td><td><b>花庄 ロピアモール滝ノ水店／住所・TEL・営業時間・QR</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>登場人物（モデル）</h2>
+  <p class="lead">ご指定いただいた方の<b>雰囲気だけ</b>を寄せた、AIオリジナルのお顔で作成しています（特定の方のお顔は再現しておりません）。</p>
+  <div class="legend">
+    <span class="la"><b></b>新海誠風</span><span class="lb"><b></b>宮崎駿風</span>
+  </div>
+  
+    <section class="model">
+      <div class="model-head"><h3>女性（一般のお客様）</h3><span class="age">30〜40代 女性</span></div>
+      <div class="pair">
+        <figure><div class="tag tag-a">新海誠風</div><img loading="lazy" src="hanasho-images/shinkai_C1_woman.jpg" alt="女性（一般のお客様） 新海誠風"></figure>
+        <figure><div class="tag tag-b">宮崎駿風</div><img loading="lazy" src="hanasho-images/ghibli_C1_woman.jpg" alt="女性（一般のお客様） 宮崎駿風"></figure>
+      </div>
+      <div class="model-body">
+        <p class="ref">ご指定の雰囲気：<b>ご参考としていただいた女優の方の雰囲気（華やかにしすぎず、庶民的に）</b></p>
+        <p>明るく親しみやすい顔立ち／大きめの二重／すっと通った鼻筋／自然な微笑み／セミロングの前髪あり。服装は普段着の淡い色（生成りベージュ・くすみブルー）、<b>赤い服はNG</b>（お花が引き立たなくなるため）。バッグは小さめ。</p>
+      </div>
+    </section>
+    <section class="model">
+      <div class="model-head"><h3>上司（銀行／保険）</h3><span class="age">40〜50代 男性</span></div>
+      <div class="pair">
+        <figure><div class="tag tag-a">新海誠風</div><img loading="lazy" src="hanasho-images/shinkai_C2_boss.jpg" alt="上司（銀行／保険） 新海誠風"></figure>
+        <figure><div class="tag tag-b">宮崎駿風</div><img loading="lazy" src="hanasho-images/ghibli_C2_boss.jpg" alt="上司（銀行／保険） 宮崎駿風"></figure>
+      </div>
+      <div class="model-body">
+        <p class="ref">ご指定の雰囲気：<b>ご参考としていただいた男優の方（落ち着いた雰囲気の方）</b></p>
+        <p>頬に柔らかさのある落ち着いた佇まい／太めの眉／やや下がり気味の温かい目元／ボリュームのある癖毛／含みのある穏やかな微笑。ネイビーのピンストライプスーツ。</p>
+      </div>
+    </section>
+    <section class="model">
+      <div class="model-head"><h3>部下（銀行／保険の営業）</h3><span class="age">20代後半〜30代 男性</span></div>
+      <div class="pair">
+        <figure><div class="tag tag-a">新海誠風</div><img loading="lazy" src="hanasho-images/shinkai_C3_junior.jpg" alt="部下（銀行／保険の営業） 新海誠風"></figure>
+        <figure><div class="tag tag-b">宮崎駿風</div><img loading="lazy" src="hanasho-images/ghibli_C3_junior.jpg" alt="部下（銀行／保険の営業） 宮崎駿風"></figure>
+      </div>
+      <div class="model-body">
+        <p class="ref">ご指定の雰囲気：<b>ご参考としていただいた方（人当たりのよい雰囲気の方）</b></p>
+        <p>丸顔でふっくら／マッシュ（ボウル）カット／丸い細フレームの<b>眼鏡あり</b>／人懐こい満面の笑み。明るめグレースーツ。<span class='warn'>※ヒアリングでは「眼鏡なし」とお伺いしておりましたが、ご参考のお写真に合わせて眼鏡ありで作成しております。眼鏡なしがよろしければ差し替えます。</span></p>
+      </div>
+    </section>
+
+  <h2>シーン別 テイスト比較</h2>
+  <p class="lead">左が新海誠風、右が宮崎駿風です（スマートフォンでは上下に並びます）。</p>
+  <div class="legend">
+    <span class="la"><b></b>新海誠風</span><span class="lb"><b></b>宮崎駿風</span>
+  </div>
+  
+    <section class="scene" id="s01">
+      <div class="scene-head">
+        <span class="num">S01</span>
+        <span class="role">悩みの共感</span>
+        <span class="dur">3.0秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S01_gift_lost.jpg" alt="S01 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S01_gift_lost.jpg" alt="S01 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">雑貨店の棚の前。贈り物を選びあぐねて小さくため息。手にはスマホ</p>
+        <p class="telop"><span>テロップ</span>贈りもの、何にしよう。</p>
+      </div>
+    </section>
+    <section class="scene" id="s02">
+      <div class="scene-head">
+        <span class="num">S02</span>
+        <span class="role">解決との出会い</span>
+        <span class="dur">3.0秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S02_flower_corner.jpg" alt="S02 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S02_flower_corner.jpg" alt="S02 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">モール内の花売場。赤・黄・ピンクの花がぎっしり並び、表情がぱっと明るくなる</p>
+        <p class="telop"><span>テロップ</span>——そうだ、花にしよう。</p>
+      </div>
+    </section>
+    <section class="scene" id="s03">
+      <div class="scene-head">
+        <span class="num">S03</span>
+        <span class="role">解決（選ぶ）</span>
+        <span class="dur">3.5秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S03_choosing.jpg" alt="S03 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S03_choosing.jpg" alt="S03 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">店内でスタッフに相談しながら花を選ぶ</p>
+        <p class="telop"><span>テロップ</span>誰に、どんな日に。おまかせください。</p>
+      </div>
+    </section>
+    <section class="scene" id="s04">
+      <div class="scene-head">
+        <span class="num">S04</span>
+        <span class="role">根拠＋シズル</span>
+        <span class="dur">3.5秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S04_bouquet_hands.jpg" alt="S04 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S04_bouquet_hands.jpg" alt="S04 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">スタッフの手元アップ。赤・ピンク・黄の花を束ねてラッピング</p>
+        <p class="telop"><span>テロップ</span>昭和53年創業。目利きが選ぶ、旬の花。</p>
+      </div>
+    </section>
+    <section class="scene" id="s05">
+      <div class="scene-head">
+        <span class="num">S05</span>
+        <span class="role">ベネフィット回収</span>
+        <span class="dur">4.0秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S05_mother_smile.jpg" alt="S05 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S05_mother_smile.jpg" alt="S05 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">自宅の玄関先。受け取ったお母様が花束を抱えて笑顔</p>
+        <p class="telop"><span>テロップ</span>&ldquo;ありがとう&rdquo;は、花がいちばん伝わる。</p>
+      </div>
+    </section>
+    <section class="scene" id="s06">
+      <div class="scene-head">
+        <span class="num">S06</span>
+        <span class="role">悩みの共感（法人）</span>
+        <span class="dur">3.0秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S06_office_worry.jpg" alt="S06 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S06_office_worry.jpg" alt="S06 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">銀行／保険のオフィス。上司と部下が顧客リストを前に思案</p>
+        <p class="telop"><span>テロップ</span>お取引先へ贈るもの、迷っていませんか。</p>
+      </div>
+    </section>
+    <section class="scene" id="s07">
+      <div class="scene-head">
+        <span class="num">S07</span>
+        <span class="role">解決（法人）</span>
+        <span class="dur">3.5秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S07_orchid_row.jpg" alt="S07 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S07_orchid_row.jpg" alt="S07 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">店内、白の大輪の胡蝶蘭がずらりと並ぶ</p>
+        <p class="telop"><span>テロップ</span>法人ギフトは、白の大輪 胡蝶蘭。</p>
+      </div>
+    </section>
+    <section class="scene" id="s08">
+      <div class="scene-head">
+        <span class="num">S08</span>
+        <span class="role">ベネフィット回収（法人）</span>
+        <span class="dur">4.0秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S08_factory_deliver.jpg" alt="S08 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S08_factory_deliver.jpg" alt="S08 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">町工場へ2人で届け、社長が笑顔で受け取る</p>
+        <p class="telop"><span>テロップ</span>贈った人の顔まで、立てる。</p>
+      </div>
+    </section>
+    <section class="scene" id="s09">
+      <div class="scene-head">
+        <span class="num">S09</span>
+        <span class="role">解決（法人②）</span>
+        <span class="dur">4.0秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S09_izakaya_stands.jpg" alt="S09 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S09_izakaya_stands.jpg" alt="S09 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">夕暮れ。居酒屋の開店祝い。入口の両サイドに4基＋4基＝計8基（立て札なし）</p>
+        <p class="telop"><span>テロップ</span>開店祝いのスタンド花も、おまかせ。</p>
+      </div>
+    </section>
+    <section class="scene" id="s10">
+      <div class="scene-head">
+        <span class="num">S10</span>
+        <span class="role">根拠</span>
+        <span class="dur">3.0秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S10_wholesale.jpg" alt="S10 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S10_wholesale.jpg" alt="S10 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">早朝の卸の現場。花のケースが山積み</p>
+        <p class="telop"><span>テロップ</span>メインは、卸売。愛知県内 約70店舗へ。</p>
+      </div>
+    </section>
+    <section class="scene" id="s11">
+      <div class="scene-head">
+        <span class="num">S11</span>
+        <span class="role">根拠</span>
+        <span class="dur">3.0秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S11_trucks.jpg" alt="S11 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S11_trucks.jpg" alt="S11 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">自社トラックがずらりと並ぶ</p>
+        <p class="telop"><span>テロップ</span>自社便21台。だから、いい花をお値打ちに。</p>
+      </div>
+    </section>
+    <section class="scene" id="s12">
+      <div class="scene-head">
+        <span class="num">S12</span>
+        <span class="role">採用</span>
+        <span class="dur">3.0秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S12_staff.jpg" alt="S12 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S12_staff.jpg" alt="S12 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">店頭で笑顔で働くスタッフ</p>
+        <p class="telop"><span>テロップ</span>スタッフ募集中／販売スタッフ・お花の配送スタッフ</p>
+      </div>
+    </section>
+    <section class="scene" id="s13">
+      <div class="scene-head">
+        <span class="num">S13</span>
+        <span class="role">オファー（CTA）</span>
+        <span class="dur">5.0秒</span>
+      </div>
+      <div class="pair">
+        <figure>
+          <div class="tag tag-a">新海誠風</div>
+          <img loading="lazy" src="hanasho-images/shinkai_S13_storefront_dusk.jpg" alt="S13 新海誠風">
+        </figure>
+        <figure>
+          <div class="tag tag-b">宮崎駿風</div>
+          <img loading="lazy" src="hanasho-images/ghibli_S13_storefront_dusk.jpg" alt="S13 宮崎駿風">
+        </figure>
+      </div>
+      <div class="scene-body">
+        <p class="desc">ロピアモール滝ノ水の店先。情報とInstagram QRを合成</p>
+        <p class="telop"><span>テロップ</span>花庄 ロピアモール滝ノ水店／住所・TEL・営業時間・QR</p>
+      </div>
+    </section>
+
+  <h2>動画の最後にお載せする情報</h2>
+  <div class="endcard">
+    <dl>
+      <dt>店舗名</dt><dd>花庄　ロピアモール滝ノ水店</dd>
+      <dt>住所</dt><dd>〒458-0021　愛知県名古屋市緑区滝ノ水5-1401　ロピアモール滝ノ水</dd>
+      <dt>電話</dt><dd>052-846-2983</dd>
+      <dt>営業時間</dt><dd>10:00 - 18:30</dd>
+      <dt>QRコード</dt><dd>Instagram（@hanasho.takinomizu）へ遷移</dd>
+    </dl>
+  </div>
+
+  <h2>ご確認いただきたい点</h2>
+  <div class="note">
+    <h3>① まず、テイストをお決めください</h3>
+    <ul>
+      <li><b>新海誠風</b>… 光と空の演出が強く、映画の予告編のような華やかさ</li>
+      <li><b>宮崎駿風</b>… 水彩のやわらかさで生活感があり、表情に親しみが出る</li>
+    </ul>
+    <h3 style="margin-top:16px">② 構成・流れはこの方向で問題ないか</h3>
+    <h3 style="margin-top:16px">③ 気になるシーンがあれば、シーン番号（S01〜S13）でお知らせください</h3>
+  </div>
+
+  <div class="note">
+    <h3>今回こちらで仮置きさせていただいた点</h3>
+    <p style="margin:0 0 8px;font-size:14.5px">ヒアリングで伺えていなかったため、業態的に最適と思われる形で作成しております。ご希望があればお知らせください。</p>
+    <ul>
+      <li>尺：約45秒</li>
+      <li>ナレーション：なし（テロップ＋BGMのみ）</li>
+      <li>BGM：温かく前向きなピアノ系</li>
+      <li>代表者・スタッフの顔出し：なし（手元・引きの画中心）</li>
+      <li>花束の受け取り手：お母様（60代）</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <h3>お写真・動画の再送のお願い</h3>
+    <p style="margin:0 0 8px;font-size:14.5px">先日いただいたデータが、こちらで開くと中身が空の状態で届いておりました。お手数ですが下記4点を改めてお送りください。</p>
+    <ul>
+      <li>店舗の入口のお写真（横向き）</li>
+      <li>店内をその場でぐるっと360度回した動画（横向き・少し離れて全体が入るように）</li>
+      <li>卸の様子（本社のお花の物量が分かるもの）</li>
+      <li>トラック（2〜3台並んでいるもので大丈夫です。21台に見えるようこちらで作成します）</li>
+    </ul>
+    <p style="margin:8px 0 0;font-size:14.5px">※ 今回の動画は全カットAIで作成しておりますので、素材なしでもこのまま進行可能です。いただけましたら、より実際のお店に近づける形で該当のカットを差し替えます。</p>
+  </div>
+
+  <footer>
+    株式会社ランバード ／ 担当：鈴木 北斗<br>
+    本ページは株式会社花庄 様専用の確認用ページです。検索エンジンには表示されません。
+  </footer>
+</div>
+</body>
+</html>
