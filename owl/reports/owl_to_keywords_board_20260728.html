@@ -6,53 +6,67 @@
   :root{
     --bg:#eef2f5; --card:#ffffff; --ink:#1f2d3d; --sub:#63707e; --line:#e2e8ee;
     --navy:#1e3a5f; --green:#2e7d32; --green2:#4aa14e; --gd:#215d34; --track:#e9eef2;
+    --blue:#2f74c0; --bluebg:#eaf3fb; --bluebd:#bcd9f0;
+    --amberbg:#fff7e9; --amberbd:#f2d9a8; --amber:#b4780f;
     --stopbg:#fdeeee; --stopbd:#f2c4c4; --stop:#c0392b;
   }
   @media (prefers-color-scheme:dark){
     :root{--bg:#0f1720;--card:#18222e;--ink:#e7edf3;--sub:#9aa8b6;--line:#26323f;--navy:#8db4e0;--track:#222e3b;
+      --blue:#6fa8dc;--bluebg:#152535;--bluebd:#2b4763;--amberbg:#2a2314;--amberbd:#5a4a24;--amber:#e0b45a;
       --stopbg:#2a1a1a;--stopbd:#5a3030;--stop:#e88b7d;}
   }
-  :root[data-theme="dark"]{--bg:#0f1720;--card:#18222e;--ink:#e7edf3;--sub:#9aa8b6;--line:#26323f;--navy:#8db4e0;--track:#222e3b;--stopbg:#2a1a1a;--stopbd:#5a3030;--stop:#e88b7d;}
-  :root[data-theme="light"]{--bg:#eef2f5;--card:#fff;--ink:#1f2d3d;--sub:#63707e;--line:#e2e8ee;--navy:#1e3a5f;--track:#e9eef2;--stopbg:#fdeeee;--stopbd:#f2c4c4;--stop:#c0392b;}
+  :root[data-theme="dark"]{--bg:#0f1720;--card:#18222e;--ink:#e7edf3;--sub:#9aa8b6;--line:#26323f;--navy:#8db4e0;--track:#222e3b;--blue:#6fa8dc;--bluebg:#152535;--bluebd:#2b4763;--amberbg:#2a2314;--amberbd:#5a4a24;--amber:#e0b45a;--stopbg:#2a1a1a;--stopbd:#5a3030;--stop:#e88b7d;}
+  :root[data-theme="light"]{--bg:#eef2f5;--card:#fff;--ink:#1f2d3d;--sub:#63707e;--line:#e2e8ee;--navy:#1e3a5f;--track:#e9eef2;--blue:#2f74c0;--bluebg:#eaf3fb;--bluebd:#bcd9f0;--amberbg:#fff7e9;--amberbd:#f2d9a8;--amber:#b4780f;--stopbg:#fdeeee;--stopbd:#f2c4c4;--stop:#c0392b;}
   *{box-sizing:border-box;margin:0}
   html,body{max-width:100%;overflow-x:hidden}
   body{background:var(--bg);color:var(--ink);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
     line-height:1.6;font-feature-settings:"palt";padding:20px 14px 48px}
-  .wrap{max-width:940px;margin:0 auto}
-  .hd{background:linear-gradient(135deg,var(--gd),#2e7d32);color:#fff;border-radius:16px;padding:20px 22px;margin-bottom:16px;
+  .wrap{max-width:960px;margin:0 auto}
+  .hd{background:linear-gradient(135deg,var(--gd),#2e7d32);color:#fff;border-radius:16px;padding:20px 22px;margin-bottom:14px;
     box-shadow:0 10px 26px rgba(30,58,95,.18)}
-  .hd h1{font-size:clamp(18px,4.4vw,23px);font-weight:900;letter-spacing:.01em}
+  .hd h1{font-size:clamp(18px,4.4vw,23px);font-weight:900}
   .hd p{font-size:12.5px;opacity:.94;margin-top:6px;line-height:1.7}
   .hd .who{display:inline-block;background:rgba(255,255,255,.18);border-radius:999px;padding:3px 12px;font-size:11.5px;font-weight:800;margin-top:8px}
 
+  .rule{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:12px;
+    padding:12px 15px;margin-bottom:16px;font-size:12.5px;font-weight:700;line-height:1.7}
+  .rule b{color:var(--green)} .rule .ng{color:var(--stop);font-weight:900}
+
   .sec{margin:22px 0 10px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .sec .tag{color:#fff;font-weight:900;font-size:13px;padding:7px 15px;border-radius:9px}
-  .sec .tag.stop{background:var(--stop)}
-  .sec .tag.add{background:var(--navy)}
+  .sec .tag.stop{background:var(--stop)} .sec .tag.add{background:var(--navy)}
   .sec .desc{font-size:12px;color:var(--sub);font-weight:700}
 
-  /* 停止KW */
-  .stopcard{background:var(--stopbg);border:1px solid var(--stopbd);border-radius:14px;padding:6px 15px}
-  .stoprow{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px dashed var(--stopbd)}
-  .stoprow:last-child{border-bottom:none}
+  .stopcard{background:var(--stopbg);border:1px solid var(--stopbd);border-radius:14px;padding:6px 15px;margin-bottom:10px}
+  .amcard{background:var(--amberbg);border:1px solid var(--amberbd);border-radius:14px;padding:12px 15px}
+  .stoprow{display:flex;gap:12px;align-items:flex-start;padding:12px 0}
   .stoprow .x{flex:0 0 24px;height:24px;border-radius:50%;background:var(--stop);color:#fff;font-weight:900;display:grid;place-items:center;font-size:13px;margin-top:1px}
-  .stoprow .body{flex:1}
+  .amrow .x{background:var(--amber)}
   .stoprow .kw{font-size:14.5px;font-weight:900;color:var(--ink)}
   .stoprow .rz{font-size:12px;color:var(--sub);font-weight:700;margin-top:3px;line-height:1.6}
-  .stoprow .rz b{color:var(--stop)}
+  .stoprow .rz b{color:var(--stop)} .amrow .rz b{color:var(--amber)}
 
-  /* 追加KW グループ */
-  .grid{display:grid;grid-template-columns:1fr;gap:12px}
-  @media(min-width:680px){.grid{grid-template-columns:1fr 1fr}}
-  .gcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 15px}
-  .gcard .gt{font-size:12.5px;font-weight:900;color:var(--gd);margin-bottom:9px;display:flex;align-items:center;gap:8px}
-  .gcard .ic{width:24px;height:24px;border-radius:8px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:900;flex:0 0 24px}
-  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
-  .chip{background:var(--track);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:800;color:var(--ink)}
-  .rz{font-size:12.5px;color:var(--sub);font-weight:700;line-height:1.66}
-  .rz b{color:var(--green)}
-  .why{display:flex;gap:7px;align-items:flex-start;margin-top:2px}
-  .why .lb{flex:0 0 auto;font-size:10.5px;font-weight:900;color:#fff;background:var(--green2);border-radius:6px;padding:2px 7px;margin-top:1px}
+  /* LP別 2カラム */
+  .lpgrid{display:grid;grid-template-columns:1fr;gap:14px}
+  @media(min-width:720px){.lpgrid{grid-template-columns:1fr 1fr}}
+  .lp{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+  .lp .lphd{padding:12px 15px;color:#fff}
+  .lp.zero .lphd{background:linear-gradient(135deg,#2f74c0,#255ea0)}
+  .lp.doku .lphd{background:linear-gradient(135deg,#c96a1c,#ff6f1c)}
+  .lp .lphd .t{font-size:14.5px;font-weight:900}
+  .lp .lphd .s{font-size:11px;font-weight:700;opacity:.92;margin-top:2px}
+  .lp .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:12px}
+  .grp .gt{font-size:11.5px;font-weight:900;color:var(--gd);margin-bottom:7px}
+  .lp.zero .grp .gt{color:var(--blue)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{border-radius:999px;padding:5px 12px;font-size:13px;font-weight:800;color:var(--ink);border:1px solid var(--line);background:var(--track)}
+  .lp.zero .chip{background:var(--bluebg);border-color:var(--bluebd)}
+  .lp.doku .chip{background:#fff2e6;border-color:#f5cfa8}
+  :root[data-theme="dark"] .lp.doku .chip,@media (prefers-color-scheme:dark){.lp.doku .chip{background:#2a1e12;border-color:#5a3f24}}
+  .rz{font-size:12px;color:var(--sub);font-weight:700;line-height:1.6;margin-top:6px}
+  .rz b{color:var(--green)} .lp.zero .rz b{color:var(--blue)}
+  .why{font-size:10.5px;font-weight:900;color:#fff;background:var(--green2);border-radius:6px;padding:2px 7px;margin-right:6px}
+  .lp.zero .why{background:var(--blue)}
 
   .note{margin-top:18px;background:var(--card);border:1px dashed var(--green2);border-radius:12px;padding:12px 15px;font-size:12px;color:var(--sub);font-weight:700;line-height:1.7}
   .note b{color:var(--green)}
@@ -62,56 +76,74 @@
 
   <div class="hd">
     <h1>OWL広告｜TO側キーワードの整理</h1>
-    <p>実績データ（Google 6/1–7/26・Yahoo 6/1–7/27 実測）をもとに、効かないキーワードを止め、代わりに入れたいキーワードをまとめました。</p>
+    <p>効かないキーワードを止め、代わりに入れたいキーワードを「送り先LP別」にまとめました（振り分けは owl-ads 運用プラン準拠）。</p>
     <span class="who">河合さん 確認用 ／ 2026-07-28</span>
   </div>
 
-  <div class="sec"><span class="tag stop">① 止めたキーワード</span><span class="desc">効率が悪く、予算のムダになっていたもの（反映済み）</span></div>
+  <div class="rule">
+    <b>基本ルール：キーワードは必ず「対象語（グループホーム／障害者GH／障害福祉）＋行動語」の2語・フレーズ一致</b>で入れます。<br>
+    <span class="ng">✕ 単体NG</span>：「立ち上げ」「始め方」だけだと会社・アプリ・サーバー等まで拾い、予算がムダになるため。
+  </div>
+
+  <div class="sec"><span class="tag stop">① 止めたキーワード</span><span class="desc">効率が悪く予算のムダ（反映済み）</span></div>
   <div class="stopcard">
     <div class="stoprow">
       <span class="x">×</span>
-      <div class="body">
+      <div>
         <div class="kw">障害者／障がい者 支援 事業 開業</div>
-        <div class="rz">両媒体で<b>最低CTR</b>（Google 9.1%・Yahoo 3.3%）、合計<b>約¥72,000の空振り</b>。意図が広すぎて、就労支援・相談支援など“開業したい人”以外まで拾ってしまうため。</div>
+        <div class="rz">両媒体で<b>最低CTR</b>（Google 9.1%・Yahoo 3.3%）、合計<b>約¥72,000の空振り</b>。意図が広すぎて就労支援・相談支援まで拾うため。</div>
       </div>
     </div>
-    <div class="stoprow">
+    <div class="stoprow" style="border-top:1px dashed var(--stopbd)">
       <span class="x">×</span>
-      <div class="body">
-        <div class="kw">介護 独立 ／ 福祉 独立</div>
-        <div class="rz"><b>品質スコア1</b>でCPCが高く、検索意図がLP（GH開業・経営）とズレていたため。</div>
+      <div>
+        <div class="kw">福祉 独立 ／ 介護 独立</div>
+        <div class="rz"><b>品質スコア1</b>でCPCが高く、検索意図がLP（GH開業・経営）とズレていたため停止（<b>河合さんと合意済み</b>）。</div>
       </div>
     </div>
   </div>
 
-  <div class="sec"><span class="tag add">② 新しく入れたいキーワード</span><span class="desc">なぜ入れるか＝理由つき</span></div>
-  <div class="grid">
-    <div class="gcard">
-      <div class="gt"><span class="ic">¥</span>お金・資金の悩み</div>
-      <div class="chips"><span class="chip">GH開業 費用</span><span class="chip">GH開業 資金</span></div>
-      <div class="why"><span class="lb">理由</span><div class="rz">お金を調べている人は<b>開業を本気で検討している“今すぐ動く層”</b>。問い合わせにつながりやすい。</div></div>
+  <div class="sec"><span class="tag add">② 新しく入れたいキーワード（LP別）</span><span class="desc">検索意図に合うLPへ送る＝CVしやすい</span></div>
+  <div class="lpgrid">
+
+    <div class="lp zero">
+      <div class="lphd"><div class="t">▶ 0円プランLP へ送る</div><div class="s">グループホームを「経営・開業」したい顕在層</div></div>
+      <div class="body">
+        <div class="grp">
+          <div class="gt">お金・資金の悩み</div>
+          <div class="chips"><span class="chip">グループホーム 開業 費用</span><span class="chip">グループホーム 開業 資金</span></div>
+          <div class="rz"><span class="why">理由</span>お金を調べる＝本気の“今すぐ層”。<b>「加盟金0」がそのまま答え</b>になり刺さる。</div>
+        </div>
+        <div class="grp">
+          <div class="gt">開業の進め方（実務・顕在）</div>
+          <div class="chips"><span class="chip">グループホーム 立ち上げ</span><span class="chip">グループホーム 指定申請</span><span class="chip">共同生活援助 開業</span></div>
+          <div class="rz"><span class="why">理由</span>手続き・制度名で調べる＝<b>行動の直前段階</b>。情報だけの人より問い合わせが近い。</div>
+        </div>
+      </div>
     </div>
-    <div class="gcard">
-      <div class="gt"><span class="ic">◎</span>未経験ニーズ</div>
-      <div class="chips"><span class="chip">障害者GH 未経験</span><span class="chip">未経験 開業</span></div>
-      <div class="why"><span class="lb">理由</span><div class="rz">「未経験でも始められる」は<b>LPの一番の売り＝訴求と一致</b>。受け皿があるので刺さりやすい。</div></div>
+
+    <div class="lp doku">
+      <div class="lphd"><div class="t">▶ 独立LP へ送る</div><div class="s">未経験から独立・新規参入したい層</div></div>
+      <div class="body">
+        <div class="grp">
+          <div class="gt">未経験ニーズ</div>
+          <div class="chips"><span class="chip">障害者GH 未経験</span><span class="chip">未経験 開業</span></div>
+          <div class="rz"><span class="why">理由</span>「未経験でも独立できる」は<b>独立LPの一番の売り＝訴求と一致</b>。刺さりやすい。</div>
+        </div>
+        <div class="grp">
+          <div class="gt">始め方（新規参入）</div>
+          <div class="chips"><span class="chip">障害福祉 始め方</span><span class="chip">福祉 事業 始め方</span></div>
+          <div class="rz"><span class="why">理由</span>これから福祉で独立を考える<b>入口の検討層</b>を拾う。</div>
+        </div>
+      </div>
     </div>
-    <div class="gcard">
-      <div class="gt"><span class="ic">→</span>開業の進め方</div>
-      <div class="chips"><span class="chip">指定申請</span><span class="chip">立ち上げ</span><span class="chip">始め方</span></div>
-      <div class="why"><span class="lb">理由</span><div class="rz">手続き・進め方を調べている＝<b>行動の直前段階</b>。情報だけの人より問い合わせが近い。</div></div>
-    </div>
-    <div class="gcard">
-      <div class="gt"><span class="ic">制</span>制度名で調べる層</div>
-      <div class="chips"><span class="chip">共同生活援助 開業</span></div>
-      <div class="why"><span class="lb">理由</span><div class="rz">正式な制度名（＝グループホームの制度名）で調べる人は<b>知識があり本気度が高い</b>。質は広告文で底上げ。</div></div>
-    </div>
+
   </div>
 
   <div class="note">
-    <b>共有まで：</b>②はTO側で追加予定です。もし河合さん側のキーワードと<b>被りがあれば</b>教えてください（なければこのまま反映します）。①の止めたKW・除外はTO側で反映済みです。
+    <b>共有まで：</b>②はTO側で追加予定です（すべて2語・フレーズ一致）。owl-ads運用プランのLP振り分け（GH経営/開業＝0円プランLP、独立/未経験＝独立LP）に沿っています。もし河合さん側のKWと<b>被りがあれば</b>教えてください（なければこのまま反映＋SSOT更新します）。①はTO側で反映済みです。
   </div>
 
-  <div class="foot">TO＝斗（星崎）担当キャンペーン ／ 数値は各媒体レポート実測 ／ 内部確認用（未公開・noindex）</div>
+  <div class="foot">TO＝斗（星崎）担当キャンペーン ／ 数値は各媒体レポート実測 ／ 振り分けは owl-ads『OWL広告運用プラン.md』準拠 ／ 内部確認用（未公開・noindex）</div>
 
 </div></body></html>
