@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社nambers Web導線調査 — 内部共有用（2026/07/30時点）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.65;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .note-top {
+            text-align: center;
+            color: #888;
+            font-size: 11px;
+            margin-bottom: 24px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 2px solid #e0e0e0;
+        }
+        .section h2 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section h2 .n {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            font-size: 12px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+        }
+
+        /* 店舗カード */
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .store {
+            border: 3px solid;
+            border-radius: 12px;
+            padding: 18px;
+            background: #fff;
+        }
+        .store.strong { border-color: #2e7d32; }
+        .store.mid    { border-color: #f9a825; }
+        .store.weak   { border-color: #e65100; }
+        .store.weakest{ border-color: #c62828; }
+
+        .store-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+        .store-name { font-size: 16px; font-weight: 700; }
+        .store-badge {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 700;
+        }
+        .store.strong .store-badge { background: #2e7d32; }
+        .store.mid    .store-badge { background: #f9a825; }
+        .store.weak   .store-badge { background: #e65100; }
+        .store.weakest .store-badge { background: #c62828; }
+
+        .store-sub {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .flow-list {
+            list-style: none;
+            counter-reset: step;
+            margin-bottom: 10px;
+        }
+        .flow-list li {
+            counter-increment: step;
+            font-size: 12.5px;
+            padding: 6px 8px 6px 30px;
+            position: relative;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        .flow-list li:last-child { border-bottom: none; }
+        .flow-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 6px; top: 6px;
+            background: #333;
+            color: #fff;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 18px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .flow-list .src { font-weight: 700; color: #1a1a1a; }
+        .flow-list .cite { color: #888; font-size: 10.5px; }
+
+        .kv {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 4px 10px;
+            font-size: 11.5px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #eee;
+        }
+        .kv dt { color: #666; }
+        .kv dd { color: #1a1a1a; }
+        .kv .miss { color: #c62828; font-weight: 700; }
+        .kv .ok   { color: #2e7d32; font-weight: 700; }
+
+        /* 比較・分析 */
+        table.cmp {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+        }
+        table.cmp th, table.cmp td {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        table.cmp th {
+            background: #f5f5f5;
+            font-weight: 700;
+        }
+        table.cmp .good { background: #e8f5e9; }
+        table.cmp .warn { background: #fff8e1; }
+        table.cmp .bad  { background: #ffebee; }
+
+        .callouts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .callout {
+            border-left: 4px solid #333;
+            padding: 10px 14px;
+            background: #fafafa;
+            border-radius: 4px;
+        }
+        .callout h4 { font-size: 13px; margin-bottom: 6px; }
+        .callout p  { font-size: 12px; color: #333; }
+        .callout.a { border-left-color: #2e7d32; }
+        .callout.b { border-left-color: #f9a825; }
+        .callout.c { border-left-color: #c62828; }
+
+        .fix-list { list-style: none; }
+        .fix-list li {
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            background: #fafafa;
+        }
+        .fix-list .tag {
+            display: inline-block;
+            font-size: 10.5px;
+            padding: 2px 8px;
+            border-radius: 8px;
+            color: #fff;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .tag.seo { background: #1565c0; }
+        .tag.meo { background: #6a1b9a; }
+        .tag.site{ background: #2e7d32; }
+        .tag.yt  { background: #c62828; }
+
+        .why {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .why .card {
+            border: 2px solid #c62828;
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .why .card h4 {
+            color: #c62828;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .why .card p { font-size: 12px; color: #333; }
+
+        .miss-note {
+            background: #fff8e1;
+            border: 1px dashed #f9a825;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #6d4c00;
+            margin-top: 12px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 11px;
+            color: #888;
+            padding: 16px 0 4px;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .store-grid, .callouts, .why {
+                grid-template-columns: 1fr;
+            }
+            h1 { font-size: 18px; }
+            table.cmp { font-size: 11.5px; }
+            table.cmp th, table.cmp td { padding: 6px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>株式会社nambers Web導線調査</h1>
+    <div class="subtitle">阿部さん／鈴木さん 内部共有用 ／ 8/1配信前ドラフト（2026/07/30 時点）</div>
+    <div class="note-top">数字・順位はすべてWebSearch/WebFetchでの実測。取得不能項目は「未取得」と明記。</div>
+
+    <!-- ================ 会社サマリ ================ -->
+    <div class="section">
+        <h2><span class="n">0</span>会社サマリ</h2>
+        <table class="cmp">
+            <tr>
+                <th style="width:120px;">会社名</th>
+                <td>株式会社 nambers（2018年設立／千葉県船橋市西船4-19-1 第11花園ビル1F／047-431-3377）</td>
+            </tr>
+            <tr>
+                <th>運営店舗</th>
+                <td>4店舗（西船橋駅周辺3＋京成船橋1）<span class="cite" style="color:#888;font-size:10.5px;">出典：nambers.jp/affiliate/</span></td>
+            </tr>
+            <tr>
+                <th>公式サイト</th>
+                <td>nambers.jp（HOME/CONCEPT/ABOUT/AFFILIATE/RECRUIT/NEWS/CONTACT の8構成）</td>
+            </tr>
+            <tr>
+                <th>過去YT広告</th>
+                <td class="warn"><b>未取得</b>（Google Ads Transparency Center は要ログインで確認不可）／クライアント自己申告「2025年夏に配信あり」— 阿部さんに配信アカウント名・配信期間を要ヒアリング</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ================ 4店舗導線マップ ================ -->
+    <div class="section">
+        <h2><span class="n">1</span>店舗別 Google検索結果・現状導線マップ</h2>
+        <p style="font-size:12px;color:#666;margin-bottom:14px;">
+            各店舗名で検索した際、新規顧客が最初にぶつかる導線TOP3。<b>公式サイトが上位に来るか／グルメサイト依存か</b>で「自社で握れる導線量」が決まる。
+        </p>
+
+        <div class="store-grid">
+
+            <!-- ① 魚屋十番 -->
+            <div class="store strong">
+                <div class="store-head">
+                    <div class="store-name">魚市場直送 魚屋十番</div>
+                    <div class="store-badge">最強</div>
+                </div>
+                <div class="store-sub">西船橋駅徒歩1分 ／ 魚居酒屋 ／ 047-431-3377</div>
+
+                <ol class="flow-list">
+                    <li><span class="src">ホットペッパー</span>（メニュー・店舗ページ2枠占有）<div class="cite">strJ000999632</div></li>
+                    <li><span class="src">ヒトサラ</span>（ネット予約可）<div class="cite">hitosara.com/0031563996</div></li>
+                    <li><span class="src">楽天ぐるなび</span> → 公式サイト uoya10ban.com<div class="cite">r.gnavi.co.jp/b353301</div></li>
+                </ol>
+
+                <dl class="kv">
+                    <dt>公式サイト</dt><dd class="ok">あり（uoya10ban.com＋b353301.gorp.jp＋10b.work）</dd>
+                    <dt>食べログ</dt><dd>3.7 / 127件</dd>
+                    <dt>Instagram</dt><dd>@uoya10ban 607フォロワー</dd>
+                    <dt>X / FB</dt><dd class="ok">両方あり</dd>
+                    <dt>予約導線</dt><dd>ホットペッパー・ぐるなび外部飛ばし</dd>
+                </dl>
+            </div>
+
+            <!-- ② 讃八小籠包 -->
+            <div class="store mid">
+                <div class="store-head">
+                    <div class="store-name">西船肉汁酒場 讃八小籠包</div>
+                    <div class="store-badge">中</div>
+                </div>
+                <div class="store-sub">西船橋駅徒歩1分 ／ 台湾料理・小籠包 ／ 047-404-3812</div>
+
+                <ol class="flow-list">
+                    <li><span class="src">楽天ぐるなび</span><div class="cite">r.gnavi.co.jp/jexxtn950000</div></li>
+                    <li><span class="src">公式（ぐるなび系gorp）</span> b353304.gorp.jp<div class="cite">※公式は独自ドメインではなくぐるなびgorpベース</div></li>
+                    <li><span class="src">ホットペッパー</span><div class="cite">strJ001230785</div></li>
+                </ol>
+
+                <dl class="kv">
+                    <dt>公式サイト</dt><dd class="warn">ぐるなびgorp＋owst（外部ASP）／独自ドメインなし</dd>
+                    <dt>食べログ</dt><dd>3.20 / 37件</dd>
+                    <dt>Instagram</dt><dd class="miss">未確認（本調査で発見できず）</dd>
+                    <dt>予約導線</dt><dd>ホットペッパー・ぐるなび外部飛ばし</dd>
+                    <dt>備考</dt><dd>「移転」履歴あり — 旧食べログ12048041が「移転」表示</dd>
+                </dl>
+            </div>
+
+            <!-- ③ 伍れんじゃー -->
+            <div class="store weak">
+                <div class="store-head">
+                    <div class="store-name">酒肴戦隊 伍れんじゃー</div>
+                    <div class="store-badge">弱</div>
+                </div>
+                <div class="store-sub">西船橋駅徒歩2分 ／ 居酒屋（戦隊コンセプト） ／ 2015年2月19日オープン</div>
+
+                <ol class="flow-list">
+                    <li><span class="src">食べログ</span>（口コミ／地図／予約の3枠占有）<div class="cite">tabelog 12065666</div></li>
+                    <li><span class="src">楽天ぐるなび</span><div class="cite">r.gnavi.co.jp/gczad1m90000</div></li>
+                    <li><span class="src">ホットペッパー</span><div class="cite">strJ004577375</div></li>
+                </ol>
+
+                <dl class="kv">
+                    <dt>公式サイト</dt><dd class="miss">なし（独自ドメイン・gorpとも未確認）</dd>
+                    <dt>食べログ</dt><dd>3.08 / 14件 ／ 745人保存</dd>
+                    <dt>Instagram</dt><dd>@gorenja_ 209フォロワー・直近7/29投稿（稼働中）</dd>
+                    <dt>予約導線</dt><dd>食べログ・ホットペッパー外部飛ばし</dd>
+                </dl>
+            </div>
+
+            <!-- ④ 豚がんちゃん -->
+            <div class="store weakest">
+                <div class="store-head">
+                    <div class="store-name">博多屋台 豚がんちゃん 船橋店</div>
+                    <div class="store-badge">最弱</div>
+                </div>
+                <div class="store-sub">京成船橋駅徒歩1分 ／ 居酒屋＋豚骨ラーメン ／ 4店舗中 唯一「西船橋外」</div>
+
+                <ol class="flow-list">
+                    <li><span class="src">つく2グルメ</span><div class="cite">gourmet.tsuku2.jp/shop/0000024330</div></li>
+                    <li><span class="src">食べログ</span>（口コミ／メニュー写真の2枠）<div class="cite">tabelog 12021690</div></li>
+                    <li><span class="src">Yahoo!マップ／NAVITIME／ラーメンDB</span><div class="cite">地図・DB系が上位</div></li>
+                </ol>
+
+                <dl class="kv">
+                    <dt>公式サイト</dt><dd class="miss">なし（グルメサイト依存100%）</dd>
+                    <dt>食べログ</dt><dd>3.15 / 14件</dd>
+                    <dt>Instagram</dt><dd class="miss">未確認（本調査で発見できず）</dd>
+                    <dt>予約導線</dt><dd>なし（居酒屋ラーメン業態・電話のみ想定）</dd>
+                </dl>
+            </div>
+
+        </div>
+
+        <div class="miss-note">
+            <b>MEO（Googleビジネスプロフィール実データ）は未取得</b>：Googleマップの写真枚数・レビュー総数・返信率はプログラム経由で個別取得ができなかった。阿部さんが該当GBP管理権限を持っていれば、口頭ヒアリングで補完可（次アクション）。
+        </div>
+    </div>
+
+    <!-- ================ 強弱の差 ================ -->
+    <div class="section">
+        <h2><span class="n">2</span>4店舗の「差」— なぜ強い店と弱い店が出るのか</h2>
+        <table class="cmp">
+            <tr>
+                <th>店舗</th>
+                <th>公式サイト</th>
+                <th>SNS稼働</th>
+                <th>食べログ件数</th>
+                <th>導線タイプ</th>
+                <th>総合</th>
+            </tr>
+            <tr>
+                <td>魚屋十番</td>
+                <td class="good">独自ドメイン＋補助ドメイン3本</td>
+                <td class="good">IG/X/FB 3媒体</td>
+                <td class="good">127件</td>
+                <td class="good">公式＋グルメサイト厚み</td>
+                <td class="good"><b>◎ 最強</b></td>
+            </tr>
+            <tr>
+                <td>讃八小籠包</td>
+                <td class="warn">ASPページのみ</td>
+                <td class="warn">未確認</td>
+                <td>37件</td>
+                <td class="warn">ぐるなび軸</td>
+                <td class="warn"><b>△ 中</b></td>
+            </tr>
+            <tr>
+                <td>伍れんじゃー</td>
+                <td class="bad">なし</td>
+                <td class="good">IGは稼働中（直近7/29）</td>
+                <td class="bad">14件</td>
+                <td class="warn">食べログ軸</td>
+                <td class="warn"><b>△ 弱（IGだけ健闘）</b></td>
+            </tr>
+            <tr>
+                <td>豚がんちゃん</td>
+                <td class="bad">なし</td>
+                <td class="bad">未確認</td>
+                <td class="bad">14件</td>
+                <td class="bad">グルメサイト・地図DB依存</td>
+                <td class="bad"><b>× 最弱</b></td>
+            </tr>
+        </table>
+        <p style="font-size:12px;color:#333;margin-top:12px;">
+            <b>読み方：</b>魚屋十番は「西船橋 居酒屋」でも公式・SNS・グルメサイトの3層が全部立ち上がる。伍れんじゃー・豚がんちゃんは<b>店名で検索されて初めて出会える</b>状態＝<b>指名検索頼り</b>で、新規客の「知らないから探せない」層を取りこぼしている。
+        </p>
+    </div>
+
+    <!-- ================ YouTube広告の意義 ================ -->
+    <div class="section">
+        <h2><span class="n">3</span>YouTube広告を「今」出す意義（求人×集客の3点）</h2>
+        <div class="why">
+            <div class="card">
+                <h4>① 検索に出てこない層に届く</h4>
+                <p>
+                    伍れんじゃー・豚がんちゃんは<b>店名を知らない人が指名検索してくれない</b>。SEO/MEOでは「西船橋 居酒屋」上位を魚屋十番以外は取れていない。YouTubeなら<b>船橋市住民＋興味関心（居酒屋・グルメ）</b>にプッシュで到達でき、指名検索の入口を作れる。
+                </p>
+            </div>
+            <div class="card">
+                <h4>② 求人は「知られていない会社」ほど動画が刺さる</h4>
+                <p>
+                    株式会社nambersの求人はタウンワーク・はたらいくの<b>店舗単体求人</b>しか露出しておらず、法人としての採用ページ（RECRUIT）は独立導線が弱い。<b>4店舗運営の会社スケール</b>と<b>船橋密着の空気感</b>を動画で見せることで、「近所で働きたい」層の一次接触を作れる。
+                </p>
+            </div>
+            <div class="card">
+                <h4>③ 既存グルメサイト依存の脱却</h4>
+                <p>
+                    現状の予約導線はホットペッパー／ぐるなび／食べログの<b>手数料モデル</b>に握られている。動画→指名検索→公式ページ（or 電話）の直接導線を1本作れれば、<b>1本あたりの獲得コストが数年単位で下がり続ける資産</b>になる。1店舗の露出でnambersの4店舗全体が持ち上がる面もある（西船橋3店舗集中）。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================ 弱点と改善の1手 ================ -->
+    <div class="section">
+        <h2><span class="n">4</span>弱点と、YouTube配信と並走してやるべき1手</h2>
+        <ul class="fix-list">
+            <li>
+                <span class="tag site">SITE</span>
+                <b>伍れんじゃー・豚がんちゃんに単ページの公式LPを作る（各1枚で十分）。</b>
+                動画を見た人の受け皿が食べログしかない状態でYT広告を出すと、動画→食べログ→競合店提案の流出リスク。特に伍れんじゃーはIGが動いているので、LP＋IG＋動画で導線が完結する。
+            </li>
+            <li>
+                <span class="tag seo">SEO</span>
+                <b>讃八小籠包の「移転履歴の食べログ旧ページ（12048041）」を整理。</b>
+                旧ページが検索上位に残ると「閉店？」の誤認離脱が発生する。食べログ側に統合依頼 or 旧ページから新ページへの誘導文追加。
+            </li>
+            <li>
+                <span class="tag meo">MEO</span>
+                <b>4店舗すべてのGBP（Googleビジネスプロフィール）レビュー数・写真枚数・投稿頻度を阿部さんから開示してもらう。</b>
+                YT広告で「動画を見た→Googleマップで店を調べる」動線が必ず走るため、地図面が空だと配信効果を半減させる。管理権限があれば無料で改善可能。
+            </li>
+            <li>
+                <span class="tag yt">YT</span>
+                <b>「2025年夏の過去YouTube広告」の配信アカウント／期間／使った動画URLを阿部さんに確認。</b>
+                過去実績を再利用（or 反面教師）できる。Google Ads Transparency Center は要ログインで外部から辿れなかった（本調査未取得）。
+            </li>
+            <li>
+                <span class="tag yt">YT</span>
+                <b>8/1配信3本の想定LP：集客2本（伍れんじゃー／魚屋十番）の遷移先は現状「食べログ or ホットペッパー」しかない。</b>
+                提案書 <a href="https://hoshizaemonn.github.io/RUNBIRD/proposals/nambers-group.html" style="color:#1565c0;">nambers-group.html</a> の想定LPと実在遷移先の齟齬を配信前に阿部さんと擦り合わせる必要あり。
+            </li>
+        </ul>
+    </div>
+
+    <!-- ================ 出典 ================ -->
+    <div class="section">
+        <h2><span class="n">5</span>主要出典（一次実測ソース）</h2>
+        <ul style="font-size:11.5px;color:#333;list-style:none;">
+            <li>• 会社／店舗一覧：<a href="https://nambers.jp/affiliate/">nambers.jp/affiliate/</a></li>
+            <li>• 魚屋十番：<a href="http://uoya10ban.com/">uoya10ban.com</a> ／ <a href="https://www.hotpepper.jp/strJ000999632/">HP</a> ／ <a href="https://www.instagram.com/uoya10ban/">IG</a></li>
+            <li>• 讃八小籠包：<a href="https://r.gnavi.co.jp/jexxtn950000/">ぐるなび</a> ／ <a href="https://sanpachisyouronpou.foodre.jp/">公式foodre</a> ／ <a href="https://tabelog.com/chiba/A1202/A120201/12048041">旧食べログ（移転）</a></li>
+            <li>• 伍れんじゃー：<a href="https://tabelog.com/chiba/A1202/A120201/12065666/">食べログ</a> ／ <a href="https://www.instagram.com/gorenja_/">IG</a></li>
+            <li>• 豚がんちゃん：<a href="https://tabelog.com/chiba/A1202/A120201/12021690/dtlrvwlst/">食べログ</a> ／ <a href="https://ramendb.supleks.jp/s/13470.html">ラーメンDB</a></li>
+            <li>• 求人：<a href="https://www.hatalike.jp/viewjob/43813e7f487fdda3/">はたらいく（魚屋十番）</a> ／ <a href="https://townwork.net/viewjob/jobid_3cfbb86ffccada67/">タウンワーク（nambers）</a></li>
+            <li>• 法人登記：<a href="https://houjin.jp/c/3040001107399">houjin.jp/c/3040001107399</a></li>
+        </ul>
+    </div>
+
+    <footer>
+        株式会社ランバード｜広告運用サポート窓口 ／ 内部共有用（クライアント送付前）
+    </footer>
+
+</div>
+</body>
+</html>
