@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lovers Web導線調査 — 内部共有用（2026/07/30時点）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.65;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+        .note-top {
+            text-align: center;
+            color: #888;
+            font-size: 11px;
+            margin-bottom: 24px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            border: 2px solid #e0e0e0;
+        }
+        .section h2 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section h2 .n {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            font-size: 12px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 22px;
+        }
+
+        /* 検索結果カード */
+        .rank-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .rank {
+            border: 3px solid;
+            border-radius: 12px;
+            padding: 18px;
+            background: #fff;
+        }
+        .rank.top    { border-color: #2e7d32; }
+        .rank.mid    { border-color: #f9a825; }
+        .rank.low    { border-color: #e65100; }
+        .rank.miss   { border-color: #c62828; }
+
+        .rank-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+        .rank-name { font-size: 15px; font-weight: 700; }
+        .rank-badge {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 700;
+        }
+        .rank.top .rank-badge  { background: #2e7d32; }
+        .rank.mid .rank-badge  { background: #f9a825; }
+        .rank.low .rank-badge  { background: #e65100; }
+        .rank.miss .rank-badge { background: #c62828; }
+
+        .rank-sub {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .flow-list {
+            list-style: none;
+            counter-reset: step;
+        }
+        .flow-list li {
+            counter-increment: step;
+            font-size: 12.5px;
+            padding: 6px 8px 6px 30px;
+            position: relative;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        .flow-list li:last-child { border-bottom: none; }
+        .flow-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 6px; top: 6px;
+            background: #333;
+            color: #fff;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 18px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .flow-list .src { font-weight: 700; color: #1a1a1a; }
+        .flow-list .cite { color: #888; font-size: 10.5px; }
+        .flow-list .lovers-here { background: #ffebee; color: #c62828; font-weight:700; padding:2px 6px; border-radius:4px; }
+
+        table.cmp {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+        }
+        table.cmp th, table.cmp td {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        table.cmp th {
+            background: #f5f5f5;
+            font-weight: 700;
+        }
+        table.cmp .good { background: #e8f5e9; }
+        table.cmp .warn { background: #fff8e1; }
+        table.cmp .bad  { background: #ffebee; }
+
+        .why {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .why .card {
+            border: 2px solid #1565c0;
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .why .card h4 {
+            color: #1565c0;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .why .card p { font-size: 12px; color: #333; }
+
+        .fix-list { list-style: none; }
+        .fix-list li {
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            background: #fafafa;
+        }
+        .fix-list .tag {
+            display: inline-block;
+            font-size: 10.5px;
+            padding: 2px 8px;
+            border-radius: 8px;
+            color: #fff;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .tag.seo   { background: #1565c0; }
+        .tag.meo   { background: #6a1b9a; }
+        .tag.site  { background: #2e7d32; }
+        .tag.yt    { background: #c62828; }
+        .tag.policy{ background: #ef6c00; }
+        .tag.gads  { background: #333; }
+
+        .miss-note {
+            background: #fff8e1;
+            border: 1px dashed #f9a825;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            color: #6d4c00;
+            margin-top: 12px;
+        }
+        .bad-note {
+            background: #ffebee;
+            border: 1px solid #c62828;
+            padding: 12px 14px;
+            border-radius: 8px;
+            font-size: 12.5px;
+            color: #7f0000;
+            margin-top: 12px;
+        }
+
+        .cause3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        .cause3 .card {
+            border: 2px solid #c62828;
+            border-radius: 10px;
+            padding: 14px;
+        }
+        .cause3 .card h4 { color: #c62828; font-size: 14px; margin-bottom: 6px; }
+        .cause3 .card p  { font-size: 12px; color: #333; }
+
+        footer {
+            text-align: center;
+            font-size: 11px;
+            color: #888;
+            padding: 16px 0 4px;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .rank-grid, .why, .cause3 { grid-template-columns: 1fr; }
+            h1 { font-size: 18px; }
+            table.cmp { font-size: 11.5px; }
+            table.cmp th, table.cmp td { padding: 6px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>Lovers Web導線調査</h1>
+    <div class="subtitle">南様（川上啓二）／鈴木さん 内部共有用 ／ Google広告1ヶ月・予約0件を受けての整理（2026/07/30時点）</div>
+    <div class="note-top">数字・順位はすべてWebSearch/WebFetchでの実測。取得不能項目は「未取得」と明記。売上・実CV等の内部数字は掲載しない。</div>
+
+    <!-- ========= 0. サマリ ========= -->
+    <div class="section">
+        <h2><span class="n">0</span>店舗サマリ</h2>
+        <table class="cmp">
+            <tr>
+                <th style="width:120px;">屋号</th>
+                <td>Lovers（ラバーズ）／男性専用リラクゼーションサロン（ゲイマッサージ）</td>
+            </tr>
+            <tr>
+                <th>所在</th>
+                <td>福岡県福岡市西区下山門1-7-62 アメックス姪浜307 ／ TEL 080-3950-3324</td>
+            </tr>
+            <tr>
+                <th>公式サイト</th>
+                <td><a href="https://lovers4ux.weebly.com/" style="color:#1565c0;">lovers4ux.weebly.com</a>（Weebly無料ホスティング／独自ドメインなし）<br>
+                title「Lovers - 福岡＆博多の出張・来店ゲイマッサージ」／スマホ対応済／営業 9:00-1:00 年中無休</td>
+            </tr>
+            <tr>
+                <th>予約導線</th>
+                <td>LINE（優先）／SMS 080-3950-3324／予約フォーム／電話（非通知不可）</td>
+            </tr>
+            <tr>
+                <th>SNS</th>
+                <td>X（Twitter）リンクあり／Instagram・YouTube・LINE以外の公式SNSは公式サイト上未確認</td>
+            </tr>
+            <tr>
+                <th class="bad">現状</th>
+                <td class="bad">Google広告 配信1ヶ月 ／ CTR 0.04% ／ 予約 <b>0件</b>（配信1ヶ月経過時点）</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ========= 1. Google検索実測 ========= -->
+    <div class="section">
+        <h2><span class="n">1</span>Google検索・実測導線マップ（新規客が最初にぶつかる面）</h2>
+        <p style="font-size:12px;color:#666;margin-bottom:14px;">
+            主要KW4本で上位面を実測。<b>Lovers公式（lovers4ux.weebly.com）はいずれのKWでも上位10件圏外</b>で、指名検索「ラバーズ 福岡」でも表示なし（同名の一般美容室 LOVER'S DAY／LOVERS by ACT JAPANが上位を占有）。
+        </p>
+
+        <div class="rank-grid">
+
+            <!-- ① ゲイマッサージ 福岡 -->
+            <div class="rank top">
+                <div class="rank-head">
+                    <div class="rank-name">KW① 「ゲイマッサージ 福岡」</div>
+                    <div class="rank-badge">主戦場</div>
+                </div>
+                <div class="rank-sub">業界の中心KW。上位は個人サロン＋ポータルで固まっている。</div>
+                <ol class="flow-list">
+                    <li><span class="src">SAMURAI</span>（samurai-fukuoka.jimdofree.com）— 天神・博多<div class="cite">Jimdo無料HP</div></li>
+                    <li><span class="src">福岡ゲイマッサージGroup</span>（Linktree／清川ユウキ・トモヤ・博多シュウタ等の複数店舗束）<div class="cite">linktr.ee/fukuoka_gaymassage_group</div></li>
+                    <li><span class="src">PERFECT SOLUTION FUKUOKA</span>（solution-gm.jimdofree.com）<div class="cite">Jimdo</div></li>
+                    <li><span class="src">うたたね</span>（utatane-fukuoka.com）— <b>独自ドメイン</b>／博多駅徒歩5分<div class="cite">九州広域</div></li>
+                    <li><span class="src">メンズタウンネット</span>（mens-town.net/fukuoka/massage.html）— <b>ポータル</b>10店舗一覧<div class="cite">Loversの掲載なし</div></li>
+                    <li style="background:#ffebee;"><span class="lovers-here">Lovers</span> 圏外（10位以内に無し）</li>
+                </ol>
+            </div>
+
+            <!-- ② メンズマッサージ 福岡 男性セラピスト -->
+            <div class="rank mid">
+                <div class="rank-head">
+                    <div class="rank-name">KW② 「メンズマッサージ 福岡 男性セラピスト」</div>
+                    <div class="rank-badge">一般客混在</div>
+                </div>
+                <div class="rank-sub">ゲイ客と非該当の一般男性客／女性客が混じる中間KW。</div>
+                <ol class="flow-list">
+                    <li><span class="src">plaisir.hakata</span>（Instagram公式）</li>
+                    <li><span class="src">ホットペッパービューティー</span>（男性歓迎リラク一覧）</li>
+                    <li><span class="src">H2-heart-heal</span>（heart-and-heal.com）— 独自ドメイン</li>
+                    <li><span class="src">エステラブ</span>（eslove.jp）— ポータル</li>
+                    <li><span class="src">イケメンセラピ.com</span>（男性セラピスト専門ポータル）</li>
+                    <li style="background:#ffebee;"><span class="lovers-here">Lovers</span> 圏外</li>
+                </ol>
+            </div>
+
+            <!-- ③ 福岡 出張マッサージ 男性 ゲイ -->
+            <div class="rank low">
+                <div class="rank-head">
+                    <div class="rank-name">KW③ 「福岡 出張マッサージ 男性 ゲイ」</div>
+                    <div class="rank-badge">出張軸</div>
+                </div>
+                <div class="rank-sub">Loversの主力導線（自宅・ホテル出張）と重なる筈のKW。</div>
+                <ol class="flow-list">
+                    <li><span class="src">癒苑 うららか</span>（X @Samurai_kiyo）— <b>Xが1位</b></li>
+                    <li><span class="src">SAMURAI</span>（jimdofree）</li>
+                    <li><span class="src">BULK UP</span>（kai-samurai.jimdofree.com）</li>
+                    <li><span class="src">りらく男子</span>（riraku-boys.com）— 独自ドメイン</li>
+                    <li><span class="src">NAGOMI</span>（nagomi-relax.com）— 独自ドメイン</li>
+                    <li style="background:#ffebee;"><span class="lovers-here">Lovers</span> 圏外</li>
+                </ol>
+            </div>
+
+            <!-- ④ 指名検索 -->
+            <div class="rank miss">
+                <div class="rank-head">
+                    <div class="rank-name">KW④ 「ラバーズ 福岡 / Lovers 福岡 マッサージ」（指名検索）</div>
+                    <div class="rank-badge">最重要／未確保</div>
+                </div>
+                <div class="rank-sub">動画・広告を見た人が最後に叩くKW。ここで公式が出ないのは致命的。</div>
+                <ol class="flow-list">
+                    <li><span class="src">LOVER'S DAY FUKUOKA</span>（loversday.jp／姪浜の美容/脱毛サロン）— <b>同エリア別業種が1位</b></li>
+                    <li><span class="src">LOVERS by ACT JAPAN</span>（ホットペッパー／福岡市の一般ネイル・エステ）</li>
+                    <li><span class="src">Wikipedia</span>（映画/漫画のLovers系タイトル群）</li>
+                    <li><span class="src">爆サイ北部九州版</span>（ゲイマッサージ福岡スレ）— Loversの言及は本調査で確認できず</li>
+                    <li style="background:#ffebee;"><span class="lovers-here">Lovers（lovers4ux.weebly.com）</span> 圏外／指名検索でも自社サイト未到達</li>
+                </ol>
+            </div>
+
+        </div>
+
+        <div class="miss-note">
+            <b>MEO（Googleビジネスプロフィール）は未取得</b>：住所「福岡市西区下山門1-7-62」で GBP の登録・写真枚数・レビュー数を確認する手段が本調査ではなかった。<b>この業種はGBP登録自体が難しい</b>（Google「ポリシー違反の恐れがある業種」に該当し得る）ため、そもそも登録していない可能性が高い。次アクションで南様に登録有無を確認要。
+        </div>
+    </div>
+
+    <!-- ========= 2. Lovers vs 業界トップ ========= -->
+    <div class="section">
+        <h2><span class="n">2</span>Lovers vs 業界上位店 — 「Web資産」の差</h2>
+        <table class="cmp">
+            <tr>
+                <th>項目</th>
+                <th>Lovers</th>
+                <th>SAMURAI／清川Group</th>
+                <th>うたたね／NAGOMI</th>
+            </tr>
+            <tr>
+                <td>ドメイン</td>
+                <td class="bad">Weebly無料（lovers4ux.weebly.com）</td>
+                <td class="warn">Jimdo無料（.jimdofree.com）</td>
+                <td class="good">独自ドメイン（.com）</td>
+            </tr>
+            <tr>
+                <td>SEO順位（業界KW）</td>
+                <td class="bad">圏外</td>
+                <td class="good">TOP3～5</td>
+                <td class="good">TOP5～10</td>
+            </tr>
+            <tr>
+                <td>グループ・ポータル露出</td>
+                <td class="bad">メンズタウンネット掲載なし／爆サイでの言及未確認</td>
+                <td class="good">Linktree・ポータル・Xで多重露出</td>
+                <td class="good">複数拠点・広域ページで露出</td>
+            </tr>
+            <tr>
+                <td>X（Twitter）稼働</td>
+                <td class="warn">サイトからリンクあり（アカウント名・稼働頻度は南様確認要）</td>
+                <td class="good">@Samurai_kiyo等 実名アカウント複数</td>
+                <td class="good">屋号アカウントで日次投稿</td>
+            </tr>
+            <tr>
+                <td>予約導線</td>
+                <td class="warn">LINE中心＋SMS＋フォーム（<b>自サイト完結／モバイル対応◎</b>）</td>
+                <td>LINE中心（同）</td>
+                <td>LINE＋予約フォーム</td>
+            </tr>
+            <tr>
+                <td>所在</td>
+                <td class="warn">西区姪浜（都心から西へ約20分／出張は全国対応）</td>
+                <td class="good">博多駅・天神・中洲徒歩圏</td>
+                <td class="good">博多駅徒歩5分ほか</td>
+            </tr>
+        </table>
+        <p style="font-size:12px;color:#333;margin-top:12px;">
+            <b>読み方：</b>公式サイトのUXは Lovers も競合と同水準（LINE中心・モバイル対応済）。<b>負けているのは「サイトの外側」＝ドメイン強度／ポータル露出／SNS拡散／店の位置</b>の4点。ここが変わらない限り、広告の受け皿として指名検索が積み上がらない。
+        </p>
+    </div>
+
+    <!-- ========= 3. 1ヶ月0件の推定原因 ========= -->
+    <div class="section">
+        <h2><span class="n">3</span>「1ヶ月・予約0件」の根本原因（推定）</h2>
+        <div class="cause3">
+            <div class="card">
+                <h4>① KWと業種のズレ</h4>
+                <p>
+                    「マッサージ 福岡」系の一般KWで配信していると、大半は<b>肩こり・妊婦・整体を探す一般客</b>で、Loversのゲイ／男性専用サービスとは購買動機が全く合わない。CTR 0.04%は<b>広告文と検索意図の乖離のサイン</b>で、クリックされてもLPで即離脱する。
+                </p>
+            </div>
+            <div class="card">
+                <h4>② 立地とターゲット到達</h4>
+                <p>
+                    店舗は<b>西区姪浜（博多駅から地下鉄約20分）</b>で、業界の主戦場である博多・天神・中洲の徒歩圏勢と競合すると来店で不利。出張が主力なら「福岡市全域＋近郊」で配信面を切り替える必要がある。「福岡市西区／姪浜」だけの絞り込みは<b>母数不足</b>で0件になりやすい。
+                </p>
+            </div>
+            <div class="card">
+                <h4>③ 受け皿SEO・SNSの積み上げがゼロ</h4>
+                <p>
+                    広告→サイト訪問→「安心そうか」を裏取りする段階で、指名「ラバーズ 福岡」検索しても<b>公式が出ずに同名の別業種（脱毛サロン等）が出る</b>。X・掲示板・ポータルに屋号の露出がないため、<b>初見客の不安を潰す第三者情報が存在しない</b>状態で予約に至れない。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========= 4. YouTube広告を止めない理由／変える方向 ========= -->
+    <div class="section">
+        <h2><span class="n">4</span>YouTube広告を「今」止めない理由と、変える方向</h2>
+        <div class="why">
+            <div class="card">
+                <h4>① オーガニックで会えない層に届く唯一の面</h4>
+                <p>
+                    Lovers公式はSEO・MEOでほぼ露出できていない。<b>認知の入口を新規で作る手段は動画プッシュしか残っていない</b>。GDN/検索広告は業種ポリシーで表現が縛られる（次項）ため、動画は数少ない残り札。
+                </p>
+            </div>
+            <div class="card">
+                <h4>② 業界主流はJimdoサイト＋X＋掲示板＝情報密度が薄い</h4>
+                <p>
+                    競合の情報発信は静的Jimdoページと個人Xが中心で、<b>「動画で店の雰囲気・施術者の人柄を見せる」枠が空いている</b>。うたたね／NAGOMIも公式YouTubeはほぼない。ここは Lovers が先に取れる。
+                </p>
+            </div>
+            <div class="card">
+                <h4>③ ただし「クリック直後の受け皿」を1本挟む</h4>
+                <p>
+                    動画→lovers4ux.weebly.com直行では、指名検索での不安潰しに繋がらない。<b>動画の説明欄・エンドカードで「LINE直リンク」を主導線に</b>して、Google検索という不確定チャネルを迂回するのが現実的。SEO立て直しは並行して長期でやる。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========= 5. Google広告ポリシー地雷 ========= -->
+    <div class="section">
+        <h2><span class="n">5</span>Google広告 センシティブ／制限ポリシーの地雷</h2>
+        <table class="cmp">
+            <tr>
+                <th style="width:180px;">項目</th>
+                <th>Loversで想定される該当</th>
+                <th>対応</th>
+            </tr>
+            <tr class="bad">
+                <td>Restricted「intimate massage」</td>
+                <td>Googleは「intimate massage（親密なマッサージ）／エスコート／同伴」を<b>制限カテゴリ</b>に指定。ゲイ／男性専用の全身オイル×出張は、審査AIに<b>この文脈で誤判定されやすい</b>。</td>
+                <td>ランディングの文言・広告見出しから「オイル」「全身」「密着」「彼氏気分」等の直接語は避け、<b>「リラクゼーション／整体／ボディメンテナンス」の言い回し</b>に統一。</td>
+            </tr>
+            <tr class="warn">
+                <td>Sexual orientation（Sensitive Interest）</td>
+                <td>「ゲイ・バイ・レズ等の性的指向」は<b>パーソナライズド広告のセンシティブカテゴリ</b>。カスタムオーディエンスや興味関心での明示ターゲティングは<b>不可</b>。</td>
+                <td>ターゲティングは<b>地域＋性別＋年齢＋YouTubeチャンネル文脈</b>で組む。「ゲイ関連KW／興味関心」を Google Ads の targeting セットに入れない（自動的に落ちる）。</td>
+            </tr>
+            <tr class="warn">
+                <td>Sexual content（Restricted）</td>
+                <td>肌の露出比率・体位・オイル塗布シーンは<b>年齢制限＋制限地域配信</b>になりリーチが激減する。</td>
+                <td>動画クリエイティブは<b>施術者の顔・手技のクローズアップ・BGM・テロップ主導</b>で、上半身は白衣／店内は明るい照明。裸体・オイル塗布の直接描写を避ける。</td>
+            </tr>
+            <tr class="warn">
+                <td>ランディング側の一貫性</td>
+                <td>広告文が「男性リラクゼーション」なのに LP タイトル「福岡＆博多の出張・来店ゲイマッサージ」が直接的で、<b>広告審査で不承認になる典型パターン</b>。</td>
+                <td>YT広告用に<b>lovers4ux.weebly.com のサブページを1枚専用で作り、そこにだけ広告を送る</b>。既存トップの「ゲイマッサージ」の直接語はそのままで良いが、広告遷移先は分離。</td>
+            </tr>
+        </table>
+        <div class="bad-note">
+            <b>過去の当社経験：</b>この業種はGoogle広告アカウント自体が「Prostitution／Sexual services」で<b>永久停止</b>になるリスクがある。<b>1回でも不承認が積み重なるとアカウント信用が落ちる</b>ため、審査提出前に文言レビューを必ず1段挟むこと。停止後の復活はほぼ不可能。
+        </div>
+    </div>
+
+    <!-- ========= 6. 昨日の4本柱との整合性 ========= -->
+    <div class="section">
+        <h2><span class="n">6</span>昨日鈴木さんに送った4本柱改善提案 との整合性チェック</h2>
+        <table class="cmp">
+            <tr>
+                <th style="width:200px;">昨日の提案</th>
+                <th>今回調査での整合性</th>
+                <th>修正の要否</th>
+            </tr>
+            <tr class="good">
+                <td>① エリア絞り込み</td>
+                <td>「西区／姪浜」への絞込は<b>母数不足</b>。出張主力を活かして「福岡市＋春日・大野城・宗像・古賀・糸島」＋出張圏（北九州・久留米まで）で運用面を作る方が現実的。</td>
+                <td class="warn"><b>要修正</b>：絞る方向より広げて濃くする。</td>
+            </tr>
+            <tr class="good">
+                <td>② 男性25-54歳</td>
+                <td>正解。Sexual orientationはターゲティングに入れられないので、<b>この属性軸が実質唯一の効くレバー</b>。上限を55-64まで一段広げる案も検討可（財布余力）。</td>
+                <td class="good">維持（上限緩め検討）</td>
+            </tr>
+            <tr class="good">
+                <td>③ 時間帯最適化</td>
+                <td>営業9:00-1:00の店舗事情と、業界の予約発生ピーク（<b>平日夕方～深夜／土日午後</b>）は一致。朝の配信を絞り、19-25時にウェイトを移す方針で良い。</td>
+                <td class="good">維持</td>
+            </tr>
+            <tr class="warn">
+                <td>④ KW18語入替</td>
+                <td>一般「マッサージ 福岡」系は<b>全刈り推奨</b>。指名系・業界系（男性専用／出張／リラクゼーション）に寄せるとGoogle審査を通しにくい両立問題があり、<b>検索広告よりYouTube動画＋LINE直リンクに予算を寄せる方が結果的に速い</b>。</td>
+                <td class="warn"><b>要修正</b>：KW入替の前に「検索広告そのものを縮小しYT寄せ」を鈴木さんに再提案。</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- ========= 7. 打ち手 ========= -->
+    <div class="section">
+        <h2><span class="n">7</span>並走してやるべき1手（優先順位つき）</h2>
+        <ul class="fix-list">
+            <li>
+                <span class="tag policy">POLICY</span>
+                <b>広告遷移先を lovers4ux.weebly.com のトップから、YT広告専用サブページに切り替える。</b>
+                トップの「ゲイマッサージ」直接語がGoogle審査を通せない可能性が高い。「男性専用リラクゼーション」表記の1枚をWeebly内に増設し、そこへ動画→LINE誘導。既存トップは指名検索・X経由の来訪者用に残す。
+            </li>
+            <li>
+                <span class="tag gads">GADS</span>
+                <b>検索広告のKW18語入替の前に、検索広告そのものの一時停止を検討。</b>
+                CTR 0.04%は「そもそもKWがマッチしていない」サイン。YouTube＋LINE直リンクに予算を集中し、検索広告は指名KWのみ残す構成へ。
+            </li>
+            <li>
+                <span class="tag seo">SEO</span>
+                <b>指名検索「ラバーズ 福岡」「Lovers 福岡 マッサージ」で自社サイトが上がらない状態を放置しない。</b>
+                同名の脱毛サロンLOVER'S DAY FUKUOKAが上位を占有しているため、公式サイトのtitle/hタグに「ラバーズ／Lovers／福岡／男性専用」を明示。X／掲示板／店紹介ポータル（メンズタウンネット等）への<b>掲載申請</b>で外部リンク数を増やす。
+            </li>
+            <li>
+                <span class="tag site">SITE</span>
+                <b>Weebly無料ホスティングから独自ドメインへの移行を検討（例：lovers-fukuoka.com）。</b>
+                業界上位のうたたね／NAGOMIは独自ドメイン。SEO上の重み付けと、ブランド認知（覚えやすさ）の両面で数ヶ月～1年で効いてくる。
+            </li>
+            <li>
+                <span class="tag meo">MEO</span>
+                <b>南様にGBP（Googleビジネスプロフィール）登録有無を確認。</b>
+                この業種はGBP登録自体が難しい可能性はあるが、登録できていれば「姪浜 マッサージ」等の地名KWで<b>マップ枠だけは公式が拾える</b>。写真・レビュー返信の運用も併走。
+            </li>
+            <li>
+                <span class="tag yt">YT</span>
+                <b>動画クリエイティブは「施術者の人柄・店内・BGM＋テロップ」中心で、肌の露出・オイル塗布シーンは削る。</b>
+                Google広告のSexual content制限で年齢ゲート化されると配信量が激減する。既存の lovers-images/final の映像は再編集で調整可能。
+            </li>
+        </ul>
+    </div>
+
+    <!-- ========= 8. 出典 ========= -->
+    <div class="section">
+        <h2><span class="n">8</span>主要出典（一次実測ソース）</h2>
+        <ul style="font-size:11.5px;color:#333;list-style:none;">
+            <li>• Lovers公式：<a href="https://lovers4ux.weebly.com/">lovers4ux.weebly.com</a>（title/予約導線/営業時間 実測）</li>
+            <li>• 業界上位：<a href="https://samurai-fukuoka.jimdofree.com/">SAMURAI</a> / <a href="https://linktr.ee/fukuoka_gaymassage_group">福岡ゲイマッサージGroup</a> / <a href="https://solution-gm.jimdofree.com/">PERFECT SOLUTION</a> / <a href="https://utatane-fukuoka.com/">うたたね</a> / <a href="https://nagomi-relax.com/">NAGOMI</a> / <a href="https://riraku-boys.com/">りらく男子</a></li>
+            <li>• ポータル：<a href="https://mens-town.net/fukuoka/massage.html">メンズタウンネット（福岡ゲイマッサージ10店掲載・Loversなし）</a></li>
+            <li>• 指名検索の同名混同：<a href="https://loversday.jp/">LOVER'S DAY FUKUOKA（姪浜・脱毛サロン）</a> / <a href="https://beauty.hotpepper.jp/keyword/%E9%A1%94%E7%AD%8B%E3%83%9E%E3%83%83%E3%82%B5%E3%83%BC%E3%82%B8%E3%80%80%E7%A6%8F%E5%B2%A1%E5%B8%82/">LOVERS by ACT JAPAN（HPB）</a></li>
+            <li>• Google広告ポリシー：<a href="https://support.google.com/adspolicy/answer/6023699?hl=en">Sexual content</a> / <a href="https://support.google.com/adspolicy/answer/16700850?hl=en">Sexual orientation in personalized ads</a> / <a href="https://support.google.com/adspolicy/answer/6015406?hl=en">Inappropriate content</a></li>
+            <li>• YouTube広告履歴：Google Ads Transparency Center は要ログインで外部からLoversの過去配信は未取得。南様から配信アカウント・期間・使用動画URLの開示要（次アクション）。</li>
+        </ul>
+    </div>
+
+    <footer>
+        株式会社ランバード｜広告運用サポート窓口 ／ 内部共有用（クライアント送付前・鈴木さん承認待ち）
+    </footer>
+
+</div>
+</body>
+</html>
