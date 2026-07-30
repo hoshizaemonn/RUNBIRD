@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8/1配信 MCC投入用 一括設定チェックリスト（6社）</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;
+    background:#f0f2f5; color:#1a1a1a; line-height:1.65; padding:20px;
+  }
+  .container { max-width:1100px; margin:0 auto; }
+  h1 { text-align:center; font-size:22px; border-bottom:3px solid #333; padding-bottom:10px; margin-bottom:4px; }
+  .subtitle { text-align:center; color:#888; font-size:12px; margin-bottom:20px; }
+
+  .summary-bar {
+    background:#fff; border-radius:12px; padding:20px; margin-bottom:28px;
+    border:2px solid #e0e0e0; text-align:center;
+  }
+  .summary-bar .num { font-size:36px; font-weight:700; color:#1b5e20; }
+  .summary-bar .num .of { color:#888; font-size:22px; font-weight:400; }
+  .summary-bar .label { font-size:12px; color:#666; margin-top:4px; }
+  .summary-bar .progress { margin-top:10px; height:8px; background:#eee; border-radius:4px; overflow:hidden; }
+  .summary-bar .progress > div { height:100%; background:#43a047; width:0%; transition:width .3s; }
+  .summary-bar ul { list-style:none; margin-top:14px; text-align:left; display:grid; grid-template-columns:repeat(2,1fr); gap:6px; font-size:12px; color:#555; }
+  .summary-bar ul li.done { color:#2e7d32; text-decoration:line-through; }
+
+  /* client section */
+  .client-section {
+    background:#fff; border-radius:14px; margin-bottom:28px; overflow:hidden;
+    border:3px solid #ddd;
+  }
+  .cs-header {
+    padding:20px 24px; color:#fff; position:relative;
+  }
+  .cs-header h2 { font-size:22px; margin-bottom:4px; }
+  .cs-header .cs-slug { font-size:12px; opacity:.9; font-family:'SF Mono',Consolas,monospace; }
+  .cs-badge {
+    display:inline-block; background:rgba(255,255,255,.25); color:#fff;
+    padding:6px 14px; border-radius:20px; font-size:12px; font-weight:700;
+    margin-top:10px; border:1px solid rgba(255,255,255,.4);
+  }
+
+  .cs-body { padding:22px 24px; }
+
+  /* per-client colors */
+  .c-sense .cs-header { background:linear-gradient(135deg,#e91e63,#c2185b); }
+  .c-sense { border-color:#c2185b; }
+  .c-garage .cs-header { background:linear-gradient(135deg,#fb8c00,#e65100); }
+  .c-garage { border-color:#e65100; }
+  .c-seraphia .cs-header { background:linear-gradient(135deg,#8e24aa,#5e35b1); }
+  .c-seraphia { border-color:#5e35b1; }
+  .c-rapita .cs-header { background:linear-gradient(135deg,#43a047,#2e7d32); }
+  .c-rapita { border-color:#2e7d32; }
+  .c-forest .cs-header { background:linear-gradient(135deg,#29b6f6,#0288d1); }
+  .c-forest { border-color:#0288d1; }
+  .c-foot .cs-header { background:linear-gradient(135deg,#a68a3a,#7a5f1a); }
+  .c-foot { border-color:#7a5f1a; }
+
+  .field { margin-bottom:14px; }
+  .field-label {
+    font-size:12px; font-weight:700; color:#555; margin-bottom:4px;
+    letter-spacing:.5px; text-transform:uppercase;
+  }
+  .copy-box {
+    display:flex; gap:8px; align-items:stretch; background:#f7f7f9;
+    border:1px solid #e0e0e0; border-radius:6px; padding:10px 12px;
+  }
+  .copy-box .val {
+    flex:1; font-family:'SF Mono',Consolas,monospace; font-size:13px;
+    white-space:pre-wrap; word-break:break-all; color:#1a1a1a;
+  }
+  .copy-box textarea {
+    flex:1; border:0; background:transparent; font-family:'SF Mono',Consolas,monospace;
+    font-size:13px; resize:vertical; min-height:80px; outline:none; color:#1a1a1a;
+  }
+  .copy-btn {
+    background:#333; color:#fff; border:0; border-radius:4px;
+    padding:6px 12px; font-size:12px; cursor:pointer; white-space:nowrap;
+    align-self:flex-start;
+  }
+  .copy-btn:hover { background:#555; }
+  .copy-btn.done { background:#43a047; }
+
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:700px) { .grid2 { grid-template-columns:1fr; } }
+
+  .missing { color:#c62828; font-weight:700; font-size:12px; }
+  .warn-box {
+    background:#fff8e1; border-left:4px solid #f9a825; padding:10px 14px;
+    border-radius:6px; margin-bottom:16px; font-size:12px; color:#5d4037;
+  }
+  .warn-box strong { color:#e65100; }
+
+  .done-check {
+    margin-top:18px; padding:14px; background:#f1f8e9; border-radius:8px;
+    border:2px solid #a5d6a7; text-align:center;
+  }
+  .done-check label {
+    font-size:15px; font-weight:700; cursor:pointer; color:#1b5e20;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .done-check input { width:20px; height:20px; cursor:pointer; }
+  .done-check.checked { background:#c8e6c9; }
+
+  .footer-note {
+    background:#fff; border-radius:10px; padding:16px 20px; margin-top:24px;
+    font-size:12px; color:#666; border:1px solid #e0e0e0;
+  }
+
+  @media print {
+    body { background:#fff; padding:0; }
+    .client-section { page-break-after:always; box-shadow:none; }
+    .summary-bar, .footer-note { page-break-after:always; }
+    .copy-btn { display:none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>8/1配信 MCC投入用 一括設定チェックリスト（6社）</h1>
+<div class="subtitle">2026/07/30 作成 ｜ 対象：8/1配信予定「設定OK」6社 ｜ MCC投入用（星崎さん作業）</div>
+
+<div class="summary-bar">
+  <div class="num"><span id="done-count">0</span><span class="of"> / 6 社 完了</span></div>
+  <div class="label">各セクション末尾のチェックで進捗が記録されます（ブラウザ保存）</div>
+  <div class="progress"><div id="progress-bar"></div></div>
+  <ul id="summary-list">
+    <li data-slug="marriage-sense">マリッジサロンsense</li>
+    <li data-slug="garage226">GARAGE226</li>
+    <li data-slug="seraphia">Seraphia</li>
+    <li data-slug="harikyu-rapita">はりきゅう ラピタ</li>
+    <li data-slug="forestleaf">フォレストリーフ (HAKATA ONE Diving)</li>
+    <li data-slug="foot-health-salon">保健師の足の健康サロン</li>
+  </ul>
+</div>
+
+<div class="warn-box">
+  <strong>[!] クロス混入防止：</strong>各セクション冒頭のバッジで「今どの社を設定中か」を必ず確認してから貼り付けてください。テンプレ流用時に他社の値が残るのが最大の事故要因です（2026-07-24 カラオケキャンドル案件で同型事故あり）。
+</div>
+
+<!-- ============================================================ -->
+<!-- 1. マリッジサロンsense -->
+<!-- ============================================================ -->
+<section class="client-section c-sense" data-slug="marriage-sense">
+  <div class="cs-header">
+    <h2>1. マリッジサロンsense 様</h2>
+    <div class="cs-slug">slug: marriage-sense</div>
+    <div class="cs-badge">[!] このセクションは「マリッジサロンsense 様」専用</div>
+  </div>
+  <div class="cs-body">
+
+    <div class="field">
+      <div class="field-label">キャンペーン名</div>
+      <div class="copy-box">
+        <span class="val">marriage-sense-集客-20260801</span>
+        <button class="copy-btn" data-copy="marriage-sense-集客-20260801">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">最終ページURL（リンク先）</div>
+      <div class="copy-box">
+        <span class="val">https://marriage-sense.com/</span>
+        <button class="copy-btn" data-copy="https://marriage-sense.com/">コピー</button>
+      </div>
+      <div class="missing">※ 提案書は「marriage-sense.com」表記。https://付きで投入すること・実URL到達確認。</div>
+    </div>
+
+    <div class="grid2">
+      <div class="field"><div class="field-label">配信開始日</div>
+        <div class="copy-box"><span class="val">2026-08-01</span></div></div>
+      <div class="field"><div class="field-label">性別</div>
+        <div class="copy-box"><span class="val">男女</span></div></div>
+      <div class="field"><div class="field-label">年齢</div>
+        <div class="copy-box"><span class="val">25〜45歳</span></div></div>
+      <div class="field"><div class="field-label">配信時間帯</div>
+        <div class="copy-box"><span class="val">7:00〜24:00</span></div></div>
+      <div class="field"><div class="field-label">フリークエンシー</div>
+        <div class="copy-box"><span class="val">週3回まで</span></div></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">重点エリア（大阪府）</div>
+      <div class="copy-box">
+        <textarea readonly>大阪市阿倍野区
+大阪市天王寺区
+大阪市中央区
+大阪市北区
+大阪市浪速区
+大阪市西成区
+大阪市住吉区
+大阪市東住吉区
+大阪市生野区</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">拡張エリア</div>
+      <div class="copy-box">
+        <textarea readonly>堺市
+東大阪市
+八尾市
+松原市
+藤井寺市
+柏原市
+奈良市</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">キーワード（24個）</div>
+      <div class="copy-box">
+        <textarea readonly>結婚相談所
+結婚相談所 大阪
+婚活
+婚活 大阪
+IBJ
+お見合い
+仲人
+マリッジサロン
+人見知り
+恋愛初心者
+出会いがない
+結婚 不安
+マッチングアプリ 疲れた
+婚活 失敗
+お見合い 練習
+プロポーズ
+結婚 したい
+パートナー 探し
+真剣な出会い
+結婚 30代
+結婚 40代
+独身 卒業
+恋愛相談
+自分磨き</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="done-check">
+      <label><input type="checkbox" data-slug="marriage-sense"> [チェック] マリッジサロンsense 様 設定完了</label>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 2. GARAGE226 -->
+<!-- ============================================================ -->
+<section class="client-section c-garage" data-slug="garage226">
+  <div class="cs-header">
+    <h2>2. GARAGE226 様（こまじぃのバイク修理屋さん）</h2>
+    <div class="cs-slug">slug: garage226</div>
+    <div class="cs-badge">[!] このセクションは「GARAGE226 様」専用</div>
+  </div>
+  <div class="cs-body">
+
+    <div class="field">
+      <div class="field-label">キャンペーン名</div>
+      <div class="copy-box">
+        <span class="val">garage226-集客-20260801</span>
+        <button class="copy-btn" data-copy="garage226-集客-20260801">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">最終ページURL（リンク先）</div>
+      <div class="copy-box">
+        <span class="val">https://komajiinobikeshuuriyasan-3.jimdosite.com/</span>
+        <button class="copy-btn" data-copy="https://komajiinobikeshuuriyasan-3.jimdosite.com/">コピー</button>
+      </div>
+      <div class="missing">※ 提案書はスキームなし表記。https://付きで投入・到達確認。</div>
+    </div>
+
+    <div class="grid2">
+      <div class="field"><div class="field-label">配信開始日</div>
+        <div class="copy-box"><span class="val">2026-08-01</span></div></div>
+      <div class="field"><div class="field-label">性別</div>
+        <div class="copy-box"><span class="val">男女（男性比重め）</span></div></div>
+      <div class="field"><div class="field-label">年齢</div>
+        <div class="copy-box"><span class="val">20〜65歳</span></div></div>
+      <div class="field"><div class="field-label">配信時間帯</div>
+        <div class="copy-box"><span class="val">7:00〜22:00</span></div></div>
+      <div class="field"><div class="field-label">フリークエンシー</div>
+        <div class="copy-box"><span class="val">週3回まで</span></div></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">重点エリア（山梨県）</div>
+      <div class="copy-box">
+        <textarea readonly>甲州市
+山梨市
+笛吹市
+甲府市
+大月市
+都留市
+上野原市</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">拡張エリア</div>
+      <div class="copy-box">
+        <textarea readonly>北杜市
+韮崎市
+南アルプス市
+中央市
+富士吉田市
+八王子市（東京都）
+諏訪市（長野県）</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">キーワード（23個）</div>
+      <div class="copy-box">
+        <textarea readonly>バイク 修理
+バイク 車検
+バイクメンテナンス
+原付 修理
+スクーター 修理
+バイク 持ち込み修理
+バイク 山梨
+バイク屋
+甲州
+農機 修理
+耕運機 修理
+草刈機 修理
+電動キックボード 修理
+電動バイク 修理
+小型エンジン 修理
+農業機械 故障
+バイク 好き
+ツーリング 山梨
+旧車 バイク
+DIY バイク
+バイクライフ
+愛車 大切に
+山梨 暮らし</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="done-check">
+      <label><input type="checkbox" data-slug="garage226"> [チェック] GARAGE226 様 設定完了</label>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 3. Seraphia -->
+<!-- ============================================================ -->
+<section class="client-section c-seraphia" data-slug="seraphia">
+  <div class="cs-header">
+    <h2>3. Seraphia 様</h2>
+    <div class="cs-slug">slug: seraphia</div>
+    <div class="cs-badge">[!] このセクションは「Seraphia 様」専用</div>
+  </div>
+  <div class="cs-body">
+
+    <div class="field">
+      <div class="field-label">キャンペーン名</div>
+      <div class="copy-box">
+        <span class="val">seraphia-集客-20260801</span>
+        <button class="copy-btn" data-copy="seraphia-集客-20260801">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">最終ページURL（リンク先）</div>
+      <div class="copy-box">
+        <span class="val">https://seraphia.jp/</span>
+        <button class="copy-btn" data-copy="https://seraphia.jp/">コピー</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="field"><div class="field-label">配信開始日</div>
+        <div class="copy-box"><span class="val">2026-08-01</span></div></div>
+      <div class="field"><div class="field-label">性別</div>
+        <div class="copy-box"><span class="val">女性</span></div></div>
+      <div class="field"><div class="field-label">年齢</div>
+        <div class="copy-box"><span class="val">25〜45歳</span></div></div>
+      <div class="field"><div class="field-label">配信時間帯</div>
+        <div class="copy-box"><span class="val">7:00〜23:00</span></div></div>
+      <div class="field"><div class="field-label">フリークエンシー</div>
+        <div class="copy-box"><span class="val missing">（提案書に記載なし・要確認 ／ 他4社と揃えるなら「週3回まで」推奨）</span></div></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">重点エリア（千葉県）</div>
+      <div class="copy-box">
+        <textarea readonly>八千代市
+佐倉市
+習志野市
+印西市
+白井市
+四街道市</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">拡張エリア（千葉県）</div>
+      <div class="copy-box">
+        <textarea readonly>千葉市
+船橋市
+市川市
+松戸市
+柏市
+成田市</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">キーワード（27個）</div>
+      <div class="copy-box">
+        <textarea readonly>マッサージ 八千代
+マッサージ 千葉
+リラクゼーション 八千代
+ボディケア 千葉
+プライベートサロン 千葉
+アロマ 千葉
+占い 千葉
+オラクルカード
+ヒーリング サロン
+音叉ヒーリング
+将来 不安
+心 疲れ
+ストレス 解消
+自律神経 整える
+気持ち リセット
+自分を見つめ直す
+生き方 悩み
+強い刺激 苦手
+優しい 施術
+自分磨き
+癒し
+セルフケア
+スピリチュアル
+チャクラ
+スピリチュアル ライフ
+大人 女性 サロン
+ご褒美 時間</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="done-check">
+      <label><input type="checkbox" data-slug="seraphia"> [チェック] Seraphia 様 設定完了</label>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 4. はりきゅう ラピタ -->
+<!-- ============================================================ -->
+<section class="client-section c-rapita" data-slug="harikyu-rapita">
+  <div class="cs-header">
+    <h2>4. はりきゅう ラピタ 様</h2>
+    <div class="cs-slug">slug: harikyu-rapita</div>
+    <div class="cs-badge">[!] このセクションは「はりきゅう ラピタ 様」専用</div>
+  </div>
+  <div class="cs-body">
+
+    <div class="field">
+      <div class="field-label">キャンペーン名</div>
+      <div class="copy-box">
+        <span class="val">harikyu-rapita-集客-20260801</span>
+        <button class="copy-btn" data-copy="harikyu-rapita-集客-20260801">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">最終ページURL（リンク先）</div>
+      <div class="copy-box">
+        <span class="val">https://harikyurapita.hp.peraichi.com/</span>
+        <button class="copy-btn" data-copy="https://harikyurapita.hp.peraichi.com/">コピー</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="field"><div class="field-label">配信開始日</div>
+        <div class="copy-box"><span class="val">2026-08-01</span></div></div>
+      <div class="field"><div class="field-label">性別</div>
+        <div class="copy-box"><span class="val">女性</span></div></div>
+      <div class="field"><div class="field-label">年齢</div>
+        <div class="copy-box"><span class="val">30〜60歳</span></div></div>
+      <div class="field"><div class="field-label">配信時間帯</div>
+        <div class="copy-box"><span class="val">7:00〜23:00</span></div></div>
+      <div class="field"><div class="field-label">フリークエンシー</div>
+        <div class="copy-box"><span class="val missing">（提案書に記載なし・要確認 ／ 他4社と揃えるなら「週3回まで」推奨）</span></div></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">重点エリア（奈良県中心）</div>
+      <div class="copy-box">
+        <textarea readonly>奈良市
+生駒市
+大和郡山市
+天理市
+木津川市（京都府）
+精華町（京都府）</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">拡張エリア</div>
+      <div class="copy-box">
+        <textarea readonly>京都市
+東大阪市
+大阪市
+枚方市
+桜井市
+橿原市
+平群町（奈良県）
+斑鳩町（奈良県）</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+      <div class="missing">※ 提案書「斡鳩町」は「斑鳩町（いかるがちょう）」の誤記と判断し訂正。投入前に嶋田社長に一言確認推奨。</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">キーワード（28個）</div>
+      <div class="copy-box">
+        <textarea readonly>鍼灸院 奈良
+鍼灸 学園前
+鍼灸 生駒
+鍼灸 女性
+鍼灸 効果
+メタトロン 奈良
+波動測定
+プライベート サロン 奈良
+東洋医学 サロン
+薬剤師 鍼灸
+肩こり ひどい 慢性
+腰痛
+頭痛
+原因不明
+冷え性 改善
+更年期 症状
+自律神経 乱れ
+原因不明 不調
+疲れ 取れない
+体質改善 女性
+自然療法
+セルフケア
+健康寿命
+大人 女性 健康
+未病 ケア
+フラワーエッセンス
+オーダーメイド 施術
+ご褒美 時間</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="done-check">
+      <label><input type="checkbox" data-slug="harikyu-rapita"> [チェック] はりきゅう ラピタ 様 設定完了</label>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5. フォレストリーフ -->
+<!-- ============================================================ -->
+<section class="client-section c-forest" data-slug="forestleaf">
+  <div class="cs-header">
+    <h2>5. フォレストリーフ 様（HAKATA ONE Diving）</h2>
+    <div class="cs-slug">slug: forestleaf</div>
+    <div class="cs-badge">[!] このセクションは「フォレストリーフ 様」専用</div>
+  </div>
+  <div class="cs-body">
+
+    <div class="field">
+      <div class="field-label">キャンペーン名</div>
+      <div class="copy-box">
+        <span class="val">forestleaf-集客-20260801</span>
+        <button class="copy-btn" data-copy="forestleaf-集客-20260801">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">最終ページURL（LINE友だち追加）</div>
+      <div class="copy-box">
+        <span class="val">https://line.me/R/ti/p/@407gcueo</span>
+        <button class="copy-btn" data-copy="https://line.me/R/ti/p/@407gcueo">コピー</button>
+      </div>
+      <div class="missing">※ LINE友だち追加リンク。広告からの計測はLINE公式管理側で。</div>
+    </div>
+
+    <div class="grid2">
+      <div class="field"><div class="field-label">配信開始日</div>
+        <div class="copy-box"><span class="val">2026-08-01</span></div></div>
+      <div class="field"><div class="field-label">性別</div>
+        <div class="copy-box"><span class="val">男女</span></div></div>
+      <div class="field"><div class="field-label">年齢</div>
+        <div class="copy-box"><span class="val">25〜44歳</span></div></div>
+      <div class="field"><div class="field-label">配信時間帯</div>
+        <div class="copy-box"><span class="val">8:00〜23:00</span></div></div>
+      <div class="field"><div class="field-label">フリークエンシー</div>
+        <div class="copy-box"><span class="val">週3回まで</span></div></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">重点エリア（福岡市）</div>
+      <div class="copy-box">
+        <textarea readonly>福岡市博多区
+福岡市中央区
+福岡市東区
+福岡市南区
+福岡市早良区</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+      <div class="missing">※ 提案書は「博多区/中央区…」のみ。Google広告投入は「福岡市博多区」等でフル指定必須。</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">拡張エリア（福岡県）</div>
+      <div class="copy-box">
+        <textarea readonly>福岡市西区
+福岡市城南区
+春日市
+大野城市
+糸島市
+宗像市
+古賀市
+糟屋郡</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">キーワード（18個）</div>
+      <div class="copy-box">
+        <textarea readonly>体験ダイビング 福岡
+ダイビングショップ 福岡
+スキューバダイビング 博多
+ダイビングスクール 福岡
+ダイビング ライセンス 福岡
+PADI 福岡
+ダイビング 初心者
+ダイビングライセンス 取得
+シュノーケリング 福岡
+マリンスポーツ 九州
+沖縄 ダイビング
+海 アクティビティ
+新しい趣味
+大人の習い事
+週末 アクティビティ
+趣味 探し
+30代 休日 過ごし方
+海が好き</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="done-check">
+      <label><input type="checkbox" data-slug="forestleaf"> [チェック] フォレストリーフ 様 設定完了</label>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 6. 保健師の足の健康サロン -->
+<!-- ============================================================ -->
+<section class="client-section c-foot" data-slug="foot-health-salon">
+  <div class="cs-header">
+    <h2>6. 保健師の足の健康サロン 様（幸田健康改善研究所）</h2>
+    <div class="cs-slug">slug: foot-health-salon</div>
+    <div class="cs-badge">[!] このセクションは「保健師の足の健康サロン 様」専用</div>
+  </div>
+  <div class="cs-body">
+
+    <div class="field">
+      <div class="field-label">キャンペーン名</div>
+      <div class="copy-box">
+        <span class="val">foot-health-salon-集客-20260801</span>
+        <button class="copy-btn" data-copy="foot-health-salon-集客-20260801">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">最終ページURL（リンク先）</div>
+      <div class="copy-box">
+        <span class="val">https://www.mo4vajapan.com/</span>
+        <button class="copy-btn" data-copy="https://www.mo4vajapan.com/">コピー</button>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="field"><div class="field-label">配信開始日</div>
+        <div class="copy-box"><span class="val">2026-08-01</span></div></div>
+      <div class="field"><div class="field-label">性別</div>
+        <div class="copy-box"><span class="val">男女（女性メイン）</span></div></div>
+      <div class="field"><div class="field-label">年齢</div>
+        <div class="copy-box"><span class="val">35〜65歳以上</span></div></div>
+      <div class="field"><div class="field-label">配信時間帯</div>
+        <div class="copy-box"><span class="val">8:00〜22:00</span></div></div>
+      <div class="field"><div class="field-label">フリークエンシー</div>
+        <div class="copy-box"><span class="val">週3回まで</span></div></div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">重点エリア（愛知県）</div>
+      <div class="copy-box">
+        <textarea readonly>幸田町（額田郡, 愛知県）
+岡崎市
+蒲郡市</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+      <div class="missing">※ 幸田町はGoogle広告UI上「幸田町, 額田郡, 愛知県」で検索・指定。</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">拡張エリア（愛知県）</div>
+      <div class="copy-box">
+        <textarea readonly>豊川市
+安城市
+西尾市
+豊橋市</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">キーワード（18個）</div>
+      <div class="copy-box">
+        <textarea readonly>フットケア 岡崎
+巻き爪 幸田
+巻き爪 岡崎
+足のタコ ケア
+爪ケア 愛知
+フットケアサロン 幸田
+足の痛み
+足のタコ 痛い
+歩きにくい
+外反母趾
+内反小趾
+足育 子ども
+健康 歩く
+シニア 健康
+寝たきり 予防
+靴 選び方
+インソール おすすめ
+保健師 相談</textarea>
+        <button class="copy-btn" data-copy-target="prev">コピー</button>
+      </div>
+    </div>
+
+    <div class="done-check">
+      <label><input type="checkbox" data-slug="foot-health-salon"> [チェック] 保健師の足の健康サロン 様 設定完了</label>
+    </div>
+  </div>
+</section>
+
+<div class="footer-note">
+  <strong>投入時の共通注意（6社共通）</strong><br>
+  ・想定月予算/配信量は6社すべて提案書に記載なし → MCC投入時に別途確認。<br>
+  ・キャンペーン命名規則：<code>{slug}-集客-20260801</code>（配信目的+日付が入る形）。<br>
+  ・URLはhttps://付きで投入。到達確認を必ず実施。<br>
+  ・年齢「65歳以上」は Google広告UIで「65歳以上」枠を明示ONに。<br>
+  ・データソース：本ページの全項目は各社提案書（<code>proposals/{slug}.html</code>）の記載を機械的に転記。憶測補完なし。
+</div>
+
+</div>
+
+<script>
+(function(){
+  // clipboard copy
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.getAttribute('data-copy');
+      if (!text && btn.getAttribute('data-copy-target') === 'prev') {
+        var ta = btn.parentElement.querySelector('textarea');
+        if (ta) text = ta.value;
+      }
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(function(){
+        var orig = btn.textContent;
+        btn.textContent = 'コピー済';
+        btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = orig; btn.classList.remove('done'); }, 1500);
+      });
+    });
+  });
+
+  // localStorage persistence
+  var KEY = 'runbird-setup-20260801-done';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){}
+
+  var boxes = document.querySelectorAll('.done-check input[type="checkbox"]');
+  function updateSummary(){
+    var done = 0;
+    boxes.forEach(function(cb){
+      var slug = cb.getAttribute('data-slug');
+      var container = cb.closest('.done-check');
+      if (cb.checked) { container.classList.add('checked'); done++; }
+      else container.classList.remove('checked');
+      var li = document.querySelector('#summary-list li[data-slug="'+slug+'"]');
+      if (li) li.classList.toggle('done', cb.checked);
+    });
+    document.getElementById('done-count').textContent = done;
+    document.getElementById('progress-bar').style.width = (done/6*100)+'%';
+  }
+  boxes.forEach(function(cb){
+    var slug = cb.getAttribute('data-slug');
+    cb.checked = !!state[slug];
+    cb.addEventListener('change', function(){
+      state[slug] = cb.checked;
+      localStorage.setItem(KEY, JSON.stringify(state));
+      updateSummary();
+    });
+  });
+  updateSummary();
+})();
+</script>
+</body>
+</html>
