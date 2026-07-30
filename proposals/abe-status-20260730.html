@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8/1配信 進捗状況 — 阿部さん共有用（2026/07/30時点）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 24px;
+        }
+
+        .summary-bar {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            border: 2px solid #e0e0e0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            text-align: center;
+        }
+        .summary-item .num {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .summary-item .label { font-size: 12px; color: #666; }
+        .summary-item.ok .num { color: #2e7d32; }
+        .summary-item.wait .num { color: #e65100; }
+        .summary-item.total .num { color: #1a1a1a; }
+
+        .col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .col {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            border: 3px solid;
+        }
+        .col.ok { border-color: #2e7d32; }
+        .col.wait { border-color: #e65100; }
+
+        .col-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .col.ok .col-title { color: #1b5e20; }
+        .col.wait .col-title { color: #bf360c; }
+        .col-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .col.ok .col-badge { background: #2e7d32; }
+        .col.wait .col-badge { background: #e65100; }
+        .col-sub {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .client-card {
+            background: #fafafa;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid #ccc;
+        }
+        .col.ok .client-card { border-left-color: #2e7d32; background: #f1f8e9; }
+        .col.wait .client-card { border-left-color: #e65100; background: #fff3e0; }
+        .client-card:last-child { margin-bottom: 0; }
+        .cc-name {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1a1a1a;
+        }
+        .cc-meta {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 6px;
+        }
+        .cc-meta strong { color: #1a1a1a; }
+        .cc-url {
+            font-size: 11px;
+            word-break: break-all;
+        }
+        .cc-url a { color: #1565c0; text-decoration: none; }
+        .cc-url a:hover { text-decoration: underline; }
+        .cc-status {
+            display: inline-block;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+        .col.ok .cc-status { background: #c8e6c9; color: #1b5e20; }
+        .col.wait .cc-status { background: #ffe0b2; color: #bf360c; }
+
+        .action-bar {
+            background: #e3f2fd;
+            border: 2px solid #1565c0;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+        }
+        .action-bar h3 {
+            color: #0d47a1;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .action-bar ul {
+            margin-left: 20px;
+            font-size: 13px;
+            color: #333;
+        }
+        .action-bar li { margin-bottom: 6px; }
+        .action-bar li strong { color: #0d47a1; }
+
+        .flow-diagram {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            border: 2px solid #e0e0e0;
+        }
+        .flow-diagram h3 {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 14px;
+        }
+        .flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+        .flow-step {
+            background: #f5f5f5;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 12px 18px;
+            text-align: center;
+            min-width: 130px;
+        }
+        .flow-step .role {
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 3px;
+            letter-spacing: .05em;
+        }
+        .flow-step .task {
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .flow-step.abe { background: #e3f2fd; border-color: #1565c0; }
+        .flow-step.abe .role { color: #0d47a1; }
+        .flow-step.host { background: #fce4ec; border-color: #ad1457; }
+        .flow-step.host .role { color: #880e4f; }
+        .flow-step.client { background: #f3e5f5; border-color: #6a1b9a; }
+        .flow-step.client .role { color: #4a148c; }
+        .flow-arrow {
+            color: #999;
+            font-size: 20px;
+            padding: 0 8px;
+        }
+
+        .footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 11px;
+            padding: 12px 0;
+        }
+
+        @media (max-width: 768px) {
+            .col-grid { grid-template-columns: 1fr; }
+            .summary-bar { grid-template-columns: repeat(3, 1fr); }
+            .flow { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); padding: 6px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>8/1配信予定 進捗状況</h1>
+    <p class="subtitle">阿部さん共有用 ／ 2026年7月30日時点 ／ 株式会社ランバード（星崎）</p>
+
+    <!-- サマリー -->
+    <div class="summary-bar">
+        <div class="summary-item total">
+            <div class="num">9</div>
+            <div class="label">8/1配信予定 全社</div>
+        </div>
+        <div class="summary-item ok">
+            <div class="num">6</div>
+            <div class="label">設定OK（着手可）</div>
+        </div>
+        <div class="summary-item wait">
+            <div class="num">3</div>
+            <div class="label">クライアント返信待ち</div>
+        </div>
+    </div>
+
+    <!-- 役割フロー -->
+    <div class="flow-diagram">
+        <h3>作業の流れ（役割分担）</h3>
+        <div class="flow">
+            <div class="flow-step client">
+                <div class="role">CLIENT</div>
+                <div class="task">提案書確認・返信</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step host">
+                <div class="role">星崎</div>
+                <div class="task">提案書送付／<br>ヒアリング内容確定</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step abe">
+                <div class="role">阿部さん</div>
+                <div class="task">MCCアカウント<br>開設</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step host">
+                <div class="role">星崎</div>
+                <div class="task">Google広告設定<br>（キャンペーン投入）</div>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step abe">
+                <div class="role">8/1</div>
+                <div class="task">配信開始</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2列比較 -->
+    <div class="col-grid">
+
+        <!-- 左：設定OK -->
+        <div class="col ok">
+            <div class="col-title">
+                <span class="col-badge">設定OK</span>
+                クライアント確認済／即着手可
+            </div>
+            <div class="col-sub">
+                提案書内容がクライアントから返信済のため、阿部さん→MCC開設 → 星崎→Google広告設定 で 8/1 配信開始可能な6社
+            </div>
+
+            <div class="client-card">
+                <div class="cc-name">1. マリッジサロン sense 様</div>
+                <div class="cc-meta">大阪府大阪市 ／ ヒアリング済</div>
+            </div>
+            <div class="client-card">
+                <div class="cc-name">2. GARAGE226 様</div>
+                <div class="cc-meta">山梨県甲府市 ／ ヒアリング済</div>
+            </div>
+            <div class="client-card">
+                <div class="cc-name">3. Seraphia 様</div>
+                <div class="cc-meta">千葉県八千代市 ／ ヒアリング済</div>
+            </div>
+            <div class="client-card">
+                <div class="cc-name">4. 鍼灸院 RAPITA 様</div>
+                <div class="cc-meta">奈良県奈良市 ／ チャンネル開設案内済（7/3）</div>
+                <div class="cc-url"><a href="./harikyu-rapita.html" target="_blank">./harikyu-rapita.html</a></div>
+            </div>
+            <div class="client-card">
+                <div class="cc-name">5. フォレストリーフ 様</div>
+                <div class="cc-meta">福岡県福岡市 ／ 予算算定済（1/31まで対応）</div>
+                <div class="cc-url"><a href="./forestleaf.html" target="_blank">./forestleaf.html</a></div>
+            </div>
+            <div class="client-card">
+                <div class="cc-name">6. 保健師の足の健康サロン 様</div>
+                <div class="cc-meta">愛知県額田郡幸田町 ／ ヒアリング済</div>
+                <div class="cc-url"><a href="./foot-health-salon.html" target="_blank">./foot-health-salon.html</a></div>
+            </div>
+        </div>
+
+        <!-- 右：返信待ち -->
+        <div class="col wait">
+            <div class="col-title">
+                <span class="col-badge">返信待ち</span>
+                クライアント返信次第で着手
+            </div>
+            <div class="col-sub">
+                提案書は送付済み。返信・確認待ちのため、返信到着後に阿部さんへMCC開設依頼を出します
+            </div>
+
+            <div class="client-card">
+                <div class="cc-name">
+                    1. 株式会社 MLO 様
+                    <span class="cc-status">電話済／返信待ち</span>
+                </div>
+                <div class="cc-meta">
+                    沖縄県宜野湾市 ／
+                    <strong>電話は繋がったが提案書への返信なし</strong>
+                    ／ 本日リマインド予定
+                </div>
+            </div>
+            <div class="client-card">
+                <div class="cc-name">
+                    2. 炭火焼肉たなか屋 様
+                    <span class="cc-status">電話済／返信待ち</span>
+                </div>
+                <div class="cc-meta">
+                    福井県越前市 ／
+                    <strong>電話は繋がったが提案書への返信なし</strong>
+                    ／ 本日リマインド予定
+                </div>
+                <div class="cc-url"><a href="./tanakaya.html" target="_blank">./tanakaya.html</a></div>
+            </div>
+            <div class="client-card">
+                <div class="cc-name">
+                    3. 株式会社 nambers 様（4店舗＋魚屋十番＋伍れんじゃー）
+                    <span class="cc-status">昨日送付／本日返信予定</span>
+                </div>
+                <div class="cc-meta">
+                    千葉県船橋市 ／
+                    <strong>昨日提案書送付・本日返信到着見込み</strong>
+                    ／ 3提案（求人1本＋集客2本）
+                </div>
+                <div class="cc-url"><a href="./nambers-group.html" target="_blank">./nambers-group.html</a>（一覧）</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 阿部さんへの依頼事項 -->
+    <div class="action-bar">
+        <h3>阿部さんへの依頼事項（本日時点）</h3>
+        <ul>
+            <li><strong>優先着手（6社）：</strong>左側「設定OK」の sense / GARAGE226 / Seraphia / RAPITA / フォレストリーフ / 保健師の足の健康サロン について、MCCアカウント開設をお願いします</li>
+            <li><strong>保留中（3社）：</strong>右側「返信待ち」の MLO / たなか屋 / nambers については、クライアント返信到着次第、あらためて開設依頼をお送りします</li>
+            <li><strong>MCC開設後：</strong>星崎側で提案書の内容に沿ってGoogle広告のキャンペーン設定を行い、8月1日（土）配信開始を目指します</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        株式会社ランバード｜広告運用サポート窓口
+    </div>
+
+</div>
+</body>
+</html>
