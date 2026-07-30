@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BuzzPlus リード獲得報告＆対応方針 / 2026-07-30</title>
+<style>
+:root{--nav:#1b2a63;--or:#f5820b;--or2:#ff8b47;--ink:#1a1d29;--mut:#6b7280;--bg:#f6f7fb;--line:#e3e6ef;--red:#d92d20;--amb:#b54708;--grn:#067647;--card:#fff}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;padding:20px 14px 60px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto}
+h1{font-size:22px;color:var(--nav);margin-bottom:4px}
+.sub{color:var(--mut);font-size:12px;margin-bottom:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(20,30,70,.04)}
+.card h2{font-size:16px;color:var(--nav);margin-bottom:12px;border-left:5px solid var(--or);padding-left:10px}
+.hero{background:linear-gradient(135deg,#0f2b1a 0%,#125d3a 100%);color:#fff;border-radius:14px;padding:22px;text-align:center;margin-bottom:16px}
+.hero .k{font-size:11px;letter-spacing:.2em;color:#8ce0b0;font-weight:800;margin-bottom:8px}
+.hero .v{font-size:26px;font-weight:900;line-height:1.4}
+.hero .v strong{color:#ffe08a;font-size:36px}
+.hero .n{font-size:12px;color:#c0e8d0;margin-top:8px}
+.top3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.top3 .b{background:#fff;border-radius:12px;padding:14px;border-top:4px solid var(--or)}
+.top3 .b.g{border-color:var(--grn)}
+.top3 .b.r{border-color:var(--red)}
+.top3 .b .n{font-size:10px;font-weight:800;color:var(--mut);letter-spacing:.05em}
+.top3 .b .t{font-size:14px;font-weight:800;color:var(--nav);margin:4px 0 4px}
+.top3 .b .d{font-size:12px;color:#333;line-height:1.5}
+.leads{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:6px}
+.lead{background:#fff;border:2px solid var(--grn);border-radius:12px;padding:16px;position:relative}
+.lead.urgent{border-color:var(--red)}
+.lead .badge{position:absolute;top:-10px;right:12px;background:var(--grn);color:#fff;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px}
+.lead.urgent .badge{background:var(--red)}
+.lead .name{font-size:20px;font-weight:800;color:var(--nav);margin-bottom:4px}
+.lead .name .furi{font-size:11px;color:var(--mut);font-weight:600;display:block;margin-top:2px}
+.lead .row{display:flex;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.lead .row:last-of-type{border:0}
+.lead .row .l{width:80px;color:var(--mut);font-size:12px;font-weight:700;flex-shrink:0}
+.lead .row .v{color:#333;word-break:break-all;font-family:"SF Mono",Menlo,monospace;font-size:12.5px}
+.lead .row .v.big{font-weight:700;font-size:14px}
+.lead .status{margin-top:12px;padding:8px 10px;border-radius:6px;background:#fff8f0;font-size:12px;color:var(--amb);font-weight:600}
+.lead.urgent .status{background:#fee;color:var(--red)}
+.warn{background:#fef3c7;border-left:5px solid var(--amb);padding:14px 16px;border-radius:8px;margin:14px 0;font-size:13.5px}
+.warn strong{color:var(--amb)}
+.err{background:#fee;border-left:5px solid var(--red);padding:14px 16px;border-radius:8px;margin:14px 0;font-size:13.5px}
+.err strong{color:var(--red)}
+.mailbox{background:#f7f9fd;border:1px dashed #a0b0d0;border-radius:10px;padding:14px 16px;margin-top:10px;font-family:"SF Mono",Menlo,monospace;font-size:12.5px;line-height:1.75;color:#222;position:relative;white-space:pre-wrap}
+.mailbox::before{content:"📋 コピー用";position:absolute;top:-9px;left:12px;background:var(--card);padding:0 8px;font-size:10px;font-weight:800;color:var(--nav);font-family:"Hiragino Kaku Gothic ProN",sans-serif;letter-spacing:.03em}
+.mail-meta{display:flex;gap:8px;font-size:11px;margin-bottom:8px;flex-wrap:wrap}
+.mail-meta span{background:var(--nav);color:#fff;padding:2px 8px;border-radius:4px;font-weight:700}
+.timeline{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}
+.timeline .step{background:#f7f9fd;border-radius:8px;padding:10px;text-align:center;font-size:11.5px}
+.timeline .step.done{background:#ecfdf5;border:1px solid var(--grn)}
+.timeline .step.now{background:#fef3c7;border:1px solid var(--amb)}
+.timeline .step.next{background:#eff6ff;border:1px solid #7ba6ff}
+.timeline .step .h{font-weight:800;font-size:12px;margin-bottom:3px;color:var(--nav)}
+.numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.numbers div{background:#f7f9fd;border-radius:8px;padding:10px 8px;text-align:center}
+.numbers .k{font-size:10px;color:var(--mut);font-weight:700}
+.numbers .v{font-size:18px;font-weight:800;color:var(--nav);line-height:1.2;margin-top:2px}
+.numbers .n{font-size:9.5px;color:var(--mut);margin-top:2px}
+@media(max-width:720px){.leads,.top3,.timeline,.numbers{grid-template-columns:1fr}.numbers{grid-template-columns:1fr 1fr}}
+</style></head>
+<body>
+<div class="wrap">
+
+<h1>📥 BuzzPlus リード獲得報告＆対応方針</h1>
+<p class="sub">2026-07-30 / 発行: 星崎 / 宛: 鈴木様・齋藤様・嶋田社長</p>
+
+<div class="hero">
+<div class="k">GOOD NEWS</div>
+<div class="v"><strong>2件</strong> のお問い合わせを獲得しました</div>
+<div class="n">Meta広告 Instant Form 経由 / 月¥30,000プランに興味 / 7月消化¥42,622で獲得</div>
+</div>
+
+<div class="top3">
+<div class="b g">
+<div class="n">結論①</div>
+<div class="t">✅ 広告は機能していた</div>
+<div class="d">7月リード「0件」と認識されていたが、実際は2件獲得済。実CPL¥21,311は業界相場内。</div>
+</div>
+<div class="b r">
+<div class="n">結論② 事故</div>
+<div class="t">🔴 通知漏れで放置</div>
+<div class="d">鈴木様・齋藤様宛の通知メール未着＋スプシ未反映。1件は6日、1件は1日放置状態。</div>
+</div>
+<div class="b">
+<div class="n">結論③ 対応</div>
+<div class="t">📩 折り返し文案準備</div>
+<div class="d">下記に本間様・後藤様それぞれへの返信テンプレを用意。鈴木様承認後に即送付。</div>
+</div>
+</div>
+
+<div class="card">
+<h2>📊 数字サマリ</h2>
+<div class="numbers">
+<div><div class="k">獲得リード</div><div class="v" style="color:var(--grn)">2件</div><div class="n">7/24, 7/29</div></div>
+<div><div class="k">7月消化</div><div class="v">¥42,622</div><div class="n">Meta広告</div></div>
+<div><div class="k">実CPL</div><div class="v" style="color:var(--grn)">¥21,311</div><div class="n">業界相場内</div></div>
+<div><div class="k">興味プラン</div><div class="v">¥30,000</div><div class="n">2件とも同じ</div></div>
+</div>
+</div>
+
+<div class="card">
+<h2>👤 獲得リード詳細</h2>
+
+<div class="leads">
+
+<div class="lead urgent">
+<span class="badge">6日放置</span>
+<div class="name">後藤 正樹 <span class="furi">ごとう まさき 様</span></div>
+<div class="row"><span class="l">送信日</span><span class="v big">2026-07-24 (金) 18:01</span></div>
+<div class="row"><span class="l">Email</span><span class="v">masakigoto@i.softbank.jp</span></div>
+<div class="row"><span class="l">興味プラン</span><span class="v">月30,000円プランの詳細</span></div>
+<div class="row"><span class="l">業種</span><span class="v">その他</span></div>
+<div class="row"><span class="l">経路</span><span class="v">Meta広告(BP_ANIME_v3) / IG</span></div>
+<div class="status">⚠️ 最優先で本日中に返信</div>
+</div>
+
+<div class="lead">
+<span class="badge">1日放置</span>
+<div class="name">本間 たけまさ <span class="furi">ほんま たけまさ 様</span></div>
+<div class="row"><span class="l">送信日</span><span class="v big">2026-07-29 (水) 19:45</span></div>
+<div class="row"><span class="l">Email</span><span class="v">takemasa0423@docomo.ne.jp</span></div>
+<div class="row"><span class="l">興味プラン</span><span class="v">月30,000円プランの詳細</span></div>
+<div class="row"><span class="l">業種</span><span class="v">その他</span></div>
+<div class="row"><span class="l">経路</span><span class="v">Meta広告(BP_ANIME_v3) / IG</span></div>
+<div class="status">🟡 本日中に返信</div>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>🚨 通知漏れ事故の全貌（RUNBIRD調査結果反映）</h2>
+<div class="err"><strong>調査結果、想定より根が深い事故でした。</strong>「通知が壊れた」のではなく、<strong>「通知フローがそもそも設定されていなかった」</strong>のが真因です。</div>
+
+<table style="width:100%;font-size:13px;border-collapse:collapse;margin-top:8px">
+<tr style="background:#f7f9fd"><th style="text-align:left;padding:8px;border:1px solid var(--line);width:30%">経路</th><th style="text-align:left;padding:8px;border:1px solid var(--line);width:30%">想定</th><th style="text-align:left;padding:8px;border:1px solid var(--line);width:40%">実態</th></tr>
+<tr><td style="padding:8px;border:1px solid var(--line)">Meta → 鈴木様メール</td><td style="padding:8px;border:1px solid var(--line)">リード時メール通知</td><td style="padding:8px;border:1px solid var(--line);color:var(--red);font-weight:700">❌ アドレス誤記の疑い（s.hokuoto=hokuto誤記）</td></tr>
+<tr><td style="padding:8px;border:1px solid var(--line)">Meta → 齋藤様メール</td><td style="padding:8px;border:1px solid var(--line)">リード時メール通知</td><td style="padding:8px;border:1px solid var(--line);color:var(--red);font-weight:700">❌ 過去に一度も設定依頼なし</td></tr>
+<tr><td style="padding:8px;border:1px solid var(--line)">Meta → スプレッドシート</td><td style="padding:8px;border:1px solid var(--line)">リード自動記録</td><td style="padding:8px;border:1px solid var(--line);color:var(--red);font-weight:700">❌ 最初から未実装（設計書は「手動確認」）</td></tr>
+<tr style="background:#fef3c7"><td style="padding:8px;border:1px solid var(--line);font-weight:700">★フォーム自体</td><td style="padding:8px;border:1px solid var(--line)">設計書のID=1380696160575891</td><td style="padding:8px;border:1px solid var(--line);color:var(--amb);font-weight:700">⚠️ 実際は別ID=3084196728443257（新規別物・通知未設定）</td></tr>
+</table>
+
+<div class="warn" style="margin-top:14px">
+<strong>復旧対応中:</strong> Coworkに以下4点を作業依頼済（本日中に完了予定）
+<ul style="padding-left:20px;margin-top:6px">
+<li>通知メール宛先の<strong>新規設定</strong>（鈴木様・齋藤様の正しいアドレスで）</li>
+<li>スプレッドシート連携の実装（Zapier/Make or GAS）</li>
+<li>フォームに<strong>電話番号を必須項目</strong>として追加（BtoBフォロー速度確保）</li>
+<li>テスト送信で全経路の疎通確認</li>
+</ul>
+</div>
+</div>
+
+<div class="card" style="border:2px solid var(--grn)">
+<h2>🔄 Fable 5評価の反転（重要）</h2>
+<p style="font-size:13.5px;margin-bottom:10px">先日のFable 5批判レポート（42点/保留）は「7月リード0件＝広告構造欠陥」を前提としていました。<strong>今回の事実発見で前提が反転します</strong>。</p>
+
+<table style="width:100%;font-size:13px;border-collapse:collapse">
+<tr style="background:#f7f9fd"><th style="text-align:left;padding:8px;border:1px solid var(--line);width:35%">項目</th><th style="text-align:left;padding:8px;border:1px solid var(--line);width:32%">Fable 5前提</th><th style="text-align:left;padding:8px;border:1px solid var(--line);width:33%">今回発見後</th></tr>
+<tr><td style="padding:8px;border:1px solid var(--line)">7月リード数</td><td style="padding:8px;border:1px solid var(--line)">0件</td><td style="padding:8px;border:1px solid var(--line);color:var(--grn);font-weight:700">2件（+∞%）</td></tr>
+<tr><td style="padding:8px;border:1px solid var(--line)">実CPL</td><td style="padding:8px;border:1px solid var(--line)">計算不能</td><td style="padding:8px;border:1px solid var(--line);color:var(--grn);font-weight:700">¥21,311（業界相場内）</td></tr>
+<tr><td style="padding:8px;border:1px solid var(--line)">動画クリエ評価</td><td style="padding:8px;border:1px solid var(--line)">検証不能</td><td style="padding:8px;border:1px solid var(--line);color:var(--grn);font-weight:700">機能している</td></tr>
+<tr><td style="padding:8px;border:1px solid var(--line)">Instant Form評価</td><td style="padding:8px;border:1px solid var(--line)">主犯（LP切替必須）</td><td style="padding:8px;border:1px solid var(--line);color:var(--amb);font-weight:700">実は完走している（LP切替判断は再議論）</td></tr>
+<tr><td style="padding:8px;border:1px solid var(--line)">8月方針</td><td style="padding:8px;border:1px solid var(--line)">4層すべて組み直し</td><td style="padding:8px;border:1px solid var(--line);color:var(--amb);font-weight:700">配線復旧＋現構成継続で検証可能</td></tr>
+</table>
+</div>
+
+<div class="card">
+<h2>📩 返信メール文案（コピー用）</h2>
+
+<p style="font-size:13px;color:var(--mut);margin-bottom:12px">※鈴木様のご確認後、後藤様・本間様それぞれのアドレスへ送付</p>
+
+<h3 style="font-size:14px;color:var(--nav);margin:14px 0 8px">■ 後藤様宛（返信遅延の謝罪込み）</h3>
+
+<div class="mail-meta">
+<span>宛先: masakigoto@i.softbank.jp</span>
+<span>件名: 【BuzzPlus】お問い合わせのお礼と月30,000円プランのご案内</span>
+</div>
+
+<div class="mailbox">後藤 正樹 様
+
+お世話になっております。
+株式会社ランバード BuzzPlus 事業担当でございます。
+
+この度は、7月24日にBuzzPlus（バズプラス）へ
+お問い合わせをいただき、誠にありがとうございました。
+
+システム設定の不備により、お客様からのご連絡確認と
+折り返しのご連絡が大変遅くなってしまいましたこと、
+心よりお詫び申し上げます。
+
+──────────────────
+■ BuzzPlus（バズプラス）とは
+──────────────────
+月額¥30,000（税込）で、
+・AI動画（15〜30秒）の毎月制作
+・SNS広告（Meta/Instagram）の配信代行
+・改善提案／レポート
+を全て込みでご提供する、
+店舗・中小企業様向けの動画×広告代行サービスです。
+
+──────────────────
+■ 現在ご検討いただけるプラン
+──────────────────
+・スタンダード ¥30,000/月（動画1本＋配信）
+・アドバンス   ¥50,000/月（動画2本＋配信最適化）
+・プレミアム   ¥80,000/月（動画3本＋LP改善＋分析）
+
+──────────────────
+■ 次のステップのご提案
+──────────────────
+後藤様のご事業内容や、動画・広告で解決されたい
+課題を伺えれば、最適なプランと事例をご紹介させて
+いただけます。
+
+以下のいずれかでご都合よろしいでしょうか。
+
+① 15分ほどのオンラインお打ち合わせ
+   （Zoom / Google Meet）
+② メールで簡単なヒアリング
+
+ご都合の良い日時、または希望方法を
+ご返信いただけますと幸いです。
+
+改めて、ご連絡が遅くなりましたこと
+重ねてお詫び申し上げます。
+
+何卒よろしくお願い申し上げます。
+
+────────────────────────
+株式会社ランバード
+BuzzPlus事業担当　齋藤
+Mail: xxxxx@runbird.co.jp
+Tel:  03-xxxx-xxxx
+URL:  https://buzzplus-ai.com/
+────────────────────────</div>
+
+<h3 style="font-size:14px;color:var(--nav);margin:24px 0 8px">■ 本間様宛（通常返信）</h3>
+
+<div class="mail-meta">
+<span>宛先: takemasa0423@docomo.ne.jp</span>
+<span>件名: 【BuzzPlus】お問い合わせありがとうございます / 月30,000円プランのご案内</span>
+</div>
+
+<div class="mailbox">本間 たけまさ 様
+
+お世話になっております。
+株式会社ランバード BuzzPlus 事業担当でございます。
+
+昨日はBuzzPlus（バズプラス）へ
+お問い合わせをいただき、誠にありがとうございました。
+
+──────────────────
+■ BuzzPlus（バズプラス）とは
+──────────────────
+月額¥30,000（税込）で、
+・AI動画（15〜30秒）の毎月制作
+・SNS広告（Meta/Instagram）の配信代行
+・改善提案／レポート
+を全て込みでご提供する、
+店舗・中小企業様向けの動画×広告代行サービスです。
+
+──────────────────
+■ 現在ご検討いただけるプラン
+──────────────────
+・スタンダード ¥30,000/月（動画1本＋配信）
+・アドバンス   ¥50,000/月（動画2本＋配信最適化）
+・プレミアム   ¥80,000/月（動画3本＋LP改善＋分析）
+
+──────────────────
+■ 次のステップのご提案
+──────────────────
+本間様のご事業内容や、動画・広告で解決されたい
+課題を伺えれば、最適なプランと事例をご紹介させて
+いただけます。
+
+以下のいずれかでご都合よろしいでしょうか。
+
+① 15分ほどのオンラインお打ち合わせ
+   （Zoom / Google Meet）
+② メールで簡単なヒアリング
+
+ご都合の良い日時、または希望方法を
+ご返信いただけますと幸いです。
+
+何卒よろしくお願い申し上げます。
+
+────────────────────────
+株式会社ランバード
+BuzzPlus事業担当　齋藤
+Mail: xxxxx@runbird.co.jp
+Tel:  03-xxxx-xxxx
+URL:  https://buzzplus-ai.com/
+────────────────────────</div>
+
+</div>
+
+<div class="card">
+<h2>📅 対応タイムライン</h2>
+<div class="timeline">
+<div class="step done">
+<div class="h">✅ 完了</div>
+発見・獲得確認<br>2026-07-30 昼
+</div>
+<div class="step now">
+<div class="h">🔥 今</div>
+承認取得<br>返信文送付<br>本日中
+</div>
+<div class="step next">
+<div class="h">📌 明日以降</div>
+通知フロー復旧<br>電話番号必須化<br>再発防止
+</div>
+</div>
+</div>
+
+<div class="card" style="border:2px solid var(--or)">
+<h2>✋ ご確認・ご判断いただきたいこと</h2>
+<ol style="padding-left:20px;font-size:14px;line-height:1.9">
+<li>返信文の文面（署名・電話番号は空欄→ご記入ください）</li>
+<li>返信送付主体は「齋藤様」でよろしいか（メール文の署名欄）</li>
+<li>お打ち合わせに応じられた場合の対応担当は誰か（齋藤様 or 嶋田社長 or 星崎）</li>
+<li>復旧作業（通知メール宛先追加）で齋藤様のメールアドレスを教えていただきたいです</li>
+</ol>
+</div>
+
+<p style="text-align:center;color:var(--mut);font-size:11px;margin-top:24px">— 以上 —</p>
+
+</div>
+</body></html>
