@@ -65,11 +65,23 @@
             border: 2px solid #e65100;
             border-radius: 10px;
             padding: 16px 20px;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
             font-size: 13px;
             color: #bf360c;
         }
         .status-banner strong { color: #bf360c; }
+
+        .biz-banner {
+            background: #fbf7ef;
+            border: 2px solid #6d4c1b;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-bottom: 28px;
+            font-size: 13px;
+            color: #4e342e;
+        }
+        .biz-banner strong { color: #4e342e; }
+        .biz-banner .biz-title { font-weight: 700; font-size: 15px; color: #4e342e; margin-bottom: 10px; }
 
         .goal-banner {
             background: linear-gradient(135deg, #4e342e, #6d4c1b);
@@ -148,6 +160,21 @@
         .area-box.primary .area-tag { background: #ffcc80; color: #4e342e; }
         .area-box.secondary .area-tag { background: #dcedc8; color: #33691e; }
 
+        .conditions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 14px;
+        }
+        .cond-card {
+            background: #fff;
+            border-left: 4px solid #6d4c1b;
+            border-radius: 8px;
+            padding: 12px 14px;
+        }
+        .cond-card .cl { font-size: 11px; color: #888; margin-bottom: 3px; }
+        .cond-card .cv { font-size: 14px; font-weight: 700; color: #4e342e; }
+
         .kw-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -177,6 +204,26 @@
             color: #333;
         }
 
+        .ref-videos {
+            display: grid;
+            gap: 12px;
+        }
+        .ref-card {
+            display: block;
+            padding: 14px 18px;
+            background: #fbf7ef;
+            border-radius: 10px;
+            border-left: 4px solid #6d4c1b;
+            text-decoration: none;
+            color: #1a1a1a;
+        }
+        .ref-card.hot { border-left-color: #d35400; background: #fff5ec; border: 2px solid #d35400; }
+        .ref-card .rc-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .ref-card .rc-meta { font-size: 12px; color: #666; }
+        .ref-card .rc-meta .views { color: #d35400; font-weight: 700; }
+        .ref-card .rc-comment { font-size: 13px; color: #555; margin-top: 6px; }
+        .ref-card .rc-url { font-size: 11px; color: #1565c0; margin-top: 4px; word-break: break-all; }
+
         .note-bar {
             background: #fff8e1;
             border: 2px solid #f9a825;
@@ -193,6 +240,7 @@
             .target-grid { grid-template-columns: repeat(2, 1fr); }
             .area-section { grid-template-columns: 1fr; }
             .kw-grid { grid-template-columns: 1fr; }
+            .conditions { grid-template-columns: 1fr; }
             .goal-flow { flex-direction: column; }
             .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
         }
@@ -202,17 +250,34 @@
 <div class="container">
 
     <h1>YouTube広告 運用提案書</h1>
-    <p class="subtitle">有限会社良邊建設 様（広島県福山市・土木／地盤改良）｜株式会社ランバード｜2026年8月上旬 配信開始（想定）</p>
+    <p class="subtitle">有限会社良邊建設 様（広島県福山市／とび・土木・舗装・地盤改良）｜株式会社ランバード｜2026年8月上旬 配信開始（想定）</p>
 
     <!-- 位置付け -->
     <div class="status-banner">
         <strong>本案件の位置付け：</strong>良邊建設様は<strong>すでにランバード4アカウントにて広告運用中</strong>のため、本提案書は<strong>「追加動画」および「追加キャンペーン」</strong>としての新規配信設計となります。既存キャンペーンとは別枠で運用し、施策の比較・検証にもご活用いただけます。
     </div>
 
+    <!-- 案件情報 -->
+    <div class="biz-banner">
+        <div class="biz-title">案件情報</div>
+        <strong>会社：</strong>有限会社良邊建設（代表 良邊 則光）／広島県福山市新市町<br>
+        <strong>事業内容：</strong>とび・土木・舗装・地盤改良／西日本エリア全域対応（全国出張案件あり）<br>
+        <strong>会社規模：</strong>創業24年 ／ 従業員21名<br>
+        <strong>訴求軸：</strong>「稼げそう・楽しそう」／ 数字訴求＋代表キャラ前面（ドボクサ／レッツドボクサイズ路線）<br>
+        <strong>お問い合わせ：</strong>0847-51-5811 ／ <a href="https://yayabe-kensetsu.net/" target="_blank" style="color:#6d4c1b;">yayabe-kensetsu.net</a> ／ <a href="https://yayabe-kensetsu.net/recruit/" target="_blank" style="color:#6d4c1b;">採用ページ</a> ／ Instagram <a href="https://www.instagram.com/yayabe5811/" target="_blank" style="color:#6d4c1b;">@yayabe5811</a>
+
+        <div class="conditions">
+            <div class="cond-card"><div class="cl">基本給</div><div class="cv">183,600〜280,800円</div></div>
+            <div class="cond-card"><div class="cl">賞与</div><div class="cv">年2回（10,000〜300,000円）</div></div>
+            <div class="cond-card"><div class="cl">年間休日</div><div class="cv">105日 ／ 週休2日</div></div>
+            <div class="cond-card"><div class="cl">社会保険</div><div class="cv">完備（雇用・労災・健保・厚生年金）</div></div>
+        </div>
+    </div>
+
     <!-- ① 目的・ゴール -->
     <div class="goal-banner">
         <h2>広告配信の目的</h2>
-        <p class="goal-sub">「土木業界で働きたい」「地元・広島で就職・転職したい」若手〜中堅層に、良邊建設の魅力（現場のリアル・職人カルチャー・地元密着）を動画で伝え、採用エントリー・お問い合わせにつなげる</p>
+        <p class="goal-sub">「土木業界で働きたい」「地元・広島で就職・転職したい」若手〜中堅層に、良邊建設の魅力（現場のリアル・職人カルチャー・稼げる待遇・地元密着）を動画で伝え、採用エントリー・お問い合わせにつなげる</p>
         <div class="goal-flow">
             <div class="gf-box">
                 <div class="gf-step">STEP 1</div>
@@ -307,6 +372,7 @@
                 <span class="kw-tag">建設 転職 広島</span>
                 <span class="kw-tag">地盤改良 求人</span>
                 <span class="kw-tag">とび 職人 求人</span>
+                <span class="kw-tag">舗装 求人 広島</span>
                 <span class="kw-tag">建設業 未経験 広島</span>
                 <span class="kw-tag">良邊建設</span>
                 <span class="kw-tag">土木 中途採用</span>
@@ -321,6 +387,7 @@
                 <span class="kw-tag">現場仕事 やりがい</span>
                 <span class="kw-tag">高収入 職人</span>
                 <span class="kw-tag">手に職 仕事</span>
+                <span class="kw-tag">月給制 建設</span>
             </div>
             <div class="kw-box">
                 <h4>ライフスタイル・潜在層</h4>
@@ -356,8 +423,8 @@
             </div>
             <div style="background:#fbf7ef;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;">
                 <div style="font-size:13px;color:#888;margin-bottom:4px;">リンク先</div>
-                <div style="font-size:14px;font-weight:700;word-break:break-all;"><a href="https://yayabe-kensetsu.net/" target="_blank" style="color:#2e7d32;">yayabe-kensetsu.net</a>（公式サイト・想定）</div>
-                <div style="font-size:12px;color:#555;margin-top:6px;">採用専用ページ・LPがあればそちらへ差替えいたします（配信前ヒアリング）。</div>
+                <div style="font-size:14px;font-weight:700;word-break:break-all;"><a href="https://yayabe-kensetsu.net/" target="_blank" style="color:#2e7d32;">yayabe-kensetsu.net</a>（公式サイト）</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">採用専用ページ（<a href="https://yayabe-kensetsu.net/recruit/" target="_blank" style="color:#2e7d32;">/recruit/</a>）へ直接遷移する導線も選択可能。</div>
             </div>
             <div style="background:#fbf7ef;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
                 <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
@@ -367,20 +434,37 @@
         </div>
     </div>
 
-    <!-- ⑤ 参考リンク -->
+    <!-- ⑤ 参考にした建設・求人動画 -->
     <div class="section">
         <div class="section-title">
-            <span class="icon" style="background:#2e7d32;">4</span>
-            参考リンク
+            <span class="icon" style="background:#d35400;">4</span>
+            参考にした建設・求人動画
         </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-            <a href="https://youtu.be/YpQPIV92i-Y" target="_blank" style="display:block;background:#fbf7ef;border-radius:10px;padding:18px;border-left:5px solid #cc0000;text-decoration:none;color:#1a1a1a;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">YouTube広告動画（今回追加）</div>
-                <div style="font-size:15px;font-weight:700;">広告動画を見る →</div>
+        <p style="font-size:13px;color:#666;margin-bottom:16px;">良邊建設様の動画クリエイティブは、下記の再生実績のある建設・職人系動画を参考にトーン・尺・訴求を組み立てました。本命は<strong>川邊組「レッツ！ドボクサイズ！」（24.4万再生）</strong>路線。</p>
+        <div class="ref-videos">
+            <a class="ref-card hot" href="https://www.youtube.com/watch?v=cUIcIjRwrMc" target="_blank">
+                <div class="rc-title">🔥 ★本命 レッツ！ドボクサイズ！（川邊組）</div>
+                <div class="rc-meta">150秒 ／ <span class="views">244,000回再生</span> ／ 建設求人動画のバズ代表例</div>
+                <div class="rc-comment">「土木工事で筋肉ゲット！カッコイイ！」リズミカルな構成＋ユーモア＋社長前面で20万再生超え。「稼げそう・楽しそう」訴求の最高到達点で、良邊建設様の路線本命。</div>
+                <div class="rc-url">https://www.youtube.com/watch?v=cUIcIjRwrMc</div>
             </a>
-            <a href="https://yayabe-kensetsu.net/" target="_blank" style="display:block;background:#fbf7ef;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;text-decoration:none;color:#1a1a1a;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">公式サイト（想定）</div>
-                <div style="font-size:15px;font-weight:700;">有限会社良邊建設 →</div>
+            <a class="ref-card" href="https://youtu.be/mFnAN_ptW3U" target="_blank">
+                <div class="rc-title">🪜 内装職人ドキュメンタリー（しまね職人チャンネル）</div>
+                <div class="rc-meta">239秒 ／ <span class="views">25,127回再生</span></div>
+                <div class="rc-comment">「この仕事のおもしろさを伝えたい」職人本人にカメラを向けて、仕事を語ってもらう構成。BGMと現場の音だけで成立する重厚な作り。中堅・即戦力層向けの参考。</div>
+                <div class="rc-url">https://youtu.be/mFnAN_ptW3U</div>
+            </a>
+            <a class="ref-card" href="https://www.youtube.com/watch?v=SLsJQ870d0M" target="_blank">
+                <div class="rc-title">⚙️ 群馬の町工場が本気で映像作ってみた（石井工機）</div>
+                <div class="rc-meta">119秒 ／ <span class="views">127,952回再生</span></div>
+                <div class="rc-comment">「中小でもここまでカッコ良くできる」お手本。BGMと映像のクオリティで勝負。中小建設・工場が目指せる最高峰クオリティ。</div>
+                <div class="rc-url">https://www.youtube.com/watch?v=SLsJQ870d0M</div>
+            </a>
+            <a class="ref-card" href="https://www.youtube.com/watch?v=EtiNaBw0Qdc" target="_blank">
+                <div class="rc-title">🎥 株式会社清皓 求人動画（愛媛の建設会社）</div>
+                <div class="rc-meta">65秒 ／ 5,298回再生</div>
+                <div class="rc-comment">中小建設で65秒に必要要素をコンパクトに収めた正統派構成。短尺の設計参考。</div>
+                <div class="rc-url">https://www.youtube.com/watch?v=EtiNaBw0Qdc</div>
             </a>
         </div>
     </div>

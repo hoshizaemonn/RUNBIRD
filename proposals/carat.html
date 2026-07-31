@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube広告 運用提案書 — Carat 様</title>
+    <title>YouTube広告 運用提案書 — Carat（カラット）様</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            background: #f7f6f2;
+            background: #fdf7f5;
             color: #1a1a1a;
             line-height: 1.7;
             padding: 24px;
@@ -19,7 +19,7 @@
             text-align: center;
             font-size: 26px;
             color: #1a1a1a;
-            border-bottom: 3px solid #b8860b;
+            border-bottom: 3px solid #c2185b;
             padding-bottom: 12px;
             margin-bottom: 6px;
         }
@@ -35,14 +35,14 @@
             border-radius: 12px;
             padding: 28px;
             margin-bottom: 28px;
-            border: 2px solid #ece6d6;
+            border: 2px solid #f4d8e2;
         }
         .section-title {
             font-size: 19px;
             font-weight: 700;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #f2ecd9;
+            border-bottom: 2px solid #fbe7ef;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -60,15 +60,27 @@
             flex-shrink: 0;
         }
 
+        .biz-banner {
+            background: #fdeef4;
+            border: 2px solid #c2185b;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-bottom: 28px;
+            font-size: 13px;
+            color: #8a134a;
+        }
+        .biz-banner strong { color: #8a134a; }
+        .biz-banner .biz-title { font-weight: 700; font-size: 15px; color: #8a134a; margin-bottom: 10px; }
+
         .goal-banner {
-            background: linear-gradient(135deg, #1a2a44, #2c3e5c);
+            background: linear-gradient(135deg, #3a1a2a, #5a2a3a);
             color: #fff;
             border-radius: 12px;
             padding: 28px 32px;
             margin-bottom: 32px;
         }
         .goal-banner h2 {
-            color: #d4af37;
+            color: #f0c8d8;
             font-size: 20px;
             text-align: center;
             margin-bottom: 10px;
@@ -76,7 +88,7 @@
         .goal-banner .goal-sub {
             text-align: center;
             font-size: 14px;
-            color: #e6dcc2;
+            color: #f5d8e0;
             margin-bottom: 24px;
         }
         .goal-flow {
@@ -94,10 +106,10 @@
             text-align: center;
             min-width: 160px;
         }
-        .gf-box .gf-step { font-size: 11px; color: #d4af37; font-weight: 700; margin-bottom: 4px; }
+        .gf-box .gf-step { font-size: 11px; color: #f0c8d8; font-weight: 700; margin-bottom: 4px; }
         .gf-box .gf-title { font-size: 15px; font-weight: 700; }
-        .gf-box .gf-desc { font-size: 12px; color: #e6dcc2; margin-top: 4px; }
-        .gf-arrow { color: #d4af37; font-size: 24px; font-weight: 700; padding: 0 10px; }
+        .gf-box .gf-desc { font-size: 12px; color: #f5d8e0; margin-top: 4px; }
+        .gf-arrow { color: #f0c8d8; font-size: 24px; font-weight: 700; padding: 0 10px; }
 
         .target-grid {
             display: grid;
@@ -106,11 +118,11 @@
             margin-bottom: 20px;
         }
         .target-card {
-            background: #fbf7ea;
+            background: #fdf3f7;
             border-radius: 10px;
             padding: 18px;
             text-align: center;
-            border: 2px solid #f2ecd9;
+            border: 2px solid #fbe7ef;
         }
         .target-card .t-icon { font-size: 28px; margin-bottom: 8px; }
         .target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
@@ -123,8 +135,8 @@
             margin-bottom: 20px;
         }
         .area-box { border-radius: 10px; padding: 18px; }
-        .area-box.primary { background: #fbf3d9; border: 2px solid #b8860b; }
-        .area-box.secondary { background: #eef2ea; border: 2px solid #6b8e23; }
+        .area-box.primary { background: #fdeef4; border: 2px solid #c2185b; }
+        .area-box.secondary { background: #f5e6ee; border: 2px solid #a06e8a; }
         .area-box h4 { font-size: 14px; margin-bottom: 10px; }
         .area-box .area-tag {
             display: inline-block;
@@ -134,8 +146,8 @@
             font-weight: 600;
             margin: 3px 4px;
         }
-        .area-box.primary .area-tag { background: #f0d878; color: #6b5000; }
-        .area-box.secondary .area-tag { background: #d9e4c8; color: #3d5320; }
+        .area-box.primary .area-tag { background: #f9c5d8; color: #8a134a; }
+        .area-box.secondary .area-tag { background: #e8d0dc; color: #5a2a3a; }
 
         .kw-grid {
             display: grid;
@@ -143,28 +155,47 @@
             gap: 14px;
         }
         .kw-box {
-            background: #fbf7ea;
+            background: #fdf3f7;
             border-radius: 10px;
             padding: 16px;
-            border: 1px solid #f2ecd9;
+            border: 1px solid #fbe7ef;
         }
         .kw-box h4 {
             font-size: 13px;
-            color: #8a6a08;
+            color: #8a134a;
             margin-bottom: 10px;
             padding-bottom: 6px;
-            border-bottom: 1px solid #f2ecd9;
+            border-bottom: 1px solid #fbe7ef;
         }
         .kw-tag {
             display: inline-block;
             background: #fff;
-            border: 1px solid #ece0b8;
+            border: 1px solid #f4c5d8;
             border-radius: 4px;
             padding: 3px 10px;
             font-size: 12px;
             margin: 2px;
             color: #333;
         }
+
+        .ref-videos {
+            display: grid;
+            gap: 12px;
+        }
+        .ref-card {
+            display: block;
+            padding: 14px 18px;
+            background: #fdf3f7;
+            border-radius: 10px;
+            border-left: 4px solid #c2185b;
+            text-decoration: none;
+            color: #1a1a1a;
+        }
+        .ref-card .rc-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+        .ref-card .rc-meta { font-size: 12px; color: #666; }
+        .ref-card .rc-meta .views { color: #c2185b; font-weight: 700; }
+        .ref-card .rc-comment { font-size: 13px; color: #555; margin-top: 6px; }
+        .ref-card .rc-url { font-size: 11px; color: #1565c0; margin-top: 4px; word-break: break-all; }
 
         .note-bar {
             background: #fff8e1;
@@ -176,7 +207,7 @@
         .note-bar h3 { color: #ef6c00; font-size: 15px; margin-bottom: 10px; }
         .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
         .note-bar li { margin-bottom: 6px; }
-        .note-bar li strong { color: #8a6a08; }
+        .note-bar li strong { color: #8a134a; }
 
         @media (max-width: 768px) {
             .target-grid { grid-template-columns: repeat(2, 1fr); }
@@ -191,61 +222,71 @@
 <div class="container">
 
     <h1>YouTube広告 運用提案書</h1>
-    <p class="subtitle">Carat 様｜株式会社ランバード｜2026年8月上旬 配信開始（想定）</p>
+    <p class="subtitle">Carat（カラット）様｜有限会社良邊建設 運営｜株式会社ランバード｜2026年8月上旬 配信開始（想定）</p>
+
+    <!-- 案件情報 -->
+    <div class="biz-banner">
+        <div class="biz-title">案件情報</div>
+        <strong>店舗：</strong>Carat（カラット）／広島県府中市・元町エリアの美容室<br>
+        <strong>コンセプト：</strong>「ラグジュアリーなのに、リーズナブル」／ セルフブロー＋セルフ脱毛で低価格化<br>
+        <strong>主なメニュー：</strong>カラー・白髪染め・カット・セルフ脱毛<br>
+        <strong>採用ターゲット：</strong>ブランクのある元美容師・ママ美容師の復職（パート時給1,000〜1,200円／週3〜5日／4時間以上／ノルマなし・残業少なめ）<br>
+        <strong>お問い合わせ：</strong>0847-54-2212 ／ <a href="https://carat-haircolor.net/" target="_blank" style="color:#c2185b;">carat-haircolor.net</a> ／ Instagram <a href="https://www.instagram.com/fuchu_carat/" target="_blank" style="color:#c2185b;">@fuchu_carat</a>
+    </div>
 
     <!-- ① 目的・ゴール -->
     <div class="goal-banner">
         <h2>広告配信の目的</h2>
-        <p class="goal-sub">Carat様のサービス・商品を知らない見込み顧客に、動画を通じて認知していただき、公式サイトまたはお問い合わせフォームからのご相談・ご来店・ご予約につなげる</p>
+        <p class="goal-sub">「働きたい元美容師（ブランク・ママ層）」および「府中エリアで美容室を探している女性」に、Caratの雰囲気・条件を動画で伝え、応募・来店予約につなげる</p>
         <div class="goal-flow">
             <div class="gf-box">
                 <div class="gf-step">STEP 1</div>
                 <div class="gf-title">認知</div>
-                <div class="gf-desc">YouTube広告で<br>「Carat」を届ける</div>
+                <div class="gf-desc">YouTube広告で<br>Caratを届ける</div>
             </div>
             <div class="gf-arrow">→</div>
             <div class="gf-box">
                 <div class="gf-step">STEP 2</div>
                 <div class="gf-title">興味</div>
-                <div class="gf-desc">動画でサービスの<br>魅力・こだわりを伝える</div>
+                <div class="gf-desc">店内・スタッフ・<br>条件を動画で伝える</div>
             </div>
             <div class="gf-arrow">→</div>
             <div class="gf-box">
                 <div class="gf-step">STEP 3</div>
-                <div class="gf-title">問合せ・来店</div>
-                <div class="gf-desc">公式サイト経由で<br>ご予約・ご相談</div>
+                <div class="gf-title">応募・予約</div>
+                <div class="gf-desc">採用ページ／<br>ホットペッパー経由</div>
             </div>
             <div class="gf-arrow">→</div>
             <div class="gf-box">
                 <div class="gf-step">GOAL</div>
-                <div class="gf-title">継続利用</div>
-                <div class="gf-desc">ファン化・<br>リピート獲得</div>
+                <div class="gf-title">採用・リピート</div>
+                <div class="gf-desc">ママ美容師採用／<br>ファン化</div>
             </div>
         </div>
     </div>
 
     <!-- ② ターゲティング設定 -->
-    <div class="section" style="border-color:#b8860b;">
+    <div class="section" style="border-color:#c2185b;">
         <div class="section-title">
-            <span class="icon" style="background:#b8860b;">1</span>
+            <span class="icon" style="background:#c2185b;">1</span>
             ターゲティング設定
         </div>
 
         <div class="target-grid">
             <div class="target-card">
-                <div class="t-icon">👤</div>
+                <div class="t-icon">👩</div>
                 <div class="t-label">性別</div>
-                <div class="t-value">男女（想定）</div>
+                <div class="t-value">女性メイン<br>（男女配信）</div>
             </div>
             <div class="target-card">
                 <div class="t-icon">📅</div>
                 <div class="t-label">年齢</div>
-                <div class="t-value">25歳〜54歳（想定）</div>
+                <div class="t-value">25歳〜54歳<br>（採用＋集客両軸）</div>
             </div>
             <div class="target-card">
                 <div class="t-icon">📍</div>
                 <div class="t-label">エリア</div>
-                <div class="t-value">店舗商圏中心<br>（想定・詳細ヒアリング）</div>
+                <div class="t-value">広島県府中市<br>（元町・周辺市）</div>
             </div>
             <div class="target-card">
                 <div class="t-icon">🕐</div>
@@ -256,91 +297,93 @@
 
         <div class="area-section">
             <div class="area-box primary">
-                <h4 style="color:#6b5000;">重点エリア（想定）</h4>
-                <span class="area-tag">店舗・拠点所在地から半径◯km</span>
-                <span class="area-tag">主要商圏の市区町村</span>
+                <h4 style="color:#8a134a;">重点エリア（通店・通勤圏）</h4>
+                <span class="area-tag">広島県 府中市</span>
+                <span class="area-tag">広島県 福山市</span>
+                <span class="area-tag">広島県 尾道市</span>
+                <span class="area-tag">広島県 三原市</span>
             </div>
             <div class="area-box secondary">
-                <h4 style="color:#3d5320;">拡張エリア（想定）</h4>
-                <span class="area-tag">通勤・買物圏の周辺エリア</span>
-                <span class="area-tag">主要交通路線沿い</span>
+                <h4 style="color:#5a2a3a;">拡張エリア</h4>
+                <span class="area-tag">広島県 世羅町／神石高原町</span>
+                <span class="area-tag">岡山県 井原市／笠岡市</span>
             </div>
         </div>
 
         <div style="background:#fff8e1;border-radius:8px;padding:14px 18px;font-size:13px;color:#ef6c00;">
-            <strong>エリア設定の考え方：</strong>初期はCarat様の<strong>店舗商圏（拠点から通える範囲）</strong>に絞って配信し、無駄クリックを抑えます。データが蓄積された段階で<strong>反応の良い地域へ拡張</strong>していく方針です。ターゲット像（想定業態）は動画演出から推定した仮置きのため、<strong>正確な業態・商圏・メイン顧客層は配信前ヒアリングで確定</strong>いたします。
+            <strong>エリア設定の考え方：</strong>美容室の来店・美容師の勤務先選びは<strong>「通える距離」が最重要</strong>。Carat（府中市元町）から通える<strong>府中市・福山市・尾道市・三原市</strong>を重点配信、無駄クリックを最小化します。年齢は<strong>ブランクからの復職ターゲット＝子育て一段落した25〜54歳の女性</strong>を軸に、集客側もほぼ同じレンジ（大人女性）が刺さります。
         </div>
     </div>
 
     <!-- ③ 関連キーワード設定 -->
     <div class="section">
         <div class="section-title">
-            <span class="icon" style="background:#6b8e23;">2</span>
+            <span class="icon" style="background:#a06e8a;">2</span>
             関連キーワード設定
         </div>
-        <p style="font-size:13px;color:#666;margin-bottom:16px;">設定したキーワードに関心がある視聴者に優先的に広告が表示されます。※業態確定後に精査・差替えいたします。</p>
+        <p style="font-size:13px;color:#666;margin-bottom:16px;">設定したキーワードに関心がある視聴者に優先的に広告が表示されます。</p>
 
         <div class="kw-grid">
             <div class="kw-box">
-                <h4>直接ニーズ（サービス指名）</h4>
-                <span class="kw-tag">Carat</span>
-                <span class="kw-tag">Carat 店舗名</span>
-                <span class="kw-tag">Carat 予約</span>
-                <span class="kw-tag">Carat 口コミ</span>
-                <span class="kw-tag">Carat 料金</span>
-                <span class="kw-tag">Carat エリア名</span>
-                <span class="kw-tag">Carat 公式</span>
-                <span class="kw-tag">Carat メニュー</span>
+                <h4>採用ニーズ（ブランク美容師・ママ美容師）</h4>
+                <span class="kw-tag">美容師 求人 府中</span>
+                <span class="kw-tag">美容師 求人 福山</span>
+                <span class="kw-tag">美容師 復職</span>
+                <span class="kw-tag">美容師 ブランク OK</span>
+                <span class="kw-tag">ママ美容師</span>
+                <span class="kw-tag">美容師 パート 主婦</span>
+                <span class="kw-tag">美容師 時短 求人</span>
+                <span class="kw-tag">Carat 府中</span>
             </div>
             <div class="kw-box">
-                <h4>検討ニーズ（比較検討層）</h4>
-                <span class="kw-tag">◯◯（業態） おすすめ</span>
-                <span class="kw-tag">◯◯ 人気</span>
-                <span class="kw-tag">◯◯ 予約</span>
-                <span class="kw-tag">◯◯ 近く</span>
-                <span class="kw-tag">◯◯ 料金</span>
-                <span class="kw-tag">◯◯ ランキング</span>
-                <span class="kw-tag">◯◯ 比較</span>
-                <span class="kw-tag">◯◯ 選び方</span>
+                <h4>集客ニーズ（美容室を探している人）</h4>
+                <span class="kw-tag">美容室 府中</span>
+                <span class="kw-tag">美容室 元町</span>
+                <span class="kw-tag">白髪染め 府中</span>
+                <span class="kw-tag">ヘアカラー 広島</span>
+                <span class="kw-tag">セルフ脱毛 府中</span>
+                <span class="kw-tag">美容室 安い 府中</span>
+                <span class="kw-tag">カット 予約 府中</span>
+                <span class="kw-tag">Carat 予約</span>
             </div>
             <div class="kw-box">
                 <h4>ライフスタイル（潜在層）</h4>
-                <span class="kw-tag">自分へのご褒美</span>
-                <span class="kw-tag">記念日</span>
-                <span class="kw-tag">プレゼント</span>
-                <span class="kw-tag">高品質</span>
-                <span class="kw-tag">上質な暮らし</span>
-                <span class="kw-tag">大人 おしゃれ</span>
-                <span class="kw-tag">こだわり 選び方</span>
-                <span class="kw-tag">ワンランク上</span>
+                <span class="kw-tag">子育て 仕事復帰</span>
+                <span class="kw-tag">ママ 働き方</span>
+                <span class="kw-tag">主婦 パート 時短</span>
+                <span class="kw-tag">白髪 悩み</span>
+                <span class="kw-tag">美髪 ケア</span>
+                <span class="kw-tag">大人女性 サロン</span>
+                <span class="kw-tag">脱毛 通いやすい</span>
+                <span class="kw-tag">自分磨き 30代</span>
             </div>
         </div>
     </div>
 
     <!-- ④ 広告配信設定まとめ -->
-    <div class="section" style="border-color:#b8860b;">
+    <div class="section" style="border-color:#c2185b;">
         <div class="section-title">
-            <span class="icon" style="background:#b8860b;">3</span>
+            <span class="icon" style="background:#c2185b;">3</span>
             広告配信設定まとめ
         </div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-            <div style="background:#fbf7ea;border-radius:10px;padding:18px;border-left:5px solid #b8860b;">
+            <div style="background:#fdf3f7;border-radius:10px;padding:18px;border-left:5px solid #c2185b;">
                 <div style="font-size:13px;color:#888;margin-bottom:4px;">広告形式</div>
                 <div style="font-size:16px;font-weight:700;">インストリーム広告（スキップ可能）</div>
                 <div style="font-size:12px;color:#555;margin-top:6px;">動画再生前に流れる広告。5秒後にスキップ可能で、興味のある視聴者に絞って届きます。</div>
             </div>
-            <div style="background:#fbf7ea;border-radius:10px;padding:18px;border-left:5px solid #6b8e23;">
+            <div style="background:#fdf3f7;border-radius:10px;padding:18px;border-left:5px solid #a06e8a;">
                 <div style="font-size:13px;color:#888;margin-bottom:4px;">フリークエンシーキャップ</div>
                 <div style="font-size:16px;font-weight:700;">週3回まで</div>
                 <div style="font-size:12px;color:#555;margin-top:6px;">同じ方に何度も広告が出ないよう制限。より多くの方にリーチが広がるよう設計します。</div>
             </div>
-            <div style="background:#fbf7ea;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;">
+            <div style="background:#fdf3f7;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;">
                 <div style="font-size:13px;color:#888;margin-bottom:4px;">リンク先</div>
-                <div style="font-size:14px;font-weight:700;">Carat 様 公式サイト（配信前ヒアリングで確定）</div>
-                <div style="font-size:12px;color:#555;margin-top:6px;">広告をクリックすると公式サイト／予約ページへ遷移する設計を想定しています。</div>
+                <div style="font-size:14px;font-weight:700;word-break:break-all;"><a href="https://carat-haircolor.net/" target="_blank" style="color:#c2185b;">carat-haircolor.net</a>（公式サイト）</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">採用動画は<a href="https://carat-haircolor.net/recruit/" target="_blank" style="color:#c2185b;">/recruit/</a>ページへ、集客動画はTOP／メニューページへ誘導設計。</div>
             </div>
-            <div style="background:#fbf7ea;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
+            <div style="background:#fdf3f7;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
                 <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
                 <div style="font-size:16px;font-weight:700;">2026年8月上旬（想定）</div>
                 <div style="font-size:12px;color:#555;margin-top:6px;">配信開始日はヒアリング後に正式決定いたします。</div>
@@ -348,16 +391,43 @@
         </div>
     </div>
 
-    <!-- ⑤ 参考リンク -->
+    <!-- ⑤ 参考にした美容室動画 -->
     <div class="section">
         <div class="section-title">
-            <span class="icon" style="background:#2e7d32;">4</span>
-            参考リンク
+            <span class="icon" style="background:#c2185b;">4</span>
+            参考にした美容室動画
         </div>
-        <div style="display:grid;grid-template-columns:1fr;gap:14px;">
-            <a href="https://youtu.be/48tkFurVed0" target="_blank" style="display:block;background:#fbf7ea;border-radius:10px;padding:18px;border-left:5px solid #cc0000;text-decoration:none;color:#1a1a1a;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">YouTube広告動画</div>
-                <div style="font-size:15px;font-weight:700;">広告動画を見る →</div>
+        <p style="font-size:13px;color:#666;margin-bottom:16px;">Caratの動画クリエイティブ・広告訴求は、下記の再生実績のある美容室動画を参考にキャスト・尺・訴求を組み立てました。</p>
+        <div class="ref-videos">
+            <a class="ref-card" href="https://www.youtube.com/watch?v=WFThXDK-9qs" target="_blank">
+                <div class="rc-title">🔥 Umineko美容室 求人動画（採用ターゲット参考）</div>
+                <div class="rc-meta">57秒 ／ <span class="views">51,743回再生</span></div>
+                <div class="rc-comment">「美容師求人動画」直球タイトルで5.2万再生。短尺・シンプル構成で実際に採用に成功した中小サロンの代表例。</div>
+                <div class="rc-url">https://www.youtube.com/watch?v=WFThXDK-9qs</div>
+            </a>
+            <a class="ref-card" href="https://www.youtube.com/watch?v=_Uao_8GGUWU" target="_blank">
+                <div class="rc-title">💎 美容室イワサキ 30秒CM（ブランク歓迎・同ターゲット）</div>
+                <div class="rc-meta">31秒 ／ <span class="views">15,368回再生</span></div>
+                <div class="rc-comment">30秒で1.5万再生。同社は「美容師復職セミナー」も実施しているブランク歓迎企業。Caratと完全同ターゲット。</div>
+                <div class="rc-url">https://www.youtube.com/watch?v=_Uao_8GGUWU</div>
+            </a>
+            <a class="ref-card" href="https://www.youtube.com/watch?v=ZNzFP7z1la4" target="_blank">
+                <div class="rc-title">💇 美容室SHANZE（シャンゼ）30秒PV（集客ターゲット参考）</div>
+                <div class="rc-meta">30秒 ／ <span class="views">15,812回再生</span></div>
+                <div class="rc-comment">国内美容室の30秒PVで1.5万再生。店内・施術・スタッフ写真を組み合わせた標準型。Caratと近いコンセプト・規模感。</div>
+                <div class="rc-url">https://www.youtube.com/watch?v=ZNzFP7z1la4</div>
+            </a>
+            <a class="ref-card" href="https://www.youtube.com/watch?v=W_5JqiaAE6M" target="_blank">
+                <div class="rc-title">🌟 エステéclat おしゃれすぎるPR動画（深谷市）</div>
+                <div class="rc-meta">60秒 ／ <span class="views">17,697回再生</span></div>
+                <div class="rc-comment">地方の中小エステでPV1.7万再生。「おしゃれすぎる」と話題になり認知拡大に成功した実例。「ラグジュアリーなのにリーズナブル」路線と相性◎。</div>
+                <div class="rc-url">https://www.youtube.com/watch?v=W_5JqiaAE6M</div>
+            </a>
+            <a class="ref-card" href="https://www.youtube.com/watch?v=ktgFtavyG9c" target="_blank">
+                <div class="rc-title">🎬 美容室hiriha プロモーションビデオ</div>
+                <div class="rc-meta">117秒 ／ <span class="views">10,925回再生</span></div>
+                <div class="rc-comment">中小美容室PVで1万再生超え。店舗・スタッフ・お客様カットを丁寧に積み上げる構成。</div>
+                <div class="rc-url">https://www.youtube.com/watch?v=ktgFtavyG9c</div>
             </a>
         </div>
     </div>
@@ -366,15 +436,14 @@
     <div class="note-bar">
         <h3>補足事項</h3>
         <ul>
-            <li>本提案書は<strong>お預かりした広告動画から推定</strong>して仮組みしたものです。以下4点を配信前ヒアリングで確定いたします：
+            <li>本提案は<strong>ヒアリング＋公式サイト／Instagram公開情報</strong>をもとに組み立てた運用設計です。以下は配信前ヒアリングで最終確定いたします：
                 <ul style="margin-top:6px;margin-left:20px;">
-                    <li>① <strong>配信開始日</strong>（8月上旬想定・確定日）</li>
-                    <li>② <strong>リンク先URL</strong>（公式サイト／LP／予約ページのいずれか）</li>
-                    <li>③ <strong>配信エリアの詳細</strong>（店舗商圏・全国・都市部限定 等）</li>
+                    <li>① <strong>訴求軸の最終確定</strong>（採用重視／集客重視／両立ハイブリッド）</li>
+                    <li>② <strong>リンク先URL</strong>（TOP／採用ページ／ホットペッパー のいずれか）</li>
+                    <li>③ <strong>配信エリアの詳細</strong>（府中中心 or 福山まで拡張）</li>
                     <li>④ <strong>月予算</strong>（テスト期間・本配信の想定額）</li>
                 </ul>
             </li>
-            <li>業態・ターゲット像は動画から推定した仮置きのため、<strong>ヒアリングで正確な業態・メイン顧客層を確認</strong>し、キーワード群を差替えいたします</li>
             <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
             <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
         </ul>
