@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告 1ヶ月レポート — MERA eyebrow salon 様（2026/07/31時点）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #cc0000;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 28px;
+        }
+
+        /* サマリーカード */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .summary-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+        .summary-card.hero { border-color: #cc0000; background: #fff5f5; }
+        .summary-card .s-label { font-size: 11px; color: #888; margin-bottom: 6px; letter-spacing: .04em; }
+        .summary-card .s-num { font-size: 28px; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
+        .summary-card.hero .s-num { color: #cc0000; }
+        .summary-card .s-unit { font-size: 12px; color: #888; margin-top: 2px; }
+        .summary-card .s-sub { font-size: 11px; color: #2e7d32; margin-top: 4px; font-weight: 600; }
+
+        .headline-bar {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            border-radius: 12px;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .headline-bar .hl-title { color: #ff6b6b; font-size: 13px; margin-bottom: 6px; font-weight: 700; letter-spacing: .05em; }
+        .headline-bar .hl-msg { font-size: 15px; color: #fff; line-height: 1.7; }
+
+        /* セクション */
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 26px;
+            margin-bottom: 24px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .section-title .icon.good { background: #2e7d32; }
+        .section-title .icon.warn { background: #e65100; }
+        .section-title .icon.plan { background: #1565c0; }
+        .section-title .icon.pred { background: #6a1b9a; }
+        .section-title .icon.mtg { background: #cc0000; }
+
+        /* 良かった点 */
+        .good-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .good-card {
+            background: #f1f8e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 8px;
+            padding: 16px 18px;
+        }
+        .good-card .g-num { font-size: 22px; font-weight: 700; color: #1b5e20; margin-bottom: 4px; }
+        .good-card .g-title { font-size: 13px; font-weight: 700; color: #1b5e20; margin-bottom: 6px; }
+        .good-card .g-desc { font-size: 12px; color: #444; line-height: 1.6; }
+
+        /* 課題カード */
+        .issue-list { display: flex; flex-direction: column; gap: 12px; }
+        .issue-card {
+            background: #fff3e0;
+            border-left: 4px solid #e65100;
+            border-radius: 8px;
+            padding: 14px 18px;
+        }
+        .issue-card .i-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #bf360c;
+            margin-bottom: 6px;
+        }
+        .issue-card .i-desc {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.7;
+        }
+        .issue-card .i-desc strong { color: #bf360c; }
+
+        /* 施策テーブル */
+        .plan-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .plan-table th {
+            background: #f5f5f5;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 700;
+            border-bottom: 2px solid #ddd;
+            color: #555;
+            font-size: 12px;
+        }
+        .plan-table td {
+            padding: 14px 10px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+        .plan-table .p-tag {
+            display: inline-block;
+            background: #cc0000;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+        .plan-table .before { color: #999; }
+        .plan-table .arrow { color: #cc0000; font-weight: 700; padding: 0 4px; }
+        .plan-table .after { color: #1565c0; font-weight: 600; }
+
+        /* データテーブル */
+        .data-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
+        .data-table th, .data-table td {
+            padding: 8px 10px;
+            text-align: right;
+            border-bottom: 1px solid #eee;
+        }
+        .data-table th {
+            background: #fafafa;
+            font-weight: 700;
+            color: #666;
+            font-size: 11px;
+        }
+        .data-table td:first-child, .data-table th:first-child { text-align: left; }
+        .data-table tr.highlight { background: #fff5f5; }
+        .data-table tr.highlight td { font-weight: 700; }
+        .data-table .warn { color: #cc0000; font-weight: 700; }
+
+        /* 予測 */
+        .pred-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .pred-card {
+            background: #f3e5f5;
+            border: 2px solid #6a1b9a;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+        }
+        .pred-card .p-label { font-size: 11px; color: #6a1b9a; font-weight: 700; margin-bottom: 6px; letter-spacing: .04em; }
+        .pred-card .p-before { font-size: 13px; color: #999; text-decoration: line-through; }
+        .pred-card .p-arrow { color: #6a1b9a; font-size: 18px; margin: 4px 0; }
+        .pred-card .p-after { font-size: 20px; font-weight: 700; color: #4a148c; }
+        .pred-card .p-note { font-size: 11px; color: #666; margin-top: 6px; }
+
+        /* MTG */
+        .mtg-box {
+            background: #fff5f5;
+            border: 2px solid #cc0000;
+            border-radius: 10px;
+            padding: 20px 24px;
+        }
+        .mtg-box .m-msg {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+        .mtg-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .mtg-slot {
+            background: #fff;
+            border: 1px solid #cc0000;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        .mtg-slot .m-date { font-size: 14px; font-weight: 700; color: #cc0000; }
+        .mtg-slot .m-time { font-size: 12px; color: #666; margin-top: 4px; }
+
+        .caveat {
+            background: #f5f5f5;
+            border-left: 3px solid #999;
+            font-size: 11px;
+            color: #666;
+            padding: 10px 14px;
+            border-radius: 4px;
+            margin-top: 14px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 11px;
+            padding: 16px 0;
+        }
+
+        @media (max-width: 768px) {
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            .good-grid { grid-template-columns: 1fr; }
+            .pred-grid { grid-template-columns: 1fr; }
+            .mtg-slots { grid-template-columns: 1fr; }
+            .plan-table th, .plan-table td { font-size: 11px; padding: 8px 6px; }
+            .data-table th, .data-table td { font-size: 10px; padding: 6px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 1ヶ月レポート</h1>
+    <p class="subtitle">MERA eyebrow salon 様 ／ 2026年7月1日〜7月31日配信結果 ／ 2026/07/31時点</p>
+
+    <!-- サマリーハイライト -->
+    <div class="summary-grid">
+        <div class="summary-card hero">
+            <div class="s-label">視聴率</div>
+            <div class="s-num">60.17%</div>
+            <div class="s-unit">%</div>
+            <div class="s-sub">業界平均40-50%を大幅超</div>
+        </div>
+        <div class="summary-card">
+            <div class="s-label">視聴数</div>
+            <div class="s-num">1,586</div>
+            <div class="s-unit">回</div>
+        </div>
+        <div class="summary-card">
+            <div class="s-label">100%完了率</div>
+            <div class="s-num">34.99%</div>
+            <div class="s-unit">%</div>
+            <div class="s-sub">動画品質◎</div>
+        </div>
+        <div class="summary-card">
+            <div class="s-label">配信費用</div>
+            <div class="s-num">¥2,118</div>
+            <div class="s-unit">1ヶ月 / 日次¥70</div>
+        </div>
+    </div>
+
+    <div class="headline-bar">
+        <div class="hl-title">1ヶ月で見えた要旨</div>
+        <div class="hl-msg">動画は「見られる」フェーズをクリア。次は<strong style="color:#ff6b6b;">「見た人を予約へ動かす」</strong>ためのエリア／KW／ターゲットの精緻化フェーズです。</div>
+    </div>
+
+    <!-- 良かった点 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon good">◎</span>
+            1ヶ月で確認できた「良かった点」
+        </div>
+        <div class="good-grid">
+            <div class="good-card">
+                <div class="g-num">60.17%</div>
+                <div class="g-title">視聴率が業界平均を大幅超</div>
+                <div class="g-desc">YouTube広告の業界平均視聴率は40-50%と言われる中、初月から60%超えは<strong>動画の冒頭訴求とターゲット整合が噛み合っている</strong>ことを示します。</div>
+            </div>
+            <div class="good-card">
+                <div class="g-num">34.99%</div>
+                <div class="g-title">100%動画完了率が高い</div>
+                <div class="g-desc">全視聴者の約3人に1人が最後まで視聴。動画本編の「訴求内容そのもの」への納得感が高く、素材の作り直し優先度は低いと判断できます。</div>
+            </div>
+            <div class="good-card">
+                <div class="g-num">¥1.3</div>
+                <div class="g-title">CPVが非常に低水準</div>
+                <div class="g-desc">平均視聴単価が¥1.3と低く、同予算でより多くの接点を作れる状態。<strong>この効率のまま行動導線を強化すれば予約に転換できます</strong>。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 改善余地 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon warn">!</span>
+            1ヶ月で見えた「改善余地」5点
+        </div>
+        <div class="issue-list">
+            <div class="issue-card">
+                <div class="i-title">1. 地域偏重：横浜市が予算の71%を消費</div>
+                <div class="i-desc">1,874表示 / 1,107視聴 / ¥1,507が<strong>横浜市に集中</strong>。大船店舗の商圏を考えると、藤沢・茅ヶ崎・鎌倉方面の露出を厚くしたほうが<strong>来店距離が短く、実来店に繋がりやすい</strong>可能性があります。</div>
+            </div>
+            <div class="issue-card">
+                <div class="i-title">2. 男性視聴が46%と予想外に多い（潜在需要）</div>
+                <div class="i-desc">女性786視聴に対し男性737視聴と<strong>ほぼ拮抗</strong>。想定外の伸びで、男性眉毛サロン需要が潜在的にあることが示唆されます。男性向けキャンペーンを分離、または「メンズ眉毛」訴求動画の追加を検討する価値があります。</div>
+            </div>
+            <div class="issue-card">
+                <div class="i-title">3. CTR 0.27%：視聴質は高いが「行動」まで至らない</div>
+                <div class="i-desc">クリック7件（うち6件がスマホ）。<strong>視聴されているが行動が起きていない</strong>状態です。動画終盤のCTA（電話番号・LINE予約QRなど）の再設計と、LP側の予約導線見直しで改善余地があります。</div>
+            </div>
+            <div class="issue-card">
+                <div class="i-title">4. KW「増毛剤」が309視聴・¥421を消費（眉毛と直接無関係）</div>
+                <div class="i-desc">「増毛剤」は<strong>頭髪育毛系の検索ユーザー</strong>を拾っており、眉毛サロン訴求とマッチしません。予算の約20%が的外れなオーディエンスに使われている可能性が高く、除外推奨です。また「美容 トレンド」（397視聴¥537）も広義過ぎるため要精査。</div>
+            </div>
+            <div class="issue-card">
+                <div class="i-title">5. 55-64歳を除外中（45-54歳が最効率のためもう一段上を試す価値）</div>
+                <div class="i-desc">現状最多視聴は<strong>45-54歳（656視聴・完了率63%）</strong>で明らかに効率が良く、この上の年齢帯（55-64歳）が除外されている状態は機会損失の可能性があります。少額でテスト復活して検証すべきです。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- データ根拠 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon warn">D</span>
+            改善根拠となる主要データ
+        </div>
+
+        <h4 style="font-size:13px;color:#666;margin-bottom:6px;">地域別（上位）</h4>
+        <table class="data-table">
+            <thead><tr><th>地域</th><th>表示回数</th><th>視聴数</th><th>費用</th><th>予算比</th></tr></thead>
+            <tbody>
+                <tr class="highlight"><td>横浜市</td><td>1,874</td><td>1,107</td><td>¥1,507</td><td class="warn">71%</td></tr>
+                <tr><td>藤沢市</td><td>185</td><td>—</td><td>¥163</td><td>7.7%</td></tr>
+                <tr><td>川崎市</td><td>130</td><td>—</td><td>¥124</td><td>5.9%</td></tr>
+                <tr><td>渋谷区</td><td>130</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>茅ヶ崎市</td><td>103</td><td>—</td><td>¥64</td><td>3.0%</td></tr>
+                <tr><td>葉山町</td><td>61</td><td>—</td><td>—</td><td>—</td></tr>
+                <tr><td>逗子市</td><td>25</td><td>—</td><td>—</td><td>—</td></tr>
+            </tbody>
+        </table>
+
+        <h4 style="font-size:13px;color:#666;margin:18px 0 6px;">年齢別（視聴数）</h4>
+        <table class="data-table">
+            <thead><tr><th>年齢</th><th>視聴数</th><th>費用</th><th>備考</th></tr></thead>
+            <tbody>
+                <tr><td>18-24歳</td><td>173</td><td>¥227</td><td></td></tr>
+                <tr><td>25-34歳</td><td>311</td><td>¥411</td><td></td></tr>
+                <tr><td>35-44歳</td><td>344</td><td>¥499</td><td></td></tr>
+                <tr class="highlight"><td>45-54歳</td><td>656</td><td>¥844</td><td class="warn">最多・完了率63%</td></tr>
+                <tr><td>55-64歳</td><td>—</td><td>—</td><td class="warn">除外中（見直し余地）</td></tr>
+                <tr><td>65歳以上</td><td>—</td><td>—</td><td>除外中</td></tr>
+            </tbody>
+        </table>
+
+        <h4 style="font-size:13px;color:#666;margin:18px 0 6px;">キーワード別（有効視聴上位）</h4>
+        <table class="data-table">
+            <thead><tr><th>キーワード</th><th>視聴数</th><th>費用</th><th>判定</th></tr></thead>
+            <tbody>
+                <tr><td>美容 トレンド</td><td>397</td><td>¥537</td><td class="warn">広義過ぎ・要精査</td></tr>
+                <tr><td>増毛剤</td><td>309</td><td>¥421</td><td class="warn">眉毛と無関係・除外推奨</td></tr>
+                <tr><td>ナチュラルメイク</td><td>218</td><td>¥316</td><td>継続</td></tr>
+                <tr><td>韓国メイク</td><td>177</td><td>¥213</td><td>継続</td></tr>
+                <tr><td>自分磨き</td><td>172</td><td>¥200</td><td>継続</td></tr>
+                <tr><td>眉毛 洗い方</td><td>162</td><td>¥203</td><td>◎ 関連性高</td></tr>
+                <tr><td>眉毛 デザイン</td><td>144</td><td>¥218</td><td>◎ 関連性高</td></tr>
+                <tr><td>メンズ眉毛サロン</td><td>4</td><td>¥5</td><td>拡張余地あり</td></tr>
+                <tr><td>眉毛サロン 横浜／アイブロウ 等</td><td>0</td><td>—</td><td>検索母数少・入札強化候補</td></tr>
+            </tbody>
+        </table>
+
+        <h4 style="font-size:13px;color:#666;margin:18px 0 6px;">性別</h4>
+        <table class="data-table">
+            <thead><tr><th>性別</th><th>視聴数</th><th>費用</th><th>比率</th></tr></thead>
+            <tbody>
+                <tr><td>女性</td><td>786</td><td>¥1,079</td><td>49%</td></tr>
+                <tr class="highlight"><td>男性</td><td>737</td><td>¥964</td><td class="warn">46%（潜在需要あり）</td></tr>
+                <tr><td>不明</td><td>63</td><td>—</td><td>4%</td></tr>
+            </tbody>
+        </table>
+
+        <div class="caveat">
+            ※ 数値はGoogle広告管理画面 2026/7/1-7/31実データより。地域別「視聴数」の細分値は管理画面での按分表示のため、一部「—」表記。
+        </div>
+    </div>
+
+    <!-- 施策4本柱 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon plan">P</span>
+            改善提案 ／ 施策4本柱
+        </div>
+        <table class="plan-table">
+            <thead>
+                <tr>
+                    <th style="width:20%;">施策</th>
+                    <th style="width:35%;">Before（現状）</th>
+                    <th style="width:35%;">After（提案）</th>
+                    <th style="width:10%;">狙い</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="p-tag">A</span>エリア再設計</td>
+                    <td class="before">横浜市に予算71%集中。大船店舗商圏（藤沢・茅ヶ崎・鎌倉）は薄い</td>
+                    <td><span class="arrow">→</span><span class="after">大船を中心に半径◯km／藤沢・茅ヶ崎・鎌倉を厚く配分。横浜市中心部の入札を抑える</span></td>
+                    <td>来店距離短縮</td>
+                </tr>
+                <tr>
+                    <td><span class="p-tag">B</span>メンズ広告分離</td>
+                    <td class="before">男女混在1本で配信。男性視聴が46%も獲れているが訴求は女性向け</td>
+                    <td><span class="arrow">→</span><span class="after">メンズ眉毛訴求のクリエイティブを1本追加し、男性キャンペーンとして分離配信</span></td>
+                    <td>新規需要獲得</td>
+                </tr>
+                <tr>
+                    <td><span class="p-tag">C</span>KW整理</td>
+                    <td class="before">「増毛剤」「美容 トレンド」等の広義・非関連KWに約45%の予算</td>
+                    <td><span class="arrow">→</span><span class="after">「増毛剤」除外・「美容 トレンド」精査。「眉毛 デザイン」「眉毛 洗い方」「アイブロウ ○○」等の眉毛特化KW帯を拡張</span></td>
+                    <td>無駄予算削減</td>
+                </tr>
+                <tr>
+                    <td><span class="p-tag">D</span>年齢上限拡張</td>
+                    <td class="before">45-54歳が最多・完了率63%。55歳以上は全除外</td>
+                    <td><span class="arrow">→</span><span class="after">55-64歳を復活して2週間テスト。効率が45-54歳並なら本配信に組込む</span></td>
+                    <td>ボリューム拡張</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 予測効果 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon pred">◇</span>
+            予測効果（同予算・日次¥70継続前提）
+        </div>
+        <div class="pred-grid">
+            <div class="pred-card">
+                <div class="p-label">CTR</div>
+                <div class="p-before">現状 0.27%</div>
+                <div class="p-arrow">▼</div>
+                <div class="p-after">0.5〜1.0%</div>
+                <div class="p-note">クリック 15〜25件/月 目標（推定）</div>
+            </div>
+            <div class="pred-card">
+                <div class="p-label">来店予約</div>
+                <div class="p-before">現状 不明</div>
+                <div class="p-arrow">▼</div>
+                <div class="p-after">月 1〜3件</div>
+                <div class="p-note">初期想定・LP転換率次第（推定）</div>
+            </div>
+            <div class="pred-card">
+                <div class="p-label">平均CPV</div>
+                <div class="p-before">現状 ¥1.3</div>
+                <div class="p-arrow">▼</div>
+                <div class="p-after">¥1.0前後</div>
+                <div class="p-note">KW整理による効率化想定（推定）</div>
+            </div>
+        </div>
+        <div class="caveat">
+            ※ 上記数値はすべて<strong>推定</strong>です。予約数は現状値の共有をいただけていないため、初期目安として提示しています。1ヶ月目MTGで実来店・予約実績を共有いただけると、目標精度を上げられます。
+        </div>
+    </div>
+
+    <!-- MTG依頼 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon mtg">M</span>
+            1ヶ月目 打ち合わせのお願い
+        </div>
+        <div class="mtg-box">
+            <div class="m-msg">
+                上記4施策を反映するにあたり、<strong>予約実績・LP動線・店舗側の受入状況</strong>を共有いただいたうえで最終判断したく、<strong>30分程度のオンラインMTG</strong>をお願いできればと存じます。<br>
+                下記いずれかのお時間でご都合いかがでしょうか。難しければ改めて候補を出します。
+            </div>
+            <div class="mtg-slots">
+                <div class="mtg-slot">
+                    <div class="m-date">8月1日（金）</div>
+                    <div class="m-time">10:00 / 14:00 / 16:00</div>
+                </div>
+                <div class="mtg-slot">
+                    <div class="m-date">8月2日（土）</div>
+                    <div class="m-time">10:00 / 14:00</div>
+                </div>
+                <div class="mtg-slot">
+                    <div class="m-date">8月5日（火）</div>
+                    <div class="m-time">10:00 / 14:00 / 16:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        株式会社ランバード｜YouTube広告 運用サポート窓口
+    </div>
+
+</div>
+</body>
+</html>
