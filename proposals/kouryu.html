@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告 運用提案書 — 腸活Labo Kouryu 光琉有 様</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f6f8f2;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #558b2f;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 2px solid #e2ecd4;
+        }
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eef4e2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .goal-banner {
+            background: linear-gradient(135deg, #33691e, #558b2f);
+            color: #fff;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+        }
+        .goal-banner h2 {
+            color: #dcedc8;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .goal-banner .goal-sub {
+            text-align: center;
+            font-size: 14px;
+            color: #ecf5db;
+            margin-bottom: 24px;
+        }
+        .goal-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .gf-box {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            min-width: 160px;
+        }
+        .gf-box .gf-step { font-size: 11px; color: #dcedc8; font-weight: 700; margin-bottom: 4px; }
+        .gf-box .gf-title { font-size: 15px; font-weight: 700; }
+        .gf-box .gf-desc { font-size: 12px; color: #ecf5db; margin-top: 4px; }
+        .gf-arrow { color: #dcedc8; font-size: 24px; font-weight: 700; padding: 0 10px; }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .target-card {
+            background: #f6faee;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #e2ecd4;
+        }
+        .target-card .t-icon { font-size: 28px; margin-bottom: 8px; }
+        .target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+        .target-card .t-value { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.5; }
+
+        .area-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .area-box { border-radius: 10px; padding: 18px; }
+        .area-box.primary { background: #fff0e8; border: 2px solid #d84315; }
+        .area-box.secondary { background: #f1f8e9; border: 2px solid #558b2f; }
+        .area-box h4 { font-size: 14px; margin-bottom: 10px; }
+        .area-box .area-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 3px 4px;
+        }
+        .area-box.primary .area-tag { background: #ffccbc; color: #bf360c; }
+        .area-box.secondary .area-tag { background: #dcedc8; color: #33691e; }
+
+        .kw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .kw-box {
+            background: #f6faee;
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid #e2ecd4;
+        }
+        .kw-box h4 {
+            font-size: 13px;
+            color: #33691e;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e2ecd4;
+        }
+        .kw-tag {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #dfe8cf;
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 12px;
+            margin: 2px;
+            color: #333;
+        }
+        .kw-tag.owner {
+            background: #fff3e0;
+            border: 1.5px solid #d84315;
+            color: #bf360c;
+            font-weight: 700;
+        }
+        .kw-tag.owner::before {
+            content: "★ ";
+            color: #d84315;
+        }
+
+        .legend {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 14px;
+        }
+        .legend .swatch {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .legend .swatch.owner { background: #fff3e0; border: 1.5px solid #d84315; color: #bf360c; }
+        .legend .swatch.extra { background: #fff; border: 1px solid #dfe8cf; color: #333; }
+
+        .note-bar {
+            background: #fff8e1;
+            border: 2px solid #f9a825;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+        }
+        .note-bar h3 { color: #ef6c00; font-size: 15px; margin-bottom: 10px; }
+        .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
+        .note-bar li { margin-bottom: 6px; }
+        .note-bar li strong { color: #d84315; }
+
+        @media (max-width: 768px) {
+            .target-grid { grid-template-columns: repeat(2, 1fr); }
+            .area-section { grid-template-columns: 1fr; }
+            .kw-grid { grid-template-columns: 1fr; }
+            .goal-flow { flex-direction: column; }
+            .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 運用提案書</h1>
+    <p class="subtitle">腸活Labo Kouryu 光琉有 様（腸活・腸もみサロン／福岡北部エリア）｜株式会社ランバード｜2026年8月1日 配信開始</p>
+
+    <!-- ① 目的・ゴール -->
+    <div class="goal-banner">
+        <h2>広告配信の目的</h2>
+        <p class="goal-sub">「腸から健康になりたい」「体質改善・デトックス・ダイエットに本気で取り組みたい」という健康意識の高い方に、腸活Labo Kouryu 光琉有 様を知ってもらい、体験・カウンセリングのご予約につなげる</p>
+        <div class="goal-flow">
+            <div class="gf-box">
+                <div class="gf-step">STEP 1</div>
+                <div class="gf-title">認知</div>
+                <div class="gf-desc">YouTube広告で<br>サロンを届ける</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 2</div>
+                <div class="gf-title">興味</div>
+                <div class="gf-desc">動画で腸活の効果・<br>施術内容を伝える</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 3</div>
+                <div class="gf-title">予約・問合せ</div>
+                <div class="gf-desc">公式サイトから<br>体験予約・相談</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">GOAL</div>
+                <div class="gf-title">継続・リピート</div>
+                <div class="gf-desc">コース契約・<br>定期利用へ</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ② ターゲティング設定 -->
+    <div class="section" style="border-color:#558b2f;">
+        <div class="section-title">
+            <span class="icon" style="background:#558b2f;">1</span>
+            ターゲティング設定
+        </div>
+
+        <div class="target-grid">
+            <div class="target-card">
+                <div class="t-icon">👤</div>
+                <div class="t-label">性別</div>
+                <div class="t-value">男女<br>（女性メイン）</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📅</div>
+                <div class="t-label">年齢</div>
+                <div class="t-value">30歳〜65歳以上</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📍</div>
+                <div class="t-label">エリア</div>
+                <div class="t-value">福岡北部<br>6エリア</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">🕐</div>
+                <div class="t-label">配信時間</div>
+                <div class="t-value">9:00〜22:00</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">💰</div>
+                <div class="t-label">世帯収入</div>
+                <div class="t-value">上位10%〜<br>21-30%</div>
+            </div>
+        </div>
+
+        <div class="area-section">
+            <div class="area-box primary">
+                <h4 style="color:#bf360c;">重点エリア（人口・需要ボリューム大）</h4>
+                <span class="area-tag">北九州市</span>
+            </div>
+            <div class="area-box secondary">
+                <h4 style="color:#33691e;">拡張エリア（商圏＋通える距離）</h4>
+                <span class="area-tag">遠賀郡</span>
+                <span class="area-tag">宗像市</span>
+                <span class="area-tag">福津市</span>
+                <span class="area-tag">古賀市</span>
+                <span class="area-tag">新宮町</span>
+            </div>
+        </div>
+
+        <div style="background:#fff8e1;border-radius:8px;padding:14px 18px;font-size:13px;color:#ef6c00;">
+            <strong>設定の理由：</strong>サロン所在地（遠賀郡岡垣町）から車で通える範囲を中心に、<strong>健康・美容に対する可処分所得が高い世帯（世帯年収500万円以上／Google広告上「上位10%〜21-30%」に該当）</strong>へ絞り込みます。腸活・ファスティング・パーソナルトレーニングは<strong>継続コース型のサービス</strong>のため、単発ではなく通い続けられる経済層に届くよう設計します。年齢は体調変化・更年期・ダイエット関心が強くなる<strong>30歳以上</strong>を中心に、上限は65歳以上まで含めます。
+        </div>
+    </div>
+
+    <!-- ③ 関連キーワード設定 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#d84315;">2</span>
+            関連キーワード設定
+        </div>
+        <p style="font-size:13px;color:#666;margin-bottom:10px;">設定したキーワードに関心がある視聴者に優先的に広告が表示されます。</p>
+        <div class="legend">
+            <span><span class="swatch owner">★ オーナー様ご指定</span> = ヒアリングでいただいた必須キーワード</span>
+            <span><span class="swatch extra">通常</span> = ランバードからの追加提案</span>
+        </div>
+
+        <div class="kw-grid">
+            <div class="kw-box">
+                <h4>直接ニーズ（腸活・施術を探している人）</h4>
+                <span class="kw-tag owner">腸もみ</span>
+                <span class="kw-tag owner">腸活</span>
+                <span class="kw-tag owner">腸セラピー</span>
+                <span class="kw-tag">腸活 サロン 福岡</span>
+                <span class="kw-tag">腸もみ 効果</span>
+                <span class="kw-tag">便秘 改善</span>
+                <span class="kw-tag">腸内環境 整える</span>
+                <span class="kw-tag">腸活 北九州</span>
+            </div>
+            <div class="kw-box">
+                <h4>検討ニーズ（ダイエット・体質改善を検討）</h4>
+                <span class="kw-tag owner">ファスティング</span>
+                <span class="kw-tag owner">パーソナルトレーニング</span>
+                <span class="kw-tag owner">酵素ドリンク</span>
+                <span class="kw-tag owner">デトックス</span>
+                <span class="kw-tag">ファスティング 福岡</span>
+                <span class="kw-tag">ダイエット 30代</span>
+                <span class="kw-tag">酵素 断食</span>
+                <span class="kw-tag">パーソナル ジム 女性</span>
+            </div>
+            <div class="kw-box">
+                <h4>ライフスタイル（潜在層・美容/健康）</h4>
+                <span class="kw-tag owner">ハーブ</span>
+                <span class="kw-tag">ハーブティー</span>
+                <span class="kw-tag">更年期 対策</span>
+                <span class="kw-tag">冷え性 改善</span>
+                <span class="kw-tag">むくみ 解消</span>
+                <span class="kw-tag">美腸</span>
+                <span class="kw-tag">自然療法</span>
+                <span class="kw-tag">健康 サロン</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ④ 広告配信設定まとめ -->
+    <div class="section" style="border-color:#d84315;">
+        <div class="section-title">
+            <span class="icon" style="background:#d84315;">3</span>
+            広告配信設定まとめ
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:#f6faee;border-radius:10px;padding:18px;border-left:5px solid #558b2f;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">広告形式</div>
+                <div style="font-size:16px;font-weight:700;">インストリーム広告（スキップ可能）</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">動画再生前に流れる広告。5秒後にスキップ可能で、興味のある視聴者に絞って届きます。</div>
+            </div>
+            <div style="background:#f6faee;border-radius:10px;padding:18px;border-left:5px solid #d84315;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">フリークエンシーキャップ</div>
+                <div style="font-size:16px;font-weight:700;">週3回まで</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">同じ方に何度も広告が出ないよう制限。より多くの方にリーチが広がるよう設計します。</div>
+            </div>
+            <div style="background:#f6faee;border-radius:10px;padding:18px;border-left:5px solid #33691e;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">リンク先</div>
+                <div style="font-size:14px;font-weight:700;word-break:break-all;"><a href="http://choukouryu080915.com/" target="_blank" style="color:#33691e;">http://choukouryu080915.com/</a>（腸活Labo Kouryu 光琉有 公式サイト）</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">広告をクリックすると公式サイトへ遷移し、施術メニュー・体験予約・お問い合わせへ進めます。</div>
+            </div>
+            <div style="background:#f6faee;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
+                <div style="font-size:16px;font-weight:700;">2026年8月1日（土）</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">審査通過次第、上記日程で配信を開始いたします。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ⑤ 参考リンク -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#33691e;">4</span>
+            参考リンク
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <a href="https://youtu.be/w8n7tjDXJWw" target="_blank" style="display:block;background:#f6faee;border-radius:10px;padding:18px;border-left:5px solid #cc0000;text-decoration:none;color:#1a1a1a;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">YouTube広告動画</div>
+                <div style="font-size:15px;font-weight:700;">広告動画を見る →</div>
+            </a>
+            <a href="http://choukouryu080915.com/" target="_blank" style="display:block;background:#f6faee;border-radius:10px;padding:18px;border-left:5px solid #33691e;text-decoration:none;color:#1a1a1a;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">公式サイト</div>
+                <div style="font-size:15px;font-weight:700;">腸活Labo Kouryu 光琉有 公式 →</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- 補足事項 -->
+    <div class="note-bar">
+        <h3>補足事項</h3>
+        <ul>
+            <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
+            <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
+            <li>公式サイトのURLは現状 <strong>http://</strong>（httpsではない）でのご案内となります。将来的にSSL化（https化）されるとブラウザでの安全性表示が向上いたしますので、必要に応じてサーバー側での常時SSL設定をご検討ください</li>
+            <li>ご不明な点やご要望がございましたら、お気軽にお申し付けください</li>
+        </ul>
+    </div>
+
+    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
+        株式会社ランバード｜広告運用サポート窓口
+    </div>
+
+</div>
+</body>
+</html>
