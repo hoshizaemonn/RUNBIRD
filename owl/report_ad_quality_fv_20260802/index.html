@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>OWL広告 ご報告｜質改善の検証＋FV改修案＋お客様の声改善（7/31-8/1）</title>
+<style>
+  :root{
+    --teal:#1BA0A6; --teal-d:#137880; --ink:#123c48; --ink2:#3a5b64;
+    --line:#dce8e9; --bg:#f6f9f9; --card:#fff;
+    --good:#1f9d57; --warn:#d98a1f; --bad:#d0483c;
+    --a-hi:#1f9d57; --a-mid:#d98a1f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+       color:var(--ink);background:var(--bg);line-height:1.75;padding:24px 16px 60px;}
+  .wrap{max-width:880px;margin:0 auto;}
+  header.rpt{border-left:6px solid var(--teal);padding:4px 0 4px 16px;margin-bottom:8px;}
+  header.rpt h1{font-size:22px;line-height:1.4;}
+  header.rpt .meta{color:var(--ink2);font-size:13px;margin-top:4px;}
+
+  .concl{background:linear-gradient(180deg,# eff6f6,#fff);border:2px solid var(--teal);
+         border-radius:14px;padding:18px 20px;margin:18px 0 26px;box-shadow:0 6px 18px rgba(18,60,72,.08);}
+  .concl h2{font-size:16px;color:var(--teal-d);margin-bottom:10px;letter-spacing:.02em;}
+  .concl ol{margin:0 0 0 4px;list-style:none;counter-reset:c;}
+  .concl li{counter-increment:c;position:relative;padding:8px 0 8px 40px;border-top:1px dashed var(--line);font-size:15px;font-weight:600;}
+  .concl li:first-child{border-top:none;}
+  .concl li::before{content:counter(c);position:absolute;left:0;top:8px;width:26px;height:26px;
+      background:var(--teal);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-size:14px;font-weight:800;}
+  .concl .em{color:var(--bad);}
+
+  h2.sec{font-size:18px;margin:30px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--teal);}
+  h3.sub{font-size:15px;margin:18px 0 6px;color:var(--teal-d);}
+  p{margin:6px 0;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0;}
+
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px;background:#fff;}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:center;}
+  th{background:#eef6f6;color:var(--ink);font-weight:700;}
+  td.l,th.l{text-align:left;}
+  .up{color:var(--good);font-weight:700;}
+  .down{color:var(--bad);font-weight:700;}
+  .num{font-variant-numeric:tabular-nums;}
+
+  .badge{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;vertical-align:middle;}
+  .b-a{background:#e5f5ec;color:var(--a-hi);border:1px solid #b7e2c7;}
+  .b-b{background:#fbf0dd;color:var(--a-mid);border:1px solid #f0d5a3;}
+
+  .fig{margin:14px 0;text-align:center;}
+  .fig img{max-width:100%;border:1px solid var(--line);border-radius:10px;box-shadow:0 6px 16px rgba(18,60,72,.1);}
+  .fig figcaption{font-size:12px;color:var(--ink2);margin-top:6px;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:640px){.two{grid-template-columns:1fr;}}
+
+  ul.clean{margin:6px 0 6px 20px;} ul.clean li{margin:4px 0;}
+  .note{background:#fff8ec;border:1px solid #f0d5a3;border-radius:10px;padding:12px 14px;font-size:13.5px;margin:12px 0;}
+  .todo{background:#eef6f6;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;}
+  .todo h3{margin-bottom:6px;color:var(--teal-d);}
+  .owner{font-size:12px;font-weight:700;color:#fff;background:var(--ink2);border-radius:6px;padding:1px 7px;margin-left:6px;}
+  footer{margin-top:34px;color:var(--ink2);font-size:12px;border-top:1px solid var(--line);padding-top:12px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="rpt">
+    <h1>OWL広告 ご報告｜質改善の検証結果＋FV改修案＋お客様の声の改善</h1>
+    <div class="meta">対象期間：2026/7/31〜8/1（施策①実施の前後）／作成：2026/8/2 星崎</div>
+  </header>
+
+  <!-- ===== 結論TOP（#54） ===== -->
+  <section class="concl">
+    <h2>◆ 結論（先に3点）</h2>
+    <ol>
+      <li>先日実施した<strong>検索パートナー除外（施策①）が的中</strong>。独立LPのFV離脱が <span class="em">63% → 6.7%</span> に激減＝<strong>来た人の質が別物になった</strong>（Clarity実測 <span class="badge b-a">確度A</span>）。</li>
+      <li>代償として<strong>流入量は激減</strong>（独立LP 約138→16PV/日）。想定内。次の一手は<strong>③KW絞りで「質を保ったまま量を戻す」</strong>。</li>
+      <li>さらに獲得を伸ばす2案を用意：<strong>(A) FV改修（金額先行をやめ「継続率97.6%」先行・モック完成）</strong>／<strong>(B) お客様の声の刷新（0円LP・独立LP両方）</strong>。実装には<strong>実績数字の一次ソース確定が必要</strong>（下記）。</li>
+    </ol>
+  </section>
+
+  <!-- ===== 1. データ ===== -->
+  <h2 class="sec">1. 7/31→8/1 データ：質は上がった、量は下がった</h2>
+
+  <h3 class="sub">Google広告 アカウント全体の推移 <span class="badge b-a">確度A（媒体レポート）</span></h3>
+  <table>
+    <tr><th class="l">日付</th><th>状態</th><th>クリック</th><th>CTR</th><th>CPC</th><th>費用</th><th>CV</th></tr>
+    <tr><td class="l">7/30</td><td>パートナー混在</td><td class="num">540</td><td class="num">52.9%</td><td class="num">¥57</td><td class="num">¥30,555</td><td>1</td></tr>
+    <tr><td class="l">7/31</td><td>除外 反映初日</td><td class="num">82</td><td class="num">14.3%</td><td class="num">¥330</td><td class="num">¥27,094</td><td>1</td></tr>
+    <tr><td class="l"><strong>8/1</strong></td><td><strong>除外後</strong></td><td class="num">49</td><td class="num">12.1%</td><td class="num">¥460</td><td class="num">¥22,548</td><td>0</td></tr>
+  </table>
+  <p class="note">CTR 52.9%は検索広告としては異常値＝パートナー面の“間違いクリック”。除外後の CTR12% / CPC¥460 は<strong>本物の検索の正常値</strong>。CPC上昇は改悪ではなく「ゴミ¥14クリックが消えて実勢に戻った」だけです。</p>
+
+  <h3 class="sub">Clarity：FV離脱率（LP先頭で帰る割合）が激変 <span class="badge b-a">確度A（実測）</span></h3>
+  <table>
+    <tr><th class="l">LP</th><th>7/30-31</th><th>8/1</th><th>評価</th></tr>
+    <tr><td class="l">独立LP（202607dokuritsu）</td><td class="num">63%</td><td class="num up">6.7%</td><td class="up">激改善</td></tr>
+    <tr><td class="l">0円プランLP（lp_zero-plan-g_v2）</td><td class="num">—</td><td class="num">16%</td><td>良好を維持</td></tr>
+  </table>
+  <p>独立LPは、パートナー除外前は<strong>6割以上がFVで即離脱</strong>していましたが、除外後は<strong>ほぼ帰らなくなり</strong>、半数が中盤（50%地点）まで読み進めています。＝“無駄クリックが消え、本命客だけが来ている”。</p>
+
+  <div class="note">
+    <strong>問い合わせ（CV）について：</strong>8/1は広告計測上0件。ただし現在の適格流入は 16PV/日 と母数が小さく、<strong>0件は誤差の範囲</strong> <span class="badge b-b">確度B</span>。件数を戻す=「③KW絞り＋本命KWへ予算集中」が次の主戦です。
+  </div>
+
+  <!-- ===== 2. FV改修案 ===== -->
+  <h2 class="sec">2. 【提案A】ファーストビュー(FV)改修 ― 金額先行をやめる</h2>
+  <p>独立LPの現状FVは<strong>金額（年1,800万・自己資金500万）を最上部に大きく</strong>置いており、「儲かりすぎ＝うさんくさい」「500万も要るのか」で離脱を生んでいました。<br>
+  改修案は、<strong>OWL公式ガイドにある「医療・福祉の事業継続率97.6%（全業種で最も高い／厚労省データ）」</strong>を主役に据え、<strong>“潰れにくい・未経験から・社会に必要”</strong>を先に伝え、金額は証拠として控えめに下げる方針です。</p>
+
+  <div class="two">
+    <figure class="fig">
+      <img src="fv_mock.png" alt="FV改修モック（スマホ）">
+      <figcaption>改修イメージ（スマホ・モック）。継続率97.6%を主役に、金額はFVから外した。</figcaption>
+    </figure>
+    <figure class="fig">
+      <img src="hero_people.png" alt="実装用の写真素材（文字なし）">
+      <figcaption>実装はこの写真＋HTML文字で構築（差替可・スマホ/PC両対応・レスポンシブ検証済み）。</figcaption>
+    </figure>
+  </div>
+
+  <h3 class="sub">改修FVのコピー（案）</h3>
+  <div class="card">
+    <p>■ 主見出し：<strong>潰れにくい福祉で、未経験から始める 障害者グループホーム経営</strong><br>
+    ■ 強調帯：<strong>事業継続率 97.6%</strong>（医療・福祉／全業種で最も高い ※厚生労働省 雇用保険事業年報）<span class="badge b-a">確度A</span><br>
+    ■ サブ：制度に支えられ、景気に左右されない。“親なき後”の住まいを増やす仕事。<br>
+    ■ CTA：無料で開業相談する／資料請求はこちら</p>
+  </div>
+
+  <div class="note">
+    <strong>実装前に一次ソース確定が必要な数字（3点）</strong>：現FV本文に残る以下は、公式ガイドに記載がなく<strong>裏取り未了</strong>のため、確定まで載せません（景表法・鈴木ルール#58）。
+    <ul class="clean">
+      <li>「95%未経験スタート」の実数（ガイドは「未経験でも開設できる」の定性表現のみ）</li>
+      <li>開設実績の件数（LP内で「400件／180社／4社」と<strong>3種バラバラ</strong>。正しい実数は？）</li>
+      <li>「自己資金500万/300万」の出所（ガイドは“初期投資目安”表記：0円プラン600〜800万 等）</li>
+    </ul>
+    ※FVの主役「97.6%」自体はガイドで確定済みのため、<strong>FV公開はこの3点確定を待たずに進められます</strong>。
+  </div>
+
+  <!-- ===== 3. お客様の声 ===== -->
+  <h2 class="sec">3. 【提案B】お客様の声の刷新（0円LP・独立LP 両方）</h2>
+  <p>両LPとも中盤まで読まれるようになった今、<strong>「決め手」になるお客様の声（実績・信頼）</strong>の強化が獲得に直結します。現状は声が弱い/一般的で、検討層の背中を押しきれていません。</p>
+  <h3 class="sub">効く「お客様の声」の条件</h3>
+  <ul class="clean">
+    <li><strong>未経験→開設できた</strong>ストーリー（＝FVの「未経験から」と一致させる）</li>
+    <li><strong>具体的な数字</strong>（開設まで○ヶ月／○ヶ月で満床／自己資金○万 等）＝ガイドに「開設2.5ヶ月で満床実績」あり <span class="badge b-a">確度A</span></li>
+    <li><strong>顔写真・実名・地域・前職</strong>（信頼の担保。※本人同意が前提）</li>
+    <li>不安→解消の順（「最初は不安だったが、行政同行・研修で乗り切れた」）</li>
+  </ul>
+  <div class="note">
+    <strong>ご相談：</strong>お客様の声は<strong>実在のオーナー様の声＝RUNBIRDの一次情報が必須</strong>です。掲載可能な事例（氏名/顔/地域/開設月数/コメントの可否）をいただければ、両LP用に構成・実装します。いただけない場合は、まず<strong>「開設2.5ヶ月で満床」等ガイド記載の実績</strong>ベースで安全に作成します。
+  </div>
+
+  <!-- ===== 次アクション ===== -->
+  <div class="todo">
+    <h3>■ 次アクション</h3>
+    <ul class="clean">
+      <li><strong>③KW絞り</strong>：広く浅い「起業 福祉/介護」を絞り、本命KW（障害者GH開業/経営・共同生活援助開業・FC系）へ予算集中 <span class="owner">星崎（アカウント操作）</span></li>
+      <li><strong>提案A：FV改修</strong>を本番反映（下書き→ご確認→公開）。主役97.6%は確定済で先行可 <span class="owner">星崎/Claude</span></li>
+      <li><strong>実績数字3点の一次ソース</strong>（未経験率・開設実績件数・自己資金）を RUNBIRD に確認 <span class="owner">鈴木さん→RUNBIRD</span></li>
+      <li><strong>提案B：お客様の声</strong>用に、掲載可能な事例の提供可否を確認 <span class="owner">鈴木さん→RUNBIRD</span></li>
+    </ul>
+  </div>
+
+  <footer>
+    ※本レポートは社内共有用（noindex）。実データ・個人情報は含みません。数字の確度は各所に明記（確度A=実測/媒体・公式ガイド、確度B=推定）。<br>
+    データ出典：Google広告・Yahoo広告 各レポート、Microsoft Clarity（OWL福祉事業LP）、OWL Business Guide Vol.19（Ver.2021.06）。
+  </footer>
+
+</div>
+</body>
+</html>
