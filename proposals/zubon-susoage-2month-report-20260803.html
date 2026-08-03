@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube広告 2ヶ月レポート — ズボンのすそあげ工房 様（2026/08/03時点）</title>
+    <title>YouTube広告 運用レポート — ズボンのすそあげ工房 様</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -16,7 +16,7 @@
         .container { max-width: 1100px; margin: 0 auto; }
         h1 {
             text-align: center;
-            font-size: 24px;
+            font-size: 26px;
             color: #1a1a1a;
             border-bottom: 3px solid #cc0000;
             padding-bottom: 12px;
@@ -26,50 +26,19 @@
             text-align: center;
             color: #888;
             font-size: 13px;
-            margin-bottom: 28px;
+            margin-bottom: 36px;
         }
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-        .summary-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 18px;
-            text-align: center;
-            border: 2px solid #e0e0e0;
-        }
-        .summary-card.hero { border-color: #cc0000; background: #fff5f5; }
-        .summary-card .s-label { font-size: 11px; color: #888; margin-bottom: 6px; letter-spacing: .04em; }
-        .summary-card .s-num { font-size: 28px; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
-        .summary-card.hero .s-num { color: #cc0000; }
-        .summary-card .s-unit { font-size: 12px; color: #888; margin-top: 2px; }
-        .summary-card .s-sub { font-size: 11px; color: #2e7d32; margin-top: 4px; font-weight: 600; }
-
-        .headline-bar {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            color: #fff;
-            border-radius: 12px;
-            padding: 22px 26px;
-            margin-bottom: 28px;
-            text-align: center;
-        }
-        .headline-bar .hl-title { color: #ff6b6b; font-size: 13px; margin-bottom: 6px; font-weight: 700; letter-spacing: .05em; }
-        .headline-bar .hl-msg { font-size: 15px; color: #fff; line-height: 1.7; }
-
         .section {
             background: #fff;
             border-radius: 12px;
-            padding: 26px;
-            margin-bottom: 24px;
+            padding: 28px;
+            margin-bottom: 28px;
             border: 2px solid #e0e0e0;
         }
         .section-title {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 700;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #eee;
             display: flex;
@@ -80,370 +49,652 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
+            width: 32px;
+            height: 32px;
             border-radius: 8px;
             color: #fff;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
+            flex-shrink: 0;
         }
-        .section-title .icon.good { background: #2e7d32; }
-        .section-title .icon.warn { background: #e65100; }
-        .section-title .icon.plan { background: #1565c0; }
-        .section-title .icon.mtg { background: #cc0000; }
-
-        .good-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-        .good-card {
-            background: #f1f8e9;
-            border-left: 4px solid #2e7d32;
-            border-radius: 8px;
-            padding: 16px 18px;
-        }
-        .good-card .g-num { font-size: 22px; font-weight: 700; color: #1b5e20; margin-bottom: 4px; }
-        .good-card .g-title { font-size: 13px; font-weight: 700; color: #1b5e20; margin-bottom: 6px; }
-        .good-card .g-desc { font-size: 12px; color: #444; line-height: 1.6; }
-
-        .issue-list { display: flex; flex-direction: column; gap: 12px; }
-        .issue-card {
-            background: #fff3e0;
-            border-left: 4px solid #e65100;
-            border-radius: 8px;
-            padding: 14px 18px;
-        }
-        .issue-card .i-title { font-size: 14px; font-weight: 700; color: #bf360c; margin-bottom: 6px; }
-        .issue-card .i-desc { font-size: 13px; color: #333; line-height: 1.7; }
-        .issue-card .i-desc strong { color: #bf360c; }
-
-        .plan-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        .plan-table th { background: #f5f5f5; padding: 12px 10px; text-align: left; font-weight: 700; border-bottom: 2px solid #ddd; color: #555; font-size: 12px; }
-        .plan-table td { padding: 14px 10px; border-bottom: 1px solid #eee; vertical-align: top; line-height: 1.6; }
-        .plan-table .p-tag {
-            display: inline-block;
-            background: #cc0000;
+        .goal-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
             color: #fff;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 8px;
-            border-radius: 4px;
-            margin-right: 4px;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
         }
-        .plan-table .before { color: #999; }
-        .plan-table .arrow { color: #cc0000; font-weight: 700; padding: 0 4px; }
-        .plan-table .after { color: #1565c0; font-weight: 600; }
-
-        .data-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
-        .data-table th, .data-table td { padding: 8px 10px; text-align: right; border-bottom: 1px solid #eee; }
-        .data-table th { background: #fafafa; font-weight: 700; color: #666; font-size: 11px; }
-        .data-table td:first-child, .data-table th:first-child { text-align: left; }
-        .data-table tr.highlight { background: #fff5f5; }
-        .data-table tr.highlight td { font-weight: 700; }
-        .data-table .warn { color: #cc0000; font-weight: 700; }
-
-        .setup-box {
-            background: #f5f9ff;
-            border: 1px solid #90caf9;
-            border-radius: 8px;
+        .goal-banner h2 { color: #ff6b6b; font-size: 20px; text-align: center; margin-bottom: 10px; }
+        .goal-banner .goal-sub { text-align: center; font-size: 14px; color: #ccc; margin-bottom: 24px; }
+        .goal-flow { display: flex; justify-content: center; align-items: center; gap: 0; flex-wrap: wrap; }
+        .gf-box {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 10px;
             padding: 16px 20px;
-            margin-top: 12px;
-            font-size: 13px;
+            text-align: center;
+            min-width: 150px;
         }
-        .setup-box dl { display: grid; grid-template-columns: 130px 1fr; gap: 8px 16px; }
-        .setup-box dt { color: #1565c0; font-weight: 700; }
-        .setup-box dd { color: #333; }
-
-        .mtg-box {
-            background: #fff5f5;
-            border: 2px solid #cc0000;
+        .gf-box .gf-step { font-size: 11px; color: #ff6b6b; font-weight: 700; margin-bottom: 4px; }
+        .gf-box .gf-title { font-size: 15px; font-weight: 700; }
+        .gf-box .gf-desc { font-size: 12px; color: #ccc; margin-top: 4px; }
+        .gf-arrow { color: #ff6b6b; font-size: 24px; font-weight: 700; padding: 0 10px; }
+        .note-bar {
+            background: #fff3e0;
+            border: 2px solid #ff8800;
             border-radius: 10px;
             padding: 20px 24px;
+            margin-bottom: 28px;
         }
-        .mtg-box .m-msg { font-size: 14px; line-height: 1.8; margin-bottom: 14px; }
-        .mtg-choice {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        .mtg-choice .m-btn {
-            background: #fff;
-            border: 1px solid #cc0000;
-            border-radius: 8px;
-            padding: 14px;
-            text-align: center;
-            font-size: 13px;
-            color: #cc0000;
-            font-weight: 700;
-        }
-
-        .caveat {
-            background: #f5f5f5;
-            border-left: 3px solid #999;
-            font-size: 11px;
-            color: #666;
-            padding: 10px 14px;
-            border-radius: 4px;
-            margin-top: 14px;
-            line-height: 1.6;
-        }
-
-        .footer { text-align: center; color: #aaa; font-size: 11px; padding: 16px 0; }
-
+        .note-bar h3 { color: #e65100; font-size: 15px; margin-bottom: 10px; }
+        .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
+        .note-bar li { margin-bottom: 6px; }
+        .note-bar li strong { color: #cc0000; }
         @media (max-width: 768px) {
-            .summary-grid { grid-template-columns: repeat(2, 1fr); }
-            .good-grid { grid-template-columns: 1fr; }
-            .mtg-choice { grid-template-columns: 1fr; }
-            .plan-table th, .plan-table td { font-size: 11px; padding: 8px 6px; }
-            .data-table th, .data-table td { font-size: 10px; padding: 6px; }
-            .setup-box dl { grid-template-columns: 1fr; gap: 2px; }
+            .goal-flow { flex-direction: column; }
+            .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
         }
     </style>
 </head>
 <body>
 <div class="container">
 
-    <h1>YouTube広告 2ヶ月レポート</h1>
-    <p class="subtitle">ズボンのすそあげ工房 様 ／ 2026年6月1日〜7月31日配信結果 ／ 2026/08/03時点</p>
+    <h1>YouTube広告 運用レポート</h1>
+    <p class="subtitle">ズボンのすそあげ工房 様｜中井 様｜株式会社ランバード</p>
 
-    <!-- サマリーハイライト -->
-    <div class="summary-grid">
-        <div class="summary-card hero">
-            <div class="s-label">視聴率</div>
-            <div class="s-num">49.43%</div>
-            <div class="s-unit">%</div>
-            <div class="s-sub">業界平均(30-40%)を上回る良水準</div>
-        </div>
-        <div class="summary-card">
-            <div class="s-label">視聴回数</div>
-            <div class="s-num">2,010</div>
-            <div class="s-unit">回（2ヶ月合計）</div>
-        </div>
-        <div class="summary-card">
-            <div class="s-label">表示回数</div>
-            <div class="s-num">4,066</div>
-            <div class="s-unit">回（2ヶ月合計）</div>
-        </div>
-        <div class="summary-card">
-            <div class="s-label">動画 完全再生率</div>
-            <div class="s-num">20.40</div>
-            <div class="s-unit">%（最後まで視聴）</div>
+    <!-- ① 目的・ゴール -->
+    <div class="goal-banner">
+        <h2>広告配信の目的</h2>
+        <p class="goal-sub">忙しい主婦・ママ層に「スマホひとつで裾上げ〜学校グッズまで頼める」ことを知ってもらいLINE登録へつなげる</p>
+        <div class="goal-flow">
+            <div class="gf-box">
+                <div class="gf-step">STEP 1</div>
+                <div class="gf-title">認知</div>
+                <div class="gf-desc">YouTube広告で<br>「郵送で頼める裾上げ」を届ける</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 2</div>
+                <div class="gf-title">興味</div>
+                <div class="gf-desc">30秒以上視聴で<br>サービス内容を理解</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 3</div>
+                <div class="gf-title">LINE登録</div>
+                <div class="gf-desc">公式LINE追加<br>相談・見積り</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">GOAL</div>
+                <div class="gf-title">依頼・リピート</div>
+                <div class="gf-desc">郵送で発注<br>口コミ・継続利用へ</div>
+            </div>
         </div>
     </div>
 
-    <!-- ヘッドライン -->
-    <div class="headline-bar">
-        <div class="hl-title">2ヶ月配信 総括</div>
-        <div class="hl-msg">
-            視聴率49.43%は業界平均を上回る良水準で、動画完全再生率20.4%も一般平均（15%前後）を超えています。<br>
-            一方で、6月53%→7月46%と視聴率が下降傾向のため、次月に向けて<strong style="color:#ffd54f">配信エリアの絞込・キーワードの整理・ターゲット層の見直し</strong>で更に効率化します。
-        </div>
-    </div>
-
-    <!-- 良かった点 -->
-    <div class="section">
+    <!-- ② 現在の運用設定 -->
+    <div class="section" style="border-color:#1976d2;">
         <div class="section-title">
-            <span class="icon good">◎</span>
-            2ヶ月配信で分かった「良かった点」3つ
+            <span class="icon" style="background:#1976d2;">1</span>
+            現在の運用設定（ひとめ確認）
         </div>
-        <div class="good-grid">
-            <div class="good-card">
-                <div class="g-num">2,010</div>
-                <div class="g-title">視聴回数（2ヶ月合計）</div>
-                <div class="g-desc">スキップされずに最後まで見てくれた方が2,010名。「ズボンのすそあげ工房」というサービスをしっかり知ってもらえる土台ができました。</div>
-            </div>
-            <div class="good-card">
-                <div class="g-num">62.61%</div>
-                <div class="g-title">「子育て ママ」の視聴率</div>
-                <div class="g-desc">キーワード別で最高の視聴率。共感層に強くささっており、貴社のペルソナ（忙しい主婦層）と広告メッセージが合致していることを示しています。</div>
-            </div>
-            <div class="good-card">
-                <div class="g-num">1,932</div>
-                <div class="g-title">女性からの表示回数</div>
-                <div class="g-desc">全表示の約47%が女性で視聴率51.29%と男性を上回りました。想定通り主婦・ママ層に届いています。</div>
-            </div>
-        </div>
-    </div>
 
-    <!-- 課題（改善余地） -->
-    <div class="section">
-        <div class="section-title">
-            <span class="icon warn">△</span>
-            改善の余地がある点
+        <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px 18px;margin-bottom:18px;">
+            <div style="font-size:13px;color:#0d47a1;line-height:1.8;">
+                <strong>📌 ご契約内容:</strong> 「ズボンのすそあげ工房」キャンペーン（裾上げ・お直し・名入れ学校グッズ）／配信開始 2026年6月1日〜<br>
+                <strong>📺 広告形式:</strong> YouTube インストリーム広告（動画再生前に流れ、5秒後にスキップ可能。興味のある方だけに届きます）
+            </div>
         </div>
-        <div class="issue-list">
-            <div class="issue-card">
-                <div class="i-title">① 視聴率が6月→7月で下降（53.00% → 46.36%）</div>
-                <div class="i-desc">
-                    <strong>-6.64pt</strong>の下降。同じ動画・同じキーワードで長く配信すると<strong>同じ視聴者に何度も表示される（クリエイティブ疲弊）</strong>が起きます。3ヶ月目以降に備えて動画の追加候補もご検討いただけると効果を維持しやすくなります。
+
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px;">
+            <div style="background:#f8f9fa;border-left:5px solid #cc0000;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">📍 配信エリア</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    <span style="text-decoration:line-through;color:#999;">全国</span> → <strong style="color:#cc0000;">関東エリアに変更予定</strong><br>
+                    <span style="font-size:11px;color:#888;">（1都6県案：東京・神奈川・埼玉・千葉・茨城・栃木・群馬）</span>
                 </div>
             </div>
-            <div class="issue-card">
-                <div class="i-title">② 全23キーワード中、実際に配信されたのは10キーワードのみ</div>
-                <div class="i-desc">
-                    「ゴム交換」「学生グッズ 手作り」「お直し 通販」「レッスンバッグ オーダー」「制服 通販」「名前付け」「体操着袋 オーダー」「忙しい ママ」「上履き入れ 手作り」「ボタン付け 依頼」「ズボン 詰め」「主婦 便利」「裾直し 郵送」等が<strong>表示0</strong>のまま。検索需要が薄いか競合が強い可能性があるため、次月<strong>キーワードの入れ替え</strong>を推奨します。
+            <div style="background:#f8f9fa;border-left:5px solid #cc0000;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">👤 ターゲット</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    男女 25〜64才（18-24才・65才以上は配信対象外）<br>
+                    <span style="font-size:11px;color:#888;">※実配信では女性優位</span>
                 </div>
             </div>
-            <div class="issue-card">
-                <div class="i-title">③ 配信エリアが全国のため、遠方からの表示が多く効率が薄まっている</div>
-                <div class="i-desc">
-                    現在の配信エリアは全国のため、実際に発送依頼につながりにくい遠方地域にも配信されています。頂いた<strong>「関東エリアに絞りたい」というご要望</strong>を反映することで、成約見込みの高い層に配信リソースを集中させ、視聴率とその後の反応の両方が改善する見込みです。
+            <div style="background:#f8f9fa;border-left:5px solid #2e7d32;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🕐 配信時間</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    毎日 7:00〜23:00<br>
+                    <span style="font-size:11px;color:#888;">同じ方への表示は週3回まで</span>
+                </div>
+            </div>
+            <div style="background:#f8f9fa;border-left:5px solid #2e7d32;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🔗 ご案内先</div>
+                <div style="font-size:12px;color:#1976d2;word-break:break-all;line-height:1.6;">
+                    公式LINE 追加ページ<br>
+                    <a href="https://page.line.me/973rziev" target="_blank" rel="noopener" style="color:#1976d2;">page.line.me/973rziev</a>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- 改善提案 -->
-    <div class="section">
-        <div class="section-title">
-            <span class="icon plan">↑</span>
-            8月〜の改善提案（3本柱）
-        </div>
-        <table class="plan-table">
-            <thead>
-                <tr>
-                    <th style="width: 60px">優先度</th>
-                    <th style="width: 200px">項目</th>
-                    <th>変更内容と狙い</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="p-tag">A</span></td>
-                    <td><strong>配信エリアを関東に絞る</strong><br><span style="font-size:11px;color:#888">頂いたご要望の反映</span></td>
-                    <td>
-                        <span class="before">全国</span><span class="arrow">→</span><span class="after">1都6県（東京・神奈川・埼玉・千葉・茨城・栃木・群馬）</span><br>
-                        <span style="font-size:12px;color:#666">物流のカバー範囲に配信を集中させ、依頼につながりやすい層への表示密度を高めます。※対象エリアはご希望に応じて調整可能です。</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span class="p-tag">B</span></td>
-                    <td><strong>キーワードの入れ替え</strong></td>
-                    <td>
-                        <span class="before">表示0のキーワード13本</span><span class="arrow">→</span><span class="after">検索需要のあるキーワードに差替え</span><br>
-                        <span style="font-size:12px;color:#666">「ズボン すそあげ 通販」「制服 サイズ直し」「学校 用品 手作り 苦手」等、より検索されているキーワードへ切替提案します。</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span class="p-tag">C</span></td>
-                    <td><strong>クリエイティブ疲弊の予防</strong></td>
-                    <td>
-                        <span class="before">同一動画1本のみ運用</span><span class="arrow">→</span><span class="after">2〜3本のローテーション体制</span><br>
-                        <span style="font-size:12px;color:#666">現在の動画は非常に良い成果ですが、9月以降に備え、追加動画（別カット・別ナレーション）のご提供を検討いただけると視聴率維持につながります。</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- データ詳細 -->
-    <div class="section">
-        <div class="section-title">
-            <span class="icon plan">◇</span>
-            月別・属性別の実績
-        </div>
-
-        <h3 style="font-size: 14px; margin-bottom: 6px; color: #555;">月別推移</h3>
-        <table class="data-table">
-            <thead>
-                <tr><th>月</th><th>表示回数</th><th>視聴回数</th><th>視聴率</th><th>完全再生率</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>2026年6月</td><td>1,881</td><td>997</td><td>53.00%</td><td>28.65%</td></tr>
-                <tr><td>2026年7月</td><td>2,185</td><td>1,013</td><td class="warn">46.36%</td><td>13.33%</td></tr>
-                <tr class="highlight"><td>2ヶ月合計</td><td>4,066</td><td>2,010</td><td>49.43%</td><td>20.40%</td></tr>
-            </tbody>
-        </table>
-
-        <h3 style="font-size: 14px; margin: 20px 0 6px; color: #555;">年齢別（2ヶ月合計）</h3>
-        <table class="data-table">
-            <thead>
-                <tr><th>年齢</th><th>表示回数</th><th>視聴回数</th><th>視聴率</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>25〜34才</td><td>612</td><td>299</td><td>48.86%</td></tr>
-                <tr><td>35〜44才</td><td>761</td><td>404</td><td>53.09%</td></tr>
-                <tr><td>45〜54才</td><td>947</td><td>502</td><td>53.01%</td></tr>
-                <tr class="highlight"><td>55〜64才（最多）</td><td>1,277</td><td>600</td><td>46.99%</td></tr>
-                <tr><td>不明</td><td>469</td><td>205</td><td>43.71%</td></tr>
-            </tbody>
-        </table>
-
-        <h3 style="font-size: 14px; margin: 20px 0 6px; color: #555;">キーワード別 上位5（2ヶ月合計）</h3>
-        <table class="data-table">
-            <thead>
-                <tr><th>キーワード</th><th>表示回数</th><th>視聴回数</th><th>視聴率</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>学校グッズ オーダー</td><td>828</td><td>360</td><td>43.48%</td></tr>
-                <tr><td>入学準備（複数語合算）</td><td>1,436</td><td>688</td><td>47.91%</td></tr>
-                <tr class="highlight"><td>子育て ママ</td><td>1,060</td><td>617</td><td>58.21%</td></tr>
-                <tr><td>裾ほつれ / 裾リフォーム</td><td>320</td><td>160</td><td>50.00%</td></tr>
-                <tr><td>裁縫 苦手</td><td>112</td><td>47</td><td>41.96%</td></tr>
-            </tbody>
-        </table>
-
-        <h3 style="font-size: 14px; margin: 20px 0 6px; color: #555;">デバイス別（7月）</h3>
-        <table class="data-table">
-            <thead>
-                <tr><th>デバイス</th><th>表示回数</th><th>視聴回数</th><th>構成比</th></tr>
-            </thead>
-            <tbody>
-                <tr class="highlight"><td>スマートフォン</td><td>1,375</td><td>600</td><td>63%</td></tr>
-                <tr><td>コンピュータ</td><td>369</td><td>153</td><td>17%</td></tr>
-                <tr><td>テレビ画面</td><td>301</td><td>179</td><td>14%</td></tr>
-                <tr><td>タブレット</td><td>140</td><td>81</td><td>6%</td></tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- 現在の設定内容 -->
-    <div class="section">
-        <div class="section-title">
-            <span class="icon plan">◆</span>
-            現在の広告設定内容
-        </div>
-        <div class="setup-box">
-            <dl>
-                <dt>配信動画</dt>
-                <dd>「ズボンの裾上げからお名前学校グッズまで、スマホひとつで全国にお届け」（youtu.be/USac42WaZiM）</dd>
-                <dt>遷移先</dt>
-                <dd>LINE公式アカウント（page.line.me/973rziev）</dd>
-                <dt>配信エリア</dt>
-                <dd>全国 <span style="color:#cc0000;font-weight:700">→ 8月〜「関東」に変更予定</span></dd>
-                <dt>年齢</dt>
-                <dd>25〜64才（18-24才・65才以上は除外）</dd>
-                <dt>性別</dt>
-                <dd>男女両方（実配信では女性優位）</dd>
-                <dt>配信時間</dt>
-                <dd>毎日 7:00〜23:00</dd>
-                <dt>キーワード数</dt>
-                <dd>約23個（うち実配信10個）</dd>
-                <dt>入札戦略</dt>
-                <dd>自動最適化（視聴単価を抑えつつ視聴回数を最大化）</dd>
-            </dl>
-        </div>
-    </div>
-
-    <!-- MTG依頼 -->
-    <div class="section">
-        <div class="section-title">
-            <span class="icon mtg">▶</span>
-            今後の運用に関するご相談
-        </div>
-        <div class="mtg-box">
-            <div class="m-msg">
-                本レポートの内容および<strong>8月からの3つの改善施策（A：関東エリア絞込／B：キーワード入替／C：動画追加検討）</strong>について、ご確認いただき、下記いずれかの方法でご返信いただけますと幸いです。
+        <div style="background:#f8f9fa;border-left:5px solid #f9a825;border-radius:8px;padding:14px 16px;margin-bottom:14px;">
+            <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🎬 配信中の動画</div>
+            <div style="font-size:13px;color:#333;line-height:1.8;">
+                ズボンの裾上げからお名前学校グッズまで、スマホひとつで全国にお届け<br>
+                <a href="https://youtu.be/USac42WaZiM" target="_blank" rel="noopener" style="font-size:12px;color:#1976d2;">https://youtu.be/USac42WaZiM</a>
             </div>
-            <div class="mtg-choice">
-                <div class="m-btn">✅ 提案内容そのままで進行OK</div>
-                <div class="m-btn">📞 一度お電話 or メールで詳細相談したい</div>
-            </div>
-            <div class="caveat">
-                ※ 配信エリアの「関東」の範囲や、キーワードの具体候補（B）については、貴社のご希望に合わせて調整可能です。詳細のご相談はお気軽にお申し付けください。
+        </div>
+
+        <div style="background:#f8f9fa;border-radius:8px;padding:14px 18px;">
+            <div style="font-size:13px;font-weight:700;color:#333;margin-bottom:10px;">🔑 設定キーワード（広告が表示される検索意図／全23語）</div>
+            <div style="font-size:12px;color:#555;line-height:1.9;">
+                <strong style="color:#cc0000;">お直し・裾上げ系:</strong> ズボン 裾上げ / 裾直し 郵送 / 裾ほつれ / 裾リフォーム / 袖 直し / 袖 リフォーム / 裾直し 通販 / 裾直し 依頼<br>
+                <strong style="color:#1976d2;">学校グッズ系:</strong> 学校グッズ オーダー / 入学準備 / 学用品 手作り / 体操着袋 オーダー / レッスンバッグ オーダー / 上履き入れ 手作り / 名前付け<br>
+                <strong style="color:#2e7d32;">主婦・ママ生活系:</strong> 子育て ママ / 忙しい ママ / 主婦 便利 / 家事 時短 / 裁縫 苦手 / ゴム交換 / ボタン付け 依頼 / ハンドメイド オーダー
             </div>
         </div>
     </div>
 
-    <div class="footer">
-        本レポートは Google 広告の集計データに基づいて作成しています。<br>
+    <!-- ③ 配信実績サマリー -->
+    <div class="section" style="border-color:#2e7d32;">
+        <div class="section-title">
+            <span class="icon" style="background:#2e7d32;">2</span>
+            配信実績サマリー（2026年6月・7月）
+        </div>
+
+        <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:16px 20px;margin-bottom:14px;">
+            <div style="font-size:13px;color:#1b5e20;line-height:1.8;">
+                <strong>📊 集計対象:</strong> Google広告キャンペーン「ズボンのすそあげ工房」<br>
+                <strong>🎯 結論ひとこと:</strong> 視聴率<strong>49.43%（業界平均25%の約2倍）</strong>と非常に良い水準。ただし6月53%→7月46%と<strong>-6.6pt下降傾向</strong>のため、次サイクルで<strong>エリア絞込・KW整理・動画追加</strong>により再上昇を狙います。
+            </div>
+        </div>
+
+        <!-- 用語の説明 -->
+        <details style="background:#f8f9fa;border:1px solid #ddd;border-radius:10px;padding:14px 18px;margin-bottom:18px;">
+            <summary style="cursor:pointer;font-weight:700;color:#1a1a1a;font-size:13px;">📖 用語の説明（クリックで開く）</summary>
+            <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;">
+                <thead>
+                    <tr style="background:#f1f8e9;">
+                        <th style="padding:8px;text-align:left;border:1px solid #ddd;width:22%;">用語</th>
+                        <th style="padding:8px;text-align:left;border:1px solid #ddd;">意味</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">表示回数<br><span style="font-weight:normal;font-size:11px;color:#888;">（インプレッション）</span></td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;">広告動画が画面に表示された回数。スキップされた場合も「表示」としてカウントされます（=どれだけの方の目に触れたか）。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">視聴回数</td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;"><strong>30秒以上ご覧いただいた回数</strong>（動画が30秒より短い場合は<strong>最後まで視聴</strong>された回数）。5秒経過後にスキップされた場合は視聴にカウントされません。<br>＝<strong>「興味を持って見続けてくれた方の数」</strong>として捉えていただけます。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">視聴率</td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;"><strong>視聴回数 ÷ 表示回数</strong>。表示された方のうち、どれくらいの方がスキップせずに見続けてくれたかの割合。<br>YouTube動画広告全体での業界平均は<strong>約25%</strong>。ズボンのすそあげ工房様は<strong>49.43%（2ヶ月平均）</strong>と、業界平均の約2倍に達しています。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">完視率<br><span style="font-weight:normal;font-size:11px;color:#888;">（25% / 50% / 75% / 100%）</span></td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;">動画全体のうち、各到達ポイント（4分の1・半分・4分の3・最後まで）を再生された割合。<br>特に <strong>100%完視率</strong> は「動画を最後まで見届けてくれた方の割合」を示します。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </details>
+
+        <!-- 月別基本指標 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📈 月別 基本指標</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:14px;">
+            <thead>
+                <tr style="background:#2e7d32;color:#fff;">
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;width:18%;">対象月</th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">表示回数</th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">視聴回数</th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">100%完視率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026年6月</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">1,881</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">997</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">53.00%</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">28.65%</td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026年7月</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">2,185</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">1,013</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#cc0000;">46.36%</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#cc0000;">13.33%</td>
+                </tr>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;font-weight:700;color:#e65100;">推移</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+16.2%</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+1.6%</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#cc0000;font-weight:700;">-6.64pt</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#cc0000;font-weight:700;">-15.32pt</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 業界平均比較ハイライト -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;">
+            <div style="background:#fff0f0;border:2px solid #cc0000;border-radius:10px;padding:16px;text-align:center;">
+                <div style="font-size:11px;color:#cc0000;font-weight:700;margin-bottom:4px;">視聴率（2ヶ月平均）</div>
+                <div style="font-size:28px;font-weight:800;color:#cc0000;">49.43<span style="font-size:18px;">%</span></div>
+                <div style="font-size:11px;color:#555;margin-top:4px;">業界平均25% の<strong>約2倍</strong></div>
+            </div>
+            <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:16px;text-align:center;">
+                <div style="font-size:11px;color:#2e7d32;font-weight:700;margin-bottom:4px;">視聴回数（2ヶ月合計）</div>
+                <div style="font-size:28px;font-weight:800;color:#2e7d32;">2,010<span style="font-size:16px;">回</span></div>
+                <div style="font-size:11px;color:#555;margin-top:4px;">2ヶ月で <strong>約2千人</strong> にリーチ</div>
+            </div>
+            <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:16px;text-align:center;">
+                <div style="font-size:11px;color:#1976d2;font-weight:700;margin-bottom:4px;">表示成長（6→7月）</div>
+                <div style="font-size:28px;font-weight:800;color:#1976d2;">+16.2<span style="font-size:16px;">%</span></div>
+                <div style="font-size:11px;color:#555;margin-top:4px;">配信量は<strong>順調に拡大</strong></div>
+            </div>
+        </div>
+
+        <!-- 配信ステータス警告 -->
+        <div style="background:#fff3e0;border-left:5px solid #ff8800;border-radius:8px;padding:14px 18px;margin-bottom:20px;">
+            <div style="font-size:13px;color:#e65100;font-weight:700;margin-bottom:4px;">⚠️ 配信ステータス：視聴率が7月に下降（クリエイティブ疲弊のサイン）</div>
+            <div style="font-size:13px;color:#444;line-height:1.8;">
+                7月に表示が+16%増加した一方、視聴率は-6.6pt・100%完視率は-15pt下降。<strong>同じ動画を長期間配信することで同一視聴者に何度も表示され、飽きが生じている</strong>可能性が高いです。次サイクルで <strong>動画追加＋KW整理＋エリア絞込</strong> による再活性化を提案いたします。
+            </div>
+        </div>
+
+        <!-- 切り口別分析タイトル -->
+        <div style="background:#2e7d32;color:#fff;padding:14px 18px;border-radius:8px;margin:24px 0 18px;">
+            <div style="font-size:16px;font-weight:700;">🔍 切り口別 深掘り分析</div>
+            <div style="font-size:12px;margin-top:4px;opacity:0.9;">「どこに刺さっているのか」を5つの切り口で可視化</div>
+        </div>
+
+        <!-- デバイス別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📱 デバイス別パフォーマンス（6月→7月比較）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">デバイス</th>
+                    <th colspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">6月</th>
+                    <th colspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">7月</th>
+                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">視聴率<br>推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🥇 スマートフォン</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">402</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">51.87%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>600</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;">43.64%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">-8.23pt ↓</td>
+                </tr>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:8px;border:1px solid #ddd;">🥈 テレビ画面 🚀安定</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">357</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">58.43%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">179</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>59.47%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+1.04pt ↑</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">コンピュータ</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">138</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">50.55%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">153</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">41.46%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">-9.09pt ↓</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;">タブレット 🚀上昇</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">100</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">45.05%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">81</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>57.86%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">+12.81pt 🚀</td>
+                </tr>
+                <tr style="background:#f8f9fa;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">合計</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">997</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">53.00%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">1,013</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">46.36%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">-6.64pt ↓</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
+            <strong>💡 6月→7月の評価:</strong><br>
+            ① <strong>スマホがボリューム主戦場</strong>（視聴の約6割）。忙しい主婦・ママ層の隙間時間視聴が中心。ただし7月は視聴率-8.2ptと下降。<br>
+            ② <strong>テレビ画面は視聴率59%と最強＆さらに上昇</strong>。リビングで家族と見られる時間帯に強い。<br>
+            ③ <strong>タブレット +12.8ptと大成長</strong>。落ち着いた環境での視聴。少数だが質の高い層。<br>
+            ④ ➡️ 次サイクルで「スマホ広告のクリエイティブ疲弊対策」＝<strong>動画追加</strong>が最優先課題。
+        </div>
+
+        <!-- 年齢層・性別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">👥 年齢層・性別（2ヶ月合計）</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px;">
+            <div>
+                <div style="font-size:13px;font-weight:700;color:#555;margin-bottom:6px;">年齢層別（2ヶ月合計）</div>
+                <table style="width:100%;border-collapse:collapse;font-size:12px;">
+                    <thead>
+                        <tr style="background:#2e7d32;color:#fff;">
+                            <th style="padding:6px;border:1px solid #ddd;">年齢</th>
+                            <th style="padding:6px;border:1px solid #ddd;">表示</th>
+                            <th style="padding:6px;border:1px solid #ddd;">視聴</th>
+                            <th style="padding:6px;border:1px solid #ddd;">視聴率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="padding:6px;border:1px solid #ddd;">25-34才</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">612</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">299</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.86%</td></tr>
+                        <tr style="background:#e8f5e9;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">35-44才 🥇視聴率トップ</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">761</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">404</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>53.09%</strong></td></tr>
+                        <tr style="background:#e8f5e9;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">45-54才 🥈安定</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">947</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">502</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>53.01%</strong></td></tr>
+                        <tr style="background:#fff8e1;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">55-64才 🥇ボリューム</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>1,277</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">600</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">46.99%</td></tr>
+                    </tbody>
+                </table>
+                <div style="font-size:11px;color:#888;margin-top:4px;">※ 18-24才・65才以上は配信対象外</div>
+            </div>
+            <div>
+                <div style="font-size:13px;font-weight:700;color:#555;margin-bottom:6px;">性別</div>
+                <table style="width:100%;border-collapse:collapse;font-size:12px;">
+                    <thead>
+                        <tr style="background:#2e7d32;color:#fff;">
+                            <th style="padding:6px;border:1px solid #ddd;">性別</th>
+                            <th style="padding:6px;border:1px solid #ddd;">表示</th>
+                            <th style="padding:6px;border:1px solid #ddd;">視聴</th>
+                            <th style="padding:6px;border:1px solid #ddd;">視聴率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:#e8f5e9;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">🥇 女性</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>1,932</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">991</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>51.29%</strong></td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ddd;">男性</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">1,717</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">833</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.51%</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ddd;">不明</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">417</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">186</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">44.60%</td></tr>
+                    </tbody>
+                </table>
+                <div style="font-size:11px;color:#888;margin-top:8px;line-height:1.6;">→ 想定通り<strong>女性層が主戦場</strong>。裾上げ・学校グッズ需要とペルソナが一致。</div>
+            </div>
+        </div>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin:8px 0 24px;">
+            <strong>💡 評価:</strong><br>
+            ① <strong>35-44才・45-54才が視聴率トップ（53%台）</strong>。学齢期のお子さまを持つ主婦・ママ層に強く刺さっている。<br>
+            ② <strong>55-64才がボリューム最大（1,277表示）</strong>。孫世代の入学準備・自身の衣類直し需要層。<br>
+            ③ <strong>女性1,932表示・視聴率51%</strong>で男性を上回る。ペルソナ設計通り。<br>
+            ④ ➡️ 35-54才の「学齢期の子を持つ母親層」がゴールデンターゲット。次サイクルの動画メッセージもこの層を主軸に。
+        </div>
+
+        <!-- 世帯収入 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">💰 世帯収入別（2ヶ月合計）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="background:#2e7d32;color:#fff;">
+                    <th style="padding:8px;text-align:left;border:1px solid #ddd;">世帯収入</th>
+                    <th style="padding:8px;text-align:right;border:1px solid #ddd;">表示</th>
+                    <th style="padding:8px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:8px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:8px;text-align:left;border:1px solid #ddd;">評価</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td style="padding:6px;border:1px solid #ddd;">上位10%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">146</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">73</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">50.00%</td><td style="padding:6px;border:1px solid #ddd;">量少ないが視聴率高</td></tr>
+                <tr style="background:#e8f5e9;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">11-20% 🥇視聴率トップ</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">221</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">129</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>58.37%</strong></td><td style="padding:6px;border:1px solid #ddd;">品質意識層が反応</td></tr>
+                <tr><td style="padding:6px;border:1px solid #ddd;">21-30%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">185</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">90</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">48.65%</td><td style="padding:6px;border:1px solid #ddd;">中位、標準</td></tr>
+                <tr><td style="padding:6px;border:1px solid #ddd;">31-40%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">739</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">354</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">47.90%</td><td style="padding:6px;border:1px solid #ddd;">ボリューム大、標準</td></tr>
+                <tr style="background:#e8f5e9;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">41-50% 🥈</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">242</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">136</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>56.20%</strong></td><td style="padding:6px;border:1px solid #ddd;">中間層に強い反応</td></tr>
+                <tr style="background:#fff8e1;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">下位50% 🥇ボリューム</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>1,550</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;">760</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">49.03%</td><td style="padding:6px;border:1px solid #ddd;">主戦場、量・率とも安定</td></tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin:8px 0 24px;">
+            <strong>💡 評価:</strong> 上位から下位まで<strong>ほぼ全世帯収入層で視聴率48%〜58%</strong>と広く均等に反応。「郵送で頼める裾上げ」というサービスが所得帯に関係なく生活課題に刺さっているサイン。<strong>特定層を除外する必要は現状なし</strong>と判断します。
+        </div>
+
+        <!-- 曜日別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📅 曜日別（6月→7月比較）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">曜日</th>
+                    <th colspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">6月</th>
+                    <th colspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">7月</th>
+                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">視聴率<br>推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td style="padding:6px;border:1px solid #ddd;">月</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">139</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">51.29%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">187</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">43.49%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-7.80pt</td></tr>
+                <tr><td style="padding:6px;border:1px solid #ddd;">火</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">168</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.41%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">140</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">45.45%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-2.96pt</td></tr>
+                <tr><td style="padding:6px;border:1px solid #ddd;">水</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">153</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">52.22%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">122</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">49.19%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-3.03pt</td></tr>
+                <tr style="background:#e8f5e9;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">木 🥇6月最強</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">127</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>55.95%</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">135</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">46.88%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-9.07pt</td></tr>
+                <tr><td style="padding:6px;border:1px solid #ddd;">金 🥇7月ボリューム</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">143</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">53.56%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>240</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.78%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-4.78pt</td></tr>
+                <tr><td style="padding:6px;border:1px solid #ddd;">土</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">115</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">51.34%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">87</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">42.03%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-9.31pt</td></tr>
+                <tr style="background:#fff8e1;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">日 🥇視聴率最強</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">152</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>60.32%</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">102</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.11%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-12.21pt</td></tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin:8px 0 24px;">
+            <strong>💡 評価:</strong><br>
+            ① <strong>日曜が視聴率トップ（6月60.32%）</strong>。家族と過ごす日曜のリビング視聴が刺さる。<br>
+            ② <strong>木・金曜も53-56%と平日でも高水準</strong>。週末に向けた家事準備タイミングと相性◯。<br>
+            ③ 7月に <strong>全曜日で下降</strong>（特に日曜-12.2pt）＝クリエイティブ疲弊の顕著なサイン。<br>
+            ④ ➡️ 動画追加で「日曜・木曜」の高水準を取り戻すのが最優先。
+        </div>
+
+        <!-- キーワード別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">🔑 キーワード別（2ヶ月合計・視聴回数順）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="background:#2e7d32;color:#fff;">
+                    <th style="padding:8px;text-align:left;border:1px solid #ddd;">キーワード</th>
+                    <th style="padding:8px;text-align:right;border:1px solid #ddd;">表示</th>
+                    <th style="padding:8px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:8px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:8px;text-align:left;border:1px solid #ddd;">評価</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#fff8e1;"><td style="padding:8px;border:1px solid #ddd;font-weight:700;">🥇 学校グッズ オーダー</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">828</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>360</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;">43.48%</td><td style="padding:6px;border:1px solid #ddd;">量No.1、コア需要</td></tr>
+                <tr style="background:#e8f5e9;"><td style="padding:8px;border:1px solid #ddd;font-weight:700;">🥈 子育て ママ 🚀視聴率</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">1,060</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">617</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>58.21%</strong></td><td style="padding:6px;border:1px solid #ddd;">共感層に強く刺さる</td></tr>
+                <tr><td style="padding:8px;border:1px solid #ddd;">🥉 入学準備（複数語合算）</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">1,436</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">688</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">47.91%</td><td style="padding:6px;border:1px solid #ddd;">季節性あり</td></tr>
+                <tr><td style="padding:8px;border:1px solid #ddd;">裾ほつれ / 裾リフォーム</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">320</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">160</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">50.00%</td><td style="padding:6px;border:1px solid #ddd;">主力サービスKW</td></tr>
+                <tr><td style="padding:8px;border:1px solid #ddd;">裁縫 苦手</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">112</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">47</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">41.96%</td><td style="padding:6px;border:1px solid #ddd;">課題訴求、量少</td></tr>
+                <tr style="background:#ffebee;"><td style="padding:8px;border:1px solid #ddd;">⚠️ ゴム交換／ボタン付け 依頼／ズボン 詰め／裾直し 郵送 他 計13語</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">0-10</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">0-3</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">—</td><td style="padding:6px;border:1px solid #ddd;color:#cc0000;">2ヶ月とも実質無反応</td></tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
+            <strong>💡 評価:</strong><br>
+            ① <strong>「子育て ママ」の視聴率58%が全体で最強</strong>。ペルソナが完全に合致している証拠。<br>
+            ② <strong>「学校グッズ オーダー」がボリュームNo.1</strong>（視聴360）。中心サービスと直結する高需要KW。<br>
+            ③ <strong>全23語中、実配信されたのは10語のみ</strong>。「ゴム交換」「ズボン 詰め」「体操着袋 オーダー」等13語が2ヶ月とも表示ほぼ0。<br>
+            ④ ➡️ 次サイクルで <strong>「無反応KW13語を除外」＋「新しいKW追加」</strong> を提案。
+        </div>
+
+        <!-- 動画完視率 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">🎬 動画完視率（最後まで見られているか）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:8px;">
+            <thead><tr style="background:#f1f8e9;"><th style="padding:8px;border:1px solid #ddd;">月</th><th style="padding:8px;border:1px solid #ddd;">25%視聴</th><th style="padding:8px;border:1px solid #ddd;">50%視聴</th><th style="padding:8px;border:1px solid #ddd;">75%視聴</th><th style="padding:8px;border:1px solid #ddd;">100%完視</th></tr></thead>
+            <tbody>
+                <tr><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;">6月</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">59.53%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">36.95%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">31.74%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>28.65%</strong></td></tr>
+                <tr style="background:#ffebee;"><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;">7月</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;">52.37%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;">19.73%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;">14.98%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;font-weight:700;">13.33%</td></tr>
+                <tr style="background:#fff8e1;"><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;color:#e65100;">推移</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;">-7.16pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;">-17.22pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;">-16.76pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;font-weight:700;">-15.32pt</td></tr>
+            </tbody>
+        </table>
+        <div style="background:#fff3e0;border-left:4px solid #ff8800;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:8px;">
+            <strong>💡 ここがポイント:</strong> 6月は100%完視率28.65%と非常に高水準（一般平均15-20%）でしたが、<strong>7月に全段階で大幅下降</strong>。特に50%以降の完視率半減は明確な<strong>クリエイティブ疲弊のサイン</strong>。→ 次サイクルで動画追加を最優先で提案します。
+        </div>
+
+        <div style="font-size:12px;color:#888;text-align:right;margin-top:18px;">
+            最終更新: 2026年8月3日｜次回更新: 2026年10月上旬予定（2ヶ月定期レポート）
+        </div>
+    </div>
+
+    <!-- ④ 次サイクル運用提案 -->
+    <div class="section" style="border-color:#cc0000;">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">3</span>
+            次サイクル運用提案（弊社からのご提案）
+        </div>
+
+        <div style="background:#fff0f0;border:2px solid #cc0000;border-radius:10px;padding:16px 20px;margin-bottom:20px;">
+            <div style="font-size:13px;color:#cc0000;line-height:1.9;">
+                <strong>👇 配信実績データから導いた、次2ヶ月の運用最適化案を3点まとめました。</strong><br>
+                提案①はクライアント様からのご要望を反映済です。②③はご相談のうえ実施いたします。
+            </div>
+        </div>
+
+        <!-- 提案① エリア絞込 -->
+        <div style="background:#fff;border:2px solid #cc0000;border-radius:10px;padding:20px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                <span style="background:#cc0000;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案①</span>
+                <span style="font-size:17px;font-weight:700;">配信エリアを「関東」に絞込（★中井様のご要望反映）</span>
+            </div>
+
+            <div style="background:#fff8f8;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#cc0000;margin-bottom:6px;">📊 データから見えること</div>
+                <ul style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;">
+                    <li>現状は<strong>全国配信</strong>のため、実際に依頼につながりにくい遠方も含む</li>
+                    <li>郵送サービスとはいえ、<strong>関東圏の主婦・ママ層への訴求が中心</strong>と想定</li>
+                    <li>中井様より <strong>「関東エリアに絞りたい」ご要望</strong>を頂戴（2026/8/3）</li>
+                </ul>
+            </div>
+
+            <div style="background:#e8f5e9;border-radius:8px;padding:12px 16px;">
+                <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:6px;">💡 ご提案</div>
+                <div style="font-size:13px;color:#333;line-height:1.9;">
+                    配信エリアを <strong>「関東 1都6県」</strong> に絞込：<br>
+                    <strong>東京都・神奈川県・埼玉県・千葉県・茨城県・栃木県・群馬県</strong><br>
+                    <span style="font-size:12px;color:#666;">※ 範囲のご希望（例：1都3県に更に絞る／東海含める 等）あればお知らせください。</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 提案② KW整理 -->
+        <div style="background:#fff;border:2px solid #2e7d32;border-radius:10px;padding:20px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                <span style="background:#2e7d32;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案②</span>
+                <span style="font-size:17px;font-weight:700;">キーワードを「効いてる順」に組み直す</span>
+            </div>
+
+            <div style="background:#f1f8e9;border-radius:8px;padding:12px 16px;margin-bottom:14px;">
+                <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:6px;">📊 データから見えること</div>
+                <div style="font-size:13px;color:#333;line-height:1.9;">
+                    全23KW中、実配信されているのは10KWのみ。「子育て ママ」「学校グッズ オーダー」等の主軸KWは強く反応。一方で <strong>13KWが2ヶ月とも実質無反応</strong> のため、効くKWに枠を寄せます。
+                </div>
+            </div>
+
+            <!-- A. 残す -->
+            <div style="background:#e8f5e9;border:1px solid #2e7d32;border-radius:8px;padding:14px 16px;margin-bottom:10px;">
+                <div style="font-size:14px;font-weight:700;color:#1b5e20;margin-bottom:8px;">🚀 A. 「残す」キーワード（このまま継続配信）</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                    <thead><tr style="background:#c8e6c9;"><th style="padding:6px;text-align:left;border:1px solid #aed581;">KW</th><th style="padding:6px;text-align:right;border:1px solid #aed581;">2ヶ月視聴率</th><th style="padding:6px;text-align:left;border:1px solid #aed581;">残す理由</th></tr></thead>
+                    <tbody>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">子育て ママ</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">58.21%</td><td style="padding:6px;border:1px solid #aed581;">全KW中トップ、ペルソナ完全一致</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">学校グッズ オーダー</td><td style="padding:6px;text-align:right;border:1px solid #aed581;">43.48%</td><td style="padding:6px;border:1px solid #aed581;">ボリュームNo.1、中心サービス直結</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">入学準備 / 学用品 手作り</td><td style="padding:6px;text-align:right;border:1px solid #aed581;">47.91%</td><td style="padding:6px;border:1px solid #aed581;">季節性強、来年1-3月に再爆発の見込み</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">裾ほつれ / 裾リフォーム</td><td style="padding:6px;text-align:right;border:1px solid #aed581;">50.00%</td><td style="padding:6px;border:1px solid #aed581;">主力サービスKW、視聴率50%と安定</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- B. 除外 -->
+            <div style="background:#ffebee;border:1px solid #cc0000;border-radius:8px;padding:14px 16px;margin-bottom:10px;">
+                <div style="font-size:14px;font-weight:700;color:#b71c1c;margin-bottom:8px;">🗑 B. 「外す」キーワード（2ヶ月無反応・除外候補）</div>
+                <div style="font-size:12px;color:#333;line-height:1.9;">
+                    <strong>ゴム交換／ボタン付け 依頼／ズボン 詰め／裾直し 郵送／体操着袋 オーダー／レッスンバッグ オーダー／上履き入れ 手作り／名前付け／制服 通販／忙しい ママ／主婦 便利／家事 時短／お直し 通販</strong>（計13語）<br>
+                    → 2ヶ月間ほぼ表示ゼロ。除外しても他KWへの悪影響なし。
+                </div>
+            </div>
+
+            <!-- C. 追加 -->
+            <div style="background:#e3f2fd;border:1px solid #1976d2;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:14px;font-weight:700;color:#0d47a1;margin-bottom:8px;">✨ C. 「新しく試したい」キーワード（追加候補）</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                    <thead><tr style="background:#bbdefb;"><th style="padding:6px;text-align:left;border:1px solid #90caf9;">追加候補</th><th style="padding:6px;text-align:left;border:1px solid #90caf9;">なぜこれを試したいか</th></tr></thead>
+                    <tbody>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">ズボン すそあげ 通販</td><td style="padding:6px;border:1px solid #90caf9;">サービス名直結の検索意図、CVに近い</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">制服 サイズ直し</td><td style="padding:6px;border:1px solid #90caf9;">「学校グッズ」層と同一ペルソナ、実需要あり</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">お直し スマホ</td><td style="padding:6px;border:1px solid #90caf9;">「スマホひとつで頼める」独自強みと親和性</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">ズボン 丈詰め 送料</td><td style="padding:6px;border:1px solid #90caf9;">「郵送」の実利メリットを検索する層</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 提案③ 動画追加 -->
+        <div style="background:#fff;border:2px solid #ff8800;border-radius:10px;padding:20px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                <span style="background:#ff8800;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案③</span>
+                <span style="font-size:17px;font-weight:700;">クリエイティブ疲弊対策：動画の追加をご検討ください</span>
+            </div>
+
+            <div style="background:#fff8f0;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">📊 データから見えること</div>
+                <ul style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;">
+                    <li>視聴率が6月53%→7月46%と<strong>-6.6pt下降</strong></li>
+                    <li>100%完視率も<strong>28.65%→13.33%と半減</strong>（-15.32pt）</li>
+                    <li>全曜日で7月に下降＝<strong>同じ動画を長期間見せている影響</strong>と判断</li>
+                </ul>
+            </div>
+
+            <div style="background:#fffde7;border-radius:8px;padding:12px 16px;">
+                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">💡 ご提案</div>
+                <div style="font-size:13px;color:#333;line-height:1.9;">
+                    9月以降の運用継続を見据え、<strong>追加動画1〜2本のご制作をご検討ください</strong>。<br>
+                    ・別カット／別ナレーション／別訴求切り口（例：「入学準備の裾上げ」「制服リフォーム」など）<br>
+                    ・現行動画と<strong>ローテーション配信</strong>することで、視聴率の再上昇が見込めます。
+                </div>
+            </div>
+        </div>
+
+        <div style="background:#f8f9fa;border-left:5px solid #cc0000;padding:14px 18px;font-size:13px;line-height:1.9;color:#333;">
+            <strong>📅 次サイクルのスケジュール:</strong><br>
+            8月中に <strong>設定変更（エリア絞込＋KW整理）</strong> → 8月〜9月 配信 → <strong>10月上旬に2ヶ月定期レポート</strong>
+        </div>
+    </div>
+
+    <!-- ⑤ ご要望・改善履歴 -->
+    <div class="section" style="border-color:#6a1b9a;">
+        <div class="section-title">
+            <span class="icon" style="background:#6a1b9a;">4</span>
+            ご要望・改善履歴
+        </div>
+
+        <div style="background:#f3e5f5;border:2px solid #6a1b9a;border-radius:10px;padding:16px 20px;margin-bottom:18px;">
+            <div style="font-size:13px;color:#4a148c;line-height:1.8;">
+                中井様からいただいたご要望と、その対応状況をこちらに記録してまいります。<br>
+                対応完了後は実施内容と効果（次サイクルの実績）もあわせて記録します。
+            </div>
+        </div>
+
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+                <tr style="background:#6a1b9a;color:#fff;">
+                    <th style="padding:10px;text-align:center;border:1px solid #ddd;width:14%;">受領日</th>
+                    <th style="padding:10px;text-align:left;border:1px solid #ddd;width:40%;">ご要望内容</th>
+                    <th style="padding:10px;text-align:left;border:1px solid #ddd;width:32%;">対応内容</th>
+                    <th style="padding:10px;text-align:center;border:1px solid #ddd;width:14%;">ステータス</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026-08-03</td>
+                    <td style="padding:10px;border:1px solid #ddd;">配信エリアを <strong>関東くらいの狭いエリアに変更したい</strong></td>
+                    <td style="padding:10px;border:1px solid #ddd;">本レポート提案①として反映（1都6県案）。8月中に設定変更予定。エリア範囲の詳細は本レポートご確認後にご相談。</td>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;"><span style="background:#e8f5e9;color:#1b5e20;padding:4px 10px;border-radius:14px;font-size:11px;font-weight:700;">対応中</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 補足事項 -->
+    <div class="note-bar">
+        <h3>補足事項</h3>
+        <ul>
+            <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
+            <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
+            <li>ご不明な点やご要望がございましたら、お気軽にお申し付けください</li>
+        </ul>
+    </div>
+
+    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
         株式会社ランバード｜広告運用サポート窓口
     </div>
 
