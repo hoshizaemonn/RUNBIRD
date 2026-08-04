@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Dリフォーム 1本目｜8/10までの進め方（図解）</title>
+<style>
+:root{
+  --ink:#1a2a3c;--sub:#6b7480;--line:#e3ded5;--bg:#faf8f3;--card:#fff;
+  --navy:#1e4a7a;--gold:#c47a1e;--red:#c0432a;--green:#1f7a4d;--purple:#6b4a8a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  line-height:1.7;-webkit-text-size-adjust:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px 90px}
+header{background:var(--navy);color:#fff;padding:24px 0}
+header .wrap{padding-bottom:0}
+h1{font-size:clamp(18px,4.2vw,26px);margin:0 0 4px}
+header p{margin:0;opacity:.85;font-size:clamp(12px,2.8vw,14px)}
+h2{font-size:clamp(16px,3.6vw,20px);margin:46px 0 6px;padding-left:12px;border-left:5px solid var(--navy)}
+.lead{color:var(--sub);font-size:clamp(13px,2.9vw,14.5px);margin:0 0 16px;padding-left:17px}
+p,li,td,th{font-size:clamp(13px,2.9vw,15px)}
+
+/* ── ギャップ図解 ── */
+.gap{display:grid;gap:14px;grid-template-columns:1fr;align-items:stretch}
+@media(min-width:820px){.gap{grid-template-columns:1fr 54px 1fr}}
+.gapbox{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:16px 18px}
+.gapbox.now{border-color:#d9cfc0}
+.gapbox.next{border-color:var(--green)}
+.gapbox h3{margin:0 0 4px;font-size:15px}
+.gapbox .meta{font-size:12px;color:var(--sub);margin:0 0 12px}
+.arrow{display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--green);font-weight:700}
+@media(max-width:819px){.arrow{transform:rotate(90deg);height:34px}}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{border-radius:999px;padding:5px 12px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.chip.have{background:#e9eff6;color:var(--navy)}
+.chip.miss{background:#f7e3de;color:var(--red);text-decoration:line-through;opacity:.75}
+.chip.add{background:#e2f2e9;color:var(--green);box-shadow:0 0 0 2px #b9e0cb inset}
+.chip.fix{background:#fdf0dc;color:var(--gold);box-shadow:0 0 0 2px #f0d9b0 inset}
+
+/* ── タイムライン ── */
+.tlscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0 4px;padding-bottom:6px}
+.tl{min-width:840px;display:grid;grid-template-columns:104px repeat(7,1fr);gap:6px}
+.tl .hd{background:#efeae1;border-radius:8px 8px 0 0;padding:8px 6px;text-align:center;
+  font-size:12.5px;font-weight:700;color:var(--navy)}
+.tl .hd.today{background:var(--navy);color:#fff}
+.tl .hd.goal{background:var(--gold);color:#fff}
+.tl .hd small{display:block;font-weight:400;font-size:11px;opacity:.8}
+.tl .lane{background:#efeae1;padding:12px 8px;border-radius:8px;font-size:12.5px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.35}
+.tl .cell{background:#fff;border:1px dashed #e7e1d7;border-radius:8px;min-height:62px;padding:5px}
+.bar{border-radius:7px;padding:7px 9px;font-size:12px;line-height:1.4;color:#fff;font-weight:700;height:100%;
+  display:flex;align-items:center}
+.bar.navy{background:var(--navy)} .bar.gold{background:var(--gold)}
+.bar.green{background:var(--green)} .bar.purple{background:var(--purple)}
+.bar.red{background:var(--red)}
+.span2{grid-column:span 2} .span3{grid-column:span 3}
+
+/* ── カード ── */
+.grid{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:700px){.grid.c2{grid-template-columns:1fr 1fr}.grid.c3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px}
+.card h4{margin:0 0 6px;font-size:14.5px}
+.card p{margin:0;font-size:13.5px;color:#33404f}
+.card.alert{border-left:5px solid var(--red)}
+.card.ok{border-left:5px solid var(--green)}
+
+/* ── 対比 ── */
+.vs{width:100%;border-collapse:collapse;background:#fff;min-width:600px}
+.vs th,.vs td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+.vs th{background:#f2efe8;white-space:nowrap}
+.vs td.was{color:var(--sub);text-decoration:line-through}
+.vs td.is{font-weight:700}
+.tblscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:10px 0}
+
+.badge{display:inline-block;border-radius:5px;padding:1px 8px;font-size:11.5px;font-weight:700;margin-right:6px;vertical-align:2px}
+.b-new{background:#e2f2e9;color:var(--green)}
+.b-fix{background:#fdf0dc;color:var(--gold)}
+.b-risk{background:#f7e3de;color:var(--red)}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--sub)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Dリフォーム 1本目｜8/10までの進め方</h1>
+<p>2026-08-04 ディレクション反映 ／ <b>8/6(水)までに完成 → 鈴木さんと詰める → 8/10(月)15:00 土井様に初稿確認</b></p>
+</div></header>
+
+<div class="wrap">
+
+<h2 style="margin-top:28px">① いちばん大きな変更点</h2>
+<p class="lead">訴求サービスが1本柱（塗装）から2本柱（塗装＋雨樋）になりました。現行モックには雨樋が1カットもありません。</p>
+
+<div class="gap">
+  <div class="gapbox now">
+    <h3>いまのモックアップ（v3）</h3>
+    <p class="meta">15秒版8カット／45秒版18カット・アニメ・テロップ＋BGM</p>
+    <div class="chips">
+      <span class="chip have">屋根・壁の塗装</span>
+      <span class="chip have">社長自ら見積り</span>
+      <span class="chip have">安心・信頼</span>
+      <span class="chip have">下地処理</span>
+      <span class="chip have">色選び</span>
+      <span class="chip miss">雨樋の交換</span>
+      <span class="chip miss">明瞭会計</span>
+      <span class="chip miss">社長ご本人の顔</span>
+    </div>
+  </div>
+  <div class="arrow">➜</div>
+  <div class="gapbox next">
+    <h3>作り直すもの（v4）</h3>
+    <p class="meta">8/5 の写真受領後に着手</p>
+    <div class="chips">
+      <span class="chip have">屋根・壁の塗装</span>
+      <span class="chip have">社長自ら見積り</span>
+      <span class="chip have">安心・信頼</span>
+      <span class="chip add">＋ 雨樋の交換</span>
+      <span class="chip add">＋ 明瞭会計</span>
+      <span class="chip add">＋ 社長の顔に寄せたキャラ</span>
+      <span class="chip fix">塗装カットの主体を職人に修正</span>
+    </div>
+  </div>
+</div>
+
+<div class="grid c3" style="margin-top:14px">
+  <div class="card ok"><h4><span class="badge b-new">最強ネタ</span>雨樋は社長ご本人が施工</h4>
+  <p>「社長が自分でやる」訴求と直結します。完工写真も多いので Before/After が作れます。</p></div>
+  <div class="card alert"><h4><span class="badge b-risk">事実と違う</span>塗装は社長がやっていない</h4>
+  <p>「現場には顔を出す程度で作業はあんまりしてない／職人仲間に業務委託」。塗るのは職人、社長は見積り・確認・お客様対応に切り分けます。</p></div>
+  <div class="card"><h4><span class="badge b-fix">再生成</span>社長キャラは汎用顔のまま</h4>
+  <p>受領写真 or LP掲載写真に寄せて作り直し。<b>登場カット全部が再生成</b>になります（S4/S5/S7/S8）。</p></div>
+</div>
+
+<h2>② 構成・台本（v4案）</h2>
+<p class="lead">雨樋・明瞭会計・「塗るのは職人／来るのは社長」を反映した新しい構成です。<b>★＝新しく絵を作るカット</b>／<b>◆＝社長キャラを作り直すカット</b>。仲野メソッドの5要素の順番は維持しています。</p>
+
+<h3 style="margin:18px 0 4px;font-size:15.5px">15秒版（本命・9カット）</h3>
+<div class="tblscroll"><table class="vs">
+<tr><th>#</th><th>尺</th><th>5要素</th><th>画</th><th>テロップ</th></tr>
+<tr><td>1</td><td>0.0-2.0</td><td><span class="badge b-new">①理想の姿</span>Who/What</td><td>塗りたての家と家族</td><td class="is">10年後も、きれいな我が家。<br><span style="font-weight:400;font-size:12px;color:#6b7480">埼玉・富士見の 外壁塗装・雨樋工事</span></td></tr>
+<tr><td>2</td><td>2.0-3.5</td><td>②悩み</td><td>色あせ・ひび</td><td>壁の色あせ、屋根の傷み。</td></tr>
+<tr><td>3</td><td>3.5-5.0</td><td>②悩み</td><td><b>★雨樋から水があふれる</b></td><td>雨樋、あふれていませんか。</td></tr>
+<tr><td>4</td><td>5.0-6.5</td><td>②悩み</td><td>スマホで不安な家主</td><td>でも、どこに頼めば安心？</td></tr>
+<tr><td>5</td><td>6.5-8.5</td><td><span class="badge b-new">③解決方法</span></td><td>◆社長が門前で会釈</td><td class="is">見積りに来るのは、社長本人です。</td></tr>
+<tr><td>6</td><td>8.5-10.0</td><td>④根拠（明瞭会計）</td><td><b>★見積書を前に社長が説明</b></td><td>その場で、金額まではっきり。</td></tr>
+<tr><td>7</td><td>10.0-11.5</td><td>④根拠（シズル）</td><td>職人のローラー</td><td>塗るのは、20年の職人。</td></tr>
+<tr><td>8</td><td>11.5-13.0</td><td>④根拠</td><td><b>★社長が雨樋を交換</b></td><td class="is">雨樋は、社長が自分で。</td></tr>
+<tr><td>9</td><td>13.0-15.0</td><td><span class="badge b-new">⑤オファー</span></td><td>エンドカード</td><td>お電話1本で、社長がうかがいます。</td></tr>
+</table></div>
+
+<h3 style="margin:22px 0 4px;font-size:15.5px">45秒版（CM尺・19カット）</h3>
+<div class="tblscroll"><table class="vs">
+<tr><th>5要素</th><th>カット</th><th>テロップ</th></tr>
+<tr><td>①理想の姿<br><small>0-5秒</small></td><td>家族と塗りたての家（寄り）→ 家全体（引き）</td><td>10年後も、きれいな我が家。／そう思えるかは、任せる相手で決まる。</td></tr>
+<tr><td>②悩みの共感<br><small>5-16秒</small></td><td>外観 → ひび → <b>★雨樋があふれる</b> → スマホ → 訪問営業</td><td>壁の色あせ、そろそろかな。／ひび割れ、チョーキング。／<b>雨樋から、水があふれる。</b>／でも、どこに頼めば安心？／無理にすすめられそうで、不安。</td></tr>
+<tr><td>③解決方法<br><small>16-23.5秒</small></td><td>◆社長（引き）→ ◆社長（寄り）→ <b>★見積書で説明</b></td><td>埼玉・富士見の、まちの塗装屋です。／見積りに来るのは、社長本人。／<b>その場で、金額まではっきり。</b></td></tr>
+<tr><td>④根拠<br><small>23.5-37.5秒</small></td><td>職人のローラー → 足場 → <b>★社長が雨樋交換</b> → <b>★交換後の雨樋</b> → ◆色見本 → ◆点検</td><td>塗るのは、20年の職人。／下地が、10年後を決める。／<b>雨樋は、社長が自分で。</b>／<b>雨の日に、ちゃんと流れる。</b>／納得いくまで、色を選べる。／塗って終わり、にしない。</td></tr>
+<tr><td>①再提示<br>⑤オファー<br><small>37.5-45秒</small></td><td>家全体 → 社用車 → エンドカード</td><td>また、この家で。安心して。／富士見の塗り替え・雨樋工事。／お電話1本で、社長がうかがいます。</td></tr>
+</table></div>
+
+<h3 style="margin:22px 0 8px;font-size:15.5px">★新しく作る絵は4枚（8/5・写真受領後）</h3>
+<div class="grid c2">
+  <div class="card"><h4>A. 雨樋から水があふれる</h4><p>雨の日、詰まった雨樋から水がこぼれている外観。<b>受領写真がなくても作れます</b>（一般的な情景）。</p></div>
+  <div class="card alert"><h4>B. 社長が雨樋を交換している</h4><p>軒先で社長が雨樋を交換している画。<b>社長の顔写真が必須</b>。「社長が自分でやる」の証拠カットで、今回いちばん重要な新規カットです。</p></div>
+  <div class="card"><h4>C. 交換後のきれいな雨樋</h4><p>新しい雨樋に雨がきれいに流れている軒先の寄り。<b>雨樋の完工写真</b>を多くお持ちとのことなので、それに寄せます。</p></div>
+  <div class="card"><h4>D. 見積書を前に社長が説明</h4><p>お客様宅で見積書（金額は読めない程度）を指しながら説明。<b>明瞭会計</b>の訴求。社長の顔写真が必要。</p></div>
+</div>
+<p class="lead" style="padding-left:0;margin-top:10px">加えて、<b>社長が登場する既存カット4つ（門前・寄り・色見本・点検）は全て再生成</b>します。現行キャラは汎用顔のためです。</p>
+
+<h2>③ スケジュール（8/6完成 → 詰める → 8/10提示）</h2>
+<p class="lead">横スクロールできます。色＝担当（■星崎さん ■Claude ■土井様 ■打ち合わせ）。<b>8/7〜8/9を丸ごとバッファに充てる</b>ので、鈴木さんの指摘が重くても8/10に間に合います。</p>
+
+<div class="tlscroll"><div class="tl">
+  <div class="lane" style="background:transparent"></div>
+  <div class="hd today">8/4 月<small>今日</small></div>
+  <div class="hd">8/5 火</div>
+  <div class="hd goal">8/6 水<small>完成・詰め</small></div>
+  <div class="hd">8/7 木</div>
+  <div class="hd">8/8 金</div>
+  <div class="hd">8/9 土</div>
+  <div class="hd goal">8/10 月<small>15:00 提示</small></div>
+
+  <div class="lane">土井様</div>
+  <div class="cell"></div>
+  <div class="cell"><div class="bar gold">写真 5〜10枚<br>をLINEで送付</div></div>
+  <div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+  <div class="cell"><div class="bar gold">初稿を確認</div></div>
+
+  <div class="lane">星崎さん</div>
+  <div class="cell"><div class="bar navy">写真依頼LINE<br>／鈴木さん報告</div></div>
+  <div class="cell"><div class="bar navy">受領・検品<br>→ Lovart動画化</div></div>
+  <div class="cell"><div class="bar navy">鈴木さんと詰める<br>（完成版を提示）</div></div>
+  <div class="cell span3"><div class="bar navy">指摘の反映 → 鈴木さんの口頭OK取得（バッファ）</div></div>
+  <div class="cell"><div class="bar navy">14:55<br>Zoomリンク送付</div></div>
+
+  <div class="lane">Claude</div>
+  <div class="cell"></div>
+  <div class="cell"><div class="bar green">構成v4／社長キャラ作り直し／雨樋カット生成</div></div>
+  <div class="cell"><div class="bar green">合成・BGM・ロゴ<br>ここで完成</div></div>
+  <div class="cell span3"><div class="bar green">修正反映・再ビルド</div></div>
+  <div class="cell"></div>
+
+  <div class="lane">打ち合わせ</div>
+  <div class="cell"><div class="bar purple">ディレクション<br>済</div></div>
+  <div class="cell"></div>
+  <div class="cell"><div class="bar purple">鈴木さんと<br>詰める</div></div>
+  <div class="cell"></div><div class="cell"></div><div class="cell"></div>
+  <div class="cell"><div class="bar purple">15:00<br>初稿確認 30分</div></div>
+</div></div>
+
+<div class="grid c2" style="margin-top:12px">
+  <div class="card ok"><h4><span class="badge b-new">前倒しの効果</span>バッファが3日できる</h4>
+  <p>8/6に完成させて鈴木さんと詰めれば、<b>8/7〜8/9が丸ごと修正時間</b>になります。従来案（8/9完成）だと指摘が来た時点で詰みでした。</p></div>
+  <div class="card alert"><h4><span class="badge b-risk">ボトルネック</span>8/5 に写真が来ないと全部ずれる</h4>
+  <p>キャラ作り直し → 全カット再生成 → Lovart動画化 が直列だからです。来なかった場合は <b>LP（dreform2025.com）掲載の顔写真で先行着手</b>します（使用許諾は打ち合わせで取得済み）。</p></div>
+</div>
+
+<h2>④ 想定と実態のズレ（ここを外すと嘘になる）</h2>
+<p class="lead">打ち合わせで判明した補正です。</p>
+<div class="tblscroll"><table class="vs">
+<tr><th>項目</th><th>こちらの想定</th><th>実態</th><th>動画への反映</th></tr>
+<tr><td>塗装作業</td><td class="was">社長が施工している</td><td class="is">顔を出す程度。職人仲間に業務委託</td><td>塗るのは職人。社長は見積り・確認・お客様対応</td></tr>
+<tr><td>雨樋交換</td><td class="was">（想定になかった）</td><td class="is">社長ご本人が施工</td><td>社長が作業しているカットを新規で作る</td></tr>
+<tr><td>社長の写真</td><td class="was">もらえる前提</td><td class="is">少ない（本人が撮影する側）</td><td>LP掲載の顔写真を使う（許諾済み）</td></tr>
+<tr><td>完工写真</td><td class="was">塗装のBefore/After</td><td class="is">雨樋のものが多い</td><td>雨樋のBefore/Afterで組む</td></tr>
+<tr><td>事務所</td><td class="was">あり</td><td class="is">まだない（これから借りる）</td><td>事務所カットは作らない</td></tr>
+<tr><td>Instagram</td><td class="was">併用したい</td><td class="is">「使っていないし興味がない」</td><td>YouTube広告に一本化。16:9のままでよい</td></tr>
+</table></div>
+
+<h2>⑤ 決まったこと</h2>
+<div class="grid c3">
+  <div class="card ok"><h4>1本目＝アニメで確定</h4><p>実写と見比べた上でご本人が選択。社長の顔に寄せたキャラ化もOK。</p></div>
+  <div class="card ok"><h4>目的＝集客</h4><p>採用ではない。「個人的にはとりあえず集客の方で」。</p></div>
+  <div class="card ok"><h4>配信＝YouTube広告</h4><p>16:9のままで正しい。15秒版が本命。</p></div>
+  <div class="card"><h4>2本目</h4><p>1本目の反響を見て判断。乏しければ実写をAIで制作。</p></div>
+  <div class="card"><h4>3本目</h4><p>法人化のタイミングで制作。</p></div>
+  <div class="card"><h4>納品</h4><p>DVD＋ギガファイル便（受注シート）。DVDの手配が必要。</p></div>
+</div>
+
+<footer>
+株式会社斗（hishaku）／ RUNBIRD AI動画事業 ／ Dリフォーム 1本目 ／ 2026-08-04 作成（社内用）
+</footer>
+</div>
+</body>
+</html>
