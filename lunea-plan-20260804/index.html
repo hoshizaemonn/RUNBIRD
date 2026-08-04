@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>LUNEA 納品までの進行計画 2026/8/4</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#141416;color:#f2f2f4;font-family:"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.75}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px 90px}
+header{padding:60px 0 34px;border-bottom:1px solid #2e2e34;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;right:-80px;top:-70px;width:320px;height:320px;border-radius:50%;
+background:radial-gradient(circle at 40% 40%,rgba(232,223,211,.15),rgba(232,223,211,0) 68%)}
+.eyebrow{color:#c9b7a4;letter-spacing:.3em;font-size:12px;margin:0 0 14px}
+h1{font-family:"Hiragino Mincho ProN",serif;font-weight:600;font-size:34px;margin:0 0 12px;letter-spacing:.04em}
+.lead{color:#a5a5ad;font-size:14.5px;margin:0;max-width:840px}
+h2{font-family:"Hiragino Mincho ProN",serif;font-size:23px;margin:58px 0 6px;letter-spacing:.05em}
+h2 .num{display:block;color:#c9b7a4;font-size:12px;letter-spacing:.28em;margin-bottom:9px}
+.note{color:#a5a5ad;font-size:14px;margin:0 0 22px;max-width:880px}
+.note b{color:#e7e2d8}
+
+/* 決定サマリー */
+.dec{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.deccard{background:#1c1c20;border:1px solid #2e2e34;border-radius:14px;padding:18px 16px}
+.deccard .k{color:#c9b7a4;font-size:11px;letter-spacing:.18em;margin-bottom:8px}
+.deccard .v{font-size:15px;font-weight:600;margin:0 0 6px}
+.deccard p{margin:0;color:#8f8f98;font-size:12.5px;line-height:1.65}
+
+/* 全体バー */
+.phasebar{display:flex;height:44px;border-radius:9px;overflow:hidden;margin:14px 0 8px;font-size:11px}
+.phasebar div{display:flex;align-items:center;justify-content:center;color:#12121a;font-weight:600;
+white-space:nowrap;overflow:hidden;padding:0 4px}
+.legend{color:#6d6d76;font-size:12px;margin:0}
+
+/* タイムライン */
+.tl{position:relative;margin-top:14px;padding-left:0}
+.tl::before{content:"";position:absolute;left:78px;top:10px;bottom:10px;width:1px;background:#2e2e34}
+.row{display:grid;grid-template-columns:78px 1fr;gap:0;position:relative}
+.date{padding:16px 16px 16px 0;text-align:right;color:#c9b7a4;font-size:12.5px;letter-spacing:.06em;white-space:nowrap}
+.date span{display:block;color:#6d6d76;font-size:11px;letter-spacing:0}
+.card{margin:10px 0 10px 24px;background:#1c1c20;border:1px solid #2e2e34;border-radius:12px;padding:15px 17px;position:relative}
+.card::before{content:"";position:absolute;left:-24px;top:22px;width:9px;height:9px;border-radius:50%;
+background:#3a3a42;border:2px solid #141416;margin-left:-4px}
+.card.ours{border-left:3px solid #a9c6e0}
+.card.theirs{border-left:3px solid #f0c98a}
+.card.both{border-left:3px solid #f2b39a}
+.card.key{background:#22201c;border-color:#6a5a49}
+.card.key::before{background:#c9b7a4}
+.who{display:inline-block;font-size:10.5px;padding:2px 9px;border-radius:999px;margin-bottom:6px}
+.w-ours{background:#26313a;color:#a9c6e0} .w-theirs{background:#4a3a24;color:#f0c98a} .w-both{background:#43302a;color:#f2b39a}
+.card h3{margin:0 0 4px;font-size:15.5px}
+.card p{margin:0;color:#9a9aa3;font-size:13px}
+.card p+p{margin-top:6px}
+
+/* 表 */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:6px}
+th,td{border-bottom:1px solid #2e2e34;padding:11px 9px;text-align:left;vertical-align:top}
+th{color:#c9b7a4;font-size:11.5px;letter-spacing:.14em;font-weight:600}
+td b{color:#f2f2f4}
+.tblwrap{overflow-x:auto}
+.ok{color:#a9d4b4} .ng{color:#e2a9bb}
+
+/* 素材カード */
+.mat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.matcard{background:#1c1c20;border:1px solid #2e2e34;border-radius:12px;padding:17px}
+.matcard.top{border-color:#6a5a49;background:#22201c}
+.matcard .rank{color:#c9b7a4;font-size:10.5px;letter-spacing:.18em;margin-bottom:7px}
+.matcard h3{margin:0 0 6px;font-size:15px}
+.matcard p{margin:0;color:#9a9aa3;font-size:12.5px}
+
+/* 設定ボックス */
+.setting{background:#1c1c20;border:1px solid #2e2e34;border-radius:12px;padding:6px 20px 16px;margin-top:10px}
+.setting .item{padding:14px 0;border-bottom:1px solid #26262c}
+.setting .item:last-child{border-bottom:none}
+.setting .lbl{font-size:15px;font-weight:600;margin:0 0 4px}
+.setting code{background:#101014;border:1px solid #2e2e34;color:#c9b7a4;padding:3px 9px;border-radius:6px;
+font-size:12px;display:inline-block;margin-top:5px}
+.setting .why{color:#8f8f98;font-size:12.5px;margin:5px 0 0}
+.warn{color:#f0c98a}
+
+ol.ask{counter-reset:i;list-style:none;padding:0;margin:0}
+ol.ask li{counter-increment:i;position:relative;padding:15px 0 15px 50px;border-bottom:1px solid #2e2e34}
+ol.ask li::before{content:counter(i);position:absolute;left:0;top:13px;width:31px;height:31px;border-radius:50%;
+border:1px solid #c9b7a4;color:#c9b7a4;display:flex;align-items:center;justify-content:center;font-size:12.5px}
+ol.ask b{display:block;margin-bottom:2px} ol.ask span{color:#a5a5ad;font-size:13.5px}
+.foot{margin-top:60px;padding-top:20px;border-top:1px solid #2e2e34;color:#6d6d76;font-size:12px}
+@media(max-width:900px){.dec{grid-template-columns:1fr 1fr}.mat{grid-template-columns:1fr}}
+@media(max-width:600px){.dec{grid-template-columns:1fr}h1{font-size:26px}
+.tl::before{left:58px}.row{grid-template-columns:58px 1fr}.date{padding-right:10px;font-size:11.5px}
+.card{margin-left:18px}.card::before{left:-18px}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header>
+<p class="eyebrow">LUNEA ／ YouTube広告動画</p>
+<h1>納品までの進行計画</h1>
+<p class="lead">2026年8月3日のお打ち合わせで決まった内容をもとに、<b>撮影から広告配信開始まで</b>の流れをまとめました。<br>
+どなたが・いつまでに・何をするかが分かる形にしています。</p>
+</header>
+
+<h2><span class="num">01</span>8月3日に決まったこと</h2>
+<p class="note">試作した2パターンのうち、<b>「悩み訴求型」</b>を採用いただきました。ここを軸に作り込んでいきます。</p>
+<div class="dec">
+  <div class="deccard">
+    <div class="k">動画の型</div>
+    <p class="v">悩み訴求型</p>
+    <p>「40代からの髪、あきらめていませんか」から入り、解決策としてお店を見せる型です。</p>
+  </div>
+  <div class="deccard">
+    <div class="k">訴求の柱</div>
+    <p class="v">ヘッドスパ ＋ 縮毛矯正</p>
+    <p>どちらか一方ではなく、両方を見せます。縮毛矯正はビフォーアフターで。</p>
+  </div>
+  <div class="deccard">
+    <div class="k">要修正</div>
+    <p class="v">店内入口の映像</p>
+    <p>実際のお店と印象が違うとご指摘いただいた箇所です。実写に差し替えます。</p>
+  </div>
+  <div class="deccard">
+    <div class="k">誘導先</div>
+    <p class="v">リンク ＋ QRコード</p>
+    <p>テレビでYouTubeをご覧の方はリンクを押せないため、QRコードが有効です。</p>
+  </div>
+</div>
+
+<h2><span class="num">02</span>全体の流れ</h2>
+<p class="note">今日から広告配信開始まで、おおよそ<b>5週間</b>です。</p>
+<div class="phasebar">
+  <div style="flex:13;background:#f0c98a">撮影（8/5〜8/17）</div>
+  <div style="flex:1.2;background:#f2b39a">打合</div>
+  <div style="flex:6;background:#a9c6e0">編集（8/19〜8/24）</div>
+  <div style="flex:1.2;background:#f2b39a">確認</div>
+  <div style="flex:7;background:#a9d4b4">修正・完成（〜9/5）</div>
+  <div style="flex:4;background:#c3aade">入稿・配信</div>
+</div>
+<p class="legend">オレンジ＝LUNEA様　／　ブルー・グリーン＝当方　／　サーモン＝お打ち合わせ</p>
+
+<h2><span class="num">03</span>スケジュール</h2>
+<p class="note">木曜定休・第二土曜・お盆を避けた日程にしています。<b>撮影は8月17日（月）までにお願いできますと幸いです。</b></p>
+
+<div class="tl">
+
+<div class="row">
+  <div class="date">8/4<span>火</span></div>
+  <div class="card ours">
+    <span class="who w-ours">当方</span>
+    <h3>撮影のご案内をお送りします</h3>
+    <p>試作動画2本・画角の見本画像・撮影していただきたいカットの一覧・カメラ設定をまとめてお送りします。次回8/18のご招待も同時にお送りします。</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="date">〜8/8<span>土</span></div>
+  <div class="card theirs key">
+    <span class="who w-theirs">LUNEA様</span>
+    <h3>ビフォーアフターのモデル可否をご連絡ください</h3>
+    <p>縮毛矯正のビフォーアフターについて、<b>お顔を出してよいお客様がいらっしゃるか</b>をお知らせください。</p>
+    <p>いらっしゃらない場合はAI生成のモデルで作ります。その場合こちらの準備に日数がかかるため、<b>早めにご一報いただけると全体が楽になります。</b></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="date">8/5〜8/17</div>
+  <div class="card theirs">
+    <span class="who w-theirs">LUNEA様</span>
+    <h3>撮影</h3>
+    <p>iPhone 16 Pro・横向き・三脚固定で撮影してください。撮影いただきたい内容は下の「04」に、設定は「05」にまとめています。</p>
+    <p><b>枚数・本数に制限はありません。</b>使えそうなものは全部お送りください。こちらで選びます。</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="date">8/17<span>月</span></div>
+  <div class="card theirs key">
+    <span class="who w-theirs">LUNEA様</span>
+    <h3>撮影データのご送付</h3>
+    <p><b>ギガファイル便</b>でお送りください。LINEでお送りいただくと圧縮で画質が大きく落ちてしまいます。</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="date">8/18<span>火 16:00</span></div>
+  <div class="card both key">
+    <span class="who w-both">お打ち合わせ</span>
+    <h3>素材の確認と、使い方のすり合わせ（約1時間）</h3>
+    <p>いただいた素材を一緒に見ながら、<b>どのカットをどこに使うか</b>を決めます。足りない画があればこの場で追加撮影をご相談します。</p>
+    <p>※ 素材の到着が直前になるため、この日に編集済みの動画をお見せすることはできません。編集版は8/25前後に改めてご確認いただきます。</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="date">8/19〜8/24</div>
+  <div class="card ours">
+    <span class="who w-ours">当方</span>
+    <h3>実写素材で編集</h3>
+    <p>AI生成の映像を実際のお店の映像に差し替え、ヘッドスパと縮毛矯正のビフォーアフターを組み込みます。テロップ・BGM・エンドカードもここで仕上げます。</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="date">8/25<span>火 前後</span></div>
+  <div class="card both key">
+    <span class="who w-both">ご確認</span>
+    <h3>実写版のご確認・修正のご指示</h3>
+    <p>完成に近い状態の動画をご覧いただきます。直したいところをまとめてお知らせください。</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="date">8/26〜9/1</div>
+  <div class="card ours">
+    <span class="who w-ours">当方</span>
+    <h3>修正の反映</h3>
+    <p>いただいたご指示を反映します。</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="date">9/1〜9/5</div>
+  <div class="card ours key">
+    <span class="who w-ours">当方</span>
+    <h3>完成・納品</h3>
+    <p>4K・16:9でYouTube広告用に書き出します。</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="date">9/8〜</div>
+  <div class="card ours">
+    <span class="who w-ours">当方</span>
+    <h3>広告の入稿・審査・配信開始</h3>
+    <p>YouTubeへ入稿し、審査を通過次第、配信を開始します。</p>
+  </div>
+</div>
+
+</div>
+
+<h2><span class="num">04</span>撮影していただきたいもの</h2>
+<p class="note">上の3つが<b>最優先</b>です。この3つが揃えば動画は成立します。下の6つは、あればより良くなるものです。</p>
+<div class="mat">
+  <div class="matcard top">
+    <div class="rank">最優先 01</div>
+    <h3>店内入口付近</h3>
+    <p>外から入口を通って店内に入るまでを、<b>歩きながら1回</b>撮ってください。「実際と印象が違う」とご指摘いただいた箇所の差し替えに使います。</p>
+  </div>
+  <div class="matcard top">
+    <div class="rank">最優先 02</div>
+    <h3>ヘッドスパの施術中</h3>
+    <p>引き（全体が分かる画）と寄り（手元・お客様の表情）の<b>両方</b>をお願いします。訴求の柱のひとつです。</p>
+  </div>
+  <div class="matcard top">
+    <div class="rank">最優先 03</div>
+    <h3>縮毛矯正のビフォーアフター</h3>
+    <p>施術前と施術後を、<b>同じ位置・同じ角度</b>で撮ってください。並べたときに違いが伝わります。</p>
+  </div>
+  <div class="matcard">
+    <div class="rank">あるとよい</div>
+    <h3>店内の引き</h3>
+    <p>セット面が並んで見える画。お店の雰囲気を伝えるカットに使います。</p>
+  </div>
+  <div class="matcard">
+    <div class="rank">あるとよい</div>
+    <h3>カット中の手元</h3>
+    <p>ハサミ・コームの寄り。丁寧さが伝わる画になります。</p>
+  </div>
+  <div class="matcard">
+    <div class="rank">あるとよい</div>
+    <h3>シャンプー台・marbb</h3>
+    <p>シャワーヘッドから泡が出ているところの寄り。</p>
+  </div>
+  <div class="matcard">
+    <div class="rank">あるとよい</div>
+    <h3>カラーの施術</h3>
+    <p>ハケで根元に塗っている手元の寄り。</p>
+  </div>
+  <div class="matcard">
+    <div class="rank">あるとよい</div>
+    <h3>仕上がりの髪</h3>
+    <p>ツヤの出た髪。動画の後半で「理想の姿」として使います。</p>
+  </div>
+  <div class="matcard">
+    <div class="rank">あるとよい</div>
+    <h3>スタッフの皆様</h3>
+    <p>お二人が並んでいるところ。信頼感につながります。</p>
+  </div>
+</div>
+
+<h2><span class="num">05</span>カメラと設定</h2>
+<p class="note">お持ちの<b>Insta360 GO3</b>も確認しましたが、<b>iPhone 16 Pro のみ</b>で撮影をお願いします。GO3は最大2.7Kまでで、4Kが撮れないためです。</p>
+
+<div class="tblwrap">
+<table>
+<tr><th></th><th>iPhone 16 Pro</th><th>Insta360 GO3</th></tr>
+<tr><td><b>最大の画質</b></td><td class="ok">4K（3840×2160）</td><td class="ng">2.7K（4Kは撮れません）</td></tr>
+<tr><td><b>暗い店内</b></td><td class="ok">センサーが大きく、きれいに写る</td><td class="ng">センサーが小さく、ざらつきが出る</td></tr>
+<tr><td><b>寄りの撮影</b></td><td class="ok">得意（髪の艶・手元がきれい）</td><td class="ng">広角固定のため苦手</td></tr>
+<tr><td><b>結論</b></td><td class="ok"><b>こちらで撮影してください</b></td><td>今回は使いません</td></tr>
+</table>
+</div>
+
+<p class="note" style="margin-top:22px">iPhoneの設定は<b>この3つだけ</b>です。撮影を始める前にご確認ください。</p>
+<div class="setting">
+  <div class="item">
+    <p class="lbl">1. 動画は「4K / 30fps」</p>
+    <code>設定 &gt; カメラ &gt; ビデオ撮影 &gt; 4K/30fps</code>
+    <p class="why">4Kで撮っておくと、引きで撮った映像から寄りのカットを作れます。またYouTubeは4Kでアップロードされた動画をきれいな方式で圧縮するため、スマートフォンで見たときの画質も上がります。<br>
+    60fpsは必要ありません。なめらかになる代わりに<b>ホームビデオのような質感</b>になり、データも2倍以上重くなります。</p>
+  </div>
+  <div class="item">
+    <p class="lbl warn">2. 「HDRビデオ」をオフ ← ここが最重要</p>
+    <code>設定 &gt; カメラ &gt; ビデオ撮影 &gt; HDRビデオ → オフ</code>
+    <p class="why">初期設定ではオンになっています。オンのまま撮影されたものは<b>編集時に色が正しく出ず</b>、肌の色が転んでしまいます。これだけは後から直せないため、撮影前に必ずご確認ください。</p>
+  </div>
+  <div class="item">
+    <p class="lbl">3. 写真は「互換性優先」</p>
+    <code>設定 &gt; カメラ &gt; フォーマット &gt; 互換性優先</code>
+    <p class="why">初期設定の形式は編集ソフトで読めないことがあります。こちらにしておくと確実です。</p>
+  </div>
+</div>
+
+<p class="note" style="margin-top:22px">撮り方のコツも4つだけ。</p>
+<div class="tblwrap">
+<table>
+<tr><th>コツ</th><th>理由</th></tr>
+<tr><td><b>横向き（16:9）で撮る</b></td><td>YouTube広告は横長のため。縦で撮ると左右が大きく切れてしまいます。</td></tr>
+<tr><td><b>ズームせず、足で近づく</b></td><td>iPhoneのズームは画質が落ちます。カメラごと近づいてください。</td></tr>
+<tr><td><b>1カット10秒以上まわす</b></td><td>実際に使うのは2秒程度でも、前後に余白がないと他のカットとつなげられません。</td></tr>
+<tr><td><b>窓を背にしない</b></td><td>逆光になり、お顔や髪が暗く写ってしまいます。窓は横か斜め前に。</td></tr>
+</table>
+</div>
+
+<h2><span class="num">06</span>当方で進めること</h2>
+<div class="tblwrap">
+<table>
+<tr><th>項目</th><th>内容</th></tr>
+<tr><td><b>構成の作り直し</b></td><td>悩み訴求型に一本化し、ヘッドスパを1ブロックに拡張。縮毛矯正のビフォーアフターを新設します。</td></tr>
+<tr><td><b>実写への差し替え</b></td><td>いただいた素材で、AI生成の映像を実際のお店の映像に置き換えます。特に入口付近。</td></tr>
+<tr><td><b>サービス紹介の整理</b></td><td>marbb・METEO・TOKIOは、ヘッドスパと縮毛矯正を支える根拠として簡潔に見せます。</td></tr>
+<tr><td><b>エンドカードにQRコード</b></td><td>テレビでご覧の方が読み取れるようQRを追加し、電話番号とあわせて配置します。</td></tr>
+<tr><td><b>テロップ・BGM</b></td><td>音を出さずに見られる前提で、テロップだけで内容が伝わるよう作ります。</td></tr>
+<tr><td><b>書き出し・入稿</b></td><td>4K・16:9でYouTube広告用に書き出し、入稿・審査対応まで行います。</td></tr>
+</table>
+</div>
+
+<h2><span class="num">07</span>ご確認・ご判断をお願いしたいこと</h2>
+<ol class="ask">
+<li><b>ビフォーアフターのモデル（〜8/8）</b><span>縮毛矯正のビフォーアフターで、<b>お顔を出してよいお客様</b>がいらっしゃいますか。いらっしゃらない場合はAI生成のモデルで作ります。<b>これが最優先です。</b></span></li>
+<li><b>QRコードの遷移先（8/18まで）</b><span>読み取った先を<b>ホームページ</b>にするか、<b>ご予約ページ</b>にするか。ご予約につなげたい場合は予約ページを直接指定した方が効果的です。</span></li>
+<li><b>広告の配信開始日（8/18まで）</b><span>いつから配信を始めたいかが決まると、そこから逆算して進行を確定できます。現在の想定は9月中旬です。</span></li>
+</ol>
+
+<div class="foot">
+株式会社ランバード ／ LUNEA 様 YouTube広告動画制作 ・ 2026年8月4日<br>
+2026年8月3日のお打ち合わせ内容にもとづいて作成しています。日程は状況に応じて調整可能です。
+</div>
+</div>
+</body>
+</html>
