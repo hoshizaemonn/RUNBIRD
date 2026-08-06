@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>OWL福祉 現状整理ダッシュボード（2026/8/6）</title>
+<style>
+  :root{
+    --teal:#1BA0A6;--teal-d:#137880;--teal-l:#e8f6f6;
+    --orange:#F5871F;--orange-d:#c96a10;--orange-l:#fff1e2;
+    --ink:#123c48;--ink2:#4a6870;--line:#d7e7e8;--bg:#f4f9f9;--card:#fff;
+    --good:#1f9d57;--good-l:#eaf4ee;--bad:#d0483c;--bad-l:#fdeeec;--amber:#c9821c;--amber-l:#fbf1dd;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--ink:#e8f1f2;--ink2:#a9c2c6;--line:#2b454b;--bg:#0e1b1e;--card:#15282c;
+          --teal-l:#123236;--orange-l:#33230f;--good-l:#122a1d;--bad-l:#3a1e1a;--amber-l:#332810;}
+  }
+  :root[data-theme="light"]{--ink:#123c48;--ink2:#4a6870;--line:#d7e7e8;--bg:#f4f9f9;--card:#fff;--teal-l:#e8f6f6;--orange-l:#fff1e2;--good-l:#eaf4ee;--bad-l:#fdeeec;--amber-l:#fbf1dd;}
+  :root[data-theme="dark"]{--ink:#e8f1f2;--ink2:#a9c2c6;--line:#2b454b;--bg:#0e1b1e;--card:#15282c;--teal-l:#123236;--orange-l:#33230f;--good-l:#122a1d;--bad-l:#3a1e1a;--amber-l:#332810;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:var(--ink);
+       background:var(--bg);line-height:1.65;padding:24px 16px 64px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:960px;margin:0 auto;}
+  .eyebrow{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;background:var(--teal);padding:3px 11px;border-radius:999px;margin-bottom:10px;}
+  h1{font-size:23px;line-height:1.35;text-wrap:balance;border-left:6px solid var(--teal);padding-left:13px;}
+  .meta{color:var(--ink2);font-size:12px;margin:8px 0 20px 19px;}
+
+  /* 両輪サマリ */
+  .twin{display:grid;grid-template-columns:1fr 40px 1fr;gap:10px;align-items:center;margin-bottom:10px;}
+  @media(max-width:640px){.twin{grid-template-columns:1fr;}.twin .plus{transform:none;margin:0 auto;}}
+  .wheel{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:0 4px 14px rgba(18,60,72,.05);}
+  .wheel h2{font-size:14px;margin-bottom:6px;}
+  .wheel.ad h2{color:var(--orange-d);} .wheel.ig h2{color:var(--teal-d);}
+  .wheel p{font-size:12.5px;color:var(--ink2);}
+  .plus{font-size:26px;font-weight:900;color:var(--teal);text-align:center;}
+  .goal{background:var(--teal-l);border:1px solid var(--line);border-radius:12px;padding:11px 15px;font-size:13px;text-align:center;margin-bottom:24px;}
+  .goal b{color:var(--teal-d);}
+
+  h2.sec{font-size:16px;margin:26px 0 12px;padding:7px 0 7px 13px;border-left:5px solid var(--teal);background:var(--teal-l);border-radius:0 9px 9px 0;display:flex;align-items:center;gap:8px;}
+  h2.sec .ic{font-size:18px;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr;}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;box-shadow:0 4px 14px rgba(18,60,72,.05);}
+  .card h3{font-size:14px;margin-bottom:9px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+  .card ul{list-style:none;font-size:13px;color:var(--ink2);}
+  .card ul li{padding:3px 0 3px 16px;position:relative;}
+  .card ul li::before{content:"›";position:absolute;left:2px;color:var(--teal);font-weight:900;}
+  .card ul li b{color:var(--ink);}
+
+  /* 数字ミニ */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:2px 0 4px;}
+  @media(max-width:640px){.kpis{grid-template-columns:1fr 1fr;}}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:10px 8px;text-align:center;}
+  .kpi .v{font-size:19px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--ink);}
+  .kpi .v.bad{color:var(--bad);} .kpi .v.good{color:var(--good);}
+  .kpi .l{font-size:10.5px;color:var(--ink2);margin-top:2px;}
+
+  .pill{font-size:10.5px;font-weight:800;border-radius:999px;padding:2px 9px;white-space:nowrap;}
+  .p-go{background:var(--good-l);color:var(--good);}      /* 実装済/進行 */
+  .p-wait{background:var(--amber-l);color:var(--amber);}   /* 待ち/要確認 */
+  .p-todo{background:var(--teal-l);color:var(--teal-d);}   /* 未着手/後日 */
+  .p-hot{background:var(--bad-l);color:var(--bad);}        /* ボトルネック */
+
+  /* 次アクション表 */
+  table{width:100%;border-collapse:collapse;font-size:13px;background:var(--card);margin-top:6px;border-radius:12px;overflow:hidden;}
+  th,td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top;}
+  th{background:var(--teal-l);font-weight:800;color:var(--teal-d);font-size:12px;}
+  td .who{font-size:11px;color:var(--ink2);}
+
+  /* 台本ラインナップ */
+  .scripts{margin-top:2px;}
+  .sh{font-size:12.5px;font-weight:700;color:var(--ink2);margin:14px 0 8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .p-kaigyo{background:var(--orange-l);color:var(--orange-d);} .p-omoi{background:var(--teal-l);color:var(--teal-d);} .p-genba{background:var(--good-l);color:var(--good);}
+  .scard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 13px;display:flex;gap:11px;align-items:flex-start;box-shadow:0 3px 10px rgba(18,60,72,.04);}
+  .sno{width:28px;height:28px;flex:0 0 auto;background:var(--ink);color:#fff;border-radius:8px;font-size:14px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .st{font-size:13.5px;font-weight:700;margin-bottom:5px;line-height:1.4;}
+  .sd{font-size:10.5px;color:var(--ink2);font-weight:600;font-variant-numeric:tabular-nums;margin-left:4px;}
+  .sk{font-size:12px;color:var(--ink2);background:var(--orange-l);border-left:3px solid var(--orange);border-radius:0 7px 7px 0;padding:6px 9px;line-height:1.5;}
+  .note{background:var(--amber-l);border:1px solid var(--line);border-radius:12px;padding:11px 15px;font-size:12.5px;color:var(--ink2);margin-top:12px;}
+  .note b{color:var(--ink);}
+  footer{margin-top:32px;color:var(--ink2);font-size:11px;border-top:1px solid var(--line);padding-top:13px;}
+  .ph{background:var(--orange-l);color:var(--orange-d);font-weight:800;border-radius:4px;padding:0 4px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">RUNBIRD ／ OWL障害者グループホーム 開業支援</div>
+  <h1>OWL福祉 現状整理ダッシュボード</h1>
+  <div class="meta">2026/8/6 星崎　※社内共有用（noindex・個人情報なし）／数字は実測（8/5）、<span class="ph">〔　〕</span>＝確認後</div>
+
+  <!-- 両輪 -->
+  <div class="twin">
+    <div class="wheel ad"><h2>① 広告（刈り取り）</h2><p>Google/Yahoo/Meta で"開業したい人"を今すぐ集める。質は改善済み、いまは<b>量とCVがボトルネック</b>。</p></div>
+    <div class="plus">＋</div>
+    <div class="wheel ig"><h2>② Instagram（育成）</h2><p>"開業したい母集団"を認知・信頼で育て、資料請求/相談へ流す。<b>これから立ち上げ（8/21撮影）</b>。</p></div>
+  </div>
+  <div class="goal">両輪の行き先はひとつ＝<b>受け皿LP（資料請求／無料開業相談）</b>。この受け皿の導線をいま作り直している。</div>
+
+  <!-- 1. 広告 -->
+  <h2 class="sec"><span class="ic">📊</span>1. 広告の現状（8/5・1日）</h2>
+  <div class="kpis">
+    <div class="kpi"><div class="v">¥33,576</div><div class="l">広告費（Google+Yahoo）</div></div>
+    <div class="kpi"><div class="v">85</div><div class="l">クリック</div></div>
+    <div class="kpi"><div class="v bad">0</div><div class="l">タグCV（当日）</div></div>
+    <div class="kpi"><div class="v good">3.7%</div><div class="l">独立LP FV離脱（質改善◎）</div></div>
+  </div>
+  <div class="grid2" style="margin-top:11px;">
+    <div class="card">
+      <h3>効いていること <span class="pill p-go">維持</span></h3>
+      <ul>
+        <li><b>質改善が定着</b>：独立LPのFV離脱10%地点=3.7%（施策①検索パートナー除外の効果が持続）</li>
+        <li><b>本命KWにクリックは来ている</b>：Google本命CP01がCTR14.1%・22クリック</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>ボトルネック <span class="pill p-hot">要対応</span></h3>
+      <ul>
+        <li><b>受け皿LPでCVに変わらない</b>（母数は来ているのに0）</li>
+        <li><b>独立LPへ起業KWが¥9,414/日ダダ漏れ</b>（39クリック0CV／KW絞り未実装）</li>
+        <li>CP01に「まもなく終了します」表示＝<b>終了日確認・延長</b>が必要</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2. 受け皿LP -->
+  <h2 class="sec"><span class="ic">🎯</span>2. 受け皿LPの改善（いちばんの本丸）</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>A. 相談導線を作り直す <span class="pill p-wait">設計中</span></h3>
+      <ul>
+        <li><b>CTAを「無料で開業相談する」に</b>（資料請求は残しサブに）</li>
+        <li>Clarityで<b>一番下のフォームに触れた形跡ゼロ</b>＝導線が通っていない</li>
+        <li><b>STEP1</b>：実体フォーム<span class="ph">（CF7 4712？要確認）</span>に確実接続＋項目最小化（名前＋連絡先＋一言）→送信でCVタグ発火</li>
+        <li><b>STEP2</b>：TimeRexカレンダー予約を追加（※外部埋込は<b>CV計測が割れる罠</b>→フォーム先行が安全）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>B. 独立LPのセクション順入替 <span class="pill p-wait">GO待ち</span></h3>
+      <ul>
+        <li>0円LP（勝ち筋）の順番に寄せる</li>
+        <li><b>SECTION 05 初期投資＋06</b> を <b>07＋08 の下</b>へ移動</li>
+        <li>中盤（50%地点で59%離脱）とCTA弱さを是正</li>
+        <li>実装=cowork（4591はREST API経由・編集トラップ注意）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>C. FV改修（A/B） <span class="pill p-wait">方向決め待ち</span></h3>
+      <ul>
+        <li>Codexで<b>モック5枚生成済</b>（全案97.6%＝業界データ明記）</li>
+        <li>推し：<b>v5（問いかけ＝検索意図一致）×v1（97.6%巨大数字）でA/B</b>、v3をセクション2に転用</li>
+        <li>方向決定後→写真＋HTMLで本番用に組み直し→responsive_check→cowork</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>D. お客様の声を上部へ <span class="pill p-todo">後続</span></h3>
+      <ul>
+        <li>声への到達：新LP約20% vs 0円LP約50%＋</li>
+        <li>掲載可否（実名/顔/地域/開設月数）は<b>鈴木さん確認待ち</b></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. KW -->
+  <h2 class="sec"><span class="ic">🔑</span>3. キーワード</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>進捗 <span class="pill p-go">追加済</span></h3>
+      <ul>
+        <li>派生KWを<b>星崎さんがアカウントに追加済</b></li>
+        <li>「障害者」含むKWはGoogle健康ポリシー→<b>例外リクエストで対応中</b></li>
+        <li>入れ先の優先＝<b>勝っている0円LP</b>（独立はLP改修後）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>残タスク <span class="pill p-hot">絞り</span></h3>
+      <ul>
+        <li><b>起業KWの絞り</b>（独立LPへの¥9.4k/日漏れを止める）＝最優先の即効レバー</li>
+        <li>CP01の<b>終了日確認・延長</b>（放置するとKW追加しても配信停止）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. Instagram -->
+  <h2 class="sec"><span class="ic">📱</span>4. Instagram 立ち上げ（〜8/21撮影）</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>方針 <span class="pill p-go">v2確定</span></h3>
+      <ul>
+        <li>ヒトツナは<b>"型"だけ流用</b>、中身はOWL＝<b>開業支援 本部軸</b></li>
+        <li>配分：<b>開業・ノウハウ5：想い3：現場2</b>（想いは"なぜ開業支援をやるか"に限定）</li>
+        <li>台本v2＝顔出しトーク7本＋現場b-roll2本（数字は〔　〕）</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>決めること <span class="pill p-wait">待ち</span></h3>
+      <ul>
+        <li><b>"顔"（語り手）が未定</b>＝仮で撮影可。現場叩き上げなら想い比率↑</li>
+        <li>撮影日程（半日でまとめ撮り）</li>
+        <li><b>広告で浮いた予算をインスタに投下</b>（"1発目を充実させてから走らせる"）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4b. 台本v2ラインナップ -->
+  <h2 class="sec"><span class="ic">🎬</span>4b. 撮影台本v2 ラインナップ（8/21・全9本／数字は〔　〕）</h2>
+  <div class="scripts">
+
+    <div class="sh"><span class="pill p-kaigyo">主軸：開業ダイレクト＋ノウハウ</span>（顔出しトーク・まとめ撮り）</div>
+    <div class="grid2">
+      <div class="scard"><div class="sno">①</div><div><div class="st">開業で"失敗する人"の共通点3つ <span class="sd">30〜45秒</span></div><div class="sk">「障害者グループホーム開業で"失敗する人"には、共通点が3つあります。」</div></div></div>
+      <div class="scard"><div class="sno">②</div><div><div class="st">なぜ"加盟金0円"にしたのか <span class="sd">30〜45秒</span></div><div class="sk">「"加盟金0円"って、正直あやしいと思いますよね。なぜ0円にしたのか話します。」</div></div></div>
+      <div class="scard"><div class="sno">③</div><div><div class="st">未経験開業の"落とし穴" <span class="sd">30〜45秒</span></div><div class="sk">「未経験で障害者GHを開く前に、これだけは知っておいてほしいことがあります。」</div></div></div>
+      <div class="scard"><div class="sno">④</div><div><div class="st">"親なき後"＝伸び続ける市場 <span class="sd">30〜45秒</span></div><div class="sk">「行き場のない障害のある方が、今も〔◯万人〕。"親なき後"問題を知っていますか？」</div></div></div>
+      <div class="scard"><div class="sno">⑤</div><div><div class="st">開業に"いくら必要か"を全部出す <span class="sd">30〜45秒</span></div><div class="sk">「障害者GH開業に、最初にいくら必要か。ぜんぶ正直に出します。」</div></div></div>
+    </div>
+
+    <div class="sh"><span class="pill p-omoi">想い：本部の動機</span>（※現場告白でなく"開業を支える側"の動機に限定）</div>
+    <div class="grid2">
+      <div class="scard"><div class="sno">⑥</div><div><div class="st">なぜ"開業支援"をやるのか <span class="sd">30〜45秒</span></div><div class="sk">「"儲かるから"じゃなくて、"開ける人を増やしたい"から、この仕事をやっています。」</div></div></div>
+      <div class="scard"><div class="sno">⑦</div><div><div class="st">「福祉は儲からない」は本当か <span class="sd">30〜45秒</span></div><div class="sk">「"福祉は儲からない"ってよく言われますが、開業支援の立場から正直に話します。」</div></div></div>
+    </div>
+
+    <div class="sh"><span class="pill p-genba">現場 b-roll</span>（施設で別撮り・入居者は映さない）</div>
+    <div class="grid2">
+      <div class="scard"><div class="sno">⑧</div><div><div class="st">新しいグループホーム、オープンしました <span class="sd">20〜30秒</span></div><div class="sk">ナレ「"寝るだけの場所"じゃなく、暮らしの場所です。」／外観・共用部・世話人の後ろ姿</div></div></div>
+      <div class="scard"><div class="sno">⑨</div><div><div class="st">世話人さんの1日 <span class="sd">30〜45秒</span></div><div class="sk">ナレ「地味かもしれない。でも、この仕事にしかない瞬間があります。」／朝の準備〜記録づけ</div></div></div>
+    </div>
+  </div>
+  <div class="note" style="background:var(--bad-l);">
+    <b>撮影ガード（必須）：</b>入居者は顔出しNG（後ろ姿・手元のみ）／収益保証・断定NG（「目安」「モデルケース」）／数字は全部〔　〕＝確認後にテロップ後入れ。公開前に <b>/telop-check</b>。
+  </div>
+
+  <!-- 5. 次アクション -->
+  <h2 class="sec"><span class="ic">✅</span>5. 次アクション（担当別）</h2>
+  <table>
+    <tr><th style="width:34%;">やること</th><th style="width:20%;">担当</th><th>状態</th></tr>
+    <tr><td><b>起業KWの絞り</b>＋CP01終了日の確認/延長</td><td class="who">星崎（アカウント）</td><td><span class="pill p-hot">最優先</span> ¥9.4k/日の漏れ止め</td></tr>
+    <tr><td><b>独立LPのセクション順入替</b>（05+06→07+08の下）</td><td class="who">cowork</td><td><span class="pill p-wait">星崎GO待ち</span></td></tr>
+    <tr><td><b>CTA→無料開業相談＋実体フォーム接続</b>（STEP1）</td><td class="who">cowork</td><td><span class="pill p-wait">フォーム実体の確認要</span></td></tr>
+    <tr><td><b>FV方向決定</b>（v5×v1 A/B）→HTML化</td><td class="who">星崎→Claude</td><td><span class="pill p-wait">方向決め待ち</span></td></tr>
+    <tr><td><b>実績数字3点</b>（未経験率/開設件数/自己資金）＋声の掲載可否</td><td class="who">鈴木さん確認</td><td><span class="pill p-wait">確認待ち</span></td></tr>
+    <tr><td><b>Instagram撮影</b>（台本v2で8/21までに）＋顔決め</td><td class="who">星崎/前田さん</td><td><span class="pill p-todo">準備OK</span></td></tr>
+  </table>
+
+  <div class="note">
+    <b>いま一番効くレバー：</b>①<b>起業KWの絞り</b>（毎日¥9.4kの無駄を即止め）と②<b>受け皿LPの相談導線を通す</b>（STEP1フォーム先行）。この2つは他の作業を待たずに動かせます。FV A/Bとインスタは並行で進行。
+  </div>
+
+  <footer>
+    データ出典：Google/Yahoo広告レポート（8/5）・Microsoft Clarity（8/5）。関連：_台本ラフ_..._v2_開業主軸_20260806 ／ FVモック/バリエーション（v1-v5）／_KW追加リスト_コピペ用_20260805。個人情報非掲載。
+  </footer>
+
+</div>
+</body>
+</html>
