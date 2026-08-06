@@ -343,3 +343,45 @@ footer{background:var(--bg-2);padding:56px 0 84px;border-top:1px solid var(--lin
 
 @media(max-width:400px){.link-chip{font-size:12.5px;padding:9px 12px;gap:7px}}
 .link-chip{min-height:40px}
+
+/* ---------- 強調（2段階） ---------- */
+:root{--alert:#a8453b;--alert-bg:#fbf6f5}
+/* ①通常の強調＝太字＋濃い黒＋ブランドカラーのマーカー */
+.faq .ans strong,.detail-txt strong,.safety-txt strong,.concept-txt strong,.msg-txt strong.em{
+  font-weight:500;color:var(--ink);
+  background:linear-gradient(transparent 60%,rgba(87,91,108,.20) 60%);
+  padding:0 1px;
+}
+/* ②注意事項＝落ち着いた赤 */
+.em-alert{color:var(--alert);font-weight:500}
+
+/* 注意ボックス */
+.notice{
+  border:1px solid #e6d5d2;background:var(--alert-bg);
+  padding:clamp(22px,3vw,30px) clamp(20px,3vw,32px);
+  max-width:840px;margin:0 auto clamp(36px,4.5vw,52px);
+}
+.notice h3{
+  font-size:15px;font-weight:500;letter-spacing:.06em;color:var(--alert);
+  margin-bottom:16px;display:flex;align-items:center;gap:9px;
+}
+.notice h3::before{
+  content:"!";flex:none;width:19px;height:19px;border-radius:50%;
+  background:var(--alert);color:#fff;font-size:12px;line-height:19px;text-align:center;font-weight:500;
+}
+.notice ul{list-style:none}
+.notice li{
+  font-size:14px;line-height:1.95;padding:9px 0 9px 18px;position:relative;
+  border-bottom:1px dashed #e6d5d2;
+}
+.notice li:last-child{border-bottom:0;padding-bottom:0}
+.notice li::before{content:"";position:absolute;left:2px;top:18px;width:6px;height:6px;border-radius:50%;background:var(--alert)}
+.notice li b{font-weight:500;color:var(--alert)}
+
+/* 料金の目安を目立たせる */
+.price-hint{
+  display:inline-block;margin-top:10px;font-size:13px;letter-spacing:.03em;
+  background:rgba(87,91,108,.08);border-left:2px solid var(--brand);
+  padding:7px 12px;line-height:1.7;color:var(--ink);
+}
+.price-hint b{font-weight:500}
