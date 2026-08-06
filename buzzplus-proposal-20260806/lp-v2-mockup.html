@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus LP v2 モックアップ | まず1本、試してみませんか</title>
+<style>
+:root {
+  --navy: #1e3a5f;
+  --orange: #ea7c1e;
+  --red: #d23f3f;
+  --gray-50: #f8f9fb;
+  --gray-100: #eef1f5;
+  --gray-800: #2a3646;
+  --gray-500: #6b7684;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  color: var(--gray-800);
+  line-height: 1.7;
+  background: white;
+}
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* Section common */
+.sec { padding: 80px 0; }
+.sec-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  color: var(--navy);
+}
+.sec-lead {
+  text-align: center;
+  color: var(--gray-500);
+  margin-bottom: 48px;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2c5382 100%);
+  color: white;
+  padding: 100px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content:""; position:absolute; inset:0;
+  background: radial-gradient(ellipse at top, rgba(234,124,30,0.15), transparent 60%);
+}
+.hero-inner { position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-block;
+  background: var(--orange);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+.hero h1 {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  color: var(--orange);
+  font-style: normal;
+}
+.hero p.sub {
+  font-size: 20px;
+  opacity: 0.9;
+  margin-bottom: 40px;
+}
+.hero-cta {
+  display: inline-block;
+  background: var(--orange);
+  color: white;
+  padding: 20px 48px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(234,124,30,0.4);
+  transition: transform 0.2s;
+}
+.hero-cta:hover { transform: translateY(-2px); }
+.hero-note { margin-top: 16px; font-size: 13px; opacity: 0.7; }
+
+/* Who */
+.who {
+  background: var(--gray-50);
+  padding: 40px 24px;
+  text-align: center;
+  border-bottom: 1px solid var(--gray-100);
+}
+.who-list { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.who-tag {
+  background: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Problem */
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.problem-item {
+  background: var(--gray-50);
+  padding: 24px;
+  border-radius: 12px;
+  border-left: 5px solid var(--red);
+}
+.problem-item .icon { font-size: 32px; margin-bottom: 8px; }
+.problem-item h3 { font-size: 16px; color: var(--gray-800); }
+
+/* Solution */
+.sol-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.sol-item {
+  text-align: center;
+  padding: 32px 20px;
+  background: white;
+  border: 2px solid var(--gray-100);
+  border-radius: 12px;
+  transition: all 0.3s;
+}
+.sol-item:hover { border-color: var(--orange); transform: translateY(-4px); }
+.sol-item .num {
+  display: inline-block;
+  width: 48px; height: 48px;
+  background: var(--orange);
+  color: white;
+  border-radius: 50%;
+  line-height: 48px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.sol-item h3 { font-size: 18px; margin-bottom: 8px; color: var(--navy); }
+.sol-item p { font-size: 14px; color: var(--gray-500); }
+
+/* Proof */
+.proof {
+  background: var(--navy);
+  color: white;
+  padding: 60px 24px;
+}
+.proof-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.proof-stat .num {
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--orange);
+  line-height: 1;
+}
+.proof-stat .label { font-size: 14px; opacity: 0.8; margin-top: 8px; }
+.proof-note { text-align: center; margin-top: 24px; font-size: 12px; opacity: 0.6; }
+
+/* Cases */
+.cases {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.case-card {
+  background: var(--gray-50);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--gray-100);
+}
+.case-thumb {
+  height: 400px;
+  background: linear-gradient(135deg, #ea7c1e, #d23f3f);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: bold;
+}
+.case-thumb.a { background: linear-gradient(135deg, #1e3a5f, #2c5382); }
+.case-thumb.b { background: linear-gradient(135deg, #d23f3f, #ea7c1e); }
+.case-thumb.c { background: linear-gradient(135deg, #ea7c1e, #f5a623); }
+.case-body { padding: 20px; }
+.case-body h3 { font-size: 16px; color: var(--navy); margin-bottom: 6px; }
+.case-body p { font-size: 13px; color: var(--gray-500); }
+
+/* Offer */
+.offer {
+  background: linear-gradient(135deg, #ea7c1e 0%, #d23f3f 100%);
+  color: white;
+  padding: 80px 24px;
+  text-align: center;
+}
+.offer .banner {
+  display: inline-block;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  padding: 12px 32px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+}
+.offer h2 {
+  font-size: 44px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+.offer p.lead { font-size: 18px; margin-bottom: 40px; opacity: 0.95; }
+.offer-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  text-align: left;
+}
+.step {
+  background: rgba(255,255,255,0.15);
+  padding: 24px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+.step .num {
+  display: inline-block;
+  width: 32px; height: 32px;
+  background: white;
+  color: var(--orange);
+  border-radius: 50%;
+  line-height: 32px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.step h3 { font-size: 16px; margin-bottom: 6px; }
+.step p { font-size: 13px; opacity: 0.9; }
+.offer-cta {
+  display: inline-block;
+  background: white;
+  color: var(--red);
+  padding: 20px 60px;
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+
+/* Pricing */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.price-card {
+  border: 2px solid var(--gray-100);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s;
+}
+.price-card.mid {
+  border-color: var(--orange);
+  background: linear-gradient(135deg, #fff9ef, white);
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(234,124,30,0.15);
+}
+.price-card.mid::before {
+  content: "オススメ";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--orange);
+  color: white;
+  padding: 4px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.price-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.price-num {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--gray-800);
+  margin: 12px 0;
+}
+.price-num small { font-size: 16px; font-weight: normal; color: var(--gray-500); }
+.price-per { font-size: 13px; color: var(--gray-500); margin-bottom: 20px; }
+.price-features { text-align: left; list-style: none; }
+.price-features li {
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+  font-size: 14px;
+  border-bottom: 1px solid var(--gray-100);
+}
+.price-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: bold;
+}
+
+.pricing-note {
+  text-align: center;
+  margin-top: 32px;
+  padding: 20px;
+  background: var(--gray-50);
+  border-radius: 12px;
+  color: var(--navy);
+  font-weight: bold;
+}
+
+/* FAQ */
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item {
+  border-bottom: 1px solid var(--gray-100);
+  padding: 24px 0;
+}
+.faq-q {
+  font-weight: bold;
+  color: var(--navy);
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+.faq-q::before {
+  content: "Q. ";
+  color: var(--orange);
+}
+.faq-a {
+  color: var(--gray-800);
+  padding-left: 24px;
+  font-size: 15px;
+}
+.faq-a::before {
+  content: "A. ";
+  color: var(--navy);
+  font-weight: bold;
+  margin-left: -24px;
+  margin-right: 6px;
+}
+
+/* Final CTA */
+.final {
+  background: var(--navy);
+  color: white;
+  padding: 100px 24px;
+  text-align: center;
+}
+.final h2 { font-size: 40px; font-weight: 900; margin-bottom: 20px; }
+.final p { font-size: 18px; margin-bottom: 40px; opacity: 0.9; line-height: 1.8; }
+
+/* Footer */
+footer {
+  background: var(--gray-800);
+  color: white;
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+/* Sticky annotation */
+.annotation {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  background: var(--red);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 12px;
+  z-index: 999;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .hero h1 { font-size: 36px; }
+  .hero p.sub { font-size: 16px; }
+  .sec-title { font-size: 26px; }
+  .offer h2 { font-size: 32px; }
+  .proof-stat .num { font-size: 42px; }
+  .price-card.mid { transform: scale(1); }
+}
+</style>
+</head>
+<body>
+
+<div class="annotation">🎨 モックアップ / 実装前デザイン案</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner wrap">
+    <span class="hero-badge">🎬 新登場・1本お試しプラン</span>
+    <h1>
+      広告に使うAI動画、<br>
+      まず1本、<br>
+      <em>試してみませんか？</em>
+    </h1>
+    <p class="sub">
+      撮影ゼロで、あなたのお店の魅力を映像に。<br>
+      制作から広告配信まで、ぜんぶこちらで。
+    </p>
+    <a href="#offer" class="hero-cta">🎬 まずは無料でお試し</a>
+    <p class="hero-note">※継続契約は不要です</p>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who">
+  <p style="font-size:14px;color:var(--gray-500);">こんな経営者様におすすめ</p>
+  <div class="who-list">
+    <span class="who-tag">飲食店</span>
+    <span class="who-tag">美容室</span>
+    <span class="who-tag">整骨院</span>
+    <span class="who-tag">士業事務所</span>
+    <span class="who-tag">建設業</span>
+    <span class="who-tag">EC事業</span>
+    <span class="who-tag">その他店舗業</span>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="sec">
+  <div class="wrap">
+    <h2 class="sec-title">こんなお悩みありませんか？</h2>
+    <p class="sec-lead">動画作りは、思ったより大変です</p>
+    <div class="problem-grid">
+      <div class="problem-item">
+        <div class="icon">📸</div>
+        <h3>動画作りたいけど、撮影が大変</h3>
+      </div>
+      <div class="problem-item">
+        <div class="icon">💸</div>
+        <h3>広告出しても反応がない</h3>
+      </div>
+      <div class="problem-item">
+        <div class="icon">💰</div>
+        <h3>制作会社に頼むと高くて継続できない</h3>
+      </div>
+      <div class="problem-item">
+        <div class="icon">⏰</div>
+        <h3>SNS運用まで手が回らない</h3>
+      </div>
+      <div class="problem-item">
+        <div class="icon">❓</div>
+        <h3>動画って本当に効果あるの？</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="sec" style="background:var(--gray-50);">
+  <div class="wrap">
+    <h2 class="sec-title">BuzzPlus なら、こう解決します</h2>
+    <p class="sec-lead">AI × プロ編集 × 広告運用ワンストップ</p>
+    <div class="sol-grid">
+      <div class="sol-item">
+        <div class="num">1</div>
+        <h3>撮影ゼロ</h3>
+        <p>AIとプロ編集で、あなたのお店の魅力を映像に</p>
+      </div>
+      <div class="sol-item">
+        <div class="num">2</div>
+        <h3>制作〜配信まで一気通貫</h3>
+        <p>動画制作からMeta/Google広告配信まで</p>
+      </div>
+      <div class="sol-item">
+        <div class="num">3</div>
+        <h3>月額¥30,000〜</h3>
+        <p>続けるか続けないかは、あなた次第</p>
+      </div>
+      <div class="sol-item">
+        <div class="num">4</div>
+        <h3>最短2日で納品</h3>
+        <p>スピード重視の対応力</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <div class="wrap">
+    <h2 style="text-align:center;font-size:28px;margin-bottom:8px;">RUNBIRD BuzzPlus の実績</h2>
+    <p style="text-align:center;font-size:14px;opacity:0.8;margin-bottom:32px;">※ 実数字は要確認</p>
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <div class="num">◯◯◯</div>
+        <div class="label">累計制作本数</div>
+      </div>
+      <div class="proof-stat">
+        <div class="num">◯◯</div>
+        <div class="label">支援クライアント数</div>
+      </div>
+      <div class="proof-stat">
+        <div class="num">10+</div>
+        <div class="label">対応業種</div>
+      </div>
+      <div class="proof-stat">
+        <div class="num">2日</div>
+        <div class="label">最短納品日数</div>
+      </div>
+    </div>
+    <p class="proof-note">※ 数字は星崎さん確認後に確定</p>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="sec">
+  <div class="wrap">
+    <h2 class="sec-title">納品事例</h2>
+    <p class="sec-lead">実際にBuzzPlusで作った動画をご覧ください</p>
+    <div class="cases">
+      <div class="case-card">
+        <div class="case-thumb a">🍖</div>
+        <div class="case-body">
+          <h3>飲食店 / 焼肉たなか屋様</h3>
+          <p>炭火焼肉店の店内〜料理を映像化。Instagram/リールで展開</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-thumb b">🏍️</div>
+        <div class="case-body">
+          <h3>バイク修理 / GARAGE226様</h3>
+          <p>山梨・勝沼の職人技を映像化。集客動画として活用</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-thumb c">✂️</div>
+        <div class="case-body">
+          <h3>美容室 / ◯◯様</h3>
+          <p>スタイリスト紹介〜施術シーンを縦型動画に</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer" id="offer">
+  <div class="wrap">
+    <div class="banner">まずは無料でお試しできます</div>
+    <h2>
+      1本無料で<br>
+      お試し制作
+    </h2>
+    <p class="lead">
+      「継続前提のサブスクは怖い」<br>
+      そんな方のために、まず1本無料でお作りします
+    </p>
+    <div class="offer-steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>無料相談（30分・Zoom）</h3>
+        <p>あなたのお店・目的を伺います</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>企画・台本作成</h3>
+        <p>お店の魅力を最大化する構成をご提案</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>7日で動画完成 → 納品</h3>
+        <p>納品データもお渡しします</p>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>継続 or 終了は自由</h3>
+        <p>気に入ったら継続、そうでなければ終了OK</p>
+      </div>
+    </div>
+    <a href="#" class="offer-cta">▶ 無料相談を予約する</a>
+    <p style="margin-top:16px;font-size:13px;opacity:0.9;">※ カレンダーからワンクリック予約</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec">
+  <div class="wrap">
+    <h2 class="sec-title">継続する場合の料金</h2>
+    <p class="sec-lead">まずは1本無料でお試ししてから、ご検討ください</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-name">ライトプラン</div>
+        <div class="price-num">¥30,000<small>/月</small></div>
+        <div class="price-per">動画1本 + SNS運用アドバイス</div>
+        <ul class="price-features">
+          <li>動画1本/月</li>
+          <li>企画・台本サポート</li>
+          <li>SNS運用アドバイス</li>
+        </ul>
+      </div>
+      <div class="price-card mid">
+        <div class="price-name">スタンダードプラン</div>
+        <div class="price-num">¥50,000<small>/月</small></div>
+        <div class="price-per">動画3本 + Meta広告配信</div>
+        <ul class="price-features">
+          <li>動画3本/月</li>
+          <li>Meta広告配信・運用込み</li>
+          <li>月次レポート</li>
+          <li>企画・台本サポート</li>
+        </ul>
+      </div>
+      <div class="price-card">
+        <div class="price-name">プレミアムプラン</div>
+        <div class="price-num">¥100,000<small>/月</small></div>
+        <div class="price-per">動画5本 + Meta/Google広告</div>
+        <ul class="price-features">
+          <li>動画5本/月</li>
+          <li>Meta広告 + Google広告</li>
+          <li>週次レポート</li>
+          <li>専属担当者</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pricing-note">
+      💡 まずは<strong>1本無料お試し</strong>から始めるのがオススメです
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" style="background:var(--gray-50);">
+  <div class="wrap">
+    <h2 class="sec-title">よくあるご質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">本当に無料ですか？途中で費用が発生しませんか？</div>
+        <div class="faq-a">お試しの1本は完全無料です。継続希望の場合のみ月額が発生します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">動画1本の制作にどれくらいかかりますか？</div>
+        <div class="faq-a">通常3営業日〜1週間で完成します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">うちの業種でも作れますか？</div>
+        <div class="faq-a">飲食・美容・治療院・小売・士業・建設など、10業種以上の実績があります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">撮影は本当に不要ですか？</div>
+        <div class="faq-a">既存の写真や資料をご提供いただくだけで大丈夫です。AI活用で動画化します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">継続契約は必須ですか？</div>
+        <div class="faq-a">いいえ。無料お試しの後、継続するかどうかは自由に選べます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">動画のデータはもらえますか？</div>
+        <div class="faq-a">はい、納品時にmp4データをお渡しします。所有権譲渡です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>「動画って本当に効果あるの？」</h2>
+    <p>
+      それは、作ってみないと分かりません。<br>
+      まずは1本、無料でお作りします。<br>
+      気に入ったら継続、そうでなければ終了。<br>
+      <strong style="color:var(--orange);">あなたのリスクはゼロです。</strong>
+    </p>
+    <a href="#" class="hero-cta" style="font-size:22px;padding:24px 60px;">▶ 無料相談を予約する</a>
+    <p style="margin-top:16px;font-size:13px;opacity:0.7;">※ 30秒で予約完了</p>
+  </div>
+</section>
+
+<footer>
+  © 株式会社ランバード | BuzzPlus | buzzplus-ai.com
+</footer>
+
+</body>
+</html>

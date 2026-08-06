@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus Google広告シフト提案 | 鈴木さん向け</title>
+<style>
+:root {
+  --navy: #1e3a5f;
+  --orange: #ea7c1e;
+  --red: #d23f3f;
+  --green: #22a06b;
+  --gray-50: #f8f9fb;
+  --gray-100: #eef1f5;
+  --gray-200: #dde3ec;
+  --gray-500: #6b7684;
+  --gray-800: #2a3646;
+  --meta-blue: #4267B2;
+  --google-red: #EA4335;
+  --google-blue: #4285F4;
+  --google-yellow: #FBBC05;
+  --google-green: #34A853;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  color: var(--gray-800);
+  line-height: 1.7;
+  background: var(--gray-50);
+}
+.wrap { max-width: 1100px; margin: 0 auto; padding: 40px 24px; }
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--navy) 0%, #2c5382 100%);
+  color: white;
+  padding: 50px 24px;
+  text-align: center;
+}
+.header .badge {
+  display: inline-block;
+  background: var(--orange);
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.header h1 { font-size: 34px; font-weight: 900; margin-bottom: 12px; }
+.header .meta { font-size: 14px; opacity: 0.85; }
+
+/* Card */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  margin-bottom: 24px;
+}
+.card h2 {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 3px solid var(--orange);
+}
+.card h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--navy);
+  margin: 24px 0 12px;
+}
+
+/* TOP3 conclusion */
+.top3 {
+  background: linear-gradient(135deg, #fff9ef 0%, #ffefdf 100%);
+  border-left: 6px solid var(--orange);
+}
+.top3-item {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+}
+.top3-num {
+  flex-shrink: 0;
+  width: 48px; height: 48px;
+  background: var(--orange);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 20px;
+}
+.top3-body h4 {
+  color: var(--navy);
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+.top3-body p { font-size: 14px; color: var(--gray-800); }
+
+/* Alert */
+.alert {
+  background: #fff5f5;
+  border-left: 6px solid var(--red);
+  padding: 20px 24px;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+.alert strong { color: var(--red); }
+
+/* Comparison table */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+.compare-table th, .compare-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--gray-100);
+}
+.compare-table th {
+  background: var(--gray-50);
+  font-weight: bold;
+  color: var(--navy);
+  font-size: 14px;
+}
+.compare-table .meta-col {
+  background: rgba(66,103,178,0.05);
+  color: var(--meta-blue);
+}
+.compare-table .google-col {
+  background: rgba(52,168,83,0.05);
+  color: var(--google-green);
+}
+.compare-table td .good { color: var(--green); font-weight: bold; }
+.compare-table td .bad { color: var(--red); font-weight: bold; }
+
+/* Meta results */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.metric {
+  background: var(--gray-50);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+.metric .num {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1;
+}
+.metric.bad .num { color: var(--red); }
+.metric.warn .num { color: var(--orange); }
+.metric .label { font-size: 12px; color: var(--gray-500); margin-top: 8px; }
+
+/* Media comparison */
+.media-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+}
+.media-card {
+  padding: 24px;
+  border-radius: 16px;
+  border: 3px solid;
+}
+.media-card.meta {
+  border-color: var(--meta-blue);
+  background: rgba(66,103,178,0.03);
+}
+.media-card.google {
+  border-color: var(--google-green);
+  background: rgba(52,168,83,0.03);
+}
+.media-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 900;
+}
+.media-card.meta .media-title { color: var(--meta-blue); }
+.media-card.google .media-title { color: var(--google-green); }
+.media-icon {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+.media-card.meta .media-icon { background: var(--meta-blue); }
+.media-card.google .media-icon { background: var(--google-green); }
+.media-list { list-style: none; }
+.media-list li {
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+  font-size: 14px;
+  border-bottom: 1px dashed var(--gray-100);
+}
+.media-list li::before {
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+.media-card.meta .media-list li::before { content: "✕"; color: var(--red); }
+.media-card.google .media-list li::before { content: "✓"; color: var(--green); }
+
+/* Keywords */
+.kw-groups {
+  display: grid;
+  gap: 16px;
+}
+.kw-group {
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 5px solid;
+}
+.kw-group.hot {
+  background: #fff5f5;
+  border-color: var(--red);
+}
+.kw-group.warm {
+  background: #fff9ef;
+  border-color: var(--orange);
+}
+.kw-group.cool {
+  background: #eef8ff;
+  border-color: var(--google-blue);
+}
+.kw-group h4 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--navy);
+}
+.kw-group .badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  margin-left: 8px;
+  color: white;
+}
+.kw-group.hot .badge { background: var(--red); }
+.kw-group.warm .badge { background: var(--orange); }
+.kw-group.cool .badge { background: var(--google-blue); }
+.kw-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.kw {
+  background: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  border: 1px solid var(--gray-100);
+  color: var(--gray-800);
+}
+
+/* Budget plans */
+.plan-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+.plan {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid var(--gray-100);
+  background: white;
+  transition: all 0.3s;
+}
+.plan.recommend {
+  border-color: var(--orange);
+  transform: scale(1.02);
+  box-shadow: 0 12px 32px rgba(234,124,30,0.15);
+}
+.plan-head {
+  padding: 20px;
+  background: var(--gray-50);
+  text-align: center;
+  border-bottom: 3px solid var(--gray-100);
+  position: relative;
+}
+.plan.recommend .plan-head {
+  background: linear-gradient(135deg, #fff9ef, #ffefdf);
+  border-color: var(--orange);
+}
+.plan.recommend .plan-head::before {
+  content: "🎯 推奨";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--orange);
+  color: white;
+  padding: 4px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+}
+.plan-name {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.plan-price {
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--orange);
+}
+.plan-price small { font-size: 14px; color: var(--gray-500); }
+.plan-body { padding: 20px; }
+.plan-alloc {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.plan-alloc .col {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+.plan-alloc .meta-col-mini { background: rgba(66,103,178,0.1); color: var(--meta-blue); }
+.plan-alloc .google-col-mini { background: rgba(52,168,83,0.1); color: var(--google-green); }
+.plan-alloc .stop { background: #f3f4f6; color: var(--gray-500); text-decoration: line-through; }
+.plan-note {
+  font-size: 13px;
+  color: var(--gray-500);
+  padding-top: 12px;
+  border-top: 1px dashed var(--gray-100);
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gray-100);
+}
+.tl-item {
+  position: relative;
+  padding: 16px 0;
+}
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -34px;
+  top: 22px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--orange);
+  border: 4px solid white;
+  box-shadow: 0 0 0 2px var(--orange);
+}
+.tl-date {
+  font-weight: bold;
+  color: var(--orange);
+  font-size: 14px;
+}
+.tl-title {
+  font-weight: bold;
+  color: var(--navy);
+  margin: 4px 0;
+}
+.tl-desc {
+  font-size: 13px;
+  color: var(--gray-500);
+}
+
+/* Q box */
+.q-box {
+  background: linear-gradient(135deg, var(--navy) 0%, #2c5382 100%);
+  color: white;
+  padding: 32px;
+  border-radius: 16px;
+  margin: 20px 0;
+}
+.q-box h3 {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+.q-item {
+  background: rgba(255,255,255,0.1);
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 4px solid var(--orange);
+}
+.q-item .label {
+  color: var(--orange);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 40px 24px;
+  color: var(--gray-500);
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .media-compare { grid-template-columns: 1fr; }
+  .compare-table { font-size: 13px; }
+  .compare-table th, .compare-table td { padding: 10px 8px; }
+  .header h1 { font-size: 24px; }
+  .plan.recommend { transform: scale(1); }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="wrap" style="padding:0;">
+    <span class="badge">📊 提案書</span>
+    <h1>BuzzPlus 広告出稿 Google シフト検討</h1>
+    <p class="meta">2026-08-06 / 発行: 星崎 / 宛: 鈴木様</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- 結論TOP3 -->
+<div class="card top3">
+  <h2>📌 結論TOP3</h2>
+
+  <div class="top3-item">
+    <div class="top3-num">1</div>
+    <div class="top3-body">
+      <h4>Meta広告は BuzzPlus に不適合 → Google広告シフトを提案</h4>
+      <p>Meta 7日実績: CPL ¥5,878（業界平均の2倍）／品質ランキング下位35%／フォームA/Bテスト3日間ともリード0。<strong>商材特性（¥30k/月コミット・経営者向け）はGoogle検索意図型に適合</strong></p>
+    </div>
+  </div>
+
+  <div class="top3-item">
+    <div class="top3-num">2</div>
+    <div class="top3-body">
+      <h4>競合10社中、確認できた広告出稿1位は Google側</h4>
+      <p><a href="https://tms-partners.com/lp/20260600/?gad_source=1" target="_blank">TMS Partners</a>（gclid付きURL確認済 = Google広告経由）が「まず1本つくって、見てから決める」で獲得。<strong>アニメる・ショート動画屋さん等の同業もGoogle検索経由の可能性大</strong></p>
+    </div>
+  </div>
+
+  <div class="top3-item">
+    <div class="top3-num">3</div>
+    <div class="top3-body">
+      <h4>Google広告シフトを今から準備する</h4>
+      <p>Meta広告の品質ランキング復旧と並行してGoogle広告で顕在層直撃。Metaは新クリエ（下記3案）で品質改善しつつ、Google広告で新規流入を確保する二段構え</p>
+    </div>
+  </div>
+</div>
+
+<!-- 新クリエ動画3案（台本） -->
+<div class="card" style="background: linear-gradient(135deg,#fff9ef,#ffefdf); border-left: 6px solid var(--orange);">
+  <h2>🎬 新クリエ動画 3案（台本・完成品あり）</h2>
+  <p style="margin-bottom:20px; color:var(--gray-500);">仲野直紀『15秒集客革命』の5要素構成 × 「試してみませんか」型リスクリバーサル訴求で3案制作</p>
+
+  <div style="display:grid; gap:24px;">
+
+    <!-- 案A -->
+    <div style="background:white; border-radius:16px; padding:24px; border: 3px solid var(--orange);">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <div style="width:48px;height:48px;background:var(--orange);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;">A</div>
+        <div>
+          <h3 style="margin:0; font-size:22px; color:var(--navy);">15秒版「1本お試しリバース型」</h3>
+          <p style="margin:4px 0 0; font-size:13px; color:var(--gray-500);">参考: RIZAP chocoZAP「5秒でスタート」篇 → <a href="https://www.youtube.com/watch?v=IS-rjJVGE0A" target="_blank" style="color:var(--orange);">YouTube</a></p>
+        </div>
+      </div>
+
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:var(--gray-50);">
+            <th style="padding:10px; text-align:left; font-size:13px; width:80px;">時間</th>
+            <th style="padding:10px; text-align:left; font-size:13px;">シーン</th>
+            <th style="padding:10px; text-align:left; font-size:13px;">テロップ焼付</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--orange);">0-2s</td>
+            <td style="padding:10px; font-size:14px;">フック（Whatの即出し）</td>
+            <td style="padding:10px; font-size:14px;">「動画制作、1本お試しできます」<br><small style="color:var(--gray-500);">ネイビー帯</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--orange);">2-5s</td>
+            <td style="padding:10px; font-size:14px;">悩み共感</td>
+            <td style="padding:10px; font-size:14px;">「初めての外注、失敗したくない…」</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--orange);">5-9s</td>
+            <td style="padding:10px; font-size:14px;">解決提示</td>
+            <td style="padding:10px; font-size:14px;">「BuzzPlusなら / まず1本 台本もお任せ」<br><small style="color:var(--gray-500);">オレンジ帯・2行</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--orange);">9-12s</td>
+            <td style="padding:10px; font-size:14px;">根拠（社会証明）</td>
+            <td style="padding:10px; font-size:14px;">「累計制作 多数 / 多業種で導入」<br><small style="color:var(--gray-500);">※実数字は星崎さん確認後に差替</small></td>
+          </tr>
+          <tr>
+            <td style="padding:10px; font-weight:bold; color:var(--orange);">12-15s</td>
+            <td style="padding:10px; font-size:14px;">オファー・CTA</td>
+            <td style="padding:10px; font-size:14px;">「まずは1本 無料相談」+「buzzplus-ai.com」<br><small style="color:var(--gray-500);">オレンジ+白の二段帯</small></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px; padding:12px; background:var(--gray-50); border-radius:8px; font-size:13px;">
+        <strong>3心理オファー:</strong> お得感（無料）+ リスクリバーサル（継続不要）
+      </div>
+    </div>
+
+    <!-- 案B -->
+    <div style="background:white; border-radius:16px; padding:24px; border: 3px solid var(--navy);">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <div style="width:48px;height:48px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;">B</div>
+        <div>
+          <h3 style="margin:0; font-size:22px; color:var(--navy);">30秒版「オファー商品名化型」</h3>
+          <p style="margin:4px 0 0; font-size:13px; color:var(--gray-500);">参考: ライフネット生命「10秒見積り」Shorts → <a href="https://www.youtube.com/shorts/os7cXq7tJC4" target="_blank" style="color:var(--orange);">YouTube</a></p>
+        </div>
+      </div>
+
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:var(--gray-50);">
+            <th style="padding:10px; text-align:left; font-size:13px; width:80px;">時間</th>
+            <th style="padding:10px; text-align:left; font-size:13px;">シーン</th>
+            <th style="padding:10px; text-align:left; font-size:13px;">テロップ焼付</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--navy);">0-5s</td>
+            <td style="padding:10px; font-size:14px;">オファー即出し（商品名）</td>
+            <td style="padding:10px; font-size:14px;">「1本お試しプラン / はじめました」<br><small style="color:var(--gray-500);">オレンジ帯・大文字</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--navy);">5-10s</td>
+            <td style="padding:10px; font-size:14px;">Who特定（BtoB担当）</td>
+            <td style="padding:10px; font-size:14px;">「動画外注が / こう変わります」<br><small style="color:var(--gray-500);">ネイビー帯・2行</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--navy);">10-15s</td>
+            <td style="padding:10px; font-size:14px;">What & How（3項目）</td>
+            <td style="padding:10px; font-size:14px;">「打合せ0回 / 台本お任せ / 7日で納品」<br><small style="color:var(--gray-500);">3行縦積み・オレンジ強調</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--navy);">15-22s</td>
+            <td style="padding:10px; font-size:14px;">根拠（実例）</td>
+            <td style="padding:10px; font-size:14px;">「実際の納品事例」<br><small style="color:var(--gray-500);">動画事例3本のシズル映像</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--navy);">22-27s</td>
+            <td style="padding:10px; font-size:14px;">オファー再訴求</td>
+            <td style="padding:10px; font-size:14px;">「1本お試し / まずは無料相談から」</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; font-weight:bold; color:var(--navy);">27-30s</td>
+            <td style="padding:10px; font-size:14px;">CTA（エンドカード）</td>
+            <td style="padding:10px; font-size:14px;">「続きが気になる方は」+「buzzplus-ai.com」+「@BuzzPlus」</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px; padding:12px; background:var(--gray-50); border-radius:8px; font-size:13px;">
+        <strong>3心理オファー:</strong> お得感 + 限定感（"はじめました"の新規感） + オファー商品名化
+      </div>
+    </div>
+
+    <!-- 案C -->
+    <div style="background:white; border-radius:16px; padding:24px; border: 3px solid var(--green);">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+        <div style="width:48px;height:48px;background:var(--green);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;">C</div>
+        <div>
+          <h3 style="margin:0; font-size:22px; color:var(--navy);">15秒版「実績→試用の橋渡し型」</h3>
+          <p style="margin:4px 0 0; font-size:13px; color:var(--gray-500);">参考: スタディサプリ「定期テスト点数アップ実績」15秒 → <a href="https://www.youtube.com/watch?v=3eqlvXB3mkU" target="_blank" style="color:var(--orange);">YouTube</a></p>
+        </div>
+      </div>
+
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="background:var(--gray-50);">
+            <th style="padding:10px; text-align:left; font-size:13px; width:80px;">時間</th>
+            <th style="padding:10px; text-align:left; font-size:13px;">シーン</th>
+            <th style="padding:10px; text-align:left; font-size:13px;">テロップ焼付</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--green);">0-3s</td>
+            <td style="padding:10px; font-size:14px;">実績数値（信頼構築）</td>
+            <td style="padding:10px; font-size:14px;">「多業種で導入実績」<br><small style="color:var(--gray-500);">※実数字は星崎さん確認後に差替</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--green);">3-6s</td>
+            <td style="padding:10px; font-size:14px;">共感→橋渡し</td>
+            <td style="padding:10px; font-size:14px;">「その安心感を / まず1本で体験」<br><small style="color:var(--gray-500);">オレンジ帯・2行</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--green);">6-11s</td>
+            <td style="padding:10px; font-size:14px;">実例（作れる証拠）</td>
+            <td style="padding:10px; font-size:14px;">「BuzzPlusで作れます」<br><small style="color:var(--gray-500);">納品事例映像</small></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--gray-100);">
+            <td style="padding:10px; font-weight:bold; color:var(--green);">11-13s</td>
+            <td style="padding:10px; font-size:14px;">オファー</td>
+            <td style="padding:10px; font-size:14px;">「初回1本 / 無料相談 受付中」</td>
+          </tr>
+          <tr>
+            <td style="padding:10px; font-weight:bold; color:var(--green);">13-15s</td>
+            <td style="padding:10px; font-size:14px;">ブランドCTA</td>
+            <td style="padding:10px; font-size:14px;">「buzzplus-ai.com」+「@BuzzPlus」</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:12px; padding:12px; background:var(--gray-50); border-radius:8px; font-size:13px;">
+        <strong>3心理オファー:</strong> お得感 + 限定感 + 信頼構築（実績→試用の順序）
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:20px; padding:16px; background:white; border-radius:12px; border-left:4px solid var(--orange);">
+    <strong>💡 3案の位置付け:</strong>
+    <ul style="margin-top:8px; padding-left:24px; font-size:14px;">
+      <li><strong>案A（15秒）</strong>: 認知〜獲得の主力バリエーション。冒頭2秒フック最重視</li>
+      <li><strong>案B（30秒）</strong>: YouTubeプレロール・じっくり見せる媒体向き</li>
+      <li><strong>案C（15秒）</strong>: 検討フェーズの背中押し・リターゲティング向き</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 現状 -->
+<div class="card">
+  <h2>📊 現状: Meta広告7日間の実績</h2>
+
+  <div class="metric-grid">
+    <div class="metric bad">
+      <div class="num">3</div>
+      <div class="label">リード獲得数（累計）</div>
+    </div>
+    <div class="metric bad">
+      <div class="num">¥5,878</div>
+      <div class="label">CPL（業界平均の2倍）</div>
+    </div>
+    <div class="metric warn">
+      <div class="num">下位35%</div>
+      <div class="label">Meta品質ランキング</div>
+    </div>
+    <div class="metric warn">
+      <div class="num">¥6,921</div>
+      <div class="label">CPM（業界の2-3倍）</div>
+    </div>
+  </div>
+
+  <div class="alert">
+    <strong>⚠️ 診断:</strong> 品質ランキング下位35% → CPM高騰 → リーチ縮小 → 悪循環。動画は100%再生されるがフォーム到達後に離脱。<strong>訴求メッセージが刺さっていない可能性が高い。</strong>
+  </div>
+</div>
+
+<!-- なぜGoogleが合うか -->
+<div class="card">
+  <h2>🎯 なぜGoogle広告が BuzzPlus に合うか</h2>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>商材特性軸</th>
+        <th>BuzzPlus商材</th>
+        <th class="meta-col">Meta広告</th>
+        <th class="google-col">Google広告</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>意思決定タイプ</strong></td>
+        <td>検討型（¥30k/月コミット必要）</td>
+        <td class="meta-col"><span class="bad">✕</span> 衝動買い向き</td>
+        <td class="google-col"><span class="good">✓</span> 検討型に強い</td>
+      </tr>
+      <tr>
+        <td><strong>ユーザー行動</strong></td>
+        <td>「動画制作 代行」で能動的に探す</td>
+        <td class="meta-col"><span class="bad">✕</span> スクロール中に遭遇</td>
+        <td class="google-col"><span class="good">✓</span> 能動的検索</td>
+      </tr>
+      <tr>
+        <td><strong>ターゲット</strong></td>
+        <td>店舗経営者（自ら探す層）</td>
+        <td class="meta-col"><span class="bad">✕</span> エンタメ視聴中</td>
+        <td class="google-col"><span class="good">✓</span> 意図明確</td>
+      </tr>
+      <tr>
+        <td><strong>感情訴求</strong></td>
+        <td>弱い（機能商材）</td>
+        <td class="meta-col"><span class="bad">✕</span> 感情訴求向き</td>
+        <td class="google-col"><span class="good">✓</span> 機能訴求適合</td>
+      </tr>
+      <tr>
+        <td><strong>単価</strong></td>
+        <td>中〜高（BtoB定石）</td>
+        <td class="meta-col"><span class="bad">✕</span> 低単価向き</td>
+        <td class="google-col"><span class="good">✓</span> 高単価対応</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 媒体特性 -->
+<div class="card">
+  <h2>📱 媒体特性 一目比較</h2>
+
+  <div class="media-compare">
+    <div class="media-card meta">
+      <div class="media-title">
+        <div class="media-icon">M</div>
+        Meta広告（現行）
+      </div>
+      <ul class="media-list">
+        <li>興味関心・行動ターゲティング（衝動買い向き）</li>
+        <li>認知〜購買のフルファネル必要</li>
+        <li>クリエ疲弊しやすい（3週間で品質低下）</li>
+        <li>CPMが競争激化で高騰中</li>
+        <li>アルゴリズム学習のリセットが起きやすい</li>
+      </ul>
+    </div>
+    <div class="media-card google">
+      <div class="media-title">
+        <div class="media-icon">G</div>
+        Google広告（提案）
+      </div>
+      <ul class="media-list">
+        <li>検索意図キーワード直撃（顕在層専門）</li>
+        <li>クリック時点で既に興味あり</li>
+        <li>キーワード数を増やせば継続的に露出可能</li>
+        <li>入札の透明性が高い（CPC単価が読みやすい）</li>
+        <li>YouTubeとの連携も可能（ランバード1動画流用可）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- キーワード -->
+<div class="card">
+  <h2>🔍 Google広告キーワード設計（3層構造）</h2>
+
+  <div class="kw-groups">
+    <div class="kw-group hot">
+      <h4>🔥 顕在層（今すぐ買う）<span class="badge">CVR高い / CPC高め</span></h4>
+      <div class="kw-list">
+        <span class="kw">動画制作 代行 サブスク</span>
+        <span class="kw">リール 制作 代行 料金</span>
+        <span class="kw">ショート動画 制作 依頼</span>
+        <span class="kw">SNS動画 制作 定額</span>
+        <span class="kw">AI動画 制作 サービス</span>
+      </div>
+    </div>
+
+    <div class="kw-group warm">
+      <h4>🟡 準顕在層<span class="badge">中庸</span></h4>
+      <div class="kw-list">
+        <span class="kw">インスタ 動画 作成</span>
+        <span class="kw">TikTok 動画 制作会社</span>
+        <span class="kw">店舗 SNS 動画 作り方</span>
+      </div>
+    </div>
+
+    <div class="kw-group cool">
+      <h4>❄️ 潜在層<span class="badge">CVR低い / CPC安い</span></h4>
+      <div class="kw-list">
+        <span class="kw">集客 SNS 動画</span>
+        <span class="kw">飲食店 集客 動画</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 予算3案 -->
+<div class="card">
+  <h2>💰 予算配分の3案（月額ランニング費のみ・開発費は別）</h2>
+
+  <div class="plan-cards">
+    <div class="plan">
+      <div class="plan-head">
+        <div class="plan-name">案A: 全額Google</div>
+        <div class="plan-price">¥30,000<small>/月</small></div>
+      </div>
+      <div class="plan-body">
+        <div class="plan-alloc">
+          <div class="col stop">Meta停止</div>
+          <div class="col google-col-mini">Google ¥1,000/日</div>
+        </div>
+        <div class="plan-note">現状Meta¥30k/月をそのままシフト。追加費用ゼロ。<strong>ただしMetaのデータ失う</strong></div>
+      </div>
+    </div>
+
+    <div class="plan recommend">
+      <div class="plan-head">
+        <div class="plan-name">案B: 併用（半々）</div>
+        <div class="plan-price">¥30,000<small>/月</small></div>
+      </div>
+      <div class="plan-body">
+        <div class="plan-alloc">
+          <div class="col meta-col-mini">Meta ¥500/日</div>
+          <div class="col google-col-mini">Google ¥500/日</div>
+        </div>
+        <div class="plan-note">追加費用ゼロ・両者データ比較可能・敗者停止→勝者集約が可能</div>
+      </div>
+    </div>
+
+    <div class="plan">
+      <div class="plan-head">
+        <div class="plan-name">案C: 増額併用</div>
+        <div class="plan-price">¥60,000<small>/月</small></div>
+      </div>
+      <div class="plan-body">
+        <div class="plan-alloc">
+          <div class="col meta-col-mini">Meta ¥1,000/日</div>
+          <div class="col google-col-mini">Google ¥1,000/日</div>
+        </div>
+        <div class="plan-note">会議決定枠¥115k/月内で最大限展開。ただし予算超過リスク</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 開発費 -->
+<div class="card">
+  <h2>🛠️ 開発費（社内吸収可能・追加請求なし）</h2>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>コスト</th>
+        <th>担当</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Google広告アカウント作成</td>
+        <td><span class="good">¥0</span></td>
+        <td>星崎 or Cowork</td>
+      </tr>
+      <tr>
+        <td>コンバージョン計測タグ設置（GTM）</td>
+        <td><span class="good">¥0</span></td>
+        <td>星崎</td>
+      </tr>
+      <tr>
+        <td>キーワード調査</td>
+        <td><span class="good">¥0</span></td>
+        <td>星崎</td>
+      </tr>
+      <tr>
+        <td>広告文作成（5〜10本）</td>
+        <td><span class="good">¥0</span></td>
+        <td>星崎</td>
+      </tr>
+      <tr>
+        <td>LP側の検索対応</td>
+        <td><span class="good">¥0</span></td>
+        <td>星崎</td>
+      </tr>
+      <tr style="background:#eef8ff;">
+        <td><strong>合計</strong></td>
+        <td><strong><span class="good">¥0</span></strong></td>
+        <td>星崎稼働のみ</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- タイムライン -->
+<div class="card">
+  <h2>📅 実施タイムライン（承認後）</h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">承認後 Day 1〜3</div>
+      <div class="tl-title">準備フェーズ</div>
+      <div class="tl-desc">キーワード調査 / 広告文作成 / LP改修着手 / 新クリエ動画3本完成</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Day 4〜6</div>
+      <div class="tl-title">実装フェーズ</div>
+      <div class="tl-desc">Google広告アカウント設定 / GTMタグ実装 / LP完成 / Meta広告テキスト差替</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Day 7</div>
+      <div class="tl-title">Google配信スタート・Meta新クリエ切替</div>
+      <div class="tl-desc">案B想定: Meta ¥500/日（新クリエ）+ Google ¥500/日で並行配信開始</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Day 8〜14</div>
+      <div class="tl-title">データ収集フェーズ</div>
+      <div class="tl-desc">両者のCPL・CVR・リード質を比較検証</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Day 15</div>
+      <div class="tl-title">中間判定 → 集中投下</div>
+      <div class="tl-desc">敗者停止 → 勝者に予算集中 → 月次評価へ</div>
+    </div>
+  </div>
+</div>
+
+<!-- 判断項目 -->
+<div class="q-box">
+  <h3>✅ 鈴木さん判断いただきたいこと</h3>
+
+  <div class="q-item">
+    <span class="label">Q1:</span>Google広告出稿の承認（✅承認 or ❌継続Meta一本）
+  </div>
+  <div class="q-item">
+    <span class="label">Q2:</span>BuzzPlus用のGoogle広告アカウント（既存 or 新規作成）
+  </div>
+  <div class="q-item">
+    <span class="label">Q3:</span>予算配分（案A/B/C どれ）
+  </div>
+  <div class="q-item">
+    <span class="label">Q4:</span>LP改修の並行実施（別紙モックアップ参照・実装承認）
+  </div>
+</div>
+
+<!-- 未確定 -->
+<div class="card">
+  <h2>⚠️ 未確定論点</h2>
+  <ul style="padding-left:24px;">
+    <li>BuzzPlus用 Google広告アカウント有無 → 未確認</li>
+    <li>Google広告出稿承認 → 本提案書で承認いただきたい事項</li>
+    <li>月予算枠 → 現行Meta ¥1,000/日と同額 or 増額の判断</li>
+    <li>LP改修着手 → 別紙「BuzzPlus_LP_v2_mockup.html」参照</li>
+    <li>競合各社のGoogle広告実配信状況 → TMS Partners は確度A、その他は要目視確認</li>
+  </ul>
+</div>
+
+<footer>
+  © 株式会社ひしゃく | BuzzPlus事業部 | 2026-08-06<br>
+  別紙: BuzzPlus_LP_v2_mockup.html / BuzzPlus_競合クリエ調査_20260805.md / BuzzPlus_試してみませんか型_動画ピックアップ_20260806.md
+</footer>
+
+</div>
+
+</body>
+</html>
