@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus 現状と提案｜2026-08-07</title>
+<style>
+:root{
+  --ink:#12202f; --ink2:#33465c; --mute:#6b7b8d;
+  --line:#e3e9f0; --bg:#f6f8fb; --card:#fff;
+  --navy:#1e3a5f; --or:#EE5600; --or-l:#F0A334;
+  --red:#d23f3f; --green:#1a8f5f; --teal:#08708A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+  color:var(--ink2);line-height:1.85;background:var(--bg);overflow-x:hidden}
+.wrap{max-width:1000px;margin:0 auto;padding:0 18px}
+h1,h2,h3,h4{color:var(--ink);line-height:1.45}
+a{color:var(--teal)}
+
+header{background:linear-gradient(135deg,var(--navy),#2c5382);color:#fff;padding:38px 0 32px}
+header h1{color:#fff;font-size:clamp(21px,4.6vw,32px);font-weight:900;letter-spacing:-.01em}
+header p{opacity:.85;margin-top:8px;font-size:clamp(13px,3.2vw,15px)}
+
+section{padding:34px 0}
+.sec-h{font-size:clamp(18px,4.2vw,25px);font-weight:900;margin-bottom:6px;
+  border-left:7px solid var(--or);padding-left:14px}
+.sec-sub{color:var(--mute);font-size:clamp(13px,3.2vw,14.5px);margin:0 0 20px 21px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:14px}
+.card h3{font-size:clamp(15.5px,3.9vw,18px);font-weight:900;margin-bottom:8px}
+.card p{font-size:clamp(13.5px,3.4vw,15px)}
+
+.warn{background:#fff8e1;border:1px solid #e8cf7a;border-left:6px solid #d9a400;border-radius:10px;padding:16px 18px;margin-bottom:18px}
+.warn h3{color:#7a5a00;font-size:15px;margin-bottom:8px}
+.warn table{font-size:13px}
+.warn td{color:#7a5a00}
+
+table{width:100%;border-collapse:collapse;background:#fff;font-size:clamp(12.5px,3.2vw,14.5px)}
+th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+th{background:#eef3f9;color:var(--ink);font-weight:900;white-space:nowrap}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:12px}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.bad{color:var(--red);font-weight:900}
+.good{color:var(--green);font-weight:900}
+
+/* 結論 */
+.concl{background:#fff;border:2px solid var(--or);border-radius:14px;padding:20px;margin-bottom:14px}
+.concl .n{display:inline-block;background:var(--or);color:#fff;font-weight:900;
+  padding:3px 12px;border-radius:999px;font-size:12.5px;margin-bottom:10px}
+.concl h3{font-size:clamp(16px,4.2vw,20px);margin-bottom:10px}
+
+/* ファネル */
+.funnel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 18px}
+.frow{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.flabel{width:130px;flex-shrink:0;font-size:13px;font-weight:700;color:var(--ink)}
+.fbarwrap{flex:1;background:#eef3f9;border-radius:6px;overflow:hidden;height:34px;position:relative}
+.fbar{height:100%;background:linear-gradient(90deg,var(--navy),#4a7ab5);display:flex;align-items:center;
+  justify-content:center;color:#fff;font-weight:900;font-size:13px;border-radius:6px;
+  min-width:58px}
+.fbar.zero{background:var(--red);width:100%!important;justify-content:center;padding:0}
+.fnote{width:120px;flex-shrink:0;font-size:12px;color:var(--mute);text-align:right}
+@media(max-width:640px){
+  .frow{flex-wrap:wrap}
+  .flabel{width:100%}
+  .fnote{width:auto;text-align:left}
+}
+
+/* 動画並べ */
+.vgrid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:720px){.vgrid{grid-template-columns:1fr 1fr}}
+.vcard{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.vcard .vh{padding:12px 16px;font-weight:900;color:#fff;font-size:14.5px}
+.vcard .vh.a{background:#7a8794}
+.vcard .vh.b{background:var(--or)}
+.vcard video{width:100%;display:block;background:#000}
+.vcard .vb{padding:14px 16px;font-size:13.5px}
+.vcard ul{margin:6px 0 0 18px}
+.vcard li{margin-bottom:5px}
+
+.ask{background:var(--navy);color:#fff;border-radius:14px;padding:24px 20px}
+.ask h3{color:#fff;font-size:clamp(17px,4.3vw,22px);margin-bottom:14px}
+.ask ol{margin-left:20px}
+.ask li{margin-bottom:12px;font-size:clamp(13.5px,3.4vw,15px)}
+.ask b{color:var(--or-l)}
+
+.btn{display:inline-block;background:var(--or);color:#fff!important;text-decoration:none;
+  padding:13px 24px;border-radius:9px;font-weight:900;font-size:15px;margin:4px 6px 4px 0}
+footer{background:var(--ink);color:rgba(255,255,255,.55);padding:22px 0;text-align:center;font-size:12.5px;margin-top:30px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>BuzzPlus 現状と提案</h1>
+    <p>2026-08-07 ／ 星崎　｜　Meta広告の数字・動画クリエイティブ・LP・Google広告シフト</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- 未確定論点 -->
+<section style="padding-top:26px">
+  <div class="warn">
+    <h3>⚠️ 未確定論点（判断の前提）</h3>
+    <div class="tw"><table>
+      <tr><td style="width:34%"><b>0円オファーの可否</b></td><td>本資料の協議事項。現行動画は既に「動画1本プレゼント」で同じ約束をして配信中</td></tr>
+      <tr><td><b>1本あたりの制作原価</b></td><td><b>未算出。</b>0円にした場合の損失額も、有料にした場合の価格根拠も出せない</td></tr>
+      <tr><td><b>累計制作本数・導入社数</b></td><td><b>実数未提供。</b>使えるのは現行LP記載の「16業種以上」のみ</td></tr>
+      <tr><td><b>LP経由フォームのCVR</b></td><td>一次データなし。試算は3〜5%の<b>仮定値</b></td></tr>
+    </table></div>
+  </div>
+</section>
+
+<!-- 結論 -->
+<section>
+  <h2 class="sec-h">結論</h2>
+  <p class="sec-sub">先にお伝えしたい3点です。</p>
+
+  <div class="concl">
+    <span class="n">結論 1</span>
+    <h3>動画は最後まで観られている。壊れているのは「その先」だけ。</h3>
+    <p>8/6の実測で、動画を<b>最後まで観た人が9人いて、そのうち1人も次に進んでいません</b>。入口（3秒）も中盤（50%）も落ちていないので、クリエイティブの出来が原因ではありません。<b>観終わった人にとって「押す理由」が無い</b>——問題はそこ1点に絞られます。</p>
+  </div>
+
+  <div class="concl">
+    <span class="n">結論 2</span>
+    <h3>「あと一歩」の正体は、詳しく知りたい人の行き先が無いこと。</h3>
+    <p>現行広告は<b>Metaのインスタントフォーム</b>で、<b>サイトへのリンクが存在しません</b>。もっと知りたいと思った人が行ける場所が物理的にゼロです。しかも締めが「詳しくはフォームから」で、<b>何がもらえるのかを繰り返していません</b>。</p>
+  </div>
+
+  <div class="concl">
+    <span class="n">結論 3</span>
+    <h3>今の予算では、何を変えても「効いたか」が判定できない。</h3>
+    <p>1日169インプ・月約¥3.3万。判定に必要な水準の<b>1/4〜1/9</b>です。クリエイティブやLPの前に、<b>「判定できる予算を出すか、出さないなら媒体を変えるか」</b>の決着が先だと考えています。</p>
+  </div>
+</section>
+
+<!-- ファネル -->
+<section>
+  <h2 class="sec-h">数字：どこで止まっているか</h2>
+  <p class="sec-sub">2026/08/06 実測（消化 ¥1,109）</p>
+  <div class="funnel">
+    <div class="frow"><div class="flabel">表示された</div>
+      <div class="fbarwrap"><div class="fbar" style="width:100%">169</div></div><div class="fnote">—</div></div>
+    <div class="frow"><div class="flabel">3秒観た</div>
+      <div class="fbarwrap"><div class="fbar" style="width:14.2%">24</div></div><div class="fnote">14.2%</div></div>
+    <div class="frow"><div class="flabel">半分観た</div>
+      <div class="fbarwrap"><div class="fbar" style="width:7.1%">12</div></div><div class="fnote">3秒到達の50%</div></div>
+    <div class="frow"><div class="flabel">最後まで観た</div>
+      <div class="fbarwrap"><div class="fbar" style="width:5.3%">9</div></div><div class="fnote">3秒到達の<b>37.5%</b></div></div>
+    <div class="frow"><div class="flabel">クリックした</div>
+      <div class="fbarwrap"><div class="fbar zero">0</div></div><div class="fnote"><span class="bad">ここだけゼロ</span></div></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>読み取れること</h3>
+    <p><b>完走率37.5%は悪い数字ではありません。</b>広告動画で改善の打ち手は普通「①冒頭2秒を強くする ②中だるみを削る ③オファーを変える」の3つですが、①②はこの数字を見る限り主犯ではありません。<b>残るのは③だけ</b>です。</p>
+  </div>
+  <div class="tw" style="margin-top:12px"><table>
+    <tr><th>日</th><th>消化</th><th>インプ</th><th>クリック</th><th>CTR</th><th>CPM</th><th>リード</th></tr>
+    <tr><td>7/1</td><td class="num">¥3,603</td><td class="num">6,013</td><td class="num">12</td><td class="num">0.20%</td><td class="num">¥599</td><td class="num">0</td></tr>
+    <tr><td>7/7</td><td class="num">¥2,907</td><td class="num">401</td><td class="num">9</td><td class="num">2.24%</td><td class="num">¥7,250</td><td class="num">0</td></tr>
+    <tr><td>7/20</td><td class="num">¥2,161</td><td class="num">204</td><td class="num">4</td><td class="num">1.96%</td><td class="num">¥10,593</td><td class="num">0</td></tr>
+    <tr><td>7/30</td><td class="num">¥1,587</td><td class="num">218</td><td class="num">5</td><td class="num">2.29%</td><td class="num">¥7,280</td><td class="num good">1</td></tr>
+    <tr><td><b>8/6</b></td><td class="num">¥1,109</td><td class="num">169</td><td class="num bad">0</td><td class="num bad">0.00%</td><td class="num">¥6,562</td><td class="num">0</td></tr>
+  </table></div>
+  <div class="card">
+    <h3>配信量が枯れています</h3>
+    <p>インプレッションは7/1比で<b>97%減</b>、CPMは<b>11倍</b>。フリクエンシーは1.09なので「同じ人に見せすぎて飽きられた」のではなく、<b>そもそも配信先が出てこない</b>状態です。品質ランキング下位35%と整合します。この状態で予算を足しても単価が上がるだけで量は戻りません。</p>
+  </div>
+</section>
+
+<!-- 動画 -->
+<section>
+  <h2 class="sec-h">動画：現行と改善案</h2>
+  <p class="sec-sub">映像は現行素材をそのまま使い、テロップのみ差し替えています（作り直しコストなし）</p>
+  <div class="vgrid">
+    <div class="vcard">
+      <div class="vh a">現行（8月配信中）</div>
+      <video src="videos/current.mp4" controls preload="metadata" playsinline></video>
+      <div class="vb">
+        <ul>
+          <li>0-1.6s「店舗オーナーの皆様へ」</li>
+          <li>3-4.9s「動画広告、つくれてますか？」</li>
+          <li><b>20-22.9s「動画1本プレゼント」</b>←オファーはここ1回だけ</li>
+          <li>24s-「詳しくはフォームから」</li>
+        </ul>
+        <p style="margin-top:10px"><b class="bad">オファーが20秒目まで出てこない。</b>途中離脱した人には、この広告が何をくれるのか伝わっていません。</p>
+      </div>
+    </div>
+    <div class="vcard">
+      <div class="vh b">改善案（パターンC：実績先行）</div>
+      <video src="videos/patternC.mp4" controls preload="metadata" playsinline></video>
+      <div class="vb">
+        <ul>
+          <li>0-1.75s「こんなお悩み、ありませんか？」</li>
+          <li>1.75-3.6s「動画広告、つくれてますか？」</li>
+          <li><b>3.6-6s「16業種以上で、制作しています。」</b>＋各カットに業種タグ</li>
+          <li>19.7-22.9s「今なら、動画1本 無料作成。」</li>
+          <li>23s-<b>「試してみたい方はこちらへ」＋ buzzplus-ai.com</b></li>
+        </ul>
+        <p style="margin-top:10px"><b>証拠 → オファーの順</b>にしました。無料オファーは「怪しさ」が最大の壁になるので、先に「作れる証拠」を見せてから出します。</p>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>0円オファーについて（要協議）</h3>
+    <p>一番のリスクは工数でも冷やかしでもなく、<b>「安い会社」と認識されること</b>です。工数は上限本数で、冷やかしは店舗URL必須で制御できますが、<b>価格認識だけは後から戻せません</b>。競合が¥20,000〜¥30,000で並ぶ中に0円で入ると、価格帯の外に出ます。</p>
+    <div class="tw" style="margin-top:10px"><table>
+      <tr><th></th><th>A. 1本0円</th><th>B. サンプル提示</th><th>C. 有料お試し</th></tr>
+      <tr><th>内容</th><td>その店の動画を作って渡す</td><td>既存実績から業種が近い動画を送る</td><td>その店の動画を低額で作る</td></tr>
+      <tr><th>反応</th><td class="good">◎ 最強</td><td>△ 弱い（自分の店ではない）</td><td>○</td></tr>
+      <tr><th>初期費用/件</th><td class="bad">制作原価を全額こちら負担</td><td class="good">ほぼゼロ</td><td>一部回収</td></tr>
+      <tr><th>月額ランニング</th><td>広告費のみ</td><td>広告費のみ</td><td>広告費のみ</td></tr>
+      <tr><th>価格認識の毀損</th><td class="bad">大</td><td class="good">なし</td><td>小</td></tr>
+      <tr><th>競合との差</th><td class="good">唯一（7社中0社）</td><td>なし</td><td>TMS¥20,000より安ければ差</td></tr>
+    </table></div>
+    <p style="margin-top:10px"><b>星崎の推奨は B → A の二段構え。</b>原価ゼロのBで先に反応を見て、見込みが立ってからAに賭ける。取り返しのつかないリスクは後ろに置きたいです。<br>
+    <span style="color:var(--mute);font-size:13px">※ Cの価格に数字を入れていません。原価が未算出で、根拠のない金額は判断を誤らせるためです。</span></p>
+  </div>
+</section>
+
+<!-- LP -->
+<section>
+  <h2 class="sec-h">LP：新版をつくりました</h2>
+  <p class="sec-sub">現行LPは競合と価格も無料オファーも同じ内容で、比較されると負ける状態です</p>
+  <div class="tw"><table>
+    <tr><th></th><th>BuzzPlus 現行</th><th>アニメる（最有力競合）</th></tr>
+    <tr><th>15秒の価格</th><td>¥30,000〜</td><td>¥30,000（9割がこの価格と明示）</td></tr>
+    <tr><th>無料オファー</th><td>Zoom30分の無料相談</td><td>無料相談</td></tr>
+    <tr><th>まとめ割</th><td class="bad">なし</td><td class="good">8本¥190,000（@¥23,750）</td></tr>
+    <tr><th>無料修正</th><td class="bad">記載なし</td><td class="good">1回無料</td></tr>
+    <tr><th>納期</th><td class="bad">記載なし</td><td class="good">最短3日／「現在1週間待ち」を常時表示</td></tr>
+    <tr><th>実績数字</th><td>「16業種以上」のみ</td><td>—（ショート動画屋さんは「2,000本以上／15支店」）</td></tr>
+  </table></div>
+  <div class="card">
+    <h3>新LPで変えたこと</h3>
+    <p>不安を3つに分解して個別に潰す構成にし、<b>「なぜ0円で作るのか」を独立セクションで説明</b>しています。無料は必ず「裏があるのでは」を生むので、そこを先に崩さないと逆効果になります。価格・納期・修正回数も明示しました。</p>
+    <p style="margin-top:10px"><b>数字は仮置きです</b>（月5社限定／3営業日／修正1回無料／30秒5万・60秒9万／運用20%）。決裁で変えても構成は崩れません。<b>累計制作本数・導入社数だけは実数が必要</b>なので空欄にしてあります。</p>
+    <a class="btn" href="https://hoshizaemonn.github.io/RUNBIRD/buzzplus-lp-v4-20260807/" target="_blank" rel="noopener">新LPを見る</a>
+  </div>
+</section>
+
+<!-- Google -->
+<section>
+  <h2 class="sec-h">Google広告シフト</h2>
+  <p class="sec-sub">8/6提出分に、今回の調査で分かったことを追加します</p>
+  <div class="card">
+    <h3>追加で分かったこと：競合はGoogleで「まず1本」を回している</h3>
+    <p>TMS Partners が <b>「まず1本つくって、見てから決める」</b>という同じ構造を、<b>有料¥20,000・縛りなし</b>でGoogle広告に出稿中です（広告からの着地を実取得して確認）。<b>この型が機能する実証を競合が示している</b>ことになります。</p>
+    <p style="margin-top:10px">同時に、こちらの新クリエ3案は全部「1本お試し」訴求なので、<b>Googleに出すとTMSと正面衝突</b>します。しかも<b>TMSのお試し¥20,000 &lt; BuzzPlus通常¥30,000</b>。有料お試しで並べると価格で負けるため、<b>0円であることが唯一の差</b>になります。</p>
+  </div>
+  <div class="card">
+    <h3>判定できる予算の水準</h3>
+    <div class="tw"><table>
+      <tr><th>目標リード数</th><th>必要月額（現CPM ¥6,562のまま）</th><th>CPMが¥3,000まで改善した場合</th></tr>
+      <tr><td>月20件</td><td class="num">¥13万〜¥19万</td><td class="num">¥6万〜¥9万</td></tr>
+      <tr><td>月30件</td><td class="num">¥20万〜¥29万</td><td class="num">¥9万〜¥13万</td></tr>
+    </table></div>
+    <p style="margin-top:10px">現行は<b>月約¥3.3万</b>。試算の前提は実測CTR1.73%（15クリック/869インプ）とLP CVR3〜5%（<b>仮定値</b>）です。<b>直近5日の実測CPL ¥7,464 と試算レンジ ¥6,500〜9,700 が一致</b>したので、桁は信用してよいと考えています。ただしリード1件からの逆算なので<b>断定はできません</b>。</p>
+    <a class="btn" href="https://hoshizaemonn.github.io/RUNBIRD/buzzplus-proposal-20260806/" target="_blank" rel="noopener">8/6の提案パッケージ</a>
+  </div>
+</section>
+
+<!-- 判断 -->
+<section>
+  <div class="ask">
+    <h3>判断をお願いしたいこと</h3>
+    <ol>
+      <li><b>0円オファーの可否</b>（A：1本0円／B：サンプル提示／C：有料お試し）。<br>星崎の推奨は <b>B→Aの二段構え</b>です。</li>
+      <li><b>パターンCを配信してよいか。</b>1日169インプではA/B判定が原理的に不能なので、<b>1本に絞って回し</b>、完走後のクリックが0から動くかだけを見たいです。</li>
+      <li><b>広告予算の水準。</b>月¥10〜20万を出すか、出さないならMetaを止めてGoogleに寄せるか。</li>
+      <li><b>実績数字（累計制作本数・導入社数）の提供。</b>動画にもLPにも入る枠を用意していますが、事実なので仮置きできません。</li>
+    </ol>
+  </div>
+</section>
+
+</div>
+
+<footer>BuzzPlus 現状と提案 ／ 2026-08-07 星崎</footer>
+</body>
+</html>
