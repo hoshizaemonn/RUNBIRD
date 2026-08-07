@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuzzPlus LP v4 | お店の動画、まず1本 無料でつくって、観てから決める。</title>
+<style>
+:root{
+  --teal:#08708A;        /* 主色 */
+  --teal-d:#016C8E;
+  --teal-l:#2094B2;
+  --teal-pale:#E9F5F8;
+  --amber:#F0A334;       /* 差し色 */
+  --amber-d:#EE5600;
+  --ink:#0f172a;
+  --ink-2:#343434;
+  --mute:#565656;
+  --f6:#F6F6F6;
+  --line:#eef1f2;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+/* 注意: このLPは約10,290px。DPR2の全画面スクショは20,580pxとなりChromeの上限(16,384px)を
+   超えて画像が破綻する。品質チェックはビューポート単位のスクロール撮影で行うこと。 */
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+  color:var(--ink-2);line-height:1.8;background:#fff;overflow-x:hidden;
+  padding-bottom:72px; /* 追従CTA分 */
+}
+img{max-width:100%;height:auto;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px;}
+.sec{padding:56px 0;}
+@media(min-width:1024px){.sec{padding:88px 0;}}
+.bg-f6{background:var(--f6);}
+.eyebrow{
+  display:inline-block;color:var(--teal);font-weight:700;
+  font-size:clamp(12px,3.2vw,14px);letter-spacing:.08em;margin-bottom:10px;
+}
+.sec-title{
+  font-size:clamp(21px,5.2vw,34px);font-weight:900;color:var(--ink);
+  line-height:1.45;letter-spacing:-.01em;text-align:center;margin-bottom:12px;
+}
+.sec-lead{text-align:center;color:var(--mute);font-size:clamp(13.5px,3.4vw,16px);margin-bottom:36px;}
+.nb{display:inline-block;}
+
+/* 要確定マーカー（公開前に外す） */
+.tbd{background:#fff3cd;color:#7a5a00;border-bottom:2px dotted #d9a400;padding:0 4px;font-weight:700;border-radius:3px;}
+.tbd-note{padding:14px 20px;background:#fff8e1;border-left:5px solid #d9a400;font-size:13px;color:#7a5a00;line-height:1.75;}
+
+/* ---- ナビ ---- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(6px);}
+.nav-in{display:flex;align-items:center;gap:16px;height:58px;}
+.nav-logo{font-weight:900;color:var(--teal);font-size:17px;letter-spacing:-.01em;white-space:nowrap;}
+.nav-links{display:none;gap:18px;margin-left:auto;}
+.nav-links a{color:var(--mute);text-decoration:none;font-size:13.5px;font-weight:700;white-space:nowrap;}
+.nav-links a:hover{color:var(--teal);}
+.nav-cta{
+  margin-left:auto;background:var(--teal);color:#fff;text-decoration:none;
+  padding:10px 16px;border-radius:8px;font-weight:700;font-size:13.5px;white-space:nowrap;
+}
+@media(min-width:1024px){.nav-links{display:flex;} .nav-cta{margin-left:18px;}}
+
+/* ---- FV ---- */
+.fv{background:linear-gradient(180deg,var(--teal-pale) 0%,#fff 100%);padding:40px 0 52px;position:relative;overflow:hidden;}
+@media(min-width:1024px){.fv{padding:72px 0 92px;}}
+.fv-in{max-width:900px;margin:0 auto;text-align:center;}
+.fv-eyebrow{
+  display:inline-block;background:#fff;border:2px solid var(--teal);color:var(--teal);
+  padding:6px 16px;border-radius:999px;font-size:clamp(11.5px,3vw,13.5px);font-weight:700;margin-bottom:20px;
+}
+.fv h1{
+  font-size:clamp(26px,7vw,50px);font-weight:900;color:var(--ink);
+  line-height:1.38;letter-spacing:-.02em;margin-bottom:18px;
+}
+.fv h1 .hl{color:var(--teal);}
+.fv h1 .big{
+  color:var(--amber-d);font-size:1.18em;
+  border-bottom:6px solid var(--amber);padding-bottom:2px;
+}
+.fv p.sub{font-size:clamp(14px,3.7vw,18px);color:var(--mute);margin-bottom:30px;line-height:1.85;}
+.fv-cta{
+  display:inline-block;background:var(--amber-d);color:#fff;text-decoration:none;
+  padding:18px 34px;border-radius:12px;font-size:clamp(16px,4.3vw,21px);font-weight:900;
+  box-shadow:0 10px 26px rgba(238,86,0,.32);transition:transform .2s;max-width:100%;
+}
+.fv-cta:hover{transform:translateY(-2px);}
+.fv-badge{
+  display:inline-flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;
+  margin-top:20px;padding:14px 22px;background:#fff;border:2px solid var(--teal);border-radius:12px;
+}
+.fv-badge b{color:var(--teal);font-size:clamp(15px,4vw,19px);font-weight:900;}
+.fv-badge span{color:var(--mute);font-size:clamp(12px,3.2vw,14px);}
+
+/* ---- 悩み ---- */
+.worry-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;}
+.worry-item{
+  background:#fff;border:2px solid var(--line);border-radius:12px;padding:22px 18px;text-align:center;
+}
+.worry-item .mk{color:var(--teal-l);font-size:26px;font-weight:900;line-height:1;margin-bottom:10px;}
+.worry-item p{font-size:clamp(13.5px,3.5vw,15px);font-weight:700;color:var(--ink);line-height:1.65;}
+
+/* 中間CTA帯 */
+.cta-band{background:var(--teal-pale);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.cta-band .wrap{text-align:center;padding-top:40px;padding-bottom:40px;}
+.cta-band h3{font-size:clamp(17px,4.4vw,24px);font-weight:900;color:var(--ink);margin-bottom:10px;line-height:1.55;}
+.cta-band p{color:var(--mute);font-size:clamp(13px,3.4vw,15px);margin-bottom:20px;}
+.btn-teal{
+  display:inline-block;background:var(--teal);color:#fff;text-decoration:none;
+  padding:15px 30px;border-radius:10px;font-weight:900;font-size:clamp(14.5px,3.9vw,17px);
+}
+
+/* ---- 3つの不安 ---- */
+.fear-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+.fear-item{background:#fff;border-radius:14px;overflow:hidden;border:2px solid var(--line);}
+.fear-q{background:var(--ink);color:#fff;padding:14px 18px;font-weight:700;font-size:clamp(13.5px,3.5vw,15px);}
+.fear-q::before{content:"「";}
+.fear-q::after{content:"」";}
+.fear-a{padding:20px 18px;}
+.fear-a .ttl{color:var(--amber-d);font-weight:900;font-size:clamp(16px,4.2vw,19px);margin-bottom:8px;line-height:1.5;}
+.fear-a p{font-size:clamp(13px,3.4vw,14.5px);color:var(--mute);}
+
+/* ---- 業種 ---- */
+.biz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.biz-item{background:#fff;border:2px solid var(--line);border-radius:12px;padding:20px;}
+.biz-tag{
+  display:inline-block;background:var(--teal-pale);color:var(--teal);
+  font-size:11.5px;font-weight:900;padding:4px 10px;border-radius:5px;margin-bottom:10px;letter-spacing:.04em;
+}
+.biz-item h4{font-size:clamp(15px,4vw,17px);color:var(--ink);font-weight:900;margin-bottom:6px;}
+.biz-item p{font-size:clamp(12.5px,3.3vw,14px);color:var(--mute);}
+
+/* ---- 実績 ---- */
+.case{background:#fff;border:2px solid var(--line);border-radius:14px;padding:24px;margin-bottom:18px;}
+.case-head{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+.case-head span{background:var(--teal);color:#fff;font-size:11.5px;font-weight:900;padding:4px 10px;border-radius:5px;}
+.case h4{font-size:clamp(16px,4.2vw,20px);color:var(--ink);font-weight:900;margin-bottom:12px;line-height:1.5;}
+.case-row{display:grid;grid-template-columns:1fr;gap:12px;}
+@media(min-width:768px){.case-row{grid-template-columns:1fr 1fr;}}
+.case-cell{background:var(--f6);border-radius:10px;padding:14px 16px;}
+.case-cell b{display:block;color:var(--teal);font-size:12.5px;margin-bottom:5px;font-weight:900;}
+.case-cell p{font-size:clamp(12.5px,3.3vw,14px);color:var(--mute);}
+
+/* ---- 流れ ---- */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;}
+.flow-item{background:#fff;border:2px solid var(--line);border-radius:12px;padding:22px 18px;position:relative;}
+.flow-item .n{
+  width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;margin-bottom:12px;
+}
+.flow-item h4{font-size:clamp(14.5px,3.8vw,16px);color:var(--ink);font-weight:900;margin-bottom:6px;line-height:1.5;}
+.flow-item p{font-size:clamp(12.5px,3.3vw,14px);color:var(--mute);}
+
+/* ---- 料金3段階 ---- */
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;align-items:stretch;}
+.plan{background:#fff;border:2px solid var(--line);border-radius:14px;padding:26px 22px;display:flex;flex-direction:column;}
+.plan.is-main{border-color:var(--amber);box-shadow:0 10px 30px rgba(240,163,52,.18);position:relative;}
+.plan.is-main::before{
+  content:"まずはここから";position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--amber-d);color:#fff;font-size:12px;font-weight:900;padding:5px 16px;border-radius:999px;white-space:nowrap;
+}
+.plan h4{font-size:clamp(15px,4vw,17px);color:var(--ink);font-weight:900;margin-bottom:12px;}
+.plan .amt{font-size:clamp(32px,8.5vw,44px);font-weight:900;color:var(--teal);line-height:1.1;letter-spacing:-.02em;}
+.plan .amt small{font-size:.42em;font-weight:900;margin-left:2px;}
+.plan .cond{color:var(--mute);font-size:clamp(12px,3.2vw,13.5px);margin:8px 0 14px;}
+.plan p.desc{font-size:clamp(12.5px,3.3vw,14px);color:var(--mute);margin-top:auto;}
+
+/* ---- FAQ ---- */
+.faq{max-width:800px;margin:0 auto;}
+.faq-item{background:#fff;border:2px solid var(--line);border-radius:12px;padding:20px;margin-bottom:12px;}
+.faq-item h4{font-size:clamp(14.5px,3.9vw,17px);color:var(--ink);font-weight:900;margin-bottom:8px;line-height:1.55;}
+.faq-item h4::before{content:"Q. ";color:var(--amber-d);}
+.faq-item p{font-size:clamp(13px,3.4vw,14.5px);color:var(--mute);}
+
+/* ---- フォーム ---- */
+.form-sec{background:var(--teal);color:#fff;}
+.form-sec .sec-title{color:#fff;}
+.form-sec .sec-lead{color:rgba(255,255,255,.85);}
+.form-card{background:#fff;border-radius:16px;padding:26px 22px;max-width:600px;margin:0 auto;color:var(--ink-2);}
+@media(min-width:768px){.form-card{padding:38px;}}
+.field{margin-bottom:20px;}
+.field label{display:block;font-weight:900;color:var(--ink);margin-bottom:8px;font-size:clamp(13.5px,3.6vw,15px);}
+.field .req{background:var(--amber-d);color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;font-weight:700;}
+.field input,.field select{
+  width:100%;padding:14px;border:2px solid var(--line);border-radius:8px;
+  font-size:16px;font-family:inherit;background:#fff;color:var(--ink-2);
+}
+.field input:focus,.field select:focus{outline:none;border-color:var(--teal);}
+.field .hint{font-size:12px;color:var(--mute);margin-top:6px;line-height:1.6;}
+.submit-btn{
+  width:100%;background:var(--amber-d);color:#fff;border:none;padding:19px;border-radius:12px;
+  font-size:clamp(16px,4.2vw,19px);font-weight:900;cursor:pointer;font-family:inherit;
+  box-shadow:0 8px 22px rgba(238,86,0,.3);
+}
+.form-foot{text-align:center;margin-top:14px;font-size:12px;color:var(--mute);line-height:1.7;}
+
+/* ---- 追従CTA（スマホ） ---- */
+.sticky-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.97);
+  border-top:1px solid var(--line);padding:10px 14px;box-shadow:0 -4px 18px rgba(0,0,0,.08);
+}
+.sticky-cta a{
+  display:block;background:var(--amber-d);color:#fff;text-decoration:none;text-align:center;
+  padding:15px;border-radius:10px;font-weight:900;font-size:clamp(15px,4.1vw,17px);
+}
+@media(min-width:1024px){.sticky-cta{display:none;} body{padding-bottom:0;}}
+
+footer{background:var(--ink);color:rgba(255,255,255,.6);padding:28px 0;text-align:center;font-size:12.5px;}
+</style>
+</head>
+<body>
+
+<div class="tbd-note">
+  <strong>【BuzzPlus 新LP モックアップ・2026-08-07】</strong> 社内レビュー用の試作です。実サービスページではありません。<br>
+  <strong>■ 仮置きの数字（決裁で変更可・変えても構成は崩れません）</strong><br>
+  月<b>5</b>社限定 ／ 納期<b>3</b>営業日 ／ 修正<b>1回</b>無料 ／ 30秒<b>5万円</b>・60秒<b>9万円</b> ／ 広告運用<b>広告費の20%（下限月5万円）</b><br>
+  <strong>■ 黄色マーカー<span class="tbd">こう</span>＝ 実数の提供が必要な項目</strong><br>
+  累計制作本数・導入社数・掲載事例は「過去の事実」のため仮置きしていません。
+</div>
+
+<!-- ナビ -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <div class="nav-logo">BuzzPlus</div>
+    <div class="nav-links">
+      <a href="#worry">お悩み</a>
+      <a href="#free">無料でお渡し</a>
+      <a href="#biz">対応業種</a>
+      <a href="#case">制作実績</a>
+      <a href="#flow">流れ</a>
+      <a href="#plan">料金</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#form" class="nav-cta">無料で1本つくる</a>
+  </div>
+</nav>
+
+<!-- FV -->
+<section class="fv">
+  <div class="wrap fv-in">
+    <div class="fv-eyebrow">はじめて動画をつくる店舗さまへ</div>
+    <h1><span class="nb">お店の動画、</span><br><span class="nb">まず<span class="big">1本</span>つくって、</span><br><span class="nb"><span class="hl">観てから決める。</span></span></h1>
+    <p class="sub"><span class="nb">撮影なし。モデルなし。素材もなし。</span><br><span class="nb">Instagram・TikTok広告に合う縦型動画を、</span><span class="nb">企画から運用まで一社で。</span></p>
+    <a href="#form" class="fv-cta">無料で1本つくってもらう</a>
+    <div class="fv-badge">
+      <b>お試し1本 0円</b>
+      <span>1本から・縛りなし・営業電話なし</span>
+    </div>
+  </div>
+</section>
+
+<!-- 悩み -->
+<section class="sec bg-f6" id="worry">
+  <div class="wrap">
+    <p style="text-align:center"><span class="eyebrow">お悩み</span></p>
+    <h2 class="sec-title"><span class="nb">動画で集客したい。</span><br><span class="nb">でも、ここで止まっていませんか？</span></h2>
+    <div class="worry-grid" style="margin-top:32px;">
+      <div class="worry-item"><div class="mk">01</div><p>撮影する時間も<br>人手もない</p></div>
+      <div class="worry-item"><div class="mk">02</div><p>“集客につながる”<br>作り方が分からない</p></div>
+      <div class="worry-item"><div class="mk">03</div><p>頼んで失敗したら<br>と思うと踏み出せない</p></div>
+      <div class="worry-item"><div class="mk">04</div><p>いくらかかるのか<br>読めない</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 中間CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <h3><span class="nb">「うちの店でも動画にできる？」</span><br><span class="nb">その段階からで大丈夫です。</span></h3>
+    <p>何を作るか決まっていなくても構いません。お店のURLだけご用意ください。</p>
+    <a href="#form" class="btn-teal">無料で1本つくってもらう</a>
+  </div>
+</section>
+
+<!-- 3つの不安 -->
+<section class="sec" id="free">
+  <div class="wrap">
+    <p style="text-align:center"><span class="eyebrow">無料でお渡し</span></p>
+    <h2 class="sec-title"><span class="nb">「動画、いきなりは不安」を、</span><br><span class="nb">まず1本でなくします。</span></h2>
+    <p class="sec-lead">踏み出せない理由は、だいたい3つ。無料の1本は、その3つを最初に消すためのものです。</p>
+    <div class="fear-grid">
+      <div class="fear-item">
+        <div class="fear-q">効果があるか分からない</div>
+        <div class="fear-a">
+          <div class="ttl">完成した“現物”で判断できる</div>
+          <p>提案書でも見積書でもなく、あなたのお店の動画そのものを観てから決められます。想像で判断する必要がありません。</p>
+        </div>
+      </div>
+      <div class="fear-item">
+        <div class="fear-q">費用や契約が不安</div>
+        <div class="fear-a">
+          <div class="ttl">0円・縛りなし</div>
+          <p>継続義務も自動更新もありません。1本だけで終わっていただいて構いません。気に入らなければ発注いただく必要はありません。</p>
+        </div>
+      </div>
+      <div class="fear-item">
+        <div class="fear-q">うちの店で動画になる？</div>
+        <div class="fear-a">
+          <div class="ttl">そのまま投稿・広告に出せる</div>
+          <p>お店のURLから雰囲気と強みを読み取って構成します。届いた動画はリールにもTikTokにも、広告にもそのまま使えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- なぜ無料か -->
+<section class="sec bg-f6">
+  <div class="wrap">
+    <p style="text-align:center"><span class="eyebrow">理由</span></p>
+    <h2 class="sec-title">なぜ、0円で作るのか。</h2>
+    <p class="sec-lead">怪しく聞こえると思うので、先にお伝えします。</p>
+    <div class="fear-grid">
+      <div class="fear-item">
+        <div class="fear-a">
+          <div class="ttl">説明より、観てもらうほうが早いから</div>
+          <p>「AIで動画が作れます」と言葉で説明しても、実物を見るまで判断はできないはずです。だから先に作ってお渡ししています。</p>
+        </div>
+      </div>
+      <div class="fear-item">
+        <div class="fear-a">
+          <div class="ttl">こちらも実績が欲しいから</div>
+          <p>許可をいただけた場合のみ、制作実績として掲載させてください。掲載がNGでも動画はそのままお渡しします。</p>
+        </div>
+      </div>
+      <div class="fear-item">
+        <div class="fear-a">
+          <div class="ttl">だから、月<b>5</b>社までです</div>
+          <p>1本ずつ手をかけて作るため、これ以上はお受けできません。埋まり次第、翌月ぶんの受付になります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 業種 -->
+<section class="sec" id="biz">
+  <div class="wrap">
+    <p style="text-align:center"><span class="eyebrow">対応業種</span></p>
+    <h2 class="sec-title"><span class="nb">「うちの業種でも作れる？」</span><br><span class="nb">その1本から、つくれます。</span></h2>
+    <p class="sec-lead">業種ごとに、お客様が反応する見せ方は違います。そこに合わせて構成します。</p>
+    <div class="biz-grid">
+      <div class="biz-item"><span class="biz-tag">来店促進</span><h4>飲食店</h4><p>シズル感と店内の空気で「行きたい」を作る。メニューの見せ場を短く連ねる構成。</p></div>
+      <div class="biz-item"><span class="biz-tag">指名予約</span><h4>美容室・サロン</h4><p>ビフォーアフターと施術の世界観で、スタイリスト指名につなげる。</p></div>
+      <div class="biz-item"><span class="biz-tag">悩み訴求</span><h4>整体・接骨院</h4><p>症状への共感から入り、通う理由を短時間で伝える。</p></div>
+      <div class="biz-item"><span class="biz-tag">信頼構築</span><h4>クリニック</h4><p>清潔感と先生の人柄を軸に、不安を先に消す構成。</p></div>
+      <div class="biz-item"><span class="biz-tag">体験導線</span><h4>ジム・スタジオ</h4><p>変化の実感と続けやすさを見せ、体験申込につなげる。</p></div>
+      <div class="biz-item"><span class="biz-tag">保護者訴求</span><h4>学習塾</h4><p>結果と面倒見の良さを、保護者目線の言葉で伝える。</p></div>
+    </div>
+    <p class="sec-lead" style="margin-top:28px;margin-bottom:0;">上記以外の業種もご相談ください。これまで16業種以上で制作しています。</p>
+  </div>
+</section>
+
+<!-- 実績 -->
+<section class="sec bg-f6" id="case">
+  <div class="wrap">
+    <p style="text-align:center"><span class="eyebrow">制作実績</span></p>
+    <h2 class="sec-title">こんな動画をお渡ししています。</h2>
+    <p class="sec-lead"><span class="tbd">※ 掲載する2事例と、累計制作本数・導入社数は実数の提供待ちです。</span></p>
+    <div class="case">
+      <div class="case-head"><span>企画・制作</span><span>Instagramリール</span></div>
+      <h4><span class="tbd">◯◯◯◯様（業種）</span></h4>
+      <div class="case-row">
+        <div class="case-cell"><b>課題</b><p><span class="tbd">（要記入）どんな集客課題があったか</span></p></div>
+        <div class="case-cell"><b>制作したもの</b><p><span class="tbd">（要記入）何を作り、どう使ったか</span></p></div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="case-head"><span>企画・制作〜広告運用</span><span>Instagram / TikTok</span></div>
+      <h4><span class="tbd">◯◯◯◯様（業種）</span></h4>
+      <div class="case-row">
+        <div class="case-cell"><b>課題</b><p><span class="tbd">（要記入）</span></p></div>
+        <div class="case-cell"><b>制作したもの</b><p><span class="tbd">（要記入）</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 流れ -->
+<section class="sec" id="flow">
+  <div class="wrap">
+    <p style="text-align:center"><span class="eyebrow">お渡しまでの流れ</span></p>
+    <h2 class="sec-title"><span class="nb">ご用意いただくのは、</span><span class="nb">お店のURLだけです。</span></h2>
+    <p class="sec-lead">打ち合わせもヒアリングシートも要りません。</p>
+    <div class="flow">
+      <div class="flow-item"><div class="n">1</div><h4>フォームに30秒入力</h4><p>業種・店名・お店のURL・メールの4つだけ。お電話は伺いません。</p></div>
+      <div class="flow-item"><div class="n">2</div><h4>こちらで構成します</h4><p>URLからお店の雰囲気と強みを読み取り、15秒の構成を組み立てます。</p></div>
+      <div class="flow-item"><div class="n">3</div><h4>3営業日でお渡し</h4><p>完成したMP4をメールでお送りします。すぐ投稿・広告に使えます。</p></div>
+      <div class="flow-item"><div class="n">4</div><h4>観てから決める</h4><p>「いらない」と思えばそれで終わりです。こちらから追いかけません。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<section class="sec bg-f6" id="plan">
+  <div class="wrap">
+    <p style="text-align:center"><span class="eyebrow">料金</span></p>
+    <h2 class="sec-title"><span class="nb">まず1本から。</span><span class="nb">気に入ったら、続けられます。</span></h2>
+    <p class="sec-lead">いきなり大きな契約は不要です。段階的に進められます。</p>
+    <div class="plan-grid" style="margin-top:26px;">
+      <div class="plan is-main">
+        <h4>お試し1本</h4>
+        <div class="amt">0<small>円</small></div>
+        <p class="cond">縛りなし・1本から</p>
+        <p class="desc">まず1本お渡しし、質と方向性をご確認いただきます。自動で有料に切り替わることはありません。</p>
+      </div>
+      <div class="plan">
+        <h4>2本目以降</h4>
+        <div class="amt">30,000<small>円〜</small></div>
+        <p class="cond">15秒／1本（税抜）<br>30秒 50,000円／60秒 90,000円</p>
+        <p class="desc">複数本を作り、業種や訴求を変えながら“当たる型”を探します。</p>
+      </div>
+      <div class="plan">
+        <h4>広告運用（任意）</h4>
+        <div class="amt">20<small>%</small></div>
+        <p class="cond">広告費に対して／媒体合算・下限 月5万円</p>
+        <p class="desc">配信・運用まで。数字を見ながら動画も作り変えていきます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <p style="text-align:center"><span class="eyebrow">FAQ</span></p>
+    <h2 class="sec-title">よくあるご質問</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h4>本当に0円ですか。あとから請求されませんか。</h4>
+        <p>本当に0円です。1本お渡しした時点で完了で、そこから自動で有料に移行することはありません。続けるかどうかはご自身で決めていただけます。</p>
+      </div>
+      <div class="faq-item">
+        <h4>写真や動画素材を用意する必要がありますか。</h4>
+        <p>不要です。お店のURLをいただければ、こちらで構成から制作まで行います。お渡ししたい素材があればお送りいただいても構いません。</p>
+      </div>
+      <div class="faq-item">
+        <h4>どんな動画になるのか、事前に見られますか。</h4>
+        <p><span class="tbd">※ ここにサンプル動画2〜3本を埋め込む（要選定）。既存の制作実績から選ぶ。</span></p>
+      </div>
+      <div class="faq-item">
+        <h4>気に入らなかったらどうなりますか。</h4>
+        <p>そのまま終了で問題ありません。お渡しした動画はそのままお使いいただけます。こちらから追いかけるご連絡はいたしません。</p>
+      </div>
+      <div class="faq-item">
+        <h4>修正はしてもらえますか。</h4>
+        <p>無料の1本にも修正を1回お付けしています。方向性が違う場合は遠慮なくお申し付けください。</p>
+      </div>
+      <div class="faq-item">
+        <h4>AIで作った動画の著作権は大丈夫ですか。</h4>
+        <p>商用利用が許可されたツールのみを使用し、既存の著作物に似ないよう制作段階で確認しています。SNS投稿・広告配信ともに問題なくお使いいただけます。<span class="tbd">※ ガイドラインページの用意を推奨。</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フォーム -->
+<section class="sec form-sec" id="form">
+  <div class="wrap">
+    <h2 class="sec-title">無料で1本つくる</h2>
+    <p class="sec-lead">入力は30秒で終わります。お電話は伺いません。</p>
+    <div class="form-card">
+      <div class="field">
+        <label>業種<span class="req">必須</span></label>
+        <select>
+          <option>選択してください</option>
+          <option>飲食店</option><option>美容室・サロン</option><option>整体・接骨院</option>
+          <option>クリニック</option><option>ジム・スタジオ</option><option>学習塾</option>
+          <option>工務店・不動産</option><option>その他</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>店名<span class="req">必須</span></label>
+        <input type="text" placeholder="例：カフェ・ランバード 博多店">
+      </div>
+      <div class="field">
+        <label>お店のURL<span class="req">必須</span></label>
+        <input type="url" placeholder="https://…">
+        <p class="hint">構成を組み立てるために使います。ホームページがなければInstagramのURLで構いません。</p>
+      </div>
+      <div class="field">
+        <label>メールアドレス<span class="req">必須</span></label>
+        <input type="email" placeholder="example@your-shop.jp">
+        <p class="hint">完成した動画のお届け先です。</p>
+      </div>
+      <button class="submit-btn">無料で1本つくってもらう</button>
+      <p class="form-foot">送信後、3営業日以内に動画をお送りします。<br>営業のお電話・しつこい追客はいたしません。</p>
+    </div>
+  </div>
+</section>
+
+<footer>BuzzPlus — AI動画 × SNS広告</footer>
+
+<div class="sticky-cta"><a href="#form">無料で1本つくってもらう</a></div>
+
+</body>
+</html>
