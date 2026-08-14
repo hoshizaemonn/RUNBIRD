@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告 運用レポート — フジサワオート 様</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #cc0000;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* 目的・ゴール */
+        .goal-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+        }
+        .goal-banner h2 {
+            color: #ff6b6b;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .goal-banner .goal-sub {
+            text-align: center;
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 24px;
+        }
+        .goal-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .gf-box {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            min-width: 160px;
+        }
+        .gf-box .gf-step { font-size: 11px; color: #ff6b6b; font-weight: 700; margin-bottom: 4px; }
+        .gf-box .gf-title { font-size: 15px; font-weight: 700; }
+        .gf-box .gf-desc { font-size: 12px; color: #ccc; margin-top: 4px; }
+        .gf-arrow { color: #ff6b6b; font-size: 24px; font-weight: 700; padding: 0 10px; }
+
+        /* ターゲティング */
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .target-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+        .target-card .t-icon { font-size: 28px; margin-bottom: 8px; }
+        .target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+        .target-card .t-value { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.5; }
+
+        .area-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .area-box { border-radius: 10px; padding: 18px; }
+        .area-box.primary { background: #fff0f0; border: 2px solid #cc0000; }
+        .area-box.secondary { background: #f0f7ff; border: 2px solid #1976d2; }
+        .area-box h4 { font-size: 14px; margin-bottom: 10px; }
+        .area-box .area-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 3px 4px;
+        }
+        .area-box.primary .area-tag { background: #ffebee; color: #c62828; }
+        .area-box.secondary .area-tag { background: #e3f2fd; color: #1565c0; }
+
+        /* キーワード */
+        .kw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .kw-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+        }
+        .kw-box h4 {
+            font-size: 13px;
+            color: #cc0000;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #eee;
+        }
+        .kw-tag {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 12px;
+            margin: 2px;
+            color: #333;
+        }
+
+        /* 補足 */
+        .note-bar {
+            background: #fff3e0;
+            border: 2px solid #ff8800;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+        }
+        .note-bar h3 { color: #e65100; font-size: 15px; margin-bottom: 10px; }
+        .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
+        .note-bar li { margin-bottom: 6px; }
+        .note-bar li strong { color: #cc0000; }
+
+        @media (max-width: 768px) {
+            .target-grid { grid-template-columns: repeat(2, 1fr); }
+            .area-section { grid-template-columns: 1fr; }
+            .kw-grid { grid-template-columns: 1fr; }
+
+            .goal-flow { flex-direction: column; }
+            .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 運用提案書</h1>
+    <p class="subtitle">フジサワオート 様｜株式会社ランバード</p>
+
+    <!-- ① 目的・ゴール -->
+    <div class="goal-banner">
+        <h2>広告配信の目的</h2>
+        <p class="goal-sub">岡山市・赤磐市エリアで愛車を大切にしているオーナーに、エンジン内部洗浄という選択肢を知ってもらいお問い合わせにつなげる</p>
+        <div class="goal-flow">
+            <div class="gf-box">
+                <div class="gf-step">STEP 1</div>
+                <div class="gf-title">認知</div>
+                <div class="gf-desc">YouTube広告で<br>「乗り換えの前に再生という選択」を届ける</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 2</div>
+                <div class="gf-title">興味</div>
+                <div class="gf-desc">動画を30秒以上見た方に<br>エンジン復元の技術力を伝える</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 3</div>
+                <div class="gf-title">問い合わせ</div>
+                <div class="gf-desc">LPで詳細を確認<br>電話・相談の予約</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">GOAL</div>
+                <div class="gf-title">施工・紹介</div>
+                <div class="gf-desc">エンジン洗浄を体感<br>口コミ・リピートへ</div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ② 現在の運用設定 -->
+    <div class="section" style="border-color:#1976d2;">
+        <div class="section-title">
+            <span class="icon" style="background:#1976d2;">1</span>
+            現在の運用設定（ひとめ確認）
+        </div>
+
+        <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px 18px;margin-bottom:18px;">
+            <div style="font-size:13px;color:#0d47a1;line-height:1.8;">
+                <strong>📌 ご契約内容:</strong> 「フジサワオート」キャンペーン（エンジン内部洗浄サービス）／配信開始 2026年4月1日〜<br>
+                <strong>📺 広告形式:</strong> YouTube インストリーム広告（動画再生前に流れ、5秒後にスキップ可能。興味のある方だけに届きます）
+            </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px;">
+            <div style="background:#f8f9fa;border-left:5px solid #cc0000;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">📍 配信エリア</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    岡山市 北区・中区・東区・南区 / 赤磐市
+                </div>
+            </div>
+            <div style="background:#f8f9fa;border-left:5px solid #cc0000;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">👤 ターゲット</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    男性 25〜64才（女性・65才以上は配信対象外）
+                </div>
+            </div>
+            <div style="background:#f8f9fa;border-left:5px solid #2e7d32;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🕐 配信時間</div>
+                <div style="font-size:13px;color:#333;line-height:1.8;">
+                    毎日 7:00〜23:00<br>
+                    <span style="font-size:11px;color:#888;">同じ方への表示は週3回まで</span>
+                </div>
+            </div>
+            <div style="background:#f8f9fa;border-left:5px solid #2e7d32;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🔗 ご案内先（LP）</div>
+                <div style="font-size:12px;color:#1976d2;word-break:break-all;line-height:1.6;">
+                    <a href="https://engine-restore.hp.peraichi.com/" target="_blank" rel="noopener" style="color:#1976d2;">engine-restore.hp.peraichi.com</a>
+                </div>
+            </div>
+        </div>
+
+        <div style="background:#f8f9fa;border-left:5px solid #f9a825;border-radius:8px;padding:14px 16px;margin-bottom:14px;">
+            <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🎬 配信中の動画</div>
+            <div style="font-size:13px;color:#333;line-height:1.8;">
+                エンジン内部洗浄で愛車復活｜フジサワオート<br>
+                <a href="https://youtu.be/nbMxGRlbIIQ" target="_blank" rel="noopener" style="font-size:12px;color:#1976d2;">https://youtu.be/nbMxGRlbIIQ</a>
+            </div>
+        </div>
+
+        <div style="background:#f8f9fa;border-radius:8px;padding:14px 18px;">
+            <div style="font-size:13px;font-weight:700;color:#333;margin-bottom:10px;">🔑 設定キーワード（広告が表示される検索意図／全16語）</div>
+            <div style="font-size:12px;color:#555;line-height:1.9;">
+                <strong style="color:#cc0000;">エンジンの不調系:</strong> エンジン洗浄 / エンジン 不調 / エンジン パワーダウン / エンジン 異音 / カーボン除去 / エンジン リフレッシュ<br>
+                <strong style="color:#1976d2;">愛車こだわり系:</strong> 愛車 メンテナンス / 車 長く乗る / 車 整備 / 車 コンディション<br>
+                <strong style="color:#2e7d32;">ライフスタイル系:</strong> 車好き / ドライブ 岡山 / 旧車 維持 / 走行距離 多い / 車 乗り換え 迷う / 10万キロ 車
+            </div>
+        </div>
+    </div>
+
+    <!-- ③ 配信実績サマリー -->
+    <div class="section" style="border-color:#2e7d32;">
+        <div class="section-title">
+            <span class="icon" style="background:#2e7d32;">2</span>
+            配信実績サマリー（2026年4月・5月）
+        </div>
+
+        <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:16px 20px;margin-bottom:14px;">
+            <div style="font-size:13px;color:#1b5e20;line-height:1.8;">
+                <strong>📊 集計対象:</strong> Google広告キャンペーン「フジサワオート」（フジサワオート様運営）<br>
+                <strong>🎯 結論ひとこと:</strong> 同じ配信規模で<strong>表示+12.7% / 視聴+18.3% / 視聴率+2.3pt</strong>と全指標で改善中。視聴率は2ヶ月とも業界平均（25%）の<strong>約2倍</strong>。
+            </div>
+        </div>
+
+        <!-- 用語の説明 -->
+        <details style="background:#f8f9fa;border:1px solid #ddd;border-radius:10px;padding:14px 18px;margin-bottom:18px;">
+            <summary style="cursor:pointer;font-weight:700;color:#1a1a1a;font-size:13px;">📖 用語の説明（クリックで開く）</summary>
+            <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;">
+                <thead>
+                    <tr style="background:#f1f8e9;">
+                        <th style="padding:8px;text-align:left;border:1px solid #ddd;width:22%;">用語</th>
+                        <th style="padding:8px;text-align:left;border:1px solid #ddd;">意味</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">表示回数<br><span style="font-weight:normal;font-size:11px;color:#888;">（インプレッション）</span></td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;">広告動画が画面に表示された回数。スキップされた場合も「表示」としてカウントされます（=どれだけの方の目に触れたか）。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">視聴回数</td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;"><strong>30秒以上ご覧いただいた回数</strong>（動画が30秒より短い場合は<strong>最後まで視聴</strong>された回数）。5秒経過後にスキップされた場合は視聴にカウントされません。<br>＝<strong>「興味を持って見続けてくれた方の数」</strong>として捉えていただけます。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">視聴率</td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;"><strong>視聴回数 ÷ 表示回数</strong>。表示された方のうち、どれくらいの方がスキップせずに見続けてくれたかの割合。<br>YouTube動画広告全体での業界平均は<strong>約25%</strong>。フジサワオート様の視聴率は<strong>48.58%（5月）</strong>と、業界平均の約2倍に達しています。</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:10px;border:1px solid #ddd;font-weight:700;">完視率<br><span style="font-weight:normal;font-size:11px;color:#888;">（25% / 50% / 75% / 100%）</span></td>
+                        <td style="padding:10px;border:1px solid #ddd;line-height:1.7;">動画全体のうち、各到達ポイント（4分の1・半分・4分の3・最後まで）を再生された割合。<br>特に <strong>100%完視率</strong> は「動画を最後まで見届けてくれた方の割合」を示します。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </details>
+
+        <!-- 月別基本指標 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📈 月別 基本指標</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:14px;">
+            <thead>
+                <tr style="background:#2e7d32;color:#fff;">
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;width:18%;">対象月</th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">表示回数</th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">視聴回数</th>
+                    <th style="padding:12px;text-align:center;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody data-report-table="bimonthly">
+                <tr data-report-month="2026-04">
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026年4月</td>
+                    <td data-metric="impressions" style="padding:10px;text-align:right;border:1px solid #ddd;">1,627</td>
+                    <td data-metric="views" style="padding:10px;text-align:right;border:1px solid #ddd;">753</td>
+                    <td data-metric="view_rate" style="padding:10px;text-align:right;border:1px solid #ddd;">46.28%</td>
+                </tr>
+                <tr data-report-month="2026-05">
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026年5月</td>
+                    <td data-metric="impressions" style="padding:10px;text-align:right;border:1px solid #ddd;">1,834</td>
+                    <td data-metric="views" style="padding:10px;text-align:right;border:1px solid #ddd;">891</td>
+                    <td data-metric="view_rate" style="padding:10px;text-align:right;border:1px solid #ddd;">48.58%</td>
+                </tr>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;font-weight:700;color:#e65100;">推移</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+12.7%</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+18.3%</td>
+                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+2.3pt</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 業界平均比較ハイライト -->
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;">
+            <div style="background:#fff0f0;border:2px solid #cc0000;border-radius:10px;padding:16px;text-align:center;">
+                <div style="font-size:11px;color:#cc0000;font-weight:700;margin-bottom:4px;">視聴率（5月）</div>
+                <div style="font-size:28px;font-weight:800;color:#cc0000;">48.58<span style="font-size:18px;">%</span></div>
+                <div style="font-size:11px;color:#555;margin-top:4px;">業界平均25% の<strong>約2倍</strong></div>
+            </div>
+            <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:16px;text-align:center;">
+                <div style="font-size:11px;color:#2e7d32;font-weight:700;margin-bottom:4px;">100%完視率（5月）</div>
+                <div style="font-size:28px;font-weight:800;color:#2e7d32;">36.93<span style="font-size:18px;">%</span></div>
+                <div style="font-size:11px;color:#555;margin-top:4px;">3人に1人以上が<strong>最後まで視聴</strong></div>
+            </div>
+            <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:16px;text-align:center;">
+                <div style="font-size:11px;color:#1976d2;font-weight:700;margin-bottom:4px;">視聴回数（5月）</div>
+                <div style="font-size:28px;font-weight:800;color:#1976d2;">891<span style="font-size:16px;">回</span></div>
+                <div style="font-size:11px;color:#555;margin-top:4px;">4月比<strong>+18.3%</strong>と増加</div>
+            </div>
+        </div>
+
+        <!-- 配信規模 注意 -->
+        <div style="background:#fff3e0;border-left:5px solid #ff8800;border-radius:8px;padding:14px 18px;margin-bottom:20px;">
+            <div style="font-size:13px;color:#e65100;font-weight:700;margin-bottom:4px;">⚠️ 配信ステータス: リーチ拡大の余地あり</div>
+            <div style="font-size:13px;color:#444;line-height:1.8;">
+                現状の配信規模では、配信したくてもできていない時間帯があります。<br>
+                視聴率が業界平均の2倍と好調なため、<strong>配信規模を広げればその分しっかりリーチが伸びる状況</strong>です（後述の「次サイクル提案」で詳細）。
+            </div>
+        </div>
+
+        <!-- 切り口別分析タイトル -->
+        <div style="background:#2e7d32;color:#fff;padding:14px 18px;border-radius:8px;margin:24px 0 18px;">
+            <div style="font-size:16px;font-weight:700;">🔍 切り口別 深掘り分析</div>
+            <div style="font-size:12px;margin-top:4px;opacity:0.9;">「どこに刺さっているのか」を6つの切り口で可視化</div>
+        </div>
+
+        <!-- デバイス別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📱 デバイス別パフォーマンス（4月→5月比較）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">デバイス</th>
+                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
+                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">視聴率<br>推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">完視率</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">完視率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🥇 テレビ画面（YouTube TVアプリ）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">441</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">52.38%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">39.71%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>618</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>52.02%</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;">39.39%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-0.36pt</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">タブレット 🚀</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">102</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">44.16%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">33.19%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">87</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">50.58%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">38.37%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+6.42pt ↑</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">PC（コンピュータ）🚀</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">118</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">41.84%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">26.79%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">117</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">47.37%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">39.68%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+5.53pt ↑</td>
+                </tr>
+                <tr style="background:#fff3e0;">
+                    <td style="padding:8px;border:1px solid #ddd;">⚠️ スマートフォン</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">92</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">33.82%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">21.48%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">69</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">30.40%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">19.91%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">-3.42pt ↓</td>
+                </tr>
+                <tr style="background:#f8f9fa;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">合計</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">753</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">46.28%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">33.52%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">891</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">48.58%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">36.93%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+2.30pt ↑</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>テレビ画面が主戦場として安定</strong>。視聴の約7割（618/891）がリビングのテレビで再生されており、家族層に動画が届いている証拠。視聴率52%は文句なし。<br>
+            ② <strong>タブレット+6.4pt・PC+5.5pt と急成長</strong>。落ち着いて視聴できる環境での評価が伸びてきました。特にPCは完視率も+12.9pt と一段アップ。<br>
+            ③ <strong>スマホだけ唯一の悪化（-3.4pt）</strong>。視聴率30%・完視率20%は他デバイスの約6割。隙間時間でスキップされやすい傾向が強まっています。<br>
+            ④ ➡️ 次サイクル提案で <strong>「スマホの取り扱い」</strong> を3案からご相談（後述）。
+        </div>
+
+        <!-- 地域別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📍 地域別パフォーマンス（4月→5月比較）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">地域</th>
+                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
+                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">視聴率<br>推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">岡山市 中区</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">449</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">211</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46.99%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">533</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">246</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46.15%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-0.84pt</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">岡山市 北区</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">451</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">203</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">45.01%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">510</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">253</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>49.61%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+4.60pt ↑</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">岡山市 南区</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">445</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">209</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46.97%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">463</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">220</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">47.52%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">+0.55pt</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🥇 岡山市 東区</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">196</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">98</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">50.00%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">235</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">124</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>52.77%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+2.77pt ↑</td>
+                </tr>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🚀 赤磐市</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">86</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">32</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#888;">37.21%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">93</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">48</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>51.61%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">+14.40pt 🚀</td>
+                </tr>
+                <tr style="background:#f8f9fa;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">合計</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">1,627</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">753</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">46.28%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">1,834</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">891</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">48.58%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+2.30pt ↑</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>赤磐市が大躍進（+14.4pt）</strong>。37%→51%。広告が浸透し、見続けてもらえるエリアに育ちつつあります。<br>
+            ② <strong>岡山市 北区も+4.6pt改善</strong>、東区は元から強くさらに+2.8pt上乗せ。<br>
+            ③ 中区だけ微減（-0.8pt）も誤差範囲、絶対値46%は引き続き業界平均の倍。<br>
+            ④ 表示の約95%は岡山市内4区が占有。<strong>倉敷市追加（藤澤様ご要望）はこの「岡山市の隣＝相性◯」のパターンを踏襲する自然な拡張</strong>です。
+        </div>
+
+        <!-- 年齢層×世帯収入 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">👥 年齢層・世帯収入（5月）</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px;">
+            <div>
+                <div style="font-size:13px;font-weight:700;color:#555;margin-bottom:6px;">年齢層別</div>
+                <table style="width:100%;border-collapse:collapse;font-size:12px;">
+                    <thead>
+                        <tr style="background:#2e7d32;color:#fff;">
+                            <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;">年齢</th>
+                            <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#558b2f;">4月</th>
+                            <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                            <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">推移</th>
+                        </tr>
+                        <tr style="background:#f1f8e9;color:#1b5e20;">
+                            <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                            <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:6px;border:1px solid #ddd;">25-34才</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">90</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">44.33%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">85</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.30%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+3.97pt ↑</td>
+                        </tr>
+                        <tr style="background:#e8f5e9;">
+                            <td style="padding:6px;border:1px solid #ddd;font-weight:700;">35-44才 🥇視聴率トップ</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">104</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">53.89%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">104</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>54.17%</strong></td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">+0.28pt</td>
+                        </tr>
+                        <tr style="background:#e8f5e9;">
+                            <td style="padding:6px;border:1px solid #ddd;font-weight:700;">45-54才 🚀大成長</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">229</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">43.13%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">293</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">50.96%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">+7.83pt 🚀</td>
+                        </tr>
+                        <tr style="background:#fff8e1;">
+                            <td style="padding:6px;border:1px solid #ddd;font-weight:700;">55-64才 🥇ボリューム</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">330</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.14%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>409</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">45.90%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-1.24pt</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="font-size:11px;color:#888;margin-top:4px;">※ 18-24才・65才以上・女性は配信対象外（藤澤様の指定通り運用）</div>
+            </div>
+            <div>
+                <div style="font-size:13px;font-weight:700;color:#555;margin-bottom:6px;">世帯収入別</div>
+                <table style="width:100%;border-collapse:collapse;font-size:12px;">
+                    <thead>
+                        <tr style="background:#2e7d32;color:#fff;">
+                            <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;">世帯収入</th>
+                            <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#558b2f;">4月</th>
+                            <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                            <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">推移</th>
+                        </tr>
+                        <tr style="background:#f1f8e9;color:#1b5e20;">
+                            <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                            <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:6px;border:1px solid #ddd;">上位10%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">70</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">43.21%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">71</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">42.51%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-0.70pt</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px;border:1px solid #ddd;">11-20%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">100</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">49.75%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">116</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.54%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-1.21pt</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px;border:1px solid #ddd;">21-30%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">68</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48.23%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">79</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">45.40%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-2.83pt</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px;border:1px solid #ddd;">31-40%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">55</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">44.00%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">81</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.93%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+3.93pt ↑</td>
+                        </tr>
+                        <tr style="background:#e8f5e9;">
+                            <td style="padding:6px;border:1px solid #ddd;font-weight:700;">41-50% 🚀大成長</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">41</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">37.61%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">83</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>53.21%</strong></td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">+15.60pt 🚀</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px;border:1px solid #ddd;">下位50%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">140</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">49.30%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">162</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">51.27%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+1.97pt</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin:8px 0 24px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>45-54才が大成長（+7.83pt）</strong>。43%→51%、視聴回数も229→293と勢いあり。車のメンテ意識が高まる中年層に訴求が届き始めたサイン。<br>
+            ② <strong>35-44才は元から最強で安定（54%）</strong>。<strong>55-64才はボリュームトップ（409視聴）</strong>で安定して動画を見届けてくれている層。<br>
+            ③ 世帯収入では <strong>「41-50%」層が+15.6pt 大躍進</strong>。中間〜やや手堅い所得層にハマってきた。<br>
+            ④ 上位10%層は視聴率42%とやや低めで横ばい。「車整備にお金をかける裕福層」というより「実用的に長く乗るオーナー層」が反応している全体像が見えてきます。
+        </div>
+
+        <!-- 時間帯・曜日 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">⏰ 時間帯・曜日（4月→5月比較）</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px;">
+            <div>
+                <div style="font-size:13px;font-weight:700;color:#555;margin-bottom:6px;">時間帯（完視率トップ5・5月基準）</div>
+                <table style="width:100%;border-collapse:collapse;font-size:12px;">
+                    <thead>
+                        <tr style="background:#2e7d32;color:#fff;">
+                            <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;">時間</th>
+                            <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#558b2f;">4月</th>
+                            <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                        </tr>
+                        <tr style="background:#f1f8e9;color:#1b5e20;">
+                            <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">完視率</th>
+                            <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">完視率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:#e8f5e9;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">🥇 7時</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">27</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">35.19%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">38</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>45.45%</strong></td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ddd;">🥈 17時</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">41</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">23.08%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">33</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">44.83%</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ddd;">🥉 14時</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">42</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">37.35%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">63</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">44.07%</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ddd;">13時</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">48</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">37.89%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">78</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">43.26%</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ddd;">15時</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">40</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">36.25%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">58</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">43.56%</td></tr>
+                    </tbody>
+                </table>
+                <div style="font-size:11px;color:#888;margin-top:4px;">※ 5月ボリュームトップは 22時(84)・11時(80)・13時(78)・21時(75)</div>
+            </div>
+            <div>
+                <div style="font-size:13px;font-weight:700;color:#555;margin-bottom:6px;">曜日別（4月→5月比較）</div>
+                <table style="width:100%;border-collapse:collapse;font-size:12px;">
+                    <thead>
+                        <tr style="background:#2e7d32;color:#fff;">
+                            <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;">曜日</th>
+                            <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#558b2f;">4月</th>
+                            <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                            <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">推移</th>
+                        </tr>
+                        <tr style="background:#f1f8e9;color:#1b5e20;">
+                            <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                            <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding:6px;border:1px solid #ddd;">月</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">104</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.71%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">112</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.26%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-0.45pt</td>
+                        </tr>
+                        <tr style="background:#e8f5e9;">
+                            <td style="padding:6px;border:1px solid #ddd;font-weight:700;">火 🚀</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">86</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">40.76%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">116</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>50.43%</strong></td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">+9.67pt 🚀</td>
+                        </tr>
+                        <tr style="background:#e8f5e9;">
+                            <td style="padding:6px;border:1px solid #ddd;font-weight:700;">水 🚀</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">109</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">46.98%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">106</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">50.00%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+3.02pt ↑</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px;border:1px solid #ddd;">木</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">130</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">42.76%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">138</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.59%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+4.83pt ↑</td>
+                        </tr>
+                        <tr style="background:#e8f5e9;">
+                            <td style="padding:6px;border:1px solid #ddd;font-weight:700;">金 🥇</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">96</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.52%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">104</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>51.23%</strong></td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+3.71pt ↑</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px;border:1px solid #ddd;">土</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">114</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">54.55%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">141</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.47%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-7.08pt</td>
+                        </tr>
+                        <tr>
+                            <td style="padding:6px;border:1px solid #ddd;">日（ボリューム最大）</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;">114</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">45.42%</td>
+                            <td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>174</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">47.67%</td>
+                            <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+2.25pt ↑</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin:8px 0 24px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>時間帯は全帯で完視率が上昇</strong>。特に7時（+10.3pt）と17時（+21.8pt!）が大幅改善。朝の通勤前・夕方の帰宅時に動画が最後まで見られるようになっています。<br>
+            ② <strong>曜日は平日が一気に強くなった</strong>。火曜が+9.7pt、水曜・木曜・金曜も+3〜5pt改善。「平日朝・夕方の通勤時間帯」がフジサワオート様の黄金タイムです。<br>
+            ③ 一方で <strong>土曜だけ4月54%→5月47%へ下降（-7.1pt）</strong>。週末はテレビの視聴コンテンツの選択肢が増え、広告がスキップされやすい可能性。<br>
+            ④ ➡️ 次サイクルでは「平日朝・夕方」帯に配信を寄せる検討余地あり。
+        </div>
+
+        <!-- キーワード別 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">🔑 キーワード別（4月→5月比較・5月視聴回数順）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
+            <thead>
+                <tr style="color:#fff;">
+                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">キーワード</th>
+                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
+                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
+                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">視聴率<br>推移</th>
+                </tr>
+                <tr style="background:#f1f8e9;color:#1b5e20;">
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th>
+                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background:#fff8e1;">
+                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🥇 車 整備</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">766</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">362</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">47.26%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">865</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>420</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;">48.55%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+1.29pt</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;">🥈 車 乗り換え 迷い 🚀</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">159</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">66</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">41.51%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">332</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">155</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46.69%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+5.18pt ↑</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">🥉 車好き</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">132</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">60</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">45.45%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">141</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">66</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46.81%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">+1.36pt</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">エンジン 不調</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">68</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">30</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">44.12%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">102</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">44</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">43.14%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-0.98pt</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;">ドライブ 岡山 🚀</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">140</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">70</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">50.00%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">82</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>56.10%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+6.10pt ↑</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;">愛車 メンテナンス 🚀</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">75</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">33</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">44.00%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">67</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">40</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>59.70%</strong></td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">+15.70pt 🚀</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;">エンジン リフレッシュ 🚀</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">92</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">41</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">44.57%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">72</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">38</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">52.78%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+8.21pt ↑</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">エンジン洗浄</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">86</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">44</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">51.16%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">69</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">32</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46.38%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-4.78pt</td>
+                </tr>
+                <tr>
+                    <td style="padding:8px;border:1px solid #ddd;">カーボン除去</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">82</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">36</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">43.90%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">82</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">40</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">48.78%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+4.88pt ↑</td>
+                </tr>
+                <tr style="background:#e8f5e9;">
+                    <td style="padding:8px;border:1px solid #ddd;">エンジン 異音 🚀</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">7</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">1</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">14.29%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">3</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">2</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">66.67%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">改善（少数）</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td style="padding:8px;border:1px solid #ddd;">⚠️ 10万キロ 車（要見直し）</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">4</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">1</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#888;">25.00%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">5</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">0</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">0.00%</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">悪化</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td style="padding:8px;border:1px solid #ddd;">⚠️ エンジン パワーダウン</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">0</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">0</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#888;">—</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">0</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">0</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">—</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">無風</td>
+                </tr>
+                <tr style="background:#ffebee;">
+                    <td style="padding:8px;border:1px solid #ddd;">⚠️ 車 コンディション</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">1</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">0</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#888;">0.00%</td>
+                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">0</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">0</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">—</td>
+                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">無風</td>
+                </tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
+            <strong>💡 4月→5月の評価:</strong><br>
+            ① <strong>「車 乗り換え 迷い」が表示2倍超</strong>（159→332）。「車を買い替えるか直して乗り続けるか」と悩んでいる層に訴求が刺さるようになってきました。<br>
+            ② <strong>「愛車 メンテナンス」+15.7pt 大躍進</strong>（44%→60%）。<strong>「ドライブ 岡山」+6.1pt</strong>、<strong>「エンジン リフレッシュ」+8.2pt</strong>と、フジサワオート様の世界観にハマるKWが軒並み伸びています。<br>
+            ③ 一方で <strong>「10万キロ 車」「車 コンディション」「エンジン パワーダウン」</strong>は4・5月ともほぼ無反応。次サイクルで除外検討候補。<br>
+            ④ 全体としては <strong>「具体的な不調名」より「愛着・ドライブ・整備意識」のKWが効く</strong> 傾向が見えてきました。
+        </div>
+
+        <!-- 動画完視率 -->
+        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">🎬 動画完視率（最後まで見られているか）</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:8px;">
+            <thead><tr style="background:#f1f8e9;"><th style="padding:8px;border:1px solid #ddd;">月</th><th style="padding:8px;border:1px solid #ddd;">25%視聴</th><th style="padding:8px;border:1px solid #ddd;">50%視聴</th><th style="padding:8px;border:1px solid #ddd;">75%視聴</th><th style="padding:8px;border:1px solid #ddd;">100%完視</th></tr></thead>
+            <tbody>
+                <tr><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;">4月</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">52.87%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">43.68%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">37.58%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">33.52%</td></tr>
+                <tr style="background:#e8f5e9;"><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;">5月</td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>54.94%</strong></td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>46.21%</strong></td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>40.92%</strong></td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>36.93%</strong></td></tr>
+                <tr style="background:#fff8e1;"><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;color:#e65100;">推移</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#2e7d32;">+2.07pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#2e7d32;">+2.53pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#2e7d32;">+3.34pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+3.41pt</td></tr>
+            </tbody>
+        </table>
+        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:8px;">
+            <strong>💡 ここがポイント:</strong> 全段階で改善。<strong>100%完視（最後まで視聴）が37%</strong>=動画自体の訴求力が強い証拠。藤澤様のオリジナル動画が「途中離脱されない」品質に育っています。
+        </div>
+
+        <div style="font-size:12px;color:#888;text-align:right;margin-top:18px;">
+            最終更新: 2026年6月7日｜次回更新: 2026年8月上旬予定
+        </div>
+    </div>
+
+
+    <!-- ③ 次サイクル運用提案 -->
+    <div class="section" style="border-color:#cc0000;">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">3</span>
+            次サイクル運用提案（弊社からのご提案）
+        </div>
+
+        <div style="background:#fff0f0;border:2px solid #cc0000;border-radius:10px;padding:16px 20px;margin-bottom:20px;">
+            <div style="font-size:13px;color:#cc0000;line-height:1.9;">
+                <strong>👇 配信実績データから導いた、次2ヶ月の運用最適化案を3点まとめました。</strong><br>
+                <strong>6/8電話で方針決定済</strong>。各提案ブロック内に決定事項を記載しております。
+            </div>
+        </div>
+
+        <!-- 提案① 配信規模拡大 -->
+        <div style="background:#fff;border:2px solid #cc0000;border-radius:10px;padding:20px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                <span style="background:#cc0000;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案①</span>
+                <span style="font-size:17px;font-weight:700;">配信規模の拡大をご検討ください</span>
+            </div>
+
+            <div style="background:#fff8f8;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#cc0000;margin-bottom:6px;">📊 データから見えること</div>
+                <ul style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;">
+                    <li>4月・5月とも <strong>「リーチ拡大の余地あり」ステータス</strong>。配信したくてもできていない時間帯あり</li>
+                    <li>視聴率 <strong>48.58%（業界平均25%の約2倍）</strong>＝広告自体は非常に効率良く効いている</li>
+                    <li><strong>5月の表示+12.7% / 視聴+18.3%</strong>と素地は十分。枠さえあれば伸び続ける状態</li>
+                </ul>
+            </div>
+
+            <div style="background:#e8f5e9;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:6px;">💡 ご提案</div>
+                <div style="font-size:13px;color:#333;line-height:1.9;">
+                    現状の配信規模を <strong>約4割広げる</strong> ご検討をいただきたいです。
+                </div>
+            </div>
+
+            <div style="background:#fffde7;border-radius:8px;padding:12px 16px;">
+                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">📈 期待される効果</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                    <tr style="background:#fff8e1;"><th style="padding:6px;text-align:left;border:1px solid #ddd;">項目</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">5月実績</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">配信規模+40%後の見込み</th></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;">月間表示回数</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">1,834</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">約2,570（+40%）</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;">月間視聴回数</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">891</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">約1,250（+40%）</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;">視聴率</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">48.58%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">維持予想（既存設定継続のため）</td></tr>
+                </table>
+                <div style="font-size:11px;color:#888;margin-top:6px;">💡 倉敷市追加と同時に実施すると、エリア拡大×枠拡大で効果最大化。</div>
+            </div>
+        </div>
+
+        <!-- 提案② スマホ取扱 -->
+        <div style="background:#fff;border:2px solid #ff8800;border-radius:10px;padding:20px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                <span style="background:#ff8800;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案②</span>
+                <span style="font-size:17px;font-weight:700;">スマホへの配信を絞り、テレビ・タブレット・PCに集中</span>
+            </div>
+
+            <div style="background:#fff8f0;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">📊 データから見えること</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;margin-bottom:8px;">
+                    <tr style="background:#fff3e0;"><th style="padding:6px;text-align:left;border:1px solid #ddd;">デバイス</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">5月視聴率</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">最後まで見た率</th></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;">テレビ画面</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;">52.02%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;">39.39%</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;">タブレット</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;">50.58%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;">38.37%</td></tr>
+                    <tr><td style="padding:6px;border:1px solid #ddd;">PC</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;">47.37%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;">39.68%</td></tr>
+                    <tr style="background:#ffebee;"><td style="padding:6px;border:1px solid #ddd;color:#cc0000;font-weight:700;">⚠️ スマホ</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;font-weight:700;">30.40%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;font-weight:700;">19.91%</td></tr>
+                </table>
+                <ul style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;">
+                    <li>スマホだけ視聴率が他デバイスの <strong>約6割</strong> に止まる</li>
+                    <li>最後まで見た方の率も <strong>約半分</strong>（20% vs 38-40%）</li>
+                    <li>4月→5月で唯一<strong>悪化（-3.4pt）</strong>している唯一のデバイス</li>
+                </ul>
+            </div>
+
+            <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:8px;padding:14px 16px;margin-bottom:12px;">
+                <div style="font-size:13px;font-weight:700;color:#0d47a1;margin-bottom:6px;">✅ 6/8電話での決定事項</div>
+                <div style="font-size:13px;color:#333;line-height:1.9;">
+                    スマホの配信比率変更は <strong>いったん保留</strong>。デバイス設定は <strong>現状のまま配信継続</strong>とします。<br>
+                    次サイクルのデータ推移を見て、必要に応じて再ご相談いたします。
+                </div>
+            </div>
+        </div>
+
+        <!-- 提案③ キーワード最適化 -->
+        <div style="background:#fff;border:2px solid #2e7d32;border-radius:10px;padding:20px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+                <span style="background:#2e7d32;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案③</span>
+                <span style="font-size:17px;font-weight:700;">キーワードを「効いてる順」に組み直す</span>
+            </div>
+
+            <div style="background:#f1f8e9;border-radius:8px;padding:12px 16px;margin-bottom:14px;">
+                <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:6px;">📊 データから見えること</div>
+                <div style="font-size:13px;color:#333;line-height:1.9;">
+                    4月→5月の比較から、<strong>「具体的な不調の名前」より「愛着・ドライブ・整備意識」のキーワードのほうが刺さる</strong>傾向が明確になりました。<br>
+                    全16語のキーワードを、データに基づき <strong>3グループ</strong>に整理して次サイクルに臨みます。
+                </div>
+            </div>
+
+            <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:8px;padding:14px 16px;margin-bottom:14px;">
+                <div style="font-size:13px;font-weight:700;color:#0d47a1;margin-bottom:6px;">✅ 6/8電話での決定事項</div>
+                <div style="font-size:13px;color:#333;line-height:1.9;">
+                    下記 <strong>A（強化）／B（除外）／C（追加） すべて実施</strong> で進めます。<br>
+                    今週中に設定変更 → 6月下旬〜7月配信 → 8月上旬に効果を次回レポートでご報告いたします。
+                </div>
+            </div>
+
+            <!-- A. 強化候補 -->
+            <div style="background:#e8f5e9;border:1px solid #2e7d32;border-radius:8px;padding:14px 16px;margin-bottom:10px;">
+                <div style="font-size:14px;font-weight:700;color:#1b5e20;margin-bottom:8px;">🚀 A. 「残したい」キーワード（除外候補と入れ替え、このまま継続配信）</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                    <thead><tr style="background:#c8e6c9;"><th style="padding:6px;text-align:left;border:1px solid #aed581;">キーワード</th><th style="padding:6px;text-align:right;border:1px solid #aed581;">5月視聴率</th><th style="padding:6px;text-align:right;border:1px solid #aed581;">4月→5月推移</th><th style="padding:6px;text-align:left;border:1px solid #aed581;">なぜ強化したいか</th></tr></thead>
+                    <tbody>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">愛車 メンテナンス</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">59.70%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#cc0000;font-weight:700;">+15.70pt 🚀</td><td style="padding:6px;border:1px solid #aed581;">愛着のあるオーナーに刺さる主軸層</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">ドライブ 岡山</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">56.10%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;">+6.10pt</td><td style="padding:6px;border:1px solid #aed581;">岡山ローカル＋車好き、地域訴求と相性◯</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">エンジン リフレッシュ</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">52.78%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;">+8.21pt</td><td style="padding:6px;border:1px solid #aed581;">サービス名と直結、検討意欲が高い</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #aed581;">車 乗り換え 迷い</td><td style="padding:6px;text-align:right;border:1px solid #aed581;">46.69%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;font-weight:700;">表示2倍超 🚀</td><td style="padding:6px;border:1px solid #aed581;">「直すか買い替えるか」迷う層に直撃</td></tr>
+                    </tbody>
+                </table>
+                <div style="font-size:11px;color:#555;margin-top:6px;">→ これらに枠を寄せると、視聴率全体がさらに底上げされる見込み</div>
+            </div>
+
+            <!-- B. 除外候補 -->
+            <div style="background:#ffebee;border:1px solid #cc0000;border-radius:8px;padding:14px 16px;margin-bottom:10px;">
+                <div style="font-size:14px;font-weight:700;color:#b71c1c;margin-bottom:8px;">🗑 B. 「外したい」キーワード（除外候補）</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                    <thead><tr style="background:#ffcdd2;"><th style="padding:6px;text-align:left;border:1px solid #ef9a9a;">キーワード</th><th style="padding:6px;text-align:right;border:1px solid #ef9a9a;">4月実績</th><th style="padding:6px;text-align:right;border:1px solid #ef9a9a;">5月実績</th><th style="padding:6px;text-align:left;border:1px solid #ef9a9a;">なぜ除外したいか</th></tr></thead>
+                    <tbody>
+                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">10万キロ 車</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">視聴1（率25%）</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">視聴0（率0%）</td><td style="padding:6px;border:1px solid #ef9a9a;">2ヶ月とも実質ゼロ反応</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">車 コンディション</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">視聴0</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示0</td><td style="padding:6px;border:1px solid #ef9a9a;">そもそも検索されていない</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">エンジン パワーダウン</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示0</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示0</td><td style="padding:6px;border:1px solid #ef9a9a;">2ヶ月とも無風</td></tr>
+                    </tbody>
+                </table>
+                <div style="font-size:11px;color:#555;margin-top:6px;">→ 外しても配信に悪影響なし。枠を強化候補に回せる</div>
+            </div>
+
+            <!-- C. 新規追加候補 -->
+            <div style="background:#e3f2fd;border:1px solid #1976d2;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:14px;font-weight:700;color:#0d47a1;margin-bottom:8px;">✨ C. 「新しく試したい」キーワード（追加候補）</div>
+                <table style="width:100%;font-size:12px;border-collapse:collapse;">
+                    <thead><tr style="background:#bbdefb;"><th style="padding:6px;text-align:left;border:1px solid #90caf9;">追加候補</th><th style="padding:6px;text-align:left;border:1px solid #90caf9;">なぜこれを試したいか</th></tr></thead>
+                    <tbody>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">車 メンテ 岡山</td><td style="padding:6px;border:1px solid #90caf9;">「ドライブ 岡山」+「愛車 メンテナンス」の組み合わせ。両方の好調KWの掛け合わせ</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">中古車 整備 / 中古車 メンテ</td><td style="padding:6px;border:1px solid #90caf9;">「車 乗り換え 迷い」が伸びている＝中古車を長く乗りたい層が反応している</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">エンジンオイル 交換</td><td style="padding:6px;border:1px solid #90caf9;">「エンジン リフレッシュ」が伸びている＝整備意識の高い層に届きやすい</td></tr>
+                        <tr><td style="padding:6px;border:1px solid #90caf9;">車 燃費 落ちた</td><td style="padding:6px;border:1px solid #90caf9;">「エンジン 不調」より具体的、生活実感のあるワード</td></tr>
+                    </tbody>
+                </table>
+                <div style="font-size:11px;color:#555;margin-top:6px;">→ 次サイクル中に少量ずつ投入し、反応を見て本採用するかご相談</div>
+            </div>
+        </div>
+
+        <div style="background:#f8f9fa;border-left:5px solid #cc0000;padding:14px 18px;font-size:13px;line-height:1.9;color:#333;">
+            <strong>📅 次サイクルのスケジュール:</strong><br>
+            6/8電話で方針決定済 → <strong>今週中に設定変更</strong>（KW整理＋倉敷市追加） → 6月下旬〜7月 配信 → <strong>7月頭に1ヶ月経過の途中経過メール</strong> → <strong>8月上旬に2ヶ月定期レポート</strong>
+        </div>
+    </div>
+
+    <!-- ⑥-α 倉敷市追加検討 -->
+    <div class="section" style="border-color:#ff8800;">
+        <div class="section-title">
+            <span class="icon" style="background:#ff8800;">+</span>
+            配信エリア拡張のご検討（倉敷市追加）
+        </div>
+
+        <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:16px 20px;margin-bottom:20px;">
+            <div style="font-size:13px;color:#1b5e20;line-height:1.9;">
+                <strong>✅ 6/8電話での決定事項:</strong> 倉敷市を <strong>配信エリアに追加</strong>することで決定いたしました。<br>
+                今週中に設定変更を実施し、6月下旬から配信を開始いたします。
+            </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;">
+            <div style="background:#f8f9fa;border-left:5px solid #1976d2;border-radius:8px;padding:18px;">
+                <div style="font-size:13px;color:#888;margin-bottom:6px;">📍 倉敷市の基本情報</div>
+                <ul style="font-size:13px;line-height:1.9;margin-left:18px;color:#333;">
+                    <li>人口: <strong>約46.2万人</strong>（岡山県第2位、岡山市約72万人に次ぐ規模）</li>
+                    <li>岡山市中心部から: 約16km・車で<strong>約30分</strong></li>
+                    <li>主要IC: 山陽自動車道 <strong>倉敷JCT</strong>、瀬戸中央自動車道</li>
+                    <li>産業: 水島臨海工業地帯（製造業従事者多）＋児島デニム＋商業集積</li>
+                </ul>
+            </div>
+            <div style="background:#f8f9fa;border-left:5px solid #2e7d32;border-radius:8px;padding:18px;">
+                <div style="font-size:13px;color:#888;margin-bottom:6px;">📈 追加時の見込み</div>
+                <ul style="font-size:13px;line-height:1.9;margin-left:18px;color:#333;">
+                    <li>推定リーチ拡大: <strong>+ 約60%</strong>（現エリア人口比）</li>
+                    <li>製造業×通勤車利用 → <strong>整備ニーズ層と相性◯</strong></li>
+                    <li>5月実績の<strong>赤磐市パターン</strong>（隣接地域で視聴率51%）と類似構造</li>
+                    <li>既存KW（車整備・エンジン洗浄・車乗換え迷い）の流用可</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:18px;margin-bottom:18px;">
+            <div style="font-size:14px;font-weight:700;color:#0d47a1;margin-bottom:10px;">📋 設定変更の内容</div>
+            <ul style="font-size:13px;color:#444;line-height:2;margin-left:22px;">
+                <li>追加エリア: <strong>倉敷市</strong>（市内全域）</li>
+                <li>区分: <strong>拡張エリア</strong>として追加（1ヶ月後のデータで重点格上げを再判断）</li>
+                <li>既存KW（愛車メンテナンス・エンジン リフレッシュ・車 乗り換え 迷い等）を倉敷市にも適用</li>
+                <li>設定変更日: <strong>今週中</strong>／配信開始: 6月下旬〜</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ⑦ ご要望・改善履歴 -->
+    <div class="section" style="border-color:#6a1b9a;">
+        <div class="section-title">
+            <span class="icon" style="background:#6a1b9a;">4</span>
+            ご要望・改善履歴
+        </div>
+
+        <div style="background:#f3e5f5;border:2px solid #6a1b9a;border-radius:10px;padding:16px 20px;margin-bottom:18px;">
+            <div style="font-size:13px;color:#4a148c;line-height:1.8;">
+                藤澤様からいただいたご要望と、その対応状況をこちらに記録してまいります。<br>
+                対応完了後は実施内容と効果（次サイクルの実績）もあわせて記録します。
+            </div>
+        </div>
+
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+            <thead>
+                <tr style="background:#6a1b9a;color:#fff;">
+                    <th style="padding:10px;text-align:center;border:1px solid #ddd;width:14%;">受領日</th>
+                    <th style="padding:10px;text-align:left;border:1px solid #ddd;width:40%;">ご要望内容</th>
+                    <th style="padding:10px;text-align:left;border:1px solid #ddd;width:32%;">対応内容</th>
+                    <th style="padding:10px;text-align:center;border:1px solid #ddd;width:14%;">ステータス</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026-06-06</td>
+                    <td style="padding:10px;border:1px solid #ddd;">配信エリアに <strong>倉敷市</strong> を追加したい（メールにてご要望）</td>
+                    <td style="padding:10px;border:1px solid #ddd;">6/8電話にて拡張エリアとして追加で決定。今週中に設定変更 → 6月下旬から配信開始</td>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;"><span style="background:#e8f5e9;color:#1b5e20;padding:4px 10px;border-radius:14px;font-size:11px;font-weight:700;">対応中</span></td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026-06-08</td>
+                    <td style="padding:10px;border:1px solid #ddd;">6/8電話にて次サイクル方針決定<br>① スマホ配信比率変更は<strong>保留</strong>（現状維持）<br>② キーワード <strong>A強化＋B除外＋C追加 すべて実施</strong><br>③ 倉敷市を<strong>拡張エリアとして追加</strong></td>
+                    <td style="padding:10px;border:1px solid #ddd;">今週中に設定変更 → 6月下旬〜7月配信 → <strong>7月頭に1ヶ月経過の途中経過メール</strong> → 8月上旬 2ヶ月定期レポート</td>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;"><span style="background:#e8f5e9;color:#1b5e20;padding:4px 10px;border-radius:14px;font-size:11px;font-weight:700;">対応中</span></td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026-07-13</td>
+                    <td style="padding:10px;border:1px solid #ddd;"><strong>女性ターゲット追加</strong>のご要望（メール）<br><br>▼ 藤澤様からの現場情報：<br>「ご夫婦だと男性より<strong>女性の方が決裁権</strong>を持たれている場合が多い」というインサイト共有</td>
+                    <td style="padding:10px;border:1px solid #ddd;">当初は「男性25-64・女性40-64」の別々設定を計画したが、Google広告の動画キャンペーン仕様上、男女別々の年齢範囲設定が不可と判明。3案（A/B/C）を提示し、藤澤様のご判断を仰いだ。</td>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;"><span style="background:#f3e5f5;color:#4a148c;padding:4px 10px;border-radius:14px;font-size:11px;font-weight:700;">仕様確認</span></td>
+                </tr>
+                <tr>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026-07-16</td>
+                    <td style="padding:10px;border:1px solid #ddd;"><strong>案A（男女両方・25〜64才）で進めることを藤澤様より承諾</strong>（メール）</td>
+                    <td style="padding:10px;border:1px solid #ddd;">▼ 実施内容：<br>① 性別：<strong>男性・女性 両方</strong>に配信<br>② 年齢：<strong>25〜64才</strong><br>③ 「拡張と最適化されたターゲティング」により反応の良い層に自動的に配信が寄っていく仕組みで運用<br>④ その他（エリア・時間帯・KW）：現状維持<br><br>▼ スケジュール：本日設定変更完了 → 8月配信 → 9月上旬レポートで <strong>男性 vs 女性・女性年齢帯別（35-44 / 45-54 / 55-64）</strong> の反応を可視化し、次回精緻化をご提案</td>
+                    <td style="padding:10px;text-align:center;border:1px solid #ddd;"><span style="background:#e8f5e9;color:#1b5e20;padding:4px 10px;border-radius:14px;font-size:11px;font-weight:700;">対応完了</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 補足事項 -->
+    <div class="note-bar">
+        <h3>補足事項</h3>
+        <ul>
+            <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
+            <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
+            <li>ご不明な点やご要望がございましたら、お気軽にお申し付けください</li>
+        </ul>
+    </div>
+
+    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
+        株式会社ランバード｜広告運用サポート窓口
+    </div>
+
+</div>
+</body>
+</html>

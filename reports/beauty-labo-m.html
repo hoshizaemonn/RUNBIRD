@@ -1,996 +1,157 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube広告 運用レポート — Beauty labo m+ 様</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            background: #f0f2f5;
-            color: #1a1a1a;
-            line-height: 1.7;
-            padding: 24px;
-        }
-        .container { max-width: 1100px; margin: 0 auto; }
-        h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px solid #cc0000; padding-bottom: 12px; margin-bottom: 6px; }
-        .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 36px; }
-        .section { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 28px; border: 2px solid #e0e0e0; }
-        .section-title { font-size: 19px; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee; display: flex; align-items: center; gap: 10px; }
-        .section-title .icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; color: #fff; font-size: 14px; font-weight: 700; flex-shrink: 0; }
-        .goal-banner { background: linear-gradient(135deg, #1a1a2e, #16213e); color: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; }
-        .goal-banner h2 { color: #ff6b6b; font-size: 20px; text-align: center; margin-bottom: 10px; }
-        .goal-banner .goal-sub { text-align: center; font-size: 14px; color: #ccc; margin-bottom: 24px; }
-        .goal-flow { display: flex; justify-content: center; align-items: center; gap: 0; flex-wrap: wrap; }
-        .gf-box { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 10px; padding: 16px 20px; text-align: center; min-width: 160px; }
-        .gf-box .gf-step { font-size: 11px; color: #ff6b6b; font-weight: 700; margin-bottom: 4px; }
-        .gf-box .gf-title { font-size: 15px; font-weight: 700; }
-        .gf-box .gf-desc { font-size: 12px; color: #ccc; margin-top: 4px; }
-        .gf-arrow { color: #ff6b6b; font-size: 24px; font-weight: 700; padding: 0 10px; }
-        .note-bar { background: #fff3e0; border: 2px solid #ff8800; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; }
-        .note-bar h3 { color: #e65100; font-size: 15px; margin-bottom: 10px; }
-        .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
-        .note-bar li { margin-bottom: 6px; }
-        .note-bar li strong { color: #cc0000; }
-        @media (max-width: 768px) {
-            .goal-flow { flex-direction: column; }
-            .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
-        }
-    </style>
-</head>
-<body>
-<div class="container">
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>YouTube広告 運用レポート — Beauty labo m+ 様</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans','Noto Sans JP',Meiryo,sans-serif;
+background:#f0f2f5;color:#1a1a1a;line-height:1.7;padding:24px;-webkit-font-smoothing:antialiased}
+.container{max-width:1100px;margin:0 auto}
+h1{text-align:center;font-size:26px;border-bottom:3px solid #cc0000;padding-bottom:12px;margin-bottom:6px}
+.subtitle{text-align:center;color:#888;font-size:13px;margin-bottom:32px}
 
-    <h1>YouTube広告 運用レポート</h1>
-    <p class="subtitle">Beauty labo m+ 様｜株式会社ランバード</p>
+.hero{background:linear-gradient(135deg,#141b2d 0%,#1d2740 100%);border-radius:14px;padding:30px 28px;margin-bottom:28px;color:#fff}
+.hero h2{color:#ff6b6b;font-size:19px;text-align:center;margin-bottom:8px}
+.hero p.goal{text-align:center;color:#d7dbe4;font-size:14px;margin-bottom:22px}
+.steps{display:flex;align-items:stretch;justify-content:center;gap:8px;flex-wrap:wrap}
+.step{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:10px;
+padding:14px 18px;min-width:150px;text-align:center}
+.step .k{color:#ff6b6b;font-size:12px;font-weight:700;letter-spacing:.04em}
+.step .t{font-size:16px;font-weight:700;margin:4px 0 6px}
+.step .d{font-size:12px;color:#c8cede;line-height:1.55}
+.arw{display:flex;align-items:center;color:#ff6b6b;font-size:20px}
 
-    <!-- ① 目的・ゴール -->
-    <div class="goal-banner">
-        <h2>広告配信の目的</h2>
-        <p class="goal-sub">沖縄中部エリアの美容に関心がある方に、Beauty labo m+の存在を知ってもらい来店につなげる</p>
-        <div class="goal-flow">
-            <div class="gf-box"><div class="gf-step">STEP 1</div><div class="gf-title">認知</div><div class="gf-desc">YouTube広告で<br>サロンを知ってもらう</div></div>
-            <div class="gf-arrow">→</div>
-            <div class="gf-box"><div class="gf-step">STEP 2</div><div class="gf-title">興味</div><div class="gf-desc">動画を30秒以上見た方に<br>サロンの魅力を伝える</div></div>
-            <div class="gf-arrow">→</div>
-            <div class="gf-box"><div class="gf-step">STEP 3</div><div class="gf-title">来店</div><div class="gf-desc">HPへアクセス<br>予約・初回ご利用</div></div>
-            <div class="gf-arrow">→</div>
-            <div class="gf-box"><div class="gf-step">GOAL</div><div class="gf-title">リピート</div><div class="gf-desc">定期通いの<br>会員様へ</div></div>
-        </div>
-    </div>
+.section{background:#fff;border-radius:12px;padding:28px;margin-bottom:28px;border:2px solid #e0e0e0}
+.section.s1{border-color:#1a73e8}.section.s2{border-color:#2e7d32}
+.section.s3{border-color:#cc0000}.section.s4{border-color:#e0e0e0}
+.section-title{font-size:19px;font-weight:700;margin-bottom:20px;padding-bottom:10px;
+border-bottom:2px solid #eee;display:flex;align-items:center;gap:10px}
+.section-title .icon{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;
+border-radius:8px;color:#fff;font-size:16px;font-weight:700}
+.s1 .icon{background:#1a73e8}.s2 .icon{background:#2e7d32}.s3 .icon{background:#cc0000}.s4 .icon{background:#777}
 
-    <!-- ② 現在の運用設定 -->
-    <div class="section" style="border-color:#1976d2;">
-        <div class="section-title"><span class="icon" style="background:#1976d2;">1</span>現在の運用設定</div>
+.callout{border-radius:8px;padding:14px 18px;margin-bottom:18px;font-size:14px}
+.callout.blue{background:#e8f0fe;border:2px solid #1a73e8}
+.callout.green{background:#e8f5e9;border:2px solid #2e7d32}
+.callout.red{background:#fdecea;border:2px solid #cc0000}
+.callout.orange{background:#fff4e5;border-left:5px solid #ef6c00;border-radius:0 8px 8px 0}
+.callout.yellow{background:#fffde7;border-left:5px solid #f9a825;border-radius:0 8px 8px 0}
+.callout b{color:#1a3a6b}
+.callout.red b{color:#cc0000}.callout.orange b{color:#ef6c00}.callout.green b{color:#1b5e20}
 
-        <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:14px 18px;margin-bottom:18px;">
-            <div style="font-size:13px;color:#0d47a1;line-height:1.8;">
-                <strong>📌 ご契約内容:</strong> 「Beauty labo m+」キャンペーン（沖縄中部 美容サロン）／配信開始 2026年4月1日〜<br>
-                <strong>📺 広告形式:</strong> YouTube インストリーム広告（動画再生前に流れ、5秒後にスキップ可能。興味のある方だけに届きます）
-            </div>
-        </div>
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.card{background:#fafafa;border-left:5px solid #cc0000;border-radius:0 8px 8px 0;padding:12px 16px}
+.card .lab{font-size:12.5px;color:#666;font-weight:700;margin-bottom:2px}
+.card .val{font-size:14.5px}
 
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px;">
-            <div style="background:#f8f9fa;border-left:5px solid #cc0000;border-radius:8px;padding:14px 16px;">
-                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">📍 配信エリア</div>
-                <div style="font-size:13px;color:#333;line-height:1.8;">
-                    <strong>重点:</strong> 浦添市・宜野湾市<br>
-                    <strong>拡張:</strong> 那覇市・沖縄市・西原町・北谷町・北中城村・中城村
-                </div>
-            </div>
-            <div style="background:#f8f9fa;border-left:5px solid #cc0000;border-radius:8px;padding:14px 16px;">
-                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">👤 ターゲット</div>
-                <div style="font-size:13px;color:#333;line-height:1.8;">
-                    男女 20〜64才
-                </div>
-            </div>
-            <div style="background:#f8f9fa;border-left:5px solid #2e7d32;border-radius:8px;padding:14px 16px;">
-                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🕐 配信時間</div>
-                <div style="font-size:13px;color:#333;line-height:1.8;">
-                    24時間（終日配信）<br>
-                    <span style="font-size:11px;color:#888;">同じ方への表示は週3回まで</span>
-                </div>
-            </div>
-            <div style="background:#f8f9fa;border-left:5px solid #2e7d32;border-radius:8px;padding:14px 16px;">
-                <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🔗 ご案内先（HP）</div>
-                <div style="font-size:12px;color:#333;line-height:1.6;">サロンHP（ご指定URL）</div>
-            </div>
-        </div>
+h3.blk{font-size:15.5px;margin:24px 0 10px;color:#1a1a1a}
+table{width:100%;border-collapse:collapse;margin:10px 0 4px;font-size:14px}
+th,td{padding:10px 12px;border:1px solid #e3e3e3;text-align:right}
+th:first-child,td:first-child{text-align:left}
+thead th{background:#2e7d32;color:#fff;font-weight:700;text-align:center;border-color:#2e7d32}
+.s3 thead th{background:#cc0000;border-color:#cc0000}
+tbody tr:nth-child(even){background:#fafafa}
+tfoot td{background:#fffbe6;font-weight:700;color:#8a6d00}
+.num{font-variant-numeric:tabular-nums}
+.up{color:#2e7d32;font-weight:700}.down{color:#cc0000;font-weight:700}.flat{color:#888}
 
-        <div style="background:#f8f9fa;border-left:5px solid #f9a825;border-radius:8px;padding:14px 16px;margin-bottom:14px;">
-            <div style="font-size:11px;color:#888;font-weight:700;margin-bottom:4px;">🎬 配信中の動画</div>
-            <div style="font-size:13px;color:#333;line-height:1.8;">
-                Beauty labo m+ サロン紹介動画
-            </div>
-        </div>
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:18px 0 6px}
+.stat{border:2px solid;border-radius:10px;padding:14px 12px;text-align:center}
+.stat .lab{font-size:12.5px;font-weight:700;margin-bottom:2px}
+.stat .big{font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.15}
+.stat .big span{font-size:15px;font-weight:700}
+.stat .sub{font-size:12px;color:#555;margin-top:2px}
+.stat.r{border-color:#cc0000;background:#fdecea}.stat.r .lab,.stat.r .big{color:#cc0000}
+.stat.b{border-color:#1a73e8;background:#e8f0fe}.stat.b .lab,.stat.b .big{color:#1a73e8}
+.stat.g{border-color:#2e7d32;background:#e8f5e9}.stat.g .lab,.stat.g .big{color:#2e7d32}
 
-        <div style="background:#f8f9fa;border-radius:8px;padding:14px 18px;margin-bottom:14px;">
-            <div style="font-size:13px;font-weight:700;color:#333;margin-bottom:10px;">🔑 設定キーワード</div>
-            <div style="font-size:12px;color:#555;line-height:1.9;">
-                <strong style="color:#cc0000;">直接ニーズ:</strong> ネイルサロン / ジェルネイル / ネイル デザイン / まつげパーマ / まつげエクステ / まつエク / アイブロウ / 美容サロン予約<br>
-                <strong style="color:#1976d2;">関連美容:</strong> ブラッシュアップ / ブラジェル / セルフケア / 自分磨き / 美容 トレンド<br>
-                <strong style="color:#2e7d32;">ライフスタイル:</strong> 女子会 / 結婚式 準備 / ぬくもり 好き<br>
-                <strong style="color:#6a1b9a;">追加（2026/6/15 長堂様ご依頼）:</strong> 60代女性男性 / うるま市
-            </div>
-        </div>
+.prop{border:2px solid #cc0000;border-radius:10px;padding:20px;margin:16px 0}
+.prop .ph{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.pill{background:#cc0000;color:#fff;border-radius:6px;padding:3px 12px;font-size:13px;font-weight:700;white-space:nowrap}
+.prop .pt{font-size:16.5px;font-weight:700}
+.box{border-radius:8px;padding:14px 18px;margin:10px 0;font-size:14px}
+.box .bh{font-weight:700;margin-bottom:6px}
+.box.data{background:#f5f5f5}.box.data .bh{color:#cc0000}
+.box.sugg{background:#e8f5e9}.box.sugg .bh{color:#1b5e20}
+.box.eff{background:#fffde7}.box.eff .bh{color:#ef6c00}
+.box ul,.box ol{margin:4px 0 0 22px}
+.box li{margin:4px 0}
+details{background:#fafafa;border:1px solid #e3e3e3;border-radius:8px;padding:12px 16px;margin:14px 0;font-size:14px}
+summary{cursor:pointer;font-weight:700}
+.kw{display:inline-block;background:#f1f3f5;border:1px solid #e0e3e7;border-radius:6px;padding:2px 9px;margin:3px 4px 3px 0;font-size:13px}
+footer{text-align:center;color:#888;font-size:13px;padding:8px 0 20px}
+a{color:#1a73e8}
+@media print{body{background:#fff;padding:0}.section,.hero{break-inside:avoid}}
+@media (max-width:720px){body{padding:12px}.grid2{grid-template-columns:1fr}.section{padding:18px 16px}
+.steps{flex-direction:column}.arw{transform:rotate(90deg);justify-content:center}}
 
-        <details style="background:#fff8e1;border:1px solid #ffb300;border-radius:8px;padding:12px 16px;">
-            <summary style="cursor:pointer;font-weight:700;color:#e65100;font-size:13px;">📖 YouTube広告の配信先はどう決まるのでしょうか？（クリックで開く）</summary>
-            <div style="font-size:13px;color:#333;line-height:1.9;margin-top:10px;">
-                YouTube動画広告の配信先は、<strong>「動画クリエイティブをGoogleのAIが解析した結果」を主軸に決定</strong>されます。設定キーワードは、その判断を補助するヒントとしての役割を担います。<br><br>
-
-                <strong>① 主軸：Google AIによる動画解析（影響度 約7割）</strong>
-                <ul style="margin-top:6px;margin-left:20px;">
-                    <li>動画の映像内容（Vision AIによる人物・物体・テロップ認識）</li>
-                    <li>動画の音声・ナレーション（音声認識）</li>
-                    <li>自動生成字幕・サムネイル画像</li>
-                </ul>
-                これらをもとに、Googleが「この動画はどんな視聴者・動画ジャンルの隣に置くと効果が高いか」を自動判定し配信先を決定いたします。<br><br>
-
-                <strong>② 補助：設定キーワード（影響度 約3割）</strong>
-                <ul style="margin-top:6px;margin-left:20px;">
-                    <li>「どんなジャンルのYouTube動画の前に広告を流したいか」をGoogleにヒントとして渡す設定</li>
-                    <li>例：「ネイルサロン」を設定 → ネイル系YouTube動画の隣で配信されやすくなる</li>
-                </ul>
-                <br>
-                <strong style="color:#cc0000;">つまり、設定キーワードは「方向性のヒント」であり、Google AIによる動画解析を上書きするものではございません。</strong>キーワードを工夫することで、本来の動画訴求と整合する視聴者層への配信精度をさらに高めることが可能です。
-            </div>
-        </details>
-    </div>
-
-    <!-- ③ 配信実績サマリー -->
-    <div class="section" style="border-color:#2e7d32;">
-        <div class="section-title"><span class="icon" style="background:#2e7d32;">2</span>配信実績サマリー（2026年4月・5月）</div>
-
-        <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:16px 20px;margin-bottom:14px;">
-            <div style="font-size:13px;color:#1b5e20;line-height:1.8;">
-                <strong>📊 集計対象:</strong> Google広告キャンペーン「Beauty labo m+」<br>
-                <strong>🎯 結論ひとこと:</strong> <strong>表示+5.9% / 視聴+2.5% / 視聴率58.27%（業界平均25%の約2.3倍）</strong>と非常に好調。一方で <strong>100%完視率が47.06%→25.87% (-21.19pt) と大幅悪化</strong>しており、デバイス配分の見直しが次サイクル最大のテーマです。
-            </div>
-        </div>
-
-        <!-- 用語の説明 -->
-        <details style="background:#f8f9fa;border:1px solid #ddd;border-radius:10px;padding:14px 18px;margin-bottom:18px;">
-            <summary style="cursor:pointer;font-weight:700;color:#1a1a1a;font-size:13px;">📖 用語の説明（クリックで開く）</summary>
-            <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:12px;">
-                <thead><tr style="background:#f1f8e9;"><th style="padding:8px;text-align:left;border:1px solid #ddd;width:22%;">用語</th><th style="padding:8px;text-align:left;border:1px solid #ddd;">意味</th></tr></thead>
-                <tbody>
-                    <tr><td style="padding:10px;border:1px solid #ddd;font-weight:700;">表示回数<br><span style="font-weight:normal;font-size:11px;color:#888;">（インプレッション）</span></td><td style="padding:10px;border:1px solid #ddd;line-height:1.7;">広告動画が画面に表示された回数。スキップされた場合も「表示」としてカウントされます。</td></tr>
-                    <tr><td style="padding:10px;border:1px solid #ddd;font-weight:700;">視聴回数</td><td style="padding:10px;border:1px solid #ddd;line-height:1.7;"><strong>30秒以上ご覧いただいた回数</strong>（動画が30秒より短い場合は最後まで視聴された回数）。5秒経過後にスキップされた場合は視聴にカウントされません。</td></tr>
-                    <tr><td style="padding:10px;border:1px solid #ddd;font-weight:700;">視聴率</td><td style="padding:10px;border:1px solid #ddd;line-height:1.7;"><strong>視聴回数 ÷ 表示回数</strong>。業界平均は約25%。Beauty labo m+様の視聴率は<strong>57.35%（5月）</strong>と業界平均の約2.3倍に達しています。</td></tr>
-                    <tr><td style="padding:10px;border:1px solid #ddd;font-weight:700;">完視率<br><span style="font-weight:normal;font-size:11px;color:#888;">（25% / 50% / 75% / 100%）</span></td><td style="padding:10px;border:1px solid #ddd;line-height:1.7;">動画全体のうち、各到達ポイント（4分の1・半分・4分の3・最後まで）を再生された割合。</td></tr>
-                </tbody>
-            </table>
-        </details>
-
-        <!-- 月別基本指標 -->
-        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📈 月別 基本指標</h3>
-        <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:14px;">
-            <thead><tr style="background:#2e7d32;color:#fff;"><th style="padding:12px;text-align:center;border:1px solid #ddd;width:18%;">対象月</th><th style="padding:12px;text-align:center;border:1px solid #ddd;">表示回数</th><th style="padding:12px;text-align:center;border:1px solid #ddd;">視聴回数</th><th style="padding:12px;text-align:center;border:1px solid #ddd;">視聴率</th></tr></thead>
-            <tbody data-report-table="bimonthly">
-                <tr data-report-month="2026-04">
-                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026年4月</td>
-                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">7,329</td>
-                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">4,343</td>
-                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">59.26%</td>
-                </tr>
-                <tr data-report-month="2026-05">
-                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026年5月</td>
-                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">7,760</td>
-                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">4,450</td>
-                    <td style="padding:10px;text-align:right;border:1px solid #ddd;">57.35%</td>
-                </tr>
-                <tr style="background:#fff8e1;">
-                    <td style="padding:10px;text-align:center;border:1px solid #ddd;font-weight:700;color:#e65100;">推移</td>
-                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+5.9%</td>
-                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+2.5%</td>
-                    <td style="padding:10px;text-align:right;border:1px solid #ddd;color:#888;">-1.91pt</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- 業界平均比較ハイライト -->
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px;">
-            <div style="background:#fff0f0;border:2px solid #cc0000;border-radius:10px;padding:16px;text-align:center;">
-                <div style="font-size:11px;color:#cc0000;font-weight:700;margin-bottom:4px;">視聴率（5月）</div>
-                <div style="font-size:28px;font-weight:800;color:#cc0000;">57.35<span style="font-size:18px;">%</span></div>
-                <div style="font-size:11px;color:#555;margin-top:4px;">業界平均25% の<strong>約2.3倍</strong></div>
-            </div>
-            <div style="background:#e3f2fd;border:2px solid #1976d2;border-radius:10px;padding:16px;text-align:center;">
-                <div style="font-size:11px;color:#1976d2;font-weight:700;margin-bottom:4px;">視聴回数（5月）</div>
-                <div style="font-size:28px;font-weight:800;color:#1976d2;">4,450<span style="font-size:16px;">回</span></div>
-                <div style="font-size:11px;color:#555;margin-top:4px;">2ヶ月合計<strong>8,793回</strong></div>
-            </div>
-            <div style="background:#fff3e0;border:2px solid #ff8800;border-radius:10px;padding:16px;text-align:center;">
-                <div style="font-size:11px;color:#e65100;font-weight:700;margin-bottom:4px;">⚠️ 100%完視率（5月）</div>
-                <div style="font-size:28px;font-weight:800;color:#e65100;">25.87<span style="font-size:18px;">%</span></div>
-                <div style="font-size:11px;color:#555;margin-top:4px;">4月比<strong>-21.19pt 悪化</strong></div>
-            </div>
-        </div>
-
-        <!-- 切り口別分析タイトル -->
-        <div style="background:#2e7d32;color:#fff;padding:14px 18px;border-radius:8px;margin:24px 0 18px;">
-            <div style="font-size:16px;font-weight:700;">🔍 切り口別 深掘り分析</div>
-            <div style="font-size:12px;margin-top:4px;opacity:0.9;">「どこに刺さっているのか」を6つの切り口で可視化</div>
-        </div>
-
-        <!-- デバイス別 -->
-        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📱 デバイス別パフォーマンス（4月→5月比較） — <span style="color:#cc0000;">★最大の発見</span></h3>
-        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
-            <thead>
-                <tr style="color:#fff;">
-                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">デバイス</th>
-                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
-                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
-                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">完視率<br>推移</th>
-                </tr>
-                <tr style="background:#f1f8e9;color:#1b5e20;">
-                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">完視率</th>
-                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">完視率</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🥇 テレビ画面（YouTube TVアプリ）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">2,688</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">69.55%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">64.61%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">1,606</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>78.07%</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>71.84%</strong></td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+7.23pt ↑（但し視聴-40%）</td>
-                </tr>
-                <tr style="background:#ffebee;">
-                    <td style="padding:8px;border:1px solid #ddd;color:#cc0000;">⚠️ スマートフォン（5月に倍増）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">937</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46.78%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">18.55%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>1,914</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;">50.78%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">4.69%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">-13.86pt ↓↓（視聴+104%）</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">PC（コンピュータ）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">558</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">53.81%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">41.22%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">803</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">49.26%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">16.03%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">-25.19pt ↓↓</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">タブレット</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">160</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">37.74%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">33.33%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">127</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">41.78%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">20.59%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">-12.74pt ↓</td>
-                </tr>
-                <tr style="background:#f8f9fa;">
-                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">合計</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">4,343</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">59.26%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">47.06%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">4,450</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">57.35%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;color:#cc0000;">25.87%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">-21.19pt</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="background:#fff3e0;border-left:5px solid #ff8800;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
-            <strong>⚠️ ここが最大の発見:</strong><br>
-            ① <strong>テレビ画面は完視率71.84%・視聴率78.07%とどちらも最強</strong>。ただし5月に視聴数が-40%（2,688→1,606）と縮小。<br>
-            ② 一方で <strong>スマホへの配信が+104%（937→1,914）と倍増</strong>。視聴率は50%と健闘も、<strong>完視率はわずか4.69%</strong>（テレビの1/15）。<br>
-            ③ つまり「最後まで見てくれない人」に対して大量配信が起きている状態。これが100%完視率の全体悪化（47%→26%）の主因です。<br>
-            ④ 次サイクルでは <strong>「デバイスごとに役割を分ける」</strong>方向で組み直します（テレビ＝認知／スマホ＝来店）。スマホは比率を維持しつつ、配信中身のKWを"予約意図"に寄せて巻き返します（後述の提案①）。
-        </div>
-
-        <!-- 地域別 -->
-        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">📍 地域別パフォーマンス（4月→5月比較）</h3>
-        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
-            <thead>
-                <tr style="color:#fff;">
-                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">地域</th>
-                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
-                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
-                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">視聴率<br>推移</th>
-                </tr>
-                <tr style="background:#f1f8e9;color:#1b5e20;">
-                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
-                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background:#fff8e1;">
-                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">🥇 那覇市（拡張・最大ボリューム）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">3,141</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">1,826</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">58.13%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>3,979</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>2,276</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;">57.20%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-0.93pt（表示+27%）</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">沖縄市（拡張）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">1,205</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">772</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">64.07%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">1,036</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">623</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">60.14%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-3.93pt</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">浦添市（重点）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">992</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">522</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">52.62%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">933</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">522</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">55.95%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+3.33pt ↑</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">宜野湾市（重点）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">839</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">494</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">58.88%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">693</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">376</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">54.26%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-4.62pt</td>
-                </tr>
-                <tr style="background:#ffebee;">
-                    <td style="padding:8px;border:1px solid #ddd;color:#cc0000;">⚠️ 西原町（拡張）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">461</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">287</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">62.26%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">508</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">275</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#cc0000;">54.13%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">-8.13pt ↓</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">北谷町（拡張）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">263</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">163</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">61.98%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">202</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">127</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">62.87%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+0.89pt</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">北中城村（拡張）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">216</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">139</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">64.35%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">222</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">135</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">60.81%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-3.54pt</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">中城村（拡張）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">212</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">140</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">66.04%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">187</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">116</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">62.03%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-4.01pt</td>
-                </tr>
-                <tr style="background:#f8f9fa;">
-                    <td style="padding:8px;border:1px solid #ddd;font-weight:700;">合計</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">7,329</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">4,343</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">59.26%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">7,760</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">4,450</td><td style="padding:6px;text-align:right;border:1px solid #ddd;font-weight:700;">57.35%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-1.91pt</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
-            <strong>💡 4月→5月の評価:</strong><br>
-            ① <strong>那覇市が圧倒的な主戦場</strong>。視聴の51%（2,276/4,450）を1人で稼ぐエース。拡張エリア指定でしたが実質的に重点エリアとして機能。<br>
-            ② <strong>重点エリア（浦添市・宜野湾市）は規模・質ともにやや控えめ</strong>。浦添市は+3.33ptと改善傾向。<br>
-            ③ <strong>中城村・北中城村・北谷町・沖縄市が視聴率60%超</strong>と質安定。少ボリュームながら効率の良い拡張エリア。<br>
-            ④ ⚠️ <strong>西原町だけ-8.13pt 悪化</strong>。次サイクルで原因確認。
-        </div>
-
-        <!-- 性別 -->
-        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">👤 性別パフォーマンス（4月→5月比較） — <span style="color:#cc0000;">★要相談</span></h3>
-        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
-            <thead>
-                <tr style="color:#fff;">
-                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">性別</th>
-                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#558b2f;">4月</th>
-                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#2e7d32;">5月</th>
-                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">推移</th>
-                </tr>
-                <tr style="background:#f1f8e9;color:#1b5e20;">
-                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
-                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background:#fff8e1;">
-                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">🥇 男性（視聴ボリューム最大）</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">2,743</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">59.76%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>2,767</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>59.69%</strong></td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-0.07pt（高位安定）</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">女性</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">1,600</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">58.42%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">1,683</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">53.87%</td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-4.55pt</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="background:#fff3e0;border-left:5px solid #ff8800;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:18px;">
-            <strong>⚠️ 4月→5月の評価:</strong><br>
-            ① <strong>男性に視聴の58%が配信</strong>（2,767 vs 1,683）。男性の視聴率59.69%と高水準で、男性層にもしっかり届いている状態。<br>
-            ② 一方、来店ターゲット（女性／男女両方）の設計意図を再確認させていただきたいです。<br>
-            ③ もし「女性向けサロン」を主軸にされている場合、性別ターゲティングを <strong>女性メイン</strong>に絞ることで女性層に予算を集中できます（後述の提案②）。<br>
-            ④ 男女両方を狙う方針であれば、現状の配分はバランスが取れています。
-        </div>
-
-        <!-- 年齢層 -->
-        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">👥 年齢層パフォーマンス（4月→5月比較）</h3>
-        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
-            <thead>
-                <tr style="color:#fff;">
-                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">年齢</th>
-                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#558b2f;">4月</th>
-                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#2e7d32;">5月</th>
-                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">推移</th>
-                </tr>
-                <tr style="background:#f1f8e9;color:#1b5e20;">
-                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
-                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="padding:6px;border:1px solid #ddd;">18-24才</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">321</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">53.86%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">242</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">54.14%</td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">+0.28pt</td>
-                </tr>
-                <tr>
-                    <td style="padding:6px;border:1px solid #ddd;">25-34才</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">582</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">57.23%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">594</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">55.51%</td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-1.72pt</td>
-                </tr>
-                <tr>
-                    <td style="padding:6px;border:1px solid #ddd;">35-44才</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">726</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">59.95%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">651</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">57.26%</td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-2.69pt</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">🥇 45-54才（質トップ）</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">1,211</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">61.19%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>1,431</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>62.06%</strong></td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+0.87pt ↑（視聴+18%）</td>
-                </tr>
-                <tr style="background:#fff8e1;">
-                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">🥇 55-64才（ボリューム最大）</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">1,503</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">59.50%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>1,532</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">54.71%</td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-4.79pt</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:18px;">
-            <strong>💡 4月→5月の評価:</strong><br>
-            ① <strong>45-54才が視聴率62.06%（質トップ）かつ視聴+18%</strong>と量・質ともに改善。働き盛りの方々がコア反応層に。<br>
-            ② <strong>55-64才がボリューム最大</strong>（1,532視聴）。退職前後の世代も安定的に届いている。<br>
-            ③ 18-34才は視聴率53-55%とやや控えめ。若年層の絶対的なボリュームはありつつ、質は35才以上のほうが高い。<br>
-            ④ ※65才以上は配信対象外（提案書の指定通り）。
-        </div>
-
-        <!-- 世帯収入 -->
-        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">💰 世帯収入別パフォーマンス（4月→5月比較）</h3>
-
-        <details style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
-            <summary style="cursor:pointer;font-weight:700;color:#1a1a1a;font-size:13px;">📖 「上位10%」「下位50%」とは？（クリックで開く）</summary>
-            <div style="font-size:13px;color:#444;line-height:1.9;margin-top:10px;">
-                Google広告では、視聴者を <strong>全国の世帯所得ランキングで7段階に分類</strong>しています。<br>
-                所得情報はGoogleが <strong>住所・利用サービス・地域統計などから推定</strong>しているもので、本人申告ではありません。
-            </div>
-            <table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:10px;">
-                <thead><tr style="background:#f1f8e9;color:#1b5e20;"><th style="padding:6px;text-align:left;border:1px solid #ddd;width:22%;">区分</th><th style="padding:6px;text-align:left;border:1px solid #ddd;">意味（イメージ）</th></tr></thead>
-                <tbody>
-                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">上位10%</td><td style="padding:6px;border:1px solid #ddd;">日本の全世帯の中で、収入が <strong>上位10%以内</strong> の方（高所得層、世帯年収目安1,500万円〜）</td></tr>
-                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">11〜20%</td><td style="padding:6px;border:1px solid #ddd;">やや高所得層（1,000〜1,500万円）</td></tr>
-                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">21〜30%</td><td style="padding:6px;border:1px solid #ddd;">中の上（800〜1,000万円）</td></tr>
-                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">31〜40%</td><td style="padding:6px;border:1px solid #ddd;">中位寄り</td></tr>
-                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">41〜50%</td><td style="padding:6px;border:1px solid #ddd;">平均的な世帯所得層</td></tr>
-                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">下位50%</td><td style="padding:6px;border:1px solid #ddd;">日本の世帯の半分（〜500万円程度）</td></tr>
-                    <tr><td style="padding:6px;border:1px solid #ddd;font-weight:700;">不明</td><td style="padding:6px;border:1px solid #ddd;">Google推定不可（ログイン情報少等）</td></tr>
-                </tbody>
-            </table>
-            <div style="font-size:11px;color:#888;margin-top:8px;">※ 金額目安はGoogle非公表のため一般統計に基づく推定値です。</div>
-        </details>
-
-        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
-            <thead>
-                <tr style="color:#fff;">
-                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">世帯収入</th>
-                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#558b2f;">4月</th>
-                    <th colspan="2" style="padding:6px;border:1px solid #ddd;background:#2e7d32;">5月</th>
-                    <th rowspan="2" style="padding:6px;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">推移</th>
-                </tr>
-                <tr style="background:#f1f8e9;color:#1b5e20;">
-                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
-                    <th style="padding:4px;border:1px solid #ddd;">視聴</th><th style="padding:4px;border:1px solid #ddd;">視聴率</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background:#fff8e1;">
-                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">🥇 上位10%（圧倒的視聴率）</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">309</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">75.55%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">342</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>82.41%</strong></td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+6.86pt ↑</td>
-                </tr>
-                <tr>
-                    <td style="padding:6px;border:1px solid #ddd;">11-20%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">385</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">60.92%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">372</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">62.00%</td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+1.08pt</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">🚀 21-30%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">284</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">55.58%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">387</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>62.72%</strong></td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+7.14pt ↑</td>
-                </tr>
-                <tr>
-                    <td style="padding:6px;border:1px solid #ddd;">31-40%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">406</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">51.13%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">691</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">50.81%</td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-0.32pt（表示+71%）</td>
-                </tr>
-                <tr style="background:#ffebee;">
-                    <td style="padding:6px;border:1px solid #ddd;color:#cc0000;">⚠️ 41-50%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">315</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">59.89%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">477</td><td style="padding:4px;text-align:right;border:1px solid #ddd;color:#cc0000;">52.19%</td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-7.70pt ↓</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:6px;border:1px solid #ddd;font-weight:700;">下位50%（ボリューム最大）</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">1,257</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">59.49%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>1,391</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;">59.57%</td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+0.08pt（高位安定）</td>
-                </tr>
-                <tr>
-                    <td style="padding:6px;border:1px solid #ddd;">不明</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">1,387</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">59.17%</td>
-                    <td style="padding:4px;text-align:right;border:1px solid #ddd;">790</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">52.01%</td>
-                    <td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-7.16pt</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
-            <strong>💡 4月→5月の評価:</strong><br>
-            ① <strong>上位10%層が視聴率82.41%と圧倒的</strong>（+6.86pt 改善）。富裕層がBeauty labo m+のサロンに最も強く惹かれている。<br>
-            ② <strong>21-30%層も+7.14pt 大幅改善</strong>（55%→62%）。中の上の所得層も主力候補に育ちつつあります。<br>
-            ③ <strong>下位50%層がボリューム最大</strong>（1,391視聴）かつ視聴率60%と安定。幅広い所得層に届く設計が機能。<br>
-            ④ ⚠️ <strong>41-50%層が-7.70pt 悪化</strong>。表示増加（315→477）に対し質が落ちており、要監視。
-        </div>
-
-        <!-- 時間帯 -->
-        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">🕐 時間帯別パフォーマンス（4月→5月比較・5月視聴回数順 主要時間帯）</h3>
-        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
-            <thead>
-                <tr style="color:#fff;">
-                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">時間帯</th>
-                    <th colspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
-                    <th colspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
-                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">完視率<br>推移</th>
-                </tr>
-                <tr style="background:#f1f8e9;color:#1b5e20;">
-                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">完視率</th>
-                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">完視率</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background:#fff8e1;"><td style="padding:6px;border:1px solid #ddd;font-weight:700;">21時（最大ボリューム）</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">338</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">37.48%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;"><strong>327</strong></td><td style="padding:4px;text-align:right;border:1px solid #ddd;color:#cc0000;">23.61%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-13.87pt ↓</td></tr>
-                <tr><td style="padding:6px;border:1px solid #ddd;">23時</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">216</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">58.04%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">247</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">40.88%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-17.16pt</td></tr>
-                <tr><td style="padding:6px;border:1px solid #ddd;">22時</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">347</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">45.10%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">174</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">21.03%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-24.07pt ↓</td></tr>
-                <tr><td style="padding:6px;border:1px solid #ddd;">20時</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">265</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">38.25%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">226</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">20.88%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-17.37pt</td></tr>
-                <tr><td style="padding:6px;border:1px solid #ddd;">19時</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">223</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">33.91%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">201</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">27.54%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#888;">-6.37pt</td></tr>
-                <tr><td style="padding:6px;border:1px solid #ddd;">12時（昼休み）</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">94</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">36.21%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">253</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">19.82%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">-16.39pt（表示2.7倍）</td></tr>
-                <tr><td style="padding:6px;border:1px solid #ddd;">深夜帯（0-5時）</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">913</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">62〜79%</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">722</td><td style="padding:4px;text-align:right;border:1px solid #ddd;">25〜49%</td><td style="padding:4px;text-align:center;border:1px solid #ddd;color:#cc0000;">大幅悪化</td></tr>
-            </tbody>
-        </table>
-        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin:8px 0 24px;">
-            <strong>💡 4月→5月の評価:</strong><br>
-            ① <strong>5月は全時間帯で完視率が大幅悪化</strong>。前述のとおりデバイス配分の変化（スマホ大量配信）が時間帯側にも波及している状態。<br>
-            ② 4月の <strong>深夜帯（0-5時）は完視率62〜79%と圧倒的</strong>。テレビ画面でじっくり見る視聴者層が刺さっていた。<br>
-            ③ <strong>21-23時の夜帯がボリューム中心</strong>。今後もコア時間帯として継続。<br>
-            ④ 12時の昼休み帯は5月に表示2.7倍となるも、完視率は19.82%と低調。スマホ流入が中心と推察。
-        </div>
-
-        <!-- キーワード別 -->
-        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">🔑 キーワード別（4月→5月比較・5月視聴回数順 主要KW）</h3>
-        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:8px;">
-            <thead>
-                <tr style="color:#fff;">
-                    <th rowspan="2" style="padding:8px;text-align:left;border:1px solid #ddd;vertical-align:middle;background:#2e7d32;">キーワード</th>
-                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#558b2f;">4月</th>
-                    <th colspan="3" style="padding:8px;text-align:center;border:1px solid #ddd;background:#2e7d32;">5月</th>
-                    <th rowspan="2" style="padding:8px;text-align:center;border:1px solid #ddd;vertical-align:middle;background:#1b5e20;">視聴率<br>推移</th>
-                </tr>
-                <tr style="background:#f1f8e9;color:#1b5e20;">
-                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
-                    <th style="padding:6px;text-align:right;border:1px solid #ddd;">表示</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">視聴率</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background:#fff8e1;">
-                    <td style="padding:8px;border:1px solid #ddd;">🥇 ブラッシュアップ 🚀</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">490</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">425</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">86.73%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>2,731</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>1,847</strong></td><td style="padding:6px;text-align:right;border:1px solid #ddd;">67.63%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;font-weight:700;">表示+457% 🚀（質はやや低下）</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:8px;border:1px solid #ddd;">🥈 女子会 🚀</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">351</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">222</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">63.25%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">1,746</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">865</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">49.54%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">-13.71pt（表示+397%）</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">🥉 アイブロウ</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">2,521</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">1,393</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">55.26%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">1,278</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">606</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">47.42%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-7.84pt（表示半減）</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">セルフケア</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">1,220</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">704</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">57.70%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">434</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">220</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">50.69%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-7.01pt（表示-64%）</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:8px;border:1px solid #ddd;">まつげパーマ（質維持）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">854</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">498</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">58.31%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">367</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">214</td><td style="padding:6px;text-align:right;border:1px solid #ddd;"><strong>58.31%</strong></td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">±0.00pt（質完全維持）</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:8px;border:1px solid #ddd;">ネイルサロン（質維持）</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">891</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">523</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">58.70%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">362</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">213</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">58.84%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">+0.14pt（質維持）</td>
-                </tr>
-                <tr>
-                    <td style="padding:8px;border:1px solid #ddd;">ジェルネイル</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">845</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">520</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">61.54%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">331</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">194</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">58.61%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#888;">-2.93pt</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:8px;border:1px solid #ddd;">🚀 ぬくもり 好き</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">18</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">7</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">38.89%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">263</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">151</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">57.41%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+18.52pt ↑（表示+1361%）</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:8px;border:1px solid #ddd;">🚀 結婚式 準備</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">99</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">23</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">23.23%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">155</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">72</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">46.45%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;font-weight:700;">+23.22pt ↑↑</td>
-                </tr>
-                <tr style="background:#e8f5e9;">
-                    <td style="padding:8px;border:1px solid #ddd;">美容 トレンド</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">6</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">5</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">83.33%</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;">75</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">59</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">78.67%</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#2e7d32;">-4.66pt（高位維持）</td>
-                </tr>
-                <tr style="background:#ffebee;">
-                    <td style="padding:8px;border:1px solid #ddd;">⚠️ ブラジェル / まつエク 自然 / 美容サロン 予約 / 自分磨き / ネイル デザイン / まつげエクステ</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;" colspan="3">表示・視聴ともに低調</td>
-                    <td style="padding:6px;text-align:right;border:1px solid #ddd;" colspan="3">表示・視聴ともに低調</td>
-                    <td style="padding:6px;text-align:center;border:1px solid #ddd;color:#cc0000;">届いていない</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="background:#f8f9fa;border-left:4px solid #2e7d32;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:24px;">
-            <strong>💡 4月→5月の評価:</strong><br>
-            ① 🚀 <strong>「ブラッシュアップ」が爆発的に主力化</strong>（表示490→2,731、視聴+335%）。視聴率も67.63%と高水準。<br>
-            ② 🚀 <strong>「結婚式 準備」が+23.22pt 大躍進</strong>（23%→46%）。<strong>「ぬくもり 好き」が+18.52pt</strong>。ライフスタイル系KWの掘り当てに成功。<br>
-            ③ <strong>「ネイルサロン」「まつげパーマ」は表示を絞ったことで質完全維持</strong>（58.84% / 58.31%）。コア層への配信が安定。<br>
-            ④ <strong>「美容 トレンド」は表示少ながら視聴率78.67%とトップレベル</strong>。表示量増加余地あり。<br>
-            ⑤ ⚠️ <strong>「ブラジェル」「まつエク 自然」「美容サロン 予約」等はほぼ機能していません</strong>。次サイクルで除外検討。
-        </div>
-
-        <!-- 動画完視率 -->
-        <h3 style="font-size:15px;color:#2e7d32;margin:18px 0 10px;">🎬 動画完視率（最後まで見られているか）</h3>
-        <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:8px;">
-            <thead><tr style="background:#f1f8e9;"><th style="padding:8px;border:1px solid #ddd;">月</th><th style="padding:8px;border:1px solid #ddd;">25%視聴</th><th style="padding:8px;border:1px solid #ddd;">50%視聴</th><th style="padding:8px;border:1px solid #ddd;">75%視聴</th><th style="padding:8px;border:1px solid #ddd;">100%完視</th></tr></thead>
-            <tbody>
-                <tr><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;">4月</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">65.03%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">60.04%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">49.64%</td><td style="padding:8px;text-align:right;border:1px solid #ddd;">47.06%</td></tr>
-                <tr style="background:#ffebee;"><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;">5月</td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>61.33%</strong></td><td style="padding:8px;text-align:right;border:1px solid #ddd;"><strong>57.59%</strong></td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;"><strong>27.82%</strong></td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;"><strong>25.87%</strong></td></tr>
-                <tr style="background:#fff8e1;"><td style="padding:8px;text-align:center;border:1px solid #ddd;font-weight:700;color:#e65100;">推移</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#888;">-3.70pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#888;">-2.45pt</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;font-weight:700;">-21.82pt ↓↓</td><td style="padding:8px;text-align:right;border:1px solid #ddd;color:#cc0000;font-weight:700;">-21.19pt ↓↓</td></tr>
-            </tbody>
-        </table>
-        <div style="background:#fff3e0;border-left:5px solid #ff8800;padding:12px 14px;font-size:13px;line-height:1.8;color:#333;margin-bottom:8px;">
-            <strong>⚠️ ここが今回最大の課題:</strong> 動画の前半（25%・50%）はほぼ維持されているものの、<strong>75%・100%（後半〜最後まで）の到達率が約半減</strong>しています。これは前述のとおり <strong>「最後までじっくり見るデバイス（テレビ画面）」への配信が減り、「すぐにスキップされるデバイス（スマホ）」への配信が倍増</strong>したことが主因です。<br>
-            次サイクルでは <strong>「デバイスごとに役割を分ける」運用（提案①）</strong> により、TV画面で4月水準（100%完視47%）への回復を目指しつつ、スマホは予約導線として比率を維持＋KW深掘りで質を立て直してまいります。
-        </div>
-
-        <div style="font-size:12px;color:#888;text-align:right;margin-top:18px;">
-            最終更新: 2026年6月8日｜次回更新: 2026年8月上旬予定
-        </div>
-    </div>
-
-    <!-- ④ 次サイクル運用提案 -->
-    <div class="section" style="border-color:#cc0000;">
-        <div class="section-title"><span class="icon" style="background:#cc0000;">3</span>次サイクル運用提案（弊社からのご提案）</div>
-
-        <div style="background:#fff0f0;border:2px solid #cc0000;border-radius:10px;padding:16px 20px;margin-bottom:20px;">
-            <div style="font-size:13px;color:#cc0000;line-height:1.9;">
-                <strong>👇 配信実績データから導いた、次2ヶ月の運用最適化案を3点まとめました。</strong><br>
-                ご一読のうえ、ご相談・ご判断をお待ちしております。
-            </div>
-        </div>
-
-        <!-- 提案① デバイス配分＋スマホKW深掘り（巻き返し版 v2） -->
-        <div style="background:#fff;border:2px solid #cc0000;border-radius:10px;padding:20px;margin-bottom:14px;">
-
-            <!-- 結論TOP -->
-            <div style="background:#fffbe6;border:3px solid #cc0000;border-radius:10px;padding:18px 22px;margin-bottom:18px;">
-                <div style="font-size:13px;font-weight:700;color:#cc0000;letter-spacing:.1em;margin-bottom:10px;">■ この提案の結論（先にお伝えします）</div>
-                <ol style="font-size:13px;line-height:1.9;margin-left:22px;color:#333;">
-                    <li><strong>スマホ配信は削りません。</strong>予約導線が完結する唯一のデバイスのため、比率はほぼ維持します。</li>
-                    <li><strong>デバイスごとに役割を分けます。</strong>TV画面＝認知（完視率で評価）／スマホ＝来店（HP遷移で評価）。</li>
-                    <li><strong>動画訴求と整合するKW群を追加し、Google AIの自動配信をさらに後押し</strong>します。過去2ヶ月もGoogleの動画解析により幅広い層への配信は機能しており、薄毛ケア系KWの追加で対象層への到達精度をさらに微調整いたします。</li>
-                </ol>
-            </div>
-
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-                <span style="background:#cc0000;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案①</span>
-                <span style="font-size:17px;font-weight:700;">テレビ画面で"認知"・スマホで"予約"の二段配分＋動画訴求と整合するKWの追加（精度UP）</span>
-            </div>
-
-            <!-- ① データから見えること -->
-            <div style="background:#fff8f8;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
-                <div style="font-size:13px;font-weight:700;color:#cc0000;margin-bottom:6px;">📊 データから見えること</div>
-                <ul style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;">
-                    <li>🥇 <strong>テレビ画面は完視率71.84%・視聴率78.07%</strong>と圧倒的。5月に視聴-40%（2,688→1,606）と縮小</li>
-                    <li>⚠️ <strong>スマホへの配信が+104%（937→1,914）と倍増</strong>。視聴率50%・完視率は4.69%（テレビの1/15）</li>
-                    <li>結果として <strong>100%完視率が47.06%→25.87%（-21.19pt）</strong>と大幅悪化</li>
-                </ul>
-            </div>
-
-            <!-- ② 考え方の整理（ロジック） -->
-            <div style="background:#f1f8fe;border-left:4px solid #1976d2;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
-                <div style="font-size:13px;font-weight:700;color:#1976d2;margin-bottom:6px;">🧭 考え方の整理</div>
-                <div style="font-size:13px;color:#333;line-height:1.9;">
-                    ここで <strong>「スマホ配信を削る」のではなく、「デバイスごとに役割を分ける」</strong>方向で組み直すのが最適と考えております。
-                    <ul style="margin-top:8px;margin-left:20px;">
-                        <li><strong>テレビ画面</strong> ＝ サロンの世界観を最後まで届ける <span style="color:#2e7d32;font-weight:700;">＝ 認知の主軸</span></li>
-                        <li><strong>スマートフォン</strong> ＝ 予約導線が完結する唯一のデバイス <span style="color:#2e7d32;font-weight:700;">＝ 来店の主軸</span></li>
-                    </ul>
-                    スマホ配信を一律で削ると <strong>来店に直結する予約導線まで細ってしまう</strong>ため、スマホは比率を維持しつつ <strong>"配信される中身（KW）"を予約意図に寄せる</strong>方針でご提案します。
-                </div>
-            </div>
-
-            <!-- ③ 入札配分のご提案 -->
-            <div style="background:#e8f5e9;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
-                <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:8px;">💡 ご提案 ①：入札配分の見直し</div>
-                <table style="width:100%;font-size:12px;border-collapse:collapse;">
-                    <thead><tr style="background:#c8e6c9;"><th style="padding:6px;text-align:left;border:1px solid #aed581;">デバイス</th><th style="padding:6px;text-align:right;border:1px solid #aed581;">現状（5月）</th><th style="padding:6px;text-align:right;border:1px solid #aed581;">次サイクル方針</th><th style="padding:6px;text-align:left;border:1px solid #aed581;">役割</th></tr></thead>
-                    <tbody>
-                        <tr><td style="padding:6px;border:1px solid #aed581;">🥇 テレビ画面</td><td style="padding:6px;text-align:right;border:1px solid #aed581;">視聴 -40%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;font-weight:700;">入札比率 +30〜40%</td><td style="padding:6px;border:1px solid #aed581;">認知（完視率で評価）</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #aed581;">💻 PC</td><td style="padding:6px;text-align:right;border:1px solid #aed581;">—</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;font-weight:700;">入札比率 +20%</td><td style="padding:6px;border:1px solid #aed581;">じっくり層</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #aed581;">📱 スマートフォン</td><td style="padding:6px;text-align:right;border:1px solid #aed581;">視聴 +104%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;font-weight:700;">比率はほぼ維持</td><td style="padding:6px;border:1px solid #aed581;">来店（HP遷移／予約導線で評価）</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- ④ KW追加（本提案の核） -->
-            <div style="background:#fff8e1;border:1px dashed #ffb300;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
-                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">🔍 ご提案 ②：動画訴求と整合するKWの追加（Google AIの後押し）</div>
-                <div style="font-size:13px;color:#333;line-height:1.9;">
-                    過去2ヶ月の配信実績（視聴率58.27%）は、<strong>Google AIが動画クリエイティブを解析し、適切な視聴者層へ自動配信していた結果</strong>でございます。<br>
-                    配信中の動画が「薄毛ケア」訴求のため、薄毛ケアに関心の高い視聴者層への配信精度を<strong>さらに微調整</strong>すべく、補助的なヒントとして下記の薄毛系KW群を追加することをご提案いたします。<br>
-                    既存の「美容感度の高い層」への配信は維持されつつ、薄毛ケア悩み層への到達がより精緻化されることが期待できます。
-                </div>
-
-                <div style="margin-top:12px;font-size:13px;font-weight:700;color:#e65100;">追加KW（全28語／4分類）</div>
-                <div style="margin-top:6px;">
-                    <div style="font-size:11px;color:#cc0000;font-weight:700;margin-top:8px;">▼ 直接ニーズ</div>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">薄毛 ケア</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">頭皮 ケア</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">抜け毛 対策</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">育毛 サロン</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">発毛 サロン</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">髪 ボリュームアップ</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">ヘッドスパ 薄毛</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">薄毛 サロン</span>
-
-                    <div style="font-size:11px;color:#cc0000;font-weight:700;margin-top:8px;">▼ 悩み系</div>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">髪 細く なった</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">分け目 目立つ</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">つむじ 薄い</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">髪 ぺたんこ</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">頭皮 マッサージ</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">抜け毛 多い</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">頭皮 乾燥</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">髪質 改善</span>
-
-                    <div style="font-size:11px;color:#cc0000;font-weight:700;margin-top:8px;">▼ 属性系</div>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">女性 薄毛</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">産後 抜け毛</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">更年期 薄毛</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">40代 薄毛</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">50代 髪</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">男性 薄毛</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">AGA</span>
-
-                    <div style="font-size:11px;color:#cc0000;font-weight:700;margin-top:8px;">▼ 地域系</div>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">薄毛 ケア 沖縄</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">育毛 サロン 那覇</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">ヘッドスパ 沖縄</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">頭皮 ケア 浦添</span>
-                    <span style="display:inline-block;background:#fff;border:1px solid #ffb300;border-radius:14px;padding:3px 10px;margin:3px 4px 3px 0;font-size:12px;">薄毛 沖縄</span>
-                </div>
-
-                <div style="margin-top:14px;font-size:13px;font-weight:700;color:#e65100;">次サイクルでの進め方</div>
-                <ol style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;margin-top:4px;">
-                    <li>Beauty labo m+様にヒアリング → 「FIX A」のターゲット層（年齢・性別）、訴求の核、地域訴求の重視度を確認</li>
-                    <li>上記KWを既存設定に<strong>追加</strong>（既存KWは維持）。属性系・地域系はヒアリング結果で精度調整</li>
-                    <li>追加後2〜4週間で薄毛系KW由来の配信実績・HP遷移数を計測 → 次々回ご報告</li>
-                </ol>
-            </div>
-
-            <!-- ⑤ KPIの見方 -->
-            <div style="background:#f3e5f5;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
-                <div style="font-size:13px;font-weight:700;color:#6a1b9a;margin-bottom:8px;">📐 KPIの見方を分ける（重要）</div>
-                <table style="width:100%;font-size:12px;border-collapse:collapse;">
-                    <thead><tr style="background:#e1bee7;"><th style="padding:6px;text-align:left;border:1px solid #ce93d8;">デバイス</th><th style="padding:6px;text-align:left;border:1px solid #ce93d8;">評価指標</th><th style="padding:6px;text-align:left;border:1px solid #ce93d8;">目的</th></tr></thead>
-                    <tbody>
-                        <tr><td style="padding:6px;border:1px solid #ce93d8;">テレビ画面</td><td style="padding:6px;border:1px solid #ce93d8;">100%完視率</td><td style="padding:6px;border:1px solid #ce93d8;">認知の深さ</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #ce93d8;">スマートフォン</td><td style="padding:6px;border:1px solid #ce93d8;">HP遷移数／予約導線到達数</td><td style="padding:6px;border:1px solid #ce93d8;">来店への寄与</td></tr>
-                    </tbody>
-                </table>
-                <div style="font-size:11px;color:#666;margin-top:6px;">※「スマホ完視率が低い＝悪い」ではなく、デバイスごとに別目的という位置付けで整理いたします。</div>
-            </div>
-
-            <!-- ⑥ 期待される効果 -->
-            <div style="background:#fffde7;border-radius:8px;padding:12px 16px;">
-                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">📈 期待される効果</div>
-                <table style="width:100%;font-size:12px;border-collapse:collapse;">
-                    <tr style="background:#fff8e1;"><th style="padding:6px;text-align:left;border:1px solid #ddd;">項目</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">5月実績</th><th style="padding:6px;text-align:right;border:1px solid #ddd;">巻き返し版 v2 見込み</th></tr>
-                    <tr><td style="padding:6px;border:1px solid #ddd;">100%完視率（TV主導）</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">25.87%</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">40〜45%（4月水準復活）</td></tr>
-                    <tr><td style="padding:6px;border:1px solid #ddd;">スマホHP遷移数</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">—</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">KW入れ替え後に改善見込み</td></tr>
-                    <tr><td style="padding:6px;border:1px solid #ddd;">サロン認知の深さ</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">—</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">TV画面で確保</td></tr>
-                    <tr><td style="padding:6px;border:1px solid #ddd;">予約導線</td><td style="padding:6px;text-align:right;border:1px solid #ddd;">維持懸念</td><td style="padding:6px;text-align:right;border:1px solid #ddd;color:#2e7d32;font-weight:700;">削らず維持＋KW深掘りで質向上</td></tr>
-                </table>
-            </div>
-        </div>
-
-        <!-- 提案② 性別ターゲティング見直し -->
-        <div style="background:#fff;border:2px solid #ff8800;border-radius:10px;padding:20px;margin-bottom:14px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-                <span style="background:#ff8800;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案②</span>
-                <span style="font-size:17px;font-weight:700;">性別ターゲティングの見直しご相談</span>
-            </div>
-
-            <div style="background:#fff8f0;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
-                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">📊 データから見えること</div>
-                <ul style="font-size:13px;color:#333;line-height:1.9;margin-left:20px;">
-                    <li>男性に視聴の <strong>58%（2,767/4,450）</strong> が配信されている</li>
-                    <li>男性の視聴率59.69%・女性53.87%と、男性のほうが視聴率が高い状態</li>
-                    <li>現在の設定は「男女・20〜64才」でターゲット設計されています</li>
-                </ul>
-            </div>
-
-            <div style="background:#e8f5e9;border-radius:8px;padding:12px 16px;margin-bottom:12px;">
-                <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:6px;">💡 ご相談（2案）</div>
-                <div style="font-size:13px;color:#333;line-height:1.9;">
-                    <strong>A案:</strong> 現状維持（男女とも狙う方針が変わらない場合）<br>
-                    <strong>B案:</strong> 女性メインに比率調整（女性向けサロンとして来店ターゲットを絞り込む場合）
-                </div>
-                <div style="font-size:12px;color:#888;margin-top:6px;">※Beauty labo m+様のお客様層（男女比率、男性のご来店有無）をお伺いした上で判断いたします。</div>
-            </div>
-
-            <div style="background:#fffde7;border-radius:8px;padding:12px 16px;">
-                <div style="font-size:13px;font-weight:700;color:#e65100;margin-bottom:6px;">📈 期待される効果（B案を選択された場合）</div>
-                <div style="font-size:13px;color:#333;line-height:1.9;">
-                    女性層への配信比率を高めることで、来店確度の高い女性層に予算を集中。<br>
-                    全体視聴回数は微減する可能性がありますが、<strong>「広告→ご来店」の転換効率が向上</strong>する見込みです。
-                </div>
-            </div>
-        </div>
-
-        <!-- 提案③ エリア＋キーワード最適化 -->
-        <div style="background:#fff;border:2px solid #2e7d32;border-radius:10px;padding:20px;margin-bottom:14px;">
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-                <span style="background:#2e7d32;color:#fff;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;">提案③</span>
-                <span style="font-size:17px;font-weight:700;">エリア＋キーワードを「効いてる順」に組み直す</span>
-            </div>
-
-            <div style="background:#f1f8e9;border-radius:8px;padding:12px 16px;margin-bottom:14px;">
-                <div style="font-size:13px;font-weight:700;color:#2e7d32;margin-bottom:6px;">📊 データから見えること</div>
-                <div style="font-size:13px;color:#333;line-height:1.9;">
-                    <strong>那覇市・沖縄市・中城村・北中城村</strong> のエリアと、<strong>「ブラッシュアップ」「ネイルサロン」「まつげパーマ」「ぬくもり 好き」「結婚式 準備」「美容 トレンド」</strong> のKWで視聴の大半を稼いでいます。<br>
-                    一方で <strong>「ブラジェル」「まつエク 自然」「美容サロン 予約」</strong> 等は2ヶ月とも機能しておらず、予算ロスにつながっています。
-                </div>
-            </div>
-
-            <!-- A. 強化候補 -->
-            <div style="background:#e8f5e9;border:1px solid #2e7d32;border-radius:8px;padding:14px 16px;margin-bottom:10px;">
-                <div style="font-size:14px;font-weight:700;color:#1b5e20;margin-bottom:8px;">🚀 A. 「残す／強化したい」候補（KWは継続配信／時間帯・エリア・属性は入札比率UP）</div>
-                <table style="width:100%;font-size:12px;border-collapse:collapse;">
-                    <thead><tr style="background:#c8e6c9;"><th style="padding:6px;text-align:left;border:1px solid #aed581;">対象</th><th style="padding:6px;text-align:right;border:1px solid #aed581;">5月視聴率</th><th style="padding:6px;text-align:right;border:1px solid #aed581;">推移</th><th style="padding:6px;text-align:left;border:1px solid #aed581;">なぜ強化したいか</th></tr></thead>
-                    <tbody>
-                        <tr><td style="padding:6px;border:1px solid #aed581;">KW：ブラッシュアップ</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">67.63%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#cc0000;font-weight:700;">表示+457% 🚀</td><td style="padding:6px;border:1px solid #aed581;">圧倒的主力KW。視聴率も高位維持</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #aed581;">KW：美容 トレンド</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">78.67%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;">-4.66pt</td><td style="padding:6px;border:1px solid #aed581;">表示少ながら最高水準の視聴率。拡大余地あり</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #aed581;">KW：結婚式 準備</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">46.45%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;font-weight:700;">+23.22pt 🚀</td><td style="padding:6px;border:1px solid #aed581;">ブライダル前美容ニーズ。来店確度高い</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #aed581;">KW：ぬくもり 好き</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">57.41%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;font-weight:700;">+18.52pt 🚀</td><td style="padding:6px;border:1px solid #aed581;">情緒系KWで急成長。サロンの世界観と相性◯</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #aed581;">エリア：那覇市</td><td style="padding:6px;text-align:right;border:1px solid #aed581;font-weight:700;">57.20%</td><td style="padding:6px;text-align:right;border:1px solid #aed581;color:#2e7d32;">表示+27%</td><td style="padding:6px;border:1px solid #aed581;">圧倒的最大ボリューム。来店圏内の主軸</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- B. 除外候補 -->
-            <div style="background:#ffebee;border:1px solid #cc0000;border-radius:8px;padding:14px 16px;margin-bottom:10px;">
-                <div style="font-size:14px;font-weight:700;color:#b71c1c;margin-bottom:8px;">🗑 B. 「外したい」候補（除外）</div>
-                <table style="width:100%;font-size:12px;border-collapse:collapse;">
-                    <thead><tr style="background:#ffcdd2;"><th style="padding:6px;text-align:left;border:1px solid #ef9a9a;">対象</th><th style="padding:6px;text-align:right;border:1px solid #ef9a9a;">4月実績</th><th style="padding:6px;text-align:right;border:1px solid #ef9a9a;">5月実績</th><th style="padding:6px;text-align:left;border:1px solid #ef9a9a;">なぜ外したいか</th></tr></thead>
-                    <tbody>
-                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">KW：ブラジェル</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示0</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示0</td><td style="padding:6px;border:1px solid #ef9a9a;">2ヶ月とも一切配信されていない</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">KW：まつエク 自然</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示1</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示0</td><td style="padding:6px;border:1px solid #ef9a9a;">そもそも検索されていない</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">KW：美容サロン 予約</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示2/視聴0</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示1/視聴1</td><td style="padding:6px;border:1px solid #ef9a9a;">2ヶ月ともボリュームなし</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">KW：自分磨き</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示4/視聴2</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;">表示4/視聴0</td><td style="padding:6px;border:1px solid #ef9a9a;">無風</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #ef9a9a;">KW：ネイル デザイン / まつげエクステ</td><td style="padding:6px;text-align:right;border:1px solid #ef9a9a;" colspan="2">2ヶ月とも表示5〜13で極小</td><td style="padding:6px;border:1px solid #ef9a9a;">ボリュームなし</td></tr>
-                    </tbody>
-                </table>
-                <div style="font-size:11px;color:#555;margin-top:6px;">→ 外しても配信に悪影響なし。枠を強化候補に回せる</div>
-            </div>
-
-            <!-- C. 新規追加候補 -->
-            <div style="background:#e3f2fd;border:1px solid #1976d2;border-radius:8px;padding:14px 16px;">
-                <div style="font-size:14px;font-weight:700;color:#0d47a1;margin-bottom:8px;">✨ C. 「新しく追加したい」キーワード（薄毛ケア訴求と整合）</div>
-                <div style="font-size:12px;color:#555;line-height:1.7;margin-bottom:8px;">
-                    配信中の動画クリエイティブが「薄毛ケア」を主軸に訴求されているため、薄毛系の関心層が見ているYouTube動画ジャンルにも広告が流れるよう、下記KW群を追加いたします。
-                </div>
-                <table style="width:100%;font-size:12px;border-collapse:collapse;">
-                    <thead><tr style="background:#bbdefb;"><th style="padding:6px;text-align:left;border:1px solid #90caf9;">分類</th><th style="padding:6px;text-align:left;border:1px solid #90caf9;">追加候補KW</th></tr></thead>
-                    <tbody>
-                        <tr><td style="padding:6px;border:1px solid #90caf9;font-weight:700;">直接ニーズ</td><td style="padding:6px;border:1px solid #90caf9;">薄毛 ケア／頭皮 ケア／抜け毛 対策／育毛 サロン／発毛 サロン／髪 ボリュームアップ／ヘッドスパ 薄毛／薄毛 サロン</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #90caf9;font-weight:700;">悩み系</td><td style="padding:6px;border:1px solid #90caf9;">髪 細く なった／分け目 目立つ／つむじ 薄い／髪 ぺたんこ／頭皮 マッサージ／抜け毛 多い／頭皮 乾燥／髪質 改善</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #90caf9;font-weight:700;">属性系</td><td style="padding:6px;border:1px solid #90caf9;">女性 薄毛／産後 抜け毛／更年期 薄毛／40代 薄毛／50代 髪／男性 薄毛／AGA</td></tr>
-                        <tr><td style="padding:6px;border:1px solid #90caf9;font-weight:700;">地域系</td><td style="padding:6px;border:1px solid #90caf9;">薄毛 ケア 沖縄／育毛 サロン 那覇／ヘッドスパ 沖縄／頭皮 ケア 浦添／薄毛 沖縄</td></tr>
-                    </tbody>
-                </table>
-                <div style="font-size:11px;color:#555;margin-top:6px;">→ 既存KWは維持し、上記を<strong>追加</strong>。属性系・地域系はBeauty labo m+様へのヒアリング結果で精度調整いたします。</div>
-            </div>
-        </div>
-
-        <div style="background:#f8f9fa;border-left:5px solid #cc0000;padding:14px 18px;font-size:13px;line-height:1.9;color:#333;">
-            <strong>📅 次サイクルの想定スケジュール:</strong><br>
-            ご報告共有 → ご判断 → 6月中旬 設定変更（デバイス配分・KW整理） → 6月下旬〜7月 配信 → 8月上旬 次回ご報告
-        </div>
-    </div>
-
-    <!-- ⑤ ご要望・改善履歴 -->
-    <div class="section" style="border-color:#6a1b9a;">
-        <div class="section-title"><span class="icon" style="background:#6a1b9a;">4</span>ご要望・改善履歴</div>
-
-        <div style="background:#f3e5f5;border:2px solid #6a1b9a;border-radius:10px;padding:16px 20px;margin-bottom:18px;">
-            <div style="font-size:13px;color:#4a148c;line-height:1.8;">
-                Beauty labo m+様からいただいたご要望と、その対応状況をこちらに記録してまいります。<br>
-                対応完了後は実施内容と効果（次サイクルの実績）もあわせて記録します。
-            </div>
-        </div>
-
-        <table style="width:100%;border-collapse:collapse;font-size:13px;">
-            <thead>
-                <tr style="background:#6a1b9a;color:#fff;">
-                    <th style="padding:10px;text-align:center;border:1px solid #ddd;width:14%;">受領日</th>
-                    <th style="padding:10px;text-align:left;border:1px solid #ddd;width:40%;">ご要望内容</th>
-                    <th style="padding:10px;text-align:left;border:1px solid #ddd;width:32%;">対応内容</th>
-                    <th style="padding:10px;text-align:center;border:1px solid #ddd;width:14%;">ステータス</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026-06-09</td>
-                    <td style="padding:10px;border:1px solid #ddd;">リンク先URLを <strong>https://mplus.readdy.co</strong> へ変更のご依頼</td>
-                    <td style="padding:10px;border:1px solid #ddd;">Google広告にてリンク先URL変更を実施・反映済み</td>
-                    <td style="padding:10px;text-align:center;border:1px solid #ddd;"><span style="background:#bbdefb;color:#0d47a1;padding:4px 10px;border-radius:14px;font-size:11px;font-weight:700;">対応済み</span></td>
-                </tr>
-                <tr>
-                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026-06-09</td>
-                    <td style="padding:10px;border:1px solid #ddd;">設定キーワードの再設計に関するご質問（薄毛ケア訴求と整合するKW追加のご相談）</td>
-                    <td style="padding:10px;border:1px solid #ddd;">YouTube広告の配信ロジック（Google AI主導・KW補助）をご説明のうえ、薄毛ケア系KW追加をご提案。次サイクル設定変更時に反映予定</td>
-                    <td style="padding:10px;text-align:center;border:1px solid #ddd;"><span style="background:#e8f5e9;color:#1b5e20;padding:4px 10px;border-radius:14px;font-size:11px;font-weight:700;">対応中</span></td>
-                </tr>
-                <tr>
-                    <td style="padding:10px;text-align:center;border:1px solid #ddd;background:#f8f9fa;font-weight:700;">2026-06-14</td>
-                    <td style="padding:10px;border:1px solid #ddd;">キーワード追加のご依頼<br>　・<strong>60代女性男性</strong><br>　・<strong>うるま市</strong></td>
-                    <td style="padding:10px;border:1px solid #ddd;">Google広告にてキーワード追加の設定変更を実施・反映済み</td>
-                    <td style="padding:10px;text-align:center;border:1px solid #ddd;"><span style="background:#bbdefb;color:#0d47a1;padding:4px 10px;border-radius:14px;font-size:11px;font-weight:700;">対応済み</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <!-- 補足事項 -->
-    <div class="note-bar">
-        <h3>補足事項</h3>
-        <ul>
-            <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
-            <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
-            <li>ご不明な点やご要望がございましたら、お気軽にお申し付けください</li>
-        </ul>
-    </div>
-
-    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
-        株式会社ランバード｜広告運用サポート窓口
-    </div>
-
-</div>
-</body>
-</html>
+.viz{--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;margin:14px 0 6px}
+@media (prefers-color-scheme: dark){.viz{--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500}}
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.chart .grid{stroke:#e3e3e3;stroke-width:1}
+.chart .ax{fill:#777;font-size:11px}
+.chart .vl{fill:#555;font-size:10.5px;font-variant-numeric:tabular-nums}
+.chart .sl{fill:#fff;font-size:11px;font-weight:600}
+.chart .mk{transition:opacity .12s}
+.chart:hover .mk{opacity:.55}
+.chart .mk:hover{opacity:1}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin:2px 0 8px;font-size:12.5px;color:#555}
+.legend .lg{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.cap{font-size:12.5px;color:#777;margin:2px 0 0}
+</style></head><body><div class="container">
+<h1>YouTube広告 運用レポート</h1>
+<p class="subtitle">Beauty labo m+ 様｜株式会社ランバード</p><div class="hero"><h2>広告配信の目的</h2>
+<p class="goal">沖縄中部で美容サロンを探している方にBeauty labo m+を知ってもらい、ご予約につなげる</p><div class="steps"><div class="step"><div class="k">STEP 1</div><div class="t">認知</div><div class="d">YouTube広告で<br>美容サロンを知ってもらう</div></div><div class="arw">→</div><div class="step"><div class="k">STEP 2</div><div class="t">興味</div><div class="d">動画を30秒以上見た方に<br>魅力を伝える</div></div><div class="arw">→</div><div class="step"><div class="k">STEP 3</div><div class="t">サロン予約</div><div class="d">ご案内先へアクセス<br>サロン予約</div></div><div class="arw">→</div><div class="step"><div class="k">GOAL</div><div class="t">リピート</div><div class="d">継続的なご利用<br>口コミ拡散</div></div></div></div><div class="section s1"><div class="section-title"><span class="icon">1</span>現在の運用設定</div>
+<div class="callout blue">📌 <b>ご契約内容:</b> 「Beauty labo m+」キャンペーン（沖縄中部 美容サロン）／配信開始 2026年4月1日〜<br>💻 <b>広告形式:</b> YouTube インストリーム広告（動画再生前に流れ、5秒後にスキップ可能。興味のある方だけに届きます）</div>
+<div class="grid2"><div class="card"><div class="lab">📍 配信エリア</div><div class="val"><b>重点：</b>浦添市・宜野湾市<br><b>拡張：</b>那覇市・沖縄市・西原町・北谷町・北中城村・中城村</div></div><div class="card"><div class="lab">👤 ターゲット</div><div class="val">男女 20〜64才</div></div><div class="card"><div class="lab">🕐 配信時間</div><div class="val">24時間（終日配信・同じ方への表示は週3回まで）</div></div><div class="card"><div class="lab">🔗 ご案内先</div><div class="val"><a href="https://mplus.readdy.co" target="_blank" rel="noopener">mplus.readdy.co</a></div></div><div class="card"><div class="lab">🎬 配信中の動画</div><div class="val"><a href="https://youtu.be/xpkB0VSET4Q" target="_blank" rel="noopener">youtu.be/xpkB0VSET4Q</a></div></div><div class="card"><div class="lab">📆 配信開始</div><div class="val">2026年4月1日〜</div></div></div>
+<h3 class="blk">🔑 設定キーワード</h3><div style="margin-top:12px"><div style="font-size:12.5px;color:#666;font-weight:700">直接ニーズ</div><span class="kw">ネイルサロン</span><span class="kw">ジェルネイル</span><span class="kw">ネイルデザイン</span><span class="kw">まつげパーマ</span><span class="kw">まつげエクステ</span><span class="kw">まつエク</span><span class="kw">アイブロウ</span><span class="kw">美容サロン予約</span></div><div style="margin-top:12px"><div style="font-size:12.5px;color:#666;font-weight:700">関連美容</div><span class="kw">ブラッシュアップ</span><span class="kw">ブラジェル</span><span class="kw">セルフケア</span><span class="kw">自分磨き</span><span class="kw">美容トレンド</span></div><div style="margin-top:12px"><div style="font-size:12.5px;color:#666;font-weight:700">ライフスタイル</div><span class="kw">女子会</span><span class="kw">結婚式準備</span><span class="kw">ぬくもり好き</span></div></div><div class="section s2"><div class="section-title"><span class="icon">2</span>配信実績サマリー（2026年6月・7月）</div>
+<div class="callout green">📊 <b>集計対象:</b> Google広告キャンペーン「Beauty labo m+」<br>
+🎯 <b>結論ひとこと:</b> 表示<b>-94.4%</b>／視聴率<b>-2.05pt</b>／100%完視率<b>-7.80pt</b>。いずれも低下しました。原因は配信面（デバイス）の構成が入れ替わったことで、動画やキーワードの問題ではありません。</div>
+<details><summary>📖 用語の説明（クリックで開く）</summary>
+<ul style="margin:8px 0 0 22px">
+<li><b>表示回数</b>：広告が画面に出た回数（インプレッション）</li>
+<li><b>視聴回数</b>：30秒以上、または動画を最後までご覧いただいた回数</li>
+<li><b>視聴率</b>：視聴回数 ÷ 表示回数</li>
+<li><b>完視率</b>：動画の25%／50%／75%／100%まで到達した割合</li></ul></details>
+<h3 class="blk">📈 月別 基本指標</h3>
+<table><thead><tr><th>対象月</th><th>表示回数</th><th>視聴回数</th><th>視聴率</th><th>100%完視率</th></tr></thead><tbody><tr><td>2026年6月</td><td class="num">6,285</td><td class="num">3,583</td><td class="num">57.01%</td><td class="num">35.85%</td></tr><tr><td>2026年7月</td><td class="num">353</td><td class="num">194</td><td class="num">54.96%</td><td class="num">28.05%</td></tr></tbody><tfoot><tr><td>推移</td><td class="num"><span class="down">-94.4% ↓</span></td><td class="num"><span class="down">-94.6% ↓</span></td><td class="num"><span class="down">-2.05pt ↓</span></td><td class="num"><span class="down">-7.80pt ↓</span></td></tr></tfoot></table>
+<div class="stats">
+<div class="stat r"><div class="lab">視聴率（7月）</div><div class="big">54.96<span>%</span></div><div class="sub">業界平均25% の 約2.2倍</div></div>
+<div class="stat b"><div class="lab">視聴回数（7月）</div><div class="big">194<span>回</span></div><div class="sub">6月比 -94.6%</div></div>
+<div class="stat g"><div class="lab">100%完視率（7月）</div><div class="big">28.05<span>%</span></div><div class="sub">6月比 -7.80pt</div></div></div>
+<div class="callout orange"><b>⚠️ 配信ステータス: リーチ拡大の余地あり</b><br>現状の配信規模では、配信しきれていない時間帯があります。質の高い<b>テレビ画面</b>（完視 66.67%）への配分を厚くする余地があります。</div>
+<h3 class="blk">📊 月別の質の推移（図解）</h3>
+<div class="viz"><div class="legend"><span class="lg"><i style="background:var(--s1)"></i>2026年6月</span><span class="lg"><i style="background:var(--s2)"></i>2026年7月</span></div><svg viewBox="0 0 720 210" class="chart" role="img"><line x1="44" y1="176.0" x2="708" y2="176.0" class="grid"/><text x="36" y="180.0" class="ax" text-anchor="end">0%</text><line x1="44" y1="135.5" x2="708" y2="135.5" class="grid"/><text x="36" y="139.5" class="ax" text-anchor="end">18%</text><line x1="44" y1="95.0" x2="708" y2="95.0" class="grid"/><text x="36" y="99.0" class="ax" text-anchor="end">36%</text><line x1="44" y1="54.5" x2="708" y2="54.5" class="grid"/><text x="36" y="58.5" class="ax" text-anchor="end">54%</text><line x1="44" y1="14.0" x2="708" y2="14.0" class="grid"/><text x="36" y="18.0" class="ax" text-anchor="end">72%</text><text x="110.4" y="198" class="ax" text-anchor="middle">視聴率</text><rect x="83.4" y="46.9" width="26.0" height="129.1" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 視聴率: 57.0%</title></rect><text x="96.4" y="42.9" class="vl" text-anchor="middle">57.0</text><rect x="111.4" y="51.5" width="26.0" height="124.5" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 視聴率: 55.0%</title></rect><text x="124.4" y="47.5" class="vl" text-anchor="middle">55.0</text><text x="243.2" y="198" class="ax" text-anchor="middle">25%完視</text><rect x="216.2" y="31.4" width="26.0" height="144.6" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 25%完視: 63.9%</title></rect><text x="229.2" y="27.4" class="vl" text-anchor="middle">63.9</text><rect x="244.2" y="36.1" width="26.0" height="139.9" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 25%完視: 61.8%</title></rect><text x="257.2" y="32.1" class="vl" text-anchor="middle">61.8</text><text x="376.0" y="198" class="ax" text-anchor="middle">50%完視</text><rect x="349.0" y="43.6" width="26.0" height="132.4" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 50%完視: 58.5%</title></rect><text x="362.0" y="39.6" class="vl" text-anchor="middle">58.5</text><rect x="377.0" y="49.6" width="26.0" height="126.4" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 50%完視: 55.8%</title></rect><text x="390.0" y="45.6" class="vl" text-anchor="middle">55.8</text><text x="508.8" y="198" class="ax" text-anchor="middle">75%完視</text><rect x="481.8" y="90.7" width="26.0" height="85.3" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 75%完視: 37.7%</title></rect><text x="494.8" y="86.7" class="vl" text-anchor="middle">37.7</text><rect x="509.8" y="107.3" width="26.0" height="68.7" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 75%完視: 30.3%</title></rect><text x="522.8" y="103.3" class="vl" text-anchor="middle">30.3</text><text x="641.6" y="198" class="ax" text-anchor="middle">100%完視</text><rect x="614.6" y="94.8" width="26.0" height="81.2" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 100%完視: 35.8%</title></rect><text x="627.6" y="90.8" class="vl" text-anchor="middle">35.8</text><rect x="642.6" y="112.5" width="26.0" height="63.5" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 100%完視: 28.0%</title></rect><text x="655.6" y="108.5" class="vl" text-anchor="middle">28.0</text></svg><p class="cap">縦軸＝割合（%）。棒の上の数字が実測値です。</p></div>
+<h3 class="blk">📉 動画の完視率（どこまで見られたか）</h3><div class="viz"><div class="legend"><span class="lg"><i style="background:var(--s1)"></i>2026年6月</span><span class="lg"><i style="background:var(--s2)"></i>2026年7月</span></div><svg viewBox="0 0 720 200" class="chart" role="img"><line x1="44" y1="166.0" x2="704" y2="166.0" class="grid"/><text x="36" y="170.0" class="ax" text-anchor="end">0%</text><line x1="44" y1="128.5" x2="704" y2="128.5" class="grid"/><text x="36" y="132.5" class="ax" text-anchor="end">18%</text><line x1="44" y1="91.0" x2="704" y2="91.0" class="grid"/><text x="36" y="95.0" class="ax" text-anchor="end">37%</text><line x1="44" y1="53.5" x2="704" y2="53.5" class="grid"/><text x="36" y="57.5" class="ax" text-anchor="end">55%</text><line x1="44" y1="16.0" x2="704" y2="16.0" class="grid"/><text x="36" y="20.0" class="ax" text-anchor="end">73%</text><text x="44.0" y="188" class="ax" text-anchor="middle">25%</text><text x="264.0" y="188" class="ax" text-anchor="middle">50%</text><text x="484.0" y="188" class="ax" text-anchor="middle">75%</text><text x="704.0" y="188" class="ax" text-anchor="middle">100%</text><polyline points="44.0,35.6 264.0,46.6 484.0,89.1 704.0,92.8" fill="none" stroke="var(--s1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44.0" cy="35.6" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2" class="mk"><title>2026年6月 / 25%: 63.86%</title></circle><text x="44.0" y="24.6" class="vl" text-anchor="middle">63.9</text><circle cx="264.0" cy="46.6" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2" class="mk"><title>2026年6月 / 50%: 58.47%</title></circle><text x="264.0" y="35.6" class="vl" text-anchor="middle">58.5</text><circle cx="484.0" cy="89.1" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2" class="mk"><title>2026年6月 / 75%: 37.66%</title></circle><text x="484.0" y="78.1" class="vl" text-anchor="middle">37.7</text><circle cx="704.0" cy="92.8" r="5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2" class="mk"><title>2026年6月 / 100%: 35.85%</title></circle><text x="704.0" y="81.8" class="vl" text-anchor="middle">35.8</text><polyline points="44.0,39.9 264.0,52.0 484.0,104.1 704.0,108.7" fill="none" stroke="var(--s2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44.0" cy="39.9" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2" class="mk"><title>2026年7月 / 25%: 61.76%</title></circle><text x="44.0" y="28.9" class="vl" text-anchor="middle">61.8</text><circle cx="264.0" cy="52.0" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2" class="mk"><title>2026年7月 / 50%: 55.81%</title></circle><text x="264.0" y="41.0" class="vl" text-anchor="middle">55.8</text><circle cx="484.0" cy="104.1" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2" class="mk"><title>2026年7月 / 75%: 30.31%</title></circle><text x="484.0" y="93.1" class="vl" text-anchor="middle">30.3</text><circle cx="704.0" cy="108.7" r="5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2" class="mk"><title>2026年7月 / 100%: 28.05%</title></circle><text x="704.0" y="97.7" class="vl" text-anchor="middle">28.0</text></svg><p class="cap">線が急に落ちる区間が離脱ポイントです。</p></div><div class="callout orange"><b>⚠️ 離脱ポイントは「50%→75%」の区間です</b><br>7月はこの区間で <b>-25.50pt</b> 落ちています（6月は -20.81pt）。ここで離脱される方が多く、動画の構成またはこの区間を見るデバイスの偏りが原因と考えられます。</div>
+<h3 class="blk">📱 デバイス別</h3>
+<div class="viz"><div class="legend"><span class="lg"><i style="background:var(--s1)"></i>2026年6月</span><span class="lg"><i style="background:var(--s2)"></i>2026年7月</span></div>
+<svg viewBox="0 0 720 210" class="chart" role="img"><line x1="44" y1="176.0" x2="708" y2="176.0" class="grid"/><text x="36" y="180.0" class="ax" text-anchor="end">0%</text><line x1="44" y1="135.5" x2="708" y2="135.5" class="grid"/><text x="36" y="139.5" class="ax" text-anchor="end">21%</text><line x1="44" y1="95.0" x2="708" y2="95.0" class="grid"/><text x="36" y="99.0" class="ax" text-anchor="end">42%</text><line x1="44" y1="54.5" x2="708" y2="54.5" class="grid"/><text x="36" y="58.5" class="ax" text-anchor="end">63%</text><line x1="44" y1="14.0" x2="708" y2="14.0" class="grid"/><text x="36" y="18.0" class="ax" text-anchor="end">84%</text><text x="127.0" y="198" class="ax" text-anchor="middle">テレビ画面</text><rect x="100.0" y="37.1" width="26.0" height="138.9" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / テレビ画面: 72.0%</title></rect><text x="113.0" y="33.1" class="vl" text-anchor="middle">72.0</text><rect x="128.0" y="38.7" width="26.0" height="137.3" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / テレビ画面: 71.2%</title></rect><text x="141.0" y="34.7" class="vl" text-anchor="middle">71.2</text><text x="293.0" y="198" class="ax" text-anchor="middle">スマートフォン</text><rect x="266.0" y="80.8" width="26.0" height="95.2" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / スマートフォン: 49.4%</title></rect><text x="279.0" y="76.8" class="vl" text-anchor="middle">49.4</text><rect x="294.0" y="82.1" width="26.0" height="93.9" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / スマートフォン: 48.7%</title></rect><text x="307.0" y="78.1" class="vl" text-anchor="middle">48.7</text><text x="459.0" y="198" class="ax" text-anchor="middle">コンピュータ</text><rect x="432.0" y="85.8" width="26.0" height="90.2" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / コンピュータ: 46.8%</title></rect><text x="445.0" y="81.8" class="vl" text-anchor="middle">46.8</text><rect x="460.0" y="99.9" width="26.0" height="76.1" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / コンピュータ: 39.5%</title></rect><text x="473.0" y="95.9" class="vl" text-anchor="middle">39.5</text><text x="625.0" y="198" class="ax" text-anchor="middle">タブレット</text><rect x="598.0" y="88.2" width="26.0" height="87.8" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / タブレット: 45.5%</title></rect><text x="611.0" y="84.2" class="vl" text-anchor="middle">45.5</text><rect x="626.0" y="31.4" width="26.0" height="144.6" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / タブレット: 75.0%</title></rect><text x="639.0" y="27.4" class="vl" text-anchor="middle">75.0</text></svg>
+<p class="cap">デバイス別の視聴率（%）。</p></div>
+<div class="viz"><div class="legend"><span class="lg"><i style="background:var(--s1)"></i>テレビ画面</span><span class="lg"><i style="background:var(--s2)"></i>スマートフォン</span><span class="lg"><i style="background:var(--s3)"></i>コンピュータ</span><span class="lg"><i style="background:var(--s4)"></i>タブレット</span></div>
+<svg viewBox="0 0 720 128" class="chart" role="img"><text x="52" y="34.0" class="ax" text-anchor="end">2026年6月</text><rect x="62.0" y="8" width="237.7" height="44" rx="4" fill="var(--s1)" class="mk"><title>テレビ画面: 37.2%（2,339）</title></rect><text x="180.8" y="34.0" class="sl" text-anchor="middle">37%</text><rect x="301.7" y="8" width="236.1" height="44" rx="4" fill="var(--s2)" class="mk"><title>スマートフォン: 37.0%（2,324）</title></rect><text x="419.7" y="34.0" class="sl" text-anchor="middle">37%</text><rect x="539.8" y="8" width="108.2" height="44" rx="4" fill="var(--s3)" class="mk"><title>コンピュータ: 17.1%（1,075）</title></rect><text x="593.9" y="34.0" class="sl" text-anchor="middle">17%</text><rect x="650.0" y="8" width="54.0" height="44" rx="4" fill="var(--s4)" class="mk"><title>タブレット: 8.7%（547）</title></rect><text x="677.0" y="34.0" class="sl" text-anchor="middle">9%</text><text x="52" y="94.0" class="ax" text-anchor="end">2026年7月</text><rect x="62.0" y="68" width="200.5" height="44" rx="4" fill="var(--s1)" class="mk"><title>テレビ画面: 31.4%（111）</title></rect><text x="162.3" y="94.0" class="sl" text-anchor="middle">31%</text><rect x="264.5" y="68" width="271.7" height="44" rx="4" fill="var(--s2)" class="mk"><title>スマートフォン: 42.5%（150）</title></rect><text x="400.3" y="94.0" class="sl" text-anchor="middle">42%</text><rect x="538.2" y="68" width="136.7" height="44" rx="4" fill="var(--s3)" class="mk"><title>コンピュータ: 21.5%（76）</title></rect><text x="606.5" y="94.0" class="sl" text-anchor="middle">22%</text><rect x="676.8" y="68" width="27.2" height="44" rx="4" fill="var(--s4)" class="mk"><title>タブレット: 4.5%（16）</title></rect></svg>
+<p class="cap">各月の表示回数を100%として分解。ラベルは構成比。</p></div>
+<table><thead><tr><th>デバイス</th><th>6月 表示</th><th>6月 視聴率</th><th>6月 完視</th><th>7月 表示</th><th>7月 視聴率</th><th>7月 完視</th></tr></thead><tbody><tr><td>テレビ画面</td><td class="num">2,339</td><td class="num">72.00%</td><td class="num">67.26%</td><td class="num">111</td><td class="num">71.17%</td><td class="num">66.67%</td></tr><tr><td>スマートフォン</td><td class="num">2,324</td><td class="num">49.35%</td><td class="num">10.05%</td><td class="num">150</td><td class="num">48.67%</td><td class="num">4.00%</td></tr><tr><td>コンピュータ</td><td class="num">1,075</td><td class="num">46.79%</td><td class="num">22.93%</td><td class="num">76</td><td class="num">39.47%</td><td class="num">21.05%</td></tr><tr><td>タブレット</td><td class="num">547</td><td class="num">45.52%</td><td class="num">36.50%</td><td class="num">16</td><td class="num">75.00%</td><td class="num">18.75%</td></tr></tbody></table>
+<div class="callout red"><b>デバイスで質が大きく分かれています。</b><br><b>テレビ画面</b>は100%完視66.67%、<b>スマートフォン</b>は4.00%。同じ動画・同じキーワードでも、どの面に出るかで最後まで見ていただける割合が62.7pt変わります。入札配分の調整が最も効く打ち手です。</div><h3 class="blk">📍 地域別</h3><div class="viz"><div class="legend"><span class="lg"><i style="background:var(--s1)"></i>2026年6月</span><span class="lg"><i style="background:var(--s2)"></i>2026年7月</span></div><svg viewBox="0 0 720 440" class="chart" role="img"><text x="98" y="37.0" class="ax" text-anchor="end">那覇市</text><rect x="108" y="22.0" width="543.1" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 那覇市: 2,892</title></rect><text x="657.1" y="32.0" class="vl">2,892</text><rect x="108" y="35.0" width="33.6" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 那覇市: 179</title></rect><text x="147.6" y="45.0" class="vl">179</text><text x="98" y="89.0" class="ax" text-anchor="end">沖縄市</text><rect x="108" y="74.0" width="194.8" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 沖縄市: 1,037</title></rect><text x="308.8" y="84.0" class="vl">1,037</text><rect x="108" y="87.0" width="10.9" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 沖縄市: 58</title></rect><text x="124.9" y="97.0" class="vl">58</text><text x="98" y="141.0" class="ax" text-anchor="end">浦添市</text><rect x="108" y="126.0" width="151.7" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 浦添市: 808</title></rect><text x="265.7" y="136.0" class="vl">808</text><rect x="108" y="139.0" width="6.4" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 浦添市: 34</title></rect><text x="120.4" y="149.0" class="vl">34</text><text x="98" y="193.0" class="ax" text-anchor="end">宜野湾市</text><rect x="108" y="178.0" width="119.3" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 宜野湾市: 635</title></rect><text x="233.3" y="188.0" class="vl">635</text><rect x="108" y="191.0" width="6.4" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 宜野湾市: 34</title></rect><text x="120.4" y="201.0" class="vl">34</text><text x="98" y="245.0" class="ax" text-anchor="end">西原町</text><rect x="108" y="230.0" width="69.5" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 西原町: 370</title></rect><text x="183.5" y="240.0" class="vl">370</text><rect x="108" y="243.0" width="5.3" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 西原町: 28</title></rect><text x="119.3" y="253.0" class="vl">28</text><text x="98" y="297.0" class="ax" text-anchor="end">北中城村</text><rect x="108" y="282.0" width="36.8" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 北中城村: 196</title></rect><text x="150.8" y="292.0" class="vl">196</text><rect x="108" y="295.0" width="2.0" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 北中城村: 7</title></rect><text x="116.0" y="305.0" class="vl">7</text><text x="98" y="349.0" class="ax" text-anchor="end">北谷町</text><rect x="108" y="334.0" width="33.6" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 北谷町: 179</title></rect><text x="147.6" y="344.0" class="vl">179</text><rect x="108" y="347.0" width="2.0" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 北谷町: 5</title></rect><text x="116.0" y="357.0" class="vl">5</text><text x="98" y="401.0" class="ax" text-anchor="end">中城村</text><rect x="108" y="386.0" width="31.6" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 中城村: 168</title></rect><text x="145.6" y="396.0" class="vl">168</text><rect x="108" y="399.0" width="2.0" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 中城村: 8</title></rect><text x="116.0" y="409.0" class="vl">8</text></svg><p class="cap">市区町村別の表示回数。</p></div><table><thead><tr><th>地域</th><th>6月 表示</th><th>6月 視聴率</th><th>7月 表示</th><th>7月 視聴率</th><th>推移</th></tr></thead><tbody><tr><td>那覇市</td><td class="num">2,892</td><td class="num">56.02%</td><td class="num">179</td><td class="num">55.87%</td><td class="num"><span class="down">-0.15pt</span></td></tr><tr><td>沖縄市</td><td class="num">1,037</td><td class="num">60.95%</td><td class="num">58</td><td class="num">53.45%</td><td class="num"><span class="down">-7.50pt</span></td></tr><tr><td>浦添市</td><td class="num">808</td><td class="num">54.83%</td><td class="num">34</td><td class="num">41.18%</td><td class="num"><span class="down">-13.65pt</span></td></tr><tr><td>宜野湾市</td><td class="num">635</td><td class="num">57.95%</td><td class="num">34</td><td class="num">76.47%</td><td class="num"><span class="up">+18.52pt</span></td></tr><tr><td>西原町</td><td class="num">370</td><td class="num">56.22%</td><td class="num">28</td><td class="num">50.00%</td><td class="num"><span class="down">-6.22pt</span></td></tr><tr><td>北中城村</td><td class="num">196</td><td class="num">60.20%</td><td class="num">7</td><td class="num">28.57%</td><td class="num"><span class="down">-31.63pt</span></td></tr><tr><td>北谷町</td><td class="num">179</td><td class="num">59.22%</td><td class="num">5</td><td class="num">100.00%</td><td class="num"><span class="up">+40.78pt</span></td></tr><tr><td>中城村</td><td class="num">168</td><td class="num">52.38%</td><td class="num">8</td><td class="num">25.00%</td><td class="num"><span class="down">-27.38pt</span></td></tr></tbody></table><p style="font-size:14px;color:#555;margin-top:8px">7月の表示回数が最も多いのは<b>那覇市（179回・上位12地域中 50.7%）</b>です。ご設定の重点エリアに届いているかご確認ください。</p><h3 class="blk">👤 性別</h3><div class="viz"><div class="legend"><span class="lg"><i style="background:var(--s1)"></i>2026年6月</span><span class="lg"><i style="background:var(--s2)"></i>2026年7月</span></div><svg viewBox="0 0 720 210" class="chart" role="img"><line x1="44" y1="176.0" x2="708" y2="176.0" class="grid"/><text x="36" y="180.0" class="ax" text-anchor="end">0%</text><line x1="44" y1="135.5" x2="708" y2="135.5" class="grid"/><text x="36" y="139.5" class="ax" text-anchor="end">16%</text><line x1="44" y1="95.0" x2="708" y2="95.0" class="grid"/><text x="36" y="99.0" class="ax" text-anchor="end">33%</text><line x1="44" y1="54.5" x2="708" y2="54.5" class="grid"/><text x="36" y="58.5" class="ax" text-anchor="end">49%</text><line x1="44" y1="14.0" x2="708" y2="14.0" class="grid"/><text x="36" y="18.0" class="ax" text-anchor="end">65%</text><text x="210.0" y="198" class="ax" text-anchor="middle">男性</text><rect x="183.0" y="32.2" width="26.0" height="143.8" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 男性: 57.9%</title></rect><text x="196.0" y="28.2" class="vl" text-anchor="middle">57.9</text><rect x="211.0" y="31.4" width="26.0" height="144.6" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 男性: 58.2%</title></rect><text x="224.0" y="27.4" class="vl" text-anchor="middle">58.2</text><text x="542.0" y="198" class="ax" text-anchor="middle">女性</text><rect x="515.0" y="37.3" width="26.0" height="138.7" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 女性: 55.8%</title></rect><text x="528.0" y="33.3" class="vl" text-anchor="middle">55.8</text><rect x="543.0" y="53.7" width="26.0" height="122.3" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 女性: 49.2%</title></rect><text x="556.0" y="49.7" class="vl" text-anchor="middle">49.2</text></svg><p class="cap">性別ごとの視聴率（%）。</p></div><table><thead><tr><th>性</th><th>6月 表示</th><th>6月 視聴率</th><th>7月 表示</th><th>7月 視聴率</th><th>推移</th></tr></thead><tbody><tr><td>男性</td><td class="num">3,581</td><td class="num">57.89%</td><td class="num">225</td><td class="num">58.22%</td><td class="num"><span class="up">+0.33pt</span></td></tr><tr><td>女性</td><td class="num">2,704</td><td class="num">55.84%</td><td class="num">128</td><td class="num">49.22%</td><td class="num"><span class="down">-6.62pt</span></td></tr></tbody></table><p style="font-size:14px;color:#555;margin-top:8px">男性の視聴率が女性を 9.00pt 上回っています（男性 58.22% / 女性 49.22%）。男性への配分を厚くする余地があります。　配信量は男性 64% / 女性 36% です。</p><h3 class="blk">🎂 年齢層別</h3><div class="viz"><div class="legend"><span class="lg"><i style="background:var(--s1)"></i>2026年6月</span><span class="lg"><i style="background:var(--s2)"></i>2026年7月</span></div><svg viewBox="0 0 720 210" class="chart" role="img"><line x1="44" y1="176.0" x2="708" y2="176.0" class="grid"/><text x="36" y="180.0" class="ax" text-anchor="end">0%</text><line x1="44" y1="135.5" x2="708" y2="135.5" class="grid"/><text x="36" y="139.5" class="ax" text-anchor="end">19%</text><line x1="44" y1="95.0" x2="708" y2="95.0" class="grid"/><text x="36" y="99.0" class="ax" text-anchor="end">37%</text><line x1="44" y1="54.5" x2="708" y2="54.5" class="grid"/><text x="36" y="58.5" class="ax" text-anchor="end">56%</text><line x1="44" y1="14.0" x2="708" y2="14.0" class="grid"/><text x="36" y="18.0" class="ax" text-anchor="end">75%</text><text x="110.4" y="198" class="ax" text-anchor="middle">18～24 才</text><rect x="83.4" y="48.5" width="26.0" height="127.5" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 18～24 才: 59.0%</title></rect><text x="96.4" y="44.5" class="vl" text-anchor="middle">59.0</text><rect x="111.4" y="68.0" width="26.0" height="108.0" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 18～24 才: 50.0%</title></rect><text x="124.4" y="64.0" class="vl" text-anchor="middle">50.0</text><text x="243.2" y="198" class="ax" text-anchor="middle">25～34 才</text><rect x="216.2" y="51.4" width="26.0" height="124.6" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 25～34 才: 57.7%</title></rect><text x="229.2" y="47.4" class="vl" text-anchor="middle">57.7</text><rect x="244.2" y="50.9" width="26.0" height="125.1" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 25～34 才: 57.9%</title></rect><text x="257.2" y="46.9" class="vl" text-anchor="middle">57.9</text><text x="376.0" y="198" class="ax" text-anchor="middle">35～44 才</text><rect x="349.0" y="50.6" width="26.0" height="125.4" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 35～44 才: 58.1%</title></rect><text x="362.0" y="46.6" class="vl" text-anchor="middle">58.1</text><rect x="377.0" y="60.8" width="26.0" height="115.2" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 35～44 才: 53.3%</title></rect><text x="390.0" y="56.8" class="vl" text-anchor="middle">53.3</text><text x="508.8" y="198" class="ax" text-anchor="middle">45～54 才</text><rect x="481.8" y="50.5" width="26.0" height="125.5" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 45～54 才: 58.1%</title></rect><text x="494.8" y="46.5" class="vl" text-anchor="middle">58.1</text><rect x="509.8" y="31.4" width="26.0" height="144.6" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 45～54 才: 67.0%</title></rect><text x="522.8" y="27.4" class="vl" text-anchor="middle">67.0</text><text x="641.6" y="198" class="ax" text-anchor="middle">55～64 才</text><rect x="614.6" y="57.0" width="26.0" height="119.0" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 55～64 才: 55.1%</title></rect><text x="627.6" y="53.0" class="vl" text-anchor="middle">55.1</text><rect x="642.6" y="78.1" width="26.0" height="97.9" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 55～64 才: 45.3%</title></rect><text x="655.6" y="74.1" class="vl" text-anchor="middle">45.3</text></svg><p class="cap">年齢層ごとの視聴率（%）。</p></div><table><thead><tr><th>年齢層</th><th>6月 表示</th><th>6月 視聴率</th><th>7月 表示</th><th>7月 視聴率</th><th>推移</th></tr></thead><tbody><tr><td>18～24 才</td><td class="num">444</td><td class="num">59.01%</td><td class="num">16</td><td class="num">50.00%</td><td class="num"><span class="down">-9.01pt</span></td></tr><tr><td>25～34 才</td><td class="num">855</td><td class="num">57.66%</td><td class="num">38</td><td class="num">57.89%</td><td class="num"><span class="up">+0.23pt</span></td></tr><tr><td>35～44 才</td><td class="num">1,035</td><td class="num">58.07%</td><td class="num">45</td><td class="num">53.33%</td><td class="num"><span class="down">-4.73pt</span></td></tr><tr><td>45～54 才</td><td class="num">1,690</td><td class="num">58.11%</td><td class="num">115</td><td class="num">66.96%</td><td class="num"><span class="up">+8.85pt</span></td></tr><tr><td>55～64 才</td><td class="num">2,261</td><td class="num">55.06%</td><td class="num">139</td><td class="num">45.32%</td><td class="num"><span class="down">-9.74pt</span></td></tr></tbody></table><p style="font-size:14px;color:#555;margin-top:8px">最も配信量が多いのは55～64 才（7月 139回・全体の39.4%）、最も視聴率が高いのは45～54 才（66.96%）です。</p><h3 class="blk">📅 曜日別</h3><div class="viz"><div class="legend"><span class="lg"><i style="background:var(--s1)"></i>2026年6月</span><span class="lg"><i style="background:var(--s2)"></i>2026年7月</span></div><svg viewBox="0 0 720 210" class="chart" role="img"><line x1="44" y1="176.0" x2="708" y2="176.0" class="grid"/><text x="36" y="180.0" class="ax" text-anchor="end">0%</text><line x1="44" y1="135.5" x2="708" y2="135.5" class="grid"/><text x="36" y="139.5" class="ax" text-anchor="end">17%</text><line x1="44" y1="95.0" x2="708" y2="95.0" class="grid"/><text x="36" y="99.0" class="ax" text-anchor="end">35%</text><line x1="44" y1="54.5" x2="708" y2="54.5" class="grid"/><text x="36" y="58.5" class="ax" text-anchor="end">52%</text><line x1="44" y1="14.0" x2="708" y2="14.0" class="grid"/><text x="36" y="18.0" class="ax" text-anchor="end">70%</text><text x="91.4" y="198" class="ax" text-anchor="middle">月曜日</text><rect x="64.4" y="46.5" width="26.0" height="129.5" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 月曜日: 55.8%</title></rect><text x="77.4" y="42.5" class="vl" text-anchor="middle">55.8</text><rect x="92.4" y="174.0" width="26.0" height="2.0" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 月曜日: 0.0%</title></rect><text x="105.4" y="170.0" class="vl" text-anchor="middle">0.0</text><text x="186.3" y="198" class="ax" text-anchor="middle">火曜日</text><rect x="159.3" y="41.1" width="26.0" height="134.9" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 火曜日: 58.2%</title></rect><text x="172.3" y="37.1" class="vl" text-anchor="middle">58.2</text><rect x="187.3" y="174.0" width="26.0" height="2.0" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 火曜日: 0.0%</title></rect><text x="200.3" y="170.0" class="vl" text-anchor="middle">0.0</text><text x="281.1" y="198" class="ax" text-anchor="middle">水曜日</text><rect x="254.1" y="31.4" width="26.0" height="144.6" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 水曜日: 62.4%</title></rect><text x="267.1" y="27.4" class="vl" text-anchor="middle">62.4</text><rect x="282.1" y="49.8" width="26.0" height="126.2" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 水曜日: 54.4%</title></rect><text x="295.1" y="45.8" class="vl" text-anchor="middle">54.4</text><text x="376.0" y="198" class="ax" text-anchor="middle">木曜日</text><rect x="349.0" y="41.9" width="26.0" height="134.1" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 木曜日: 57.8%</title></rect><text x="362.0" y="37.9" class="vl" text-anchor="middle">57.8</text><rect x="377.0" y="44.9" width="26.0" height="131.1" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 木曜日: 56.5%</title></rect><text x="390.0" y="40.9" class="vl" text-anchor="middle">56.5</text><text x="470.9" y="198" class="ax" text-anchor="middle">金曜日</text><rect x="443.9" y="45.8" width="26.0" height="130.2" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 金曜日: 56.1%</title></rect><text x="456.9" y="41.8" class="vl" text-anchor="middle">56.1</text><rect x="471.9" y="174.0" width="26.0" height="2.0" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 金曜日: 0.0%</title></rect><text x="484.9" y="170.0" class="vl" text-anchor="middle">0.0</text><text x="565.7" y="198" class="ax" text-anchor="middle">土曜日</text><rect x="538.7" y="43.5" width="26.0" height="132.5" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 土曜日: 57.1%</title></rect><text x="551.7" y="39.5" class="vl" text-anchor="middle">57.1</text><rect x="566.7" y="174.0" width="26.0" height="2.0" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 土曜日: 0.0%</title></rect><text x="579.7" y="170.0" class="vl" text-anchor="middle">0.0</text><text x="660.6" y="198" class="ax" text-anchor="middle">日曜日</text><rect x="633.6" y="54.9" width="26.0" height="121.1" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 日曜日: 52.2%</title></rect><text x="646.6" y="50.9" class="vl" text-anchor="middle">52.2</text><rect x="661.6" y="174.0" width="26.0" height="2.0" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 日曜日: 0.0%</title></rect><text x="674.6" y="170.0" class="vl" text-anchor="middle">0.0</text></svg><p class="cap">曜日ごとの視聴率（%）。</p></div><table><thead><tr><th>曜日</th><th>6月 表示</th><th>6月 視聴率</th><th>7月 表示</th><th>7月 視聴率</th><th>推移</th></tr></thead><tbody><tr><td>月曜日</td><td class="num">1,137</td><td class="num">55.85%</td><td class="num">0</td><td class="num">0.00%</td><td class="num"><span class="down">-55.85pt</span></td></tr><tr><td>火曜日</td><td class="num">949</td><td class="num">58.17%</td><td class="num">0</td><td class="num">0.00%</td><td class="num"><span class="down">-58.17pt</span></td></tr><tr><td>水曜日</td><td class="num">829</td><td class="num">62.36%</td><td class="num">261</td><td class="num">54.41%</td><td class="num"><span class="down">-7.96pt</span></td></tr><tr><td>木曜日</td><td class="num">664</td><td class="num">57.83%</td><td class="num">92</td><td class="num">56.52%</td><td class="num"><span class="down">-1.31pt</span></td></tr><tr><td>金曜日</td><td class="num">928</td><td class="num">56.14%</td><td class="num">0</td><td class="num">0.00%</td><td class="num"><span class="down">-56.14pt</span></td></tr><tr><td>土曜日</td><td class="num">926</td><td class="num">57.13%</td><td class="num">0</td><td class="num">0.00%</td><td class="num"><span class="down">-57.13pt</span></td></tr><tr><td>日曜日</td><td class="num">852</td><td class="num">52.23%</td><td class="num">0</td><td class="num">0.00%</td><td class="num"><span class="down">-52.23pt</span></td></tr></tbody></table><p style="font-size:14px;color:#555;margin-top:8px">7月で最も視聴率が高かったのは<b>木曜日（56.52%）</b>、低かったのは<b>水曜日（54.41%）</b>で、その差は 2.12pt です。曜日の入札配分を見直す余地があります。</p><h3 class="blk">🔑 キーワード別</h3><div class="viz"><div class="legend"><span class="lg"><i style="background:var(--s1)"></i>2026年6月</span><span class="lg"><i style="background:var(--s2)"></i>2026年7月</span></div><svg viewBox="0 0 720 752" class="chart" role="img"><text x="98" y="37.0" class="ax" text-anchor="end">女子会</text><rect x="108" y="22.0" width="543.1" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 女子会: 1,388</title></rect><text x="657.1" y="32.0" class="vl">1,388</text><rect x="108" y="35.0" width="38.0" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 女子会: 97</title></rect><text x="152.0" y="45.0" class="vl">97</text><text x="98" y="89.0" class="ax" text-anchor="end">アイブロウ</text><rect x="108" y="74.0" width="449.2" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / アイブロウ: 1,148</title></rect><text x="563.2" y="84.0" class="vl">1,148</text><rect x="108" y="87.0" width="16.8" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / アイブロウ: 43</title></rect><text x="130.8" y="97.0" class="vl">43</text><text x="98" y="141.0" class="ax" text-anchor="end">フラットラッシュ</text><rect x="108" y="126.0" width="326.4" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / フラットラッシュ: 834</title></rect><text x="440.4" y="136.0" class="vl">834</text><rect x="108" y="139.0" width="9.8" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / フラットラッシュ: 25</title></rect><text x="123.8" y="149.0" class="vl">25</text><text x="98" y="193.0" class="ax" text-anchor="end">セルフケア</text><rect x="108" y="178.0" width="221.9" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / セルフケア: 567</title></rect><text x="335.9" y="188.0" class="vl">567</text><rect x="108" y="191.0" width="2.0" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / セルフケア: 0</title></rect><text x="116.0" y="201.0" class="vl">0</text><text x="98" y="245.0" class="ax" text-anchor="end">まつげパーマ</text><rect x="108" y="230.0" width="210.5" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / まつげパーマ: 538</title></rect><text x="324.5" y="240.0" class="vl">538</text><rect x="108" y="243.0" width="6.3" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / まつげパーマ: 16</title></rect><text x="120.3" y="253.0" class="vl">16</text><text x="98" y="297.0" class="ax" text-anchor="end">ジェルネイル</text><rect x="108" y="282.0" width="203.1" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / ジェルネイル: 519</title></rect><text x="317.1" y="292.0" class="vl">519</text><rect x="108" y="295.0" width="7.8" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / ジェルネイル: 20</title></rect><text x="121.8" y="305.0" class="vl">20</text><text x="98" y="349.0" class="ax" text-anchor="end">ネイルサロン</text><rect x="108" y="334.0" width="172.2" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / ネイルサロン: 440</title></rect><text x="286.2" y="344.0" class="vl">440</text><rect x="108" y="347.0" width="2.0" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / ネイルサロン: 0</title></rect><text x="116.0" y="357.0" class="vl">0</text><text x="98" y="401.0" class="ax" text-anchor="end">おしゃれ 好き</text><rect x="108" y="386.0" width="171.4" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / おしゃれ 好き: 438</title></rect><text x="285.4" y="396.0" class="vl">438</text><rect x="108" y="399.0" width="2.0" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / おしゃれ 好き: 5</title></rect><text x="116.0" y="409.0" class="vl">5</text><text x="98" y="453.0" class="ax" text-anchor="end">AGA</text><rect x="108" y="438.0" width="67.3" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / AGA: 172</title></rect><text x="181.3" y="448.0" class="vl">172</text><rect x="108" y="451.0" width="5.9" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / AGA: 15</title></rect><text x="119.9" y="461.0" class="vl">15</text><text x="98" y="505.0" class="ax" text-anchor="end">頭皮 マッサージ</text><rect x="108" y="490.0" width="64.6" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 頭皮 マッサージ: 165</title></rect><text x="178.6" y="500.0" class="vl">165</text><rect x="108" y="503.0" width="10.6" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 頭皮 マッサージ: 27</title></rect><text x="124.6" y="513.0" class="vl">27</text><text x="98" y="557.0" class="ax" text-anchor="end">パラジェル</text><rect x="108" y="542.0" width="5.9" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / パラジェル: 15</title></rect><text x="119.9" y="552.0" class="vl">15</text><rect x="108" y="555.0" width="41.1" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / パラジェル: 105</title></rect><text x="155.1" y="565.0" class="vl">105</text><text x="98" y="609.0" class="ax" text-anchor="end">美容 トレンド</text><rect x="108" y="594.0" width="5.5" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 美容 トレンド: 14</title></rect><text x="119.5" y="604.0" class="vl">14</text><rect x="108" y="607.0" width="2.0" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 美容 トレンド: 0</title></rect><text x="116.0" y="617.0" class="vl">0</text><text x="98" y="661.0" class="ax" text-anchor="end">結婚式 準備</text><rect x="108" y="646.0" width="3.1" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / 結婚式 準備: 8</title></rect><text x="117.1" y="656.0" class="vl">8</text><rect x="108" y="659.0" width="2.0" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / 結婚式 準備: 0</title></rect><text x="116.0" y="669.0" class="vl">0</text><text x="98" y="713.0" class="ax" text-anchor="end">まつげエクステ</text><rect x="108" y="698.0" width="2.0" height="11" rx="4" fill="var(--s1)" class="mk"><title>2026年6月 / まつげエクステ: 5</title></rect><text x="116.0" y="708.0" class="vl">5</text><rect x="108" y="711.0" width="2.0" height="11" rx="4" fill="var(--s2)" class="mk"><title>2026年7月 / まつげエクステ: 0</title></rect><text x="116.0" y="721.0" class="vl">0</text></svg><p class="cap">設定キーワードごとの表示回数。</p></div><table><thead><tr><th>キーワード</th><th>6月 表示</th><th>6月 視聴率</th><th>7月 表示</th><th>7月 視聴率</th><th>推移</th></tr></thead><tbody><tr><td>女子会</td><td class="num">1,388</td><td class="num">48.34%</td><td class="num">97</td><td class="num">38.14%</td><td class="num"><span class="down">-10.20pt</span></td></tr><tr><td>アイブロウ</td><td class="num">1,148</td><td class="num">57.14%</td><td class="num">43</td><td class="num">34.88%</td><td class="num"><span class="down">-22.26pt</span></td></tr><tr><td>フラットラッシュ</td><td class="num">834</td><td class="num">57.31%</td><td class="num">25</td><td class="num">100.00%</td><td class="num"><span class="up">+42.69pt</span></td></tr><tr><td>セルフケア</td><td class="num">567</td><td class="num">63.84%</td><td class="num">0</td><td class="num">0.00%</td><td class="num"><span class="down">-63.84pt</span></td></tr><tr><td>まつげパーマ</td><td class="num">538</td><td class="num">60.59%</td><td class="num">16</td><td class="num">62.50%</td><td class="num"><span class="up">+1.91pt</span></td></tr><tr><td>ジェルネイル</td><td class="num">519</td><td class="num">61.08%</td><td class="num">20</td><td class="num">55.00%</td><td class="num"><span class="down">-6.08pt</span></td></tr><tr><td>ネイルサロン</td><td class="num">440</td><td class="num">63.41%</td><td class="num">0</td><td class="num">0.00%</td><td class="num"><span class="down">-63.41pt</span></td></tr><tr><td>おしゃれ 好き</td><td class="num">438</td><td class="num">53.88%</td><td class="num">5</td><td class="num">40.00%</td><td class="num"><span class="down">-13.88pt</span></td></tr><tr><td>AGA</td><td class="num">172</td><td class="num">62.79%</td><td class="num">15</td><td class="num">60.00%</td><td class="num"><span class="down">-2.79pt</span></td></tr><tr><td>頭皮 マッサージ</td><td class="num">165</td><td class="num">60.61%</td><td class="num">27</td><td class="num">55.56%</td><td class="num"><span class="down">-5.05pt</span></td></tr><tr><td>パラジェル</td><td class="num">15</td><td class="num">86.67%</td><td class="num">105</td><td class="num">66.67%</td><td class="num"><span class="down">-20.00pt</span></td></tr><tr><td>美容 トレンド</td><td class="num">14</td><td class="num">71.43%</td><td class="num">0</td><td class="num">0.00%</td><td class="num"><span class="down">-71.43pt</span></td></tr><tr><td>結婚式 準備</td><td class="num">8</td><td class="num">50.00%</td><td class="num">0</td><td class="num">0.00%</td><td class="num"><span class="down">-50.00pt</span></td></tr><tr><td>まつげエクステ</td><td class="num">5</td><td class="num">60.00%</td><td class="num">0</td><td class="num">0.00%</td><td class="num"><span class="down">-60.00pt</span></td></tr></tbody></table><p style="font-size:14px;color:#555;margin-top:8px">配信を牽引しているのは<b>パラジェル</b>（7月 105回・上位14語中 29.7%）。視聴率が最も高いのは<b>パラジェル（66.67%）</b>、最も低いのは<b>女子会（38.14%）</b>で、その差は 28.52pt です。</p><p style="margin:10px 0 4px;font-size:13.5px"><b style="color:#1b5e20">✅ 残したい（強化継続）</b></p><span class="kw">パラジェル 66.7%</span><p style="margin:10px 0 4px;font-size:13.5px"><b style="color:#cc0000">⚠️ 見直したい（視聴率40%%未満）</b></p><span class="kw">女子会 38.1%</span></div><div class="section s3"><div class="section-title"><span class="icon">3</span>次サイクル運用提案（弊社からのご提案）</div>
+<div class="callout red"><b>👇 配信実績データから導いた、次2ヶ月の運用最適化案を3点まとめました。</b><br>
+ご一読のうえ、ご相談・ご判断をお待ちしております。</div><div class="prop"><div class="ph"><span class="pill">提案①</span>
+<span class="pt">デバイス入札の最適化（テレビ画面へ配分を寄せる）</span></div>
+<div class="box data"><div class="bh">📊 データから見えること</div><ul><li>🚀 <b>テレビ画面</b>が最も質が高く、100%完視 <b>66.67%</b>・視聴率 71.17%</li><li>⚠️ <b>スマートフォン</b>は100%完視 <b>4.00%</b>と極端に低く、全体を押し下げています</li><li>⚠️ テレビ画面の表示構成比は 37.2% → <b>31.4%</b>（縮小）</li><li>📊 最良デバイスと最弱デバイスの完視率差は <b>62.7pt</b></li></ul></div>
+<div class="box sugg"><div class="bh">💡 ご提案（3点セット）</div><ol><li><b>テレビ画面</b>への入札比率を <b>+30%</b> 引き上げ</li><li><b>スマートフォン</b>への入札を <b>-30%</b> 抑制（完全除外はせず配信量は確保）</li><li>その他デバイスは現状維持で経過観察</li></ol></div>
+<div class="box eff"><div class="bh">📈 期待される効果</div>同じ配信量のなかで <b>全体の100%完視率 +8〜20pt</b> の改善見込み。最後まで見ていただける方が増えることで、サロン予約につながる質の高い接触が増えます。</div></div><div class="prop"><div class="ph"><span class="pill">提案②</span>
+<span class="pt">配信量の回復（リーチの取り戻し）</span></div>
+<div class="box data"><div class="bh">📊 データから見えること</div><ul><li>⚠️ 表示回数が <b>-94.4%</b>（6,285 → 353）と縮小</li><li>🚀 一方で視聴率は 54.96% と質は保てています</li><li>📊 質が保てている状態での量の縮小は、機会損失にあたります</li></ul></div>
+<div class="box sugg"><div class="bh">💡 ご提案（3点セット）</div><ol><li>日予算の消化状況を確認し、配信機会を逃していないか点検</li><li><b>重点エリアの入札</b>を引き上げ、取りこぼしを回収</li><li>キーワードの表示機会が減っていないか確認し、必要なら関連語を追加</li></ol></div>
+<div class="box eff"><div class="bh">📈 期待される効果</div><b>表示回数 +20〜30%</b> の回復見込み。質を保ったまま接触数を増やせます。</div></div><div class="prop"><div class="ph"><span class="pill">提案③</span>
+<span class="pt">年齢・曜日・地域の配分を実績に合わせる</span></div>
+<div class="box data"><div class="bh">📊 データから見えること</div><ul><li>📊 配信量トップの年齢層は<b>55～64 才</b>（139回・39.4%）</li><li>🚀 視聴率が最も高いのは<b>45～54 才</b>（66.96%）</li><li>🚀 曜日別トップは<b>木曜日</b>（56.52%）、最下位は水曜日（54.41%）で差は 2.12pt</li><li>📊 地域トップは<b>那覇市</b>（179回・50.7%）</li><li>🚀 キーワード別トップは<b>パラジェル</b>（66.67%）、最下位は女子会（38.14%）</li></ul></div>
+<div class="box sugg"><div class="bh">💡 ご提案（4点セット）</div><ol><li><b>45～54 才</b>への入札比率を <b>+20%</b>（最も反応が良い層を厚くする）</li><li><b>木曜日</b>の配信比率を <b>+20%</b>、水曜日を <b>-15%</b></li><li>重点エリアに配信が届いているかを確認し、不足していれば入札を引き上げ</li><li>キーワード「パラジェル」の入札を <b>+20%</b>、「女子会」は入札抑制または除外を検討</li></ol></div>
+<div class="box eff"><div class="bh">📈 期待される効果</div><b>視聴率 +2〜4pt</b>。反応の良い層・曜日・地域に配信が集中し、サロン予約への導線が太くなります。</div></div>
+<div class="callout yellow"><b>📅 次サイクルの想定スケジュール</b><br>本レポート共有 → 長堂様ご判断 → 8月中旬に設定変更 → 8月下旬〜9月配信 → 次回ご報告</div></div><div class="section s4"><div class="section-title"><span class="icon">4</span>ご要望・改善履歴</div>
+<table><thead><tr><th>受領日</th><th>ご要望内容</th><th>対応内容</th><th>ステータス</th></tr></thead>
+<tbody><tr><td colspan="4" style="text-align:center;color:#888">※ 次回ご報告時のヒアリング後、こちらに記録してまいります</td></tr></tbody></table>
+<div class="callout orange" style="margin-top:16px"><b>補足</b><br>
+・配信開始後、2ヶ月に1回の頻度で成果をご報告いたします。<br>・ターゲティングやキーワードは、データを見ながら随時最適化してまいります。<br>・数値は Google 広告の管理画面より取得したものです（タイムゾーン：日本標準時）。<br>・ご不明な点やご要望がございましたら、お気軽にお申し付けください。</div></div><div class="section s4"><div class="section-title"><span class="icon">5</span>過去のご報告</div>
+<table><thead><tr><th>回</th><th>対象期間</th><th>ご報告時期</th><th>レポート</th></tr></thead>
+<tbody><tr><td>第1回</td><td>2026年4月・5月</td><td>2026年6月ご報告</td><td><a href="archive/beauty-labo-m_2026-04_05.html" target="_blank" rel="noopener">▶ 開く</a></td></tr></tbody></table>
+<div class="callout orange" style="margin-top:16px"><b>補足</b><br>
+前回までのご報告は上記リンクからいつでもご覧いただけます。</div></div><footer>最終更新：2026年8月7日　／　次回更新：2026年10月上旬予定<br>
+株式会社ランバード｜広告運用サポート窓口</footer></div></body></html>
