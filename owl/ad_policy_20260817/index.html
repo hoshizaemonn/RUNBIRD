@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>OWL広告 配信方針（Google＋Yahoo）｜60日の結果を踏まえた戦略</title>
+<title>OWL広告 配信方針（Google・TO側）｜実測CSVで作成</title>
 <style>
   :root{--teal:#1BA0A6;--teal-d:#137880;--teal-l:#e8f6f6;--orange:#F5871F;--orange-d:#c96a10;--orange-l:#fff1e2;
-        --ink:#123c48;--ink2:#4a6870;--line:#d7e7e8;--bg:#f4f9f9;--card:#fff;--bad:#d0483c;--bad-l:#fdeeec;--amber:#c9821c;--amber-l:#fbf1dd;--good:#1f9d57;--good-l:#eaf4ee;--gg:#4285F4;--yh:#FF0033;}
+        --ink:#123c48;--ink2:#4a6870;--line:#d7e7e8;--bg:#f4f9f9;--card:#fff;--bad:#d0483c;--bad-l:#fdeeec;--amber:#c9821c;--amber-l:#fbf1dd;--good:#1f9d57;--good-l:#eaf4ee;--gg:#4285F4;}
   @media (prefers-color-scheme: dark){:root{--ink:#e8f1f2;--ink2:#a9c2c6;--line:#2b454b;--bg:#0e1b1e;--card:#15282c;--teal-l:#123236;--orange-l:#33230f;--bad-l:#3a1e1a;--amber-l:#332810;--good-l:#122a1d;}}
   :root[data-theme="light"]{--ink:#123c48;--ink2:#4a6870;--line:#d7e7e8;--bg:#f4f9f9;--card:#fff;--teal-l:#e8f6f6;--orange-l:#fff1e2;--bad-l:#fdeeec;--amber-l:#fbf1dd;--good-l:#eaf4ee;}
   :root[data-theme="dark"]{--ink:#e8f1f2;--ink2:#a9c2c6;--line:#2b454b;--bg:#0e1b1e;--card:#15282c;--teal-l:#123236;--orange-l:#33230f;--bad-l:#3a1e1a;--amber-l:#332810;--good-l:#122a1d;}
@@ -16,7 +16,8 @@
   .wrap{max-width:920px;margin:0 auto;}
   .eyebrow{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;color:#fff;background:var(--teal);padding:3px 11px;border-radius:999px;margin-bottom:10px;}
   h1{font-size:21px;line-height:1.35;border-left:6px solid var(--teal);padding-left:13px;}
-  .meta{color:var(--ink2);font-size:12px;margin:8px 0 18px 19px;}
+  .meta{color:var(--ink2);font-size:12px;margin:8px 0 16px 19px;}
+  .scope{background:var(--teal-l);border:1px solid var(--line);border-radius:10px;padding:9px 14px;font-size:12px;margin-bottom:16px;} .scope b{color:var(--teal-d);}
 
   .alert{background:var(--bad-l);border:1px solid #f0c3bd;border-left:5px solid var(--bad);border-radius:12px;padding:13px 16px;margin-bottom:14px;font-size:13.5px;font-weight:600;}
   @media (prefers-color-scheme: dark){.alert{border-color:#6b3229;}}
@@ -29,14 +30,14 @@
   .concl li::before{content:counter(ci);counter-increment:ci;position:absolute;left:0;top:1px;width:20px;height:20px;background:var(--teal);color:#fff;border-radius:50%;font-size:11px;display:flex;align-items:center;justify-content:center;}
 
   h2.sec{font-size:15px;margin:24px 0 11px;padding:7px 0 7px 12px;border-left:5px solid var(--orange);background:var(--orange-l);border-radius:0 9px 9px 0;}
-  /* 実績 */
-  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-  @media(max-width:640px){.kpis{grid-template-columns:1fr 1fr;}}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  @media(max-width:560px){.kpis{grid-template-columns:1fr;}}
   .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center;}
-  .kpi .n{font-size:22px;font-weight:800;color:var(--teal-d);} .kpi .n.bad{color:var(--bad);} .kpi .n.good{color:var(--good);}
+  .kpi .n{font-size:22px;font-weight:800;color:var(--teal-d);} .kpi .n.good{color:var(--good);}
   .kpi .l{font-size:11px;color:var(--ink2);margin-top:2px;}
   table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px;}
-  th,td{border:1px solid var(--line);padding:6px 9px;text-align:right;} th{background:var(--teal-l);text-align:center;} td:first-child,th:first-child{text-align:left;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:right;} th{background:var(--teal-l);text-align:center;} td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;}
+  tr.total td{font-weight:800;background:var(--teal-l);}
 
   .learn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
   @media(max-width:640px){.learn{grid-template-columns:1fr;}}
@@ -61,93 +62,99 @@
   .undecided ul{list-style:none;} .undecided li{font-size:13px;padding:4px 0 4px 22px;position:relative;} .undecided li::before{content:"✓";position:absolute;left:2px;font-weight:800;color:var(--amber);}
   .note{background:var(--teal-l);border:1px solid var(--line);border-radius:12px;padding:11px 15px;font-size:12.5px;color:var(--ink2);margin-top:12px;} .note b{color:var(--ink);}
   footer{margin-top:30px;color:var(--ink2);font-size:11px;border-top:1px solid var(--line);padding-top:12px;}
-  .ph{background:var(--amber-l);color:var(--amber);font-weight:800;border-radius:4px;padding:0 5px;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="eyebrow">OWL障害者グループホーム ／ 広告配信方針（Google＋Yahoo）</div>
-  <h1>OWL広告 配信方針｜60日の結果を踏まえた戦略</h1>
-  <div class="meta">2026/8/17　※社内共有用（noindex）／出典：配信60日レポート（2026-06-18〜08-16）実測。数字は管理画面CSV・確度A。</div>
+  <div class="eyebrow">OWL障害者グループホーム ／ 広告配信方針（Google・TO側）</div>
+  <h1>OWL広告 配信方針｜実測データで作成</h1>
+  <div class="meta">2026/8/17　※社内共有用（noindex）／出典：Google広告 実測CSV（キャンペーン／検索KW・2026-06-18〜08-06）。</div>
+  <div class="scope"><b>本資料の範囲：</b>TO側（当方担当）のGoogleのみ。RB側（別担当）は対象外。Yahooは今回データ未取得のため別途。<b>管理画面CVは指標に用いず、成果は「フォーム問い合わせ」で見ます。</b></div>
 
   <div class="alert">
-    ⚠️ <b>現在、広告は止まっています。</b>TO側は全キャンペーンが終了／一時停止で、8/9以降ずっと¥0。<b>まず「再開してよいか」の判断をお願いします。</b>
+    ⚠️ <b>現在、広告は止まっています。</b>TO側のキャンペーンは全て終了／一時停止。<b>まず「再開してよいか」の判断をお願いします。</b>
   </div>
 
   <div class="concl">
-    <h2>◆ 結果からの結論（3点）</h2>
+    <h2>◆ 実測からの結論（3点）</h2>
     <ol>
-      <li><b>Googleの"広く浅い起業KW"は¥30万使ってCV0</b>（管理画面）。一方<b>本命の"GH経営/開業KW"がCV源</b>（Yahooで初CV）。→ 再開時は<b>本命KWに予算集中</b>し、質を保ったまま件数を戻す。</li>
-      <li><b>成果はフォーム問い合わせ23件（有望10件）で見る</b>。管理画面CV（Google0/Yahoo1）とは別集計で、実リードは出ている。</li>
-      <li><b>効いた施策＝検索パートナー除外</b>（質改善→Yahoo本命で初CV）。これは継続する。</li>
+      <li><b>TO側は¥789,317を投下済み</b>（うち本命GH KWに¥654,358・大半）。まず配信を再開したうえで、この配分を最適化する。</li>
+      <li><b>"起業/独立"の広いKWは、安いクリックが大量に入るだけの低intent</b>（CTR33%・CPC¥76）。ここを絞り、本命GH KWへ寄せる。</li>
+      <li><b>成果はフォーム問い合わせで判断</b>（管理画面CVは使わない）。1週間ごとに検索語句を見て再調整。</li>
     </ol>
   </div>
 
-  <!-- 実績 -->
-  <h2 class="sec">① これまでの実績（配信60日・実測）</h2>
+  <h2 class="sec">① これまでの実績（TO側Google・実測 6/18〜8/6）</h2>
   <div class="kpis">
-    <div class="kpi"><div class="n">¥389,454</div><div class="l">総費用（60日）</div></div>
-    <div class="kpi"><div class="n">873</div><div class="l">クリック（CPC¥446）</div></div>
+    <div class="kpi"><div class="n">¥789,317</div><div class="l">TO側Google 費用</div></div>
+    <div class="kpi"><div class="n">3,357</div><div class="l">クリック（CTR21.2%／CPC¥235）</div></div>
     <div class="kpi"><div class="n good">23件</div><div class="l">フォーム問い合わせ<br>（有望◎○ 10件）</div></div>
-    <div class="kpi"><div class="n bad">CV 1</div><div class="l">管理画面CV<br>（Yahoo本命1・Google0）</div></div>
   </div>
   <table>
-    <tr><th>媒体</th><th>費用</th><th>クリック</th><th>管理画面CV</th><th>メモ</th></tr>
-    <tr><td>Google</td><td>¥308,387</td><td>765</td><td>0</td><td style="text-align:left;">起業KW(広)中心で0CV流出</td></tr>
-    <tr><td>Yahoo</td><td>¥81,067</td><td>108</td><td>1</td><td style="text-align:left;">本命「グループホーム経営」¥3,709で初CV</td></tr>
+    <tr><th>キャンペーン</th><th>KWの中身</th><th>費用</th><th>クリック</th><th>CTR</th><th>CPC</th></tr>
+    <tr><td>TO-OWL-GH-Google-CP01</td><td>本命GH KW（経営/開業・障害者GH・共同生活援助）</td><td>¥654,358</td><td>1,589</td><td>15.0%</td><td>¥412</td></tr>
+    <tr><td>TO-OWL-7月資料請求-CP01（2本）</td><td>起業/独立 KW（起業福祉/介護・福祉独立）</td><td>¥134,959</td><td>1,768</td><td>33.5%</td><td>¥76</td></tr>
+    <tr><td>CP02 / CP03</td><td>停止中</td><td>¥0</td><td>0</td><td>—</td><td>—</td></tr>
+    <tr class="total"><td>TO側 計</td><td>—</td><td>¥789,317</td><td>3,357</td><td>21.2%</td><td>¥235</td></tr>
   </table>
 
-  <!-- 学び -->
   <h2 class="sec">② 1〜2ヶ月でわかったこと</h2>
   <div class="learn">
-    <div class="lc win"><h4>◯ 効いた</h4>検索パートナー除外で質改善 → <b>Yahoo本命KWで初CV（¥3,709）</b>。本命の「GH経営／開業」に開業を"今調べている"顕在層がいる。</div>
-    <div class="lc lose"><h4>✕ ムダだった</h4>「起業 福祉／起業 介護」など<b>広いKWに1日約¥1.3万が0CVで流出</b>。求職・別業態・情報収集まで拾ってしまう。</div>
+    <div class="lc lose"><h4>✕ ムダになりやすい</h4><b>起業/独立の広いKW（CTR33%・CPC¥76）</b>＝安いクリックが大量。求職・別業態・情報収集まで拾い、開業を"今調べている"層と混ざる。</div>
+    <div class="lc win"><h4>◯ 効いた／継続</h4>検索パートナー除外で質改善。本命GH KWは<b>CPC¥412＝顕在寄り</b>で、予算の大半（¥65万）を既に投下済み。ここを主軸にする。</div>
   </div>
 
-  <!-- 次の戦略 -->
   <h2 class="sec">③ 次にこう進めたい（結果ベースの戦略）</h2>
   <div class="strat">
     <ol>
-      <li>配信を再開する<small>期間・ステータスを有効化（今は全停止のため）。</small></li>
-      <li>Googleは"起業KW（広）"を絞り、"本命GH KW"へ予算集中<small>0CVの流出を止め、Yahooで出たCVをGoogle側でも取りにいく。総額は増やさず配分で質を上げる。</small></li>
+      <li>配信を再開する<small>期間・ステータスを有効化（今は全停止）。</small></li>
+      <li>"起業/独立KW（広）"を絞り、"本命GH KW"へ予算集中<small>安いだけの低intentクリックを止め、顕在層に予算を寄せる。総額は増やさず配分で質を上げる。</small></li>
       <li>検索パートナー除外は継続<small>質改善に効いた施策。</small></li>
-      <li>Yahooの本命KWを厚くする<small>唯一のCV源。「グループホーム経営」を軸に。</small></li>
-      <li>成果は「フォーム問い合わせ（有望件数）」で判断<small>管理画面CVだけで判断しない。1週間ごとに検索語句を見て再調整。</small></li>
+      <li>成果は「フォーム問い合わせ（有望件数）」で判断<small>管理画面CVに頼らない。フォーム到達の計測が効いているかも合わせて点検。</small></li>
+      <li>1週間ごとに検索語句レポートを見て追加除外<small>広い語の混入を継続的に止める。</small></li>
     </ol>
   </div>
 
-  <h2 class="sec">④ キーワード方針</h2>
-  <div class="kw">
+  <h2 class="sec">④ 入れたいKW／止めたいKW（簡潔版）</h2>
+  <div class="kw" style="grid-template-columns:1fr 1fr;">
     <div class="kwbox keep">
-      <h4>寄せる（本命・CV源）</h4>
-      <span class="k">グループホーム 経営</span><span class="k">グループホーム 開業</span><span class="k">障害者GH 経営/開業※</span><span class="k">共同生活援助 開業</span>
-      <div style="margin-top:6px;color:var(--ink2);font-size:11.5px;">※「障害者」含む＝健康ポリシー対象</div>
-    </div>
-    <div class="kwbox add">
-      <h4>追加する派生（費用・手続き）</h4>
-      <span class="k">開業 費用</span><span class="k">開業 資金</span><span class="k">開業 初期費用</span><span class="k">共同生活援助 指定申請</span>
+      <h4>◎ 入れたい（予算を寄せる・顕在層）</h4>
+      <span class="k">グループホーム 経営</span><span class="k">グループホーム 開業</span><span class="k">障害者GH 経営/開業※</span><span class="k">共同生活援助 開業</span><span class="k">開業 費用</span><span class="k">開業 資金</span><span class="k">開業 初期費用</span><span class="k">共同生活援助 指定申請</span>
+      <div style="margin-top:6px;color:var(--ink2);font-size:11.5px;">※「障害者」含む＝Google健康ポリシー対象（例外申請 or 言い換え）。CPC¥412＝"今開業を調べている"層。</div>
     </div>
     <div class="kwbox excl">
-      <h4>絞る／除外（0CV源）</h4>
-      <span class="k">起業 福祉</span><span class="k">起業 介護</span><span class="k">求人/転職</span><span class="k">バイト/パート</span><span class="k">口コミ/評判</span><span class="k">フランチャイズ</span>
+      <h4>✕ 止めたい（絞る・除外）</h4>
+      <span class="k">起業 福祉</span><span class="k">起業 介護</span><span class="k">福祉 独立</span><span class="k">介護 独立</span><span class="k">求人/転職</span><span class="k">バイト/パート</span><span class="k">給料/年収</span><span class="k">口コミ/評判</span>
+      <div style="margin-top:6px;color:var(--ink2);font-size:11.5px;">起業/独立系＝CTR33%・CPC¥76の"安いだけの広い層"（¥13.5万流入）。採用・情報収集も除外。</div>
     </div>
+  </div>
+
+  <h2 class="sec">⑤ 「1日1件」を狙う戦略（簡潔）</h2>
+  <div class="strat">
+    <div style="font-size:12.5px;color:var(--ink2);margin-bottom:9px;">現状は全体で約0.5件/日（フォーム23件÷49日）。<b>1日1件（月約30件）</b>にするには「本命クリック数 × フォーム化率」を上げる。レバーは3つ。</div>
+    <ol>
+      <li>止めたいKWを切り、本命KWへ予算集中<small>安いだけの起業/独立クリックを止め、同じ予算で"顕在クリック"を増やす。</small></li>
+      <li>FVを"資料請求"特化にして、クリック→フォーム化率を上げる<small>実績（開設支援◯件）／継続率97.6%／加盟金0円／明確CTA。※FV案10枚から選定。数字は要確定。</small></li>
+      <li>日予算は逆算して確保<small>本命CPC¥412 × フォーム化率で1件の単価が決まる。例：化率2%→1件¥20,600/日、FV改善で化率3%→¥13,600/日（いずれも目安・要検証）。</small></li>
+    </ol>
+    <div style="font-size:12px;color:var(--ink2);margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);"><b>要点：</b>FVでフォーム化率を上げるほど「1日1件」に必要な予算が下がる＝KW集中とFV改善はセット。1週間ごとに検索語句を見て締める。</div>
   </div>
 
   <div class="undecided">
     <h2>✓ 配信前にご確認いただきたい点</h2>
     <ul>
       <li><b>再開してよいか</b>（今は全キャンペーン停止中）。</li>
-      <li><b>予算</b>：実績はGoogle約¥14,700/日・Yahoo約¥5,400/日。この水準で再開か、配分を変えるか。</li>
+      <li><b>予算</b>：本命GH KWに寄せる前提で、日予算をどの水準に置くか。</li>
       <li><b>"障害者"KWの扱い</b>：Google健康ポリシー対象。例外申請で維持か、言い換えKW（「グループホーム経営 未経験」等）で先行か。</li>
     </ul>
   </div>
 
   <div class="note">
-    <b>Sanity Pause（配信開始＝配信トリガー）：</b>CV計測（資料請求フォーム送信）が紐付いていることを確認してから再開。開始後はフォーム発火をテスト送信で実測します。
+    <b>Sanity Pause（配信開始＝配信トリガー）：</b>フォーム問い合わせの計測が効いていることを確認してから再開。開始後はフォーム発火をテスト送信で実測します。
   </div>
 
   <footer>
-    出典：OWL広告 配信60日レポート（2026-06-18〜08-16・管理画面CSV実測）／KW現状分析（2026-08-04）。金額・KWは実績ベースの現行方針。配信前のご確認のうえ確定。個人情報非掲載。
+    出典：Google広告 キャンペーン／検索KWレポート（2026-06-18〜08-06・実測CSV）。TO側のみ集計（RB側・Yahooは範囲外）。管理画面CVは指標不使用。個人情報非掲載。
   </footer>
 </div>
 </body>
