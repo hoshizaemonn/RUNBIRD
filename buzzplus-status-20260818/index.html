@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>BuzzPlus 現状と打ち手｜2026-08-18</title>
+<style>
+:root{--ink:#1b1b1b;--sub:#666;--line:#e4e4e4;--paper:#fbfbfb;--card:#fff;
+--orange:#ee5600;--orangeT:#c24400;--amber:#f0a334;--blue:#2094b2;--red:#c0392b;--green:#2e7d52;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+line-height:1.75;-webkit-text-size-adjust:100%}
+.wrap{max-width:960px;margin:0 auto;padding:clamp(16px,4vw,40px)}
+header{border-bottom:4px solid var(--orange);padding-bottom:18px;margin-bottom:28px}
+.eyebrow{font-size:clamp(11px,2.6vw,13px);letter-spacing:.14em;color:var(--orange);font-weight:800}
+h1{font-size:clamp(21px,5.2vw,34px);margin:.25em 0 .15em;line-height:1.3;font-weight:800}
+.meta{font-size:clamp(11px,2.8vw,13px);color:var(--sub)}
+h2{font-size:clamp(17px,4.2vw,24px);margin:44px 0 14px;padding-left:12px;border-left:6px solid var(--orange);font-weight:800;line-height:1.4}
+h3{font-size:clamp(14px,3.4vw,17px);margin:26px 0 8px;font-weight:800}
+p{margin:.6em 0;font-size:clamp(13px,3.2vw,15px)}
+.lead{background:#fff4ec;border:1px solid #f6cdb4;border-radius:12px;padding:clamp(14px,3.5vw,22px);margin:0 0 8px}
+.lead p{margin:.35em 0}
+.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:18px 0}
+.kpi div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 12px;text-align:center}
+.kpi .n{font-size:clamp(22px,6vw,32px);font-weight:800;line-height:1.15;display:block}
+.kpi .l{font-size:clamp(10px,2.6vw,12px);color:var(--sub);display:block;margin-top:4px}
+.bad{color:var(--red)}.ok{color:var(--green)}.or{color:var(--orangeT)}
+/* ファネル */
+.fn{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:clamp(14px,3.5vw,22px);margin:14px 0}
+.row{display:grid;grid-template-columns:1fr;gap:4px;margin:0 0 14px}
+.row .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.row .name{font-weight:800;font-size:clamp(12px,3.2vw,15px)}
+.row .val{font-size:clamp(12px,3.2vw,15px);font-weight:800;white-space:nowrap}
+.bar{height:26px;border-radius:6px;background:linear-gradient(90deg,var(--orange),var(--amber));min-width:6px}
+.bar.z{background:#d8d8d8}
+.row .note{font-size:clamp(10px,2.7vw,12px);color:var(--sub)}
+.drop{font-size:clamp(10px,2.7vw,12px);color:var(--red);font-weight:800;padding-left:2px}
+/* タイムライン */
+.tl{position:relative;margin:16px 0 0;padding-left:26px}
+.tl:before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:3px;background:var(--line)}
+.ev{position:relative;margin:0 0 16px}
+.ev:before{content:"";position:absolute;left:-22px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 0 0 2px var(--orange)}
+.ev.stop:before{background:var(--red);box-shadow:0 0 0 2px var(--red)}
+.ev .d{font-weight:800;font-size:clamp(12px,3.2vw,15px)}
+.ev .t{font-size:clamp(12px,3.1vw,14px)}
+.ev .s{font-size:clamp(10px,2.7vw,12px);color:var(--sub)}
+/* 表 */
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:clamp(11px,2.9vw,14px)}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:right;white-space:nowrap}
+th{background:#f3f3f3;font-weight:800;text-align:center}
+td:first-child,th:first-child{text-align:left}
+tr.hl td{background:#fff4ec;font-weight:800}
+tfoot td{background:#f3f3f3;font-weight:800}
+/* 打ち手 */
+.step{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--orange);border-radius:10px;padding:clamp(13px,3.4vw,20px);margin:12px 0}
+.step .h{font-weight:800;font-size:clamp(14px,3.6vw,18px);margin-bottom:4px}
+.step .n{display:inline-block;background:var(--orange);color:#fff;border-radius:6px;padding:1px 9px;font-size:12px;margin-right:8px;vertical-align:2px}
+ul{padding-left:1.15em;margin:.5em 0}li{margin:.3em 0;font-size:clamp(13px,3.1vw,15px)}
+.warn{background:#fff8e6;border:1px solid #f0d79a;border-radius:10px;padding:clamp(12px,3.2vw,18px);margin:14px 0}
+.decide{background:#fff;border:2px solid var(--orange);border-radius:12px;padding:clamp(14px,3.5vw,22px);margin:16px 0}
+footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);font-size:clamp(10px,2.7vw,12px);color:var(--sub)}
+svg{max-width:100%;height:auto;display:block}
+.nb{display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">RUNBIRD ／ BuzzPlus 集客フロント</div>
+  <h1><span class="nb">いま止まっている理由と、</span><span class="nb">次にやること</span></h1>
+  <div class="meta">2026-08-18 作成／対象期間 2026-08-01〜08-09（配信停止まで）／出典: Meta広告 日別レポート・ランキングレポート</div>
+</header>
+
+<div class="lead">
+  <p><strong>9日間で ¥9,405 を使って、問い合わせは0件でした。</strong></p>
+  <p>8/9に配信を停止済みです。止めた判断は正しかった、というのが結論です。</p>
+  <p><strong>ただし「クリエイティブが悪いから直す」だけでは、次も同じ結果になります。</strong>この予算では何を変えても判定できないためです。</p>
+</div>
+
+<div class="kpi">
+  <div><span class="n">9<span style="font-size:.5em">日</span></span><span class="l">配信日数（8/1〜8/9）</span></div>
+  <div><span class="n">¥9,405</span><span class="l">消化金額</span></div>
+  <div><span class="n">2,060</span><span class="l">インプレッション</span></div>
+  <div><span class="n or">18</span><span class="l">リンククリック</span></div>
+  <div><span class="n bad">0</span><span class="l">リード（問い合わせ）</span></div>
+</div>
+
+<h2>0. 8月の結果（7月との比較）</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>指標</th><th>7月（取得済み分）</th><th>8月（8/1〜8/9）</th><th>変化</th></tr></thead>
+<tbody>
+<tr><td>消化金額</td><td>—</td><td>¥9,405</td><td>—</td></tr>
+<tr><td>インプレッション</td><td>607</td><td>2,060</td><td>—</td></tr>
+<tr><td>3秒再生率</td><td>約11.5%</td><td>11.7%</td><td class="ok">ほぼ変化なし</td></tr>
+<tr class="hl"><td>CTR（リンククリック）</td><td>2.47%</td><td>0.87%</td><td class="bad">約3分の1に低下</td></tr>
+<tr><td>リード（問い合わせ）</td><td>—</td><td>0件</td><td class="bad">9日間ゼロ</td></tr>
+<tr><td>品質ランキング</td><td>—</td><td>下位35%（両広告）</td><td class="bad">平均以下</td></tr>
+<tr><td>エンゲージメント率ランキング</td><td>—</td><td>旧=平均以下／新=平均</td><td>—</td></tr>
+<tr><td>コンバージョン率ランキング</td><td>—</td><td>平均（両広告）</td><td class="ok">悪くない</td></tr>
+</tbody>
+</table>
+</div>
+<div class="warn">
+<p><strong>この表のいちばん大事な行は「3秒再生率」です。</strong>7月も8月もほぼ同じ＝<strong>冒頭の掴みは劣化していません。</strong>動画を8/2に差し替えても、3秒で残る人数は変わりませんでした。</p>
+<p><strong>落ちたのはCTRだけ</strong>＝「観たあとに押す率」です。コンバージョン率ランキングが「平均」なので、フォームが極端に悪いわけでもありません。<strong>押す理由が動画の締めに無かった</strong>、というのが8月の中身です。</p>
+</div>
+<p style="font-size:clamp(11px,2.8vw,13px);color:var(--sub)">※ 以前「CTRが5分の1に落ちた」と報告しましたが、7/30単日（125インプ・5クリック）の良い日と比較していたための誇張でした。9日ぶんの母数で見直した<strong>「約3分の1」が正しい数字</strong>です。訂正します。</p>
+
+<h2>1. どこで人が消えているか</h2>
+<div class="fn">
+  <div class="row">
+    <div class="top"><span class="name">① 広告が表示された</span><span class="val">2,060</span></div>
+    <div class="bar" style="width:100%"></div>
+    <div class="note">9日間の合計。1日あたり約229回しか表示されていない</div>
+  </div>
+  <div class="drop">↓ 88.3% がここで消える（3秒も見ずにスクロール）</div>
+  <div class="row">
+    <div class="top"><span class="name">② 3秒以上見た</span><span class="val">240（11.7%）</span></div>
+    <div class="bar" style="width:11.7%"></div>
+    <div class="note">7月も約11.5%。<strong>動画を差し替えても、ここは変わっていない</strong></div>
+  </div>
+  <div class="drop">↓ 半分が離脱</div>
+  <div class="row">
+    <div class="top"><span class="name">③ 最後まで見た</span><span class="val">118（3秒到達者の49%）</span></div>
+    <div class="bar" style="width:5.7%"></div>
+    <div class="note">観始めた人の約半分は最後まで観ている＝<strong>中身は嫌われていない</strong></div>
+  </div>
+  <div class="drop">↓ 完走した118人のうち、押したのは18人だけ</div>
+  <div class="row">
+    <div class="top"><span class="name">④ クリックした</span><span class="val or">18（0.87%）</span></div>
+    <div class="bar" style="width:0.9%"></div>
+    <div class="note">7月は2.47%。<strong>約3分の1に落ちている</strong></div>
+  </div>
+  <div class="drop">↓ 18人が押して、1人も送信しなかった</div>
+  <div class="row">
+    <div class="top"><span class="name">⑤ 問い合わせた</span><span class="val bad">0</span></div>
+    <div class="bar z" style="width:6px"></div>
+    <div class="note">ただし18クリックは判定に足りない母数（通過率30%でも0人になる確率は約1.6%〜、最低20〜30クリック必要）</div>
+  </div>
+</div>
+
+<h3>ここから言えること</h3>
+<ul>
+  <li><strong>冒頭の掴みは劣化していない。</strong>3秒到達率は7月11.5%・8月11.7%でほぼ同じ。8/2に動画を差し替えても変わらなかった</li>
+  <li><strong>落ちたのは「観たあとに押す率」だけ。</strong>7月2.47% → 8月0.87%</li>
+  <li><strong>Metaの評価も同じことを言っている。</strong>品質ランキングは両広告とも<strong>下位35%</strong>。一方でコンバージョン率ランキングは「平均」＝フォームが極端に悪いわけではない</li>
+</ul>
+
+<h2>2. 8月に何をしたか（1週間で4回いじっている）</h2>
+<div class="tl">
+  <div class="ev"><div class="d">8/2 19:33</div><div class="t">動画を差し替え（22.4秒 → 26.4秒）</div><div class="s">同時に、この日を最後にFacebook配信が消える</div></div>
+  <div class="ev"><div class="d">8/3</div><div class="t">v7フォーム版の広告を新規作成（旧広告と並走）</div><div class="s">新しい広告ID＝Metaの学習がゼロから</div></div>
+  <div class="ev"><div class="d">8/4 16:10</div><div class="t">両方の広告に「大きな変更」＝学習リセット</div><div class="s">この直後の8/6・8/7がクリック0</div></div>
+  <div class="ev"><div class="d">8/6</div><div class="t">旧広告が実質停止（消化 ¥5 → ¥2）</div><div class="s">A/Bテストとして成立しなくなる</div></div>
+  <div class="ev stop"><div class="d">8/9</div><div class="t"><strong>配信停止</strong>（新クリエイティブができるまで再開しない）</div><div class="s">8/10以降のデータは1行も無い</div></div>
+</div>
+<div class="warn">
+  <p><strong>これが一番の問題かもしれません。</strong>動画・広告ID・フォーム・配置を同じ週にまとめて変えたため、<strong>どれが効いたのか原理的に切り分けられません。</strong>「クリエイティブが悪かった」も、実は証明できていない状態です。</p>
+</div>
+
+<h2>3. 日別の実績</h2>
+<div class="scroll">
+<table>
+<thead><tr><th>日</th><th>消化</th><th>インプ</th><th>クリック</th><th>CTR</th><th>3秒率</th><th>リード</th><th>出来事</th></tr></thead>
+<tbody>
+<tr><td>8/01</td><td>¥1,315</td><td>340</td><td>3</td><td>0.88%</td><td>6.5%</td><td>0</td><td style="text-align:left">FB+IG</td></tr>
+<tr><td>8/02</td><td>¥1,256</td><td>222</td><td>2</td><td>0.90%</td><td>13.5%</td><td>0</td><td style="text-align:left">動画差し替え</td></tr>
+<tr><td>8/03</td><td>¥1,244</td><td>320</td><td>3</td><td>0.94%</td><td>10.9%</td><td>0</td><td style="text-align:left">新広告／IG限定に</td></tr>
+<tr><td>8/04</td><td>¥1,068</td><td>289</td><td>2</td><td>0.69%</td><td>12.8%</td><td>0</td><td style="text-align:left">学習リセット</td></tr>
+<tr class="hl"><td>8/05</td><td>¥1,275</td><td>270</td><td>5</td><td>1.85%</td><td>12.2%</td><td>0</td><td style="text-align:left">期間中ベスト</td></tr>
+<tr><td>8/06</td><td>¥1,109</td><td>169</td><td>0</td><td>0.00%</td><td>14.2%</td><td>0</td><td style="text-align:left">旧広告停止</td></tr>
+<tr><td>8/07</td><td>¥1,176</td><td>162</td><td>0</td><td>0.00%</td><td>17.9%</td><td>0</td><td style="text-align:left">CPM ¥7,047（ワースト）</td></tr>
+<tr><td>8/08</td><td>¥328</td><td>154</td><td>2</td><td>1.30%</td><td>10.4%</td><td>0</td><td style="text-align:left">消化が急落</td></tr>
+<tr><td>8/09</td><td>¥634</td><td>134</td><td>1</td><td>0.75%</td><td>10.4%</td><td>0</td><td style="text-align:left"><strong>停止</strong></td></tr>
+</tbody>
+<tfoot><tr><td>合計</td><td>¥9,405</td><td>2,060</td><td>18</td><td>0.87%</td><td>11.7%</td><td>0</td><td style="text-align:left">9日間</td></tr></tfoot>
+</table>
+</div>
+
+<h2>4. <span class="nb">いちばんの制約は</span><span class="nb">「予算」です</span></h2>
+<div class="fn">
+  <p style="margin-top:0"><strong>日予算 ¥1,000 では、9日かけても2,060回しか表示されません。</strong></p>
+  <svg viewBox="0 0 700 150" role="img" aria-label="必要クリック数と現状の比較">
+    <text x="0" y="18" font-size="14" font-weight="700" fill="#1b1b1b">判定に必要なクリック数</text>
+    <rect x="0" y="28" width="600" height="26" rx="5" fill="#2e7d52"/>
+    <text x="612" y="46" font-size="14" font-weight="700" fill="#2e7d52">20〜30</text>
+    <text x="0" y="86" font-size="14" font-weight="700" fill="#1b1b1b">9日間で実際に取れたクリック</text>
+    <rect x="0" y="96" width="120" height="26" rx="5" fill="#c0392b"/>
+    <text x="132" y="114" font-size="14" font-weight="700" fill="#c0392b">18</text>
+    <text x="0" y="142" font-size="12" fill="#666">※18クリックで「フォームが悪い」とは判定できない。0件でも偶然の範囲</text>
+  </svg>
+  <p><strong>つまり、いま新しい動画に替えても、また「よく分からないまま9日が過ぎる」だけになります。</strong>クリエイティブより先に、判定できる母数を用意する必要があります。</p>
+</div>
+
+<h2>5. 提案：この順番でやる</h2>
+
+<div class="step">
+  <div class="h"><span class="n">STEP 1</span><span class="nb">予算を決める</span><span class="nb">（これが決まらないと他が全部無駄になる）</span></div>
+  <ul>
+    <li><strong>選択肢は2つだけです。</strong>月¥10〜20万まで上げて判定できる母数を作るか、<strong>いったん止めたままにするか</strong></li>
+    <li><strong>いちばん損なのは「月¥3.3万のまま続ける」こと。</strong>判定できないのに金だけ減ります</li>
+    <li>止める判断も正解のひとつです。オーガニック（Instagram投稿）なら0円で反応を見られます</li>
+  </ul>
+</div>
+
+<div class="step">
+  <div class="h"><span class="n">STEP 2</span>新しいクリエイティブに入れ替える（3本 完成済み）</div>
+  <ul>
+    <li><strong>冒頭2秒で業種を名指しする</strong>（「店舗オーナー」では誰も自分ごとにしない。長期配信の勝ち組は「飲食店の皆様へ」まで下ろしている）</li>
+    <li><strong>悩んでいる人の画から始める</strong>（現行は人が一度も出てこない。長期配信17本中9本は0.15秒で人が話している）</li>
+    <li><strong>動画の締めとクリック先を一致させる</strong>（現行は「サイトへ」と言うのにサイトリンクが無かった）</li>
+    <li><strong>着地をLPにする</strong>（長期配信19本中、インスタントフォーム着地は0本）</li>
+  </ul>
+</div>
+
+<div class="step">
+  <div class="h"><span class="n">STEP 3</span><span class="nb">出したら、</span><span class="nb">20〜30クリック貯まるまで触らない</span></div>
+  <ul>
+    <li><strong>8月の失敗は「1週間で4回いじった」こと。</strong>変えるのは1回につき1箇所だけ</li>
+    <li>クリック0の日が2日続いても、それだけでは何も分かりません。触りたくなるのを我慢する期間です</li>
+  </ul>
+</div>
+
+<h2>6. 決めていただきたいこと</h2>
+<div class="decide">
+  <h3 style="margin-top:0">① 予算をどうするか　<span style="color:var(--red)">←最優先</span></h3>
+  <p>月¥10〜20万に上げる／このまま止めておく／オーガニックだけで様子を見る</p>
+  <h3>② お試し1本を0円にするか</h3>
+  <p>現行LPに無料制作の記載はありません（無料はZoom相談のみ）。<strong>0円にするなら、動画・広告文・LP・フォームを全部揃える必要があります。</strong>揃わないまま出したのが8月の失敗でした</p>
+  <h3>③ 累計制作本数・導入社数の実数</h3>
+  <p>競合は「2,000本以上／15支店」と出しています。こちらは<strong>「16業種以上」しか言えるものがありません。</strong>実数をいただければ、そのまま使えます</p>
+</div>
+
+<footer>
+  <p>本ページは社内検討用です。数値はMeta広告マネージャの実データ（8/1〜8/17レポート）に基づきます。<br>
+  作成: 星崎（Claude Code）／RUNBIRD BuzzPlus</p>
+</footer>
+
+</div>
+</body>
+</html>
