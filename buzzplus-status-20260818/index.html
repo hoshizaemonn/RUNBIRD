@@ -51,6 +51,10 @@ p{margin:.6em 0;font-size:clamp(13px,3.2vw,15px)}
 .vscard dl{margin:0;font-size:clamp(12px,3vw,14px)}
 .vscard dt{color:var(--sub);font-size:clamp(10px,2.6vw,12px);margin-top:8px}
 .vscard dd{margin:0;font-weight:700}
+.vscard .qq{background:#fff;border:1px dashed var(--line);border-radius:8px;padding:8px 10px;margin:0 0 10px;font-weight:800;font-size:clamp(12px,3.1vw,15px);line-height:1.5}
+.vscard ol.opts{margin:0;padding-left:1.4em}
+.vscard ol.opts li{font-size:clamp(12px,3vw,14px);margin:.28em 0;line-height:1.55}
+.vscard .verdict{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--line);font-size:clamp(12px,3vw,14px)}
 .tl{position:relative;margin:16px 0 0;padding-left:26px}
 .tl:before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:3px;background:var(--line)}
 .ev{position:relative;margin:0 0 16px}
@@ -149,8 +153,59 @@ svg{max-width:100%;height:auto;display:block}
 </div>
 
 <div class="warn">
-  <p><strong>広告文では7月も8月も「月30,000円」と言い続けているのに、クリックした先のフォームからは価格の受け皿だけが消えました。</strong></p>
-  <p>7月に取れた3件は、<strong>全員がその「月30,000円プランの詳細」を選んで入ってきた人たち</strong>です。訴求と着地が、ここで切断されています。</p>
+  <p><strong>広告文では7月も8月も「月30,000円」と言い続けているのに、フォーム側からは「月30,000円プランの詳細」という選択肢が消えました。</strong></p>
+  <p>7月に取れた3件のうち<strong>2件は、その「月30,000円プランの詳細」を選んで入ってきたことが確認できています</strong>（残り1件は回答内容が未取得）。訴求と着地が、ここで切断されています。</p>
+  <p style="font-size:clamp(10px,2.7vw,12px);color:var(--sub)">※ 価格そのものが消えたわけではありません。v7bのイントロ文にも「月30,000円から動画制作+SNS配信まで一気通貫。」がv4と一字一句同じで残っています。消えたのは<strong>選択肢だけ</strong>です。</p>
+</div>
+
+<h3>設問1が、まるごと入れ替わっています</h3>
+<div class="vs">
+  <div class="vscard win">
+    <div class="t">✅ v4（7月・リード3件）</div>
+    <div class="qq">興味のあるものを教えてください</div>
+    <ol class="opts">
+      <li><strong>月30,000円プランの詳細</strong></li>
+      <li>制作事例をもっと見たい</li>
+      <li>料金プランの相談</li>
+      <li>サンプル動画がほしい</li>
+      <li>その他（情報収集など）</li>
+    </ol>
+    <p class="verdict ok">5択すべてが「次にこちらへ要求すること」。<br><strong>選ぶこと自体が問い合わせになる。</strong></p>
+  </div>
+  <div class="vscard lose">
+    <div class="t">❌ v7b（8月・リード0件）</div>
+    <div class="qq">現在の動画制作における一番の課題を教えてください</div>
+    <ol class="opts">
+      <li>制作コスト（予算）を抑えたい</li>
+      <li>ハイクオリティな映像を作りたい</li>
+      <li>今までと違った企画で映像をつくりたい</li>
+      <li>パートナーとして協業・丸投げしたい</li>
+      <li>その他（情報収集など）</li>
+    </ol>
+    <p class="verdict bad">5択すべてが「いま自分が困っていること」。<br><strong>選んでも次のアクションが発生しない。アンケートに答えただけになる。</strong></p>
+  </div>
+</div>
+<div class="warn">
+  <p><strong>送信する動機が、ここで消えています。</strong>価格の選択肢が無くなったこと以上に、<strong>「要求を宣言する」形から「悩みを申告する」形に変わった</strong>ことが効いている可能性が高いです。</p>
+</div>
+
+<h3>設問1以外の差分</h3>
+<div class="scroll">
+<table>
+<thead><tr><th></th><th>v4</th><th>v7b</th></tr></thead>
+<tbody>
+<tr><td>フォームタイプ</td><td>高い意向</td><td>大量用</td></tr>
+<tr><td>画面数</td><td>5画面</td><td>4画面</td></tr>
+<tr class="hl"><td>設問2</td><td style="text-align:left">業種を教えてください<br><span style="color:var(--sub)">飲食／美容／小売／治療院・整骨院／採用BtoB／その他</span></td><td class="bad">削除</td></tr>
+<tr><td>連絡先</td><td style="text-align:left">メール・氏名</td><td style="text-align:left">メール・氏名・<strong>会社名（任意）</strong></td></tr>
+<tr><td>完了ボタン</td><td>ウェブサイトにアクセス</td><td>サービス詳細を見る</td></tr>
+<tr><td>イントロ文</td><td colspan="2" style="text-align:center">「月30,000円から動画制作+SNS配信まで一気通貫。撮影不要・最短即日でお届けします。」<strong>← 完全に同一</strong></td></tr>
+</tbody>
+</table>
+</div>
+<div class="warn">
+  <p><strong>業種（飲食・美容・治療院）を落として、会社名を足しています。</strong>選択肢の語彙も「協業・丸投げ」「ハイクオリティ」と、制作会社に発注し慣れた企業側の言葉です。</p>
+  <p><strong>個人店オーナー向けから、法人向けに寄っています。</strong>7月に取れた3件は、確認できている範囲では全員「業種＝その他」の個人事業主層でした。</p>
 </div>
 
 <h3>あわせて確認した2点</h3>
@@ -165,7 +220,7 @@ svg{max-width:100%;height:auto;display:block}
 <h2>3. 8月の0件は本物です（埋もれではない）</h2>
 <p>リードセンターの 8/1〜8/17 は4件ありますが、<strong>4件すべてがテストリード（test@meta.com）</strong>でした。7月のように通知が落ちて実リードが埋もれていた分は<strong>ゼロ</strong>です。</p>
 <div class="warn">
-  <p><strong>あわせて7月の数字も訂正します。</strong>リードセンター6件のうち実名は3件（後藤正樹 7/24／本間たけまさ 7/29／石原有紗 7/29）で、残り3件はテストでした。広告マネージャ上の「リード5件」はテストを含んだ数です。<strong>7月の実リードは3件が正しい数字</strong>で、これは星崎さんの認識と一致します。</p>
+  <p><strong>あわせて7月の数字も訂正します。</strong>リードセンター6件のうち実リードは3件（7/24・7/29・7/29／氏名は本ページには載せません）で、残り3件はテストでした。広告マネージャ上の「リード5件」はテストを含んだ数です。<strong>7月の実リードは3件が正しい数字</strong>で、これは星崎さんの認識と一致します。</p>
 </div>
 
 <h2>4. 外れた仮説（訂正）</h2>
