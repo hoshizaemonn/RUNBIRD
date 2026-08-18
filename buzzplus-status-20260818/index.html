@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>BuzzPlus 現状と打ち手｜2026-08-18</title>
+<title>BuzzPlus 7月は3件・8月は0件｜原因特定 2026-08-18</title>
 <style>
 :root{--ink:#1b1b1b;--sub:#666;--line:#e4e4e4;--paper:#fbfbfb;--card:#fff;
 --orange:#ee5600;--orangeT:#c24400;--amber:#f0a334;--blue:#2094b2;--red:#c0392b;--green:#2e7d52;}
@@ -27,17 +27,30 @@ p{margin:.6em 0;font-size:clamp(13px,3.2vw,15px)}
 .kpi .n{font-size:clamp(22px,6vw,32px);font-weight:800;line-height:1.15;display:block}
 .kpi .l{font-size:clamp(10px,2.6vw,12px);color:var(--sub);display:block;margin-top:4px}
 .bad{color:var(--red)}.ok{color:var(--green)}.or{color:var(--orangeT)}
-/* ファネル */
 .fn{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:clamp(14px,3.5vw,22px);margin:14px 0}
-.row{display:grid;grid-template-columns:1fr;gap:4px;margin:0 0 14px}
-.row .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
-.row .name{font-weight:800;font-size:clamp(12px,3.2vw,15px)}
-.row .val{font-size:clamp(12px,3.2vw,15px);font-weight:800;white-space:nowrap}
-.bar{height:26px;border-radius:6px;background:linear-gradient(90deg,var(--orange),var(--amber));min-width:6px}
-.bar.z{background:#d8d8d8}
-.row .note{font-size:clamp(10px,2.7vw,12px);color:var(--sub)}
-.drop{font-size:clamp(10px,2.7vw,12px);color:var(--red);font-weight:800;padding-left:2px}
-/* タイムライン */
+/* 2段の壊れ方 */
+.stage{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:clamp(13px,3.4vw,20px);margin:12px 0}
+.stage.s1{border-left:6px solid var(--amber)}
+.stage.s2{border-left:6px solid var(--red)}
+.stage .cap{font-size:clamp(11px,2.8vw,13px);color:var(--sub);font-weight:800;letter-spacing:.06em}
+.stage .h{font-weight:800;font-size:clamp(15px,3.8vw,19px);margin:2px 0 6px;line-height:1.4}
+.arrowrow{display:flex;align-items:center;gap:clamp(8px,2.5vw,18px);flex-wrap:wrap;margin:12px 0 6px}
+.pill{background:#f6f6f6;border:1px solid var(--line);border-radius:10px;padding:8px 14px;text-align:center;flex:1 1 120px;min-width:110px}
+.pill .v{font-size:clamp(18px,5vw,26px);font-weight:800;display:block;line-height:1.2}
+.pill .k{font-size:clamp(10px,2.6vw,12px);color:var(--sub);display:block}
+.pill.was{border-color:#bfe0cc;background:#f1faf4}
+.pill.now{border-color:#f0bdb5;background:#fdf2f0}
+.arw{font-size:clamp(18px,5vw,26px);font-weight:800;color:var(--sub);flex:0 0 auto}
+/* 比較カード */
+.vs{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0}
+@media(min-width:640px){.vs{grid-template-columns:1fr 1fr}}
+.vscard{border:1px solid var(--line);border-radius:12px;padding:clamp(13px,3.2vw,18px);background:var(--card)}
+.vscard.win{border:2px solid var(--green);background:#f4fbf6}
+.vscard.lose{border:2px solid var(--red);background:#fdf3f1}
+.vscard .t{font-weight:800;font-size:clamp(13px,3.4vw,16px);margin-bottom:8px;line-height:1.4}
+.vscard dl{margin:0;font-size:clamp(12px,3vw,14px)}
+.vscard dt{color:var(--sub);font-size:clamp(10px,2.6vw,12px);margin-top:8px}
+.vscard dd{margin:0;font-weight:700}
 .tl{position:relative;margin:16px 0 0;padding-left:26px}
 .tl:before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:3px;background:var(--line)}
 .ev{position:relative;margin:0 0 16px}
@@ -46,7 +59,6 @@ p{margin:.6em 0;font-size:clamp(13px,3.2vw,15px)}
 .ev .d{font-weight:800;font-size:clamp(12px,3.2vw,15px)}
 .ev .t{font-size:clamp(12px,3.1vw,14px)}
 .ev .s{font-size:clamp(10px,2.7vw,12px);color:var(--sub)}
-/* 表 */
 .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
 table{border-collapse:collapse;width:100%;min-width:560px;font-size:clamp(11px,2.9vw,14px)}
 th,td{border:1px solid var(--line);padding:7px 9px;text-align:right;white-space:nowrap}
@@ -54,9 +66,8 @@ th{background:#f3f3f3;font-weight:800;text-align:center}
 td:first-child,th:first-child{text-align:left}
 tr.hl td{background:#fff4ec;font-weight:800}
 tfoot td{background:#f3f3f3;font-weight:800}
-/* 打ち手 */
 .step{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--orange);border-radius:10px;padding:clamp(13px,3.4vw,20px);margin:12px 0}
-.step .h{font-weight:800;font-size:clamp(14px,3.6vw,18px);margin-bottom:4px}
+.step .h{font-weight:800;font-size:clamp(14px,3.6vw,18px);margin-bottom:4px;line-height:1.45}
 .step .n{display:inline-block;background:var(--orange);color:#fff;border-radius:6px;padding:1px 9px;font-size:12px;margin-right:8px;vertical-align:2px}
 ul{padding-left:1.15em;margin:.5em 0}li{margin:.3em 0;font-size:clamp(13px,3.1vw,15px)}
 .warn{background:#fff8e6;border:1px solid #f0d79a;border-radius:10px;padding:clamp(12px,3.2vw,18px);margin:14px 0}
@@ -71,109 +82,126 @@ svg{max-width:100%;height:auto;display:block}
 
 <header>
   <div class="eyebrow">RUNBIRD ／ BuzzPlus 集客フロント</div>
-  <h1><span class="nb">いま止まっている理由と、</span><span class="nb">次にやること</span></h1>
-  <div class="meta">2026-08-18 作成／対象期間 2026-08-01〜08-09（配信停止まで）／出典: Meta広告 日別レポート・ランキングレポート</div>
+  <h1><span class="nb">7月は3件、8月は0件。</span><span class="nb">何が変わったのか</span></h1>
+  <div class="meta">2026-08-18 作成／Meta広告 日別レポート（7/1〜7/31・8/1〜8/17）＋ 広告マネージャ実画面の裏取り結果に基づく</div>
 </header>
 
 <div class="lead">
-  <p><strong>9日間で ¥9,405 を使って、問い合わせは0件でした。</strong></p>
-  <p>8/9に配信を停止済みです。止めた判断は正しかった、というのが結論です。</p>
-  <p><strong>ただし「クリエイティブが悪いから直す」だけでは、次も同じ結果になります。</strong>この予算では何を変えても判定できないためです。</p>
+  <p><strong>動画はほぼ同じ内容なのに取れなくなった。その原因を、2段に分けて特定しました。</strong></p>
+  <p>① <strong>押されなくなった</strong>（CTR 2.15% → 0.87%）／② <strong>押した人が送信しなくなった</strong>（3件 → 0件）</p>
+  <p>そして<strong>②のほうに、はっきりした変更が見つかりました。</strong>7月にリードが取れていたフォームが、8月には別物に入れ替わっています。</p>
 </div>
 
 <div class="kpi">
-  <div><span class="n">9<span style="font-size:.5em">日</span></span><span class="l">配信日数（8/1〜8/9）</span></div>
-  <div><span class="n">¥9,405</span><span class="l">消化金額</span></div>
-  <div><span class="n">2,060</span><span class="l">インプレッション</span></div>
-  <div><span class="n or">18</span><span class="l">リンククリック</span></div>
-  <div><span class="n bad">0</span><span class="l">リード（問い合わせ）</span></div>
+  <div><span class="n ok">3</span><span class="l">7月の実リード（実名）</span></div>
+  <div><span class="n bad">0</span><span class="l">8月の実リード</span></div>
+  <div><span class="n">2.15<span style="font-size:.5em">%</span> <span class="bad">→</span> <span class="bad">0.87<span style="font-size:.5em">%</span></span></span><span class="l">CTR（同一キャンペーン比較）</span></div>
+  <div><span class="n ok">11.5<span style="font-size:.5em">%</span> → 11.7<span style="font-size:.5em">%</span></span><span class="l">3秒再生率（＝掴みは劣化なし）</span></div>
 </div>
 
-<h2>0. 8月の結果（7月との比較）</h2>
+<h2>1. 壊れているのは2箇所。原因は別々です</h2>
+
+<div class="stage s1">
+  <div class="cap">① 表示 → クリック</div>
+  <div class="h">押されなくなった</div>
+  <div class="arrowrow">
+    <div class="pill was"><span class="v ok">2.15%</span><span class="k">7月（32クリック）</span></div>
+    <div class="arw">→</div>
+    <div class="pill now"><span class="v bad">0.87%</span><span class="k">8月（18クリック）</span></div>
+  </div>
+  <p><strong>広告のメインテキスト・見出し・CTAボタンは、7月と8月で完全に同一でした。</strong>「月30,000円」という価格訴求も8月版から消えていません。</p>
+  <p>3秒再生率も変わっていない（11.5% → 11.7%）ので、<strong>冒頭の掴みも劣化していません。</strong></p>
+  <p>→ 残っている変更は <strong>8/2の動画差し替え（22.4秒 → 26.4秒）だけ</strong>です。ここが唯一の容疑者になります。</p>
+</div>
+
+<div class="stage s2">
+  <div class="cap">② クリック → リード</div>
+  <div class="h">押した人が、送信しなくなった</div>
+  <div class="arrowrow">
+    <div class="pill was"><span class="v ok">3件</span><span class="k">7月</span></div>
+    <div class="arw">→</div>
+    <div class="pill now"><span class="v bad">0件</span><span class="k">8月</span></div>
+  </div>
+  <p><strong>7月に実際にリードが入った3件は、すべて同じフォーム <code>BP_LEAD_FORM_v4</code> 経由でした。</strong>そのフォームが8月には使われていません。</p>
+</div>
+
+<h2>2. <span class="nb">決定的だったのは、</span><span class="nb">フォームの入れ替えです</span></h2>
+
+<div class="vs">
+  <div class="vscard win">
+    <div class="t">✅ v4（7月・リードが取れた）</div>
+    <dl>
+      <dt>フォームタイプ</dt><dd>高い意向</dd>
+      <dt>設問1</dt><dd>興味のあるものを教えてください</dd>
+      <dt>価格の選択肢</dt><dd class="ok">「月30,000円プランの詳細」あり</dd>
+      <dt>実績</dt><dd class="ok">実名リード3件すべてがここ経由</dd>
+    </dl>
+  </div>
+  <div class="vscard lose">
+    <div class="t">❌ v7 / v7b（8/3作成・8月に使用）</div>
+    <dl>
+      <dt>フォームタイプ</dt><dd>大量用（More volume）</dd>
+      <dt>設問1</dt><dd>現在の動画制作における一番の課題</dd>
+      <dt>価格の選択肢</dt><dd class="bad">なし（削除されている）</dd>
+      <dt>実績</dt><dd class="bad">実名リード 0件</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="warn">
+  <p><strong>広告文では7月も8月も「月30,000円」と言い続けているのに、クリックした先のフォームからは価格の受け皿だけが消えました。</strong></p>
+  <p>7月に取れた3件は、<strong>全員がその「月30,000円プランの詳細」を選んで入ってきた人たち</strong>です。訴求と着地が、ここで切断されています。</p>
+</div>
+
+<h3>さらに、見過ごせない2点</h3>
+<ul>
+  <li><strong>v7 のロケールが English (US)。</strong>入力欄のラベルが英語のままでした。31分後に v7b が作り直されています（8/3 17:26 → 17:57）。<strong>8/3 18:47作成の配信広告が v7 と v7b のどちらを指していたかは未特定です。</strong>もし v7 なら、クリックした人が英語フォームに着地していたことになり、それだけで0件が説明できます <span class="bad nb">←最優先の確認事項</span></li>
+  <li><strong>勝ちフォーム v4 が、いまどの広告にも繋がっていません。</strong>7月広告のリンク先も <code>BP_LEAD_FORM_v6</code> に変わっています</li>
+</ul>
+
+<h2>3. 8月の0件は本物です（埋もれではない）</h2>
+<p>リードセンターの 8/1〜8/17 は4件ありますが、<strong>4件すべてがテストリード（test@meta.com）</strong>でした。7月のように通知が落ちて実リードが埋もれていた分は<strong>ゼロ</strong>です。</p>
+<div class="warn">
+  <p><strong>あわせて7月の数字も訂正します。</strong>リードセンター6件のうち実名は3件（後藤正樹 7/24／本間たけまさ 7/29／石原有紗 7/29）で、残り3件はテストでした。広告マネージャ上の「リード5件」はテストを含んだ数です。<strong>7月の実リードは3件が正しい数字</strong>で、これは星崎さんの認識と一致します。</p>
+</div>
+
+<h2>4. 外れた仮説（訂正）</h2>
 <div class="scroll">
 <table>
-<thead><tr><th>指標</th><th>7月（取得済み分）</th><th>8月（8/1〜8/9）</th><th>変化</th></tr></thead>
+<thead><tr><th>仮説</th><th>判定</th><th>根拠</th></tr></thead>
 <tbody>
-<tr><td>消化金額</td><td>—</td><td>¥9,405</td><td>—</td></tr>
-<tr><td>インプレッション</td><td>607</td><td>2,060</td><td>—</td></tr>
-<tr><td>3秒再生率</td><td>約11.5%</td><td>11.7%</td><td class="ok">ほぼ変化なし</td></tr>
-<tr class="hl"><td>CTR（リンククリック）</td><td>2.47%</td><td>0.87%</td><td class="bad">約3分の1に低下</td></tr>
-<tr><td>リード（問い合わせ）</td><td>—</td><td>0件</td><td class="bad">9日間ゼロ</td></tr>
-<tr><td>品質ランキング</td><td>—</td><td>下位35%（両広告）</td><td class="bad">平均以下</td></tr>
-<tr><td>エンゲージメント率ランキング</td><td>—</td><td>旧=平均以下／新=平均</td><td>—</td></tr>
-<tr><td>コンバージョン率ランキング</td><td>—</td><td>平均（両広告）</td><td class="ok">悪くない</td></tr>
+<tr><td>8月版から「月30,000円」の価格訴求が消えた</td><td class="bad">✗ 外れ</td><td style="text-align:left">広告文は7月・8月で完全に同一</td></tr>
+<tr><td>Facebook配信を落としたのが原因</td><td class="bad">✗ 外れ</td><td style="text-align:left">7月のFB CTRは1.83%でIG（2.45%）より低い。落として悪化する側ではない</td></tr>
+<tr><td>冒頭の掴みが劣化した</td><td class="bad">✗ 外れ</td><td style="text-align:left">3秒再生率は11.5% → 11.7%でほぼ同じ</td></tr>
+<tr class="hl"><td>フォームが壊れたから0件になった</td><td class="or">△ 断定不可</td><td style="text-align:left">7月のCVR 9.4%が続いていれば8月の期待値は1.7件。18クリックで0件になる確率は<strong>約17%</strong>あり、統計的な証明にはならない。ただしフォームの中身が実際に変わっていることは事実</td></tr>
 </tbody>
 </table>
 </div>
-<div class="warn">
-<p><strong>この表のいちばん大事な行は「3秒再生率」です。</strong>7月も8月もほぼ同じ＝<strong>冒頭の掴みは劣化していません。</strong>動画を8/2に差し替えても、3秒で残る人数は変わりませんでした。</p>
-<p><strong>落ちたのはCTRだけ</strong>＝「観たあとに押す率」です。コンバージョン率ランキングが「平均」なので、フォームが極端に悪いわけでもありません。<strong>押す理由が動画の締めに無かった</strong>、というのが8月の中身です。</p>
-</div>
-<p style="font-size:clamp(11px,2.8vw,13px);color:var(--sub)">※ 以前「CTRが5分の1に落ちた」と報告しましたが、7/30単日（125インプ・5クリック）の良い日と比較していたための誇張でした。9日ぶんの母数で見直した<strong>「約3分の1」が正しい数字</strong>です。訂正します。</p>
 
-<h2>1. どこで人が消えているか</h2>
-<div class="fn">
-  <div class="row">
-    <div class="top"><span class="name">① 広告が表示された</span><span class="val">2,060</span></div>
-    <div class="bar" style="width:100%"></div>
-    <div class="note">9日間の合計。1日あたり約229回しか表示されていない</div>
-  </div>
-  <div class="drop">↓ 88.3% がここで消える（3秒も見ずにスクロール）</div>
-  <div class="row">
-    <div class="top"><span class="name">② 3秒以上見た</span><span class="val">240（11.7%）</span></div>
-    <div class="bar" style="width:11.7%"></div>
-    <div class="note">7月も約11.5%。<strong>動画を差し替えても、ここは変わっていない</strong></div>
-  </div>
-  <div class="drop">↓ 半分が離脱</div>
-  <div class="row">
-    <div class="top"><span class="name">③ 最後まで見た</span><span class="val">118（3秒到達者の49%）</span></div>
-    <div class="bar" style="width:5.7%"></div>
-    <div class="note">観始めた人の約半分は最後まで観ている＝<strong>中身は嫌われていない</strong></div>
-  </div>
-  <div class="drop">↓ 完走した118人のうち、押したのは18人だけ</div>
-  <div class="row">
-    <div class="top"><span class="name">④ クリックした</span><span class="val or">18（0.87%）</span></div>
-    <div class="bar" style="width:0.9%"></div>
-    <div class="note">7月は2.47%。<strong>約3分の1に落ちている</strong></div>
-  </div>
-  <div class="drop">↓ 18人が押して、1人も送信しなかった</div>
-  <div class="row">
-    <div class="top"><span class="name">⑤ 問い合わせた</span><span class="val bad">0</span></div>
-    <div class="bar z" style="width:6px"></div>
-    <div class="note">ただし18クリックは判定に足りない母数（通過率30%でも0人になる確率は約1.6%〜、最低20〜30クリック必要）</div>
-  </div>
-</div>
-
-<h3>ここから言えること</h3>
-<ul>
-  <li><strong>冒頭の掴みは劣化していない。</strong>3秒到達率は7月11.5%・8月11.7%でほぼ同じ。8/2に動画を差し替えても変わらなかった</li>
-  <li><strong>落ちたのは「観たあとに押す率」だけ。</strong>7月2.47% → 8月0.87%</li>
-  <li><strong>Metaの評価も同じことを言っている。</strong>品質ランキングは両広告とも<strong>下位35%</strong>。一方でコンバージョン率ランキングは「平均」＝フォームが極端に悪いわけではない</li>
-</ul>
-
-<h2>2. 8月に何をしたか（1週間で4回いじっている）</h2>
+<h2>5. 8月は、同じ週に4つ同時に変えています</h2>
 <div class="tl">
-  <div class="ev"><div class="d">8/2 19:33</div><div class="t">動画を差し替え（22.4秒 → 26.4秒）</div><div class="s">同時に、この日を最後にFacebook配信が消える</div></div>
-  <div class="ev"><div class="d">8/3</div><div class="t">v7フォーム版の広告を新規作成（旧広告と並走）</div><div class="s">新しい広告ID＝Metaの学習がゼロから</div></div>
-  <div class="ev"><div class="d">8/4 16:10</div><div class="t">両方の広告に「大きな変更」＝学習リセット</div><div class="s">この直後の8/6・8/7がクリック0</div></div>
-  <div class="ev"><div class="d">8/6</div><div class="t">旧広告が実質停止（消化 ¥5 → ¥2）</div><div class="s">A/Bテストとして成立しなくなる</div></div>
-  <div class="ev stop"><div class="d">8/9</div><div class="t"><strong>配信停止</strong>（新クリエイティブができるまで再開しない）</div><div class="s">8/10以降のデータは1行も無い</div></div>
+  <div class="ev"><div class="d">8/2</div><div class="t">動画を差し替え（22.4秒 → 26.4秒）</div><div class="s">実行: 鈴木 北斗／同時に、この日を最後にFacebook配信が消える</div></div>
+  <div class="ev"><div class="d">8/3 17:26・17:57</div><div class="t">v7 / v7b フォームを作成（大量用・価格選択肢なし・v7は英語ロケール）</div><div class="s">31分差で2つ存在している</div></div>
+  <div class="ev"><div class="d">8/3 18:47</div><div class="t">v7フォーム版の広告を新規作成（旧広告と並走）</div><div class="s">実行: 鈴木 北斗／新しい広告ID＝Metaの学習がゼロから</div></div>
+  <div class="ev"><div class="d">8/4 16:09 → 16:10</div><div class="t">予算 ¥1,000 → ¥500 → ¥1,000（往復）</div><div class="s">実行: 鈴木 北斗／「商品の大きな変更」として学習リセット扱い。この直後の8/6・8/7がクリック0</div></div>
+  <div class="ev stop"><div class="d">8/9 10:22</div><div class="t"><strong>キャンペーンをオフ</strong>（以降オフのまま）</div><div class="s">実行: 鈴木 北斗／8/10以降のデータは1行も無い</div></div>
 </div>
 <div class="warn">
-  <p><strong>これが一番の問題かもしれません。</strong>動画・広告ID・フォーム・配置を同じ週にまとめて変えたため、<strong>どれが効いたのか原理的に切り分けられません。</strong>「クリエイティブが悪かった」も、実は証明できていない状態です。</p>
+  <p><strong>動画・広告ID・フォーム・予算を同じ週にまとめて変えたため、どれが効いたのかを原理的に切り分けられません。</strong>次に再開するときは、<strong>変えるのは1回につき1箇所だけ</strong>にしてください。</p>
+  <p style="font-size:clamp(10px,2.7vw,12px);color:var(--sub)">※ 変更履歴の表記は「広告の変更」までで、何を差し替えたかは画面に出ません。期間は7/25〜8/10に絞れなかったため、過去30日（7/19〜8/17）の全50件で代替しています（抜けなし）。</p>
 </div>
 
-<h2>3. 日別の実績</h2>
+<h2>6. 日別の実績（8月・停止まで）</h2>
 <div class="scroll">
 <table>
 <thead><tr><th>日</th><th>消化</th><th>インプ</th><th>クリック</th><th>CTR</th><th>3秒率</th><th>リード</th><th>出来事</th></tr></thead>
 <tbody>
 <tr><td>8/01</td><td>¥1,315</td><td>340</td><td>3</td><td>0.88%</td><td>6.5%</td><td>0</td><td style="text-align:left">FB+IG</td></tr>
 <tr><td>8/02</td><td>¥1,256</td><td>222</td><td>2</td><td>0.90%</td><td>13.5%</td><td>0</td><td style="text-align:left">動画差し替え</td></tr>
-<tr><td>8/03</td><td>¥1,244</td><td>320</td><td>3</td><td>0.94%</td><td>10.9%</td><td>0</td><td style="text-align:left">新広告／IG限定に</td></tr>
-<tr><td>8/04</td><td>¥1,068</td><td>289</td><td>2</td><td>0.69%</td><td>12.8%</td><td>0</td><td style="text-align:left">学習リセット</td></tr>
+<tr><td>8/03</td><td>¥1,244</td><td>320</td><td>3</td><td>0.94%</td><td>10.9%</td><td>0</td><td style="text-align:left">v7フォーム広告／IG限定に</td></tr>
+<tr><td>8/04</td><td>¥1,068</td><td>289</td><td>2</td><td>0.69%</td><td>12.8%</td><td>0</td><td style="text-align:left">予算往復＝学習リセット</td></tr>
 <tr class="hl"><td>8/05</td><td>¥1,275</td><td>270</td><td>5</td><td>1.85%</td><td>12.2%</td><td>0</td><td style="text-align:left">期間中ベスト</td></tr>
-<tr><td>8/06</td><td>¥1,109</td><td>169</td><td>0</td><td>0.00%</td><td>14.2%</td><td>0</td><td style="text-align:left">旧広告停止</td></tr>
+<tr><td>8/06</td><td>¥1,109</td><td>169</td><td>0</td><td>0.00%</td><td>14.2%</td><td>0</td><td style="text-align:left">旧広告が実質停止</td></tr>
 <tr><td>8/07</td><td>¥1,176</td><td>162</td><td>0</td><td>0.00%</td><td>17.9%</td><td>0</td><td style="text-align:left">CPM ¥7,047（ワースト）</td></tr>
 <tr><td>8/08</td><td>¥328</td><td>154</td><td>2</td><td>1.30%</td><td>10.4%</td><td>0</td><td style="text-align:left">消化が急落</td></tr>
 <tr><td>8/09</td><td>¥634</td><td>134</td><td>1</td><td>0.75%</td><td>10.4%</td><td>0</td><td style="text-align:left"><strong>停止</strong></td></tr>
@@ -182,62 +210,52 @@ svg{max-width:100%;height:auto;display:block}
 </table>
 </div>
 
-<h2>4. <span class="nb">いちばんの制約は</span><span class="nb">「予算」です</span></h2>
-<div class="fn">
-  <p style="margin-top:0"><strong>日予算 ¥1,000 では、9日かけても2,060回しか表示されません。</strong></p>
-  <svg viewBox="0 0 700 150" role="img" aria-label="必要クリック数と現状の比較">
-    <text x="0" y="18" font-size="14" font-weight="700" fill="#1b1b1b">判定に必要なクリック数</text>
-    <rect x="0" y="28" width="600" height="26" rx="5" fill="#2e7d52"/>
-    <text x="612" y="46" font-size="14" font-weight="700" fill="#2e7d52">20〜30</text>
-    <text x="0" y="86" font-size="14" font-weight="700" fill="#1b1b1b">9日間で実際に取れたクリック</text>
-    <rect x="0" y="96" width="120" height="26" rx="5" fill="#c0392b"/>
-    <text x="132" y="114" font-size="14" font-weight="700" fill="#c0392b">18</text>
-    <text x="0" y="142" font-size="12" fill="#666">※18クリックで「フォームが悪い」とは判定できない。0件でも偶然の範囲</text>
-  </svg>
-  <p><strong>つまり、いま新しい動画に替えても、また「よく分からないまま9日が過ぎる」だけになります。</strong>クリエイティブより先に、判定できる母数を用意する必要があります。</p>
-</div>
-
-<h2>5. 提案：この順番でやる</h2>
+<h2>7. 再開時にやること</h2>
 
 <div class="step">
-  <div class="h"><span class="n">STEP 1</span><span class="nb">予算を決める</span><span class="nb">（これが決まらないと他が全部無駄になる）</span></div>
+  <div class="h"><span class="n">1</span><span class="nb">フォームを v4 に戻す</span></div>
   <ul>
-    <li><strong>選択肢は2つだけです。</strong>月¥10〜20万まで上げて判定できる母数を作るか、<strong>いったん止めたままにするか</strong></li>
-    <li><strong>いちばん損なのは「月¥3.3万のまま続ける」こと。</strong>判定できないのに金だけ減ります</li>
-    <li>止める判断も正解のひとつです。オーガニック（Instagram投稿）なら0円で反応を見られます</li>
+    <li>または v4 を複製して、<strong>「高い意向」＋「月30,000円プランの詳細」の選択肢あり</strong>で作り直す</li>
+    <li><strong>唯一、実際にリードを生んだ設定です。</strong>広告文が「月30,000円」と言っている以上、着地もそこに揃える</li>
   </ul>
 </div>
 
 <div class="step">
-  <div class="h"><span class="n">STEP 2</span>新しいクリエイティブに入れ替える（3本 完成済み）</div>
+  <div class="h"><span class="n">2</span><span class="nb">8月の配信広告が v7 か v7b かを特定する</span></div>
   <ul>
-    <li><strong>冒頭2秒で業種を名指しする</strong>（「店舗オーナー」では誰も自分ごとにしない。長期配信の勝ち組は「飲食店の皆様へ」まで下ろしている）</li>
-    <li><strong>悩んでいる人の画から始める</strong>（現行は人が一度も出てこない。長期配信17本中9本は0.15秒で人が話している）</li>
-    <li><strong>動画の締めとクリック先を一致させる</strong>（現行は「サイトへ」と言うのにサイトリンクが無かった）</li>
-    <li><strong>着地をLPにする</strong>（長期配信19本中、インスタントフォーム着地は0本）</li>
+    <li>v7（English (US)）だったなら、<strong>クリックした人が英語フォームに着地していた</strong>ことになり、それ自体が8月の直接原因</li>
+    <li>この1点だけは、他の議論より先に確定させたいところです</li>
   </ul>
 </div>
 
 <div class="step">
-  <div class="h"><span class="n">STEP 3</span><span class="nb">出したら、</span><span class="nb">20〜30クリック貯まるまで触らない</span></div>
+  <div class="h"><span class="n">3</span><span class="nb">7月の動画を1本、そのまま戻して</span><span class="nb">同時に回す</span></div>
   <ul>
-    <li><strong>8月の失敗は「1週間で4回いじった」こと。</strong>変えるのは1回につき1箇所だけ</li>
+    <li>新クリエイティブ3本（完成済み）だけを出すと、良いのか悪いのかを判定する基準がありません</li>
+    <li><strong>7月版＝CTR 2.15%・リード3件という実績がある、唯一の対照群です</strong></li>
+  </ul>
+</div>
+
+<div class="step">
+  <div class="h"><span class="n">4</span><span class="nb">20〜30クリック貯まるまで触らない</span></div>
+  <ul>
+    <li><strong>8月の失敗は「1週間で4回いじった」ことです。</strong>変えるのは1回につき1箇所だけ</li>
     <li>クリック0の日が2日続いても、それだけでは何も分かりません。触りたくなるのを我慢する期間です</li>
   </ul>
 </div>
 
-<h2>6. 決めていただきたいこと</h2>
+<h2>8. 決めていただきたいこと</h2>
 <div class="decide">
-  <h3 style="margin-top:0">① 予算をどうするか　<span style="color:var(--red)">←最優先</span></h3>
-  <p>月¥10〜20万に上げる／このまま止めておく／オーガニックだけで様子を見る</p>
+  <h3 style="margin-top:0">① フォームを v4 の形に戻してよいか　<span style="color:var(--red)">←最優先</span></h3>
+  <p>「高い意向」タイプに戻し、設問に「月30,000円プランの詳細」を復活させます。v7で狙った「量を取る」方針とは逆向きになるため、判断が要ります。</p>
   <h3>② お試し1本を0円にするか</h3>
-  <p>現行LPに無料制作の記載はありません（無料はZoom相談のみ）。<strong>0円にするなら、動画・広告文・LP・フォームを全部揃える必要があります。</strong>揃わないまま出したのが8月の失敗でした</p>
+  <p>現行LPに無料制作の記載はありません（無料はZoom相談のみ）。<strong>0円にするなら、動画・広告文・LP・フォームを全部揃える必要があります。</strong>揃わないまま出したのが8月の失敗でした。</p>
   <h3>③ 累計制作本数・導入社数の実数</h3>
-  <p>競合は「2,000本以上／15支店」と出しています。こちらは<strong>「16業種以上」しか言えるものがありません。</strong>実数をいただければ、そのまま使えます</p>
+  <p>競合は「2,000本以上／15支店」と出しています。こちらは<strong>「16業種以上」しか言えるものがありません。</strong>実数をいただければ、そのまま使えます。</p>
 </div>
 
 <footer>
-  <p>本ページは社内検討用です。数値はMeta広告マネージャの実データ（8/1〜8/17レポート）に基づきます。<br>
+  <p>本ページは社内検討用です。数値はMeta広告マネージャの実データ（7/1〜7/31・8/1〜8/17 日別レポート）と、広告マネージャ／リードセンターの実画面取得結果に基づきます。<br>
   作成: 星崎（Claude Code）／RUNBIRD BuzzPlus</p>
 </footer>
 
