@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>RUNBIRD福祉FC 対談動画 たたき台 v3（汎用版）</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, "Hiragino Kaku Gothic ProN", sans-serif; line-height: 1.75; color: #222; background: #faf6ef; padding: 40px 20px; }
+.container { max-width: 960px; margin: 0 auto; }
+h1 { font-size: 28px; border-bottom: 4px solid #ff7a35; padding-bottom: 12px; margin-bottom: 8px; }
+.meta { color: #666; font-size: 13px; margin-bottom: 32px; }
+h2 { font-size: 22px; margin-top: 40px; margin-bottom: 14px; padding: 10px 16px; background: #14213d; color: #fff; border-radius: 6px; }
+h3 { font-size: 16px; color: #14213d; margin: 18px 0 8px; }
+
+.flow { background: #fff; border: 2px solid #14213d; border-radius: 12px; padding: 24px; margin-bottom: 32px; }
+.flow-title { font-size: 14px; letter-spacing: 0.15em; color: #ff7a35; font-weight: 900; margin-bottom: 16px; }
+.flow-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+@media (max-width: 760px) { .flow-grid { grid-template-columns: repeat(2, 1fr); } }
+.flow-step { background: #f8fafc; border-left: 4px solid #ff7a35; padding: 12px 8px; border-radius: 6px; text-align: center; }
+.flow-step .num { font-size: 11px; color: #ff7a35; font-weight: 900; letter-spacing: 0.1em; }
+.flow-step .label { font-size: 13px; font-weight: 700; color: #14213d; margin: 4px 0; }
+.flow-step .time { font-size: 10px; color: #64748b; }
+
+.point-box { background: #e6f9ee; border: 2px solid #27ae60; border-radius: 10px; padding: 18px 22px; margin-bottom: 24px; }
+.point-box h3 { font-size: 15px; color: #27ae60; margin: 0 0 10px; }
+.point-box ul { padding-left: 22px; }
+.point-box ul li { margin-bottom: 4px; font-size: 14px; }
+
+.formula { background: #14213d; color: #fff; padding: 18px 22px; border-radius: 10px; margin: 14px 0; font-size: 15px; font-weight: 700; text-align: center; }
+.formula .part { display: inline-block; margin: 3px 4px; padding: 4px 10px; border-radius: 6px; background: #22335c; }
+.formula .part.hl { background: #ff7a35; }
+.formula-note { font-size: 12px; color: #64748b; text-align: center; margin-bottom: 14px; }
+
+.type-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 14px 0 24px; }
+@media (max-width: 700px) { .type-grid { grid-template-columns: 1fr; } }
+.type-card { background: #fff; border: 1px solid #e2e8f0; border-top: 5px solid #ff7a35; border-radius: 10px; padding: 16px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.type-card.b { border-top-color: #2563eb; }
+.type-card.c { border-top-color: #27ae60; }
+.type-card.d { border-top-color: #d97706; }
+.type-card .tag { font-size: 11px; font-weight: 900; letter-spacing: 0.12em; color: #ff7a35; }
+.type-card.b .tag { color: #2563eb; } .type-card.c .tag { color: #27ae60; } .type-card.d .tag { color: #d97706; }
+.type-card h3 { margin: 4px 0 6px; font-size: 17px; }
+.type-card p { font-size: 13px; color: #444; margin-bottom: 8px; }
+.type-card .title-ex { background: #f8fafc; border-left: 3px solid #cbd5e1; padding: 8px 10px; font-size: 12px; border-radius: 4px; color: #14213d; }
+
+.scene { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 18px 22px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.scene-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #ff7a35; padding-bottom: 8px; margin-bottom: 12px; }
+.scene-num { font-family: monospace; font-size: 13px; color: #ff7a35; font-weight: 900; letter-spacing: 0.1em; }
+.scene-time { font-size: 12px; color: #64748b; }
+.scene-title { font-size: 16px; font-weight: 700; color: #14213d; margin-bottom: 8px; }
+.scene-purpose { font-size: 12px; background: #fff8d7; padding: 6px 10px; border-radius: 4px; margin-bottom: 10px; color: #6b5c1a; }
+.scene ul { padding-left: 20px; font-size: 13.5px; }
+.scene ul li { margin-bottom: 4px; }
+
+.telop-panel { background: #14213d; color: #fff; padding: 14px 18px; border-radius: 8px; margin: 12px 0; font-family: monospace; font-size: 13px; }
+.telop-panel .lbl { font-size: 10px; letter-spacing: 0.15em; color: #ff7a35; margin-bottom: 4px; }
+
+.memo { background: #eff6ff; border-left: 5px solid #2563eb; padding: 14px 18px; border-radius: 4px; margin-top: 24px; }
+.memo h3 { font-size: 15px; color: #2563eb; margin: 0 0 8px; }
+.memo ul { padding-left: 22px; font-size: 13px; }
+
+.warn { background: #fdecec; border-left: 5px solid #dc2626; padding: 14px 18px; border-radius: 4px; margin-top: 16px; }
+.warn h3 { font-size: 15px; color: #dc2626; margin: 0 0 8px; }
+.warn ul { padding-left: 22px; font-size: 13px; }
+
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; background: #fff; }
+th { background: #14213d; color: #fff; padding: 8px 10px; text-align: left; }
+td { border-bottom: 1px solid #eee; padding: 8px 10px; }
+tr:nth-child(even) { background: #f8fafc; }
+.small { font-size: 12px; color: #64748b; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>RUNBIRD福祉FC 対談動画 たたき台 v3（汎用版）</h1>
+<div class="meta">2026-08-18 / おさるチャンネル（@marketerosaru）対談動画40本超の本調査を反映 / ゲストが誰でも使える汎用フレーム / 編集後 14〜20分想定</div>
+
+<h2>0. チャンネル本調査サマリ（v2に無かった知見）</h2>
+
+<div class="point-box">
+<h3>◎ おさる対談の運用実態（40本超のタイトル・実測データより）</h3>
+<ul>
+<li><b>対談本編は14〜20分</b>（実測 14:08 / 18:03 / 20:01）。v2の12〜15分想定より少し長くてOK</li>
+<li><b>本編とショート切り抜き（1〜2分）を交互に毎日投稿</b>。ショートはゲストの一言の切り出し → 収録時に「30秒の言い切り」を最低3つ取る</li>
+<li><b>対談は1日にまとめ撮り</b>（密着動画で確認）→ 撮影日を作りゲスト2〜3人連続収録が効率的</li>
+<li><b>中身は5質問に集約</b>: ①ビフォー ②アフター ③転機・要因 ④再現可能な手法 ⑤今後 — v2の7ブロックはこの展開形</li>
+<li><b>動画→実績記事→LINE/相談のファネル一体設計</b> → 対談1本＝YouTube本編＋サイト転載記事＋ショート3本を1セットで撮る</li>
+</ul>
+</div>
+
+<h3>タイトルは1つの式で書ける（例外ほぼ無し）</h3>
+<div class="formula">
+<span class="part">【シリーズ名】</span>＋<span class="part">属性/手法フック</span>＋<span class="part hl">で！</span>＋<span class="part hl">数字（→ / ▶︎）</span>＋<span class="part">【河合×◯◯さん対談】</span>
+</div>
+<div class="formula-note">実例: 【マーケ講座受講生実績】Canvaで!月1,270万円【おさる×かんな対談】／ たった1ヶ月で月800万円→月1,600万円達成！</div>
+
+<table>
+<tr><th>ルール</th><th>おさる実例</th><th>福祉FC版への翻訳</th></tr>
+<tr><td>冒頭【】でシリーズ固定</td><td>【マーケ講座受講生実績】</td><td>【加盟オーナー実績】で統一</td></tr>
+<tr><td>数字は具体値・カンマ区切り</td><td>月1,270万円 / 累計7,300万円</td><td>月商◯◯◯万円・融資◯,◯◯◯万円（正本からコピペ）</td></tr>
+<tr><td>ビフォー→アフターは矢印</td><td>月0円→月340万円 / 登録者800人▶︎2,200人</td><td>月商0円▶︎◯◯万円 / 入居0名→満室◯名</td></tr>
+<tr><td>期間の短さを頭に</td><td>たった3日で / 10日間で / 開始3ヶ月で</td><td>たった◯ヶ月で満室</td></tr>
+<tr><td>逆境属性フック</td><td>21歳女子大生 / 手取り18万 / 自己破産→</td><td>福祉未経験 / 元◯◯ / 自己資金◯◯万円から</td></tr>
+<tr><td>サフィックス</td><td>〜の秘密 / 裏側すべて公開 / 完全解説</td><td>満室までの◯ヶ月完全解説 等</td></tr>
+</table>
+
+<h2>1. ゲストタイプを選ぶ（撮影前に1つ決める）</h2>
+<p class="small">共通進行（§2）は全タイプ同じ。差し込む質問セットだけ替える。Aが主力、B〜Dは信頼を厚くする役。</p>
+
+<div class="type-grid">
+<div class="type-card">
+<div class="tag">TYPE A｜主力</div>
+<h3>実績オーナー</h3>
+<p>満室達成・黒字化した加盟オーナー。実績の証明・共感→資料請求へ。<b>質問セットはv2が正本。</b></p>
+<div class="title-ex">【加盟オーナー実績】福祉未経験・自己資金◯◯万→たった◯ヶ月で満室！【河合×◯◯さん対談】</div>
+</div>
+<div class="type-card b">
+<div class="tag">TYPE B</div>
+<h3>準備中オーナー</h3>
+<p>加盟直後〜開設前。不安を<b>現在形</b>で語れるのが価値。満室達成後にA型で再登場＝続編シリーズ化。</p>
+<div class="title-ex">【密着】元◯◯が障がい者グループホーム開業に挑戦｜加盟◯ヶ月目のリアル【河合×◯◯さん対談】</div>
+</div>
+<div class="type-card c">
+<div class="tag">TYPE C</div>
+<h3>本部・専門家</h3>
+<p>本部スタッフ／税理士・行政書士・金融関係者。ノウハウ解説で検索流入と信頼残高。資料を画面に映してよい回。</p>
+<div class="title-ex">【完全解説】障がい者グループホームの融資が通る事業計画の作り方【河合×◯◯対談】</div>
+</div>
+<div class="type-card d">
+<div class="tag">TYPE D</div>
+<h3>現場スタッフ</h3>
+<p>サビ管・世話人・管理者。「運営の中身」の透明性で不安払拭。きれいごとだけにしない。</p>
+<div class="title-ex">【現場のリアル】サビ管が語る、未経験オーナーと働くということ【河合×◯◯さん対談】</div>
+</div>
+</div>
+
+<h2>2. 共通進行フレーム（全タイプ・7ブロック）</h2>
+
+<div class="flow">
+<div class="flow-title">▎ 編集後の流れ（おさる式5質問の展開形・ゲストのセリフは書かず実話を引き出す）</div>
+<div class="flow-grid">
+<div class="flow-step"><div class="num">B1</div><div class="label">言い切り</div><div class="time">0:00-0:40</div></div>
+<div class="flow-step"><div class="num">B2</div><div class="label">ビフォー</div><div class="time">0:40-4:00</div></div>
+<div class="flow-step"><div class="num">B3</div><div class="label">転機・迷い</div><div class="time">4:00-7:00</div></div>
+<div class="flow-step"><div class="num">B4</div><div class="label">変化・手法</div><div class="time">7:00-11:00</div></div>
+<div class="flow-step"><div class="num">B5</div><div class="label">数字確定</div><div class="time">11:00-14:00</div></div>
+<div class="flow-step"><div class="num">B6</div><div class="label">メッセージ</div><div class="time">14:00-17:00</div></div>
+<div class="flow-step"><div class="num">B7</div><div class="label">CTA</div><div class="time">17:00-18:00</div></div>
+</div>
+</div>
+
+<div class="scene">
+<div class="scene-header"><span class="scene-num">BLOCK 1</span><span class="scene-time">0:00-0:40</span></div>
+<div class="scene-title">冒頭・河合の言い切り（ここだけ台本通り）</div>
+<div class="scene-purpose">狙い: ゲストに実績を自慢させない。河合が数字込みで言い切り、ゲストは自己紹介だけでいい状態に。</div>
+<ul>
+<li>A: 「福祉未経験から◯ヶ月で満室、現在月商◯◯万円の◯◯さんです」</li>
+<li>B: 「加盟◯ヶ月目・物件契約済み、開業準備まっただ中の◯◯さんです」</li>
+<li>C: 「融資支援◯件、◯◯を担当してきた◯◯です」／ D: 「開設から◯年、入居者◯名を見てきたサビ管の◯◯さんです」</li>
+</ul>
+</div>
+
+<div class="scene">
+<div class="scene-header"><span class="scene-num">BLOCK 2</span><span class="scene-time">0:40-4:00</span></div>
+<div class="scene-title">ビフォー — 努力×結果のギャップ＋感情</div>
+<div class="scene-purpose">狙い: 感情の言葉が出るまで粘る。心理的天井（「自分には無理だと思っていた」）と、セリフで再現できる場面を1つ取る。</div>
+<ul>
+<li>「まず何から始めました?」→「どのくらいの期間?」→「結果どうでした?」→「その時、正直どういう気持ちでした?」</li>
+<li>しんどかった瞬間: 「相手、何て言ったんですか?」→ <b>セリフで再現させる</b>（テロップ最大の見せ場）</li>
+</ul>
+</div>
+
+<div class="scene">
+<div class="scene-header"><span class="scene-num">BLOCK 3</span><span class="scene-time">4:00-7:00</span></div>
+<div class="scene-title">転機 — 出会いと「迷い」</div>
+<div class="scene-purpose">狙い: 迷った人が決めた理由こそ検討者が一番聞きたい情報。加盟を迷った話を飛ばさない。</div>
+<ul>
+<li>「どこで知ったんですか?」「正直、FCって怪しいと思いませんでした?」（視聴者代弁・河合から言う）</li>
+<li>「どのくらい迷いました? 何がネック?」「最後の決め手は?」／ 制度説明（加盟金0円等）は河合が30秒で補足（ゲストに営業させない）</li>
+</ul>
+</div>
+
+<div class="scene">
+<div class="scene-header"><span class="scene-num">BLOCK 4</span><span class="scene-time">7:00-11:00</span></div>
+<div class="scene-title">変化 — 何をしたら何が変わったか（1対1）</div>
+<div class="scene-purpose">狙い: 再現可能なメソッドとして語らせる。「やったこと→変わった数字」をセットで。正直なマイナスを必ず1つ。</div>
+<ul>
+<li>事業計画（部屋数・管理者兼務）／ 融資（3パターン計画・想定Q&A）／ 入居者集め（開設前の挨拶回り）から該当分</li>
+<li>「逆に、想定と違ったこと・大変だったことは?」← 良い話だけの対談は借り物に見える。正直さが信頼の核</li>
+</ul>
+</div>
+
+<div class="scene">
+<div class="scene-header"><span class="scene-num">BLOCK 5</span><span class="scene-time">11:00-14:00</span></div>
+<div class="scene-title">アフター — 数字の確定と生活の変化</div>
+<div class="scene-purpose">狙い: 数字をレイヤー別に聞き、河合が復唱驚きで1つずつ確定。お金以外の変化＝福祉はここが刺さる。</div>
+<ul>
+<li>「今、入居◯名で月商が——?」（復唱）「手元にはどのくらい残る感覚?」（言えなければ前職比較に切替）</li>
+<li>「収入以外で生活変わりました?」「ご家族は今、何て?」「入居者さんやご家族から言われて印象に残ってる言葉は?」</li>
+</ul>
+</div>
+
+<div class="scene">
+<div class="scene-header"><span class="scene-num">BLOCK 6</span><span class="scene-time">14:00-17:00</span></div>
+<div class="scene-title">後悔・時間価値 → これからの人へ</div>
+<div class="scene-purpose">狙い: 「なぜもっと早くやらなかったんだろう」の福祉版を本人の言葉で。台本で3ヶ条を与えない。</div>
+<ul>
+<li>「もし加盟してなかったら、今どうなってたと思います?」「1人で調べてた◯ヶ月、今振り返るとどうですか?」</li>
+<li>「最後に、これから考えてる人へ」＋ <b>ショート用の30秒言い切り×3テーマ</b>（「1人で調べてる人へ」「お金の不安がある人へ」「家族に反対されてる人へ」）</li>
+</ul>
+</div>
+
+<div class="scene">
+<div class="scene-header"><span class="scene-num">BLOCK 7</span><span class="scene-time">17:00-18:00</span></div>
+<div class="scene-title">締め・CTA（河合のみ・別撮り可）</div>
+<div class="scene-purpose">狙い: 河合が教訓を一般化して総括 → 資料請求LINE → 次回予告。</div>
+<ul>
+<li>「◯◯さんが特別だったんじゃなく、"1人で調べる"のをやめて数字で設計するやり方に切り替えたことが大事」→ LINEで収支シミュレーション3パターンのサンプル送付 → 次回ゲスト予告＋チャンネル登録</li>
+</ul>
+</div>
+
+<div class="telop-panel">
+<div class="lbl">▎ 冒頭ダイジェスト（編集で作る）</div>
+Block 5の「数字の復唱」＋ Block 2の「しんどかった瞬間のセリフ」を先頭15秒に。<br>
+例: 「これ、赤字ですよね?って言われて——」→「現在、月商◯◯万円」<br>
+テロップはヒアリングシート正本からのみコピペ（手打ち禁止）。/fact-check /telop-check 通過後に納品。
+</div>
+
+<h2>3. インタビュアー4技術（河合・収録中ずっと）</h2>
+<table>
+<tr><th>技術</th><th>使い方</th></tr>
+<tr><td><b>復唱驚き</b></td><td>数字が出たら必ず「え、◯◯万ですか?」と驚きながら繰り返す（テロップ素材になる）</td></tr>
+<tr><td><b>言い換え</b></td><td>「要は◯◯ということですね」と整理し直す（視聴者の理解が揃う）</td></tr>
+<tr><td><b>視聴者代弁</b></td><td>「見てる方は"本当に入居者集まるの?"と思ってるはず」と疑問をぶつける</td></tr>
+<tr><td><b>抽象化</b></td><td>個別エピソードを「これ、福祉参入する人全員に言えることで…」と法則に昇格</td></tr>
+</table>
+
+<div class="memo">
+<h3>撮影・運用メモ</h3>
+<ul>
+<li>場所: 実際のグループホーム外観→共用部で対談（背景がリアリティを担保）／ 1問1答ごとに軽くカット割り</li>
+<li>撮影日を作ってゲスト2〜3人まとめ撮り（おさる式運用）</li>
+<li>対談1本＝YouTube本編（14〜20分）＋ショート3本＋サイト転載記事の1セットで納品</li>
+<li>収録1週間前までにヒアリングシート回収。数字が1つでも未確認なら収録に入らない</li>
+</ul>
+</div>
+
+<div class="warn">
+<h3>コンプラ・トーン（厳守）</h3>
+<ul>
+<li>収益保証NG。数字は個人事例に限定し「※個人の実績であり成果を保証するものではありません」を数字テロップに常時併記</li>
+<li>煽らない（堅実・信頼ポジション）。「騙されるな!!」型は使わず「正直に話します」に置き換え</li>
+<li>入居者の顔出しNG。施設カットは共用部・後ろ姿・手元のみ（本人同意前提）</li>
+<li>タイトル・テロップの数字は正本からのみコピペ（手打ち禁止）。収録中に出た新数字は本人に事後確認</li>
+<li>送付・公開前: Sanity Pause 3問＋鈴木さん承認（クライアント連絡100%ルール）</li>
+</ul>
+</div>
+
+<div class="meta" style="margin-top:32px">v1=リハーサル用モデルケース ／ v2=Aタイプ進行正本 ／ v3（本書）=汎用たたき台。ゲスト決定→タイプ選択→シート回収→正本数字を差し込んで「収録用1枚」を作る。</div>
+
+</div>
+</body>
+</html>
