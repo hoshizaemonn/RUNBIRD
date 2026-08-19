@@ -2123,3 +2123,57 @@ button {
 
 /* スマホで見出し2行目の末尾に「ます」「す」だけが落ちるのを防ぐ */
 .reason__title { text-wrap: balance; }
+
+/* =================================================================
+   #10 ご利用の流れ = 毎日中国語型のSTEPブロック（下が矢印に尖る）  2026-08-19
+   ・左にSTEPブロック、右に白カード。縦に積む
+   ・矢印の尖りは clip-path。1つおきに濃さを変えて段が分かるようにする
+   ================================================================= */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+
+.step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+}
+
+.step__badge {
+  position: relative;
+  background: var(--c-cta);
+  color: #fff;
+  width: 92px;
+  padding: 18px 8px 34px;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  /* 下端を三角に尖らせる（次のSTEPへ送る矢印） */
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 26px), 50% 100%, 0 calc(100% - 26px));
+}
+.step:nth-child(even) .step__badge { background: var(--c-deep); }
+
+.step__label { margin: 0; display: grid; justify-items: center; line-height: 1.05; }
+.step__en  { font-size: 14px; font-weight: 700; letter-spacing: .08em; }
+.step__num { font-size: 30px; font-weight: 700; }
+
+.step__icon { width: 30px; height: 30px; fill: currentColor; opacity: .85; }
+
+.step__body {
+  background: #fff;
+  padding: 22px 20px;
+  box-shadow: var(--shadow-card);
+  min-height: 100%;
+}
+.step__title { margin: 0 0 8px; font-size: 18px; font-weight: 700; color: var(--c-deep); }
+.step__text  { margin: 0; line-height: 1.9; }
+
+@media (min-width: 768px) {
+  .steps { gap: 26px; }
+  .step__badge { width: 124px; padding: 26px 10px 46px; gap: 16px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 34px), 50% 100%, 0 calc(100% - 34px)); }
+  .step__en  { font-size: 16px; }
+  .step__num { font-size: 36px; }
+  .step__icon { width: 36px; height: 36px; }
+  .step__body { padding: 32px 34px; }
+  .step__title { font-size: 21px; }
+  .step__text { font-size: 17px; }
+}
