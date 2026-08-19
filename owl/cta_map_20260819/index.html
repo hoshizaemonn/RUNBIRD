@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>OWL｜CTA設置マップのご提案</title>
+<style>
+  :root{--teal:#1BA0A6;--teal-d:#137880;--teal-l:#e8f6f6;--orange:#F5871F;--orange-d:#c96a10;--orange-l:#fff1e2;
+        --ink:#123c48;--ink2:#4a6870;--line:#d7e7e8;--bg:#f4f9f9;--card:#fff;--bad:#d0483c;--bad-l:#fdeeec;--amber:#c9821c;--amber-l:#fbf1dd;--good:#1f9d57;--good-l:#eaf4ee;--gg:#4285F4;}
+  @media (prefers-color-scheme: dark){:root{--ink:#e8f1f2;--ink2:#a9c2c6;--line:#2b454b;--bg:#0e1b1e;--card:#15282c;--teal-l:#123236;--orange-l:#33230f;--bad-l:#3a1e1a;--amber-l:#332810;--good-l:#122a1d;}}
+  :root[data-theme="light"]{--ink:#123c48;--ink2:#4a6870;--line:#d7e7e8;--bg:#f4f9f9;--card:#fff;--teal-l:#e8f6f6;--orange-l:#fff1e2;--bad-l:#fdeeec;--amber-l:#fbf1dd;--good-l:#eaf4ee;}
+  :root[data-theme="dark"]{--ink:#e8f1f2;--ink2:#a9c2c6;--line:#2b454b;--bg:#0e1b1e;--card:#15282c;--teal-l:#123236;--orange-l:#33230f;--bad-l:#3a1e1a;--amber-l:#332810;--good-l:#122a1d;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;padding:24px 16px 64px;}
+  .wrap{max-width:920px;margin:0 auto;}
+  .eyebrow{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;color:#fff;background:var(--teal);padding:3px 11px;border-radius:999px;margin-bottom:10px;}
+  h1{font-size:21px;line-height:1.35;border-left:6px solid var(--teal);padding-left:13px;}
+  .meta{color:var(--ink2);font-size:12px;margin:8px 0 16px 19px;}
+  .scope{background:var(--teal-l);border:1px solid var(--line);border-radius:10px;padding:9px 14px;font-size:12px;margin-bottom:16px;} .scope b{color:var(--teal-d);}
+
+  .alert{background:var(--bad-l);border:1px solid #f0c3bd;border-left:5px solid var(--bad);border-radius:12px;padding:13px 16px;margin-bottom:14px;font-size:13.5px;font-weight:600;}
+  @media (prefers-color-scheme: dark){.alert{border-color:#6b3229;}}
+  .alert b{color:var(--bad);}
+
+  .concl{background:var(--card);border:2px solid var(--teal);border-radius:14px;padding:15px 18px;margin-bottom:14px;box-shadow:0 6px 18px rgba(18,60,72,.08);}
+  .concl h2{font-size:15px;color:var(--teal-d);margin-bottom:9px;}
+  .concl ol{counter-reset:ci;list-style:none;}
+  .concl li{font-size:14px;font-weight:600;margin:8px 0;padding-left:27px;position:relative;}
+  .concl li::before{content:counter(ci);counter-increment:ci;position:absolute;left:0;top:1px;width:20px;height:20px;background:var(--teal);color:#fff;border-radius:50%;font-size:11px;display:flex;align-items:center;justify-content:center;}
+
+  h2.sec{font-size:15px;margin:24px 0 11px;padding:7px 0 7px 12px;border-left:5px solid var(--orange);background:var(--orange-l);border-radius:0 9px 9px 0;}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  @media(max-width:560px){.kpis{grid-template-columns:1fr;}}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center;}
+  .kpi .n{font-size:22px;font-weight:800;color:var(--teal-d);} .kpi .n.good{color:var(--good);}
+  .kpi .l{font-size:11px;color:var(--ink2);margin-top:2px;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:right;} th{background:var(--teal-l);text-align:center;} td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;}
+  tr.total td{font-weight:800;background:var(--teal-l);}
+
+  .learn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
+  @media(max-width:640px){.learn{grid-template-columns:1fr;}}
+  .lc{border:1px solid var(--line);border-radius:11px;padding:11px 13px;font-size:12.5px;}
+  .lc.win{background:var(--good-l);} .lc.lose{background:var(--bad-l);}
+  .lc h4{font-size:12.5px;margin-bottom:4px;} .lc.win h4{color:var(--good);} .lc.lose h4{color:var(--bad);}
+
+  .strat{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px;}
+  .strat ol{counter-reset:si;list-style:none;}
+  .strat li{font-size:13.5px;margin:9px 0;padding-left:28px;position:relative;font-weight:600;}
+  .strat li::before{content:counter(si);counter-increment:si;position:absolute;left:0;top:0;width:21px;height:21px;background:var(--orange);color:#fff;border-radius:6px;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .strat li small{display:block;font-weight:400;color:var(--ink2);font-size:12px;margin-top:1px;}
+
+  .kw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:6px;}
+  @media(max-width:640px){.kw{grid-template-columns:1fr;}}
+  .kwbox{border:1px solid var(--line);border-radius:11px;padding:11px 13px;font-size:12.5px;}
+  .kwbox.keep{background:var(--good-l);} .kwbox.add{background:var(--teal-l);} .kwbox.excl{background:var(--bad-l);}
+  .kwbox h4{font-size:12.5px;margin-bottom:6px;} .kwbox .k{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 7px;margin:2px 3px 0 0;font-size:11.5px;}
+
+  .undecided{background:var(--amber-l);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:14px 16px;margin-top:14px;}
+  .undecided h2{font-size:14px;color:var(--amber);margin-bottom:8px;}
+  .undecided ul{list-style:none;} .undecided li{font-size:13px;padding:4px 0 4px 22px;position:relative;} .undecided li::before{content:"✓";position:absolute;left:2px;font-weight:800;color:var(--amber);}
+  .note{background:var(--teal-l);border:1px solid var(--line);border-radius:12px;padding:11px 15px;font-size:12.5px;color:var(--ink2);margin-top:12px;} .note b{color:var(--ink);}
+  footer{margin-top:30px;color:var(--ink2);font-size:11px;border-top:1px solid var(--line);padding-top:12px;}
+</style>
+<style>
+  .fn{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 18px;margin-top:10px;}
+  .fnrow{display:flex;align-items:center;gap:12px;margin:9px 0;font-size:13px;}
+  .fnrow .l{width:190px;flex:0 0 auto;font-weight:700;}
+  @media(max-width:600px){.fnrow .l{width:120px;font-size:12px;}}
+  .fnrow .b{flex:1;background:var(--line);border-radius:6px;height:26px;position:relative;overflow:hidden;}
+  .fnrow .b i{position:absolute;left:0;top:0;bottom:0;background:var(--teal);border-radius:6px;}
+  .fnrow .b i.warn{background:var(--bad);}
+  .fnrow .v{width:88px;flex:0 0 auto;font-weight:800;font-size:13px;text-align:right;}
+  .map{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:6px 0;margin-top:10px;overflow:hidden;}
+  .sec2{display:flex;align-items:stretch;border-bottom:1px solid var(--line);}
+  .sec2:last-child{border-bottom:0;}
+  .sec2 .pos{width:52px;flex:0 0 auto;text-align:center;font-size:11.5px;font-weight:800;color:var(--ink2);padding:11px 0;background:var(--teal-l);}
+  .sec2 .bd{flex:1;padding:10px 12px;font-size:13px;}
+  .sec2 .bd b{display:block;font-size:13px;}
+  .sec2 .bd small{color:var(--ink2);font-size:11.5px;}
+  .sec2 .rc{width:104px;flex:0 0 auto;padding:10px 8px;font-size:11.5px;text-align:right;color:var(--ink2);}
+  .sec2 .rc em{font-style:normal;font-weight:800;color:var(--ink);font-size:14px;}
+  .sec2.has{background:var(--good-l);}
+  .sec2.add{background:var(--orange-l);}
+  .sec2.add .pos{background:var(--orange);color:#fff;}
+  .sec2.add .bd b{color:var(--orange-d);}
+  .badge{display:inline-block;font-size:10px;font-weight:800;border-radius:4px;padding:1px 7px;margin-left:6px;vertical-align:1px;}
+  .badge.now{background:var(--good);color:#fff;}
+  .badge.new{background:var(--orange);color:#fff;}
+  .copy{background:var(--card);border:1px dashed var(--orange);border-radius:9px;padding:9px 12px;margin-top:7px;font-size:12.5px;line-height:1.7;}
+  .copy b{color:var(--orange-d);}
+  .btnprev{display:inline-block;background:var(--orange);color:#fff;border-radius:9px;padding:9px 18px;font-size:13.5px;font-weight:800;margin-top:6px;}
+  .cmp{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:8px;}
+  @media(max-width:640px){.cmp{grid-template-columns:1fr;}}
+  .cmpb{border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:12.5px;line-height:1.75;}
+  .cmpb.x{background:var(--bad-l);} .cmpb.x h4{color:var(--bad);}
+  .cmpb.o{background:var(--good-l);} .cmpb.o h4{color:var(--good);}
+  .cmpb h4{font-size:13px;margin-bottom:6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<span class="eyebrow">OWL福祉事業 / 鈴木さん提案</span>
+<h1><span style="display:inline-block">CTAの置き場所のご提案</span><span style="display:inline-block">（0円プランLP）</span></h1>
+<div class="meta">2026年8月19日／根拠：Clarity（モバイル・8/17-18・37ページビュー）＋LPの実測スクロール位置</div>
+<div class="scope"><b>母数が37ページビューと小さいので、断定ではなく方向としてご覧ください。</b>ただしCTAの位置は実測なので、そこは事実です。</div>
+
+<div class="concl">
+<h2>先に、前回の訂正です</h2>
+<ol>
+<li>「フォームで落ちている」と申し上げましたが、<b>間違いでした。</b></li>
+<li>正しくは <b>37人中2人（5.4%）しかCTAを押していません。</b>押した2人のうち1人は送信しています（50%）。</li>
+<li>つまり<b>フォームは詰まっていません。詰まっているのは、その手前です。</b></li>
+</ol>
+</div>
+
+<h2 class="sec">いまのファネル（モバイル・2日間）</h2>
+<div class="fn">
+<div class="fnrow"><span class="l">ページを見た</span><span class="b"><i style="width:100%"></i></span><span class="v">37人</span></div>
+<div class="fnrow"><span class="l">最後まで読んだ</span><span class="b"><i style="width:32%"></i></span><span class="v">12人 32%</span></div>
+<div class="fnrow"><span class="l">CTAを押した</span><span class="b"><i class="warn" style="width:5.4%"></i></span><span class="v">2人 5.4%</span></div>
+<div class="fnrow"><span class="l">送信した</span><span class="b"><i style="width:2.7%"></i></span><span class="v">1人</span></div>
+</div>
+<div class="note">前回「フォーム内タップ19回に対し送信1回」とお伝えしましたが、<b>この19回は同じ2人が入力欄を何度も触った回数</b>でした。フォームを開いた2人のうち1人が送信しているので、<b>フォーム自体の成約率は50%あります。</b>問題は、37人中2人しか開いていないことです。</div>
+
+<h2 class="sec">なぜ押されないのか — CTAの位置を測りました</h2>
+<div class="alert"><b>本文の12%〜93%、ページの81%にあたる区間に、CTAが1つもありません。</b>CTAは冒頭（0%・5%）と最下部（93%・98%）、それと画面上部に出ている固定バーだけです。</div>
+<p style="font-size:13px;margin-top:10px">読み進めて気持ちが動いた瞬間に、押す場所がない状態です。<b>そして最下部のCTAまで到達するのは37人中12人（32%）だけ</b>なので、実質的にほとんどの人はFVのCTAしか見ていません。</p>
+
+<h2 class="sec">提案：CTAを3本足す</h2>
+<div class="map">
+<div class="sec2 has"><div class="pos">0%</div><div class="bd"><b>FV「加盟金0円で、月商300万モデルへ」<span class="badge now">CTA</span></b><small>まだ何も読んでいない段階のCTA</small></div><div class="rc"><em>37</em>人 100%</div></div>
+<div class="sec2"><div class="pos">12%</div><div class="bd"><b>02 こんなお悩みありませんか</b></div><div class="rc"><em>37</em>人 100%</div></div>
+<div class="sec2"><div class="pos">19%</div><div class="bd"><b>03 解決</b></div><div class="rc"><em>35</em>人 95%</div></div>
+<div class="sec2"><div class="pos">26%</div><div class="bd"><b>04 数字で見るOWLの実績</b><small>開設実績400件／未経験率95%／月次黒字化 最短4ヶ月／最短満床2.5ヶ月</small></div><div class="rc"><em>32</em>人 86%</div></div>
+<div class="sec2 add"><div class="pos">★<br>30%</div><div class="bd"><b>CTA① を追加<span class="badge new">新規</span></b>
+<small>実績の数字を見た直後。<b>ここが最大の未活用ポイントです。</b>いま最下部CTAに届くのは12人ですが、ここなら32人が目にします（約2.7倍）。</small>
+<div class="copy"><b>添えるひとこと案：</b>「この数字が、あなたの地域でも成り立つか。<b>30分で一緒に試算します。</b>」<br><span class="btnprev">30分オンラインで相談する</span></div></div><div class="rc"><em>32</em>人が到達</div></div>
+<div class="sec2"><div class="pos">33%</div><div class="bd"><b>05 市場</b></div><div class="rc"><em>29</em>人 78%</div></div>
+<div class="sec2"><div class="pos">40%</div><div class="bd"><b>06 安定性</b></div><div class="rc"><em>29</em>人 78%</div></div>
+<div class="sec2"><div class="pos">46〜61%</div><div class="bd"><b>収益シミュレーション</b><small>ページ内で唯一、自分で操作できるセクション（HTML）。最長のブロック。</small></div><div class="rc"><em>26</em>人 70%</div></div>
+<div class="sec2 add"><div class="pos">★<br>61%</div><div class="bd"><b>CTA② を追加<span class="badge new">新規</span></b>
+<small>自分の収益を計算した直後。<b>ページ内で最も気持ちが動いている場所</b>だと考えます。試算して終わり、にさせない。</small>
+<div class="copy"><b>添えるひとこと案：</b>「この試算、<b>あなたの条件で正確に出し直せます。</b>物件のエリアと部屋数だけ教えてください。」<br><span class="btnprev">30分オンラインで相談する</span></div></div><div class="rc"><em>23</em>人が到達</div></div>
+<div class="sec2"><div class="pos">63%</div><div class="bd"><b>08 開業までの流れ</b></div><div class="rc"><em>23</em>人 62%</div></div>
+<div class="sec2"><div class="pos">70%</div><div class="bd"><b>09 加盟オーナーの声</b></div><div class="rc"><em>23</em>人 62%</div></div>
+<div class="sec2"><div class="pos">78%</div><div class="bd"><b>10 他社フランチャイズとの違い</b><small>比較表（加盟金・月額費用・サポート期間・未経験率・黒字化期間）</small></div><div class="rc"><em>20</em>人 54%</div></div>
+<div class="sec2 add"><div class="pos">★<br>84%</div><div class="bd"><b>CTA③ を追加<span class="badge new">新規</span></b>
+<small>比較して納得した直後。ここまで読んだ人は、かなり本気で検討しています。</small>
+<div class="copy"><b>添えるひとこと案：</b>「比較してご検討中の方こそ、一度お話しさせてください。<b>無理な勧誘はしません。</b>」<br><span class="btnprev">30分オンラインで相談する</span></div></div><div class="rc"><em>20</em>人が到達</div></div>
+<div class="sec2"><div class="pos">86%</div><div class="bd"><b>11 サポート体制</b></div><div class="rc"><em>18</em>人 49%</div></div>
+<div class="sec2 has"><div class="pos">93%</div><div class="bd"><b>12「まずは、無料相談から始めましょう」<span class="badge now">CTA</span></b><small>画像にボタンが描かれていない。到達18人 → 最下部まで12人（ここで6人離脱）</small></div><div class="rc"><em>12</em>人 32%</div></div>
+</div>
+<div class="note"><b>効果の見込み</b>：いまCTAを目にできるのは、FV（37人）と最下部（12人）だけです。3本足すと、<b>32人・23人・20人</b>が「読んで温まった状態で」CTAに出会います。<b>押される確率が高いのは、冒頭のCTAではなく、こちらのほうです。</b></div>
+
+<h2 class="sec">あわせて直したい、CTAの文言</h2>
+<div class="cmp">
+<div class="cmpb x"><h4>× いま</h4>
+固定バー：<b>「無料で資料請求」</b><br>
+FV下：<b>「無料で資料請求」</b><br>
+最下部：<b>「無料資料請求」</b><br><br>
+最下部のCTA画像には「まずは、<b>無料相談</b>から始めましょう」と書いてあるのに、その下のサブコピーは「事業概要・収益モデル・加盟プランの詳細を<b>無料でお送りします</b>」＝郵送。<br><br>
+<b>言っていることと、やらせることが違います。</b>フォームに住所が必要なのも、ここに繋がっています。</div>
+<div class="cmpb o"><h4>◎ 案</h4>
+すべて <b>「30分オンラインで相談する」</b> に統一。<br><br>
+サブに <b>「無料／オンライン／無理な勧誘はしません」</b>。<br><br>
+「資料請求」をやめると、<b>住所・郵便番号を聞く理由がなくなります。</b>カレンダー予約フォームと自然に繋がります。<br><br>
+資料が欲しい方向けには、相談予約の完了画面で「資料もお送りしましょうか」と聞けば十分だと考えます。</div>
+</div>
+
+<h2 class="sec">最後のCTA画像について</h2>
+<div class="alert"><b>12番の画像には、押せそうな見た目のボタンが1つも描かれていません。</b>大きなフクロウのイラストと文章だけです。ボタンはその下にあるHTMLの小さなボタンで、画像を見ている人には「ここで終わり」に見えます。</div>
+<p style="font-size:13px;margin-top:9px">ここまで読んだ18人のうち、<b>最下部に到達したのは12人。6人がこの画像のところで離脱</b>しています。画像の中にボタンを描くか、画像直後のボタンを大きく目立たせるかのどちらかで拾えると考えます。</p>
+
+<h2 class="sec">やる順番</h2>
+<table>
+<tr><th>#</th><th>やること</th><th>手間</th><th>効くところ</th></tr>
+<tr><td>1</td><td>CTAを3本追加（30% / 61% / 84%）</td><td>小</td><td>CTAに出会う人が 12人 → 32人</td></tr>
+<tr><td>2</td><td>文言を「30分オンラインで相談する」に統一</td><td>極小</td><td>住所を聞く理由が消える</td></tr>
+<tr><td>3</td><td>最下部CTAのボタンを目立たせる</td><td>小</td><td>最後の6人を拾う</td></tr>
+<tr><td>4</td><td>カレンダー予約フォーム（作成済み）</td><td>中</td><td>押した後の完了率</td></tr>
+</table>
+<div class="note"><b>1〜3を先にやるのが順番だと考えます。</b>フォームをどれだけ良くしても、<b>押す人が37人中2人のままでは効きません。</b>まず押される数を増やして、その受け皿としてカレンダーを置く、という順番です。</div>
+
+<footer>
+出典：Microsoft Clarity（OWL福祉事業LP・モバイル・2026/8/17-18・37ページビュー／タップ26件の内訳を分類）、LP内のCTA位置とセクション位置はスマホ幅390pxでの実測（ページ全高10,473px）。<br>
+※ 母数が小さいため、比率は方向として扱ってください。CTAの位置と本数は実測値です。<br>
+※ 本番サイトへの変更は行っていません。
+</footer>
+</div>
+</body>
+</html>
