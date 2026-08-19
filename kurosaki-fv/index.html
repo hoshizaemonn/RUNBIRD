@@ -7,10 +7,8 @@
 
 <!-- ==========================================================
      ⚠️ 屋号未確定（2026-08-20 ディレクションで確定）
-     教室名は下部 <script> の SHOP_NAME 1箇所でのみ定義し、
-     表示箇所は data-shop-name 属性で参照しています。
-     確定後は SHOP_NAME の値を書き換えるだけで全箇所に反映されます。
-     ※ 教室名の直書きは禁止。
+     教室名の定義は assets/main.js の `SHOP_NAME` 1箇所のみ。
+     表示箇所は data-shop-name 属性で参照しています。直書き禁止。
      ========================================================== -->
 <title>{{SHOP_NAME}}｜さいたま市岩槻のマンツーマン中国語教室</title>
 <meta name="description" content="さいたま市岩槻の完全マンツーマン中国語教室。元・社会科教師／全国通訳案内士が、初級から上級まであなたのペースで指導します。">
@@ -26,27 +24,103 @@
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
-<!-- ============================ ヘッダー ============================ -->
+<!-- ==========================================================
+     アイコン／線画イラストのスプライト（インラインSVG・単色）
+     色は CSS 側の color: var(--c-main) で付ける。外部アイコンフォントは読み込まない。
+     ========================================================== -->
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <defs>
+    <g id="i-base" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></g>
+  </defs>
+
+  <symbol id="ico-pronounce" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 19h7l9-7v24l-9-7H7z"/><path d="M30 18a8 8 0 0 1 0 12"/><path d="M37 13a16 16 0 0 1 0 22"/>
+  </symbol>
+
+  <symbol id="ico-daily" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="6" width="25" height="17" rx="4"/><path d="M11 23v7l7-7"/>
+    <rect x="21" y="26" width="24" height="16" rx="4"/><path d="M37 42v6l-6-6"/>
+  </symbol>
+
+  <symbol id="ico-travel" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 24 43 8 30 41 23 28z"/><path d="M5 24l18 4"/>
+  </symbol>
+
+  <symbol id="ico-business" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="15" width="38" height="25" rx="3"/><path d="M18 15v-4a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4"/><path d="M5 25h38"/>
+  </symbol>
+
+  <symbol id="ico-exam" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 6h16l8 8v28a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M28 6v8h8"/><path d="M17 30l5 5 10-11"/>
+  </symbol>
+
+  <symbol id="ico-grammar" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 14C20 10 13 9 6 10v25c7-1 14 0 18 4 4-4 11-5 18-4V10c-7-1-14 0-18 4z"/><path d="M24 14v25"/>
+  </symbol>
+
+  <symbol id="ico-mail" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="11" width="38" height="26" rx="3"/><path d="M6 15l18 13 18-13"/>
+  </symbol>
+
+  <symbol id="ico-chat" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 9h36a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H21l-9 7v-7H6a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3z"/>
+    <path d="M16 21h.01M24 21h.01M32 21h.01"/>
+  </symbol>
+
+  <symbol id="ico-calendar" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="11" width="36" height="31" rx="3"/><path d="M6 20h36"/><path d="M16 7v8M32 7v8"/><rect x="15" y="27" width="8" height="7" rx="1"/>
+  </symbol>
+
+  <symbol id="ico-pencil" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M33 6l9 9-23 23-11 2 2-11z"/><path d="M29 10l9 9"/><path d="M8 44h32"/>
+  </symbol>
+
+  <symbol id="ill-pron" viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="58" cy="38" r="12"/>
+    <path d="M40 76c0-11 8-19 18-19s18 8 18 19"/>
+    <path d="M82 32a13 13 0 0 1 0 17"/>
+    <path d="M91 26a23 23 0 0 1 0 29"/>
+    <path d="M20 30c0-5 4-9 9-9s9 4 9 8c0 6-6 7-6 12"/>
+    <path d="M32 52h.01"/>
+  </symbol>
+
+  <symbol id="ill-book" viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="18" y="62" width="58" height="11" rx="2"/>
+    <rect x="24" y="49" width="52" height="11" rx="2"/>
+    <rect x="20" y="36" width="48" height="11" rx="2"/>
+    <circle cx="88" cy="34" r="13"/>
+    <path d="M98 44l10 11"/>
+  </symbol>
+
+  <symbol id="ill-talk" viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="36" cy="34" r="12"/>
+    <path d="M18 74c0-11 8-19 18-19s18 8 18 19"/>
+    <rect x="68" y="20" width="40" height="27" rx="6"/>
+    <path d="M80 47v8l9-8"/>
+  </symbol>
+</svg>
+
+<!-- @@SHARED:HEADER:START -->
 <header class="site-header">
   <div class="site-header__inner">
 
     <p class="site-header__logo">
-      <a href="#" data-shop-name>教室名</a>
+      <a href="index.html" data-shop-name>教室名</a>
     </p>
 
     <nav class="site-nav" id="global-nav" aria-label="メインナビゲーション">
       <ul class="site-nav__list">
-        <li><a href="#about">当教室について</a></li>
-        <li><a href="#lesson">レッスン・料金</a></li>
-        <li><a href="#teacher">講師紹介</a></li>
-        <li><a href="#faq">よくあるご質問</a></li>
-        <li><a href="#access">アクセス</a></li>
-        <li><a href="#blog">ブログ</a></li>
+        <li><a href="about.html">当教室について</a></li>
+        <li><a href="lesson.html">レッスン・料金</a></li>
+        <li><a href="teacher.html">講師紹介</a></li>
+        <li><a href="faq.html">よくあるご質問</a></li>
+        <li><a href="access.html">アクセス</a></li>
+        <li><a href="blog.html">ブログ</a></li>
       </ul>
     </nav>
 
     <!-- CTA は SP でもハンバーガーに入れず常時表示 -->
-    <a class="btn btn--cta site-header__cta" href="#contact">
+    <a class="btn btn--cta site-header__cta" href="contact.html">
       レッスンのご相談<span class="is-pc-only">・お問い合わせ</span>
     </a>
 
@@ -59,16 +133,16 @@
 
   </div>
 </header>
+<!-- @@SHARED:HEADER:END -->
 
 <main id="main">
 
-  <!-- ============================ ファーストビュー ============================ -->
+  <!-- ========== 01. ファーストビュー（#01で確認済み・構造は変更なし） ========== -->
   <section class="page-top-fv">
     <div class="page-top-fv__inner">
 
       <div class="page-top-fv__body">
 
-        <!-- 帯コピー2本（左端から伸びる帯） -->
         <div class="fv-ribbons">
           <p class="fv-ribbon">独学で止まってしまった方へ。</p>
           <p class="fv-ribbon">何歳からでも、話せるところまで。</p>
@@ -97,14 +171,8 @@
       </div>
 
       <div class="page-top-fv__media">
-        <!-- ==========================================================
-             ⚠️ 差し替え前提のプレースホルダ画像です（無地・文字焼き込みなし）。
-             フリー素材が決まったら、同じファイル名で以下2点を上書きしてください。
-               images/hero.jpg     … PC用・縦長（推奨 1200×1500 前後）
-               images/hero-sp.jpg  … SP用・横長（推奨  900×640 前後）
-             ※ PCとSPで同じトリミングを使い回さないこと。
-             ※ 画像に文字を焼き込まないこと。
-             ========================================================== -->
+        <!-- ⚠️ 要差し替え：無地プレースホルダ。同名で上書きすれば反映されます。
+             images/hero.jpg（PC・縦長 1200×1500）／images/hero-sp.jpg（SP・横長 900×640） -->
         <picture>
           <source media="(max-width: 767px)" srcset="images/hero-sp.jpg">
           <img src="images/hero.jpg" alt="レッスンの様子" width="1200" height="1500" fetchpriority="high">
@@ -116,64 +184,623 @@
     </div>
   </section>
 
-  <!-- ============================ FV下・サブ帯 ============================ -->
   <section class="fv-subband">
     <div class="fv-subband__inner">
       <p class="fv-subband__text">
         元・社会科教師／全国通訳案内士が教える、さいたま市岩槻のマンツーマン中国語教室
       </p>
-      <a class="btn btn--cta" href="#contact">
+      <a class="btn btn--cta" href="contact.html">
         レッスンのご相談<span class="is-pc-only">・お問い合わせ</span>
       </a>
     </div>
   </section>
 
-  <!-- ==========================================================
-       ここから下は #02 指示書のスコープ（今回は未着手）
-       要確認: 営業時間 / 定休日 / 最寄駅名（岩槻駅想定）/ 入会金の有無
-       要確認: 住所の公開範囲（自宅教室のため番地公開の可否）
-       要確認: 体験レッスンの有無と「無料」かどうか（共有シート未記載）。
-       ★8/20で確定したらCTA文言を「無料体験レッスンのお申し込み」に戻す（現在は事実未確定のため中立文言）
+
+  <!-- ========== 02. こんな方におすすめ ========== -->
+  <section class="sec sec--tint" id="recommend">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">RECOMMENDED</span>
+        <h2 class="sec-head__ja">こんな方におすすめです</h2>
+        <p class="sec-head__lead">ひとつでも当てはまれば、マンツーマンが向いています。</p>
+      </div>
+
+      <ul class="grid grid--3">
+        <li class="card">
+          <div class="card__head"><span class="num">01</span></div>
+          <p class="card__text">中国語を始めてみたいが、何から手をつければいいか分からない</p>
+        </li>
+        <li class="card">
+          <div class="card__head"><span class="num">02</span></div>
+          <p class="card__text">独学や教材を買ってみたが、途中で止まってしまった</p>
+        </li>
+        <li class="card">
+          <div class="card__head"><span class="num">03</span></div>
+          <p class="card__text">発音に自信がなく、人前で話すのが怖い</p>
+        </li>
+        <li class="card">
+          <div class="card__head"><span class="num">04</span></div>
+          <p class="card__text">グループレッスンだと質問しづらく、置いていかれる気がする</p>
+        </li>
+        <li class="card">
+          <div class="card__head"><span class="num">05</span></div>
+          <p class="card__text">旅行や中国の文化をもっと楽しみたい</p>
+        </li>
+        <li class="card">
+          <!-- 要確認: 検定対策（HSK・中国語検定）に対応するか。未ヒアリングのため8/20で確認 -->
+          <div class="card__head"><span class="num">06</span></div>
+          <p class="card__text">HSK・中国語検定に向けて、レベルに合った対策をしたい</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ========== 03. 独学で伸びない“本当の理由” ========== -->
+  <!-- 写真は使わない。線画イラスト（インラインSVG・単色）で組む -->
+  <section class="sec" id="reason-why">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">WHY</span>
+        <h2 class="sec-head__ja">独学で伸びないときの、よくある3つの原因</h2>
+        <p class="sec-head__lead">やる気や才能の問題ではなく、多くは「やり方」でつまずいています。</p>
+      </div>
+
+      <ul class="grid grid--3">
+        <li class="card center">
+          <svg class="illust" viewBox="0 0 120 90" role="img" aria-label="発音を確認してもらえない様子のイラスト"><use href="#ill-pron"></use></svg>
+          <div class="card__head"><span class="num">01</span></div>
+          <h3 class="card__title">発音が合っているか分からない</h3>
+          <p class="card__text">中国語には声調があります。自分の耳だけで正しいかどうかを判断するのは難しく、間違えたまま覚えてしまうことがあります。</p>
+        </li>
+        <li class="card center">
+          <svg class="illust" viewBox="0 0 120 90" role="img" aria-label="教材を選びかねている様子のイラスト"><use href="#ill-book"></use></svg>
+          <div class="card__head"><span class="num">02</span></div>
+          <h3 class="card__title">教材が自分に合っているか分からない</h3>
+          <p class="card__text">難しすぎても、やさしすぎても続きません。今の自分に合う一冊を独学で見極めるのは、思っている以上に大変です。</p>
+        </li>
+        <li class="card center">
+          <svg class="illust" viewBox="0 0 120 90" role="img" aria-label="話す相手がいない様子のイラスト"><use href="#ill-talk"></use></svg>
+          <div class="card__head"><span class="num">03</span></div>
+          <h3 class="card__title">覚えた言葉を、口に出す機会がない</h3>
+          <p class="card__text">読んで分かることと、口から出てくることは別です。話す機会がないままだと、覚えた表現は使えるようになりません。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ========== 04. だからこそ、1対1（ブリッジ・“間”をつくる） ========== -->
+  <section class="sec sec--tint" id="bridge">
+    <div class="sec__inner center">
+      <p class="prose">どれも、その場で直してくれる人がいれば解決することばかりです。</p>
+      <p class="sub-head mt-sm">だからこそ、1対1。</p>
+      <p class="prose mt-sm">あなたの発音を聞いて、あなたのペースに合わせる。<br>それが、この教室のやり方です。</p>
+    </div>
+  </section>
+
+
+  <!-- ========== 05. 当教室について ========== -->
+  <section class="sec" id="about">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">ABOUT</span>
+        <h2 class="sec-head__ja">当教室について</h2>
+        <p class="sec-head__lead">マンツーマン専門。落ち着いた環境で、あなたひとりのために時間を使います。</p>
+      </div>
+
+      <ul class="grid grid--3">
+        <li class="card">
+          <h3 class="card__title">マンツーマン専門</h3>
+          <p class="card__text">グループクラスはありません。レッスンの60分すべてが、あなたのための時間です。分からないところは、その場で確認できます。</p>
+        </li>
+        <li class="card">
+          <h3 class="card__title">落ち着いた環境で</h3>
+          <!-- 要確認: 住所の公開範囲（自宅の一室を教室にするため、番地までWebに公開してよいか本人確認） -->
+          <p class="card__text">さいたま市岩槻区の、静かな一室でレッスンを行います。人目を気にせず、声を出して練習していただけます。</p>
+        </li>
+        <li class="card">
+          <h3 class="card__title">オンラインもご相談ください</h3>
+          <!-- 要確認: オンライン対応の可否・料金（正本では「検討中」） -->
+          <p class="card__text">対面のマンツーマンレッスンが基本です。オンラインでの受講については、現在検討しております。ご希望の方はご相談ください。</p>
+        </li>
+      </ul>
+
+      <div class="grid grid--2 mt-md">
+        <!-- ⚠️ 要差し替え：教室の様子（フリー素材・写真2点まで） -->
+        <div class="media-frame"><img src="images/hero-sp.jpg" alt="" width="900" height="640"></div>
+        <div class="media-frame"><img src="images/hero-sp.jpg" alt="" width="900" height="640"></div>
+      </div>
+      <p class="note center mt-xs">写真プレースホルダ（フリー素材に差し替え予定）</p>
+    </div>
+  </section>
+
+
+  <!-- ========== 06. 選ばれる理由（4つ） ========== -->
+  <!-- すべて共有シート記載の事実。数字・％を足さないこと -->
+  <section class="sec sec--tint" id="features">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">FEATURES</span>
+        <h2 class="sec-head__ja">選ばれる4つの理由</h2>
+      </div>
+
+      <ul class="grid grid--4">
+        <li class="card">
+          <div class="card__head"><span class="num">01</span></div>
+          <h3 class="card__title">完全1対1の指導</h3>
+          <p class="card__text">1対1なので、細かいところまで見て指導できます。理解のスピードに合わせて進められます。</p>
+        </li>
+        <li class="card">
+          <div class="card__head"><span class="num">02</span></div>
+          <h3 class="card__title">日本人講師だから分かるつまずき</h3>
+          <p class="card__text">日本人が引っかかりやすいポイントや壁を、自分自身が通ってきた道として説明できます。</p>
+        </li>
+        <li class="card">
+          <div class="card__head"><span class="num">03</span></div>
+          <h3 class="card__title">元・社会科教師の教え方</h3>
+          <p class="card__text">教えることを仕事にしてきました。何が分かっていないのかを見つけて、順番を整えてお伝えします。</p>
+        </li>
+        <li class="card">
+          <div class="card__head"><span class="num">04</span></div>
+          <h3 class="card__title">国家資格・全国通訳案内士</h3>
+          <p class="card__text">中国語の全国通訳案内士（国家資格）を所持しています。現在も通訳案内の業務を続けています。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ========== 07. 一般的な語学スクールとの違い ========== -->
+  <!-- 他社名は書かない。「一般的な語学スクール」と表記する -->
+  <section class="sec" id="compare">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">COMPARISON</span>
+        <h2 class="sec-head__ja">一般的な語学スクールとの違い</h2>
+        <p class="sec-head__lead">どちらが良い・悪いではなく、向き不向きがあります。</p>
+      </div>
+
+      <table class="table table--stack">
+        <thead>
+          <tr>
+            <th scope="col">項目</th>
+            <th scope="col">一般的な語学スクール</th>
+            <th scope="col"><span data-shop-name>当教室</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">レッスン形態</th>
+            <td data-label="一般的な語学スクール">グループレッスンが中心のことが多い</td>
+            <td data-shop-label>完全マンツーマン（1対1）</td>
+          </tr>
+          <tr>
+            <th scope="row">担当講師</th>
+            <td data-label="一般的な語学スクール">クラスや時期によって交代することがある</td>
+            <td data-shop-label>同じ講師が最後まで担当</td>
+          </tr>
+          <tr>
+            <th scope="row">進むペース</th>
+            <td data-label="一般的な語学スクール">クラス全体のペースに合わせる</td>
+            <td data-shop-label>ご本人の理解に合わせて調整</td>
+          </tr>
+          <tr>
+            <th scope="row">質問のしやすさ</th>
+            <td data-label="一般的な語学スクール">他の受講生がいると聞きづらいことがある</td>
+            <td data-shop-label>その場ですぐに質問できる</td>
+          </tr>
+          <tr>
+            <th scope="row">つまずきへの対応</th>
+            <td data-label="一般的な語学スクール">全体に向けた説明が中心になりやすい</td>
+            <td data-shop-label>日本人がつまずきやすい点に沿って説明</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- ========== 08. 学べる内容（アイコングリッド・写真ゼロ） ========== -->
+  <section class="sec sec--tint" id="contents">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">CONTENTS</span>
+        <h2 class="sec-head__ja">学べる内容</h2>
+        <p class="sec-head__lead">目的に合わせて組み立てます。「これだけやりたい」でも大丈夫です。</p>
+      </div>
+
+      <ul class="grid grid--6">
+        <li class="card center">
+          <svg class="icon" aria-hidden="true"><use href="#ico-pronounce"></use></svg>
+          <h3 class="card__title">発音・ピンイン</h3>
+          <p class="card__text">声調から、ひとつずつ。</p>
+        </li>
+        <li class="card center">
+          <svg class="icon" aria-hidden="true"><use href="#ico-daily"></use></svg>
+          <h3 class="card__title">日常会話</h3>
+          <p class="card__text">あいさつから会話まで。</p>
+        </li>
+        <li class="card center">
+          <svg class="icon" aria-hidden="true"><use href="#ico-travel"></use></svg>
+          <h3 class="card__title">旅行中国語</h3>
+          <p class="card__text">現地で使える言い回し。</p>
+        </li>
+        <li class="card center">
+          <!-- 要確認: ビジネス中国語に対応するか（未ヒアリング） -->
+          <svg class="icon" aria-hidden="true"><use href="#ico-business"></use></svg>
+          <h3 class="card__title">ビジネス中国語</h3>
+          <p class="card__text">仕事で使う場面から。</p>
+        </li>
+        <li class="card center">
+          <!-- 要確認: HSK・中国語検定の対策に対応するか（未ヒアリング） -->
+          <svg class="icon" aria-hidden="true"><use href="#ico-exam"></use></svg>
+          <h3 class="card__title">HSK・中検対策</h3>
+          <p class="card__text">レベルに合わせた準備。</p>
+        </li>
+        <li class="card center">
+          <svg class="icon" aria-hidden="true"><use href="#ico-grammar"></use></svg>
+          <h3 class="card__title">文法のやり直し</h3>
+          <p class="card__text">つまずいた所まで戻って。</p>
+        </li>
+      </ul>
+
+      <p class="note note--block center">※ 対応できる学習内容の範囲（ビジネス中国語・検定対策）は確認中です。<!-- 要確認: 8/20ディレクションで確定 --></p>
+    </div>
+  </section>
+
+
+  <!-- ========== 09. レッスンの進み方 ========== -->
+  <section class="sec" id="flow-lesson">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">LESSON</span>
+        <h2 class="sec-head__ja">60分レッスンの進み方</h2>
+        <p class="sec-head__lead">組み立ては、ご希望と理解度に合わせて調整します。</p>
+      </div>
+
+      <ul class="grid grid--4">
+        <li class="card">
+          <div class="card__head"><span class="num">01</span></div>
+          <h3 class="card__title">前回の復習</h3>
+          <p class="card__text">前回やったところを声に出して確認します。</p>
+        </li>
+        <li class="card">
+          <div class="card__head"><span class="num">02</span></div>
+          <h3 class="card__title">新しい内容</h3>
+          <p class="card__text">その日のテーマを、例文と一緒に進めます。</p>
+        </li>
+        <li class="card">
+          <div class="card__head"><span class="num">03</span></div>
+          <h3 class="card__title">発音の確認</h3>
+          <p class="card__text">気になる音をその場で聞いて、直します。</p>
+        </li>
+        <li class="card">
+          <div class="card__head"><span class="num">04</span></div>
+          <h3 class="card__title">次回までの課題</h3>
+          <p class="card__text">無理のない量で、次回までの取り組みを決めます。</p>
+        </li>
+      </ul>
+
+      <!-- 要確認: 実際のレッスンの進め方は未ヒアリング。下記はすべて仮置き -->
+      <p class="note note--block center">※ 上記は<strong>仮置き</strong>の構成です。実際の進め方は確認のうえ差し替えます。</p>
+    </div>
+  </section>
+
+
+  <!-- ========== 10. コース・料金 ＋ 11. 受講できる曜日・時間 ========== -->
+  <!-- 背景の交互配置を保つため、11は10と同じ面（.sec--tint）にまとめています -->
+  <section class="sec sec--tint" id="price">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">PRICE</span>
+        <h2 class="sec-head__ja">コース・料金</h2>
+      </div>
+
+      <ul class="grid grid--3">
+        <li class="card">
+          <h3 class="card__title">対面マンツーマンレッスン</h3>
+          <p class="card__text">さいたま市岩槻区の教室で行う、1対1のレッスンです。初級から上級まで対応します。</p>
+          <div class="card__foot">
+            <p class="card__price">60分 3,300円</p>
+            <!-- 要確認: 正本では「で考えている」＝検討段階。確定額を8/20で確認 -->
+            <p class="note">※ 金額は検討中です。確定後に更新します。</p>
+          </div>
+        </li>
+        <li class="card">
+          <h3 class="card__title">オンラインレッスン</h3>
+          <!-- 要確認: オンライン対応の可否・料金・使用ツール（正本では「検討中」） -->
+          <p class="card__text">オンラインでの受講は現在検討中です。ご希望の方はお問い合わせください。</p>
+          <div class="card__foot">
+            <p class="card__price">—</p>
+            <p class="note">※ 内容・料金は確認中です。</p>
+          </div>
+        </li>
+        <li class="card">
+          <h3 class="card__title">体験レッスン</h3>
+          <!-- 要確認: 体験レッスンの有無・時間・料金（正本では未確定。無料と書かないこと） -->
+          <p class="card__text">体験レッスンのご用意については確認中です。ご相談は随時お受けしています。</p>
+          <div class="card__foot">
+            <p class="card__price">—</p>
+            <p class="note">※ 実施の有無を確認中です。</p>
+          </div>
+        </li>
+      </ul>
+
+      <!-- 要確認: 入会金・回数券の有無と金額（正本では未確定） -->
+      <p class="note note--block center">※ 入会金・回数券の有無は確認中です。決まり次第こちらでご案内します。</p>
+
+      <h3 class="sub-head mt-lg" id="schedule">受講できる曜日・時間</h3>
+      <p class="note center mb-sm mt-xs">※ 受講いただける曜日・時間は<strong>確認中</strong>です。仮の丸印は入れていません。</p>
+
+      <!-- 要確認: 営業時間・定休日・レッスン可能枠。すべて未ヒアリングのため全マス空欄のまま。
+           ※ 曜日を「行」・時間帯を「列」にしています（4列なのでSPでも横スクロールせず収まるため）。
+              確定後は各マスに ◯ を入れるだけで完成します。 -->
+      <table class="table table--compact">
+        <thead>
+          <tr>
+            <th scope="col">曜日</th>
+            <th scope="col">午前</th>
+            <th scope="col">午後</th>
+            <th scope="col">夕方以降</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">月</th><td></td><td></td><td></td></tr>
+          <tr><th scope="row">火</th><td></td><td></td><td></td></tr>
+          <tr><th scope="row">水</th><td></td><td></td><td></td></tr>
+          <tr><th scope="row">木</th><td></td><td></td><td></td></tr>
+          <tr><th scope="row">金</th><td></td><td></td><td></td></tr>
+          <tr><th scope="row">土</th><td></td><td></td><td></td></tr>
+          <tr><th scope="row">日</th><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <!-- ========== 12. 講師紹介 ========== -->
+  <section class="sec" id="teacher">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">TEACHER</span>
+        <h2 class="sec-head__ja">講師紹介</h2>
+      </div>
+
+      <div class="grid grid--2">
+        <!-- ⚠️ 要差し替え：講師写真。要確認: 顔写真の掲載可否 -->
+        <div class="media-frame"><img src="images/hero-sp.jpg" alt="" width="900" height="640"></div>
+
+        <div class="card">
+          <!-- 要確認: 講師名の掲載可否（正本の代表者名より。「﨑」＝立﨑） -->
+          <h3 class="card__title">黒﨑 豊子（くろさき とよこ）</h3>
+          <p class="card__text">社会科教師として教壇に立ったのち、中国語の全国通訳案内士（国家資格）を取得。現在も通訳案内の業務を続けながら、さいたま市岩槻区で中国語教室を運営しています。</p>
+          <div class="card__foot">
+            <p class="note note--block">※ 講師からのメッセージ文は、ご本人への確認後に掲載します。<br>この欄は現在<strong>空欄のまま</strong>にしています。<!-- 要確認: メッセージ文をヒアリングして流し込む --></p>
+          </div>
+        </div>
+      </div>
+      <p class="note center mt-xs">写真プレースホルダ（掲載可否の確認後に差し替え）</p>
+    </div>
+  </section>
+
+
+  <!-- ========== 13. 生徒さまの声 ==========
+       ⚠️ 実例がまだ無いため hidden で非表示にしています。
+       ダミーの体験談は作らないこと。開講後、実際にいただいた声に差し替えて hidden を外す。
+       ※ hidden を外す際は、前後の背景（12=base / 14=tint）と重ならないよう
+         このセクションに .sec--tint を付けるか、14 を base に変えて交互配置を保つこと。
        ========================================================== -->
+  <section class="sec" id="voice" hidden>
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">VOICE</span>
+        <h2 class="sec-head__ja">生徒さまの声</h2>
+      </div>
+      <ul class="grid grid--3">
+        <li class="card"><p class="card__text"><!-- 開講後に差し替え --></p></li>
+        <li class="card"><p class="card__text"><!-- 開講後に差し替え --></p></li>
+        <li class="card"><p class="card__text"><!-- 開講後に差し替え --></p></li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ========== 14. 通訳・ガイドのご依頼 ========== -->
+  <section class="sec sec--tint" id="guide">
+    <div class="sec__inner center">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">INTERPRETER</span>
+        <h2 class="sec-head__ja">通訳・ガイドのご依頼</h2>
+      </div>
+      <p class="prose">
+        中国語の全国通訳案内士（国家資格）として、通訳・ガイドの業務も継続してお受けしています。<br>
+        観光のご案内、商談や来訪時の通訳など、内容をお伺いしたうえでお見積りいたします。<br>
+        まずはご希望の日程と内容をお知らせください。
+      </p>
+      <!-- 要確認: 通訳・ガイドの対応範囲・料金体系（未ヒアリング） -->
+      <p class="note note--block">※ 対応範囲・料金は内容によって異なります。詳細は確認中です。</p>
+      <div class="btn-row">
+        <a class="btn btn--outline" href="contact.html">通訳・ガイドのご相談</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== 15. ご利用の流れ ========== -->
+  <section class="sec" id="flow">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">FLOW</span>
+        <h2 class="sec-head__ja">ご利用の流れ</h2>
+      </div>
+
+      <ol class="grid grid--4">
+        <li class="card center">
+          <svg class="icon" aria-hidden="true"><use href="#ico-mail"></use></svg>
+          <div class="card__head"><span class="num">01</span></div>
+          <h3 class="card__title">お問い合わせ</h3>
+          <p class="card__text">フォームからご連絡ください。</p>
+        </li>
+        <li class="card center">
+          <svg class="icon" aria-hidden="true"><use href="#ico-chat"></use></svg>
+          <div class="card__head"><span class="num">02</span></div>
+          <h3 class="card__title">ご相談</h3>
+          <p class="card__text">目的や今のレベルをお伺いします。</p>
+        </li>
+        <li class="card center">
+          <svg class="icon" aria-hidden="true"><use href="#ico-calendar"></use></svg>
+          <div class="card__head"><span class="num">03</span></div>
+          <h3 class="card__title">日程調整</h3>
+          <p class="card__text">ご都合のよい曜日・時間を決めます。</p>
+        </li>
+        <li class="card center">
+          <svg class="icon" aria-hidden="true"><use href="#ico-pencil"></use></svg>
+          <div class="card__head"><span class="num">04</span></div>
+          <h3 class="card__title">レッスン開始</h3>
+          <p class="card__text">1対1のレッスンをはじめます。</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+
+  <!-- ========== 16. よくあるご質問 ========== -->
+  <section class="sec sec--tint" id="faq">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">FAQ</span>
+        <h2 class="sec-head__ja">よくあるご質問</h2>
+      </div>
+
+      <div class="faq">
+        <details class="faq__item">
+          <summary class="faq__q">全くの初心者ですが大丈夫ですか？</summary>
+          <div class="faq__a">はい。初級から上級までレベル別に対応しています。1対1ですので、分からないところはその場でご確認いただけます。</div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q">何歳からでも始められますか？</summary>
+          <!-- 要確認: 対象年齢（正本では「成人の方希望」。下限の扱いを確認） -->
+          <div class="faq__a">成人の方を対象としています。40代・50代・60代からお始めになる方も想定しています。</div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q">オンラインでも受けられますか？</summary>
+          <!-- 要確認: オンライン対応の可否と料金 -->
+          <div class="faq__a">対面のマンツーマンレッスンが基本です。オンラインでの受講は現在検討しております。<br><span class="note">※ 回答は確認中です。</span></div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q">1回のレッスンはどのくらいの時間ですか？</summary>
+          <div class="faq__a">60分です。</div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q">教材は自分で用意する必要がありますか？</summary>
+          <!-- 要確認: 教材の指定・購入の要否 -->
+          <div class="faq__a"><span class="note">※ 回答は確認中です。決まり次第こちらでご案内します。</span></div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__q">駐車場はありますか？</summary>
+          <!-- 要確認: 正本では「1台（想定）」。実際の有無を確認 -->
+          <div class="faq__a">1台分ございます。<br><span class="note">※ 確認中の項目です。</span></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== 17. アクセス ========== -->
+  <section class="sec" id="access">
+    <div class="sec__inner">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">ACCESS</span>
+        <h2 class="sec-head__ja">アクセス</h2>
+      </div>
+
+      <div class="grid grid--2">
+        <table class="table table--stack">
+          <tbody>
+            <tr>
+              <th scope="row">所在地</th>
+              <!-- 要確認: 番地までの公開可否（自宅の一室を教室にするため本人確認が必要） -->
+              <td data-label="所在地">埼玉県さいたま市岩槻区<br><span class="note">※ 詳しい住所は、ご予約確定後にご案内します。</span></td>
+            </tr>
+            <tr>
+              <th scope="row">最寄駅から</th>
+              <!-- 要確認: 最寄駅名（岩槻駅を想定・未確認） -->
+              <td data-label="最寄駅から">徒歩13分程度<br><span class="note">※ 最寄駅名は確認中です。</span></td>
+            </tr>
+            <tr>
+              <th scope="row">駐車場</th>
+              <td data-label="駐車場">1台<br><span class="note">※ 確認中の項目です。</span></td>
+            </tr>
+            <tr>
+              <th scope="row">営業時間・定休日</th>
+              <!-- 要確認: 営業時間・定休日ともに未ヒアリング -->
+              <td data-label="営業時間・定休日"><span class="note">※ 確認中です。</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- ⚠️ 要差し替え：地図または外観写真 -->
+        <div class="media-frame"><img src="images/hero-sp.jpg" alt="" width="900" height="640"></div>
+      </div>
+      <p class="note center mt-xs">地図・写真プレースホルダ（差し替え予定）</p>
+    </div>
+  </section>
+
+
+  <!-- ========== 18. お問い合わせCTA ========== -->
+  <section class="sec sec--tint" id="contact-cta">
+    <div class="sec__inner center">
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">CONTACT</span>
+        <h2 class="sec-head__ja">まずは、ご相談から</h2>
+        <p class="sec-head__lead">「続けられるか不安」「何から始めればいいか分からない」——そこからで大丈夫です。</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--cta btn--lg" href="contact.html">
+          レッスンのご相談<span class="is-pc-only">・お問い合わせ</span>
+        </a>
+      </div>
+      <!-- 要確認: 電話での問い合わせを受けるか（携帯番号1本のみのため未確認） -->
+    </div>
+  </section>
 
 </main>
 
-<script>
-  /* 教室名の定義はここ1箇所だけ。屋号確定後はこの値のみ書き換える。 */
-  /* 屋号は未確定。既定はプレースホルダのまま。
-     確認用に ?shop=中文堂 のようにURLパラメータを付けると、その表記で見た目を確認できる。
-     ★確定したらこの既定値を書き換える（表示箇所は data-shop-name が自動で拾う）。 */
-  var SHOP_NAME = "{{SHOP_NAME}}";
-  try {
-    var _q = new URLSearchParams(location.search).get("shop");
-    if (_q) { SHOP_NAME = _q; }
-  } catch (e) {}
+<!-- @@SHARED:FOOTER:START -->
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <p class="site-footer__name" data-shop-name>教室名</p>
+      <!-- 要確認: 住所の公開範囲・電話番号の掲載可否。確定まで市区までの表記とし、電話番号は置かない -->
+      <p class="site-footer__addr">
+        埼玉県さいたま市岩槻区<br>
+        完全マンツーマンの中国語教室
+      </p>
+    </div>
 
-  document.querySelectorAll("[data-shop-name]").forEach(function (el) {
-    el.textContent = SHOP_NAME;
-  });
-  document.title = SHOP_NAME + "｜さいたま市岩槻のマンツーマン中国語教室";
+    <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="about.html">当教室について</a>
+      <a href="lesson.html">レッスン・料金</a>
+      <a href="teacher.html">講師紹介</a>
+      <a href="faq.html">よくあるご質問</a>
+      <a href="access.html">アクセス</a>
+      <a href="blog.html">ブログ</a>
+      <a href="contact.html">お問い合わせ</a>
+      <a href="contact.html#privacy">プライバシーポリシー</a>
+    </nav>
 
-  /* ハンバーガー開閉 */
-  (function () {
-    var btn = document.querySelector(".nav-toggle");
-    var nav = document.getElementById("global-nav");
-    if (!btn || !nav) return;
+    <p class="site-footer__copy">© <span data-shop-name>教室名</span></p>
+  </div>
+</footer>
+<!-- @@SHARED:FOOTER:END -->
 
-    btn.addEventListener("click", function () {
-      var open = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", String(!open));
-      document.body.classList.toggle("is-nav-open", !open);
-    });
-
-    nav.addEventListener("click", function (e) {
-      if (e.target.closest("a")) {
-        btn.setAttribute("aria-expanded", "false");
-        document.body.classList.remove("is-nav-open");
-      }
-    });
-  })();
-</script>
-
+<script src="assets/main.js"></script>
 </body>
 </html>

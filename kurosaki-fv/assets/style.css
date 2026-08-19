@@ -30,8 +30,13 @@ body {
 img { display: block; max-width: 100%; height: auto; }
 picture { display: block; }
 
-h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
-ul { list-style: none; }
+h1, h2, h3, h4, p, ul, ol, li, dl, dt, dd, figure { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+table { border-collapse: collapse; width: 100%; }
+svg { display: block; }
+
+/* hidden 属性を display:grid/flex より優先させる（!important を使わないため） */
+[hidden] { display: none; }
 
 a { color: inherit; text-decoration: none; }
 
@@ -55,22 +60,25 @@ button {
 .skip-link:focus { left: 0; }
 
 /* ------------------------------------------------------------
-   2. ボタン
+   2. 【共通パーツ 2-5】ボタン .btn
+   主 = .btn--cta（--c-cta 背景・白文字）／副 = .btn--outline（白背景・--c-cta の枠と文字）
+   高さ PC 56px / SP 52px。タップ領域を狭くしない。
    ------------------------------------------------------------ */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  min-height: 44px;
-  padding: 10px 18px;
+  min-height: 52px;
+  padding: 12px 22px;
+  border: 1px solid transparent;
   border-radius: 4px;
   font-family: var(--f-sans);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.5;
   text-align: center;
-  transition: background-color .2s ease;
+  transition: background-color .2s ease, color .2s ease;
 }
 
 .btn--cta {
@@ -82,7 +90,25 @@ button {
   background-color: var(--c-deep);
 }
 
-/* PCでのみ見せる補足文言（SPは「無料体験レッスン」まで） */
+.btn--outline {
+  color: var(--c-cta);
+  background-color: var(--c-white);
+  border-color: var(--c-cta);
+}
+.btn--outline:hover,
+.btn--outline:focus-visible {
+  color: var(--c-white);
+  background-color: var(--c-cta);
+}
+
+/* 大きめCTA（セクション18など） */
+.btn--lg {
+  width: 100%;
+  max-width: 420px;
+  font-size: 16px;
+}
+
+/* PCでのみ見せる補足文言（SPは「レッスンのご相談」まで） */
 .is-pc-only { display: none; }
 
 /* ------------------------------------------------------------
@@ -119,9 +145,10 @@ button {
   overflow-wrap: anywhere;
 }
 
+/* ヘッダー内のCTAだけは高さを詰める（ヘッダー高 PC80/SP64 に収めるため） */
 .site-header__cta {
   flex: 0 0 auto;
-  min-height: 40px;
+  min-height: 44px;
   padding: 8px 12px;
   font-size: 13px;
 }
@@ -257,6 +284,7 @@ button {
   line-height: 1.7;
   letter-spacing: .06em;
   color: var(--c-ink-sub);
+  word-break: auto-phrase;
 }
 
 .fv-title {
@@ -274,6 +302,7 @@ button {
   font-size: var(--fs-body-sp);
   line-height: var(--lh-body);
   color: var(--c-ink);
+  word-break: auto-phrase;
 }
 
 /* --- 信頼バッジ3つ（数字は載せない） --- */
@@ -352,6 +381,430 @@ button {
   color: var(--c-ink);
 }
 
+/* ############################################################
+   ★ 共通パーツ（指示書#02 §2）
+   以降のセクションは、原則このクラスの組み合わせだけで組むこと。
+   セクション専用のCSSを増やさない。
+   ############################################################ */
+
+/* ------------------------------------------------------------
+   2-1. セクション枠 .sec ／ 背景は base ⇄ tint の交互のみ
+   ------------------------------------------------------------ */
+.sec {
+  padding-block: var(--sp-section-sp);
+  background-color: var(--c-base);
+}
+.sec--tint { background-color: var(--c-tint); }
+
+.sec__inner {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* ------------------------------------------------------------
+   2-2. セクション見出し .sec-head
+   英字（装飾・aria-hidden）→ 日本語（明朝・大）→ リード
+   飾り罫・下線は付けない
+   ------------------------------------------------------------ */
+.sec-head {
+  margin-bottom: 32px;
+  text-align: center;
+}
+.sec-head__en {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .18em;
+  color: var(--c-main);
+}
+.sec-head__ja {
+  font-family: var(--f-serif);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .04em;
+  color: var(--c-deep);
+  text-wrap: balance;
+  word-break: auto-phrase;
+}
+.sec-head__lead {
+  margin-top: 14px;
+  font-size: var(--fs-body-sp);
+  line-height: var(--lh-body);
+  color: var(--c-ink-sub);
+  text-wrap: balance;
+  word-break: auto-phrase;
+}
+
+/* ------------------------------------------------------------
+   2-3. カード .card ／ 同じ行は必ず同じ高さ（grid + height:100%）
+   ------------------------------------------------------------ */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: 20px;
+  background-color: var(--c-white);
+  border: 1px solid var(--c-line);
+  border-radius: 6px;
+}
+.card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.card__title {
+  font-family: var(--f-serif);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: .02em;
+  color: var(--c-deep);
+  /* 行末に1文字だけ落ちるのを防ぐ（未対応ブラウザは通常の折り返し） */
+  text-wrap: balance;
+  word-break: auto-phrase;
+}
+.card__text {
+  font-size: var(--fs-body-sp);
+  line-height: var(--lh-body);
+  color: var(--c-ink);
+  text-wrap: pretty;
+}
+/* カード下端に寄せる要素（価格・ボタンなど）。高さ揃えを崩さない */
+.card__foot {
+  margin-top: auto;
+  padding-top: 14px;
+}
+.card__price {
+  font-family: var(--f-serif);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--c-deep);
+}
+
+/* ------------------------------------------------------------
+   2-4. 番号タグ .num（01 / 02 の2桁・明朝）
+   ------------------------------------------------------------ */
+.num {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 28px;
+  padding: 2px 9px;
+  border-radius: 4px;
+  background-color: var(--c-deep);
+  color: var(--c-white);
+  font-family: var(--f-serif);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .08em;
+}
+
+/* ------------------------------------------------------------
+   2-6. 表 .table ／ SPは横スクロールさせず縦積み
+   ------------------------------------------------------------ */
+.table {
+  font-size: var(--fs-body-sp);
+  line-height: 1.8;
+  background-color: var(--c-white);
+}
+.table th,
+.table td {
+  padding: 12px 14px;
+  border: 1px solid var(--c-line);
+  text-align: left;
+  vertical-align: top;
+}
+.table thead th,
+.table th[scope="row"] {
+  background-color: var(--c-tint);
+  font-weight: 700;
+  color: var(--c-deep);
+}
+.table td { color: var(--c-ink); text-wrap: pretty; }
+.table__wrap { margin-top: 4px; }
+
+/* .table--compact：列数が多い表（時間割など）。SPでも横スクロールさせず収める */
+.table--compact th,
+.table--compact td { text-align: center; }
+.table--compact th[scope="row"] { text-align: left; }
+@media (max-width: 559px) {
+  .table--compact { font-size: 14px; }
+  .table--compact th,
+  .table--compact td { padding: 10px 4px; }
+}
+
+/* SP：行ごとにカード化して縦積み */
+@media (max-width: 767px) {
+  .table--stack,
+  .table--stack tbody,
+  .table--stack tr,
+  .table--stack th,
+  .table--stack td { display: block; width: 100%; }
+
+  .table--stack thead { display: none; }
+
+  .table--stack tr {
+    margin-bottom: 12px;
+    border: 1px solid var(--c-line);
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: var(--c-white);
+  }
+  .table--stack tr:last-child { margin-bottom: 0; }
+
+  .table--stack th,
+  .table--stack td {
+    border: 0;
+    border-bottom: 1px solid var(--c-line);
+  }
+  .table--stack tr > *:last-child { border-bottom: 0; }
+
+  .table--stack td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: .04em;
+    color: var(--c-ink-sub);
+  }
+}
+
+/* ------------------------------------------------------------
+   2-7. アコーディオン .faq（details / summary・JSに頼らない）
+   ------------------------------------------------------------ */
+.faq__item {
+  background-color: var(--c-white);
+  border: 1px solid var(--c-line);
+  border-radius: 6px;
+}
+.faq__item + .faq__item { margin-top: 12px; }
+
+.faq__q {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 52px 16px 18px;
+  position: relative;
+  font-size: var(--fs-body-sp);
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--c-deep);
+  cursor: pointer;
+  list-style: none;
+}
+.faq__q::-webkit-details-marker { display: none; }
+
+/* ＋／− アイコン（CSSのみ） */
+.faq__q::after,
+.faq__q::before {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 14px;
+  height: 2px;
+  background-color: var(--c-cta);
+}
+.faq__q::before { transform: translateY(-50%) rotate(90deg); }
+.faq__q::after  { transform: translateY(-50%); }
+.faq__item[open] .faq__q::before { transform: translateY(-50%) rotate(0deg); }
+
+.faq__a {
+  padding: 16px 18px;
+  border-top: 1px solid var(--c-line);
+  font-size: var(--fs-body-sp);
+  line-height: var(--lh-body);
+  color: var(--c-ink);
+}
+
+/* ------------------------------------------------------------
+   レイアウト・ユーティリティ（型を使い回すための最小限）
+   ------------------------------------------------------------ */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: stretch;
+  gap: 16px;
+}
+/* アイコングリッド .grid--6：SP 2列 → 560px以上 3列（6項目を2行で見せる） */
+.grid--6 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.stack > * + * { margin-top: 16px; }
+.center { text-align: center; }
+/* .center を付けたカードは、中の番号タグ・アイコンも中央に揃える */
+.center .card__head { justify-content: center; }
+.center .icon,
+.center .illust { margin-inline: auto; }
+
+/* セクション内の下位見出し */
+.sub-head {
+  font-family: var(--f-serif);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .04em;
+  color: var(--c-deep);
+  text-align: center;
+  text-wrap: balance;
+  word-break: auto-phrase;
+}
+
+/* 余白ユーティリティ（セクション専用CSSを増やさないため） */
+.mt-xs { margin-top: 8px; }
+.mt-sm { margin-top: 20px; }
+.mt-md { margin-top: 24px; }
+.mt-lg { margin-top: 48px; }
+.mb-sm { margin-bottom: 20px; }
+
+.btn-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.note {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--c-ink-sub);
+}
+.note--block {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border: 1px dashed var(--c-line);
+  border-radius: 4px;
+  background-color: var(--c-base);
+}
+
+/* アイコン・線画：単色 var(--c-main) で統一（装飾用途） */
+.icon {
+  width: 44px;
+  height: 44px;
+  color: var(--c-main);
+}
+.illust {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  margin-inline: auto;
+  color: var(--c-main);
+}
+
+/* 写真枠（未確定の写真はここに無地プレースホルダを敷く） */
+.media-frame {
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--c-tint-str);
+}
+.media-frame img { width: 100%; }
+
+/* 中央寄せの本文ブロック */
+.prose {
+  max-width: 40em;
+  margin-inline: auto;
+  font-size: var(--fs-body-sp);
+  line-height: var(--lh-body);
+  color: var(--c-ink);
+  word-break: auto-phrase;
+}
+
+/* 下層ページのページヘッダー */
+.page-head {
+  padding-block: 28px;
+  background-color: var(--c-tint);
+  border-bottom: 1px solid var(--c-line);
+}
+.page-head__inner {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 20px;
+  text-align: center;
+}
+.page-head__en {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  color: var(--c-main);
+}
+.page-head__ja {
+  font-family: var(--f-serif);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: .04em;
+  color: var(--c-deep);
+  text-wrap: balance;
+  word-break: auto-phrase;
+}
+.breadcrumb {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--c-ink-sub);
+}
+.breadcrumb a:hover { color: var(--c-cta); }
+
+/* ------------------------------------------------------------
+   フッター
+   ------------------------------------------------------------ */
+.site-footer {
+  padding-block: 36px 24px;
+  background-color: var(--c-tint-str);
+}
+.site-footer__inner {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 20px;
+  display: grid;
+  gap: 24px;
+}
+.site-footer__name {
+  font-family: var(--f-serif);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .04em;
+  color: var(--c-deep);
+}
+.site-footer__addr {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--c-ink-sub);
+}
+.site-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.site-footer__nav a:hover { color: var(--c-cta); }
+.site-footer__copy {
+  padding-top: 16px;
+  border-top: 1px solid var(--c-line);
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--c-ink-sub);
+}
+
 /* ============================================================
    6. 560px 以上
    ============================================================ */
@@ -369,6 +822,14 @@ button {
     padding: 14px 8px;
     text-align: center;
   }
+
+  .grid--2,
+  .grid--3,
+  .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .btn-row { flex-direction: row; justify-content: center; flex-wrap: wrap; }
+  .btn--lg { width: auto; min-width: 320px; }
 }
 
 /* ============================================================
@@ -403,8 +864,45 @@ button {
     text-align: left;
   }
   .fv-subband__text { font-size: var(--fs-body); }
-  .btn { font-size: 15px; padding: 12px 24px; }
-  .site-header__cta { font-size: 14px; padding: 10px 18px; }
+  .btn { min-height: 56px; font-size: 16px; padding: 14px 28px; }
+  .btn--lg { font-size: 17px; }
+  .site-header__cta { min-height: 44px; font-size: 14px; padding: 10px 18px; }
+
+  /* --- 共通パーツ（タブレット以上） --- */
+  .sec { padding-block: 72px; }
+  .sec__inner { padding-inline: 32px; }
+
+  .sec-head { margin-bottom: 40px; }
+  .sec-head__ja { font-size: 30px; }
+  .sub-head { font-size: 24px; }
+  .sec-head__lead { font-size: var(--fs-body); }
+
+  .card { padding: 24px; gap: 12px; }
+  .card__title { font-size: 19px; }
+  .card__text { font-size: var(--fs-body); }
+  .card__price { font-size: 24px; }
+
+  .table { font-size: var(--fs-body); }
+  .table th, .table td { padding: 14px 18px; }
+
+  .faq__q { font-size: var(--fs-body); padding: 18px 56px 18px 22px; }
+  .faq__a { font-size: var(--fs-body); padding: 18px 22px; }
+
+  .grid { gap: 20px; }
+  .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .prose { font-size: var(--fs-body); }
+
+  .page-head { padding-block: 36px; }
+  .page-head__inner { padding-inline: 32px; }
+  .page-head__ja { font-size: 30px; }
+
+  .icon { width: 48px; height: 48px; }
+  .illust { max-width: 200px; }
+
+  .site-footer { padding-block: 48px 28px; }
+  .site-footer__inner { padding-inline: 32px; }
+  .site-footer__nav { font-size: 15px; }
 }
 
 /* ============================================================
@@ -464,6 +962,27 @@ button {
   .page-top-fv__media img { aspect-ratio: 4 / 5; }
 
   .fv-subband__inner { gap: 32px; padding: 32px 40px; }
+
+  /* --- 共通パーツ（PC） --- */
+  .sec { padding-block: var(--sp-section); }
+  .sec__inner { padding-inline: 40px; }
+
+  .sec-head { margin-bottom: 48px; }
+  .sec-head__ja { font-size: 34px; }
+
+  .grid { gap: 24px; }
+  .grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  .page-head { padding-block: 44px; }
+  .page-head__inner { padding-inline: 40px; }
+  .page-head__ja { font-size: 34px; }
+
+  .site-footer__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 32px 48px;
+    padding-inline: 40px;
+  }
+  .site-footer__copy { grid-column: 1 / -1; }
 }
 
 /* ============================================================
@@ -473,6 +992,9 @@ button {
   .site-nav__list { gap: 26px; }
   .site-nav__list a { font-size: 16px; }
   .page-top-fv__inner { gap: 72px; padding-inline: 20px; }
+  .sec__inner,
+  .page-head__inner,
+  .site-footer__inner { padding-inline: 20px; }
 }
 
 /* ============================================================
