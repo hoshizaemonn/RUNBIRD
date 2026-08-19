@@ -70,15 +70,129 @@
     </div>
   </div>
 
+  <!-- #12：毎日中国語の無料カウンセリング申込ページ（/counseling/）の構成に合わせた。
+       導入 → ご相談の流れ3ステップ → 1列のフォーム（ラベル上・必須バッジ）→ 同意チェック → 送信。
+       ★参考ページは「面接希望日時」を8:00〜22:00の固定セレクトにしているが、
+         こちらは営業時間・定休日が未ヒアリングのため選択肢を作れない。自由記入にしてある。 -->
   <section class="sec">
     <div class="sec__inner">
       <div class="sec-head">
         <span class="sec-head__en" aria-hidden="true">CONTACT</span>
-        <h2 class="sec-head__ja"><span class="kw">お問い合わせ</span></h2>
-        <p class="sec-head__lead">レッスンのご相談、通訳・ガイドのご依頼はこちらから。</p>
+        <h2 class="sec-head__ja">レッスンの<span class="kw">ご相談</span></h2>
+        <p class="sec-head__lead">今のレベルとご希望をお伺いして、どんな進め方になるかをご説明します。</p>
       </div>
-      <!-- 要確認: フォームの実装方法（bizクラウド側のフォーム機能を使うか）・送信先メールアドレスの表示可否・電話受付の可否 -->
-      <p class="note note--block center">※ お問い合わせフォームは、bizクラウド側の実装に合わせて設置します。<br>現在は設置枠のみです。</p>
+
+      <p class="prose center">「続けられるか不安」「何から始めればいいか分からない」——そこからで大丈夫です。<br>中国語がはじめての方も、途中で止まってしまった方も、まずはお話を聞かせてください。</p>
+
+      <h3 class="sub-head mt-lg">ご相談の<span class="kw">流れ</span></h3>
+
+      <ol class="steps mt-sm">
+        <li class="step">
+          <div class="step__badge">
+            <p class="step__label"><span class="step__en">STEP</span><span class="step__num">1</span></p>
+            <svg class="step__icon" aria-hidden="true"><use href="#ico-mail"></use></svg>
+          </div>
+          <div class="step__body">
+            <h4 class="step__title">フォームを送信</h4>
+            <p class="step__text">下のフォームにご記入のうえ送信してください。お名前とご連絡先だけでも構いません。</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step__badge">
+            <p class="step__label"><span class="step__en">STEP</span><span class="step__num">2</span></p>
+            <svg class="step__icon" aria-hidden="true"><use href="#ico-chat"></use></svg>
+          </div>
+          <div class="step__body">
+            <h4 class="step__title">こちらからご返信</h4>
+            <!-- 要確認: 返信の目安日数・返信手段（メールのみか電話もするか）。日数は書かないこと -->
+            <p class="step__text">いただいた内容を確認して、ご連絡いたします。ご希望の曜日・時間帯をあわせて調整します。</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="step__badge">
+            <p class="step__label"><span class="step__en">STEP</span><span class="step__num">3</span></p>
+            <svg class="step__icon" aria-hidden="true"><use href="#ico-calendar"></use></svg>
+          </div>
+          <div class="step__body">
+            <h4 class="step__title">日程を決める</h4>
+            <p class="step__text">お互いのご都合が合う日をお決めします。その場でお申し込みいただく必要はありません。</p>
+          </div>
+        </li>
+      </ol>
+
+      <!-- ⚠️ 差し替え必須: このフォームは【見た目のみ】。送信先が未設定なので実際には送信されない。
+           bizクラウド側のフォーム機能に差し替えるか、送信先メールを設定すること。 -->
+      <form class="form mt-lg" action="#" method="post">
+
+        <div class="form__row">
+          <label class="form__label" for="f-name">お名前<span class="form__req">必須</span></label>
+          <input class="form__input" type="text" id="f-name" name="name" autocomplete="name" required>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-kana">フリガナ<span class="form__any">任意</span></label>
+          <input class="form__input" type="text" id="f-kana" name="kana">
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-email">メールアドレス<span class="form__req">必須</span></label>
+          <input class="form__input" type="email" id="f-email" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="form__row">
+          <!-- 要確認: 電話での問い合わせを受けるか（携帯1本のみ）。受けない場合はこの欄を外す -->
+          <label class="form__label" for="f-tel">お電話番号<span class="form__any">任意</span></label>
+          <input class="form__input" type="tel" id="f-tel" name="tel" autocomplete="tel">
+          <p class="form__help">お電話でのご連絡をご希望の場合はご記入ください。</p>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-type">ご相談の内容<span class="form__req">必須</span></label>
+          <select class="form__input" id="f-type" name="type" required>
+            <option value="">選択してください</option>
+            <option>中国語レッスンについて</option>
+            <option>通訳・ガイドのご依頼について</option>
+            <option>その他</option>
+          </select>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-level">中国語のご経験<span class="form__any">任意</span></label>
+          <select class="form__input" id="f-level" name="level">
+            <option value="">選択してください</option>
+            <option>はじめて学びます</option>
+            <option>少し学んだことがある</option>
+            <option>学習中（続けています）</option>
+            <option>分からない・相談したい</option>
+          </select>
+        </div>
+
+        <div class="form__row">
+          <!-- 要確認: 営業時間・定休日が未ヒアリングのため、参考サイトのような時間帯セレクトが作れない。
+               確定したらセレクトに変更する -->
+          <label class="form__label" for="f-when">ご希望の曜日・時間帯<span class="form__any">任意</span></label>
+          <input class="form__input" type="text" id="f-when" name="when" placeholder="例：平日の午前、土曜の午後　など">
+          <p class="form__help">第二・第三希望まで書いていただけると調整がスムーズです。</p>
+        </div>
+
+        <div class="form__row">
+          <label class="form__label" for="f-body">お問い合わせ内容<span class="form__any">任意</span></label>
+          <textarea class="form__input form__input--area" id="f-body" name="body" rows="6" placeholder="ご質問やご希望がありましたらお書きください。"></textarea>
+        </div>
+
+        <div class="form__agree">
+          <input type="checkbox" id="f-agree" name="agree" required>
+          <label for="f-agree"><a href="#privacy">個人情報の取り扱い</a>に同意します<span class="form__req">必須</span></label>
+        </div>
+
+        <div class="form__submit">
+          <button class="btn btn--cta btn--lg" type="submit">この内容で送信する</button>
+        </div>
+
+        <!-- 要確認: フォームの実装方法（bizクラウド側のフォーム機能を使うか）・送信先メールアドレス -->
+        <p class="note note--block center">※ このフォームは<strong>表示確認用</strong>です。送信先が未設定のため、まだ送信されません。<br>bizクラウド側の実装に合わせて接続します。</p>
+      </form>
+
     </div>
   </section>
 
@@ -88,8 +202,30 @@
         <span class="sec-head__en" aria-hidden="true">PRIVACY POLICY</span>
         <h2 class="sec-head__ja">プライバシー<span class="kw">ポリシー</span></h2>
       </div>
-      <!-- 要確認: プライバシーポリシー本文（会社標準の雛形を流し込む） -->
-      <p class="note note--block center">※ 本文は会社標準の雛形を流し込みます。現在は枠のみです。</p>
+      <!-- ⚠️ 差し替え必須: 以下は【仮の骨子】。法務上の正式文言は会社標準の雛形に差し替えること。
+           事業者名は屋号確定後に確定する。連絡先メールは掲載可否が未確認のため書いていない。 -->
+      <div class="policy">
+        <h3 class="policy__title">個人情報の取り扱いについて</h3>
+        <p class="policy__text">当教室は、お問い合わせフォームでお預かりした個人情報を、以下のとおり取り扱います。</p>
+
+        <h4 class="policy__sub">1. 取得する情報</h4>
+        <p class="policy__text">お名前、フリガナ、メールアドレス、お電話番号、ご相談内容など、フォームにご記入いただいた情報。</p>
+
+        <h4 class="policy__sub">2. 利用目的</h4>
+        <p class="policy__text">お問い合わせへのご返信、レッスンや通訳・ガイドのご案内、日程のご相談のために利用します。これ以外の目的では利用しません。</p>
+
+        <h4 class="policy__sub">3. 第三者への提供</h4>
+        <p class="policy__text">法令に基づく場合を除き、ご本人の同意なく第三者に提供することはありません。</p>
+
+        <h4 class="policy__sub">4. 管理</h4>
+        <p class="policy__text">お預かりした情報は、漏えい・滅失・毀損の防止に努め、適切に管理します。</p>
+
+        <h4 class="policy__sub">5. 開示・訂正・削除のご請求</h4>
+        <p class="policy__text">ご本人からのお申し出があった場合は、内容を確認のうえ、速やかに対応します。</p>
+
+        <!-- 要確認: 事業者名（屋号確定待ち）・問い合わせ窓口の連絡先・制定日 -->
+        <p class="note note--block">※ 上記は<strong>仮の骨子</strong>です。正式な文面は会社標準の雛形に差し替えます。事業者名・お問い合わせ窓口・制定日は屋号の確定後に記載します。</p>
+      </div>
     </div>
   </section>
 
