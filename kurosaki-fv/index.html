@@ -75,48 +75,9 @@
     <path d="M33 6l9 9-23 23-11 2 2-11z"/><path d="M29 10l9 9"/><path d="M8 44h32"/>
   </symbol>
 
-  <symbol id="ill-pron" viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="58" cy="38" r="12"/>
-    <path d="M40 76c0-11 8-19 18-19s18 8 18 19"/>
-    <path d="M82 32a13 13 0 0 1 0 17"/>
-    <path d="M91 26a23 23 0 0 1 0 29"/>
-    <path d="M20 30c0-5 4-9 9-9s9 4 9 8c0 6-6 7-6 12"/>
-    <path d="M32 52h.01"/>
-  </symbol>
 
-  <symbol id="ill-book" viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="18" y="62" width="58" height="11" rx="2"/>
-    <rect x="24" y="49" width="52" height="11" rx="2"/>
-    <rect x="20" y="36" width="48" height="11" rx="2"/>
-    <circle cx="88" cy="34" r="13"/>
-    <path d="M98 44l10 11"/>
-  </symbol>
 
-  <symbol id="ill-talk" viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="36" cy="34" r="12"/>
-    <path d="M18 74c0-11 8-19 18-19s18 8 18 19"/>
-    <rect x="68" y="20" width="40" height="27" rx="6"/>
-    <path d="M80 47v8l9-8"/>
-  </symbol>
 
-  <!-- 人物ピクトグラム（2-5用・マスコットは置かない。--c-deep と --c-main の2色まで） -->
-  <symbol id="pic-a" viewBox="0 0 64 76">
-    <circle cx="32" cy="18" r="14" fill="var(--c-deep)"/>
-    <path d="M4 76c0-15 12.5-27 28-27s28 12 28 27z" fill="var(--c-main)"/>
-  </symbol>
-  <symbol id="pic-b" viewBox="0 0 64 76">
-    <path d="M15 20a17 17 0 0 1 34 0v9a4 4 0 0 1-4 4H19a4 4 0 0 1-4-4z" fill="var(--c-deep)"/>
-    <circle cx="32" cy="19" r="13" fill="var(--c-deep)"/>
-    <path d="M4 76c0-15 12.5-27 28-27s28 12 28 27z" fill="var(--c-deep)"/>
-    <path d="M24 50h16l-8 12z" fill="var(--c-main)"/>
-  </symbol>
-  <symbol id="pic-c" viewBox="0 0 64 76">
-    <circle cx="32" cy="18" r="14" fill="var(--c-deep)"/>
-    <circle cx="26" cy="18" r="4.5" fill="none" stroke="var(--c-marker)" stroke-width="2"/>
-    <circle cx="38" cy="18" r="4.5" fill="none" stroke="var(--c-marker)" stroke-width="2"/>
-    <path d="M30.5 18h3" stroke="var(--c-marker)" stroke-width="2"/>
-    <path d="M4 76c0-15 12.5-27 28-27s28 12 28 27z" fill="var(--c-main)"/>
-  </symbol>
 </svg>
 
 <!-- @@SHARED:HEADER:START -->
@@ -156,60 +117,65 @@
 
 <main id="main">
 
-  <!-- ========== 01. ファーストビュー（#01で確認済み・構造は変更なし） ========== -->
-  <section class="page-top-fv">
-    <div class="page-top-fv__inner">
+  <!-- ========== 01. ファーストビュー（#04-A：毎日中国語型に作り直し） ==========
+       文言は #02 のまま。構造と見た目だけ変更。
+       ・背景 = var(--c-deep) のベタ ＋ 写真を深緑のベールで沈めて敷く
+       ・帯①② = 右端を斜めカット、左端は画面外から
+       ・屋号 = 白抜き＋ごく薄い影（ここだけ明朝のまま）
+       ・バッジ = 白い円＋var(--c-main) の枠。パーセント・人数・合格率のたぐいは入れない
+       ・帯③④ = 白面＋濃い文字（#02のサブ帯の一文を2本に分けたもの）
+       ================================================================= -->
+  <section class="fv">
 
-      <div class="page-top-fv__body">
-
-        <div class="fv-ribbons">
-          <p class="fv-ribbon">独学で止まってしまった方へ。</p>
-          <p class="fv-ribbon">何歳からでも、話せるところまで。</p>
-        </div>
-
-        <p class="fv-eyebrow">さいたま市岩槻・完全マンツーマンの中国語教室</p>
-        <h1 class="fv-title" data-shop-name>教室名</h1>
-        <p class="fv-lead">初級から上級まで、<span class="mk">あなたのペースで</span>。</p>
-
-        <!-- 信頼バッジ3つ（すべて共有シート記載の事実。数字・％は載せない） -->
-        <ul class="fv-badges">
-          <li class="fv-badge">
-            <span class="fv-badge__main">完全マンツーマン</span>
-            <span class="fv-badge__sub">1対1指導</span>
-          </li>
-          <li class="fv-badge">
-            <span class="fv-badge__main">国家資格</span>
-            <span class="fv-badge__sub">全国通訳案内士</span>
-          </li>
-          <li class="fv-badge">
-            <span class="fv-badge__main">初級〜上級</span>
-            <span class="fv-badge__sub">レベル別対応</span>
-          </li>
-        </ul>
-
-      </div>
-
-      <div class="page-top-fv__media">
-        <!-- ⚠️ 差し替え必須: AI生成の仮画像です（実在の黒﨑様ではありません）。本番の写真に差し替えること。
-             images/hero.jpg（PC・縦長 1200×1500）／images/hero-sp.jpg（SP・横長 900×640） -->
-        <picture>
-          <source media="(max-width: 767px)" srcset="images/hero-sp.jpg">
-          <img src="images/hero.jpg" alt="レッスンの様子" width="1200" height="1500" fetchpriority="high">
-        </picture>
-        <p class="temp-note">※仮画像（AI生成）。本番は差し替えます。</p>
-      </div>
-
+    <!-- ⚠️ 差し替え必須: AI生成の仮画像です（実在の黒﨑様ではありません）。本番の写真に差し替えること。 -->
+    <div class="fv__bg" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 767px)" srcset="images/hero-sp.jpg">
+        <img src="images/hero.jpg" alt="" width="1200" height="1500" fetchpriority="high">
+      </picture>
     </div>
-  </section>
+    <div class="fv__veil" aria-hidden="true"></div>
 
-  <section class="fv-subband">
-    <div class="fv-subband__inner">
-      <p class="fv-subband__text">
-        元・社会科教師／全国通訳案内士が教える、さいたま市岩槻のマンツーマン中国語教室
-      </p>
-      <a class="btn btn--invert" href="contact.html">
-        レッスンのご相談<span class="is-pc-only">・お問い合わせ</span>
-      </a>
+    <div class="fv__inner">
+
+      <div class="fv-ribbons">
+        <p class="fv-ribbon">独学で止まってしまった方へ。</p>
+        <p class="fv-ribbon">何歳からでも、話せるところまで。</p>
+      </div>
+
+      <p class="fv-eyebrow">さいたま市岩槻・完全マンツーマンの中国語教室</p>
+      <h1 class="fv-title" data-shop-name>教室名</h1>
+      <p class="fv-lead">初級から上級まで、あなたのペースで。</p>
+
+      <!-- 信頼バッジ3つ（すべて共有シート記載の事実。数字・％は載せない） -->
+      <ul class="fv-badges">
+        <li class="fv-badge">
+          <span class="fv-badge__main">完全マンツーマン</span>
+          <span class="fv-badge__sub">1対1指導</span>
+        </li>
+        <li class="fv-badge">
+          <span class="fv-badge__main">国家資格</span>
+          <span class="fv-badge__sub">全国通訳案内士</span>
+        </li>
+        <li class="fv-badge">
+          <span class="fv-badge__main">初級〜上級</span>
+          <span class="fv-badge__sub">レベル別対応</span>
+        </li>
+      </ul>
+
+      <div class="fv-strips">
+        <p class="fv-strip">元・社会科教師／全国通訳案内士が教える</p>
+        <p class="fv-strip">さいたま市岩槻のマンツーマン中国語教室</p>
+      </div>
+
+      <div class="fv-cta">
+        <a class="btn btn--cta btn--onDark" href="contact.html">
+          レッスンのご相談<span class="is-pc-only">・お問い合わせ</span>
+        </a>
+      </div>
+
+      <p class="fv-note">※背景の写真は仮画像（AI生成）です。本番は差し替えます。</p>
+
     </div>
   </section>
 
@@ -267,15 +233,12 @@
       <!-- 2-5 人物ピクトグラム＋吹き出し（写真を使わずに賑やかさを出す。マスコットは置かない） -->
       <ul class="voices">
         <li class="voice">
-          <svg class="picto" role="img" aria-label="学ぶ人のピクトグラム"><use href="#pic-a"></use></svg>
           <p class="bubble">「発音が合っているのか分からない…」</p>
         </li>
         <li class="voice">
-          <svg class="picto" role="img" aria-label="学ぶ人のピクトグラム"><use href="#pic-b"></use></svg>
           <p class="bubble">「参考書は買ったけれど、続かない…」</p>
         </li>
         <li class="voice">
-          <svg class="picto" role="img" aria-label="学ぶ人のピクトグラム"><use href="#pic-c"></use></svg>
           <p class="bubble">「話す機会がないまま、忘れてしまう…」</p>
         </li>
       </ul>
@@ -289,19 +252,19 @@
 
       <ul class="grid grid--3">
         <li class="card center">
-          <svg class="illust" viewBox="0 0 120 90" role="img" aria-label="発音を確認してもらえない様子のイラスト"><use href="#ill-pron"></use></svg>
+          <img class="illust" src="images/illust/cause_01.png" alt="発音を確認してもらえずに困っている様子のイラスト" width="800" height="600" loading="lazy">
           <div class="card__head"><span class="num num--xl">01</span></div>
           <h3 class="card__title">発音が合っているか分からない</h3>
           <p class="card__text">中国語には声調があります。自分の耳だけで正しいかどうかを判断するのは難しく、<span class="mk">間違えたまま覚えてしまう</span>ことがあります。</p>
         </li>
         <li class="card center">
-          <svg class="illust" viewBox="0 0 120 90" role="img" aria-label="教材を選びかねている様子のイラスト"><use href="#ill-book"></use></svg>
+          <img class="illust" src="images/illust/cause_02.png" alt="教材を選びかねている様子のイラスト" width="800" height="600" loading="lazy">
           <div class="card__head"><span class="num num--xl">02</span></div>
           <h3 class="card__title">教材が自分に合っているか分からない</h3>
           <p class="card__text">難しすぎても、やさしすぎても続きません。今の自分に合う一冊を独学で見極めるのは、<span class="mk">思っている以上に大変</span>です。</p>
         </li>
         <li class="card center">
-          <svg class="illust" viewBox="0 0 120 90" role="img" aria-label="話す相手がいない様子のイラスト"><use href="#ill-talk"></use></svg>
+          <img class="illust" src="images/illust/cause_03.png" alt="話す相手がいない様子のイラスト" width="800" height="600" loading="lazy">
           <div class="card__head"><span class="num num--xl">03</span></div>
           <h3 class="card__title">覚えた言葉を、口に出す機会がない</h3>
           <p class="card__text">読んで分かることと、口から出てくることは別です。話す機会がないままだと、覚えた表現は<span class="mk">使えるようになりません</span>。</p>
@@ -314,6 +277,9 @@
   <!-- ========== 04. だからこそ、1対1（ブリッジ・“間”をつくる） ========== -->
   <section class="sec sec--deep" id="bridge">
     <div class="sec__inner center">
+      <figure class="illust-panel">
+        <img src="images/illust/lesson_1on1.png" alt="講師と生徒が向かい合ってレッスンをしているイラスト" width="800" height="600" loading="lazy">
+      </figure>
       <p class="prose">どれも、その場で直してくれる人がいれば解決することばかりです。</p>
       <p class="sub-head mt-sm">だからこそ、1対1。</p>
       <p class="prose mt-sm">あなたの発音を聞いて、あなたのペースに合わせる。<br>それが、この教室のやり方です。</p>
@@ -360,10 +326,21 @@
   <!-- すべて共有シート記載の事実。数字・％を足さないこと -->
   <section class="sec sec--shade" id="features">
     <div class="sec__inner">
-      <div class="sec-head">
-        <span class="sec-head__en" aria-hidden="true">FEATURES</span>
-        <h2 class="sec-head__ja"><span class="br">選ばれる</span><span class="kw">4つの理由</span></h2>
+      <div class="headfig">
+        <img class="headfig__img" src="images/illust/step_up.png" alt="段階を一歩ずつ上っていくイラスト" width="800" height="600" loading="lazy">
+        <div class="sec-head">
+          <span class="sec-head__en" aria-hidden="true">FEATURES</span>
+          <h2 class="sec-head__ja"><span class="br">選ばれる</span><span class="kw">4つの理由</span></h2>
+        </div>
       </div>
+
+      <!-- 2-3 太枠キーワードボックス（下のカードの見出しから抜き出した短いキーワード） -->
+      <ul class="keyboxes">
+        <li class="keybox">完全1対1</li>
+        <li class="keybox">日本人講師</li>
+        <li class="keybox">元・社会科教師</li>
+        <li class="keybox">国家資格</li>
+      </ul>
 
       <ul class="grid grid--4">
         <li class="card">
@@ -512,7 +489,7 @@
 
 
   <!-- ========== 09. レッスンの進み方 ========== -->
-  <section class="sec sec--shade" id="flow-lesson">
+  <section class="sec" id="flow-lesson">
     <div class="sec__inner">
       <div class="sec-head">
         <span class="sec-head__en" aria-hidden="true">LESSON</span>
@@ -551,41 +528,112 @@
 
   <!-- ========== 10. コース・料金 ＋ 11. 受講できる曜日・時間 ========== -->
   <!-- 背景の交互配置を保つため、11は10と同じ面（.sec--tint）にまとめています -->
-  <section class="sec sec--tint" id="price">
+  <section class="sec sec--shade" id="price">
     <div class="sec__inner">
       <div class="sec-head">
         <span class="sec-head__en" aria-hidden="true">PRICE</span>
         <h2 class="sec-head__ja">コース・<span class="kw">料金</span></h2>
       </div>
 
+      <!-- #04-B：中国北京語学教室型のコースカード（番号＋見出し／写真／説明／✓特徴／料金行／おすすめボックス）
+           ・✓の特徴は #02 の本文から抜き出しただけ。新しい主張は足していない
+           ・確定している金額は「60分 3,300円（検討中）」のみ。02・03は空欄 -->
       <ul class="grid grid--3">
-        <li class="card">
-          <h3 class="card__title">対面マンツーマンレッスン</h3>
-          <p class="card__text">さいたま市岩槻区の教室で行う、1対1のレッスンです。初級から上級まで対応します。</p>
-          <div class="card__foot">
-            <p class="card__price">60分 3,300円</p>
+
+        <li class="pcard">
+          <p class="pcard__head"><span class="pcard__num">01</span><span class="pcard__title">対面マンツーマンレッスン</span></p>
+
+          <!-- ⚠️ 差し替え必須: AI生成の仮画像です。実際の教室の写真に差し替えること。 -->
+          <div class="pcard__media">
+            <img src="images/classroom.jpg" alt="レッスンを行う部屋のイメージ" width="1200" height="800" loading="lazy">
+          </div>
+          <p class="temp-note">※仮画像（AI生成）。本番は差し替えます。</p>
+
+          <p class="pcard__text">さいたま市岩槻区の教室で行う、1対1のレッスンです。初級から上級まで対応します。</p>
+
+          <ul class="pcard__feats">
+            <li>完全1対1</li>
+            <li>理解のスピードに合わせて進行</li>
+            <li>その場で質問できる</li>
+          </ul>
+
+          <div class="pcard__price">
+            <!-- 要確認: 3,300円が税込か税別か（正本に記載なし）。確定するまで「税込」と断定しない -->
+            <p class="pcard__price-title">料金（税込／税別は確認中）</p>
+            <dl class="pcard__row">
+              <dt>1回60分</dt>
+              <dd>3,300円</dd>
+            </dl>
             <!-- 要確認: 正本では「で考えている」＝検討段階。確定額を8/20で確認 -->
             <p class="note">※ 金額は検討中です。確定後に更新します。</p>
           </div>
+
+          <div class="pcard__reco">
+            <p class="pcard__reco-title">こんな人におすすめ！</p>
+            <p class="pcard__reco-text">じっくり見てもらいながら、自分のペースで進めたい方</p>
+          </div>
         </li>
-        <li class="card">
-          <h3 class="card__title">オンラインレッスン</h3>
+
+        <li class="pcard">
+          <p class="pcard__head"><span class="pcard__num">02</span><span class="pcard__title">オンラインレッスン</span></p>
+
+          <!-- ⚠️ 差し替え必須: 写真が未定のためプレースホルダ枠のみ -->
+          <div class="pcard__media pcard__media--empty">
+            <p class="note">写真は差し替え予定</p>
+          </div>
+
           <!-- 要確認: オンライン対応の可否・料金・使用ツール（正本では「検討中」） -->
-          <p class="card__text">オンラインでの受講は現在検討中です。ご希望の方はお問い合わせください。</p>
-          <div class="card__foot">
-            <p class="card__price">—</p>
+          <p class="pcard__text">オンラインでの受講は現在検討中です。ご希望の方はお問い合わせください。</p>
+
+          <!-- 要確認: オンラインの内容（✓の特徴3点）。確定するまで空欄のまま -->
+          <ul class="pcard__feats"></ul>
+
+          <div class="pcard__price">
+            <p class="pcard__price-title">料金</p>
+            <dl class="pcard__row">
+              <dt>—</dt>
+              <dd>—</dd>
+            </dl>
             <p class="note">※ 内容・料金は確認中です。</p>
           </div>
-        </li>
-        <li class="card">
-          <h3 class="card__title">体験レッスン</h3>
-          <!-- 要確認: 体験レッスンの有無・時間・料金（正本では未確定。無料と書かないこと） -->
-          <p class="card__text">体験レッスンのご用意については確認中です。ご相談は随時お受けしています。</p>
-          <div class="card__foot">
-            <p class="card__price">—</p>
-            <p class="note">※ 実施の有無を確認中です。</p>
+
+          <div class="pcard__reco">
+            <p class="pcard__reco-title">こんな人におすすめ！</p>
+            <!-- 要確認: おすすめの対象（オンライン）。勝手に書かない -->
+            <p class="pcard__reco-text note">※ 確認中です。</p>
           </div>
         </li>
+
+        <li class="pcard">
+          <p class="pcard__head"><span class="pcard__num">03</span><span class="pcard__title">体験レッスン</span></p>
+
+          <!-- ⚠️ 差し替え必須: 写真が未定のためプレースホルダ枠のみ -->
+          <div class="pcard__media pcard__media--empty">
+            <p class="note">写真は差し替え予定</p>
+          </div>
+
+          <!-- 要確認: 体験レッスンの有無・時間・料金（正本では未確定。無料と書かないこと） -->
+          <p class="pcard__text">体験レッスンのご用意については確認中です。ご相談は随時お受けしています。</p>
+
+          <!-- 要確認: 体験レッスンの内容（✓の特徴3点）。確定するまで空欄のまま -->
+          <ul class="pcard__feats"></ul>
+
+          <div class="pcard__price">
+            <p class="pcard__price-title">料金</p>
+            <dl class="pcard__row">
+              <dt>—</dt>
+              <dd>—</dd>
+            </dl>
+            <p class="note">※ 実施の有無を確認中です。</p>
+          </div>
+
+          <div class="pcard__reco">
+            <p class="pcard__reco-title">こんな人におすすめ！</p>
+            <!-- 要確認: おすすめの対象（体験レッスン）。勝手に書かない -->
+            <p class="pcard__reco-text note">※ 確認中です。</p>
+          </div>
+        </li>
+
       </ul>
 
       <!-- 要確認: 入会金・回数券の有無と金額（正本では未確定） -->

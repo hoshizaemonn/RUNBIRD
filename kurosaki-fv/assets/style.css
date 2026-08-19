@@ -225,156 +225,6 @@ button {
 .site-nav__list a:hover,
 .site-nav__list a:focus-visible { color: var(--c-cta); }
 
-/* ------------------------------------------------------------
-   4. ファーストビュー
-   ------------------------------------------------------------ */
-.page-top-fv {
-  /* 帯の左伸ばし（::before）を閉じ込める。clip 非対応ブラウザは hidden にフォールバック。
-     ※ sticky ヘッダーの祖先には overflow を掛けないこと（sticky が効かなくなるため）。 */
-  overflow: hidden;
-  overflow: clip;
-  padding-block: 28px var(--sp-section-sp);
-  background-color: var(--c-base);
-}
-
-.page-top-fv__inner {
-  display: grid;
-  gap: 32px;
-  width: 100%;
-  max-width: var(--wrap);
-  margin-inline: auto;
-  padding-inline: 20px;
-}
-
-/* --- 帯コピー2本（左端から伸びる帯） --- */
-.fv-ribbons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 24px;
-}
-
-.fv-ribbon {
-  position: relative;
-  padding: 6px 20px 6px 0;
-  font-family: var(--f-sans);
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.6;
-  letter-spacing: .02em;
-  color: var(--c-white);
-  background-color: var(--c-deep);
-}
-.fv-ribbon::before {
-  content: "";
-  position: absolute;
-  right: 100%;
-  top: 0;
-  bottom: 0;
-  width: 100vw;
-  background-color: var(--c-deep);
-}
-
-/* --- 見出し --- */
-.fv-eyebrow {
-  margin-bottom: 10px;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.7;
-  letter-spacing: .06em;
-  color: var(--c-ink-sub);
-  word-break: auto-phrase;
-}
-
-.fv-title {
-  font-family: var(--f-serif);
-  font-size: clamp(44px, 12vw, 58px);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: .06em;
-  color: var(--c-deep);
-  overflow-wrap: anywhere;
-}
-
-.fv-lead {
-  margin-top: 16px;
-  font-size: var(--fs-body-sp);
-  line-height: var(--lh-body);
-  color: var(--c-ink);
-  word-break: auto-phrase;
-}
-
-/* --- 信頼バッジ3つ（数字は載せない） --- */
-.fv-badges {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 28px;
-}
-
-.fv-badge {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 4px 10px;
-  padding: 12px 16px;
-  border: 1px solid var(--c-main);
-  border-radius: 4px;
-  background-color: var(--c-white);
-  color: var(--c-deep);
-}
-
-.fv-badge__main {
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-.fv-badge__sub {
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--c-ink-sub);
-}
-
-/* --- FV写真 --- */
-.page-top-fv__media { min-width: 0; }
-
-.page-top-fv__media img {
-  width: 100%;
-  border-radius: 8px;
-  aspect-ratio: 45 / 32;
-  object-fit: cover;
-}
-
-/* ------------------------------------------------------------
-   5. FV下・サブ帯
-   ------------------------------------------------------------ */
-.fv-subband {
-  /* #03: 毎日中国語のFV下の帯に寄せて濃い面に（白文字 6.87:1） */
-  background-color: var(--c-deep);
-}
-
-.fv-subband__inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  width: 100%;
-  max-width: var(--wrap);
-  margin-inline: auto;
-  padding: 24px 20px;
-  text-align: center;
-}
-
-.fv-subband__text {
-  font-size: var(--fs-body-sp);
-  font-weight: 700;
-  line-height: 1.8;
-  color: var(--c-white);
-  word-break: auto-phrase;
-}
-
 /* ############################################################
    ★ 共通パーツ（指示書#02 §2）
    以降のセクションは、原則このクラスの組み合わせだけで組むこと。
@@ -426,14 +276,7 @@ button {
   word-break: auto-phrase;
 }
 /* 見出しの中で強調したいキーワードだけ色を変える（毎日中国語の型） */
-.sec-head__ja .kw {
-  color: var(--c-deep);
-  /* 黒×深緑では色差が弱いため、毎日中国語と同じくキーワードにマーカーを重ねて差を出す */
-  background: linear-gradient(transparent 66%, var(--c-marker) 66%);
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  padding-inline: .06em;
-}
+.sec-head__ja .kw { color: var(--c-deep); }
 .sec-head__ja .br { display: block; }
 .sec-head__lead {
   margin-top: 14px;
@@ -817,16 +660,6 @@ button {
 
   .site-header__cta { font-size: 14px; padding: 8px 16px; }
 
-  .fv-badges { grid-template-columns: repeat(3, 1fr); }
-
-  .fv-badge {
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    padding: 14px 8px;
-    text-align: center;
-  }
-
   .grid--2,
   .grid--3,
   .grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -846,28 +679,6 @@ button {
   .site-header__logo { font-size: 20px; }
 
   .site-nav__list a { font-size: var(--fs-body); }
-
-  .page-top-fv { padding-block: 40px 72px; }
-  .page-top-fv__inner { gap: 40px; padding-inline: 32px; }
-
-  .fv-ribbon { font-size: 17px; padding: 8px 28px 8px 0; }
-  .fv-eyebrow { font-size: 15px; }
-  .fv-title { font-size: 64px; }
-  .fv-lead { font-size: var(--fs-body); }
-
-  .fv-badge__main { font-size: 16px; }
-  .fv-badge__sub  { font-size: 14px; }
-
-  .page-top-fv__media img { aspect-ratio: 16 / 9; }
-
-  .fv-subband__inner {
-    flex-direction: row;
-    justify-content: center;
-    gap: 24px;
-    padding: 28px 32px;
-    text-align: left;
-  }
-  .fv-subband__text { font-size: var(--fs-body); }
   .btn { min-height: 56px; font-size: 16px; padding: 14px 28px; }
   .btn--lg { font-size: 17px; }
   .site-header__cta { min-height: 44px; font-size: 14px; padding: 10px 18px; }
@@ -945,28 +756,6 @@ button {
     white-space: nowrap;
   }
 
-  /* --- FV 2カラム --- */
-  .page-top-fv { padding-block: 56px var(--sp-section); }
-
-  .page-top-fv__inner {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    align-items: center;
-    gap: 56px;
-    padding-inline: 40px;
-  }
-
-  .fv-ribbons { gap: 10px; margin-bottom: 32px; }
-  .fv-ribbon { font-size: 18px; }
-
-  .fv-title { font-size: clamp(56px, 5.4vw, 84px); }
-  .fv-lead { margin-top: 20px; }
-
-  .fv-badges { gap: 12px; margin-top: 36px; }
-
-  .page-top-fv__media img { aspect-ratio: 4 / 5; }
-
-  .fv-subband__inner { gap: 32px; padding: 32px 40px; }
-
   /* --- 共通パーツ（PC） --- */
   .sec { padding-block: var(--sp-section); }
   .sec__inner { padding-inline: 40px; }
@@ -995,7 +784,6 @@ button {
 @media (min-width: 1280px) {
   .site-nav__list { gap: 26px; }
   .site-nav__list a { font-size: 16px; }
-  .page-top-fv__inner { gap: 72px; padding-inline: 20px; }
   .sec__inner,
   .page-head__inner,
   .site-footer__inner { padding-inline: 20px; }
@@ -1088,16 +876,7 @@ button {
   gap: 18px;
   margin-bottom: 36px;
 }
-.voice {
-  display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
-  align-items: center;
-  gap: 14px;
-}
-.picto {
-  width: 72px;
-  height: 86px;
-}
+.voice { display: block; }
 .bubble {
   position: relative;
   padding: 14px 18px;
@@ -1122,14 +901,16 @@ button {
   border-style: solid;
 }
 .bubble::before {
-  left: -11px;
-  border-width: 8px 11px 8px 0;
-  border-color: transparent var(--c-line) transparent transparent;
+  top: 100%;
+  left: 28px;
+  border-width: 11px 10px 0 10px;
+  border-color: var(--c-line) transparent transparent transparent;
 }
 .bubble::after {
-  left: -10px;
-  border-width: 8px 11px 8px 0;
-  border-color: transparent var(--c-white) transparent transparent;
+  top: calc(100% - 1px);
+  left: 29px;
+  border-width: 10px 9px 0 9px;
+  border-color: var(--c-white) transparent transparent transparent;
 }
 
 /* ------------------------------------------------------------
@@ -1250,28 +1031,14 @@ button {
     gap: 10px;
   }
   .bubble { width: 100%; text-align: center; font-size: 14px; }
-  /* 縦並びになるのでしっぽは上向きに付け替える */
-  .bubble::before,
-  .bubble::after { top: auto; left: 50%; }
-  .bubble::before {
-    bottom: 100%;
-    margin-left: -11px;
-    border-width: 0 11px 11px 11px;
-    border-color: transparent transparent var(--c-line) transparent;
-  }
-  .bubble::after {
-    bottom: calc(100% - 1px);
-    margin-left: -10px;
-    border-width: 0 10px 10px 10px;
-    border-color: transparent transparent var(--c-white) transparent;
-  }
+  .bubble::before { left: 50%; margin-left: -10px; }
+  .bubble::after { left: 50%; margin-left: -9px; }
 }
 
 @media (min-width: 768px) {
   .keybox { font-size: 16px; min-height: 68px; }
   .num--xl { font-size: 60px; }
   .numhead { gap: 16px; }
-  .picto { width: 88px; height: 104px; }
   .bubble { font-size: 15px; padding: 16px 18px; }
   .figbar { padding: 28px; gap: 24px; }
   .figbar__title { font-size: 17px; }
@@ -1300,3 +1067,445 @@ button {
   .keyboxes--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 .media-frame--sm { max-width: 380px; margin-inline: auto; }
+
+/* ############################################################
+   ★ #04-A ファーストビュー（毎日中国語型・色面で見せる）
+   背景 = --c-deep のベタ ＋ 写真を沈めて敷く
+   白文字を載せてよいのは --c-deep / --c-ink-deep / --c-cta の上だけ
+   ############################################################ */
+.fv {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--c-deep);
+  padding-block: 40px 44px;
+}
+
+/* --- 背景写真（右寄せ）＋深緑のベール --- */
+.fv__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+.fv__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* SP：顔が切れないよう上寄せ。PCは右半分に寄せる（下のメディアクエリ） */
+  object-position: 50% 20%;
+}
+/* 深緑のベール（写真は"気配"として見える程度まで沈める） */
+.fv__veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--c-deep);
+  opacity: .86;
+}
+/* 文字が乗る側をさらに沈めて、白文字のコントラストを確保する。
+   SPは縦方向（写真は上部＝顔まわりだけ気配として残す）、PCは左方向。 */
+.fv__veil::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, transparent 0%, var(--c-ink-deep) 60%);
+  opacity: .6;
+}
+
+.fv__inner {
+  position: relative;
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* --- 帯①②：左端は画面外から。右端を斜めにカット --- */
+.fv-ribbons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 26px;
+}
+.fv-ribbon {
+  display: inline-block;
+  /* 左は画面外まで伸ばす（.fv の overflow:hidden で切る） */
+  margin-left: -1000px;
+  padding: 7px 34px 7px 1000px;
+  background-color: var(--c-ink-deep);
+  color: var(--c-white);
+  font-family: var(--f-sans);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: .02em;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+}
+
+/* --- 小見出し・屋号・リード --- */
+.fv-eyebrow {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+  letter-spacing: .06em;
+  color: var(--c-white);
+  word-break: auto-phrase;
+}
+.fv-title {
+  font-family: var(--f-serif);
+  font-size: clamp(46px, 13vw, 60px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .06em;
+  color: var(--c-white);
+  text-shadow: var(--shadow-title);
+  overflow-wrap: anywhere;
+}
+.fv-lead {
+  margin-top: 14px;
+  font-size: var(--fs-body-sp);
+  font-weight: 500;
+  line-height: var(--lh-body);
+  color: var(--c-white);
+  word-break: auto-phrase;
+}
+
+/* --- バッジ3つ（白面＋--c-main の枠＋--c-deep の文字。数字・％は入れない） --- */
+.fv-badges {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 26px;
+}
+.fv-badge {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px 10px;
+  padding: 12px 14px;
+  border: 2px solid var(--c-main);
+  border-radius: 6px;
+  background-color: var(--c-white);
+  color: var(--c-deep);
+  text-align: center;
+}
+.fv-badge__main {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+.fv-badge__sub {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--c-cta);
+}
+
+/* --- 帯③④：白面＋濃い文字で、深緑から浮かせる --- */
+.fv-strips {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 30px;
+}
+.fv-strip {
+  padding: 9px 18px;
+  border-radius: 3px;
+  background-color: var(--c-base);
+  color: var(--c-deep);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.6;
+  letter-spacing: .01em;
+  word-break: auto-phrase;
+}
+.fv-cta { margin-top: 22px; }
+.fv-cta .btn { width: 100%; max-width: 420px; }
+
+.fv-note {
+  margin-top: 14px;
+  font-size: 12px;
+  line-height: 1.7;
+  /* 濃色背景の上なので白。--c-tint-str だと小さい文字で 4.5:1 を割るため */
+  color: var(--c-white);
+}
+
+@media (min-width: 560px) {
+  /* バッジは白い円（毎日中国語の丸メダルの位置。金色は使わない） */
+  .fv-badges {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .fv-badge {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    width: 100%;
+    max-width: 176px;
+    margin-inline: auto;
+    padding: 10px;
+    border-radius: 50%;
+  }
+  .fv-cta .btn { width: auto; min-width: 320px; }
+}
+
+@media (min-width: 768px) {
+  .fv { padding-block: 56px 60px; }
+  .fv__inner { padding-inline: 32px; }
+  /* PCは写真を右側だけに敷き、左端はぼかして深緑へ溶かす */
+  .fv__bg { left: auto; width: 64%; }
+  .fv__bg img { object-position: 50% 26%; }
+  .fv__bg {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, var(--c-deep) 38%);
+    mask-image: linear-gradient(to right, transparent 0%, var(--c-deep) 38%);
+  }
+  .fv__veil::after {
+    background-image: linear-gradient(100deg, var(--c-ink-deep) 0%, transparent 62%);
+    opacity: .85;
+  }
+
+  .fv-ribbons { gap: 10px; margin-bottom: 32px; }
+  .fv-ribbon {
+    font-size: 21px;
+    padding: 10px 46px 10px 1000px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 22px) 100%, 0 100%);
+  }
+  .fv-eyebrow { font-size: 15px; }
+  .fv-title { font-size: 92px; }
+  .fv-lead { font-size: var(--fs-body); }
+
+  .fv-badges { max-width: 620px; }
+  .fv-badge__main { font-size: 16px; }
+  .fv-badge__sub { font-size: 13px; }
+
+  .fv-strips { flex-direction: row; flex-wrap: wrap; }
+  .fv-strip { font-size: 15px; padding: 11px 22px; }
+}
+
+@media (min-width: 1024px) {
+  .fv { padding-block: 72px 76px; }
+  .fv__inner { padding-inline: 40px; }
+  .fv-title { font-size: 104px; }
+  .fv-badges { margin-top: 34px; }
+}
+
+@media (min-width: 1280px) {
+  .fv__inner { padding-inline: 20px; }
+}
+
+/* ############################################################
+   ★ #04-B コース・料金カード（中国北京語学教室型）
+   カード面は淡い黄緑（--c-tint）、中の箱は白で抜く
+   ############################################################ */
+.pcard {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  padding: 18px;
+  border-radius: 10px;
+  background-color: var(--c-tint);
+}
+
+.pcard__head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.pcard__num {
+  flex: 0 0 auto;
+  font-family: var(--f-sans);
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: .02em;
+  color: var(--c-main);
+}
+.pcard__title {
+  font-family: var(--f-sans);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.5;
+  letter-spacing: .01em;
+  color: var(--c-deep);
+  text-wrap: balance;
+  word-break: auto-phrase;
+}
+
+.pcard__media {
+  aspect-ratio: 3 / 2;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--c-white);
+}
+.pcard__media img { width: 100%; height: 100%; object-fit: cover; }
+.pcard__media--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border: 1px dashed var(--c-line);
+  text-align: center;
+}
+/* 写真直下の仮画像注記は詰める */
+.pcard .temp-note { margin-top: -8px; text-align: left; }
+
+.pcard__text {
+  font-size: var(--fs-body-sp);
+  line-height: var(--lh-body);
+  color: var(--c-ink);
+  text-wrap: pretty;
+}
+
+/* ✓ の特徴（中身が空のときは何も出さない） */
+.pcard__feats { display: grid; gap: 6px; }
+.pcard__feats:empty { display: none; }
+.pcard__feats li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--c-deep);
+  word-break: auto-phrase;
+}
+.pcard__feats li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: .45em;
+  width: 12px;
+  height: 6px;
+  border-left: 2px solid var(--c-cta);
+  border-bottom: 2px solid var(--c-cta);
+  transform: rotate(-45deg);
+}
+
+.pcard__price {
+  padding: 12px 14px;
+  border-radius: 6px;
+  background-color: var(--c-white);
+}
+.pcard__price-title {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.6;
+  color: var(--c-ink-sub);
+}
+.pcard__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--c-line);
+}
+.pcard__row dt {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--c-ink);
+}
+.pcard__row dd {
+  flex: 0 0 auto;
+  font-family: var(--f-sans);
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--c-deep);
+  white-space: nowrap;
+}
+.pcard__price .note { margin-top: 6px; }
+
+/* 「こんな人におすすめ！」はカード下端に固定して高さを揃える */
+.pcard__reco {
+  margin-top: auto;
+  padding: 12px 14px;
+  border: 1px solid var(--c-main);
+  border-radius: 6px;
+  background-color: var(--c-white);
+}
+.pcard__reco-title {
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.6;
+  color: var(--c-cta);
+}
+.pcard__reco-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--c-ink);
+  word-break: auto-phrase;
+}
+
+@media (min-width: 768px) {
+  .pcard { padding: 22px; gap: 16px; }
+  .pcard__num { font-size: 28px; }
+  .pcard__title { font-size: 19px; }
+  .pcard__text { font-size: var(--fs-body); }
+  .pcard__row dd { font-size: 22px; }
+}
+
+
+/* ############################################################
+   ★ #04-C 支給イラスト（フラットな線画・文字は入っていない）
+   ラベルが要るときは必ずHTMLテキストで載せる（画像に焼き込まない）
+   ############################################################ */
+.illust {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  margin-inline: auto;
+  mix-blend-mode: multiply;   /* 白背景のPNGを面の色になじませる */
+}
+
+/* 濃色面（04）の上に置くイラストは白いパネルに載せる */
+.illust-panel {
+  max-width: 420px;
+  margin: 0 auto 24px;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: var(--c-white);
+}
+.illust-panel img { width: 100%; height: auto; }
+
+/* 見出しの横にイラストを置く（06） */
+.headfig {
+  display: grid;
+  justify-items: center;
+  margin-bottom: 32px;
+}
+.headfig__img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  mix-blend-mode: multiply;
+}
+.headfig .sec-head { margin-bottom: 0; }
+
+@media (min-width: 768px) {
+  .illust { max-width: 300px; }
+  .headfig {
+    grid-template-columns: auto auto;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 44px;
+  }
+  .headfig__img { max-width: 230px; }
+  .headfig .sec-head { text-align: left; }
+}
+
+/* FVのCTA：バッジ・帯がすべて白い箱のため、CTAだけ塗りに変えて主役を立てる
+   （濃色背景の上なので白い縁取りを添えて浮かせる） */
+.btn--onDark {
+  border-color: var(--c-white);
+  box-shadow: var(--shadow-pop);
+}
