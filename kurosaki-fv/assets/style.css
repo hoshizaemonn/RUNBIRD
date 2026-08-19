@@ -2177,3 +2177,165 @@ button {
   .step__title { font-size: 21px; }
   .step__text { font-size: 17px; }
 }
+
+/* =================================================================
+   #10 学べる内容 = 毎日中国語「万全なサポート体制」型の2列一覧  2026-08-19
+   ・見出し → その下にイラスト（左）＋説明文（右）
+   ・項目ごとに横罫で区切る。PCは2列＋列の間に縦罫
+   ・写真は使わない（この案件は素材が10点までのため、ここは既存のSVGアイコンで持たせる）
+   ================================================================= */
+.learns { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+
+.learn {
+  padding: 26px 0;
+  border-bottom: 1px solid var(--c-tint-str);
+}
+.learns > .learn:first-child { border-top: 1px solid var(--c-tint-str); }
+
+.learn__title {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-ink-deep);
+}
+
+.learn__body {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.learn__icon {
+  width: 64px;
+  height: 64px;
+  /* symbol 側が stroke="currentColor" なので、色は color で渡す（stroke指定では効かない） */
+  color: var(--c-cta);
+  flex: none;
+}
+
+.learn__text { margin: 0; line-height: 1.9; }
+
+@media (min-width: 768px) {
+  .learns {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 56px;
+  }
+  /* PCは1・2番目の両方に上罫を出す（1列目だけ線が付くのを防ぐ） */
+  .learns > .learn:nth-child(2) { border-top: 1px solid var(--c-tint-str); }
+  .learn { padding: 32px 0; }
+  .learn__title { font-size: 22px; }
+  .learn__icon { width: 84px; height: 84px; }
+  .learn__text { font-size: 16px; }
+}
+
+@media (min-width: 1024px) {
+  .learns { column-gap: 72px; }
+  .learn__icon { width: 96px; height: 96px; }
+}
+
+/* =================================================================
+   #11 一般的な語学スクールとの違い = 左右の対比カード  2026-08-19
+   ・表だと「情報の一覧」にしか見えないので、左右で温度差をつけて読ませる
+   ・左（他社）は沈めた面＋グレーの×、右（当教室）は白く浮かせて緑の◯
+   ・SPでは縦積みになり、間の「VS」が横罫の上に乗る
+   ================================================================= */
+.vs {
+  display: grid;
+  gap: 14px;
+  align-items: start;
+}
+
+.vs__col {
+  padding: 26px 22px 28px;
+  display: grid;
+  gap: 18px;
+}
+.vs__col--other {
+  background: var(--c-shade);
+  color: var(--c-ink);
+  /* 右カードの4px緑ラインと同じ厚みを透明で確保し、左右の行を1pxもずらさない */
+  border-top: 4px solid transparent;
+}
+.vs__col--ours {
+  background: #fff;
+  box-shadow: var(--shadow-pop);
+  border-top: 4px solid var(--c-cta);
+}
+
+.vs__head {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+.vs__mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+}
+.vs__mark--x { background: var(--c-tint-str); color: #6B7360; }
+.vs__mark--o { background: var(--c-cta); color: #fff; }
+
+.vs__name { font-size: 19px; font-weight: 700; }
+.vs__col--ours .vs__name { color: var(--c-deep); }
+
+.vs__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.vs__item {
+  display: grid;
+  gap: 4px;
+  padding: 14px 0;
+  border-top: 1px solid var(--c-tint-str);
+}
+.vs__key { font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--c-cta); }
+.vs__val { line-height: 1.8; }
+.vs__col--ours .vs__val { font-weight: 700; }
+
+.vs__sep {
+  margin: 0;
+  justify-self: center;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  color: var(--c-cta);
+  background: var(--c-base);
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--c-tint-str);
+}
+
+.vs__note {
+  margin: 26px 0 0;
+  text-align: center;
+  line-height: 1.9;
+  color: var(--c-ink);
+}
+
+@media (min-width: 768px) {
+  .vs {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    gap: 0;
+    align-items: stretch;
+  }
+  .vs__col { padding: 34px 32px 38px; }
+  /* 右（当教室）は持ち上げない。ずらすと左右の行が揃わず、比較として読みにくくなる。
+     主役であることは影・上の緑ライン・太字で出す */
+  .vs__sep { align-self: center; margin: 0 -27px; z-index: 1; position: relative; }
+  .vs__name { font-size: 21px; }
+  .vs__mark { width: 42px; height: 42px; font-size: 22px; }
+  .vs__val { font-size: 16px; }
+}
+
+@media (min-width: 1024px) {
+  .vs__col { padding: 40px 40px 44px; }
+
+}

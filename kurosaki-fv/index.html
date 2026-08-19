@@ -407,63 +407,76 @@
         <p class="sec-head__lead">どちらが良い・悪いではなく、向き不向きがあります。</p>
       </div>
 
-      <table class="table table--stack">
-        <thead>
-          <tr>
-            <th scope="col">項目</th>
-            <th scope="col">一般的な語学スクール</th>
-            <th scope="col"><span data-shop-name>当教室</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">レッスン形態</th>
-            <td data-label="一般的な語学スクール">グループレッスンが中心のことが多い</td>
-            <td data-shop-label>完全マンツーマン（1対1）</td>
-          </tr>
-          <tr>
-            <th scope="row">担当講師</th>
-            <td data-label="一般的な語学スクール">クラスや時期によって交代することがある</td>
-            <td data-shop-label>同じ講師が最後まで担当</td>
-          </tr>
-          <tr>
-            <th scope="row">進むペース</th>
-            <td data-label="一般的な語学スクール">クラス全体のペースに合わせる</td>
-            <td data-shop-label>ご本人の理解に合わせて調整</td>
-          </tr>
-          <tr>
-            <th scope="row">質問のしやすさ</th>
-            <td data-label="一般的な語学スクール">他の受講生がいると聞きづらいことがある</td>
-            <td data-shop-label>その場ですぐに質問できる</td>
-          </tr>
-          <tr>
-            <th scope="row">つまずきへの対応</th>
-            <td data-label="一般的な語学スクール">全体に向けた説明が中心になりやすい</td>
-            <td data-shop-label>日本人がつまずきやすい点に沿って説明</td>
-          </tr>
-        </tbody>
-      </table>
+      <!-- #11：3列の比較表をやめ、左右の対比カードに変更（鈴木さん指示・2026-08-19）。
+           ・左＝一般的な語学スクール（沈んだ面・×）／右＝当教室（白く浮かせる・◯）
+           ・棒グラフ（figbar）は削除。「自分が話している時間のイメージ」は
+             実測値がなく比率を作文することになるため（会社ルール：数字を創作しない）
+           ・項目・文言は表のときから変えていない -->
+      <div class="vs">
 
-      <!-- 2-7 図解：1レッスンの中で「自分が話している」時間のイメージ。
-           図はイメージであり実測値ではない。数値・％は入れないこと。 -->
-      <div class="figbar">
-        <p class="figbar__title">1レッスンの中で「自分が話している」時間のイメージ</p>
-        <div>
-          <p class="figbar__label">一般的な語学スクール</p>
-          <div class="figbar__track" role="img" aria-label="一般的な語学スクールでは、話す時間を受講生の人数で分け合うイメージ">
-            <span class="figbar__fill figbar__fill--sub"></span>
-          </div>
-          <p class="figbar__cap">グループ＝人数で分け合う</p>
+        <div class="vs__col vs__col--other">
+          <p class="vs__head">
+            <span class="vs__mark vs__mark--x" aria-hidden="true">×</span>
+            <span class="vs__name">一般的な語学スクール</span>
+          </p>
+          <ul class="vs__list">
+            <li class="vs__item">
+              <span class="vs__key">レッスン形態</span>
+              <span class="vs__val">グループレッスンが中心のことが多い</span>
+            </li>
+            <li class="vs__item">
+              <span class="vs__key">担当講師</span>
+              <span class="vs__val">クラスや時期によって交代することがある</span>
+            </li>
+            <li class="vs__item">
+              <span class="vs__key">進むペース</span>
+              <span class="vs__val">クラス全体のペースに合わせる</span>
+            </li>
+            <li class="vs__item">
+              <span class="vs__key">質問のしやすさ</span>
+              <span class="vs__val">他の受講生がいると聞きづらいことがある</span>
+            </li>
+            <li class="vs__item">
+              <span class="vs__key">つまずきへの対応</span>
+              <span class="vs__val">全体に向けた説明が中心になりやすい</span>
+            </li>
+          </ul>
         </div>
-        <div>
-          <p class="figbar__label"><span data-shop-name>当教室</span></p>
-          <div class="figbar__track" role="img" aria-label="当教室では、60分すべてが自分の時間になるイメージ">
-            <span class="figbar__fill figbar__fill--main"></span>
-          </div>
-          <p class="figbar__cap">1対1＝60分すべて</p>
+
+        <p class="vs__sep" aria-hidden="true">VS</p>
+
+        <div class="vs__col vs__col--ours">
+          <p class="vs__head">
+            <span class="vs__mark vs__mark--o" aria-hidden="true">◯</span>
+            <span class="vs__name" data-shop-name>当教室</span>
+          </p>
+          <ul class="vs__list">
+            <li class="vs__item">
+              <span class="vs__key">レッスン形態</span>
+              <span class="vs__val">完全マンツーマン（1対1）</span>
+            </li>
+            <li class="vs__item">
+              <span class="vs__key">担当講師</span>
+              <span class="vs__val">同じ講師が最後まで担当</span>
+            </li>
+            <li class="vs__item">
+              <span class="vs__key">進むペース</span>
+              <span class="vs__val">ご本人の理解に合わせて調整</span>
+            </li>
+            <li class="vs__item">
+              <span class="vs__key">質問のしやすさ</span>
+              <span class="vs__val">その場ですぐに質問できる</span>
+            </li>
+            <li class="vs__item">
+              <span class="vs__key">つまずきへの対応</span>
+              <span class="vs__val">日本人がつまずきやすい点に沿って説明</span>
+            </li>
+          </ul>
         </div>
-        <p class="note center">※ この図はイメージです。実測値ではありません。</p>
+
       </div>
+
+      <p class="vs__note">どちらにも向き不向きがあります。仲間と一緒に続けたい方には、グループレッスンのほうが合うこともあります。</p>
     </div>
   </section>
 
@@ -477,38 +490,60 @@
         <p class="sec-head__lead">目的に合わせて組み立てます。「これだけやりたい」でも大丈夫です。</p>
       </div>
 
-      <ul class="grid grid--6">
-        <li class="card card--key center">
-          <svg class="icon" aria-hidden="true"><use href="#ico-pronounce"></use></svg>
-          <h3 class="card__title">発音・ピンイン</h3>
-          <p class="card__text">声調から、ひとつずつ。</p>
+      <!-- #10：毎日中国語「万全なサポート体制」と同じ2列レイアウト。
+           見出し → その下にイラスト（左）＋説明文（右）、項目ごとに横罫で区切る。
+           6枚のアイコンカードから変更（鈴木さん指示・2026-08-19）。
+           説明文は1対1・初級〜上級という共有シートの事実の範囲で書いており、
+           対応可否が未確定の項目（ビジネス・検定）は下の※で断り書きを残している -->
+      <ul class="learns">
+        <li class="learn">
+          <h3 class="learn__title">発音・ピンイン</h3>
+          <div class="learn__body">
+            <svg class="learn__icon" aria-hidden="true"><use href="#ico-pronounce"></use></svg>
+            <p class="learn__text">まずは声調から、ひとつずつ音を確かめます。自分の耳だけでは判断しづらいところを、その場で聞いて直せるのがマンツーマンの強みです。</p>
+          </div>
         </li>
-        <li class="card card--key center">
-          <svg class="icon" aria-hidden="true"><use href="#ico-daily"></use></svg>
-          <h3 class="card__title">日常会話</h3>
-          <p class="card__text">あいさつから会話まで。</p>
+
+        <li class="learn">
+          <h3 class="learn__title">日常会話</h3>
+          <div class="learn__body">
+            <svg class="learn__icon" aria-hidden="true"><use href="#ico-daily"></use></svg>
+            <p class="learn__text">あいさつや自己紹介から始めて、少しずつ話せる場面を増やしていきます。決まった台本をなぞるのではなく、ご自身が言いたいことから組み立てます。</p>
+          </div>
         </li>
-        <li class="card card--key center">
-          <svg class="icon" aria-hidden="true"><use href="#ico-travel"></use></svg>
-          <h3 class="card__title">旅行中国語</h3>
-          <p class="card__text">現地で使える言い回し。</p>
+
+        <li class="learn">
+          <h3 class="learn__title">旅行中国語</h3>
+          <div class="learn__body">
+            <svg class="learn__icon" aria-hidden="true"><use href="#ico-travel"></use></svg>
+            <p class="learn__text">空港・ホテル・買い物・食事など、旅先で実際に使う言い回しに絞って練習します。行き先が決まっている場合は、その土地の言い方に寄せることもできます。</p>
+          </div>
         </li>
-        <li class="card card--key center">
+
+        <li class="learn">
           <!-- 要確認: ビジネス中国語に対応するか（未ヒアリング） -->
-          <svg class="icon" aria-hidden="true"><use href="#ico-business"></use></svg>
-          <h3 class="card__title">ビジネス中国語</h3>
-          <p class="card__text">仕事で使う場面から。</p>
+          <h3 class="learn__title">ビジネス中国語</h3>
+          <div class="learn__body">
+            <svg class="learn__icon" aria-hidden="true"><use href="#ico-business"></use></svg>
+            <p class="learn__text">商談やあいさつ、来客対応など、お仕事で必要な場面からお伺いします。使う相手や場面が決まっているほど、練習の的を絞りやすくなります。</p>
+          </div>
         </li>
-        <li class="card card--key center">
+
+        <li class="learn">
           <!-- 要確認: HSK・中国語検定の対策に対応するか（未ヒアリング） -->
-          <svg class="icon" aria-hidden="true"><use href="#ico-exam"></use></svg>
-          <h3 class="card__title">HSK・中検対策</h3>
-          <p class="card__text">レベルに合わせた準備。</p>
+          <h3 class="learn__title">HSK・中検対策</h3>
+          <div class="learn__body">
+            <svg class="learn__icon" aria-hidden="true"><use href="#ico-exam"></use></svg>
+            <p class="learn__text">目標の級と試験日をお聞きして、いま足りていないところから順に進めます。過去問を解くだけでなく、間違えた理由まで一緒に確認します。</p>
+          </div>
         </li>
-        <li class="card card--key center">
-          <svg class="icon" aria-hidden="true"><use href="#ico-grammar"></use></svg>
-          <h3 class="card__title">文法のやり直し</h3>
-          <p class="card__text">つまずいた所まで戻って。</p>
+
+        <li class="learn">
+          <h3 class="learn__title">文法のやり直し</h3>
+          <div class="learn__body">
+            <svg class="learn__icon" aria-hidden="true"><use href="#ico-grammar"></use></svg>
+            <p class="learn__text">「どこかで分からなくなった」という方は、つまずいた所まで戻ってやり直せます。先に進むより、抜けているところを埋めるほうが結果的に早く進みます。</p>
+          </div>
         </li>
       </ul>
 
@@ -526,28 +561,52 @@
         <p class="sec-head__lead">組み立ては、ご希望と理解度に合わせて調整します。</p>
       </div>
 
-      <ul class="grid grid--4">
-        <li class="card">
-          <div class="card__head"><span class="num">01</span></div>
-          <h3 class="card__title">前回の復習</h3>
-          <p class="card__text">前回やったところを声に出して確認します。</p>
+      <!-- #10：ご利用の流れと同じSTEPブロックに統一（鈴木さん指示・2026-08-19）。文言は変えていない -->
+      <ol class="steps">
+        <li class="step">
+          <div class="step__badge">
+            <p class="step__label"><span class="step__en">STEP</span><span class="step__num">1</span></p>
+            <svg class="step__icon" aria-hidden="true"><use href="#ico-pronounce"></use></svg>
+          </div>
+          <div class="step__body">
+            <h3 class="step__title">前回の復習</h3>
+            <p class="step__text">前回やったところを声に出して確認します。</p>
+          </div>
         </li>
-        <li class="card">
-          <div class="card__head"><span class="num">02</span></div>
-          <h3 class="card__title">新しい内容</h3>
-          <p class="card__text">その日のテーマを、例文と一緒に進めます。</p>
+
+        <li class="step">
+          <div class="step__badge">
+            <p class="step__label"><span class="step__en">STEP</span><span class="step__num">2</span></p>
+            <svg class="step__icon" aria-hidden="true"><use href="#ico-grammar"></use></svg>
+          </div>
+          <div class="step__body">
+            <h3 class="step__title">新しい内容</h3>
+            <p class="step__text">その日のテーマを、例文と一緒に進めます。</p>
+          </div>
         </li>
-        <li class="card">
-          <div class="card__head"><span class="num">03</span></div>
-          <h3 class="card__title">発音の確認</h3>
-          <p class="card__text">気になる音をその場で聞いて、直します。</p>
+
+        <li class="step">
+          <div class="step__badge">
+            <p class="step__label"><span class="step__en">STEP</span><span class="step__num">3</span></p>
+            <svg class="step__icon" aria-hidden="true"><use href="#ico-daily"></use></svg>
+          </div>
+          <div class="step__body">
+            <h3 class="step__title">発音の確認</h3>
+            <p class="step__text">気になる音をその場で聞いて、直します。</p>
+          </div>
         </li>
-        <li class="card">
-          <div class="card__head"><span class="num">04</span></div>
-          <h3 class="card__title">次回までの課題</h3>
-          <p class="card__text">無理のない量で、次回までの取り組みを決めます。</p>
+
+        <li class="step">
+          <div class="step__badge">
+            <p class="step__label"><span class="step__en">STEP</span><span class="step__num">4</span></p>
+            <svg class="step__icon" aria-hidden="true"><use href="#ico-pencil"></use></svg>
+          </div>
+          <div class="step__body">
+            <h3 class="step__title">次回までの課題</h3>
+            <p class="step__text">無理のない量で、次回までの取り組みを決めます。</p>
+          </div>
         </li>
-      </ul>
+      </ol>
 
       <!-- 要確認: 実際のレッスンの進め方は未ヒアリング。下記はすべて仮置き -->
       <p class="note note--block center">※ 上記は<strong>仮置き</strong>の構成です。実際の進め方は確認のうえ差し替えます。</p>
