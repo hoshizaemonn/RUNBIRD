@@ -1133,7 +1133,7 @@ button {
   z-index: 0;
   display: inline-block;
   padding: 7px 34px 7px 0;
-  color: var(--c-white);
+  color: var(--c-band);
   font-family: var(--f-sans);
   /* 毎日中国語の実測比 約2.4vw */
   font-size: clamp(17px, 2.4vw, 34px);
@@ -1152,7 +1152,8 @@ button {
   right: 0;
   top: 0;
   bottom: 0;
-  background-color: var(--c-ink-deep);
+  /* 鈴木さん確認：帯は白でよい（濃緑背景の上で最も読める） */
+  background-color: var(--c-base);
   clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
 }
 
@@ -1298,7 +1299,7 @@ button {
     border: 0;
     border-radius: 0;
     background-color: transparent;
-    background-image: url(../images/badge/badge_frame.png);
+    background-image: url(../images/badge/badge_frame_v2.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -1542,4 +1543,39 @@ button {
   }
   .headfig__img { max-width: 230px; }
   .headfig .sec-head { text-align: left; }
+}
+
+/* 帯の中のキーワードだけ色を変える（毎日中国語の黒帯×黄色文字に相当。
+   こちらは店舗カラーに合わせて淡い黄緑を使う） */
+.fv-ribbon .kw { color: var(--c-cta); }
+
+/* 下段の帯（元・社会科教師／さいたま市岩槻）も、上の帯と同じ
+   「左は画面外から、右端は斜めカット」の形にする。面は白のまま（階層を分けるため）。 */
+.fv-strip {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  padding-right: 34px;
+  padding-left: 0;
+  border-radius: 0;
+  background-color: transparent;
+  white-space: nowrap;
+}
+.fv-strip::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -1000px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: var(--c-base);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+}
+.fv-strips { align-items: flex-start; }
+@media (min-width: 768px) {
+  .fv-strip { padding-right: 46px; padding-left: 0; }
+  .fv-strip::before { clip-path: polygon(0 0, 100% 0, calc(100% - 22px) 100%, 0 100%); }
+  /* 横並びだと画面外から出せないので縦積みにする */
+  .fv-strips { flex-direction: column; flex-wrap: nowrap; }
 }
