@@ -1881,3 +1881,106 @@ button {
   .access-map iframe { height: 580px; }
   .access-card { left: 56px; top: 96px; width: 400px; padding: 36px 34px; }
 }
+
+/* =================================================================
+   #08 「だからこそ、1対1」= 文字だけで止めるバンド（毎日中国語の黄色帯と同じ役割） 2026-08-19
+   ・イラストは削除。強調は色でつける
+   ・--c-band-kw は --c-deep 上で 5.75:1（実測）。白文字 6.87:1 と併用して階層を作る
+   ================================================================= */
+.band-msg { display: grid; gap: 18px; }
+
+.band-msg .band-kw {
+  color: var(--c-band-kw);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.band-msg__lead { margin: 0; font-size: clamp(15px, 2.2vw, 19px); line-height: 1.9; }
+
+.band-msg__main {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.5;
+  font-size: clamp(28px, 6.4vw, 52px);
+}
+
+.band-msg__sub { margin: 0; font-size: clamp(15px, 2.4vw, 21px); line-height: 1.9; }
+
+@media (min-width: 768px) {
+  .band-msg { gap: 22px; }
+}
+
+/* =================================================================
+   #08 当教室について = POINT 1/2/3（毎日中国語と同じ番号ブロック＋右に本文） 2026-08-19
+   ================================================================= */
+.points { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+
+.point {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+  background: #fff;
+  padding: 24px 22px;
+  box-shadow: var(--shadow-card);
+}
+
+.point__badge {
+  margin: 0;
+  background: var(--c-deep);
+  color: #fff;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  width: 84px;
+  min-height: 84px;
+  padding: 10px 6px;
+  line-height: 1.05;
+}
+.point__label { font-size: 13px; font-weight: 700; letter-spacing: .1em; }
+.point__num   { font-size: 40px; font-weight: 700; }
+
+.point__title { margin: 0 0 8px; font-size: 19px; font-weight: 700; color: var(--c-deep); }
+.point__text  { margin: 0; line-height: 1.9; }
+
+@media (min-width: 768px) {
+  .points { gap: 24px; }
+  .point { gap: 28px; padding: 30px 32px; }
+  .point__badge { width: 100px; min-height: 100px; }
+  .point__num { font-size: 48px; }
+  .point__title { font-size: 21px; }
+}
+
+@media (min-width: 1024px) {
+  .point { padding: 34px 38px; }
+  .point__text { font-size: 17px; }
+}
+
+/* =================================================================
+   #08 「こんな方におすすめです」= イラスト → 写真に変更  2026-08-19
+   ・鈴木さん指示（イラストではなく画像にしてほしい）
+   ・写真はカード上端いっぱいに敷く（料金カードと同じ見せ方）
+   ・.card--reco は padding を持つので、写真だけネガティブマージンで端まで出す
+   ================================================================= */
+.card--reco { overflow: hidden; }
+
+.card__photo {
+  margin: -28px -26px 4px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--c-shade);
+}
+.card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .card__photo { margin: -40px -38px 8px; }
+}
+
+/* スマホで「あなたのペースに合わせ／る。」のように1文字だけ行送りされるのを防ぐ */
+.band-msg__lead,
+.band-msg__sub { text-wrap: balance; }
