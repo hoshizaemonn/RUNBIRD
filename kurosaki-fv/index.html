@@ -329,10 +329,6 @@
         </li>
       </ul>
 
-      <!-- ⚠️ 差し替え必須: AI生成の仮画像です。実際の教室の写真に差し替えること。 -->
-      <div class="media-frame media-frame--md mt-md">
-        <img src="images/classroom.jpg" alt="レッスンを行う部屋のイメージ" width="1200" height="800">
-      </div>
     </div>
   </section>
 
@@ -341,44 +337,62 @@
   <!-- すべて共有シート記載の事実。数字・％を足さないこと -->
   <section class="sec sec--shade" id="features">
     <div class="sec__inner">
-      <div class="headfig">
-        <img class="headfig__img" src="images/illust/step_up.png" alt="段階を一歩ずつ上っていくイラスト" width="800" height="600" loading="lazy">
-        <div class="sec-head">
-          <span class="sec-head__en" aria-hidden="true">FEATURES</span>
-          <h2 class="sec-head__ja"><span class="br">選ばれる</span><span class="kw">4つの理由</span></h2>
-        </div>
+      <div class="sec-head">
+        <span class="sec-head__en" aria-hidden="true">FEATURES</span>
+        <h2 class="sec-head__ja"><span class="br">選ばれる</span><span class="kw">4つの理由</span></h2>
       </div>
 
-      <!-- 2-3 太枠キーワードボックス（下のカードの見出しから抜き出した短いキーワード） -->
-      <ul class="keyboxes">
-        <li class="keybox">完全1対1</li>
-        <li class="keybox">日本人講師</li>
-        <li class="keybox">元・社会科教師</li>
-        <li class="keybox">国家資格</li>
-      </ul>
+      <!-- #09：毎日中国語「中国語が上達する5つの理由」と同じ型。
+           大きな数字＋見出し → その下に図解を大きく → 本文。1つ1枚のパネルで縦に積む。
+           ・キーワードボックス（完全1対1／日本人講師…）は見出しと重複するので削除（2026-08-19）
+           ・図解は文字を焼き込まない（会社ルール）。ラベルは見出し側で持つ -->
+      <ol class="reasons">
 
-      <ul class="grid grid--4">
-        <li class="card">
-          <div class="card__head"><span class="num num--xl">01</span></div>
-          <h3 class="card__title">完全1対1の指導</h3>
-          <p class="card__text">1対1なので、細かいところまで見て指導できます。理解のスピードに合わせて進められます。</p>
+        <li class="reason">
+          <div class="reason__head">
+            <span class="reason__num">1</span>
+            <h3 class="reason__title">完全1対1だから、<br>あなたのスピードで進めます</h3>
+          </div>
+          <figure class="reason__fig">
+            <img src="images/illust/fig_01.png" alt="グループ授業では講師の目が分散するのに対し、1対1では講師と生徒が一直線に向き合っていることを示す対比図" width="767" height="487" loading="lazy">
+          </figure>
+          <p class="reason__text">1対1なので、細かいところまで見て指導できます。理解のスピードに合わせて進められます。</p>
         </li>
-        <li class="card">
-          <div class="card__head"><span class="num num--xl">02</span></div>
-          <h3 class="card__title">日本人講師だから分かるつまずき</h3>
-          <p class="card__text"><span class="mk">日本人が引っかかりやすい</span>ポイントや壁を、自分自身が通ってきた道として説明できます。</p>
+
+        <li class="reason">
+          <div class="reason__head">
+            <span class="reason__num">2</span>
+            <h3 class="reason__title">日本人講師だから、<br>つまずく場所が分かります</h3>
+          </div>
+          <figure class="reason__fig">
+            <img src="images/illust/fig_02.png" alt="学習の道の途中にある段差で、先に上りきった案内役が手を差し伸べていることを示す図" width="683" height="536" loading="lazy">
+          </figure>
+          <p class="reason__text"><span class="mk">日本人が引っかかりやすい</span>ポイントや壁を、自分自身が通ってきた道として説明できます。</p>
         </li>
-        <li class="card">
-          <div class="card__head"><span class="num num--xl">03</span></div>
-          <h3 class="card__title">元・社会科教師の教え方</h3>
-          <p class="card__text">教えることを仕事にしてきました。何が分かっていないのかを見つけて、順番を整えてお伝えします。</p>
+
+        <li class="reason">
+          <div class="reason__head">
+            <span class="reason__num">3</span>
+            <h3 class="reason__title">元・社会科教師だから、<br>教える順番を整えられます</h3>
+          </div>
+          <figure class="reason__fig">
+            <img src="images/illust/fig_03.png" alt="ばらばらだったブロックが、順番に並び直されることを示す図" width="789" height="347" loading="lazy">
+          </figure>
+          <p class="reason__text">教えることを仕事にしてきました。何が分かっていないのかを見つけて、順番を整えてお伝えします。</p>
         </li>
-        <li class="card">
-          <div class="card__head"><span class="num num--xl">04</span></div>
-          <h3 class="card__title">国家資格・全国通訳案内士</h3>
-          <p class="card__text">中国語の全国通訳案内士（国家資格）を所持しています。現在も通訳案内の業務を続けています。</p>
+
+        <li class="reason">
+          <div class="reason__head">
+            <span class="reason__num">4</span>
+            <h3 class="reason__title">国家資格・全国通訳案内士が<br>現場で使う中国語を教えます</h3>
+          </div>
+          <figure class="reason__fig">
+            <img src="images/illust/fig_04.png" alt="認定メダルと、通訳をしている人物を示す図" width="737" height="531" loading="lazy">
+          </figure>
+          <p class="reason__text">中国語の全国通訳案内士（国家資格）を所持しています。現在も通訳案内の業務を続けています。</p>
         </li>
-      </ul>
+
+      </ol>
     </div>
   </section>
 
@@ -803,37 +817,37 @@
 
       <div class="faq">
         <details class="faq__item">
-          <summary class="faq__q">全くの初心者ですが大丈夫ですか？</summary>
-          <div class="faq__a">はい。初級から上級まで<span class="mk">レベル別に対応しています</span>。1対1ですので、分からないところはその場でご確認いただけます。</div>
+          <summary class="faq__q"><span class="faq__mark faq__mark--q" aria-hidden="true">?</span><span class="faq__qtext">全くの初心者ですが大丈夫ですか？</span></summary>
+          <div class="faq__a"><span class="faq__mark faq__mark--a" aria-hidden="true">A</span><span class="faq__atext">はい。初級から上級まで<span class="mk">レベル別に対応しています</span>。1対1ですので、分からないところはその場でご確認いただけます。</span></div>
         </details>
 
         <details class="faq__item">
-          <summary class="faq__q">何歳からでも始められますか？</summary>
+          <summary class="faq__q"><span class="faq__mark faq__mark--q" aria-hidden="true">?</span><span class="faq__qtext">何歳からでも始められますか？</span></summary>
           <!-- 要確認: 対象年齢（正本では「成人の方希望」。下限の扱いを確認） -->
-          <div class="faq__a">成人の方を対象としています。40代・50代・60代からお始めになる方も想定しています。</div>
+          <div class="faq__a"><span class="faq__mark faq__mark--a" aria-hidden="true">A</span><span class="faq__atext">成人の方を対象としています。40代・50代・60代からお始めになる方も想定しています。</span></div>
         </details>
 
         <details class="faq__item">
-          <summary class="faq__q">オンラインでも受けられますか？</summary>
+          <summary class="faq__q"><span class="faq__mark faq__mark--q" aria-hidden="true">?</span><span class="faq__qtext">オンラインでも受けられますか？</span></summary>
           <!-- 要確認: オンライン対応の可否と料金 -->
-          <div class="faq__a">対面のマンツーマンレッスンが基本です。オンラインでの受講は現在検討しております。<br><span class="note">※ 回答は確認中です。</span></div>
+          <div class="faq__a"><span class="faq__mark faq__mark--a" aria-hidden="true">A</span><span class="faq__atext">対面のマンツーマンレッスンが基本です。オンラインでの受講は現在検討しております。<br><span class="note">※ 回答は確認中です。</span></span></div>
         </details>
 
         <details class="faq__item">
-          <summary class="faq__q">1回のレッスンはどのくらいの時間ですか？</summary>
-          <div class="faq__a">60分です。</div>
+          <summary class="faq__q"><span class="faq__mark faq__mark--q" aria-hidden="true">?</span><span class="faq__qtext">1回のレッスンはどのくらいの時間ですか？</span></summary>
+          <div class="faq__a"><span class="faq__mark faq__mark--a" aria-hidden="true">A</span><span class="faq__atext">60分です。</span></div>
         </details>
 
         <details class="faq__item">
-          <summary class="faq__q">教材は自分で用意する必要がありますか？</summary>
+          <summary class="faq__q"><span class="faq__mark faq__mark--q" aria-hidden="true">?</span><span class="faq__qtext">教材は自分で用意する必要がありますか？</span></summary>
           <!-- 要確認: 教材の指定・購入の要否 -->
-          <div class="faq__a"><span class="note">※ 回答は確認中です。決まり次第こちらでご案内します。</span></div>
+          <div class="faq__a"><span class="faq__mark faq__mark--a" aria-hidden="true">A</span><span class="faq__atext"><span class="note">※ 回答は確認中です。決まり次第こちらでご案内します。</span></span></div>
         </details>
 
         <details class="faq__item">
-          <summary class="faq__q">駐車場はありますか？</summary>
+          <summary class="faq__q"><span class="faq__mark faq__mark--q" aria-hidden="true">?</span><span class="faq__qtext">駐車場はありますか？</span></summary>
           <!-- 要確認: 正本では「1台（想定）」。実際の有無を確認 -->
-          <div class="faq__a">1台分ございます。<br><span class="note">※ 確認中の項目です。</span></div>
+          <div class="faq__a"><span class="faq__mark faq__mark--a" aria-hidden="true">A</span><span class="faq__atext">1台分ございます。<br><span class="note">※ 確認中の項目です。</span></span></div>
         </details>
       </div>
     </div>

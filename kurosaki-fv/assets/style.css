@@ -1984,3 +1984,142 @@ button {
 /* スマホで「あなたのペースに合わせ／る。」のように1文字だけ行送りされるのを防ぐ */
 .band-msg__lead,
 .band-msg__sub { text-wrap: balance; }
+
+/* =================================================================
+   #09 選ばれる4つの理由 = 毎日中国語「上達する5つの理由」型   2026-08-19
+   ・1つ1枚の白パネルを縦に積む
+   ・大きな数字 ＋ 2行見出し → 図解を大きく中央 → 本文
+   ・図解には文字を焼き込まない（会社ルール）。意味は見出しが持つ
+   ================================================================= */
+.reasons {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 24px;
+}
+
+.reason {
+  background: #fff;
+  padding: 28px 22px 32px;
+  box-shadow: var(--shadow-card);
+  display: grid;
+  gap: 20px;
+}
+
+.reason__head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.reason__num {
+  color: var(--c-cta);
+  font-weight: 700;
+  line-height: .9;
+  font-size: clamp(40px, 9vw, 56px);
+}
+
+.reason__title {
+  margin: 0;
+  font-size: clamp(17px, 4.2vw, 21px);
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--c-ink-deep);
+  align-self: center;
+}
+
+.reason__fig { margin: 0; display: grid; place-items: center; }
+.reason__fig img { width: 100%; max-width: 420px; height: auto; }
+
+.reason__text { margin: 0; line-height: 1.9; }
+
+@media (min-width: 768px) {
+  .reasons { gap: 32px; }
+  .reason { padding: 40px 44px 44px; gap: 26px; }
+  .reason__head { gap: 22px; }
+  .reason__num { font-size: 64px; }
+  .reason__title { font-size: 24px; }
+  .reason__fig img { max-width: 520px; }
+  .reason__text { font-size: 17px; }
+}
+
+@media (min-width: 1024px) {
+  .reason { padding: 48px 56px 52px; }
+  .reason__num { font-size: 72px; }
+  .reason__title { font-size: 26px; }
+  .reason__fig img { max-width: 580px; }
+}
+
+/* =================================================================
+   #09 よくあるご質問 = 毎日中国語型（? と A のマーク＋横罫の一覧）  2026-08-19
+   ・details/summary のまま（JS不要・キーボード操作もそのまま効く）
+   ・? は装飾なので aria-hidden。読み上げでは質問文だけが読まれる
+   ・マーク色は --c-cta（淡い面の上で 4.29:1・実測）。--c-main は 2.30:1 で使えない
+   ================================================================= */
+.faq__item {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--c-tint-str);
+  border-radius: 0;
+  box-shadow: none;
+}
+.faq__item + .faq__item { margin-top: 0; }
+.faq .faq__item:last-child { border-bottom: 1px solid var(--c-tint-str); }
+
+.faq__q {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  background: transparent;
+  border: 0;
+  padding: 20px 46px 20px 4px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.faq__a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  background: transparent;
+  border: 0;
+  padding: 0 46px 22px 4px;
+  line-height: 1.9;
+}
+
+.faq__mark {
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: 26px;
+  color: var(--c-cta);
+  width: 1.1em;
+  text-align: center;
+}
+.faq__mark--a { color: var(--c-deep); }
+
+/* 開閉の矢印は右端。既存の ::before/::after の十字は使わないので消す */
+.faq__q::before { content: none; }
+.faq__q::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--c-cta);
+  border-bottom: 2px solid var(--c-cta);
+  transform: translateY(-70%) rotate(45deg);
+  background: none;
+  right: 14px;
+}
+.faq__item[open] .faq__q::after { transform: translateY(-20%) rotate(-135deg); }
+
+@media (min-width: 768px) {
+  .faq__q { gap: 18px; padding: 24px 52px 24px 8px; font-size: 18px; }
+  .faq__a { gap: 18px; padding: 0 52px 26px 8px; }
+  .faq__mark { font-size: 30px; }
+}
+
+/* スマホで見出し2行目の末尾に「ます」「す」だけが落ちるのを防ぐ */
+.reason__title { text-wrap: balance; }
