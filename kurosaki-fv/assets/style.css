@@ -1728,3 +1728,156 @@ button {
 
 /* FV下の注記を消したぶん、CTAとセクション下端の間を詰める */
 .fv-cta { margin-bottom: 4px; }
+
+/* =================================================================
+   #06 原因①〜③（毎日中国語型の横長カード）  2026-08-19
+   ・吹き出し（.voices）とキーワードボックスは同セクションから削除済み
+   ・白カードの角に「原因①」タグを外へ飛び出させ、左右交互にイラストを置く
+   ================================================================= */
+.causes { list-style: none; margin: 0; padding: 0; display: grid; gap: 56px; }
+
+.cause {
+  position: relative;
+  background: #fff;
+  padding: 40px 32px 36px;
+  box-shadow: var(--shadow-card);
+  display: grid;
+  gap: 20px;
+}
+
+/* 「原因①」タグ：カードの角から外へ出す */
+.cause__tag {
+  position: absolute;
+  top: -22px;
+  left: 0;
+  margin: 0;
+  background: var(--c-deep);
+  color: #fff;
+  padding: 10px 18px;
+  display: grid;
+  justify-items: center;
+  line-height: 1.15;
+  font-weight: 700;
+}
+.cause--rev .cause__tag { left: auto; right: 0; }
+.cause__tag-label { font-size: 14px; letter-spacing: .08em; }
+.cause__tag-num { font-size: 22px; }
+
+.cause__media { display: grid; place-items: center; }
+.cause__media img { width: 100%; max-width: 340px; height: auto; }
+
+.cause__title {
+  margin: 0 0 12px;
+  color: var(--c-cta);
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+.cause__lead { margin: 0; line-height: 1.9; }
+
+@media (min-width: 768px) {
+  .causes { gap: 64px; }
+  .cause {
+    grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+    align-items: center;
+    gap: 40px;
+    padding: 48px 56px;
+  }
+  .cause__tag { top: 0; left: -1px; padding: 14px 22px; }
+  .cause--rev .cause__tag { left: auto; right: -1px; }
+  .cause__tag-num { font-size: 26px; }
+
+  /* 偶数カードは本文が左・イラストが右（毎日中国語と同じ交互配置）
+     列幅も入れ替える。入れ替えないと本文が40%側に入り、見出しが不自然に折り返す */
+  .cause--rev { grid-template-columns: minmax(0, 1fr) minmax(0, 40%); }
+  .cause--rev .cause__media { order: 2; }
+  .cause--rev .cause__text  { order: 1; }
+
+  /* タグと本文が重ならないよう、タグ側の1カラム目に上余白を足す */
+  .cause__text { padding-top: 8px; }
+  .cause__title { font-size: 24px; }
+}
+
+@media (min-width: 1024px) {
+  .cause { padding: 56px 64px; gap: 48px; }
+  .cause__media img { max-width: 380px; }
+  .cause__title { font-size: 26px; }
+  .cause__lead { font-size: 17px; }
+}
+
+/* =================================================================
+   #06 「こんな方におすすめです」にイラストを追加  2026-08-19
+   ・鈴木さん指示「こんな方におすすめも絵がいる」への対応
+   ・写真ではなくイラストにした理由: 契約が「フリー素材10点まで」で
+     すでに写真4点を消費済み。写真6点を足すと使い切りになるため
+     （イラストは素材10点の枠を消費しない）
+   ・番号は絵の上に重ねず、絵の下に置いて本文とセットで読ませる
+   ================================================================= */
+.card--reco { align-content: start; }
+
+.card__illust {
+  display: grid;
+  place-items: center;
+  margin-bottom: 4px;
+}
+.card__illust img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+}
+
+@media (min-width: 1024px) {
+  .card--reco { min-height: 0; }
+  .card__illust img { max-width: 300px; }
+}
+
+/* =================================================================
+   #07 アクセス（中国北京語学教室型：大きな地図＋白い情報カードを重ねる） 2026-08-19
+   ・PC = 地図の上に白カードを左寄せで重ねる
+   ・SP = 重ねると地図が潰れるので、地図の下にカードを置く
+   ================================================================= */
+.access-map { position: relative; }
+
+.access-map iframe {
+  display: block;
+  width: 100%;
+  height: 420px;
+  border: 0;
+}
+
+.access-card {
+  background: #fff;
+  padding: 26px 24px;
+  box-shadow: var(--shadow-card);
+  display: grid;
+  gap: 14px;
+}
+
+.access-card__name {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--c-deep);
+}
+.access-card__addr { margin: 0; font-weight: 700; line-height: 1.8; }
+.access-card__row  { margin: 0; line-height: 1.8; }
+.access-card__btn  { justify-self: start; margin-top: 4px; }
+
+@media (min-width: 768px) {
+  .access-map iframe { height: 520px; }
+  .access-card {
+    position: absolute;
+    /* Googleマップ自身の住所ラベルが左上に出る。半分隠れると見苦しいので、その下から始める */
+    top: 92px;
+    left: 40px;
+    width: min(380px, 42%);
+    padding: 32px 30px;
+    max-height: calc(100% - 132px);
+    overflow: auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .access-map iframe { height: 580px; }
+  .access-card { left: 56px; top: 96px; width: 400px; padding: 36px 34px; }
+}
