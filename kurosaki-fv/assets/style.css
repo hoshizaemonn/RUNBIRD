@@ -1311,7 +1311,8 @@ button {
   .fv__inner { padding-inline: 32px; }
   /* PCは写真を右側だけに敷き、左端はぼかして深緑へ溶かす */
   .fv__bg { left: auto; width: 64%; }
-  .fv__bg img { object-position: 50% 26%; }
+  /* 右側の帯が顔にかからない位置。実測で 62% 18% が最も顔が見える */
+  .fv__bg img { object-position: 62% 18%; }
   .fv__bg {
     -webkit-mask-image: linear-gradient(to right, transparent 0%, var(--c-deep) 38%);
     mask-image: linear-gradient(to right, transparent 0%, var(--c-deep) 38%);
@@ -1699,3 +1700,31 @@ button {
     clip-path: polygon(14px 0, 100% 0, 100% 100%, 0 100%);
   }
 }
+
+
+/* ============================================================
+   「こんな方におすすめです」を料金カードと同じ大きさ・作りに（2026-08-19）
+   6枚を3列で小さく並べると中途半端になるため、2列で大きく見せる。
+   ============================================================ */
+.card--reco {
+  padding: 28px 26px;
+  gap: 14px;
+  box-shadow: var(--shadow-card);
+}
+.card--reco .card__text {
+  font-size: var(--fs-body-sp);
+  line-height: 1.85;
+  font-weight: 700;
+}
+@media (min-width: 768px) {
+  .grid.reco { gap: 20px; }
+  .card--reco { padding: 34px 32px; }
+  .card--reco .card__text { font-size: var(--fs-body); }
+}
+@media (min-width: 1024px) {
+  .card--reco { padding: 40px 38px; min-height: 168px; }
+  .card--reco .card__text { font-size: 19px; }
+}
+
+/* FV下の注記を消したぶん、CTAとセクション下端の間を詰める */
+.fv-cta { margin-bottom: 4px; }
