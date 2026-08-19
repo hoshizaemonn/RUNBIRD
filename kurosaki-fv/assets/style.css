@@ -1621,11 +1621,19 @@ button {
   .fv-badge { padding: 0; }
   .fv-badge__main { max-width: 64%; font-size: clamp(15px, 1.25vw, 19px); }
 
-  /* 横に並べる分、帯の文字はひと回り落とす */
-  .fv-lower .fv-strip { font-size: clamp(17px, 1.6vw, 24px); padding-left: 28px; }
+  /* 上の帯と同じ「画面端まで伸びる帯」にする。
+     上の帯＝左が画面外／右が斜めカット。右側に置くこちらはその左右反転で、
+     右を画面外まで伸ばし、左を斜めカットする。 */
+  .fv-lower .fv-strips { position: relative; }
+  .fv-lower .fv-strip {
+    font-size: clamp(17px, 1.9vw, 28px);
+    padding-left: 30px;
+    padding-right: 0;
+  }
   .fv-lower .fv-strip::before {
     left: 0;
-    clip-path: polygon(13px 0, 100% 0, calc(100% - 20px) 100%, 0 100%);
+    right: -1000px;
+    clip-path: polygon(20px 0, 100% 0, 100% 100%, 0 100%);
   }
 }
 
