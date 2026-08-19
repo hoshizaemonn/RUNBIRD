@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>BuzzPlus（バズプラス）｜AI動画 × SNS配信 月30,000円から</title>
+<meta name="description" content="撮影なし。お店のURLを送るだけで、AI動画の制作からSNS配信までまるごと。月30,000円から、16業種以上で制作しています。" />
+<style>
+  :root{
+    --orange:#ee5600; --orange-dark:#c24400; --amber:#ffb020;
+    --ink:#1b1b1b; --ink-2:#4a4a4a; --paper:#fff; --paper-2:#faf7f3; --line:#e7e0d8;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; color:var(--ink); background:var(--paper);
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+    line-height:1.8; font-size:16px; -webkit-text-size-adjust:100%;
+  }
+  img{max-width:100%; height:auto; display:block}
+  .wrap{width:min(100% - 40px, var(--maxw)); margin-inline:auto}
+  section{padding:64px 0}
+  h2{font-size:clamp(24px,5.2vw,36px); line-height:1.45; margin:0 0 8px; letter-spacing:.01em}
+  h2 .en{display:block; font-size:13px; letter-spacing:.22em; color:var(--orange); font-weight:700; margin-bottom:6px}
+  h3{font-size:clamp(18px,3.6vw,22px); line-height:1.5; margin:0 0 8px}
+  p{margin:0 0 14px}
+  .lead{color:var(--ink-2)}
+  .center{text-align:center}
+
+  /* ---------- ヘッダー ---------- */
+  header{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  .hd{display:flex; align-items:center; gap:16px; min-height:60px}
+  .logo{font-weight:800; font-size:19px; letter-spacing:.02em; white-space:nowrap}
+  .logo small{display:block; font-size:10px; font-weight:600; color:var(--ink-2); letter-spacing:.06em}
+  .hd nav{margin-left:auto; display:flex; gap:18px; align-items:center}
+  .hd nav a{color:var(--ink); text-decoration:none; font-size:14px; font-weight:700; white-space:nowrap}
+  .hd .btn-sm{background:var(--orange); color:#fff; padding:10px 18px; border-radius:8px; font-size:14px}
+  @media (max-width:860px){ .hd nav a:not(.btn-sm){display:none} }
+
+  /* ---------- ボタン ---------- */
+  .btn{
+    display:inline-block; background:var(--orange); color:#fff; text-decoration:none;
+    font-weight:800; font-size:clamp(15px,3.4vw,18px); padding:18px 30px; border-radius:12px;
+    box-shadow:0 8px 24px rgba(238,86,0,.28); border:none; cursor:pointer; text-align:center;
+  }
+  .btn.ghost{background:#fff; color:var(--orange-dark); border:2px solid var(--orange); box-shadow:none}
+  .btn-row{display:flex; gap:12px; flex-wrap:wrap}
+  .btn-row .btn{flex:1 1 220px}
+
+  /* ---------- FV（アニメる型：ロゴ主役・シンプル） ---------- */
+  .fv{position:relative; color:#fff; overflow:hidden; padding:0}
+  .fv .bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 45%}
+  .fv .veil{position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,.34) 42%,rgba(0,0,0,.72) 100%)}
+  .fv .inner{position:relative; min-height:clamp(520px,72svh,640px); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:56px 0 44px}
+  /* 「AI動画 × SNS配信 × 月額制」の三語並び */
+  .triad{display:flex; align-items:center; justify-content:center; gap:clamp(8px,2.4vw,16px); flex-wrap:wrap; margin:0 0 clamp(6px,2vw,14px); font-weight:800; font-size:clamp(19px,5.2vw,38px); letter-spacing:.02em}
+  .triad span{color:#fff; text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .triad i{font-style:normal; color:var(--amber)}
+  .logo-hero{width:clamp(210px,52vw,380px); height:auto; filter:drop-shadow(0 6px 26px rgba(0,0,0,.55)); margin:0 auto}
+  .tagline{font-weight:800; font-size:clamp(18px,4.6vw,30px); line-height:1.6; margin:clamp(4px,1.6vw,10px) 0 clamp(20px,4vw,30px); text-shadow:0 3px 16px rgba(0,0,0,.75)}
+  .tagline .hl{color:var(--amber)}
+  .fv-cta{padding:18px clamp(24px,5vw,44px); font-size:clamp(16px,3.8vw,21px); border-radius:999px}
+
+  /* ---------- 価格チェック帯 ---------- */
+  .pricecheck{background:var(--paper-2); padding:56px 0}
+  .pc-kicker{color:var(--orange); font-weight:800; letter-spacing:.12em; font-size:clamp(13px,3vw,16px); margin:0 0 6px}
+  .pc-price{font-weight:800; color:var(--orange-dark); font-size:clamp(30px,7.4vw,54px); line-height:1.2; margin:0 0 16px}
+  .pc-price span{font-size:clamp(17px,3.6vw,26px); color:var(--ink)}
+  .pc-lead{font-weight:700; font-size:clamp(15px,3.4vw,18px); margin:0 0 12px}
+  .pc-note{font-size:13px; color:var(--ink-2); margin:0 0 24px}
+
+  /* ---------- 汎用パーツ ---------- */
+  .tint{background:var(--paper-2)}
+  .cards{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:26px}
+  .card .num{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:var(--orange); color:#fff; font-weight:800; margin-bottom:12px}
+  .quote{border-left:5px solid var(--orange); background:#fff; padding:18px 20px; border-radius:0 10px 10px 0; font-weight:700; font-size:clamp(16px,3.6vw,19px)}
+  .quote + .quote{margin-top:14px}
+
+  /* ---------- 料金 ---------- */
+  .price-box{background:#fff; border:2px solid var(--orange); border-radius:16px; padding:32px; text-align:center}
+  .price-box .amount{font-size:clamp(34px,8vw,60px); font-weight:800; color:var(--orange-dark); line-height:1.1; letter-spacing:-.01em}
+  .price-box .amount small{font-size:clamp(15px,3.2vw,20px); font-weight:700}
+  .incl{display:grid; gap:10px; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); margin:24px 0 6px; text-align:left}
+  .incl li{list-style:none; background:var(--paper-2); border-radius:10px; padding:14px 16px; font-weight:700; font-size:15px}
+  .incl li::before{content:"✓ "; color:var(--orange); font-weight:800}
+  .note{font-size:13px; color:var(--ink-2); margin-top:16px}
+
+  /* ---------- フロー ---------- */
+  .flow{display:grid; gap:14px}
+  .step{display:grid; grid-template-columns:56px 1fr; gap:16px; align-items:start; background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px}
+  .step .n{width:44px; height:44px; border-radius:50%; background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800}
+  .step h3{margin:2px 0 4px}
+  .step p{margin:0; color:var(--ink-2); font-size:15px}
+
+  /* ---------- FAQ ---------- */
+  details{background:#fff; border:1px solid var(--line); border-radius:12px; margin-bottom:12px; overflow:hidden}
+  summary{cursor:pointer; padding:20px 52px 20px 22px; font-weight:800; font-size:clamp(15px,3.4vw,17px); position:relative; list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"＋"; position:absolute; right:22px; top:50%; transform:translateY(-50%); color:var(--orange); font-weight:800}
+  details[open] summary::after{content:"−"}
+  details .a{padding:0 22px 22px; color:var(--ink-2); font-size:15px}
+
+  /* ---------- ギャラリー ---------- */
+  .gallery{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+  /* 制作動画イメージは大きく見せる（アニメる型：フルで流す） */
+  .gallery.full{grid-template-columns:repeat(auto-fit,minmax(420px,1fr)); gap:22px}
+  @media (max-width:520px){ .gallery.full{grid-template-columns:1fr} }
+  .gallery figure{margin:0; border-radius:14px; overflow:hidden; border:1px solid var(--line); background:#000}
+  .gallery video{width:100%; aspect-ratio:16/9; object-fit:cover; display:block}
+  .gallery figcaption{background:#fff; padding:10px 14px; font-weight:800; font-size:14px; color:var(--ink-2)}
+
+  /* ---------- フォーム ---------- */
+  .form{background:#fff; border:1px solid var(--line); border-radius:16px; padding:clamp(22px,4vw,36px)}
+  .field{margin-bottom:20px}
+  .field label{display:block; font-weight:800; font-size:15px; margin-bottom:8px}
+  .req{color:#fff; background:var(--orange); font-size:11px; padding:3px 8px; border-radius:4px; margin-left:8px; vertical-align:2px}
+  .opt{color:var(--ink-2); background:#eee; font-size:11px; padding:3px 8px; border-radius:4px; margin-left:8px; vertical-align:2px}
+  input[type=text],input[type=email],input[type=tel],textarea{
+    width:100%; padding:14px; border:1px solid #ccc4b9; border-radius:10px; font-size:16px; font-family:inherit; background:#fffdfb;
+  }
+  textarea{min-height:120px; resize:vertical}
+  .choices{display:grid; gap:10px}
+  .choices label{display:flex; gap:12px; align-items:flex-start; background:var(--paper-2); border:2px solid transparent; border-radius:10px; padding:14px 16px; font-weight:700; font-size:15px; cursor:pointer}
+  .choices input{margin-top:4px; accent-color:var(--orange); width:18px; height:18px; flex:none}
+  .choices label:has(input:checked){border-color:var(--orange); background:#fff6f0}
+
+  /* ---------- 追従CTA ---------- */
+  .sticky{position:fixed; left:0; right:0; bottom:0; z-index:60; background:rgba(255,255,255,.96); border-top:1px solid var(--line); padding:10px 0; backdrop-filter:blur(8px)}
+  .sticky .btn{width:100%; padding:16px}
+  body{padding-bottom:88px}
+
+  footer{background:#1b1b1b; color:#cfcac4; padding:40px 0; font-size:13px}
+  footer a{color:#cfcac4}
+
+  /* ---------- 料金プラン（アニメ／実写） ---------- */
+  .plans{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .plan{background:#fff; border:2px solid var(--line); border-radius:16px; padding:26px 22px; text-align:center}
+  .plan-tag{display:inline-block; background:var(--orange); color:#fff; font-weight:800; font-size:14px; padding:7px 20px; border-radius:999px; margin-bottom:14px}
+  .plan-tag.alt{background:#1b3a6b}
+  .plan-price{font-weight:800; color:var(--orange-dark); font-size:clamp(28px,6.6vw,42px); line-height:1.15}
+  .plan-price small{font-size:clamp(14px,3vw,19px)}
+  .plan-desc{margin:12px 0 0; font-size:15px; color:var(--ink-2)}
+
+  /* ---------- FLOW：PCは3列 ---------- */
+  .flow{display:grid; gap:16px; grid-template-columns:1fr}
+  @media (min-width:600px) and (max-width:899px){ .flow{grid-template-columns:repeat(2,1fr)} }
+  @media (min-width:900px){ .flow{grid-template-columns:repeat(3,1fr)} }
+  .step{display:grid; grid-template-columns:52px 1fr; gap:14px; align-items:start; background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px}
+  .step-en{margin:0 0 2px; font-size:12px; font-weight:700; color:var(--orange); letter-spacing:.04em}
+  .step h3{margin:0 0 8px; font-size:clamp(17px,3.4vw,21px)}
+  .step p:not(.step-en){margin:0; color:var(--ink-2); font-size:14px; line-height:1.75}
+
+  /* ---------- お悩み（キャラ＋吹き出し＋チェック） ---------- */
+  .solve{display:flex; align-items:flex-end; justify-content:center; gap:6px; margin-bottom:24px}
+  .solve-bubble{position:relative; background:#fff; border:3px solid var(--ink); border-radius:18px; padding:18px 22px; max-width:min(60%,440px)}
+  .solve-bubble p{margin:0; font-weight:800; font-size:clamp(15px,3.4vw,23px); line-height:1.55}
+  .solve-bubble strong{color:var(--orange)}
+  .solve-bubble::after{content:""; position:absolute; right:-16px; bottom:26px; width:0; height:0; border:13px solid transparent; border-left-color:var(--ink)}
+  .solve-char{width:clamp(110px,26vw,210px) !important; max-width:210px; height:auto; flex:0 0 auto; mix-blend-mode:multiply}
+  .checks{list-style:none; margin:0; background:#fff; border:3px solid var(--amber); border-radius:16px; padding:22px}
+  .checks li{position:relative; padding:12px 0 12px 42px; font-weight:700; font-size:clamp(15px,3.2vw,19px); line-height:1.6}
+  .checks li + li{border-top:1px dashed var(--line)}
+  .checks li::before{content:"✓"; position:absolute; left:6px; top:12px; width:26px; height:26px; border:2px solid var(--ink); border-radius:5px; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--orange)}
+  .checks strong{color:var(--orange-dark)}
+
+  /* ---------- 選ばれる3つの理由 ---------- */
+  .en-sub{color:var(--orange); font-weight:800; letter-spacing:.14em; font-size:14px; margin:0 0 2px}
+  .reasons{display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+  .reason{background:#fff; border:1px solid var(--line); border-radius:16px; overflow:hidden; padding-bottom:22px}
+  .reason-visual{background:var(--paper-2)}
+  .reason-visual img{width:100%; aspect-ratio:1/1; object-fit:cover; display:block}
+  .reason-no{display:inline-block; background:#1b3a6b; color:#fff; font-weight:800; font-size:13px; padding:7px 16px; border-radius:0 0 10px 0; letter-spacing:.08em}
+  .reason-no em{font-style:normal; margin-left:8px}
+  .reason h3{margin:14px 22px 6px; font-size:clamp(17px,3.4vw,21px)}
+  .reason p{margin:0 22px; font-size:14px}
+  /* 比較グラフはCSSで描く（画像に文字を焼き込まないため） */
+  .chart{aspect-ratio:1/1; display:flex; align-items:stretch; padding:26px 18px 18px}
+  .bars{display:flex; align-items:flex-end; gap:clamp(10px,3vw,22px); width:100%}
+  .bar{flex:1 1 0; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; height:100%; min-width:0}
+  .bar i{display:block; width:100%; border-radius:6px 6px 0 0; background:#c9cfd8}
+  .bar.b3 i{background:var(--orange)}
+  .bar .v{font-weight:800; font-size:clamp(11px,2.2vw,14px); margin-bottom:6px; color:var(--ink-2); white-space:nowrap}
+  .bar.b3 .v{color:var(--orange-dark); font-size:clamp(12px,2.6vw,16px)}
+  .bar .l{font-size:clamp(10px,2vw,12px); margin-top:8px; color:var(--ink-2); text-align:center; line-height:1.35}
+  .bar.b3 .l{font-weight:800; color:var(--ink)}
+
+  /* ---------- フォーム：イメージ選択 ---------- */
+  .choices.pick2{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .choices.pick2 label{flex-direction:column; align-items:center; text-align:center; gap:6px; padding:16px 12px}
+  .choices.pick2 input{margin:0}
+  .choices.pick2 b{display:block; font-size:16px}
+  .choices.pick2 small{display:block; font-weight:600; font-size:12px; color:var(--ink-2); margin-top:3px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <div class="logo">BuzzPlus<small>AI動画 × SNS配信</small></div>
+    <nav>
+      <a href="#works">制作動画</a>
+      <a href="#price">料金</a>
+      <a href="#problem">お悩み</a>
+      <a href="#flow">ご利用の流れ</a>
+      <a href="#faq">よくある質問</a>
+      <a class="btn-sm" href="#contact">無料で相談</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== FV ===================== -->
+<!-- FV動画は納品物のショーリール（アニメ=たなか屋様／実写風=Lani様を交互）。要掲載許諾 -->
+<section class="fv">
+  <video class="bg" src="assets/fv_loop.mp4" poster="assets/fv_poster.jpg"
+         autoplay muted loop playsinline preload="metadata"></video>
+  <div class="veil"></div>
+  <div class="wrap inner">
+    <p class="triad"><span>AI動画</span><i>×</i><span>SNS配信</span><i>×</i><span>月額制</span></p>
+    <img class="logo-hero" src="assets/logo_white.png" alt="BUZZ+ バズプラス" />
+    <p class="tagline"><span class="hl">価格</span>と<span class="hl">手間</span>で<br /><span class="hl">動画集客</span>が変わる</p>
+    <a class="btn fv-cta" href="#price">月30,000円で動画制作　<span aria-hidden="true">›</span></a>
+  </div>
+</section>
+
+<!-- ===================== 価格チェック帯 ===================== -->
+<section class="pricecheck">
+  <div class="wrap center">
+    <p class="pc-kicker">AI動画 × SNS配信</p>
+    <p class="pc-price">月30,000円<span>で動画制作</span></p>
+    <p class="pc-lead">
+      商業利用OK！<br />
+      撮影なしで、動画の制作からSNSへの配信までまるごと。<br />
+      ご用意いただくのは、お店のURLだけです。
+    </p>
+    <p class="pc-note">※守秘義務の関係上、社名は非公開ですが、16業種以上での制作実績がございます。</p>
+    <a class="btn" href="#price">価格をチェック　<span aria-hidden="true">›</span></a>
+  </div>
+</section>
+
+<!-- ===================== 制作実績 ===================== -->
+<!-- ⚠️ 公開前に各社の掲載許諾が必要（下の _制作メモ.md 参照）。
+     社名は伏せているが、動画内に店名テロップが入っているものがあるため
+     「社名を出さない」だけでは匿名化にならない。 -->
+<section id="works">
+  <div class="wrap">
+    <h2 class="center"><span class="en">SAMPLE</span>制作動画イメージ</h2>
+    <p class="center lead">すべて撮影なしで制作しています。縦型（9:16）・横型（16:9）どちらにも対応します。</p>
+    <div class="gallery full" style="margin-top:28px">
+      <figure><video src="assets/works/work01.mp4" poster="assets/works/work01.jpg" autoplay muted loop playsinline preload="metadata" controls></video><figcaption>飲食店</figcaption></figure>
+      <figure><video src="assets/works/work02.mp4" poster="assets/works/work02.jpg" autoplay muted loop playsinline preload="metadata" controls></video><figcaption>鍼灸・治療院</figcaption></figure>
+      <figure><video src="assets/works/work03.mp4" poster="assets/works/work03.jpg" autoplay muted loop playsinline preload="metadata" controls></video><figcaption>スクール・教室</figcaption></figure>
+      <figure><video src="assets/works/work04.mp4" poster="assets/works/work04.jpg" autoplay muted loop playsinline preload="metadata" controls></video><figcaption>花・ギフト</figcaption></figure>
+      <figure><video src="assets/works/work05.mp4" poster="assets/works/work05.jpg" autoplay muted loop playsinline preload="metadata" controls></video><figcaption>サービス業</figcaption></figure>
+      <figure><video src="assets/works/work06.mp4" poster="assets/works/work06.jpg" autoplay muted loop playsinline preload="metadata" controls></video><figcaption>美容・サロン</figcaption></figure>
+    </div>
+    <p class="center note">ほかにも <strong>16業種以上</strong> で制作しています。</p>
+  </div>
+</section>
+
+<!-- ===================== 料金 ===================== -->
+<section class="tint" id="price">
+  <div class="wrap">
+    <h2 class="center"><span class="en">PRICE</span>料金</h2>
+    <p class="center lead" style="margin-bottom:30px">
+      1本いくら、ではありません。<strong>毎月まわり続けるための月額制</strong>です。<br />
+      <strong>アニメでも、実写風でも、同じ料金</strong>でお作りします。
+    </p>
+
+    <div class="plans">
+      <div class="plan">
+        <span class="plan-tag">アニメ</span>
+        <div class="plan-price">月30,000円<small>から</small></div>
+        <p class="plan-desc">キャラクターや背景を描き起こす、アニメ調の動画。<br />世界観をつくり込みたいお店に。</p>
+      </div>
+      <div class="plan">
+        <span class="plan-tag alt">実写風</span>
+        <div class="plan-price">月30,000円<small>から</small></div>
+        <p class="plan-desc">実写と見分けがつかない映像。<br />商品やサービスをそのまま見せたいお店に。</p>
+      </div>
+    </div>
+
+    <div class="price-box" style="margin-top:22px">
+      <p style="font-weight:800; margin:0 0 4px; font-size:clamp(17px,3.8vw,22px)">どちらのプランにも含まれます</p>
+      <ul class="incl">
+        <li>AI動画の企画・制作</li>
+        <li>SNSへの配信まで代行</li>
+        <li>縦型（9:16）・横型（16:9）対応</li>
+        <li>ご用意はお店のURLだけ</li>
+      </ul>
+      <p class="note">
+        ご希望の本数・配信先・業種によって最適な形が変わるため、
+        <strong>正確なお見積りは無料相談でご案内しています。</strong>
+      </p>
+      <div class="btn-row" style="margin-top:20px; justify-content:center">
+        <a class="btn" href="#contact">無料で見積りを相談する</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 流れ ===================== -->
+<section id="flow">
+  <div class="wrap">
+    <h2 class="center"><span class="en">FLOW</span>ご依頼の流れ</h2>
+    <div class="flow" style="margin-top:30px">
+      <div class="step"><div class="n">1</div><div><p class="step-en">お気軽にご相談ください</p><h3>お問い合わせ</h3><p>下のフォームから1分でお申し込みいただけます。</p></div></div>
+      <div class="step"><div class="n">2</div><div><p class="step-en">動画の内容を確認</p><h3>ヒアリング</h3><p>お店のことと目的を、オンラインまたはメールでうかがいます。</p></div></div>
+      <div class="step"><div class="n">3</div><div><p class="step-en">プランのご提案</p><h3>お見積り</h3><p>本数・配信先を踏まえて、月額のプランをご提示します。</p></div></div>
+      <div class="step"><div class="n">4</div><div><p class="step-en">ご用意はURLだけ</p><h3>お店のURLを送る</h3><p>台本も素材も不要です。アニメか実写風かもここで決められます。</p></div></div>
+      <div class="step"><div class="n">5</div><div><p class="step-en">最短3営業日</p><h3>動画制作</h3><p>初稿をお出しします。ご確認のうえ調整します。</p></div></div>
+      <div class="step"><div class="n">6</div><div><p class="step-en">つくって終わりにしない</p><h3>SNSへ配信</h3><p>納品だけでなく、配信までこちらで行います。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 問題提起 ===================== -->
+<section class="tint" id="problem">
+  <div class="wrap">
+    <div class="solve">
+      <div class="solve-bubble">
+        <p>AI動画で集客のお悩み<br /><strong>すべて解決します！</strong></p>
+      </div>
+      <img class="solve-char" src="assets/char_guide.png" alt="" />
+    </div>
+    <ul class="checks">
+      <li>制作会社に見積もりを出したら、<strong>高額すぎて手が出ない</strong></li>
+      <li>自分でAIを使ってみたけど、<strong>不自然で使えない</strong></li>
+      <li>SNS用に動画を出したいが、<strong>撮影する時間がない</strong></li>
+      <li>動画は作れても、<strong>配信まで手が回らない</strong></li>
+    </ul>
+    <p class="lead center" style="margin-top:26px">
+      BuzzPlusは、<strong>動画をつくって終わりにしません。</strong>
+      制作からSNSへの配信までまとめてお引き受けします。
+    </p>
+  </div>
+</section>
+
+<!-- ===================== 選ばれる理由 ===================== -->
+<section>
+  <div class="wrap">
+    <p class="center en-sub">選ばれる</p>
+    <h2 class="center" style="margin-bottom:30px">3つの理由</h2>
+    <div class="reasons">
+
+      <div class="reason">
+        <div class="reason-visual chart">
+          <div class="bars">
+            <div class="bar b1"><span class="v">30万円〜</span><i style="height:88%"></i><span class="l">制作会社</span></div>
+            <div class="bar b2"><span class="v">10万円〜</span><i style="height:38%"></i><span class="l">他社AI制作</span></div>
+            <div class="bar b3"><span class="v">月3万円〜</span><i style="height:14%"></i><span class="l">BuzzPlus</span></div>
+          </div>
+        </div>
+        <span class="reason-no">001<em>価格</em></span>
+        <h3>撮影が要らないから、この価格</h3>
+        <p class="lead">カメラマンの手配も、撮影の立ち会いも不要。しかも配信まで込みの月額制です。</p>
+      </div>
+
+      <div class="reason">
+        <div class="reason-visual"><img src="assets/reason_world.png" alt="" /></div>
+        <span class="reason-no">002<em>世界観</em></span>
+        <h3>アニメも実写風も、同じ料金で</h3>
+        <p class="lead">お店の雰囲気に合う見せ方を選べます。どちらを選んでも月30,000円からです。</p>
+      </div>
+
+      <div class="reason">
+        <div class="reason-visual"><img src="assets/reason_quality.png" alt="" /></div>
+        <span class="reason-no">003<em>品質管理</em></span>
+        <h3>AI任せにせず、人が仕上げます</h3>
+        <p class="lead">構成・テロップ・見せ方を担当が調整してから納品します。生成したままではお出ししません。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="tint" id="faq">
+  <div class="wrap">
+    <h2 class="center"><span class="en">FAQ</span>よくあるご質問</h2>
+    <div style="margin-top:28px">
+      <details open>
+        <summary>AIで作った動画は、商用利用や著作権の面で問題ありませんか？</summary>
+        <div class="a">商用利用が許可されたAIモデルを使用し、公開前に既存の著作物と紛らわしい表現がないかを確認しています。SNS広告・店頭・自社サイトでご利用いただけます。</div>
+      </details>
+      <details>
+        <summary>AIっぽくて、安っぽく見えませんか？</summary>
+        <div class="a">生成したままではお出ししません。構成・テロップ・見せ方をこちらで調整したうえで納品します。気になる箇所はご指摘いただければ調整します。</div>
+      </details>
+      <details>
+        <summary>自分でも作れるのでは？と思っています。</summary>
+        <div class="a">作ること自体は可能です。ただ、多くの店舗さまが止まるのは「作る」ではなく「毎月続けて配信する」ところです。BuzzPlusは制作と配信をまとめてお引き受けするサービスです。</div>
+      </details>
+      <details>
+        <summary>本当に月30,000円から、配信まで込みですか？</summary>
+        <div class="a">月30,000円からで、動画制作とSNSへの配信を含みます。ご希望の本数や配信先によって金額が変わるため、正確なお見積りは無料相談でご案内しています。</div>
+      </details>
+      <details>
+        <summary>納品までどれくらいかかりますか？縦型にも対応していますか？</summary>
+        <div class="a">最短3営業日で初稿をお出しします。Instagramリールなどの縦型（9:16）、YouTubeなどの横型（16:9）の両方に対応しています。</div>
+      </details>
+      <details>
+        <summary>うちの業種でもできますか？</summary>
+        <div class="a">これまでに16業種以上で制作しています。飲食・美容・小売・治療院など、業種ごとに見せ方を変えて構成しますので、まずはご相談ください。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== クロージング ===================== -->
+<section style="padding:0">
+  <div style="position:relative; color:#fff">
+    <img src="assets/street.jpg" alt="" style="width:100%; height:clamp(280px,52vw,460px); object-fit:cover; object-position:50% 62%" />
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.78))"></div>
+    <div class="wrap" style="position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center">
+      <h2 style="color:#fff">まずは1本、<br />観てから決めてください。</h2>
+      <p style="color:#f0ece7">ご相談は無料です。お店のURLだけご用意ください。</p>
+      <a class="btn" href="#contact" style="margin-top:8px">無料で相談する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== フォーム ===================== -->
+<section id="contact">
+  <div class="wrap">
+    <h2 class="center"><span class="en">CONTACT</span>無料相談・お問い合わせ</h2>
+    <p class="center lead" style="margin-bottom:28px">1分で送信できます。ご記入いただいた内容をもとに、担当からご連絡します。</p>
+
+    <form class="form" method="post" action="#" novalidate>
+      <div class="field">
+        <label>いちばん知りたいことを教えてください<span class="req">必須</span></label>
+        <div class="choices">
+          <label><input type="radio" name="want" value="月30,000円プランの詳細" required /><span>月30,000円プランの詳細を知りたい</span></label>
+          <label><input type="radio" name="want" value="サンプル動画がほしい" /><span>サンプル動画がほしい</span></label>
+          <label><input type="radio" name="want" value="制作事例をもっと見たい" /><span>制作事例をもっと見たい</span></label>
+          <label><input type="radio" name="want" value="うちの業種でできるか相談" /><span>うちの業種でできるか相談したい</span></label>
+          <label><input type="radio" name="want" value="その他" /><span>その他（情報収集など）</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>つくりたい動画のイメージ<span class="opt">任意</span></label>
+        <div class="choices pick2">
+          <label><input type="radio" name="style" value="アニメ" /><span><b>アニメ</b><small>世界観をつくり込みたい</small></span></label>
+          <label><input type="radio" name="style" value="実写風" /><span><b>実写風</b><small>商品をそのまま見せたい</small></span></label>
+          <label><input type="radio" name="style" value="おまかせ" /><span><b>おまかせ</b><small>相談して決めたい</small></span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-biz">業種<span class="opt">任意</span></label>
+        <input id="f-biz" name="biz" type="text" placeholder="例）居酒屋 / 美容室 / 整骨院 など" />
+      </div>
+
+      <div class="field">
+        <label for="f-name">お名前<span class="req">必須</span></label>
+        <input id="f-name" name="name" type="text" required />
+      </div>
+
+      <div class="field">
+        <label for="f-company">店舗名・会社名<span class="opt">任意</span></label>
+        <input id="f-company" name="company" type="text" />
+      </div>
+
+      <div class="field">
+        <label for="f-email">メールアドレス<span class="req">必須</span></label>
+        <input id="f-email" name="email" type="email" required />
+      </div>
+
+      <div class="field">
+        <label for="f-tel">電話番号<span class="opt">任意</span></label>
+        <input id="f-tel" name="tel" type="tel" />
+      </div>
+
+      <div class="field">
+        <label for="f-url">お店のURL<span class="opt">任意</span></label>
+        <input id="f-url" name="url" type="text" placeholder="ホームページ / Instagram / Googleマップ など" />
+      </div>
+
+      <div class="field">
+        <label for="f-msg">ご相談内容<span class="opt">任意</span></label>
+        <textarea id="f-msg" name="message" placeholder="お困りごとや、やってみたいことがあればお書きください。"></textarea>
+      </div>
+
+      <button class="btn" type="submit" style="width:100%">この内容で送信する</button>
+      <p class="note center">送信いただいた内容は、ご連絡以外の目的には使用しません。</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="font-weight:800; color:#fff; font-size:17px; margin-bottom:6px">BuzzPlus（バズプラス）</div>
+    <p style="margin:0 0 10px">運営：株式会社ランバード</p>
+    <p style="margin:0">buzzplus-ai.com</p>
+  </div>
+</footer>
+
+<div class="sticky">
+  <div class="wrap"><a class="btn" href="#contact">無料で相談する（1分）</a></div>
+</div>
+
+</body>
+</html>
