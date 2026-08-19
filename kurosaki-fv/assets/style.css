@@ -347,19 +347,12 @@ button {
   object-fit: cover;
 }
 
-.media-placeholder-note {
-  margin-top: 8px;
-  font-size: 12px;
-  line-height: 1.6;
-  text-align: center;
-  color: var(--c-ink-sub);
-}
-
 /* ------------------------------------------------------------
    5. FV下・サブ帯
    ------------------------------------------------------------ */
 .fv-subband {
-  background-color: var(--c-tint-str);
+  /* #03: 毎日中国語のFV下の帯に寄せて濃い面に（白文字 6.87:1） */
+  background-color: var(--c-deep);
 }
 
 .fv-subband__inner {
@@ -376,9 +369,10 @@ button {
 
 .fv-subband__text {
   font-size: var(--fs-body-sp);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.8;
-  color: var(--c-ink);
+  color: var(--c-white);
+  word-break: auto-phrase;
 }
 
 /* ############################################################
@@ -422,15 +416,25 @@ button {
   color: var(--c-main);
 }
 .sec-head__ja {
-  font-family: var(--f-serif);
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: .04em;
-  color: var(--c-deep);
+  font-family: var(--f-sans);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.45;
+  letter-spacing: .01em;
+  color: var(--c-ink);
   text-wrap: balance;
   word-break: auto-phrase;
 }
+/* 見出しの中で強調したいキーワードだけ色を変える（毎日中国語の型） */
+.sec-head__ja .kw {
+  color: var(--c-deep);
+  /* 黒×深緑では色差が弱いため、毎日中国語と同じくキーワードにマーカーを重ねて差を出す */
+  background: linear-gradient(transparent 66%, var(--c-marker) 66%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding-inline: .06em;
+}
+.sec-head__ja .br { display: block; }
 .sec-head__lead {
   margin-top: 14px;
   font-size: var(--fs-body-sp);
@@ -459,11 +463,11 @@ button {
   gap: 12px;
 }
 .card__title {
-  font-family: var(--f-serif);
+  font-family: var(--f-sans);
   font-size: 18px;
-  font-weight: 700;
-  line-height: 1.6;
-  letter-spacing: .02em;
+  font-weight: 800;
+  line-height: 1.55;
+  letter-spacing: .01em;
   color: var(--c-deep);
   /* 行末に1文字だけ落ちるのを防ぐ（未対応ブラウザは通常の折り返し） */
   text-wrap: balance;
@@ -481,7 +485,7 @@ button {
   padding-top: 14px;
 }
 .card__price {
-  font-family: var(--f-serif);
+  font-family: var(--f-sans);
   font-size: 22px;
   font-weight: 700;
   line-height: 1.4;
@@ -502,11 +506,11 @@ button {
   border-radius: 4px;
   background-color: var(--c-deep);
   color: var(--c-white);
-  font-family: var(--f-serif);
+  font-family: var(--f-sans);
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.2;
-  letter-spacing: .08em;
+  letter-spacing: .06em;
 }
 
 /* ------------------------------------------------------------
@@ -650,11 +654,11 @@ button {
 
 /* セクション内の下位見出し */
 .sub-head {
-  font-family: var(--f-serif);
-  font-size: 20px;
-  font-weight: 700;
+  font-family: var(--f-sans);
+  font-size: 21px;
+  font-weight: 900;
   line-height: 1.5;
-  letter-spacing: .04em;
+  letter-spacing: .01em;
   color: var(--c-deep);
   text-align: center;
   text-wrap: balance;
@@ -743,11 +747,11 @@ button {
   color: var(--c-main);
 }
 .page-head__ja {
-  font-family: var(--f-serif);
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: .04em;
+  font-family: var(--f-sans);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.45;
+  letter-spacing: .01em;
   color: var(--c-deep);
   text-wrap: balance;
   word-break: auto-phrase;
@@ -873,7 +877,7 @@ button {
   .sec__inner { padding-inline: 32px; }
 
   .sec-head { margin-bottom: 40px; }
-  .sec-head__ja { font-size: 30px; }
+  .sec-head__ja { font-size: 32px; }
   .sub-head { font-size: 24px; }
   .sec-head__lead { font-size: var(--fs-body); }
 
@@ -895,7 +899,7 @@ button {
 
   .page-head { padding-block: 36px; }
   .page-head__inner { padding-inline: 32px; }
-  .page-head__ja { font-size: 30px; }
+  .page-head__ja { font-size: 32px; }
 
   .icon { width: 48px; height: 48px; }
   .illust { max-width: 200px; }
@@ -968,14 +972,14 @@ button {
   .sec__inner { padding-inline: 40px; }
 
   .sec-head { margin-bottom: 48px; }
-  .sec-head__ja { font-size: 34px; }
+  .sec-head__ja { font-size: 38px; }
 
   .grid { gap: 24px; }
   .grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
   .page-head { padding-block: 44px; }
   .page-head__inner { padding-inline: 40px; }
-  .page-head__ja { font-size: 34px; }
+  .page-head__ja { font-size: 38px; }
 
   .site-footer__inner {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
@@ -1004,3 +1008,295 @@ button {
   html { scroll-behavior: auto; }
   .btn { transition: none; }
 }
+
+/* ############################################################
+   ★ #03 デザイン改修（2026-08-19「毎日中国語に寄せる」）
+   追加パーツのみ。文章・構成には手を入れていない。
+   ############################################################ */
+
+/* ------------------------------------------------------------
+   2-2. マーカー .mk（1段落につき1箇所まで）
+   --c-marker の上の本文は 11.66:1。
+   ------------------------------------------------------------ */
+.mk {
+  background-image: linear-gradient(transparent 62%, var(--c-marker) 62%);
+  font-weight: 700;
+  /* 行をまたいでも各行に同じ線が引かれるようにする */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* ------------------------------------------------------------
+   2-3. 太枠キーワードボックス .keybox
+   ------------------------------------------------------------ */
+.keyboxes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.keybox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 62px;
+  padding: 14px 16px;
+  background-color: var(--c-white);
+  border: var(--bw-strong) solid var(--c-deep);
+  border-radius: 4px;
+  color: var(--c-deep);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.6;
+  letter-spacing: .01em;
+  text-align: center;
+  text-wrap: balance;
+  word-break: auto-phrase;
+}
+
+/* ------------------------------------------------------------
+   2-4. 特大の連番 .num--xl
+   数字のみ。白系の面の上に載せる前提で --c-main を使う。
+   ------------------------------------------------------------ */
+.num--xl {
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--c-main);
+  font-family: var(--f-sans);
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+}
+/* 特大連番＋見出しの2カラム（数字の右に見出しが回り込む） */
+.numhead {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+/* ------------------------------------------------------------
+   2-5. 人物ピクトグラム＋吹き出し
+   ------------------------------------------------------------ */
+.voices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+.voice {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+}
+.picto {
+  width: 72px;
+  height: 86px;
+}
+.bubble {
+  position: relative;
+  padding: 14px 18px;
+  background-color: var(--c-white);
+  border: 1px solid var(--c-line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: var(--c-ink);
+  word-break: auto-phrase;
+}
+/* 吹き出しのしっぽ（左向き） */
+.bubble::before,
+.bubble::after {
+  content: "";
+  position: absolute;
+  top: 26px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+.bubble::before {
+  left: -11px;
+  border-width: 8px 11px 8px 0;
+  border-color: transparent var(--c-line) transparent transparent;
+}
+.bubble::after {
+  left: -10px;
+  border-width: 8px 11px 8px 0;
+  border-color: transparent var(--c-white) transparent transparent;
+}
+
+/* ------------------------------------------------------------
+   2-6. カードを浮かせる／ライトグレー地
+   ------------------------------------------------------------ */
+.sec--shade { background-color: var(--c-shade); }
+
+.card {
+  border-color: var(--c-shade);
+  box-shadow: var(--shadow-card);
+}
+.keybox { box-shadow: none; }
+
+/* ------------------------------------------------------------
+   濃い面のセクション .sec--deep（白文字OK：6.87:1）
+   ------------------------------------------------------------ */
+.sec--deep {
+  background-color: var(--c-deep);
+  color: var(--c-white);
+}
+.sec--deep .sec-head__ja,
+.sec--deep .sub-head,
+.sec--deep .prose { color: var(--c-white); }
+.sec--deep .sec-head__ja .kw { color: var(--c-marker); }
+.sec--deep .sec-head__en { color: var(--c-tint-str); }
+.sec--deep .sec-head__lead { color: var(--c-tint); }
+
+/* 濃い面の上のボタン（白地・--c-deep 文字） */
+.btn--invert {
+  color: var(--c-deep);
+  background-color: var(--c-white);
+  border-color: var(--c-white);
+}
+.btn--invert:hover,
+.btn--invert:focus-visible {
+  color: var(--c-white);
+  background-color: var(--c-cta);
+  border-color: var(--c-white);
+}
+
+/* ------------------------------------------------------------
+   2-7. 横棒の図解（07 比較セクション）
+   ※ 数値・％は入れない。あくまでイメージ図。
+   ------------------------------------------------------------ */
+.figbar {
+  display: grid;
+  gap: 20px;
+  margin-top: 28px;
+  padding: 20px;
+  background-color: var(--c-white);
+  border: 1px solid var(--c-line);
+  border-radius: 6px;
+  box-shadow: var(--shadow-card);
+}
+.figbar__title {
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.6;
+  color: var(--c-ink);
+  text-align: center;
+  word-break: auto-phrase;
+}
+.figbar__label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--c-ink);
+}
+.figbar__track {
+  display: flex;
+  height: 26px;
+  background-color: var(--c-shade);
+  border: 1px solid var(--c-line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.figbar__fill { display: block; height: 100%; }
+.figbar__fill--sub  { flex: 0 0 28%; background-color: var(--c-tint-str); }
+.figbar__fill--main { flex: 1 1 auto; background-color: var(--c-deep); }
+.figbar__cap {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--c-deep);
+  word-break: auto-phrase;
+}
+
+/* ------------------------------------------------------------
+   仮画像（AI生成）の注記
+   ------------------------------------------------------------ */
+.temp-note {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--c-ink-sub);
+  text-align: center;
+  word-break: auto-phrase;
+}
+.temp-note--strong {
+  padding: 8px 12px;
+  border: 1px dashed var(--c-cta);
+  border-radius: 4px;
+  color: var(--c-cta);
+  font-weight: 700;
+}
+
+/* ============================================================
+   #03 追加パーツのレスポンシブ
+   ============================================================ */
+@media (min-width: 560px) {
+  .keyboxes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .voices { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .voice {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+  }
+  .bubble { width: 100%; text-align: center; font-size: 14px; }
+  /* 縦並びになるのでしっぽは上向きに付け替える */
+  .bubble::before,
+  .bubble::after { top: auto; left: 50%; }
+  .bubble::before {
+    bottom: 100%;
+    margin-left: -11px;
+    border-width: 0 11px 11px 11px;
+    border-color: transparent transparent var(--c-line) transparent;
+  }
+  .bubble::after {
+    bottom: calc(100% - 1px);
+    margin-left: -10px;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent var(--c-white) transparent;
+  }
+}
+
+@media (min-width: 768px) {
+  .keybox { font-size: 16px; min-height: 68px; }
+  .num--xl { font-size: 60px; }
+  .numhead { gap: 16px; }
+  .picto { width: 88px; height: 104px; }
+  .bubble { font-size: 15px; padding: 16px 18px; }
+  .figbar { padding: 28px; gap: 24px; }
+  .figbar__title { font-size: 17px; }
+  .figbar__label, .figbar__cap { font-size: 15px; }
+  .figbar__track { height: 30px; }
+}
+
+@media (min-width: 1024px) {
+  .keyboxes { gap: 16px; margin-bottom: 40px; }
+  .voices { gap: 20px; }
+  .num--xl { font-size: 66px; }
+}
+
+/* 08「学べる内容」：キーワードボックスの太枠をカードに適用（2-3の見た目を流用） */
+.card--key {
+  border: var(--bw-strong) solid var(--c-deep);
+  box-shadow: none;
+}
+.card--key .card__title { color: var(--c-deep); }
+
+/* 写真枠のサイズ調整（高さが出すぎないように） */
+.media-frame--md { max-width: 840px; margin-inline: auto; }
+
+/* キーボックスが3個のときは3列（2列だと1個だけ余って見える） */
+@media (min-width: 560px) {
+  .keyboxes--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.media-frame--sm { max-width: 380px; margin-inline: auto; }
