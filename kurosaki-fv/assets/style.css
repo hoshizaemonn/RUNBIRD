@@ -1579,3 +1579,61 @@ button {
   /* 横並びだと画面外から出せないので縦積みにする */
   .fv-strips { flex-direction: column; flex-wrap: nowrap; }
 }
+
+
+/* ============================================================
+   FV下部の配置を毎日中国語に合わせる（2026-08-19）
+   あちらは「左＝バッジ3つ／右＝帯2本」を同じ行に並べている。
+   ★成立の条件：バッジの文字が短いこと。
+     8文字入れると横並びでは白い部分に収まらず1文字ずつ縦に潰れるため、
+     バッジは1行の短語のみとする（資格名はすぐ下の白帯で見せている）。
+   ============================================================ */
+.fv-lower { display: block; }
+
+@media (min-width: 1024px) {
+  .fv-lower {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-wrap: nowrap;
+  }
+  /* grid の 1fr だと親（帯側）に押し潰されるので、横並びでは固定幅の flex に切り替える */
+  .fv-lower .fv-badges {
+    flex: 0 0 auto;
+    display: flex;
+    grid-template-columns: none;
+    max-width: none;
+    margin-top: 0;
+    gap: 12px;
+  }
+  .fv-lower .fv-badge {
+    flex: 0 0 auto;
+    width: clamp(150px, 12.5vw, 190px);
+  }
+  .fv-lower .fv-strips { flex: 1 1 auto; margin-top: 0; display: flex; flex-direction: column; gap: 10px; }
+
+  /* 毎日中国語のバッジは画面幅の約12% */
+  .fv-badge { max-width: clamp(150px, 12.5vw, 190px); }
+
+  /* ★内側は em ではなく「バッジ幅に対する %」で決める。
+     em だと縮めたときに文字だけ取り残されて潰れる。
+     メダルの白い部分は中心から半幅の66.8%＝1行なら幅の64%まで置ける。 */
+  .fv-badge { padding: 0; }
+  .fv-badge__main { max-width: 64%; font-size: clamp(15px, 1.25vw, 19px); }
+
+  /* 横に並べる分、帯の文字はひと回り落とす */
+  .fv-lower .fv-strip { font-size: clamp(17px, 1.6vw, 24px); padding-left: 28px; }
+  .fv-lower .fv-strip::before {
+    left: 0;
+    clip-path: polygon(13px 0, 100% 0, calc(100% - 20px) 100%, 0 100%);
+  }
+}
+
+
+/* タブレット帯（768〜1023px）でもメダルが大きすぎたので、短語化に合わせて縮める。
+   バッジ幅が小さくなるため、内側は em ではなく % 基準に統一する。 */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .fv-badges { max-width: 620px; }
+  .fv-badge { max-width: 190px; padding: 0; }
+  .fv-badge__main { max-width: 64%; font-size: 18px; }
+}
