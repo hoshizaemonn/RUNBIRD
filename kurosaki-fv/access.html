@@ -81,11 +81,28 @@
            ・住所は番地まで掲載（2026-08-19 鈴木さん決定）
            ・電話番号とメールはカードに載せない：電話受付の可否が未ヒアリングのため（正本参照）
            ・営業時間・定休日は 2026-08-20 に確定。最寄駅名のみ未ヒアリングのため「確認中」のまま -->
-      <div class="access-map">
-        <iframe
-          src="https://www.google.com/maps?q=%E5%9F%BC%E7%8E%89%E7%9C%8C%E3%81%95%E3%81%84%E3%81%9F%E3%81%BE%E5%B8%82%E5%B2%A9%E6%A7%BB%E5%8C%BA%E8%A5%BF%E7%94%BA5-5-17&z=16&output=embed"
-          title="教室所在地の地図" width="600" height="450" style="border:0;"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <!-- 2026-08-20 黒﨑様のご要望「岩槻駅からの徒歩ルートの地図」への対応。
+           Googleマップの saddr/daddr 形式は APIキー不要でルート線を埋め込める（実測で表示確認済み）。
+           地図自体が「徒歩13分・950m」と出るので、本文の「13分程度」とも整合する。 -->
+      <div class="route">
+        <h3 class="route__title">岩槻駅からの<span class="kw">徒歩ルート</span></h3>
+        <p class="route__lead">東武アーバンパークライン 岩槻駅から、徒歩13分程度です。</p>
+        <div class="route__map">
+          <iframe
+            src="https://www.google.com/maps?saddr=%E5%B2%A9%E6%A7%BB%E9%A7%85&daddr=%E5%9F%BC%E7%8E%89%E7%9C%8C%E3%81%95%E3%81%84%E3%81%9F%E3%81%BE%E5%B8%82%E5%B2%A9%E6%A7%BB%E5%8C%BA%E8%A5%BF%E7%94%BA5-5-17&dirflg=w&output=embed"
+            title="岩槻駅から教室までの徒歩ルート" width="600" height="450" style="border:0;"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <p class="route__btn">
+          <a class="btn btn--outline btn--sm" href="https://www.google.com/maps/dir/?api=1&origin=%E5%B2%A9%E6%A7%BB%E9%A7%85&destination=%E5%9F%BC%E7%8E%89%E7%9C%8C%E3%81%95%E3%81%84%E3%81%9F%E3%81%BE%E5%B8%82%E5%B2%A9%E6%A7%BB%E5%8C%BA%E8%A5%BF%E7%94%BA5-5-17&travelmode=walking" target="_blank" rel="noopener">
+            スマートフォンの地図アプリで開く
+          </a>
+        </p>
+      </div>
+
+      <!-- 2026-08-20 鈴木さん指示: 地図は「岩槻駅からの徒歩ルート」1つに統一。
+           所在地の地図（q=住所）は削除し、情報カードは地図に重ねず独立ブロックにした -->
+      <div class="access-info">
 
         <div class="access-card">
           <p class="access-card__name" data-shop-name>教室名</p>
@@ -106,24 +123,6 @@
         </div>
       </div>
 
-      <!-- 2026-08-20 黒﨑様のご要望「岩槻駅からの徒歩ルートの地図」への対応。
-           Googleマップの saddr/daddr 形式は APIキー不要でルート線を埋め込める（実測で表示確認済み）。
-           地図自体が「徒歩13分・950m」と出るので、本文の「13分程度」とも整合する。 -->
-      <div class="route">
-        <h3 class="route__title">岩槻駅からの<span class="kw">徒歩ルート</span></h3>
-        <p class="route__lead">東武アーバンパークライン 岩槻駅から、徒歩13分程度です。</p>
-        <div class="route__map">
-          <iframe
-            src="https://www.google.com/maps?saddr=%E5%B2%A9%E6%A7%BB%E9%A7%85&daddr=%E5%9F%BC%E7%8E%89%E7%9C%8C%E3%81%95%E3%81%84%E3%81%9F%E3%81%BE%E5%B8%82%E5%B2%A9%E6%A7%BB%E5%8C%BA%E8%A5%BF%E7%94%BA5-5-17&dirflg=w&output=embed"
-            title="岩槻駅から教室までの徒歩ルート" width="600" height="450" style="border:0;"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        </div>
-        <p class="route__btn">
-          <a class="btn btn--outline btn--sm" href="https://www.google.com/maps/dir/?api=1&origin=%E5%B2%A9%E6%A7%BB%E9%A7%85&destination=%E5%9F%BC%E7%8E%89%E7%9C%8C%E3%81%95%E3%81%84%E3%81%9F%E3%81%BE%E5%B8%82%E5%B2%A9%E6%A7%BB%E5%8C%BA%E8%A5%BF%E7%94%BA5-5-17&travelmode=walking" target="_blank" rel="noopener">
-            スマートフォンの地図アプリで開く
-          </a>
-        </p>
-      </div>
     </div>
   </section>
 

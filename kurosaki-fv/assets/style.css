@@ -2589,3 +2589,34 @@ button {
 @media (min-width: 1280px) {
   .route__map iframe { height: 520px; }
 }
+
+/* =================================================================
+   #16 アクセスを地図1つに統一  2026-08-20
+   鈴木さん指示「地図は2ついらない。岩槻駅からの徒歩ルートだけでいい」
+   ・所在地の地図（q=住所）を削除
+   ・情報カードは地図に重ねる必要がなくなったので、通常の白いカードに戻す
+   ================================================================= */
+.access-info {
+  position: static;
+  margin-top: 32px;
+}
+
+/* 重ね配置用の指定を打ち消す（.access-card は元は地図の上に absolute で載せていた） */
+.access-info .access-card {
+  position: static;
+  width: auto;
+  max-width: 760px;
+  margin-inline: auto;
+  max-height: none;
+  overflow: visible;
+  top: auto;
+  left: auto;
+}
+
+/* 徒歩ルートはアクセスの先頭に来るので、上の余白を詰める */
+.sec .route:first-of-type { margin-top: 0; }
+
+@media (min-width: 768px) {
+  .access-info { margin-top: 40px; }
+  .access-info .access-card { padding: 32px 34px; }
+}
