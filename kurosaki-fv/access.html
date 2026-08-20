@@ -30,7 +30,7 @@
   <div class="site-header__inner">
 
     <p class="site-header__logo">
-      <a href="index.html" data-shop-name>教室名</a>
+      <a href="./" data-shop-name>教室名</a>
     </p>
 
     <nav class="site-nav" id="global-nav" aria-label="メインナビゲーション">
@@ -66,7 +66,7 @@
     <div class="page-head__inner">
       <span class="page-head__en" aria-hidden="true">ACCESS</span>
       <h1 class="page-head__ja">アクセス</h1>
-      <p class="breadcrumb"><a href="index.html">ホーム</a> ／ アクセス</p>
+      <p class="breadcrumb"><a href="./">ホーム</a> ／ アクセス</p>
     </div>
   </div>
 
@@ -92,8 +92,9 @@
 
           <p class="access-card__addr">埼玉県さいたま市岩槻区西町5-5-17</p>
 
-          <!-- 要確認: 最寄駅名（岩槻駅を想定・未確認）。確定したら「〇〇駅から徒歩13分」に書き換える -->
-          <p class="access-card__row">最寄駅から徒歩13分程度<br><span class="note">※ 最寄駅名は確認中です。</span></p>
+          <!-- 2026-08-20 クライアントメールで最寄駅=岩槻駅と確定 -->
+          <p class="access-card__row">東武アーバンパークライン<strong>岩槻駅</strong>から徒歩13分程度</p>
+
 
           <p class="access-card__row">駐車場 1台<br><span class="note">※ 確認中の項目です。</span></p>
 
@@ -103,6 +104,25 @@
           <!-- 要確認: 電話でのお問い合わせを受けるか（携帯1本のみのため）。可なら下にTELを追加する -->
           <a class="btn btn--cta access-card__btn" href="contact.html">レッスンのご相談・お問い合わせ</a>
         </div>
+      </div>
+
+      <!-- 2026-08-20 黒﨑様のご要望「岩槻駅からの徒歩ルートの地図」への対応。
+           Googleマップの saddr/daddr 形式は APIキー不要でルート線を埋め込める（実測で表示確認済み）。
+           地図自体が「徒歩13分・950m」と出るので、本文の「13分程度」とも整合する。 -->
+      <div class="route">
+        <h3 class="route__title">岩槻駅からの<span class="kw">徒歩ルート</span></h3>
+        <p class="route__lead">東武アーバンパークライン 岩槻駅から、徒歩13分程度です。</p>
+        <div class="route__map">
+          <iframe
+            src="https://www.google.com/maps?saddr=%E5%B2%A9%E6%A7%BB%E9%A7%85&daddr=%E5%9F%BC%E7%8E%89%E7%9C%8C%E3%81%95%E3%81%84%E3%81%9F%E3%81%BE%E5%B8%82%E5%B2%A9%E6%A7%BB%E5%8C%BA%E8%A5%BF%E7%94%BA5-5-17&dirflg=w&output=embed"
+            title="岩槻駅から教室までの徒歩ルート" width="600" height="450" style="border:0;"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <p class="route__btn">
+          <a class="btn btn--outline btn--sm" href="https://www.google.com/maps/dir/?api=1&origin=%E5%B2%A9%E6%A7%BB%E9%A7%85&destination=%E5%9F%BC%E7%8E%89%E7%9C%8C%E3%81%95%E3%81%84%E3%81%9F%E3%81%BE%E5%B8%82%E5%B2%A9%E6%A7%BB%E5%8C%BA%E8%A5%BF%E7%94%BA5-5-17&travelmode=walking" target="_blank" rel="noopener">
+            スマートフォンの地図アプリで開く
+          </a>
+        </p>
       </div>
     </div>
   </section>
@@ -138,7 +158,7 @@
     </div>
 
     <nav class="site-footer__nav" aria-label="フッターナビゲーション">
-      <a href="index.html">ホーム</a>
+      <a href="./">ホーム</a>
       <a href="about.html">当教室について</a>
       <a href="lesson.html">レッスン・料金</a>
       <a href="teacher.html">講師紹介</a>

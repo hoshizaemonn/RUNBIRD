@@ -2412,3 +2412,180 @@ button {
 .policy__title { margin: 0 0 14px; font-size: 20px; font-weight: 700; color: var(--c-deep); }
 .policy__sub   { margin: 24px 0 6px; font-size: 16px; font-weight: 700; color: var(--c-cta); }
 .policy__text  { margin: 0; line-height: 1.9; }
+
+/* =================================================================
+   #13 トップの「サイト内のご案内」カード ＋ 選ばれる理由ダイジェスト  2026-08-20
+   LP型（1枚に全部）→ 通常のホームページ型（トップは概要、詳細は下層）へ変更したため追加
+   ・カード全体をリンクにする（見出しだけでなく面で押せる＝40〜60代に優しい）
+   ・a の中に span を並べるので、ブロック化は grid で行う
+   ================================================================= */
+.navcards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.navcard__link {
+  display: grid;
+  gap: 8px;
+  background: #fff;
+  padding: 24px 22px 26px;
+  box-shadow: var(--shadow-card);
+  color: var(--c-ink);
+  text-decoration: none;
+  height: 100%;
+  align-content: start;
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+.navcard__link:hover,
+.navcard__link:focus-visible {
+  box-shadow: var(--shadow-pop);
+  transform: translateY(-2px);
+}
+
+.navcard__en {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  color: var(--c-main);
+}
+.navcard__ja { font-size: 20px; font-weight: 700; color: var(--c-deep); line-height: 1.5; }
+.navcard__text { line-height: 1.9; }
+.navcard__more {
+  margin-top: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--c-cta);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.navcard__more::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+@media (min-width: 768px) {
+  .navcards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .navcard__link { padding: 30px 28px 32px; }
+}
+@media (min-width: 1024px) {
+  .navcards { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+}
+
+/* 選ばれる理由のダイジェスト（トップ用・詳細は about.html） */
+.digest { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.digest__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 20px 4px;
+  border-top: 1px solid var(--c-tint-str);
+}
+.digest__item:last-child { border-bottom: 1px solid var(--c-tint-str); }
+.digest__num {
+  color: var(--c-cta);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  width: 1.4em;
+  text-align: center;
+}
+.digest__text { line-height: 1.8; }
+
+@media (min-width: 768px) {
+  .digest__item { padding: 24px 8px; gap: 22px; }
+  .digest__num { font-size: 38px; }
+  .digest__text { font-size: 18px; }
+}
+
+/* 講師欄など、左寄せにしたいボタン行 */
+.btn-row--left { justify-content: flex-start; }
+
+/* =================================================================
+   #14 料金の追記（4回チケット・入会金ゼロ・税込表記）  2026-08-20
+   クライアントメールの指示で追加
+   ================================================================= */
+.pcard__row--ticket { border-top: 1px dashed var(--c-tint-str); }
+
+.pricenotes {
+  list-style: none;
+  margin: 28px auto 0;
+  padding: 22px 20px;
+  max-width: 760px;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  display: grid;
+  gap: 0;
+}
+.pricenote {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-top: 1px solid var(--c-tint-str);
+  line-height: 1.8;
+}
+.pricenote:first-child { border-top: 0; }
+.pricenote__key {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--c-cta);
+  padding: 4px 10px;
+  white-space: nowrap;
+  align-self: start;
+}
+.pricenote__val { }
+
+/* アクセス：徒歩ルートを開くボタン */
+.access-card__route { margin: 0; }
+.btn--sm { padding: 10px 16px; font-size: 14px; }
+
+@media (min-width: 768px) {
+  .pricenotes { padding: 28px 30px; }
+  .pricenote { gap: 20px; padding: 14px 0; }
+}
+
+/* =================================================================
+   #15 岩槻駅からの徒歩ルート地図  2026-08-20
+   黒﨑様のご要望。Googleマップ saddr/daddr 形式（APIキー不要）で
+   ページ内にルート線を表示する。所在地の地図とは別ブロックにして、
+   ルート用の操作パネル（出発地・目的地）と情報カードが重ならないようにしている。
+   ================================================================= */
+.route { margin-top: 48px; }
+
+.route__title {
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--c-ink-deep);
+}
+.route__lead { margin: 0 0 20px; text-align: center; line-height: 1.8; }
+
+.route__map iframe {
+  display: block;
+  width: 100%;
+  height: 380px;
+  border: 0;
+}
+
+.route__btn { margin: 16px 0 0; text-align: center; }
+
+@media (min-width: 768px) {
+  .route { margin-top: 60px; }
+  .route__title { font-size: 26px; }
+  .route__map iframe { height: 460px; }
+}
+@media (min-width: 1280px) {
+  .route__map iframe { height: 520px; }
+}
