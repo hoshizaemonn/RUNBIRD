@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>OWL｜独立LP初CV者の行動から見える改善点</title>
+<style>
+  :root{--teal:#1BA0A6;--teal-d:#137880;--teal-l:#e8f6f6;--orange:#F5871F;--orange-d:#c96a10;--orange-l:#fff1e2;
+        --ink:#123c48;--ink2:#4a6870;--line:#d7e7e8;--bg:#f4f9f9;--card:#fff;--bad:#d0483c;--bad-l:#fdeeec;--amber:#c9821c;--amber-l:#fbf1dd;--good:#1f9d57;--good-l:#eaf4ee;--gg:#4285F4;}
+  @media (prefers-color-scheme: dark){:root{--ink:#e8f1f2;--ink2:#a9c2c6;--line:#2b454b;--bg:#0e1b1e;--card:#15282c;--teal-l:#123236;--orange-l:#33230f;--bad-l:#3a1e1a;--amber-l:#332810;--good-l:#122a1d;}}
+  :root[data-theme="light"]{--ink:#123c48;--ink2:#4a6870;--line:#d7e7e8;--bg:#f4f9f9;--card:#fff;--teal-l:#e8f6f6;--orange-l:#fff1e2;--bad-l:#fdeeec;--amber-l:#fbf1dd;--good-l:#eaf4ee;}
+  :root[data-theme="dark"]{--ink:#e8f1f2;--ink2:#a9c2c6;--line:#2b454b;--bg:#0e1b1e;--card:#15282c;--teal-l:#123236;--orange-l:#33230f;--bad-l:#3a1e1a;--amber-l:#332810;--good-l:#122a1d;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;padding:24px 16px 64px;}
+  .wrap{max-width:920px;margin:0 auto;}
+  .eyebrow{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;color:#fff;background:var(--teal);padding:3px 11px;border-radius:999px;margin-bottom:10px;}
+  h1{font-size:21px;line-height:1.35;border-left:6px solid var(--teal);padding-left:13px;}
+  .meta{color:var(--ink2);font-size:12px;margin:8px 0 16px 19px;}
+  .scope{background:var(--teal-l);border:1px solid var(--line);border-radius:10px;padding:9px 14px;font-size:12px;margin-bottom:16px;} .scope b{color:var(--teal-d);}
+
+  .alert{background:var(--bad-l);border:1px solid #f0c3bd;border-left:5px solid var(--bad);border-radius:12px;padding:13px 16px;margin-bottom:14px;font-size:13.5px;font-weight:600;}
+  @media (prefers-color-scheme: dark){.alert{border-color:#6b3229;}}
+  .alert b{color:var(--bad);}
+
+  .concl{background:var(--card);border:2px solid var(--teal);border-radius:14px;padding:15px 18px;margin-bottom:14px;box-shadow:0 6px 18px rgba(18,60,72,.08);}
+  .concl h2{font-size:15px;color:var(--teal-d);margin-bottom:9px;}
+  .concl ol{counter-reset:ci;list-style:none;}
+  .concl li{font-size:14px;font-weight:600;margin:8px 0;padding-left:27px;position:relative;}
+  .concl li::before{content:counter(ci);counter-increment:ci;position:absolute;left:0;top:1px;width:20px;height:20px;background:var(--teal);color:#fff;border-radius:50%;font-size:11px;display:flex;align-items:center;justify-content:center;}
+
+  h2.sec{font-size:15px;margin:24px 0 11px;padding:7px 0 7px 12px;border-left:5px solid var(--orange);background:var(--orange-l);border-radius:0 9px 9px 0;}
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  @media(max-width:560px){.kpis{grid-template-columns:1fr;}}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center;}
+  .kpi .n{font-size:22px;font-weight:800;color:var(--teal-d);} .kpi .n.good{color:var(--good);}
+  .kpi .l{font-size:11px;color:var(--ink2);margin-top:2px;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px;}
+  th,td{border:1px solid var(--line);padding:6px 9px;text-align:right;} th{background:var(--teal-l);text-align:center;} td:first-child,th:first-child,td:nth-child(2),th:nth-child(2){text-align:left;}
+  tr.total td{font-weight:800;background:var(--teal-l);}
+
+  .learn{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px;}
+  @media(max-width:640px){.learn{grid-template-columns:1fr;}}
+  .lc{border:1px solid var(--line);border-radius:11px;padding:11px 13px;font-size:12.5px;}
+  .lc.win{background:var(--good-l);} .lc.lose{background:var(--bad-l);}
+  .lc h4{font-size:12.5px;margin-bottom:4px;} .lc.win h4{color:var(--good);} .lc.lose h4{color:var(--bad);}
+
+  .strat{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:14px 16px;}
+  .strat ol{counter-reset:si;list-style:none;}
+  .strat li{font-size:13.5px;margin:9px 0;padding-left:28px;position:relative;font-weight:600;}
+  .strat li::before{content:counter(si);counter-increment:si;position:absolute;left:0;top:0;width:21px;height:21px;background:var(--orange);color:#fff;border-radius:6px;font-size:12px;display:flex;align-items:center;justify-content:center;}
+  .strat li small{display:block;font-weight:400;color:var(--ink2);font-size:12px;margin-top:1px;}
+
+  .kw{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:6px;}
+  @media(max-width:640px){.kw{grid-template-columns:1fr;}}
+  .kwbox{border:1px solid var(--line);border-radius:11px;padding:11px 13px;font-size:12.5px;}
+  .kwbox.keep{background:var(--good-l);} .kwbox.add{background:var(--teal-l);} .kwbox.excl{background:var(--bad-l);}
+  .kwbox h4{font-size:12.5px;margin-bottom:6px;} .kwbox .k{display:inline-block;background:var(--card);border:1px solid var(--line);border-radius:5px;padding:1px 7px;margin:2px 3px 0 0;font-size:11.5px;}
+
+  .undecided{background:var(--amber-l);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:12px;padding:14px 16px;margin-top:14px;}
+  .undecided h2{font-size:14px;color:var(--amber);margin-bottom:8px;}
+  .undecided ul{list-style:none;} .undecided li{font-size:13px;padding:4px 0 4px 22px;position:relative;} .undecided li::before{content:"✓";position:absolute;left:2px;font-weight:800;color:var(--amber);}
+  .note{background:var(--teal-l);border:1px solid var(--line);border-radius:12px;padding:11px 15px;font-size:12.5px;color:var(--ink2);margin-top:12px;} .note b{color:var(--ink);}
+  footer{margin-top:30px;color:var(--ink2);font-size:11px;border-top:1px solid var(--line);padding-top:12px;}
+</style>
+<style>
+  .tl{position:relative;margin-top:12px;padding-left:96px;}
+  .tl::before{content:"";position:absolute;left:78px;top:8px;bottom:8px;width:3px;background:var(--line);}
+  .ev{position:relative;margin-bottom:15px;}
+  .ev .t{position:absolute;left:-96px;width:66px;text-align:right;font-weight:800;font-size:13px;color:var(--teal-d);top:3px;}
+  .ev::before{content:"";position:absolute;left:-21px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--teal);border:3px solid var(--card);}
+  .ev.hot::before{background:var(--bad);}
+  .ev.gap::before{background:var(--amber);}
+  .ev .b{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:10px 14px;font-size:13px;line-height:1.65;}
+  .ev.hot .b{background:var(--bad-l);border-color:#f0c3bd;}
+  .ev.gap .b{background:var(--amber-l);}
+  .ev .b b{color:var(--ink);}
+  .ev .b small{display:block;color:var(--ink2);font-size:11.5px;margin-top:3px;}
+  .flip{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;}
+  @media(max-width:640px){.flip{grid-template-columns:1fr;}}
+  .fb{border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:13px;line-height:1.7;}
+  .fb h4{font-size:13.5px;margin-bottom:6px;}
+  .fb.n{background:var(--good-l);} .fb.n h4{color:var(--good);}
+  .fb.r{background:var(--bad-l);} .fb.r h4{color:var(--bad);}
+  .depth{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:10px;}
+  .dr{display:flex;align-items:center;gap:10px;font-size:12.5px;margin:6px 0;}
+  .dr .l{width:118px;flex:0 0 auto;color:var(--ink2);text-align:right;}
+  .dr .bar{flex:1;height:20px;background:var(--line);border-radius:5px;position:relative;overflow:hidden;}
+  .dr .bar i{position:absolute;left:0;top:0;bottom:0;background:var(--teal);}
+  .dr .bar i.w{background:var(--bad);}
+  .dr .v{width:78px;flex:0 0 auto;font-weight:800;text-align:right;}
+  .fix{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:15px 17px;margin-top:12px;}
+  .fix.p1{border-left:6px solid var(--bad);} .fix.p2{border-left:6px solid var(--orange);} .fix.p3{border-left:6px solid var(--teal);}
+  .fix h3{font-size:14.5px;margin-bottom:7px;}
+  .fix.p1 h3{color:var(--bad);} .fix.p2 h3{color:var(--orange-d);} .fix.p3 h3{color:var(--teal-d);}
+  .fix p{font-size:13px;line-height:1.72;margin:6px 0;}
+  .now{background:var(--bad-l);border:1px solid #f0c3bd;border-radius:9px;padding:9px 12px;font-size:12.5px;margin:8px 0;}
+  .aft{background:var(--good-l);border:1px solid var(--line);border-left:4px solid var(--good);border-radius:9px;padding:9px 12px;font-size:12.5px;line-height:1.7;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<span class="eyebrow">OWL福祉事業 / 鈴木さん提案</span>
+<h1><span style="display:inline-block">独立LPで初めて資料請求した方の行動から、</span><span style="display:inline-block">直すべき場所が見えました</span></h1>
+<div class="meta">2026年8月21日／根拠：2026/8/20 Clarityのセッション録画＋LPの実測位置＋LPソース</div>
+<div class="scope">独立LP（202607dokuritsu）から<b>初めて実際の資料請求が入った1件</b>の行動記録です。1人ぶんなので断定はできませんが、<b>行動の「順番」が示していることは無視できない</b>と考えます。</div>
+
+<div class="concl">
+<h2>いちばん大事なこと</h2>
+<ol>
+<li>この方は<b>不安を解消してから送信したのではなく、送信してから不安を調べ始めています。</b>順番が逆です。</li>
+<li>送信後に<b>一度ページを離れ、1分半後に戻ってきて、FAQを6分間読み続けました。</b></li>
+<li>つまり<b>「送ったけど、本当に自分にできるのか分からない」まま送信し、誰も答えてくれないので自分で探した</b>——ということです。</li>
+</ol>
+</div>
+
+<h2 class="sec">実際の行動（8/20）</h2>
+<div class="tl">
+<div class="ev"><span class="t">01:16</span><div class="b"><b>「無料で開業相談する」を押す</b><small>ページに来て1分16秒。判断は速い＝FVと冒頭は効いている</small></div></div>
+<div class="ev"><span class="t">〜02:13</span><div class="b"><b>資料請求／オンライン相談を選び、複数の項目に入力して送信</b><small>入力にかかった時間 <b>57秒</b>。必須は6項目（住所・郵便番号を含む）</small></div></div>
+<div class="ev"><span class="t">02:36</span><div class="b">フォームを閉じる<small>送信の23秒後</small></div></div>
+<div class="ev gap"><span class="t">〜04:05</span><div class="b"><b>ページから離れる（約1分半）</b><small>戻ってきているので、離脱ではない。メールを確認しに行った可能性がある</small></div></div>
+<div class="ev hot"><span class="t">04:47</span><div class="b"><b>FAQ「未経験でも本当に開業できますか？」を開く</b><small>次を開くまで<b>1分17秒</b>＝しっかり読んでいる</small></div></div>
+<div class="ev hot"><span class="t">06:04</span><div class="b"><b>FAQ「開業までの期間はどのくらい？」</b></div></div>
+<div class="ev hot"><span class="t">06:14</span><div class="b"><b>FAQ「融資は本当に受けられますか？」</b><small>10秒間隔＝探しながら拾い読み</small></div></div>
+</div>
+
+<h2 class="sec">この順番が意味すること</h2>
+<div class="flip">
+<div class="fb n"><h4>◎ 本来あるべき順番</h4>
+LPを読む → <b>不安が解消される</b> → 納得して送信 → 待つ<br><br>
+送信した時点で気持ちが固まっているので、<b>連絡を待てる。</b></div>
+<div class="fb r"><h4>× 実際に起きた順番</h4>
+LPを読む → <b>不安が残ったまま送信</b> → 誰も答えてくれない → <b>自分でFAQを探しに戻る</b><br><br>
+送信後の6分間、<b>この方は一人で不安と向き合っていました。</b></div>
+</div>
+<div class="alert">送信後に自分で調べ直す人は、<b>連絡が来る前に冷めます。</b>いま神藤様（8/17着弾）は3日、藤井様（8/20着弾・この方）は未対応のままです。<b>いちばん熱があった6分間に、こちらから何も届いていません。</b></div>
+
+<h2 class="sec">そのFAQは、ページのいちばん下にあります</h2>
+<div class="depth">
+<div class="dr"><span class="l">CTAボタン</span><span class="bar"><i style="width:8%"></i></span><span class="v">8%</span></div>
+<div class="dr"><span class="l">CTAボタン</span><span class="bar"><i style="width:28%"></i></span><span class="v">28%</span></div>
+<div class="dr"><span class="l">CTAボタン</span><span class="bar"><i style="width:55%"></i></span><span class="v">55%</span></div>
+<div class="dr"><span class="l"><b>FAQ 6問</b></span><span class="bar"><i class="w" style="width:88%"></i></span><span class="v"><b>85〜91%</b></span></div>
+<div class="dr"><span class="l">CTAボタン</span><span class="bar"><i style="width:92%"></i></span><span class="v">92%</span></div>
+</div>
+<div class="note"><b>8/20にFAQのある85%地点まで到達したのは、25人中わずか3人（12%）です。</b>そして<b>その3人のうち1人が、この資料請求した方</b>でした。<br><br>
+一方で、同じ日の<b>独立LPの全タップ27回のうち17回（63%）がFAQ</b>。<b>いちばん読まれているコンテンツが、いちばん遠いところに置かれています。</b></div>
+
+<h2 class="sec">直すべき場所（優先順）</h2>
+
+<div class="fix p1">
+<h3>1. 送信完了画面が、ほぼ空白になっています</h3>
+<div class="now"><b>いまの文言（全文）</b>：「お問い合わせを受け付けました／担当者より折り返しご連絡いたします。／ありがとうございました。」</div>
+<p>この方は<b>この画面を23秒で閉じて、1分半後にFAQを探しに戻りました。</b>答えはページの下にあったのに、完了画面は何も教えていません。</p>
+<div class="aft"><b>案</b>：完了画面に<b>その3つの答えをそのまま置く</b>。<br>
+「未経験でも大丈夫です（180社のうち約6割が未経験）」<br>
+「開業まで最短3ヶ月です」<br>
+「融資は金融機関との交渉まで支援に含まれます」<br><br>
+<b>探させない。</b>手間はほぼゼロで、いちばん熱い瞬間に効きます。</div>
+</div>
+
+<div class="fix p1">
+<h3>2. 自動返信メールの中身（要確認）</h3>
+<p>02:36にフォームを閉じて、04:05に戻ってきています。この1分半、<b>メールを確認しに行った可能性</b>があります。もしそうなら、<b>自動返信を読んでも不安が解けなかったので戻ってきた</b>ということになります。</p>
+<div class="aft"><b>案</b>：自動返信メールにも同じ3つの答えを入れる。あわせて「いつ・どんな形で連絡が来るか」を1行。<br>
+<b>※自動返信が有効になっているかどうか自体が未確認です</b>（Coworkに調査を依頼済み）。</div>
+</div>
+
+<div class="fix p2">
+<h3>3. FAQが85%地点にある</h3>
+<p>到達するのは12%だけ。<b>最も読まれる中身が、最も遠い場所にあります。</b></p>
+<div class="aft"><b>案</b>：FAQを丸ごと上げるのは構成が変わるので、まず<b>フォームを開くボタンの直前に「よくある不安 3つ」だけ抜き出して置く</b>。送信前に解消できれば、そもそも送信後に探しに戻る必要がなくなります。</div>
+</div>
+
+<div class="fix p2">
+<h3>4. 入力に57秒かかっています</h3>
+<p>01:16に押して、送信は02:13。<b>必須6項目（お名前・ふりがな・電話・メール・郵便番号・住所）</b>を埋めるのにかかった時間です。</p>
+<div class="aft"><b>案</b>：作成済みのカレンダー予約フォーム（<b>日時タップ＋3項目</b>）なら20秒前後です。<b>住所を聞く理由は、受け皿が「資料郵送」だからでした。</b></div>
+</div>
+
+<div class="fix p3">
+<h3>5. 初回接触までの時間</h3>
+<p>この方は<b>送信後6分間、自分で不安を解消しようとしていました。</b>その熱があるうちに、こちらからは何も届いていません。</p>
+<div class="aft"><b>案</b>：数字を決めてしまう。たとえば<b>「営業時間内なら30分以内に一次連絡」</b>。それが難しければ、<b>自動返信で「本日中にご連絡します」と明示</b>するだけでも、待てる時間が変わります。</div>
+</div>
+
+<h2 class="sec">やる順番</h2>
+<table>
+<tr><th>#</th><th>やること</th><th>手間</th><th>効くところ</th></tr>
+<tr><td>1</td><td>完了画面に3つの答えを置く</td><td>小</td><td>送信直後の不安（いちばん熱い瞬間）</td></tr>
+<tr><td>2</td><td>自動返信の中身を確認して、同じ3つを入れる</td><td>小</td><td>離れている間のフォロー</td></tr>
+<tr><td>3</td><td>フォーム直前に「よくある不安3つ」を出す</td><td>中</td><td>そもそも不安を残さず送信させる</td></tr>
+<tr><td>4</td><td>カレンダー予約フォームに切替（作成済み）</td><td>中</td><td>入力57秒 → 20秒</td></tr>
+<tr><td>5</td><td>一次連絡までの時間を決める</td><td>—</td><td>運用（決めるだけ）</td></tr>
+</table>
+<div class="note"><b>1と2は今日中にできます。</b>そして<b>この2つがいちばん効く</b>と考えています。理由は、この方が「送信後」に動いているからです。送信前をいくら磨いても、送信後の空白は埋まりません。</div>
+
+<footer>
+出典：Microsoft Clarity のセッション記録（2026/8/20・独立LP 202607dokuritsu）、同日のClarity スクロール／タップ集計（PV25・タップ27回中17回がFAQ・85%到達3人）、owl-fukushi.net/202607dokuritsu/ のHTMLソースおよびスマホ幅390pxでの実測位置（ページ全高10,674px）。<br>
+※ 1人ぶんの行動記録です。比率は方向として扱ってください。行動の時刻・順番と、ページ上の位置は実測値です。<br>
+※ 本番サイトへの変更は行っていません。
+</footer>
+</div>
+</body>
+</html>
