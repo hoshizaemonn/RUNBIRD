@@ -115,6 +115,32 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 .note{background:var(--amberbg);border:1px solid #fedf89;border-radius:12px;padding:16px 18px;
   font-size:14px;color:#93370d;margin-top:14px}
 .note b{color:#7a2e0e}
+/* フォーム案 */
+.fstep{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
+.fstep:last-child{border-bottom:0}
+.fnum{width:34px;height:34px;border-radius:9px;background:#0d1424;color:#fff;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px}
+.fbody{flex:1;min-width:0}
+.fbody h3{margin:0 0 4px;font-size:16.5px}
+.fbody .why{margin:0 0 10px;font-size:14px;color:var(--sub)}
+.fbox{background:#f8f9fb;border:1px dashed #cfd4dc;border-radius:10px;padding:14px 16px}
+.fbox .lbl{font-size:11.5px;color:var(--mute);letter-spacing:.1em;font-weight:800;margin-bottom:6px}
+.fbox .cp{font-size:15px;line-height:1.75}
+.opt{display:block;padding:9px 14px;border:2px solid #d0d5dd;border-radius:8px;margin-top:8px;
+  background:#fff;font-weight:800;font-size:14.5px}
+.opt.on{border-color:var(--or);color:var(--or)}
+.opt.del{border-style:dashed;color:var(--mute);font-weight:400;text-decoration:line-through;background:#fafafa}
+.fld{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid #e9ebf0;font-size:14.5px}
+.fld:last-child{border-bottom:0}
+.fld em{font-style:normal;color:var(--mute);font-size:12.5px;white-space:nowrap}
+.fld.new{color:var(--or);font-weight:800}
+/* 予算・損益 */
+.big{display:flex;flex-wrap:wrap;gap:14px;margin:4px 0 6px}
+.bigc{flex:1 1 200px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.bigc .bl{font-size:12.5px;color:var(--sub);margin-bottom:4px}
+.bigc .bv{font-size:30px;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.bigc.hit{border-color:var(--or);background:#fff7f2}
+.bigc.hit .bv{color:var(--or)}
 /* 制作済みアセット */
 .vgrid{display:grid;gap:14px;grid-template-columns:1fr}
 @media(min-width:620px){.vgrid{grid-template-columns:repeat(2,1fr)}}
@@ -272,23 +298,52 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
 </div>
 </div>
 
-<h2><span class="n">07</span>経済性 <span class="b b-amb" style="font-size:13px;vertical-align:middle">確度C・試算</span></h2>
-<p class="lead">前提はすべて実績のない仮置きです。根拠ではなく、判断材料として見てください。</p>
+<h2><span class="n">07</span>月5万で回すと、どうなるか <span class="b b-amb" style="font-size:13px;vertical-align:middle">確度C・試算</span></h2>
+<p class="lead">実測のCPM・CTRを土台に3シナリオ。<b>前提はすべて実績のない仮置きです。</b></p>
+
 <div class="card">
-  <div class="cmp">
-    <div class="cbar"><span class="cl">受注1件のCAC</span><div class="cv cac">約 ¥165,000</div></div>
-    <div class="cbar"><span class="cl">受注1件の粗利</span><div class="cv gp">約 ¥108,000</div></div>
-  </div>
-  <p style="margin:20px 0 0;font-size:16px" class="bad">CAC が粗利を上回る＝赤字。返答率が80%まで上がってもほぼトントンです。</p>
-  <div class="tw" style="margin-top:18px"><table>
-    <tr><th>前提</th><th>値</th><th>出所</th></tr>
-    <tr><td>CPC</td><td class="num">¥450</td><td><span class="b b-grn">実測</span> 7月¥411／8月¥523の中間</td></tr>
-    <tr><td>クリック→リード</td><td class="num">3%</td><td><span class="b b-red">仮置き</span> 電話必須で摩擦が上がるため</td></tr>
-    <tr><td>リード→返答</td><td class="num">50%</td><td><span class="b b-red">仮置き</span> 実績なし</td></tr>
-    <tr><td>返答→商談</td><td class="num">60%</td><td><span class="b b-red">仮置き</span> 実績なし</td></tr>
-    <tr><td>商談→受注</td><td class="num">30%</td><td><span class="b b-red">仮置き</span> 実績なし</td></tr>
-    <tr><td>継続月数／粗利率</td><td class="num">6ヶ月／60%</td><td><span class="b b-red">仮置き</span> 実績なし</td></tr>
+<div class="tw"><table>
+  <tr><th></th><th>悲観</th><th>中位</th><th>楽観</th></tr>
+  <tr><th>CPM</th><td class="num">¥8,855</td><td class="num">¥6,700</td><td class="num">¥4,566</td></tr>
+  <tr><th>CTR</th><td class="num">0.87%</td><td class="num">2.0%</td><td class="num">2.5%</td></tr>
+  <tr><th>表示</th><td class="num">5,647</td><td class="num">7,463</td><td class="num">10,951</td></tr>
+  <tr><th>クリック</th><td class="num">49</td><td class="num">149</td><td class="num">274</td></tr>
+  <tr><th>フォーム送信率</th><td class="num">4%</td><td class="num">5%</td><td class="num">6%</td></tr>
+  <tr><th>リード</th><td class="num">2件</td><td class="num"><b>7.5件</b></td><td class="num">16件</td></tr>
+  <tr><th>連絡がついた数</th><td class="num">0.8</td><td class="num"><b>4.5</b></td><td class="num">11.5</td></tr>
+  <tr><th>商談</th><td class="num">0.3件</td><td class="num"><b>2.2件</b></td><td class="num">6.9件</td></tr>
+  <tr><th>受注</th><td class="num bad">0.06名</td><td class="num"><b>0.67名</b></td><td class="num ok">2.07名</td></tr>
+  <tr><th>受注1件あたり</th><td class="num bad">¥794,000</td><td class="num">¥74,600</td><td class="num ok">¥24,200</td></tr>
+</table></div>
+<div class="note">
+  <b>訂正：</b>8/20版で「受注1件あたり¥165,000」と書きましたが、あれは<b>LPフォーム（送信率3%）前提</b>でした。
+  インスタントフォームを使う前提なら中位<b>¥74,600</b>で、粗利¥108,000を下回ります。<b>成立しうる水準です。</b>
+</div>
+</div>
+
+<h2 style="margin-top:34px"><span class="n">07-2</span>「月5万＝2名」の線を確かめる</h2>
+<p class="lead">広告費を単月で回収するのに、何名の獲得が要るか。</p>
+<div class="big">
+  <div class="bigc"><div class="bl">売上ベース（月30,000円 × 名）</div><div class="bv">2名</div></div>
+  <div class="bigc hit"><div class="bl">粗利ベース（粗利60%と仮定）</div><div class="bv">3名</div></div>
+  <div class="bigc"><div class="bl">中位シナリオの期待値</div><div class="bv" style="color:var(--red)">0.67名</div></div>
+</div>
+<div class="card" style="margin-top:16px">
+  <p style="margin:0 0 14px;font-size:16px"><b>「毎月2名」は期待値ではなく、楽観シナリオでちょうど届く水準です。</b>中位では3分の1しか届きません。</p>
+  <div class="tw"><table>
+    <tr><th>ペース</th><th>累積が黒字になるまで</th><th>そのときの顧客数</th></tr>
+    <tr><td>中位 0.67名/月</td><td class="num bad">8ヶ月</td><td class="num">5.4名</td></tr>
+    <tr><td>楽観 2.07名/月</td><td class="num ok">2ヶ月</td><td class="num">4.1名</td></tr>
   </table></div>
+  <p style="margin:14px 0 0;font-size:14.5px;color:var(--sub)">※ 粗利60%・<b>解約ゼロ</b>の前提。実際には解約が入るのでもっと遅くなります。</p>
+</div>
+<div class="note" style="background:var(--greenbg);border-color:#a6f4c5;color:#05603a">
+  <b>「2名」は、全部を広告で獲る必要はありません。</b>既存クライアントからの1名はCAC0円です。
+  <b>広告1名＋既存客1名</b>のほうが、広告2名よりはるかに現実的で、今月中に届きます。
+</div>
+<div class="note" style="background:var(--redbg);border-color:#fecdca;color:#912018">
+  <b>最大の未知数は継続月数です。</b>月額サブスクなので、1名獲得しても<b>2ヶ月で解約されれば回収できません。</b>
+  継続月数の実績が無いまま「LTV 6ヶ月」を置いています。ここが崩れると上の表は全部変わります。
 </div>
 
 <h2><span class="n">08</span>主軸の移し先</h2>
@@ -301,7 +356,7 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
     <p>Metaは「困っていると気づいていない人」に当てる媒体。<b>探している人</b>のほうが合い、電話番号を書く抵抗も低い。</p></div></div></div>
   <div class="card"><div class="pri"><div class="pn">3</div><div>
     <h3>オーガニックInstagram</h3>
-    <p>広告費0。<b>制作した動画がそのまま在庫になります。</b>今日作った2本は広告に出さなくてもここで使えます。</p></div></div></div>
+    <p>広告費0。<b>制作した動画がそのまま在庫になります。</b>制作済みの5本は広告に出さなくてもここで使えます。</p></div></div></div>
   <div class="card"><div class="pri"><div class="pn g4">4</div><div>
     <h3>Meta広告（縮小して継続）</h3>
     <p>やめません。役割を<b>「サンプル配布の入口」1つ</b>に絞り、受け皿が直るまでは0円。</p></div></div></div>
@@ -321,7 +376,119 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
   <b>3つ目が肝です。</b>C様が選んだのは「サンプル動画がほしい」で、返したのは営業メールでした。<b>欲しいと言われたものを、その場で渡します。</b>
 </div>
 
-<h2><span class="n">10</span>いま出せるもの（制作済み）</h2>
+<h2><span class="n">10</span>配信の組み方 — 3本を「1つの広告セット」に入れる</h2>
+<p class="lead">3本流すのは賛成。<b>分け方だけ変えます。</b>500円×3つの広告セットに分けないでください。</p>
+
+<div class="grid g2">
+  <div class="card concl"><div class="k">理由 1</div>
+    <h3>1日500円では、3つとも<br>学習フェーズを抜けられない</h3>
+    <p>広告セットは<b>それぞれが別の学習単位</b>です。¥500 ÷ CPM¥6,700 ＝ <b>1日約75表示</b>。3つとも「学習が限定的」で固定され、配信が不安定になって単価が上がります。<br><br>
+    <b>8/7にCPMが¥7,047まで跳ねたのが、まさにこの状態です。</b>分けると、それを3つ作ることになります。<br><br>
+    さらに、同じターゲットの広告セット3つは<b>自社同士がオークションでぶつかります。</b></p></div>
+  <div class="card concl"><div class="k">理由 2</div>
+    <h3>クリエイティブの優劣に<br>予算を使うのは配分ミス</h3>
+    <p><b>同じ動画が、設定違いでCTR 16倍</b>になっています（下表）。クリエイティブの差は二次要因です。<br><br>
+    しかも数字上、<b>この予算では優劣は出ません。</b>CTR 2%と3%を統計的に区別するには<b>1本あたり約3,800表示</b>が必要。月7,463表示を3本に割ると1本2,500表示で、1ヶ月回しても足りません。<br><br>
+    <b>3本流す目的は「どれが勝つか決める」ことではなく、Metaに選ばせることです。</b></p></div>
+</div>
+
+<div class="card" style="margin-top:16px">
+<div class="tw"><table>
+  <tr><th>同一クリエイティブ <code>BuzzPlus_AI動画_v1</code></th><th>表示</th><th>CTR</th></tr>
+  <tr><td>エンゲージメント（DM）目的</td><td class="num">11,689</td><td class="num bad">0.16%</td></tr>
+  <tr><td>リード目的 B案</td><td class="num">1,136</td><td class="num">1.94%</td></tr>
+  <tr><td>リード目的 本体</td><td class="num">2,593</td><td class="num ok">2.58%</td></tr>
+</table></div>
+<p style="margin:14px 0 0;font-size:15px"><b>中身は同じ動画です。設定だけで16倍違いました。</b></p>
+</div>
+
+<div class="grid g3" style="margin-top:20px">
+  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">流す3本</div>
+    <h3>①型（40.6秒）</h3><p>9:16・テロップ入り・BGMあり</p></div>
+  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">流す3本</div>
+    <h3>③型カタログ（40秒）</h3><p>帯固定・テロップなし。<b>競合が約80日回している型。</b>1:1なので<b>9:16版を作ります</b></p></div>
+  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">流す3本</div>
+    <h3>本C改良版（15秒）</h3><p>短尺。<b>冒頭の「飲食店の皆様へ」を外してから</b>出します</p></div>
+</div>
+<div class="note">
+  アニメる風の<b>動画版・静止画版は外します。</b>同じ絵の派生なので、Metaに選ばせる材料として情報量が少ないためです。<br><br>
+  <b>回し始めたら2週間触らないでください。</b>8/4に「商品の大きな変更」で両広告の学習がリセットされています。予算変更・差し替え・設問変更はすべてリセット要因です。
+</div>
+
+<h2><span class="n">11</span>フォーム完成案</h2>
+<p class="lead">タイプは<b>「高い意向」</b>。v4（高い意向）が3件、v7b（大量用）が0件でした。<b>画面数はv4と同じ5画面のまま</b>、業種を削ってURLと電話を足します。</p>
+
+<div class="card">
+  <div class="fstep"><div class="fnum">1</div><div class="fbody">
+    <h3>イントロ</h3>
+    <div class="fbox"><div class="lbl">見出し</div>
+      <div class="cp">月30,000円から、動画制作＋SNS配信まで。</div>
+      <div class="lbl" style="margin-top:12px">本文</div>
+      <div class="cp">お店のURLを送るだけ。台本も撮影も要りません。<br>3営業日でお届けします。16業種以上で制作しています。</div>
+    </div></div></div>
+
+  <div class="fstep"><div class="fnum">2</div><div class="fbody">
+    <h3>設問1 ─ 5択を2択に減らす</h3>
+    <p class="why">7月の実データで、<b>残り3つは1件も選ばれていません。</b>「サンプル動画がほしい」を1番目に置きます（完了画面でその場で渡せるため）。</p>
+    <div class="fbox"><div class="lbl">興味のあるものを教えてください</div>
+      <span class="opt on">サンプル動画がほしい　<em style="font-style:normal;font-size:12px;font-weight:400">7月 1件</em></span>
+      <span class="opt on">月30,000円プランの詳細を知りたい　<em style="font-style:normal;font-size:12px;font-weight:400">7月 2件</em></span>
+      <span class="opt del">制作事例をもっと見たい　0件</span>
+      <span class="opt del">料金プランの相談　0件</span>
+      <span class="opt del">その他（情報収集など）　0件</span>
+    </div></div></div>
+
+  <div class="fstep"><div class="fnum">3</div><div class="fbody">
+    <h3>設問2 ─ 「お店のURL」を新規追加（必須）</h3>
+    <p class="why">サービスの入力そのものなので聞くのが自然。<b>冷やかしは書きません。</b>業種の設問は削除します（3人とも「その他」で、用意した5業種は0件でした）。</p>
+    <div class="fbox"><div class="lbl">お店のURLを教えてください</div>
+      <div class="cp">ホームページ・食べログ・Instagram・Googleマップ、どれでも構いません。<br><b>このURLだけでサンプルをお作りします。</b></div>
+    </div></div></div>
+
+  <div class="fstep"><div class="fnum">4</div><div class="fbody">
+    <h3>連絡先 ─ 電話番号を必須で追加</h3>
+    <p class="why"><b>ここが改修の本丸です。</b>現行はメールと氏名だけで、メールが届かなかった時点で打つ手がゼロでした。</p>
+    <div class="fbox">
+      <div class="fld"><span>氏名</span><em>自動入力</em></div>
+      <div class="fld"><span>メールアドレス</span><em>自動入力</em></div>
+      <div class="fld new"><span>電話番号　★追加</span><em>自動入力・必須</em></div>
+      <div class="fld" style="color:var(--mute);text-decoration:line-through"><span>業種（任意）</span><em>削除</em></div>
+    </div></div></div>
+
+  <div class="fstep"><div class="fnum">5</div><div class="fbody">
+    <h3>完了画面 ─ 最大の変更</h3>
+    <p class="why"><b>完了画面は到達率100%の唯一の場所です。</b>メールは0〜67%。C様が欲しいと言ったのは「サンプル動画」で、返したのは営業メールでした。<b>ここに置けば、メールが弾かれても価値は届きます。</b></p>
+    <div class="fbox"><div class="lbl">見出し</div>
+      <div class="cp">ありがとうございます。サンプル動画をご覧ください。</div>
+      <div class="lbl" style="margin-top:12px">本文</div>
+      <div class="cp">3営業日以内にご連絡します。</div>
+      <div class="lbl" style="margin-top:12px">ボタン</div>
+      <div class="cp"><span class="opt on" style="display:inline-block;margin-top:4px">サンプル動画を見る →</span><br>
+      <span style="font-size:13.5px;color:var(--sub)">遷移先：LPのサンプルセクション</span></div>
+    </div></div></div>
+</div>
+
+<div class="card" style="margin-top:16px">
+<div class="tw"><table>
+  <tr><th></th><th>v4（7月・3件）</th><th>新案</th></tr>
+  <tr><td>タイプ</td><td>高い意向</td><td>据え置き</td></tr>
+  <tr><td>設問1</td><td>5択</td><td class="ok">2択に削減</td></tr>
+  <tr><td>設問2</td><td>業種（任意）</td><td class="bad">削除</td></tr>
+  <tr><td>—</td><td>—</td><td class="ok">お店のURL（必須）を追加</td></tr>
+  <tr><td>連絡先</td><td>メール・氏名</td><td class="ok">＋電話番号（必須）</td></tr>
+  <tr><td>完了画面</td><td>標準</td><td class="ok">サンプル動画へのボタン</td></tr>
+  <tr><td>通知先</td><td class="bad">実質未設定</td><td class="ok">3名＋テスト送信で着信確認</td></tr>
+  <tr><td>画面数</td><td class="num">5</td><td class="num">5（増やさない）</td></tr>
+</table></div>
+</div>
+<div class="note" style="background:var(--redbg);border-color:#fecdca;color:#912018">
+  <b>フォームに入れてはいけない表現（正本より）</b><br>
+  ・<b>「1本30,000円」「1本あたり30,000円」</b> ─ 禁止語。月額です<br>
+  ・<b>「動画1本無料」「0円」</b> ─ <b>未確定論点①・鈴木さん未回答。</b>フォームにもクリエイティブにも入れません<br>
+  ・<b>「累計制作本数」「導入社数」</b> ─ 実数が未提供のため書けません
+</div>
+
+<h2><span class="n">12</span>いま出せるもの（制作済み）</h2>
 <p class="lead">戦略の話とは別に、<b>素材はもうあります。</b>配信を止めている間も、オーガニックIGと既存クライアントへの提案でそのまま使えます。</p>
 
 <div class="lpcard">
@@ -379,7 +546,7 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
   <b>使いどころ。</b>Meta広告への投入は受け皿が整うまで止めますが、<b>オーガニックInstagramへの投稿</b>と<b>既存クライアントへの「こういうものを作ります」という提案素材</b>としては、今日から使えます。優先度1位の既存客展開には、この5本がそのまま営業ツールになります。
 </div>
 
-<h2><span class="n">11</span>配信再開の条件（5項目）</h2>
+<h2><span class="n">13</span>配信再開の条件（5項目）</h2>
 <p class="lead">過去に「設定した」で終わって届いていなかった事故が起きています。<b>設定画面の確認では合格にしません。実際に流して着信を見ます。</b></p>
 <div class="card"><ol class="chk">
   <li><b>LPフォームに「お店のURL」「電話番号」を必須で追加</b><span>テスト送信で両方が入って出てくること</span></li>
@@ -389,21 +556,21 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
   <li><b>台帳＋当日接触ルール</b><span>送信→台帳反映を確認。担当者と時刻を決める</span></li>
 </ol></div>
 
-<h2><span class="n">12</span>撤退ラインを、投下する前に引く</h2>
+<h2><span class="n">14</span>撤退ラインを、投下する前に引く</h2>
 <div class="gate">
   <div class="gh">判定条件</div>
   <div class="gb">
     <div class="gline"><span class="gk">前提</span><span>受け皿5項目が全部テストで通っていること</span></div>
-    <div class="gline"><span class="gk">投下</span><span><b>1ヶ月 ¥100,000</b>（日予算¥1,000では9日で2,060インプ。何を変えても判定できない）</span></div>
-    <div class="gline"><span class="gk">見る指標</span><span><b>商談数</b>（リード数ではない）</span></div>
-    <div class="gline"><span class="gk"><span class="b b-grn">継続</span></span><span>商談 3件以上</span></div>
-    <div class="gline"><span class="gk"><span class="b b-amb">縮小</span></span><span>商談 1〜2件 → サンプル配布の入口に限定</span></div>
-    <div class="gline"><span class="gk"><span class="b b-red">撤退</span></span><span>商談 0〜1件 → Google・既存客・オーガニックへ全面シフト</span></div>
+    <div class="gline"><span class="gk">投下</span><span><b>1ヶ月 ¥50,000</b>（¥1,500/日 × 1広告セット × 3本）</span></div>
+    <div class="gline"><span class="gk">見る指標</span><span><b>連絡がついた数</b>（商談は月2件前後でブレが大きい。中位で4.5件なら月内に判定できる）</span></div>
+    <div class="gline"><span class="gk"><span class="b b-grn">継続</span></span><span>連絡がついた <b>3件以上</b> → ¥100,000に増やして受注を見る</span></div>
+    <div class="gline"><span class="gk"><span class="b b-amb">縮小</span></span><span>連絡がついた 2件 → サンプル配布の入口に限定</span></div>
+    <div class="gline"><span class="gk"><span class="b b-red">撤退</span></span><span>連絡がついた <b>0〜1件</b> → Google・既存客・オーガニックへ全面シフト</span></div>
   </div>
 </div>
-<div class="note"><b>リード数は判定に使いません。</b>10件出ても商談0なら撤退です。</div>
+<div class="note"><b>リード数は判定に使いません。</b>10件出ても、連絡がつかなければ撤退です。<br><br><b>4.5万でも5万でも誤差です。</b>本当の分岐は<b>5万か10万か</b>。まず5万で「連絡がつくか」だけを見て、ついたら10万に増やして受注を見る、の2段が現実的です。</div>
 
-<h2><span class="n">13</span>いったん止めること</h2>
+<h2><span class="n">15</span>いったん止めること</h2>
 <div class="grid g3">
   <div class="card concl stop"><div class="k" style="color:var(--mute)">STOP 1</div>
     <h3>動画の本数を増やす</h3><p>リードを増やす打ち手。<b>意欲の問題には効きません。</b>今ある2本で当面足ります。</p></div>
@@ -416,17 +583,18 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
   <b>作った動画は無駄になりません。</b>オーガニックIGと、既存クライアントへの提案資料でそのまま使えます。
 </div>
 
-<h2><span class="n">14</span>鈴木さん判断が要ること</h2>
+<h2><span class="n">16</span>鈴木さん判断が要ること</h2>
 <div class="card"><div class="tw"><table>
   <tr><th></th><th>論点</th><th>なぜ判断が要るか</th></tr>
   <tr><td class="num">①</td><td><b>お試し1本を0円にするか</b></td><td>「その場でサンプルを返す」設計の核。<span class="b b-red">引継書からの持ち越し・未回答</span></td></tr>
   <tr><td class="num">②</td><td>Meta を縮小して Google へ移すか</td><td>予算の付け替え。事業判断</td></tr>
   <tr><td class="num">③</td><td>既存客への横展開を誰がいつ声かけするか</td><td>クライアント連絡100%ルール。こちらでは動かせない</td></tr>
-  <tr><td class="num">④</td><td>撤退ライン（¥100,000／商談3件）でよいか</td><td>合意しておかないと、ずるずる続きます</td></tr>
+  <tr><td class="num">④</td><td>撤退ライン（¥50,000／連絡がついた3件）でよいか</td><td>合意しておかないと、ずるずる続きます</td></tr>
+  <tr><td class="num">⑥</td><td><b>目標「毎月2名」は広告だけで背負うのか</b></td><td>広告2名は楽観シナリオ。<b>広告1名＋既存客1名</b>のほうが現実的です</td></tr>
   <tr><td class="num">⑤</td><td>累計制作本数・導入社数の実数</td><td>実績表記に使う。<span class="b b-red">引継書からの持ち越し・未回答</span></td></tr>
 </table></div></div>
 
-<h2><span class="n">15</span>未確定のまま残っている事実</h2>
+<h2><span class="n">17</span>未確定のまま残っている事実</h2>
 <div class="card"><div class="tw"><table>
   <tr><th></th><th>内容</th><th>状態</th></tr>
   <tr><td class="num">1</td><td>「連絡が取れなかった」の中身（エラー返送／無反応／電話不通）</td><td><span class="b b-red">未確認</span> 原因の切り分けに直結</td></tr>
