@@ -34,6 +34,12 @@ ol.q li{counter-increment:q;position:relative;padding:11px 14px 11px 42px;margin
 ol.q li::before{content:counter(q);position:absolute;left:13px;top:11px;width:20px;height:20px;
   border-radius:50%;background:var(--warn);color:#fff;font-size:12px;font-weight:700;
   display:flex;align-items:center;justify-content:center}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.shot{min-width:0}
+.shot img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff}
+.shot .cap{font-size:12px;color:var(--ink2);margin-top:6px;line-height:1.6}
+.shot .cap b{color:var(--ink)}
+@media(max-width:560px){.shots{grid-template-columns:1fr;gap:18px}}
 footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
 @media(max-width:430px){h1{font-size:18px}.wrap{padding:19px 13px 55px}td.l{width:auto;display:block;border:0;padding-bottom:0}td{display:block}}
 </style></head><body>
@@ -54,6 +60,18 @@ footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-si
 <tr><td class="l">触っていないもの</td><td>フォームの入力項目、0円プランLP</td></tr>
 </table>
 <div class="note">資料請求くださった方が、送信したあとに6分かけてご自分でFAQを読み直していたため、その手当てです。スマホ360〜430pxで表示確認済み。</div>
+
+<div class="shots">
+  <div class="shot">
+    <img src="shot_modal.webp" alt="フォーム上部に追加した「送信前に、よくあるご不安」3問">
+    <div class="cap"><b>送信の前</b>／フォームの上に3問。開かないと本文は出ないので、入力の邪魔にはなりません。</div>
+  </div>
+  <div class="shot">
+    <img src="shot_done.webp" alt="送信後の完了画面。このあとの流れとFAQ3問と電話ボタン">
+    <div class="cap"><b>送信の後</b>／受付完了と「このあとの流れ」、その下にFAQ3問と電話ボタン。</div>
+  </div>
+</div>
+<div class="note">※どちらも実際の画面です（スマホ幅390px）。完了画面は表示だけさせて撮ったもので、テスト送信はしていません。</div>
 </div>
 
 <span class="day">8月22日</span>
