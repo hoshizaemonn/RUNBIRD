@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OWL福祉 8/22 実施内容と結果</title>
+<style>
+:root{
+  --teal:#0D9488; --orange:#C2410C;
+  --bg:#fcfcfb; --card:#fff; --ink:#1a2224; --ink2:#4a5a5e; --muted:#7d8f93;
+  --line:#e4eaea; --good:#15803d; --warn:#B45309; --bad:#B91C1C;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;
+  line-height:1.75;-webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:28px 18px 80px}
+header{border-bottom:3px solid var(--teal);padding-bottom:14px;margin-bottom:26px}
+h1{font-size:23px;margin:0 0 6px;letter-spacing:.01em}
+.sub{color:var(--muted);font-size:13px}
+h2{font-size:17px;margin:40px 0 14px;padding-left:11px;border-left:4px solid var(--teal)}
+h3{font-size:14.5px;margin:24px 0 9px;color:var(--ink2)}
+p{margin:9px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:17px 18px;margin:13px 0}
+
+/* 結論 */
+.concl{background:#fff;border:2px solid var(--teal);border-radius:14px;padding:6px 20px 18px;margin:0 0 8px}
+.concl h2{border:0;padding:0;margin:18px 0 4px;font-size:16px;color:var(--teal)}
+.cItem{display:flex;gap:13px;padding:15px 0;border-bottom:1px dashed var(--line)}
+.cItem:last-child{border-bottom:0}
+.cNo{flex:0 0 26px;height:26px;border-radius:50%;background:var(--teal);color:#fff;
+  font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.cBody{flex:1;min-width:0}
+.cTtl{font-weight:700;font-size:15px;margin-bottom:3px}
+.cTxt{font-size:13.5px;color:var(--ink2)}
+
+/* stat */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:13px 15px}
+.stat .k{font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+.stat .v{font-size:25px;font-weight:800;letter-spacing:-.01em;margin-top:2px;font-variant-numeric:tabular-nums}
+.stat .d{font-size:12px;margin-top:2px}
+.up{color:var(--orange)} .down{color:var(--teal)} .flat{color:var(--muted)}
+
+/* bars */
+.bars{margin:12px 0}
+.brow{display:grid;grid-template-columns:1fr;gap:3px;margin:11px 0}
+.blab{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink2);gap:10px}
+.blab b{font-variant-numeric:tabular-nums;color:var(--ink);font-weight:700}
+.btrack{height:16px;background:#eef2f2;border-radius:4px;overflow:hidden}
+.bfill{height:100%;border-radius:4px;background:var(--teal)}
+.bfill.o{background:var(--orange)}
+.bfill.g{background:#9aa9ac}
+
+/* table */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:480px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#f2f6f6;font-size:12px;color:var(--ink2);font-weight:700;white-space:nowrap}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.tot td{font-weight:700;background:#f7faf9}
+
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;
+  border:1px solid;white-space:nowrap}
+.t-ok{color:var(--good);border-color:#bfe0c8;background:#f2faf4}
+.t-warn{color:var(--warn);border-color:#eed9b4;background:#fdf8ef}
+.t-bad{color:var(--bad);border-color:#f0c9c9;background:#fdf3f3}
+.t-mute{color:var(--muted);border-color:var(--line);background:#f7f9f9}
+
+.q{background:#fdf8ef;border:1px solid #eed9b4;border-radius:12px;padding:15px 18px;margin:13px 0}
+.q .qn{font-weight:700;font-size:14.5px;color:var(--warn);margin-bottom:4px}
+.note{font-size:12.5px;color:var(--muted);margin-top:6px}
+ul{margin:8px 0;padding-left:20px}li{margin:5px 0;font-size:13.5px}
+.legend{font-size:12px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap;margin:6px 0 0}
+.sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+@media(max-width:430px){h1{font-size:19px}.wrap{padding:20px 13px 60px}.stat .v{font-size:21px}}
+</style></head><body>
+<div class="wrap">
+
+<header>
+  <h1>OWL福祉｜8月22日にやったことと、その結果</h1>
+  <div class="sub">2026年8月23日 作成／対象データ 8月21日・22日（Google広告・Yahoo広告・Clarity・問い合わせ通知メール）</div>
+</header>
+
+<div class="concl">
+<h2>まず、この3つです</h2>
+
+<div class="cItem"><div class="cNo">1</div><div class="cBody">
+  <div class="cTtl">主力キャンペーンが止まりかけていました。戻しました。</div>
+  <div class="cTxt">除外キーワードの設定を1つ間違えて、<b>いちばん効いているGH（0円プラン）のキャンペーンが配信ゼロになる寸前</b>でした。当日中に気づいて修正し、表示回数は 203 → <b>317</b> に戻っています。問い合わせ4件のうち3件はこのキャンペーン経由なので、放置していたら止まっていました。</div>
+</div></div>
+
+<div class="cItem"><div class="cNo">2</div><div class="cBody">
+  <div class="cTtl">費用が1日で30%増えました。増やしたのはYahooです。</div>
+  <div class="cTxt">¥26,142 → <b>¥34,044</b>。Googleの予算は1円も上げていません。増えたのはYahooで <b>¥6,059 → ¥10,251（+69%）</b>。日予算¥5,000に対して<b>¥8,526</b>使っており、クリック単価はGoogleの約1.9倍です。問い合わせは0件でした。</div>
+</div></div>
+
+<div class="cItem"><div class="cNo">3</div><div class="cBody">
+  <div class="cTtl">LPの重さは4分の1になりました。次に重いのは画像ではありません。</div>
+  <div class="cTxt">0円プランLPを <b>16.72MB → 3.98MB（76%減）</b> に。ただし内訳を見ると、いま一番重いのは<b>JavaScript 2.2MB</b>で、画像（0.91MB）の2倍以上です。次に手を入れるならここです。</div>
+</div></div>
+</div>
+
+<h2>1. 昨日（8/22）の数字</h2>
+
+<div class="stats">
+  <div class="stat"><div class="k">費用（Google＋Yahoo）</div><div class="v">¥34,044</div><div class="d up">前日 ¥26,142 ／ +30%</div></div>
+  <div class="stat"><div class="k">クリック</div><div class="v">86</div><div class="d up">前日 79 ／ +9%</div></div>
+  <div class="stat"><div class="k">クリック単価</div><div class="v">¥396</div><div class="d up">前日 ¥331 ／ +20%</div></div>
+  <div class="stat"><div class="k">問い合わせ</div><div class="v">0件</div><div class="d flat">2日連続で0件</div></div>
+</div>
+
+<h3>費用の内訳（8月22日）</h3>
+<div class="bars">
+  <div class="brow"><div class="blab"><span>Google／GH（0円プランLP）</span><b>¥13,251</b></div>
+    <div class="btrack"><div class="bfill" style="width:100%"></div></div></div>
+  <div class="brow"><div class="blab"><span>Yahoo／GH<span class="tag t-bad" style="margin-left:6px">日予算¥5,000を¥3,526超過</span></span><b>¥8,526</b></div>
+    <div class="btrack"><div class="bfill o" style="width:64.3%"></div></div></div>
+  <div class="brow"><div class="blab"><span>Google／独立 300万版</span><b>¥4,526</b></div>
+    <div class="btrack"><div class="bfill" style="width:34.2%"></div></div></div>
+  <div class="brow"><div class="blab"><span>Google／RB 経営者向け（河合さん）</span><b>¥4,640</b></div>
+    <div class="btrack"><div class="bfill g" style="width:35.0%"></div></div></div>
+  <div class="brow"><div class="blab"><span>Yahoo／RB 経営者向け（河合さん）</span><b>¥1,725</b></div>
+    <div class="btrack"><div class="bfill g" style="width:13.0%"></div></div></div>
+  <div class="brow"><div class="blab"><span>Google／独立 500万版</span><b>¥1,376</b></div>
+    <div class="btrack"><div class="bfill" style="width:10.4%"></div></div></div>
+</div>
+<div class="legend">
+  <span><span class="sw" style="background:#0D9488"></span>斗（弊社）担当</span>
+  <span><span class="sw" style="background:#C2410C"></span>要判断</span>
+  <span><span class="sw" style="background:#9aa9ac"></span>河合さん担当</span>
+</div>
+
+<h3>媒体別の効率</h3>
+<div class="tw"><table>
+<thead><tr><th>媒体・枠</th><th class="n">表示</th><th class="n">クリック</th><th class="n">費用</th><th class="n">クリック単価</th><th class="n">問い合わせ</th></tr></thead>
+<tbody>
+<tr><td>Google／GH（0円プランLP）</td><td class="n">317</td><td class="n">35</td><td class="n">¥13,251</td><td class="n">¥379</td><td class="n">0</td></tr>
+<tr><td>Google／独立（2本合計）</td><td class="n">293</td><td class="n">28</td><td class="n">¥5,902</td><td class="n">¥211</td><td class="n">0</td></tr>
+<tr><td><b>Yahoo／GH</b></td><td class="n">75</td><td class="n">12</td><td class="n"><b>¥8,526</b></td><td class="n"><b>¥711</b></td><td class="n">0</td></tr>
+<tr class="tot"><td>合計（河合さん枠を除く）</td><td class="n">685</td><td class="n">75</td><td class="n">¥27,679</td><td class="n">¥369</td><td class="n">0</td></tr>
+</tbody></table></div>
+<p class="note">Yahooは表示75回に対して費用¥8,526。<b>Googleの同じキーワードがクリック単価¥379のところ、Yahooは¥711</b>です。8/1〜8/21の3週間では、Yahooは¥43,167を使って問い合わせ1件（1件あたり¥43,167）でした。</p>
+
+<h2>2. 8月22日にやったこと</h2>
+
+<h3>広告</h3>
+<div class="tw"><table>
+<thead><tr><th>やったこと</th><th>ねらい</th><th>結果（翌日時点）</th></tr></thead>
+<tbody>
+<tr><td>除外キーワードの設定ミスを修正</td><td>GHキャンペーンが全面ブロックされる寸前だった</td><td><span class="tag t-ok">回復</span> 表示 203→317</td></tr>
+<tr><td>独立キャンペーンにキーワード9語を追加</td><td>主力の「起業 介護」が枯れた分を補う</td><td><span class="tag t-warn">空振り</span> 審査は通過。ただし2本合計で表示19回・クリック1回</td></tr>
+<tr><td>除外から「助成金」「資格」「無料」を解除</td><td>開業を検討している人ほど使う言葉を落としていた</td><td><span class="tag t-mute">判定は数日後</span> 表示は増えたが、順位負けも増加</td></tr>
+<tr><td>Yahooの「フランチャイズ」流出を停止</td><td>河合さんの領域を弊社予算で買っていた（3週間で¥2,117）</td><td><span class="tag t-ok">停止済</span></td></tr>
+<tr><td>Yahooの「障害者支援 事業 開業」を停止</td><td>3週間で¥10,897使って問い合わせ0。Googleでは既に見切っていた語</td><td><span class="tag t-ok">停止済</span></td></tr>
+</tbody></table></div>
+
+<h3>LP</h3>
+<div class="tw"><table>
+<thead><tr><th>やったこと</th><th>結果</th></tr></thead>
+<tbody>
+<tr><td>0円プランLPの画像10枚をWebP化</td><td>画像 13.18MB→<b>0.91MB</b>（93%減）／ページ全体 16.72MB→<b>3.98MB</b>（76%減）</td></tr>
+<tr><td>独立LP（300万版）の自己資金表記を統一</td><td>ファーストビュー「300万円から」と本文「500万円以上」の食い違いを解消</td></tr>
+</tbody></table></div>
+<p class="note">どちらも見た目は1ピクセルも変えていません。画像10枚の表示・フォームの動作・PC表示・360〜1440pxの画面幅まで確認済みです。</p>
+
+<h3>0円プランLPの重さの内訳（WebP化のあと・スマホ実測）</h3>
+<div class="bars">
+  <div class="brow"><div class="blab"><span>JavaScript</span><b>2.22 MB</b></div>
+    <div class="btrack"><div class="bfill o" style="width:100%"></div></div></div>
+  <div class="brow"><div class="blab"><span>画像（今回WebP化した分）</span><b>1.09 MB</b></div>
+    <div class="btrack"><div class="bfill" style="width:49.1%"></div></div></div>
+  <div class="brow"><div class="blab"><span>フォント</span><b>0.40 MB</b></div>
+    <div class="btrack"><div class="bfill g" style="width:18.0%"></div></div></div>
+  <div class="brow"><div class="blab"><span>CSS・HTML</span><b>0.26 MB</b></div>
+    <div class="btrack"><div class="bfill g" style="width:11.7%"></div></div></div>
+</div>
+<p class="note">画像を93%減らした結果、<b>いま一番重いのはJavaScript</b>です。使っていないプラグインの整理になるので、影響範囲を確認したうえであらためてご相談します。<br>
+※Googleの計測ツール（PageSpeed Insights）が1日の上限に達していて回せなかったため、上記はブラウザの実転送量をこちらで計測した数字です。<b>スコアと表示秒数（元は46点・29.7秒）は未取得</b>で、本日あらためて取得します。</p>
+
+<h2>3. 追加した9語は、いまのところ空振りです</h2>
+<div class="card">
+<p>審査は通って配信可能になりましたが、<b>2キャンペーン合計で表示19回・クリック1回</b>でした。検索需要がほとんど無い語だった、というのが現時点の結論です。</p>
+<div class="tw"><table>
+<thead><tr><th>追加した語</th><th class="n">表示</th><th class="n">クリック</th><th>状態</th></tr></thead>
+<tbody>
+<tr><td>介護 起業</td><td class="n">8</td><td class="n">0</td><td><span class="tag t-warn">品質が低い判定</span></td></tr>
+<tr><td>福祉 起業</td><td class="n">5</td><td class="n">1</td><td><span class="tag t-ok">有効</span></td></tr>
+<tr><td>介護事業 独立</td><td class="n">5</td><td class="n">0</td><td><span class="tag t-ok">有効</span></td></tr>
+<tr><td>福祉事業 起業</td><td class="n">1</td><td class="n">0</td><td><span class="tag t-ok">有効</span></td></tr>
+<tr><td>福祉事業 開業 ／ 不動産 福祉 投資 ／ 脱サラ 介護</td><td class="n">0</td><td class="n">0</td><td><span class="tag t-ok">有効</span></td></tr>
+<tr><td>脱サラ 福祉 ／ 福祉事業 独立</td><td class="n">0</td><td class="n">0</td><td><span class="tag t-mute">検索数が少なく対象外</span></td></tr>
+</tbody></table></div>
+<p>一方、元からある<b>「起業 福祉」は232回表示</b>（前日172回）と伸びています。<b>この1語が独立LPの入口をほぼ一人で支えている</b>状態です。1週間見て動かなければ、空振りの語は整理します。</p>
+</div>
+
+<h2>4. LPを見た人の動き（8/22・スマホ）</h2>
+<div class="tw"><table>
+<thead><tr><th>LP</th><th class="n">閲覧</th><th class="n">タップ</th><th class="n">タップ率</th><th>中身</th></tr></thead>
+<tbody>
+<tr><td>独立LP <b>300万版</b></td><td class="n">18</td><td class="n"><b>13</b></td><td class="n"><b>72%</b></td><td>そのうち<b>8回がFAQを開く操作</b></td></tr>
+<tr><td>独立LP 500万版</td><td class="n">10</td><td class="n">3</td><td class="n">30%</td><td>FAQ 2回・画像1回</td></tr>
+<tr><td>0円プランLP</td><td class="n">37</td><td class="n">3</td><td class="n">8%</td><td>収支シミュレーション2回・画像1回</td></tr>
+</tbody></table></div>
+<p><b>300万版だけ、来た人の反応がはっきり違います。</b>ただし2日分・閲覧18人の話なので、まだ「そう見える」段階です。<br>
+そしてどのLPも、<b>問い合わせボタンはほとんど押されていません。</b>読まれてはいるが、行動には至っていない、という状態が続いています。</p>
+
+<h2>5. ご判断いただきたいこと</h2>
+
+<div class="q"><div class="qn">① Yahooをこのまま続けますか</div>
+3週間で<b>¥43,167を使って問い合わせ1件</b>。クリック単価はGoogleの約1.9倍で、昨日は日予算¥5,000に対して¥8,526使っています。同じ金額をGoogleに回すと、単純計算でクリックは約2倍取れます。<br>
+<span class="note">※弊社の判断で止めず、ご指示をお待ちします。</span></div>
+
+<div class="q"><div class="qn">② 未経験の比率は「95%」ですか「約6割」ですか</div>
+0円プランLPと独立LPのファーストビューが<b>95%</b>、独立LPのFAQ本文が<b>約6割</b>で、同じサイト内で食い違っています。</div>
+
+<div class="q"><div class="qn">③ 実績数は「400件」ですか「180社」ですか</div>
+0円プランLPが<b>400件</b>、独立LPが<b>180社</b>です。</div>
+
+<div class="q"><div class="qn">④ 独立LP（300万版）の自己資金の書き方</div>
+スクリーニングを「物件取得・内装工事・運転資金を含め、<b>トータルで300万以上</b>」としましたが、同じページの収支シミュレーションでは総投下資金が<b>¥370〜1,200万（融資活用時）</b>、東京7部屋の総額目安が<b>¥670万</b>です。<br>
+<b>300万は「自己資金」で、残りは融資でまかなう</b>、という理解で合っていますでしょうか。合っていれば「物件取得・内装工事・運転資金を含め、トータルで」を外し、「<b>自己資金として300万以上</b>」に直したいです。</div>
+
+<div class="q"><div class="qn">⑤ 障がい者グループホーム以外も支援対象ですか</div>
+Yahooの検索で、<b>就労継続支援A型/B型・相談支援事業所・放課後等デイサービス・児童発達支援</b>の開業を調べている方が、3週間で<b>248回</b>表示されています（クリックは3回のみ）。<br>
+対象であれば大きな未開拓地、対象外であれば除外して節約する場所になります。</div>
+
+<div class="q"><div class="qn">⑥ いただいた4件は、その後いかがでしょうか</div>
+8/17・8/19・8/20（2件）にいただいた4件です。とくに<b>8/20午前の独立LPからの方は、送信したあと6分かけてご自分でFAQを読み直していた</b>方です。いちばん熱があった時間にこちらから何も届いていないのが気がかりです。<br>
+<span class="note">※LPをいくら直しても、来た問い合わせが冷めてしまうと成果になりません。対応状況だけ共有いただけると、LP側で何を先に直すかの判断が変わります。</span></div>
+
+<h2>6. 次にやること</h2>
+<ul>
+<li><b>PageSpeed Insightsの再取得</b>（スコア・表示秒数の実数。本日クォータ回復後）</li>
+<li><b>除外解除3語の効果判定</b>（数日ぶんの検索語句を見て、狙った層が来ているか）</li>
+<li><b>追加9語の整理</b>（1週間見て動かない語は落とす）</li>
+<li><b>JavaScriptの軽量化</b>（2.2MB。影響範囲を確認してからご相談）</li>
+<li>独立LP 2本の比較を有効にする設定（現状は同じキーワードを2本で取り合っていて、勝ち負けが判定できません）</li>
+</ul>
+
+<footer>
+出典：Google広告 キャンペーン／検索キーワード レポート（8/21・8/22）、Yahoo広告 キャンペーン／キーワード／検索クエリー レポート（8/1〜8/22）、Microsoft Clarity スクロール・タップ集計（8/21・8/22）、問い合わせ通知メール実物、owl-fukushi.net の公開HTMLおよびブラウザ実転送量の実測。<br>
+数値はすべて実測値です。推定に基づく箇所（WebP化後のページ総量に対するPageSpeedスコア）は本文中に明記しています。<br>
+株式会社斗／担当 星崎
+</footer>
+
+</div></body></html>
