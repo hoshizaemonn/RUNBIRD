@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>BuzzPlus 戦略再設計｜2026-08-20</title>
+<style>
+:root{
+  --ink:#101828; --sub:#475467; --mute:#98a2b3; --line:#e4e7ec; --bg:#f6f7f9; --card:#fff;
+  --red:#d92d20; --redbg:#fef3f2; --amber:#dc6803; --amberbg:#fffaeb;
+  --green:#079455; --greenbg:#ecfdf3; --blue:#1570ef; --bluebg:#eff8ff; --or:#ee5600;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+  line-height:1.8;-webkit-text-size-adjust:100%}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px 80px}
+
+/* header */
+.hd{background:linear-gradient(160deg,#0d1424 0%,#1b2a4a 100%);color:#fff;padding:52px 0 44px;margin-bottom:34px}
+.hd .wrap{padding-bottom:0}
+.tag{display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+  padding:5px 14px;border-radius:999px;font-size:13px;letter-spacing:.06em;margin-bottom:16px}
+.hd h1{margin:0 0 12px;font-size:clamp(25px,5.2vw,40px);line-height:1.35;letter-spacing:.01em}
+.hd p{margin:0;color:#c3cede;font-size:15px}
+
+h2{font-size:clamp(20px,3.6vw,27px);margin:56px 0 6px;letter-spacing:.01em;line-height:1.45}
+h2 .n{color:var(--or);margin-right:10px;font-variant-numeric:tabular-nums}
+.lead{color:var(--sub);margin:0 0 22px;font-size:15px}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:16px}
+.grid{display:grid;gap:14px}
+@media(min-width:760px){.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}}
+
+/* 結論カード（同種＝高さ揃え） */
+.concl{display:flex;flex-direction:column;height:100%;border-left:5px solid var(--red)}
+.concl .k{font-size:12px;letter-spacing:.12em;color:var(--red);font-weight:800;margin-bottom:8px}
+.concl h3{margin:0 0 10px;font-size:18px;line-height:1.5}
+.concl p{margin:0;color:var(--sub);font-size:14.5px}
+
+/* ファネル */
+.funnel{display:flex;flex-direction:column;gap:8px;margin:6px 0 4px}
+.fr{display:flex;align-items:center;gap:12px}
+.fbar{height:52px;border-radius:9px;display:flex;align-items:center;padding:0 14px;color:#fff;
+  font-weight:800;font-size:15px;white-space:nowrap;overflow:hidden;min-width:0}
+.fl{font-size:13.5px;color:var(--sub);min-width:104px;flex-shrink:0}
+.f1{background:#1570ef;width:100%}
+.f2{background:#2e90fa;width:62%}
+.f3{background:#53b1fd;width:34%;color:#0d1424}
+.f4{background:var(--red);width:20%}
+.f5{background:#912018;width:20%}
+.cut{display:flex;align-items:center;gap:10px;margin:10px 0 2px;
+  color:var(--red);font-weight:800;font-size:14.5px}
+.cut::before{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--red) 0 8px,transparent 8px 16px)}
+.cut::after{content:"";flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--red) 0 8px,transparent 8px 16px)}
+
+/* テーブル */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:11px 12px;text-align:left;vertical-align:top}
+th{background:#f8f9fb;font-weight:800;font-size:13px;color:var(--sub);white-space:nowrap}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.bad{color:var(--red);font-weight:800}
+.ok{color:var(--green);font-weight:800}
+
+/* バッジ */
+.b{display:inline-block;padding:2px 9px;border-radius:6px;font-size:12px;font-weight:800;white-space:nowrap}
+.b-red{background:var(--redbg);color:var(--red)}
+.b-amb{background:var(--amberbg);color:var(--amber)}
+.b-grn{background:var(--greenbg);color:var(--green)}
+.b-blu{background:var(--bluebg);color:var(--blue)}
+
+/* DNS */
+.dns{background:#0d1424;color:#d7e3f4;border-radius:12px;padding:18px 20px;font-size:14px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow-x:auto}
+.dns .g{color:#6ee7a8}.dns .r{color:#ff8a80;font-weight:700}
+
+/* CAC 比較 */
+.cmp{display:flex;flex-direction:column;gap:14px;margin-top:6px}
+.cbar{display:flex;align-items:center;gap:12px}
+.cbar .cl{min-width:118px;font-size:13.5px;color:var(--sub);flex-shrink:0}
+.cbar .cv{height:44px;border-radius:8px;display:flex;align-items:center;padding:0 14px;
+  color:#fff;font-weight:800;font-size:15px;white-space:nowrap}
+.cac{background:var(--red);width:100%}
+.gp{background:var(--green);width:65%}
+
+/* 優先度 */
+.pri{display:flex;gap:14px;align-items:flex-start}
+.pn{width:40px;height:40px;border-radius:10px;background:var(--or);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;flex-shrink:0}
+.pn.g4{background:var(--mute)}
+.pri h3{margin:0 0 4px;font-size:17px}
+.pri p{margin:0;color:var(--sub);font-size:14.5px}
+
+/* チェックリスト */
+.chk{counter-reset:c;list-style:none;padding:0;margin:0}
+.chk li{counter-increment:c;position:relative;padding:14px 0 14px 46px;border-bottom:1px solid var(--line)}
+.chk li:last-child{border-bottom:0}
+.chk li::before{content:counter(c);position:absolute;left:0;top:13px;width:28px;height:28px;
+  border-radius:8px;background:#0d1424;color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800}
+.chk b{display:block;font-size:15.5px}
+.chk span{color:var(--sub);font-size:14px}
+
+/* 撤退 */
+.gate{border:2px solid var(--ink);border-radius:14px;overflow:hidden;background:#fff}
+.gate .gh{background:var(--ink);color:#fff;padding:14px 20px;font-weight:800;font-size:16px}
+.gate .gb{padding:20px}
+.gline{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.gline:last-child{border-bottom:0}
+.gline .gk{min-width:112px;flex-shrink:0}
+
+/* 注記 */
+.note{background:var(--amberbg);border:1px solid #fedf89;border-radius:12px;padding:16px 18px;
+  font-size:14px;color:#93370d;margin-top:14px}
+.note b{color:#7a2e0e}
+.foot{margin-top:60px;padding-top:22px;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
+.stop{border-left:5px solid var(--mute);background:#fafafa}
+.stop h3{margin:0 0 6px;font-size:16px;color:var(--sub)}
+.stop p{margin:0;font-size:14px;color:var(--mute)}
+@media(max-width:480px){
+  .fl{min-width:78px;font-size:12.5px}
+  .fbar{height:46px;font-size:13.5px;padding:0 11px}
+  .cbar .cl{min-width:92px;font-size:12.5px}
+  .card{padding:18px}
+}
+</style>
+</head>
+<body>
+
+<header class="hd"><div class="wrap">
+  <span class="tag">社内検討用ドラフト ／ 鈴木さん提示前</span>
+  <h1>BuzzPlus 戦略再設計</h1>
+  <p>7月の実リード3件が、全員連絡不通だったことを受けて｜2026-08-20</p>
+</div></header>
+
+<div class="wrap">
+
+<h2><span class="n">01</span>直していた場所は、壊れていた場所ではなかった</h2>
+<p class="lead">これまでの改善は全部「表示→クリック→リード」に向けていました。そこは動いていました。</p>
+
+<div class="card">
+  <div class="funnel">
+    <div class="fr"><span class="fl">表示</span><div class="fbar f1">インプレッション</div></div>
+    <div class="fr"><span class="fl">クリック</span><div class="fbar f2">リンククリック</div></div>
+    <div class="fr"><span class="fl">リード</span><div class="fbar f3">3件</div></div>
+  </div>
+  <div class="cut">ここが本当の断点</div>
+  <div class="funnel">
+    <div class="fr"><span class="fl">接触</span><div class="fbar f4">0件</div></div>
+    <div class="fr"><span class="fl">商談・受注</span><div class="fbar f5">0件</div></div>
+  </div>
+  <div class="note">
+    <b>動画のクリエイティブも、フォームの設問も、この 0 には関係していません。</b><br>
+    7月に3件取れたフォームに戻しても、動画を4本目・5本目と作っても、接触が0のままなら結果は同じです。
+    <br><br><b>KPIを「リード数」から「接触できた数」に変えます。</b>CPLは意味を失いました。
+  </div>
+</div>
+
+<h2><span class="n">02</span>結論は3つ</h2>
+<div class="grid g3">
+  <div class="card concl"><div class="k">CONCLUSION 1</div>
+    <h3>KPIをリード数から<br>接触数へ変える</h3>
+    <p>リードは取れていました。取れなかったのは接触です。指標を変えないと、同じ改善を繰り返します。</p></div>
+  <div class="card concl"><div class="k">CONCLUSION 2</div>
+    <h3>受け皿が直るまで<br>配信は再開しない</h3>
+    <p>いま再開すると、連絡のつかないリードをもう一度お金を出して作ることになります。</p></div>
+  <div class="card concl"><div class="k">CONCLUSION 3</div>
+    <h3>Meta広告を<br>主軸から外す</h3>
+    <p>約5.2万円で商談ゼロ。試算では受注1件あたりのコストが粗利を上回ります。</p></div>
+</div>
+
+<h2><span class="n">03</span>実績</h2>
+<div class="card">
+<div class="tw"><table>
+  <tr><th>項目</th><th>7月</th><th>8月（1〜9日で停止）</th><th>合計</th></tr>
+  <tr><td>消化</td><td class="num">¥42,622</td><td class="num">¥9,405</td><td class="num"><b>¥52,027</b></td></tr>
+  <tr><td>実リード</td><td class="num">3件</td><td class="num">0件</td><td class="num">3件</td></tr>
+  <tr><td>接触</td><td class="num bad">0件</td><td class="num">—</td><td class="num bad">0件</td></tr>
+  <tr><td>商談</td><td class="num bad">0件</td><td class="num">—</td><td class="num bad">0件</td></tr>
+  <tr><td>受注</td><td class="num bad">0件</td><td class="num">—</td><td class="num bad">0件</td></tr>
+</table></div>
+</div>
+
+<h2><span class="n">04</span>3人は、取れなかった理由が違う</h2>
+<p class="lead">個人情報は伏せています。1人だけ性質がはっきり違います。</p>
+<div class="card">
+<div class="tw"><table>
+  <tr><th></th><th>A様</th><th>B様</th><th>C様</th></tr>
+  <tr><th>送信</th><td class="num">7/24 18:01</td><td class="num">7/29 19:45</td><td class="num">7/30 12:11</td></tr>
+  <tr><th>メール種別</th>
+    <td><span class="b b-red">キャリアメール</span><br><small>softbank</small></td>
+    <td><span class="b b-red">キャリアメール</span><br><small>docomo</small></td>
+    <td><span class="b b-blu">法人ドメイン</span><br><small>Google Workspace</small></td></tr>
+  <tr><th>選んだもの</th><td>月30,000円の詳細</td><td>月30,000円の詳細</td><td>サンプル動画がほしい</td></tr>
+  <tr><th>業種</th><td>その他</td><td>その他</td><td>その他</td></tr>
+  <tr><th>社内で存在が<br>判明した日</th>
+    <td class="num">7/30<br><span class="b b-amb">6日後</span></td>
+    <td class="num">7/30<br><span class="b b-grn">1日後</span></td>
+    <td class="num">8/18<br><span class="b b-red">19日後</span></td></tr>
+  <tr><th>最有力の原因</th>
+    <td class="bad">メールが届いていない</td>
+    <td class="bad">メールが届いていない</td>
+    <td class="bad">19日埋もれた</td></tr>
+</table></div>
+<div class="note" style="background:var(--bluebg);border-color:#b2ddff;color:#175cd3">
+  <b>C様だけは本物の見込み客だった可能性が高い。</b>3人で唯一の法人ドメインで、メールは技術的に届きます。
+  つまり取れなかった理由は到達ではなく、<b>8/18まで存在を把握していなかったこと</b>です。
+</div>
+</div>
+
+<h2><span class="n">05</span>実害：送信ドメイン認証が無い</h2>
+<p class="lead">2026-08-20 に実査。docomo・softbank は認証の無いPCドメインを最も厳しく弾きます。<b>3人中2人がそのキャリアです。</b></p>
+<div class="card">
+<div class="dns">
+$ dig +short TXT runbird.net<br>
+<span class="g">"v=spf1 +a:sv13026.xserver.jp ... ~all"</span>　← SPF あり<br><br>
+$ dig +short TXT _dmarc.runbird.net<br>
+<span class="r">（応答なし）　← DMARC が存在しない</span><br><br>
+$ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
+<span class="r">（応答なし）　← 代表セレクタでは DKIM を確認できず</span>
+</div>
+<div class="note">
+  <b>「返事がない」ではなく「そもそも届いていない」なら、文面をどう工夫しても永久に取れません。</b><br>
+  実際に弾かれたかは、送信ログにエラー返送があるかで確定します。<b>未確認。</b>
+</div>
+</div>
+
+<h2><span class="n">06</span>経済性 <span class="b b-amb" style="font-size:13px;vertical-align:middle">確度C・試算</span></h2>
+<p class="lead">前提はすべて実績のない仮置きです。根拠ではなく、判断材料として見てください。</p>
+<div class="card">
+  <div class="cmp">
+    <div class="cbar"><span class="cl">受注1件のCAC</span><div class="cv cac">約 ¥165,000</div></div>
+    <div class="cbar"><span class="cl">受注1件の粗利</span><div class="cv gp">約 ¥108,000</div></div>
+  </div>
+  <p style="margin:20px 0 0;font-size:16px" class="bad">CAC が粗利を上回る＝赤字。接触率が80%まで上がってもほぼトントンです。</p>
+  <div class="tw" style="margin-top:18px"><table>
+    <tr><th>前提</th><th>値</th><th>出所</th></tr>
+    <tr><td>CPC</td><td class="num">¥450</td><td><span class="b b-grn">実測</span> 7月¥411／8月¥523の中間</td></tr>
+    <tr><td>クリック→リード</td><td class="num">3%</td><td><span class="b b-red">仮置き</span> 電話必須で摩擦が上がるため</td></tr>
+    <tr><td>リード→接触</td><td class="num">50%</td><td><span class="b b-red">仮置き</span> 実績なし</td></tr>
+    <tr><td>接触→商談</td><td class="num">60%</td><td><span class="b b-red">仮置き</span> 実績なし</td></tr>
+    <tr><td>商談→受注</td><td class="num">30%</td><td><span class="b b-red">仮置き</span> 実績なし</td></tr>
+    <tr><td>継続月数／粗利率</td><td class="num">6ヶ月／60%</td><td><span class="b b-red">仮置き</span> 実績なし</td></tr>
+  </table></div>
+</div>
+
+<h2><span class="n">07</span>主軸の移し先</h2>
+<div class="grid g2">
+  <div class="card"><div class="pri"><div class="pn">1</div><div>
+    <h3>既存客・紹介</h3>
+    <p><b>CACほぼ0。</b>すでに関係があるので「連絡がつかない」が構造的に起きません。月30,000円は既存取引に上乗せしやすい単価です。</p></div></div></div>
+  <div class="card"><div class="pri"><div class="pn">2</div><div>
+    <h3>Google広告（顕在層）</h3>
+    <p>Metaは「困っていると気づいていない人」に当てる媒体。<b>探している人</b>のほうが合い、電話番号を書く抵抗も低い。</p></div></div></div>
+  <div class="card"><div class="pri"><div class="pn">3</div><div>
+    <h3>オーガニックInstagram</h3>
+    <p>広告費0。<b>制作した動画がそのまま在庫になります。</b>今日作った2本は広告に出さなくてもここで使えます。</p></div></div></div>
+  <div class="card"><div class="pri"><div class="pn g4">4</div><div>
+    <h3>Meta広告（縮小して継続）</h3>
+    <p>やめません。役割を<b>「サンプル配布の入口」1つ</b>に絞り、受け皿が直るまでは0円。</p></div></div></div>
+</div>
+
+<h2><span class="n">08</span>今回いちばんの転換：「お店のURL」を必須にする</h2>
+<p class="lead">BuzzPlusの価値そのものが「お店のURLを送るだけ」です。それを入口に置くと3つ同時に効きます。</p>
+<div class="grid g3">
+  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">EFFECT 1</div>
+    <h3>聞くことが自然</h3><p>サービスの入力そのものなので、フォームで尋ねても不自然になりません。</p></div>
+  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">EFFECT 2</div>
+    <h3>冷やかしは書かない</h3><p>自然なフィルタになります。業種が3人とも「その他」だった問題への回答でもあります。</p></div>
+  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">EFFECT 3</div>
+    <h3>その場で返せる</h3><p><b>そのお店のサンプル動画を作って返せる。</b>人が追いかけなくても価値が届きます。</p></div>
+</div>
+<div class="note" style="background:var(--greenbg);border-color:#a6f4c5;color:#05603a">
+  <b>3つ目が肝です。</b>19日埋もれても機会が死にません。C様が選んだのが、まさに「サンプル動画がほしい」でした。
+</div>
+
+<h2><span class="n">09</span>配信再開の条件（6項目）</h2>
+<p class="lead">過去に「設定した」で終わって届いていなかった事故が起きています。<b>設定画面の確認では合格にしません。実際に流して着信を見ます。</b></p>
+<div class="card"><ol class="chk">
+  <li><b>電話番号を必須で取る</b><span>テスト送信で番号が入って出てくること</span></li>
+  <li><b>通知が届く</b><span>テストリードを1件流し、受信箱に着信することを目視</span></li>
+  <li><b>送信直後の自動返信</b><span>テスト送信の直後に自動メールが届くこと</span></li>
+  <li><b>DMARC / DKIM を立てる</b><span>dig TXT _dmarc.runbird.net が応答を返すこと</span></li>
+  <li><b>リードが落ちない台帳</b><span>送信→台帳反映を確認。担当者と確認時刻を決める</span></li>
+  <li><b>一次接触のルール</b><span>「当日中に電話、不通ならSMS」を明文化し、担当を決める</span></li>
+</ol></div>
+
+<h2><span class="n">10</span>撤退ラインを、投下する前に引く</h2>
+<div class="gate">
+  <div class="gh">判定条件</div>
+  <div class="gb">
+    <div class="gline"><span class="gk">前提</span><span>受け皿6項目が全部テストで通っていること</span></div>
+    <div class="gline"><span class="gk">投下</span><span><b>1ヶ月 ¥100,000</b>（日予算¥1,000では9日で2,060インプ。何を変えても判定できない）</span></div>
+    <div class="gline"><span class="gk">見る指標</span><span><b>商談数</b>（リード数ではない）</span></div>
+    <div class="gline"><span class="gk"><span class="b b-grn">継続</span></span><span>商談 3件以上</span></div>
+    <div class="gline"><span class="gk"><span class="b b-amb">縮小</span></span><span>商談 1〜2件 → サンプル配布の入口に限定</span></div>
+    <div class="gline"><span class="gk"><span class="b b-red">撤退</span></span><span>商談 0〜1件 → Google・既存客・オーガニックへ全面シフト</span></div>
+  </div>
+</div>
+<div class="note"><b>リード数は判定に使いません。</b>10件出ても商談0なら撤退です。</div>
+
+<h2><span class="n">11</span>いったん止めること</h2>
+<div class="grid g3">
+  <div class="card concl stop"><div class="k" style="color:var(--mute)">STOP 1</div>
+    <h3>動画の本数を増やす</h3><p>リードを増やす打ち手。接触が直るまで効きません。今ある2本で当面足ります。</p></div>
+  <div class="card concl stop"><div class="k" style="color:var(--mute)">STOP 2</div>
+    <h3>フォームを7月版に戻す議論</h3><p>同じ理由。7月版は3件取れましたが、<b>3件とも接触できていません。</b></p></div>
+  <div class="card concl stop"><div class="k" style="color:var(--mute)">STOP 3</div>
+    <h3>配信の再開</h3><p>受け皿6項目が埋まるまで。埋まらないまま再開するのが、いちばん高くつきます。</p></div>
+</div>
+<div class="note" style="background:var(--greenbg);border-color:#a6f4c5;color:#05603a">
+  <b>作った動画は無駄になりません。</b>オーガニックIGと、既存クライアントへの提案資料でそのまま使えます。
+</div>
+
+<h2><span class="n">12</span>鈴木さん判断が要ること</h2>
+<div class="card"><div class="tw"><table>
+  <tr><th></th><th>論点</th><th>なぜ判断が要るか</th></tr>
+  <tr><td class="num">①</td><td><b>お試し1本を0円にするか</b></td><td>「その場でサンプルを返す」設計の核。<span class="b b-red">引継書からの持ち越し・未回答</span></td></tr>
+  <tr><td class="num">②</td><td>Meta を縮小して Google へ移すか</td><td>予算の付け替え。事業判断</td></tr>
+  <tr><td class="num">③</td><td>既存客への横展開を誰がいつ声かけするか</td><td>クライアント連絡100%ルール。こちらでは動かせない</td></tr>
+  <tr><td class="num">④</td><td>撤退ライン（¥100,000／商談3件）でよいか</td><td>合意しておかないと、ずるずる続きます</td></tr>
+  <tr><td class="num">⑤</td><td>累計制作本数・導入社数の実数</td><td>実績表記に使う。<span class="b b-red">引継書からの持ち越し・未回答</span></td></tr>
+</table></div></div>
+
+<h2><span class="n">13</span>未確定のまま残っている事実</h2>
+<div class="card"><div class="tw"><table>
+  <tr><th></th><th>内容</th><th>状態</th></tr>
+  <tr><td class="num">1</td><td>「連絡が取れなかった」の中身（エラー返送／無反応／電話不通）</td><td><span class="b b-red">未確認</span> 原因の切り分けに直結</td></tr>
+  <tr><td class="num">2</td><td>3人へ実際にいつ・どの手段で連絡したか</td><td><span class="b b-red">未確認</span></td></tr>
+  <tr><td class="num">3</td><td>7月上旬の別キャンペーンにある「リード2件」の正体</td><td><span class="b b-amb">未解決</span> フォームのCSVに存在しない。実リードなら7月は5件になる</td></tr>
+  <tr><td class="num">4</td><td>DKIM が実際に設定されているか</td><td><span class="b b-amb">断定不可</span> セレクタ不明。Xserver管理画面で要確認</td></tr>
+</table></div></div>
+
+<div class="foot">
+  BuzzPlus 戦略再設計｜2026-08-20 作成｜社内検討用。<br>
+  実測（確度A）＝消化額・リード件数・選択肢・判明日・CPC・CTR・DNS実査結果。<br>
+  試算（確度C）＝06章の経済性すべて。CVR・接触率・商談化率・受注率・継続月数・粗利率はいずれも実績のない仮置きです。<br>
+  本ページは個人情報（氏名・メールアドレス）を掲載していません。noindex,nofollow 設定。
+</div>
+
+</div>
+</body>
+</html>
