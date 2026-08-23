@@ -115,6 +115,28 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 .note{background:var(--amberbg);border:1px solid #fedf89;border-radius:12px;padding:16px 18px;
   font-size:14px;color:#93370d;margin-top:14px}
 .note b{color:#7a2e0e}
+/* 制作済みアセット */
+.vgrid{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:620px){.vgrid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:940px){.vgrid{grid-template-columns:repeat(3,1fr)}}
+.vc{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  display:flex;flex-direction:column}
+.vc .vt{position:relative;width:100%;aspect-ratio:9/16;background:#0b1220;display:block}
+.vc video{width:100%;height:100%;object-fit:contain;display:block;background:#0b1220}
+.vc .vb{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1}
+.vc h3{margin:0 0 6px;font-size:16px;line-height:1.5}
+.vc .spec{font-size:12.5px;color:var(--mute);font-variant-numeric:tabular-nums;margin-bottom:9px}
+.vc p{margin:0;font-size:14px;color:var(--sub)}
+.lpcard{display:flex;flex-direction:column;gap:16px;background:linear-gradient(160deg,#0d1424,#1b2a4a);
+  color:#fff;border-radius:14px;padding:24px}
+@media(min-width:760px){.lpcard{flex-direction:row;align-items:center}}
+.lpcard .lt{flex:1;min-width:0}
+.lpcard h3{margin:0 0 8px;font-size:20px}
+.lpcard p{margin:0;color:#c3cede;font-size:14.5px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--or);color:#fff;
+  text-decoration:none;font-weight:800;padding:13px 24px;border-radius:10px;font-size:15px;
+  white-space:nowrap;flex-shrink:0}
+.btn:hover{filter:brightness(1.08)}
 .foot{margin-top:60px;padding-top:22px;border-top:1px solid var(--line);color:var(--mute);font-size:13px}
 .stop{border-left:5px solid var(--mute);background:#fafafa}
 .stop h3{margin:0 0 6px;font-size:16px;color:var(--sub)}
@@ -299,7 +321,65 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
   <b>3つ目が肝です。</b>C様が選んだのは「サンプル動画がほしい」で、返したのは営業メールでした。<b>欲しいと言われたものを、その場で渡します。</b>
 </div>
 
-<h2><span class="n">10</span>配信再開の条件（5項目）</h2>
+<h2><span class="n">10</span>いま出せるもの（制作済み）</h2>
+<p class="lead">戦略の話とは別に、<b>素材はもうあります。</b>配信を止めている間も、オーガニックIGと既存クライアントへの提案でそのまま使えます。</p>
+
+<div class="lpcard">
+  <div class="lt">
+    <h3>ランディングページ（アニメる型）</h3>
+    <p>競合アニメるのLPを分解して、BuzzPlus版に作り直したもの。ファーストビューは実際の納品動画をショーリールで流しています。
+    <b>ここに「お店のURL」「電話番号」を必須で足せば、そのまま新しい受け皿になります。</b></p>
+  </div>
+  <a class="btn" href="https://hoshizaemonn.github.io/RUNBIRD/buzzplus-lp-20260820/" target="_blank" rel="noopener">LPを開く →</a>
+</div>
+<div class="note" style="margin-bottom:26px">
+  <b>注意：</b>LPに載せている納品動画6本は<b>掲載許諾が未取得</b>です。第三者の顔写真と、店名・住所・電話・QRの締めカードは公開前に全除去していますが、<b>許諾そのものは取れていません。</b>外部に出す前に鈴木さん経由で取得が必要です。
+</div>
+
+<div class="vgrid">
+  <div class="vc">
+    <div class="vt"><video controls preload="none" playsinline poster="media/v1_animeru1.jpg"><source src="media/v1_animeru1.mp4" type="video/mp4"></video></div>
+    <div class="vb"><h3>アニメる①型（最新）</h3>
+      <div class="spec">9:16 ／ 40.6秒 ／ <b>BGMあり</b></div>
+      <p>競合①を実物から分解して寄せた版。<b>帯なし・全面が絵・座布団テロップ。</b>15カット全部をBPM130の拍に乗せています。</p></div>
+  </div>
+  <div class="vc">
+    <div class="vt"><video controls preload="none" playsinline poster="media/v2_catalog.jpg"><source src="media/v2_catalog.mp4" type="video/mp4"></video></div>
+    <div class="vb"><h3>カタログ型（③型）</h3>
+      <div class="spec">1:1 ／ 40秒 ／ 無音</div>
+      <p>競合が<b>約80日回し続けている長寿命の型。</b>上下の帯を固定し、中央の業種カットだけが変わる。テロップは一切入れません。</p></div>
+  </div>
+  <div class="vc">
+    <div class="vt"><video controls preload="none" playsinline poster="media/v3_veo.jpg"><source src="media/v3_veo.mp4" type="video/mp4"></video></div>
+    <div class="vb"><h3>アニメる風・動画版</h3>
+      <div class="spec">9:16 ／ 24秒 ／ 無音</div>
+      <p>AI生成の静止画を Veo で動かした版。人物や湯気が動きます。</p></div>
+  </div>
+  <div class="vc">
+    <div class="vt"><video controls preload="none" playsinline poster="media/v4_still.jpg"><source src="media/v4_still.mp4" type="video/mp4"></video></div>
+    <div class="vb"><h3>アニメる風・静止画版</h3>
+      <div class="spec">9:16 ／ 24秒 ／ 無音</div>
+      <p>同じ絵を静止画のままつないだ版。<b>動かす価値があるかの比較用</b>に残しています。</p></div>
+  </div>
+  <div class="vc">
+    <div class="vt"><video controls preload="none" playsinline poster="media/v5_honc.jpg"><source src="media/v5_honc.mp4" type="video/mp4"></video></div>
+    <div class="vb"><h3>本C 改良版</h3>
+      <div class="spec">9:16 ／ 15秒 ／ 無音</div>
+      <p>8/19版。CTAを全編に常時表示し、価格を主役にしました。<b>冒頭が「飲食店の皆様へ」</b>になっています。</p></div>
+  </div>
+</div>
+
+<div class="note" style="background:var(--redbg);border-color:#fecdca;color:#912018">
+  <b>正直に2点、申し添えます。</b><br>
+  ① <b>5本とも、別環境での独立チェック（Cowork）を通していません。</b>誤字・見切れの目視は社内1人分だけです。外部に出す前に通します。<br>
+  ② <b>本Cの「飲食店の皆様へ」は、実データと噛み合っていません。</b>リード3人の業種は全員「その他」で、飲食は0件でした。汎用版に差し替えるべきです。
+</div>
+
+<div class="note" style="background:var(--greenbg);border-color:#a6f4c5;color:#05603a">
+  <b>使いどころ。</b>Meta広告への投入は受け皿が整うまで止めますが、<b>オーガニックInstagramへの投稿</b>と<b>既存クライアントへの「こういうものを作ります」という提案素材</b>としては、今日から使えます。優先度1位の既存客展開には、この5本がそのまま営業ツールになります。
+</div>
+
+<h2><span class="n">11</span>配信再開の条件（5項目）</h2>
 <p class="lead">過去に「設定した」で終わって届いていなかった事故が起きています。<b>設定画面の確認では合格にしません。実際に流して着信を見ます。</b></p>
 <div class="card"><ol class="chk">
   <li><b>LPフォームに「お店のURL」「電話番号」を必須で追加</b><span>テスト送信で両方が入って出てくること</span></li>
@@ -309,7 +389,7 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
   <li><b>台帳＋当日接触ルール</b><span>送信→台帳反映を確認。担当者と時刻を決める</span></li>
 </ol></div>
 
-<h2><span class="n">11</span>撤退ラインを、投下する前に引く</h2>
+<h2><span class="n">12</span>撤退ラインを、投下する前に引く</h2>
 <div class="gate">
   <div class="gh">判定条件</div>
   <div class="gb">
@@ -323,7 +403,7 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
 </div>
 <div class="note"><b>リード数は判定に使いません。</b>10件出ても商談0なら撤退です。</div>
 
-<h2><span class="n">12</span>いったん止めること</h2>
+<h2><span class="n">13</span>いったん止めること</h2>
 <div class="grid g3">
   <div class="card concl stop"><div class="k" style="color:var(--mute)">STOP 1</div>
     <h3>動画の本数を増やす</h3><p>リードを増やす打ち手。<b>意欲の問題には効きません。</b>今ある2本で当面足ります。</p></div>
@@ -336,7 +416,7 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
   <b>作った動画は無駄になりません。</b>オーガニックIGと、既存クライアントへの提案資料でそのまま使えます。
 </div>
 
-<h2><span class="n">13</span>鈴木さん判断が要ること</h2>
+<h2><span class="n">14</span>鈴木さん判断が要ること</h2>
 <div class="card"><div class="tw"><table>
   <tr><th></th><th>論点</th><th>なぜ判断が要るか</th></tr>
   <tr><td class="num">①</td><td><b>お試し1本を0円にするか</b></td><td>「その場でサンプルを返す」設計の核。<span class="b b-red">引継書からの持ち越し・未回答</span></td></tr>
@@ -346,7 +426,7 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
   <tr><td class="num">⑤</td><td>累計制作本数・導入社数の実数</td><td>実績表記に使う。<span class="b b-red">引継書からの持ち越し・未回答</span></td></tr>
 </table></div></div>
 
-<h2><span class="n">14</span>未確定のまま残っている事実</h2>
+<h2><span class="n">15</span>未確定のまま残っている事実</h2>
 <div class="card"><div class="tw"><table>
   <tr><th></th><th>内容</th><th>状態</th></tr>
   <tr><td class="num">1</td><td>「連絡が取れなかった」の中身（エラー返送／無反応／電話不通）</td><td><span class="b b-red">未確認</span> 原因の切り分けに直結</td></tr>
