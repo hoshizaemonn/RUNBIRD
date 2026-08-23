@@ -115,6 +115,23 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 .note{background:var(--amberbg);border:1px solid #fedf89;border-radius:12px;padding:16px 18px;
   font-size:14px;color:#93370d;margin-top:14px}
 .note b{color:#7a2e0e}
+/* 前後フロー */
+.flowline{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0}
+.stp{padding:9px 13px;border-radius:9px;font-weight:800;font-size:13.5px;line-height:1.4}
+@media(max-width:660px){
+  .flowline{flex-direction:column;align-items:stretch;gap:6px}
+  .flowline .stp{text-align:center}
+  .flowline .arw{text-align:center;display:block;transform:rotate(90deg);font-size:15px;line-height:1}
+}
+.stp.us{background:var(--bluebg);color:#175cd3;border:1px solid #b2ddff}
+.stp.wait{background:var(--redbg);color:var(--red);border:2px dashed var(--red)}
+.stp.ok{background:var(--greenbg);color:#05603a;border:1px solid #a6f4c5}
+.arw{color:#98a2b3;font-weight:800;font-size:16px}
+.mini{background:#f8f9fb;border:1px dashed #cfd4dc;border-radius:10px;padding:14px 16px;font-size:14.5px;
+  line-height:1.7;margin-top:10px}
+.mini .lbl{font-size:11.5px;color:var(--mute);letter-spacing:.1em;font-weight:800;margin-bottom:6px}
+.mini code{background:#eef1f5;padding:2px 6px;border-radius:4px;font-size:13.5px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all}
 /* フォーム案 */
 .fstep{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
 .fstep:last-child{border-bottom:0}
@@ -362,18 +379,77 @@ $ dig +short TXT {default,xserver,google,selector1}._domainkey.runbird.net<br>
     <p>やめません。役割を<b>「サンプル配布の入口」1つ</b>に絞り、受け皿が直るまでは0円。</p></div></div></div>
 </div>
 
-<h2><span class="n">09</span>今回いちばんの転換：「お店のURL」を必須にする</h2>
-<p class="lead">BuzzPlusの価値そのものが「お店のURLを送るだけ」です。それを入口に置くと3つ同時に効きます。</p>
-<div class="grid g3">
-  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">EFFECT 1</div>
-    <h3>聞くことが自然</h3><p>サービスの入力そのものなので、フォームで尋ねても不自然になりません。</p></div>
-  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">EFFECT 2</div>
-    <h3>冷やかしは書かない</h3><p>自然なフィルタになります。業種が3人とも「その他」だった問題への回答でもあります。</p></div>
-  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">EFFECT 3</div>
-    <h3>その場で返せる</h3><p><b>そのお店のサンプル動画を作って返せる。</b>人が追いかけなくても価値が届きます。</p></div>
+<h2><span class="n">09</span>フォームに1問足すと、追いかけなくてよくなる</h2>
+<p class="lead">「お店のURL」を必須で1問足すだけ。<b>これが今回いちばんの転換です。</b></p>
+
+<div class="card">
+  <div class="mini" style="margin-top:0">
+    <div class="lbl">追加する設問</div>
+    <b style="font-size:16px">お店のURLを教えてください　［必須］</b><br>
+    <span style="color:var(--sub)">ホームページ・食べログ・Instagram・Googleマップ、どれでも構いません。</span>
+  </div>
+</div>
+
+<h3 style="font-size:18px;margin:26px 0 10px">いまの流れ ─ 相手の返信を待たないと1ミリも進まない</h3>
+<div class="card">
+  <div class="flowline">
+    <span class="stp us">リード獲得</span><span class="arw">→</span>
+    <span class="stp us">こちらから連絡</span><span class="arw">→</span>
+    <span class="stp wait">相手の返信を待つ</span><span class="arw">→</span>
+    <span class="stp us">何の店か聞く</span><span class="arw">→</span>
+    <span class="stp wait">相手の返信を待つ</span><span class="arw">→</span>
+    <span class="stp us">サンプル制作</span>
+  </div>
+  <p style="margin:16px 0 0;font-size:16px" class="bad">3人とも、最初の「返信を待つ」で止まりました。その先には一歩も進んでいません。</p>
+</div>
+
+<h3 style="font-size:18px;margin:26px 0 10px">URLをもらうと ─ 待つ必要がなくなる</h3>
+<div class="card">
+  <div class="flowline">
+    <span class="stp ok">リード獲得（<b>URL付き</b>）</span><span class="arw">→</span>
+    <span class="stp ok">こちらがサンプルを作る</span><span class="arw">→</span>
+    <span class="stp ok">送る</span>
+  </div>
+  <p style="margin:16px 0 0;font-size:16px"><b>相手は、自分の店の動画を見るまで、何もしなくていい。</b></p>
+</div>
+
+<h2 style="margin-top:38px"><span class="n">09-2</span>なぜURLだとそれができるのか</h2>
+<p class="lead"><b>BuzzPlusのサービスが「お店のURLを送るだけ」だからです。</b>この1問は追加のアンケートではなく、<b>フォームの送信そのものが発注の受付になります。</b>送信された瞬間に、サンプルを作るのに必要なものが揃っている。ヒアリングが要りません。</p>
+
+<div class="grid g2">
+  <div class="card concl">
+    <div class="k">いま届く情報</div>
+    <h3>これでは何も言えない</h3>
+    <div class="mini"><code>氏名 ／ メールアドレス ／ 業種「その他」</code></div>
+    <p style="margin-top:12px">だから送る文面が<b>「お問い合わせありがとうございます。ご希望をお聞かせください」</b>になり、返信を待つしかなくなります。</p>
+  </div>
+  <div class="card concl" style="border-left-color:var(--green)">
+    <div class="k" style="color:var(--green)">URLが1つ付くと</div>
+    <h3>こちらで分かる</h3>
+    <div class="mini"><code>https://www.instagram.com/xxx_yakiniku/</code><br>
+      <span style="color:var(--sub)">→ 焼肉店・福岡・写真10枚・動画なし</span></div>
+    <p style="margin-top:12px">送る文面が変わります。<b>「○○様のInstagramを拝見しました。お写真から15秒の動画を作ってみたので、ご覧ください。」</b></p>
+  </div>
 </div>
 <div class="note" style="background:var(--greenbg);border-color:#a6f4c5;color:#05603a">
-  <b>3つ目が肝です。</b>C様が選んだのは「サンプル動画がほしい」で、返したのは営業メールでした。<b>欲しいと言われたものを、その場で渡します。</b>
+  <b>返信をもらう前に、価値を渡し終わっている。</b>これが狙いです。
+</div>
+
+<h2 style="margin-top:38px"><span class="n">09-3</span>ついでに効くこと3つと、代償</h2>
+<div class="grid g3">
+  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">効果 1</div>
+    <h3>冷やかしが落ちる</h3>
+    <p>自動入力はURLを埋められません。<b>自分で探して貼る手間が30秒ほどかかります。</b>その30秒を使わない人は、月30,000円を払いません。</p></div>
+  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">効果 2</div>
+    <h3>業種を聞かなくてよくなる</h3>
+    <p>3人とも「その他」で、用意した5業種は0件。<b>設問として機能していません。</b>URLを見れば分かるので削除でき、<b>画面数は増えません。</b></p></div>
+  <div class="card concl" style="border-left-color:var(--or)"><div class="k" style="color:var(--or)">効果 3</div>
+    <h3>連絡手段が1つ増える</h3>
+    <p>メールが弾かれ電話も出ない場合でも、<b>その店の公式窓口（問い合わせフォーム・Instagram）</b>という第3のルートが残ります。今は詰みます。</p></div>
+</div>
+<div class="note">
+  <b>代償：送信率は落ちます。</b>9.4% → 5%程度を見込んでいます。月5万なら <b>15件 → 7.5件</b>。<br>
+  <b>半分になりますが、いまは15件取っても0件しか繋がりません。</b>
 </div>
 
 <h2><span class="n">10</span>配信の組み方 — 3本を「1つの広告セット」に入れる</h2>
