@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OWL福祉 品質スコアの現状とLP改修案</title>
+<style>
+:root{--teal:#0D9488;--orange:#C2410C;--bg:#fcfcfb;--card:#fff;--ink:#1a2224;
+  --ink2:#4a5a5e;--muted:#7d8f93;--line:#e4eaea;--warn:#B45309;--red:#C0392B}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.75}
+.wrap{max-width:780px;margin:0 auto;padding:26px 18px 70px}
+header{border-bottom:3px solid var(--teal);padding-bottom:13px;margin-bottom:22px}
+h1{font-size:21px;margin:0 0 5px}
+.sub{color:var(--muted);font-size:12.5px}
+.day{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--teal);
+  padding:3px 12px;border-radius:99px;margin:32px 0 4px}
+.day.o{background:var(--orange)}
+h2{font-size:16px;margin:6px 0 12px;padding-left:11px;border-left:4px solid var(--teal)}
+p{margin:8px 0;font-size:13.5px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin:11px 0}
+.box .h{font-size:13.5px;font-weight:700;margin-bottom:8px}
+.note{font-size:12.5px;color:var(--muted);margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:4px 0}
+td,th{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{font-size:12px;color:var(--ink2);font-weight:700;white-space:nowrap}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
+
+/* 結論カード */
+.top{background:#fff;border:2px solid var(--teal);border-radius:14px;padding:6px 18px 16px;margin:0 0 8px}
+.tc{display:flex;gap:13px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.tc:last-child{border-bottom:0}
+.tc .no{flex:0 0 27px;height:27px;border-radius:50%;background:var(--teal);color:#fff;
+  font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.tc .tt{font-size:14.5px;font-weight:700;line-height:1.6}
+.tc .td{font-size:12.8px;color:var(--ink2);margin-top:4px}
+
+/* 横棒 */
+.bar{margin:9px 0}
+.bar .lb{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:3px}
+.bar .lb b{font-variant-numeric:tabular-nums}
+.bar .tk{height:15px;background:#eef2f1;border-radius:99px;overflow:hidden}
+.bar .fl{height:100%;background:var(--teal);border-radius:99px}
+.bar.hot .fl{background:var(--orange)}
+.bar.hot .lb{font-weight:700;color:var(--orange)}
+.bar.zero .fl{background:#d5dbda}
+
+/* 3因子 */
+.fac{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:13px}
+.fac .nm{flex:0 0 140px}
+.fac .st{flex:1;height:26px;border-radius:6px;display:flex;overflow:hidden;font-size:11px;color:#fff}
+.fac .seg{display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.up{background:#0D9488}.mid{background:#94a3a1}.dn{background:#C0392B}
+@media(max-width:520px){.fac{flex-wrap:wrap}.fac .nm{flex:0 0 100%;font-weight:700}}
+
+/* 推移 */
+.tr{display:flex;align-items:flex-end;gap:5px;height:120px;margin:14px 0 4px}
+.tr .c{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.tr .v{font-size:11px;font-variant-numeric:tabular-nums;margin-bottom:3px;color:var(--ink2)}
+.tr .b{width:100%;background:var(--teal);border-radius:4px 4px 0 0;min-height:3px}
+.tr .c.last .b{background:var(--red)}
+.tr .c.last .v{color:var(--red);font-weight:700}
+.trx{display:flex;gap:5px;font-size:10.5px;color:var(--muted)}
+.trx div{flex:1;text-align:center}
+
+/* 前後 */
+.ba{display:grid;grid-template-columns:1fr 26px 1fr;gap:9px;align-items:stretch;margin:12px 0}
+.ba .p{border-radius:10px;padding:12px 13px;font-size:12.8px}
+.ba .b4{background:#fdf1ea;border:1px solid #f0d3c0}
+.ba .af{background:#eef7f6;border:1px solid #cfe6e3}
+.ba .ar{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:17px}
+.ba .t{font-size:11.5px;font-weight:700;margin-bottom:5px;letter-spacing:.04em}
+.ba .b4 .t{color:#8a3410}.ba .af .t{color:#0b5f5a}
+@media(max-width:520px){.ba{grid-template-columns:1fr;gap:6px}.ba .ar{transform:rotate(90deg);height:20px}}
+
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;margin-right:5px}
+.tag.now{background:#fdecec;color:#c0392b}
+.tag.go{background:#eef7f6;color:#0b5f5a}
+.tag.hold{background:#fff4d6;color:#8a6412}
+.chk{font-size:13px;margin:7px 0;padding-left:22px;position:relative}
+.chk::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:2px;background:var(--teal)}
+.chk.h::before{background:#d9a441}
+@media(max-width:430px){h1{font-size:18px}.wrap{padding:19px 13px 55px}}
+</style></head><body>
+<div class="wrap">
+
+<header>
+  <h1>OWL福祉｜広告の品質スコアと、LPをどう直すか</h1>
+  <div class="sub">2026年8月24日／星崎　データ：Google広告 実測（〜8/23）＋ Clarity 8/23（モバイル）＋ 本番LPのHTML実査</div>
+</header>
+
+<div class="top">
+  <div class="tc"><div class="no">1</div><div>
+    <div class="tt">広告の品質スコアが 4.96 → 2.94 まで落ちています</div>
+    <div class="td">原因は1つに絞れました。3つの評価項目のうち<b>「ランディングページの利便性」だけが、6月の開始日から今日まで一度も"平均"に届いていません</b>。全キーワードが100%「平均より下」です。</div>
+  </div></div>
+  <div class="tc"><div class="no">2</div><div>
+    <div class="tt">お客様が「押せない画像」を押していました</div>
+    <div class="td">リンクでもボタンでもない本文画像へのタップが、0円プランLPで17%、独立LPでは<b>タップの半分</b>。<b>拡大して読もうとしている動き</b>です。画像に焼いた文字が読めていません。</div>
+  </div></div>
+  <div class="tc"><div class="no">3</div><div>
+    <div class="tt">WEB説明会は求められているのに、LPに説明が1文字もありません</div>
+    <div class="td">フォームの中に隠れている「希望日程」欄が17%タップされ、直近の問い合わせも2件が説明会希望。なのに本文に「説明会」の語は0円LPで2回・独立LPで<b>0回</b>です。</div>
+  </div></div>
+</div>
+<p class="note">※ 本資料の数字はすべて実測です。まだ確定していない数字（未経験比率・実績件数・初期費用の内訳など）は、この資料でもLPでも空欄のままにしています。</p>
+
+<!-- ===== 1 ===== -->
+<span class="day">現状①</span>
+<h2>品質スコアは落ち続けています</h2>
+<div class="box">
+<div class="h">表示回数で重みづけした平均品質スコア（10点満点）</div>
+<div class="tr">
+  <div class="c"><div class="v">4.96</div><div class="b" style="height:50%"></div></div>
+  <div class="c"><div class="v">4.61</div><div class="b" style="height:46%"></div></div>
+  <div class="c"><div class="v">3.34</div><div class="b" style="height:33%"></div></div>
+  <div class="c"><div class="v">3.52</div><div class="b" style="height:35%"></div></div>
+  <div class="c"><div class="v">3.74</div><div class="b" style="height:37%"></div></div>
+  <div class="c"><div class="v">4.02</div><div class="b" style="height:40%"></div></div>
+  <div class="c"><div class="v">3.72</div><div class="b" style="height:37%"></div></div>
+  <div class="c last"><div class="v">2.94</div><div class="b" style="height:29%"></div></div>
+</div>
+<div class="trx">
+  <div>6/18〜</div><div>8/6</div><div>8/17-18</div><div>8/19</div><div>8/20</div><div>8/21</div><div>8/22</div><div>8/23</div>
+</div>
+<div class="note">8/23時点で <b>10点満点中2.94</b>。6点以上のキーワードは1語もなく、最高が5点です。</div>
+</div>
+
+<div class="box">
+<div class="h">3つの評価項目のうち、どれが悪いのか（8/23・費用ベース）</div>
+<div class="fac"><div class="nm">広告の関連性</div><div class="st">
+  <div class="seg up" style="flex:10">平均より上 10語</div><div class="seg mid" style="flex:5">平均 5</div><div class="seg dn" style="flex:9">下 9</div></div></div>
+<div class="fac"><div class="nm">推定クリック率</div><div class="st">
+  <div class="seg mid" style="flex:13">平均 13語</div><div class="seg dn" style="flex:11">平均より下 11語</div></div></div>
+<div class="fac"><div class="nm"><b style="color:#C0392B">LPの利便性</b></div><div class="st">
+  <div class="seg dn" style="flex:24">平均より下 24語（100%）</div></div></div>
+<div class="note"><b>LPの利便性だけが真っ赤です。</b>しかもこれは今日始まった話ではなく、6月18日の44語も、今日の24語も、例外なく全部が「平均より下」でした。<b>一度も改善していません。</b></div>
+</div>
+
+<div class="box">
+<div class="h">品質スコアが低いと、いくら損しているか（弊社アカウントの実測・8/6＋8/19〜23）</div>
+<table>
+<tr><th></th><th class="n">クリック率</th><th class="n">クリック単価</th><th class="n">使った額</th></tr>
+<tr><td>品質スコア 1〜3 のKW</td><td class="n">11.2%</td><td class="n" style="color:#C0392B"><b>¥360</b></td><td class="n">¥32,437</td></tr>
+<tr><td>品質スコア 4〜5 のKW</td><td class="n">14.6%</td><td class="n"><b>¥316</b></td><td class="n">¥72,034</td></tr>
+</table>
+<div class="note">低い方は<b>1クリックあたり ¥44（14%）高く</b>ついています。8/23は<b>広告費の22%（¥4,594）が品質スコア1のキーワード</b>に流れていました。</div>
+</div>
+
+<!-- ===== 2 ===== -->
+<span class="day">現状②</span>
+<h2>お客様がLPのどこを触っているか（8/23・スマホ）</h2>
+
+<div class="box">
+<div class="h">0円プランLP　54回閲覧 / 35タップ</div>
+<div class="bar"><div class="lb"><span>フォームの入力項目</span><b>11回・31%</b></div><div class="tk"><div class="fl" style="width:31%"></div></div></div>
+<div class="bar hot"><div class="lb"><span>収益シミュレーター</span><b>6回・17%</b></div><div class="tk"><div class="fl" style="width:17%"></div></div></div>
+<div class="bar hot"><div class="lb"><span>WEB説明会の希望日程（フォームの中）</span><b>6回・17%</b></div><div class="tk"><div class="fl" style="width:17%"></div></div></div>
+<div class="bar hot"><div class="lb"><span>★本文の画像そのもの（押せない場所）</span><b>6回・17%</b></div><div class="tk"><div class="fl" style="width:17%"></div></div></div>
+<div class="bar"><div class="lb"><span>費用（物件取得費×内装費）</span><b>2回・6%</b></div><div class="tk"><div class="fl" style="width:6%"></div></div></div>
+<div class="bar"><div class="lb"><span>CTAボタン</span><b>2回・6%</b></div><div class="tk"><div class="fl" style="width:6%"></div></div></div>
+<div class="note">フォームを開いて入力し、<b>1名が送信まで到達</b>しています（8/23の問い合わせ1件と一致）。0円プランLPは受け皿として機能しています。</div>
+</div>
+
+<div class="box">
+<div class="h">独立LP　24回閲覧 / 6タップ　<span class="tag now">CTAタップ 0回</span></div>
+<div class="bar hot"><div class="lb"><span>★本文の画像そのもの（押せない場所）</span><b>3回・50%</b></div><div class="tk"><div class="fl" style="width:50%"></div></div></div>
+<div class="bar"><div class="lb"><span>よくあるご質問（開いて読んだ）</span><b>2回・33%</b></div><div class="tk"><div class="fl" style="width:33%"></div></div></div>
+<div class="bar"><div class="lb"><span>ページ最上部へ戻る</span><b>1回・17%</b></div><div class="tk"><div class="fl" style="width:17%"></div></div></div>
+<div class="bar zero"><div class="lb"><span>CTAボタン</span><b>0回</b></div><div class="tk"><div class="fl" style="width:1%"></div></div></div>
+<div class="note">もう1本の独立LP（300万円版・19回閲覧）は<b>タップが1回もありません</b>。独立LP2本で8/23に ¥8,429（全広告費の27%）を使っていますが、CTAは一度も押されていません。</div>
+</div>
+
+<div class="box">
+<div class="h">なぜ画像を押すのか — ページの中身を調べました</div>
+<table>
+<tr><td>0円プランLP：本文の画像9枚の説明文（alt）</td><td class="n"><b style="color:#C0392B">9枚すべて空</b></td></tr>
+<tr><td>0円プランLP：見出しの数</td><td class="n"><b style="color:#C0392B">3つだけ</b></td></tr>
+<tr><td>独立LP：見出しに「グループホーム」が出る回数</td><td class="n"><b style="color:#C0392B">0回</b></td></tr>
+</table>
+<div class="note">広告は「グループホーム 経営」「グループホーム 開業」で出しているのに、<b>着地したページにその言葉がテキストとして存在していません</b>。文字が全部画像の中に焼き込まれているためです。お客様が読めないのと、Googleが読めないのは、同じ理由で起きています。</div>
+</div>
+
+<!-- ===== 3 ===== -->
+<span class="day o">改修案</span>
+<h2>触られている場所を、詳しく書き直します</h2>
+<p>新しい訴求を足すのではなく、<b>すでにお客様が触っている場所を深掘りする</b>方針です。写真はこれまで通り画像のまま置き、<b>見出し・本文・数字・表だけを文字にします</b>。</p>
+
+<div class="box">
+<div class="h">① 開業にいくら必要か、内訳を表で出す<span class="tag now" style="margin-left:8px">今：画像1枚・タップ2回</span></div>
+<p>物件取得費／内装・改修費／什器・備品／指定申請・法人設立／開設前の運転資金／加盟金0円 → <b>合計と、うち自己資金いくらか</b>まで1つの表に。</p>
+<div class="note">いま本文は「トータルで300万以上」と読める一方、同じページの総投下資金は¥370〜1,200万です。<b>「自己資金300万＋残りは融資」なのか「総額300万」なのか</b>が読み手に伝わっていません。表1つで解消します。</div>
+</div>
+
+<div class="box">
+<div class="h">② シミュレーターの「その数字の根拠」を直下に足す<span class="tag now" style="margin-left:8px">今：タップ最多クラス 17%</span></div>
+<p>売上がどこから入るのか（国・自治体の給付費 ＋ 利用者負担）を割合で示し、<b>「景気で消える売上ではない」</b>を伝えます。</p>
+<div class="note">加えてご質問形式で3本：入居者が埋まらなかった場合／人件費と人員配置基準／黒字化までの期間。<b>満室前提の数字だけを見せない</b>ようにします。</div>
+</div>
+
+<div class="box">
+<div class="h">③ WEB説明会（Zoom）をページ本体に出す<span class="tag go" style="margin-left:8px">新設</span></div>
+<div class="ba">
+  <div class="p b4"><div class="t">いま</div>フォームを開く → 「WEB説明会」にチェックを入れる → <b>そこで初めて希望日程が現れる</b><br><br>ページ本文に説明会の説明は<b>一切なし</b></div>
+  <div class="ar">→</div>
+  <div class="p af"><div class="t">改修後</div>LP本体に独立したセクションを新設<br><br><b>当日話すこと3点</b>／形式（Zoom・顔出し不要）／所要時間／無料／定員／持ち物不要／「その場で契約を迫りません」</div>
+</div>
+<div class="note">直近の問い合わせ2件（8/17・8/23）がどちらも説明会をご希望でした。<b>需要は確認できています。</b>独立LPには入口自体が存在しないため、そちらにも新設します。<br><b>当日の内容は鈴木北斗さんが本日ヒアリングしてくださる分を反映します。</b></div>
+</div>
+
+<div class="box">
+<div class="h">④ 画像に焼いた文字を、読める文字にする<span class="tag now" style="margin-left:8px">今：画像タップ 17% / 50%</span></div>
+<div class="ba">
+  <div class="p b4"><div class="t">いま</div>見出しも本文も数字も表も、<b>すべて画像の中</b><br><br>→ 拡大しないと読めない<br>→ 文言を直すたび作り直し<br>→ Googleにも伝わらない</div>
+  <div class="ar">→</div>
+  <div class="p af"><div class="t">改修後</div><b>写真だけ画像</b>のまま残す<br><br>→ そのまま読める<br>→ 文字だけ後から差し替えられる<br>→ 検索エンジンにも伝わる</div>
+</div>
+<div class="note"><b>今日すぐできること：</b>空になっている画像の説明文（alt）9枚を埋める。画像の作り直しは不要で、文字を足すだけです。</div>
+</div>
+
+<div class="box">
+<div class="h">⑤ よくあるご質問を増やす<span class="tag now" style="margin-left:8px">今：独立LPのタップの33%</span></div>
+<p>数少ない接触の3分の1がご質問欄です。「まだ疑問が残っている」サインと見ています。</p>
+<div class="note">追加候補：未経験でも本当にできますか／<b>オーナーは自分で介護をするのですか</b>／自己資金が足りない場合、融資は通りますか／物件はどうやって探すのですか／指定申請は代行してもらえますか</div>
+</div>
+
+<div class="box">
+<div class="h">⑥ 0円プランLPのボタン文言を統一する</div>
+<p>5つあるボタンが<b>すべて別の文言</b>になっています。</p>
+<table>
+<tr><td>①「無料資料請求 ›」</td><td>②「▶ 無料で資料請求」</td></tr>
+<tr><td>③「無料資料請求」</td><td>④「WEB説明会」</td></tr>
+<tr><td>⑤「無料で資料請求」</td><td></td></tr>
+</table>
+<div class="note">→ 「<b>▶ 無料で資料をもらう</b>」に統一します。説明会は③の専用セクションへ。<br>※独立LPは「▶ 無料で開業相談する」で<b>すでに統一済み</b>でした。</div>
+</div>
+
+<!-- ===== 4 ===== -->
+<span class="day">確認事項</span>
+<h2>数字が確定するまで、LPには出しません</h2>
+<div class="box">
+<table>
+<tr><th>確認したいこと</th><th>状況</th></tr>
+<tr><td>WEB説明会の内容・所要時間・定員・頻度</td><td>鈴木北斗さんが本日ヒアリング</td></tr>
+<tr><td>Zoomアカウントの契約状況</td><td>未確認（費用に影響）</td></tr>
+<tr><td>未経験の比率</td><td>LPは「95%」／FAQは「約6割」で食い違い</td></tr>
+<tr><td>開設実績の件数</td><td>「400件」「180社」「4社」の3種類</td></tr>
+<tr><td>初期費用の内訳（各項目の金額）</td><td>未取得</td></tr>
+<tr><td>融資のサポートをLPに書いてよいか</td><td>未回答（7/23からの継続）</td></tr>
+</table>
+<div class="note">実績や収益の表示は景品表示法に直結します。<b>推測で数字を埋めることはしません。</b>確定するまで、モックでも空欄のままにしてあります。</div>
+</div>
+
+<!-- ===== 5 ===== -->
+<span class="day">進め方</span>
+<h2>先に動かせるものと、確認待ちのもの</h2>
+<div class="box">
+<div class="h" style="color:#0b5f5a">確認なしで今日から着手できます</div>
+<div class="chk">画像の説明文（alt）9枚を埋める</div>
+<div class="chk">0円プランLPのボタン文言を統一する</div>
+<div class="chk">品質スコア1のキーワード4語を止める（1日 ¥4,594）</div>
+<div class="chk">タップされている画像から順に、文字を読める形にしていく</div>
+</div>
+<div class="box">
+<div class="h" style="color:#8a6412">確認が取れてから着手します</div>
+<div class="chk h">WEB説明会セクションの新設（ヒアリング結果待ち）</div>
+<div class="chk h">初期費用の表・シミュレーターの根拠（数字の確定待ち）</div>
+<div class="chk h">よくあるご質問の追加（融資サポートを書いてよいかの確認）</div>
+</div>
+<div class="box">
+<div class="h">今回やらないこと</div>
+<div class="note">
+・収益シミュレーター自体の作り直し（すでに機能していて、よく触られているため）<br>
+・LP全体をゼロから作り直すこと（投資に対して効果が読めないため。<b>触られている箇所の深掘りから始めます</b>）<br>
+・構造化データ（JSON-LD）の追加。検索表示には有効ですが、<b>広告の品質スコアを上げるという公式情報はない</b>ため、品質スコア対策としては提案しません
+</div>
+</div>
+
+<div class="box" style="border-left:4px solid var(--teal)">
+<div class="h">この改修は、いまのWordPressのまま実装できます</div>
+<div class="note">
+・テーマ変更・プラグイン追加は<b>不要</b>（ご質問欄はHTMLの標準機能で作れます）<br>
+・<b>お問い合わせフォームには一切触りません</b>。既存の「WEB説明会」チェックボックスをそのまま使い、LP側に入口を足すだけです<br>
+・通知先メールアドレス2件にも影響ありません<br>
+・画像を文字に置き換える分、<b>ページはむしろ軽くなります</b>
+</div>
+</div>
+
+<div class="box" style="border-left:4px solid var(--orange)">
+<div class="h">改修案①〜⑥を、実際の画面イメージにしたもの</div>
+<p style="margin:6px 0"><a href="mock.html" style="color:var(--orange);font-weight:700;font-size:14px">▶ LP改修モックを見る（スマホ表示）</a></p>
+<div class="note">まだ確定していない数字は <b>要確定</b> のバッジで空けてあります。WEB説明会の「当日お話しすること」3点は、鈴木北斗さんのヒアリング結果が入り次第このページを更新します。</div>
+</div>
+
+<footer>
+株式会社斗｜OWL福祉事業 広告・LP運用<br>
+出典：Google広告 検索キーワードレポート／キャンペーンレポート（〜2026-08-23）、Microsoft Clarity（2026-08-23・モバイル）、本番LPのHTML実査（2026-08-24）<br>
+このページは検索エンジンに登録されない設定（noindex）です。
+</footer>
+
+</div></body></html>

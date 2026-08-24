@@ -1,0 +1,152 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OWL LP改修モック 2026-08-24</title>
+<style>
+:root{--g:#1f7a5a;--gl:#e8f5f0;--t:#1a1a1a;--m:#5b6b66;--ln:#d8e3df;--or:#f0821e}
+*{box-sizing:border-box}body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--t);background:#f4f6f5;line-height:1.75}
+.page{max-width:430px;margin:0 auto;background:#fff;padding-bottom:60px}
+.hd{background:var(--g);color:#fff;padding:14px 18px;font-size:13px;position:sticky;top:0;z-index:5}
+.hd b{display:block;font-size:15px}
+.sec{padding:26px 18px;border-bottom:8px solid #f4f6f5}
+.tag{display:inline-block;background:var(--gl);color:var(--g);font-size:11px;font-weight:700;padding:4px 10px;border-radius:99px;margin-bottom:10px}
+.tag.now{background:#fdecec;color:#c0392b}
+h2{font-size:20px;margin:6px 0 4px;line-height:1.5}
+h3{font-size:15px;margin:18px 0 6px;color:var(--g)}
+p{font-size:14px;margin:8px 0;color:#333}
+.lead{font-size:13px;color:#5b6b66}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th,td{border:1px solid var(--ln);padding:8px 9px;text-align:left}
+th{background:var(--gl);color:#155;font-weight:700;white-space:nowrap}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tot td{background:#fffbe9;font-weight:700}
+details{border:1px solid var(--ln);border-radius:8px;margin:8px 0;background:#fff}
+summary{padding:12px 14px;font-size:14px;font-weight:700;cursor:pointer;list-style:none;position:relative;padding-right:38px}
+summary::after{content:"＋";position:absolute;right:14px;color:var(--g);font-weight:700}
+details[open] summary::after{content:"−"}
+details .in{padding:0 14px 14px;font-size:13px;color:#444}
+.cta{display:block;background:var(--or);color:#fff;text-align:center;font-weight:700;font-size:16px;padding:15px;border-radius:10px;text-decoration:none;margin:16px 0 6px;box-shadow:0 3px 0 #c96a12}
+.sub{display:block;text-align:center;font-size:13px;color:var(--g);text-decoration:underline;margin-bottom:4px}
+.micro{text-align:center;font-size:11px;color:#7a8a85}
+.zoom{background:var(--gl);border-radius:12px;padding:16px}
+.step{display:flex;gap:10px;margin:10px 0;font-size:13px}
+.step .no{flex:0 0 24px;height:24px;border-radius:50%;background:var(--g);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.ph{background:#fff4d6;border:1px dashed #d9a441;color:#8a6412;font-size:11px;padding:2px 6px;border-radius:4px;font-weight:700}
+.note{background:#f7f9f8;border-left:3px solid var(--g);padding:10px 12px;font-size:12px;color:#4a5a55;margin:12px 0}
+.imgph{background:#e9edeb;border:1px dashed #b3c2bd;color:#7a8a85;font-size:12px;text-align:center;padding:26px 10px;border-radius:8px;margin:10px 0}
+.k{font-size:12px;color:#7a8a85;margin-top:2px}
+</style></head><body><div class="page">
+
+<div class="hd"><b>OWL LP改修モック（案）</b>2026-08-24 ／ 8/23 Clarityのタップ集中箇所に対応 ／ 数字は<span class="ph">要確定</span>で仮置き</div>
+
+<!-- ① 費用 -->
+<div class="sec">
+<span class="tag now">現状：画像1枚・タップ2回だけ</span>
+<span class="tag">改修案①</span>
+<h2>開業にいくら必要か、全部出します</h2>
+<p class="lead">いま「物件取得費 × 内装費」は画像1枚で、総額の内訳がどこにも書かれていません。ここをテキストの表にして、触れる状態にします。</p>
+
+<h3>初期費用の内訳（定員<span class="ph">要確定</span>名・モデルケース）</h3>
+<table>
+<tr><th>項目</th><th>目安</th><th>補足</th></tr>
+<tr><td>物件取得費</td><td class="n"><span class="ph">要確定</span></td><td>賃貸／購入で変動</td></tr>
+<tr><td>内装・改修費</td><td class="n"><span class="ph">要確定</span></td><td>消防・バリアフリー対応含む</td></tr>
+<tr><td>什器・備品</td><td class="n"><span class="ph">要確定</span></td><td>—</td></tr>
+<tr><td>指定申請・法人設立</td><td class="n"><span class="ph">要確定</span></td><td>行政書士費用含む</td></tr>
+<tr><td>開設前の運転資金</td><td class="n"><span class="ph">要確定</span></td><td>報酬入金までの数ヶ月分</td></tr>
+<tr><td>加盟金</td><td class="n">0円</td><td>0円プランの場合</td></tr>
+<tr class="tot"><td>合計</td><td class="n"><span class="ph">要確定</span></td><td>うち自己資金 <span class="ph">要確定</span>／残りは融資</td></tr>
+</table>
+<div class="note"><b>ここが今いちばん誤解されている箇所です。</b>本文は「トータルで300万以上」と読める一方、同じページの総投下資金は¥370〜1,200万。「自己資金300万＋融資」なのか「総額300万」なのかを、この表で1回で分からせます。</div>
+</div>
+
+<!-- ② 収益シミュレーター -->
+<div class="sec">
+<span class="tag now">現状：タップ6回（17%）＝一番触られている</span>
+<span class="tag">改修案②</span>
+<h2>その数字の、根拠</h2>
+<p class="lead">シミュレーターは触られています。触った直後に「なぜこの数字になるのか」が無いので、そこを足します。</p>
+<h3>売上はどこから入るのか</h3>
+<table>
+<tr><th>収入の出どころ</th><th>割合</th></tr>
+<tr><td>国・自治体からの給付費（国保連請求）</td><td class="n"><span class="ph">要確定</span>%</td></tr>
+<tr><td>利用者負担・家賃・食費</td><td class="n"><span class="ph">要確定</span>%</td></tr>
+</table>
+<p style="font-size:13px">売上の大半が<b>公的な給付費</b>です。景気や集客の波で急に消える売上ではない、という点が他業種の開業と最も違います。</p>
+<details><summary>入居者が埋まらなかった場合はどうなりますか</summary><div class="in">稼働率別の収支を<span class="ph">要確定</span>で提示。満室前提の数字だけを見せない。</div></details>
+<details><summary>人件費・人員配置基準はどこまで必要ですか</summary><div class="in">世話人・生活支援員の配置基準と、モデルケースの人件費を<span class="ph">要確定</span>で提示。</div></details>
+<details><summary>黒字化までどのくらいかかりますか</summary><div class="in">開設から報酬入金までのタイムラグと、月次推移を<span class="ph">要確定</span>で提示。</div></details>
+</div>
+
+<!-- ③ WEB説明会 -->
+<div class="sec">
+<span class="tag now">現状：フォームの中に隠れている（チェックしないと出ない）</span>
+<span class="tag">改修案③ ★新設</span>
+<h2>WEB説明会（Zoom）</h2>
+<p class="lead">8/23はフォーム内の「希望日程」に<b>6回（全タップの17%）</b>触られています。直近の問い合わせも2件が説明会希望。<b>需要はあるのに、LP上に説明会の説明が1文字もありません。</b>ここを独立セクションにします。</p>
+<div class="zoom">
+<h3 style="margin-top:0">当日お話しすること</h3>
+<div class="step"><div class="no">1</div><div><span class="ph">鈴木北斗さんが本日ヒアリング</span></div></div>
+<div class="step"><div class="no">2</div><div><span class="ph">同上</span></div></div>
+<div class="step"><div class="no">3</div><div><span class="ph">同上</span></div></div>
+<table style="margin-top:12px">
+<tr><th>形式</th><td>Zoom（顔出し不要）</td></tr>
+<tr><th>所要</th><td><span class="ph">要確定</span>分</td></tr>
+<tr><th>費用</th><td>無料</td></tr>
+<tr><th>定員</th><td><span class="ph">要確定</span></td></tr>
+<tr><th>持ち物</th><td>不要</td></tr>
+</table>
+<p class="micro" style="text-align:left;margin-top:10px">※その場で契約を迫ることはありません。</p>
+</div>
+<a class="cta" href="#">▶ WEB説明会に無料で参加する</a>
+<a class="sub" href="#">まず資料だけ受け取る方はこちら</a>
+<p class="micro">入力1分／しつこい営業はありません</p>
+</div>
+
+<!-- ④ 画像の構造化 -->
+<div class="sec">
+<span class="tag now">現状：画像タップ 0円LP 6回(17%)／独立LP 3回(50%)</span>
+<span class="tag">改修案④</span>
+<h2>画像に焼いた文字を、読める文字にする</h2>
+<p class="lead"><b>リンクでもボタンでもない本文画像が、両LPで最多クラスにタップされています。</b>拡大して読もうとしている動きです。画像は残したまま、文字だけHTMLに出します。</p>
+<div class="imgph">写真はこれまで通り &lt;img&gt; で配置<br>（人物・施設・街並みの写真のみ）</div>
+<h3>業界の転換点</h3>
+<p style="font-size:13px">見出し・本文・数字・表は<b>HTMLテキスト</b>で。読める・拡大不要・検索エンジンにも伝わる・後から文言だけ差し替えられる。</p>
+<div class="note">
+<b>いま何が起きているか（実測）</b><br>
+・0円プランLP：本文セクション画像 <b>9枚すべて alt が空</b><br>
+・0円プランLP：見出し(h2)が<b>3つだけ</b>（収益シミュレーション／無料お問い合わせ／完了）<br>
+・独立LP：見出しに「グループホーム」が<b>1回も出てこない</b><br>
+→ 流入KW「グループホーム 経営／開業」「福祉 起業」に、ページのテキストが対応していない
+</div>
+</div>
+
+<!-- ⑤ FAQ -->
+<div class="sec">
+<span class="tag now">現状：独立LPのタップの33%がFAQ</span>
+<span class="tag">改修案⑤</span>
+<h2>FAQを増やす（テキストで）</h2>
+<p class="lead">独立LPは6タップ中2タップがFAQ。数少ない接触の3分の1が「まだ疑問が残っている」サインです。</p>
+<details open><summary>未経験でも本当にできますか</summary><div class="in">未経験比率は<span class="ph">要確定（95%と約6割で社内資料が食い違い中）</span>。確定するまで数字は出さない。</div></details>
+<details><summary>オーナーは自分で介護をするのですか</summary><div class="in">「オーナーは現場作業をせず運営・管理に専念」を明言（異業種FCの勝ちパターン）。GH開業で最も多い不安。</div></details>
+<details><summary>自己資金が足りない場合、融資は通りますか</summary><div class="in">融資支援の有無を<span class="ph">LPに出してよいか要確認</span>。</div></details>
+<details><summary>物件はどうやって探すのですか</summary><div class="in">サポート範囲（物件／人材／指定申請／運営）を4点で。</div></details>
+<details><summary>指定申請は代行してもらえますか</summary><div class="in">同上。</div></details>
+<p class="k">※ FAQはテキスト（&lt;details&gt;）で持つ。JS不要・軽量・検索にも拾われる。</p>
+</div>
+
+<div class="sec" style="border-bottom:none">
+<span class="tag">CTA統一（7/26提案の未実施分）</span>
+<h2>0円LPのCTAは5個とも文言がバラバラ</h2>
+<table>
+<tr><th>#</th><th>現在の文言</th></tr>
+<tr><td>1</td><td>無料資料請求 ›</td></tr>
+<tr><td>2</td><td>▶ 無料で資料請求</td></tr>
+<tr><td>3</td><td>無料資料請求</td></tr>
+<tr><td>4</td><td>WEB説明会</td></tr>
+<tr><td>5</td><td>無料で資料請求</td></tr>
+</table>
+<p style="font-size:13px">→ 主CTAを <b>「▶ 無料で資料をもらう」</b> に統一し、説明会は上記③の専用セクション＋小リンクへ。<br>（独立LPは「▶ 無料で開業相談する」×5＋「資料請求はこちら」×1で、すでに統一済み）</p>
+</div>
+
+</div></body></html>
