@@ -1,143 +1,428 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>YouTube広告 8月レポート — MERA eyebrow salon 様</title>
-<style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;background:#f5f2ec;color:#1a1a1a;line-height:1.7;padding:20px}
-  .container{max-width:900px;margin:0 auto}
-  h1{text-align:center;font-size:22px;border-bottom:3px solid #8b6f4b;padding-bottom:12px;margin-bottom:6px}
-  .subtitle{text-align:center;color:#888;font-size:12px;margin-bottom:24px}
-  .section{background:#fff;border-radius:12px;padding:22px;margin-bottom:20px;border:1px solid #e0e0e0}
-  .section-title{font-size:16px;font-weight:700;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid #eee;display:flex;align-items:center;gap:10px}
-  .section-title .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:6px;background:#8b6f4b;color:#fff;font-size:13px;font-weight:700}
-  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px}
-  .kpi{background:#faf7f2;border-radius:8px;padding:14px;text-align:center;border:1px solid #e8dfd0}
-  .kpi .label{font-size:11px;color:#888;margin-bottom:4px}
-  .kpi .value{font-size:22px;font-weight:700;color:#5c4a30}
-  .kpi .sub{font-size:11px;color:#666;margin-top:4px}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #eee}
-  th{background:#faf7f2;color:#5c4a30;font-weight:700;font-size:12px}
-  td.num{text-align:right;font-variant-numeric:tabular-nums}
-  .highlight{background:#fef9f0}
-  .footer{text-align:center;color:#aaa;font-size:11px;padding:20px 0}
-  @media(max-width:600px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>YouTube広告 2ヶ月目レポート — MERA eyebrow salon 様（2026/08/25時点）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #cc0000;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 28px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .summary-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+        .summary-card.hero { border-color: #cc0000; background: #fff5f5; }
+        .summary-card .s-label { font-size: 11px; color: #888; margin-bottom: 6px; letter-spacing: .04em; }
+        .summary-card .s-num { font-size: 28px; font-weight: 700; color: #1a1a1a; line-height: 1.2; }
+        .summary-card.hero .s-num { color: #cc0000; }
+        .summary-card .s-unit { font-size: 12px; color: #888; margin-top: 2px; }
+        .summary-card .s-sub { font-size: 11px; color: #2e7d32; margin-top: 4px; font-weight: 600; }
+
+        .headline-bar {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            border-radius: 12px;
+            padding: 22px 26px;
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .headline-bar .hl-title { color: #ff6b6b; font-size: 13px; margin-bottom: 6px; font-weight: 700; letter-spacing: .05em; }
+        .headline-bar .hl-msg { font-size: 15px; color: #fff; line-height: 1.7; }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 26px;
+            margin-bottom: 24px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .section-title .icon.good { background: #2e7d32; }
+        .section-title .icon.warn { background: #e65100; }
+        .section-title .icon.plan { background: #1565c0; }
+        .section-title .icon.pred { background: #6a1b9a; }
+        .section-title .icon.mtg { background: #cc0000; }
+
+        .good-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .good-card {
+            background: #f1f8e9;
+            border-left: 4px solid #2e7d32;
+            border-radius: 8px;
+            padding: 16px 18px;
+        }
+        .good-card .g-num { font-size: 22px; font-weight: 700; color: #1b5e20; margin-bottom: 4px; }
+        .good-card .g-title { font-size: 13px; font-weight: 700; color: #1b5e20; margin-bottom: 6px; }
+        .good-card .g-desc { font-size: 12px; color: #444; line-height: 1.6; }
+
+        .issue-list { display: flex; flex-direction: column; gap: 12px; }
+        .issue-card {
+            background: #fff3e0;
+            border-left: 4px solid #e65100;
+            border-radius: 8px;
+            padding: 14px 18px;
+        }
+        .issue-card .i-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #bf360c;
+            margin-bottom: 6px;
+        }
+        .issue-card .i-desc {
+            font-size: 13px;
+            color: #333;
+            line-height: 1.7;
+        }
+        .issue-card .i-desc strong { color: #bf360c; }
+
+        .data-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 10px; }
+        .data-table th, .data-table td {
+            padding: 8px 10px;
+            text-align: right;
+            border-bottom: 1px solid #eee;
+        }
+        .data-table th {
+            background: #fafafa;
+            font-weight: 700;
+            color: #666;
+            font-size: 11px;
+        }
+        .data-table td:first-child, .data-table th:first-child { text-align: left; }
+        .data-table tr.highlight { background: #fff5f5; }
+        .data-table tr.highlight td { font-weight: 700; }
+        .data-table .warn { color: #cc0000; font-weight: 700; }
+        .data-table .good { color: #2e7d32; font-weight: 700; }
+
+        .caveat {
+            background: #f5f5f5;
+            border-left: 3px solid #999;
+            font-size: 11px;
+            color: #666;
+            padding: 10px 14px;
+            border-radius: 4px;
+            margin-top: 14px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 11px;
+            padding: 16px 0;
+        }
+
+        @media (max-width: 768px) {
+            .summary-grid { grid-template-columns: repeat(2, 1fr); }
+            .good-grid { grid-template-columns: 1fr; }
+            .data-table th, .data-table td { font-size: 10px; padding: 6px; }
+        }
+    </style>
 </head>
 <body>
 <div class="container">
 
-<h1>YouTube広告 8月レポート</h1>
-<p class="subtitle">MERA eyebrow salon 様｜株式会社ランバード｜集計期間：2026年8月1日〜8月25日</p>
+    <h1>YouTube広告 2ヶ月目レポート</h1>
+    <p class="subtitle">MERA eyebrow salon 様 ／ 2026年8月1日〜8月25日配信結果 ／ 2026/08/25時点</p>
 
-<!-- ① 全体サマリ -->
-<div class="section">
-  <div class="section-title"><span class="num">1</span>配信実績サマリー</div>
-  <div class="kpi-grid">
-    <div class="kpi"><div class="label">表示回数</div><div class="value">2,237</div><div class="sub">回</div></div>
-    <div class="kpi"><div class="label">視聴回数</div><div class="value">1,294</div><div class="sub">回</div></div>
-    <div class="kpi"><div class="label">視聴率</div><div class="value">57.85%</div><div class="sub">業界平均25%の約2.3倍</div></div>
-    <div class="kpi"><div class="label">最後まで見られた率</div><div class="value">35.92%</div><div class="sub">100%完視率</div></div>
-  </div>
-  <div style="background:#faf7f2;border-radius:8px;padding:12px 16px;font-size:12px;color:#5c4a30;margin-top:14px;">
-    動画そのものは、多くの方にしっかりと届き、最後までご覧いただけている状態です。
-  </div>
-</div>
+    <!-- サマリーハイライト -->
+    <div class="summary-grid">
+        <div class="summary-card hero">
+            <div class="s-label">視聴率</div>
+            <div class="s-num">57.85%</div>
+            <div class="s-unit">%</div>
+            <div class="s-sub">業界平均40-50%を大幅超</div>
+        </div>
+        <div class="summary-card">
+            <div class="s-label">視聴数</div>
+            <div class="s-num">1,294</div>
+            <div class="s-unit">回</div>
+        </div>
+        <div class="summary-card">
+            <div class="s-label">100%完了率</div>
+            <div class="s-num">35.92%</div>
+            <div class="s-unit">%</div>
+            <div class="s-sub">動画品質◎</div>
+        </div>
+        <div class="summary-card">
+            <div class="s-label">配信期間 / 表示回数</div>
+            <div class="s-num">2,237</div>
+            <div class="s-unit">回（25日連続配信）</div>
+        </div>
+    </div>
 
-<!-- ② 曜日別 -->
-<div class="section">
-  <div class="section-title"><span class="num">2</span>曜日別 配信実績</div>
-  <table>
-    <tr><th>曜日</th><th class="num">表示回数</th><th class="num">視聴回数</th><th class="num">視聴率</th></tr>
-    <tr><td>月曜日</td><td class="num">377</td><td class="num">217</td><td class="num">57.56%</td></tr>
-    <tr><td>火曜日</td><td class="num">297</td><td class="num">157</td><td class="num">52.86%</td></tr>
-    <tr class="highlight"><td>水曜日</td><td class="num">314</td><td class="num">215</td><td class="num"><strong>68.47%</strong></td></tr>
-    <tr><td>木曜日</td><td class="num">311</td><td class="num">166</td><td class="num">53.38%</td></tr>
-    <tr><td>金曜日</td><td class="num">290</td><td class="num">179</td><td class="num">61.72%</td></tr>
-    <tr><td>土曜日</td><td class="num">335</td><td class="num">199</td><td class="num">59.40%</td></tr>
-    <tr><td>日曜日</td><td class="num">313</td><td class="num">161</td><td class="num">51.44%</td></tr>
-  </table>
-</div>
+    <div class="headline-bar">
+        <div class="hl-title">8月で見えた要旨</div>
+        <div class="hl-msg">8/3の設定変更（エリア／KW／世帯収入／リンク先）を反映した2ヶ月目。動画の届き方は依然として良好（視聴率57.85%）。次は<strong style="color:#ff6b6b;">「大船店舗の商圏＝逗子・鎌倉方面の露出をさらに厚く」</strong>と<strong style="color:#ff6b6b;">「Instagram側の予約導線」</strong>の2点が伸び代です。</div>
+    </div>
 
-<!-- ③ 性別 -->
-<div class="section">
-  <div class="section-title"><span class="num">3</span>性別</div>
-  <table>
-    <tr><th>性別</th><th class="num">表示回数</th><th class="num">視聴回数</th><th class="num">視聴率</th></tr>
-    <tr class="highlight"><td>女性</td><td class="num">1,150</td><td class="num">693</td><td class="num"><strong>60.26%</strong></td></tr>
-    <tr><td>男性</td><td class="num">982</td><td class="num">559</td><td class="num">56.92%</td></tr>
-    <tr><td>不明</td><td class="num">105</td><td class="num">42</td><td class="num">40.00%</td></tr>
-  </table>
-</div>
+    <!-- 良かった点 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon good">◎</span>
+            8月で確認できた「良かった点」
+        </div>
+        <div class="good-grid">
+            <div class="good-card">
+                <div class="g-num">57.85%</div>
+                <div class="g-title">視聴率が引き続き業界平均超</div>
+                <div class="g-desc">先月60.17%に続き、8月も57.85%と<strong>業界平均40-50%を大幅に超える水準</strong>を維持。動画の冒頭訴求とターゲット整合が引き続き噛み合っています。</div>
+            </div>
+            <div class="good-card">
+                <div class="g-num">75.68%</div>
+                <div class="g-title">逗子市の視聴率が全地域最高</div>
+                <div class="g-desc">8/3の変更で追加された<strong>逗子市の視聴率が75.68%と全地域中トップ</strong>。大船店舗の来店見込み層に近い方々が動画を最後までしっかり見てくださっています。</div>
+            </div>
+            <div class="good-card">
+                <div class="g-num">575</div>
+                <div class="g-title">45-54歳がメイン層で定着</div>
+                <div class="g-desc">45-54歳が575視聴で最多。全体の視聴率59.46%と質も高く、<strong>MERA様のメインターゲット層に的確に届いている</strong>ことがデータから確認できます。</div>
+            </div>
+        </div>
+    </div>
 
-<!-- ④ 年齢 -->
-<div class="section">
-  <div class="section-title"><span class="num">4</span>年齢</div>
-  <table>
-    <tr><th>年齢</th><th class="num">表示回数</th><th class="num">視聴回数</th><th class="num">視聴率</th></tr>
-    <tr><td>18〜24歳</td><td class="num">225</td><td class="num">132</td><td class="num">58.67%</td></tr>
-    <tr><td>25〜34歳</td><td class="num">426</td><td class="num">248</td><td class="num">58.22%</td></tr>
-    <tr><td>35〜44歳</td><td class="num">498</td><td class="num">293</td><td class="num">58.84%</td></tr>
-    <tr class="highlight"><td>45〜54歳</td><td class="num"><strong>967</strong></td><td class="num"><strong>575</strong></td><td class="num">59.46%</td></tr>
-    <tr><td>不明</td><td class="num">121</td><td class="num">46</td><td class="num">38.02%</td></tr>
-  </table>
-  <div style="font-size:11px;color:#888;margin-top:8px;">※ 55〜64歳・65歳以上は除外設定済み</div>
-</div>
+    <!-- 現在の設定内容（8/3変更後） -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#455a64;">◉</span>
+            現在の設定内容（8/3設定変更後）
+        </div>
+        <div style="background:#f5f5f5;border:1px solid #ddd;border-radius:8px;padding:16px 20px;margin-bottom:16px;font-size:13px;color:#666;">
+            ※ 下記は<strong>8/3の電話MTGで合意した4項目を反映した状態</strong>です。8月データはこの設定で配信された結果になります。<br>
+            ※ 1ヶ月目レポート：<a href="https://hoshizaemonn.github.io/RUNBIRD/proposals/mera-1month-report-20260731.html" target="_blank" style="color:#1565c0;">mera-1month-report-20260731.html</a>
+        </div>
 
-<!-- ⑤ 世帯収入 -->
-<div class="section">
-  <div class="section-title"><span class="num">5</span>世帯収入</div>
-  <table>
-    <tr><th>世帯収入</th><th class="num">表示回数</th><th class="num">視聴回数</th><th class="num">視聴率</th></tr>
-    <tr><td>31〜40%</td><td class="num">566</td><td class="num">251</td><td class="num">44.35%</td></tr>
-    <tr><td>41〜50%</td><td class="num">148</td><td class="num">86</td><td class="num">58.11%</td></tr>
-    <tr class="highlight"><td>下位50%</td><td class="num">703</td><td class="num">408</td><td class="num">58.04%</td></tr>
-    <tr><td>不明</td><td class="num">551</td><td class="num">380</td><td class="num">68.97%</td></tr>
-  </table>
-  <div style="font-size:11px;color:#888;margin-top:8px;">※ 上位10%・11〜20%・21〜30%は除外設定済み（8/3変更どおり反映）</div>
-</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:20px;">
+            <div style="background:#fafafa;border-radius:8px;padding:14px 16px;border-left:4px solid #455a64;">
+                <div style="font-size:11px;color:#888;margin-bottom:4px;">👤 性別</div>
+                <div style="font-size:15px;font-weight:700;">男女</div>
+            </div>
+            <div style="background:#fafafa;border-radius:8px;padding:14px 16px;border-left:4px solid #455a64;">
+                <div style="font-size:11px;color:#888;margin-bottom:4px;">📅 年齢</div>
+                <div style="font-size:15px;font-weight:700;">18〜54歳</div>
+            </div>
+            <div style="background:#fafafa;border-radius:8px;padding:14px 16px;border-left:4px solid #455a64;">
+                <div style="font-size:11px;color:#888;margin-bottom:4px;">📍 エリア</div>
+                <div style="font-size:15px;font-weight:700;">大船・鎌倉・本郷台 中心</div>
+            </div>
+            <div style="background:#fafafa;border-radius:8px;padding:14px 16px;border-left:4px solid #455a64;">
+                <div style="font-size:11px;color:#888;margin-bottom:4px;">🕐 配信時間帯</div>
+                <div style="font-size:15px;font-weight:700;">7:00〜23:00</div>
+            </div>
+        </div>
 
-<!-- ⑥ 地域 -->
-<div class="section">
-  <div class="section-title"><span class="num">6</span>地域</div>
-  <table>
-    <tr><th>地域</th><th class="num">表示回数</th><th class="num">視聴回数</th><th class="num">視聴率</th></tr>
-    <tr><td>横須賀市</td><td class="num">342</td><td class="num">212</td><td class="num">61.99%</td></tr>
-    <tr><td>藤沢市</td><td class="num">288</td><td class="num">170</td><td class="num">59.03%</td></tr>
-    <tr><td>茅ヶ崎市</td><td class="num">126</td><td class="num">59</td><td class="num">46.83%</td></tr>
-    <tr><td>鎌倉市</td><td class="num">79</td><td class="num">43</td><td class="num">54.43%</td></tr>
-    <tr><td>栄区</td><td class="num">94</td><td class="num">49</td><td class="num">52.13%</td></tr>
-    <tr class="highlight"><td>逗子市</td><td class="num">37</td><td class="num">28</td><td class="num"><strong>75.68%</strong></td></tr>
-    <tr><td>本郷台</td><td class="num">4</td><td class="num">2</td><td class="num">50.00%</td></tr>
-  </table>
-</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+            <div style="background:#fce4ec;border:1px solid #f8bbd0;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:12px;color:#880e4f;font-weight:700;margin-bottom:8px;">重点エリア（8/3〜）</div>
+                <div style="font-size:13px;line-height:1.8;">大船 ／ 鎌倉市 ／ 本郷台<br><span style="color:#c62828;font-size:11px;">※ 横浜市は停止</span></div>
+            </div>
+            <div style="background:#f3e5f5;border:1px solid #e1bee7;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:12px;color:#4a148c;font-weight:700;margin-bottom:8px;">拡張エリア</div>
+                <div style="font-size:13px;line-height:1.8;">逗子市 ／ 藤沢市 ／ 茅ヶ崎市 ／ 横須賀市</div>
+            </div>
+        </div>
 
-<!-- ⑦ キーワード -->
-<div class="section">
-  <div class="section-title"><span class="num">7</span>キーワード</div>
-  <table>
-    <tr><th>キーワード</th><th class="num">視聴回数</th></tr>
-    <tr class="highlight"><td>ナチュラルメイク</td><td class="num"><strong>355</strong></td></tr>
-    <tr><td>増毛</td><td class="num">196</td></tr>
-    <tr><td>眉 整え方</td><td class="num">179</td></tr>
-    <tr><td>自分磨き</td><td class="num">157</td></tr>
-    <tr><td>眉 デザイン</td><td class="num">125</td></tr>
-    <tr><td>美容 トレンド</td><td class="num">120</td></tr>
-    <tr><td>小顔</td><td class="num">65</td></tr>
-    <tr><td>メンズ眉サロン</td><td class="num">2</td></tr>
-    <tr><td>アイブロウサロン</td><td class="num">1</td></tr>
-    <tr><td colspan="2" style="color:#888;font-size:11px;">実配信ゼロ：フェイスワックス／眉毛 左右非対称／HBL 白／眉ワックス／眉 にじみ 対策／お藤美 自然／骨格 眉／眉毛サロン 大船／電気バリブラシ／眉毛サロン 銀座／眉 悩み／眉毛 形 似合う／眉毛サロン 横浜／メンズアイブロウ</td></tr>
-  </table>
-</div>
+        <div style="background:#e3f2fd;border:1px solid #90caf9;border-radius:8px;padding:14px 16px;margin-bottom:20px;">
+            <div style="font-size:12px;color:#0d47a1;font-weight:700;margin-bottom:8px;">設定キーワード（全22語 ／ うち実配信10語）</div>
+            <div style="font-size:13px;line-height:1.9;color:#333;">
+                <strong style="color:#2e7d32;">実配信あり（10語）：</strong>ナチュラルメイク ／ 増毛 ／ 眉 整え方 ／ 自分磨き ／ 眉 デザイン ／ 美容 トレンド ／ 小顔 ／ メンズ眉サロン ／ アイブロウサロン ／ メンズアイブロウ<br>
+                <strong style="color:#bf360c;">実配信ゼロ（12語）：</strong>フェイスワックス ／ 電気バリブラシ ／ 眉毛 左右非対称 ／ HBL 白 ／ 眉ワックス ／ 眉 にじみ 対策 ／ お藤美 自然 ／ 骨格 眉 ／ 眉毛サロン 大船 ／ 眉毛サロン 銀座 ／ 眉 悩み ／ 眉毛サロン 横浜
+            </div>
+        </div>
 
-<div class="footer">
-  MERA eyebrow salon 様｜YouTube広告 8月レポート<br>
-  株式会社ランバード｜広告運用サポート窓口
-</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px;">
+            <div style="background:#fce4ec;border:1px solid #f8bbd0;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:12px;color:#880e4f;font-weight:700;margin-bottom:8px;">世帯収入（3層に絞込）</div>
+                <div style="font-size:13px;line-height:1.8;">31〜40% ／ 41〜50% ／ 下位50%<br><span style="color:#c62828;font-size:11px;">※ 上位10%〜21-30%は除外</span></div>
+            </div>
+            <div style="background:#f3e5f5;border:1px solid #e1bee7;border-radius:8px;padding:14px 16px;">
+                <div style="font-size:12px;color:#4a148c;font-weight:700;margin-bottom:8px;">配信曜日</div>
+                <div style="font-size:13px;line-height:1.8;">月〜日（全曜日）<br><span style="color:#6a1b9a;font-size:11px;">水曜が視聴率68.47%で最高</span></div>
+            </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:#fafafa;border-radius:8px;padding:14px 16px;border-left:4px solid #2e7d32;">
+                <div style="font-size:11px;color:#888;margin-bottom:4px;">🔗 リンク先（8/3変更）</div>
+                <div style="font-size:13px;font-weight:700;word-break:break-all;"><a href="https://www.instagram.com/mera_eyebrow_megmi/" target="_blank" style="color:#2e7d32;">Instagram公式（@mera_eyebrow_megmi）</a></div>
+            </div>
+            <div style="background:#fafafa;border-radius:8px;padding:14px 16px;border-left:4px solid #cc0000;">
+                <div style="font-size:11px;color:#888;margin-bottom:4px;">🎬 配信動画</div>
+                <div style="font-size:13px;font-weight:700;word-break:break-all;"><a href="https://youtu.be/qkH-as89YtM" target="_blank" style="color:#cc0000;">YouTube動画</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 改善余地 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon warn">!</span>
+            8月で見えた「改善余地」3点
+        </div>
+        <div class="issue-list">
+            <div class="issue-card">
+                <div class="i-title">1. 横浜市の残存表示（254件）— 停止設定の再確認要</div>
+                <div class="i-desc">8/3に横浜市停止を反映したにも関わらず、<strong>港北区160表示・栄区94表示</strong>が発生しています。管理画面設定を再確認のうえ、必要に応じて再停止処理を実施いたします。</div>
+            </div>
+            <div class="issue-card">
+                <div class="i-title">2. クリック数が1件（CTR 0.04%）— Instagram側の受け皿要確認</div>
+                <div class="i-desc">動画は最後まで見られている一方、<strong>クリックからInstagramへの遷移が1件のみ</strong>。8/3にリンク先をLINEからInstagramへ変更したばかりですので、<strong>プロフィール文・予約導線（ハイライト・DM）が期待通り機能しているかご確認</strong>いただけますと、次の一手が具体化します。</div>
+            </div>
+            <div class="issue-card">
+                <div class="i-title">3. 追加KW「フェイスワックス」「電気バリブラシ」は実配信ゼロ</div>
+                <div class="i-desc">8/3に追加した3つの新KWのうち、<strong>「小顔」は65視聴で稼働中</strong>ですが、<strong>「フェイスワックス」「電気バリブラシ」は検索母数が少なく実配信ゼロ</strong>。9月中に稼働がなければ、より検索されやすいKWへの入れ替えを検討いたします。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- データ根拠 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon warn">D</span>
+            8月データ（2026/8/1〜8/25）
+        </div>
+
+        <h4 style="font-size:13px;color:#666;margin-bottom:6px;">曜日別</h4>
+        <table class="data-table">
+            <thead><tr><th>曜日</th><th>表示回数</th><th>視聴数</th><th>視聴率</th></tr></thead>
+            <tbody>
+                <tr><td>月曜日</td><td>377</td><td>217</td><td>57.56%</td></tr>
+                <tr><td>火曜日</td><td>297</td><td>157</td><td>52.86%</td></tr>
+                <tr class="highlight"><td>水曜日</td><td>314</td><td>215</td><td class="good">68.47%（最高）</td></tr>
+                <tr><td>木曜日</td><td>311</td><td>166</td><td>53.38%</td></tr>
+                <tr><td>金曜日</td><td>290</td><td>179</td><td>61.72%</td></tr>
+                <tr><td>土曜日</td><td>335</td><td>199</td><td>59.40%</td></tr>
+                <tr><td>日曜日</td><td>313</td><td>161</td><td>51.44%</td></tr>
+            </tbody>
+        </table>
+
+        <h4 style="font-size:13px;color:#666;margin:18px 0 6px;">地域別</h4>
+        <table class="data-table">
+            <thead><tr><th>地域</th><th>表示回数</th><th>視聴数</th><th>視聴率</th></tr></thead>
+            <tbody>
+                <tr class="highlight"><td>横須賀市</td><td>342</td><td>212</td><td>61.99%</td></tr>
+                <tr class="highlight"><td>藤沢市</td><td>288</td><td>170</td><td>59.03%</td></tr>
+                <tr><td>茅ヶ崎市</td><td>126</td><td>59</td><td>46.83%</td></tr>
+                <tr><td>鎌倉市</td><td>79</td><td>43</td><td>54.43%</td></tr>
+                <tr><td>栄区（横浜市）</td><td>94</td><td>49</td><td class="warn">52.13%（停止漏れ疑い）</td></tr>
+                <tr><td>港北区（横浜市）</td><td>160</td><td>87</td><td class="warn">54.38%（停止漏れ疑い）</td></tr>
+                <tr class="highlight"><td>逗子市</td><td>37</td><td>28</td><td class="good">75.68%（最高）</td></tr>
+                <tr><td>本郷台</td><td>4</td><td>2</td><td>50.00%</td></tr>
+            </tbody>
+        </table>
+
+        <h4 style="font-size:13px;color:#666;margin:18px 0 6px;">年齢別</h4>
+        <table class="data-table">
+            <thead><tr><th>年齢</th><th>表示回数</th><th>視聴数</th><th>視聴率</th></tr></thead>
+            <tbody>
+                <tr><td>18-24歳</td><td>225</td><td>132</td><td>58.67%</td></tr>
+                <tr><td>25-34歳</td><td>426</td><td>248</td><td>58.22%</td></tr>
+                <tr><td>35-44歳</td><td>498</td><td>293</td><td>58.84%</td></tr>
+                <tr class="highlight"><td>45-54歳</td><td>967</td><td>575</td><td class="good">59.46%（最多・メイン層）</td></tr>
+                <tr><td>不明</td><td>121</td><td>46</td><td>38.02%</td></tr>
+            </tbody>
+        </table>
+
+        <h4 style="font-size:13px;color:#666;margin:18px 0 6px;">性別</h4>
+        <table class="data-table">
+            <thead><tr><th>性別</th><th>表示回数</th><th>視聴数</th><th>視聴率</th></tr></thead>
+            <tbody>
+                <tr class="highlight"><td>女性</td><td>1,150</td><td>693</td><td class="good">60.26%</td></tr>
+                <tr><td>男性</td><td>982</td><td>559</td><td>56.92%</td></tr>
+                <tr><td>不明</td><td>105</td><td>42</td><td>40.00%</td></tr>
+            </tbody>
+        </table>
+
+        <h4 style="font-size:13px;color:#666;margin:18px 0 6px;">世帯収入別（3層絞込を反映）</h4>
+        <table class="data-table">
+            <thead><tr><th>世帯収入</th><th>表示回数</th><th>視聴数</th><th>視聴率</th></tr></thead>
+            <tbody>
+                <tr><td>31-40%</td><td>566</td><td>251</td><td>44.35%</td></tr>
+                <tr><td>41-50%</td><td>148</td><td>86</td><td>58.11%</td></tr>
+                <tr class="highlight"><td>下位50%</td><td>703</td><td>408</td><td class="good">58.04%（最多）</td></tr>
+                <tr><td>不明</td><td>551</td><td>380</td><td>68.97%</td></tr>
+            </tbody>
+        </table>
+
+        <h4 style="font-size:13px;color:#666;margin:18px 0 6px;">キーワード別（実配信あり）</h4>
+        <table class="data-table">
+            <thead><tr><th>キーワード</th><th>視聴数</th><th>備考</th></tr></thead>
+            <tbody>
+                <tr class="highlight"><td>ナチュラルメイク</td><td>355</td><td class="good">◎ 最多視聴</td></tr>
+                <tr><td>増毛</td><td>196</td><td>継続</td></tr>
+                <tr><td>眉 整え方</td><td>179</td><td>◎ 関連性高</td></tr>
+                <tr><td>自分磨き</td><td>157</td><td>継続</td></tr>
+                <tr><td>眉 デザイン</td><td>125</td><td>◎ 関連性高</td></tr>
+                <tr><td>美容 トレンド</td><td>120</td><td>継続</td></tr>
+                <tr><td>小顔</td><td>65</td><td>8/3追加・稼働中</td></tr>
+                <tr><td>メンズ眉サロン</td><td>2</td><td>—</td></tr>
+                <tr><td>アイブロウサロン</td><td>1</td><td>—</td></tr>
+                <tr><td>メンズアイブロウ</td><td>0※</td><td>※ 直近ゼロ</td></tr>
+            </tbody>
+        </table>
+
+        <div class="caveat">
+            ※ 数値はGoogle広告管理画面 2026/8/1-8/25実データより。横浜市（港北区・栄区）は8/3の停止設定にも関わらず表示が発生しており、要再確認事項として記載しています。
+        </div>
+    </div>
+
+    <div class="footer">
+        株式会社ランバード｜YouTube広告 運用サポート窓口
+    </div>
 
 </div>
 </body>
