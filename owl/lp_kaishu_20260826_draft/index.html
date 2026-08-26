@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OWL LP改修のご提案</title>
+<style>
+:root{--teal:#0D9488;--orange:#C2410C;--bg:#fcfcfb;--card:#fff;--ink:#1a2224;
+  --ink2:#4a5a5e;--muted:#7d8f93;--line:#e4eaea;--red:#C0392B}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,"Hiragino Sans","Noto Sans JP",sans-serif;line-height:1.75}
+.wrap{max-width:860px;margin:0 auto;padding:26px 18px 70px}
+header{border-bottom:3px solid var(--teal);padding-bottom:13px;margin-bottom:20px}
+h1{font-size:21px;margin:0 0 5px}
+.sub{color:var(--muted);font-size:12.5px}
+.day{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--teal);
+  padding:3px 12px;border-radius:99px;margin:34px 0 4px}
+.day.o{background:var(--orange)}
+h2{font-size:16.5px;margin:6px 0 12px;padding-left:11px;border-left:4px solid var(--teal)}
+h1,h2,.fix .ttl,.tc .tt{text-wrap:balance;word-break:auto-phrase}
+p{margin:8px 0;font-size:13.5px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin:12px 0}
+.box .h{font-size:14px;font-weight:700;margin-bottom:8px}
+.note{font-size:12.5px;color:var(--muted);margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:13px;margin:4px 0}
+td,th{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+th{font-size:12px;color:var(--ink2);font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted)}
+
+.top{background:#fff;border:2px solid var(--orange);border-radius:14px;padding:6px 18px 16px;margin:0 0 10px}
+.tc{display:flex;gap:13px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.tc:last-child{border-bottom:0}
+.tc .no{flex:0 0 27px;height:27px;border-radius:50%;background:var(--orange);color:#fff;
+  font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.tc .tt{font-size:14.5px;font-weight:700;line-height:1.6}
+.tc .td{font-size:12.8px;color:var(--ink2);margin-top:4px}
+
+/* LP一覧 */
+.lps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:14px 0}
+.lp{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px}
+.lp .nm{font-size:13.5px;font-weight:700;margin-bottom:2px}
+.lp .u{font-size:10.5px;color:var(--muted);word-break:break-all;margin-bottom:8px}
+.lp .open{display:block;margin-top:9px;text-align:center;font-size:12.5px;font-weight:700;
+  color:var(--teal);text-decoration:none;border:1px solid #cfe6e3;background:#f3faf9;
+  border-radius:8px;padding:8px 6px}
+.lp .open:hover{background:#eaf6f4}
+.lp img{width:100%;height:auto;display:block}
+.lp .st{font-size:12px;color:var(--ink2);margin-top:9px;line-height:1.65;border-top:1px solid var(--line);padding-top:8px}
+@media(max-width:640px){.lps{grid-template-columns:1fr;gap:20px}.lp img{max-width:240px;margin:0 auto}}
+
+/* 改修ブロック */
+.fix{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 17px;margin:14px 0}
+.fix .ttl{font-size:15.5px;font-weight:700;margin-bottom:3px}
+.fix .meta{font-size:11.5px;color:var(--orange);font-weight:700;margin-bottom:11px}
+.two{display:grid;grid-template-columns:390px 1fr;gap:18px;align-items:start}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 2px}
+.pair figure{margin:0}
+.pair img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line)}
+.pair figcaption{font-size:11.5px;font-weight:700;color:var(--muted);margin-top:6px;text-align:center}
+@media(max-width:720px){.pair{grid-template-columns:1fr;gap:20px}}
+.two img{width:100%;max-width:390px;height:auto;display:block;border-radius:8px;border:1px solid var(--line)}
+@media(max-width:720px){.two{grid-template-columns:1fr}.two img{max-width:100%}}
+.arrow{font-size:12px;font-weight:700;color:var(--orange);letter-spacing:.06em;margin:0 0 6px}
+.fix ul{margin:6px 0 0;padding-left:19px;font-size:13.2px}
+.fix li{margin:5px 0}
+.kari{display:inline-block;background:#E7F0F8;border:1px solid #9DBFDA;color:#20597F;font-size:11px;font-weight:700;padding:1px 7px;border-radius:4px;white-space:nowrap}
+.ph{background:#fff4d6;border:1px solid #e3c78a;color:#8a6412;font-size:11px;padding:1px 7px;border-radius:4px;font-weight:700;white-space:nowrap}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 9px;border-radius:99px;margin-right:5px}
+.tag.new{background:#fdf1ea;color:#8a3410}
+.tag.done{background:#eef7f6;color:#0b5f5a}
+.chk{font-size:13.2px;margin:7px 0;padding-left:22px;position:relative}
+.chk::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:2px;background:var(--teal)}
+.chk.h::before{background:#d9a441}
+.ba{display:grid;grid-template-columns:1fr 26px 1fr;gap:9px;margin:10px 0}
+.ba .p{border-radius:10px;padding:12px 13px;font-size:12.8px}
+.ba .b4{background:#fdf1ea;border:1px solid #f0d3c0}
+.ba .af{background:#eef7f6;border:1px solid #cfe6e3}
+.ba .ar{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:17px}
+.ba .t{font-size:11.5px;font-weight:700;margin-bottom:5px;letter-spacing:.04em}
+.ba .b4 .t{color:#8a3410}.ba .af .t{color:#0b5f5a}
+@media(max-width:520px){.ba{grid-template-columns:1fr}.ba .ar{transform:rotate(90deg);height:18px}}
+@media(max-width:430px){h1{font-size:18px}.wrap{padding:19px 13px 55px}
+  th{white-space:normal}
+  table{table-layout:fixed}
+  td,th{word-break:break-word;overflow-wrap:anywhere}}
+</style></head><body>
+<div style="position:sticky;top:0;z-index:2147483647;background:#C2410C;color:#fff;font:700 13px/1.5 -apple-system,'Hiragino Sans','Noto Sans JP',sans-serif;padding:9px 14px;text-align:center">これは <u>2026-08-26 追記版の下書き</u>です。公開中のご提案ページ（8/24版）はまだ差し替えていません。</div>
+
+<div class="wrap">
+
+<header>
+  <h1>OWL｜ランディングページ改修のご提案</h1>
+  <div class="sub">2026年8月24日／株式会社斗　　根拠：Microsoft Clarity 2026-08-23（スマートフォン・実測）／ 現行LP3本の画面実査 ／ <b>商談記録9社10商談（2026/7/11）</b> ／ <b>GH BUSINESS GUIDE vol.19（0円プラン）</b><br>対象ページ：<a href="https://owl-fukushi.net/lp_zero-plan-g_v2/" target="_blank" rel="noopener">0円プランLP</a>／<a href="https://owl-fukushi.net/202607dokuritsu/" target="_blank" rel="noopener">独立起業向けLP</a>／<a href="https://owl-fukushi.net/202607dokuritsu300/" target="_blank" rel="noopener">同 300万円版</a></div>
+</header>
+
+<div class="top">
+  <div class="tc"><div class="no">1</div><div>
+    <div class="tt">お客様が「押しても何も起きない場所」を押しています</div>
+    <div class="td">一番押されているのは、収益シミュレーションの<b>「人気プラン 12〜14居室 約1,200万円」のカード</b>と、<b>本文の画像そのもの</b>です。どちらもリンクではありません。<b>「もっと詳しく知りたい」のサイン</b>と考えています。</div>
+  </div></div>
+  <div class="tc"><div class="no">2</div><div>
+    <div class="tt">WEB説明会は求められているのに、ページに説明がありません</div>
+    <div class="td">お申し込みフォームの中に隠れている「希望日程」欄が<b>全タップの17%</b>。直近のお問い合わせも2件が説明会をご希望でした。<b>何をする会なのかがページに書かれていません。</b></div>
+  </div></div>
+  <div class="tc"><div class="no">3</div><div>
+    <div class="tt">独立起業向けLPは、ボタンがほとんど押されていません</div>
+    <div class="td">8/23は2本合わせて43回ご覧いただきましたが、<b>お問い合わせボタンのタップは0回</b>。一方で0円プランLPは同じ日にフォーム送信まで進んでいます。<b>受け皿の差が出ています。</b><br>
+    <span style="color:var(--teal);font-weight:700">※ 追記（8/26）：</span>その後<b>8月26日に、独立起業向けLP（300万円版）から資料請求を1件</b>いただきました。<b>導線が使えないわけではなく、届いている数がまだ少ない状態</b>です。停止ではなく改善の対象と考えています。</div>
+  </div></div>
+</div>
+
+<div class="box" style="border-left:4px solid var(--teal)">
+<div class="h">この資料の2つの印について</div>
+<table>
+<tr><td style="width:64px"><span class="kari">仮</span></td>
+    <td><b>こちらで下書きしました。</b>商談記録で御社が実際にご説明されていた内容をもとにしています。<b>そのまま使えるものは使い、違うところだけ直してください。</b></td></tr>
+<tr><td><span class="ph">要確定</span></td>
+    <td><b>こちらでは書けない数字です。</b>実績や収益の表示は景品表示法に関わるため、<b>推測で埋めることはいたしません。</b>御社に確定していただいてから入れます。</td></tr>
+</table>
+</div>
+
+<!-- ===== 現状 ===== -->
+<span class="day">現状</span>
+<h2>いま公開されている3本と、変更したい箇所</h2>
+<div class="lps">
+
+<div class="lp">
+  <div class="nm">0円プランLP</div>
+  <div class="u"><a href="https://owl-fukushi.net/lp_zero-plan-g_v2/" target="_blank" rel="noopener" style="color:var(--muted)">owl-fukushi.net/lp_zero-plan-g_v2/</a></div>
+  <img src="img/zero_mini.jpg" alt="0円プランLPの全体像と変更箇所">
+  <div class="st">8/23：<b>54回閲覧・35タップ</b><br>フォーム送信まで到達した方あり。<b>受け皿として機能しています。</b></div>
+  <a class="open" href="https://owl-fukushi.net/lp_zero-plan-g_v2/" target="_blank" rel="noopener">▶ 実際のページを開く</a>
+</div>
+
+<div class="lp">
+  <div class="nm">独立起業向けLP</div>
+  <div class="u"><a href="https://owl-fukushi.net/202607dokuritsu/" target="_blank" rel="noopener" style="color:var(--muted)">owl-fukushi.net/202607dokuritsu/</a></div>
+  <img src="img/dokuritsu_mini.jpg" alt="独立起業向けLPの全体像と変更箇所">
+  <div class="st">8/23：<b>24回閲覧・6タップ</b><br>うち3回が画像、2回がFAQ。<b>ボタンは0回。</b></div>
+  <a class="open" href="https://owl-fukushi.net/202607dokuritsu/" target="_blank" rel="noopener">▶ 実際のページを開く</a>
+</div>
+
+<div class="lp">
+  <div class="nm">独立起業向けLP（300万円版）</div>
+  <div class="u"><a href="https://owl-fukushi.net/202607dokuritsu300/" target="_blank" rel="noopener" style="color:var(--muted)">owl-fukushi.net/202607dokuritsu300/</a></div>
+  <img src="img/dokuritsu300_mini.jpg" alt="300万円版の全体像と変更箇所">
+  <div class="st">8/23：<b>19回閲覧・タップ0回</b><br>85%まで進んだ時点で全員が離脱しています。</div>
+  <a class="open" href="https://owl-fukushi.net/202607dokuritsu300/" target="_blank" rel="noopener">▶ 実際のページを開く</a>
+</div>
+
+</div>
+<p class="note">オレンジの枠が、今回ご提案する変更箇所です。番号は下の①〜⑤に対応しています。</p>
+
+<!-- ===== 改修案 ===== -->
+<span class="day">商談記録から</span>
+<h2>9社の商談を読み直して分かったこと</h2>
+<p>いただいた商談記録（9社10商談）と事業ガイド vol.19 を読み、<b>LPで先に解消できることがないか</b>を探しました。</p>
+
+<div class="box" style="border-left:4px solid var(--red)">
+<div class="h" style="color:#C0392B">9社のうち4社が、資金のところで止まっていました</div>
+<p>「加盟金0円」でお問い合わせいただいた方が、商談の中で総額をお聞きになって温度が下がる、という同じ形が繰り返し出ています。</p>
+<table>
+<tr><th>いま LPに書かれている数字</th><th>事業ガイド vol.19 の数字</th></tr>
+<tr><td>自己資金の目安<br><b style="font-size:15px">約230〜560万円</b></td>
+    <td>0円プラン（3棟・12居室）の<br>初期投資金額の目安<br><b style="font-size:15px;color:#C0392B">600〜800万円</b><span class="note" style="margin:0">（運転資金・プラン金額を含む）</span></td></tr>
+</table>
+<div class="note"><b>230万円は「1棟あたりの開設費用（約230万円）」の数字と一致します。</b>これが自己資金の目安として載っているため、実際に必要な額との差が生まれている可能性があります。<br>
+→ 改修案①で<b>内訳と総額を先に出す</b>ことで、商談前に期待値を揃えられます。</div>
+</div>
+
+<div class="box">
+<div class="h">温度感の高い方には、共通点がありました</div>
+<p>上位の方はいずれも<b>福祉・医療の現役実務者、または当事者のご家族</b>でした（看護師・特別支援学校の教員・サービス管理責任者の実務経験者・重度障害のお子さんをお持ちの方）。</p>
+<div class="note">→ LPの見せ方も、この層に向けて「実務経験をどう活かせるか」を厚くする余地があります。改修案⑤のご質問にも反映しました。</div>
+</div>
+
+<div class="box">
+<div class="h">商談で繰り返し聞かれていたこと</div>
+<p>これらは<b>LPに先に書いておけるもの</b>です。改修案⑤のFAQに入れました。</p>
+<table>
+<tr><td>運転資金はなぜ必要か</td><td class="note" style="border:0;padding:7px 8px">国保連への請求から入金まで約60日</td></tr>
+<tr><td>補助金・助成金は使えるか</td><td class="note" style="border:0;padding:7px 8px">小規模GHは現在なし（商談で毎回訂正されている）</td></tr>
+<tr><td>サビ管は自分で取る必要があるか</td><td class="note" style="border:0;padding:7px 8px">非常勤で可・介護経験は不要</td></tr>
+<tr><td>勤めたまま準備できるか</td><td class="note" style="border:0;padding:7px 8px">副業規定を気にされる方が複数</td></tr>
+<tr><td>物件の条件</td><td class="note" style="border:0;padding:7px 8px">築年数・市街化調整区域・大家様の許諾・居室面積・消防設備</td></tr>
+<tr><td>総量規制の対象エリアか</td><td class="note" style="border:0;padding:7px 8px">エリアを変えて解決した例あり</td></tr>
+<tr><td>未経験でも融資は通るか</td><td class="note" style="border:0;padding:7px 8px">未経験の方の共通の不安</td></tr>
+<tr><td>やめる場合の費用</td><td class="note" style="border:0;padding:7px 8px">原状回復の費用をお尋ねになった方あり</td></tr>
+</table>
+</div>
+
+<div class="box">
+<div class="h">1点、ご相談したいこと</div>
+<div class="note">商談では<b>「棟数」</b>（1棟目・2棟目…）で収益をご説明されていますが、<b>現在のLPは「居室数」</b>（8〜10居室・12〜14居室）で書かれています。事業ガイドも棟数表記です。<b>LPを棟数に揃えるかどうか</b>をご相談させてください。</div>
+</div>
+
+<span class="day o">ご提案</span>
+<h2>触られている場所を「もっと詳しく」に変えます</h2>
+<p>新しい訴求を足すのではなく、<b>すでにお客様が触れている場所を深掘りする</b>方針です。写真はそのまま残し、<b>見出し・本文・数字・表だけを文字にして、開いて読める形</b>にします。右側は<b>作りたいものの雰囲気</b>で、デザインは現行LPのトーンに合わせます。</p>
+
+<div class="fix">
+  <div class="ttl">② 収益シミュレーションのカードを開けるようにする</div>
+  <div class="meta">8/23：この一帯にタップ6回（17%）／<b>8/25：16回中9回（56%）に急増 — ページ内で最も触られている場所です</b></div>
+  <div class="pair">
+    <figure><img src="img/zero_2.jpg" alt="現状"><figcaption>いまの画面</figcaption></figure>
+    <figure><img src="img/a2.jpg" alt="改修後イメージ"><figcaption>こう変えます（イメージ）</figcaption></figure>
+  </div>
+  <ul>
+    <li><b>各プランのカードを開けるようにします</b>（いまは押しても何も起きません）</li>
+    <li>開くと出る中身は<b>事業ガイド vol.19 の数字</b>で書けます — 0円プラン（3棟12居室）年間売上予測 5,214万円／年間営業利益予測 989万円／<b>投資回収期間 1年〜1年半</b>／サポート費 月16.5万円（税込・2棟目以降 +5.5万円）</li>
+    <li>加えて<b>入居率別の収支</b>／<b>人件費と人員配置</b>／<b>1棟目と2棟目で利益がどう変わるか</b> — <b>項目立てと説明文は <span class="kari">仮</span> で下書き済み</b>、入る金額だけ <span class="ph">要確定</span> です</li>
+    <li>満室前提の数字だけを見せない形にします（後の不信を防ぐため）</li>
+  </ul>
+  <div class="note">一番押されているのが「人気プラン 12〜14居室 約1,200万円」です。<b>ここが最も知りたがられている</b>と読めます。商談で「2年ぐらいで回収できると安心できる」とおっしゃった方がいました。<b>回収期間はガイドに1年〜1年半と明記されているので、LPに出せます。</b></div>
+</div>
+<div class="fix">
+  <div class="ttl">① 費用のセクションに「内訳」を足す</div>
+  <div class="meta">8/23：タップ2回　／　いまの構成はそのまま活かし、足すだけです</div>
+  <div class="pair">
+    <figure><img src="img/zero_1.jpg" alt="現状"><figcaption>いまの画面</figcaption></figure>
+    <figure><img src="img/a1.jpg" alt="改修後イメージ"><figcaption>こう変えます（イメージ）</figcaption></figure>
+  </div>
+  <ul>
+    <li><b>事業ガイド vol.19 の数字をそのまま載せます</b> — 1棟あたりの開設費用 約230万円（物件取得費85万／内装工事35万／消防設備60万／一般備品45万／事務機器5万）</li>
+    <li>そこに<b>運転資金</b>を足します。<b>国保連への請求から入金まで約60日</b>かかるため2ヶ月分が必要、という説明もあわせて書きます（ファクタリングで最短5営業日というご案内も）</li>
+    <li>最後に<b>0円プランの初期投資金額の目安「600〜800万円」</b>を提示します</li>
+    <li>「加盟金0円」「融資のご相談も」という<b>今の見せ方はそのまま活かします</b></li>
+  </ul>
+  <div class="note"><b>ご確認いただきたい点：</b>自己資金の目安が、0円プランLPは「約230〜560万円」、独立起業向けLPは「300万円以上」、事業ガイドは「600〜800万円」と3つの数字があります。<b>LPに載せる数字を1つに決めさせてください。</b></div>
+</div>
+<div class="fix" style="border:2px solid var(--orange)">
+  <div class="ttl">③ WEB説明会（Zoom）をページ本体に出す　<span class="tag new">新設</span></div>
+  <div class="meta">8/23：フォーム内の「希望日程」に6回（17%）／直近のお問い合わせ2件が説明会をご希望</div>
+  <div class="pair">
+    <figure><img src="img/zero_6.jpg" alt="現状"><figcaption>いまの画面</figcaption></figure>
+    <figure><img src="img/a3.jpg" alt="改修後イメージ"><figcaption>こう変えます（イメージ）</figcaption></figure>
+  </div>
+  <div class="ba">
+    <div class="p b4"><div class="t">いま</div>お申し込みフォームを開く → 「WEB説明会」にチェックを入れる → <b>そこで初めて希望日程が現れます</b><br><br>ページ本文に説明会の説明は<b>一切ありません</b>（「説明会」という言葉が、0円プランLPで2回、独立起業向けLPでは0回）</div>
+    <div class="ar">→</div>
+    <div class="p af"><div class="t">改修後</div>ページ本体に独立したセクションを新設<br><br><b>当日お話しすること3点</b>／形式（Zoom・顔出し不要）／所要時間／無料／定員／持ち物不要／「その場で契約を迫ることはありません」の一文</div>
+  </div>
+  <div class="note">独立起業向けLPには説明会の入口自体がないため、そちらにも新設します。<br>
+<b>「当日お話しすること」3点は <span class="kari">仮</span> で下書きしました</b>（商談9社で共通して説明されていた順番 = 事業のしくみ → お金 → エリアで開設できるか）。所要時間・開催頻度も仮置きです。<b>実際の進行に合わせて差し替えてください。</b></div>
+</div>
+<div class="fix">
+  <div class="ttl">④ 画像に焼き込まれた文字を、そのまま読める文字にする</div>
+  <div class="meta">8/23：0円プランLPで6回（17%）／独立起業向けLPで3回（タップの50%）が「画像そのもの」</div>
+  <div class="pair">
+    <figure><img src="img/zero_4.jpg" alt="現状"><figcaption>いまの画面</figcaption></figure>
+    <figure><img src="img/a4.jpg" alt="改修後イメージ"><figcaption>こう変えます（イメージ）</figcaption></figure>
+  </div>
+  <div class="ba">
+    <div class="p b4"><div class="t">いま</div>見出しも本文も数字も表も、<b>すべて画像の中</b>に描かれています<br><br>→ 拡大しないと読みにくい<br>→ 文言を直すたびに画像の作り直しが必要<br>→ 検索エンジンにも中身が伝わらない</div>
+    <div class="ar">→</div>
+    <div class="p af"><div class="t">改修後</div><b>写真はそのまま画像</b>で残します<br><br>→ そのまま読める<br>→ 文字だけ後から差し替えられる<br>→ 検索エンジンにも伝わる</div>
+  </div>
+  <div class="note">押せない画像を押しているのは、<b>拡大して読もうとしている</b>動きだと考えています。<b>デザインの見た目は変えず、文字の持ち方だけを変える</b>改修です。</div>
+</div>
+<div class="fix">
+  <div class="ttl">⑤ よくあるご質問を増やす（独立起業向けLP）</div>
+  <div class="meta">8/23：独立起業向けLPのタップの33%がご質問欄　／　追加9問は商談記録から</div>
+  <div class="pair">
+    <figure><img src="img/dokuritsu_5.jpg" alt="現状"><figcaption>いまの画面</figcaption></figure>
+    <figure><img src="img/a5.jpg" alt="改修後イメージ"><figcaption>こう変えます（イメージ）</figcaption></figure>
+  </div>
+  <div class="note">数少ない接触の3分の1がご質問欄です。<b>「まだ疑問が残っている」サイン</b>と見ています。<br>
+追加する9問は<b>商談記録で実際に聞かれていたもの</b>から選び、<b>回答も6問ぶん <span class="kari">仮</span> で下書きしました</b>（商談での御社のご説明をそのまま文章にしています）。<br>
+金額が絡む3問（総量規制の調べ方・融資・撤退費用）だけは、こちらで書かずに空けてあります。<br>
+商談で毎回ご説明されていることをLPに先に出しておけば、<b>商談の時間を前向きな話に使えます。</b></div>
+</div>
+
+<!-- ===== その後わかったこと ===== -->
+<span class="day o">その後わかったこと</span>
+<h2>8月25日・26日の実測で、ご提案の優先順位がはっきりしました</h2>
+<p>8月24日にこのご提案を作成したあと、あらためて実測しました。<b>ご提案の内容は変えません。</b>どれから着手すべきかが、より明確になりました。</p>
+
+<div class="fix">
+  <div class="ttl">1. ご提案②（収益シミュレーション）が、最優先で間違いありません</div>
+  <div class="meta">8/23：タップの17% → 8/25：<b>タップの56%</b></div>
+  <div class="box" style="margin:10px 0 0">
+  <table>
+  <tr><th>押されていた場所（8/25・スマートフォン・全16回）</th><th style="text-align:right">回数</th></tr>
+  <tr><td>収益シミュレーションの<b>利益額の数字そのもの</b></td><td style="text-align:right"><b>4回</b></td></tr>
+  <tr><td>本文の画像（リンクではありません）</td><td style="text-align:right">4回</td></tr>
+  <tr><td>収益シミュレーションのアイコン・カード</td><td style="text-align:right">5回</td></tr>
+  <tr><td>お問い合わせボタン</td><td style="text-align:right">1回</td></tr>
+  </table>
+  </div>
+  <ul>
+    <li><b>収益シミュレーション関連だけで9回（56%）</b>。8月23日の17%から大きく増えました</li>
+    <li>最も押されていたのは<b>「月間営業利益 約○○万円」の数字そのもの</b>です。<b>「押したら内訳が見られる」と思って押されています。</b>いまは押しても何も起きません</li>
+    <li>ご提案②「カードを開けるようにする」が、そのままこの動きに応える形になります</li>
+  </ul>
+</div>
+
+<div class="fix" style="border:2px solid var(--orange)">
+  <div class="ttl">2. ページの下まで読まれる割合が、3分の1に減っています</div>
+  <div class="meta">0円プランLP・スマートフォン・最後まで到達した方の割合</div>
+  <div class="box" style="margin:10px 0 0">
+  <table>
+  <tr><th>日</th><th style="text-align:right">ご覧になった方</th><th style="text-align:right">半分まで</th><th style="text-align:right">最後まで</th></tr>
+  <tr><td>8/17-18</td><td style="text-align:right">37人</td><td style="text-align:right">70%</td><td style="text-align:right"><b>32%（12人）</b></td></tr>
+  <tr><td>8/21</td><td style="text-align:right">33人</td><td style="text-align:right">70%</td><td style="text-align:right">18%（6人）</td></tr>
+  <tr><td>8/22</td><td style="text-align:right">37人</td><td style="text-align:right">54%</td><td style="text-align:right">16%（6人）</td></tr>
+  <tr><td>8/25</td><td style="text-align:right">38人</td><td style="text-align:right">58%</td><td style="text-align:right"><b style="color:var(--red)">11%（4人）</b></td></tr>
+  </table>
+  </div>
+  <ul>
+    <li><b>ご覧になる方の数は37人前後で変わっていません。</b>減っているのは「下まで読む方」だけです</li>
+    <li>お申し込みフォームはページの下にあります。<b>下まで行く方が3分の1になると、お問い合わせは出にくくなります</b></li>
+    <li>これは<b>ご提案④（画像に焼いた文字を読める文字にする）</b>が効く部分です。読むのに拡大が必要な状態が、離脱につながっていると考えています</li>
+  </ul>
+</div>
+
+<div class="fix">
+  <div class="ttl">3. スマートフォンで表示に10秒かかっています</div>
+  <div class="meta">実測（スマートフォン回線を想定・3回平均）</div>
+  <ul>
+    <li>主要な画像が表示されるまで<b>10.0秒</b>（良好とされる基準は2.5秒）</li>
+    <li>ページ全体で<b>6.19MB</b>。うち<b>計測タグのプログラムだけで1.26MB</b>（全体の2割）を占めていました</li>
+    <li>使われていない古いアクセス解析のタグが1本残っており、<b>これを止めるだけで0.56MB減ります</b>。こちらで対応可能です</li>
+    <li>ご提案④で画像を文字に置き換えると、<b>この重さも同時に軽くなります</b></li>
+  </ul>
+  <div class="note">2.5秒まで縮めるにはWordPressのテーマ側の見直しが必要で、今回のご提案の範囲を超えます。まずは無理なく減らせるところから進めます。</div>
+</div>
+
+<div class="fix">
+  <div class="ttl">4. ページの名前（検索結果に出るタイトル）を直しました　<span class="tag done">対応済み</span></div>
+  <div class="meta">8/25 反映済み・本文には一切手を加えていません</div>
+  <ul>
+    <li>3本とも「2026年6月」「2026年7月 資料請求」という社内向けの名前が、そのまま検索結果に出ていました</li>
+    <li>0円プランLP →「<b>障がい者グループホーム開業・経営｜加盟金0円 - OWL福祉事業</b>」</li>
+    <li>独立起業向けLP →「<b>福祉事業で独立・起業｜グループホーム開業 - OWL福祉事業</b>」</li>
+    <li>ページのアドレスと本文は変更していません（変更前後で本文が完全に一致することを確認済みです）</li>
+  </ul>
+</div>
+
+<!-- ===== 確認事項 ===== -->
+<span class="day">ご確認をお願いしたいこと</span>
+<h2>数字が決まるまで、LPには出しません</h2>
+<div class="box">
+<table>
+<tr><th>ご確認したいこと</th><th>現状</th></tr>
+<tr><td><b>WEB説明会の当日の内容</b>・所要時間・開催頻度</td><td><span class="kari">仮</span> で下書き済み。<b>これで合っているかだけご確認ください</b></td></tr>
+<tr><td><b>自己資金の目安</b>（LPに載せる数字を1つに）</td><td>0円プランLP「約230〜560万円」／独立起業向けLP「300万円以上」／<b>事業ガイド「600〜800万円」</b>の3つ</td></tr>
+<tr><td><b>未経験の比率</b></td><td>LP上部のバッジは「95%」、同じ独立起業向けLPの下部は「85%」、FAQは「約6割」と3つ。<b>事業ガイドには記載が見当たりません</b></td></tr>
+<tr><td><b>開設実績の件数</b></td><td>「400件」「180社」「4社」の3種類。<b>独立起業向けLPでは、上部のバッジが「400件」・下部のセクションが「180社」と同じページ内で異なります</b></td></tr>
+<tr><td>給付費が売上に占める割合</td><td>0円プランLPは「9割」、独立起業向けLPは「85%」、事業ガイドは「大半」と表現が分かれています</td></tr>
+<tr><td>収益の見せ方を<b>棟数</b>に揃えるか</td><td>商談とガイドは棟数、LPは居室数</td></tr>
+<tr><td>FAQ9問の回答内容</td><td>質問は商談記録から抽出済み。<b>6問は <span class="kari">仮</span> で回答も下書き済み</b>／残り3問（総量規制の調べ方・融資・撤退費用）は空欄</td></tr>
+<tr><td>入居率別の収支・人件費・1〜3棟目の月次利益</td><td>項目立ては <span class="kari">仮</span> で用意済み。<b>入る金額のみ <span class="ph">要確定</span></b></td></tr>
+</table>
+<div class="note" style="margin-top:12px"><b>ご確認を待たずに進めたもの：</b>上の <span class="kari">仮</span> は、商談記録をもとにこちらで下書きしました。ゼロから考えていただく必要はありません。<br><br><b>解決したもの：</b>初期費用の内訳は、事業ガイド vol.19 に「1棟あたり約230万円（物件取得費85万／内装工事35万／消防設備60万／一般備品45万／事務機器5万）」の記載があったため、そのまま使えます。</div>
+<div class="note">実績や収益の表示は景品表示法に関わります。<b>こちらの推測で数字を埋めることはいたしません。</b>決まるまでは現在の表記のままにします。</div>
+</div>
+
+<!-- ===== 進め方 ===== -->
+<span class="day">進め方</span>
+<h2>こちらで進めるもの／ご確認をお願いするもの</h2>
+
+<div class="box" style="border-left:4px solid var(--teal)">
+<div class="h" style="color:#0b5f5a">④ は、こちらで進めます（ご確認は不要です）</div>
+<p>④は<b>いま画像に描かれている文言を、そのまま文字にするだけ</b>です。新しい主張を足すものではないので、ご確認をお待ちする必要がないと考えています。</p>
+<div class="chk">画像の説明文（alt）を埋める — 現在9枚が空欄。<b>文面はこちらで用意済みです</b></div>
+<div class="chk">タップされている画像から順に、見出し・本文・数字をテキストにしていく</div>
+<div class="note">※ 見た目は変わりません。写真もそのまま残します。数字も<b>いま書かれているものをそのまま</b>移すだけで、変更はしません。<br>
+※ 「400件」「95%」など<b>社内で割れている数字は、確定してから画像とあわせて直します</b>。それまではいまの表記のまま移します。</div>
+</div>
+
+<div class="box">
+<div class="h" style="color:#8a6412">ご確認をいただいてから着手します</div>
+<div class="chk h"><b>③ WEB説明会セクションの新設</b> — 当日の内容は <span class="kari">仮</span> で下書き済み。<b>合っているかだけご確認ください</b></div>
+<div class="chk h"><b>② 収益シミュレーションの中身・① 費用の内訳</b> — 事業ガイドの数字は反映済み。入居率別の収支・人件費・棟ごとの利益だけ <span class="ph">要確定</span></div>
+<div class="chk h"><b>⑤ よくあるご質問の追加</b> — 6問は <span class="kari">仮</span> で回答も下書き済み。残り3問（総量規制の調べ方・融資・撤退費用）のご確認</div>
+<div class="chk h"><b>数字の統一</b> — 自己資金／未経験率／開設実績を、それぞれ1つに決めていただきたい</div>
+</div>
+
+<div class="box" style="border-left:4px solid var(--teal)">
+<div class="h">現在のWordPressのまま実装できます</div>
+<div class="note">
+・テーマの変更・プラグインの追加は<b>不要</b>です<br>
+・<b>お申し込みフォームには一切手を触れません</b>。既存の「WEB説明会」チェックボックスをそのまま使い、ページ側に入口を足すだけです<br>
+・通知先のメールアドレスにも影響ありません<br>
+・画像を文字に置き換える分、<b>ページはむしろ軽くなります</b>
+</div>
+</div>
+
+<footer>
+株式会社斗｜OWL福祉事業 LP改修のご提案（2026-08-26 追記版）<br>
+出典：Microsoft Clarity（2026-08-23／08-17〜08-25・スマートフォン）、現行LP3本の画面実査（2026-08-24・08-26）、表示速度の実測（2026-08-25）、お問い合わせ実績（2026-08-26 時点）。掲載しているスクリーンショットは 2026-08-24 時点の公開ページです。<br>
+このページは検索エンジンに登録されない設定（noindex）です。
+</footer>
+
+</div></body></html>
