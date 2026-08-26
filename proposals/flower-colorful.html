@@ -6,10 +6,7 @@
 <title>YouTube広告 運用提案書 — flower shop 叶色 colorful 様</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-    background: #f0f2f5; color: #1a1a1a; line-height: 1.7; padding: 24px;
-}
+body { font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background: #f0f2f5; color: #1a1a1a; line-height: 1.7; padding: 24px; }
 .container { max-width: 1100px; margin: 0 auto; }
 h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px solid #d81b60; padding-bottom: 12px; margin-bottom: 6px; }
 .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 36px; }
@@ -25,11 +22,17 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
 .gf-box .gf-title { font-size: 15px; font-weight: 700; }
 .gf-box .gf-desc { font-size: 12px; color: #ddd; margin-top: 4px; }
 .gf-arrow { color: #ffd54f; font-size: 24px; font-weight: 700; padding: 0 10px; }
+.strength-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.strength-card { background: #fce4ec; border-radius: 10px; padding: 18px; border: 2px solid #f8bbd0; }
+.strength-card .s-num { font-size: 11px; font-weight: 700; color: #d81b60; margin-bottom: 6px; }
+.strength-card .s-title { font-size: 15px; font-weight: 700; color: #880e4f; margin-bottom: 6px; }
+.strength-card .s-desc { font-size: 12.5px; color: #555; line-height: 1.6; }
 .target-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
 .target-card { background: #f8f9fa; border-radius: 10px; padding: 18px; text-align: center; border: 2px solid #e0e0e0; }
 .target-card .t-icon { font-size: 28px; margin-bottom: 8px; }
 .target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
 .target-card .t-value { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.5; }
+.t-src { color: #2e7d32; font-size: 11px; display: block; margin-top: 4px; font-weight: 400; }
 .tbd { color: #b71c1c; font-size: 11px; display: block; margin-top: 4px; }
 .area-section { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
 .area-box { border-radius: 10px; padding: 18px; }
@@ -55,6 +58,7 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
 .confirm-bar li strong { color: #0d47a1; }
 @media (max-width: 768px) {
     .target-grid { grid-template-columns: repeat(2, 1fr); }
+    .strength-grid { grid-template-columns: 1fr; }
     .area-section { grid-template-columns: 1fr; }
     .kw-grid { grid-template-columns: 1fr; }
     .goal-flow { flex-direction: column; }
@@ -71,24 +75,24 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
 <!-- ① 目的・ゴール -->
 <div class="goal-banner">
   <h2>広告配信の目的</h2>
-  <p class="goal-sub">あびこ・住吉エリアで「贈りもの」「自分へのご褒美」「お部屋のグリーン」を探している方に<br>『flower shop 叶色 colorful』を知っていただき、ご来店・ワークショップのご参加につなげる</p>
+  <p class="goal-sub">「認知拡大・新規集客」— あびこ・住吉エリアの方に『叶色 colorful』を知っていただき、<br>ご来店・フラワー体験レッスンのご参加につなげる</p>
   <div class="goal-flow">
     <div class="gf-box">
       <div class="gf-step">STEP 1</div>
       <div class="gf-title">認知</div>
-      <div class="gf-desc">YouTube広告で<br>「叶色 colorful」を届ける</div>
+      <div class="gf-desc">YouTube広告で<br>お店の存在を届ける</div>
     </div>
     <div class="gf-arrow">→</div>
     <div class="gf-box">
       <div class="gf-step">STEP 2</div>
       <div class="gf-title">興味</div>
-      <div class="gf-desc">動画を見た方に<br>お店の雰囲気・品揃えを伝える</div>
+      <div class="gf-desc">「おしゃれだな」<br>「かわいい花に出会えそう」</div>
     </div>
     <div class="gf-arrow">→</div>
     <div class="gf-box">
       <div class="gf-step">STEP 3</div>
       <div class="gf-title">来店・お問合せ</div>
-      <div class="gf-desc">ご来店／お電話<br>Instagram・公式LINE</div>
+      <div class="gf-desc">ご来店／お電話<br>Instagram DM</div>
     </div>
     <div class="gf-arrow">→</div>
     <div class="gf-box">
@@ -99,22 +103,48 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
   </div>
 </div>
 
-<!-- ② ターゲティング設定 -->
+<!-- ② この広告で伝える強み -->
 <div class="section" style="border-color:#d81b60;">
   <div class="section-title">
     <span class="icon" style="background:#d81b60;">1</span>
+    この広告で伝える「叶色 colorful 様の強み」
+  </div>
+  <p style="font-size:13px;color:#666;margin-bottom:16px;">ヒアリングでお伺いした内容と、制作した広告動画の訴求軸をもとに整理しています。ターゲティング・キーワードはすべてこの3点に紐づけて設計しました。</p>
+  <div class="strength-grid">
+    <div class="strength-card">
+      <div class="s-num">STRENGTH 1</div>
+      <div class="s-title">花屋さん一筋14年目のオーナー</div>
+      <div class="s-desc">10代の頃から花一筋、13年の経験を経てご独立。NFD1級・リジョイスバルーン認定講師。「花が並んでいるお店」ではなく「花のプロが選ぶお店」として差別化できます。</div>
+    </div>
+    <div class="strength-card">
+      <div class="s-num">STRENGTH 2</div>
+      <div class="s-title">一輪一輪に想いを込める手仕事</div>
+      <div class="s-desc">お客様との会話から花束をつくるスタイル。贈りもの需要（誕生日・記念日・お祝い）と非常に相性がよく、価格ではなく「気持ちが伝わるか」で選ばれます。</div>
+    </div>
+    <div class="strength-card">
+      <div class="s-num">STRENGTH 3</div>
+      <div class="s-title">手ぶらで通えるフラワー体験レッスン</div>
+      <div class="s-desc">道具・材料はすべて店舗でご用意。初心者も安心の少人数／マンツーマン、テーマが毎回変わる単発制。「習い事を探している層」という別の入口を持てるのが大きな強みです。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ③ ターゲティング設定 -->
+<div class="section" style="border-color:#6a1b9a;">
+  <div class="section-title">
+    <span class="icon" style="background:#6a1b9a;">2</span>
     ターゲティング設定
   </div>
   <div class="target-grid">
     <div class="target-card">
       <div class="t-icon">👤</div>
       <div class="t-label">性別</div>
-      <div class="t-value">女性中心＋男性も配信<span class="tbd">※要確認</span></div>
+      <div class="t-value">男女すべて<span class="t-src">ヒアリング内容に準拠</span></div>
     </div>
     <div class="target-card">
       <div class="t-icon">📅</div>
       <div class="t-label">年齢</div>
-      <div class="t-value">25〜64歳<span class="tbd">※要確認</span></div>
+      <div class="t-value">18歳以上すべて<br>（年齢の絞り込みなし）<span class="t-src">「幅広い年代」に準拠</span></div>
     </div>
     <div class="target-card">
       <div class="t-icon">📍</div>
@@ -126,6 +156,9 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
       <div class="t-label">配信時間</div>
       <div class="t-value">7:00〜22:00</div>
     </div>
+  </div>
+  <div style="background:#f3e5f5;border-radius:8px;padding:14px 18px;font-size:13px;color:#4a148c;margin-bottom:20px;">
+    <strong>性別・年齢を絞らない理由：</strong>ヒアリングにて「ターゲットは<strong>幅広い年代の男女</strong>」とお伺いしております。お花は「自分用」だけでなく<strong>贈りもの</strong>としての需要が大きく、贈る側は男性・ご年配の方も多いため、あえて絞り込まずに配信いたします。配信データが溜まった段階で、反応の良い層へ配分を寄せる調整を行います。
   </div>
   <div class="area-section">
     <div class="area-box primary">
@@ -145,20 +178,20 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
     </div>
   </div>
   <div style="background:#fff3e0;border-radius:8px;padding:14px 18px;font-size:13px;color:#e65100;">
-    <strong>エリア設定の理由：</strong>実店舗へのご来店が前提となる業態のため、店舗のある<strong>住吉区（あびこ）</strong>を中心に、徒歩・自転車・電車で通いやすい隣接区（東住吉・住之江・阿倍野）を重点エリアとしました。拡張エリアには、贈りもの需要で少し足を延ばしていただける範囲（平野・西成・堺市北部・松原）を含めています。
+    <strong>エリア設定の理由：</strong>実店舗へのご来店・ワークショップへのご参加が前提となるため、店舗のある<strong>住吉区（あびこ）</strong>を中心に、徒歩・自転車・電車で通いやすい隣接区（東住吉・住之江・阿倍野）を重点エリアとしました。拡張エリアには、贈りもの需要で少し足を延ばしていただける範囲（平野・西成・堺市北部・松原）を含めています。
   </div>
 </div>
 
-<!-- ③ 関連キーワード設定 -->
+<!-- ④ 関連キーワード設定 -->
 <div class="section">
   <div class="section-title">
-    <span class="icon" style="background:#6a1b9a;">2</span>
+    <span class="icon" style="background:#2e7d32;">3</span>
     関連キーワード設定
   </div>
-  <p style="font-size:13px;color:#666;margin-bottom:16px;">設定したキーワードに関心がある視聴者に優先的に広告が表示されます。</p>
+  <p style="font-size:13px;color:#666;margin-bottom:16px;">設定したキーワードに関心がある視聴者に優先的に広告が表示されます。上記の強み3点に対応させ、3つの入口から集めます。</p>
   <div class="kw-grid">
     <div class="kw-box">
-      <h4>直接ニーズ（お花屋さんを探している人）</h4>
+      <h4>① お花屋さんを探している人</h4>
       <span class="kw-tag">花屋 大阪</span>
       <span class="kw-tag">あびこ 花屋</span>
       <span class="kw-tag">住吉区 花屋</span>
@@ -167,33 +200,33 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
       <span class="kw-tag">観葉植物 販売</span>
     </div>
     <div class="kw-box">
-      <h4>検討ニーズ（贈りものを考えている人）</h4>
-      <span class="kw-tag">誕生日 プレゼント 女性</span>
+      <h4>② 贈りものを探している人</h4>
+      <span class="kw-tag">誕生日 プレゼント</span>
       <span class="kw-tag">記念日 花</span>
+      <span class="kw-tag">還暦祝い プレゼント</span>
       <span class="kw-tag">母の日 ギフト</span>
       <span class="kw-tag">開店祝い 花</span>
       <span class="kw-tag">プリザーブドフラワー</span>
-      <span class="kw-tag">ドライフラワー 通販</span>
     </div>
     <div class="kw-box">
-      <h4>ライフスタイル（潜在層）</h4>
-      <span class="kw-tag">観葉植物 育て方</span>
-      <span class="kw-tag">多肉植物</span>
-      <span class="kw-tag">お部屋 インテリア</span>
-      <span class="kw-tag">ボタニカル 暮らし</span>
+      <h4>③ 習い事・体験を探している人</h4>
       <span class="kw-tag">フラワーアレンジメント 教室</span>
+      <span class="kw-tag">フラワー ワークショップ</span>
       <span class="kw-tag">習い事 大人</span>
+      <span class="kw-tag">体験レッスン 大阪</span>
+      <span class="kw-tag">観葉植物 育て方</span>
+      <span class="kw-tag">花のある暮らし</span>
     </div>
   </div>
   <div style="background:#f1f8e9;border-radius:8px;padding:14px 18px;font-size:13px;color:#33691e;margin-top:16px;">
-    <strong>ワークショップについて：</strong>「フラワー体験レッスン」を開催されているため、<strong>習い事・体験レッスンを探している層</strong>のキーワードも入れています。開催頻度が高い時期は、この層への配分を厚くする調整も可能です。
+    <strong>③の枠を独立させている理由：</strong>ワークショップは「お花を買いたい人」とは<strong>別の層</strong>（習い事・趣味を探している方）から集客できる導線です。今後ワークショップを増やしていかれるとのことでしたので、開催が増える時期にはこの枠への配分を厚くする調整が可能です。
   </div>
 </div>
 
-<!-- ④ 広告配信設定まとめ -->
+<!-- ⑤ 広告配信設定まとめ -->
 <div class="section" style="border-color:#d81b60;">
   <div class="section-title">
-    <span class="icon" style="background:#d81b60;">3</span>
+    <span class="icon" style="background:#d81b60;">4</span>
     広告配信設定まとめ
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
@@ -210,7 +243,7 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
     <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;">
       <div style="font-size:13px;color:#888;margin-bottom:4px;">リンク先</div>
       <div style="font-size:14px;font-weight:700;word-break:break-all;">https://www.flowercolorful.site/</div>
-      <div style="font-size:12px;color:#555;margin-top:6px;">広告をクリックした際の遷移先。公式HPを第一候補としています。<strong style="color:#b71c1c;">※Instagram・公式LINEへの変更もご希望に応じて対応可能です（要ご指定）</strong></div>
+      <div style="font-size:12px;color:#555;margin-top:6px;">広告をクリックした際の遷移先。公式HPを第一候補としています。<strong style="color:#b71c1c;">※ワークショップのご予約はInstagramのDMで承っているとのことでしたので、Instagramへの変更も有力です。ご希望をお聞かせください。</strong></div>
     </div>
     <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
       <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
@@ -220,15 +253,15 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
   </div>
 </div>
 
-<!-- ⑤ 参考リンク -->
+<!-- ⑥ 参考リンク -->
 <div class="section">
   <div class="section-title">
-    <span class="icon" style="background:#2e7d32;">4</span>
+    <span class="icon" style="background:#c2185b;">5</span>
     参考リンク
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
     <a href="https://youtu.be/kbTKdftfDfc" target="_blank" rel="noopener" style="display:block;background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #cc0000;text-decoration:none;color:#1a1a1a;">
-      <div style="font-size:13px;color:#888;margin-bottom:4px;">YouTube広告動画</div>
+      <div style="font-size:13px;color:#888;margin-bottom:4px;">YouTube広告動画（35秒）</div>
       <div style="font-size:15px;font-weight:700;">広告動画を見る →</div>
     </a>
     <a href="https://www.flowercolorful.site/" target="_blank" rel="noopener" style="display:block;background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #2e7d32;text-decoration:none;color:#1a1a1a;">
@@ -246,10 +279,9 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
 <div class="confirm-bar">
   <h3>ご確認いただきたい事項</h3>
   <ul>
-    <li><strong>広告のリンク先</strong>：公式HPで設定してよろしいでしょうか（Instagram・公式LINEへの変更も可能です）</li>
-    <li><strong>ターゲット層</strong>：想定のお客様に応じて年齢・性別を調整いたします（現状は女性中心・25〜64歳で仮置き）</li>
+    <li><strong>広告のリンク先</strong>：公式HP／Instagram のどちらにいたしましょうか（ご予約導線を踏まえるとInstagramも有力です）</li>
     <li><strong>配信エリア</strong>：ご来店いただいているお客様の範囲をお教えください（現状は住吉区中心で設定）</li>
-    <li><strong>ワークショップの開催状況</strong>：直近のご開催予定があれば、その時期に合わせて配分を調整いたします</li>
+    <li><strong>ワークショップの開催予定</strong>：直近のご開催時期に合わせて、習い事キーワードへの配分を調整いたします</li>
   </ul>
 </div>
 
@@ -257,6 +289,7 @@ h1 { text-align: center; font-size: 26px; color: #1a1a1a; border-bottom: 3px sol
 <div class="note-bar">
   <h3>補足事項</h3>
   <ul>
+    <li>ターゲット（男女すべて・年齢の絞り込みなし）は、<strong>ヒアリングでお伺いした「幅広い年代の男女」</strong>に準拠しています</li>
     <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
     <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
     <li>ご不明な点やご要望がございましたら、お気軽にお申し付けください</li>
