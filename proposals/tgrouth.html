@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>YouTube広告 運用提案書 — 株式会社ティーグロウス 様</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #eef4f9;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #2ab0d0;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .goal-banner {
+            background: linear-gradient(135deg, #163a4a, #2ab0d0);
+            color: #fff;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+        }
+        .goal-banner h2 {
+            color: #d6f3fb;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .philosophy-box {
+            background: rgba(214,243,251,.12);
+            border: 1px solid rgba(214,243,251,.35);
+            border-radius: 10px;
+            padding: 16px 24px;
+            margin-bottom: 24px;
+            text-align: center;
+            font-size: 14px;
+            color: #eaf7fb;
+            line-height: 1.9;
+        }
+        .goal-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .gf-box {
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            min-width: 155px;
+        }
+        .gf-box .gf-step { font-size: 11px; color: #d6f3fb; font-weight: 700; margin-bottom: 4px; }
+        .gf-box .gf-title { font-size: 15px; font-weight: 700; }
+        .gf-box .gf-desc { font-size: 12px; color: #ccc; margin-top: 4px; }
+        .gf-arrow { color: #d6f3fb; font-size: 24px; font-weight: 700; padding: 0 10px; }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .target-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+        .target-card .t-icon { font-size: 28px; margin-bottom: 8px; }
+        .target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+        .target-card .t-value { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.5; }
+
+        .area-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .area-box { border-radius: 10px; padding: 18px; }
+        .area-box.primary { background: #e3f4fa; border: 2px solid #2ab0d0; }
+        .area-box.secondary { background: #f2f5ef; border: 2px solid #7ca844; }
+        .area-box h4 { font-size: 14px; margin-bottom: 10px; }
+        .area-box .area-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 3px 4px;
+        }
+        .area-box.primary .area-tag { background: #d1ecf5; color: #0b6a83; }
+        .area-box.secondary .area-tag { background: #e2eed4; color: #3f5d1a; }
+
+        .kw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .kw-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+        }
+        .kw-box h4 {
+            font-size: 13px;
+            color: #0b6a83;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #eee;
+        }
+        .kw-tag {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 12px;
+            margin: 2px;
+            color: #333;
+        }
+        .kw-tag.exclude {
+            background: #fafafa;
+            border: 1px dashed #ccc;
+            color: #aaa;
+            text-decoration: line-through;
+        }
+
+        .sitelink-box {
+            background: #fff8e6;
+            border: 2px solid #f0b429;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-top: 16px;
+        }
+        .sitelink-box h4 { color: #8a6206; font-size: 15px; margin-bottom: 10px; }
+        .sitelink-box .sl-list { display: grid; gap: 10px; margin-top: 10px; }
+        .sitelink-item {
+            background: #fff;
+            border-radius: 8px;
+            padding: 10px 14px;
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 10px;
+            font-size: 13px;
+            border-left: 4px solid #f0b429;
+        }
+        .sitelink-item .sl-name { font-weight: 700; color: #8a6206; }
+        .sitelink-item .sl-url { color: #555; word-break: break-all; }
+
+        .note-bar {
+            background: #e3f4fa;
+            border: 2px solid #2ab0d0;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+        }
+        .note-bar h3 { color: #0b6a83; font-size: 15px; margin-bottom: 10px; }
+        .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
+        .note-bar li { margin-bottom: 6px; }
+        .note-bar li strong { color: #0b6a83; }
+
+        @media (max-width: 768px) {
+            .target-grid { grid-template-columns: repeat(2, 1fr); }
+            .area-section { grid-template-columns: 1fr; }
+            .kw-grid { grid-template-columns: 1fr; }
+            .goal-flow { flex-direction: column; }
+            .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
+            .sitelink-item { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 運用提案書</h1>
+    <p class="subtitle">株式会社ティーグロウス 様｜株式会社ランバード</p>
+
+    <!-- ① 目的・ゴール -->
+    <div class="goal-banner">
+        <h2>広告配信の目的</h2>
+        <div class="philosophy-box">
+            商業施設・催事場でのイベント集客を検討している<br>
+            <strong>担当者・出展企業</strong>へ、ティーグロウス様の<br>
+            「親子で夢中になれるイベントで滞在時間を伸ばし、<br>
+            対面販売・商談機会を最大化する」という価値を届ける。
+        </div>
+        <div class="goal-flow">
+            <div class="gf-box">
+                <div class="gf-step">STEP 1</div>
+                <div class="gf-title">知ってもらう</div>
+                <div class="gf-desc">YouTube広告で<br>ティーグロウスに出会う</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 2</div>
+                <div class="gf-title">共感してもらう</div>
+                <div class="gf-desc">親子集客・滞在時間延伸<br>という効果を実感</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 3</div>
+                <div class="gf-title">詳しく知る</div>
+                <div class="gf-desc">ホームページ／LINEで<br>事例・費用感を確認</div>
+            </div>
+            <div class="gf-arrow">→</div>
+            <div class="gf-box">
+                <div class="gf-step">GOAL</div>
+                <div class="gf-title">お問い合わせ</div>
+                <div class="gf-desc">催事コンテンツの<br>ご依頼・ご相談へ</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ② ターゲティング設定 -->
+    <div class="section" style="border-color:#2ab0d0;">
+        <div class="section-title">
+            <span class="icon" style="background:#2ab0d0;">1</span>
+            ターゲティング（届ける相手）の設定
+        </div>
+
+        <div class="target-grid">
+            <div class="target-card">
+                <div class="t-icon">👤</div>
+                <div class="t-label">性別</div>
+                <div class="t-value">男女</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📅</div>
+                <div class="t-label">年齢</div>
+                <div class="t-value">30〜60歳</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📍</div>
+                <div class="t-label">配信エリア</div>
+                <div class="t-value">全国</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">🕐</div>
+                <div class="t-label">配信時間</div>
+                <div class="t-value">7:00〜23:00</div>
+            </div>
+        </div>
+
+        <div class="area-section">
+            <div class="area-box primary">
+                <h4 style="color:#0b6a83;">主なターゲット層</h4>
+                <span class="area-tag">商業施設・ショッピングモールの運営担当</span>
+                <span class="area-tag">催事場の企画・運営担当</span>
+                <span class="area-tag">催事出展を検討中の販促担当</span>
+                <span class="area-tag">対面販売の集客に課題を感じている企業</span>
+            </div>
+            <div class="area-box secondary">
+                <h4 style="color:#3f5d1a;">拡張ターゲット層</h4>
+                <span class="area-tag">保険・不動産などの営業推進担当</span>
+                <span class="area-tag">物販・実演販売を行う小売業</span>
+                <span class="area-tag">親子向け販促に関心のある企業</span>
+                <span class="area-tag">地域イベントの主催団体・商店会</span>
+            </div>
+        </div>
+
+        <div style="background:#e3f4fa;border-radius:8px;padding:14px 18px;font-size:13px;color:#0b6a83;">
+            <strong>ターゲティングの設計理由：</strong>BtoB色の強いサービス内容のため、担当者の意思決定年齢層（30〜60歳）に絞ります。エリアは全国配信で、商業施設・催事出展を扱う全国の担当者・企業に広くリーチいたします。
+        </div>
+    </div>
+
+    <!-- ③ 関連キーワード設定 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#7ca844;">2</span>
+            関連する検索キーワードの設定
+        </div>
+        <p style="font-size:13px;color:#666;margin-bottom:16px;">「催事場でどう集客するか」「商業施設でイベントをやるには」など、<strong>ティーグロウス様のサービスを必要としている担当者が実際に検索する言葉</strong>を軸に設計しています。</p>
+
+        <div class="kw-grid">
+            <div class="kw-box">
+                <h4>催事・イベント集客</h4>
+                <span class="kw-tag">催事 集客</span>
+                <span class="kw-tag">催事場 コンテンツ</span>
+                <span class="kw-tag">催事 企画</span>
+                <span class="kw-tag">催事 出店</span>
+                <span class="kw-tag">対面販売 集客</span>
+                <span class="kw-tag">商談 機会 増やす</span>
+                <span class="kw-tag">実演販売 集客</span>
+            </div>
+            <div class="kw-box">
+                <h4>商業施設・モール向け</h4>
+                <span class="kw-tag">商業施設 イベント</span>
+                <span class="kw-tag">ショッピングモール 販促</span>
+                <span class="kw-tag">モール 催事 企画</span>
+                <span class="kw-tag">館内 イベント</span>
+                <span class="kw-tag">来館者 増やす</span>
+                <span class="kw-tag">施設 集客 企画</span>
+                <span class="kw-tag">滞在時間 延伸</span>
+            </div>
+            <div class="kw-box">
+                <h4>親子・体験コンテンツ</h4>
+                <span class="kw-tag">親子 集客 イベント</span>
+                <span class="kw-tag">子ども 体験 イベント</span>
+                <span class="kw-tag">ミニ四駆 イベント</span>
+                <span class="kw-tag">段ボール迷路 レンタル</span>
+                <span class="kw-tag">乗用玩具 イベント</span>
+                <span class="kw-tag">ワークショップ 企画</span>
+                <span class="kw-tag">キッズ 販促 企画</span>
+            </div>
+        </div>
+
+        <div style="background:#f5f5f0;border-radius:8px;padding:14px 18px;font-size:13px;color:#666;margin-top:16px;">
+            <strong>今回の広告では避けるキーワード：</strong>
+            <span class="kw-tag exclude">個人向け イベント参加</span>
+            <span class="kw-tag exclude">結婚式 イベント</span>
+            <span class="kw-tag exclude">音楽 フェス</span>
+            <span class="kw-tag exclude">オンライン セミナー</span>
+            ※ 個人の参加者向けの検索は、ティーグロウス様の狙う「BtoB」の層とずれるため、除外いたします。
+        </div>
+    </div>
+
+    <!-- ④ 広告配信設定まとめ -->
+    <div class="section" style="border-color:#2ab0d0;">
+        <div class="section-title">
+            <span class="icon" style="background:#2ab0d0;">3</span>
+            広告本体の設定（お客様のご要望を反映）
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #cc0000;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">広告の形</div>
+                <div style="font-size:16px;font-weight:700;">動画広告（スキップ可能）</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">動画の再生前に流れる広告。5秒後にスキップ可能。興味のある方だけに届きます。</div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #1976d2;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">同じ人への表示回数の上限</div>
+                <div style="font-size:16px;font-weight:700;">週3回まで</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">同じ方に何度も広告が出ないよう制限し、より多くの方にリーチいたします。</div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #2ab0d0;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">広告をクリックした時のメインの飛び先</div>
+                <div style="font-size:16px;font-weight:700;">ティーグロウス様 ホームページ</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">動画を見た方が「もっと知りたい」と思って押したときに開くページを、公式ホームページに設定いたします。</div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
+                <div style="font-size:16px;font-weight:700;">ご承認をいただき次第</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">本提案書の内容にご了承をいただけましたら、設定を進め、審査通過後に配信開始いたします。</div>
+            </div>
+        </div>
+
+        <!-- サイトリンク（HP + LINE） -->
+        <div class="sitelink-box">
+            <h4>🔗 広告の下に表示する追加のリンク（4本）</h4>
+            <p style="font-size:12px;color:#555;margin-bottom:6px;">動画広告のすぐ下に、ホームページの中のよく見られる場所と、LINEへの導線を追加で表示いたします。<strong>ホームページとLINEの2つ、両方をご案内できる形</strong>です。</p>
+            <div class="sl-list">
+                <div class="sitelink-item">
+                    <div class="sl-name">① ホームページ</div>
+                    <div class="sl-url">ティーグロウス様 公式ホームページ トップ</div>
+                </div>
+                <div class="sitelink-item">
+                    <div class="sl-name">② 導入事例</div>
+                    <div class="sl-url">これまでの催事イベント事例のページ</div>
+                </div>
+                <div class="sitelink-item">
+                    <div class="sl-name">③ お問い合わせ</div>
+                    <div class="sl-url">お問い合わせフォーム</div>
+                </div>
+                <div class="sitelink-item">
+                    <div class="sl-name">④ 公式LINE</div>
+                    <div class="sl-url">ティーグロウス様 公式LINE 友だち追加ページ</div>
+                </div>
+            </div>
+            <p style="font-size:11px;color:#8a6206;margin-top:10px;">※ ①〜④のリンク名・遷移先URLは仮の内容です。実際のホームページの構成に合わせて、ティーグロウス様とご相談のうえ確定いたします。</p>
+            <p style="font-size:11px;color:#8a6206;margin-top:6px;">※ 追加リンクはスマートフォンでの表示が中心となります。パソコンでも表示されるようご要望がある場合は、別の広告の作り方（別方式）でのご提案も可能ですので、その旨お申し付けください。</p>
+        </div>
+    </div>
+
+    <!-- 補足事項 -->
+    <div class="note-bar">
+        <h3>補足事項</h3>
+        <ul>
+            <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
+            <li>ターゲット層やキーワードは、<strong>配信データを見ながら随時見直し・改善</strong>してまいります</li>
+            <li>ご不明な点やご要望がございましたら、いつでもお申し付けください。専門用語はできるだけ避け、必要な場合は言い換えつつご説明いたします</li>
+        </ul>
+    </div>
+
+    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
+        株式会社ランバード｜広告運用サポート窓口
+    </div>
+
+</div>
+</body>
+</html>
