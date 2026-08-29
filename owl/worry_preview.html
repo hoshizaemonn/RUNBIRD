@@ -43,7 +43,7 @@ body[data-view="over"] .range{display:flex}
   「重ねる」を選ぶと元画像を半透明で重ねられます（ズレの確認用）。<br>
   <b>中身：</b>見出し・カードの文字はすべてHTMLのテキスト（＝Googleが読める）。
   <b>背景は星崎さん支給のものに差し替え済み</b>（2026-08-29）。見出し脇のキラキラとアウル君のピンクの集中線は、
-  ご指示どおり入れていません。アイコン4つとアウル君は元画像からの切り出しです。
+  ご指示どおり入れていません。<b>アウル君は公式の .ai データから300dpiで書き出したもの</b>（座りポーズを17°傾けて配置＝元LPと同じ）。アイコン4つは元画像からの切り出しです。
   <b>文言・数値は1文字も変えていません。</b>
 </div>
 
@@ -128,7 +128,12 @@ body[data-view="over"] .range{display:flex}
   margin:0 !important; object-fit:contain; display:block !important;
 }
 
-/* フクロウ（左下・カードに重なる） */
+/* アウル君（左下・カードに重なる）
+   ★loading="eager" は必須。position:absolute＋loading="lazy" だと、
+     セクション下端にいるアウル君が描画されないことがある（8幅中5幅で再現）。
+   ★素材は公式の OWL_キャラクター_0906.ai から300dpiで書き出したもの（座りポーズ）。
+     LPの元画像は同じ座りポーズを約17°傾けて配置していたので、同じ角度で書き出している
+     （シルエット一致率92.8%）。ブランド素材なので絵そのものは一切いじっていない。 */
 .owlwr img.owlwr-mascot{
   position:absolute; z-index:4; left:5.4%; bottom:1.3cqw;
   width:31.4% !important; height:auto !important; margin:0 !important;
@@ -185,7 +190,7 @@ body[data-view="over"] .range{display:flex}
     </ul>
   </div>
 
-  <img class="owlwr-mascot" src="worry_20260829/mascot.webp" alt="" aria-hidden="true" width="284" height="372" loading="lazy" decoding="async">
+  <img class="owlwr-mascot" src="worry_20260829/mascot.webp" alt="" aria-hidden="true" width="582" height="746" loading="eager" decoding="sync">
 
 </section>
         <div class="orig-ver">
