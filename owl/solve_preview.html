@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>OWL 03_solve HTML化プレビュー 2026-08-29</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef2f6;font-family:system-ui,"Hiragino Kaku Gothic ProN",sans-serif;color:#22406b}
+.bar{position:sticky;top:0;z-index:99;background:#22406b;color:#fff;padding:10px 14px;
+     display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:700 13px/1.5 system-ui}
+.bar .t{margin-right:auto}
+.bar button{font:700 13px system-ui;border:0;border-radius:999px;padding:7px 14px;cursor:pointer;
+     background:#ffffff22;color:#fff}
+.bar button.on{background:#fff;color:#22406b}
+.note{max-width:900px;margin:14px auto;padding:0 14px;font:13.5px/1.9 system-ui;color:#33475b}
+.note b{color:#22406b}
+.stage{background:#fff}
+.wrap{position:relative}
+.orig{display:block;width:100%}
+.orig--pc{display:none}
+@media(min-width:860px){.orig--sp{display:none}.orig--pc{display:block}}
+body[data-view="orig"] .html-ver{display:none}
+body[data-view="html"] .orig-ver{display:none}
+body[data-view="over"] .orig-ver{position:absolute;inset:0;z-index:5;opacity:var(--op,.5);pointer-events:none}
+body[data-view="over"] .orig-ver img{height:100%;object-fit:fill}
+.range{display:none;align-items:center;gap:8px}
+body[data-view="over"] .range{display:flex}
+.tag{position:absolute;left:8px;top:8px;z-index:9;background:#22406bcc;color:#fff;
+     font:700 11px system-ui;padding:4px 9px;border-radius:999px}
+</style></head>
+<body data-view="html">
+
+<div class="bar">
+  <span class="t">OWL「そのお悩み、OWL福祉事業が解決します」— 焼き込み画像 → HTML化</span>
+  <button data-v="html" class="on">HTML版</button>
+  <button data-v="orig">元画像</button>
+  <button data-v="over">重ねる</button>
+  <span class="range"><input type="range" min="0" max="100" value="50" id="op"><span id="opv">50%</span></span>
+</div>
+
+<div class="note">
+  <b>見てほしいところ：</b>ブラウザの幅を変えると、860pxを境にスマホ版（縦積み）とPC版（左アウル君＋右3カード）が切り替わります。
+  「重ねる」を選ぶと元画像を半透明で重ねられます（ズレの確認用）。<br>
+  <b>中身：</b>見出し・カード3枚の文字・「0円」はすべてHTMLのテキスト（＝Googleが読める）。
+  <b>背景は星崎さん支給のもの</b>（2026-08-29）。空はCSSのグラデーション＋下の風景だけ画像にしているので、
+  セクションの高さが変わっても地平線が歪みません。<b>文言・数値は1文字も変えていません。</b><br>
+  <b>★アウル君について：</b>公式の .ai データ（OWL_キャラクター_0906.ai）を全ポーズ照合しましたが、
+  <b>元LPのアウル君と同じ絵柄は公式データに存在しませんでした</b>（元LPは水彩調・オレンジの足あり／公式は
+  フラットなベクター・襟あり・足なし。最も近いポーズでもシルエット一致82%）。
+  今は<b>公式データのポーズ</b>を使っています（02_worryと同じもの）。
+  下のボタンで<b>元LPから切り出したアウル君</b>に切り替えて見比べられます。
+</div><div class="stage">
+  <div class="owl-lp-wrap">
+    <div class="owl-lp-card" style="max-width:480px;width:100%;margin:0 auto;background:#fef8ed;overflow:hidden;position:relative;z-index:1">
+      <div class="wrap">
+        <span class="tag">HTML版</span>
+
+<style>
+/* OWL 03_solve — 焼き込み画像をHTML化（2026-08-29） */
+.owlsv{
+  --sv-sky:#c3e6f9;        /* 空の水色（支給背景から実測） */
+  --sv-cream:#fef8ed;      /* 地のクリーム */
+  --sv-ink:#002a5c;        /* 見出し・本文の紺 */
+  --sv-org:#fa7c00;        /* OWL福祉事業／0円 のオレンジ */
+  --sv-org-u:#fddf98;      /* 0円の下線 */
+  --sv-card:#ecf7fd;       /* カードの面 */
+  --sv-blue:#3293d9;       /* 番号バッジ */
+  --sv-green:#4ab056;      /* チェック */
+  position:relative; overflow:hidden;
+  container-type:inline-size;   /* 以降の cqw は「このセクションの幅」基準 */
+  background:var(--sv-cream);
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  color:var(--sv-ink);
+  isolation:isolate;
+}
+.owlsv,.owlsv *,.owlsv *::before,.owlsv *::after{box-sizing:border-box}
+
+/* ★詳細度の書き戻し（ホスト: .owl-lp-wrap section,.owl-lp-wrap div:not(.owl-lp-card){padding:0!important} = (0,2,1)）
+   クラス3つ(0,3,0)にしないと余白が全部0にされる。短くしないこと。 */
+.owlsv.owlsv.owlsv{padding:0 !important}
+
+/* ── 上半分：空＋アウル君 ────────────────────────────────
+   背景は3層。上から ①ドット ②下の風景（雲・植物・草地） ③空のグラデ。
+   ②を bottom / 100% auto で置くので、ブロックが高くなっても
+   地平線は必ず下端から一定の位置に来る（＝伸び縮みで歪まない）。 */
+.owlsv-scene{
+  position:relative; z-index:1;
+  background:
+    url(solve_20260829/dots_sp.webp) center top / 100% auto no-repeat,
+    url(solve_20260829/scene_sp.webp) center bottom / 100% auto no-repeat,
+    linear-gradient(180deg,var(--sv-sky) 0%,#dcedf7 10%,var(--sv-cream) 21%,var(--sv-cream) 100%);
+}
+.owlsv .owlsv-scene.owlsv-scene{padding:0 0 5.9cqw !important}   /* ★アウル君の足元に草地を残す。0だと足が切れて見え、白地との段差が横一直線に出る */
+
+/* 見出し ── 実測：1行目のインク上端 15.1cqw／行間 3.1cqw／文字高 8.5cqw */
+.owlsv-h2{
+  margin:0 !important; padding:14.3cqw 3cqw 0 !important;
+  border:0 !important; background:none !important;   /* ★Lightning/VKのh2は上下にボーダーを持つ。消さないとティールの横線が出る */
+  text-align:center; font-weight:900; color:var(--sv-ink);
+  font-feature-settings:"palt" 1;
+  font-size:clamp(19px,7.4cqw,70px); line-height:1.38; letter-spacing:0;
+}
+/* ★1行ずつ nowrap。元画像は2行きっかり。
+   clamp下限20px×約10.7em＝214px < 320-24=296px なので320pxでも折り返らない。
+   ★<br>は使わない（ホストが br{display:none!important}） */
+.owlsv-h2 .ln{display:block;white-space:nowrap}
+.owlsv-h2 em{font-style:normal;color:var(--sv-org)}
+
+/* アウル君 ── 実測：幅42cqw・上端39.6cqw・下端96.3cqw（比0.741） */
+.owlsv img.owlsv-mascot{           /* ★詳細度(0,2,1)。.owlsv-mascot(0,1,0) だと
+                                      ホストの .owl-lp-card img{width:100%!important} に負けて横いっぱいに伸びる */
+  display:block; margin:3.3cqw auto 0 !important;
+  width:42% !important; max-width:100% !important; height:auto !important;
+}
+
+/* ── 下半分：カード3枚 ──────────────────────────────── */
+.owlsv-cards{background:var(--sv-cream) url(solve_20260829/dots_bottom.webp) center bottom / 100% auto no-repeat}   /* ★地は白ではなくクリーム（実測 rgb(255,250,238)）＋元画像にある下端のドット */
+.owlsv .owlsv-cards.owlsv-cards{padding:0 4.6cqw 9.8cqw !important}
+.owlsv-list{
+  list-style:none; margin:0 !important; padding:0 !important;
+  display:grid; grid-template-columns:minmax(0,1fr); gap:3.05cqw;   /* ★minmax(0,1fr)。1frだと中身の最小幅で列が膨らむ */
+}
+.owlsv-list li{
+  position:relative; min-height:18.4cqw;
+  display:grid; grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center; column-gap:2.2cqw;
+  background:var(--sv-card); border:2px solid #fff; border-radius:2.4cqw;   /* ★枠は2px固定。3pxにすると320〜860pxでカード高が0.5〜1cqw膨らみ、全体比が元からずれる（実測） */
+  margin:0 !important;          /* ★テーマの li 既定マージンを殺す（これが無いとカード間が2倍に開く） */
+  padding:1.8cqw 2.6cqw !important;
+  box-shadow:0 .6cqw 1.8cqw rgba(30,58,95,.07);
+}
+.owlsv-list li:first-child{min-height:22.4cqw}   /* 元画像も1枚目だけ背が高い（0円が入るため） */
+/* ✅と番号 */
+.owlsv-mark{display:flex;align-items:center;gap:1.4cqw}
+.owlsv-chk{
+  flex:0 0 auto; width:8.4cqw; height:8.4cqw; border-radius:50%;
+  background:var(--sv-green); position:relative;
+}
+.owlsv-chk::after{
+  content:""; position:absolute; left:33%; top:20%;
+  width:29%; height:50%; border:1.1cqw solid #fff; border-top:0; border-left:0;
+  transform:rotate(42deg);
+}
+.owlsv-num{
+  flex:0 0 auto; min-width:9.4cqw; height:9.4cqw; border-radius:1.8cqw;
+  background:var(--sv-blue); color:#fff; font-weight:900;
+  font-size:clamp(17px,5.6cqw,52px); line-height:9.4cqw; text-align:center;
+}
+/* 本文 */
+.owlsv-tx{font-weight:800;line-height:1.26;font-size:clamp(12px,4.7cqw,42px);letter-spacing:0;font-feature-settings:"palt" 1}
+.owlsv-tx .ln{display:block}   /* ★改行位置を元画像に固定。<br>は使わない（ホストが br{display:none!important}） */
+/* 右のイラスト／0円 */
+.owlsv-fig{flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:21.9cqw}
+.owlsv img.owlsv-illo{width:auto !important;max-width:100% !important;max-height:14cqw !important;height:auto !important;display:block;margin:0 auto !important}
+.owlsv-zero{
+  /* 元画像の実測（941px幅基準）：0＝幅8.6cqw×高14.1cqw／円＝紺・高5.1cqw／
+     下線＝淡黄の細い帯。0と円のフォントサイズ比は SP/PC とも 2.5 倍
+     （0の字面＝SP 10.37cqw／PC 5.79cqw。閃きを含めた外接矩形と取り違えないこと） */
+  position:relative;display:inline-block;
+  font-weight:900;color:var(--sv-ink);line-height:1;white-space:nowrap;
+  font-size:clamp(11px,5.8cqw,52px);
+  padding:0 0 .29em;
+}
+.owlsv-zero b{display:inline-block;color:var(--sv-org);font-size:2.39em;line-height:.72;letter-spacing:-.03em;vertical-align:-.02em}   /* ★inline-blockにしないとインラインボックスの高さが約1.4emで解決され、カードが3.5cqw膨らむ（実測） */
+.owlsv-zero::after{                     /* 下線（元画像は文字より左右に広い細い帯） */
+  content:"";position:absolute;left:-.52em;right:-.52em;bottom:.06em;
+  height:.25em;border-radius:.13em;background:var(--sv-org-u);
+}
+/* 「0」の上の閃き3本。元画像に実在する（SP/PCとも独立した3つのオレンジ塊を実測）。
+   位置は「0」の中心（ボックス左端から.72em）を基準。SP・PCで em 換算値が一致することを確認済み */
+.owlsv-zero .sp{
+  position:absolute;left:.85em;top:-.47em;transform:translateX(-50%);
+  width:.12em;height:.353em;border-radius:.06em;background:var(--sv-org);
+}
+.owlsv-zero .sp::before,.owlsv-zero .sp::after{
+  content:"";position:absolute;width:.12em;border-radius:.06em;background:var(--sv-org);
+}
+/* 元画像は3本が段違い＆左右非対称（左-27°／右+32°）。揃えると手描きの雰囲気が消える */
+.owlsv-zero .sp::before{left:-.54em;top:.10em;height:.29em;transform:rotate(-27deg)}
+.owlsv-zero .sp::after{left:.48em;top:.29em;height:.25em;transform:rotate(32deg)}
+
+/* ── PC（860px以上）：左にアウル君、右に見出し＋カード3枚 ─────────
+   実測（1600×900基準・cqw＝%of幅）：
+     見出し1行目インク上端 8.0cqw／2行目下端 20.8cqw
+     アウル君 上端16.3・下端47.25・幅22.6
+     カード 上端26.4・下端51.2／セクション全高56.25 */
+@media (min-width:860px){
+  .owlsv{
+    background:
+      url(solve_20260829/dots_pc.webp) center top / 100% auto no-repeat,
+      url(solve_20260829/scene_pc.webp) center bottom / 100% auto no-repeat,
+      linear-gradient(180deg,var(--sv-sky) 0%,#dcedf7 8%,var(--sv-cream) 17%,var(--sv-cream) 100%);
+  }
+  .owlsv.owlsv.owlsv{
+    padding:0 !important;
+    display:grid; grid-template-columns:minmax(0,36%) minmax(0,64%);
+    align-items:start;
+  }
+  /* ★position:static にすること。relative のままだと下の .owlsv-h2 の left:33.6% が
+     「左カラム(36%)の33.6%」＝12.1% と解決され、見出しがアウル君の頭に重なる（実測で確認） */
+  .owlsv-scene{background:none;grid-column:1;grid-row:1;position:static}
+  .owlsv .owlsv-scene.owlsv-scene{padding:16.3cqw 0 9cqw !important}
+  .owlsv-cards{background:none;grid-column:2;grid-row:1}   /* PCは下端ドットをセクション側の背景に含めているので消す */
+  .owlsv .owlsv-cards.owlsv-cards{padding:26.4cqw 5.1cqw 4.4cqw 2.9cqw !important}   /* ★左2.9cqw。0だとカード帯が元より左に2.9cqwずれる（元:card1左端38.9cqw／card3右端94.9cqw） */
+  /* 見出しは右カラムの上に重ねる（元画像は見出しが右上・アウル君が左） */
+  .owlsv-h2{
+    position:absolute; z-index:3; left:33.6%; right:4.2%; top:0;
+    padding:7.2cqw 0 0 !important; text-align:left;
+    /* ★5.7cqwだと2行目の実テキスト幅が68.3%になり、枠61.2%を超えて右端が切れる（実測）。
+       5.15cqw＋letter-spacing -.02em で枠内に収める */
+    font-size:clamp(21px,5.15cqw,83px); line-height:1.39; letter-spacing:-.02em;
+  }
+  .owlsv-h2 .ln:first-child{padding-left:10.8cqw}   /* 元画像は1行目が右に寄っている（x44.4%〜） */
+  .owlsv img.owlsv-mascot{width:62.8% !important;margin:0 0 0 27.2% !important}
+  .owlsv-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.8cqw}
+  .owlsv-list li,.owlsv-list li:first-child{
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    row-gap:.9cqw; border-radius:1.7cqw; padding:1.2cqw 1.5cqw 1.2cqw !important;   /* 元画像のカード角丸は実測 約26px＝1.63cqw */
+    min-height:24.8cqw;   /* 元画像の実測：カード高24.8cqw（上端26.4／下端51.2） */
+  }
+  .owlsv-mark{gap:.9cqw}
+  .owlsv-chk{width:3.2cqw;height:3.2cqw}
+  .owlsv-chk::after{border-width:.42cqw}
+  .owlsv-num{min-width:3.6cqw;height:3.6cqw;line-height:3.6cqw;border-radius:.7cqw;font-size:clamp(15px,2.3cqw,37px)}
+  .owlsv-tx{font-size:clamp(12px,1.8cqw,29px);line-height:1.41}   /* ★元実測：8文字で14.44cqw。2.05cqwだとカード内幅15.2cqwを超えて文字がはみ出す */
+  .owlsv-fig{width:auto;max-width:86%;margin-top:auto}
+  .owlsv img.owlsv-illo{max-height:9.4cqw !important;width:auto !important}
+  .owlsv-zero{font-size:clamp(11px,3.19cqw,51px)}
+}
+
+/* 360px 最終防衛 */
+@media (max-width:380px){
+  .owlsv .owlsv-cards.owlsv-cards{padding:0 3.4cqw 9.8cqw !important}
+  .owlsv-list li{column-gap:1.6cqw;padding:1.8cqw 2.2cqw !important}
+}
+</style>
+
+<section class="owlsv">
+  <div class="owlsv-scene">
+    <h2 class="owlsv-h2"><span class="ln">そのお悩み、</span><span class="ln"><em>OWL福祉事業</em>が解決します</span></h2>
+    <img class="owlsv-mascot" src="solve_20260829/mascot.webp" width="804" height="1089" loading="eager" decoding="sync" alt="OWL福祉事業のキャラクター アウル君">
+  </div>
+  <div class="owlsv-cards">
+    <ul class="owlsv-list">
+      <li>
+        <span class="owlsv-mark"><span class="owlsv-chk"></span><span class="owlsv-num">1</span></span>
+        <span class="owlsv-tx"><span class="ln">加盟金0円、</span><span class="ln">初期費用を抑えて</span><span class="ln">開業可能</span></span>
+        <span class="owlsv-fig"><span class="owlsv-zero"><i class="sp"></i><b>0</b>円</span></span>
+      </li>
+      <li>
+        <span class="owlsv-mark"><span class="owlsv-chk"></span><span class="owlsv-num">2</span></span>
+        <span class="owlsv-tx"><span class="ln">開設から運営まで</span><span class="ln">完全サポート</span></span>
+        <span class="owlsv-fig"><img class="owlsv-illo" src="solve_20260829/illo_02_support.webp" width="208" height="151" loading="eager" decoding="sync" alt=""></span>
+      </li>
+      <li>
+        <span class="owlsv-mark"><span class="owlsv-chk"></span><span class="owlsv-num">3</span></span>
+        <span class="owlsv-tx"><span class="ln">未経験でも</span><span class="ln">安心の研修制度</span></span>
+        <span class="owlsv-fig"><img class="owlsv-illo" src="solve_20260829/illo_03_training.webp" width="219" height="146" loading="eager" decoding="sync" alt=""></span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+      </div>
+      <div class="wrap orig-ver">
+        <img class="orig orig--sp" src="assets/lp/03_solve.webp" alt="元画像（スマホ）">
+        <img class="orig orig--pc" src="lp_wide/03_solve.jpg" alt="元画像（PC）">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bar" style="position:static;background:#3a5d8f">
+  <span class="t">アウル君の絵柄</span>
+  <button id="mA" class="on">公式.aiのポーズ（02_worryと同じ）</button>
+  <button id="mB">元LPから切り出し</button>
+</div>
+<script>
+(function(){var a=document.getElementById('mA'),b=document.getElementById('mB');
+ var img=document.querySelector('img.owlsv-mascot');
+ function set(u,on){img.src=u;a.classList.toggle('on',on);b.classList.toggle('on',!on);}
+ a.onclick=function(){set('solve_20260829/mascot.webp',true)};
+ b.onclick=function(){set('solve_20260829/mascot_lp.webp',false)};})();
+</script>
+<script>
+/* 元LPのリセットCSS（.owl-lp-wrap 配下）をそのまま再現しています */
+document.querySelectorAll('.bar button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.bar button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); document.body.dataset.view=b.dataset.v;});
+const op=document.getElementById('op');
+op.oninput=()=>{document.body.style.setProperty('--op',op.value/100);document.getElementById('opv').textContent=op.value+'%';};
+</script>
+<style>
+/* ▼ 本番LPのリセットCSS（そのまま持ってきたもの。ここに勝てるように作ってある） */
+
+.owl-lp-wrap, .owl-lp-wrap * { box-sizing: border-box !important; }
+.owl-lp-wrap p { margin: 0 !important; padding: 0 !important; display: contents !important; }
+.owl-lp-wrap br { display: none !important; }
+.owl-lp-wrap a { text-decoration: none !important; }
+.owl-lp-wrap img { max-width: 100% !important; height: auto !important; display: block !important; margin: 0 !important; }
+.owl-lp-wrap section, .owl-lp-wrap div:not(.owl-lp-card) { margin: 0 !important; padding: 0 !important; }
+.owl-lp-card { margin-left: auto !important; margin-right: auto !important; align-self: center !important; }</p>
+<p>.owl-lp-wrap {
+  position: relative !important;
+  width: 100vw !important;
+  left: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}</p>
+<p>.owl-btn, .owl-btn *, a.owl-btn, a.owl-btn *,
+.owl-cta-dark, .owl-cta-dark *, .owl-cta-dark a, .owl-cta-dark a *,
+.owl-tel-link, .owl-tel-link * {
+  color: #ffffff !important;
+}
+.owl-btn svg path, .owl-btn svg rect, .owl-btn svg line, .owl-btn svg polyline, .owl-btn svg circle {
+  stroke: #ffffff !important;
+}
+.owl-tel-link svg path { fill: #ffffff !important; stroke: none !important; }</p>
+<p>.owl-float-cta-bar { display: none !important; }</p>
+<p>/* WPが自動挿入する空のp/brを非表示 */
+body > p, body > br,
+.entry-content > p:empty, .entry-content > p:not(:has(*)),
+.entry-content > p, .entry-content > br,
+.entry > p, .entry > br,
+article > p:empty, article > br {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}</p>
+<p>@media (min-width: 768px) {
+  .owl-lp-card { max-width: 600px !important; }
+}
+@media (min-width: 1200px) {
+  .owl-lp-card { max-width: 680px !important; }
+}</p>
+<p>body header[role="banner"], body header.l-header, body header#site-header, body .site-header, body .global-header,
+body footer[role="contentinfo"], body footer.l-footer, body footer#site-footer, body .site-footer, body .global-footer,
+body .breadcrumb, body .breadcrumb-list, body #breadcrumb,
+body .page-title, body .ld-page-title, body #page-title, body .pageHeader, body .page-header {
+  display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important;
+}
+html, body, body .site, body #main, body .l-main, body .entry-content, body .entry, body article, body main, body .container, body .wrap, body .wrapper, body .site-body, body .site-content {
+  padding-top: 0 !important; padding-bottom: 0 !important;
+  padding-left: 0 !important; padding-right: 0 !important;
+  margin-top: 0 !important; margin-bottom: 0 !important;
+  margin-left: 0 !important; margin-right: 0 !important;
+  max-width: 100% !important; width: 100% !important;
+  background: transparent !important;
+}
+html {
+  background: linear-gradient(180deg,#fef0d5 0%,#fdf6e6 40%,#e8f2f8 100%) !important;
+  background-attachment: fixed !important;
+}</p>
+<p>@keyframes owlPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+@keyframes owlShimmer { 0% { left: -100%; } 60% { left: 120%; } 100% { left: 120%; } }
+.owl-btn { animation: owlPulse 2.4s ease-in-out infinite; }
+.owl-btn.delay { animation-delay: 1.2s; }
+.owl-btn::before { content:""; position:absolute; top:0; left:-100%; width:70%; height:100%; background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5) 50%, transparent); transform:skewX(-20deg); animation:owlShimmer 3s ease-in-out infinite; pointer-events:none; }
+.owl-btn.delay::before { animation-delay: 1.5s; }
+
+.owlfv2-wrap{background:#fafaf5;padding:0;margin:0}.owlfv2{position:relative;width:100%;max-width:none;margin:0 auto;aspect-ratio:941/1672;background:#fafaf5;overflow:hidden}.owlfv2>img{display:block;width:100%;height:100%;object-fit:cover}.owlfv2 .cta-top{position:absolute;top:2.1%;right:3.2%;display:inline-flex;align-items:center;gap:.35em;background:#f5843c;color:#fff;font-weight:700;text-decoration:none;font-size:clamp(12px,3.1vw,16px);padding:.62em 1.15em;border-radius:999px;box-shadow:0 3px 10px rgba(245,132,60,.4);white-space:nowrap}.owlfv2 .cta-top:hover{background:#e8731f;transform:translateY(-1px);box-shadow:0 5px 14px rgba(245,132,60,.5)}.owlfv2 .cta-top:active{transform:translateY(0) scale(.98)}.owlfv2 .cta-main{position:absolute;left:50%;bottom:2.6%;transform:translateX(-50%);width:90%;display:flex;align-items:center;justify-content:center;gap:.4em;background:linear-gradient(180deg,#46a046,#3d8b3d);color:#fff;text-decoration:none;font-weight:800;font-size:clamp(19px,5.6vw,32px);letter-spacing:.02em;padding:.66em 0;border-radius:14px;box-shadow:0 6px 18px rgba(61,139,61,.42);animation:owlpulse 2.4s ease-in-out infinite}.owlfv2 .cta-main:hover{filter:brightness(1.05);transform:translateX(-50%) translateY(-2px);box-shadow:0 10px 26px rgba(61,139,61,.5);animation:none}.owlfv2 .cta-main:active{transform:translateX(-50%) translateY(0) scale(.99)}@keyframes owlpulse{0%,100%{box-shadow:0 6px 18px rgba(61,139,61,.42)}50%{box-shadow:0 6px 26px rgba(61,139,61,.75)}}.owl-lp-wrap{padding-left:8px!important;padding-right:8px!important}@media(min-width:768px){.owlfv2-wrap{padding:24px 0}.owlfv2{box-shadow:0 8px 30px rgba(0,0,0,.10);border-radius:16px}.owl-lp-card{max-width:600px!important}}@media(min-width:1200px){.owl-lp-card{max-width:680px!important}}@media(prefers-reduced-motion:reduce){.owlfv2 .cta-main{animation:none}}
+
+/* OWL FV v2 — 焼き込み画像をHTML化したファーストビュー（2026-08-29） */
+.owlfv{
+  --fv-ink:#090908; --fv-red:#d1251f; --fv-sub:#504e49;
+  --fv-green:#3aa144; --fv-orange:#f0861b; --fv-blue:#2687c3;
+  --fv-cream:#fcf9ef; --fv-cta:#f0861b;
+  position:relative; background:var(--fv-cream); overflow:hidden;
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  color:var(--fv-ink); isolation:isolate;
+}
+.owlfv,.owlfv *,.owlfv *::before,.owlfv *::after{box-sizing:border-box}
+/* ── ホストLPのリセットを打ち消す（.owl-lp-wrap 配下の !important 対策） ──
+   打ち消し対象:
+     .owl-lp-wrap section,.owl-lp-wrap div:not(.owl-lp-card){margin:0!important;padding:0!important}
+     .owl-lp-wrap img{height:auto!important;margin:0!important}
+     .owl-lp-card img{width:100%!important;max-width:100%!important}  ← 768px以上
+     .owl-lp-wrap p{display:contents!important} / .owl-lp-wrap br{display:none!important}
+   ↑のためロゴ幅・写真高さ・内側の余白は全部 !important で書き戻している。 */
+/* 写真（差し替え口はここだけ） */
+.owlfv-photo{position:relative;order:-1;width:100%}
+.owlfv-photo picture{display:block;width:100%;height:100%}   /* 罠5-56 */
+.owlfv-photo img{
+  width:100% !important; max-width:100% !important;
+  height:clamp(190px,54vw,340px) !important;
+  object-fit:cover; object-position:var(--fv-photo-pos,50% 42%);
+  display:block !important; margin:0 !important; border-radius:0 !important;
+}
+/* ロゴ
+   ★ セレクタは `.owlfv img.owlfv-logo`（詳細度0,2,1）にすること。
+     `.owlfv-logo`(0,1,0) だとホスト側の `.owl-lp-card img{width:100%!important}`
+     （768px以上・0,1,1・こちらより後方に定義）に負けて、
+     768px以上でロゴが幅いっぱいに伸びる（実測: 768pxで幅752px・1920pxで855px）。 */
+.owlfv img.owlfv-logo{
+  width:clamp(132px,37vw,300px) !important; max-width:60% !important; height:auto !important;
+  margin:clamp(12px,3.4vw,26px) 0 clamp(10px,2.6vw,20px) clamp(14px,3.6vw,34px) !important;
+  display:block !important;
+}
+/* 本文側 */
+.owlfv-body{
+  position:relative; z-index:2;
+  padding:clamp(18px,4.4vw,36px) clamp(8px,2.2vw,34px) clamp(22px,4.4vw,40px) !important;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  gap:clamp(11px,2.2vw,18px);
+}
+.owlfv-h1{
+  margin:0 !important; padding:0 !important; font-weight:900; line-height:1.22; letter-spacing:.005em;
+  font-size:clamp(27px,10.3vw,62px); color:var(--fv-ink);
+}
+.owlfv-h1 .ln{display:block}                 /* <br>禁止（ホストが br を display:none にする） */
+.owlfv-h1 .hl{color:var(--fv-red)}
+.owlfv-h1 .yen{color:var(--fv-red);font-size:.66em;vertical-align:.06em;margin-right:.02em}
+.owlfv-h1 .sm{font-size:.62em}
+.owlfv-sub{                                   /* <p>禁止（ホストが p を display:contents にする） */
+  margin:0 !important; padding:0 !important; color:var(--fv-sub); font-weight:700; line-height:1.7;
+  font-size:clamp(11.4px,3.12vw,20px); white-space:nowrap;
+}
+.owlfv-sub b{font-weight:900;color:var(--fv-ink);font-size:1.1em}
+.owlfv-sub .sep{margin:0 .34em;color:#c9c6bf}
+.owlfv-sub .it{white-space:nowrap;display:inline-block}
+/* 丸バッジ3つ */
+.owlfv-badges{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:clamp(9px,2.9vw,24px);
+  width:100%; max-width:clamp(258px,74vw,470px);
+  margin-top:clamp(4px,1.4vw,12px) !important;
+}
+.owlfv-badges .b{
+  aspect-ratio:1; border-radius:50%; color:#fff;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; line-height:1.15; padding:6px !important;
+  box-shadow:0 6px 16px rgba(30,58,95,.16);
+}
+.owlfv-badges .b1{background:var(--fv-green)}
+.owlfv-badges .b2{background:var(--fv-orange)}
+.owlfv-badges .b3{background:var(--fv-blue)}
+.owlfv-badges .k{font-size:clamp(9px,2.5vw,15px);font-weight:900;margin-bottom:.15em}
+.owlfv-badges .v{font-size:clamp(21px,6.4vw,40px);font-weight:900;letter-spacing:-.02em}
+.owlfv-badges .v small{font-size:.5em;font-weight:900}
+.owlfv-badges .u{font-size:clamp(9px,2.5vw,15px);font-weight:900;margin-top:.1em}
+/* CTA（class="owl-btn" を必ず残す＝モーダルの発火条件） */
+.owlfv-cta{
+  display:flex !important; align-items:center; justify-content:center; gap:.45em;
+  width:100%; max-width:520px;
+  background:linear-gradient(180deg,#f5943a,var(--fv-cta));
+  color:#fff !important; text-decoration:none !important; font-weight:900;
+  font-size:clamp(17px,5vw,30px); letter-spacing:.02em;
+  padding:.66em 1em !important; border-radius:14px;
+  box-shadow:0 8px 22px rgba(226,118,16,.42);
+  position:relative; overflow:hidden;
+  animation:owlfvPulse 2.4s ease-in-out infinite;
+}
+.owlfv-cta::before{
+  content:"";position:absolute;inset:0 auto 0 -100%;width:70%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.45) 50%,transparent);
+  transform:skewX(-20deg);animation:owlfvShine 3s ease-in-out infinite;pointer-events:none;
+}
+.owlfv-cta .tri{font-size:.8em;line-height:1}
+@keyframes owlfvPulse{0%,100%{box-shadow:0 8px 22px rgba(226,118,16,.42)}50%{box-shadow:0 8px 30px rgba(226,118,16,.72)}}
+@keyframes owlfvShine{0%{left:-100%}60%{left:130%}100%{left:130%}}
+@media (prefers-reduced-motion:reduce){.owlfv-cta{animation:none}.owlfv-cta::before{display:none}}
+.owlfv-cta-top{
+  position:absolute;top:clamp(10px,2.4vw,20px);right:clamp(10px,2.4vw,20px);z-index:5;
+  display:inline-flex;align-items:center;gap:.3em;
+  background:var(--fv-cta);color:#fff !important;text-decoration:none !important;font-weight:900;
+  font-size:clamp(11px,2.9vw,16px);padding:.6em 1.05em !important;border-radius:999px;
+  box-shadow:0 3px 10px rgba(226,118,16,.42);white-space:nowrap;
+}
+/* スマホは上部の固定バー(.owl-sticky-bar)にCTAがあるので出さない＝現行と同じ挙動 */
+@media (max-width:767px){.owlfv-cta-top{display:none !important}}
+/* タブレット帯（640〜859px）はロゴを頭打ちにする。
+   37vw のままだと 768px でロゴ284px＝PC(1280px)の218pxより大きくなる逆転が起き、
+   その分だけCTAがファーストビューの外へ押し出される。 */
+@media (min-width:640px) and (max-width:859px){
+  .owlfv img.owlfv-logo{width:min(37vw,200px) !important}
+}
+/* PC: 文字が左54% / 写真が右46% */
+@media (min-width:860px){
+  .owlfv{display:grid;grid-template-columns:minmax(0,54%) minmax(0,46%);align-items:stretch}
+  .owlfv img.owlfv-logo{grid-column:1;grid-row:1;align-self:start;z-index:3;
+              width:clamp(200px,20vw,320px) !important;   /* 焼き込みPC版は約22.8vw。近づける */
+              margin:clamp(24px,2.6vw,40px) 0 0 clamp(24px,3vw,44px) !important}
+  .owlfv-body{grid-column:1;grid-row:1;justify-content:center;align-items:flex-start;text-align:left;
+              padding-top:clamp(96px,11vw,150px) !important;padding-right:clamp(24px,3vw,40px) !important}
+  .owlfv-h1{font-size:clamp(28px,4.4vw,52px)}
+  .owlfv-sub{font-size:clamp(11px,1.35vw,17px)}
+  .owlfv-cta{max-width:560px}
+  .owlfv-badges{max-width:470px}
+  .owlfv-photo{                                   /* 罠5-57: grid-row も明示する */
+    order:0;grid-column:2;grid-row:1;height:100%;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.55) 7%,#000 18%);
+            mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.55) 7%,#000 18%);
+  }
+  .owlfv-photo picture{height:100%;min-height:480px}
+  .owlfv-photo img{height:100% !important;min-height:480px !important;object-position:50% 50%}
+}
+/* 360px 最終防衛（罠5-58: 前段で詰めた余白と矛盾させない） */
+@media (max-width:380px){
+  .owlfv-body{padding:16px 8px 20px !important;gap:11px}
+  .owlfv-badges{gap:7px}
+  .owlfv-badges .k,.owlfv-badges .u{font-size:9px}
+}
+
+
+/* ===== OWL 0円プランLP : このLP限定の追加スタイル ===== */
+html,body{overflow-x:hidden !important;}
+
+/* (1) 追従 資料請求バー */
+.owl-sticky-bar{position:fixed;top:0;left:0;right:0;z-index:9990;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.10);border-bottom:1px solid #eee;transform:translateY(-120%);transition:transform .28s ease;font-family:"Noto Sans JP","Hiragino Sans",sans-serif;}
+body.owl-hdr-scrolled .owl-sticky-bar{transform:translateY(0);}
+.owl-sticky-logo{height:36px;width:auto;display:block;}
+.owl-sticky-actions{display:flex;align-items:center;gap:12px;}
+.owl-sticky-tel{color:#f0771f;font-weight:800;text-decoration:none;font-size:15px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
+.owl-sticky-cta{background:linear-gradient(180deg,#ff9a3d,#f0771f);color:#fff;font-weight:800;text-decoration:none;font-size:15px;padding:11px 20px;border-radius:999px;box-shadow:0 4px 12px rgba(240,119,31,.45);white-space:nowrap;transition:filter .15s,transform .15s;}
+.owl-sticky-cta:hover{filter:brightness(1.06);transform:translateY(-1px);}
+@media(max-width:600px){.owl-sticky-logo{height:28px;}.owl-sticky-tel{display:none;}.owl-sticky-cta{font-size:14px;padding:10px 16px;}.owl-sticky-bar{padding:7px 12px;}}
+
+/* (2) FV緑CTA強調＋上下バウンス */
+.owlfv2 .cta-main{background:linear-gradient(180deg,#ff9a3d,#f0771f) !important;box-shadow:0 10px 26px rgba(240,119,31,.55), 0 0 0 4px rgba(255,154,61,.22) !important;font-size:clamp(20px,6vw,34px) !important;padding:.74em 0 !important;letter-spacing:.03em !important;animation:owlbounce 1.4s ease-in-out infinite !important;}
+@keyframes owlbounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+@media(prefers-reduced-motion:reduce){.owlfv2 .cta-main{animation:none !important}}
+
+/* (3) 背景クリーム（PC左右の額縁） */
+body{background:#fbf6ea !important;}
+
+/* (4) PC(>=768)：横長・幅広1600px（親コンテナ制限を解除） */
+@media (min-width:768px){
+  .site-body-container{max-width:1600px !important;padding-left:0 !important;padding-right:0 !important;}
+  .owl-lp-wrap{max-width:1600px !important;}
+  .owl-lp-card{max-width:1600px !important;overflow:visible !important;}
+  .owl-lp-card img{width:100% !important;max-width:100% !important;margin:0 !important;display:block;}
+  .owlfv2{max-width:1600px !important;aspect-ratio:1600/900 !important;}
+  .owlfv2 > img{width:100% !important;height:100% !important;}
+  .owlfv2 .cta-main{max-width:560px;}
+}
+
+/* (5) スマホ(<=767)：全幅・角丸なし */
+@media (max-width:767px){
+  /* mobile: real header always visible (baked header in FV image is cropped out) */
+  .owl-sticky-bar{transform:translateY(0) !important;transition:none !important;}
+  body{padding-top:48px !important;}
+  .owlfv2{aspect-ratio:941/1500 !important;}
+  .owlfv2 > img{object-fit:cover !important;object-position:50% 100% !important;}
+  .owlfv2 .cta-top{display:none !important;}
+  .site-body-container{max-width:100% !important;padding-left:0 !important;padding-right:0 !important;}
+  .owl-lp-wrap{padding-left:0 !important;padding-right:0 !important;}
+  .owl-lp-card{max-width:100% !important;width:100% !important;border-radius:0 !important;box-shadow:none !important;}
+}
+
+</style>
+</body></html>
