@@ -42,7 +42,8 @@ body[data-view="over"] .range{display:flex}
   <b>見てほしいところ：</b>ブラウザの幅を変えると、860pxを境にスマホ版（2×2）とPC版（横4列）が切り替わります。
   「重ねる」を選ぶと元画像を半透明で重ねられます（ズレの確認用）。<br>
   <b>中身：</b>見出し・カードの文字はすべてHTMLのテキスト（＝Googleが読める）。
-  アイコン4つ・キラキラ・フクロウ・ドットは<b>元画像から切り出した本物</b>です。
+  <b>背景（波・ドット・キラキラ）は、元画像から「文字とカードとアウル君だけを消した」もの</b>をそのまま敷いています
+  （CSSでの近似をやめました）。アイコン4つとアウル君は元画像からの切り出し。
   <b>文言・数値は1文字も変えていません。</b>
 </div>
 
@@ -63,7 +64,9 @@ body[data-view="over"] .range{display:flex}
   --wr-dot:#e2d9ab;        /* ドット */
   position:relative; overflow:hidden;
   container-type:inline-size;   /* 以降の cqw は「このセクションの幅」基準 */
-  background:var(--wr-cream);
+  /* ★背景は元画像から「文字・カード・アウル君だけを消した」もの。
+     波・ドット・キラキラは元画像そのまま。CSSで近似していない。 */
+  background:var(--wr-cream) url(worry_20260829/bg_sp.webp) center top / 100% 100% no-repeat;
   font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
   color:var(--wr-ink);
   padding:0 0 31cqw !important;   /* ★下の .owlwr.owlwr.owlwr で上書きしている（ホストの padding:0!important 対策）
@@ -86,23 +89,8 @@ body[data-view="over"] .range{display:flex}
      .owl-lp-card img{width:100%!important}（768px以上・0,1,1）→ 画像は .owlwr img.xxx（0,2,1）で書く
      p{display:contents!important} / br{display:none!important} → <p>と<br>は使わない */
 
-/* 上下の波 */
-.owlwr-wave{position:absolute;left:0;width:100%;z-index:0;display:block;pointer-events:none}
-.owlwr-wave--t{top:0;height:17cqw;max-height:170px}
-.owlwr-wave--b{bottom:0;height:18cqw;max-height:180px}
-.owlwr-wave svg{width:100%;height:100%;display:block}
 
 /* ドット（右下・右上） */
-/* 装飾（ドット・線）は元画像から切り出したものを使う。
-   CSSのradial-gradientでは「三角形に並ぶ粒」「杏色」が再現できず、
-   background-size:%が親の箱基準になって網目に潰れる事故も起きた。 */
-.owlwr-dec{position:absolute;z-index:1;pointer-events:none}
-.owlwr img.owlwr-dec{height:auto !important;margin:0 !important}
-.owlwr img.owlwr-dec--tr{left:80.6%;top:3.2cqw;width:17.0% !important}
-.owlwr img.owlwr-dec--br{left:62.9%;bottom:2.5cqw;width:34.0% !important}
-.owlwr img.owlwr-dec--bl{left:0;bottom:0;width:40.4% !important}
-.owlwr .owlwr-dec--pc{display:none}
-
 .owlwr .owlwr-in.owlwr-in{position:relative;z-index:2;padding:0 5.9% !important}
 
 /* 見出し */
@@ -115,11 +103,6 @@ body[data-view="over"] .range{display:flex}
 }
 .owlwr-h2 .ln{display:block;width:fit-content;margin-inline:auto}   /* <br>は使わない（罠5-61） */
 
-/* 見出し脇のキラキラ */
-.owlwr-spark{position:absolute;z-index:3;pointer-events:none}
-.owlwr img.owlwr-spark{width:8.4% !important;height:auto !important;margin:0 !important}
-.owlwr-spark--l{left:5.5%;top:17.4%}
-.owlwr-spark--r{right:5.9%;top:18%}
 
 /* カード 2×2 */
 .owlwr-cards{
@@ -153,9 +136,8 @@ body[data-view="over"] .range{display:flex}
 
 /* PC：見出し1行・カード4列（本番PC版 02_worry.jpg と同じ並び） */
 @media (min-width:860px){
-  .owlwr.owlwr.owlwr{padding:0 0 14.4% !important}
-  .owlwr-wave--t{height:12.1cqw;max-height:200px}
-  .owlwr-wave--b{height:13.8cqw;max-height:230px}
+  .owlwr.owlwr.owlwr{padding:0 0 14.4% !important;
+                     background-image:url(worry_20260829/bg_pc.webp) !important}
   .owlwr .owlwr-in.owlwr-in{padding:0 9.2% !important}   /* 元画像のカード左端と同じ位置 */
   .owlwr-h2{padding:10.6cqw 0 1.1cqw !important; font-size:clamp(32px,5.9cqw,104px)}
   .owlwr-h2 .ln{display:inline}
@@ -164,12 +146,8 @@ body[data-view="over"] .range{display:flex}
                   gap:1.5cqw; font-size:clamp(12px,1.71cqw,32px); line-height:1.6}
   .owlwr img.owlwr-ic{height:10.4cqw !important;max-height:185px !important}
   .owlwr img.owlwr-mascot{width:14.2% !important;left:2.4%;bottom:0}   /* 元画像と同じ高さに置く（カード1の文字と深く重ならないように） */
-  .owlwr .owlwr-spark{display:none !important}   /* PC装飾画像にキラキラが含まれているので二重描画になる */
-  .owlwr .owlwr-dec--sp{display:none}
-  .owlwr .owlwr-dec--pc{display:block}
-  .owlwr img.owlwr-dec--ptl{left:0;top:0.9cqw;width:14.9% !important}
-  .owlwr img.owlwr-dec--ptr{left:89.25%;top:0.9cqw;width:10.75% !important}
-  .owlwr img.owlwr-dec--pb{left:0;bottom:0;width:100% !important}
+
+
 
 }
 
@@ -182,31 +160,6 @@ body[data-view="over"] .range{display:flex}
 </style>
 
 <section class="owlwr" aria-labelledby="owlwr-h">
-
-  <!-- 上の波（元画像の境界を実測してトレース） -->
-  <div class="owlwr-wave owlwr-wave--t" aria-hidden="true">
-    <svg viewBox="0 0 941 170" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#feefce" d="M0,0 L941,0 L941,-1 L0,-1 Z"/>
-      <path fill="#feefce" d="M0,156 C78,106 156,83 234,74 C312,71 390,59 468,40 C546,16 585,4 624,0 L0,0 Z"/>
-    </svg>
-  </div>
-
-  <!-- 下の波 -->
-  <div class="owlwr-wave owlwr-wave--b" aria-hidden="true">
-    <svg viewBox="0 0 941 172" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#ffeeca" d="M0,0 L234,0 C312,40 390,40 468,47 C546,44 585,36 624,0 L941,0 L941,172 L0,172 Z"/>
-    </svg>
-  </div>
-
-  <img class="owlwr-spark owlwr-spark--l" src="worry_20260829/spark1.webp" alt="" aria-hidden="true" width="84" height="93" loading="lazy" decoding="async">
-  <img class="owlwr-spark owlwr-spark--r" src="worry_20260829/spark7.webp" alt="" aria-hidden="true" width="80" height="92" loading="lazy" decoding="async">
-
-  <img class="owlwr-dec owlwr-dec--sp owlwr-dec--tr" src="worry_20260829/dots_tr.webp" alt="" aria-hidden="true" width="160" height="156" loading="lazy" decoding="async">
-  <img class="owlwr-dec owlwr-dec--sp owlwr-dec--br" src="worry_20260829/dots_br.webp" alt="" aria-hidden="true" width="320" height="216" loading="lazy" decoding="async">
-  <img class="owlwr-dec owlwr-dec--sp owlwr-dec--bl" src="worry_20260829/deco_bl.webp" alt="" aria-hidden="true" width="380" height="324" loading="lazy" decoding="async">
-  <img class="owlwr-dec owlwr-dec--pc owlwr-dec--ptl" src="worry_20260829/pcdec_tl.webp" alt="" aria-hidden="true" width="238" height="286" loading="lazy" decoding="async">
-  <img class="owlwr-dec owlwr-dec--pc owlwr-dec--ptr" src="worry_20260829/pcdec_tr.webp" alt="" aria-hidden="true" width="172" height="286" loading="lazy" decoding="async">
-  <img class="owlwr-dec owlwr-dec--pc owlwr-dec--pb" src="worry_20260829/pcdec_b.webp" alt="" aria-hidden="true" width="1600" height="228" loading="lazy" decoding="async">
 
   <div class="owlwr-in">
     <h2 class="owlwr-h2" id="owlwr-h"><span class="ln">こんなお悩み、</span><span class="ln">ありませんか？</span></h2>
@@ -245,8 +198,9 @@ body[data-view="over"] .range{display:flex}
 
 <div class="note" style="padding-bottom:40px">
   <b>元画像との突合（機械測定）：</b>
-  スマホはカード4枚・見出し2行・フクロウ・キラキラのすべてが元画像と一致（全体比率 178.0% / 元 177.7%）。
-  PCも4枚とも一致（56.8% / 元 57.1%）。<b>フクロウとカードの文字の重なりは画素レベルで0</b>（8/29 17:40 修正）。320〜1920pxの13幅で横スクロール0px・本文2行を維持。
+  カード4枚・見出し・アウル君の位置はスマホ／PCとも元画像と一致。背景の色は元画像との差が最大3/255。
+  320〜1920pxの13幅で横スクロール0px・本文2行を維持。
+  <b>アウル君とカードの文字の重なりは画素レベルで0</b>（元画像も0）。
 </div>
 
 <script>
