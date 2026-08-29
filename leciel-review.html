@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le,Ciel 構成レビュー</title>
+<style>
+  :root{ --herb:#5e6b4f; --herb-d:#404a36; --gold:#a8804a; --red:#a8503a;
+         --ink:#33352f; --sub:#7c7f74; --soft:#faf7f1; --card:#fff; --line:#e9e2d6; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; background:var(--soft);
+        color:var(--ink); line-height:1.75; -webkit-text-size-adjust:100%; }
+  img,video{ max-width:100%; }
+  header{ text-align:center; padding:40px 20px 30px; background:linear-gradient(165deg,#f2efe4,#e8e6d6); border-bottom:1px solid var(--line); }
+  header .mark{ font-family:"Hiragino Mincho ProN",serif; font-size:1.9rem; letter-spacing:.06em; color:var(--herb-d); }
+  header h1{ font-size:1rem; font-weight:600; margin-top:10px; letter-spacing:.02em; }
+  header p{ margin-top:6px; color:var(--sub); font-size:.85rem; }
+  .wrap{ max-width:960px; margin:0 auto; padding:30px 18px 70px; }
+  h2{ font-size:1.1rem; color:var(--herb-d); margin:42px 0 8px; padding-left:12px; border-left:4px solid var(--herb); line-height:1.4; }
+  h2:first-of-type{ margin-top:4px; }
+  h2 small{ display:block; font-size:.75rem; color:var(--sub); font-weight:400; margin-top:3px; }
+  .concl{ background:#fff; border:2px solid var(--herb); border-radius:14px; padding:22px 24px; margin:14px 0; }
+  .concl h3{ font-size:.95rem; color:var(--herb-d); margin-bottom:12px; }
+  .concl ol{ margin-left:20px; font-size:.93rem; }
+  .concl li{ margin:9px 0; }
+  .concl b{ color:var(--gold); }
+  .warn{ background:#fffaf0; border:1px solid #ecdcc0; border-radius:12px; padding:18px 22px; margin:14px 0; font-size:.9rem; }
+  .warn h3{ font-size:.95rem; color:var(--red); margin-bottom:8px; }
+  .warn ul{ margin-left:20px; } .warn li{ margin:6px 0; }
+  .stage{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:22px; margin:14px 0; text-align:center; }
+  .stage video{ border-radius:12px; background:#000; width:100%; box-shadow:0 10px 30px rgba(80,70,50,.12); }
+  .stage .cap{ margin-top:10px; font-size:.8rem; color:var(--sub); }
+  .stage .dl{ display:inline-block; margin-top:10px; padding:8px 20px; border-radius:22px; background:var(--herb); color:#fff; font-size:.82rem; text-decoration:none; }
+  .tl{ background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; margin:14px 0; }
+  .bar{ display:flex; height:26px; border-radius:6px; overflow:hidden; margin-bottom:10px; }
+  .seg{ display:block; }
+  .legend{ display:flex; flex-wrap:wrap; gap:6px 14px; font-size:.76rem; color:var(--sub); }
+  .legend i{ display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:5px; vertical-align:-1px; }
+  .flow{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; font-size:.85rem; margin-top:14px; }
+  .flow span.b{ background:#f3f0e6; border:1px solid var(--line); border-radius:8px; padding:7px 12px; }
+  .flow span.a{ color:var(--sub); }
+  table{ width:100%; border-collapse:collapse; background:var(--card); font-size:.85rem; margin:12px 0; }
+  th,td{ border:1px solid var(--line); padding:9px 12px; text-align:left; vertical-align:top; }
+  th{ background:#f3f0e6; color:var(--herb-d); font-weight:600; }
+  td b{ color:var(--gold); }
+  .cuts{ display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; margin:14px 0; }
+  .cut{ background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .cut .ph{ position:relative; aspect-ratio:16/9; background:#111; }
+  .cut .ph img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .cut .no{ position:absolute; top:7px; left:8px; background:rgba(0,0,0,.65); color:#fff; font-size:.68rem; padding:2px 8px; border-radius:10px; }
+  .cut .tag{ position:absolute; top:7px; right:8px; color:#fff; font-size:.66rem; padding:2px 8px; border-radius:10px; }
+  .cut .tx{ padding:9px 11px 12px; font-size:.79rem; line-height:1.55; }
+  .cut .sec{ display:block; color:var(--sub); font-size:.7rem; }
+  .cut .tel{ display:block; color:var(--herb-d); font-weight:600; margin-top:3px; }
+  .cut .ai{ display:block; color:var(--sub); font-size:.71rem; margin-top:4px; }
+  .ref a{ display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--herb-d);
+          background:var(--card); border:1px solid var(--line); border-radius:12px; padding:13px 16px; margin-bottom:10px; }
+  .ref a:hover{ background:#f3f0e6; }
+  .ref .ic{ flex:0 0 auto; width:36px; height:36px; border-radius:50%; background:var(--herb); color:#fff;
+            display:flex; align-items:center; justify-content:center; font-size:.8rem; }
+  .ref .t{ font-size:.88rem; font-weight:600; line-height:1.45; }
+  .ref .t em{ display:block; font-style:normal; font-weight:400; font-size:.76rem; color:var(--sub); margin-top:3px; }
+  .ref .n{ margin-left:auto; flex:0 0 auto; font-size:.78rem; color:var(--gold); font-weight:600; text-align:right; }
+  ol.steps{ margin:10px 0 10px 22px; font-size:.9rem; } ol.steps li{ margin:7px 0; }
+  ul{ margin:8px 0 8px 20px; font-size:.9rem; } li{ margin:5px 0; }
+  .note{ background:#f4f2ea; border:1px dashed #d6cfbe; border-radius:12px; padding:16px 20px; font-size:.85rem; color:#5f6157; margin:14px 0; }
+  .note b{ color:var(--herb-d); }
+  footer{ text-align:center; color:#a5a396; font-size:.75rem; padding:32px 20px 44px; border-top:1px solid var(--line); margin-top:40px; }
+  @media(max-width:560px){
+    .wrap{ padding:24px 14px 56px; }
+    .cuts{ grid-template-columns:1fr; }
+    h2{ font-size:1rem; }
+    .bar{ height:20px; }
+    .ref a{ flex-wrap:wrap; } .ref .n{ margin-left:46px; text-align:left; width:100%; }
+    table, tbody, tr, th, td{ display:block; width:100%; }
+    tr{ border:1px solid var(--line); border-radius:10px; overflow:hidden; margin-bottom:10px; background:var(--card); }
+    th,td{ border:0; border-bottom:1px solid var(--line); }
+    tr > *:last-child{ border-bottom:0; }
+    tr:first-child{ display:none; }
+    td:first-child{ background:#f3f0e6; color:var(--herb-d); font-weight:600; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="mark">Le,Ciel</div>
+  <h1>AI動画 モックアップ v11 ／ 構成レビュー</h1>
+  <p>佐賀県神埼郡吉野ヶ里町　代表 米光 知子 様（女性専用・韓国産よもぎ蒸し）<br>2026年8月30日／社内共有用</p>
+</header>
+<div class="wrap">
+
+  <h2>結論（先に3つ）</h2>
+  <div class="concl">
+    <ol>
+      <li><b>「サウナと同じに見える」を、2段階の差別化で解いた。</b>
+        ①素材の差（韓国産・600年）＋②体験の差（熱くない／下半身から蒸気で／のぼせず長く座れる）。
+        <b>効能は1つも言っていない</b>ので薬機法に触れない。</li>
+      <li><b>冒頭を「売り込まない入り」に作り替えた。</b>
+        朝霧のよもぎ畑＋縦組みタイトル → 受けている女性 → 湯気のよもぎ。
+        参考は <b>発酵温浴nifu</b>。説明から入るのをやめ、映像で引き込んでから言葉を足す構成にした。</li>
+      <li><b>実店舗の再現度を上げた。</b>受領写真をもとに、内装・椅子（穴は縦長の楕円＋木の縁）・
+        施術着（赤い織りテープは襟ぐりとお腹の2か所）まで合わせ込み。<b>登場はお客様1名のみ・代表は出していない。</b></li>
+    </ol>
+  </div>
+
+  <h2>未確定の論点<small>ここが決まると動画が変わります。9/3の打ち合わせで確認したい項目</small></h2>
+  <div class="warn">
+    <h3>要確認 4点</h3>
+    <ul>
+      <li><b>よもぎの産地。</b>「江華島（カンファド）産」なら韓国の<b>地理的表示 第16号</b>の登録特産品なので、
+        他店が真似できない札になる。現状は確認が取れていないため <b>「韓国産よもぎ使用」</b>止まりにしてある
+        （「ここだけ」「唯一」は景表法・優良誤認の対象なので裏が取れるまで書けない）。</li>
+      <li><b>ロゴデータ。</b>参考にしたnifuは筆記体ロゴ＋シンボルマークを使っている。
+        現状はタイトル・CTAとも<b>明朝の文字組みで代用</b>。AI/SVG/PNGをいただきたい。</li>
+      <li><b>設定温度と施術時間。</b>「◯度で◯分」と数字で言えると、サウナとの違いがさらにはっきりする。</li>
+      <li><b>屋号のカンマと郡名。</b>「Le,Ciel」のカンマの有無／いただいたシートは「神崎郡」だが「神埼郡」で合っているか。</li>
+    </ul>
+  </div>
+  <div class="note">
+    <b>ヒアリングシートに実際と違う記載がありました。</b>シートは「幅広い年齢層の男女」でしたが、
+    実際は<b>女性専用</b>（8/29 クライアント確認済み・正本 facts.json に反映）。
+    また代表の出演もシートは「顔出し前提」ですが、実際は「出さない」でご指示をいただいています。
+    <b>他の項目もズレている可能性があるので、9/3でまとめて突き合わせたい</b>と考えています。
+  </div>
+
+  <h2>モックアップ v11<small>1920×1080（16:9）／65秒／全18カット／BGMあり</small></h2>
+  <div class="stage">
+    <video src="leciel/leciel-mockup-v11-wide.mp4" controls playsinline preload="metadata"></video>
+    <div class="cap">静止画をつないだ下書きです。実制作では全カットを動かします</div>
+    <a class="dl" href="leciel/leciel-mockup-v11-wide.mp4" target="_blank">別ウィンドウで開く</a>
+  </div>
+
+  <h2>構成の図解<small>65秒を何に使っているか</small></h2>
+  <div class="tl">
+    <div class="bar"><span class="seg" style="width:6.92%;background:#5e6b4f" title="c00 タイトル"></span><span class="seg" style="width:6.00%;background:#6b7f8c" title="c01 nifu型"></span><span class="seg" style="width:6.00%;background:#6b7f8c" title="c02 nifu型"></span><span class="seg" style="width:7.08%;background:#8a8a7a" title="c03 橋渡し"></span><span class="seg" style="width:5.69%;background:#a8804a" title="c04 YOMO型"></span><span class="seg" style="width:5.54%;background:#8c6239" title="c05 差別化①"></span><span class="seg" style="width:5.69%;background:#8c6239" title="c06 差別化①"></span><span class="seg" style="width:7.08%;background:#8c6239" title="c07 差別化①"></span><span class="seg" style="width:5.08%;background:#6b7a5e" title="c08 店内"></span><span class="seg" style="width:5.08%;background:#6b7a5e" title="c09 店内"></span><span class="seg" style="width:5.69%;background:#6b7a5e" title="c10 店内"></span><span class="seg" style="width:6.00%;background:#7a5c8c" title="c11 差別化②"></span><span class="seg" style="width:5.69%;background:#7a5c8c" title="c12 差別化②"></span><span class="seg" style="width:6.15%;background:#7a5c8c" title="c13 差別化②"></span><span class="seg" style="width:5.54%;background:#a0724f" title="c14 体感"></span><span class="seg" style="width:5.54%;background:#a0724f" title="c15 体感"></span><span class="seg" style="width:6.62%;background:#7a8a6b" title="c16 サブ"></span><span class="seg" style="width:10.31%;background:#404a36" title="c17 CTA"></span></div>
+    <div class="legend">
+      <span><i style="background:#5e6b4f"></i>タイトル（自然）</span>
+      <span><i style="background:#6b7f8c"></i>nifu型（引き込む・テロップ最小）</span>
+      <span><i style="background:#8a8a7a"></i>橋渡し</span>
+      <span><i style="background:#a8804a"></i>YOMO型（言い切る）</span>
+      <span><i style="background:#8c6239"></i>差別化①素材の差</span>
+      <span><i style="background:#6b7a5e"></i>店内（不安を消す）</span>
+      <span><i style="background:#7a5c8c"></i>差別化②体験の差</span>
+      <span><i style="background:#a0724f"></i>体感</span>
+      <span><i style="background:#7a8a6b"></i>サブ（わんちゃん）</span>
+      <span><i style="background:#404a36"></i>CTA</span>
+    </div>
+    <div class="flow">
+      <span class="b">自然</span><span class="a">→</span>
+      <span class="b">受けている女性</span><span class="a">→</span>
+      <span class="b">よもぎ</span><span class="a">→</span>
+      <span class="b">屋号</span><span class="a">→</span>
+      <span class="b">①素材の差</span><span class="a">→</span>
+      <span class="b">店内</span><span class="a">→</span>
+      <span class="b">②体験の差</span><span class="a">→</span>
+      <span class="b">体感</span><span class="a">→</span>
+      <span class="b">CTA</span>
+    </div>
+  </div>
+  <table>
+    <tr><th>区間</th><th>役割</th><th>テロップの量</th><th>狙い</th></tr>
+    <tr><td>0〜10秒<br>（nifu型）</td><td>引き込む</td><td><b>ほぼゼロ</b><br>縦組みの毛筆を左端に置くだけ</td><td>説明から入ると流される。まず画で引っかかりを作る</td></tr>
+    <tr><td>10〜24秒<br>（YOMO型・差別化①）</td><td>素材で差をつける</td><td>毎カット1〜2行</td><td>他店は「国産」が売り。その<b>裏返し</b>が Le,Ciel の武器</td></tr>
+    <tr><td>28〜34秒<br>（店内）</td><td>不安を消す</td><td>毎カット1行</td><td>「どんな所か」「何を着るか」が分からないのが来店の障壁</td></tr>
+    <tr><td>37〜48秒<br>（差別化②）</td><td>サウナとの違い</td><td>毎カット1〜2行</td><td><b>サウナでは絶対に言えない3枚</b>。ここが「サラダにならない」ための核</td></tr>
+    <tr><td>54〜65秒</td><td>サブ訴求＋締め</td><td>連絡先</td><td>わんちゃん層は男女問わず届く。最後に保存を促す</td></tr>
+  </table>
+
+  <h2>参考にした動画<small>それぞれ何を借りたか。数字は2026年8月29日時点の実測</small></h2>
+  <div class="ref">
+    <a href="https://www.instagram.com/reel/DDTlpRtxJHr/" target="_blank" rel="noopener">
+      <span class="ic">1</span>
+      <span class="t">YOMO 代官山（よもぎ蒸しサロン）<em>全体の型 — 毎カット短いキャッチで言い切る組み立て</em></span>
+      <span class="n">44秒</span></a>
+    <a href="https://www.instagram.com/reel/Ci7Y95fB8dV/" target="_blank" rel="noopener">
+      <span class="ic">2</span>
+      <span class="t">発酵温浴 nifu（吉野檜の酵素風呂）<em>★冒頭の型 — 霧の山＋縦組みタイトル＋産地表記。売り込まない入り</em></span>
+      <span class="n">15秒<br>いいね974</span></a>
+    <a href="https://www.instagram.com/reel/DRQipBVkmdK/" target="_blank" rel="noopener">
+      <span class="ic">3</span>
+      <span class="t">温spa Ayi（福岡・薬院／ハーブ温活）<em>来店ジャーニー型 — 冒頭がいきなり施術、テロップほぼゼロ、顔を出さない</em></span>
+      <span class="n">48秒<br>約6万再生</span></a>
+    <a href="https://youtu.be/K1ClTtW6z04" target="_blank" rel="noopener">
+      <span class="ic">4</span>
+      <span class="t">神戸市公式 ふるさと納税PR（サウナ編）<em>体感の記号だけで組む — 汗・温度計・砂時計。設備説明をしない</em></span>
+      <span class="n">30秒<br>99,913回</span></a>
+    <a href="https://www.instagram.com/reel/DVQooQJkwTu/" target="_blank" rel="noopener">
+      <span class="ic">5</span>
+      <span class="t">「渡韓歴60回以上だけど人生初の垢すり」<em>希少性フックの構文 — 数字＋「初」。※形式は顔出しトーク型なので不採用、フックだけ参考</em></span>
+      <span class="n">64秒<br>いいね1,938</span></a>
+  </div>
+  <div class="note">
+    <b>調べて分かったこと：よもぎ蒸しのSNS動画は、カテゴリ全体が伸びていません。</b>
+    同業種のリールはいいね20〜90が普通で（浅草の同業はTikTokで再生128〜1,275）、
+    <b>「同業種でバズった動画」は事実上存在しません</b>。<br>
+    その中で ③ の約6万再生が突出しているのは業種の力ではなく<b>型の力</b>なので、
+    「同業種で数字が良いもの」を探すより、<b>型が優れているものを他業種から借りる</b>方針にしました。
+  </div>
+
+  <h2>効果・効能を書かなかった理由<small>米光様から「効果を3枚くらい入れたい」とご相談をいただいた件</small></h2>
+  <table>
+    <tr><th>使えない表現</th><th>理由</th></tr>
+    <tr><td>デトックス／毒素／老廃物を出す</td><td><b>根拠がないと公的に整理されている</b>。薬機法＋景表法（優良誤認）の二重リスク。※業界で多用されているが入れない</td></tr>
+    <tr><td>経皮吸収／皮膚から成分が入る</td><td>「経皮吸収は実際に行われない」と整理されている</td></tr>
+    <tr><td>冷えが治る／月経不順の改善／子宮を温める</td><td>症状の改善＝医薬品的な効能効果の標榜。よもぎ蒸しは医薬品でも医療機器でもない</td></tr>
+    <tr><td>美と健康を生み出す</td><td>参考にしたnifuは使っているが、<b>あちらは物販商品でこちらは施術</b>。同じようには書けない</td></tr>
+  </table>
+  <div class="note">
+    <b>そこで「効能」ではなく「構造の違い」を言う形にしました。</b>
+    「熱くない」「下半身から蒸気で」「のぼせずに長く座れる」——これらは事実の説明であって効能ではないので安全です。
+    それでも見ている人には「サウナとは違うものだ」としっかり伝わります。<br>
+    歴史の1枚（「韓国では600年以上、受け継がれてきました」）も同じ考え方で、効能を1つも言わずに本場の裏づけになります。
+  </div>
+
+  <h2>全18カット<small>実際に焼き込んだテロップをそのまま載せています</small></h2>
+  <div class="cuts">
+    <div class="cut">
+      <div class="ph"><span class="no">C00</span><span class="tag" style="background:#5e6b4f">タイトル</span>
+      <img src="leciel-images/v11_c00.jpg" alt="c00" loading="lazy"></div>
+      <div class="tx"><span class="sec">0.0s ／ 4.5秒</span><span class="tel">（テロップなし・縦組みタイトル）</span><span class="ai">よもぎが自生する丘。nifuの「霧の吉野杉」にあたる位置</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C01</span><span class="tag" style="background:#6b7f8c">nifu型</span>
+      <img src="leciel-images/v11_c01.jpg" alt="c01" loading="lazy"></div>
+      <div class="tx"><span class="sec">3.6s ／ 3.9秒</span><span class="tel">よもぎの力を、／蒸気にのせて</span><span class="ai">★山の次にすぐ「受けているシーン」</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C02</span><span class="tag" style="background:#6b7f8c">nifu型</span>
+      <img src="leciel-images/v11_c02.jpg" alt="c02" loading="lazy"></div>
+      <div class="tx"><span class="sec">6.5s ／ 3.9秒</span><span class="tel">佐賀で、受けられます</span><span class="ai">湯気の乾燥よもぎ。本場が佐賀にある、という一撃</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C03</span><span class="tag" style="background:#8a8a7a">橋渡し</span>
+      <img src="leciel-images/v11_c03.jpg" alt="c03" loading="lazy"></div>
+      <div class="tx"><span class="sec">9.8s ／ 4.6秒</span><span class="tel">Le,Ciel（ル・シエル）／佐賀・吉野ヶ里</span><span class="ai">ここから言葉が増える</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C04</span><span class="tag" style="background:#a8804a">YOMO型</span>
+      <img src="leciel-images/v11_c04.jpg" alt="c04" loading="lazy"></div>
+      <div class="tx"><span class="sec">14.0s ／ 3.7秒</span><span class="tel">これ、サウナじゃないんです</span><span class="ai">前回「冒頭が弱い」への回答</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C05</span><span class="tag" style="background:#8c6239">差別化①</span>
+      <img src="leciel-images/v11_c05.jpg" alt="c05" loading="lazy"></div>
+      <div class="tx"><span class="sec">17.3s ／ 3.6秒</span><span class="tel">使うのは、韓国産のよもぎ</span><span class="ai">他店は「国産」が売り。その裏返し</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C06</span><span class="tag" style="background:#8c6239">差別化①</span>
+      <img src="leciel-images/v11_c06.jpg" alt="c06" loading="lazy"></div>
+      <div class="tx"><span class="sec">20.5s ／ 3.7秒</span><span class="tel">香りの濃さが、／ぜんぜん違う</span><span class="ai">「濃さ」を湯気と液面で可視化</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C07</span><span class="tag" style="background:#8c6239">差別化①</span>
+      <img src="leciel-images/v11_c07.jpg" alt="c07" loading="lazy"></div>
+      <div class="tx"><span class="sec">23.8s ／ 4.6秒</span><span class="tel">韓国では600年以上、／受け継がれてきました</span><span class="ai">★店内で実際に受けている画に変更</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C08</span><span class="tag" style="background:#6b7a5e">店内</span>
+      <img src="leciel-images/v11_c08.jpg" alt="c08" loading="lazy"></div>
+      <div class="tx"><span class="sec">28.1s ／ 3.3秒</span><span class="tel">中は、こんな感じです</span><span class="ai">受領写真どおりの内装</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C09</span><span class="tag" style="background:#6b7a5e">店内</span>
+      <img src="leciel-images/v11_c09.jpg" alt="c09" loading="lazy"></div>
+      <div class="tx"><span class="sec">31.0s ／ 3.3秒</span><span class="tel">この椅子に、座るだけ</span><span class="ai">★穴は縦長の楕円＋木の縁（実物どおり）</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C10</span><span class="tag" style="background:#6b7a5e">店内</span>
+      <img src="leciel-images/v11_c10.jpg" alt="c10" loading="lazy"></div>
+      <div class="tx"><span class="sec">34.0s ／ 3.7秒</span><span class="tel">専用の施術着に、着替えます</span><span class="ai">★赤い織りテープは襟ぐりとお腹の2か所</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C11</span><span class="tag" style="background:#7a5c8c">差別化②</span>
+      <img src="leciel-images/v11_c11.jpg" alt="c11" loading="lazy"></div>
+      <div class="tx"><span class="sec">37.4s ／ 3.9秒</span><span class="tel">サウナのように、熱くありません</span><span class="ai">★サウナでは言えない言葉①</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C12</span><span class="tag" style="background:#7a5c8c">差別化②</span>
+      <img src="leciel-images/v11_c12.jpg" alt="c12" loading="lazy"></div>
+      <div class="tx"><span class="sec">40.9s ／ 3.7秒</span><span class="tel">下半身から、蒸気でじんわり</span><span class="ai">★サウナでは言えない言葉②</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C13</span><span class="tag" style="background:#7a5c8c">差別化②</span>
+      <img src="leciel-images/v11_c13.jpg" alt="c13" loading="lazy"></div>
+      <div class="tx"><span class="sec">44.2s ／ 4.0秒</span><span class="tel">のぼせずに、／長く座っていられます</span><span class="ai">★サウナでは言えない言葉③</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C14</span><span class="tag" style="background:#a0724f">体感</span>
+      <img src="leciel-images/v11_c14.jpg" alt="c14" loading="lazy"></div>
+      <div class="tx"><span class="sec">47.9s ／ 3.6秒</span><span class="tel">じんわり、汗が出てきます</span><span class="ai">効能ではなく現象の描写</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C15</span><span class="tag" style="background:#a0724f">体感</span>
+      <img src="leciel-images/v11_c15.jpg" alt="c15" loading="lazy"></div>
+      <div class="tx"><span class="sec">51.1s ／ 3.6秒</span><span class="tel">終わったあとの、／この軽さ</span><span class="ai">お客様の未来像</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C16</span><span class="tag" style="background:#7a8a6b">サブ</span>
+      <img src="leciel-images/v11_c16.jpg" alt="c16" loading="lazy"></div>
+      <div class="tx"><span class="sec">54.3s ／ 4.3秒</span><span class="tel">わんちゃんのお手入れ・／ペット用アロマも</span><span class="ai">男女問わず届く層</span></div>
+    </div>
+    <div class="cut">
+      <div class="ph"><span class="no">C17</span><span class="tag" style="background:#404a36">CTA</span>
+      <img src="leciel-images/v11_c17.jpg" alt="c17" loading="lazy"></div>
+      <div class="tx"><span class="sec">58.3s ／ 6.7秒</span><span class="tel">Le,Ciel／韓国産よもぎ蒸し／Instagram／TEL／住所</span><span class="ai">連絡先</span></div>
+    </div>
+  </div>
+
+  <h2>ここまでの直し<small>いただいたご指摘と、どう直したか</small></h2>
+  <table>
+    <tr><th>ご指摘</th><th>対応</th></tr>
+    <tr><td>冒頭が弱い</td><td>「これ、サウナじゃないんです」の否定から入る形に→さらに v9 以降は<b>自然の風景から入る形</b>に作り替え</td></tr>
+    <tr><td>テロップの横に黒い線が入る</td><td>黒帯を全廃。<b>文字の形に沿った影だけ</b>で浮かせる方式に。強さは実測で決定</td></tr>
+    <tr><td>「スッキリした」だけだとサウナと同じ</td><td><b>差別化を2段階に分けた</b>（①素材 ②体験）。これが今の構成の背骨</td></tr>
+    <tr><td>内装が実際と違う</td><td>受領写真をもとに、板張りの壁・黄色いマット・青いカーテン・着替えスペース・木箱の観葉植物まで再現</td></tr>
+    <tr><td>登場人物は一人がよい</td><td><b>お客様役1名のみ。代表は出していない。</b>7枚を1リクエストで生成し同一人物を担保</td></tr>
+    <tr><td>カッパのようではなく服を着ている方がよい</td><td>受領写真どおりの<b>緑の半袖・半ズボン</b>に統一</td></tr>
+    <tr><td>服装が統一されていない／赤のライン</td><td>受領写真に写っていた<b>赤い織りテープ</b>を全カットに。<b>位置は胸ではなくお腹あたり</b>（実物どおり）</td></tr>
+    <tr><td>椅子が若干違う</td><td>穴を丸から<b>縦長の楕円＋内側に木の縁</b>へ。脚も太めの角材で低くずんぐりした形に</td></tr>
+    <tr><td>「600年」の画が弱い</td><td><b>実際に店内で受けている引きの画</b>に差し替え（韓屋の土間案から変更）</td></tr>
+    <tr><td>文字もnifuに似せたい</td><td>タイトルを<b>衡山毛筆</b>に。4書体を同じ背景で比較して決定</td></tr>
+  </table>
+
+  <h2>品質チェックの状況<small>クライアント送付前に残っていること</small></h2>
+  <table>
+    <tr><th>ゲート</th><th>状況</th></tr>
+    <tr><td>fact_check（正本との1文字照合）</td><td><b>ブロッカーなし。</b>屋号・代表者名・電話・住所はすべて facts.json からコピペ（手打ちなし）</td></tr>
+    <tr><td>telop_check（機械）＋決定的検証</td><td>OCRの誤読は出るが、<b>グリフ画素照合で全18カット100%</b>／テロップの同時表示ゼロ／素材の重複ゼロ</td></tr>
+    <tr><td>/video-check（別環境で目視）</td><td><b>未実施</b></td></tr>
+    <tr><td>/video-qa-relay（Cowork別AIの独立チェック→突合）</td><td><b>未実施</b>。証拠パックは作成済み</td></tr>
+    <tr><td>鈴木さんの口頭OK</td><td><b>クライアント送付には改めて必要</b></td></tr>
+  </table>
+  <div class="note">
+    <b>まだクライアントには出していません。</b>三重チェックを通してから、鈴木さんの口頭OKをいただいて送付する順序で考えています。
+  </div>
+
+</div>
+<footer>Le,Ciel 様　AI動画 構成レビュー ／ 2026年8月30日</footer>
+</body>
+</html>
