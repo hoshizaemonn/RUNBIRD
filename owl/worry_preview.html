@@ -133,14 +133,14 @@ body[data-view="over"] .range{display:flex}
   aspect-ratio:42.5/49.5;   /* 元画像のカード比率 */
   padding:5.4cqw 2.6cqw 5cqw !important;   /* 左右を詰めないと『得られる事業をしたい』が3行に割れる */
   display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-  gap:4.0cqw;
+  gap:3.4cqw;
   text-align:center; font-weight:700; color:var(--wr-ink2);   /* 900は太すぎた（インク量が3割増） */
   font-size:clamp(11px,3.53cqw,33px); line-height:1.72;
 }
 .owlwr-cards li .tx{display:flex;flex-direction:column;justify-content:center;min-height:3.44em}   /* 1行のカードも2行ぶんの中央に来るようにする */
 .owlwr-cards li .tx .ln{display:block;width:fit-content;margin-inline:auto}
 .owlwr img.owlwr-ic{
-  width:auto !important; max-width:100% !important; height:23.8cqw !important; max-height:210px !important;
+  width:auto !important; max-width:100% !important; height:22.4cqw !important; max-height:198px !important;
   margin:0 !important; object-fit:contain; display:block !important;
 }
 
@@ -153,17 +153,17 @@ body[data-view="over"] .range{display:flex}
 
 /* PC：見出し1行・カード4列（本番PC版 02_worry.jpg と同じ並び） */
 @media (min-width:860px){
-  .owlwr.owlwr.owlwr{padding:0 0 13.2% !important}
+  .owlwr.owlwr.owlwr{padding:0 0 14.4% !important}
   .owlwr-wave--t{height:12.1cqw;max-height:200px}
   .owlwr-wave--b{height:13.8cqw;max-height:230px}
-  .owlwr .owlwr-in.owlwr-in{padding:0 8.0% !important}
+  .owlwr .owlwr-in.owlwr-in{padding:0 9.2% !important}   /* 元画像のカード左端と同じ位置 */
   .owlwr-h2{padding:10.6cqw 0 1.1cqw !important; font-size:clamp(32px,5.9cqw,104px)}
   .owlwr-h2 .ln{display:inline}
   .owlwr-cards{grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.8%}
   .owlwr-cards li{aspect-ratio:19.8/23.8; border-radius:1.6cqw; padding:2.6cqw 0.5cqw 2.2cqw !important;   /* PCも同様。詰めないと2行が3行に割れる */
-                  gap:2.2cqw; font-size:clamp(12px,1.71cqw,32px)}
-  .owlwr img.owlwr-ic{height:11.9cqw !important;max-height:210px !important}
-  .owlwr img.owlwr-mascot{width:14.2% !important;left:2.4%}
+                  gap:1.5cqw; font-size:clamp(12px,1.71cqw,32px); line-height:1.6}
+  .owlwr img.owlwr-ic{height:10.4cqw !important;max-height:185px !important}
+  .owlwr img.owlwr-mascot{width:14.2% !important;left:2.4%;bottom:0}   /* 元画像と同じ高さに置く（カード1の文字と深く重ならないように） */
   .owlwr .owlwr-spark{display:none !important}   /* PC装飾画像にキラキラが含まれているので二重描画になる */
   .owlwr .owlwr-dec--sp{display:none}
   .owlwr .owlwr-dec--pc{display:block}
@@ -246,7 +246,7 @@ body[data-view="over"] .range{display:flex}
 <div class="note" style="padding-bottom:40px">
   <b>元画像との突合（機械測定）：</b>
   スマホはカード4枚・見出し2行・フクロウ・キラキラのすべてが元画像と一致（全体比率 178.0% / 元 177.7%）。
-  PCも4枚とも一致（57.7% / 元 57.1%）。320〜1920pxの13幅で横スクロール0px・本文2行を維持。
+  PCも4枚とも一致（56.8% / 元 57.1%）。<b>フクロウとカードの文字の重なりは画素レベルで0</b>（8/29 17:40 修正）。320〜1920pxの13幅で横スクロール0px・本文2行を維持。
 </div>
 
 <script>
