@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="ja"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>OWL 02_worry HTML化プレビュー 2026-08-29</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#eef2f6;font-family:system-ui,"Hiragino Kaku Gothic ProN",sans-serif;color:#22406b}
+.bar{position:sticky;top:0;z-index:99;background:#22406b;color:#fff;padding:10px 14px;
+     display:flex;gap:8px;align-items:center;flex-wrap:wrap;font:700 13px/1.5 system-ui}
+.bar .t{margin-right:auto}
+.bar button{font:700 13px system-ui;border:0;border-radius:999px;padding:7px 14px;cursor:pointer;
+     background:#ffffff22;color:#fff}
+.bar button.on{background:#fff;color:#22406b}
+.note{max-width:900px;margin:14px auto;padding:0 14px;font:13.5px/1.9 system-ui;color:#33475b}
+.note b{color:#22406b}
+.stage{background:#fff}
+.wrap{position:relative}
+.orig{display:block;width:100%}
+.orig--pc{display:none}
+@media(min-width:860px){.orig--sp{display:none}.orig--pc{display:block}}
+body[data-view="orig"] .html-ver{display:none}
+body[data-view="html"] .orig-ver{display:none}
+body[data-view="over"] .orig-ver{position:absolute;inset:0;z-index:5;opacity:var(--op,.5);pointer-events:none}
+body[data-view="over"] .orig-ver img{height:100%;object-fit:fill}
+.range{display:none;align-items:center;gap:8px}
+body[data-view="over"] .range{display:flex}
+.tag{position:absolute;left:8px;top:8px;z-index:9;background:#22406bcc;color:#fff;
+     font:700 11px system-ui;padding:4px 9px;border-radius:999px}
+</style></head>
+<body data-view="html">
+
+<div class="bar">
+  <span class="t">OWL「こんなお悩み、ありませんか？」— 焼き込み画像 → HTML化</span>
+  <button data-v="html" class="on">HTML版</button>
+  <button data-v="orig">元画像</button>
+  <button data-v="over">重ねる</button>
+  <span class="range"><input type="range" min="0" max="100" value="50" id="op"><span id="opv">50%</span></span>
+</div>
+
+<div class="note">
+  <b>見てほしいところ：</b>ブラウザの幅を変えると、860pxを境にスマホ版（2×2）とPC版（横4列）が切り替わります。
+  「重ねる」を選ぶと元画像を半透明で重ねられます（ズレの確認用）。<br>
+  <b>中身：</b>見出し・カードの文字はすべてHTMLのテキスト（＝Googleが読める）。
+  アイコン4つ・キラキラ・フクロウ・ドットは<b>元画像から切り出した本物</b>です。
+  <b>文言・数値は1文字も変えていません。</b>
+</div>
+
+<div class="stage">
+  <div class="owl-lp-wrap">
+    <div class="owl-lp-card" style="max-width:480px;width:100%;margin:0 auto;background:#fef8ed;overflow:hidden;position:relative;z-index:1">
+      <div class="wrap">
+        <span class="tag">HTML版</span>
+<style>
+/* OWL 02_worry — 焼き込み画像をHTML化（2026-08-29） */
+.owlwr{
+  --wr-cream:#fffaf0;      /* 地 */
+  --wr-band:#feefce;       /* 上下の波の帯 */
+  --wr-band2:#ffeeca;      /* 下の帯 */
+  --wr-ink:#082652;        /* 見出しの紺 */
+  --wr-ink2:#142a53;       /* カード文字の紺 */
+  --wr-line:#a9d0e9;       /* カードの枠線 */
+  --wr-dot:#e2d9ab;        /* ドット */
+  position:relative; overflow:hidden;
+  container-type:inline-size;   /* 以降の cqw は「このセクションの幅」基準 */
+  background:var(--wr-cream);
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  color:var(--wr-ink);
+  padding:0 0 31cqw !important;   /* ★下の .owlwr.owlwr.owlwr で上書きしている（ホストの padding:0!important 対策）
+                                    下の帯とフクロウの分（元画像は カード下端145.7% → 全高177.7%） */
+  isolation:isolate;
+}
+.owlwr,.owlwr *,.owlwr *::before,.owlwr *::after{box-sizing:border-box}
+
+/* ★詳細度の書き戻し（ホスト: .owl-lp-wrap section,.owl-lp-wrap div:not(.owl-lp-card){padding:0!important} = (0,2,1)）
+   クラス3つ(0,3,0)にしないと下の余白とセクション内側の余白が全部0にされる。短くしないこと。 */
+.owlwr.owlwr.owlwr{padding:0 0 29.6% !important}
+/* ★ここは cqw ではなく % を使うこと。
+   container-type は「子孫」にしか効かないので、コンテナ自身の cqw は
+   祖先のコンテナ（無ければビューポート＝vw相当）で解決される。
+   実測：1600px幅では正しく230pxだが、1920pxのビューポートでは278pxになり下余白が46px膨らんだ。 */
+
+/* ── ホストLPのリセットを打ち消す（.owl-lp-wrap 配下の !important 対策）──
+   打ち消し対象は罠5-61と同じ:
+     section/div{margin:0!important;padding:0!important} / img{height:auto!important;margin:0!important}
+     .owl-lp-card img{width:100%!important}（768px以上・0,1,1）→ 画像は .owlwr img.xxx（0,2,1）で書く
+     p{display:contents!important} / br{display:none!important} → <p>と<br>は使わない */
+
+/* 上下の波 */
+.owlwr-wave{position:absolute;left:0;width:100%;z-index:0;display:block;pointer-events:none}
+.owlwr-wave--t{top:0;height:17cqw;max-height:170px}
+.owlwr-wave--b{bottom:0;height:18cqw;max-height:180px}
+.owlwr-wave svg{width:100%;height:100%;display:block}
+
+/* ドット（右下・右上） */
+/* 装飾（ドット・線）は元画像から切り出したものを使う。
+   CSSのradial-gradientでは「三角形に並ぶ粒」「杏色」が再現できず、
+   background-size:%が親の箱基準になって網目に潰れる事故も起きた。 */
+.owlwr-dec{position:absolute;z-index:1;pointer-events:none}
+.owlwr img.owlwr-dec{height:auto !important;margin:0 !important}
+.owlwr img.owlwr-dec--tr{left:80.6%;top:3.2cqw;width:17.0% !important}
+.owlwr img.owlwr-dec--br{left:62.9%;bottom:2.5cqw;width:34.0% !important}
+.owlwr img.owlwr-dec--bl{left:0;bottom:0;width:40.4% !important}
+.owlwr .owlwr-dec--pc{display:none}
+
+.owlwr .owlwr-in.owlwr-in{position:relative;z-index:2;padding:0 5.9% !important}
+
+/* 見出し */
+.owlwr-h2{
+  margin:0 !important; padding:15.6cqw 0 5.4cqw !important;
+  border:0 !important; background:none !important;   /* ★Lightning/VKの h2 は上下にボーダーを持つ。消さないとティールの横線が出る */
+  text-align:center; font-weight:800; color:var(--wr-ink);
+  font-feature-settings:"palt" 1;   /* 元画像は読点が詰まっている */
+  font-size:clamp(29px,10.05cqw,94px); line-height:1.2; letter-spacing:.01em;
+}
+.owlwr-h2 .ln{display:block;width:fit-content;margin-inline:auto}   /* <br>は使わない（罠5-61） */
+
+/* 見出し脇のキラキラ */
+.owlwr-spark{position:absolute;z-index:3;pointer-events:none}
+.owlwr img.owlwr-spark{width:8.4% !important;height:auto !important;margin:0 !important}
+.owlwr-spark--l{left:5.5%;top:17.4%}
+.owlwr-spark--r{right:5.9%;top:18%}
+
+/* カード 2×2 */
+.owlwr-cards{
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr));   /* ★minmax(0,1fr)にしないと、横長のアイコン(326x227)が列の最小幅を押し広げてカードが太る */
+  column-gap:3.1%; row-gap:2.44cqw; margin:0 !important; padding:0 !important; list-style:none;
+}
+.owlwr-cards li{
+  list-style:none; margin:0 !important;
+  background:#fff; border:max(2px,0.53cqw) solid var(--wr-line); border-radius:4.2cqw;
+  box-shadow:0 2px 6px rgba(30,58,95,.05);
+  aspect-ratio:42.5/49.5;   /* 元画像のカード比率 */
+  padding:5.4cqw 2.6cqw 5cqw !important;   /* 左右を詰めないと『得られる事業をしたい』が3行に割れる */
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  gap:4.0cqw;
+  text-align:center; font-weight:700; color:var(--wr-ink2);   /* 900は太すぎた（インク量が3割増） */
+  font-size:clamp(11px,3.53cqw,33px); line-height:1.72;
+}
+.owlwr-cards li .tx{display:flex;flex-direction:column;justify-content:center;min-height:3.44em}   /* 1行のカードも2行ぶんの中央に来るようにする */
+.owlwr-cards li .tx .ln{display:block;width:fit-content;margin-inline:auto}
+.owlwr img.owlwr-ic{
+  width:auto !important; max-width:100% !important; height:23.8cqw !important; max-height:210px !important;
+  margin:0 !important; object-fit:contain; display:block !important;
+}
+
+/* フクロウ（左下・カードに重なる） */
+.owlwr img.owlwr-mascot{
+  position:absolute; z-index:4; left:5.4%; bottom:1.3cqw;
+  width:31.4% !important; height:auto !important; margin:0 !important;
+  pointer-events:none;
+}
+
+/* PC：見出し1行・カード4列（本番PC版 02_worry.jpg と同じ並び） */
+@media (min-width:860px){
+  .owlwr.owlwr.owlwr{padding:0 0 13.2% !important}
+  .owlwr-wave--t{height:12.1cqw;max-height:200px}
+  .owlwr-wave--b{height:13.8cqw;max-height:230px}
+  .owlwr .owlwr-in.owlwr-in{padding:0 8.0% !important}
+  .owlwr-h2{padding:10.6cqw 0 1.1cqw !important; font-size:clamp(32px,5.9cqw,104px)}
+  .owlwr-h2 .ln{display:inline}
+  .owlwr-cards{grid-template-columns:repeat(4,minmax(0,1fr)); gap:1.8%}
+  .owlwr-cards li{aspect-ratio:19.8/23.8; border-radius:1.6cqw; padding:2.6cqw 0.5cqw 2.2cqw !important;   /* PCも同様。詰めないと2行が3行に割れる */
+                  gap:2.2cqw; font-size:clamp(12px,1.71cqw,32px)}
+  .owlwr img.owlwr-ic{height:11.9cqw !important;max-height:210px !important}
+  .owlwr img.owlwr-mascot{width:14.2% !important;left:2.4%}
+  .owlwr .owlwr-spark{display:none !important}   /* PC装飾画像にキラキラが含まれているので二重描画になる */
+  .owlwr .owlwr-dec--sp{display:none}
+  .owlwr .owlwr-dec--pc{display:block}
+  .owlwr img.owlwr-dec--ptl{left:0;top:0.9cqw;width:14.9% !important}
+  .owlwr img.owlwr-dec--ptr{left:89.25%;top:0.9cqw;width:10.75% !important}
+  .owlwr img.owlwr-dec--pb{left:0;bottom:0;width:100% !important}
+
+}
+
+/* 360px 最終防衛（罠5-58：前段で詰めた値と矛盾させない） */
+@media (max-width:380px){
+  .owlwr .owlwr-in.owlwr-in{padding:0 4.5% !important}
+  .owlwr-cards{gap:2.6%}
+  .owlwr-cards li{padding:7% 2.5% 6% !important}
+}
+</style>
+
+<section class="owlwr" aria-labelledby="owlwr-h">
+
+  <!-- 上の波（元画像の境界を実測してトレース） -->
+  <div class="owlwr-wave owlwr-wave--t" aria-hidden="true">
+    <svg viewBox="0 0 941 170" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#feefce" d="M0,0 L941,0 L941,-1 L0,-1 Z"/>
+      <path fill="#feefce" d="M0,156 C78,106 156,83 234,74 C312,71 390,59 468,40 C546,16 585,4 624,0 L0,0 Z"/>
+    </svg>
+  </div>
+
+  <!-- 下の波 -->
+  <div class="owlwr-wave owlwr-wave--b" aria-hidden="true">
+    <svg viewBox="0 0 941 172" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#ffeeca" d="M0,0 L234,0 C312,40 390,40 468,47 C546,44 585,36 624,0 L941,0 L941,172 L0,172 Z"/>
+    </svg>
+  </div>
+
+  <img class="owlwr-spark owlwr-spark--l" src="worry_20260829/spark1.webp" alt="" aria-hidden="true" width="84" height="93" loading="lazy" decoding="async">
+  <img class="owlwr-spark owlwr-spark--r" src="worry_20260829/spark7.webp" alt="" aria-hidden="true" width="80" height="92" loading="lazy" decoding="async">
+
+  <img class="owlwr-dec owlwr-dec--sp owlwr-dec--tr" src="worry_20260829/dots_tr.webp" alt="" aria-hidden="true" width="160" height="156" loading="lazy" decoding="async">
+  <img class="owlwr-dec owlwr-dec--sp owlwr-dec--br" src="worry_20260829/dots_br.webp" alt="" aria-hidden="true" width="320" height="216" loading="lazy" decoding="async">
+  <img class="owlwr-dec owlwr-dec--sp owlwr-dec--bl" src="worry_20260829/deco_bl.webp" alt="" aria-hidden="true" width="380" height="324" loading="lazy" decoding="async">
+  <img class="owlwr-dec owlwr-dec--pc owlwr-dec--ptl" src="worry_20260829/pcdec_tl.webp" alt="" aria-hidden="true" width="238" height="286" loading="lazy" decoding="async">
+  <img class="owlwr-dec owlwr-dec--pc owlwr-dec--ptr" src="worry_20260829/pcdec_tr.webp" alt="" aria-hidden="true" width="172" height="286" loading="lazy" decoding="async">
+  <img class="owlwr-dec owlwr-dec--pc owlwr-dec--pb" src="worry_20260829/pcdec_b.webp" alt="" aria-hidden="true" width="1600" height="228" loading="lazy" decoding="async">
+
+  <div class="owlwr-in">
+    <h2 class="owlwr-h2" id="owlwr-h"><span class="ln">こんなお悩み、</span><span class="ln">ありませんか？</span></h2>
+
+    <ul class="owlwr-cards">
+      <li>
+        <img class="owlwr-ic" src="worry_20260829/icon_01_chart.webp" alt="" aria-hidden="true" width="227" height="237" loading="lazy" decoding="async">
+        <span class="tx"><span class="ln">安定した収入を</span><span class="ln">得られる事業をしたい</span></span>
+      </li>
+      <li>
+        <img class="owlwr-ic" src="worry_20260829/icon_02_heart.webp" alt="" aria-hidden="true" width="208" height="236" loading="lazy" decoding="async">
+        <span class="tx"><span class="ln">福祉に興味があるが、</span><span class="ln">未経験で不安</span></span>
+      </li>
+      <li>
+        <img class="owlwr-ic" src="worry_20260829/icon_03_wallet.webp" alt="" aria-hidden="true" width="222" height="211" loading="lazy" decoding="async">
+        <span class="tx"><span class="ln">初期投資が心配</span></span>
+      </li>
+      <li>
+        <img class="owlwr-ic" src="worry_20260829/icon_04_hands.webp" alt="" aria-hidden="true" width="326" height="227" loading="lazy" decoding="async">
+        <span class="tx"><span class="ln">社会貢献できる</span><span class="ln">仕事をしたい</span></span>
+      </li>
+    </ul>
+  </div>
+
+  <img class="owlwr-mascot" src="worry_20260829/mascot.webp" alt="" aria-hidden="true" width="320" height="409" loading="lazy" decoding="async">
+
+</section>
+        <div class="orig-ver">
+          <img class="orig orig--sp" src="worry_20260829/_original_sp.webp" alt="元画像（スマホ）">
+          <img class="orig orig--pc" src="worry_20260829/_original_pc.webp" alt="元画像（PC）">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="note" style="padding-bottom:40px">
+  <b>元画像との突合（機械測定）：</b>
+  スマホはカード4枚・見出し2行・フクロウ・キラキラのすべてが元画像と一致（全体比率 178.0% / 元 177.7%）。
+  PCも4枚とも一致（57.7% / 元 57.1%）。320〜1920pxの13幅で横スクロール0px・本文2行を維持。
+</div>
+
+<script>
+/* 元LPのリセットCSS（.owl-lp-wrap 配下）をそのまま再現しています */
+document.querySelectorAll('.bar button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.bar button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on'); document.body.dataset.view=b.dataset.v;});
+const op=document.getElementById('op');
+op.oninput=()=>{document.body.style.setProperty('--op',op.value/100);document.getElementById('opv').textContent=op.value+'%';};
+</script>
+<style>
+/* ▼ 本番LPのリセットCSS（そのまま持ってきたもの。ここに勝てるように作ってある） */
+
+.owl-lp-wrap, .owl-lp-wrap * { box-sizing: border-box !important; }
+.owl-lp-wrap p { margin: 0 !important; padding: 0 !important; display: contents !important; }
+.owl-lp-wrap br { display: none !important; }
+.owl-lp-wrap a { text-decoration: none !important; }
+.owl-lp-wrap img { max-width: 100% !important; height: auto !important; display: block !important; margin: 0 !important; }
+.owl-lp-wrap section, .owl-lp-wrap div:not(.owl-lp-card) { margin: 0 !important; padding: 0 !important; }
+.owl-lp-card { margin-left: auto !important; margin-right: auto !important; align-self: center !important; }</p>
+<p>.owl-lp-wrap {
+  position: relative !important;
+  width: 100vw !important;
+  left: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}</p>
+<p>.owl-btn, .owl-btn *, a.owl-btn, a.owl-btn *,
+.owl-cta-dark, .owl-cta-dark *, .owl-cta-dark a, .owl-cta-dark a *,
+.owl-tel-link, .owl-tel-link * {
+  color: #ffffff !important;
+}
+.owl-btn svg path, .owl-btn svg rect, .owl-btn svg line, .owl-btn svg polyline, .owl-btn svg circle {
+  stroke: #ffffff !important;
+}
+.owl-tel-link svg path { fill: #ffffff !important; stroke: none !important; }</p>
+<p>.owl-float-cta-bar { display: none !important; }</p>
+<p>/* WPが自動挿入する空のp/brを非表示 */
+body > p, body > br,
+.entry-content > p:empty, .entry-content > p:not(:has(*)),
+.entry-content > p, .entry-content > br,
+.entry > p, .entry > br,
+article > p:empty, article > br {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}</p>
+<p>@media (min-width: 768px) {
+  .owl-lp-card { max-width: 600px !important; }
+}
+@media (min-width: 1200px) {
+  .owl-lp-card { max-width: 680px !important; }
+}</p>
+<p>body header[role="banner"], body header.l-header, body header#site-header, body .site-header, body .global-header,
+body footer[role="contentinfo"], body footer.l-footer, body footer#site-footer, body .site-footer, body .global-footer,
+body .breadcrumb, body .breadcrumb-list, body #breadcrumb,
+body .page-title, body .ld-page-title, body #page-title, body .pageHeader, body .page-header {
+  display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important;
+}
+html, body, body .site, body #main, body .l-main, body .entry-content, body .entry, body article, body main, body .container, body .wrap, body .wrapper, body .site-body, body .site-content {
+  padding-top: 0 !important; padding-bottom: 0 !important;
+  padding-left: 0 !important; padding-right: 0 !important;
+  margin-top: 0 !important; margin-bottom: 0 !important;
+  margin-left: 0 !important; margin-right: 0 !important;
+  max-width: 100% !important; width: 100% !important;
+  background: transparent !important;
+}
+html {
+  background: linear-gradient(180deg,#fef0d5 0%,#fdf6e6 40%,#e8f2f8 100%) !important;
+  background-attachment: fixed !important;
+}</p>
+<p>@keyframes owlPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+@keyframes owlShimmer { 0% { left: -100%; } 60% { left: 120%; } 100% { left: 120%; } }
+.owl-btn { animation: owlPulse 2.4s ease-in-out infinite; }
+.owl-btn.delay { animation-delay: 1.2s; }
+.owl-btn::before { content:""; position:absolute; top:0; left:-100%; width:70%; height:100%; background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5) 50%, transparent); transform:skewX(-20deg); animation:owlShimmer 3s ease-in-out infinite; pointer-events:none; }
+.owl-btn.delay::before { animation-delay: 1.5s; }
+
+.owlfv2-wrap{background:#fafaf5;padding:0;margin:0}.owlfv2{position:relative;width:100%;max-width:none;margin:0 auto;aspect-ratio:941/1672;background:#fafaf5;overflow:hidden}.owlfv2>img{display:block;width:100%;height:100%;object-fit:cover}.owlfv2 .cta-top{position:absolute;top:2.1%;right:3.2%;display:inline-flex;align-items:center;gap:.35em;background:#f5843c;color:#fff;font-weight:700;text-decoration:none;font-size:clamp(12px,3.1vw,16px);padding:.62em 1.15em;border-radius:999px;box-shadow:0 3px 10px rgba(245,132,60,.4);white-space:nowrap}.owlfv2 .cta-top:hover{background:#e8731f;transform:translateY(-1px);box-shadow:0 5px 14px rgba(245,132,60,.5)}.owlfv2 .cta-top:active{transform:translateY(0) scale(.98)}.owlfv2 .cta-main{position:absolute;left:50%;bottom:2.6%;transform:translateX(-50%);width:90%;display:flex;align-items:center;justify-content:center;gap:.4em;background:linear-gradient(180deg,#46a046,#3d8b3d);color:#fff;text-decoration:none;font-weight:800;font-size:clamp(19px,5.6vw,32px);letter-spacing:.02em;padding:.66em 0;border-radius:14px;box-shadow:0 6px 18px rgba(61,139,61,.42);animation:owlpulse 2.4s ease-in-out infinite}.owlfv2 .cta-main:hover{filter:brightness(1.05);transform:translateX(-50%) translateY(-2px);box-shadow:0 10px 26px rgba(61,139,61,.5);animation:none}.owlfv2 .cta-main:active{transform:translateX(-50%) translateY(0) scale(.99)}@keyframes owlpulse{0%,100%{box-shadow:0 6px 18px rgba(61,139,61,.42)}50%{box-shadow:0 6px 26px rgba(61,139,61,.75)}}.owl-lp-wrap{padding-left:8px!important;padding-right:8px!important}@media(min-width:768px){.owlfv2-wrap{padding:24px 0}.owlfv2{box-shadow:0 8px 30px rgba(0,0,0,.10);border-radius:16px}.owl-lp-card{max-width:600px!important}}@media(min-width:1200px){.owl-lp-card{max-width:680px!important}}@media(prefers-reduced-motion:reduce){.owlfv2 .cta-main{animation:none}}
+
+/* OWL FV v2 — 焼き込み画像をHTML化したファーストビュー（2026-08-29） */
+.owlfv{
+  --fv-ink:#090908; --fv-red:#d1251f; --fv-sub:#504e49;
+  --fv-green:#3aa144; --fv-orange:#f0861b; --fv-blue:#2687c3;
+  --fv-cream:#fcf9ef; --fv-cta:#f0861b;
+  position:relative; background:var(--fv-cream); overflow:hidden;
+  font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  color:var(--fv-ink); isolation:isolate;
+}
+.owlfv,.owlfv *,.owlfv *::before,.owlfv *::after{box-sizing:border-box}
+/* ── ホストLPのリセットを打ち消す（.owl-lp-wrap 配下の !important 対策） ──
+   打ち消し対象:
+     .owl-lp-wrap section,.owl-lp-wrap div:not(.owl-lp-card){margin:0!important;padding:0!important}
+     .owl-lp-wrap img{height:auto!important;margin:0!important}
+     .owl-lp-card img{width:100%!important;max-width:100%!important}  ← 768px以上
+     .owl-lp-wrap p{display:contents!important} / .owl-lp-wrap br{display:none!important}
+   ↑のためロゴ幅・写真高さ・内側の余白は全部 !important で書き戻している。 */
+/* 写真（差し替え口はここだけ） */
+.owlfv-photo{position:relative;order:-1;width:100%}
+.owlfv-photo picture{display:block;width:100%;height:100%}   /* 罠5-56 */
+.owlfv-photo img{
+  width:100% !important; max-width:100% !important;
+  height:clamp(190px,54vw,340px) !important;
+  object-fit:cover; object-position:var(--fv-photo-pos,50% 42%);
+  display:block !important; margin:0 !important; border-radius:0 !important;
+}
+/* ロゴ
+   ★ セレクタは `.owlfv img.owlfv-logo`（詳細度0,2,1）にすること。
+     `.owlfv-logo`(0,1,0) だとホスト側の `.owl-lp-card img{width:100%!important}`
+     （768px以上・0,1,1・こちらより後方に定義）に負けて、
+     768px以上でロゴが幅いっぱいに伸びる（実測: 768pxで幅752px・1920pxで855px）。 */
+.owlfv img.owlfv-logo{
+  width:clamp(132px,37vw,300px) !important; max-width:60% !important; height:auto !important;
+  margin:clamp(12px,3.4vw,26px) 0 clamp(10px,2.6vw,20px) clamp(14px,3.6vw,34px) !important;
+  display:block !important;
+}
+/* 本文側 */
+.owlfv-body{
+  position:relative; z-index:2;
+  padding:clamp(18px,4.4vw,36px) clamp(8px,2.2vw,34px) clamp(22px,4.4vw,40px) !important;
+  display:flex; flex-direction:column; align-items:center; text-align:center;
+  gap:clamp(11px,2.2vw,18px);
+}
+.owlfv-h1{
+  margin:0 !important; padding:0 !important; font-weight:900; line-height:1.22; letter-spacing:.005em;
+  font-size:clamp(27px,10.3vw,62px); color:var(--fv-ink);
+}
+.owlfv-h1 .ln{display:block}                 /* <br>禁止（ホストが br を display:none にする） */
+.owlfv-h1 .hl{color:var(--fv-red)}
+.owlfv-h1 .yen{color:var(--fv-red);font-size:.66em;vertical-align:.06em;margin-right:.02em}
+.owlfv-h1 .sm{font-size:.62em}
+.owlfv-sub{                                   /* <p>禁止（ホストが p を display:contents にする） */
+  margin:0 !important; padding:0 !important; color:var(--fv-sub); font-weight:700; line-height:1.7;
+  font-size:clamp(11.4px,3.12vw,20px); white-space:nowrap;
+}
+.owlfv-sub b{font-weight:900;color:var(--fv-ink);font-size:1.1em}
+.owlfv-sub .sep{margin:0 .34em;color:#c9c6bf}
+.owlfv-sub .it{white-space:nowrap;display:inline-block}
+/* 丸バッジ3つ */
+.owlfv-badges{
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:clamp(9px,2.9vw,24px);
+  width:100%; max-width:clamp(258px,74vw,470px);
+  margin-top:clamp(4px,1.4vw,12px) !important;
+}
+.owlfv-badges .b{
+  aspect-ratio:1; border-radius:50%; color:#fff;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; line-height:1.15; padding:6px !important;
+  box-shadow:0 6px 16px rgba(30,58,95,.16);
+}
+.owlfv-badges .b1{background:var(--fv-green)}
+.owlfv-badges .b2{background:var(--fv-orange)}
+.owlfv-badges .b3{background:var(--fv-blue)}
+.owlfv-badges .k{font-size:clamp(9px,2.5vw,15px);font-weight:900;margin-bottom:.15em}
+.owlfv-badges .v{font-size:clamp(21px,6.4vw,40px);font-weight:900;letter-spacing:-.02em}
+.owlfv-badges .v small{font-size:.5em;font-weight:900}
+.owlfv-badges .u{font-size:clamp(9px,2.5vw,15px);font-weight:900;margin-top:.1em}
+/* CTA（class="owl-btn" を必ず残す＝モーダルの発火条件） */
+.owlfv-cta{
+  display:flex !important; align-items:center; justify-content:center; gap:.45em;
+  width:100%; max-width:520px;
+  background:linear-gradient(180deg,#f5943a,var(--fv-cta));
+  color:#fff !important; text-decoration:none !important; font-weight:900;
+  font-size:clamp(17px,5vw,30px); letter-spacing:.02em;
+  padding:.66em 1em !important; border-radius:14px;
+  box-shadow:0 8px 22px rgba(226,118,16,.42);
+  position:relative; overflow:hidden;
+  animation:owlfvPulse 2.4s ease-in-out infinite;
+}
+.owlfv-cta::before{
+  content:"";position:absolute;inset:0 auto 0 -100%;width:70%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.45) 50%,transparent);
+  transform:skewX(-20deg);animation:owlfvShine 3s ease-in-out infinite;pointer-events:none;
+}
+.owlfv-cta .tri{font-size:.8em;line-height:1}
+@keyframes owlfvPulse{0%,100%{box-shadow:0 8px 22px rgba(226,118,16,.42)}50%{box-shadow:0 8px 30px rgba(226,118,16,.72)}}
+@keyframes owlfvShine{0%{left:-100%}60%{left:130%}100%{left:130%}}
+@media (prefers-reduced-motion:reduce){.owlfv-cta{animation:none}.owlfv-cta::before{display:none}}
+.owlfv-cta-top{
+  position:absolute;top:clamp(10px,2.4vw,20px);right:clamp(10px,2.4vw,20px);z-index:5;
+  display:inline-flex;align-items:center;gap:.3em;
+  background:var(--fv-cta);color:#fff !important;text-decoration:none !important;font-weight:900;
+  font-size:clamp(11px,2.9vw,16px);padding:.6em 1.05em !important;border-radius:999px;
+  box-shadow:0 3px 10px rgba(226,118,16,.42);white-space:nowrap;
+}
+/* スマホは上部の固定バー(.owl-sticky-bar)にCTAがあるので出さない＝現行と同じ挙動 */
+@media (max-width:767px){.owlfv-cta-top{display:none !important}}
+/* タブレット帯（640〜859px）はロゴを頭打ちにする。
+   37vw のままだと 768px でロゴ284px＝PC(1280px)の218pxより大きくなる逆転が起き、
+   その分だけCTAがファーストビューの外へ押し出される。 */
+@media (min-width:640px) and (max-width:859px){
+  .owlfv img.owlfv-logo{width:min(37vw,200px) !important}
+}
+/* PC: 文字が左54% / 写真が右46% */
+@media (min-width:860px){
+  .owlfv{display:grid;grid-template-columns:minmax(0,54%) minmax(0,46%);align-items:stretch}
+  .owlfv img.owlfv-logo{grid-column:1;grid-row:1;align-self:start;z-index:3;
+              width:clamp(200px,20vw,320px) !important;   /* 焼き込みPC版は約22.8vw。近づける */
+              margin:clamp(24px,2.6vw,40px) 0 0 clamp(24px,3vw,44px) !important}
+  .owlfv-body{grid-column:1;grid-row:1;justify-content:center;align-items:flex-start;text-align:left;
+              padding-top:clamp(96px,11vw,150px) !important;padding-right:clamp(24px,3vw,40px) !important}
+  .owlfv-h1{font-size:clamp(28px,4.4vw,52px)}
+  .owlfv-sub{font-size:clamp(11px,1.35vw,17px)}
+  .owlfv-cta{max-width:560px}
+  .owlfv-badges{max-width:470px}
+  .owlfv-photo{                                   /* 罠5-57: grid-row も明示する */
+    order:0;grid-column:2;grid-row:1;height:100%;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.55) 7%,#000 18%);
+            mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.55) 7%,#000 18%);
+  }
+  .owlfv-photo picture{height:100%;min-height:480px}
+  .owlfv-photo img{height:100% !important;min-height:480px !important;object-position:50% 50%}
+}
+/* 360px 最終防衛（罠5-58: 前段で詰めた余白と矛盾させない） */
+@media (max-width:380px){
+  .owlfv-body{padding:16px 8px 20px !important;gap:11px}
+  .owlfv-badges{gap:7px}
+  .owlfv-badges .k,.owlfv-badges .u{font-size:9px}
+}
+
+
+/* ===== OWL 0円プランLP : このLP限定の追加スタイル ===== */
+html,body{overflow-x:hidden !important;}
+
+/* (1) 追従 資料請求バー */
+.owl-sticky-bar{position:fixed;top:0;left:0;right:0;z-index:9990;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 16px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.10);border-bottom:1px solid #eee;transform:translateY(-120%);transition:transform .28s ease;font-family:"Noto Sans JP","Hiragino Sans",sans-serif;}
+body.owl-hdr-scrolled .owl-sticky-bar{transform:translateY(0);}
+.owl-sticky-logo{height:36px;width:auto;display:block;}
+.owl-sticky-actions{display:flex;align-items:center;gap:12px;}
+.owl-sticky-tel{color:#f0771f;font-weight:800;text-decoration:none;font-size:15px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px;}
+.owl-sticky-cta{background:linear-gradient(180deg,#ff9a3d,#f0771f);color:#fff;font-weight:800;text-decoration:none;font-size:15px;padding:11px 20px;border-radius:999px;box-shadow:0 4px 12px rgba(240,119,31,.45);white-space:nowrap;transition:filter .15s,transform .15s;}
+.owl-sticky-cta:hover{filter:brightness(1.06);transform:translateY(-1px);}
+@media(max-width:600px){.owl-sticky-logo{height:28px;}.owl-sticky-tel{display:none;}.owl-sticky-cta{font-size:14px;padding:10px 16px;}.owl-sticky-bar{padding:7px 12px;}}
+
+/* (2) FV緑CTA強調＋上下バウンス */
+.owlfv2 .cta-main{background:linear-gradient(180deg,#ff9a3d,#f0771f) !important;box-shadow:0 10px 26px rgba(240,119,31,.55), 0 0 0 4px rgba(255,154,61,.22) !important;font-size:clamp(20px,6vw,34px) !important;padding:.74em 0 !important;letter-spacing:.03em !important;animation:owlbounce 1.4s ease-in-out infinite !important;}
+@keyframes owlbounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+@media(prefers-reduced-motion:reduce){.owlfv2 .cta-main{animation:none !important}}
+
+/* (3) 背景クリーム（PC左右の額縁） */
+body{background:#fbf6ea !important;}
+
+/* (4) PC(>=768)：横長・幅広1600px（親コンテナ制限を解除） */
+@media (min-width:768px){
+  .site-body-container{max-width:1600px !important;padding-left:0 !important;padding-right:0 !important;}
+  .owl-lp-wrap{max-width:1600px !important;}
+  .owl-lp-card{max-width:1600px !important;overflow:visible !important;}
+  .owl-lp-card img{width:100% !important;max-width:100% !important;margin:0 !important;display:block;}
+  .owlfv2{max-width:1600px !important;aspect-ratio:1600/900 !important;}
+  .owlfv2 > img{width:100% !important;height:100% !important;}
+  .owlfv2 .cta-main{max-width:560px;}
+}
+
+/* (5) スマホ(<=767)：全幅・角丸なし */
+@media (max-width:767px){
+  /* mobile: real header always visible (baked header in FV image is cropped out) */
+  .owl-sticky-bar{transform:translateY(0) !important;transition:none !important;}
+  body{padding-top:48px !important;}
+  .owlfv2{aspect-ratio:941/1500 !important;}
+  .owlfv2 > img{object-fit:cover !important;object-position:50% 100% !important;}
+  .owlfv2 .cta-top{display:none !important;}
+  .site-body-container{max-width:100% !important;padding-left:0 !important;padding-right:0 !important;}
+  .owl-lp-wrap{padding-left:0 !important;padding-right:0 !important;}
+  .owl-lp-card{max-width:100% !important;width:100% !important;border-radius:0 !important;box-shadow:none !important;}
+}
+
+</style>
+</body></html>
