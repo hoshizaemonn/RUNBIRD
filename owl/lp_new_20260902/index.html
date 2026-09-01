@@ -174,6 +174,12 @@ table.pl tr.total th,table.pl tr.total td{background:var(--orange);color:#fff;bo
 .vmovies{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:30px}
 .vmv{background:var(--cream);border-radius:var(--r);overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.06);
   display:flex;flex-direction:column}
+.vmv-hold{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;
+  background:repeating-linear-gradient(135deg,#123434 0 12px,#0e2b2b 12px 24px)}
+.vmv-hold .hold{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;text-align:center;padding:18px;color:#cfe9e6}
+.vmv-hold .hold b{font-size:15px;color:#fff;font-weight:900}
+.vmv-hold .hold span{font-size:12px;line-height:1.8}
 .vmv-screen{aspect-ratio:16/9;background:#0e2b2b;position:relative}
 .vmv-screen video{width:100%;height:100%;display:block;object-fit:cover}
 .vmv-screen .soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
@@ -561,17 +567,17 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
     <h2 class="center">開業されたオーナー様の例</h2>
     <p class="lead center">どんなご相談から始まり、何をご提案し、いまどうなっているか。<br>ご本人が話されている様子は、<a href="#voice" style="color:var(--teal-d);font-weight:800">この下の「加盟オーナー様の声」</a>でご覧いただけます。</p>
     <p class="pl-note center" style="margin-bottom:26px">
-      <strong>※ お名前はまだ仮です。</strong>
+      <strong>※ <strong>お名前と写真はまだ仮です。物件写真はイメージで、この事業所のものではありません。</strong></strong>
       内容・金額は<strong>2026年8月のインタビューでご本人が話された取材時点の実績</strong>です（決算書での裏取りは未）。
       三重の運営規模（2棟・3棟目着手）は、2026年7月の商談記録（見学先としての案内）とも一致しています。
       地域・物件条件により金額は変動します。</p>
 
     <div class="case-card">
       <div class="case-photos">
-        <div class="ph main"><img src="assets/case1_exterior.webp" alt="事例1の物件外観"></div>
+        <div class="ph main"><span class="karibadge">仮の写真</span><img src="assets/case1_exterior.webp" alt="事例1の物件外観（仮の写真）"></div>
         <div style="display:grid;gap:3px">
-          <div class="ph side"><img src="assets/case1_living.webp" alt="事例1の共用部"></div>
-          <div class="ph side"><img src="assets/case1_room.webp" alt="事例1の居室"></div>
+          <div class="ph side"><span class="karibadge">仮</span><img src="assets/case1_living.webp" alt="事例1の共用部（仮の写真）"></div>
+          <div class="ph side"><span class="karibadge">仮</span><img src="assets/case1_room.webp" alt="事例1の居室（仮の写真）"></div>
         </div>
       </div>
       <div class="case-body">
@@ -600,10 +606,10 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
 
     <div class="case-card">
       <div class="case-photos">
-        <div class="ph main"><img src="assets/case2_exterior.webp" alt="事例2の物件外観"></div>
+        <div class="ph main"><span class="karibadge">仮の写真</span><img src="assets/case2_exterior.webp" alt="事例2の物件外観（仮の写真）"></div>
         <div style="display:grid;gap:3px">
-          <div class="ph side"><img src="assets/case2_living.webp" alt="事例2の共用部"></div>
-          <div class="ph side"><img src="assets/case2_room.webp" alt="事例2の居室"></div>
+          <div class="ph side"><span class="karibadge">仮</span><img src="assets/case2_living.webp" alt="事例2の共用部（仮の写真）"></div>
+          <div class="ph side"><span class="karibadge">仮</span><img src="assets/case2_room.webp" alt="事例2の居室（仮の写真）"></div>
         </div>
       </div>
       <div class="case-body">
@@ -646,11 +652,11 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
 
     <div class="vmovies">
       <div class="vmv">
-        <div class="vmv-screen">
-          <video controls preload="none" playsinline poster="assets/poster_aichi.webp">
-            <source src="assets/iv_aichi.mp4" type="video/mp4">
-            お使いのブラウザは動画の再生に対応していません。
-          </video>
+        <div class="vmv-screen vmv-hold">
+          <div class="hold">
+            <b>インタビュー動画は、いまは出していません</b>
+            <span>2026年8月30日 愛知に撮影済み。<br>ご本人のWeb掲載の同意を確認できたら、ここに入ります。</span>
+          </div>
         </div>
         <div class="vmv-body">
           <span class="vband g">複数本部比較で選択</span>
@@ -660,11 +666,11 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
         </div>
       </div>
       <div class="vmv">
-        <div class="vmv-screen">
-          <video controls preload="none" playsinline poster="assets/poster_mie.webp">
-            <source src="assets/iv_mie.mp4" type="video/mp4">
-            お使いのブラウザは動画の再生に対応していません。
-          </video>
+        <div class="vmv-screen vmv-hold">
+          <div class="hold">
+            <b>インタビュー動画は、いまは出していません</b>
+            <span>2026年8月29〜30日 三重に撮影済み。<br>ご本人のWeb掲載の同意を確認できたら、ここに入ります。</span>
+          </div>
         </div>
         <div class="vmv-body">
           <span class="vband o">子供の将来を支える</span>
