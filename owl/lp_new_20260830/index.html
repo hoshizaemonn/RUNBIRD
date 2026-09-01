@@ -169,6 +169,48 @@ table.pl tr.total th,table.pl tr.total td{background:var(--orange);color:#fff;bo
 .plan:nth-child(3) .amount{color:var(--green)}
 .plan .amount small{font-size:15px;font-weight:800}
 
+/* ===== オーナー様の声 ===== */
+.voices{background:#fff}
+.vmovies{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:30px}
+.vmv{background:var(--cream);border-radius:var(--r);overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.06);
+  display:flex;flex-direction:column}
+.vmv-screen{aspect-ratio:16/9;background:#0e2b2b;position:relative}
+.vmv-screen video{width:100%;height:100%;display:block;object-fit:cover}
+.vmv-screen .soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:8px;color:#cfe9e6;text-align:center;padding:16px;
+  background:repeating-linear-gradient(135deg,#123434 0 12px,#0e2b2b 12px 24px)}
+.vmv-screen .soon i{font-style:normal;font-size:34px;line-height:1}
+.vmv-screen .soon b{font-size:15px;color:#fff;font-weight:900}
+.vmv-screen .soon span{font-size:12px;line-height:1.7}
+.vmv-body{padding:20px 22px 22px}
+.vmv-body .vband{display:inline-block;text-align:left}
+.vmv-body .vplace{text-align:left}
+.vmv-quote{font-size:15px;line-height:1.9;margin:0;font-weight:700}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.vsub{font-size:13px;font-weight:900;color:var(--sub);letter-spacing:.04em;margin:0 0 14px}
+.vcard{background:var(--cream);border-radius:var(--r);padding:24px 22px 22px;position:relative;
+  box-shadow:0 3px 14px rgba(0,0,0,.05);display:flex;flex-direction:column}
+.vface{width:78px;height:78px;border-radius:50%;overflow:hidden;background:var(--line);
+  margin:0 auto 14px;display:flex;align-items:center;justify-content:center;position:relative;flex:none}
+.vface img{width:100%;height:100%;object-fit:cover;display:block}
+.vface .nophoto{font-size:11px;font-weight:900;color:#8a6d00;background:var(--kari-bg);
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.4}
+.vband{display:block;text-align:center;font-size:13px;white-space:nowrap;font-weight:900;color:#fff;
+  border-radius:999px;padding:5px 12px;margin-bottom:8px}
+.vband.o{background:var(--orange)} .vband.g{background:var(--green)} .vband.b{background:var(--teal)}
+.vplace{display:block;text-align:center;font-size:12px;font-weight:800;color:var(--sub);margin-bottom:12px}
+.vtext{font-size:14px;line-height:1.85;margin:0}
+.vlink{margin:12px 0 0;font-size:12px;font-weight:800;color:var(--teal-d);
+  background:var(--teal-l);border-radius:8px;padding:7px 10px;text-align:center}
+@media(max-width:900px){
+  .vgrid{grid-template-columns:1fr;gap:14px}
+  .vmovies{grid-template-columns:1fr;gap:16px;margin-bottom:22px}
+  .vcard{flex-direction:row;gap:16px;align-items:flex-start;padding:18px}
+  .vface{width:64px;height:64px;margin:0}
+  .vcard>div.vbody{flex:1}
+  .vband,.vplace{text-align:left}
+  .vband{display:inline-block}
+}
 /* ===== 事例 ===== */
 .case{background:var(--cream)}
 .case-card{background:#fff;border-radius:var(--r);padding:0;margin-bottom:24px;overflow:hidden;
@@ -190,6 +232,17 @@ table.pl tr.total th,table.pl tr.total td{background:var(--orange);color:#fff;bo
 .case-qa dt{font-size:12px;font-weight:900;color:#fff;background:var(--orange);display:inline-block;
   border-radius:5px;padding:3px 10px;letter-spacing:.05em;margin-bottom:6px}
 .case-qa dd{margin:0 0 16px;font-size:15px}
+.honnin{background:#eaf6f4;border-bottom:2px dotted #2f8f86;padding:0 .18em;font-weight:800;border-radius:3px}
+.honnin::after{content:"（本人確認）";font-size:.7em;color:#1f6b64;font-weight:800}
+.case-src{font-size:12px;color:var(--sub);line-height:1.75;margin:14px 0 0;padding-top:12px;border-top:1px dashed var(--line)}
+.case-movie{margin:0 0 18px;border-radius:12px;overflow:hidden;background:#0e2b2b;position:relative;aspect-ratio:16/9}
+.case-movie video{width:100%;height:100%;display:block;object-fit:cover}
+.case-movie .soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;color:#cfe9e6;text-align:center;padding:16px;background:
+  repeating-linear-gradient(135deg,#123434 0 12px,#0e2b2b 12px 24px)}
+.case-movie .soon b{font-size:15px;font-weight:900;color:#fff}
+.case-movie .soon span{font-size:12px;line-height:1.7}
+.case-movie .soon i{font-style:normal;font-size:30px;line-height:1}
 .voice{background:var(--teal-l);border-radius:12px;padding:20px 22px;font-size:15px;position:relative}
 .voice::before{content:"オーナー様の声";display:block;font-size:12px;font-weight:900;color:var(--teal-d);margin-bottom:6px}
 
@@ -506,9 +559,12 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
   <div class="wrap">
     <span class="sec-en">CASE</span>
     <h2 class="center">開業されたオーナー様の例</h2>
-    <p class="lead center">どんなご相談から始まり、何をご提案し、いまどうなっているか。</p>
-    <p class="pl-note center" style="margin-bottom:26px"><strong>※ この2件の写真・社名・数字はすべて仮です。</strong>
-      公開前に、実際に開業されたオーナー様の実物写真と実データに差し替えます。</p>
+    <p class="lead center">どんなご相談から始まり、何をご提案し、いまどうなっているか。<br>ご本人が話されている様子は、<a href="#voice" style="color:var(--teal-d);font-weight:800">この下の「加盟オーナー様の声」</a>でご覧いただけます。</p>
+    <p class="pl-note center" style="margin-bottom:26px">
+      <strong>※ 写真とお名前はまだ仮です。</strong>
+      それ以外の内容は<strong>2026年8月に撮影したオーナー様インタビューでご本人が話された内容</strong>にもとづきます。
+      <strong>金額（月商・自己資金・融資額）は、ご本人の確認が取れ次第このページに入れます。</strong>
+      実額はインタビューで確認済みです。</p>
 
     <div class="case-card">
       <div class="case-photos">
@@ -521,18 +577,24 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
       <div class="case-body">
         <div class="case-head">
           <span class="case-name kari">◯◯◯◯様</span>
-          <span class="case-tag kari">◯◯県・戸建て◯LDK</span>
-          <span class="case-tag kari">◯棟／入居者◯名</span>
+          <span class="case-tag">愛知県</span>
+          <span class="case-tag">2棟運営</span>
+          <span class="case-tag">ご夫婦で経営</span>
         </div>
         <dl class="case-qa">
           <dt>ご要望</dt>
-          <dd class="kari">（開業前に何に困っていたか。ヒアリングして記入）</dd>
+          <dd>ご主人は老人ホームの紹介会社を経営、奥様は中学校の特別支援学級に約13年。
+            <strong>「まず、実際に運営している加盟店の現場を見せてほしい」</strong>というのが最初のご要望でした。</dd>
           <dt>OWLからのご提案</dt>
-          <dd class="kari">（物件・規模・人員配置・資金計画について何を提案したか）</dd>
+          <dd>比較されていた他社では、愛知県内での見学もオンラインでの見学も実現しませんでした。
+            OWLは関東の加盟店へご案内し、運営中のオーナー様から直接お話を聞いていただきました。</dd>
           <dt>結果</dt>
-          <dd class="kari">（開設までの期間、いまの入居状況、収支）</dd>
+          <dd>2025年4月にご加盟、同年9月に1棟目（定員5名）を開設。満室までは7〜8ヶ月かかりましたが、
+            現在は5名満室です。2026年8月に2棟目を開設されました。<br>
+            月商は<span class="kari">約◯◯◯万円</span>、スタート時の自己資金は<span class="kari">約◯,◯◯◯万円</span>。</dd>
         </dl>
-        <div class="voice kari">（オーナー様ご本人のコメント）</div>
+        <p class="case-src">※ 2026年8月30日のインタビューでご本人が話された内容にもとづきます。
+          金額・期間は取材時点のもので、地域・物件条件により変動します。</p>
       </div>
     </div>
 
@@ -547,17 +609,98 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
       <div class="case-body">
         <div class="case-head">
           <span class="case-name kari">◯◯◯◯様</span>
-          <span class="case-tag kari">◯◯県・戸建て◯LDK</span>
-          <span class="case-tag kari">◯棟／入居者◯名</span>
+          <span class="case-tag">三重県</span>
+          <span class="case-tag">2棟＋サテライト2</span>
+          <span class="case-tag">元・小学校教員</span>
         </div>
         <dl class="case-qa">
-          <dt>ご要望</dt><dd class="kari">（同上）</dd>
-          <dt>OWLからのご提案</dt><dd class="kari">（同上）</dd>
-          <dt>結果</dt><dd class="kari">（同上）</dd>
+          <dt>ご要望</dt>
+          <dd>小学校の教員を長く務められ、校長も経験された方。次男の方に生まれながらの重度の障がいがあり、
+            <strong>「退職を機に、子どもに与えてもらった分をお返しできる仕事がしたい」</strong>。
+            一方で会社経営は未経験で、資金がどれだけ必要かも分からない、というのが出発点でした。</dd>
+          <dt>OWLからのご提案</dt>
+          <dd>駅から徒歩1分の元社宅をご提案。事業計画の作成から金融機関との面談同行まで担当が伴走し、
+            信用金庫・信用組合・銀行の計4行を回って<span class="kari">1棟あたり◯◯◯万円・2棟で計◯,◯◯◯万円</span>の融資を実行しました。</dd>
+          <dt>結果</dt>
+          <dd>ご加盟から約6ヶ月で1棟目（定員5名）を開設し、数ヶ月で満室に。5ヶ月後に2棟目を開設され、
+            サテライトを含めて計11居室。2棟目は2人目の入居まで半年かかりましたが、<br>
+            相談支援事業所への訪問を重ねて解消しています。満室時の月商は<span class="kari">約◯◯◯万円</span>、
+            自己資金は<span class="kari">◯◯◯〜◯◯◯万円</span>からのスタートでした。</dd>
         </dl>
-        <div class="voice kari">（オーナー様ご本人のコメント）</div>
+        <p class="case-src">※ 2026年8月29〜30日のインタビューでご本人が話された内容にもとづきます。
+          金額・期間は取材時点のもので、地域・物件条件により変動します。</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== オーナー様の声 ===== -->
+<section class="voices" id="voice">
+  <div class="wrap">
+    <span class="sec-en">VOICE</span>
+    <h2 class="center">加盟オーナー様の<span class="mark">声</span></h2>
+    <p class="lead center">開業されたオーナー様に、直接お話をうかがいました。</p>
+
+    <div class="vmovies">
+      <div class="vmv">
+        <div class="vmv-screen">
+          <div class="soon"><i>▶</i><b>インタビュー動画（編集中）</b>
+            <span>2026年8月30日 愛知にて撮影<br>編集した動画ができ次第ここに入ります。</span></div>
+        </div>
+        <div class="vmv-body">
+          <span class="vband g">複数本部比較で選択</span>
+          <span class="vplace">愛知県・2棟運営</span>
+          <p class="vmv-quote">「いろんな本部を比較して一番支援が手厚そうなOWLに。一生お付き合いしたいと思っています。」</p>
+          <p class="vlink">▲ くわしい経緯と数字は、上の事例①をご覧ください</p>
+        </div>
+      </div>
+      <div class="vmv">
+        <div class="vmv-screen">
+          <div class="soon"><i>▶</i><b>インタビュー動画（編集中）</b>
+            <span>2026年8月29〜30日 三重にて撮影<br>編集した動画ができ次第ここに入ります。</span></div>
+        </div>
+        <div class="vmv-body">
+          <span class="vband o">子供の将来を支える</span>
+          <span class="vplace">三重県・2棟運営</span>
+          <p class="vmv-quote">「障害ある子供の将来を支えたくて開業。障害を持つ子供の親からの感謝の言葉が多く、やってよかったと実感。」</p>
+          <p class="vlink">▲ くわしい経緯と数字は、上の事例②をご覧ください</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="vsub center">ほかにも、全国のオーナー様から声が届いています。</p>
+    <div class="vgrid">
+      <div class="vcard">
+        <div class="vface"><span class="nophoto">顔写真<br>仮</span></div>
+        <div class="vbody">
+          <span class="vband o">地域No.1の規模</span>
+          <span class="vplace">大阪府・70居室以上運営</span>
+          <p class="vtext">「コロナ禍に打撃を受けた中、OWLと出会い開業。60居室を超える事業所を開設し地域では一番大きな信頼を得ています。」</p>
+        </div>
+      </div>
+      <div class="vcard">
+        <div class="vface"><span class="nophoto">顔写真<br>仮</span></div>
+        <div class="vbody">
+          <span class="vband o">不動産業から成長</span>
+          <span class="vplace">千葉県・3棟運営</span>
+          <p class="vtext">「不動産業から参入。未経験でしたが、今では行政担当者と対等に話せる自分に成長しました（笑）」</p>
+        </div>
+      </div>
+      <div class="vcard">
+        <div class="vface"><span class="nophoto">顔写真<br>仮</span></div>
+        <div class="vbody">
+          <span class="vband b">介護事業から転換</span>
+          <span class="vplace">福島県・4棟運営</span>
+          <p class="vtext">「介護事業の壁にぶつかった時、OWLに出会えた。何回聞いても丁寧に伝えてくれて頼りに。」</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="pl-note center" style="margin:28px 0 0">
+      <strong>※ 動画は編集中、顔写真は仮です。</strong>コメント・所在地・運営規模は、公開中のLPに掲載しているものと同じ内容です。
+      <span class="kari">大阪府の「地域No.1」「地域では一番大きな信頼」は、根拠を示せるか要確認</span>（HTMLにすると検索エンジンにも読まれます）。<br>
+      動画の掲載には、<strong>ご本人のWeb掲載の同意</strong>が必要です。
+    </p>
   </div>
 </section>
 
