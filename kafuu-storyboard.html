@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>holistic salon KAFUU AI動画1本目 モックv1｜社内確認</title>
+<style>
+
+:root{
+  --bg:#fbfaf6; --panel:#ffffff; --ink:#2f3b3a; --muted:#6b7a78;
+  --line:#e2e8e4; --accent:#4c9a83; --accent-soft:#eaf4f0;
+  --warn:#b4562f; --warn-soft:#fbeee7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141917; --panel:#1c2321; --ink:#e8efec; --muted:#9db0ab;
+    --line:#2b3532; --accent:#6fc2a6; --accent-soft:#1e2f29;
+    --warn:#e39a72; --warn-soft:#2e231d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141917; --panel:#1c2321; --ink:#e8efec; --muted:#9db0ab;
+  --line:#2b3532; --accent:#6fc2a6; --accent-soft:#1e2f29;
+  --warn:#e39a72; --warn-soft:#2e231d;
+}
+*{box-sizing:border-box}
+.nb{white-space:nowrap}
+.ytgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin:0 0 10px}
+.yt{display:block; background:var(--panel); border:1px solid var(--line); border-radius:12px;
+  overflow:hidden; text-decoration:none; color:var(--ink)}
+.yt:hover{border-color:var(--accent)}
+.yt img{display:block; width:100%; height:auto; background:#000}
+.yt .t{display:block; padding:11px 13px 0; font-size:.88rem; font-weight:700; line-height:1.5}
+.yt .w{display:block; padding:6px 13px 13px; font-size:.8rem; color:var(--muted); line-height:1.6}
+
+h3.seq{font-size:1.02rem; margin:30px 0 10px; color:var(--accent)}
+h3.seq .len{font-weight:400; font-size:.84rem; color:var(--muted)}
+table.script{min-width:820px; font-size:.86rem}
+table.script td.sec{white-space:nowrap; color:var(--muted); font-variant-numeric:tabular-nums}
+table.script td.tl{font-weight:700}
+table.script td:first-child{color:var(--muted); text-align:right; width:2.2em}
+.src{font-size:.78rem; color:var(--muted); font-weight:400}
+
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+  line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:940px; margin:0 auto; padding:0 20px 80px}
+header{padding:56px 0 32px; border-bottom:1px solid var(--line); margin-bottom:40px}
+.eyebrow{font-size:.8rem; letter-spacing:.14em; color:var(--accent); font-weight:700; margin:0 0 10px}
+h1{font-size:clamp(1.6rem,4.6vw,2.3rem); margin:0 0 14px; letter-spacing:.01em; line-height:1.35}
+.meta{color:var(--muted); font-size:.9rem; margin:0}
+.badge{display:inline-block; background:var(--warn-soft); color:var(--warn); border:1px solid currentColor;
+  border-radius:999px; padding:4px 13px; font-size:.78rem; font-weight:700; margin-top:16px}
+h2{font-size:1.22rem; margin:52px 0 16px; padding-bottom:9px; border-bottom:2px solid var(--accent-soft)}
+h3{font-size:1rem; margin:0 0 4px}
+p{margin:0 0 14px}
+.lead{font-size:1.02rem; color:var(--ink)}
+.videos{display:grid; gap:32px; margin:8px 0 0}
+.card{background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+.card video{display:block; width:100%; height:auto; background:#000}
+.card .body{padding:18px 20px 20px}
+.tag{display:inline-block; font-size:.74rem; font-weight:700; letter-spacing:.06em;
+  background:var(--accent-soft); color:var(--accent); border-radius:5px; padding:3px 9px; margin-bottom:9px}
+.card p{margin:0; color:var(--muted); font-size:.92rem}
+.dl{display:inline-block; margin-top:12px; font-size:.85rem; font-weight:700; color:var(--accent); text-decoration:none; border:1px solid var(--accent); border-radius:7px; padding:6px 13px}
+.dl:hover{background:var(--accent-soft)}
+.card .why{margin-top:9px; color:var(--ink); font-size:.92rem}
+.tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 0 16px}
+table{border-collapse:collapse; width:100%; min-width:560px; font-size:.9rem}
+th,td{border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top}
+th{background:var(--accent-soft); color:var(--ink); font-weight:700; white-space:nowrap}
+td code{background:var(--accent-soft); padding:1px 5px; border-radius:4px; font-size:.86em}
+.note{background:var(--panel); border-left:3px solid var(--accent); border-radius:0 10px 10px 0;
+  padding:15px 18px; margin:0 0 18px}
+.note.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+.note p:last-child{margin-bottom:0}
+ol.checks{counter-reset:c; list-style:none; padding:0; margin:0}
+ol.checks li{counter-increment:c; position:relative; padding:14px 0 14px 46px; border-bottom:1px solid var(--line)}
+ol.checks li::before{content:counter(c); position:absolute; left:0; top:14px; width:28px; height:28px;
+  background:var(--accent); color:#fff; border-radius:50%; display:grid; place-items:center;
+  font-size:.82rem; font-weight:700}
+ol.checks li:last-child{border-bottom:none}
+ol.checks .q{font-weight:700; display:block}
+ol.checks .a{color:var(--muted); font-size:.9rem}
+.ref{background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:0 0 18px}
+.ref .yt{position:relative; width:100%; aspect-ratio:16/9; background:#000}
+.ref .yt iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.ref .body{padding:16px 20px 18px}
+.ref h3{margin:0 0 6px}
+.ref .src{font-size:.82rem; color:var(--muted); margin:0 0 10px}
+.ref .src a{color:var(--accent)}
+.reaction{background:var(--warn-soft); border-left:3px solid var(--warn); border-radius:0 8px 8px 0;
+  padding:11px 15px; margin:12px 0 0; font-size:.92rem}
+.reaction .who{display:block; font-size:.78rem; color:var(--muted); margin-bottom:3px}
+.compare{display:grid; gap:24px; grid-template-columns:1fr}
+@media(min-width:760px){.compare{grid-template-columns:1fr 1fr}}
+.compare .card .body{padding:15px 17px 17px}
+.pick{display:inline-block; font-size:.74rem; font-weight:700; letter-spacing:.05em; border-radius:5px;
+  padding:3px 9px; margin-bottom:8px}
+.pick.a{background:var(--accent-soft); color:var(--accent)}
+.pick.b{background:var(--warn-soft); color:var(--warn)}
+footer{margin-top:60px; padding-top:22px; border-top:1px solid var(--line); color:var(--muted); font-size:.84rem}
+strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">RUNBIRD ／ AI動画事業</p>
+  <h1>holistic salon KAFUU<br><span class="nb">AI動画 1本目</span> <span class="nb">モック v1</span></h1>
+  <p class="meta">営業担当：吉村 様　／　ディレクション 2026年9月8日(火) 10:00　／　契約3本（今回は1本目）</p>
+  <span class="badge">社内確認用（クライアント未提示）</span>
+</header>
+
+<p class="lead">
+9月8日が<strong>初回の打ち合わせ</strong>です。構成案を口頭で説明するより、
+<strong>「こういう動画になります」を先に見てもらったほうが早い</strong>ので、
+ほぼ完成形の状態まで作ってあります。音（ナレーション・BGM）はまだ載せていません。
+</p>
+
+<h2>モック動画</h2>
+<div class="videos">
+  <div class="card">
+    <video controls preload="metadata" playsinline poster="kafuu/poster_v1.jpg">
+      <source src="kafuu/v1.mp4" type="video/mp4">
+    </video>
+    <div class="body">
+      <span class="tag">1本目</span>
+      <h3>身体の癒しのトータルプライベートサロン ／ 子連れOK</h3>
+      <p>50秒 ／ 1920×1080 ／ 音声なし</p>
+      <p class="why">冒頭3秒で<strong>「行きたいけど、子どもがいるから」</strong>を言い当てるところから始めています。
+      同業の広告を3本調べましたが、<strong>お子さま連れを描いた動画は一つもありませんでした</strong>。ここがKAFUU様の一番の強みです。</p>
+      <a class="dl" href="kafuu/v1.mp4" download>ダウンロード</a>
+    </div>
+  </div>
+</div>
+
+<h2>演出のキモ</h2>
+<ol class="checks">
+  <li><span class="q">最初の3秒で「行きたいけど、子どもがいるから」を言い当てる</span>
+      <span class="a">受注シートの売り「子連れOK」は、参考にした同業3本のどれにも無い差別化点。30〜70代の主婦層に一番刺さる入口として冒頭に置きました。</span></li>
+  <li><span class="q">holistic ＝「全体」を、言葉ではなく画で見せる</span>
+      <span class="a">肩・腰・頭とバラバラに手をやる冒頭（S01-02）→ 全身を真上から見るS08で回収。「一部分だけを見ません」の一言だけで意味が通ります。</span></li>
+  <li><span class="q">クライアント自身のコピーで締める</span>
+      <span class="a">ラストの「毎日を笑顔で過ごせる身体へ」は公式Instagramのコンセプト原文です。こちらで作った言葉ではありません。</span></li>
+  <li><span class="q">顔を出さずに成立させている</span>
+      <span class="a">河上様のご出演可否がまだ確認できていないため、セラピストは全カット後ろ姿・手元のみ。顔出しOKと決まれば、そのまま実写に差し替えられる作りにしてあります。</span></li>
+</ol>
+
+<h2>構成・台本（12シーン／50秒）</h2>
+<div class="tablewrap">
+<table class="script">
+  <thead><tr><th>#</th><th>秒</th><th>映像</th><th>ナレーション</th><th>テロップ</th></tr></thead>
+  <tbody>
+  <tr><td>01</td><td class="sec">0.0-3.5</td><td>キッチンで肩を揉む母／足元に子ども</td><td>—</td><td class="tl">「自分のこと」は、<br>いつも後回しでした。</td></tr>
+  <tr><td>02</td><td class="sec">3.5-7.5</td><td>ソファで腰に手をあて首を回す</td><td>肩も、腰も、頭も。どこから来ているのか、わからない。</td><td class="tl">—</td></tr>
+  <tr><td>03</td><td class="sec">7.5-11.5</td><td>サロンを調べていたスマホを膝に下ろす</td><td>—</td><td class="tl">行きたいけど、<br>子どもがいるから。</td></tr>
+  <tr><td>04</td><td class="sec">11.5-15.5</td><td>サロン室内の引き。レースカーテン越しの南国の光</td><td>沖縄・中城村 南上原。おうちのような、プライベートサロンです。</td><td class="tl">holistic salon KAFUU<br>沖縄・中城村 南上原</td></tr>
+  <tr><td>05</td><td class="sec">15.5-19.5</td><td>ラグで子どもが絵本／奥の施術ベッドに母</td><td>お子さま連れでも、大丈夫。</td><td class="tl">お子さま連れ、歓迎です。</td></tr>
+  <tr><td>06</td><td class="sec">19.5-23.5</td><td>アロマの遮光瓶の棚／手が1本を選ぶ</td><td>その日の身体に合わせて、香りを選びます。</td><td class="tl">アロマを使った<br>オールハンド施術</td></tr>
+  <tr><td>07</td><td class="sec">23.5-28.5</td><td>背中に添えられた両手（セラピストは顔を出さない）</td><td>機械は使いません。手のひらだけで、ゆっくりほぐしていきます。</td><td class="tl">—</td></tr>
+  <tr><td>08</td><td class="sec">28.5-32.5</td><td>真俯瞰。足先から頭まで全身が1枚に入る</td><td>からだの一部分だけを、見ません。</td><td class="tl">holistic ＝ 「全体」</td></tr>
+  <tr><td>09</td><td class="sec">32.5-36.5</td><td>施術後、光の中で目を閉じ深く息を吸う</td><td>—</td><td class="tl">深呼吸を、<br>思い出す時間。<br><span class="src">※感じ方には個人差があります</span></td></tr>
+  <tr><td>10</td><td class="sec">36.5-40.5</td><td>お茶を差し出す手元／奥のソファに母と子</td><td>—</td><td class="tl">ゆったりとした<br>アットホームな自宅サロン</td></tr>
+  <tr><td>11</td><td class="sec">40.5-44.5</td><td>母子が手をつないで歩く後ろ姿／沖縄の青い空</td><td>次は、あなたの番です。</td><td class="tl">毎日を笑顔で<br>過ごせる身体へ</td></tr>
+  <tr><td>12</td><td class="sec">44.5-50.0</td><td>エンドカード</td><td>—</td><td class="tl">—</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3 class="seq">ナレーション全文 <span class="len">7本・147字（発話約23秒／残り27秒が「間」）</span></h3>
+<div class="note">
+<p>肩も、腰も、頭も。どこから来ているのか、わからない。<br>
+沖縄・中城村 南上原。おうちのような、プライベートサロンです。<br>
+お子さま連れでも、大丈夫。<br>
+その日の身体に合わせて、香りを選びます。<br>
+機械は使いません。手のひらだけで、ゆっくりほぐしていきます。<br>
+からだの一部分だけを、見ません。<br>
+次は、あなたの番です。</p>
+<p class="src">声の指定（仮置き）：30〜40代女性・落ち着いて温かい・押しつけない／音読さん スピード0.9・トーン-1</p>
+</div>
+
+<h3 class="seq">エンドカード</h3>
+<div class="note">
+<p><strong>holistic salon KAFUU</strong>／毎日を笑顔で過ごせる身体へ<br>
+完全予約制 ／ プライベートサロン<span class="src">（仮置き）</span><br>
+沖縄県中頭郡中城村字南上原491 アーバンパレット南上原エルア202<br>
+TEL 090-5503-0421<br>
+公式LINE（QR）／ Instagram @holisticsalon.kafuu（QR）<br>
+<span class="src">※感じ方には個人差があります　※当サロンの施術は医療行為ではありません。</span></p>
+</div>
+
+<h2>参考にした動画</h2>
+<p>業態が直接通じるもの（女性向け・アロマ／リラクゼーション・個人サロン）だけを選び、
+<strong>すべてサムネイルの実サイズを見て生存確認</strong>しています。</p>
+<div class="ref">
+  <div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/zdRsS-D6aZk" title="【アロママッサージ店】プロモーション動画事例" loading="lazy" allowfullscreen></iframe></div>
+  <div class="body">
+    <h3>【アロママッサージ店】プロモーション動画事例</h3>
+    <p class="src">World Change Analysis inc.　/　<a href="https://www.youtube.com/watch?v=zdRsS-D6aZk" target="_blank" rel="noopener">YouTubeで見る</a>　（2026-09-03 生存確認済み）</p>
+    <p>アロマ・オールハンドは<strong>手元と背中のクローズアップだけで業態が伝わる</strong>。顔を出さずに成立している点を骨格として取りました。河上様のご出演可否がまだ決まっていないので、この作りにしておけば後から実写に差し替えられます。</p>
+  </div>
+</div>
+<div class="ref">
+  <div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/mm-m6QYmANI" title="【リラクゼーションサロンPlumeria】プロモーション動画" loading="lazy" allowfullscreen></iframe></div>
+  <div class="body">
+    <h3>【リラクゼーションサロンPlumeria】プロモーション動画</h3>
+    <p class="src">cow3　/　<a href="https://www.youtube.com/watch?v=mm-m6QYmANI" target="_blank" rel="noopener">YouTubeで見る</a>　（2026-09-03 生存確認済み）</p>
+    <p>個人サロンの<strong>室内の質感（光・カーテン・植物）で「行ってみたい」を作る</strong>構成。今回いただいた「与えたい印象＝一度行ってみたい」に直結するので、沖縄の午後の光を最大の武器にしました。</p>
+  </div>
+</div>
+<div class="ref">
+  <div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/HfyWwzR4BdQ" title="映像制作サンプル - エステサロン vol 2" loading="lazy" allowfullscreen></iframe></div>
+  <div class="body">
+    <h3>映像制作サンプル - エステサロン vol 2</h3>
+    <p class="src">ASOBOAD　/　<a href="https://www.youtube.com/watch?v=HfyWwzR4BdQ" target="_blank" rel="noopener">YouTubeで見る</a>　（2026-09-03 生存確認済み）</p>
+    <p>ピアノ主体・ナレーション最小・テロップ主体。受注シートの<strong>☑清潔感 ☑ラグジュアリー</strong>に対する回答としてこの温度感を採っています。</p>
+  </div>
+</div>
+
+<div class="note warn">
+<p><strong>受注シートの「現場で見せた動画」について</strong></p>
+<p>Google Driveのリンクの正体は <strong>『株式会社花庄様　広告動画　完成品.mp4』＝弊社が過去に納品した動画</strong>でした（所有 k.sakuma@runbird.net／2026-08-18作成）。外部の参考動画ではありません。</p>
+<div class="reaction"><span class="who">河上様の反応</span>「今ってAIでこんな動画作れるんですねー」</div>
+<p style="margin-top:12px">この反応は<strong>作風が刺さったのではなく、AIでここまでできることへの驚き</strong>と読みました。
+花庄はアニメ調ですが、受注シートは<strong>☑実写動画・アニメーションはチェックなし</strong>だったため、<strong>作風は引き継いでいません</strong>。
+（チェック欄はPDFの文字ではなく図形なので、400dpiで拡大して目視確認しています）</p>
+</div>
+
+<h2>9/8 に確定させたいこと</h2>
+<ol class="checks">
+  <li><span class="q">「KAFUU」というお名前は、沖縄の言葉の「果報（かふう）」＝幸せ、から取られていますか？</span><span class="a">由来が合っていれば動画に一言入れると一気に強くなります。<strong>確認が取れるまで動画には入れていません。</strong></span></li>
+  <li><span class="q">動画に河上様が映るのは、①顔出しOK ②後ろ姿と手元だけ ③出演なし のどれがいいですか？</span><span class="a">今のモックは②です。①なら撮影カットが増えます。</span></li>
+  <li><span class="q">お子さま連れは、施術中に同じ部屋にいる形ですか？　何歳くらいから大丈夫ですか？</span><span class="a">動画の一番の売りなので、条件を正確に描きたいところです。</span></li>
+  <li><span class="q">ご予約は、公式LINE・Instagram・お電話 のどれを一番に置きますか？</span><span class="a">エンドカードの並び順が決まります。※ホットペッパーは使わないご意向とうかがっています。</span></li>
+  <li><span class="q">あん摩マッサージ指圧師などの国家資格はお持ちですか？</span><span class="a">お持ちなら「マッサージ」と書けます。無ければ今のまま「オールハンド施術」にします。</span></li>
+  <li><span class="q">メニュー名・時間・料金を教えてください。動画に入れますか？</span><span class="a">入れる場合も、<strong>9/30で終わるオープン記念（1,000円OFF）は入れません</strong>。配信時には終わっているためです。</span></li>
+</ol>
+<p class="src">このほか、屋号の正式表記／営業時間・定休日／住所の表記／お客様役の出演／ロゴデータ／ナレーションとBGM／尺（50秒でよいか）／与儀店は2本目でよいか の9項目が未確認です。</p>
+
+<h2>今回あえて入れていないもの</h2>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>入れていないもの</th><th>理由</th></tr></thead>
+  <tbody>
+  <tr><td><strong>「マッサージ」「整体」</strong></td><td>国家資格の有無が未確認。すべて「オールハンド施術」「ほぐす」にしています</td></tr>
+  <tr><td><strong>料金・メニュー名</strong></td><td>未取得のため</td></tr>
+  <tr><td><strong>オープン記念「1,000円OFF・9/30まで」</strong></td><td>運用スタート（1本目納品後）には終了している可能性が高いため</td></tr>
+  <tr><td><strong>「果報（かふう）」＝KAFUUの由来</strong></td><td>有力ですがご本人に確認が取れていないため</td></tr>
+  <tr><td><strong>沖縄市・与儀店</strong></td><td>まだオープン前（恐らく11月）のため。2本目の題材にします</td></tr>
+  <tr><td><strong>ホットペッパー</strong></td><td>「リピになりづらい＆クーポンで単価が下がる」というご意向のため</td></tr>
+  <tr><td><strong>河上様のお顔・実在のお客様</strong></td><td>ご出演可否が未確認のため、セラピストは全カット後ろ姿・手元のみ</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>素材のお願い（打ち合わせでお渡しする内容）</h2>
+<div class="note">
+<p>今の動画は<strong>AIで全カット作っているので、素材なしでもこのまま納品できます。</strong>
+いただけた分だけ本物のサロンの映像に差し替える、という進め方です。</p>
+<p><strong>撮影のコツは3つだけ：</strong>①スマホは横持ち　②昼間、カーテンを開けて自然光で　③1カット5秒以上、動かさずに止めて撮る</p>
+<p><strong>優先度★★★：</strong>サロンの部屋の全体／施術ベッド／アロマの棚／お子さまが過ごすスペース／玄関　＋　ロゴデータ・メニュー表・営業時間・公式LINEのQR</p>
+<p><strong>優先度★★：</strong>施術中の手元（お顔は不要）／アロマを選んでいる手元／施術後のお飲み物／マンションの外観／窓からの光</p>
+</div>
+
+<h2>品質チェックの状況</h2>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>ゲート</th><th>結果</th></tr></thead>
+  <tbody>
+  <tr><td><code>/fact-check</code>（正本 facts.json との機械照合）</td><td><strong>ブロッカー0</strong>。読点1文字違い2件を修正済み</td></tr>
+  <tr><td><code>/telop-check</code>（テロップの機械チェック）</td><td>機械の指摘6件は<strong>原寸の目視で全てOCRの誤読と確認</strong>。見切れ・被りなし</td></tr>
+  <tr><td>目視（制作側）</td><td>5カットを不合格にして生成し直し（肩を揉む仕草／背中の露出／真俯瞰で全身／手をつなぐ・マンション）</td></tr>
+  <tr><td><code>/video-check</code>・<code>/video-qa-relay</code></td><td><strong>未実施。</strong>クライアントへ出す段になったら、別環境の別AIによる独立チェックを通します</td></tr>
+  </tbody>
+</table>
+</div>
+
+<footer>
+  <p>株式会社ランバード ／ AI動画事業　制作：株式会社斗（hishaku）　作成日 2026-09-03</p>
+  <p>このページは検索エンジンに登録されません（noindex）。関係者以外に共有しないでください。</p>
+</footer>
+
+</div>
+</body>
+</html>
