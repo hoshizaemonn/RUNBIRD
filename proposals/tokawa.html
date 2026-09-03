@@ -1,396 +1,271 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube広告 運用提案書 — と革 様</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
-            background: #f0f2f5;
-            color: #1a1a1a;
-            line-height: 1.7;
-            padding: 24px;
-        }
-        .container { max-width: 1100px; margin: 0 auto; }
-
-        h1 {
-            text-align: center;
-            font-size: 26px;
-            color: #1a1a1a;
-            border-bottom: 3px solid #cc0000;
-            padding-bottom: 12px;
-            margin-bottom: 6px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #888;
-            font-size: 13px;
-            margin-bottom: 36px;
-        }
-
-        .section {
-            background: #fff;
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 28px;
-            border: 2px solid #e0e0e0;
-        }
-        .section-title {
-            font-size: 19px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .section-title .icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 14px;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .goal-banner {
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-            color: #fff;
-            border-radius: 12px;
-            padding: 28px 32px;
-            margin-bottom: 32px;
-        }
-        .goal-banner h2 {
-            color: #d4a96a;
-            font-size: 20px;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .goal-banner .goal-sub {
-            text-align: center;
-            font-size: 14px;
-            color: #ccc;
-            margin-bottom: 24px;
-        }
-        .philosophy-box {
-            background: rgba(212,169,106,.15);
-            border: 1px solid rgba(212,169,106,.4);
-            border-radius: 10px;
-            padding: 16px 24px;
-            margin-bottom: 24px;
-            text-align: center;
-            font-size: 14px;
-            color: #f0e0c0;
-            line-height: 1.9;
-        }
-        .goal-flow {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0;
-            flex-wrap: wrap;
-        }
-        .gf-box {
-            background: rgba(255,255,255,.08);
-            border: 1px solid rgba(255,255,255,.2);
-            border-radius: 10px;
-            padding: 16px 20px;
-            text-align: center;
-            min-width: 155px;
-        }
-        .gf-box .gf-step { font-size: 11px; color: #d4a96a; font-weight: 700; margin-bottom: 4px; }
-        .gf-box .gf-title { font-size: 15px; font-weight: 700; }
-        .gf-box .gf-desc { font-size: 12px; color: #ccc; margin-top: 4px; }
-        .gf-arrow { color: #d4a96a; font-size: 24px; font-weight: 700; padding: 0 10px; }
-
-        .target-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-bottom: 20px;
-        }
-        .target-card {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 18px;
-            text-align: center;
-            border: 2px solid #e0e0e0;
-        }
-        .target-card .t-icon { font-size: 28px; margin-bottom: 8px; }
-        .target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
-        .target-card .t-value { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.5; }
-
-        .area-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        .area-box { border-radius: 10px; padding: 18px; }
-        .area-box.primary { background: #fdf8f0; border: 2px solid #b8860b; }
-        .area-box.secondary { background: #f5f5f0; border: 2px solid #666; }
-        .area-box h4 { font-size: 14px; margin-bottom: 10px; }
-        .area-box .area-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            margin: 3px 4px;
-        }
-        .area-box.primary .area-tag { background: #fef3dc; color: #8b6914; }
-        .area-box.secondary .area-tag { background: #eeeee8; color: #444; }
-
-        .kw-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-        .kw-box {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 16px;
-            border: 1px solid #e0e0e0;
-        }
-        .kw-box h4 {
-            font-size: 13px;
-            color: #8b6914;
-            margin-bottom: 10px;
-            padding-bottom: 6px;
-            border-bottom: 1px solid #eee;
-        }
-        .kw-tag {
-            display: inline-block;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 3px 10px;
-            font-size: 12px;
-            margin: 2px;
-            color: #333;
-        }
-        .kw-tag.exclude {
-            background: #fafafa;
-            border: 1px dashed #ccc;
-            color: #aaa;
-            text-decoration: line-through;
-        }
-
-        .note-bar {
-            background: #fdf8f0;
-            border: 2px solid #b8860b;
-            border-radius: 10px;
-            padding: 20px 24px;
-            margin-bottom: 28px;
-        }
-        .note-bar h3 { color: #8b6914; font-size: 15px; margin-bottom: 10px; }
-        .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
-        .note-bar li { margin-bottom: 6px; }
-        .note-bar li strong { color: #8b6914; }
-
-        @media (max-width: 768px) {
-            .target-grid { grid-template-columns: repeat(2, 1fr); }
-            .area-section { grid-template-columns: 1fr; }
-            .kw-grid { grid-template-columns: 1fr; }
-            .goal-flow { flex-direction: column; }
-            .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube広告 運用再提案書（2026年10月・11月） — と革 様</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background: #f3f1ec; color: #1a1a1a; line-height: 1.75; padding: 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+h1 { text-align: center; font-size: 26px; border-bottom: 3px solid #6d4c2f; padding-bottom: 12px; margin-bottom: 6px; }
+.subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 30px; }
+.section { background: #fff; border-radius: 12px; padding: 28px; margin-bottom: 28px; border: 2px solid #e4ddd3; }
+.section-title { font-size: 19px; font-weight: 700; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid #eee; display: flex; align-items: center; gap: 10px; }
+.section-title .icon { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; color: #fff; font-size: 14px; font-weight: 700; flex-shrink: 0; }
+.lead { font-size: 14px; color: #444; margin-bottom: 14px; }
+.goal-banner { background: linear-gradient(135deg, #3e2a1c, #6d4c2f); color: #fff; border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; }
+.goal-banner h2 { color: #f2d59b; font-size: 20px; text-align: center; margin-bottom: 10px; }
+.goal-banner .goal-sub { text-align: center; font-size: 14px; color: #eee; margin-bottom: 24px; }
+.goal-flow { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; }
+.gf-box { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 10px; padding: 16px 20px; text-align: center; min-width: 170px; }
+.gf-box .gf-step { font-size: 11px; color: #f2d59b; font-weight: 700; margin-bottom: 4px; }
+.gf-box .gf-title { font-size: 15px; font-weight: 700; }
+.gf-box .gf-desc { font-size: 12px; color: #ddd; margin-top: 4px; }
+.gf-arrow { color: #f2d59b; font-size: 24px; font-weight: 700; padding: 0 10px; }
+.target-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 18px; }
+.target-card { background: #faf8f4; border-radius: 10px; padding: 16px 10px; text-align: center; border: 2px solid #e4ddd3; }
+.target-card .t-icon { font-size: 26px; margin-bottom: 6px; }
+.target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+.target-card .t-value { font-size: 14px; font-weight: 700; line-height: 1.5; }
+.reason { border-radius: 8px; padding: 14px 18px; font-size: 13px; margin-bottom: 14px; }
+.reason.brown { background: #f6efe6; color: #4e3a28; }
+.reason.green { background: #eef5e9; color: #2f4f2a; }
+.reason.orange { background: #fff3e0; color: #7a4100; }
+.reason.blue { background: #e8f0f8; color: #1f3a5f; }
+.area-section { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.area-box { border-radius: 10px; padding: 18px; }
+.area-box.primary { background: #f6efe6; border: 2px solid #6d4c2f; }
+.area-box.secondary { background: #eef1f6; border: 2px solid #4a5d7a; }
+.area-box.reserve { background: #f4f4f4; border: 2px dashed #999; }
+.area-box h4 { font-size: 14px; margin-bottom: 10px; }
+.area-tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; margin: 3px 4px; background: #fff; border: 1px solid #ccc; }
+.area-box.primary .area-tag { background: #e9d9c3; color: #4e3a28; border-color: #d4bf9f; }
+.area-box.secondary .area-tag { background: #d6dfeb; color: #1f3a5f; border-color: #b7c5d8; }
+.kw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.kw-box { background: #faf8f4; border-radius: 10px; padding: 16px; border: 1px solid #e4ddd3; }
+.kw-box h4 { font-size: 13px; color: #6d4c2f; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #eee; }
+.kw-tag { display: inline-block; background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 3px 10px; font-size: 12px; margin: 2px; color: #333; }
+.kw-tag.ng { background: #fdecea; border-color: #f5c6c2; color: #8a1c13; text-decoration: line-through; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
+th, td { border: 1px solid #e0dcd5; padding: 9px 10px; text-align: left; vertical-align: top; }
+th { background: #f6efe6; color: #4e3a28; font-weight: 700; }
+.rank { display: inline-block; min-width: 28px; text-align: center; border-radius: 6px; color: #fff; font-weight: 700; padding: 2px 6px; }
+.r1 { background: #b8860b; } .r2 { background: #8c8c8c; } .r3 { background: #a0522d; } .r4 { background: #5a6b7a; }
+.pattern-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pattern { border-radius: 10px; padding: 18px; border: 2px solid #e4ddd3; background: #faf8f4; }
+.pattern .p-month { font-size: 11px; font-weight: 700; color: #6d4c2f; letter-spacing: .05em; }
+.pattern h4 { font-size: 15px; margin: 4px 0 8px; }
+.pattern p { font-size: 13px; color: #444; }
+.note-bar { background: #fff3e0; border: 2px solid #ff8800; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; }
+.note-bar h3 { color: #e65100; font-size: 15px; margin-bottom: 10px; }
+.confirm-bar { background: #e8f0f8; border: 2px solid #1f3a5f; border-radius: 10px; padding: 20px 24px; margin-bottom: 28px; }
+.confirm-bar h3 { color: #1f3a5f; font-size: 15px; margin-bottom: 10px; }
+.note-bar ul, .confirm-bar ul, .section ul { margin-left: 20px; font-size: 13px; color: #444; }
+.note-bar li, .confirm-bar li, .section li { margin-bottom: 6px; }
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.summary-card { background: #faf8f4; border-radius: 10px; padding: 18px; border-left: 5px solid #6d4c2f; }
+.summary-card .s-label { font-size: 13px; color: #888; margin-bottom: 4px; }
+.summary-card .s-value { font-size: 16px; font-weight: 700; word-break: break-all; }
+.summary-card .s-desc { font-size: 12px; color: #555; margin-top: 6px; }
+@media (max-width: 768px) {
+  .target-grid { grid-template-columns: repeat(2, 1fr); }
+  .area-section, .kw-grid, .pattern-grid, .summary-grid { grid-template-columns: 1fr; }
+  .goal-flow { flex-direction: column; }
+  .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
+  .section { padding: 18px; }
+  .tbl-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 10px 0; }
+  .tbl-wrap table { min-width: 640px; margin: 0; }
+}
+.tbl-wrap { max-width: 100%; }
+</style>
 </head>
 <body>
 <div class="container">
 
-    <h1>YouTube広告 運用提案書</h1>
-    <p class="subtitle">と革 様｜株式会社ランバード</p>
+<h1>YouTube広告 運用再提案書</h1>
+<p class="subtitle">と革 様（2026年10月・11月 配信分）｜株式会社ランバード｜第1弾 2026年9月4日</p>
 
-    <!-- ① 目的・ゴール -->
-    <div class="goal-banner">
-        <h2>広告配信の目的</h2>
-        <div class="philosophy-box">
-            「革製品を探している層」ではなく、<br>
-            まだ知らないが、<strong>思想に触れることで関心を持つ層</strong>へリーチする。<br>
-            消費に意味を求め、ものづくりの背景でモノを選ぶ人たちへ届ける。
-        </div>
-        <div class="goal-flow">
-            <div class="gf-box">
-                <div class="gf-step">STEP 1</div>
-                <div class="gf-title">認知</div>
-                <div class="gf-desc">YouTube広告で<br>と革の世界観に出会う</div>
-            </div>
-            <div class="gf-arrow">→</div>
-            <div class="gf-box">
-                <div class="gf-step">STEP 2</div>
-                <div class="gf-title">共感</div>
-                <div class="gf-desc">ジビエ・自然・倫理の<br>思想に惹かれる</div>
-            </div>
-            <div class="gf-arrow">→</div>
-            <div class="gf-box">
-                <div class="gf-step">STEP 3</div>
-                <div class="gf-title">深く知る</div>
-                <div class="gf-desc">公式サイトで<br>ブランドの背景を知る</div>
-            </div>
-            <div class="gf-arrow">→</div>
-            <div class="gf-box">
-                <div class="gf-step">GOAL</div>
-                <div class="gf-title">ファン・購入</div>
-                <div class="gf-desc">思想に共鳴し<br>購入・リピーターへ</div>
-            </div>
-        </div>
+<div class="reason brown" style="margin-bottom:28px;">
+  <strong>はじめに</strong><br>
+  9月2日はお時間をいただきありがとうございました。本書は、お伺いした内容（届けたい層・売れている地域・ご覧いただきたい導線）を、そのまま配信設定の形に置き換えたものです。<br>
+  4月にご承認いただいた設計（女性中心／配信時間 5〜10時・18〜翌2時／公式サイトへの導線／直接検討キーワードの除外）は引き継ぎ、そのうえで<strong>「誰に」「どこで」「どの順番で」</strong>を今回のお話で具体化しています。各項目に理由とおすすめ順を添えましたので、違うと感じる箇所はご遠慮なくお申し付けください。
+</div>
+
+<!-- 目的 -->
+<div class="goal-banner">
+  <h2>広告配信の目的</h2>
+  <p class="goal-sub">「革製品を探している人」ではなく、<strong>ものを選ぶ基準を持っている女性</strong>に、と革の存在をそっと刷り込む。<br>売り込まず、忘れた頃にもう一度届き、何かのきっかけで「と革」を検索してもらう。</p>
+  <div class="goal-flow">
+    <div class="gf-box"><div class="gf-step">STEP 1</div><div class="gf-title">出会う</div><div class="gf-desc">暮らし・ものづくりの<br>動画の前に静かに流れる</div></div>
+    <div class="gf-arrow">→</div>
+    <div class="gf-box"><div class="gf-step">STEP 2</div><div class="gf-title">覚えている</div><div class="gf-desc">同じ方に間隔を空けて<br>2〜3回届く</div></div>
+    <div class="gf-arrow">→</div>
+    <div class="gf-box"><div class="gf-step">STEP 3</div><div class="gf-title">知る</div><div class="gf-desc">公式サイトで<br>世界観と背景に触れる</div></div>
+    <div class="gf-arrow">→</div>
+    <div class="gf-box"><div class="gf-step">GOAL</div><div class="gf-title">検索・来店・購入</div><div class="gf-desc">きっかけの時に<br>「と革」と検索する</div></div>
+  </div>
+</div>
+
+<!-- 1 ターゲティング -->
+<div class="section" style="border-color:#6d4c2f;">
+  <div class="section-title"><span class="icon" style="background:#6d4c2f;">1</span>ターゲティング設定（誰に届けるか）</div>
+  <div class="target-grid">
+    <div class="target-card"><div class="t-icon">👤</div><div class="t-label">性別</div><div class="t-value">女性中心<br><span style="font-size:11px;color:#888;">（男性は除外）</span></div></div>
+    <div class="target-card"><div class="t-icon">📅</div><div class="t-label">年齢</div><div class="t-value">25〜54歳<br><span style="font-size:11px;color:#888;">（30〜40代を中心）</span></div></div>
+    <div class="target-card"><div class="t-icon">💰</div><div class="t-label">世帯収入</div><div class="t-value">上位30%<br><span style="font-size:11px;color:#888;">（上位10%＋11〜20%＋21〜30%）</span></div></div>
+    <div class="target-card"><div class="t-icon">📍</div><div class="t-label">エリア</div><div class="t-value">絞り込み配信<br><span style="font-size:11px;color:#888;">（月ごとに切替・下記）</span></div></div>
+    <div class="target-card"><div class="t-icon">🕐</div><div class="t-label">配信時間</div><div class="t-value">5:00〜10:00<br>18:00〜翌2:00</div></div>
+  </div>
+  <div class="reason brown">
+    <strong>年齢の設定理由：</strong>髙見澤様のコアターゲットは30〜40代。Google広告の年齢区分は「25〜34 / 35〜44 / 45〜54…」の刻みのため、30〜40代を漏れなく含む<strong>25〜54歳</strong>を採用します。7月の配信データでも、25〜34歳（視聴率57.6%）・35〜44歳（57.0%）・45〜54歳（54.7%）が上位3層で、65歳以上（44.8%）を大きく上回っていました。<strong>髙見澤様のご判断は数字のうえでも正しかった</strong>ということです。反応を見て45〜54歳を外す／50代を足す調整は随時できます。
+  </div>
+  <div class="reason brown">
+    <strong>世帯収入の設定理由：</strong>お話にあった「ある程度ゆとりがある人」を機械的に絞る設定です。日本ではおおよそ上位30%＝世帯年収600〜700万円以上が目安（上位10%は約1,200万円以上）。「上位40%」まで広げると450万円台に近づくため、まず30%で始めます。母数が少なすぎる場合は40%まで広げてご報告します。
+  </div>
+  <div class="reason brown">
+    <strong>性別について：</strong>4月のご依頼（女性8割）と9月のお話（30〜40代の女性）を踏まえ、今回は<strong>女性のみ</strong>に配信して、限られた表示回数を届けたい層に集中させます。男性向けは需要が見えた段階で別枠でご提案します。
+  </div>
+
+  <h4 style="font-size:15px;margin:22px 0 10px;">📍 配信エリア（分散させず、売れる土地に絞る）</h4>
+  <p class="lead">「両方やると分散して回らない」ため、<strong>1ヶ月目と2ヶ月目でエリアを切り替えて比較</strong>します。エリアの根拠は髙見澤様の実売の実感（東京西側／北海道／熊本・福岡の移住エリア／広島／神戸／金沢／京都の大学周辺、東北は外す）です。</p>
+  <div class="area-section">
+    <div class="area-box primary">
+      <h4 style="color:#4e3a28;">1ヶ月目（10月）：東京西側 ＋ 北海道</h4>
+      <div style="font-size:12px;color:#666;margin-bottom:6px;">東京（浅草側と混ざらない西側）</div>
+      <span class="area-tag">世田谷区</span><span class="area-tag">目黒区</span><span class="area-tag">渋谷区</span><span class="area-tag">杉並区</span><span class="area-tag">中野区</span><span class="area-tag">練馬区</span><span class="area-tag">武蔵野市</span><span class="area-tag">三鷹市</span><span class="area-tag">調布市</span><span class="area-tag">小金井市</span><span class="area-tag">国立市</span><span class="area-tag">国分寺市</span>
+      <div style="font-size:12px;color:#666;margin:10px 0 6px;">北海道（札幌の中心ではなく周辺＋旭川）</div>
+      <span class="area-tag">札幌市（中央区を除く）</span><span class="area-tag">江別市</span><span class="area-tag">北広島市</span><span class="area-tag">恵庭市</span><span class="area-tag">千歳市</span><span class="area-tag">石狩市</span><span class="area-tag">小樽市</span><span class="area-tag">旭川市</span>
     </div>
-
-    <!-- ② ターゲティング設定 -->
-    <div class="section" style="border-color:#b8860b;">
-        <div class="section-title">
-            <span class="icon" style="background:#b8860b;">1</span>
-            ターゲティング設定
-        </div>
-
-        <div class="target-grid">
-            <div class="target-card">
-                <div class="t-icon">👤</div>
-                <div class="t-label">性別</div>
-                <div class="t-value">女性中心<br><span style="font-size:12px;color:#888;">（男性も含む）</span></div>
-            </div>
-            <div class="target-card">
-                <div class="t-icon">📅</div>
-                <div class="t-label">年齢</div>
-                <div class="t-value">20〜50代</div>
-            </div>
-            <div class="target-card">
-                <div class="t-icon">📍</div>
-                <div class="t-label">エリア</div>
-                <div class="t-value">全国配信</div>
-            </div>
-            <div class="target-card">
-                <div class="t-icon">🕐</div>
-                <div class="t-label">配信時間</div>
-                <div class="t-value">5:00〜10:00<br>18:00〜翌2:00</div>
-            </div>
-        </div>
-
-        <div class="area-section">
-            <div class="area-box primary">
-                <h4 style="color:#8b6914;">コアターゲット</h4>
-                <span class="area-tag">サステナブル・エシカル消費に関心がある方</span>
-                <span class="area-tag">自然・食・身体への意識が高い方</span>
-                <span class="area-tag">ものづくりの背景でモノを選ぶ方</span>
-            </div>
-            <div class="area-box secondary">
-                <h4 style="color:#444;">拡張ターゲット</h4>
-                <span class="area-tag">民藝・クラフト好きな方</span>
-                <span class="area-tag">ジビエ・自然環境に関心がある方</span>
-                <span class="area-tag">丁寧な暮らしを志向する方</span>
-            </div>
-        </div>
-
-        <div style="background:#fdf8f0;border-radius:8px;padding:14px 18px;font-size:13px;color:#8b6914;">
-            <strong>配信時間の設定理由：</strong>早朝（5〜10時）の余白の時間と、仕事終わり〜夜の静かな時間帯（18〜翌2時）に配信。じっくりと世界観に向き合える時間帯に届けることで、思想への共感が生まれやすい環境を整えます。
-        </div>
+    <div class="area-box secondary">
+      <h4 style="color:#1f3a5f;">2ヶ月目（11月）：九州 ＋ 広島</h4>
+      <div style="font-size:12px;color:#666;margin-bottom:6px;">福岡（博多から電車1時間圏の移住者エリア）</div>
+      <span class="area-tag">糸島市</span><span class="area-tag">福津市</span><span class="area-tag">宗像市</span><span class="area-tag">新宮町</span><span class="area-tag">太宰府市</span><span class="area-tag">筑紫野市</span><span class="area-tag">那珂川市</span><span class="area-tag">朝倉市</span><span class="area-tag">筑前町</span><span class="area-tag">うきは市</span>
+      <div style="font-size:12px;color:#666;margin:10px 0 6px;">熊本・広島</div>
+      <span class="area-tag">熊本市</span><span class="area-tag">合志市</span><span class="area-tag">菊陽町</span><span class="area-tag">広島市</span><span class="area-tag">廿日市市</span>
     </div>
+  </div>
+  <div class="area-box reserve" style="margin-bottom:14px;">
+    <h4 style="color:#555;">控え（反応次第で差し替え・追加）</h4>
+    <span class="area-tag">京都市 左京区・北区（大学周辺）</span><span class="area-tag">神戸市 中央区・東灘区／芦屋市</span><span class="area-tag">金沢市</span><span class="area-tag">鎌倉市・逗子市</span><span class="area-tag">大阪市（中心部を外した北摂：豊中・箕面）</span>
+  </div>
+  <div class="reason orange">
+    <strong>切替の判断：</strong>10月中旬時点で東京西側＋北海道の動きが鈍い場合は、待たずに九州を前倒しで追加します。逆に10月が好調なら11月は「東京西側を残しつつ九州を足す」形も取れます。いずれもメール1本でご相談のうえ切り替えます。
+  </div>
+</div>
 
-    <!-- ③ 関連キーワード設定 -->
-    <div class="section">
-        <div class="section-title">
-            <span class="icon" style="background:#555;">2</span>
-            関連キーワード設定
-        </div>
-        <p style="font-size:13px;color:#666;margin-bottom:16px;">「革製品を探している層」ではなく、<strong>思想・価値観で共鳴する層</strong>に届くキーワードを設計しています。</p>
+<!-- 2 4パターン -->
+<div class="section" style="border-color:#4a5d7a;">
+  <div class="section-title"><span class="icon" style="background:#4a5d7a;">2</span>2ヶ月で4パターンを検証する設計（どの順番で）</div>
+  <p class="lead">通常は1社1パターンの配信ですが、10〜11月は検証のため<strong>設定パターンを増やして配信</strong>いたします（追加費用はいただきません）。「Google検索の言葉で狙う」「YouTubeの中の居場所で狙う」の2系統を、月ごとに切り替えて比較します。</p>
+  <div class="pattern-grid">
+    <div class="pattern"><div class="p-month">10月 ─ パターンA</div><h4>暮らし系の言葉 × Google検索</h4><p>「丁寧な暮らし」「心地よい暮らし」「サステナブルな暮らし」などを<strong>Googleで検索した人</strong>に、YouTube上で広告を届けます。今の住まい・持ち物を変えたい意識のある層。</p></div>
+    <div class="pattern"><div class="p-month">10月 ─ パターンB</div><h4>丁寧な暮らし系チャンネルへの指定配信</h4><p>暮らしVlogで人気のチャンネル（例：Choki、futaba、umi など、配信前に直近の再生数で10〜20チャンネルを選定）の動画の前にだけ流します。女性・年齢・世帯収入・エリアの条件は同時にかけます。</p></div>
+    <div class="pattern"><div class="p-month">11月 ─ パターンC</div><h4>物選びの言葉 × Google検索（ギフト差し替え込み）</h4><p>「一生使える財布」「長く使えるバッグ」「質のいいものを選ぶ」を検索した人。11月半ばからは<strong>クリスマス・年末ギフトの言葉に差し替え</strong>て、贈り物を探す時期に合わせます。</p></div>
+    <div class="pattern"><div class="p-month">11月 ─ パターンD</div><h4>近い世界観のブランドに関心がある人</h4><p>ミナ ペルホネン／アーツ＆サイエンス／MEDERU／himie／SHINKAI を検索した人、およびそれらのサイトを閲覧する人に近い興味を持つ人（詳細は第4章）。</p></div>
+  </div>
 
-        <div class="kw-grid">
-            <div class="kw-box">
-                <h4>自然・ジビエ・いのち</h4>
-                <span class="kw-tag">ジビエ 活用</span>
-                <span class="kw-tag">ジビエ 革</span>
-                <span class="kw-tag">野生動物 共存</span>
-                <span class="kw-tag">有害鳥獣 活用</span>
-                <span class="kw-tag">自然素材 暮らし</span>
-                <span class="kw-tag">命をいただく</span>
-                <span class="kw-tag">狩猟 文化</span>
-            </div>
-            <div class="kw-box">
-                <h4>エシカル・サステナブル消費</h4>
-                <span class="kw-tag">エシカル消費</span>
-                <span class="kw-tag">サステナブル ファッション</span>
-                <span class="kw-tag">フェアトレード 雑貨</span>
-                <span class="kw-tag">エシカル ブランド</span>
-                <span class="kw-tag">環境に優しい 暮らし</span>
-                <span class="kw-tag">廃棄ゼロ ものづくり</span>
-                <span class="kw-tag">サステナブル 小物</span>
-            </div>
-            <div class="kw-box">
-                <h4>食・暮らし・民藝・クラフト</h4>
-                <span class="kw-tag">丁寧な暮らし</span>
-                <span class="kw-tag">民藝 暮らし</span>
-                <span class="kw-tag">クラフト 作家</span>
-                <span class="kw-tag">ハンドメイド 革小物</span>
-                <span class="kw-tag">自然農 食</span>
-                <span class="kw-tag">オーガニック 生活</span>
-                <span class="kw-tag">手仕事 日本</span>
-            </div>
-        </div>
+  <h4 style="font-size:15px;margin:22px 0 8px;">🏆 おすすめランキング（当方の見立て）</h4>
+  <div class="tbl-wrap"><table>
+    <tr><th style="width:60px;">順位</th><th style="width:28%;">パターン</th><th>おすすめする理由</th><th style="width:22%;">リスク</th></tr>
+    <tr><td><span class="rank r1">1位</span></td><td>C　物選びの言葉</td><td>革小物は「一生もの」「長く使う」と最も相性がよく、10〜11月はギフト検討期と重なる。購入までの距離が一番近い。</td><td>季節の言葉を混ぜすぎると崩れる → 差し替え運用で回避</td></tr>
+    <tr><td><span class="rank r2">2位</span></td><td>A　暮らし系の言葉</td><td>雑誌の特集キーワードと一致し検索量も安定。「変わりたい」意識がある層で、公式サイトの世界観が刺さりやすい。</td><td>母数が多い分、1回見て終わりになりやすい → フリークエンシーで補う</td></tr>
+    <tr><td><span class="rank r3">3位</span></td><td>D　近い世界観のブランド</td><td>髙見澤様のお客様と客層が重なると分かっている確度の高い層。母数は小さいが打率が高い見込み。</td><td>母数が小さく配信が伸びない可能性</td></tr>
+    <tr><td><span class="rank r4">4位</span></td><td>B　チャンネル指定</td><td>「刷り込み」の目的に最も忠実な出し方。ヨガ・食にこだわる層への入口にもなる。</td><td>動かない可能性がある（お話のとおり）。試す価値はある</td></tr>
+  </table></div>
+  <div class="reason blue"><strong>4月にご承認いただいた思想の言葉（ジビエ・エシカル・民藝）</strong>は、単独では検索量が小さく配信が立ち上がりにくいため、今回はパターンAの中に「サステナブル」「手仕事」として溶かし込み、と革の独自語（ジビエ革・野生革）は公式サイト側で語っていただく設計にしています。</div>
+</div>
 
-        <div style="background:#f5f5f0;border-radius:8px;padding:14px 18px;font-size:13px;color:#666;margin-top:16px;">
-            <strong>除外キーワード（直接検討層は対象外）：</strong>
-            <span class="kw-tag exclude">革製品 通販</span>
-            <span class="kw-tag exclude">本革バッグ</span>
-            <span class="kw-tag exclude">レザー 財布 おすすめ</span>
-            <span class="kw-tag exclude">革財布 ブランド</span>
-            ※検索・自然流入で対応できるため、今回の広告ターゲットから除外します。
-        </div>
+<!-- 3 キーワード -->
+<div class="section">
+  <div class="section-title"><span class="icon" style="background:#2e7d32;">3</span>関連キーワード設定（言葉の中身）</div>
+  <p class="lead">Googleで下記の言葉を検索した人・関心を示した人に優先的に届けます。年ごとに変わる言葉はトレンドを見ながら入れ替えます（AIによる検索の増加も踏まえ、質問文に近い言葉も含めています）。</p>
+  <div class="kw-grid">
+    <div class="kw-box">
+      <h4>① 物選び（優先1位・パターンC）</h4>
+      <span class="kw-tag">一生使える 財布</span><span class="kw-tag">一生もの バッグ</span><span class="kw-tag">長く使える バッグ</span><span class="kw-tag">長く使える 財布</span><span class="kw-tag">飽きない 財布</span><span class="kw-tag">質のいいもの 選ぶ</span><span class="kw-tag">物を大切にする 暮らし</span><span class="kw-tag">上質 日用品</span><span class="kw-tag">経年変化 楽しむ</span><span class="kw-tag">育てる 革</span><span class="kw-tag">ものづくり 背景</span><span class="kw-tag">作り手の顔が見える</span>
+      <div style="font-size:11px;color:#888;margin-top:8px;">11月中旬〜差し替え：</div>
+      <span class="kw-tag">クリスマスプレゼント 30代 女性</span><span class="kw-tag">自分へのご褒美 財布</span><span class="kw-tag">大切な人 プレゼント 上質</span><span class="kw-tag">長く使える プレゼント</span>
     </div>
-
-    <!-- ④ 広告配信設定まとめ -->
-    <div class="section" style="border-color:#b8860b;">
-        <div class="section-title">
-            <span class="icon" style="background:#b8860b;">3</span>
-            広告配信設定まとめ
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #cc0000;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">広告形式</div>
-                <div style="font-size:16px;font-weight:700;">インストリーム広告（スキップ可能）</div>
-                <div style="font-size:12px;color:#555;margin-top:6px;">動画再生前に流れる広告。5秒後にスキップ可能。興味のある方だけに届きます。</div>
-            </div>
-            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #1976d2;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">フリークエンシーキャップ</div>
-                <div style="font-size:16px;font-weight:700;">週3回まで</div>
-                <div style="font-size:12px;color:#555;margin-top:6px;">同じ方に何度も広告が出ないよう制限し、より多くの方にリーチします。</div>
-            </div>
-            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #8b6914;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">リンク先</div>
-                <div style="font-size:16px;font-weight:700;">https://www.to-kawa.com</div>
-                <div style="font-size:12px;color:#555;margin-top:6px;">ブランドの世界観・思想をしっかり伝えるため、ホームページを優先導線として設定。Instagram（@tokawa2298）は、興味を持っていただいた方が後から辿れる導線として位置づけます。</div>
-            </div>
-            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
-                <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
-                <div style="font-size:16px;font-weight:700;">2026年6月1日〜</div>
-                <div style="font-size:12px;color:#555;margin-top:6px;">審査通過次第、配信を開始いたします。</div>
-            </div>
-        </div>
+    <div class="kw-box">
+      <h4>② 暮らし系（優先2位・パターンA）</h4>
+      <span class="kw-tag">丁寧な暮らし</span><span class="kw-tag">心地よい暮らし</span><span class="kw-tag">暮らしを楽しむ</span><span class="kw-tag">サステナブルな暮らし</span><span class="kw-tag">心地よい部屋</span><span class="kw-tag">毎日の器</span><span class="kw-tag">手仕事 日本</span><span class="kw-tag">民藝 暮らし</span><span class="kw-tag">自然素材 暮らし</span><span class="kw-tag">田舎暮らし 移住</span><span class="kw-tag">二拠点生活</span><span class="kw-tag">ミニマリスト 持ち物</span>
     </div>
-
-    <!-- 補足事項 -->
-    <div class="note-bar">
-        <h3>補足事項</h3>
-        <ul>
-            <li>配信開始後、<strong>2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
-            <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
-            <li>ご不明な点やご要望がございましたら、お気軽にお申し付けください</li>
-        </ul>
+    <div class="kw-box">
+      <h4>③ 心と身体・ライフスタイル（パターンBの補助）</h4>
+      <span class="kw-tag">心を整える</span><span class="kw-tag">自分らしさ とは</span><span class="kw-tag">ヨガ 暮らし</span><span class="kw-tag">ピラティス 30代</span><span class="kw-tag">ヴィーガン 生活</span><span class="kw-tag">オーガニック 生活</span><span class="kw-tag">自然農 食</span><span class="kw-tag">マインドフルネス 習慣</span><span class="kw-tag">朝の習慣 丁寧</span>
     </div>
+  </div>
+  <div style="margin-top:16px;">
+    <div style="font-size:13px;font-weight:700;color:#8a1c13;margin-bottom:6px;">除外キーワード（直接検討層は対象外・4月のご承認どおり）</div>
+    <span class="kw-tag ng">革製品 通販</span><span class="kw-tag ng">本革バッグ</span><span class="kw-tag ng">レザー 財布 おすすめ</span><span class="kw-tag ng">革財布 ブランド</span><span class="kw-tag ng">大人 ファッション</span><span class="kw-tag ng">レザー バッグ</span>
+    <p style="font-size:12px;color:#666;margin-top:6px;">※ 6〜7月に表示の99%を占めていた汎用語（大人ファッション／ハンドメイド革／レザーバッグ／革バッグ／革財布）は、今回すべて外します。検索・自然流入で対応できる層です。</p>
+  </div>
+</div>
 
-    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
-        株式会社ランバード｜広告運用サポート窓口
-    </div>
+<!-- 4 類似ブランド -->
+<div class="section" style="border-color:#b8860b;">
+  <div class="section-title"><span class="icon" style="background:#b8860b;">4</span>近い世界観のブランドに関心がある人への配信（調査結果）</div>
+  <p class="lead">お話に出た5ブランドについて、「その人たちに出せるか」を確認しました。</p>
+  <div class="tbl-wrap"><table>
+    <tr><th style="width:24%;">ブランド</th><th>世界観・客層（サイトより）</th><th style="width:26%;">と革との接点</th></tr>
+    <tr><td><strong>MEDERU</strong><br><span style="font-size:11px;color:#888;">mederu-jewelry.co.jp</span></td><td>「アイデンティティとしての装身具」。手仕事・自然素材・古典技法、「ちゃんと古くなるもの」。大人の女性、質を理解する層。</td><td>「経年変化を楽しむ」「一生もの」の思想が最も近い</td></tr>
+    <tr><td><strong>himie（ヒーミー）</strong><br><span style="font-size:11px;color:#888;">himie.com</span></td><td>「静謐と煌めきのあわい」。松屋銀座店・京都店。静かな高揚感を求める大人の女性、リフォーム・一点物も。</td><td>上品な導線・京都エリアの客層と重なる</td></tr>
+    <tr><td><strong>SHINKAI</strong><br><span style="font-size:11px;color:#888;">shinkaijewelry.com</span></td><td>蔵前店・伊勢丹新宿店。ダイヤ・真珠の上質素材、22〜50万円台。洗練された大人の女性、ブライダル層。</td><td>蔵前＝松が谷のご近所。価格感度が低い層</td></tr>
+    <tr><td><strong>ミナ ペルホネン</strong></td><td>ものづくりの物語性、飲食・ギャラリーも展開。丁寧な暮らし志向の女性の象徴的ブランド。</td><td>客層そのもの。店のある地域＝売れる地域</td></tr>
+    <tr><td><strong>アーツ＆サイエンス</strong></td><td>上質な素材・古きよきものを選ぶセレクトショップ。各地に店舗。</td><td>「質のいいものを選ぶ」層の入口</td></tr>
+  </table></div>
+  <div class="summary-grid" style="margin-top:14px;">
+    <div class="summary-card" style="border-left-color:#2e7d32;"><div class="s-label">できること（今回設定します）</div><div class="s-value" style="font-size:14px;">① 5ブランド名をGoogleで検索した人に配信<br>② 5ブランドのサイトを閲覧する人と近い興味を持つ人に配信</div><div class="s-desc">Google広告の「カスタムセグメント」という設定で、検索した言葉・閲覧するサイトの傾向から対象者を作れます。ブランド名は<strong>設定内部でのみ使用</strong>し、広告文や動画には一切出しません。</div></div>
+    <div class="summary-card" style="border-left-color:#8a1c13;"><div class="s-label">できないこと（正直にお伝えします）</div><div class="s-value" style="font-size:14px;">各ブランドのサイトを「実際に訪れた人」そのものへの配信</div><div class="s-desc">他社サイトの訪問者データはそのブランドしか持てないため、②の「近い興味を持つ人」で代替します。MEDERUさんが行っているのは自社サイト訪問者への再配信で、と革様でも<strong>公式サイトを訪れた方への再配信</strong>は同じ仕組みで可能です（第5章）。</div></div>
+  </div>
+</div>
 
+<!-- 5 配信設定まとめ -->
+<div class="section" style="border-color:#6d4c2f;">
+  <div class="section-title"><span class="icon" style="background:#6d4c2f;">5</span>広告配信設定まとめ</div>
+  <div class="summary-grid">
+    <div class="summary-card"><div class="s-label">広告形式</div><div class="s-value">インストリーム広告（スキップ可能）</div><div class="s-desc">動画再生前に流れる広告。5秒後にスキップ可能で、興味のある方だけが見続けます。</div></div>
+    <div class="summary-card"><div class="s-label">同じ方への表示回数</div><div class="s-value">週3回まで（2ヶ月で複数回届く設計）</div><div class="s-desc">上限を設けつつ、「忘れた頃にもう一度」が起きるよう、同じ層に2ヶ月かけて重ねて届けます。</div></div>
+    <div class="summary-card" style="border-left-color:#c2185b;"><div class="s-label">リンク先</div><div class="s-value">https://www.to-kawa.com（公式サイト トップ）</div><div class="s-desc">通販へ直行させず、まず公式サイトで世界観に触れていただく導線。トップページのまま、上品な入口として使います。</div></div>
+    <div class="summary-card" style="border-left-color:#f9a825;"><div class="s-label">配信開始</div><div class="s-value">2026年10月1日（木）</div><div class="s-desc">月の途中で始めず、10月1日から月丸ごとで開始。9月18日のお打ち合わせで確定後、設定→別担当者による確認→開始の順で進めます。</div></div>
+    <div class="summary-card" style="border-left-color:#4a5d7a;"><div class="s-label">公式サイトを訪れた方への再配信</div><div class="s-value">設定します（推奨）</div><div class="s-desc">一度 to-kawa.com をご覧になった方に、間隔を空けてもう一度届けます。公式サイトに計測タグの設置が必要です（設置はこちらで手順をご案内します）。</div></div>
+    <div class="summary-card" style="border-left-color:#cc0000;"><div class="s-label">広告動画</div><div class="s-value">現行の動画を継続（要ご相談）</div><div class="s-desc">今回のLookbook（33歳の役者の方・新しいアートディレクション）を広告素材に使えるかをご相談したいです。次の客層への種まきという狙いと、今回の配信設計は同じ方向を向いています。</div></div>
+  </div>
+</div>
+
+<!-- 6 運用の約束 -->
+<div class="section">
+  <div class="section-title"><span class="icon" style="background:#2e7d32;">6</span>運用の進め方（今回から変えること）</div>
+  <ul>
+    <li><strong>毎月、データ→ご相談→次の一手</strong>をセットでお送りします。レポートを送って終わりにしません。</li>
+    <li><strong>季節の先回り</strong>：クリスマス（11月中旬〜）、ボーナス期（12月・6月）、母の日・誕生日などの前に、言葉とエリアの差し替え案を先にお出しします。</li>
+    <li><strong>設定の確認手順</strong>：ご承認いただいた内容を「設定の正本」として記録し、配信前に設定担当とは別の担当者が管理画面と1項目ずつ照合します。開始のご報告には設定画面の画像を添えます。</li>
+    <li><strong>差し替えは1通で</strong>：エリア・言葉の切り替えはメール1本で承り、翌営業日までに反映します。</li>
+  </ul>
+</div>
+
+<div class="confirm-bar">
+  <h3>髙見澤様にご確認いただきたい点（9月18日までに、可能な範囲でご返信ください）</h3>
+  <ul>
+    <li><strong>① 年齢</strong>：25〜54歳（30〜40代中心）でよろしいでしょうか。50代まで広げる／45歳で切る、どちらも可能です。</li>
+    <li><strong>② 10月のエリア</strong>：東京西側＋北海道（札幌周辺・旭川）で開始してよろしいでしょうか。加えたい／外したい市区町村があればお知らせください。</li>
+    <li><strong>③ 広告動画</strong>：現行の動画のままか、Lookbookの素材で新しく作るか（新素材の場合は10月は現行、11月から差し替えも可能です）。</li>
+    <li><strong>④ 近い世界観のブランド</strong>：5ブランドの名前を設定内部（対象者の作成）にのみ使うことをご了承いただけますでしょうか。</li>
+    <li><strong>⑤ 公式サイトへの計測タグ設置</strong>：再配信のため、to-kawa.com にタグを設置してよろしいでしょうか（サイト制作会社様がいらっしゃれば手順をお渡しします）。</li>
+  </ul>
+</div>
+
+<div class="note-bar">
+  <h3>補足事項</h3>
+  <ul>
+    <li>海外（NY・パリ）向けは今回の対象外とし、別途ご提案します。</li>
+    <li>本書は第1弾です。ご意見を反映した確定版を9月17日までにお送りし、<strong>9月18日（金）11:00 のお打ち合わせ（Zoom）</strong>で最終確認のうえ、10月1日に配信を開始します。</li>
+    <li>ご不明な点・違和感のある点は、どんなに小さなことでもお知らせください。</li>
+  </ul>
+</div>
+
+<div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">株式会社ランバード｜広告運用サポート窓口</div>
 </div>
 </body>
 </html>
