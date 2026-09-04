@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube広告 運用提案書 — 焼肉 桃松苑 様</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 24px;
+        }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        h1 {
+            text-align: center;
+            font-size: 26px;
+            color: #1a1a1a;
+            border-bottom: 3px solid #cc0000;
+            padding-bottom: 12px;
+            margin-bottom: 6px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 36px;
+        }
+
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border: 2px solid #e0e0e0;
+        }
+        .section-title {
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-title .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .goal-banner {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #fff;
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 32px;
+        }
+        .goal-banner h2 {
+            color: #ff6b6b;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .goal-banner .goal-sub {
+            text-align: center;
+            font-size: 14px;
+            color: #ccc;
+            margin-bottom: 24px;
+        }
+        .goal-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+        .gf-box {
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 10px;
+            padding: 16px 20px;
+            text-align: center;
+            min-width: 160px;
+        }
+        .gf-box .gf-step { font-size: 11px; color: #ff6b6b; font-weight: 700; margin-bottom: 4px; }
+        .gf-box .gf-title { font-size: 15px; font-weight: 700; }
+        .gf-box .gf-desc { font-size: 12px; color: #ccc; margin-top: 4px; }
+        .gf-arrow { color: #ff6b6b; font-size: 24px; font-weight: 700; padding: 0 10px; }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .target-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+        }
+        .target-card .t-icon { font-size: 28px; margin-bottom: 8px; }
+        .target-card .t-label { font-size: 12px; color: #888; margin-bottom: 4px; }
+        .target-card .t-value { font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.5; }
+
+        .area-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .area-box { border-radius: 10px; padding: 18px; }
+        .area-box.primary { background: #fff0f0; border: 2px solid #cc0000; }
+        .area-box.secondary { background: #f0f7ff; border: 2px solid #1976d2; }
+        .area-box h4 { font-size: 14px; margin-bottom: 10px; }
+        .area-box .area-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 3px 4px;
+        }
+        .area-box.primary .area-tag { background: #ffebee; color: #c62828; }
+        .area-box.secondary .area-tag { background: #e3f2fd; color: #1565c0; }
+
+        .kw-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .kw-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 16px;
+            border: 1px solid #e0e0e0;
+        }
+        .kw-box h4 {
+            font-size: 13px;
+            color: #cc0000;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #eee;
+        }
+        .kw-tag {
+            display: inline-block;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 3px 10px;
+            font-size: 12px;
+            margin: 2px;
+            color: #333;
+        }
+
+        .note-bar {
+            background: #fff3e0;
+            border: 2px solid #ff8800;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin-bottom: 28px;
+        }
+        .note-bar h3 { color: #e65100; font-size: 15px; margin-bottom: 10px; }
+        .note-bar ul { margin-left: 20px; font-size: 13px; color: #444; }
+        .note-bar li { margin-bottom: 6px; }
+        .note-bar li strong { color: #cc0000; }
+
+        @media (max-width: 768px) {
+            .target-grid { grid-template-columns: repeat(2, 1fr); }
+            .area-section { grid-template-columns: 1fr; }
+            .kw-grid { grid-template-columns: 1fr; }
+            .goal-flow { flex-direction: column; }
+            .gf-arrow { transform: rotate(90deg); padding: 4px 0; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>YouTube広告 運用提案書</h1>
+    <p class="subtitle">焼肉 桃松苑（とうしょうえん）様｜株式会社ランバード<br><span style="font-size:12px;color:#aaa;">最終更新：2026年9月4日（配信開始：9月中予定）</span></p>
+
+    <!-- ① 目的・ゴール -->
+    <div class="goal-banner">
+        <h2>広告配信の目的</h2>
+        <p class="goal-sub">江東区・近隣エリアの焼肉店をお探しの方に桃松苑さんの存在を知ってもらい、公式LINEのご登録・ご来店につなげる</p>
+        <div class="goal-flow">
+            <div class="gf-box">
+                <div class="gf-step">STEP 1</div>
+                <div class="gf-title">認知</div>
+                <div class="gf-desc">YouTube広告で<br>「元力士がこだわる焼肉」を届ける</div>
+            </div>
+            <div class="gf-arrow">&rarr;</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 2</div>
+                <div class="gf-title">興味</div>
+                <div class="gf-desc">動画でお店の世界観・<br>看板メニューを伝える</div>
+            </div>
+            <div class="gf-arrow">&rarr;</div>
+            <div class="gf-box">
+                <div class="gf-step">STEP 3</div>
+                <div class="gf-title">登録</div>
+                <div class="gf-desc">公式LINEへ遷移し<br>お友だち登録</div>
+            </div>
+            <div class="gf-arrow">&rarr;</div>
+            <div class="gf-box">
+                <div class="gf-step">GOAL</div>
+                <div class="gf-title">ご来店</div>
+                <div class="gf-desc">実際の<br>ご来店へ</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ② ターゲティング設定 -->
+    <div class="section" style="border-color:#cc0000;">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">1</span>
+            ターゲティング設定
+        </div>
+
+        <div class="target-grid">
+            <div class="target-card">
+                <div class="t-icon">👤</div>
+                <div class="t-label">性別</div>
+                <div class="t-value">男女</div>
+                <div style="font-size:11px;color:#c62828;margin-top:4px;">「不明」を除外</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📅</div>
+                <div class="t-label">年齢</div>
+                <div class="t-value">20〜49才</div>
+                <div style="font-size:11px;color:#c62828;margin-top:4px;">「不明」を除外</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">📍</div>
+                <div class="t-label">エリア</div>
+                <div class="t-value">店舗から<br>半径5km圏内</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">🕐</div>
+                <div class="t-label">配信時間</div>
+                <div class="t-value">毎日<br>11:00〜22:00</div>
+            </div>
+            <div class="target-card">
+                <div class="t-icon">🔁</div>
+                <div class="t-label">表示回数の上限</div>
+                <div class="t-value">同じ方へ<br>1日2回まで</div>
+            </div>
+        </div>
+
+        <div class="area-section">
+            <div class="area-box primary">
+                <h4 style="color:#c62828;">配信エリア（案）</h4>
+                <span class="area-tag">東京都江東区住吉2丁目24-15 から半径5km圏内</span>
+                <span class="area-tag">江東区（都市）</span>
+                <span class="area-tag">墨田区（都市）</span>
+                <span class="area-tag">錦糸町・亀戸周辺（周辺地域）</span>
+            </div>
+            <div class="area-box secondary">
+                <h4 style="color:#1565c0;">エリア設定の考え方</h4>
+                <div style="font-size:12.5px;color:#444;line-height:1.9;">
+                    店舗所在地（<strong>東京都江東区住吉</strong>）を中心とした<strong>半径5km圏内</strong>に加え、電車・徒歩で通える範囲として<strong>江東区・墨田区・錦糸町・亀戸周辺</strong>を都市／周辺地域単位で追加設定いたします。<br>
+                    初回配信のため、まずはこのエリアで反応を見て、次サイクルで実績をもとに絞り込み・拡張してまいります。<br>
+                    <strong style="color:#c62828;">※最寄り駅の確認</strong>：エンドカードの案内表記との整合のため、最寄り駅（住吉駅を想定）を配信設定前に一度ご確認させてください。
+                </div>
+            </div>
+        </div>
+
+        <div style="background:#fff3e0;border-radius:8px;padding:14px 18px;font-size:13px;color:#e65100;">
+            <strong>ターゲット層について：</strong>お店のコンセプトをふまえ、以下2層を主要ターゲットに設定しております。<br>
+            <strong style="display:inline-block;margin-top:6px;">①</strong> 仕事帰り・接待・飲み会幹事のサラリーマン層<br>
+            <strong>②</strong> 女子会・デート利用の女性層（無煙ロースター完備で匂い・煙を気にせず楽しめる点を訴求）<br>
+            この2層を包含する年齢帯として <strong>20〜49才</strong> を設定しております。ご希望があればご意見をお聞かせください。
+        </div>
+    </div>
+
+    <!-- ③ 関連キーワード設定 -->
+    <div class="section">
+        <div class="section-title">
+            <span class="icon" style="background:#1976d2;">2</span>
+            関連キーワード設定
+        </div>
+        <p style="font-size:13px;color:#666;margin-bottom:16px;">設定したキーワードに関連する動画に対して広告が配信されます。地域の焼肉店を探している方と、桃松苑さんならではの話題性（元力士が営むお店）に関心を持つ方の両方に届く構成にしております。</p>
+
+        <div class="kw-grid" style="margin-bottom:22px;">
+            <div class="kw-box">
+                <h4>焼肉店を直接お探しの方</h4>
+                <span class="kw-tag">焼肉</span><span class="kw-tag">焼肉 江東区</span><span class="kw-tag">焼肉 住吉</span><span class="kw-tag">焼肉 錦糸町</span><span class="kw-tag">焼肉 予約</span><span class="kw-tag">焼肉 おすすめ</span>
+            </div>
+            <div class="kw-box">
+                <h4>話題性（元力士のお店）</h4>
+                <span class="kw-tag">元力士 飲食店</span><span class="kw-tag">引退力士 セカンドキャリア</span><span class="kw-tag">相撲部屋 出身</span>
+            </div>
+            <div class="kw-box">
+                <h4>接待・飲み会（サラリーマン層）</h4>
+                <span class="kw-tag">接待 焼肉</span><span class="kw-tag">飲み会 幹事</span><span class="kw-tag">仕事終わり 焼肉</span><span class="kw-tag">歓送迎会 会場</span>
+            </div>
+            <div class="kw-box">
+                <h4>女子会・デート（女性層）</h4>
+                <span class="kw-tag">女子会 焼肉</span><span class="kw-tag">焼肉 デート</span><span class="kw-tag">煙が気にならない 焼肉</span><span class="kw-tag">無煙ロースター</span>
+            </div>
+            <div class="kw-box">
+                <h4>お肉・メニュー</h4>
+                <span class="kw-tag">和牛 焼肉</span><span class="kw-tag">ハラミ 焼肉</span><span class="kw-tag">ホルモン 焼肉</span><span class="kw-tag">厳選牛肉</span>
+            </div>
+            <div class="kw-box">
+                <h4>地域グルメ</h4>
+                <span class="kw-tag">江東区 グルメ</span><span class="kw-tag">住吉駅 グルメ</span><span class="kw-tag">亀戸 グルメ</span><span class="kw-tag">錦糸町 グルメ</span>
+            </div>
+        </div>
+
+        <div style="background:#fff3e0;border-radius:8px;padding:14px 18px;font-size:13px;color:#e65100;margin-top:16px;">
+            <strong>「元力士」関連キーワードについて：</strong>あくまで動画の話題性・検索意図に基づく配信先の選定であり、日本相撲協会様との関係を示すものではございません。動画本編でも協会ロゴ・番付・化粧まわし等は使用しておりません。<br>
+            <strong style="display:inline-block;margin-top:6px;">審査について：</strong>入稿時に一部キーワードが審査対象となる場合がございます。その場合は審査結果を踏まえて調整いたします。<br>
+            <strong style="display:inline-block;margin-top:6px;">配信後の最適化：</strong>配信開始後の実績を見て、実際に配信が発生している言葉に絞り込み・拡張してまいります。
+        </div>
+    </div>
+
+    <!-- ④ CTA（リンク先） -->
+    <div class="section" style="border-color:#2e7d32;">
+        <div class="section-title">
+            <span class="icon" style="background:#2e7d32;">3</span>
+            CTA（リンク先）
+        </div>
+        <p style="font-size:13px;color:#666;margin-bottom:16px;">広告の「詳細」ボタンから遷移する先を、<strong>公式LINE</strong> で設定いたします。動画をご覧いただいた方が最短ルートでお友だち登録・ご予約相談まで到達できる導線です。</p>
+
+        <div style="background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:20px;">
+            <h4 style="font-size:15px;margin-bottom:8px;">公式LINE（お友だち登録導線）</h4>
+            <div style="font-size:13px;color:#555;line-height:1.7;">動画から直接LINEお友だち登録画面へ遷移します。「動画 → LINE登録」の最短ルートで、離脱を最小限に抑えます。</div>
+            <div style="font-size:12px;color:#c62828;background:#fff;padding:8px 10px;border-radius:6px;margin-top:8px;border:1px solid #ddd;">
+                <strong>確認事項：</strong>追加先アカウント名は「安彦剣太郎　剣翔桃太郎」様と伺っております。広告に設定するLINE公式アカウントのURL（またはQRコード）を頂戴できますでしょうか。
+            </div>
+        </div>
+    </div>
+
+    <!-- ⑤ 広告配信設定まとめ -->
+    <div class="section" style="border-color:#cc0000;">
+        <div class="section-title">
+            <span class="icon" style="background:#cc0000;">4</span>
+            広告配信設定まとめ
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #cc0000;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">広告形式</div>
+                <div style="font-size:16px;font-weight:700;">スキップ可能インストリーム広告</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">動画再生前に流れる広告。5秒後にスキップ可能。30秒以上ご覧いただいた方がカウントされます。</div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #1976d2;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">使用動画</div>
+                <div style="font-size:16px;font-weight:700;">焼肉 桃松苑様 広告動画</div>
+                <div style="font-size:12px;margin-top:6px;"><a href="https://youtu.be/IUqZvsJmQ3I" target="_blank" rel="noopener" style="color:#1976d2;text-decoration:underline;">https://youtu.be/IUqZvsJmQ3I</a></div>
+            </div>
+            <div style="background:#fff3e0;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">リンク先（CTA）<span style="color:#e65100;font-weight:700;margin-left:6px;">確認中</span></div>
+                <div style="font-size:16px;font-weight:700;">公式LINE</div>
+                <div style="font-size:12px;color:#555;margin-top:10px;line-height:1.7;">
+                    動画をご覧になった方が「気になる」と感じた瞬間に、<strong>そのままLINEお友だち登録まで一直線で到達できる</strong>導線です。<br>
+                    ・「動画 → LINE登録」の最短ルート<br>
+                    ・登録先アカウント名「安彦剣太郎　剣翔桃太郎」様と伺っておりますが、広告設定用のURL・QRコードを別途ご確認させてください
+                </div>
+            </div>
+            <div style="background:#f8f9fa;border-radius:10px;padding:18px;border-left:5px solid #f9a825;">
+                <div style="font-size:13px;color:#888;margin-bottom:4px;">配信開始</div>
+                <div style="font-size:16px;font-weight:700;">2026年9月中 開始予定</div>
+                <div style="font-size:12px;color:#555;margin-top:6px;">リンク先（公式LINE）が確定しましたら、Google広告の設定と最終確認を行い、準備が整い次第、配信開始のご連絡をさせていただきます。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 補足事項 -->
+    <div class="note-bar">
+        <h3>補足事項</h3>
+        <ul>
+            <li>配信開始後、<strong>約2ヶ月に1回</strong>の頻度で成果をご報告いたします</li>
+            <li>ターゲティングやキーワードは<strong>データを見ながら随時最適化</strong>してまいります</li>
+            <li>本提案は店舗所在地（東京都江東区住吉2丁目24-15）をもとに作成しております。営業日・営業時間（ディナー17:00〜21:30 L.O.21:00／ランチ11:00〜13:30 L.O.13:00／木曜定休）に合わせ、配信時間の調整も可能です</li>
+            <li>ご不明な点やご要望がございましたら、お気軽にお申し付けください</li>
+        </ul>
+    </div>
+
+    <div style="text-align:center;color:#aaa;font-size:12px;padding:20px 0;">
+        株式会社ランバード｜広告運用サポート窓口
+    </div>
+
+</div>
+</body>
+</html>
