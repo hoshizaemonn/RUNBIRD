@@ -123,6 +123,14 @@ strong{color:var(--ink)}
 ほぼ完成形の状態まで作ってあります。音（ナレーション・BGM）はまだ載せていません。
 </p>
 
+<div class="note">
+<p><strong>2026-09-04 更新：テロップ表現を刷新しました。</strong>
+構成・台本・ナレーションの文言は変えていません。参考動画に挙げていた
+<a href="https://youtu.be/mm-m6QYmANI" target="_blank" rel="noopener">Plumeria（陸前高田）</a>を実際にダウンロードしてコマ送りで研究し、
+<strong>①左上の常設ブランド帯 ②《鉤括弧》の見出し ③タグ＋大見出し ④USPのピル型チップ ⑤縦書き列＋点線リーダー</strong>
+の5つの見せ方を移植しています。詳細は本ページ末尾の「テロップ表現について」。</p>
+</div>
+
 <h2>モック動画</h2>
 <div class="videos">
   <div class="card">
@@ -274,9 +282,29 @@ TEL 090-5503-0421<br>
   <thead><tr><th>ゲート</th><th>結果</th></tr></thead>
   <tbody>
   <tr><td><code>/fact-check</code>（正本 facts.json との機械照合）</td><td><strong>ブロッカー0</strong>。読点1文字違い2件を修正済み</td></tr>
-  <tr><td><code>/telop-check</code>（テロップの機械チェック）</td><td>機械の指摘6件は<strong>原寸の目視で全てOCRの誤読と確認</strong>。見切れ・被りなし</td></tr>
-  <tr><td>目視（制作側）</td><td>5カットを不合格にして生成し直し（肩を揉む仕草／背中の露出／真俯瞰で全身／手をつなぐ・マンション）</td></tr>
+  <tr><td><code>/telop-check</code>（テロップの機械チェック）</td><td>機械の指摘は<strong>原寸の目視で全てOCRの誤読と確認</strong>。見切れ・被りなし（縦書き・鉤括弧を採用してから誤検出は増えたが、実害は0件）</td></tr>
+  <tr><td>目視（制作側）</td><td>画像5カットを不合格にして生成し直し。テロップはスパークルの重なりを1件修正</td></tr>
   <tr><td><code>/video-check</code>・<code>/video-qa-relay</code></td><td><strong>未実施。</strong>クライアントへ出す段になったら、別環境の別AIによる独立チェックを通します</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>テロップ表現について（2026-09-04 更新）</h2>
+<div class="note">
+<p><strong>「構成は良さそうだが、もう少し工夫がほしい。参考動画のテロップの見せ方が良いのでそれに寄せてほしい」</strong>というフィードバックを受け、
+<a href="https://youtu.be/mm-m6QYmANI" target="_blank" rel="noopener">参考動画（Plumeria）</a>を実際にダウンロードして1秒ごとにコマ送りで研究し、
+テロップの「見せ方」だけを作り直しました。<strong>台本・ナレーション・構成は変更していません。</strong></p>
+<p>移植した5つの技法：</p>
+</div>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>技法</th><th>参考動画での見え方</th><th>本案件での使い方</th></tr></thead>
+  <tbody>
+  <tr><td>①常設ブランドウォーターマーク</td><td>左上に虫眼鏡アイコン＋店名の帯がずっと表示</td><td>全カット共通で表示。AI生成の「ストック感」を消す一番効いた要素</td></tr>
+  <tr><td>②《鉤括弧》見出し</td><td>《大人贅》＋サブライン</td><td>「《行きたいけど》子どもがいるから。」「《holistic＝全体》からだの一部分だけを、見ません。」</td></tr>
+  <tr><td>③タグ＋明朝の大見出し</td><td>「男女問わずご来店可能」＋「心と身体を癒す」</td><td>ブランド名の登場カット・ラストのブランドコピーで使用</td></tr>
+  <tr><td>④USPのピル型チップ</td><td>「オールハンドの施術」×「自然な木の香り」</td><td>「お子さま連れ、歓迎です。」「アロマを使った」「オールハンド施術」</td></tr>
+  <tr><td>⑤縦書き列＋点線リーダー</td><td>「冷えやむくみを／改善する／効果が期待」の3列</td><td>施術シーンの説明「機械は使いません。／手のひらだけで、／ゆっくりほぐしていきます。」</td></tr>
   </tbody>
 </table>
 </div>
