@@ -1,33 +1,52 @@
 @charset "UTF-8";
 /* ==========================================================================
    Dareグループ（株式会社成和）HP 叩き台 共通CSS
-   2026-09-03 作成 / WordPress化前提の素直な構造（フレームワーク不使用）
+   2026-09-03 作成 / 2026-09-05 参考4サイトの実測値を反映
+   WordPress化前提の素直な構造（フレームワーク不使用）
 
-   ★配色は「仮当て」です（店舗カラー未確定・9/7 MTGで確定）
-     犬・自然・北海道苫小牧の文脈に合う落ち着いた配色として
-     深緑（森）＋クリーム（生成り）＋木のブラウンで仮組みしています。
-     確定後は下の :root のカスタムプロパティ4色を差し替えるだけで全ページ反映されます。
+   ★配色は「仮当て」です（店舗カラー未確定・MTGで確定）
+     お客様が選んだ参考4サイトの実測色から導いた仮の配色です。
+     確定後は下の :root のカスタムプロパティを差し替えるだけで全ページに反映されます。
+
+   ── 参考サイトの実測値（2026-09-05・PC1440px / SP390px で計測）──
+   ・北欧の杜公園: 背景 #F5EDE8 ／ 文字 #4A413B ／ アクセント #306A6C ／ セクション余白 79-80px
+   ・ゆるり奥日光 : 見出し30px・字間4.8-6px ／ 本文13px・行間28px・字間1.56px
+                   アクセント #C99833（金）／ ボタン角丸100px（ピル）／ コンテンツ幅1080px
+   ・Seagull Inn : 全体が明朝体（游明朝）／ 見出し26px・字間1.4px ／ アクセント #9E8553 #B09D7C
+                   背景 #F6F1EA ／ コンテンツ幅1200px
+   ・TOKIWAN    : 本文16px・行間25.6px・字間0.5px ／ 背景 #FEFEFE ／ コンテンツ幅1200px
+   → 4サイト共通: **画像・カードの角丸は全て0px、影なし**、暖色のオフホワイト背景、
+     文字は黒ではなく暖かみのある濃茶、アクセントは金〜タン系、余白が広い、写真が主役。
    ========================================================================== */
 
 :root {
   /* --- 仮当てカラー（MTGで確定）--- */
-  --color-primary: #33533f;        /* 深緑：見出し・ヘッダー・フッター */
-  --color-primary-dark: #243c2d;
-  --color-accent: #a9713f;         /* 木のブラウン：ボタン・アクセント */
-  --color-accent-dark: #8d5c31;
-  --color-bg: #faf8f3;             /* 生成りの背景 */
-  --color-bg-alt: #f1ece1;
-  --color-text: #333029;
-  --color-text-light: #6b665c;
-  --color-border: #e0d9cb;
+  /* 参考4サイトの実測色から: 背景=暖色オフホワイト／文字=暖かみのある濃茶／
+     アクセント=金〜タン（ゆるり奥日光・Seagull に共通）／深緑=北欧の杜の #306A6C 系 */
+  --color-primary: #2f4a41;        /* 深緑：見出し・フッター（北欧の杜の青緑に寄せた低彩度） */
+  --color-primary-dark: #243932;
+  /* 金〜タン（#C99833 / #9E8553 系）。ただし参考サイトそのままの明るい金だと
+     白文字ボタンで 3.1:1 しか出ないため、可読性が出る濃さまで落として使う */
+  --color-accent: #8f6f33;         /* ボタン地・枠線（白文字とのコントラスト 4.7:1） */
+  --color-accent-dark: #75592a;
+  --color-accent-text: #81622a;    /* クリーム地・生成り地に置く小さな金文字（4.6:1） */
+  --color-accent-light: #c9a355;   /* 写真の上に置く下線など、暗所で使う明るい金 */
+  --color-bg: #f6f1ea;             /* 暖色のオフホワイト（Seagull #F6F1EA と同値） */
+  --color-bg-alt: #efe7db;         /* 一段濃い生成り（北欧の杜 #EAE1DB 系） */
+  --color-text: #4a413b;           /* 暖かみのある濃茶（北欧の杜の実測値と同値） */
+  --color-text-light: #6d6459;     /* 生成り地でも4.5:1を確保する濃さ */
+  --color-border: #ded4c6;
   --color-white: #ffffff;
 
+  /* 参考サイトは見出しに明朝／本文にゴシックを使う構成（Seagull=全面明朝、ゆるり=Noto Serif併用） */
   --font-base: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
-    "Hiragino Sans", Meiryo, sans-serif;
+    "Hiragino Sans", "Yu Gothic Medium", "Yu Gothic", Meiryo, sans-serif;
+  --font-serif: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN W3", "Yu Mincho",
+    "YuMincho", "游明朝", "Noto Serif JP", serif;
 
-  --wrap: 1080px;
-  --radius: 10px;
-  --shadow: 0 2px 10px rgba(51, 83, 63, 0.08);
+  --wrap: 1120px;                  /* 参考: 1080（ゆるり）〜1200（Seagull/TOKIWAN） */
+  --radius: 0px;                   /* ★参考4サイトとも角丸0px。直角に統一 */
+  --section-pad: 88px;             /* 参考: 79-90px */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -37,18 +56,17 @@ html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   font-family: var(--font-base);
-  font-size: 16px;
-  line-height: 1.9;
+  font-size: 15px;                 /* 参考: 13-16px。やや小さめ＋広い行間が4サイト共通 */
+  line-height: 2.05;               /* 参考: ゆるり 27.95/13 = 2.15 */
+  letter-spacing: 0.06em;          /* 参考: ゆるり 1.56px / TOKIWAN 0.5px */
   color: var(--color-text);
   background: var(--color-bg);
-  /* 長い和文が360pxで溢れないように */
   overflow-wrap: anywhere;
   word-break: normal;
   line-break: strict;
 }
 
-/* 和文を文節単位で折り返し、「す。」「無）」のような2文字ぶら下がりを防ぐ
-   （対応ブラウザのみ適用。非対応ブラウザは従来どおりの折り返しで崩れない） */
+/* 和文を文節単位で折り返し、「す。」「無）」のような2文字ぶら下がりを防ぐ */
 @supports (word-break: auto-phrase) {
   p, li, h1, h2, h3, .lead, .note-box, dd { word-break: auto-phrase; }
 }
@@ -61,18 +79,59 @@ a { color: var(--color-accent-dark); }
   width: 100%;
   max-width: var(--wrap);
   margin-inline: auto;
-  padding-inline: 20px;
+  padding-inline: 24px;
 }
 
 /* --------------------------------------------------------------------------
    ヘッダー / ナビゲーション
+   参考サイトはいずれも白または透過の細いヘッダー＋余白広め
    -------------------------------------------------------------------------- */
+/* ★参考サイト（ゆるり奥日光・TOKIWAN）はナビをFV写真の上に透過で重ねている。
+   最上部では透明、スクロールすると白背景に切り替える（.is-solid は nav.js が付与） */
 .site-header {
-  background: var(--color-white);
-  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  border-bottom: 1px solid transparent;
   position: sticky;
   top: 0;
   z-index: 50;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.site-header.is-solid {
+  background: var(--color-white);
+  border-bottom-color: var(--color-border);
+}
+
+/* 透過時、ヘッダーの行だけに暗い帯を敷く。
+   ★写真全体にスクリムを足すと主題が沈むので、帯はヘッダーの高さ分に限定する */
+.site-header:not(.is-solid)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  height: 132px;                 /* ヘッダーより下まで伸ばし、文字が乗る行で十分な濃さを確保する */
+  bottom: auto;
+  background: linear-gradient(to bottom, rgba(26, 35, 30, 0.72) 0%, rgba(26, 35, 30, 0.48) 58%, rgba(26, 35, 30, 0) 100%);
+  pointer-events: none;
+}
+
+/* 透過時は写真の上に乗るので白文字にする */
+.site-header .site-logo { color: var(--color-white); text-shadow: 0 1px 10px rgba(0,0,0,0.4); }
+.site-header .site-logo span { color: rgba(255,255,255,0.82); }
+.site-header .global-nav a { color: rgba(255,255,255,0.95); text-shadow: 0 1px 10px rgba(0,0,0,0.4); }
+.site-header .nav-toggle { background: transparent; color: var(--color-white); border-color: rgba(255,255,255,0.7); }
+
+.site-header.is-solid .site-logo { color: var(--color-primary); text-shadow: none; }
+.site-header.is-solid .site-logo span { color: var(--color-text-light); }
+.site-header.is-solid .global-nav a { color: var(--color-text); text-shadow: none; }
+.site-header.is-solid .nav-toggle { background: var(--color-white); color: var(--color-primary); border-color: var(--color-border); }
+
+/* 透過時は現在地・hoverも白のまま（下線のアクセント色で現在地を示す）。
+   これを入れないと .global-nav a[aria-current] の濃緑が写真に溶けて読めなくなる */
+.site-header:not(.is-solid) .global-nav a:hover,
+.site-header:not(.is-solid) .global-nav a[aria-current="page"] {
+  color: var(--color-white);
+  border-bottom-color: var(--color-accent-light);
 }
 
 .header-inner {
@@ -80,23 +139,25 @@ a { color: var(--color-accent-dark); }
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  min-height: 68px;
+  min-height: 76px;
 }
 
 .site-logo {
-  font-size: 19px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   color: var(--color-primary);
   text-decoration: none;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .site-logo span {
   display: block;
-  font-size: 11px;
+  font-family: var(--font-base);
+  font-size: 10px;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.18em;
   color: var(--color-text-light);
 }
 
@@ -105,17 +166,17 @@ a { color: var(--color-accent-dark); }
   border: 1px solid var(--color-border);
   background: var(--color-white);
   color: var(--color-primary);
-  font-size: 13px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
   font-family: inherit;
-  padding: 9px 13px;
-  border-radius: 6px;
+  padding: 10px 14px;
   cursor: pointer;
 }
 
 .global-nav ul {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 26px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -124,9 +185,10 @@ a { color: var(--color-accent-dark); }
 .global-nav a {
   color: var(--color-text);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
   padding: 6px 0;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
   white-space: nowrap;
 }
 
@@ -136,11 +198,12 @@ a { color: var(--color-accent-dark); }
   border-bottom-color: var(--color-accent);
 }
 
+/* CTAのみピル型（ゆるり奥日光のボタン border-radius:100px に合わせる） */
 .global-nav .nav-cta a {
   background: var(--color-accent);
   color: var(--color-white);
-  padding: 9px 18px;
-  border-radius: 999px;
+  padding: 11px 22px;
+  border-radius: 100px;
   border-bottom: none;
 }
 
@@ -150,26 +213,72 @@ a { color: var(--color-accent-dark); }
 }
 
 /* --------------------------------------------------------------------------
-   ファーストビュー / ページヘッダー
-   ★写真は実素材の提供待ち。現在はプレースホルダ（CSSの単色＋HTMLテキスト）。
-     文字を焼き込んだ画像は使わない方針のため、見出しは必ずHTML側に置くこと。
+   ファーストビュー
+   ★参考サイト（ゆるり奥日光・TOKIWAN）は写真を画面いっぱいに敷き、
+     その上にキャッチを重ねる型。写真が主役という共通項をここで再現している。
+     文字は焼き込まずHTML側に置き、可読性はスクリム（暗いグラデ）で確保する。
    -------------------------------------------------------------------------- */
 .hero {
-  background: var(--color-primary);
+  position: relative;
+  margin-top: -76px;               /* ヘッダーの高さ分だけ引き上げ、写真の下にくぐらせる */
+  min-height: 700px;               /* 参考: ゆるり940px / TOKIWAN 900px */               /* 参考: ゆるり940px / TOKIWAN 900px のFV高 */
+  display: flex;
+  align-items: flex-end;
   color: var(--color-white);
-  padding: 64px 0 72px;
+  background: var(--color-primary);
+  overflow: hidden;
 }
 
-.hero-inner { display: grid; gap: 32px; grid-template-columns: 1fr 1fr; align-items: center; }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+  /* 参考4サイトの写真は低彩度・暖色寄り。生成画像の彩度を落として空気感を合わせる */
+  filter: saturate(0.98) sepia(0.06);
+}
+
+/* 写真の上でも文字が読めるようにする（下から上への暗いグラデ） */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(26, 35, 30, 0.72) 0%, rgba(26, 35, 30, 0.42) 34%, rgba(26, 35, 30, 0.04) 100%),
+    linear-gradient(to right, rgba(26, 35, 30, 0.40) 0%, rgba(26, 35, 30, 0.04) 74%);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 74px;
+  padding-top: 120px;
+  max-width: 760px;
+}
 
 .hero h1 {
-  /* 360pxで右余白が消えないよう 6.6vw まで下げる（"ギリギリ収まる"＝崩れとみなす） */
-  font-size: min(34px, 6.6vw);
-  line-height: 1.55;
-  margin: 0 0 18px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-family: var(--font-serif);
+  font-size: min(40px, 7.4vw);
+  line-height: 1.9;
+  letter-spacing: 0.14em;          /* 参考: ゆるり見出し 4.8-6px の広い字間 */
+  margin: 0 0 22px;
+  font-weight: 500;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.34);
 }
+
+.hero p {
+  margin: 0 0 30px;
+  font-size: 14px;
+  line-height: 2.15;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  max-width: 620px;
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
 
 /* 見出しは意味のかたまり単位でのみ改行させる（助詞・句点1文字の孤立を防ぐ） */
 .nb { display: inline-block; }
@@ -177,53 +286,87 @@ a { color: var(--color-accent-dark); }
 /* 電話番号など、途中で改行されると困るものに付ける */
 .nowrap { white-space: nowrap; }
 
-.hero p {
-  margin: 0 0 26px;
-  font-size: 15px;
-  line-height: 2;
-  color: rgba(255, 255, 255, 0.9);
-}
+/* 屋号など、途中で折れると読みづらい固有名詞はかたまりで折り返す */
+.site-footer .footer-bottom span,
+.site-footer li a { display: inline-block; }
 
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-
+/* --------------------------------------------------------------------------
+   下層ページのページヘッダー（写真＋見出しの帯）
+   -------------------------------------------------------------------------- */
+/* 下層ページは白ヘッダー固定（.header-fixed-solid）。写真の下にくぐらせない */
 .page-header {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: flex-end;
   background: var(--color-primary);
   color: var(--color-white);
-  padding: 46px 0;
+  overflow: hidden;
 }
 
+.page-header .hero-bg { object-position: center 34%; }  /* 主題（犬の頭・建物）が切れない位置 */
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(26, 35, 30, 0.70) 0%, rgba(26, 35, 30, 0.42) 55%, rgba(26, 35, 30, 0.06) 100%),
+    linear-gradient(to right, rgba(26, 35, 30, 0.38) 0%, rgba(26, 35, 30, 0.04) 74%);
+}
+
+.page-header .wrap { position: relative; z-index: 2; padding-bottom: 44px; padding-top: 56px; }
+
 .page-header h1 {
-  margin: 0 0 8px;
-  font-size: min(28px, 6.0vw);
-  line-height: 1.5;
+  font-family: var(--font-serif);
+  margin: 0 0 10px;
+  font-size: min(32px, 6.4vw);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.7;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.34);
 }
 
 .page-header p {
   margin: 0;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 13.5px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* 白い皿など明るい写真の上では通常のスクリムでは白文字が浮かないため、一段濃くする */
+.page-header.is-light-photo::after {
+  background:
+    linear-gradient(to top, rgba(26, 35, 30, 0.86) 0%, rgba(26, 35, 30, 0.64) 55%, rgba(26, 35, 30, 0.26) 100%),
+    linear-gradient(to right, rgba(26, 35, 30, 0.48) 0%, rgba(26, 35, 30, 0.16) 74%);
+}
+
+@media (min-width: 1200px) {
+  .page-header { min-height: 380px; }   /* 横長になりすぎて写真の主題が帯で切れるのを防ぐ */
 }
 
 /* パンくず */
 .breadcrumb {
   background: var(--color-bg-alt);
-  font-size: 12px;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
   color: var(--color-text-light);
-  padding: 10px 0;
+  padding: 12px 0;
 }
 .breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
-.breadcrumb li::after { content: "›"; margin-left: 8px; color: #b6ae9d; }
+.breadcrumb li::after { content: "›"; margin-left: 8px; color: #bcb0a0; }
 .breadcrumb li:last-child::after { content: ""; margin: 0; }
+.breadcrumb a { color: var(--color-text-light); }
 
 /* --------------------------------------------------------------------------
-   画像プレースホルダ（実写真に差し替える場所）
+   画像プレースホルダ（Googleマップ等、まだ実体がない箇所）
    -------------------------------------------------------------------------- */
 .ph {
   background: repeating-linear-gradient(
     45deg, #e7e0d2, #e7e0d2 12px, #ded6c5 12px, #ded6c5 24px
   );
   border: 1px dashed #c3b8a2;
-  border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -235,62 +378,74 @@ a { color: var(--color-accent-dark); }
   min-height: 200px;
 }
 
-.ph-hero { min-height: 280px; background-color: #4a6b55; }
 .ph-wide { min-height: 240px; }
-.ph-card { min-height: 168px; border-radius: var(--radius) var(--radius) 0 0; }
 
 /* --------------------------------------------------------------------------
    写真（★現在はすべてAI生成のダミー画像。実素材の受領後に差し替える）
+   参考4サイトはいずれも画像の角丸が0px・影なし。ここでも直角・影なしに統一。
    差し替え箇所の一覧は 02_制作/_ダミー画像差し替え一覧.md を参照
    -------------------------------------------------------------------------- */
 .media {
   width: 100%;
-  border-radius: var(--radius);
   object-fit: cover;
   aspect-ratio: 16 / 9;
 }
 
-.media-hero { aspect-ratio: 4 / 3; min-height: 240px; }
-.media-wide { aspect-ratio: 16 / 7; margin-bottom: 34px; }
+.media-wide { aspect-ratio: 16 / 6.6; margin-bottom: 46px; }
 
 .card-img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 10;           /* 参考: Seagull のカード画像 391x220 ≒ 16:9 */
   object-fit: cover;
-  border-radius: var(--radius) var(--radius) 0 0;
 }
 
 /* --------------------------------------------------------------------------
    セクション共通
+   参考サイトのセクション余白は79〜90px。ゆったり取る。
    -------------------------------------------------------------------------- */
-.section { padding: 60px 0; }
+.section { padding: var(--section-pad) 0; }
 .section-alt { background: var(--color-bg-alt); }
+.section-white { background: var(--color-white); }
 
-.section-head { margin-bottom: 34px; text-align: center; }
+.section-head { margin-bottom: 46px; text-align: center; }
+
+/* English の小見出し（参考サイト共通の意匠：小さく・字間を広く・アクセント色） */
+.section-head .en {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--color-accent-text);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
 
 .section-head h2 {
-  font-size: min(26px, 6.2vw);
-  line-height: 1.6;
-  margin: 0 0 10px;
+  font-family: var(--font-serif);
+  font-size: min(28px, 6.0vw);
+  font-weight: 500;
+  line-height: 1.85;
+  margin: 0 0 12px;
   color: var(--color-primary);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.16em;          /* 参考: ゆるり h2 の字間4.8-6px */
 }
 
 .section-head p {
   margin: 0;
-  font-size: 14px;
+  font-size: 13.5px;
+  letter-spacing: 0.06em;
   color: var(--color-text-light);
 }
 
-.lead { font-size: 15px; line-height: 2.1; }
+.lead { font-size: 15px; line-height: 2.15; }
 
 /* --------------------------------------------------------------------------
-   事業カード（同種カードは高さを揃える：grid + stretch + flex内でCTAを底に固定）
+   カード（同種カードは高さを揃える：grid + stretch + flex内でCTAを底に固定）
+   参考4サイトに合わせて角丸なし・影なし・ヘアラインの枠のみ
    -------------------------------------------------------------------------- */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  gap: 34px;
   align-items: stretch;
 }
 
@@ -302,66 +457,85 @@ a { color: var(--color-accent-dark); }
   height: 100%;
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
 }
 
 .card-body {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  padding: 22px 20px 24px;
+  padding: 28px 26px 30px;
 }
 
 .card-body h3 {
-  margin: 0 0 6px;
-  font-size: 18px;
-  line-height: 1.55;
+  font-family: var(--font-serif);
+  margin: 0 0 10px;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.75;
+  letter-spacing: 0.1em;
   color: var(--color-primary);
 }
 
 .card-body .card-sub {
-  margin: 0 0 12px;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  color: var(--color-accent-dark);
+  margin: 0 0 14px;
+  font-size: 10.5px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent-text);
 }
 
-.card-body p { margin: 0 0 18px; font-size: 14px; line-height: 1.95; }
+.card-body p { margin: 0 0 22px; font-size: 14px; line-height: 2.05; }
 
-.card-body .btn { margin-top: auto; align-self: flex-start; }
+.card-body .btn,
+.card-body .link-more { margin-top: auto; align-self: flex-start; }
 
 /* --------------------------------------------------------------------------
    ボタン
+   参考: ゆるり奥日光＝金のピル型／北欧の杜・Seagull＝線と矢印の控えめなリンク
    -------------------------------------------------------------------------- */
 .btn {
   display: inline-block;
   background: var(--color-accent);
   color: var(--color-white);
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 700;
-  padding: 13px 24px;
-  border-radius: 999px;
-  border: 2px solid var(--color-accent);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  padding: 15px 30px;
+  border-radius: 100px;
+  border: 1px solid var(--color-accent);
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .btn:hover { background: var(--color-accent-dark); border-color: var(--color-accent-dark); }
 
-.btn-outline { background: transparent; color: var(--color-white); border-color: rgba(255,255,255,0.8); }
-.btn-outline:hover { background: rgba(255,255,255,0.14); border-color: var(--color-white); }
+.btn-outline { background: transparent; color: var(--color-white); border-color: rgba(255,255,255,0.85); }
+.btn-outline:hover { background: rgba(255,255,255,0.16); border-color: var(--color-white); }
 
 .btn-quiet {
-  background: var(--color-white);
+  background: transparent;
   color: var(--color-primary);
   border-color: var(--color-primary);
 }
-.btn-quiet:hover { background: var(--color-primary); color: var(--color-white); }
+.btn-quiet:hover { background: var(--color-primary); color: var(--color-white); border-color: var(--color-primary); }
 
 .btn-block { display: block; width: 100%; }
+
+/* 「VIEW MORE →」型の控えめなリンク（北欧の杜・ゆるりのカード下部の意匠） */
+.link-more {
+  display: inline-block;
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  text-decoration: none;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.link-more::after { content: " →"; color: var(--color-accent-text); }
+.link-more:hover { color: var(--color-accent-dark); }
 
 /* --------------------------------------------------------------------------
    情報テーブル（料金・施設概要・アクセス）
@@ -372,16 +546,17 @@ a { color: var(--color-accent-dark); }
 .info-table th,
 .info-table td {
   border: 1px solid var(--color-border);
-  padding: 13px 16px;
+  padding: 16px 20px;
   text-align: left;
   vertical-align: top;
-  line-height: 1.85;
+  line-height: 1.95;
 }
 
 .info-table th {
   background: var(--color-bg-alt);
   width: 30%;
-  font-weight: 700;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   color: var(--color-primary);
   white-space: nowrap;
 }
@@ -403,73 +578,101 @@ a { color: var(--color-accent-dark); }
 .note-box {
   background: #fff8ea;
   border: 1px solid #e8d4a8;
-  border-left: 4px solid #d9a441;
-  border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 16px 20px;
+  border-left: 3px solid #d9a441;
+  padding: 18px 26px 18px 22px;   /* メールアドレス等が右罫線に接触しないよう右を広めに */
+  overflow-wrap: anywhere;        /* 英数字の長い連続（メールアドレス）を折り返す */
   font-size: 13px;
-  line-height: 1.9;
+  line-height: 1.95;
   color: #6d5322;
-  margin: 0 0 26px;
+  margin: 0 0 32px;
 }
 
-.note-box strong { color: #a9741a; }
+/* 見出し（先頭のstrong）だけ独立行にする。文中の強調はインラインのまま残す
+   （子孫すべてを block にすると文が途中で改行され、行頭が「：」になる） */
+.note-box > strong:first-child { color: #81622a; display: block; margin-bottom: 6px; }
+.note-box strong { color: #81622a; }
 .note-box ul { margin: 8px 0 0; padding-left: 1.3em; }
 
 /* --------------------------------------------------------------------------
    ステップ（ご利用の流れ）
    -------------------------------------------------------------------------- */
-.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
 
 .steps li {
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 18px 20px 18px 62px;
+  padding: 22px 24px 22px 68px;
   position: relative;
   font-size: 14px;
-  line-height: 1.9;
+  line-height: 2;
 }
 
 .steps li .step-num {
   position: absolute;
-  left: 18px;
-  top: 18px;
+  left: 22px;
+  top: 22px;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  color: var(--color-white);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent-dark);
+  background: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0;
 }
 
-.steps li h3 { margin: 0 0 4px; font-size: 15px; color: var(--color-primary); }
+.steps li h3 {
+  font-family: var(--font-serif);
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+}
 
 /* --------------------------------------------------------------------------
    FAQ
    -------------------------------------------------------------------------- */
-.faq { display: grid; gap: 12px; }
+.faq { display: grid; gap: 14px; }
 
 .faq details {
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 4px 18px;
+  padding: 4px 22px;
 }
 
 .faq summary {
   cursor: pointer;
-  font-weight: 700;
-  font-size: 15px;
+  list-style: none;
+  position: relative;
+  padding-right: 34px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 15.5px;
+  letter-spacing: 0.08em;
   color: var(--color-primary);
-  padding: 14px 0;
-  line-height: 1.7;
+  padding: 16px 0;
+  line-height: 1.8;
 }
 
-.faq details p { margin: 0 0 16px; font-size: 14px; line-height: 1.95; }
+.faq summary::-webkit-details-marker { display: none; }
+
+.faq summary::after {
+  content: "＋";
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-accent-text);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.faq details[open] summary::after { content: "−"; }
+
+.faq details p { margin: 0 0 18px; font-size: 14px; line-height: 2.05; }
 
 /* --------------------------------------------------------------------------
    お問い合わせ（事業ごとに分ける導線）
@@ -477,7 +680,7 @@ a { color: var(--color-accent-dark); }
 .contact-choice {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 30px;
   align-items: stretch;
 }
 
@@ -487,16 +690,22 @@ a { color: var(--color-accent-dark); }
   height: 100%;
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-top: 4px solid var(--color-accent);
-  border-radius: var(--radius);
-  padding: 24px 20px;
-  box-shadow: var(--shadow);
+  border-top: 2px solid var(--color-accent);
+  padding: 30px 26px;
 }
 
-.contact-card h3 { margin: 0 0 4px; font-size: 17px; color: var(--color-primary); line-height: 1.5; }
-.contact-card .card-sub { margin: 0 0 14px; font-size: 12px; color: var(--color-accent-dark); letter-spacing: 0.06em; }
-.contact-card p { margin: 0 0 16px; font-size: 13.5px; line-height: 1.9; }
-.contact-card dl { margin: 0 0 18px; font-size: 13px; line-height: 1.85; }
+.contact-card h3 {
+  font-family: var(--font-serif);
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  line-height: 1.7;
+}
+.contact-card .card-sub { margin: 0 0 16px; font-size: 10.5px; color: var(--color-accent-text); letter-spacing: 0.26em; text-transform: uppercase; }
+.contact-card p { margin: 0 0 18px; font-size: 13.5px; line-height: 2; }
+.contact-card dl { margin: 0 0 22px; font-size: 13px; line-height: 1.95; }
 .contact-card dt { font-weight: 700; color: var(--color-primary); }
 .contact-card dd { margin: 0 0 10px; }
 .contact-card .btn { margin-top: auto; }
@@ -505,28 +714,28 @@ a { color: var(--color-accent-dark); }
 .form-block {
   background: var(--color-white);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  padding: 28px 24px;
+  padding: 36px 32px;
 }
 
-.form-row { margin-bottom: 20px; }
+.form-row { margin-bottom: 24px; }
 
 .form-row label {
   display: block;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   color: var(--color-primary);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .form-row .req {
-  background: #c0563f;
+  background: #a2553f;
   color: #fff;
   font-size: 10px;
-  font-weight: 500;
-  padding: 2px 7px;
-  border-radius: 3px;
-  margin-left: 8px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  margin-left: 10px;
   vertical-align: 2px;
 }
 
@@ -537,25 +746,23 @@ a { color: var(--color-accent-dark); }
 .form-row textarea {
   width: 100%;
   border: 1px solid var(--color-border);
-  border-radius: 6px;
-  padding: 12px 13px;
+  padding: 13px 14px;
   font-size: 15px; /* 16px未満だとiOSで自動ズームするため15px以上を維持 */
   font-family: inherit;
-  background: #fdfcf9;
+  background: #fcfaf6;
   color: var(--color-text);
 }
 
-.form-row textarea { min-height: 150px; resize: vertical; }
+.form-row textarea { min-height: 160px; resize: vertical; }
 
-.form-note { font-size: 12px; color: var(--color-text-light); margin: 6px 0 0; }
+.form-note { font-size: 12px; color: var(--color-text-light); margin: 8px 0 0; }
 
 .form-privacy {
   background: var(--color-bg-alt);
-  border-radius: var(--radius);
-  padding: 16px 18px;
+  padding: 18px 20px;
   font-size: 13px;
-  line-height: 1.85;
-  margin-bottom: 22px;
+  line-height: 1.95;
+  margin-bottom: 26px;
 }
 
 /* --------------------------------------------------------------------------
@@ -564,12 +771,19 @@ a { color: var(--color-accent-dark); }
 .cta-band {
   background: var(--color-primary-dark);
   color: var(--color-white);
-  padding: 48px 0;
+  padding: 68px 0;
   text-align: center;
 }
 
-.cta-band h2 { margin: 0 0 10px; font-size: min(23px, 5.8vw); line-height: 1.6; }
-.cta-band p { margin: 0 0 24px; font-size: 14px; color: rgba(255,255,255,0.86); }
+.cta-band h2 {
+  font-family: var(--font-serif);
+  margin: 0 0 14px;
+  font-size: min(25px, 5.6vw);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.85;
+}
+.cta-band p { margin: 0 0 30px; font-size: 13.5px; letter-spacing: 0.06em; color: rgba(255,255,255,0.86); }
 .cta-band .hero-actions { justify-content: center; }
 
 /* --------------------------------------------------------------------------
@@ -578,30 +792,39 @@ a { color: var(--color-accent-dark); }
 .site-footer {
   background: var(--color-primary);
   color: rgba(255, 255, 255, 0.86);
-  padding: 44px 0 22px;
-  font-size: 13.5px;
-  line-height: 1.95;
+  padding: 60px 0 26px;
+  font-size: 13px;
+  line-height: 2.05;
+  letter-spacing: 0.06em;
 }
 
 .footer-cols {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 28px;
+  gap: 40px;
+  margin-bottom: 36px;
 }
 
-.site-footer h2 { font-size: 16px; margin: 0 0 10px; color: var(--color-white); }
-.site-footer h3 { font-size: 13px; margin: 0 0 10px; color: var(--color-white); letter-spacing: 0.06em; }
+.site-footer h2 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  margin: 0 0 14px;
+  color: var(--color-white);
+}
+.site-footer h3 { font-size: 11px; margin: 0 0 14px; color: var(--color-white); letter-spacing: 0.2em; text-transform: uppercase; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
-.site-footer li { margin-bottom: 7px; }
+.site-footer li { margin-bottom: 8px; }
 .site-footer a { color: rgba(255, 255, 255, 0.9); text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
 
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding-top: 16px;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.66);
+  padding-top: 20px;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.62);
   display: flex;
   flex-wrap: wrap;
   gap: 10px 20px;
@@ -611,17 +834,19 @@ a { color: var(--color-accent-dark); }
 /* --------------------------------------------------------------------------
    レスポンシブ
    ※360 / 375px が最初に割れる幅。ここを最優先で崩れないよう調整している。
+   　参考サイトのSPも実測済み（写真全面＋文字は下寄せ、余白は50-60px）
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
+  :root { --section-pad: 64px; }
   .card-grid,
   .card-grid.cols-2,
-  .contact-choice { grid-template-columns: repeat(2, 1fr); }
+  .contact-choice { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .footer-cols { grid-template-columns: 1fr 1fr; }
-  .hero-inner { grid-template-columns: 1fr; }
+  .hero { min-height: 600px; }
 }
 
 @media (max-width: 820px) {
-  .wrap { padding-inline: 16px; }
+  .wrap { padding-inline: 18px; }
 
   .nav-toggle { display: block; }
 
@@ -633,8 +858,7 @@ a { color: var(--color-accent-dark); }
     top: 100%;
     background: var(--color-white);
     border-bottom: 1px solid var(--color-border);
-    box-shadow: var(--shadow);
-    padding: 8px 16px 16px;
+    padding: 8px 18px 18px;
   }
 
   .global-nav.is-open { display: block; }
@@ -644,44 +868,62 @@ a { color: var(--color-accent-dark); }
   .global-nav li { border-bottom: 1px solid var(--color-border); }
   .global-nav li:last-child { border-bottom: none; }
 
-  .global-nav a { display: block; padding: 14px 2px; border-bottom: none; white-space: normal; }
+  .global-nav a { display: block; padding: 15px 2px; border-bottom: none; white-space: normal; }
 
-  .global-nav .nav-cta { margin-top: 12px; }
-  .global-nav .nav-cta a { text-align: center; padding: 13px 18px; }
+  .global-nav .nav-cta { margin-top: 14px; }
+  .global-nav .nav-cta a { text-align: center; padding: 14px 18px; }
 
-  .header-inner { position: relative; min-height: 60px; }
+  .header-inner { position: relative; min-height: 64px; }
+  .hero { margin-top: -64px; }
+  /* スマホでメニューを開いたときは背景を白にして読めるようにする */
+  .site-header:has(.global-nav.is-open) { background: var(--color-white); border-bottom-color: var(--color-border); }
+  /* メニューを開いたら透過用の暗い帯を消す（残すとロゴが帯に潰れて読めない） */
+  .site-header:has(.global-nav.is-open)::before { display: none; }
+  .site-header:has(.global-nav.is-open) .site-logo { color: var(--color-primary); text-shadow: none; }
+  .site-header:has(.global-nav.is-open) .site-logo span { color: var(--color-text-light); }
+  .site-header:has(.global-nav.is-open) .global-nav a { color: var(--color-text); text-shadow: none; }
+  .site-header:has(.global-nav.is-open) .nav-toggle { background: var(--color-white); color: var(--color-primary); border-color: var(--color-border); }
 
-  .hero { padding: 44px 0 48px; }
-  .section { padding: 44px 0; }
+  /* SPは写真の縦位置を上げて主題（犬・建物）が切れないようにする */
+  .hero { min-height: 540px; align-items: flex-end; }
+  .hero-bg { object-position: center 42%; }
+  .hero-inner { padding-top: 90px; padding-bottom: 48px; }
+
+  .page-header { min-height: 260px; }
+  .page-header .wrap { padding-top: 46px; padding-bottom: 30px; }
+
+  .media-wide { aspect-ratio: 4 / 3; margin-bottom: 32px; }
 
   .card-grid,
   .card-grid.cols-2,
-  .contact-choice { grid-template-columns: 1fr; }
+  .contact-choice { grid-template-columns: 1fr; gap: 22px; align-items: start; }
+  .card, .contact-card { height: auto; }
 
-  .footer-cols { grid-template-columns: 1fr; gap: 24px; }
+  .footer-cols { grid-template-columns: 1fr; gap: 28px; }
 
-  .info-table th, .info-table td { padding: 11px 12px; }
+  .info-table th, .info-table td { padding: 13px 14px; }
   .info-table th { width: 34%; white-space: normal; }
 
   /* タブレット幅でボタンが間延びしないよう上限を設ける */
   .hero-actions .btn { width: 100%; max-width: 340px; }
-  /* 1カラムでは高さを揃える必要がないので、間延びを防ぐ */
-  .card-grid, .card-grid.cols-2, .contact-choice { align-items: start; }
-  .card, .contact-card { height: auto; }
   .cta-band .hero-actions { align-items: center; flex-direction: column; }
 }
 
 @media (max-width: 400px) {
-  body { font-size: 15px; }
-  .page-header h1 { letter-spacing: 0; }
-  .page-header p, .hero p { font-size: 14px; }
-  .wrap { padding-inline: 14px; }
-  .site-logo { font-size: 17px; }
-  .btn { padding: 13px 16px; font-size: 13.5px; }
+  :root { --section-pad: 52px; }
+  body { font-size: 14.5px; }
+  .wrap { padding-inline: 16px; }
+  .site-logo { font-size: 18px; }
+  .hero { min-height: 500px; }
+  .hero h1 { letter-spacing: 0.1em; line-height: 1.85; }
+  .hero p, .page-header p { font-size: 13px; }
+  .btn { padding: 14px 18px; font-size: 12.5px; letter-spacing: 0.08em; }
   .info-table { font-size: 13px; }
-  .info-table th, .info-table td { padding: 10px 9px; }
-  .steps li { padding: 16px 15px 16px 54px; }
-  /* 「ドッグラン Dare／オヤツ屋さん Dare」等の長い見出しが1行ギリギリになるのを回避 */
-  .card-body h3 { font-size: 16.5px; }
-  .form-block { padding: 22px 16px; }
+  .info-table th, .info-table td { padding: 11px 10px; }
+  .steps li { padding: 18px 16px 18px 58px; }
+  .steps li .step-num { left: 16px; top: 18px; }
+  .card-body { padding: 24px 20px 26px; }
+  .card-body h3 { font-size: 17px; letter-spacing: 0.06em; }
+  .section-head h2 { letter-spacing: 0.1em; }
+  .form-block { padding: 26px 18px; }
 }
