@@ -1655,7 +1655,9 @@ a { color: var(--color-accent-dark); }
   object-fit: cover;
 }
 
-/* 写真がない項目はイラストで代替（黄色の面＋線画） */
+/* ★方針: 番号つきグリッドの中身は必ず実写にする。
+   イラストは中身ではなく .illust-deco としてパネルの角に小さく添える。
+   （下の .num-illust は、写真がどうしても用意できない項目のための予備） */
 .num-item .num-illust {
   background: var(--color-yellow-soft);
   border: 1px solid #f0dfb0;
@@ -1764,3 +1766,133 @@ a { color: var(--color-accent-dark); }
   font-size: 13px;
   right: 0;
 }
+
+
+/* ==========================================================================
+   写真スライダー（参考: TOKIWAN の施設ページ）
+   ・大きな写真＋左右の丸いページ送り＋下にサムネイル
+   ・自動再生はしない（手動送り）。キーボードの左右キーでも送れる
+   ・prefers-reduced-motion では切り替えのフェードを止める
+   ========================================================================== */
+.slider { margin-bottom: 30px; }
+
+.slider-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-bg-alt);
+}
+
+.slider-stage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.slider-stage img.is-active { opacity: 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-stage img { transition: none; }
+}
+
+/* 左右の丸いページ送り（参考は金色の丸） */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-yellow);
+  color: #4a3b06;              /* 黄色の上なので濃い茶（白文字にしない） */
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
+}
+
+.slider-nav:hover { background: #e0ad00; }
+.slider-prev { left: 14px; }
+.slider-next { right: 14px; }
+
+.slider-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.slider-thumbs button {
+  padding: 0;
+  border: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.slider-thumbs img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+
+.slider-thumbs button[aria-current="true"] { border-color: var(--color-yellow); }
+
+@media (max-width: 820px) {
+  .slider-nav { width: 40px; height: 40px; font-size: 16px; }
+  .slider-prev { left: 8px; }
+  .slider-next { right: 8px; }
+  .slider-thumbs { gap: 6px; }
+}
+
+/* ==========================================================================
+   Googleマップの埋め込み
+   ========================================================================== */
+.map-embed {
+  position: relative;
+  width: 100%;
+  max-width: 760px;          /* 幅いっぱいに広げると縦も伸びて板のように見えるため上限を設ける */
+  margin: 14px auto 0;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+}
+
+.map-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+@media (max-width: 820px) {
+  .map-embed { aspect-ratio: 4 / 3; }   /* スマホでは潰れないよう縦を確保 */
+}
+
+/* ==========================================================================
+   イラストは「中身」ではなく、パネルの角にちょこっと添える装飾に
+   ========================================================================== */
+.num-item { position: relative; }
+
+.num-item .illust-deco {
+  position: absolute;
+  z-index: 2;
+  width: 58px;
+  right: 4px;            /* グリッドからはみ出さない位置に */
+  top: -34px;            /* 英字ラベルから十分に離す */
+  color: var(--color-primary-dark);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* 装飾は広いPCでのみ。1100px以下はカラムが狭く英字ラベルに接触するため出さない */
+@media (max-width: 1100px) {
+  .num-item .illust-deco { display: none; }
+}
+
+/* 4列に並ぶグリッド（ドッグランの施設のご案内）は1カラムが狭く、
+   イラストが英字ラベルに接触するので、この列数のときは出さない */
+.num-grid:has(.num-item:nth-child(4)) .illust-deco { display: none; }

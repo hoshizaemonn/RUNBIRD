@@ -72,6 +72,35 @@
     }
   }
 
+  /* 写真スライダー（手動送り・サムネイル・キーボード対応） */
+  document.querySelectorAll('[data-slider]').forEach(function (root) {
+    var slides = [].slice.call(root.querySelectorAll('.slider-stage img'));
+    var thumbs = [].slice.call(root.querySelectorAll('.slider-thumbs button'));
+    if (slides.length < 2) return;
+    var index = 0;
+
+    var show = function (i) {
+      index = (i + slides.length) % slides.length;
+      slides.forEach(function (el, n) { el.classList.toggle('is-active', n === index); });
+      thumbs.forEach(function (b, n) { b.setAttribute('aria-current', n === index ? 'true' : 'false'); });
+    };
+
+    thumbs.forEach(function (b, n) { b.addEventListener('click', function () { show(n); }); });
+
+    var prev = root.querySelector('.slider-prev');
+    var next = root.querySelector('.slider-next');
+    if (prev) prev.addEventListener('click', function () { show(index - 1); });
+    if (next) next.addEventListener('click', function () { show(index + 1); });
+
+    /* キーボードの左右キーでも送れるようにする */
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { show(index + 1); }
+      if (e.key === 'ArrowLeft') { show(index - 1); }
+    });
+
+    show(0);
+  });
+
   /* 最上部では写真の上に透過で重ね、少しでもスクロールしたら白背景にする
      （参考サイト：ゆるり奥日光・TOKIWAN と同じ挙動） */
   /* 下層ページ（.header-fixed-solid）は常に白ヘッダーなので切り替えない */
