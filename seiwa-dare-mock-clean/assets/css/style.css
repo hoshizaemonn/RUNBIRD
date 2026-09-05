@@ -113,9 +113,10 @@ a { color: var(--color-accent-dark); }
   position: absolute;
   inset: 0;
   z-index: -1;
-  height: 132px;                 /* ヘッダーより下まで伸ばし、文字が乗る行で十分な濃さを確保する */
+  height: 140px;                 /* ヘッダーより下まで伸ばし、文字が乗る行で十分な濃さを確保する
+                                    （写真を明るいものに差し替えてもナビが破綻しないよう固定で敷く） */
   bottom: auto;
-  background: linear-gradient(to bottom, rgba(26, 35, 30, 0.72) 0%, rgba(26, 35, 30, 0.48) 58%, rgba(26, 35, 30, 0) 100%);
+  background: linear-gradient(to bottom, rgba(26, 35, 30, 0.80) 0%, rgba(26, 35, 30, 0.56) 58%, rgba(26, 35, 30, 0) 100%);
   pointer-events: none;
 }
 
@@ -123,7 +124,12 @@ a { color: var(--color-accent-dark); }
 .site-header .site-logo { color: var(--color-white); text-shadow: 0 1px 10px rgba(0,0,0,0.4); }
 .site-header .site-logo span { color: rgba(255,255,255,0.82); }
 .site-header .global-nav a { color: rgba(255,255,255,0.95); text-shadow: 0 1px 10px rgba(0,0,0,0.4); }
-.site-header .nav-toggle { background: transparent; color: var(--color-white); border-color: rgba(255,255,255,0.7); }
+.site-header .nav-toggle {
+  background: rgba(26, 35, 30, 0.34);      /* 明るい空の上でも枠と文字が沈まないように */
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
 
 .site-header.is-solid .site-logo { color: var(--color-primary); text-shadow: none; }
 .site-header.is-solid .site-logo span { color: var(--color-text-light); }
@@ -241,21 +247,22 @@ a { color: var(--color-accent-dark); }
   object-fit: cover;
   object-position: center 55%;
   /* 参考4サイトの写真は低彩度・暖色寄り。生成画像の彩度を落として空気感を合わせる */
-  filter: saturate(0.98) sepia(0.06);
+  filter: saturate(1) sepia(0.04);
 }
 
-/* 写真の上でも文字が読めるようにする（下から上への暗いグラデ） */
+/* ★参考（ゆるり奥日光）はオーバーレイを一切使わず、text-shadow と
+   「文字を写真の暗い側に置く」ことだけで白文字を成立させている。
+   ここでも**全面の暗幕は使わず**、キャッチを置く左下だけを斜めに沈める。
+   写真の主題（右側・上側）は素の明るさのまま残す。 */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background:
-    /* スライドによって左側の明るさが違う（青空・白壁の逆光）ため、
-       文字が乗る左下だけを確実に沈める。写真の主題（右側）は明るいまま残す */
-    linear-gradient(to top, rgba(24, 33, 28, 0.88) 0%, rgba(24, 33, 28, 0.66) 40%, rgba(24, 33, 28, 0.12) 100%),
-    linear-gradient(to right, rgba(24, 33, 28, 0.58) 0%, rgba(24, 33, 28, 0.10) 62%, rgba(24, 33, 28, 0) 100%),
-    /* 文字の塊の裏だけをさらに沈める（明るい空・白壁のスライドでも4.5:1を確保する） */
-    radial-gradient(130% 95% at 6% 100%, rgba(20, 28, 24, 0.82) 0%, rgba(20, 28, 24, 0.54) 44%, rgba(20, 28, 24, 0) 76%);
+    /* 左下 → 右上へ抜ける斜めのグラデ。右半分は素の写真が見える */
+    linear-gradient(100deg, rgba(18, 26, 22, 0.60) 0%, rgba(18, 26, 22, 0.82) 32%, rgba(18, 26, 22, 0.82) 48%, rgba(18, 26, 22, 0.56) 58%, rgba(18, 26, 22, 0.18) 66%, rgba(18, 26, 22, 0) 74%),
+    /* 足元だけの軽い締め（写真の下端が白飛びするのを防ぐ程度） */
+    linear-gradient(to top, rgba(18, 26, 22, 0.34) 0%, rgba(18, 26, 22, 0.08) 24%, rgba(18, 26, 22, 0) 42%);
 }
 
 .hero-inner {
@@ -263,7 +270,14 @@ a { color: var(--color-accent-dark); }
   z-index: 2;
   padding-bottom: 74px;
   padding-top: 120px;
-  max-width: 760px;
+  /* 参考（ゆるり奥日光）はキャッチを画面幅の約30%に収め、右側は写真をそのまま見せている。
+     こちらも文字の塊を絞り、沈める範囲を最小限にする */
+}
+
+/* キャッチの塊だけを絞る（.hero-inner は .wrap と同じ要素なので、ここを絞ると中央寄せになる）
+   参考=ゆるり奥日光は画面幅の約30%にキャッチを収め、右側は写真をそのまま見せている */
+.hero-inner > div {
+  max-width: 560px;
 }
 
 .hero h1 {
@@ -273,7 +287,7 @@ a { color: var(--color-accent-dark); }
   letter-spacing: 0.14em;          /* 参考: ゆるり見出し 4.8-6px の広い字間 */
   margin: 0 0 22px;
   font-weight: 500;
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.34);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .hero p {
@@ -281,9 +295,9 @@ a { color: var(--color-accent-dark); }
   font-size: 14px;
   line-height: 2.15;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.94);
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
-  max-width: 620px;
+  color: rgba(255, 255, 255, 0.96);
+  text-shadow: 0 0 18px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.4);
+  max-width: 560px;
 }
 
 .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -291,12 +305,24 @@ a { color: var(--color-accent-dark); }
 /* 見出しは意味のかたまり単位でのみ改行させる（助詞・句点1文字の孤立を防ぐ） */
 .nb { display: inline-block; }
 
+/* 画面幅で出し分ける文言 */
+.sp-only { display: none; }
+
 /* 電話番号など、途中で改行されると困るものに付ける */
 .nowrap { white-space: nowrap; }
 
 /* 屋号など、途中で折れると読みづらい固有名詞はかたまりで折り返す */
 .site-footer .footer-bottom span,
 .site-footer li a { display: inline-block; }
+
+/* 明るい写真のスライドが表示されているときだけ、文字帯をもう一段沈める
+   （全スライドを暗くするのではなく、必要な1枚だけに効かせる） */
+.hero:has(.hero-bg[data-bright="1"].is-active)::after {
+  background:
+    linear-gradient(100deg, rgba(18, 26, 22, 0.62) 0%, rgba(18, 26, 22, 0.84) 36%, rgba(18, 26, 22, 0.90) 52%, rgba(18, 26, 22, 0.66) 62%, rgba(18, 26, 22, 0.22) 70%, rgba(18, 26, 22, 0) 78%),
+    /* このスライドは文字の足元も明るいので、下側も少しだけ足す */
+    linear-gradient(to top, rgba(18, 26, 22, 0.60) 0%, rgba(18, 26, 22, 0.28) 30%, rgba(18, 26, 22, 0) 50%);
+}
 
 /* --------------------------------------------------------------------------
    下層ページのページヘッダー（写真＋見出しの帯）
@@ -909,12 +935,33 @@ a { color: var(--color-accent-dark); }
 
   /* SPは写真の縦位置を上げて主題（犬・建物）が切れないようにする */
   .hero { min-height: 540px; align-items: flex-end; }
-  /* FVの写真は主題が右寄りの構図。スマホで左を詰めて主題を残す */
-  .hero-bg { object-position: 68% 45%; }
+  /* スマホは文字量を絞って、写真が見える面積（上半分）を確保する */
+  .sp-hide, .pc-only { display: none; }
+  .sp-only { display: inline; }
+  .hero h1 { font-size: min(27px, 6.8vw); line-height: 1.7; margin-bottom: 14px; }
+  .hero p {
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+  }
+  .hero-inner { padding-top: 120px; }
+  /* スマホは専用の縦構図（*_sp.jpg）に差し替わる。中央やや上を見せて主題を残す */
+  .hero-bg { object-position: center 38%; }
+  /* 主題（犬の顔）が右端にあるカットは、さらに右を残す */
+  .hero-bg[data-pos="sp-right"] { object-position: 74% 45%; }
   .hero::after {
     background:
-      linear-gradient(to top, rgba(24, 33, 28, 0.92) 0%, rgba(24, 33, 28, 0.76) 48%, rgba(24, 33, 28, 0.26) 100%),
-      radial-gradient(160% 88% at 22% 100%, rgba(20, 28, 24, 0.86) 0%, rgba(20, 28, 24, 0.50) 58%, rgba(20, 28, 24, 0) 88%);
+      /* スマホは文字が画面幅いっぱいに来るので下側を広めに沈める。上半分は素の写真のまま */
+      linear-gradient(to top, rgba(18, 26, 22, 0.94) 0%, rgba(18, 26, 22, 0.86) 36%, rgba(18, 26, 22, 0.42) 60%, rgba(18, 26, 22, 0) 80%),
+      linear-gradient(100deg, rgba(18, 26, 22, 0.42) 0%, rgba(18, 26, 22, 0.12) 46%, rgba(18, 26, 22, 0) 70%);
+  }
+
+  /* 明るい写真のスライドのときだけ、スマホでも一段沈める */
+  .hero:has(.hero-bg[data-bright="1"].is-active)::after {
+    background:
+      /* 文字は下1/3に集まるので、スクリムもそこに集中させる。上60%は素の写真を見せる */
+      linear-gradient(to top, rgba(18, 26, 22, 0.97) 0%, rgba(18, 26, 22, 0.96) 44%, rgba(18, 26, 22, 0.90) 62%, rgba(18, 26, 22, 0.48) 72%, rgba(18, 26, 22, 0.08) 84%, rgba(18, 26, 22, 0) 88%),
+      linear-gradient(100deg, rgba(18, 26, 22, 0.30) 0%, rgba(18, 26, 22, 0.08) 46%, rgba(18, 26, 22, 0) 70%);
   }
   .hero-inner { padding-top: 90px; padding-bottom: 48px; }
 
@@ -939,8 +986,28 @@ a { color: var(--color-accent-dark); }
   .cta-band .hero-actions { align-items: center; flex-direction: column; }
 }
 
+
+/* 701〜820px は写真がPC用の横構図に戻るので、スクリムも横方向（左帯）に戻す
+   （スマホ用の下側スクリムのままだと、横構図の主題まで沈んでしまう） */
+@media (min-width: 701px) and (max-width: 820px) {
+  .hero::after {
+    background:
+      linear-gradient(100deg, rgba(18, 26, 22, 0.80) 0%, rgba(18, 26, 22, 0.86) 32%, rgba(18, 26, 22, 0.82) 52%, rgba(18, 26, 22, 0.66) 66%, rgba(18, 26, 22, 0.24) 78%, rgba(18, 26, 22, 0) 88%),
+      linear-gradient(to top, rgba(18, 26, 22, 0.82) 0%, rgba(18, 26, 22, 0.56) 34%, rgba(18, 26, 22, 0.16) 56%, rgba(18, 26, 22, 0) 72%);
+  }
+  .hero:has(.hero-bg[data-bright="1"].is-active)::after {
+    background:
+      linear-gradient(100deg, rgba(18, 26, 22, 0.62) 0%, rgba(18, 26, 22, 0.88) 36%, rgba(18, 26, 22, 0.86) 56%, rgba(18, 26, 22, 0.70) 68%, rgba(18, 26, 22, 0.28) 78%, rgba(18, 26, 22, 0) 88%),
+      linear-gradient(to top, rgba(18, 26, 22, 0.86) 0%, rgba(18, 26, 22, 0.62) 34%, rgba(18, 26, 22, 0.18) 56%, rgba(18, 26, 22, 0) 72%);
+  }
+  .hero-bg { object-position: 62% 45%; }
+}
+
 @media (max-width: 400px) {
   :root { --section-pad: 52px; }
+  /* スマホは専用の縦構図に差し替わるので、中央やや上を見せる */
+  .hero-bg { object-position: center 38%; }
+  .hero-bg[data-pos="sp-right"] { object-position: center 38%; }
   body { font-size: 14.5px; }
   .wrap { padding-inline: 16px; }
   .site-logo { font-size: 18px; }

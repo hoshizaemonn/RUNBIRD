@@ -46,9 +46,17 @@
          ※ダミー画像（AI生成）。実素材の受領後に差し替え
          ※動きを減らす設定（prefers-reduced-motion）の端末では自動切り替えを止める（assets/js/nav.js） -->
     <div class="hero-slides" id="hero-slides">
-      <img class="hero-bg is-active" src="assets/img/hero_slide1.jpg" alt="北海道の広い空の下、芝生のドッグランを走る柴犬" width="1774" height="887">
+      <picture>
+        <!-- スマホは主題（犬）が沈まないよう、縦構図に切り出した専用画像に差し替える -->
+        <source media="(max-width: 700px)" srcset="assets/img/hero_slide1_sp.jpg">
+        <img class="hero-bg is-active" data-bright="1" src="assets/img/hero_slide1.jpg" alt="北海道の広い空の下、芝生のドッグランを走る柴犬" width="1774" height="887">
+      </picture>
       <img class="hero-bg" src="assets/img/hero_slide2.jpg" alt="夕暮れのゲストハウス外観と、ウッドデッキでくつろぐ黒いラブラドール" width="1774" height="887" loading="lazy">
-      <img class="hero-bg" src="assets/img/hero_slide3.jpg" alt="木のテーブルに置かれた犬用のおやつと、待っている小型犬" width="1774" height="887" loading="lazy">
+      <picture>
+        <!-- スマホは主題（犬）が沈まないよう、縦構図に切り出した専用画像に差し替える -->
+        <source media="(max-width: 700px)" srcset="assets/img/hero_slide3_sp.jpg">
+        <img class="hero-bg" data-bright="1" data-pos="sp-right" src="assets/img/hero_slide3.jpg" alt="木のテーブルに置かれた犬用のおやつと、待っている小型犬" width="1774" height="887" loading="lazy">
+      </picture>
     </div>
     <div class="hero-dots" id="hero-dots" role="tablist" aria-label="メインビジュアルの切り替え"></div>
     <div class="wrap hero-inner">
@@ -56,7 +64,7 @@
         <!-- 意味のかたまり単位でしか改行させない（360pxで「に。」だけが行に落ちるのを防ぐ） -->
         <h1><span class="nb">愛犬と過ごす時間を、</span><span class="nb">もっと自由に。</span><span class="nb">もっと安心に。</span></h1>
         <p>
-          北海道苫小牧市沼ノ端で、ドッグラン・犬のおやつ・愛犬と泊まれるゲストハウスの3つをご用意しています。走る、食べる、泊まる。愛犬との毎日に寄り添うDareグループです。 </p>
+          <span class="sp-only">北海道苫小牧市沼ノ端の、ドッグラン・犬のおやつ・ゲストハウス。</span><span class="pc-only">北海道苫小牧市沼ノ端で、ドッグラン・犬のおやつ・愛犬と泊まれるゲストハウスの3つをご用意しています。走る、食べる、泊まる。愛犬との毎日に寄り添うDareグループです。</span> </p>
         <div class="hero-actions">
           <a class="btn" href="#business">3つの事業を見る</a>
           <a class="btn btn-outline" href="contact.html">お問い合わせ</a>
