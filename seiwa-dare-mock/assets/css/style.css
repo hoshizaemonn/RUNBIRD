@@ -722,7 +722,7 @@ a { color: var(--color-accent-dark); }
   cursor: pointer;
   list-style: none;
   position: relative;
-  padding-right: 34px;
+  padding-right: 46px;   /* ＋アイコンと質問文が接触しないよう余白を広げる */
   font-family: var(--font-serif);
   font-weight: 500;
   font-size: 15.5px;
@@ -1511,14 +1511,21 @@ a { color: var(--color-accent-dark); }
 .illust-run {
   -webkit-mask-image: url("../img/illust/dog_run.png");
   mask-image: url("../img/illust/dog_run.png");
-  aspect-ratio: 640 / 420;
+  aspect-ratio: 560 / 368;
 }
 
 .illust-sit {
   -webkit-mask-image: url("../img/illust/dog_sit.png");
   mask-image: url("../img/illust/dog_sit.png");
-  aspect-ratio: 640 / 940;
+  aspect-ratio: 560 / 822;
 }
+
+.illust-walk    { -webkit-mask-image: url("../img/illust/dog_walk.png");    mask-image: url("../img/illust/dog_walk.png");    aspect-ratio: 560 / 405; }
+.illust-jump    { -webkit-mask-image: url("../img/illust/dog_jump.png");    mask-image: url("../img/illust/dog_jump.png");    aspect-ratio: 560 / 473; }
+.illust-bernese { -webkit-mask-image: url("../img/illust/dog_bernese.png"); mask-image: url("../img/illust/dog_bernese.png"); aspect-ratio: 560 / 363; }
+.illust-bowl    { -webkit-mask-image: url("../img/illust/bowl_bone.png");   mask-image: url("../img/illust/bowl_bone.png");   aspect-ratio: 560 / 392; }
+.illust-lie     { -webkit-mask-image: url("../img/illust/dog_lie.png");     mask-image: url("../img/illust/dog_lie.png");     aspect-ratio: 560 / 332; }
+.illust-stretch { -webkit-mask-image: url("../img/illust/dog_stretch.png"); mask-image: url("../img/illust/dog_stretch.png"); aspect-ratio: 560 / 364; }
 
 /* 帯の上に白い線画で重ねる（お客様の「手書きっぽい白いやつ」） */
 .biz-band .illust {
@@ -1580,7 +1587,180 @@ a { color: var(--color-accent-dark); }
   .service-head .illust { position: static; margin: 14px auto 0; width: 92px; }
 }
 
-@media (max-width: 400px) {
-  .section-head .illust { display: none; }   /* 360pxでは見出しに被るので出さない */
+/* 900px以下では、装飾の犬が画面端で切れたり本文に重なるので出さない
+   （PCの広い余白があってはじめて成立する装飾のため） */
+@media (max-width: 900px) {
+  .section-head .illust { display: none; }
   .biz-band .illust-sit { display: none; }
+}
+
+
+/* ==========================================================================
+   番号つきグリッド（参考: ゆるり奥日光の「館内施設」一覧）
+   ・英字ラベルを弧に沿わせ（SVGの textPath）、その下に大きな明朝の連番
+   ・写真は角丸なし、太字の日本語タイトル、説明文
+   ・項目数が3でも4でも崩れないよう auto-fit で組む
+   ========================================================================== */
+.num-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 34px 26px;
+  align-items: stretch;
+}
+
+.num-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.num-head {
+  position: relative;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+/* 弧を描く英字ラベル */
+.num-arc {
+  display: block;
+  width: 190px;
+  height: 54px;
+  margin: 0 auto -6px;
+  overflow: visible;
+}
+
+.num-arc text {
+  font-family: var(--font-base);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  fill: #4f6a48;         /* 小さな文字なので4.5:1以上を満たす濃さ */
+}
+
+/* 大きな連番（明朝・淡い色・主張しすぎない） */
+.num-no {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 42px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: #6b8c60;        /* 淡いままだと1.8:1で読めないため、大きな文字の基準3.0:1を満たす濃さに */
+  margin-bottom: 12px;
+}
+
+.num-item img,
+.num-item .num-illust {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* 写真がない項目はイラストで代替（黄色の面＋線画） */
+.num-item .num-illust {
+  background: var(--color-yellow-soft);
+  border: 1px solid #f0dfb0;
+}
+
+/* 黄色のセクションでは同色で溶けるので、パネルを白にする */
+.section-yellow .num-item .num-illust {
+  background: var(--color-white);
+  border-color: #ecdcae;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.num-item .num-illust .illust {
+  width: 70%;
+  color: var(--color-primary-dark);
+  opacity: 0.62;
+  position: static;
+}
+
+.num-item h3 {
+  font-family: var(--font-serif);
+  font-size: 16.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.7;
+  color: var(--color-primary);
+  margin: 16px 0 8px;
+}
+
+.num-item p { margin: 0; font-size: 13.5px; line-height: 1.95; }
+
+@media (max-width: 820px) {
+  .num-grid { grid-template-columns: repeat(2, 1fr); gap: 26px 18px; }
+  .num-no { font-size: 34px; }
+  /* 狭い幅では弧が潰れるので、直線の英字ラベルに切り替える */
+  .num-arc { display: none; }
+  .num-head .num-en {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #4f6a48;
+    margin-bottom: 4px;
+  }
+}
+
+@media (min-width: 821px) {
+  .num-head .num-en { display: none; }
+}
+
+/* 480px以下は1列に。2列のままだと本文幅が狭く「どう／ぞ」のように語中で改行される */
+@media (max-width: 480px) {
+  .num-grid { grid-template-columns: 1fr; }
+  .num-item img, .num-item .num-illust { aspect-ratio: 16 / 9; }
+}
+
+/* ==========================================================================
+   黄色を面でも使う（ブランドの2色を効かせる）
+   ★黄色の上に白文字は置かない（実測1.68:1）。乗せる文字は濃い茶か濃い緑
+   ========================================================================== */
+.section-yellow {
+  background: var(--color-yellow-soft);
+}
+
+.section-yellow .section-head h2 { color: var(--color-primary-dark); }
+.section-yellow .section-head .en { background: var(--color-white); color: #4a3b06; }
+.section-yellow .section-head p,
+.section-yellow p { color: var(--color-text); }
+.section-yellow .section-head h2::after { background: var(--color-primary); }
+
+/* 「ご利用の流れ」の番号を黄色の丸に（文字は濃い緑） */
+.steps li .step-num {
+  border-radius: 50%;
+  background: var(--color-yellow);
+  border-color: var(--color-yellow);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+/* 英字の小見出しを黄色のピルに（文字は濃い茶） */
+.section-head .en {
+  display: inline-block;
+  background: var(--color-yellow);
+  color: #4a3b06;
+  padding: 5px 16px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  margin-bottom: 16px;
+}
+
+/* テーブルの見出し列にも黄色を薄く敷く */
+.info-table th { background: #fdf4dc; }
+
+/* FAQ の ＋ を黄色の丸に */
+.faq summary::after {
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--color-yellow);
+  color: #4a3b06;
+  font-size: 13px;
+  right: 0;
 }
