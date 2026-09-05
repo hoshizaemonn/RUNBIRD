@@ -1827,7 +1827,8 @@ a { color: var(--color-accent-dark); }
 
 .slider-thumbs {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  /* サムネイルの枚数ぶんの列を自動で作る（4列固定だと5枚目だけ次の行に落ちる） */
+  grid-template-columns: repeat(var(--thumb-count, 4), 1fr);
   gap: 10px;
   margin-top: 10px;
 }
@@ -2159,4 +2160,280 @@ a { color: var(--color-accent-dark); }
   .num-grid:has(.num-item:nth-child(3)):not(:has(.num-item:nth-child(4))) { grid-template-columns: repeat(3, 1fr); gap: 26px 18px; }
   /* 2項目のときは2列（3列にすると右に空の列が残る） */
   .num-grid:not(:has(.num-item:nth-child(3))) { grid-template-columns: repeat(2, 1fr); gap: 26px 18px; }
+}
+
+
+/* ==========================================================================
+   ブログ（一覧・記事）と客室詳細ページ
+   ・参考: ゆるり奥日光の客室詳細（細い罫線＋大きな日本語の部屋名＋小さな英字）
+   ・ここでも「グリッドの中身は必ず実写・イラストは装飾」の方針を守る
+   ========================================================================== */
+
+.wrap.narrow { max-width: 880px; }
+
+/* --- 一覧のカテゴリーチップ（現時点ではリンク先のない見本） --- */
+.cat-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.cat-chips span {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-white);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+}
+
+/* --- 記事ページ --- */
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.post-title {
+  font-family: var(--font-serif);
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  margin: 0 0 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--color-border);
+  word-break: auto-phrase;
+}
+
+.post-hero {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.post h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.8;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin: 38px 0 14px;
+  padding-left: 14px;
+  border-left: 3px solid var(--color-yellow);
+  word-break: auto-phrase;
+}
+
+.post p { margin: 0 0 18px; font-size: 14.5px; line-height: 2.1; }
+
+/* --- 記事・お部屋の前後リンク --- */
+.post-nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  margin-top: 46px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+  font-size: 13px;
+}
+
+.post-nav a { color: var(--color-primary); text-decoration: none; }
+.post-nav a:hover { text-decoration: underline; }
+.post-nav span { display: block; }
+
+.post-nav .pn-prev span,
+.post-nav .pn-next span {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  margin-bottom: 4px;
+}
+
+.post-nav .pn-next { text-align: right; }
+.post-nav .pn-none { color: var(--color-text-light); font-size: 12px; }
+.post-nav .pn-next.pn-none, .post-nav span.pn-none:last-child { text-align: right; }
+
+.post-nav .pn-index {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 9px 20px;
+  background: var(--color-white);
+  white-space: nowrap;
+}
+
+/* --- 客室詳細の見出し（細い罫線＋大きな日本語＋小さな英字） --- */
+.room-head { margin-bottom: 28px; }
+
+.room-head .room-no {
+  display: inline-block;
+  width: 56px;
+  border-top: 1px solid var(--color-primary);
+  padding-top: 10px;
+  font-family: var(--font-serif);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: var(--color-primary);
+}
+
+.room-head h2 {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  margin: 8px 0 6px;
+}
+
+.room-head .room-en {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+.room-lead {
+  margin: 26px 0 0;
+  font-size: 14.5px;
+  line-height: 2.3;
+  letter-spacing: 0.04em;
+}
+
+.room-rule { border: none; border-top: 1px solid var(--color-border); margin: 34px 0 30px; }
+
+.room-detail {
+  display: grid;
+  grid-template-columns: 1fr 232px;
+  gap: 34px;
+  align-items: start;
+}
+
+.spec-list { margin: 0; }
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 116px 1fr;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px dotted var(--color-border);
+  font-size: 13.5px;
+  line-height: 1.9;
+}
+
+.spec-row dt { margin: 0; color: var(--color-primary); letter-spacing: 0.06em; }
+.spec-row dd { margin: 0; }
+
+/* 間取り図は未入手のためプレースホルダ（捏造しない） */
+.plan-ph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  aspect-ratio: 4 / 3;
+  border: 1px dashed var(--color-border);
+  background: var(--color-bg-alt);
+  text-align: center;
+  padding: 16px;
+}
+
+.plan-ph p { margin: 0; font-size: 12px; line-height: 1.85; color: var(--color-text-light); }
+
+.plan-icon {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  background: var(--color-yellow);
+  color: #4a3b06;      /* 黄色の上には白文字を置かない */
+  font-size: 15px;
+}
+
+.plan-cap { margin: 10px 0 0; font-size: 12px; text-align: center; }
+
+/* 幅広の濃い色のCTA（参考の「この客室を予約する」の位置） */
+.room-cta { margin-top: 38px; }
+
+.btn-wide {
+  display: block;
+  padding: 20px 24px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+  text-decoration: none;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  letter-spacing: 0.12em;
+}
+
+.btn-wide:hover { background: var(--color-primary-dark); }
+
+.room-cta-note {
+  margin: 12px 0 0;
+  font-size: 12.5px;
+  text-align: center;
+  color: var(--color-text-light);
+}
+
+/* 客室カードから詳細ページへの導線 */
+.num-more { margin: 12px 0 0; font-size: 13px; }
+.num-more a { color: var(--color-primary); }
+
+@media (max-width: 820px) {
+  .post-title { font-size: 21px; }
+  .room-head h2 { font-size: 26px; }
+  .room-detail { grid-template-columns: 1fr; gap: 26px; }
+  .room-plan { max-width: 260px; margin-inline: auto; }
+  .spec-row { grid-template-columns: 1fr; gap: 2px; }
+  .post-nav { grid-template-columns: 1fr; gap: 12px; text-align: left; }
+  .post-nav .pn-next,
+  .post-nav .pn-next.pn-none,
+  .post-nav span.pn-none:last-child { text-align: left; }
+  .post-nav .pn-index { justify-self: start; }
+  .btn-wide { font-size: 15px; padding: 18px 20px; }
+}
+
+/* ナビが「ブログ」で1項目増えたため、デスクトップ表示に切り替わる直後
+   （821〜920px）だけ項目間を詰めて、ロゴとの間に余裕を持たせる */
+@media (min-width: 821px) and (max-width: 920px) {
+  .global-nav ul { gap: 18px; }
+  .site-header .global-nav .nav-cta a { padding-inline: 18px; }
+}
+
+
+/* 客室詳細ページの調整（通しQAの指摘分） */
+/* 間取り図の枠は左のスペック表と背丈を揃える（小さいと置き忘れに見える） */
+.room-plan { align-self: stretch; display: flex; flex-direction: column; }
+.room-plan .plan-ph { flex: 1 1 auto; aspect-ratio: auto; min-height: 240px; }
+
+@media (max-width: 820px) {
+  /* 間取り図は本文幅いっぱいに。中央に小さく置くと浮いて見える
+     （margin-inline:auto が残っていると幅が縮むので合わせて解除する） */
+  .room-plan { max-width: none; margin-inline: 0; }
+  .room-plan .plan-ph { min-height: 200px; }
+  /* 前後リンクはPCの中央揃えと印象を揃える */
+  .post-nav { text-align: center; justify-items: center; }
+  .post-nav .pn-prev,
+  .post-nav .pn-next,
+  .post-nav .pn-next.pn-none,
+  .post-nav span.pn-none:last-child { text-align: center; }
+  .post-nav .pn-index { justify-self: center; }
+}
+
+@media (max-width: 400px) {
+  /* 360px で値が右端ぎりぎりにならないよう、スペックの文字を少しだけ落とす */
+  .spec-row { font-size: 13px; }
+  .room-lead { font-size: 14px; }
 }
