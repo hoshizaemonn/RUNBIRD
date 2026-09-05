@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<!--
+  Dareグループ（株式会社成和）HP 叩き台 — トップページ
+  2026-09-03 作成 / 9/7 ディレクションMTG提示用
+
+  ★この叩き台のルール
+    - 配色は仮当て（店舗カラー未確定 → assets/css/style.css の :root を差し替えれば全ページ反映）
+    - 写真は「提供あり」だが実素材が未着のため、すべてAI生成のダミー画像を仮に入れている
+      （差し替え箇所の一覧は 01_制作前/_ダミー画像差し替え一覧.md。Googleマップのみ .ph プレースホルダのまま）
+    - 文字を焼き込んだ画像は使わない。見出し・キャッチは必ずHTML側に置く
+    - 未確定情報は <span class="tbd">…</span> で「仮」と分かるようにし、創作しない
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<!-- ★叩き台の間のみ。本番公開時はこの1行を必ず削除する（検索に載せないための指定） -->
+<meta content="noindex,nofollow" name="robots"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Dareグループ｜北海道苫小牧のドッグラン・犬のおやつ・犬と泊まれるゲストハウス</title>
+<meta content="北海道苫小牧市沼ノ端のDareグループ。ドッグランDare、オヤツ屋さんDare、ゲストハウス フレンドDareの3つで、愛犬と過ごす時間をお手伝いします。" name="description"/>
+<link href="assets/css/style.css" rel="stylesheet"/>
+
+<!-- ▼このstyleは build_clean.py が差し込んだもの（クリーン版だけの指定）。
+     02_制作/ 側のHTML・CSSは一切変更していない。 -->
+<style>
+  /* 【制作メモ】の黄色い四角を消す */
+  .note-box { display: none !important; }
+  /* MTG説明用のブロック（お問い合わせフォームの2案）をセクションごと消す */
+  [data-memo="section"] { display: none !important; }
+  /* 仮置きテキストの黄色マーカーを外す（文字は残す） */
+  .tbd {
+    background: none !important;
+    border-bottom: none !important;
+    padding: 0 !important;
+    color: inherit !important;
+    font-size: inherit !important;
+  }
+</style>
+</head>
+<body>
+<header class="site-header">
+<div class="wrap header-inner">
+<a class="site-logo" href="index.html">Dareグループ<span>北海道苫小牧市沼ノ端</span></a>
+<button aria-controls="global-nav" aria-expanded="false" class="nav-toggle" type="button">メニュー</button>
+<nav aria-label="メインメニュー" class="global-nav" id="global-nav">
+<ul>
+<li><a aria-current="page" href="index.html">ホーム</a></li>
+<li><a href="dogrun.html">ドッグラン</a></li>
+<li><a href="oyatsu.html">オヤツ屋さん</a></li>
+<li><a href="guesthouse.html">ゲストハウス</a></li>
+<li class="nav-cta"><a href="contact.html">お問い合わせ</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<!-- ===== ファーストビュー ===== -->
+<section class="hero">
+<!-- ▼差し替え：メインビジュアル（3事業が伝わる4枚を自動で切り替える。文字は焼き込まずHTML側に重ねる）
+         ※ダミー画像（AI生成）。実素材の受領後に差し替え
+         ※動きを減らす設定（prefers-reduced-motion）の端末では自動切り替えを止める（assets/js/nav.js） -->
+<div class="hero-slides" id="hero-slides">
+<img alt="北海道の広い空の下、芝生のドッグランを走る柴犬" class="hero-bg is-active" height="887" src="assets/img/hero_slide1.jpg" width="1774"/>
+<img alt="夕暮れのゲストハウス外観と、ウッドデッキでくつろぐ黒いラブラドール" class="hero-bg" height="887" loading="lazy" src="assets/img/hero_slide2.jpg" width="1774"/>
+<img alt="木のテーブルに置かれた犬用のおやつと、待っている小型犬" class="hero-bg" height="887" loading="lazy" src="assets/img/hero_slide3.jpg" width="1774"/>
+</div>
+<div aria-label="メインビジュアルの切り替え" class="hero-dots" id="hero-dots" role="tablist"></div>
+<div class="wrap hero-inner">
+<div>
+<!-- 意味のかたまり単位でしか改行させない（360pxで「に。」だけが行に落ちるのを防ぐ） -->
+<h1><span class="nb">愛犬と過ごす時間を、</span><span class="nb">もっと自由に。</span><span class="nb">もっと安心に。</span></h1>
+<p>北海道苫小牧市沼ノ端で、ドッグラン・犬のおやつ・愛犬と泊まれるゲストハウスの3つをご用意しています。走る、食べる、泊まる。愛犬との毎日に寄り添うDareグループです。</p>
+<div class="hero-actions">
+<a class="btn" href="#business">3つの事業を見る</a>
+<a class="btn btn-outline" href="contact.html">お問い合わせ</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ===== グループ紹介 ===== -->
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<span class="en">about</span>
+<h2>Dareグループについて</h2>
+<p>ひとつの場所に、愛犬との時間に必要なものを。</p>
+</div>
+<p class="lead" style="max-width:760px;margin-inline:auto;text-align:center;">Dareグループは、株式会社成和が営む「ドッグランDare」「オヤツ屋さんDare」「ゲストハウス フレンドDare」の3つの事業です。思いきり走れる場所、安心して食べられるおやつ、一緒に泊まれる場所。愛犬と暮らすご家族が「困った」と感じる場面を、ひとつずつ減らしていきたいと考えています。</p>
+</div>
+</section>
+<!-- ===== 3事業へのハブ（参考: ゆるり奥日光「お部屋／お食事」ブロックの型）
+       金色の帯の上に、角を斜めに切り欠いた白パネルを重ね、写真とテキストを左右交互に配置する ===== -->
+<section class="biz-band" id="business">
+<svg aria-hidden="true" class="paw paw-1" fill="none" focusable="false" stroke="#5a4a20" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 100 100"><ellipse cx="50" cy="66" rx="19" ry="15"></ellipse><ellipse cx="28" cy="44" rx="7.5" ry="10"></ellipse><ellipse cx="43" cy="34" rx="7.5" ry="11"></ellipse><ellipse cx="59" cy="34" rx="7.5" ry="11"></ellipse><ellipse cx="73" cy="45" rx="7.5" ry="10"></ellipse></svg>
+<svg aria-hidden="true" class="paw paw-2" fill="none" focusable="false" stroke="#5a4a20" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" viewbox="0 0 100 100"><ellipse cx="50" cy="66" rx="19" ry="15"></ellipse><ellipse cx="28" cy="44" rx="7.5" ry="10"></ellipse><ellipse cx="43" cy="34" rx="7.5" ry="11"></ellipse><ellipse cx="59" cy="34" rx="7.5" ry="11"></ellipse><ellipse cx="73" cy="45" rx="7.5" ry="10"></ellipse></svg>
+<div class="wrap">
+<div class="section-head">
+<span class="en">business</span>
+<h2>3つの事業</h2>
+<p>それぞれのページで、料金・ご利用方法・お問い合わせ先をご案内しています。</p>
+</div>
+<div class="biz-block">
+<div class="biz-photo">
+<!-- ▼差し替え：ドッグランの芝の上でくつろぐ犬 ※ダミー画像（AI生成）。実素材の受領後に差し替え -->
+<img alt="ドッグランの芝の上でくつろぐ犬" height="941" loading="lazy" src="assets/img/card_dogrun.jpg" width="1672"/>
+</div>
+<div class="biz-panel">
+<div class="biz-panel-head">
+<h3 class="biz-title">ドッグランDare</h3>
+<div class="biz-meta">
+<span class="rule"></span>
+<span class="biz-tag">dog run</span>
+<p class="biz-sub">思いきり走れる、苫小牧沼ノ端のドッグラン</p>
+<p>年会費と使用料、回数券やフリーパスなど、通い方に合わせてお選びいただけます。はじめての方にも安心してお使いいただけるよう、料金とご利用条件をすべて先にご案内しています。</p>
+<a class="btn-pill" href="dogrun.html">view more</a>
+</div>
+</div>
+</div>
+</div>
+<div class="biz-block is-reverse">
+<div class="biz-photo">
+<!-- ▼差し替え：木のトレイに盛られた犬用おやつの詰め合わせ ※ダミー画像（AI生成）。実素材の受領後に差し替え -->
+<img alt="木のトレイに盛られた犬用おやつの詰め合わせ" height="941" loading="lazy" src="assets/img/oyatsu_wide.jpg" width="1672"/>
+</div>
+<div class="biz-panel">
+<div class="biz-panel-head">
+<h3 class="biz-title">オヤツ屋さんDare</h3>
+<div class="biz-meta">
+<span class="rule"></span>
+<span class="biz-tag">dog treats</span>
+<p class="biz-sub">愛犬のためのおやつを、ひとつずつ</p>
+<p>毎日のごほうびに、そしてドッグランの帰りのおみやげに。店頭でのお求めのほか、オンラインショップからもご購入いただけます。</p>
+<a class="btn-pill" href="oyatsu.html">view more</a>
+</div>
+</div>
+</div>
+</div>
+<div class="biz-block">
+<div class="biz-photo">
+<!-- ▼差し替え：ゲストハウスの共用リビングでくつろぐ小型犬 ※ダミー画像（AI生成）。実素材の受領後に差し替え -->
+<img alt="ゲストハウスの共用リビングでくつろぐ小型犬" height="900" loading="lazy" src="assets/img/card_guesthouse.jpg" width="1600"/>
+</div>
+<div class="biz-panel">
+<div class="biz-panel-head">
+<h3 class="biz-title">ゲストハウス フレンドDare</h3>
+<div class="biz-meta">
+<span class="rule"></span>
+<span class="biz-tag">guest house</span>
+<p class="biz-sub">愛犬とご一緒に、苫小牧での一日をゆっくりと</p>
+<p>「旅先で愛犬を預ける場所を探さなくていい」。それだけで、旅の計画はぐっと自由になります。苫小牧観光の拠点としても、長距離移動の途中の一泊としてもご利用いただけます。</p>
+<a class="btn-pill" href="guesthouse.html">view more</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ===== 選ばれる理由 ===== -->
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<span class="en">reason</span>
+<h2>Dareが選ばれる理由</h2>
+</div>
+
+<div class="card-grid">
+<article class="card">
+<div class="card-body">
+<p class="card-sub">01</p>
+<h3><span class="nb">走る・食べる・泊まるが、</span><span class="nb">ひとつの場所に</span></h3>
+<p>ドッグラン、おやつ、宿泊。愛犬との時間に必要なものが同じ地域にそろっているため、一日の予定が立てやすくなります。</p>
+</div>
+</article>
+<article class="card">
+<div class="card-body">
+<p class="card-sub">02</p>
+<h3>ご利用条件を、先にすべてご案内します</h3>
+<p>料金・ご利用ルール・ワクチンの取り扱いなど、ご来場前に知っておきたいことを各ページに明記しています。「行ってみたら違った」をなくします。</p>
+</div>
+</article>
+<article class="card">
+<div class="card-body">
+<p class="card-sub">03</p>
+<h3>ご家族で営む、身近な場所</h3>
+<p>ご質問やご相談には、日々現場に立つスタッフが直接お答えします。はじめての方も、どうぞお気軽に<span class="nowrap">お声がけください</span>。</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- ===== アクセス（2拠点） ===== -->
+<section class="section section-alt">
+<div class="wrap">
+<div class="section-head">
+<span class="en">access</span>
+<h2>アクセス</h2>
+<p>ドッグラン・オヤツ屋さんと、ゲストハウスは場所が異なります。</p>
+</div>
+<div class="card-grid cols-2">
+<article class="card">
+<div class="card-body">
+<h3><span class="nb">ドッグランDare／</span><span class="nb">オヤツ屋さんDare</span></h3>
+<p><br/><span class="nowrap">北海道苫小牧市沼ノ端中央1丁目2-24</span></p>
+<!-- ▼差し替え：Googleマップ埋め込み（本番でiframe設置） -->
+<div class="ph ph-wide">Googleマップ埋め込み予定<br/>（沼ノ端中央1丁目2-24）</div>
+</div>
+</article>
+<article class="card">
+<div class="card-body">
+<h3>ゲストハウス フレンドDare</h3>
+<p><br/><span class="nowrap">北海道苫小牧市沼ノ端中央6丁目3-12</span></p>
+<!-- ▼差し替え：Googleマップ埋め込み（本番でiframe設置） -->
+<div class="ph ph-wide">Googleマップ埋め込み予定<br/>（沼ノ端中央6丁目3-12）</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- ===== 新着情報（ブログ） ===== -->
+
+<!-- ===== 下部CTA ===== -->
+<section class="cta-band">
+<div class="wrap">
+<h2>お問い合わせ</h2>
+<p>ドッグラン・おやつ・ゲストハウス、それぞれの窓口をご用意しています。</p>
+<div class="hero-actions">
+<a class="btn" href="contact.html">お問い合わせページへ</a>
+<a class="btn btn-outline" href="tel:0144574031">お電話（0144-57-4031）</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="footer-cols">
+<div>
+<h2>Dareグループ</h2>
+<p>
+          運営：株式会社成和<br/>
+<span class="nowrap">北海道苫小牧市沼ノ端中央1丁目2-24</span><br/>
+          TEL 0144-57-4031 </p>
+</div>
+<div>
+<h3>事業のご案内</h3>
+<ul>
+<li><a href="dogrun.html">ドッグランDare</a></li>
+<li><a href="oyatsu.html">オヤツ屋さんDare</a></li>
+<li><a href="guesthouse.html">ゲストハウス フレンドDare</a></li>
+</ul>
+</div>
+<div>
+<h3>サイト内のご案内</h3>
+<ul>
+<li><a href="contact.html">お問い合わせ</a></li>
+<li><a href="privacy.html">プライバシーポリシー</a></li>
+<li><a href="https://frienddare.base.shop/" rel="noopener" target="_blank">オンラインショップ</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 株式会社成和</span>
+<span>Dareグループ（ドッグランDare／オヤツ屋さんDare／ゲストハウス フレンドDare）</span>
+</div>
+</div>
+</footer>
+<script src="assets/js/nav.js"></script>
+</body>
+</html>

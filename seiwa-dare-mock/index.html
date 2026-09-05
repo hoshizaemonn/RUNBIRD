@@ -6,7 +6,7 @@
   ★この叩き台のルール
     - 配色は仮当て（店舗カラー未確定 → assets/css/style.css の :root を差し替えれば全ページ反映）
     - 写真は「提供あり」だが実素材が未着のため、すべてAI生成のダミー画像を仮に入れている
-      （差し替え箇所の一覧は 02_制作/_ダミー画像差し替え一覧.md。Googleマップのみ .ph プレースホルダのまま）
+      （差し替え箇所の一覧は 01_制作前/_ダミー画像差し替え一覧.md。Googleマップのみ .ph プレースホルダのまま）
     - 文字を焼き込んだ画像は使わない。見出し・キャッチは必ずHTML側に置く
     - 未確定情報は <span class="tbd">…</span> で「仮」と分かるようにし、創作しない
 -->
@@ -42,9 +42,15 @@
 
   <!-- ===== ファーストビュー ===== -->
   <section class="hero">
-    <!-- ▼差し替え：メインビジュアル（写真を全面に敷き、文字はHTML側で重ねる）
-         ※ダミー画像（AI生成）。実素材の受領後に差し替え -->
-    <img class="hero-bg" src="assets/img/hero_main.jpg" alt="北海道の自然の中に広がるドッグランで走る犬" width="1672" height="941">
+    <!-- ▼差し替え：メインビジュアル（3事業が伝わる4枚を自動で切り替える。文字は焼き込まずHTML側に重ねる）
+         ※ダミー画像（AI生成）。実素材の受領後に差し替え
+         ※動きを減らす設定（prefers-reduced-motion）の端末では自動切り替えを止める（assets/js/nav.js） -->
+    <div class="hero-slides" id="hero-slides">
+      <img class="hero-bg is-active" src="assets/img/hero_slide1.jpg" alt="北海道の広い空の下、芝生のドッグランを走る柴犬" width="1774" height="887">
+      <img class="hero-bg" src="assets/img/hero_slide2.jpg" alt="夕暮れのゲストハウス外観と、ウッドデッキでくつろぐ黒いラブラドール" width="1774" height="887" loading="lazy">
+      <img class="hero-bg" src="assets/img/hero_slide3.jpg" alt="木のテーブルに置かれた犬用のおやつと、待っている小型犬" width="1774" height="887" loading="lazy">
+    </div>
+    <div class="hero-dots" id="hero-dots" role="tablist" aria-label="メインビジュアルの切り替え"></div>
     <div class="wrap hero-inner">
       <div>
         <!-- 意味のかたまり単位でしか改行させない（360pxで「に。」だけが行に落ちるのを防ぐ） -->
@@ -72,8 +78,11 @@
     </div>
   </section>
 
-  <!-- ===== 3事業へのハブ（同種カードは高さを揃える） ===== -->
-  <section class="section section-alt" id="business">
+  <!-- ===== 3事業へのハブ（参考: ゆるり奥日光「お部屋／お食事」ブロックの型）
+       金色の帯の上に、角を斜めに切り欠いた白パネルを重ね、写真とテキストを左右交互に配置する ===== -->
+  <section class="biz-band" id="business">
+    <svg class="paw paw-1" viewBox="0 0 100 100" fill="none" stroke="#5a4a20" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><ellipse cx="50" cy="66" rx="19" ry="15"/><ellipse cx="28" cy="44" rx="7.5" ry="10"/><ellipse cx="43" cy="34" rx="7.5" ry="11"/><ellipse cx="59" cy="34" rx="7.5" ry="11"/><ellipse cx="73" cy="45" rx="7.5" ry="10"/></svg>
+    <svg class="paw paw-2" viewBox="0 0 100 100" fill="none" stroke="#5a4a20" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><ellipse cx="50" cy="66" rx="19" ry="15"/><ellipse cx="28" cy="44" rx="7.5" ry="10"/><ellipse cx="43" cy="34" rx="7.5" ry="11"/><ellipse cx="59" cy="34" rx="7.5" ry="11"/><ellipse cx="73" cy="45" rx="7.5" ry="10"/></svg>
     <div class="wrap">
       <div class="section-head">
         <span class="en">business</span>
@@ -81,42 +90,59 @@
         <p>それぞれのページで、料金・ご利用方法・お問い合わせ先をご案内しています。</p>
       </div>
 
-      <div class="card-grid">
-        <article class="card">
-          <!-- ▼差し替え：ドッグランの施設写真 ※ダミー画像（AI生成）。実素材の受領後に差し替え -->
-          <img class="card-img" src="assets/img/card_dogrun.jpg" alt="ドッグランの芝の上でくつろぐ犬" width="1672" height="941">
-          <div class="card-body">
-            <p class="card-sub">DOG RUN</p>
-            <h3>ドッグランDare</h3>
-            <p>
-              愛犬が思いきり走れる、苫小牧沼ノ端のドッグランです。はじめての方にも安心してお使いいただけるよう、ご利用条件をわかりやすくご案内しています。 </p>
-            <a class="link-more" href="dogrun.html">view more</a>
+      <div class="biz-block">
+        <div class="biz-photo">
+          <!-- ▼差し替え：ドッグランの芝の上でくつろぐ犬 ※ダミー画像（AI生成）。実素材の受領後に差し替え -->
+          <img src="assets/img/card_dogrun.jpg" alt="ドッグランの芝の上でくつろぐ犬" width="1672" height="941" loading="lazy">
+        </div>
+        <div class="biz-panel">
+          <div class="biz-panel-head">
+            <h3 class="biz-title">ドッグランDare</h3>
+            <div class="biz-meta">
+              <span class="rule"></span>
+              <span class="biz-tag">dog run</span>
+              <p class="biz-sub">思いきり走れる、苫小牧沼ノ端のドッグラン</p>
+              <p>年会費と使用料、回数券やフリーパスなど、通い方に合わせてお選びいただけます。はじめての方にも安心してお使いいただけるよう、料金とご利用条件をすべて先にご案内しています。</p>
+              <a class="btn-pill" href="dogrun.html">view more</a>
+            </div>
           </div>
-        </article>
-
-        <article class="card">
-          <!-- ▼差し替え：おやつ商品の写真 ※ダミー画像（AI生成）。実素材の受領後に差し替え -->
-          <img class="card-img" src="assets/img/oyatsu_item2.jpg" alt="木の器に盛られた犬用のおやつ" width="1672" height="941">
-          <div class="card-body">
-            <p class="card-sub">DOG TREATS</p>
-            <h3>オヤツ屋さんDare</h3>
-            <p>
-              愛犬のための、犬のおやつをお作りしています。店頭でのお求めのほか、オンラインショップからもご購入いただけます。 </p>
-            <a class="link-more" href="oyatsu.html">view more</a>
+        </div>
+      </div>
+      <div class="biz-block is-reverse">
+        <div class="biz-photo">
+          <!-- ▼差し替え：木のトレイに盛られた犬用おやつの詰め合わせ ※ダミー画像（AI生成）。実素材の受領後に差し替え -->
+          <img src="assets/img/oyatsu_wide.jpg" alt="木のトレイに盛られた犬用おやつの詰め合わせ" width="1672" height="941" loading="lazy">
+        </div>
+        <div class="biz-panel">
+          <div class="biz-panel-head">
+            <h3 class="biz-title">オヤツ屋さんDare</h3>
+            <div class="biz-meta">
+              <span class="rule"></span>
+              <span class="biz-tag">dog treats</span>
+              <p class="biz-sub">愛犬のためのおやつを、ひとつずつ</p>
+              <p>毎日のごほうびに、そしてドッグランの帰りのおみやげに。店頭でのお求めのほか、オンラインショップからもご購入いただけます。</p>
+              <a class="btn-pill" href="oyatsu.html">view more</a>
+            </div>
           </div>
-        </article>
-
-        <article class="card">
-          <!-- ▼差し替え：ゲストハウスの外観／客室写真 ※ダミー画像（AI生成）。実素材の受領後に差し替え -->
-          <img class="card-img" src="assets/img/card_guesthouse.jpg" alt="ゲストハウスの共用リビングでくつろぐ小型犬" width="1600" height="900">
-          <div class="card-body">
-            <p class="card-sub">GUEST HOUSE</p>
-            <h3>ゲストハウス フレンドDare</h3>
-            <p>
-              愛犬とご一緒にお泊まりいただけるゲストハウスです。苫小牧観光やお仕事の拠点としてもご利用いただけます。 </p>
-            <a class="link-more" href="guesthouse.html">view more</a>
+        </div>
+      </div>
+      <div class="biz-block">
+        <div class="biz-photo">
+          <!-- ▼差し替え：ゲストハウスの共用リビングでくつろぐ小型犬 ※ダミー画像（AI生成）。実素材の受領後に差し替え -->
+          <img src="assets/img/card_guesthouse.jpg" alt="ゲストハウスの共用リビングでくつろぐ小型犬" width="1600" height="900" loading="lazy">
+        </div>
+        <div class="biz-panel">
+          <div class="biz-panel-head">
+            <h3 class="biz-title">ゲストハウス フレンドDare</h3>
+            <div class="biz-meta">
+              <span class="rule"></span>
+              <span class="biz-tag">guest house</span>
+              <p class="biz-sub">愛犬とご一緒に、苫小牧での一日をゆっくりと</p>
+              <p>「旅先で愛犬を預ける場所を探さなくていい」。それだけで、旅の計画はぐっと自由になります。苫小牧観光の拠点としても、長距離移動の途中の一泊としてもご利用いただけます。</p>
+              <a class="btn-pill" href="guesthouse.html">view more</a>
+            </div>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   </section>
@@ -155,7 +181,7 @@
             <p class="card-sub">03</p>
             <h3>ご家族で営む、身近な場所</h3>
             <p>
-              ご質問やご相談には、日々現場に立つスタッフが直接お答えします。はじめての方も、どうぞお気軽にお声がけください。 </p>
+              ご質問やご相談には、日々現場に立つスタッフが直接お答えします。はじめての方も、どうぞお気軽に<span class="nowrap">お声がけください</span>。 </p>
           </div>
         </article>
       </div>
@@ -177,7 +203,7 @@
             <h3><span class="nb">ドッグランDare／</span><span class="nb">オヤツ屋さんDare</span></h3>
             <p>
               〒<span class="tbd">郵便番号（未確認）</span><br>
-              北海道苫小牧市沼ノ端中央1丁目2-24 </p>
+              <span class="nowrap">北海道苫小牧市沼ノ端中央1丁目2-24</span> </p>
             <!-- ▼差し替え：Googleマップ埋め込み（本番でiframe設置） -->
             <div class="ph ph-wide">Googleマップ埋め込み予定<br>（沼ノ端中央1丁目2-24）</div>
           </div>
@@ -188,7 +214,7 @@
             <h3>ゲストハウス フレンドDare</h3>
             <p>
               〒<span class="tbd">郵便番号（未確認）</span><br>
-              北海道苫小牧市沼ノ端中央6丁目3-12 </p>
+              <span class="nowrap">北海道苫小牧市沼ノ端中央6丁目3-12</span> </p>
             <!-- ▼差し替え：Googleマップ埋め込み（本番でiframe設置） -->
             <div class="ph ph-wide">Googleマップ埋め込み予定<br>（沼ノ端中央6丁目3-12）</div>
           </div>
@@ -257,7 +283,7 @@
         <h2>Dareグループ</h2>
         <p>
           運営：株式会社成和<br>
-          北海道苫小牧市沼ノ端中央1丁目2-24<br>
+          <span class="nowrap">北海道苫小牧市沼ノ端中央1丁目2-24</span><br>
           TEL 0144-57-4031 </p>
       </div>
       <div>
