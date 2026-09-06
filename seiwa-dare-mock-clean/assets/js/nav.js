@@ -111,4 +111,10 @@
     sync();
     window.addEventListener('scroll', sync, { passive: true });
   }
+
+  /* 客室スペックの開閉：広い画面では最初から開いておく（狭い画面は畳んだまま） */
+  var roomMore = document.querySelectorAll('.room-more');
+  if (roomMore.length && window.matchMedia('(min-width: 821px)').matches) {
+    roomMore.forEach(function (d) { d.open = true; });
+  }
 })();
