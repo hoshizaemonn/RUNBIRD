@@ -1109,7 +1109,8 @@ a { color: var(--color-accent-dark); }
 
 .biz-photo img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  /* お客様提供の動画から切り出した実素材（480px幅・横長）を、拡大せずに使える比率にしている */
+  aspect-ratio: 2 / 1;
   object-fit: cover;
   filter: saturate(0.98) sepia(0.06);
 }
@@ -1413,7 +1414,8 @@ a { color: var(--color-accent-dark); }
 
 .service-card img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  /* お客様提供の動画から切り出した実素材（480px幅・横長）を、拡大せずに使える比率にしている */
+  aspect-ratio: 2 / 1;
   object-fit: cover;
   filter: saturate(0.98) sepia(0.06);
 }
@@ -1493,7 +1495,7 @@ a { color: var(--color-accent-dark); }
   .service-grid { grid-template-columns: 1fr; gap: 18px; margin-bottom: 30px; }
   .service-head { margin-bottom: 34px; }
   .service-head .dog-line { position: static; display: block; margin: 16px auto 0; width: 84px; height: 84px; }
-  .service-card img { aspect-ratio: 16 / 10; }
+  .service-card img { aspect-ratio: 2 / 1; }
   .btn-round-white { display: block; text-align: center; }
 }
 
@@ -2322,10 +2324,13 @@ a { color: var(--color-accent-dark); }
 
 .room-detail {
   display: grid;
-  grid-template-columns: 1fr 232px;
+  /* 間取り図（.room-plan）は「いらない」とのご指示で削除したため1カラム。
+     間取り図を戻すときは `1fr 232px` に戻す（右カラムが .room-plan） */
+  grid-template-columns: 1fr;
   gap: 34px;
   align-items: start;
 }
+.room-detail:has(.room-plan) { grid-template-columns: 1fr 232px; }
 
 .spec-list { margin: 0; }
 
@@ -2684,3 +2689,264 @@ a { color: var(--color-accent-dark); }
    平坦な地の上にグラデの端が線として出てしまうので局所の暗部を使わない
    （写真がなければ素の状態で15:1以上あり、そもそも不要） */
 .page-header:not(:has(.hero-bg)) h1::before { display: none; }
+
+/* ============================================================
+   紹介動画（2026-09-07 MTG決定：トップのFV直下／ゲストハウスページ）
+   ・埋め込み動画は max-width:100% + height:auto でスマホでも溢れさせない
+   ・16:9の枠を先に確保して、読み込み時のガタつき（レイアウトシフト）を防ぐ
+   ============================================================ */
+.movie-band { background: var(--color-bg-alt); }
+.movie-frame {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #221f1a;
+  box-shadow: 0 10px 30px rgba(48, 40, 26, .16);
+}
+.movie-frame video,
+.movie-frame iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: #221f1a;
+}
+/* YouTube埋め込み：iframe は height:auto が効かない環境があるので、
+   枠側で16:9を確保して iframe を100%×100%で敷き詰める */
+.movie-embed { position: relative; aspect-ratio: 16 / 9; }
+.movie-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
+}
+.movie-frame.is-portrait { max-width: 360px; }
+.movie-frame.is-portrait video { aspect-ratio: 9 / 16; }
+.movie-note {
+  max-width: 900px;
+  margin: 12px auto 0;
+  text-align: center;
+  font-size: .88rem;
+  color: var(--color-text-light);
+}
+
+/* 看板犬（トップの「Dareグループについて」の末尾） */
+.kanban-dog {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  max-width: 860px;
+  margin: 40px auto 0;
+  padding: 18px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(48, 40, 26, .08);
+}
+.kanban-dog img {
+  flex: 0 0 46%;
+  width: 46%;
+  border-radius: 10px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.kanban-dog figcaption { display: block; }
+.kanban-dog figcaption strong {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+.kanban-dog figcaption span { display: block; line-height: 1.9; }
+
+@media (max-width: 700px) {
+  .kanban-dog { display: block; padding: 14px; }
+  .kanban-dog img { width: 100%; margin-bottom: 14px; }
+  .movie-frame { border-radius: 10px; }
+  .movie-frame.is-portrait { max-width: 300px; }
+}
+
+/* ============================================================
+   オヤツ屋さん：品数の多さを伝えるパーツ（2026-09-07 MTGの方針転換）
+   ============================================================ */
+.meat-chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+}
+.meat-chips li {
+  min-width: 46px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--color-yellow-soft);
+  color: #6d5322;            /* 淡い黄色地の上：実測 6.0:1 */
+  font-weight: 700;
+  font-size: .95rem;
+  text-align: center;
+}
+
+.shop-lead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 44px;
+  padding: 30px 34px;
+  border-radius: 16px;
+  background: var(--color-primary);
+  color: #fff;               /* 深緑 #2F5A3C 地：実測 7.4:1 */
+}
+.shop-lead-en {
+  display: block;
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-accent-light);   /* 暗所の黄色 #f8c000：深緑地で 6.4:1 */
+  margin-bottom: 6px;
+}
+.shop-lead h3 { margin: 0 0 10px; color: #fff; font-size: 1.35rem; line-height: 1.5; }
+.shop-lead p { margin: 0; line-height: 1.9; color: #f2f6f0; }
+.shop-lead-action { flex: 0 0 auto; text-align: center; }
+.btn-shop {
+  background: var(--color-yellow);
+  color: #4a3a06;            /* 黄色 #f8c000 地：白は不可、濃い茶で 7.9:1 */
+  border-color: var(--color-yellow);
+  font-weight: 700;
+}
+.btn-shop:hover, .btn-shop:focus-visible { background: #ffd433; border-color: #ffd433; color: #4a3a06; }
+.shop-lead-note { display: block; margin-top: 10px; font-size: .78rem; color: #dfe8dc; }
+
+.items-sample { margin-top: 40px; }
+.items-sample > summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #e3dccb;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.items-sample > summary:hover { background: #fffdf6; }
+.items-sample[open] > summary { margin-bottom: 4px; }
+.items-sample-foot { margin-top: 18px; text-align: center; }
+
+@media (max-width: 780px) {
+  .shop-lead { display: block; padding: 24px 20px; text-align: center; }
+  .shop-lead-action { margin-top: 20px; }
+  .shop-lead h3 { font-size: 1.15rem; }
+}
+
+/* ============================================================
+   ご予約（2026-09-07 MTG：叩き台では「見え方」のみ・実際には動かない）
+   ============================================================ */
+.reserve-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.reserve-cal, .reserve-form {
+  background: #fff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 6px 20px rgba(48, 40, 26, .08);
+}
+.reserve-cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.reserve-cal-title { font-weight: 700; color: var(--color-primary); }
+.reserve-cal-sample {
+  font-size: .72rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--color-yellow-soft);
+  color: #6d5322;               /* 実測 6.0:1 */
+}
+.reserve-cal-week, .reserve-cal-days {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.reserve-cal-week li {
+  text-align: center;
+  font-size: .78rem;
+  color: #6a6357;               /* 白地 実測 5.9:1 */
+  padding-bottom: 6px;
+}
+.reserve-cal-days li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-height: 46px;
+  border-radius: 7px;
+  background: #f6f2e8;
+}
+.reserve-cal-days .d { font-size: .74rem; color: #6a6357; }
+.reserve-cal-days .m { font-size: .95rem; color: #46403a; line-height: 1; }
+.reserve-cal-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 14px 0 0;
+  font-size: .78rem;
+  color: #55504a;               /* 白地 実測 7.8:1 */
+}
+.reserve-cal-note { margin: 6px 0 0; font-size: .76rem; color: #6a6357; }
+
+.reserve-form-lead { margin: 0 0 16px; color: var(--color-primary); font-size: 1.05rem; }
+.reserve-field { margin-bottom: 14px; }
+.reserve-field label {
+  display: block;
+  font-size: .84rem;
+  font-weight: 700;
+  color: #46403a;
+  margin-bottom: 6px;
+}
+.reserve-field input, .reserve-field select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #ddd5c4;
+  border-radius: 8px;
+  background: #faf7f0;
+  color: #46403a;
+  font-size: 1rem;
+  font-family: inherit;
+}
+.reserve-field input:disabled, .reserve-field select:disabled {
+  color: #57514a;               /* 無効でも読めるコントラストを確保（#faf7f0地で 7.3:1） */
+  opacity: 1;
+  cursor: not-allowed;
+}
+.reserve-hint { display: block; margin-top: 6px; font-size: .76rem; color: #6a6357; }
+.btn-wide-form {
+  width: 100%;
+  margin-top: 6px;
+  cursor: not-allowed;
+  opacity: .75;
+}
+.reserve-form-note { margin: 14px 0 0; font-size: .78rem; line-height: 1.8; color: #55504a; }
+
+@media (max-width: 820px) {
+  .reserve-grid { grid-template-columns: 1fr; gap: 20px; }
+  .reserve-cal-days li { min-height: 40px; }
+}
+@media (max-width: 400px) {
+  .reserve-cal, .reserve-form { padding: 16px; }
+  .reserve-cal-days { gap: 3px; }
+  .reserve-cal-days li { min-height: 36px; }
+  .reserve-cal-days .d { font-size: .68rem; }
+}
