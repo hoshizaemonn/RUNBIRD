@@ -987,6 +987,9 @@ a { color: var(--color-accent-dark); }
   .hero-bg { object-position: center 38%; }
   /* 主題（犬の顔）が右端にあるカットは、さらに右を残す */
   .hero-bg[data-pos="sp-right"] { object-position: 74% 45%; }
+  /* 2026-09-08 ゲストハウス外観の実写：既定の center 38% では明るい空が見出しの裏に来て
+     コントラストが3.89まで落ちるため、建物側（下寄り）を見せる */
+  .hero-bg[data-pos="sp-low"] { object-position: center 80%; }
   .hero::after {
     background:
       /* スマホは文字が画面幅いっぱいに来るので下側を広めに沈める。上半分は素の写真のまま */
