@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <!--
-  Dareグループ HP 叩き台 — お問い合わせ（2026-09-03）
+  Dareグループ HP 叩き台 — お問い合わせ（2026-09-03 / 2026-09-07 更新）
   ★制作注意事項の核：「事業ごとにページを分け、問い合わせ先（予約含む）も事業ごとに分けたい」
-    この叩き台では【案A＝3フォーム別立て】を形にしている。
-    【案B＝1フォーム＋事業選択式】もMTGで比較できるよう、ページ下部に説明を置いている。
+    2026-09-07 決定：**窓口カードを押すと、その事業のフォームだけが表示される**形にする。
+      ・3つの窓口カード（ドッグラン／オヤツ屋さん／ゲストハウス）はそのまま残す
+      ・カードのボタン＝タブ。押した事業のフォームだけを開き、他は閉じる
+      ・初期状態は「未選択」。上の3つから選ぶよう案内を出す
+      ・contact.html#dogrun / #oyatsu / #guesthouse で来た場合は、そのフォームが開いた状態になる
+    ※JavaScriptが動かない環境では、3フォームが全部表示された状態（従来と同じ）になり、
+      アンカーリンクでそれぞれのフォームに飛べる。問い合わせ手段は必ず残る（切り替えはJSの上乗せ）。
     フォームはWordPress化時に Contact Form 7 等へ置き換える前提の素直なHTML。
     ※この叩き台では送信処理は行わない（action未設定・ダミー）
 -->
@@ -56,22 +61,24 @@
     </div>
   </nav>
 
-  <!-- ===== 窓口の選択 ===== -->
-  <section class="section">
+  <!-- ===== 窓口の選択（カード＝タブ。押した事業のフォームだけを開く） ===== -->
+  <section class="section" id="contact-choice">
     <div class="wrap">
       <div class="note-box">
         <strong>【制作メモ・未確定／公開時は削除するブロック】</strong>
         <ul>
-          <li><strong>フォームの分け方</strong>：この叩き台は「事業ごとに3つのフォームを別立て」で作っています（案A）。1つのフォームに「お問い合わせ先の事業」を選ぶ欄を付ける形（案B）もご用意できます。どちらがよいかMTGで決めさせてください。</li>
+          <li><strong>フォームの分け方（決定済み）</strong>：上の3つの窓口カードから選ぶと、その事業のフォームだけが表示される形にしました。事業ごとに聞く項目を変えつつ（ゲストハウスは宿泊日・頭数など）、ページが縦に長くならないようにしています。</li>
           <li><strong>送信先メールアドレス</strong>：事業ごとに分けるか、1か所にまとめるか。現在は代表メール1件のみ把握しています（アドレスは共有シートをご参照ください）。</li>
           <li><strong>掲載する電話番号</strong>：本叩き台では店舗（ドッグラン）<span class="nowrap">0144-57-4031</span> のみ掲載しています。共有シートの希望架電先とChatWorkでご案内いただいた番号に相違があるため、掲載可否と正しい番号をご確認ください（番号は共有シートをご参照ください）。</li>
           <li><strong>ゲストハウスのご予約</strong>：フォームで受けるか、予約システムを導入するか。</li>
         </ul>
       </div>
 
+      <p class="choice-lead">お問い合わせ先の事業をお選びください。</p>
+
       <div class="contact-choice">
         <article class="contact-card">
-          <p class="card-sub">DOG RUN</p>
+          <p class="card-sub">DOG RUN<span class="card-flag">選択中</span></p>
           <h3>ドッグランについて</h3>
           <p>ご利用条件・料金・混雑状況などのお問い合わせはこちらです。</p>
           <dl>
@@ -80,11 +87,11 @@
             <dt>所在地</dt>
             <dd><span class="nowrap">苫小牧市沼ノ端中央1丁目2-24</span></dd>
           </dl>
-          <a class="btn" href="#dogrun">フォームへ進む</a>
+          <a class="btn contact-tab" href="#dogrun" data-contact-tab="dogrun">このフォームを開く</a>
         </article>
 
         <article class="contact-card">
-          <p class="card-sub">DOG TREATS</p>
+          <p class="card-sub">DOG TREATS<span class="card-flag">選択中</span></p>
           <h3>おやつについて</h3>
           <p>商品のご相談・卸のご依頼・配送についてのお問い合わせはこちらです。</p>
           <dl>
@@ -93,11 +100,11 @@
             <dt>所在地</dt>
             <dd><span class="nowrap">苫小牧市沼ノ端中央1丁目2-24</span></dd>
           </dl>
-          <a class="btn" href="#oyatsu">フォームへ進む</a>
+          <a class="btn contact-tab" href="#oyatsu" data-contact-tab="oyatsu">このフォームを開く</a>
         </article>
 
         <article class="contact-card">
-          <p class="card-sub">GUEST HOUSE</p>
+          <p class="card-sub">GUEST HOUSE<span class="card-flag">選択中</span></p>
           <h3>ゲストハウスのご予約</h3>
           <p>空室状況・ご宿泊条件・愛犬の同伴についてのご相談はこちらです。</p>
           <dl>
@@ -106,14 +113,27 @@
             <dt>所在地</dt>
             <dd><span class="nowrap">苫小牧市沼ノ端中央6丁目3-12</span></dd>
           </dl>
-          <a class="btn" href="#guesthouse">フォームへ進む</a>
+          <a class="btn contact-tab" href="#guesthouse" data-contact-tab="guesthouse">このフォームを開く</a>
         </article>
       </div>
     </div>
   </section>
 
+  <!-- ===== フォーム（選んだ事業のものだけを表示する） =====
+       ・JSが動く環境：選ばれていないパネルに hidden 属性が付き、1つだけが表示される
+       ・JSが動かない環境：hidden が付かないので3つとも表示され、アンカーで飛べる（従来と同じ） -->
+  <div class="contact-panels" id="contact-panels">
+
+    <!-- 未選択のときの案内。既定は hidden で、JSが動いたときだけ表示する
+         （JS無効の環境では3フォームが全部見えているので、この案内は出さない） -->
+    <section class="section section-alt contact-empty" id="contact-empty" hidden>
+      <div class="wrap">
+        <p class="choice-empty">ご用件に合わせて、上の3つから窓口をお選びください。選んだ事業のご入力欄が、ここに表示されます。</p>
+      </div>
+    </section>
+
   <!-- ===== フォーム1：ドッグラン ===== -->
-  <section class="section section-alt" id="dogrun">
+  <section class="section section-alt contact-panel" id="dogrun" data-contact-panel="dogrun">
     <div class="wrap">
       <div class="section-head">
         <span class="en">dog run</span>
@@ -152,11 +172,13 @@
 
         <button class="btn btn-block" type="submit">この内容で送信する</button>
       </form>
+
+      <p class="panel-back"><a href="#contact-choice">別の窓口を選び直す</a></p>
     </div>
   </section>
 
   <!-- ===== フォーム2：オヤツ屋さん ===== -->
-  <section class="section" id="oyatsu">
+  <section class="section section-alt contact-panel" id="oyatsu" data-contact-panel="oyatsu">
     <div class="wrap">
       <div class="section-head">
         <span class="en">dog treats</span>
@@ -201,11 +223,13 @@
 
         <button class="btn btn-block" type="submit">この内容で送信する</button>
       </form>
+
+      <p class="panel-back"><a href="#contact-choice">別の窓口を選び直す</a></p>
     </div>
   </section>
 
   <!-- ===== フォーム3：ゲストハウス（予約相当） ===== -->
-  <section class="section section-alt" id="guesthouse">
+  <section class="section section-alt contact-panel" id="guesthouse" data-contact-panel="guesthouse">
     <div class="wrap">
       <div class="section-head">
         <span class="en">guest house</span>
@@ -255,25 +279,12 @@
 
         <button class="btn btn-block" type="submit">この内容で送信する</button>
       </form>
+
+      <p class="panel-back"><a href="#contact-choice">別の窓口を選び直す</a></p>
     </div>
   </section>
 
-  <!-- ===== 案A/案Bの比較（MTG説明用・本番では削除する） ===== -->
-  <section class="section" data-memo="section">
-    <div class="wrap">
-      <div class="note-box">
-        <strong>【制作メモ・MTG説明用／公開時は削除するブロック】お問い合わせフォームの2案</strong>
-        <ul>
-          <li><strong>案A（この叩き台の形）：事業ごとに3フォーム別立て</strong><br>
-            長所＝お客様が迷わない。事業ごとに聞く項目を変えられる（ゲストハウスなら宿泊日・頭数など）。送信先メールも分けやすい。<br>
-            短所＝ページが縦に長くなる。管理する（受け取る）窓口が3つに増える。</li>
-          <li><strong>案B：1フォーム＋「お問い合わせ先の事業」を選ぶ欄</strong><br>
-            長所＝ページが短く、受け取り側の管理が1か所で済む。<br>
-            短所＝事業ごとに聞きたい項目を出し分けにくい（全員に同じ項目を見せることになる）。</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+  </div><!-- /.contact-panels -->
 
 </main>
 

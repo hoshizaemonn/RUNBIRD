@@ -793,6 +793,83 @@ a { color: var(--color-accent-dark); }
 .contact-card dd { margin: 0 0 10px; }
 .contact-card .btn { margin-top: auto; }
 
+/* --- 窓口カード＝タブ（押した事業のフォームだけを開く） ---
+   ・切り替えUIはJavaScriptが動いたときだけ有効になる（HTMLの既定は3フォームとも表示）
+   ・パネルの開閉は hidden 属性で行う。JSが動かない環境ではhiddenが付かないので全部見える */
+.choice-lead {
+  margin: 0 0 28px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--color-text);          /* #3f3a32 on #fbf7ee = 10.54:1 */
+}
+
+/* 「選択中」バッジ。既定は非表示で、選ばれたカードにだけ出す
+   ※バッジの有無で行の高さが変わり3枚の行位置がずれるので、この行の高さを固定する */
+.contact-card .card-sub {
+  display: flex;
+  align-items: center;
+  min-height: 22px;
+}
+.contact-card .card-flag { display: none; }
+.contact-card.is-selected .card-flag {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: var(--color-primary);  /* #2F5A3C に白文字 = 7.93:1 */
+  color: var(--color-white);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+}
+
+/* 選択中のカードは枠と上辺の色で示す（色だけに頼らずバッジ＋ボタン文字も変える） */
+.contact-card.is-selected {
+  border-color: var(--color-primary);
+  border-top-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+/* 選択中のボタンは色を濃くし、さらに「この下に開いている」印（▼）を足す
+   ＝色だけに頼らず、バッジ・枠・記号の3つで選択中と分かるようにする */
+.contact-card.is-selected .btn {
+  background: var(--color-accent-dark);   /* #234630 に白文字 = 10.55:1 */
+}
+.contact-card.is-selected .btn::after {
+  content: "▼";
+  margin-left: 8px;
+  font-size: 9px;
+  vertical-align: 1px;
+}
+
+/* キーボード操作の位置が分かるように、フォーカスリングははっきり出す */
+.contact-tab:focus-visible,
+.contact-panel:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* 閉じているフォーム（.section の指定に負けないよう明示する） */
+.contact-panel[hidden],
+.contact-empty[hidden] { display: none !important; }
+
+/* 未選択のときの案内 */
+.contact-empty .choice-empty {
+  margin: 0;
+  text-align: center;
+  font-size: 14.5px;
+  line-height: 2.1;
+  color: var(--color-text);          /* #3f3a32 on #f3ecdd = 9.58:1 */
+}
+
+/* 各フォームの下に置く「別の窓口を選び直す」 */
+.panel-back {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 13.5px;
+}
+.panel-back a { color: var(--color-accent-dark); }   /* #234630 on #f3ecdd = 8.97:1 */
+
 /* フォーム（WordPress化時は Contact Form 7 等に置換する想定） */
 .form-block {
   background: var(--color-white);

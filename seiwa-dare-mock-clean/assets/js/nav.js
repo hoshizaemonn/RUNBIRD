@@ -112,6 +112,141 @@
     window.addEventListener('scroll', sync, { passive: true });
   }
 
+  /* --------------------------------------------------------------------------
+     お問い合わせページ：窓口カードで表示するフォームを切り替える（タブ）
+     ・HTMLは「3フォームが全部表示されている」状態が既定。ここで初めて切り替えUIを有効にする
+       （＝JavaScriptが動かない環境では従来どおり3フォームが並び、アンカーで飛べる）
+     ・contact.html#dogrun / #oyatsu / #guesthouse で来たら、そのフォームを開いた状態にする
+     ・キーボード：Tabでタブ列に入り、←→（↑↓）で移動、Home/Endで端、Enter/Spaceで確定
+     -------------------------------------------------------------------------- */
+  var tabWrap = document.querySelector('.contact-choice');
+  var panelWrap = document.getElementById('contact-panels');
+
+  if (tabWrap && panelWrap) {
+    var tabs = [].slice.call(tabWrap.querySelectorAll('[data-contact-tab]'));
+    var panels = [].slice.call(panelWrap.querySelectorAll('[data-contact-panel]'));
+    var emptyBox = document.getElementById('contact-empty');
+    var header = document.querySelector('.site-header');
+
+    if (tabs.length && panels.length) {
+      var keyOf = function (el) {
+        return el.getAttribute('data-contact-tab') || el.getAttribute('data-contact-panel');
+      };
+      var panelOf = function (key) {
+        for (var i = 0; i < panels.length; i++) {
+          if (keyOf(panels[i]) === key) return panels[i];
+        }
+        return null;
+      };
+      var reduceMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* タブとしての役割を後付けする（JSが動いた環境だけこの意味になる） */
+      tabWrap.setAttribute('role', 'tablist');
+      tabWrap.setAttribute('aria-label', 'お問い合わせ窓口の選択');
+      tabWrap.setAttribute('aria-owns', tabs.map(function (t) {
+        return 'tab-' + keyOf(t);
+      }).join(' '));
+
+      tabs.forEach(function (tab) {
+        var key = keyOf(tab);
+        tab.id = 'tab-' + key;
+        tab.setAttribute('role', 'tab');
+        tab.setAttribute('aria-controls', key);
+        tab.setAttribute('aria-selected', 'false');
+        tab.setAttribute('tabindex', '-1');
+      });
+      tabs[0].setAttribute('tabindex', '0');   /* 未選択でもキーボードでタブ列に入れるようにする */
+
+      panels.forEach(function (panel) {
+        panel.setAttribute('role', 'tabpanel');
+        panel.setAttribute('aria-labelledby', 'tab-' + keyOf(panel));
+        panel.setAttribute('tabindex', '0');   /* 長いパネルをキーボードでスクロールできるように */
+        panel.hidden = true;                   /* 既定は「未選択」＝どのフォームも開かない */
+      });
+      if (emptyBox) emptyBox.hidden = false;   /* 代わりに案内文を出す */
+
+      /* 押した直後にフォームが視界に入るようにスクロールする（固定ヘッダー分だけ上に余白） */
+      var scrollToPanel = function (panel, smooth) {
+        var offset = (header ? header.offsetHeight : 0) + 12;
+        var top = window.pageYOffset + panel.getBoundingClientRect().top - offset;
+        if (top < 0) top = 0;
+        if (smooth && !reduceMotion && 'scrollBehavior' in document.documentElement.style) {
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        } else {
+          window.scrollTo(0, top);
+        }
+      };
+
+      var select = function (key, opts) {
+        var target = panelOf(key);
+        if (!target) return false;
+        opts = opts || {};
+
+        panels.forEach(function (panel) { panel.hidden = (panel !== target); });
+        if (emptyBox) emptyBox.hidden = true;
+
+        tabs.forEach(function (tab) {
+          var on = keyOf(tab) === key;
+          tab.setAttribute('aria-selected', on ? 'true' : 'false');
+          tab.setAttribute('tabindex', on ? '0' : '-1');
+          var card = tab.closest ? tab.closest('.contact-card') : tab.parentNode;
+          if (card) card.classList.toggle('is-selected', on);
+        });
+
+        /* URLを共有できるよう残す。location.hash を書き換えると画面が飛ぶのでreplaceStateを使う */
+        if (opts.updateHash !== false && window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', '#' + key);
+        }
+        if (opts.scroll !== false) scrollToPanel(target, opts.smooth !== false);
+        return true;
+      };
+
+      tabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function (e) {
+          e.preventDefault();
+          select(keyOf(tab));
+        });
+        tab.addEventListener('keydown', function (e) {
+          var move = 0;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') move = 1;
+          else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') move = -1;
+          else if (e.key === 'Home') move = -Infinity;
+          else if (e.key === 'End') move = Infinity;
+          else if (e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();            /* Enterはリンクの既定動作＝clickで拾える */
+            select(keyOf(tab));
+            return;
+          } else {
+            return;
+          }
+          e.preventDefault();
+          var n = move === -Infinity ? 0
+                : move === Infinity ? tabs.length - 1
+                : (i + move + tabs.length) % tabs.length;
+          tabs[n].focus();
+          select(keyOf(tabs[n]), { scroll: false });   /* 移動中は画面を飛ばさない */
+        });
+      });
+
+      /* 他ページから contact.html#guesthouse などで来たときに、そのフォームを開く */
+      var openFromHash = function (isInitial) {
+        var key = (window.location.hash || '').replace('#', '');
+        if (!key) return false;
+        return select(key, { updateHash: false, smooth: !isInitial });
+      };
+      if (openFromHash(true)) {
+        /* 画像の読み込みで高さが変わると位置がずれるので、読み込み完了後にもう一度合わせる */
+        window.addEventListener('load', function () {
+          var key = (window.location.hash || '').replace('#', '');
+          var panel = panelOf(key);
+          if (panel && !panel.hidden) scrollToPanel(panel, false);
+        });
+      }
+      window.addEventListener('hashchange', function () { openFromHash(false); });
+    }
+  }
+
   /* 客室スペックの開閉：広い画面では最初から開いておく（狭い画面は畳んだまま） */
   var roomMore = document.querySelectorAll('.room-more');
   if (roomMore.length && window.matchMedia('(min-width: 821px)').matches) {
