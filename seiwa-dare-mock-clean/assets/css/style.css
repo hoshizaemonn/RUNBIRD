@@ -2695,7 +2695,9 @@ a { color: var(--color-accent-dark); }
    ・埋め込み動画は max-width:100% + height:auto でスマホでも溢れさせない
    ・16:9の枠を先に確保して、読み込み時のガタつき（レイアウトシフト）を防ぐ
    ============================================================ */
-.movie-band { background: var(--color-bg-alt); }
+/* 2026-09-07：独立した動画セクション（.movie-band）は「Dareグループについて」に
+   統合したため廃止。動画は .about-movie としてaboutセクションの中に置いている */
+.about-movie { margin-top: 42px; }
 .movie-frame {
   max-width: 900px;
   margin: 0 auto;
@@ -2727,10 +2729,16 @@ a { color: var(--color-accent-dark); }
 .movie-frame.is-portrait video { aspect-ratio: 9 / 16; }
 .movie-note {
   max-width: 900px;
-  margin: 12px auto 0;
+  margin: 16px auto 0;
   text-align: center;
-  font-size: .88rem;
+  font-size: .92rem;
+  line-height: 1.9;
   color: var(--color-text-light);
+}
+.movie-note small {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: .84rem;   /* 約13px。これ以上小さくすると読みづらくなる */
 }
 
 /* 看板犬（トップの「Dareグループについて」の末尾） */
@@ -2766,6 +2774,8 @@ a { color: var(--color-accent-dark); }
   .kanban-dog img { width: 100%; margin-bottom: 14px; }
   .movie-frame { border-radius: 10px; }
   .movie-frame.is-portrait { max-width: 300px; }
+  .about-movie { margin-top: 30px; }
+  .kanban-dog { margin-top: 32px; }
 }
 
 /* ============================================================
