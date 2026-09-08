@@ -32,8 +32,10 @@
   .card.priority .tag{background:var(--accent3); color:#4a3a10;}
   .card.face .tag{background:var(--accent2);}
   .card h3{margin:2px 0 0; font-size:15px;}
-  .diagram{background:#f3ece0; border-radius:10px; padding:10px; display:flex; align-items:center; justify-content:center;}
-  .diagram svg{width:100%; height:auto; max-width:200px;}
+  .diagram{background:#f3ece0; border-radius:10px; overflow:hidden; position:relative;}
+  .diagram img{width:100%; height:auto; display:block;}
+  .diagram .caption{position:absolute; left:8px; bottom:8px; background:rgba(60,50,38,.72); color:#fffdf9; font-size:11px; padding:3px 9px; border-radius:999px;}
+  .refnote{font-size:11px; color:var(--sub); margin-top:-6px;}
   .desc{font-size:13px; color:#5c503f;}
   .desc b{color:var(--ink);}
   .angle-label{font-size:11px; color:var(--sub); text-align:center; margin-top:-4px;}
@@ -54,6 +56,7 @@
 <section>
   <h2>全体方針</h2>
   <p class="lead">9/8の打ち合わせで伺った内容をそのまま角度に落とし込んでいます。文章版は <a href="https://hoshizaemonn.github.io/RUNBIRD/kafuu-storyboard.html">構成案・モック動画のページ</a> を参照してください。</p>
+  <div class="note">写真は<b>すべてAIが生成したイメージ例</b>です（実際のKAFUU様の店内写真ではありません）。「だいたいこういう距離感・こういう構図で」という<b>角度の目安</b>として見てください。</div>
   <div class="grid">
     <div class="card">
       <div class="tag">色味・光</div>
@@ -75,15 +78,7 @@
     <div class="card face">
       <div class="tag">P-1 優先</div>
       <h3>施術中の手元</h3>
-      <div class="diagram">
-        <svg viewBox="0 0 200 140">
-          <rect x="30" y="55" width="120" height="35" rx="6" fill="none" stroke="#8b6f4e" stroke-width="3"/>
-          <ellipse cx="90" cy="72" rx="34" ry="9" fill="#c9a24b" opacity=".35"/>
-          <circle cx="170" cy="72" r="9" fill="none" stroke="#3c3226" stroke-width="3"/>
-          <path d="M170 63 L180 55 M170 81 L180 89" stroke="#3c3226" stroke-width="3" fill="none"/>
-          <path d="M161 72 L100 72" stroke="#3c3226" stroke-width="2" stroke-dasharray="4 4"/>
-        </svg>
-      </div>
+      <div class="diagram"><img src="kafuu-shoot/p1.jpg" alt="施術中の手元の参考イメージ" loading="lazy"><span class="caption">イメージ例（AI生成）</span></div>
       <div class="angle-label">真横 or 斜め上から</div>
       <div class="desc">背中・肩に手を当てているところ。<b>お顔は入れなくて大丈夫</b>（顎から下・首から下でOK）。参考動画と同じ構図。</div>
     </div>
@@ -91,15 +86,7 @@
     <div class="card face">
       <div class="tag">P-2 優先</div>
       <h3>アロマを選ぶ手元</h3>
-      <div class="diagram">
-        <svg viewBox="0 0 200 140">
-          <rect x="60" y="30" width="80" height="80" rx="8" fill="none" stroke="#8b6f4e" stroke-width="2"/>
-          <rect x="88" y="50" width="10" height="30" rx="2" fill="#6b7c5a"/>
-          <rect x="103" y="55" width="10" height="25" rx="2" fill="#c9a24b"/>
-          <circle cx="100" cy="118" r="16" fill="none" stroke="#3c3226" stroke-width="3"/>
-          <line x1="111" y1="129" x2="122" y2="140" stroke="#3c3226" stroke-width="3"/>
-        </svg>
-      </div>
+      <div class="diagram"><img src="kafuu-shoot/p2.jpg" alt="アロマを選ぶ手元の参考イメージ" loading="lazy"><span class="caption">イメージ例（AI生成）</span></div>
       <div class="angle-label">近づいて手元アップ</div>
       <div class="desc">ボトルを手に取っているところ。お顔は入りません。</div>
     </div>
@@ -107,17 +94,9 @@
     <div class="card face">
       <div class="tag">P-3 余裕あれば</div>
       <h3>施術中の横顔</h3>
-      <div class="diagram">
-        <svg viewBox="0 0 200 140">
-          <rect x="60" y="55" width="90" height="30" rx="6" fill="none" stroke="#8b6f4e" stroke-width="3"/>
-          <circle cx="100" cy="45" r="9" fill="#c9a24b" opacity=".5"/>
-          <circle cx="15" cy="70" r="8" fill="none" stroke="#3c3226" stroke-width="3"/>
-          <path d="M15 62 L8 52 M15 78 L8 88" stroke="#3c3226" stroke-width="3" fill="none"/>
-          <path d="M23 70 L60 70" stroke="#3c3226" stroke-width="2" stroke-dasharray="4 4"/>
-        </svg>
-      </div>
-      <div class="angle-label">斜め後ろ〜真横・距離を取る</div>
-      <div class="desc">カメラは<b>遠め</b>に。お客様役の頭越しに横顔が少し見える程度の距離感。正面・近距離アップは撮らない。</div>
+      <div class="diagram"><img src="kafuu-shoot/p3.jpg" alt="施術中の距離を取った参考イメージ" loading="lazy"><span class="caption">イメージ例（AI生成）</span></div>
+      <div class="angle-label">背面〜斜め後ろ・距離を取る</div>
+      <div class="desc">カメラは<b>遠め</b>に。正面や近距離のアップは撮らない、この写真くらいの距離感で大丈夫です。横顔が写る程度に寄れれば尚良いですが、無理はしなくて大丈夫です。</div>
     </div>
 
   </div>
@@ -130,15 +109,7 @@
     <div class="card priority">
       <div class="tag">A-1</div>
       <h3>サロン全体</h3>
-      <div class="diagram">
-        <svg viewBox="0 0 200 140">
-          <rect x="15" y="15" width="170" height="110" rx="4" fill="none" stroke="#8b6f4e" stroke-width="3"/>
-          <rect x="35" y="45" width="55" height="25" rx="4" fill="none" stroke="#6b7c5a" stroke-width="2"/>
-          <rect x="125" y="35" width="12" height="12" fill="#c9a24b" opacity=".5"/>
-          <path d="M8 128 L60 60 L140 60 L192 128 Z" fill="#c9a24b" opacity=".15"/>
-          <circle cx="8" cy="128" r="6" fill="none" stroke="#3c3226" stroke-width="3"/>
-        </svg>
-      </div>
+      <div class="diagram"><img src="kafuu-shoot/a1.jpg" alt="入口から部屋全体を見た参考イメージ" loading="lazy"><span class="caption">イメージ例（AI生成）</span></div>
       <div class="angle-label">入口から部屋全体</div>
       <div class="desc">部屋全体が入る位置から。<b>光が床に入っている時間帯</b>で。</div>
     </div>
@@ -146,14 +117,7 @@
     <div class="card priority">
       <div class="tag">A-2</div>
       <h3>施術ベッド</h3>
-      <div class="diagram">
-        <svg viewBox="0 0 200 140">
-          <rect x="30" y="50" width="140" height="40" rx="8" fill="none" stroke="#8b6f4e" stroke-width="3"/>
-          <ellipse cx="100" cy="70" rx="55" ry="12" fill="#f3ece0" stroke="#c9a24b" stroke-width="1.5"/>
-          <path d="M8 128 L60 65 L140 65 L192 128 Z" fill="#c9a24b" opacity=".12"/>
-          <circle cx="8" cy="128" r="6" fill="none" stroke="#3c3226" stroke-width="3"/>
-        </svg>
-      </div>
+      <div class="diagram"><img src="kafuu-shoot/a2.jpg" alt="施術ベッド全体の参考イメージ" loading="lazy"><span class="caption">イメージ例（AI生成）</span></div>
       <div class="angle-label">ベッド全体が入る位置から</div>
       <div class="desc">タオルはいつも通りにセットして撮影。</div>
     </div>
@@ -161,18 +125,7 @@
     <div class="card priority">
       <div class="tag">A-3</div>
       <h3>アロマボトルの棚</h3>
-      <div class="diagram">
-        <svg viewBox="0 0 200 140">
-          <rect x="55" y="20" width="90" height="90" rx="6" fill="none" stroke="#8b6f4e" stroke-width="2"/>
-          <line x1="55" y1="50" x2="145" y2="50" stroke="#8b6f4e" stroke-width="1.5"/>
-          <line x1="55" y1="80" x2="145" y2="80" stroke="#8b6f4e" stroke-width="1.5"/>
-          <rect x="70" y="35" width="7" height="14" fill="#6b7c5a"/>
-          <rect x="85" y="33" width="7" height="16" fill="#c9a24b"/>
-          <rect x="100" y="37" width="7" height="12" fill="#8b6f4e"/>
-          <circle cx="20" cy="65" r="8" fill="none" stroke="#3c3226" stroke-width="3"/>
-          <path d="M28 65 L55 65" stroke="#3c3226" stroke-width="2" stroke-dasharray="4 4"/>
-        </svg>
-      </div>
+      <div class="diagram"><img src="kafuu-shoot/a3.jpg" alt="アロマボトルの棚の参考イメージ" loading="lazy"><span class="caption">イメージ例（AI生成）</span></div>
       <div class="angle-label">近づいて横から</div>
       <div class="desc">ボトルが並んでいる様子。近づいて撮影。</div>
     </div>
@@ -180,14 +133,7 @@
     <div class="card priority">
       <div class="tag">A-4</div>
       <h3>窓からの光</h3>
-      <div class="diagram">
-        <svg viewBox="0 0 200 140">
-          <rect x="70" y="15" width="60" height="60" rx="4" fill="none" stroke="#8b6f4e" stroke-width="3"/>
-          <line x1="100" y1="15" x2="100" y2="75" stroke="#8b6f4e" stroke-width="2"/>
-          <path d="M75 75 L60 120 M125 75 L140 120" stroke="#c9a24b" stroke-width="2.5" stroke-dasharray="5 4"/>
-          <ellipse cx="100" cy="115" rx="45" ry="8" fill="#c9a24b" opacity=".2"/>
-        </svg>
-      </div>
+      <div class="diagram"><img src="kafuu-shoot/a4.jpg" alt="窓からの光の参考イメージ" loading="lazy"><span class="caption">イメージ例（AI生成）</span></div>
       <div class="angle-label">カーテン越し・床に光が落ちる様子</div>
       <div class="desc">窓・光・観葉植物などが一緒に入るように。</div>
     </div>
@@ -195,15 +141,7 @@
     <div class="card priority">
       <div class="tag">A-5</div>
       <h3>玄関・入ってくる目線</h3>
-      <div class="diagram">
-        <svg viewBox="0 0 200 140">
-          <rect x="40" y="10" width="15" height="90" rx="3" fill="none" stroke="#8b6f4e" stroke-width="3"/>
-          <path d="M55 10 A70 90 0 0 1 120 55" fill="none" stroke="#8b6f4e" stroke-width="2" stroke-dasharray="3 4"/>
-          <circle cx="47" cy="105" r="7" fill="none" stroke="#3c3226" stroke-width="3"/>
-          <path d="M47 112 L47 130" stroke="#3c3226" stroke-width="3"/>
-          <path d="M47 118 Q100 100 165 60" fill="none" stroke="#c9a24b" stroke-width="2" stroke-dasharray="4 4"/>
-        </svg>
-      </div>
+      <div class="diagram"><img src="kafuu-shoot/a5.jpg" alt="玄関から入る目線の参考イメージ" loading="lazy"><span class="caption">イメージ例（AI生成）</span></div>
       <div class="angle-label">ドアを開けて入る目線（POV）</div>
       <div class="desc">奥のサロンが見えるように、入ってくる人の目線で。</div>
     </div>
@@ -218,14 +156,7 @@
     <div class="card">
       <div class="tag">B-1</div>
       <h3>お子さまスペース</h3>
-      <div class="diagram">
-        <svg viewBox="0 0 200 140">
-          <rect x="20" y="20" width="160" height="90" rx="6" fill="none" stroke="#8b6f4e" stroke-width="3"/>
-          <ellipse cx="80" cy="80" rx="35" ry="16" fill="#6b7c5a" opacity=".25"/>
-          <rect x="120" y="60" width="18" height="14" rx="2" fill="#c9a24b" opacity=".5"/>
-          <rect x="140" y="55" width="14" height="20" rx="2" fill="#8b6f4e" opacity=".4"/>
-        </svg>
-      </div>
+      <div class="diagram"><img src="kafuu-shoot/b1.jpg" alt="お子さまスペースの参考イメージ" loading="lazy"><span class="caption">イメージ例（AI生成）</span></div>
       <div class="angle-label">部屋全体が入る位置から</div>
       <div class="desc">ラグ・おもちゃ・絵本などいつもの状態で。</div>
     </div>
@@ -233,13 +164,7 @@
     <div class="card">
       <div class="tag">B-2</div>
       <h3>施術後のお茶</h3>
-      <div class="diagram">
-        <svg viewBox="0 0 200 140">
-          <circle cx="100" cy="70" r="45" fill="none" stroke="#8b6f4e" stroke-width="2"/>
-          <circle cx="100" cy="70" r="16" fill="none" stroke="#c9a24b" stroke-width="2.5"/>
-          <circle cx="100" cy="70" r="3" fill="#8b6f4e"/>
-        </svg>
-      </div>
+      <div class="diagram"><img src="kafuu-shoot/b2.jpg" alt="お茶のフラットレイの参考イメージ" loading="lazy"><span class="caption">イメージ例（AI生成）</span></div>
       <div class="angle-label">真上から（フラットレイ）</div>
       <div class="desc">テーブルに置いた状態を上から撮影。</div>
     </div>
