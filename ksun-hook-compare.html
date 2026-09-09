@@ -3,21 +3,23 @@
   body{font-family:-apple-system,"Hiragino Sans",sans-serif;background:#0e1420;color:#e8eef7;margin:0;padding:32px 20px 80px}
   h1{font-size:20px;margin:0 0 6px}
   .lead{color:#9fb0c8;font-size:14px;margin:0 0 28px;line-height:1.7}
-  .grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:760px;margin:0 auto}
-  @media(min-width:860px){.grid{grid-template-columns:1fr 1fr;max-width:1200px}}
+  .grid{display:grid;grid-template-columns:1fr;gap:20px;max-width:420px;margin:0 auto}
+  @media(min-width:900px){.grid{grid-template-columns:1fr 1fr 1fr;max-width:1320px}}
   .card{background:#161d2b;border:1px solid #263149;border-radius:14px;overflow:hidden}
+  .card.reco{border-color:#4a8f5c}
   .card h2{font-size:15px;margin:0;padding:14px 16px;border-bottom:1px solid #263149;display:flex;justify-content:space-between;align-items:center}
   .card h2 .tag{font-size:12px;color:#9fb0c8;font-weight:normal}
+  .badge{display:inline-block;font-size:11px;background:#4a8f5c;color:#fff;border-radius:6px;padding:2px 8px;margin-left:8px}
   video{width:100%;display:block;background:#000}
   .note{padding:14px 16px;font-size:13px;color:#c3cee0;line-height:1.7}
   .note b{color:#fff}
-  .why{max-width:1200px;margin:32px auto 0;background:#161d2b;border:1px solid #263149;border-radius:14px;padding:18px 20px;font-size:13px;line-height:1.8;color:#c3cee0}
+  .why{max-width:1320px;margin:32px auto 0;background:#161d2b;border:1px solid #263149;border-radius:14px;padding:18px 20px;font-size:13px;line-height:1.8;color:#c3cee0}
   .why h3{color:#fff;font-size:14px;margin:0 0 10px}
   .why ol{margin:0;padding-left:20px}
 </style>
 
-<h1>掴み（冒頭）比較 — 現行 vs 試作B</h1>
-<p class="lead">静止画をつないだ状態です。動き・BGM・ナレーションは入っていません。どちらの入り方が「行きたくなる」か比べてください。</p>
+<h1>掴み（冒頭）比較 — 現行A / 案B / 案C</h1>
+<p class="lead">静止画をつないだ状態です。動き・BGM・ナレーションは入っていません。どの入り方が「行きたくなる」か比べてください。</p>
 
 <div class="grid">
   <div class="card">
@@ -31,22 +33,34 @@
     </div>
   </div>
   <div class="card">
-    <h2>案B（試作）<span class="tag">6.5秒</span></h2>
+    <h2>案B<span class="tag">6.5秒</span></h2>
     <video controls playsinline poster="ksun/s01.jpg">
       <source src="ksun/hook-b.mp4" type="video/mp4">
     </video>
     <div class="note">
       <b>発見の驚き顔（寄り） → 海沿いの道（短縮） → 到着</b><br>
-      最初の1.5秒で「何かが起きている」ことだけを見せ、あとから状況（海沿いの道）を明かす。
+      最初の1.5秒で「何かが起きている」ことだけを見せる。
+    </div>
+  </div>
+  <div class="card reco">
+    <h2>案C<span class="badge">今回の推奨</span><span class="tag">8.0秒</span></h2>
+    <video controls playsinline poster="ksun/s10.jpg">
+      <source src="ksun/hook-c.mp4" type="video/mp4">
+    </video>
+    <div class="note">
+      <b>ブリトーにかぶりつく瞬間 → かき氷アップ → 海沿いの道 → 到着</b><br>
+      お店の「美味しさ」を最初の3秒で見せてから、意外性（古民家に見えるがカフェ）に繋ぐ。
     </div>
   </div>
 </div>
 
 <div class="why">
-  <h3>案Bの根拠</h3>
+  <h3>案Cの根拠</h3>
   <ol>
-    <li>短尺で成功している広告・動画（RIZAP／Dollar Shave Club／北九州「COME ON! 関門！」／飲食店リール等）を調査した結果、共通するのは「結果・驚きを冒頭数秒で先に見せる」型。今の車移動9秒はどの型にも当てはまらない準備カットになっていた。</li>
-    <li>参考にした水上カフェの動画（21秒でオチまで完結）と比べても、掴みに9秒はかけすぎ。</li>
-    <li>絵は新しく描き足さず、既存のS01・S02・S03を並べ替え・トリミング・尺詰めだけで作成。クライアント要望の「ドライブ中に見つける」流れは維持している。</li>
+    <li>「ドライブから入ると最初の数秒でスキップされる」というご指摘どおり、飲食店の短尺動画で実証されている定石は<b>「冒頭1〜3秒に、いちばん絵になる食べ物の瞬間を置く」</b>こと（TikTok公式調査：上位動画の63%が最初の3秒でフックを作っている）。</li>
+    <li>特に「かぶりつきの瞬間」は、食欲トリガー（湯気・断面・照り）と社会的証明（誰かが美味しそうに食べている）を同時に満たす形式として、飲食店のバイラル動画で最も再現性が高いとされる。</li>
+    <li>かき氷を2カット目に続けることで、静止画でも視覚的インパクトが強い「見た瞬間の食欲喚起」を重ねる。</li>
+    <li>ドライブ（意外性の演出）は3秒以降に回し、「美味しそう」で止めてから「え、こんな場所にあったんだ」で二段構えの掴みにする。</li>
+    <li>絵は新しく描き足さず、既存のカット（S10かぶりつき／S11かき氷／S01海沿いの道／S03到着）を並べ替え・尺詰めしただけ。</li>
   </ol>
 </div>
