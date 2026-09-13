@@ -504,6 +504,163 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
   .flow-no{width:48px;height:48px;font-size:16px}
   .flow-item:not(:last-child)::before{left:24px;top:58px}
 }
+/* ===== OWL support visual patterns — 2026-09-13 =====
+   Hitotsuna: photo + speech-number / multicolour rule.
+   Rehas: organic photo / floating label / chevrons / reveal.
+   IBJ: support banner / three pillars / vertical accents.
+   Scoped to support areas. Existing internal banners and kari rules untouched. */
+.owl-design .owl-title{position:relative;padding-bottom:26px;margin-bottom:24px}
+.owl-design .owl-title::after{content:"";display:block;width:132px;height:6px;border-radius:99px;
+  margin:20px auto 0;background:linear-gradient(90deg,var(--teal) 0 33.33%,var(--orange) 33.33% 66.66%,var(--green) 66.66%)}
+.owl-design .owl-title .mark{background:none}
+.owl-keywords{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;
+  padding:18px 24px;margin:36px 0 42px;background:var(--cream);border-block:1px solid var(--line);font-weight:900}
+.owl-keywords span{font-size:clamp(16px,2.1vw,23px)}
+.owl-keywords span:nth-of-type(1){color:var(--teal-d)}
+.owl-keywords span:nth-of-type(2){color:var(--orange-d)}
+.owl-keywords span:nth-of-type(3){color:var(--ink)}
+.owl-keywords i{font-size:22px;font-style:normal;color:var(--brown)}
+.owl-pillar-banner{position:relative;margin-top:60px;padding:34px 150px 34px 40px;
+  background:var(--teal);border-radius:28px 28px 28px 6px;color:var(--white)}
+.owl-pillar-banner::after{content:"";position:absolute;bottom:-18px;left:calc(50% - 20px);
+  border-left:20px solid transparent;border-right:20px solid transparent;border-top:20px solid var(--teal)}
+.owl-pillar-banner h2{font-size:clamp(24px,3vw,34px);color:var(--white);margin:0;line-height:1.6}
+.owl-pillar-banner .mark{background:none;padding:0;display:inline-block}
+.owl-pillar-banner img{position:absolute;width:112px;right:25px;bottom:12px;transform:rotate(6deg)}
+.owl-pillar-banner + .lead{margin:38px auto 18px;max-width:780px}
+#ops .owl-pillars{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:48px 0 42px;align-items:stretch}
+#ops .owl-pillar{--accent:var(--teal);display:flex;flex-direction:column;min-width:0;background:var(--cream);padding:0;margin:0;
+  border:1px solid var(--line);border-radius:26px;box-shadow:0 8px 0 var(--teal-l)}
+#ops .owl-pillar:nth-child(2){--accent:var(--orange);box-shadow:0 8px 0 var(--orange-l)}
+#ops .owl-pillar:nth-child(3){--accent:var(--green);box-shadow:0 8px 0 var(--green-l)}
+.owl-pillar-photo{position:relative;margin:0;padding:18px 18px 0}
+.owl-pillar-photo > img{width:100%;height:176px;object-fit:cover;border-radius:18px}
+.owl-pillar-photo figcaption{font-size:10px;color:var(--sub);text-align:right;padding:5px 2px}
+.owl-design .owl-number{position:absolute;z-index:1;top:-18px;left:8px;display:flex;align-items:center;justify-content:center;
+  width:76px;height:76px;border-radius:50%;background:var(--accent,var(--teal));color:var(--white);
+  font-size:34px;font-weight:900;line-height:1;border:4px solid var(--white);letter-spacing:-.04em}
+.owl-number::before{content:"0"}
+.owl-number::after{content:"";position:absolute;right:-5px;bottom:2px;width:21px;height:24px;
+  background:var(--accent,var(--teal));clip-path:polygon(0 0,100% 100%,0 76%);z-index:-1}
+.owl-pillar-body{padding:8px 22px 26px;min-width:0;flex:1;display:flex;flex-direction:column}
+.owl-pillar-body > .more-details{margin-top:auto}
+#ops .owl-pillar h3{display:block;border-left:6px solid var(--accent);padding-left:12px;font-size:23px;margin:7px 0 18px;color:var(--ink)}
+.owl-design .owl-emphasis{color:var(--orange-d);text-decoration:underline;text-decoration-color:var(--orange);
+  text-decoration-thickness:2px;text-underline-offset:5px;font-weight:900}
+.owl-design .owl-pillar .story-summary + .story-summary{padding-top:16px;border-top:1px dashed var(--line)}
+.owl-design .more-body h4{border-left:6px solid var(--teal);padding-left:12px;margin:22px 0 12px;line-height:1.6}
+.owl-design .more-body h4:not(:first-child){padding-top:12px;border-top:1px dashed var(--line)}
+.owl-design .more-details > summary{padding:16px 110px 16px 14px}
+.owl-design .more-details > summary::after{top:17px;right:12px}
+.owl-design .more-details .more-body{padding:0 16px 18px}
+.owl-design .more-details .more-body p{font-size:14px;overflow-wrap:anywhere}
+.owl-design .more-details:focus-within{outline:2px solid var(--teal);outline-offset:3px}
+.owl-design .ops-card:not(.owl-pillar){border:1px solid var(--line)}
+.owl-design .ops-card:not(.owl-pillar) > h3{border-left:6px solid var(--teal);padding-left:14px;margin-bottom:18px}
+.owl-design .ops-card:not(.owl-pillar) .more-details + .more-details{margin-top:12px}
+/* Two section dividers. Motion runs only while visible. */
+.owl-chevron{display:flex;flex-direction:column;align-items:center;gap:5px;padding:30px 0 8px;margin:0 auto;width:72px}
+.owl-chevron i{display:block;width:44px;height:14px;clip-path:polygon(0 0,50% 52%,100% 0,100% 45%,50% 100%,0 45%);
+  background:var(--teal);opacity:.35;animation:owl-chevron-drop 1.8s ease-in-out infinite;animation-play-state:paused}
+.owl-chevron i:nth-child(2){background:var(--teal-d);animation-delay:.2s}
+.owl-chevron i:nth-child(3){background:var(--orange);animation-delay:.4s}
+.owl-chevron.is-visible i{animation-play-state:running}
+@keyframes owl-chevron-drop{0%,100%{opacity:.3;transform:translateY(-3px)}50%{opacity:1;transform:translateY(3px)}}
+/* Opening: existing photo as a soft organic shape with OWL illustration. */
+.owl-opening .owl-blob{position:relative;max-width:740px;margin:16px auto 30px;padding:24px 66px 14px 20px;
+  overflow:visible;border-radius:0;box-shadow:none;background:none}
+.owl-opening .owl-blob > img{width:100%;height:320px;aspect-ratio:auto;object-fit:cover;
+  border-radius:60% 40% 55% 45% / 55% 60% 40% 45%;border:7px solid var(--teal-l)}
+.owl-opening .owl-blob figcaption{margin-top:18px;padding:0;background:none;color:var(--white);font-size:12px;text-align:center}
+.owl-opening .owl-float-label{position:absolute;right:4px;top:52px;max-width:230px;padding:18px 24px;
+  background:var(--orange-l);border:3px solid var(--white);border-radius:50%;color:var(--orange-d);
+  font-size:17px;font-weight:900;transform:rotate(6deg);text-align:center;line-height:1.6}
+.owl-opening .owl-blob .owl-photo-owl{position:absolute;right:2px;bottom:35px;width:110px;height:auto;
+  border:0;object-fit:contain;aspect-ratio:auto;border-radius:0;transform:rotate(-7deg)}
+.owl-opening .support-grid{display:block;margin-top:54px}
+.owl-opening .owl-opening-row{--accent:var(--teal);display:grid;grid-template-columns:280px minmax(0,1fr);gap:34px;
+  background:var(--white);border-radius:28px;padding:36px;margin-bottom:38px;color:var(--ink)}
+.owl-opening .owl-opening-row:nth-child(2){--accent:var(--orange)}
+.owl-opening .owl-opening-row:nth-child(3){--accent:var(--green)}
+.owl-opening .owl-opening-row:nth-child(4){--accent:var(--brown)}
+.owl-opening-photo{position:relative;margin:0;padding:10px 0 0;min-width:0}
+.owl-opening-photo > img{width:100%;height:240px;object-fit:cover;border-radius:24px;border:3px solid var(--accent)}
+.owl-opening-photo figcaption{font-size:11px;color:var(--sub);margin-top:12px;text-align:center}
+.owl-opening .owl-opening-photo .owl-number{left:-12px;top:-16px;width:86px;height:86px;font-size:38px}
+.owl-opening .owl-opening-copy{min-width:0}
+.owl-opening .owl-opening-copy h3{display:block;border-left:6px solid var(--accent);padding-left:16px;
+  color:var(--teal-d);font-size:clamp(22px,2.6vw,28px);margin-bottom:18px}
+.owl-opening .owl-opening-copy ul{padding-left:1.2em;line-height:1.95;font-size:15px}
+.owl-opening .owl-opening-copy > p{color:var(--sub)!important}
+.owl-opening .owl-opening-copy .steps-flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;border-top:1px dashed var(--line);padding-top:20px}
+.owl-opening .owl-opening-copy .steps-flow .arrow{display:none}
+.owl-opening .owl-opening-copy .steps-flow .step{background:var(--cream);border-color:var(--line)}
+.owl-opening .owl-opening-copy .steps-flow .when{color:var(--orange-d)}
+.owl-opening .owl-opening-copy .steps-flow .what{color:var(--ink)}
+.owl-opening .owl-opening-copy .steps-flow .arrow{color:var(--teal)}
+.owl-opening .iconlist{display:block;border-top:1px dashed var(--line);padding-top:20px}
+.owl-opening .iconlist .ic-item{margin-bottom:14px}
+.owl-opening .iconlist p{color:var(--ink)}
+.owl-opening .iconlist .num{background:var(--orange);color:var(--white)}
+.owl-opening .support-tools{background:var(--cream);color:var(--ink);padding:34px;border-radius:28px}
+.owl-opening .support-tools > h3{border-left:6px solid var(--teal);padding-left:16px;color:var(--teal-d);margin-bottom:24px}
+.owl-opening .tool-item{background:var(--white);border-top:1px dashed var(--line);color:var(--ink)}
+.owl-opening .tool-item strong{color:var(--orange-d);text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:4px}
+.owl-opening .tool-item .ic{background:var(--teal);color:var(--white)}
+.owl-opening .support-tools > .pl-note{color:var(--sub)!important}
+.owl-opening table.matrix{background:var(--white)}
+.owl-opening table.matrix th,.owl-opening table.matrix td{color:var(--ink);border-color:var(--line)}
+.owl-opening table.matrix thead th{background:var(--teal-l);color:var(--teal-d)}
+.owl-flow .flow{max-width:900px;margin-inline:auto}
+.owl-flow .cmp-wrap{border:1px solid var(--line)}
+.owl-flow .cmp thead th{background:var(--teal);color:var(--white);position:static;box-shadow:none}
+.owl-flow .cmp tbody th{background:var(--teal-l);color:var(--teal-d)}
+/* Progressive enhancement: content is visible without JS / IO. */
+.owl-design .reveal{transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.3,1)}
+.owl-design .reveal.is-pending{opacity:0;transform:translateY(22px)}
+.owl-design .reveal.is-visible{opacity:1;transform:none}
+@media(max-width:900px){
+  #ops .owl-pillars{grid-template-columns:1fr;max-width:640px;margin-inline:auto;gap:38px}
+  #ops .owl-pillar{display:grid;grid-template-columns:38% minmax(0,1fr)}
+  .owl-pillar-photo{padding:18px 0 0 18px}
+  .owl-pillar-photo > img{height:190px}
+  .owl-pillar-body{padding:20px}
+  .owl-opening .owl-opening-row{grid-template-columns:220px minmax(0,1fr);gap:24px;padding:28px}
+}
+@media(max-width:600px){
+  .owl-pillar-banner{padding:28px 18px 86px;margin-top:34px;border-radius:24px}
+  .owl-pillar-banner img{width:82px;right:18px;bottom:-12px}
+  .owl-pillar-banner h2{font-size:24px}
+  .owl-keywords{gap:8px;padding:16px 10px;margin:24px 0 30px}
+  .owl-keywords span{font-size:14px}.owl-keywords i{font-size:16px}
+  #ops .owl-pillar{display:block}
+  .owl-pillar-photo{padding:18px 18px 0}
+  .owl-pillar-photo > img{height:184px}
+  .owl-pillar-body{padding:6px 20px 24px}
+  .owl-design .owl-number{left:8px;top:-14px;width:70px;height:70px;font-size:31px}
+  .owl-opening .owl-blob{padding:28px 12px 12px;margin-top:0}
+  .owl-opening .owl-blob > img{height:230px;border-width:4px}
+  .owl-opening .owl-float-label{right:0;top:0;padding:12px 17px;font-size:13px;max-width:180px}
+  .owl-opening .owl-blob .owl-photo-owl{width:76px;right:0;bottom:62px}
+  .owl-opening .owl-blob figcaption{font-size:11px;margin-top:26px}
+  .owl-opening .owl-opening-row{grid-template-columns:1fr;padding:22px;gap:20px;border-radius:24px;margin-bottom:36px}
+  .owl-opening-photo{padding-top:12px}
+  .owl-opening-photo > img{height:205px}
+  .owl-opening .owl-opening-photo .owl-number{left:-8px;top:-8px;width:72px;height:72px;font-size:32px}
+  .owl-opening .owl-opening-copy h3{font-size:23px;padding-left:12px}
+  .owl-opening .support-tools{padding:24px 18px}
+  .owl-design .more-details > summary{padding:15px 94px 15px 12px;font-size:13px}
+  .owl-design .more-details > summary::after{font-size:11px;right:10px;top:17px}
+  .owl-opening .owl-opening-copy .steps-flow{grid-template-columns:1fr;gap:0}
+  .owl-opening .owl-opening-copy .steps-flow .arrow{display:flex}
+  .owl-chevron{padding-top:24px}
+}
+@media(prefers-reduced-motion:reduce){
+  .owl-design .reveal,.owl-design .reveal.is-pending{opacity:1;transform:none;transition:none}
+  .owl-chevron i{animation:none;opacity:1;transform:none}
+}
+@media print{.owl-design .reveal.is-pending{opacity:1;transform:none}.owl-chevron{display:none}}
+
 </style>
 </head>
 <body>
@@ -895,10 +1052,10 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
 </section>
 
 <!-- ===== 運営ストーリー ===== -->
-<section class="ops" id="ops">
+<section class="ops owl-design" id="ops">
   <div class="wrap">
     <span class="sec-en">STORY — OPERATION</span>
-    <h2 class="center">開業して終わりではありません。<span class="mark">運営ストーリー</span></h2>
+    <h2 class="center owl-title">開業して終わりではありません。<span class="mark">運営ストーリー</span></h2>
     <p class="lead center">開業後にも壁はあります。実際にどんな壁があり、どう乗り越えたかをお伝えします。</p>
 
     <div class="answer" style="background:var(--orange);margin-bottom:36px">
@@ -936,14 +1093,15 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
          Initial-response reference: https://trailhead.salesforce.com/ja/content/learn/modules/premier-success-plans/resolve-issues-fast-with-premier-support
          Checked 2026-09-13. References supply presentation patterns only.
          All newly proposed OWL commitments and metrics are marked kari; no competitor results transferred. -->
-    <h2 class="center">日々の困りごとから次の一棟まで。<br><span class="mark">OWLの3つのサポート</span></h2>
+    <div class="owl-keywords" aria-label="未経験 × フルサポート × 加盟金0円"><span>未経験</span><i aria-hidden="true">×</i><span>フルサポート</span><i aria-hidden="true">×</i><span>加盟金0円</span></div>
+    <div class="owl-pillar-banner reveal"><h2 class="center">日々の困りごとから次の一棟まで。<br><span class="mark">OWLの3つのサポート</span></h2><img src="assets/owl_normal.webp" alt="一緒に考えるアウル君" loading="lazy"></div>
     <p class="lead center">「何を相談できるか」に加えて、「誰が・いつ・どこまで動くか」が分かる支援体制へ。</p>
     <p class="pl-note">※ 以下は支援内容を具体化するための確認案です。黄色の箇所は、提供可否・担当体制・契約条件を事業側で確認してから確定します。◯は未確定値であり、実績値ではありません。</p>
-    <div class="why-grid">
-      <div class="ops-card">
-        <h3><span>1</span>事業所運営</h3>
+    <div class="why-grid owl-pillars">
+      <div class="ops-card owl-pillar reveal"><figure class="owl-pillar-photo"><img src="assets/gh_staff.webp" alt="支援内容を紹介するイメージ写真" loading="lazy"><span class="owl-number" aria-label="01">1</span><figcaption>写真はイメージです</figcaption></figure><div class="owl-pillar-body">
+        <h3>事業所運営</h3>
         <p class="story-summary"><span class="kari">記録・請求・運営指導の準備を、現場の書類を見ながら一緒に進めます。</span></p>
-        <p class="story-summary"><strong>定期確認</strong><br><span class="kari">訪問は月◯回・1回◯時間。支援記録、勤務表、請求前の確認事項を担当と照合します。</span></p>
+        <p class="story-summary"><strong class="owl-emphasis">定期確認</strong><br><span class="kari">訪問は月◯回・1回◯時間。支援記録、勤務表、請求前の確認事項を担当と照合します。</span></p>
         <details class="more-details">
           <summary>運営の確認内容</summary>
           <div class="more-body">
@@ -951,14 +1109,14 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
             <p><span class="kari">記録の不足・入力漏れを確認し、修正箇所と担当者、提出までの期限を一覧にします。返戻が生じた場合は、理由の確認から再請求の準備まで相談できます。</span></p>
             <h4>運営指導の通知が届いたら</h4>
             <p><span class="kari">通知内容と提出期限を共有いただき、必要書類の洗い出し・事前点検・改善事項の整理を実施。制度改定時には変更点と書類の更新箇所を追加で案内します。</span></p>
-            <p><strong>確認後に残すもの</strong><br><span class="kari">書類点検リスト、修正事項一覧、次回までの対応期限。</span></p>
+            <p><strong class="owl-emphasis">確認後に残すもの</strong><br><span class="kari">書類点検リスト、修正事項一覧、次回までの対応期限。</span></p>
           </div>
         </details>
-      </div>
-      <div class="ops-card">
-        <h3><span>2</span>経営</h3>
+      </div></div>
+      <div class="ops-card owl-pillar reveal"><figure class="owl-pillar-photo"><img src="assets/gh_living.webp" alt="支援内容を紹介するイメージ写真" loading="lazy"><span class="owl-number" aria-label="02">2</span><figcaption>写真はイメージです</figcaption></figure><div class="owl-pillar-body">
+        <h3>経営</h3>
         <p class="story-summary"><span class="kari">入居者募集から資金繰りまで、稼働が伸びない原因を数字と活動記録で確かめます。</span></p>
-        <p class="story-summary"><strong>定例面談</strong><br><span class="kari">月◯回・1回◯分。問い合わせ・見学・入居の件数と収支を確認し、翌月の行動を決めます。</span></p>
+        <p class="story-summary"><strong class="owl-emphasis">定例面談</strong><br><span class="kari">月◯回・1回◯分。問い合わせ・見学・入居の件数と収支を確認し、翌月の行動を決めます。</span></p>
         <details class="more-details">
           <summary>経営の確認内容</summary>
           <div class="more-body">
@@ -966,14 +1124,14 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
             <p><span class="kari">相談支援事業所への訪問先、紹介数、見学後の反応を整理。初回は◯件・◯時間を目安に同行し、案内資料と説明内容を一緒に見直します。追加同行の条件も事前に共有します。</span></p>
             <h4>収支・増棟を考えるとき</h4>
             <p><span class="kari">入居人数別の収支、人件費、手元資金、入金までの資金繰りを確認。増棟は既存棟の稼働と人員の余力を見て、投資時期と資金計画を検討します。</span></p>
-            <p><strong>確認後に残すもの</strong><br><span class="kari">募集活動の記録、収支見通し、担当者と期限を記した翌月の行動計画。</span></p>
+            <p><strong class="owl-emphasis">確認後に残すもの</strong><br><span class="kari">募集活動の記録、収支見通し、担当者と期限を記した翌月の行動計画。</span></p>
           </div>
         </details>
-      </div>
-      <div class="ops-card">
-        <h3><span>3</span>人材育成</h3>
+      </div></div>
+      <div class="ops-card owl-pillar reveal"><figure class="owl-pillar-photo"><img src="assets/gh_kitchen.webp" alt="支援内容を紹介するイメージ写真" loading="lazy"><span class="owl-number" aria-label="03">3</span><figcaption>写真はイメージです</figcaption></figure><div class="owl-pillar-body">
+        <h3>人材育成</h3>
         <p class="story-summary"><span class="kari">採用時の教育から日々の支援まで、職種に合わせた学習と現場での振り返りをつなぎます。</span></p>
-        <p class="story-summary"><strong>定例研修＋必要時の補講</strong><br><span class="kari">月◯回・1回◯分。制度改定、新人入職、理解が不十分な項目があるときは追加研修を調整します。</span></p>
+        <p class="story-summary"><strong class="owl-emphasis">定例研修＋必要時の補講</strong><br><span class="kari">月◯回・1回◯分。制度改定、新人入職、理解が不十分な項目があるときは追加研修を調整します。</span></p>
         <details class="more-details">
           <summary>育成の確認内容</summary>
           <div class="more-body">
@@ -981,10 +1139,10 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
             <p><span class="kari">全◯日・計◯時間の研修を、制度と役割、支援記録の演習、緊急時の連絡手順に分けて実施。管理者・サービス管理責任者・世話人など、対象職種を明示します。</span></p>
             <h4>受講したあとも</h4>
             <p><span class="kari">受講後◯日以内に担当が実務上の疑問を確認。確認テストと実務チェックで理解度を把握し、未習得項目は再受講・個別相談につなげます。</span></p>
-            <p><strong>確認後に残すもの</strong><br><span class="kari">職種別の受講記録、理解度チェック、現場で確認する項目と再確認日。</span></p>
+            <p><strong class="owl-emphasis">確認後に残すもの</strong><br><span class="kari">職種別の受講記録、理解度チェック、現場で確認する項目と再確認日。</span></p>
           </div>
         </details>
-      </div>
+      </div></div>
     </div>
 
     <div class="ops-card">
@@ -1099,13 +1257,14 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
     </p>
     <p class="pl-note">※ 今回追加した「3つのサポート」・段階別フォロー・相談窓口は、上記事例の実績ではなく、支援内容の確認案です。具体的な提供条件は黄色の仮表示にしています（2026年9月13日作成）。</p>
   </div>
+  <div class="owl-chevron" aria-hidden="true"><i></i><i></i><i></i></div>
 </section>
 
 <!-- ===== 流れ ===== -->
-<section>
+<section class="owl-design owl-flow">
   <div class="wrap">
     <span class="sec-en">FLOW</span>
-    <h2 class="center">開業までの<span class="mark">流れ</span></h2>
+    <h2 class="center owl-title">開業までの<span class="mark">流れ</span></h2>
     <p class="lead center">お問い合わせから開業まで、<span class="kari">おおむね◯ヶ月</span>が目安です。</p>
     <div class="flow">
       <div class="flow-item"><div class="flow-no">1</div><div>
@@ -1161,21 +1320,22 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
     </div>
     <p class="pl-note"><span class="kari">予定の変更時は、遅れている項目・開所日への影響・次の確認日を共有。開業担当と運営担当が同席する引継ぎ面談を◯回設け、開所後の連絡先と未完了事項を確認します。</span></p>
   </div>
+  <div class="owl-chevron" aria-hidden="true"><i></i><i></i><i></i></div>
 </section>
 
 <!-- ===== サポート（営業支援・営業ツール提供の網羅） ===== -->
-<section class="support" id="support">
+<section class="support owl-design owl-opening" id="support">
   <div class="wrap">
     <span class="sec-en">SUPPORT</span>
-    <h2 class="center">開業支援サポートの内容</h2>
+    <h2 class="center owl-title">開業支援サポートの内容</h2>
     <p class="lead center">開業して終わりではありません。運営が回り、事業を伸ばすところまでご一緒します。</p>
-    <figure class="ph-card support-photo"><img src="assets/gh_staff.webp" alt="グループホームで打ち合わせをするスタッフのイメージ">
-      <figcaption>専属スタッフが、開業前から開業後まで一緒に考えます（写真はイメージです）</figcaption></figure>
+    <figure class="ph-card support-photo owl-blob reveal"><img src="assets/gh_staff.webp" alt="グループホームで打ち合わせをするスタッフのイメージ">
+      <span class="owl-float-label">開業前から、<br>開業後まで。</span><img class="owl-photo-owl" src="assets/owl_girl.webp" alt="準備を応援するフクロウ" loading="lazy"><figcaption>専属スタッフが、開業前から開業後まで一緒に考えます（写真はイメージです）</figcaption></figure>
     <p class="pl-note center" style="margin:0 0 34px;color:#dff2f4">▲ 「相談支援事業所への訪問を重ねたことが、2人目の入居につながった」——三重のオーナー様の実体験にもとづきます（<span class="kari">当該インタビューの動画掲載可否は別途最終確認</span>）。</p>
 
     <div class="support-grid">
-      <div class="support-card">
-        <h3><span>1</span>事前準備</h3>
+      <div class="support-card owl-opening-row reveal"><figure class="owl-opening-photo"><img src="assets/gh_exterior_1.webp" alt="開業支援のイメージ写真" loading="lazy"><span class="owl-number" aria-label="01">1</span><figcaption>写真はイメージです</figcaption></figure><div class="owl-opening-copy">
+        <h3>事前準備</h3>
         <ul><li>市場調査・エリア選定</li><li>物件の選定と適合確認</li><li>資金調達のサポート（事業計画書作成〜金融機関同行）</li><li>行政への事前相談</li><li>事業計画の作成</li></ul>
         <details class="more-details"><summary>計画の確認</summary><div class="more-body"><p class="story-summary"><span class="kari">候補物件と収支計画は、家賃・改修費・採用費・入金までの運転資金を分けて確認。面談は月◯回・1回◯分を目安に、物件契約前の未確認事項と判断期限を一覧にします。</span></p></div></details>
         <p style="margin:14px 0 4px;font-size:12px;font-weight:900;color:#ffd76a;letter-spacing:.03em">開業までの逆算タイムライン（開所日から逆算・目安）</p>
@@ -1191,14 +1351,14 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
           <div class="step"><span class="when"><span class="kari story-summary">1ヶ月前〜</span></span><p class="what">人材採用・研修</p></div>
         </div>
         <p style="margin:0;font-size:11.5px;color:#cfeef0">※ 目安の期間です。<span class="kari">物件の状態・自治体の審査スピードにより前後します（要確認）</span>。</p>
-      </div>
-      <div class="support-card">
-        <h3><span>2</span>立ち上げ</h3>
+      </div></div>
+      <div class="support-card owl-opening-row reveal"><figure class="owl-opening-photo"><img src="assets/gh_room.webp" alt="開業支援のイメージ写真" loading="lazy"><span class="owl-number" aria-label="02">2</span><figcaption>写真はイメージです</figcaption></figure><div class="owl-opening-copy">
+        <h3>立ち上げ</h3>
         <ul><li>内装・設備のプランニング</li><li>消防・建築基準への対応</li><li>備品の手配</li><li>人材の採用支援</li><li>指定申請書類の作成</li></ul>
         <details class="more-details"><summary>開所前の確認</summary><div class="more-body"><p class="story-summary"><span class="kari">採用・改修・申請の進捗を週◯回確認。求人票や申請書類の修正箇所、工事の未完了事項を整理し、開所前に管理者・担当者と受け入れ準備を点検します。</span></p></div></details>
-      </div>
-      <div class="support-card">
-        <h3><span>3</span>開業後の営業支援</h3>
+      </div></div>
+      <div class="support-card owl-opening-row reveal"><figure class="owl-opening-photo"><img src="assets/gh_living.webp" alt="開業支援のイメージ写真" loading="lazy"><span class="owl-number" aria-label="03">3</span><figcaption>写真はイメージです</figcaption></figure><div class="owl-opening-copy">
+        <h3>開業後の営業支援</h3>
         <ul><li>入居者募集・相談支援事業所への訪問同行</li><li>紹介ネットワークづくりの伴走</li><li>チラシ・パンフレットなど営業ツールの提供</li><li>現役オーナー見学のセッティング</li><li>2棟目以降の展開相談</li></ul>
         <details class="more-details"><summary>募集活動の確認</summary><div class="more-body"><p class="story-summary"><span class="kari">訪問先ごとに紹介・問い合わせ・見学の進捗を記録し、月◯回の面談で次の訪問先と案内内容を見直します。資料の修正、訪問同行、問い合わせ対応について、本部と事業所の担当範囲を確認します。</span></p></div></details>
         <p style="margin:14px 0 4px;font-size:12px;font-weight:900;color:#ffd76a;letter-spacing:.03em">入居者募集のライフサイクル</p>
@@ -1215,9 +1375,9 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
           <div class="arrow">→</div>
           <div class="step"><span class="when">STEP6</span><p class="what">稼働率モニタリング</p></div>
         </div>
-      </div>
-      <div class="support-card">
-        <h3><span>4</span>継続的な経営支援</h3>
+      </div></div>
+      <div class="support-card owl-opening-row reveal"><figure class="owl-opening-photo"><img src="assets/gh_staff.webp" alt="開業支援のイメージ写真" loading="lazy"><span class="owl-number" aria-label="04">4</span><figcaption>写真はイメージです</figcaption></figure><div class="owl-opening-copy">
+        <h3>継続的な経営支援</h3>
         <ul><li>国保連請求業務のサポート</li><li>実地指導（運営指導）への対応</li><li>職員の育成・研修動画の提供</li><li>加算・報酬改定など制度変更のご案内</li><li>経営数値の定点相談</li></ul>
         <details class="more-details"><summary>毎月の振り返り</summary><div class="more-body"><p class="story-summary"><span class="kari">請求・人員・稼働・収支を月◯回の面談で確認。相談の回答だけで終えず、次回までに誰が何をするかを記録し、対応の完了と残っている課題を確認します。</span></p></div></details>
         <div class="iconlist">
@@ -1225,7 +1385,7 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
           <div class="ic-item"><span class="num">②</span><p>実地指導の直前にチェックリストで事前確認できます。</p></div>
           <div class="ic-item"><span class="num">③</span><p>制度変更・報酬改定は分かり次第ご案内します。</p></div>
         </div>
-      </div>
+      </div></div>
     </div>
 
     <div class="support-tools">
@@ -1430,6 +1590,42 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
       });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
     targets.forEach(function(t){ observer.observe(t); });
+  }
+})();
+</script>
+<script>
+// OWL support motion: progressive enhancement, separate from existing tab code.
+(function(){
+  var blocks = document.querySelectorAll('.owl-design .reveal');
+  var chevrons = document.querySelectorAll('.owl-chevron');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!('IntersectionObserver' in window) || reduced.matches) return;
+  var observer;
+  function show(el){
+    el.classList.remove('is-pending');
+    el.classList.add('is-visible');
+    if (observer) observer.unobserve(el);
+  }
+  try {
+    observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){if(entry.isIntersecting) show(entry.target);});
+    }, {threshold:0, rootMargin:'0px 0px -24px 0px'});
+    blocks.forEach(function(el){
+      // Only hide blocks still below the viewport; anchors and tall cards remain readable.
+      if(el.getBoundingClientRect().top >= window.innerHeight){el.classList.add('is-pending');observer.observe(el);}
+      else show(el);
+    });
+    var dividerObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){entry.target.classList.toggle('is-visible',entry.isIntersecting);});
+    });
+    chevrons.forEach(function(el){dividerObserver.observe(el);});
+    document.addEventListener('focusin',function(event){
+      var el=event.target.closest('.reveal');if(el) show(el);
+    });
+    function stopMotion(event){if(event.matches){blocks.forEach(show);dividerObserver.disconnect();}}
+    if(reduced.addEventListener) reduced.addEventListener('change',stopMotion);
+  } catch(error) {
+    blocks.forEach(show); // Fail open: motion never gates access to the copy.
   }
 })();
 </script>
