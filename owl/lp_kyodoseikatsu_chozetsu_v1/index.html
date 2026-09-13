@@ -17,11 +17,14 @@
   --r:18px;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;
   color:var(--ink);background:var(--white);line-height:1.8;font-size:16px;-webkit-text-size-adjust:100%}
 img{max-width:100%;height:auto;display:block}
 .wrap{width:min(1080px,92vw);margin-inline:auto;position:relative}
 section{padding:72px 0;position:relative;overflow:hidden}
+section[id]{scroll-margin-top:var(--sticky-top,124px)}
 h1,h2,h3,.fv .sub,.answer p{word-break:auto-phrase;overflow-wrap:anywhere}
 h2{font-size:clamp(23px,3.6vw,34px);line-height:1.45;margin:0 0 10px;letter-spacing:.01em;font-weight:800}
 h3{font-size:clamp(17px,2.2vw,20px);line-height:1.55;margin:0 0 8px;font-weight:800}
@@ -30,6 +33,87 @@ p{margin:0 0 1em}
 .center{text-align:center}
 .sec-en{display:block;font-size:12px;letter-spacing:.2em;color:var(--orange);font-weight:800;margin-bottom:8px}
 .mark{background:linear-gradient(transparent 62%, #ffe9a8 62%);padding:0 .1em}
+
+/* ===== タブナビ（sticky・スクロール連動） ===== */
+.tabbar{position:sticky;top:var(--tabbar-top,65px);z-index:850;background:#fff;
+  border-bottom:1px solid var(--line);box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.tabbar-inner{display:flex;gap:4px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  padding:0 4px;scrollbar-width:none}
+.tabbar-inner::-webkit-scrollbar{display:none}
+.tabbar a{flex:0 0 auto;display:block;padding:14px 16px 12px;font-size:13px;font-weight:800;
+  color:var(--sub);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;transition:.15s}
+.tabbar a:hover{color:var(--teal-d)}
+.tabbar a.active{color:var(--teal-d);border-bottom-color:var(--orange)}
+@media(max-width:430px){.tabbar a{padding:12px 12px 10px;font-size:12.5px}}
+
+/* ===== もっと読む アコーディオン（ストーリー圧縮） ===== */
+.story-summary{font-size:15px;color:var(--ink);margin:0 0 14px;line-height:1.85}
+.more-details{border:1px dashed var(--line);border-radius:12px;background:#fff;margin-top:4px}
+.more-details>summary{cursor:pointer;list-style:none;padding:13px 44px 13px 18px;font-weight:800;
+  color:var(--teal-d);font-size:13.5px;position:relative}
+.more-details>summary::-webkit-details-marker{display:none}
+.more-details>summary::after{content:"続きを読む ＋";position:absolute;right:16px;top:13px;color:var(--orange);font-size:12.5px;font-weight:900}
+.more-details[open]>summary::after{content:"閉じる −"}
+.more-details>summary::before{content:"";}
+.more-details .more-body{padding:4px 18px 18px}
+
+/* ===== 番号アイコン列挙（メリット/工程） ===== */
+.iconlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0}
+.iconlist .ic-item{display:flex;gap:12px;align-items:flex-start}
+.iconlist .ic-item .num{flex:0 0 auto;width:30px;height:30px;border-radius:50%;background:var(--orange);
+  color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:900}
+.iconlist .ic-item p{margin:0;font-size:13.5px;color:var(--ink);line-height:1.7}
+
+/* ===== 逆算タイムライン／ライフサイクル フロー図 ===== */
+.steps-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:20px 0}
+.steps-flow .step{flex:1 1 150px;background:#fff;border:2px solid var(--line);border-radius:12px;
+  padding:16px 14px;position:relative;min-width:140px}
+.steps-flow .step .when{display:block;font-size:11px;font-weight:900;color:var(--orange-d);letter-spacing:.02em;margin-bottom:6px}
+.steps-flow .step .what{font-size:13.5px;font-weight:800;color:var(--ink);line-height:1.6;margin:0}
+.steps-flow .arrow{flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+  width:26px;color:var(--teal);font-size:20px;font-weight:900}
+@media(max-width:700px){
+  .steps-flow{flex-direction:column}
+  .steps-flow .arrow{width:auto;height:22px;transform:rotate(90deg)}
+}
+.support .steps-flow .step{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
+.support .steps-flow .step .when{color:#ffd76a}
+.support .steps-flow .step .what{color:#fff}
+.support .steps-flow .arrow{color:#ffd76a}
+.support .iconlist p{color:#eafcfd}
+.support .iconlist .num{background:#ffd76a;color:var(--teal-d)}
+
+/* ===== 担当者名指し型カード ===== */
+.role-card{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;
+  background:#fff;border-radius:var(--r);padding:22px 24px;margin:18px 0;
+  box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.role-card .role-badge{background:var(--teal);color:#fff;border-radius:12px;text-align:center;
+  padding:16px 8px;font-weight:900;font-size:12px;line-height:1.5}
+.role-card .role-badge strong{display:block;font-size:15px;margin-top:2px}
+.role-card ul{margin:0;padding-left:1.1em;font-size:14px}
+.role-card li{margin-bottom:5px}
+@media(max-width:600px){.role-card{grid-template-columns:1fr}}
+
+/* ===== Before / After 図解 ===== */
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.ba-card{border-radius:14px;padding:20px 20px 18px;position:relative}
+.ba-card.before{background:#fdf1ee;border:2px solid #e8a08c}
+.ba-card.after{background:var(--teal-l);border:2px solid var(--teal)}
+.ba-label{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.08em;
+  border-radius:999px;padding:4px 12px;margin-bottom:10px}
+.ba-card.before .ba-label{background:#d9573f;color:#fff}
+.ba-card.after .ba-label{background:var(--teal);color:#fff}
+.ba-card p{margin:0;font-size:14px;line-height:1.75;color:var(--ink)}
+.ba-arrow{display:flex;align-items:center;justify-content:center;grid-column:1/-1;color:var(--sub);font-size:12px;font-weight:800;margin:-8px 0}
+@media(max-width:600px){.ba-grid{grid-template-columns:1fr}.ba-arrow{margin:0}}
+
+/* ===== 研修・提供ツール マトリクス ===== */
+.matrix-wrap{overflow-x:auto;margin:18px 0;border-radius:12px}
+table.matrix{width:100%;min-width:520px;border-collapse:collapse;background:rgba(255,255,255,.08);border-radius:12px;overflow:hidden}
+table.matrix th,table.matrix td{border:1px solid rgba(255,255,255,.25);padding:10px 12px;font-size:13px;text-align:center;color:#fff}
+table.matrix thead th{background:rgba(255,255,255,.18);font-weight:900}
+table.matrix td.day{background:rgba(255,214,106,.22);font-weight:900}
+table.matrix th:first-child,table.matrix td:first-child{text-align:left;font-weight:800}
 
 /* 社内確認帯（公開前に削除） */
 .internal{position:sticky;top:0;z-index:9999;background:#c2410c;color:#fff;
@@ -42,7 +126,7 @@ p{margin:0 0 1em}
 .kari::after{content:"（仮）";font-size:.7em;color:#8a6d00;font-weight:800}
 
 /* ヘッダー */
-header{position:sticky;top:65px;z-index:900;background:rgba(255,255,255,.97);
+header{position:sticky;top:var(--internal-h,65px);z-index:900;background:rgba(255,255,255,.97);
   border-bottom:1px solid var(--line);backdrop-filter:saturate(180%) blur(8px)}
 .hd{display:flex;align-items:center;gap:16px;padding:10px 0;flex-wrap:wrap}
 .hd .logo{height:44px;width:auto}
@@ -119,17 +203,30 @@ header{position:sticky;top:65px;z-index:900;background:rgba(255,255,255,.97);
 .why-card p strong{color:var(--ink)}
 
 /* ===== 比較（他社フランチャイズとの違い） ===== */
-.compare{background:#fff}
+.compare{background:#fff;overflow:visible} /* sticky theadのためsection共通のoverflow:hiddenを解除 */
 .cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r);
   box-shadow:0 3px 14px rgba(0,0,0,.07);margin-bottom:16px}
-table.cmp{width:100%;min-width:760px;border-collapse:collapse;background:#fff}
+/* overflow-x:autoを付けたコンテナは仕様上overflow-yも強制的にautoになり、
+   中の position:sticky (thead) がページスクロールに追従しなくなる。
+   横スクロールが不要な幅（表の min-width 760px 以上が収まる）ではoverflow自体を解除してsticky theadを有効化する。 */
+@media(min-width:860px){.cmp-wrap{overflow-x:visible}}
+table.cmp{width:100%;min-width:760px;border-collapse:separate;border-spacing:0;background:#fff}
 table.cmp th,table.cmp td{border-bottom:1px solid var(--line);padding:16px 18px;font-size:14.5px;text-align:left;vertical-align:top}
-table.cmp thead th{background:#fafcfd;font-weight:900;color:var(--ink);font-size:13px}
+table.cmp thead th{background:#eef2f4;font-weight:900;color:var(--ink);font-size:13px;
+  position:sticky;top:var(--sticky-top,124px);z-index:3;
+  border-bottom:2px solid var(--teal);box-shadow:0 4px 10px rgba(0,0,0,.12)}
+table.cmp thead th.other-h{background:#e3e7ea}
 table.cmp tbody th{width:19%;background:#fafcfd;font-weight:800;color:var(--ink)}
 table.cmp td.other{color:var(--sub)}
 table.cmp td.owl{color:var(--teal-d);font-weight:800;background:var(--teal-l)}
+table.cmp th.owl-col,table.cmp td.owl{border-left:2px solid var(--teal);border-right:2px solid var(--teal)}
 table.cmp thead th.owl-h{background:var(--teal);color:#fff}
 table.cmp thead th.other-h{background:#f2f4f6;color:var(--sub)}
+@media(max-width:860px){
+  table.cmp th:first-child,table.cmp td:first-child{position:sticky;left:0;z-index:2;
+    box-shadow:2px 0 6px rgba(0,0,0,.06)}
+  table.cmp thead th:first-child{z-index:4}
+}
 .cmp-src{font-size:12.5px;color:var(--sub);line-height:1.8;margin:0 0 40px}
 .cmp-src strong{color:var(--ink)}
 
@@ -378,7 +475,7 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
 }
 @media (max-width:860px){
   section{padding:52px 0}
-  header{top:78px}
+  header{top:var(--internal-h,78px)}
   .hd-nav{display:none}
   .hd-cta{display:none}
   .hd .logo{height:38px}
@@ -411,7 +508,7 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
 </head>
 <body>
 
-<div class="internal">【社内確認用・超絶版】共同生活援助レーン専用LP（2026-09-12・9/10戦略会議 決定事項D-5 反映／同日追加演出指示 反映）／<strong>黄色マーカーの数字と、声セクションの顔写真は仮</strong>です。公開中のLPではありません。</div>
+<div class="internal">【社内確認用・超絶版・クライアント送付禁止・本番差し替え禁止】共同生活援助レーン専用LP（2026-09-12・9/10戦略会議 決定事項D-5 反映／同日追加演出指示 反映／<strong>2026-09-13 UI・コピー刷新（タブ導線・比較表sticky・もっと読む圧縮・逆算タイムライン/担当者名指し/ライフサイクル図解/Before-After追加）</strong>）／<strong>黄色マーカーの数字と、声セクションの顔写真は仮</strong>です。公開中のLPではありません。</div>
 <div class="internal2">ベース: 2026-09-02案（インタビュー動画入り版）を拡張。事例①②のインタビュー本文は<strong>2026年8月のご本人取材・Web掲載同意を鈴木さんに確認済み</strong>（2026-09-12時点）。ただし<strong>動画・顔写真の掲載可否は別途最終確認が必要</strong>です。営業支援セクションの内訳は9/10商談ログ横断分析にもとづく仮の一般化です。<strong>今回の追加</strong>: ①比較表に「行政書士へ個別依頼」の列を追加、②運営ストーリー冒頭に「開業支援だけの業者に頼むと運営で赤字を繰り返しがち」という警鐘文を追加、③営業支援ツール10項目にいつ／どう提供するかを加筆、④愛知・三重の既存インタビュー動画を比較・開業ストーリー・運営ストーリー・声・営業支援・動画ラインナップの計6箇所で再利用（動画ファイルは <code>独立LP_動画埋め込み案_20260912/</code> 配下を相対パス参照。<span class="kari">本番デプロイ時はこのLP専用assetsへのコピー・パス修正が必要</span>）。</div>
 
 <header>
@@ -422,6 +519,7 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
       <a href="#case">開業ストーリー</a>
       <a href="#ops">運営ストーリー</a>
       <a href="#support">営業支援</a>
+      <a href="#voices">声・FAQ</a>
     </nav>
     <div class="hd-cta">
       <a class="btn btn-sub" href="#form">WEB説明会</a>
@@ -457,6 +555,16 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
 </div>
 
 <div class="finance-bar">資金調達のご相談から、開業後の運営・入居者募集まで、まるごとサポートします</div>
+
+<nav class="tabbar" id="tabbar">
+  <div class="wrap tabbar-inner">
+    <a href="#case" data-tab="case">開業ストーリー</a>
+    <a href="#ops" data-tab="ops">運営ストーリー</a>
+    <a href="#compare" data-tab="compare">他社比較</a>
+    <a href="#support" data-tab="support">支援ツール</a>
+    <a href="#voices" data-tab="voices">声・FAQ</a>
+  </div>
+</nav>
 
 <!-- ===== 悩み ===== -->
 <section class="worry">
@@ -527,7 +635,7 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
     <div class="cmp-wrap">
       <table class="cmp">
         <thead>
-          <tr><th></th><th class="other-h">行政書士へ<br>個別依頼</th><th class="other-h">一般的な障がい者GH フランチャイズ</th><th class="owl-h">OWL福祉事業</th></tr>
+          <tr><th></th><th class="other-h">行政書士へ<br>個別依頼</th><th class="other-h">一般的な障がい者GH フランチャイズ</th><th class="owl-h owl-col">OWL福祉事業</th></tr>
         </thead>
         <tbody>
           <tr><th>費用の形</th><td class="other kari">指定申請の着手金＋報酬（案件ごとの単発費用、要確認）</td><td class="other">加盟金 200万〜500万円が相場</td><td class="owl">加盟金0円</td></tr>
@@ -689,32 +797,38 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
             <source src="../独立LP_動画埋め込み案_20260912/_gh_pages_work/owl/lp_new_20260830/assets/aichi_owlface_v2_ver.mp4" type="video/mp4">
           </video>
         </div>
-        <dl class="case-qa">
-          <dt>開業前 — きっかけ</dt>
-          <dd>ご主人は老人ホームの紹介会社を経営、奥様は中学校の特別支援学級に約13年。
-            福祉業界の将来性と、ご自身の経験を活かせる事業を探すなかでOWLに出会いました。
-            <strong>「まず、実際に運営している加盟店の現場を見せてほしい」</strong>というのが最初のご要望でした。</dd>
-          <dt>迷った点 — 他社との比較</dt>
-          <dd>複数のフランチャイズ本部を比較検討されましたが、<strong>比較していた他社では、愛知県内での見学もオンラインでの見学も実現しませんでした。</strong>
-            「本当に運営できているのか」を自分の目で確かめられないまま契約を迫られたことが、決め手を欠く理由になっていました。</dd>
-          <dt>OWLからのご提案</dt>
-          <dd>OWLは関東の加盟店へご案内し、運営中のオーナー様から直接、収支・苦労した点・行政対応まで包み隠さず話を聞いていただきました。
-            「一番支援が手厚そう」という実感を持って契約に進まれています。</dd>
-          <dt>開業 〜 いま</dt>
-          <dd>2025年4月にご加盟、同年9月に1棟目（定員5名）を開設。満室までは7〜8ヶ月かかりましたが、
-            現在は5名満室で、1棟目の月商は約190万円です。1棟目開設から11ヶ月後の2026年8月に、2棟目を開設されました。<br>
-            スタート時の自己資金は約1,500万円。</dd>
-        </dl>
-        <div class="story-line">
-          <dl>
-            <dt>2025年 初頭</dt><dd>複数のフランチャイズ本部を比較検討。見学が実現せず足踏み。</dd>
-            <dt>2025年4月</dt><dd>OWLに加盟。関東の加盟店見学で運営の実態を確認できたことが決め手に。</dd>
-            <dt>2025年9月</dt><dd>1棟目（定員5名）開設。満室までは7〜8ヶ月。</dd>
-            <dt>2026年8月</dt><dd>2棟目を開設。「一生お付き合いしたい」と話される関係に。</dd>
-          </dl>
-        </div>
-        <p class="case-src">※ 2026年8月30日のインタビューでご本人が話された内容にもとづきます。
-          金額・期間は取材時点のもので、地域・物件条件により変動します。</p>
+        <p class="story-summary">老人ホーム紹介会社を営むご主人と、特別支援学級で約13年教壇に立った奥様。<strong>他社では見学すら叶わなかった</strong>比較検討の末、2025年4月にOWLへ加盟し、2026年8月に<strong>2棟目を開設</strong>しました。1棟目の月商は満室で約190万円です。</p>
+        <details class="more-details">
+          <summary>もっと読む（開業までの詳しい経緯）</summary>
+          <div class="more-body">
+            <dl class="case-qa">
+              <dt>開業前 — きっかけ</dt>
+              <dd>ご主人は老人ホームの紹介会社を経営、奥様は中学校の特別支援学級に約13年。
+                福祉業界の将来性と、ご自身の経験を活かせる事業を探すなかでOWLに出会いました。
+                <strong>「まず、実際に運営している加盟店の現場を見せてほしい」</strong>というのが最初のご要望でした。</dd>
+              <dt>迷った点 — 他社との比較</dt>
+              <dd>複数のフランチャイズ本部を比較検討されましたが、<strong>比較していた他社では、愛知県内での見学もオンラインでの見学も実現しませんでした。</strong>
+                「本当に運営できているのか」を自分の目で確かめられないまま契約を迫られたことが、決め手を欠く理由になっていました。</dd>
+              <dt>OWLからのご提案</dt>
+              <dd>OWLは関東の加盟店へご案内し、運営中のオーナー様から直接、収支・苦労した点・行政対応まで包み隠さず話を聞いていただきました。
+                「一番支援が手厚そう」という実感を持って契約に進まれています。</dd>
+              <dt>開業 〜 いま</dt>
+              <dd>2025年4月にご加盟、同年9月に1棟目（定員5名）を開設。満室までは7〜8ヶ月かかりましたが、
+                現在は5名満室で、1棟目の月商は約190万円です。1棟目開設から11ヶ月後の2026年8月に、2棟目を開設されました。<br>
+                スタート時の自己資金は約1,500万円。</dd>
+            </dl>
+            <div class="story-line">
+              <dl>
+                <dt>2025年 初頭</dt><dd>複数のフランチャイズ本部を比較検討。見学が実現せず足踏み。</dd>
+                <dt>2025年4月</dt><dd>OWLに加盟。関東の加盟店見学で運営の実態を確認できたことが決め手に。</dd>
+                <dt>2025年9月</dt><dd>1棟目（定員5名）開設。満室までは7〜8ヶ月。</dd>
+                <dt>2026年8月</dt><dd>2棟目を開設。「一生お付き合いしたい」と話される関係に。</dd>
+              </dl>
+            </div>
+            <p class="case-src">※ 2026年8月30日のインタビューでご本人が話された内容にもとづきます。
+              金額・期間は取材時点のもので、地域・物件条件により変動します。</p>
+          </div>
+        </details>
       </div>
     </div>
 
@@ -739,36 +853,42 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
             <source src="assets_video/mie_iv4_clip_v3.mp4" type="video/mp4">
           </video>
         </div>
-        <dl class="case-qa">
-          <dt>開業前 — きっかけ</dt>
-          <dd>小学校の教員を長く務められ、校長も経験された方。次男の方に生まれながらの重度の障がいがあり、
-            <strong>「退職を機に、子どもに与えてもらった分をお返しできる仕事がしたい」</strong>という思いが原点でした。
-            一方で会社経営は未経験で、資金がどれだけ必要かも分からない、というのが出発点でした。</dd>
-          <dt>迷った点 — 経営未経験という壁</dt>
-          <dd>教員一筋で経営知識がなく、「事業計画」「融資」という言葉自体に距離感があったといいます。
-            OWLはPLの読み方から一つずつ説明し、駅から徒歩1分の元社宅を物件候補として提案。
-            事業計画の作成から金融機関との面談同行まで担当が伴走し、信用金庫・信用組合・銀行の計4行を回って、
-            1棟あたり600万円・2棟で計1,200万円の融資を実行しました。</dd>
-          <dt>開業直後 — つまずいた点</dt>
-          <dd>1棟目（定員5名）は加盟から約6ヶ月で開設し、数ヶ月で満室に。5ヶ月後に2棟目を開設されましたが、
-            <strong>2人目の入居が決まるまでに半年かかる</strong>という壁に直面しました。
-            解消したのは、地域の相談支援事業所への訪問を重ねるという、地道な営業活動です。</dd>
-          <dt>いま — 運営の現在地</dt>
-          <dd>サテライトを含めて計11居室。2026年2月の運営指導では重たい指摘はなく、現在は3棟目の申請直前です（目標は4棟）。<br>
-            満室時の月商は約350万円（11居室）、経費・役員報酬を除いた手残りは約50〜60万円。
-            自己資金は500〜600万円からのスタートでした。</dd>
-        </dl>
-        <div class="story-line">
-          <dl>
-            <dt>加盟前</dt><dd>教員退職を決意。経営知識ゼロから、事業計画・融資の同行支援を受ける。</dd>
-            <dt>加盟から約6ヶ月</dt><dd>1棟目（定員5名）開設。数ヶ月で満室に。</dd>
-            <dt>5ヶ月後</dt><dd>2棟目を開設。ただし2人目の入居まで半年かかり、相談支援事業所への訪問で解消。</dd>
-            <dt>2026年2月</dt><dd>運営指導、重たい指摘なし。</dd>
-            <dt>いま</dt><dd>3棟目の申請直前（目標4棟）。</dd>
-          </dl>
-        </div>
-        <p class="case-src">※ 2026年8月29〜30日のインタビューでご本人が話された内容にもとづきます。
-          金額・期間は取材時点のもので、地域・物件条件により変動します。</p>
+        <p class="story-summary">小学校の元教員で、校長も経験。<strong>経営知識ゼロ</strong>からのスタートでしたが、OWLの伴走で計4行から<strong>1,200万円の融資</strong>を実行。現在は2棟＋サテライト2（計11居室）を運営し、<strong>3棟目の申請直前</strong>（目標4棟）です。</p>
+        <details class="more-details">
+          <summary>もっと読む（開業までの詳しい経緯）</summary>
+          <div class="more-body">
+            <dl class="case-qa">
+              <dt>開業前 — きっかけ</dt>
+              <dd>小学校の教員を長く務められ、校長も経験された方。次男の方に生まれながらの重度の障がいがあり、
+                <strong>「退職を機に、子どもに与えてもらった分をお返しできる仕事がしたい」</strong>という思いが原点でした。
+                一方で会社経営は未経験で、資金がどれだけ必要かも分からない、というのが出発点でした。</dd>
+              <dt>迷った点 — 経営未経験という壁</dt>
+              <dd>教員一筋で経営知識がなく、「事業計画」「融資」という言葉自体に距離感があったといいます。
+                OWLはPLの読み方から一つずつ説明し、駅から徒歩1分の元社宅を物件候補として提案。
+                事業計画の作成から金融機関との面談同行まで担当が伴走し、信用金庫・信用組合・銀行の計4行を回って、
+                1棟あたり600万円・2棟で計1,200万円の融資を実行しました。</dd>
+              <dt>開業直後 — つまずいた点</dt>
+              <dd>1棟目（定員5名）は加盟から約6ヶ月で開設し、数ヶ月で満室に。5ヶ月後に2棟目を開設されましたが、
+                <strong>2人目の入居が決まるまでに半年かかる</strong>という壁に直面しました。
+                解消したのは、地域の相談支援事業所への訪問を重ねるという、地道な営業活動です。</dd>
+              <dt>いま — 運営の現在地</dt>
+              <dd>サテライトを含めて計11居室。2026年2月の運営指導では重たい指摘はなく、現在は3棟目の申請直前です（目標は4棟）。<br>
+                満室時の月商は約350万円（11居室）、経費・役員報酬を除いた手残りは約50〜60万円。
+                自己資金は500〜600万円からのスタートでした。</dd>
+            </dl>
+            <div class="story-line">
+              <dl>
+                <dt>加盟前</dt><dd>教員退職を決意。経営知識ゼロから、事業計画・融資の同行支援を受ける。</dd>
+                <dt>加盟から約6ヶ月</dt><dd>1棟目（定員5名）開設。数ヶ月で満室に。</dd>
+                <dt>5ヶ月後</dt><dd>2棟目を開設。ただし2人目の入居まで半年かかり、相談支援事業所への訪問で解消。</dd>
+                <dt>2026年2月</dt><dd>運営指導、重たい指摘なし。</dd>
+                <dt>いま</dt><dd>3棟目の申請直前（目標4棟）。</dd>
+              </dl>
+            </div>
+            <p class="case-src">※ 2026年8月29〜30日のインタビューでご本人が話された内容にもとづきます。
+              金額・期間は取材時点のもので、地域・物件条件により変動します。</p>
+          </div>
+        </details>
       </div>
     </div>
   </div>
@@ -789,6 +909,18 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
         下の4つの壁は、その一部です。</p>
     </div>
 
+    <div class="ba-grid">
+      <div class="ba-card before">
+        <span class="ba-label">BEFORE（開業支援だけの業者）</span>
+        <p>指定申請が通った時点で契約終了。入居者募集のやり方も、請求業務の締切対応も自己流。稼働が上がらず<strong>赤字が続く</strong>。</p>
+      </div>
+      <div class="ba-arrow">↓ OWLのフルサポートで防げること ↓</div>
+      <div class="ba-card after">
+        <span class="ba-label">AFTER（OWLのフルサポート）</span>
+        <p>開業後も専属担当が継続伴走。相談支援事業所への訪問同行・請求業務サポート・研修動画で、<strong>稼働と収支を安定させる</strong>。</p>
+      </div>
+    </div>
+
     <div class="case-movie" style="max-width:640px;margin:0 auto 34px">
       <video controls preload="none" poster="assets_video/poster_aichi_owlmask_v5.webp">
         <source src="assets_video/aichi_iv4_web_v2_owlmask_v2.mp4" type="video/mp4">
@@ -796,39 +928,74 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
       <p class="pl-note center" style="margin:10px 0 0;color:var(--sub)">▲ 「1棟目は入居1名で月商30万円弱からのスタート、2.5〜3名でようやく収支トントン、5名満室で月商190万円」——愛知のオーナー様ご本人が運営の実態を語っています（2026年8月30日撮影・掲載同意確認済み／<span class="kari">動画そのものの掲載可否は別途最終確認</span>）</p>
     </div>
 
+    <div class="role-card">
+      <div class="role-badge">運営専属担当<strong><span class="kari">エリアサポーター</span></strong></div>
+      <ul>
+        <li>開業後<span class="kari">◯日間</span>は毎日フォロー（<span class="kari">電話・チャット</span>）</li>
+        <li>開業後半年は月<span class="kari">◯回</span>の定期訪問</li>
+        <li>相談支援事業所への初回訪問に同席</li>
+        <li>請求業務・実地指導は都度オンラインで相談可</li>
+      </ul>
+    </div>
+    <p class="pl-note center" style="margin:-6px 0 24px">※ 「エリアサポーター」は仮称、頻度の数字は仮置きです。<span class="kari">呼称・頻度・連絡手段は事業側に確認</span>のうえ確定してください。</p>
+
     <div class="ops-card">
       <h3><span>1</span>「2棟目の入居が決まらない」壁</h3>
-      <p>三重のオーナー様は、2棟目開設後、<strong>2人目の入居が決まるまでに半年</strong>かかりました。
-        入居者の紹介元は、相談支援事業所（利用者と事業所をつなぐケアマネジャーのような存在）です。
-        OWLは開業してからも、<strong>相談支援事業所への訪問・関係づくりの営業活動</strong>を一緒に組み立てます。
-        「箱を作れば入る」わけではないという現実と、そこから抜け出す打ち手の両方を伝えます。</p>
-      <div class="ops-grid">
-        <div class="ops-box"><b>よくある壁</b>開設直後は稼働率が上がりきらない。1棟目は月<span class="kari">◯〜◯万円</span>程度にとどまることもあります。</div>
-        <div class="ops-box"><b>OWLの動き</b>相談支援事業所への訪問同行、地域の福祉事業者ネットワークの紹介。</div>
-      </div>
+      <p class="story-summary">2人目の入居に半年かかった三重の事例から、相談支援事業所への訪問同行で解消する打ち手をまとめました。</p>
+      <details class="more-details">
+        <summary>もっと読む</summary>
+        <div class="more-body">
+          <p>三重のオーナー様は、2棟目開設後、<strong>2人目の入居が決まるまでに半年</strong>かかりました。
+            入居者の紹介元は、相談支援事業所（利用者と事業所をつなぐケアマネジャーのような存在）です。
+            OWLは開業してからも、<strong>相談支援事業所への訪問・関係づくりの営業活動</strong>を一緒に組み立てます。
+            「箱を作れば入る」わけではないという現実と、そこから抜け出す打ち手の両方を伝えます。</p>
+          <div class="ops-grid">
+            <div class="ops-box"><b>よくある壁</b>開設直後は稼働率が上がりきらない。1棟目は月<span class="kari">◯〜◯万円</span>程度にとどまることもあります。</div>
+            <div class="ops-box"><b>OWLの動き</b>相談支援事業所への訪問同行、地域の福祉事業者ネットワークの紹介。</div>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="ops-card">
       <h3><span>2</span>「請求業務・実地指導」の壁</h3>
-      <p>グループホームの売上は、国保連（国民健康保険団体連合会）への毎月の請求業務で決まります。
-        サービス提供実績記録票の入力、月10日までの請求書伝送、25日の請求書・領収書発行など、<strong>毎月決まった締切のある事務作業</strong>です。
-        また、自治体による定期的な運営指導（実地指導）もあります。三重のオーナー様は<strong>2026年2月の運営指導で重たい指摘はなく</strong>通過しました。
-        OWLは請求業務のサポートと、実地指導への対応を継続してご支援します。</p>
+      <p class="story-summary">毎月締切のある国保連請求と、自治体の実地指導。三重のオーナー様は2026年2月の運営指導を重い指摘なく通過しています。</p>
+      <details class="more-details">
+        <summary>もっと読む</summary>
+        <div class="more-body">
+          <p>グループホームの売上は、国保連（国民健康保険団体連合会）への毎月の請求業務で決まります。
+            サービス提供実績記録票の入力、月10日までの請求書伝送、25日の請求書・領収書発行など、<strong>毎月決まった締切のある事務作業</strong>です。
+            また、自治体による定期的な運営指導（実地指導）もあります。三重のオーナー様は<strong>2026年2月の運営指導で重たい指摘はなく</strong>通過しました。
+            OWLは請求業務のサポートと、実地指導への対応を継続してご支援します。</p>
+        </div>
+      </details>
     </div>
 
     <div class="ops-card">
       <h3><span>3</span>「人を育てる」壁</h3>
-      <p>管理者・サービス管理責任者・世話人・生活支援員・夜間支援員など、<strong>職種ごとに配置基準と業務範囲が異なります。</strong>
-        未経験のスタッフを採用した場合の教育も、開業後にオーナー様が向き合う課題の一つです。
-        OWLでは、職種別の業務内容や制度の基礎を解説する<strong>研修動画（社内制作・法定研修対応）</strong>を用意し、新人教育の負担を軽くする準備を進めています。</p>
+      <p class="story-summary">職種ごとに配置基準・業務範囲が異なるため、未経験スタッフの教育は開業後の大きな課題になります。</p>
+      <details class="more-details">
+        <summary>もっと読む</summary>
+        <div class="more-body">
+          <p>管理者・サービス管理責任者・世話人・生活支援員・夜間支援員など、<strong>職種ごとに配置基準と業務範囲が異なります。</strong>
+            未経験のスタッフを採用した場合の教育も、開業後にオーナー様が向き合う課題の一つです。
+            OWLでは、職種別の業務内容や制度の基礎を解説する<strong>研修動画（社内制作・法定研修対応）</strong>を用意し、新人教育の負担を軽くする準備を進めています。</p>
+        </div>
+      </details>
     </div>
 
     <div class="ops-card">
       <h3><span>4</span>「次の一棟」への壁</h3>
-      <p>1棟目が軌道に乗ったあとの関心は、決まって「2棟目・3棟目をどう増やすか」です。
-        三重のオーナー様は、<strong>2棟＋サテライト2で計11居室を運営しながら、3棟目の申請直前</strong>（目標4棟）まで進んでいます。
-        愛知のオーナー様も、1棟目開設から11ヶ月後に2棟目を開設されました。
-        OWLは1棟目の運営だけでなく、<strong>展開ペースの相談・エリア戦略まで継続してご一緒</strong>します。</p>
+      <p class="story-summary">1棟目が軌道に乗ると、次の関心は決まって「2棟目・3棟目をどう増やすか」に移ります。</p>
+      <details class="more-details">
+        <summary>もっと読む</summary>
+        <div class="more-body">
+          <p>1棟目が軌道に乗ったあとの関心は、決まって「2棟目・3棟目をどう増やすか」です。
+            三重のオーナー様は、<strong>2棟＋サテライト2で計11居室を運営しながら、3棟目の申請直前</strong>（目標4棟）まで進んでいます。
+            愛知のオーナー様も、1棟目開設から11ヶ月後に2棟目を開設されました。
+            OWLは1棟目の運営だけでなく、<strong>展開ペースの相談・エリア戦略まで継続してご一緒</strong>します。</p>
+        </div>
+      </details>
     </div>
 
     <div class="case-movie" style="max-width:640px;margin:0 auto 34px">
@@ -901,6 +1068,19 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
       <div class="support-card">
         <h3><span>1</span>事前準備</h3>
         <ul><li>市場調査・エリア選定</li><li>物件の選定と適合確認</li><li>資金調達のサポート（事業計画書作成〜金融機関同行）</li><li>行政への事前相談</li><li>事業計画の作成</li></ul>
+        <p style="margin:14px 0 4px;font-size:12px;font-weight:900;color:#ffd76a;letter-spacing:.03em">開業までの逆算タイムライン（開所日から逆算・目安）</p>
+        <div class="steps-flow">
+          <div class="step"><span class="when">開所4ヶ月前〜</span><p class="what">物件選定</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="when">3.5ヶ月前〜</span><p class="what">資金調達・融資書類作成</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="when">2ヶ月前〜</span><p class="what">指定申請書類作成・自治体同行</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="when">2ヶ月前〜</span><p class="what">内装改修の業者手配・図面チェック</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="when">1ヶ月前〜</span><p class="what">人材採用・研修</p></div>
+        </div>
+        <p style="margin:0;font-size:11.5px;color:#cfeef0">※ 目安の期間です。<span class="kari">物件の状態・自治体の審査スピードにより前後します（要確認）</span>。</p>
       </div>
       <div class="support-card">
         <h3><span>2</span>立ち上げ</h3>
@@ -909,10 +1089,29 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
       <div class="support-card">
         <h3><span>3</span>開業後の営業支援</h3>
         <ul><li>入居者募集・相談支援事業所への訪問同行</li><li>紹介ネットワークづくりの伴走</li><li>チラシ・パンフレットなど営業ツールの提供</li><li>現役オーナー見学のセッティング</li><li>2棟目以降の展開相談</li></ul>
+        <p style="margin:14px 0 4px;font-size:12px;font-weight:900;color:#ffd76a;letter-spacing:.03em">入居者募集のライフサイクル</p>
+        <div class="steps-flow">
+          <div class="step"><span class="when">STEP1</span><p class="what">相談機関・行政・ケアマネへの営業同行</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="when">STEP2</span><p class="what">チラシ・HP制作</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="when">STEP3</span><p class="what">問い合わせ対応の代行</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="when">STEP4</span><p class="what">内見案内</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="when">STEP5</span><p class="what">契約書類作成支援</p></div>
+          <div class="arrow">→</div>
+          <div class="step"><span class="when">STEP6</span><p class="what">稼働率モニタリング</p></div>
+        </div>
       </div>
       <div class="support-card">
         <h3><span>4</span>継続的な経営支援</h3>
         <ul><li>国保連請求業務のサポート</li><li>実地指導（運営指導）への対応</li><li>職員の育成・研修動画の提供</li><li>加算・報酬改定など制度変更のご案内</li><li>経営数値の定点相談</li></ul>
+        <div class="iconlist">
+          <div class="ic-item"><span class="num">①</span><p>毎月の請求サイクルに沿って伴走するので、締切に一人で追われません。</p></div>
+          <div class="ic-item"><span class="num">②</span><p>実地指導の直前にチェックリストで事前確認できます。</p></div>
+          <div class="ic-item"><span class="num">③</span><p>制度変更・報酬改定は分かり次第ご案内します。</p></div>
+        </div>
       </div>
     </div>
 
@@ -930,13 +1129,61 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
         <div class="tool-item"><span class="ic">9</span><span><strong>国保連請求 業務サポート</strong><br><strong>毎月の請求サイクル（記録票入力〜月10日の伝送〜25日の請求書発行）</strong>に沿って、開業後ずっと継続してサポートします。</span></div>
         <div class="tool-item"><span class="ic">10</span><span><strong>現役オーナー見学のご案内</strong><br><strong>契約前の比較検討段階</strong>から、運営中のオーナー様の事業所を実際に見学いただけるよう調整します。</span></div>
       </div>
+      <h3 style="margin-top:26px">新人研修プログラム <span class="kari">OWLベーシック研修</span>（◯日間×◯科目・仮称）</h3>
+      <div class="matrix-wrap">
+        <table class="matrix">
+          <thead><tr><th>研修日</th><th>科目</th><th>対象職種</th><th>形式</th></tr></thead>
+          <tbody>
+            <tr><td class="day kari">1日目</td><td class="kari">制度・法定研修の基礎</td><td>全職種</td><td>動画＋テキスト</td></tr>
+            <tr><td class="day kari">2日目</td><td class="kari">支援記録・国保連請求の実務</td><td>世話人・生活支援員</td><td>動画＋演習</td></tr>
+            <tr><td class="day kari">3日目</td><td class="kari">緊急時対応・虐待防止研修</td><td>全職種</td><td>動画＋確認テスト</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="pl-note" style="color:#dff2f4;margin:0 0 24px">※ プログラム名・日数・科目構成は<span class="kari">仮称・仮置き</span>です。実際の研修体系は事業側に必ず確認のうえ公開してください。</p>
       <p class="pl-note" style="color:#dff2f4;margin-top:0">※ 上記は現状ご提供中・準備中のツールと、その提供タイミングを一般化して記載したものです。<span class="kari">個別のツール名・提供有無・提供タイミングは事業側に必ず確認</span>してから公開してください。</p>
     </div>
   </div>
 </section>
 
+<!-- ===== オーナー様の声（抜粋） ===== -->
+<section class="voices" id="voices">
+  <div class="wrap">
+    <span class="sec-en">VOICE</span>
+    <h2 class="center">オーナー様の<span class="mark">声</span></h2>
+    <p class="lead center">「開業ストーリー」「運営ストーリー」でご紹介したお二人の言葉から、一部を抜粋しています。</p>
+    <div class="vgrid">
+      <div class="vcard">
+        <div class="vface"><span class="nophoto kari">顔写真</span></div>
+        <div class="vbody">
+          <span class="vband b">愛知県・2棟運営</span>
+          <span class="vplace">ご夫婦で経営</span>
+          <p class="vtext">「比較していた他社では、県内での見学もオンラインでの見学も実現しませんでした。OWLは実際に運営中のオーナーの現場を見せてくれた。一番支援が手厚そうだと感じています。」</p>
+        </div>
+      </div>
+      <div class="vcard">
+        <div class="vface"><span class="nophoto kari">顔写真</span></div>
+        <div class="vbody">
+          <span class="vband g">三重県・2棟＋サテライト2</span>
+          <span class="vplace">元・小学校教員</span>
+          <p class="vtext">「経営知識ゼロからのスタートでしたが、PLの読み方から一つずつ教えてもらいました。2人目の入居まで半年かかったときも、相談支援事業所への訪問に一緒に動いてくれました。」</p>
+        </div>
+      </div>
+      <div class="vcard">
+        <div class="vface"><span class="nophoto kari">顔写真</span></div>
+        <div class="vbody">
+          <span class="vband o">三重県</span>
+          <span class="vplace">元・小学校教員</span>
+          <p class="vtext">「障害のある子どもの将来を支えたくて開業しました。障害を持つお子さんの親御さんから感謝の言葉をいただくことが多く、やってよかったと実感しています。」</p>
+        </div>
+      </div>
+    </div>
+    <p class="pl-note center" style="margin-top:22px">※ 2026年8月29〜30日のインタビューでご本人が話された内容からの抜粋です。掲載内容自体はご本人同意を確認済み（2026-09-12時点）ですが、<span class="kari">顔写真の掲載可否は別途最終確認</span>が必要です。動画本編は「開業ストーリー」「運営ストーリー」でご覧いただけます。</p>
+  </div>
+</section>
+
 <!-- ===== FAQ ===== -->
-<section>
+<section id="faq">
   <div class="wrap">
     <div class="faq-head">
       <img src="assets/elder.webp" alt="答える長老フクロウ" style="transform:scaleX(-1)">
@@ -1027,5 +1274,51 @@ footer strong{color:#fff;display:block;font-size:16px;margin-bottom:8px}
   <a class="btn btn-main" href="#form">無料で資料請求</a>
 </div>
 
+<script>
+(function(){
+  // --- sticky-top: ヘッダー＋（社内確認帯）＋タブバーの実高さを計測してCSS変数に反映 ---
+  var header = document.querySelector('header');
+  var tabbar = document.getElementById('tabbar');
+  var internals = document.querySelectorAll('.internal, .internal2');
+  function calcStickyTop(){
+    var internalH = 0;
+    internals.forEach(function(el){ internalH += el.offsetHeight; });
+    document.documentElement.style.setProperty('--internal-h', internalH + 'px');
+    var tabbarTop = internalH;
+    if(header) tabbarTop += header.offsetHeight;
+    document.documentElement.style.setProperty('--tabbar-top', tabbarTop + 'px');
+    var h = tabbarTop;
+    if(tabbar) h += tabbar.offsetHeight;
+    document.documentElement.style.setProperty('--sticky-top', h + 'px');
+  }
+  calcStickyTop();
+  window.addEventListener('resize', calcStickyTop);
+  window.addEventListener('load', calcStickyTop);
+
+  // --- タブバー: クリックでスムーススクロール（scroll-margin-topで自動オフセット） ---
+  var tabs = tabbar ? tabbar.querySelectorAll('a[data-tab]') : [];
+  var targets = Array.prototype.map.call(tabs, function(a){
+    return document.querySelector(a.getAttribute('href'));
+  }).filter(Boolean);
+
+  // --- スクロール連動ハイライト ---
+  if('IntersectionObserver' in window && targets.length){
+    var byId = {};
+    tabs.forEach(function(a){ byId[a.getAttribute('data-tab')] = a; });
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var id = entry.target.id;
+        var tab = byId[id];
+        if(!tab) return;
+        if(entry.isIntersecting){
+          tabs.forEach(function(a){ a.classList.remove('active'); });
+          tab.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    targets.forEach(function(t){ observer.observe(t); });
+  }
+})();
+</script>
 </body>
 </html>
