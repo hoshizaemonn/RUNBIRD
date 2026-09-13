@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>YouTube広告のリンク先について（ご提案イメージ）— ティーグロウス様</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,Roboto,sans-serif; background:#f0f0f0; color:#0f0f0f; padding:24px; }
+.wrap { max-width:900px; margin:0 auto; }
+h1 { font-size:20px; margin-bottom:4px; }
+.subtitle { color:#666; font-size:13px; margin-bottom:24px; }
+
+.phone-mock { max-width:340px; margin:0 auto 28px; background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.15); }
+.yt-topbar { background:#fff; padding:10px 12px; display:flex; align-items:center; gap:14px; border-bottom:1px solid #eee; }
+.yt-topbar svg { width:22px; }
+.yt-logo { font-weight:700; font-size:16px; display:flex; align-items:center; gap:2px; }
+.yt-logo .play { background:#f00; color:#fff; border-radius:4px; padding:1px 4px; font-size:11px; }
+
+.video-area { position:relative; aspect-ratio:16/9; background:linear-gradient(135deg,#ccc,#e8e8e8); overflow:hidden; }
+.video-area .photo { position:absolute; inset:0; background:#ddd; display:flex; align-items:flex-end; justify-content:center; color:#999; font-size:11px; }
+.ad-overlay { position:absolute; left:0; right:0; bottom:26px; background:rgba(0,0,0,0.55); backdrop-filter:blur(2px); display:flex; align-items:center; padding:8px 10px; gap:8px; }
+.ad-icon { width:32px; height:32px; border-radius:50%; background:#1a73e8; flex-shrink:0; }
+.ad-text { color:#fff; font-size:12px; line-height:1.3; flex:1; }
+.ad-domain { color:#ccc; font-size:10.5px; }
+.ad-btn { background:#fff; color:#000; font-size:12px; font-weight:600; padding:7px 14px; border-radius:16px; white-space:nowrap; }
+.progress-row { position:absolute; left:0; right:0; bottom:0; height:26px; background:rgba(0,0,0,0.85); display:flex; align-items:center; padding:0 8px; }
+.progress-bar { flex:1; height:3px; background:#555; border-radius:2px; overflow:hidden; margin:0 8px;}
+.progress-bar .fill { width:35%; height:100%; background:#ffd400; }
+.sponsor-label { position:absolute; left:8px; bottom:30px; color:#eee; font-size:10px; }
+
+.info-card { padding:12px 14px 4px; }
+.info-brand { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+.info-brand .dot { width:28px; height:28px; border-radius:50%; background:#1a73e8; flex-shrink:0; }
+.info-brand .name { font-size:13.5px; font-weight:600; }
+.info-brand .sub { font-size:11px; color:#666; }
+
+.sitelinks { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#e5e5e5; border:1px solid #e5e5e5; border-radius:4px; overflow:hidden; margin-bottom:10px; }
+.sitelinks.single { grid-template-columns:1fr; }
+.sl-item { background:#f7f7f7; padding:10px 12px; }
+.sl-title { font-size:12.5px; font-weight:600; margin-bottom:3px; }
+.sl-desc { font-size:11px; color:#666; line-height:1.4; }
+
+.cta-full { text-align:center; padding:11px; background:#fff; border-top:1px solid #eee; font-size:13px; font-weight:600; color:#0f0f0f; margin-top:4px; }
+
+.caption { text-align:center; font-size:12px; color:#888; margin-top:8px; }
+
+.note-box { background:#fff; border-radius:10px; padding:18px 20px; margin-top:24px; border:1px solid #ddd; font-size:13px; line-height:1.8; color:#333; }
+.note-box b { color:#1a73e8; }
+.note-box .line-b { color:#2e9e5b; }
+
+.hp-mock { max-width:520px; margin:24px auto 8px; background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.15); border:1px solid #eee; }
+.hp-nav { background:#fff; border-bottom:1px solid #eee; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; }
+.hp-logo { font-size:12px; font-weight:700; color:#1a1a2e; }
+.hp-menu { display:flex; align-items:center; gap:16px; }
+.hp-menu-item { font-size:10.5px; font-weight:600; color:#333; letter-spacing:0.03em; }
+.hp-btn { font-size:10.5px; font-weight:700; padding:7px 14px; border-radius:4px; border:1.5px solid; letter-spacing:0.03em; }
+.hp-btn.contact { color:#0a8a8a; border-color:#0a8a8a; }
+.hp-body { padding:24px 18px; background:#fafafa; }
+.hp-block { background:#eee; border-radius:6px; height:60px; display:flex; align-items:center; justify-content:center; color:#999; font-size:11px; margin-bottom:14px; }
+.line-banner { background:#06c755; border-radius:10px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:10px; box-shadow:0 3px 8px rgba(6,199,85,0.3); }
+.line-banner .txt { color:#fff; }
+.line-banner .txt .big { font-size:14px; font-weight:700; margin-bottom:2px; }
+.line-banner .txt .small { font-size:10.5px; opacity:0.9; }
+.line-banner .btn { background:#fff; color:#06c755; font-size:12px; font-weight:700; padding:9px 16px; border-radius:20px; white-space:nowrap; }
+.highlight-ring { outline:3px dashed #06c755; outline-offset:4px; border-radius:14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>YouTube広告のリンク先について（ご提案イメージ）</h1>
+<p class="subtitle">ティーグロウス株式会社様｜株式会社ランバード｜2026年9月13日　※実際の広告画面に近い形のイメージ図です</p>
+
+<div class="phone-mock">
+  <div class="yt-topbar">
+    <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="#000" stroke-width="2" fill="none"/></svg>
+    <div class="yt-logo"><span class="play">▶</span> YouTube</div>
+  </div>
+  <div class="video-area">
+    <div class="photo">（動画）</div>
+    <div class="sponsor-label">スポンサー ⓘ　tgrowth.jp</div>
+    <div class="ad-overlay">
+      <div class="ad-icon"></div>
+      <div class="ad-text">催事場・イベント集客なら<br><span class="ad-domain">tgrowth.jp</span></div>
+      <div class="ad-btn">サイトを見る</div>
+    </div>
+    <div class="progress-row">
+      <span style="color:#fff;font-size:10px;">0:04</span>
+      <div class="progress-bar"><div class="fill"></div></div>
+    </div>
+  </div>
+
+  <div class="info-card">
+    <div class="info-brand">
+      <div class="dot"></div>
+      <div>
+        <div class="name">ティーグロウス株式会社</div>
+        <div class="sub">スポンサー・tgrowth.jp</div>
+      </div>
+    </div>
+
+    <div class="sitelinks">
+      <div class="sl-item">
+        <div class="sl-title">ホームページ</div>
+        <div class="sl-desc">サービス詳細・実績はこちら</div>
+      </div>
+      <div class="sl-item">
+        <div class="sl-title">公式LINE</div>
+        <div class="sl-desc">お気軽にご相談・友だち登録はこちらから</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-full">サイトを見る</div>
+</div>
+<p class="caption">↑ 実際にYouTube広告に表示されるイメージ（他社様の運用実績を参考に作成）</p>
+
+<div class="note-box">
+<b>「公式LINE」ボタンの中身について</b><br>
+新しくページを1枚作るのではなく、<b>今あるホームページの本文の中に、目立つ色の「LINEでご相談はこちら」バナーを1つ追加</b>していただくだけで対応できます。ヘッダーの小さいテキストリンクだと見落とされやすいため、押しやすい大きさ・色で本文中に置きます。<br><br>
+「公式LINE」のサイトリンクは、このバナーがあるページ（トップページ、または問い合わせページ）を指定します。着地した瞬間に緑色のバナーが目に入る形です。<br>
+（<span class="line-b">この形は他社様のYouTube広告でも実際に使われている、一般的なやり方です</span>）
+</div>
+
+<div class="hp-mock">
+  <div class="hp-nav">
+    <div class="hp-logo">T-GROWTH</div>
+    <div class="hp-menu">
+      <div class="hp-menu-item">BUSINESS</div>
+      <div class="hp-menu-item">COMPANY</div>
+      <div class="hp-menu-item">PRIVACY</div>
+      <div class="hp-menu-item">RECRUIT</div>
+      <div class="hp-btn contact">CONTACT</div>
+    </div>
+  </div>
+  <div class="hp-body">
+    <div class="hp-block">（既存のトップページ本文）</div>
+    <div class="line-banner highlight-ring">
+      <div class="txt">
+        <div class="big">LINEでのご相談はこちら</div>
+        <div class="small">お気軽にお問い合わせいただけます</div>
+      </div>
+      <div class="btn">友だち追加</div>
+    </div>
+  </div>
+</div>
+<p class="caption">↑ 本文の中に目立つ緑色のバナーを1つ追加するイメージ（点線が追加箇所）</p>
+
+</div>
+</body>
+</html>
