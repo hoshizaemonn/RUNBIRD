@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<title>BAR佐助 画像モックアップ一覧（社内確認用）</title>
+<style>
+  body { font-family: "Hiragino Kaku Gothic ProN", sans-serif; background:#1a1210; color:#f4ece0; margin:0; padding:24px; }
+  h1 { font-size: 20px; }
+  .status { background:#243a24; border:1px solid #4a8a4a; padding:12px 16px; border-radius:8px; margin-bottom:16px; }
+  .warn { background:#3a2f1f; border:1px solid #a38333; padding:12px 16px; border-radius:8px; margin-bottom:24px; }
+  .warn ul { margin:8px 0 0; padding-left:20px; }
+  .sheet { max-width: 1200px; margin: 0 auto 24px; }
+  .sheet img { width:100%; display:block; border-radius:8px; border:1px solid #4a352c; }
+  .legend { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:8px; max-width:1200px; margin: 0 auto; font-size:13px; }
+  .legend .cell { background:#241a16; border:1px solid #4a352c; border-radius:6px; padding:8px 10px; }
+  .legend .cell b { color:#e0c9a0; }
+  .ok { color:#8fce8f; }
+  .caution { color:#e0b85f; }
+</style>
+</head>
+<body>
+<h1>BAR佐助（サスケ） 画像モックアップ一覧（社内確認用・非公開）</h1>
+
+<div class="status">
+  <strong>✅ contact_v1.png 取り込み済み</strong> — 鈴木さんがGPT Imageで生成した10カット・1枚絵コンタクトシート。
+  目視確認結果: <code>_目視確認_contact_v1_20260915.md</code> 参照。
+</div>
+
+<div class="warn">
+  <strong>⚠ 動画化・送付前に要対応</strong>
+  <ul>
+    <li>🔴 <b>営業時間（20:00-3:00）</b>が未確定のまま。テロップに入れず確認待ちの仮置きと明記するか、クライアント確認を先に取る</li>
+    <li>🟡 <b>店主キャラクター</b>が関原様ご本人のイメージに合っているか、本人未確認（正式な参考写真が無いまま生成）</li>
+    <li>🟡 <b>S10の人数</b>が実際の店の収容人数（カウンター6席+ソファ席で最大8席・録音で本人言及）と比べて多すぎる（画像は15〜18名規模）</li>
+  </ul>
+</div>
+
+<div class="sheet">
+  <img src="contact_v1.png" alt="BAR佐助 10カット コンタクトシート v1">
+</div>
+
+<div class="legend" id="legend"></div>
+
+<script>
+const scenes = [
+  ["S01", "夜の徳島の通り", "（無テロップ）", "ok"],
+  ["S02", "ビル入口・エレベーターホール", "BAR 佐助", "ok"],
+  ["S03", "店主が一人で支度", "出会いとご縁の場", "ok"],
+  ["S04", "客が次々来店し賑わっていく", "飲み放題・歌い放題（時間無制限）", "ok"],
+  ["S05", "乾杯・盛り上がる瞬間", "（無テロップ・音楽の抑揚ポイント）", "ok"],
+  ["S06", "自家製料理とおつまみ", "佐助自家製の、おもてなし", "ok"],
+  ["S07", "はしご酒へ向かう夜の街", "（無テロップ）", "ok"],
+  ["S08", "「ただいま」と店に戻る", "「ただいま」って、帰れる店", "ok"],
+  ["S09", "〆のスープを渡す佐助さん", "（無テロップ）", "ok"],
+  ["S10", "賑わうカウンターの俯瞰", "男性¥3,000／女性¥1,000（時間無制限・飲み放題歌い放題）", "caution"],
+];
+const legend = document.getElementById("legend");
+scenes.forEach(([id, desc, telop, cls]) => {
+  const cell = document.createElement("div");
+  cell.className = "cell";
+  const mark = cls === "caution" ? "⚠️" : "✅";
+  cell.innerHTML = `<b>${id}</b> ${mark} ${desc}<br><span class="${cls}">テロップ: ${telop}</span>`;
+  legend.appendChild(cell);
+});
+</script>
+</body>
+</html>
