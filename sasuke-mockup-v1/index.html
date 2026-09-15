@@ -2,67 +2,167 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>BAR佐助 画像モックアップ一覧（社内確認用）</title>
+<title>BAR佐助（サスケ）／ AI動画モックアップ v1</title>
 <style>
-  body { font-family: "Hiragino Kaku Gothic ProN", sans-serif; background:#1a1210; color:#f4ece0; margin:0; padding:24px; }
-  h1 { font-size: 20px; }
-  .status { background:#243a24; border:1px solid #4a8a4a; padding:12px 16px; border-radius:8px; margin-bottom:16px; }
-  .warn { background:#3a2f1f; border:1px solid #a38333; padding:12px 16px; border-radius:8px; margin-bottom:24px; }
-  .warn ul { margin:8px 0 0; padding-left:20px; }
-  .sheet { max-width: 1200px; margin: 0 auto 24px; }
-  .sheet img { width:100%; display:block; border-radius:8px; border:1px solid #4a352c; }
-  .legend { display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:8px; max-width:1200px; margin: 0 auto; font-size:13px; }
-  .legend .cell { background:#241a16; border:1px solid #4a352c; border-radius:6px; padding:8px 10px; }
-  .legend .cell b { color:#e0c9a0; }
-  .ok { color:#8fce8f; }
-  .caution { color:#e0b85f; }
+:root{
+  --bg:#170f0c;--bg2:#1f1512;--card:#241a16;--line:#4a352c;
+  --text:#f4ece0;--muted:#c9a988;--accent:#e0b85f;--accent2:#e0793f;--warn:#e0793f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#150d0a 0%,#170f0c 100%);color:var(--text);font-family:"Hiragino Sans","Yu Gothic UI","Noto Sans JP",sans-serif;line-height:1.8;-webkit-font-smoothing:antialiased}
+.wrap{max-width:980px;margin:0 auto;padding:32px 18px 80px}
+
+header{padding:24px 0 22px;border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px;font-size:26px;letter-spacing:.02em}
+.lead{color:var(--muted);font-size:14px;margin:6px 0 14px}
+.badges{display:flex;gap:8px;flex-wrap:wrap}
+.badge{background:var(--bg2);border:1px solid var(--line);color:var(--accent);padding:5px 12px;border-radius:999px;font-size:12px}
+.badge.warm{color:var(--accent2);border-color:#5b3720}
+
+h2{margin:40px 0 14px;font-size:20px;border-left:4px solid var(--accent2);padding-left:12px}
+
+.stage-note{background:#241a16;border:1px solid var(--line);border-left:4px solid var(--accent);padding:14px 18px;border-radius:10px;font-size:13.5px;color:var(--muted);margin-bottom:18px}
+
+.scene-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px}
+.scene-table th,.scene-table td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.scene-table th{background:#1c130f;color:var(--accent);font-size:12px;letter-spacing:.08em;font-weight:700}
+.scene-table td.time{color:var(--accent);font-family:"SF Mono","Menlo",monospace;font-size:12px;white-space:nowrap;width:70px}
+.scene-table td.scene{color:#f0c98a;font-weight:700;width:96px}
+.scene-table td.img{width:220px}
+.scene-table td.img img{width:100%;display:block;border-radius:6px;border:1px solid var(--line)}
+.scene-table td.telop{color:var(--text);font-size:13px}
+.scene-table td.telop .muted{color:var(--muted);font-style:italic}
+.scene-table tr:last-child td{border-bottom:none}
+.scene-table tr.caution{background:#2a1c10}
+.scene-table tr.caution .telop::before{content:"⚠️ ";}
+
+.endcard{background:#0c1812;border:1px solid var(--line);border-left:4px solid var(--accent);padding:18px 22px;border-radius:12px;font-size:14px;white-space:pre-line;color:var(--text)}
+
+.check{background:#241a16;border:1px dashed var(--line);padding:18px 22px;border-radius:10px;font-size:14px}
+.check ul{margin:8px 0 0;padding-left:22px}
+.check li{margin:6px 0}
+.check b{color:var(--accent)}
+
+footer{margin-top:60px;text-align:center;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:22px}
 </style>
 </head>
 <body>
-<h1>BAR佐助（サスケ） 画像モックアップ一覧（社内確認用・非公開）</h1>
+<div class="wrap">
 
-<div class="status">
-  <strong>✅ contact_v1.png 取り込み済み</strong> — 鈴木さんがGPT Imageで生成した10カット・1枚絵コンタクトシート。
-  目視確認結果: <code>_目視確認_contact_v1_20260915.md</code> 参照。
+<header>
+  <h1>BAR佐助（サスケ）／ AI動画モックアップ v1</h1>
+  <p class="lead">関原 和徳 様　／　BUZZ＋・ジブリ風アニメ・約30秒　／　2026-09-15 ご確認用（社内・非公開）</p>
+  <div class="badges">
+    <span class="badge">徳島市秋田町</span>
+    <span class="badge">ジブリ風2Dアニメ</span>
+    <span class="badge">30秒・11カット</span>
+    <span class="badge warm">ナレーションなし・テロップ主体</span>
+  </div>
+</header>
+
+<h2>🖼 静止画モックアップ（画像段階のご確認用）</h2>
+<div class="stage-note">
+  現在は静止画（GPT Image生成）段階です。動画化（Lovart/Seedance投入）の前に、キャラクター・世界観のイメージが合っているかをまずご確認ください。
 </div>
 
-<div class="warn">
-  <strong>⚠ 動画化・送付前に要対応</strong>
+<h2>🎞 構成（秒×シーン×画×テロップ）</h2>
+<table class="scene-table">
+  <thead>
+    <tr><th>秒</th><th>シーン</th><th>画</th><th>テロップ</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="time">0:00-0:02</td>
+      <td class="scene">S1 導入</td>
+      <td class="img"><img src="crops/S01_night_street.png" alt="S1 徳島の夜の繁華街"></td>
+      <td class="telop"><span class="muted">（無テロップ・BGMイントロ）</span><br>徳島の夜の繁華街。提灯・ネオンの灯る通りをゆっくり奥へ</td>
+    </tr>
+    <tr>
+      <td class="time">0:02-0:04</td>
+      <td class="scene">S2 屋号</td>
+      <td class="img"><img src="crops/S02_building_entrance.png" alt="S2 ビル入口"></td>
+      <td class="telop"><b>BAR 佐助</b><br>雑居ビルのエレベーターホールへ吸い込まれるカメラ</td>
+    </tr>
+    <tr>
+      <td class="time">0:04-0:08</td>
+      <td class="scene">S3 開店</td>
+      <td class="img"><img src="crops/S03_owner_alone.png" alt="S3 店主が一人で支度"></td>
+      <td class="telop"><b>出会いとご縁の場</b><br>着物姿で髷を結った佐助さんが一人静かにグラスを拭く。カウンターに男性客が一人</td>
+    </tr>
+    <tr>
+      <td class="time">0:08-0:12</td>
+      <td class="scene">S4 賑わい</td>
+      <td class="img"><img src="crops/S04_filling_up.png" alt="S4 客が次々来店"></td>
+      <td class="telop"><b>飲み放題・歌い放題</b>（時間無制限）<br>扉が開くたびに客が増え、カウンターとソファ席が賑わっていく</td>
+    </tr>
+    <tr>
+      <td class="time">0:12-0:16</td>
+      <td class="scene">S5 乾杯</td>
+      <td class="img"><img src="crops/S05_toast.png" alt="S5 乾杯・盛り上がる瞬間"></td>
+      <td class="telop"><span class="muted">（無テロップ・ここで音楽の抑揚をつけて盛り上げる）</span><br>男性客・女性客・佐助さんが笑顔で乾杯 ※歌唱シーンは入れない</td>
+    </tr>
+    <tr>
+      <td class="time">0:16-0:19</td>
+      <td class="scene">S6 料理</td>
+      <td class="img"><img src="crops/S06_food_table.png" alt="S6 自家製料理"></td>
+      <td class="telop"><b>佐助自家製の、おもてなし</b><br>自家製ビーフシチューやおつまみを楽しそうに食べる客たち</td>
+    </tr>
+    <tr>
+      <td class="time">0:19-0:22</td>
+      <td class="scene">S7 はしご酒</td>
+      <td class="img"><img src="crops/S07_hopping_bars.png" alt="S7 夜の街へ"></td>
+      <td class="telop"><span class="muted">（無テロップ）</span><br>客たちが店を出て、夜の徳島の街へ歩き出す後ろ姿</td>
+    </tr>
+    <tr>
+      <td class="time">0:22-0:25</td>
+      <td class="scene">S8 帰還</td>
+      <td class="img"><img src="crops/S08_return.png" alt="S8 「ただいま」と店に戻る"></td>
+      <td class="telop"><b>「ただいま」って、帰れる店</b><br>同じ客たちが再び扉を開けて戻ってくる。佐助さんが笑顔で迎える</td>
+    </tr>
+    <tr>
+      <td class="time">0:25-0:27</td>
+      <td class="scene">S9 〆</td>
+      <td class="img"><img src="crops/S09_soup.png" alt="S9 〆のスープ"></td>
+      <td class="telop"><span class="muted">（無テロップ）</span><br>佐助さんが温かい〆のスープを差し出す。客がほっとした表情</td>
+    </tr>
+    <tr class="caution">
+      <td class="time">0:27-0:29</td>
+      <td class="scene">S10 俯瞰</td>
+      <td class="img"><img src="crops/S10_wide_crowd.png" alt="S10 賑わうカウンターの俯瞰"></td>
+      <td class="telop">男性¥3,000／女性¥1,000（時間無制限・飲み放題歌い放題）<br>人数が実際の収容人数（最大8席）より多く描かれています。要調整</td>
+    </tr>
+    <tr>
+      <td class="time">0:29-0:30</td>
+      <td class="scene">S11 エンド</td>
+      <td class="img" style="color:var(--muted);font-size:12px">（未生成・エンドカードのみ）</td>
+      <td class="telop">
+        <b>BAR 佐助</b><br>
+        徳島県徳島市秋田町1-50-1 アクティ異人館ビル5F<br>
+        090-5065-6480<br>
+        OPEN 20:00 - CLOSE 3:00 <span class="muted">※要確認</span><br>
+        Instagram @sasuke_0218
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>✅ ご確認いただきたい点</h2>
+<div class="check">
   <ul>
-    <li>🔴 <b>営業時間（20:00-3:00）</b>が未確定のまま。テロップに入れず確認待ちの仮置きと明記するか、クライアント確認を先に取る</li>
-    <li>🟡 <b>店主キャラクター</b>が関原様ご本人のイメージに合っているか、本人未確認（正式な参考写真が無いまま生成）</li>
-    <li>🟡 <b>S10の人数</b>が実際の店の収容人数（カウンター6席+ソファ席で最大8席・録音で本人言及）と比べて多すぎる（画像は15〜18名規模）</li>
+    <li><b>営業時間</b>（OPEN 20:00 - CLOSE 3:00）：現行も有効かご確認ください（唯一未確定の事実情報）</li>
+    <li><b>佐助さんのキャラクターイメージ</b>：着物・髷スタイルで描いていますが、ご本人のイメージに合っているかご確認ください（正式な正面・横の参考写真がまだ揃っておらず、店内自作動画からの仮参照で生成しています）</li>
+    <li><b>S10の人数</b>：カウンター6席＋ソファ席で最大8席とのことですが、画像は賑わい演出で15〜18名規模になっています。動画化前に人数を調整するか、演出上の誇張としてこのまま進めるかご意向をお聞かせください</li>
+    <li><b>キャッチコピー</b>：文言はお任せいただいていますが、「出会い・ご縁・交流」のトーンで統一予定です。ご希望の方向性があれば教えてください</li>
   </ul>
 </div>
 
-<div class="sheet">
-  <img src="contact_v1.png" alt="BAR佐助 10カット コンタクトシート v1">
+<footer>
+  BAR佐助（サスケ）／ AI動画モックアップ v1（2026-09-15・社内確認用）<br>
+  制作：株式会社ランバード
+</footer>
+
 </div>
-
-<div class="legend" id="legend"></div>
-
-<script>
-const scenes = [
-  ["S01", "夜の徳島の通り", "（無テロップ）", "ok"],
-  ["S02", "ビル入口・エレベーターホール", "BAR 佐助", "ok"],
-  ["S03", "店主が一人で支度", "出会いとご縁の場", "ok"],
-  ["S04", "客が次々来店し賑わっていく", "飲み放題・歌い放題（時間無制限）", "ok"],
-  ["S05", "乾杯・盛り上がる瞬間", "（無テロップ・音楽の抑揚ポイント）", "ok"],
-  ["S06", "自家製料理とおつまみ", "佐助自家製の、おもてなし", "ok"],
-  ["S07", "はしご酒へ向かう夜の街", "（無テロップ）", "ok"],
-  ["S08", "「ただいま」と店に戻る", "「ただいま」って、帰れる店", "ok"],
-  ["S09", "〆のスープを渡す佐助さん", "（無テロップ）", "ok"],
-  ["S10", "賑わうカウンターの俯瞰", "男性¥3,000／女性¥1,000（時間無制限・飲み放題歌い放題）", "caution"],
-];
-const legend = document.getElementById("legend");
-scenes.forEach(([id, desc, telop, cls]) => {
-  const cell = document.createElement("div");
-  cell.className = "cell";
-  const mark = cls === "caution" ? "⚠️" : "✅";
-  cell.innerHTML = `<b>${id}</b> ${mark} ${desc}<br><span class="${cls}">テロップ: ${telop}</span>`;
-  legend.appendChild(cell);
-});
-</script>
 </body>
 </html>
