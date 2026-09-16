@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>AquaMare AI動画 モックv2｜社内確認</title>
+<style>
+
+:root{
+  --bg:#f5f8fa; --panel:#ffffff; --ink:#1e2b33; --muted:#5c7381;
+  --line:#dde6ea; --accent:#1f7a9e; --accent-soft:#e6f3f8;
+  --warn:#b4562f; --warn-soft:#fbeee7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101819; --panel:#182325; --ink:#e7f0f2; --muted:#95acb3;
+    --line:#28373a; --accent:#5fc2e6; --accent-soft:#1b3038;
+    --warn:#e39a72; --warn-soft:#2e231d;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101819; --panel:#182325; --ink:#e7f0f2; --muted:#95acb3;
+  --line:#28373a; --accent:#5fc2e6; --accent-soft:#1b3038;
+  --warn:#e39a72; --warn-soft:#2e231d;
+}
+*{box-sizing:border-box}
+.nb{white-space:nowrap}
+h3.seq{font-size:1.02rem; margin:30px 0 10px; color:var(--accent)}
+h3.seq .len{font-weight:400; font-size:.84rem; color:var(--muted)}
+table.script{min-width:900px; font-size:.86rem}
+table.script td.sec{white-space:nowrap; color:var(--muted); font-variant-numeric:tabular-nums}
+table.script td.tl{font-weight:700}
+table.script td:first-child{color:var(--muted); text-align:right; width:2.6em}
+.src{font-size:.78rem; color:var(--muted); font-weight:400}
+
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+  line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:980px; margin:0 auto; padding:0 20px 80px}
+header{padding:56px 0 32px; border-bottom:1px solid var(--line); margin-bottom:40px}
+.eyebrow{font-size:.8rem; letter-spacing:.14em; color:var(--accent); font-weight:700; margin:0 0 10px}
+h1{font-size:clamp(1.6rem,4.6vw,2.3rem); margin:0 0 14px; letter-spacing:.01em; line-height:1.35}
+.meta{color:var(--muted); font-size:.9rem; margin:0}
+.badge{display:inline-block; background:var(--warn-soft); color:var(--warn); border:1px solid currentColor;
+  border-radius:999px; padding:4px 13px; font-size:.78rem; font-weight:700; margin-top:16px}
+h2{font-size:1.22rem; margin:52px 0 16px; padding-bottom:9px; border-bottom:2px solid var(--accent-soft)}
+h3{font-size:1rem; margin:0 0 4px}
+p{margin:0 0 14px}
+.lead{font-size:1.02rem; color:var(--ink)}
+.videos{display:grid; gap:32px; margin:8px 0 0}
+.card{background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden}
+.card video{display:block; width:100%; height:auto; background:#000}
+.card .body{padding:18px 20px 20px}
+.tag{display:inline-block; font-size:.74rem; font-weight:700; letter-spacing:.06em;
+  background:var(--accent-soft); color:var(--accent); border-radius:5px; padding:3px 9px; margin-bottom:9px}
+.card p{margin:0; color:var(--muted); font-size:.92rem}
+.dl{display:inline-block; margin-top:12px; font-size:.85rem; font-weight:700; color:var(--accent); text-decoration:none; border:1px solid var(--accent); border-radius:7px; padding:6px 13px}
+.dl:hover{background:var(--accent-soft)}
+.card .why{margin-top:9px; color:var(--ink); font-size:.92rem}
+.tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 0 16px}
+table{border-collapse:collapse; width:100%; min-width:560px; font-size:.9rem}
+th,td{border:1px solid var(--line); padding:10px 12px; text-align:left; vertical-align:top}
+th{background:var(--accent-soft); color:var(--ink); font-weight:700; white-space:nowrap}
+td code{background:var(--accent-soft); padding:1px 5px; border-radius:4px; font-size:.86em}
+.note{background:var(--panel); border-left:3px solid var(--accent); border-radius:0 10px 10px 0;
+  padding:15px 18px; margin:0 0 18px}
+.note.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+.note p:last-child{margin-bottom:0}
+ol.checks{counter-reset:c; list-style:none; padding:0; margin:0}
+ol.checks li{counter-increment:c; position:relative; padding:14px 0 14px 46px; border-bottom:1px solid var(--line)}
+ol.checks li::before{content:counter(c); position:absolute; left:0; top:14px; width:28px; height:28px;
+  background:var(--accent); color:#fff; border-radius:50%; display:grid; place-items:center;
+  font-size:.82rem; font-weight:700}
+ol.checks li:last-child{border-bottom:none}
+ol.checks .q{font-weight:700; display:block}
+ol.checks .a{color:var(--muted); font-size:.9rem}
+.scenegrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; margin:8px 0 0}
+.scene{background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden}
+.scene img{display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; background:#000}
+.scene .body{padding:10px 12px 12px}
+.scene .id{font-size:.72rem; font-weight:700; color:var(--accent); letter-spacing:.06em}
+.scene .tl{font-size:.82rem; margin-top:3px; line-height:1.5}
+.ref{background:var(--panel); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin:0 0 18px}
+.ref .yt{position:relative; width:100%; aspect-ratio:16/9; background:#000}
+.ref .yt iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.ref .body{padding:16px 20px 18px}
+.ref h3{margin:0 0 6px}
+.ref .src{font-size:.82rem; color:var(--muted); margin:0 0 10px}
+.ref .src a{color:var(--accent)}
+footer{margin-top:60px; padding-top:22px; border-top:1px solid var(--line); color:var(--muted); font-size:.84rem}
+strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">RUNBIRD ／ AI動画事業</p>
+  <h1>AquaMare<br><span class="nb">AI動画 1本目</span> <span class="nb">モック v2</span></h1>
+  <p class="meta">代表：横田 冬馬 様　／　熱帯魚・サンゴ販売・水槽設置メンテナンス・専門学校講師業</p>
+  <span class="badge">社内確認用（クライアント未提示）</span>
+</header>
+
+<p class="lead">
+ヒアリングシートと初回打ち合わせの録音をもとに、<strong>「こういう動画になります」を先に見てもらう</strong>ため、
+ほぼ完成形の状態まで作ってあります。現在は静止画をつないだアニマティック（Ken Burnsでゆっくり動かした状態）で、
+ナレーション・BGMはまだ載せていません。実際の動画化（Lovart）はこれから行います。
+</p>
+
+<div class="note warn">
+<p><strong>⚠️ クライアントへはまだ送付できません。</strong>
+①尺・ナレーション・BGMの正式希望が未確認（現状仮置き）　②横田さんの顔写真・Tシャツ・ホワイトボード講義風景・個人宅設置・店舗外観の5点が未着（受領済みは店内水槽7枚のみ）
+③動画スタイル（アニメ風 vs テレビCM風プロモーションムービー）が、ヒアリングシートと打ち合わせ録音で食い違う可能性があり最終確認中
+　の3点が残っています。社内の方向性確認用としてご覧ください。</p>
+</div>
+
+<h2>モック動画</h2>
+<div class="videos">
+  <div class="card">
+    <video controls preload="metadata" playsinline poster="aquamare/poster_v1.jpg">
+      <source src="aquamare/v1.mp4" type="video/mp4">
+    </video>
+    <div class="body">
+      <span class="tag">1本目</span>
+      <h3>熱帯魚・サンゴ専門店 AquaMare ／ 来店・集客訴求</h3>
+      <p>48.6秒 ／ 1920×1080 ／ 音声なし（アニマティック）</p>
+      <p class="why">冒頭は水槽の光を<strong>「ぼやけた状態から一気にピントが合う」</strong>演出で始めます。
+      これは鈴木さんが指定した「ART AQUARIUM MUSEUM GINZA×TOOBOEコラボCM」の冒頭手法を参考にしたもので、
+      見た目のモチーフ（金魚・提灯）はAquaMare本来の店内（サンゴ・海水魚水槽）に差し替えています。</p>
+      <a class="dl" href="aquamare/v1.mp4" download>ダウンロード</a>
+    </div>
+  </div>
+</div>
+
+<h2>演出のキモ</h2>
+<ol class="checks">
+  <li><span class="q">冒頭は「ぼやけ→急に鮮明」でAquaMareの水槽そのものを見せる</span>
+      <span class="a">鈴木さん指定の参考動画（ART AQUARIUM MUSEUM GINZA×TOOBOEコラボCM）は演出手法だけを踏襲し、モチーフ（金魚・提灯）は使わず実店舗のサンゴ・海水魚水槽で表現。</span></li>
+  <li><span class="q">専門学校での講義シーンで権威性を示す（初回モック漏れを追加）</span>
+      <span class="a">打ち合わせ録音で「ホワイトボードを使って学生に教えている方が、大勢に話すより一目で『先生っぽい・知識がありそう』と伝わる」と強調されており、専用シーンを追加しました。</span></li>
+  <li><span class="q">3パターンの顧客像で「誰のための店か」を描く</span>
+      <span class="a">家族（ファインディングニモ風・ナンヨウハギ）／単身の個人事業主（緑基調・カージナルテトラ等）／50代後半夫婦（キイロハギ・3秒の短尺カット）と、魚種までヒアリングシート通りに描き分けています。</span></li>
+  <li><span class="q">「遠隔サポート」と「来店して見せる」を混同しない</span>
+      <span class="a">単身男性のシーンは、ヒアリングシート原文「休日にお店に来てもらって、スマホで『今こういう感じなんだよ』って見せてくれる」に忠実な<strong>来店・対面</strong>のシーンとして設計（自宅からの遠隔ビデオ通話ではない）。</span></li>
+  <li><span class="q">CTAはInstagram一本に統一</span>
+      <span class="a">QRコード・YouTubeバナーの遷移先とも打ち合わせ録音でInstagramに確定。住所・電話番号はそのまま掲載、営業時間は「Instagramでご確認ください」表記に統一しています。</span></li>
+</ol>
+
+<h2>構成・台本（13シーン＋CTA／48.6秒）</h2>
+<div class="tablewrap">
+<table class="script">
+  <thead><tr><th>#</th><th>秒</th><th>映像</th><th>テロップ</th></tr></thead>
+  <tbody>
+  <tr><td>S1</td><td class="sec">0:00-0:03</td><td>水槽の光がぼやけた状態から一気にピントが合う（人物なし）</td><td class="tl">—</td></tr>
+  <tr><td>S2</td><td class="sec">0:03-0:07</td><td>単身男性30代、一人部屋でスマホを見る</td><td class="tl">一人の時間、なんだか物足りない</td></tr>
+  <tr><td>S3</td><td class="sec">0:07-0:10</td><td>父親が困り顔、息子はスマホに夢中、母親は奥に</td><td class="tl">子どもと何を一緒に楽しもう</td></tr>
+  <tr><td>S4</td><td class="sec">0:10-0:13</td><td><strong>（追加）</strong>専門学校の実習室、ホワイトボードで20代の学生に講義する横田さん</td><td class="tl">専門学校で講師も務める、確かな知識</td></tr>
+  <tr><td>S5</td><td class="sec">0:13-0:17</td><td>AquaMare店内、横田さんが水槽の前で控えめに案内</td><td class="tl">専門知識で、はじめての一歩を全力サポート</td></tr>
+  <tr><td>S6</td><td class="sec">0:17-0:21</td><td>単身男性が店内で水草水槽（カージナルテトラ等）を眺める</td><td class="tl">一人でも、じっくり楽しめる趣味に</td></tr>
+  <tr><td>S7</td><td class="sec">0:21-0:25</td><td>家族3人が海水魚水槽（イソギンチャク・<strong>ナンヨウハギ</strong>）を見て息子が指差す</td><td class="tl">家族みんなで夢中になれる</td></tr>
+  <tr><td>S8</td><td class="sec">0:25-0:28</td><td>50代後半夫婦が3秒登場、リーフタンク（<strong>キイロハギ</strong>）</td><td class="tl">—</td></tr>
+  <tr><td>S9</td><td class="sec">0:28-0:32</td><td>横田さんが個人宅で水槽メンテナンス</td><td class="tl">設置からメンテナンスまで、<br>解決するまでずっと伴走</td></tr>
+  <tr><td>S10</td><td class="sec">0:32-0:36</td><td><strong>（修正）</strong>単身男性が休日に来店し、スマホで自宅水槽を横田さんに見せる（対面・来店シーン）</td><td class="tl">「今こんな感じなんだよ」がうれしい時間</td></tr>
+  <tr><td>S11</td><td class="sec">0:36-0:39</td><td>3カット畳みかけ：家族／単身男性／夫婦</td><td class="tl">にぎやかに／自分だけの趣味に／会話が増えました、<br>旦那が留守の日も</td></tr>
+  <tr><td>S12</td><td class="sec">0:39-0:43</td><td>店内引きの全景からロゴがフェードイン</td><td class="tl">AquaMare</td></tr>
+  <tr><td>S13</td><td class="sec">0:43-0:48.6</td><td>エンドカード</td><td class="tl">AquaMare／instagram: @aquamare_japan<br>北海道札幌市中央区南2条西24丁目2-17 カワムラビル 1階<br>090-3116-5765／営業時間はInstagramでご確認ください</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>シーン画像（GPT Image生成・アニメ風／新海誠風）</h2>
+<div class="scenegrid">
+  <div class="scene"><img src="aquamare/s01_hook.jpg" alt="S1 フック"><div class="body"><span class="id">S1</span><div class="tl">水槽フック</div></div></div>
+  <div class="scene"><img src="aquamare/s02_problem_man.jpg" alt="S2"><div class="body"><span class="id">S2</span><div class="tl">単身男性・Problem</div></div></div>
+  <div class="scene"><img src="aquamare/s03_problem_family.jpg" alt="S3"><div class="body"><span class="id">S3</span><div class="tl">家族・Problem</div></div></div>
+  <div class="scene"><img src="aquamare/s04b_school_teaching.jpg" alt="S4"><div class="body"><span class="id">S4</span><div class="tl">専門学校の講義（追加）</div></div></div>
+  <div class="scene"><img src="aquamare/s04_shop_owner.jpg" alt="S5"><div class="body"><span class="id">S5</span><div class="tl">店主・店内案内</div></div></div>
+  <div class="scene"><img src="aquamare/s05_solo_man_shop.jpg" alt="S6"><div class="body"><span class="id">S6</span><div class="tl">単身男性・店内</div></div></div>
+  <div class="scene"><img src="aquamare/s06_family_shop.jpg" alt="S7"><div class="body"><span class="id">S7</span><div class="tl">家族・店内（ナンヨウハギ）</div></div></div>
+  <div class="scene"><img src="aquamare/s07_couple.jpg" alt="S8"><div class="body"><span class="id">S8</span><div class="tl">夫婦（キイロハギ）</div></div></div>
+  <div class="scene"><img src="aquamare/s08_maintenance.jpg" alt="S9"><div class="body"><span class="id">S9</span><div class="tl">個人宅メンテナンス</div></div></div>
+  <div class="scene"><img src="aquamare/s09b_shop_visit_phone.jpg" alt="S10"><div class="body"><span class="id">S10</span><div class="tl">来店・スマホで近況報告（修正）</div></div></div>
+  <div class="scene"><img src="aquamare/s09_remote_support.jpg" alt="参考"><div class="body"><span class="id">参考</span><div class="tl">初版（自宅通話案・不採用）</div></div></div>
+  <div class="scene"><img src="aquamare/s11_wide_shop.jpg" alt="S12"><div class="body"><span class="id">S12</span><div class="tl">店内全景・ロゴ着地</div></div></div>
+</div>
+
+<h2>参考にした動画</h2>
+<p>業態が直接通じるもの（熱帯魚・サンゴ・アクアリウム関連の実在CM）を優先し、
+<strong>サムネイルの実サイズで生存確認</strong>しています。</p>
+<div class="ref">
+  <div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/jjvoaMAsbtw" title="ART AQUARIUM MUSEUM GINZA×TOOBOE コラボCM" loading="lazy" allowfullscreen></iframe></div>
+  <div class="body">
+    <h3>ART AQUARIUM MUSEUM GINZA×TOOBOE コラボCM</h3>
+    <p class="src">ART AQUARIUM MUSEUM アートアクアリウム美術館　/　<a href="https://youtu.be/jjvoaMAsbtw" target="_blank" rel="noopener">YouTubeで見る</a>　（生存確認済み）</p>
+    <p><strong>鈴木さん最優先指定。</strong>「冒頭がすごく印象深い、一番いい」とのフィードバックを受け、
+    <strong>「ぼやけた状態から急に鮮明な画が現れる」冒頭の技法だけ</strong>をS1フックに移植しました（モチーフの金魚・提灯は使わず、AquaMare実店舗のサンゴ・海水魚水槽で表現）。</p>
+  </div>
+</div>
+<div class="ref">
+  <div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/ckDB_tDkJOY" title="アートアクアリウム美術館GINZAのご紹介" loading="lazy" allowfullscreen></iframe></div>
+  <div class="body">
+    <h3>アートアクアリウム美術館GINZAのご紹介</h3>
+    <p class="src">MITSUKOSHI 三越 公式チャンネル　/　<a href="https://youtu.be/ckDB_tDkJOY" target="_blank" rel="noopener">YouTubeで見る</a>　（生存確認済み）</p>
+    <p>同美術館の紹介映像。水槽演出・照明のトーンの参考として分析しました。</p>
+  </div>
+</div>
+<div class="ref">
+  <div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/SntTy6Kv7t4" title="君の名は。×サントリー 南アルプスの天然水" loading="lazy" allowfullscreen></iframe></div>
+  <div class="body">
+    <h3>君の名は。×サントリー 南アルプスの天然水 アニメCM</h3>
+    <p class="src">新海誠／コミックス・ウェーブ・フィルム　/　<a href="https://www.youtube.com/watch?v=SntTy6Kv7t4" target="_blank" rel="noopener">YouTubeで見る</a>　（生存確認済み）</p>
+    <p>ヒアリングシート指定の「アニメ風（新海誠風）」の絵作り参考。水・光の透明感の演出をシーン画像に反映しています。</p>
+  </div>
+</div>
+
+<h2>ヒアリング内容の網羅チェック（初回モックからの修正点）</h2>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>指摘</th><th>初回モックの状態</th><th>対応</th></tr></thead>
+  <tbody>
+  <tr><td>専門学校でホワイトボードを使い学生に教えているシーン</td><td>12シーン構成に漏れていた</td><td>S4として新規追加</td></tr>
+  <tr><td>単身男性のシーン</td><td>「自宅からビデオ通話で遠隔サポート」と誤設計</td><td>「休日に来店してスマホで対面で見せる」に修正（S10）</td></tr>
+  <tr><td>家族シーンの魚種</td><td>キイロハギを誤使用</td><td>ナンヨウハギ（ドリー配色）に修正</td></tr>
+  <tr><td>夫婦シーンの魚種</td><td>魚種の明記なし</td><td>キイロハギを明示</td></tr>
+  <tr><td>老夫婦「旦那が留守でも世話をしている」ニュアンス</td><td>テロップに未反映</td><td>S11のテロップに追記</td></tr>
+  <tr><td>参考動画</td><td>汎用的な新海誠風CMのみ</td><td>鈴木さん指定のART AQUARIUM MUSEUM GINZA×TOOBOEを最優先参考に追加</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>未確認・仮置き事項</h2>
+<div class="note">
+<p><strong>横田さんから今後LINEでいただく予定の写真（打ち合わせ録音より）：</strong><br>
+①ホワイトボードで学生に講義している様子　②個人宅でのメンテナンス・設置の様子　③Tシャツ（現在のポロシャツ姿の可能性あり）を着用した横田さんの写真　④店舗の内装・外装写真（内装は受領済み7枚で代替、外装は未着）</p>
+<p><strong>その他仮置き：</strong>尺（45〜48秒で仮置き）／ナレーション有無・声質（落ち着いた女性ナレーションで仮置き）／BGMイメージ（水・自然を感じる穏やかなトーンで仮置き）</p>
+<p><strong>⚠️ 動画スタイルの最終確認が必要：</strong>ヒアリングシートは「アニメ風（新海誠風）」明記だが、打ち合わせ録音では営業担当が阿蘇ブルーベリーオーシャンファームのようなテレビCM風プロモーションムービーも提示し、家族層への訴求で有利と推奨している箇所がある（文字起こし精度が低く断定不可）。本モックはスプシ優先でアニメ風のまま作成。</p>
+</div>
+
+<h2>品質チェックの状況</h2>
+<div class="tablewrap">
+<table>
+  <thead><tr><th>ゲート</th><th>結果</th></tr></thead>
+  <tbody>
+  <tr><td><code>/fact-check</code>（正本 facts.json との機械照合）</td><td><strong>ブロッカー0</strong>（住所の「北海道」抜け・「1F」表記ゆれを検出→台本・動画とも修正済み）</td></tr>
+  <tr><td><code>/telop-check</code>（テロップの機械チェック＋目視二重確認）</td><td><strong>ブロッカー0</strong>。機械の指摘15→12件は原寸目視で全てOCRの誤読（水槽テクスチャ・図解内の文字）と確認。独立目視（Gate3）でS12ロゴ抜け・カットの動きの弱さを発見し修正済み</td></tr>
+  <tr><td>目視（制作側・二重）</td><td>店主の手の破綻／メンテナンスシーンの手の破綻／店内全景の画風不一致　の3点を発見し再生成、いずれも解消確認済み</td></tr>
+  <tr><td><code>/video-check</code>・<code>/video-qa-relay</code></td><td><strong>未実施。</strong>クライアントへ出す段になったら、別環境の別AIによる独立チェックを通します</td></tr>
+  </tbody>
+</table>
+</div>
+
+<footer>
+  <p>株式会社ランバード ／ AI動画事業　制作：株式会社斗（hishaku）　作成日 2026-09-16</p>
+  <p>このページは検索エンジンに登録されません（noindex）。関係者以外に共有しないでください。</p>
+</footer>
+
+</div>
+</body>
+</html>
