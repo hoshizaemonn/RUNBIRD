@@ -92,17 +92,29 @@
 .price-card .amount small{font-size:14px;color:var(--muted);margin-left:4px}
 .price-card>p{font-size:12px;color:var(--muted);margin-top:8px}
 .price-card--accent{border-color:var(--gold)}
-/* System: early-bird note (entrance price panel) + starter pack note (poker chip panel) */
+/* System: early-bird note (entrance price panel) */
 .early-bird-note{display:flex;align-items:center;gap:12px;border:1px solid var(--gold);background:#0000001a;padding:14px 16px;margin-top:22px;text-align:left;width:100%}
 .early-bird-badge{flex-shrink:0;font:600 11px Arial,sans-serif;letter-spacing:.08em;color:var(--bg);background:var(--gold);padding:6px 10px;white-space:nowrap}
 .early-bird-note p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
 .early-bird-note strong{color:var(--gold-light);font-weight:600}
 .early-bird-note small{display:block;color:#8f9d8e;font-size:11px;margin-top:2px}
-.starter-pack-note{display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);background:var(--panel);padding:18px 20px;margin-top:20px}
-.starter-pack-badge{align-self:flex-start;font:600 11px Arial,sans-serif;letter-spacing:.08em;color:var(--bg);background:var(--gold);padding:6px 10px}
-.starter-pack-note p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}
-.starter-pack-note strong{color:var(--gold-light);font-weight:600}
-.starter-pack-note small{color:#8f9d8e}
+.early-bird-note--strong{background:linear-gradient(135deg,#dfbd7a22,#dfbd7a0a);border-width:2px;padding:20px 22px;gap:18px}
+.early-bird-note--strong .early-bird-badge{font-size:13px;padding:9px 14px}
+.early-bird-note--strong p{font-size:16px;color:var(--white)}
+.early-bird-note--strong strong{font-size:20px}
+.early-bird-note--strong small{font-size:13px;margin-top:4px}
+/* System: standalone starter-pack feature block (moved out of chip table for visibility) */
+.starter-pack-feature{display:flex;align-items:center;gap:32px;margin-top:34px;border:2px solid var(--gold);background:linear-gradient(135deg,#dfbd7a1f,#dfbd7a08);padding:26px 32px}
+.starter-pack-feature-media{position:relative;flex-shrink:0;width:150px;height:150px;overflow:hidden;border:1px solid var(--gold)}
+.starter-pack-feature-media img{width:100%;height:100%;object-fit:cover}
+.starter-pack-feature-body{display:flex;flex-direction:column;gap:10px}
+.starter-pack-feature-badge{align-self:flex-start;font:700 13px Arial,sans-serif;letter-spacing:.1em;color:var(--bg);background:var(--gold);padding:8px 16px}
+.starter-pack-feature-price{font:400 clamp(28px,3vw,38px) Georgia,serif;color:var(--gold-light);margin:0}
+.starter-pack-feature-price strong{color:var(--gold-light)}
+.starter-pack-feature-body>p:not(.starter-pack-feature-price){font-size:14px;line-height:1.8;color:var(--muted);margin:0}
+.starter-pack-feature-body strong{color:var(--white);font-weight:600}
+.starter-pack-feature-body small{color:#8f9d8e;font-size:12px}
+@media(max-width:640px){.starter-pack-feature{flex-direction:column;align-items:flex-start;gap:18px;padding:22px}.starter-pack-feature-media{width:100%;height:180px}}
 /* System: table charge note (drink-only panel) — emphasised like early-bird/starter-pack notes */
 .table-charge-note{display:flex;align-items:center;gap:12px;border:1px solid var(--gold);background:#0000001a;padding:14px 16px;margin-bottom:22px}
 .table-charge-badge{flex-shrink:0;font:600 11px Arial,sans-serif;letter-spacing:.08em;color:var(--bg);background:var(--gold);padding:6px 10px;white-space:nowrap}
