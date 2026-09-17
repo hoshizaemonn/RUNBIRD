@@ -92,6 +92,17 @@
 .price-card .amount small{font-size:14px;color:var(--muted);margin-left:4px}
 .price-card>p{font-size:12px;color:var(--muted);margin-top:8px}
 .price-card--accent{border-color:var(--gold)}
+/* System: early-bird note (entrance price panel) + starter pack note (poker chip panel) */
+.early-bird-note{display:flex;align-items:center;gap:12px;border:1px solid var(--gold);background:#0000001a;padding:14px 16px;margin-top:22px;text-align:left;width:100%}
+.early-bird-badge{flex-shrink:0;font:600 11px Arial,sans-serif;letter-spacing:.08em;color:var(--bg);background:var(--gold);padding:6px 10px;white-space:nowrap}
+.early-bird-note p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+.early-bird-note strong{color:var(--gold-light);font-weight:600}
+.early-bird-note small{display:block;color:#8f9d8e;font-size:11px;margin-top:2px}
+.starter-pack-note{display:flex;flex-direction:column;gap:8px;border:1px solid var(--line);background:var(--panel);padding:18px 20px;margin-top:20px}
+.starter-pack-badge{align-self:flex-start;font:600 11px Arial,sans-serif;letter-spacing:.08em;color:var(--bg);background:var(--gold);padding:6px 10px}
+.starter-pack-note p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}
+.starter-pack-note strong{color:var(--gold-light);font-weight:600}
+.starter-pack-note small{color:#8f9d8e}
 /* About / Access: single-row editorial photo block (reuses scene-row skeleton generically) */
 .section-note{margin-top:26px;font-size:12px;color:#8f9d8e}
 /* Access: feature strip under the access copy */
@@ -118,6 +129,7 @@
 .related-post .rp-label{font:10px Arial,sans-serif;letter-spacing:.1em;color:var(--gold)}
 .related-post h4{font-size:15px;margin-top:6px;font-weight:600}
 @media(max-width:800px){.price-cards{grid-template-columns:1fr}.access-features{grid-template-columns:1fr;gap:18px}.blog-featured{grid-template-columns:1fr;gap:22px}.blog-featured .blog-thumb img{height:auto;aspect-ratio:1.5}}
+@media(max-width:580px){.early-bird-note{flex-direction:column;align-items:flex-start;gap:8px}.recruit-row{grid-template-columns:1fr;gap:6px;padding:16px 4px}}
 /* ===== access.html 再構成 (2026-09-15): 写真カルーセル / 地図 / 詳細情報リスト / お客様の声 (Bee構成参考) ===== */
 /* Carousel: Bee(bee-style.jp/shop/bee/sendai.html)実測(メインスライド約1000px・左右に次スライドが少し覗く)に合わせ、
    フルブリードをやめてコンテナ幅に収め、外側パディング分だけ隣のスライドが覗く構成に変更 (2026-09-15 鈴木さん指摘#1,#2) */
@@ -232,6 +244,13 @@
 .final-cta-buttons .tel-button:hover{background:#d8b97f14}
 @media(max-width:580px){.access-tel{flex-direction:column;align-items:flex-start;gap:10px}.final-cta-buttons .tel-button{width:100%;justify-content:center}}
 /* 採用情報ページ (recruit.html) — 準備中の告知ブロック */
+.recruit-adjusting-note{display:flex;align-items:flex-start;gap:10px;max-width:820px;margin:0 auto 40px;padding:16px 20px;border:1px solid var(--gold);background:#00000020;font-size:12px;line-height:1.8;color:var(--muted)}
+.recruit-adjusting-note>span{color:var(--gold);font-weight:600;flex-shrink:0}
+.recruit-adjusting-note>p{margin:0}
+.recruit-table{max-width:820px;margin:0 auto 60px;border-top:1px solid var(--line)}
+.recruit-row{display:grid;grid-template-columns:160px 1fr;gap:20px;padding:18px 4px;border-bottom:1px solid var(--line)}
+.recruit-th{font:600 13px Arial,sans-serif;letter-spacing:.05em;color:var(--gold)}
+.recruit-td{font-size:14px;color:#dfe3dc;line-height:1.8}
 .recruit-notice{max-width:720px;margin:0 auto;text-align:center;padding:60px 40px;border:1px solid #d8b97f55;background:#171d1a}
 .recruit-notice .point-suit{display:block;font:34px Georgia,serif;color:var(--gold);margin-bottom:18px}
 .recruit-notice h2{font-size:clamp(24px,3vw,32px);margin-bottom:20px;line-height:1.6}
