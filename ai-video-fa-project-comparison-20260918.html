@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FA Project vs RUNBIRD AI動画 比較</title>
+<style>
+  :root{
+    --bg:#f4f5f7;
+    --card:#ffffff;
+    --ink:#1a1d29;
+    --sub:#6b7280;
+    --line:#e5e7eb;
+    --fa:#9ca3af;
+    --fa-bg:#f3f4f6;
+    --rb:#2563eb;
+    --rb-bg:#eff6ff;
+    --good:#16a34a;
+    --bad:#dc2626;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0f1117;
+      --card:#1a1d27;
+      --ink:#f3f4f6;
+      --sub:#9ca3af;
+      --line:#2a2e3a;
+      --fa:#6b7280;
+      --fa-bg:#20232d;
+      --rb:#60a5fa;
+      --rb-bg:#152238;
+      --good:#4ade80;
+      --bad:#f87171;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:24px 16px 48px;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;}
+  header{text-align:center;margin-bottom:24px;}
+  header .eyebrow{font-size:12px;letter-spacing:.08em;color:var(--sub);font-weight:600;}
+  header h1{font-size:22px;margin:6px 0 4px;line-height:1.4;}
+  header p{font-size:13px;color:var(--sub);margin:0;}
+
+  .verdict{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:18px 20px;
+    margin-bottom:20px;
+    box-shadow:0 1px 3px rgba(0,0,0,.05);
+  }
+  .verdict .label{font-size:12px;color:var(--sub);font-weight:600;margin-bottom:8px;}
+  .verdict .row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:14px;}
+  .verdict .row + .row{border-top:1px dashed var(--line);}
+  .pill{
+    display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;
+  }
+  .pill.rb{background:var(--rb-bg);color:var(--rb);}
+  .pill.fa{background:var(--fa-bg);color:var(--fa);}
+  .pill.even{background:var(--fa-bg);color:var(--sub);}
+
+  .vs-head{
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    gap:8px;margin:28px 0 12px;
+  }
+  .vs-head .side{text-align:center;font-weight:700;font-size:14px;padding:8px 4px;border-radius:10px;}
+  .vs-head .side.fa{background:var(--fa-bg);color:var(--fa);}
+  .vs-head .side.rb{background:var(--rb-bg);color:var(--rb);}
+  .vs-head .vs{font-size:11px;color:var(--sub);font-weight:700;}
+
+  .items{display:flex;flex-direction:column;gap:10px;}
+  .item{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px 16px;
+  }
+  .item .title{font-size:13px;font-weight:700;color:var(--sub);margin-bottom:10px;display:flex;align-items:center;gap:6px;}
+  .item .cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .item .col{border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.5;}
+  .item .col.fa{background:var(--fa-bg);color:var(--ink);}
+  .item .col.rb{background:var(--rb-bg);color:var(--ink);}
+  .item .col .who{font-size:10px;font-weight:700;letter-spacing:.04em;margin-bottom:4px;}
+  .item .col.fa .who{color:var(--fa);}
+  .item .col.rb .who{color:var(--rb);}
+  .item .col .mark{font-weight:700;}
+  .item .col .mark.good{color:var(--good);}
+  .item .col .mark.bad{color:var(--bad);}
+
+  .note{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px 18px;
+    margin-top:22px;
+    font-size:13px;
+    line-height:1.7;
+    color:var(--ink);
+  }
+  .note .title{font-size:12px;font-weight:700;color:var(--sub);margin-bottom:6px;}
+
+  footer{text-align:center;font-size:11px;color:var(--sub);margin-top:28px;}
+
+  @media (max-width:420px){
+    .item .cols{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">COMPETITOR CHECK · 2026-09-18</div>
+    <h1>FA Project（AI CM）<br>vs RUNBIRD AI動画</h1>
+    <p>Meta広告経由で流れてきたAI CM制作サービスを実際に確認した結果</p>
+  </header>
+
+  <div class="verdict">
+    <div class="label">結論</div>
+    <div class="row"><span>ナレーション品質</span><span class="pill rb">RUNBIRD優位</span></div>
+    <div class="row"><span>価格</span><span class="pill fa">FA Project優位</span></div>
+    <div class="row"><span>スピード</span><span class="pill fa">FA Project優位</span></div>
+    <div class="row"><span>品質担保プロセス</span><span class="pill rb">RUNBIRD優位</span></div>
+    <div class="row"><span>総合脅威度</span><span class="pill even">中程度</span></div>
+  </div>
+
+  <div class="vs-head">
+    <div class="side fa">FA Project</div>
+    <div class="vs">VS</div>
+    <div class="side rb">RUNBIRD</div>
+  </div>
+
+  <div class="items">
+
+    <div class="item">
+      <div class="title">🎙️ ナレーション</div>
+      <div class="cols">
+        <div class="col fa">
+          <div class="who">FA PROJECT</div>
+          <span class="mark bad">✕ 片言・不自然</span><br>実サンプルを確認した限りかなり機械的
+        </div>
+        <div class="col rb">
+          <div class="who">RUNBIRD</div>
+          <span class="mark good">◯ 自然</span><br>音読さんTTS＋ゴールド参考動画基準で選定
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="title">💰 価格</div>
+      <div class="cols">
+        <div class="col fa">
+          <div class="who">FA PROJECT</div>
+          制作費 10万円台〜<br><span style="color:var(--sub);font-size:12px;">放送・配信費は別途</span>
+        </div>
+        <div class="col rb">
+          <div class="who">RUNBIRD</div>
+          案件ごとに見積り
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="title">⚡ スピード</div>
+      <div class="cols">
+        <div class="col fa">
+          <div class="who">FA PROJECT</div>
+          撮影不要・完全自動で速い
+        </div>
+        <div class="col rb">
+          <div class="who">RUNBIRD</div>
+          台本〜三重チェックのため相応の工数
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="title">🛡️ 品質担保プロセス</div>
+      <div class="cols">
+        <div class="col fa">
+          <div class="who">FA PROJECT</div>
+          自動生成のみ<br><span style="color:var(--sub);font-size:12px;">チェック体制は不明</span>
+        </div>
+        <div class="col rb">
+          <div class="who">RUNBIRD</div>
+          台本主導権を保持＋fact-check / telop-check / video-qa-relayの三重チェック
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="title">🎯 ターゲット / ポジション</div>
+      <div class="cols">
+        <div class="col fa">
+          <div class="who">FA PROJECT</div>
+          経営者・店舗オーナー（30-65歳）<br>予算面でCMを諦めていた層 →低価格・量産型
+        </div>
+        <div class="col rb">
+          <div class="who">RUNBIRD</div>
+          案件ごとにカスタム対応 →品質重視型
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <div class="title">所感</div>
+    「予算でCMを諦めていた層」を低価格で狙う設計は参考になる。ただしナレーションがこのレベルだと、ブランドイメージを重視する業種（飲食・美容等）には刺さりにくいはず。RUNBIRDは品質担保プロセスの厚さを差別化ポイントとして伝えていける。
+  </div>
+
+  <footer>社内用メモ／FA Project（KeyHolderグループ）公開LPをもとに作成</footer>
+
+</div>
+</body>
+</html>
