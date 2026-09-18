@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<!--
+  ★社内確認用ドラフトです（本番サイトではありません）
+  HAIR SARON 02様（埼玉県比企郡鳩山町・小川信浩様）のHP制作案件について、
+  RUNBIRD社内（鈴木さん）確認用に作成したデザインたたき台です。
+  写真・人物・地図はすべて生成画像・仮のイメージで実在しません。
+  店舗名・住所・電話番号はヒアリングシート記載の実情報ですが、
+  このページ自体はまだ社内検討段階であり、クライアント納品・一般公開はしていません。
+  検索エンジンにはインデックスさせない設定（robots noindex）にしています。
+-->
+<title>【社内確認用ドラフト】HAIR SARON 02（ヘアーサロン ゼロツー）｜比企郡鳩山町の美容室</title>
+<style>
+  :root{
+    --base-white:#ffffff;
+    --base-gray:#f5f6f6;
+    --line-gray:#e2e5e8;
+    --text-main:#333333;
+    --text-sub:#6b7280;
+    --accent-blue:#4b6a80;   /* support-mieux寄りの落ち着いた青グレー（MENUの構成パターンに使用） */
+    --accent-blue-dark:#374d5c;
+    --brand-gray:#7a8288;    /* リップルマーク寄りのグレー（メイン配色） */
+    --brand-gray-dark:#565d62;
+    --brand-orange:#e0812f;  /* リップルマーク実サイトのオレンジ見出し色 */
+    --brand-orange-dark:#c86c1e;
+    --mens-tag:#5a6b57;
+    --womens-tag:#b98a8a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family: "Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text-main);
+    background:var(--base-white);
+    line-height:1.8;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;width:100%;height:100%;object-fit:cover;}
+
+  /* ヘッダー */
+  header{
+    position:sticky;top:0;z-index:10;
+    background:var(--base-white);
+    border-bottom:1px solid var(--line-gray);
+  }
+  .header-inner{
+    max-width:1080px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 20px;
+  }
+  .logo{
+    font-size:20px;font-weight:700;letter-spacing:.03em;color:var(--brand-gray-dark);
+  }
+  .logo small{display:block;font-size:11px;font-weight:400;color:var(--text-sub);}
+  nav{display:flex;gap:22px;font-size:14px;}
+  .header-right{display:flex;align-items:center;gap:18px;}
+  .header-hours{font-size:11px;color:var(--text-sub);text-align:right;}
+  .header-tel{text-align:right;font-size:12px;color:var(--text-sub);}
+  .header-tel .num{font-size:20px;font-weight:700;color:var(--brand-gray-dark);}
+
+  /* メインビジュアル（ファーストビュー・固定先頭） */
+  .hero{position:relative;height:460px;background-size:cover;background-position:center;}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,24,26,.10),rgba(20,24,26,.55));}
+  .hero-copy{position:relative;z-index:1;max-width:1080px;margin:0 auto;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 20px;color:#fff;}
+  .hero-copy .catch{font-size:28px;font-weight:700;margin:0 0 12px;text-shadow:0 1px 8px rgba(0,0,0,.35);}
+  .hero-copy .sub{font-size:15px;margin:0 0 22px;opacity:.95;}
+  .welcome-badge{display:inline-block;background:rgba(255,255,255,.92);border-radius:999px;padding:10px 22px;font-size:14px;color:var(--brand-gray-dark);font-weight:700;width:fit-content;}
+
+  /* CTAバー */
+  .cta-bar{background:var(--brand-gray-dark);color:#fff;}
+  .cta-bar-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:28px;padding:14px 20px;flex-wrap:wrap;text-align:center;}
+  .cta-bar .tel-big{font-size:24px;font-weight:700;}
+  .cta-bar .tel-note{font-size:12px;opacity:.85;}
+  .cta-btn{background:#fff;color:var(--brand-gray-dark);padding:10px 22px;border-radius:4px;font-weight:700;font-size:14px;}
+
+  section{padding:56px 20px;position:relative;}
+  .section-inner{max-width:1080px;margin:0 auto;}
+  .section-head{text-align:center;margin-bottom:32px;}
+  .section-head .en{font-size:12px;letter-spacing:.15em;color:var(--brand-gray);}
+  .section-head h2{font-size:22px;margin:6px 0 0;color:var(--text-main);}
+
+  /* ============ 共通：アイコン付きオレンジ見出し（ABOUT US/INFORMATIONで使用） ============ */
+  .icon-head{text-align:center;margin-bottom:36px;}
+  .icon-head .icon-row{display:flex;align-items:center;justify-content:center;gap:10px;}
+  .icon-head .icon-row svg{width:30px;height:30px;flex-shrink:0;}
+  .icon-head .en-big{
+    font-size:34px;font-weight:800;letter-spacing:.04em;color:var(--brand-orange);
+    font-family:Georgia,"Times New Roman",serif;
+  }
+  .icon-head .ja-sub{font-size:16px;font-weight:700;color:var(--text-main);margin-top:6px;}
+
+  /* ============ MENU専用：中央シンプル見出し（support-mieux踏襲・アイコンなし） ============ */
+  .menu-head-simple{text-align:center;margin-bottom:40px;}
+  .menu-head-simple .en-big-blue{
+    font-size:34px;font-weight:800;letter-spacing:.04em;color:var(--accent-blue);
+    font-family:Georgia,"Times New Roman",serif;
+  }
+  .menu-head-simple .ja-sub{font-size:15px;font-weight:700;color:var(--text-sub);margin-top:6px;}
+
+  /* ============ ABOUT US（オレンジ帯＋斜め写真） ============ */
+  .aboutus-section{padding:0;}
+  .aboutus-head{text-align:center;padding:48px 20px 8px;}
+  .aboutus-head .line{width:48px;height:2px;background:var(--brand-orange);margin:0 auto 14px;}
+  .aboutus-head .en-big{
+    font-size:34px;font-weight:800;letter-spacing:.05em;color:var(--brand-orange);
+    font-family:Georgia,"Times New Roman",serif;
+  }
+  .aboutus-grid{
+    display:grid;grid-template-columns:1.15fr 1fr;
+    max-width:1080px;margin:24px auto 0;gap:0;
+  }
+  .aboutus-copy{
+    background:var(--brand-orange);color:#fff;
+    padding:44px 40px;border-radius:8px 0 0 8px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .aboutus-copy .catch{font-size:23px;font-weight:800;line-height:1.5;margin:0 0 20px;}
+  .aboutus-copy p{font-size:13px;line-height:2;margin:0 0 14px;opacity:.96;}
+  .aboutus-photos{
+    position:relative;background:var(--base-gray);border-radius:0 8px 8px 0;
+    min-height:340px;
+  }
+  .aboutus-photos .p1, .aboutus-photos .p2{
+    position:absolute;width:56%;height:70%;
+    border:6px solid #fff;outline:3px solid var(--brand-orange);
+    border-radius:6px;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,.18);
+  }
+  .aboutus-photos .p1{left:6%;top:10%;transform:rotate(-4deg);z-index:1;}
+  .aboutus-photos .p2{right:6%;bottom:8%;transform:rotate(4deg);z-index:2;}
+
+  /* メンズ×女性 両立 */
+  .coexist{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line-gray);border-radius:6px;overflow:hidden;}
+  .coexist > div{padding:32px 28px;}
+  .coexist .mens-block{background:#eef0ee;}
+  .coexist .womens-block{background:#f6eeee;}
+  .coexist h3{margin:0 0 10px;font-size:16px;}
+  .coexist p{font-size:13px;color:var(--text-sub);margin:0;}
+  .tags{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap;}
+  .tag{font-size:11px;font-weight:700;color:#fff;padding:3px 10px;border-radius:3px;}
+  .tag.mens{background:var(--mens-tag);}
+  .tag.womens{background:var(--womens-tag);}
+  .tag.all{background:var(--brand-gray);}
+
+  /* ============ MENU（メニュー）※v6：support-mieux型「1テーマ1ブロック」構成に差し替え ============ */
+  .menu3-list{display:flex;flex-direction:column;gap:36px;}
+  .menu3-row{display:grid;grid-template-columns:240px 1fr;gap:26px;align-items:stretch;}
+  .menu3-row.reverse{grid-template-columns:1fr 240px;}
+  .menu3-row.reverse .menu3-photo{order:2;}
+  .menu3-photo{
+    border-radius:6px;overflow:hidden;border:1px solid var(--line-gray);
+    aspect-ratio:1/1;
+  }
+  .menu3-box{
+    border:2px solid var(--accent-blue);border-radius:8px;
+    padding:20px 24px;display:flex;flex-direction:column;justify-content:center;
+  }
+  .menu3-box h3{margin:0 0 8px;font-size:16px;color:var(--accent-blue-dark);}
+  .menu3-box p{margin:0;font-size:13px;color:var(--text-sub);}
+  .menu3-more{
+    margin-top:14px;
+    background:var(--accent-blue);color:#fff;
+    padding:13px 22px;border-radius:6px;
+    font-size:13px;font-weight:700;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .menu3-more .arrow{font-size:18px;}
+
+  .menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:48px;}
+  .menu-card{background:#fff;border:1px solid var(--line-gray);border-radius:6px;overflow:hidden;}
+  .menu-card .photo{height:180px;overflow:hidden;}
+  .menu-card-body{padding:18px 20px;}
+  .menu-card h3{margin:0 0 8px;font-size:17px;}
+  .menu-card p{margin:0 0 10px;font-size:13px;color:var(--text-sub);}
+  .menu-card .price{font-size:15px;font-weight:700;color:var(--brand-gray-dark);}
+
+  /* 全年代歓迎メッセージ */
+  .welcome-message{background:var(--base-white);text-align:center;}
+  .welcome-message .box{border:1px solid var(--line-gray);border-radius:8px;padding:36px 24px;max-width:760px;margin:0 auto;}
+  .welcome-message .box .lead{font-size:18px;font-weight:700;color:var(--brand-gray-dark);margin:0 0 12px;}
+  .welcome-message .box p{font-size:14px;color:var(--text-sub);margin:0;}
+  .welcome-message .points{display:flex;justify-content:center;gap:24px;margin-top:20px;flex-wrap:wrap;font-size:12px;color:var(--text-sub);}
+  .welcome-message .points span{background:var(--base-gray);border-radius:4px;padding:6px 14px;}
+
+  /* ============ INFORMATION（店舗情報） ============ */
+  .info-section{background:var(--base-gray);}
+  .info-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:stretch;}
+  .info-table-wrap{
+    position:relative;overflow:hidden;
+    background:#eef3f2;border-radius:8px;padding:28px 26px;
+  }
+  .info-table-wrap::before{
+    content:"";position:absolute;inset:0;opacity:.10;pointer-events:none;
+    background-image:
+      radial-gradient(circle at 85% 15%, #7fae86 0 40px, transparent 41px),
+      radial-gradient(circle at 10% 85%, #7fae86 0 55px, transparent 56px);
+  }
+  .info-table{position:relative;width:100%;border-collapse:collapse;font-size:14px;}
+  .info-table th{
+    text-align:left;color:var(--brand-orange-dark);font-weight:700;
+    padding:12px 12px 12px 0;white-space:nowrap;width:110px;vertical-align:top;
+    border-bottom:1px solid rgba(0,0,0,.08);
+  }
+  .info-table td{
+    padding:12px 0;color:var(--text-main);border-bottom:1px solid rgba(0,0,0,.08);
+  }
+  .info-table tr:last-child th, .info-table tr:last-child td{border-bottom:none;}
+
+  .map-wrap{position:relative;border-radius:8px;overflow:hidden;background:#dfe7ea;min-height:280px;}
+  .map-fake{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(#c9d6da 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, #c9d6da 1px, transparent 1px) 0 0/40px 40px,
+      #e6edef;
+  }
+  .map-fake .road{position:absolute;background:#fff;box-shadow:0 0 0 1px #cfd8db;}
+  .map-fake .road.h{height:14px;left:0;right:0;top:52%;}
+  .map-fake .road.v{width:14px;top:0;bottom:0;left:35%;}
+  .map-pin{
+    position:absolute;left:35%;top:52%;transform:translate(-50%,-100%);
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .map-pin .dot{
+    width:26px;height:26px;border-radius:50% 50% 50% 0;
+    background:var(--brand-orange);transform:rotate(-45deg);
+    box-shadow:0 2px 6px rgba(0,0,0,.25);
+  }
+  .map-pin .label{
+    margin-top:6px;background:#fff;border-radius:4px;padding:4px 10px;
+    font-size:11px;font-weight:700;color:var(--text-main);box-shadow:0 1px 4px rgba(0,0,0,.15);
+    white-space:nowrap;
+  }
+  .map-note{
+    position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.9);
+    font-size:10px;color:var(--text-sub);padding:3px 8px;border-radius:3px;
+  }
+  .float-banner{
+    position:absolute;right:14px;bottom:14px;z-index:2;
+    background:var(--brand-orange);color:#fff;
+    padding:12px 18px;border-radius:8px;font-size:13px;font-weight:700;
+    box-shadow:0 4px 14px rgba(0,0,0,.25);
+    display:flex;align-items:center;gap:8px;
+  }
+  .float-banner .sub{display:block;font-size:10px;font-weight:400;opacity:.9;}
+
+  /* 店内ギャラリー */
+  .gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .gallery-grid .g-photo{height:260px;border-radius:6px;overflow:hidden;}
+  .gallery-grid .g-cap{text-align:center;font-size:12px;color:var(--text-sub);margin-top:8px;}
+
+  /* スタッフ紹介（代表個人） */
+  .about-grid{display:grid;grid-template-columns:280px 1fr;gap:32px;align-items:center;}
+  .about-grid .photo{height:340px;border-radius:6px;overflow:hidden;}
+  .about-text h3{font-size:18px;margin:0 0 12px;}
+  .about-text p{font-size:14px;color:var(--text-sub);}
+  .about-text .staff-name{margin-top:16px;font-size:14px;font-weight:700;color:var(--brand-gray-dark);}
+
+  /* アクセス・フッター */
+  footer{background:var(--brand-gray-dark);color:#fff;padding:44px 20px 28px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  footer h4{font-size:15px;margin:0 0 10px;}
+  footer p{font-size:13px;line-height:1.9;margin:0;color:#dde3e6;}
+  .footer-bottom{text-align:center;font-size:11px;color:#b9c3c9;margin-top:32px;}
+
+  @media (max-width:680px){
+    nav{display:none;}
+    .menu-grid, .coexist, .about-grid, .footer-inner, .gallery-grid,
+    .info-grid, .aboutus-grid{grid-template-columns:1fr;}
+    .menu3-row, .menu3-row.reverse{grid-template-columns:1fr;}
+    .menu3-row.reverse .menu3-photo{order:0;}
+    .menu3-photo{aspect-ratio:16/9;}
+    .hero{height:340px;}
+    .hero-copy .catch{font-size:22px;}
+    .about-grid .photo{height:260px;}
+    .aboutus-copy{border-radius:8px 8px 0 0;}
+    .aboutus-photos{border-radius:0 0 8px 8px;min-height:260px;}
+    .float-banner{position:static;margin-top:12px;justify-content:center;}
+    .icon-head .en-big, .aboutus-head .en-big, .menu-head-simple .en-big-blue{font-size:26px;}
+  }
+</style>
+</head>
+<body>
+
+<div style="background:#b91c1c;color:#fff;text-align:center;font-size:12px;font-weight:700;padding:6px 10px;letter-spacing:.02em;">
+  社内確認用ドラフト（デザインたたき台）です。クライアント納品・一般公開ではありません。写真・人物・地図はすべてイメージです。
+</div>
+
+<!-- ============ ヘッダー ============ -->
+<header>
+  <div class="header-inner">
+    <div class="logo">HAIR SARON 02
+      <small>ヘアーサロン ゼロツー／比企郡鳩山町</small>
+    </div>
+    <nav>
+      <a href="#aboutus">ABOUT US</a>
+      <a href="#menu">メニュー</a>
+      <a href="#information">店舗情報</a>
+      <a href="#access">アクセス</a>
+    </nav>
+    <div class="header-right">
+      <div class="header-hours">駐車場完備／予約なしでもご来店OK</div>
+      <div class="header-tel">
+        お電話でのご予約・お問い合わせ<br>
+        <span class="num">049-292-9695</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ファーストビュー（メインビジュアル・固定先頭） ============ -->
+<div class="hero" style="background-image:url('assets/shop_exterior.png');">
+  <div class="hero-copy">
+    <p class="catch">白髪染め・パーマも、いつもの「入りやすさ」で。</p>
+    <p class="sub">比企郡鳩山町松ヶ丘、地域のみなさまに寄り添う美容室です。予約なしでもお気軽にどうぞ。</p>
+    <span class="welcome-badge">学生さんからご年配の方まで、男女どなたでも大歓迎です</span>
+  </div>
+</div>
+
+<!-- ============ CTAバー ============ -->
+<div class="cta-bar">
+  <div class="cta-bar-inner">
+    <div>
+      <div class="tel-big">049-292-9695</div>
+      <div class="tel-note">店舗直通／営業時間内はいつでもお電話ください</div>
+    </div>
+    <a href="#contact" class="cta-btn">お問い合わせフォームへ</a>
+  </div>
+</div>
+
+<!--
+  ============ セクション順について（v4で確定・v5/v6もそのまま） ============
+  ヒーロー→ABOUT US→メンズ×女性(特徴)→MENU→全年代歓迎メッセージ→
+  INFORMATION→ギャラリー→スタッフ紹介→アクセス の順。
+  v6はMENUセクションの構成パターンのみ、リップルマーク型からsupport-mieux型
+  （写真＋見出しボックス＋説明文＋横長MOREボタンの「1テーマ1ブロック」）に
+  差し替え。配色はこれまで通りのベースカラーのまま（support-mieuxの青は
+  MENUの構成パターンのみ踏襲し、配色統一はしていない）。他セクションは
+  v5から変更なし。
+-->
+
+<!-- ============ ABOUT US（オレンジ帯＋斜め写真） ============ -->
+<section class="aboutus-section" id="aboutus">
+  <div class="aboutus-head">
+    <div class="line"></div>
+    <span class="en-big">ABOUT US</span>
+  </div>
+  <div class="aboutus-grid">
+    <div class="aboutus-copy">
+      <p class="catch">地域のみなさまへ、そして<br>新しい世代の男性たちへ。</p>
+      <p>
+        HAIR SARON 02は、埼玉県比企郡鳩山町松ヶ丘のプチプラザE店舗で営業する、
+        地域密着の美容室です。白髪染めやパーマを中心に、地元の年配のお客様に長くご愛顧いただいてきました。
+      </p>
+      <p>
+        これからは、学生さんやお仕事帰りのサラリーマンの方など、若い男性のお客様にも、
+        もっと気軽に立ち寄っていただきたいと考えています。理容室感覚でふらっと入れる、
+        そんな入りやすさを大切にしています。
+      </p>
+      <p>
+        もちろん、これまで通っていただいているご年配のお客様も大切な存在です。
+        男女・年代を問わず、どなたでも安心してお任せいただけるサロンでありたいと思っています。
+        予約なしでもお気軽にご来店ください。
+      </p>
+    </div>
+    <div class="aboutus-photos">
+      <div class="p1"><img src="assets/about_business_man.png" alt="サラリーマン風の男性のお客様（イメージ）"></div>
+      <div class="p2"><img src="assets/about_young_man.png" alt="学生風の若い男性のお客様（イメージ）"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ メンズ訴求 × 女性メニュー 両立（ABOUT USの特徴・FEATURE相当） ============ -->
+<section class="menu-highlight">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="en">FOR EVERYONE</div>
+      <h2>学生さん・お仕事帰りの男性から、女性のお客様まで</h2>
+    </div>
+    <div class="coexist">
+      <div class="mens-block">
+        <span class="tags"><span class="tag mens">MEN'S</span></span>
+        <h3>男性のお客様へ</h3>
+        <p>
+          学生さんの通学スタイルから、サラリーマンの方の身だしなみカット・白髪染め・パーマまで。
+          理容室感覚で気軽に立ち寄っていただける雰囲気づくりを大切にしています。
+        </p>
+      </div>
+      <div class="womens-block">
+        <span class="tags"><span class="tag womens">WOMEN'S</span></span>
+        <h3>女性のお客様へ</h3>
+        <p>
+          カット・カラー・パーマはもちろん、白髪染めのご相談もお気軽に。
+          長年ご愛顧いただいている地元のお客様も多く、安心してお任せいただけます。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU（メニュー）※v6：support-mieux型「1テーマ1ブロック」構成 ============ -->
+<section id="menu">
+  <div class="section-inner">
+    <div class="menu-head-simple">
+      <span class="en-big-blue">MENU</span>
+      <div class="ja-sub">メニュー</div>
+    </div>
+
+    <div class="menu3-list">
+      <!-- ブロック1: 白髪染め（写真左・テキスト右） -->
+      <div>
+        <div class="menu3-row">
+          <div class="menu3-photo"><img src="assets/menu_haku.png" alt="白髪染め施術の様子"></div>
+          <div class="menu3-box">
+            <h3>白髪染め（グレイカラー）</h3>
+            <p>
+              白髪をぼかすように自然に仕上げる、低刺激カラー剤を使用。
+              初めての方にも丁寧なカウンセリングから。学生さんからご年配の方まで幅広くご利用いただいています。
+            </p>
+          </div>
+        </div>
+        <div class="menu3-more"><span>白髪染めメニューを見る</span><span class="arrow">›</span></div>
+      </div>
+
+      <!-- ブロック2: パーマ（写真右・テキスト左＝千鳥配置） -->
+      <div>
+        <div class="menu3-row reverse">
+          <div class="menu3-box">
+            <h3>パーマ（学生さん・メンズにも人気）</h3>
+            <p>
+              通学・お仕事帰りにも通いやすいメンズパーマから、ふんわり仕上げる女性向けパーマまで。
+              お手入れしやすいスタイルをご提案します。
+            </p>
+          </div>
+          <div class="menu3-photo"><img src="assets/menu_perm.png" alt="パーマ施術の様子（若い男性のお客様）"></div>
+        </div>
+        <div class="menu3-more"><span>パーマメニューを見る</span><span class="arrow">›</span></div>
+      </div>
+
+      <!-- ブロック3: オプション（写真左・テキスト右） -->
+      <div>
+        <div class="menu3-row">
+          <div class="menu3-photo"><img src="assets/menu_extra.png" alt="シャンプー・ヘッドスパの様子"></div>
+          <div class="menu3-box">
+            <h3>オプションメニュー（シャンプー・ヘッドスパ）</h3>
+            <p>
+              丁寧なシャンプーとヘッドスパで、頭皮まですっきりリフレッシュ。
+              カット・カラー・パーマとあわせてお気軽にどうぞ。
+            </p>
+          </div>
+        </div>
+        <div class="menu3-more"><span>オプションメニューを見る</span><span class="arrow">›</span></div>
+      </div>
+    </div>
+
+    <!-- 価格の明記（v4/v5から継続） -->
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="photo"><img src="assets/menu_perm.png" alt="パーマ施術の様子"></div>
+        <div class="menu-card-body">
+          <span class="tags"><span class="tag mens">メンズにも人気</span></span>
+          <h3>パーマ</h3>
+          <p>学生さん・お仕事帰りの方にも対応。お手入れしやすいスタイルをご提案します。</p>
+          <div class="price">¥5,500〜（税込）</div>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="photo"><img src="assets/menu_haku.png" alt="白髪染め施術の様子"></div>
+        <div class="menu-card-body">
+          <span class="tags"><span class="tag all">全年代対応</span></span>
+          <h3>白髪染め（リタッチカラー）</h3>
+          <p>初めての方にも丁寧なカウンセリングから。自然な仕上がりにこだわります。</p>
+          <div class="price">¥4,000〜（税込）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 全年代歓迎メッセージ ============ -->
+<section class="welcome-message">
+  <div class="section-inner">
+    <div class="box">
+      <p class="lead">学生さんからご年配の方まで、男女どなたでも大歓迎です</p>
+      <p>
+        HAIR SARON 02は、地域のみなさまに長く通っていただける美容室でありたいと考えています。
+        予約なしでもお気軽にお越しください。ご不明な点はお電話でも承ります。
+      </p>
+      <div class="points">
+        <span>予約なしOK</span>
+        <span>駐車場完備</span>
+        <span>電話・フォーム受付</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INFORMATION（店舗情報） ============ -->
+<section class="info-section" id="information">
+  <div class="section-inner">
+    <div class="icon-head">
+      <div class="icon-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="color:var(--brand-orange)">
+          <path d="M4 4l6 6M4 10l6-6M8 12l9 9a2 2 0 0 0 3-3l-9-9M14 4l6 6"/>
+        </svg>
+        <span class="en-big">INFORMATION</span>
+      </div>
+      <div class="ja-sub">店舗情報</div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-table-wrap">
+        <table class="info-table">
+          <tr><th>店舗名</th><td>HAIR SARON 02（ヘアーサロン ゼロツー）</td></tr>
+          <tr><th>TEL</th><td>049-292-9695</td></tr>
+          <tr><th>営業時間</th><td>9:00〜19:00（詳細はディレクションで確定予定）</td></tr>
+          <tr><th>定休日</th><td>不定休（確認中）</td></tr>
+          <tr><th>駐車場</th><td>あり（プチプラザ敷地内・完備）</td></tr>
+          <tr><th>ご予約</th><td>お電話・お問い合わせフォームより（予約なしのご来店も歓迎）</td></tr>
+        </table>
+      </div>
+
+      <div class="map-wrap">
+        <div class="map-fake">
+          <div class="road h"></div>
+          <div class="road v"></div>
+        </div>
+        <div class="map-pin">
+          <div class="dot"></div>
+          <div class="label">HAIR SARON 02</div>
+        </div>
+        <div class="map-note">地図は仮のイメージです（実装時にGoogleマップ埋め込み予定）</div>
+        <div class="float-banner">
+          <span>📞</span>
+          <span>お電話でのご予約は<br><span class="sub">こちら（049-292-9695）</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 店内ギャラリー ============ -->
+<section class="menu-highlight" id="gallery">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="en">GALLERY</div>
+      <h2>店舗のご紹介</h2>
+    </div>
+    <div class="gallery-grid">
+      <div>
+        <div class="g-photo"><img src="assets/shop_exterior.png" alt="店舗外観"></div>
+        <p class="g-cap">プチプラザE店舗（駐車場完備）</p>
+      </div>
+      <div>
+        <div class="g-photo"><img src="assets/shop_interior.png" alt="店内の様子"></div>
+        <p class="g-cap">白基調で明るく落ち着いた店内</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ スタッフ紹介（代表個人） ============ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="en">STAFF</div>
+      <h2>代表のご紹介</h2>
+    </div>
+    <div class="about-grid">
+      <div class="photo"><img src="assets/staff_owner.png" alt="代表 小川信浩（イメージ）"></div>
+      <div class="about-text">
+        <h3>誠実に、丁寧に。地域の皆さまに寄り添うサロンです。</h3>
+        <p>
+          比企郡鳩山町松ヶ丘のプチプラザE店舗にて営業しております。
+          お客様一人ひとりのご要望をしっかりお伺いし、無理のないご提案を心がけています。
+          白髪染め・パーマはもちろん、日々のお手入れに関するご相談もお気軽にどうぞ。
+        </p>
+        <p class="staff-name">代表：小川 信浩</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ アクセス／フッター ============ -->
+<footer id="access">
+  <div class="footer-inner">
+    <div>
+      <h4>HAIR SARON 02（ヘアーサロン ゼロツー）</h4>
+      <p>
+        〒350-0332<br>
+        埼玉県比企郡鳩山町松ヶ丘3-2-1 プチプラザE店舗（駐車場完備）<br><br>
+        店舗電話：049-292-9695<br>
+        代表：小川 信浩
+      </p>
+    </div>
+    <div id="contact">
+      <h4>ご予約・お問い合わせ</h4>
+      <p>
+        お電話またはお問い合わせフォームより承っております。<br>
+        （LINE・外部予約サイトは現在ご利用いただけません／予約なしでのご来店も歓迎です）<br><br>
+        比企郡鳩山町 美容室／比企郡 美容室／鳩山町 美容室
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    ※本ページはデザインたたき台（仮想ページ）です。写真・人物・店舗・地図は全てイメージで実在しません。 &copy; HAIR SARON 02
+  </div>
+</footer>
+
+</body>
+</html>
