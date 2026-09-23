@@ -14,7 +14,136 @@
   検索エンジンにはインデックスさせない設定（robots noindex）にしています。
 -->
 <title>【社内確認用ドラフト】HAIR SARON 02（ヘアーサロン ゼロツー）｜比企郡鳩山町の美容室</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
+  /* ============================================================
+     v52: 鈴木さんより「タイトル文字（ABOUT US／STYLES等の巨大見出し）が
+       時代の合ったおしゃれな書体になっていない」と指摘。文字間・余白は
+       v51で調整済みだが、書体そのものが未対応だった。
+       調査: boy-inc.comのfonts.css（wp/wp-content/themes/boy/assets/fonts/
+       fonts.css）を直接curlで取得したところ、巨大見出し(.font_canvas/
+       font_canvas--b等)は自社ホスティングの独自woff2「MADE Canvas」
+       （Regular/Light/Black）を使用していることを確認。これはMADE社が
+       販売する商用ライセンスフォントであり、無断で流用不可
+       （フォントファイルが配信されていても利用権はboy-inc.com側のみに
+       帰属するため、ファイルを拝借する選択肢は除外）。
+       MADE Canvas Blackは「幾何学的な構成＋角を落とした柔らかい直線」の
+       モダン・ファッション誌的な太字ディスプレイ書体で、Hiragino/Yu Gothic
+       の日本語ゴシックBoldとは全く系統が異なる（後者は無難な角ゴシックで
+       "時代が古い"印象の原因）。
+       近い雰囲気（幾何学的・現代的・大文字での存在感・2020年代以降の
+       ブランディングで多用される"おしゃれ"な空気感）を持つ商用利用可の
+       Google Fontsとして「Unbounded」を選定（Bodoni Moda/Fraunces系の
+       セリフはMADE Canvasのサンセリフ・幾何学的な性格と系統が違うため除外、
+       Anton/Big Shoulders Displayは"太い"だけで角が古典的な工業系の
+       印象になり除外、Playfair Displayもセリフで除外）。
+       Unboundedは角を意図的にカットした幾何学サンセリフで、MADE Canvas
+       同様「直線的だが冷たすぎない・大文字での見栄えに特化した」性格を
+       持ち、2024年以降の国内外ブランディングで"今っぽい"代表格として
+       多用されている書体。
+       → 巨大見出し系クラス（.giant-head/.ghost/.ghost-solo/.ttl-center/
+       .ttl-left/.discover-ghost/.styles-giant＝ABOUT US/DISCOVER US/
+       STYLES/THE MENU/BLOG/INFOの全巨大タイトル・ゴースト文字）に
+       font-family:"Unbounded"を追加。本文・nav・ロゴ・ボタン等は
+       現状の日本語ゴシック/Georgiaのまま変更なし（指摘対象は巨大見出しの
+       書体のみのため）。
+     ============================================================ */
+  /* ============================================================
+     v51: 鈴木さんより「文字間・余白感・画像のサイズ感をサイト全体で
+       boy-inc.comに合わせて」指摘。boy-inc.com実CSS(style.css)をcurlで
+       直接取得し体系的に実測（Playwrightではなく実CSS原文を直接解析）：
+         - letter-spacing: body { letter-spacing:0.05em; } が
+           サイト全体のベース値として設定されており、個別要素
+           （nav=1px、見出し=1.5px等）はこの上に個別上書きされている
+           構成。対してv50時点の本サイトはbody自体にletter-spacing指定が
+           無く（デフォルト0）、本文段落・テーブル・footer等の個別指定の
+           無い要素は字間0のままだった＝サイト全体として字間が詰まって
+           見える根本原因。→ body に letter-spacing:.03em を追加
+           （日本語本文の可読性を考慮し0.05emよりやや控えめな値に調整。
+           個別にletter-spacing指定済みの要素(nav/giant-head/ghost系/
+           eyebrow系)はそのまま優先されるため影響なし）。
+         - 余白感: home_menu_box .menu_tab_list margin-bottom:70px
+           （タブ→コンテンツ間に大きく間を取る構成）に対し、本サイトの
+           .menu-tabs margin-bottom:8px + .menu-panel padding-top:28px
+           （合計36px）はタブ直下にコンテンツが詰まって見えていた。
+           → .menu-panel padding-topを48pxに拡大し窮屈感を解消。
+           あわせて.menu-line（ドットリーダー価格行）のpadding:15px→18pxで
+           行間の呼吸を確保（boy-incのmenu_list系が1.5em/3emという
+           余裕あるマージンを取っているのに合わせた方向の調整）。
+         - home_discover_sec は padding:80px 0 120px という上下非対称
+           （下側により大きい余白）構成。本サイトの.discover-copyは
+           padding:96px 24px 48px と下側が上側よりむしろ狭く、次の
+           hero-linksブロックまでが詰まって見えていた。→ 下padding
+           48px→64pxに拡大し、非対称の余白感（下により余裕）を近づけた。
+         - 画像のサイズ感: STYLES一覧（row-mens/womens/perm/color）の
+           aspect-ratioは既にv38bでboy-inc実測px比率
+           (946.1/651.2、1/1、587.5/756.2、946.1/651)をそのまま移植済みで
+           一致確認。ABOUT USの2枚組写真(aspect-ratio:4/5)もboy-incの
+           ポートレート系比率(587.5/756.2≈0.777)に近い0.8で近似済み、
+           BLOGサムネ(4/3)は自社の「同種カード高さ統一ルール」により
+           意図的に固定比率を採用（boy-incは自然比率のまま）——
+           いずれも既存のまま変更不要と判断。
+     ============================================================ */
+  /* ============================================================
+     v50: 鈴木さんより「リザーブのとこだけ違う。ちゃんとデザイン感揃えて」指摘。
+       v48時点は「コーナー独立フローティングのため両端丸スタジアム型カプセルに
+       翻案」と判断したが、これが指摘の原因（翻案せず実サイト通りに）。
+       改めてPlaywrightでnoir2023.net .reserve_btn を実測（PC 1440x900）：
+         - コンテナ: position:fixed; right:0(画面端に完全フラッシュ、はみ出しなし
+           だが右側は角丸ゼロで画面端でスパッと切れる「D字」形状);
+           bottom:100px; width:140px; height:130px;
+         - 内側<a>: background:rgb(4,161,153)=#04A199;
+           border-radius:80px 0 0 80px（左のみ丸め・右2隅は角丸0で
+           画面端に垂直に食い込む＝「半円が画面端にめり込む」の正体）;
+         - 内側白枠(::before): width:158.19px height:120.89px;
+           border-radius:80px 0 0 80px; border:1px solid rgba(255,255,255,.6);
+           right:-102.19px（本体よりさらに右＝画面外にはみ出す配置）;
+       → 翻案せず、HAIR SARON 02の.fv-reserveもこの実測値通り
+         「right:0でコンテナごと画面端にフラッシュ」「border-radiusは左のみ」
+         の构造に修正。PC/モバイルとも同じ考え方でスケール。
+     ============================================================ */
+  /* ============================================================
+     v48: 鈴木さんより2点指示。
+       (1) 右下フローティングボタン(.fv-reserve)の文言を「TEL/お電話はこちら」
+           から「RESERVE/ご予約はこちら」に戻す（tel:リンクはそのまま維持）。
+           形状もnoir2023.net実サイトの.reserve_btn（PC幅実測: 140x130px、
+           background:#04A199、内側に width:113% height:93% top:50% left:60%
+           border:1px solid #fff、text「RESERVE」+「ご予約はこちら」）を
+           Chrome/Playwrightで実測のうえ、縦長の角丸カプセル型＋内側の細い
+           白枠線に正確に翻案。実サイトは画面端フラッシュの半円カプセルだが、
+           本サイトはコーナー独立フローティングのため、両端が丸まった
+           縦長スタジアム型カプセルに変換して踏襲。
+       (2) 右上回転バッジ(.fv-badge)をinline SVG(textPathの黄色系)から
+           画像(assets/fv_badge_circle.png・鈴木さん用意・ティール/グリーン系
+           #2e8f84〜#3fb6a8・透過1254x1254)に差し替え。回転アニメーション
+           (20〜22秒/周)はimg要素にそのまま適用して維持。
+     ============================================================ */
+  /* ============================================================
+     v47: 鈴木さんより4点指示。
+       (1) FV下部の「Hatoyama, Saitama」＋訴求コピー(.fv-caption)を完全削除。
+           同趣旨の文言はABOUT USセクションに既存のため重複削除として問題なし。
+           HTML側の.fv-caption要素、CSS(.fv-caption本体・モバイル上書き)を
+           丸ごと除去し、fv-frameの余白量のみ再調整（後述(2)参照）。
+       (2) FV全体のデザイン精度を底上げ。noir2023.net実サイトの影・距離感を
+           再度見比べ、以下を調整：
+             - .fv-frame: キャプション削除に伴いpadding-bottomを微調整
+               (clamp(40px,5vw,70px)→clamp(28px,4vw,52px))。写真直下の
+               白余白が間延びしないようにする。
+             - .fv-news: box-shadowを0 14px 30px rgba(17,17,17,.14)→
+               0 18px 38px rgba(17,17,17,.16)に強化し、浮き上がりの
+               コントラストを明確化。角を2pxの微丸(border-radius)に。
+             - .fv-badge: box-shadowを0 4px 18px rgba(0,0,0,.3)→
+               0 6px 22px rgba(0,0,0,.32)に調整し、影の質感をfv-newsと揃える。
+       (3) ヘッダー右端の電話番号ボタン(.header-contact-btn)を「CONTACT」
+           テキスト＋contact.htmlへのリンクに変更（noir2023.net実サイトの
+           CONTACTボタンと同じ導線に統一。電話番号の直接表示は廃止）。
+       (4) 右下フローティングボタン(.fv-reserve)は既にv44時点でTEL導線
+           （en:"TEL"/ja:"お電話はこちら"）に変更済みだったため文言変更は
+           不要。ヘッダーCONTACT化に合わせ、影・角のトーンのみ(3)と統一
+           （box-shadowの強さをfv-news/fv-badgeと同系統に微調整）。
+     ============================================================ */
   /* ============================================================
      v41: 鈴木さんより2点指示。
        (1) 「STYLES以外のタイトルをもっと太文字に」→ ttl-center(BLOG)・
@@ -79,6 +208,7 @@
     color:var(--ink);
     background:var(--paper);
     line-height:1.9;
+    letter-spacing:.03em;
     -webkit-font-smoothing:antialiased;
     padding-top:var(--header-h);
   }
@@ -89,32 +219,68 @@
 
   .bleed{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;}
 
-  /* ============ ヘッダー（透明⇄白帯・スクロール連動） ============ */
+  /* ============ ヘッダー ============
+     v43: noir2023.net参考FV刷新に伴い変更。noir実サイトはヘッダーが常時
+     白背景・黒文字（透明→スクロールで白、ではなく最初から白帯）。
+     FVを「写真の周りに白余白枠」の額装構成にするため、ヘッダーも常時白帯に
+     揃え、白文字が白背景に沈む事故を回避する（旧来の透明⇄白のスクロール
+     連動ロジックは廃止。scrolledクラスは影の有無のみに用途変更）。
+
+     v45: 鈴木さん2点指摘への対応。
+     (1) FV写真がヘッダーに隠れる問題：v44のローカル版自体はPC/375-430pxでは
+         問題なかったが、実際に公開中のindex.html（v42相当）およびv44でも
+         約681〜900px幅（nav表示・header-right表示の両方が生きる帯）で
+         ロゴ2行＋nav＋営業時間/電話番号2行がheader-inner(flex/align-items:center)
+         内に収まりきらず折り返し、固定高さのheaderボックスから上下に
+         オーバーフローしていた（上＝ロゴ「HAIR」が見切れる／下＝FV写真の
+         上端に文字が重なる）ことをPlaywrightで実測確認。原因は「1行に収まる
+         想定の情報量」を超えていたため。
+     (2) noir2023.net実サイトのヘッダー（実CSS/DOM実測：nav文字16px/700・
+         letter-spacing .5px・項目間margin-left 40px、CONTACTのみ枠線
+         1px solid+padding 12px 28pxのボタン化、header高さ100px・
+         左右padding 40px）に合わせ、営業時間/電話番号の2行テキストを廃止し、
+         電話番号を枠線ボタン1個（1行）に統合。情報量を減らし1行に収める
+         ことで、(1)のオーバーフロー自体も解消する。
+         （「駐車場完備／予約なしでもご来店OK」はCTAセクション/フッターに
+         既存表記があるため情報として消えるわけではない） */
   header{
     position:fixed;top:0;left:0;right:0;z-index:50;height:var(--header-h);
-    background:transparent;border-bottom:1px solid transparent;
-    transition:background .35s ease, border-color .35s ease;
+    background:var(--paper);border-bottom:1px solid var(--line);
+    transition:box-shadow .35s ease;
   }
-  header.scrolled{background:var(--paper);border-bottom-color:var(--line);}
-  .header-inner{max-width:1120px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
-  .logo{font-size:18px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;transition:color .35s ease;}
-  .logo small{display:block;font-size:10px;font-weight:400;color:rgba(255,255,255,.75);letter-spacing:.05em;margin-top:3px;text-transform:none;transition:color .35s ease;}
-  nav{display:flex;gap:26px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;}
-  nav a{color:#fff;transition:color .35s ease;}
-  .header-right{display:flex;align-items:center;gap:20px;}
-  .header-hours{font-size:10px;color:rgba(255,255,255,.75);text-align:right;transition:color .35s ease;}
-  .header-tel{text-align:right;font-size:10px;color:rgba(255,255,255,.75);transition:color .35s ease;}
-  .header-tel .num{font-size:17px;font-weight:700;color:#fff;transition:color .35s ease;}
-
-  header.scrolled .logo{color:var(--ink);}
-  header.scrolled .logo small{color:var(--gray);}
-  header.scrolled nav a{color:var(--ink);}
-  header.scrolled .header-hours{color:var(--gray);}
-  header.scrolled .header-tel{color:var(--gray);}
-  header.scrolled .header-tel .num{color:var(--ink);}
+  header.scrolled{box-shadow:0 2px 14px rgba(17,17,17,.06);}
+  .header-inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 40px;gap:24px;}
+  .logo{font-size:18px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);white-space:nowrap;flex:none;}
+  .logo small{display:block;font-size:10px;font-weight:400;color:var(--gray);letter-spacing:.03em;margin-top:3px;text-transform:none;white-space:nowrap;}
+  /* noir実測：nav a=16px/700/letter-spacing .5px、項目間margin-left 40px。
+     項目数(6)+ロゴ(2行/日本語副題つき)がnoirより情報量が多いため、
+     同じ40px間隔だと1440px幅でも詰まるので、間隔のみ32pxへ調整。
+     文字サイズ・太さ・字間はnoir実測値にできるだけ寄せる。 */
+  nav{display:flex;align-items:center;gap:32px;flex:none;}
+  nav a{font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);white-space:nowrap;}
+  /* noir実測のCONTACT（border 1px solid #000・padding 12px 28px・
+     16px/700）を電話ボタンとして翻案。1行に収め、旧header-hours/
+     header-telの2行テキストを廃止（(1)のオーバーフロー解消の本体）。 */
+  /* v47: 電話番号ボタン→CONTACTボタンに変更（noir2023.net実サイトの
+     CONTACTボタンと同じ導線）。枠線ボタンの見た目自体はv45から流用、
+     テキストと遷移先(contact.html)のみ変更。letter-spacingをnav項目と
+     揃えて統一感を出す。 */
+  .header-contact-btn{
+    flex:none;display:inline-flex;align-items:center;justify-content:center;
+    border:1px solid var(--ink);padding:11px 26px;font-size:13px;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--ink);white-space:nowrap;transition:background .2s ease,color .2s ease;
+  }
+  .header-contact-btn:hover{background:var(--ink);color:#fff;}
 
   /* ============ 巨大タイポグラフィ ============ */
   .giant-wrap{overflow:hidden;position:relative;}
+  /* v52: 巨大見出し系クラス全般にUnbounded（幾何学的・現代的な
+     ディスプレイ書体）を適用。MADE Canvas Black（boy-inc.com実サイトが
+     使用する商用フォント・無断使用不可）に近い"おしゃれで今っぽい"
+     雰囲気を目指す代替。 */
+  .giant-head,.ghost,.ghost-solo,.ttl-center,.ttl-left,.discover-ghost,.styles-giant{
+    font-family:"Unbounded","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+  }
   .giant-head{font-size:clamp(64px,17vw,240px);font-weight:900;line-height:.82;letter-spacing:-.01em;color:var(--ink);margin:0;padding-left:14px;white-space:nowrap;position:relative;z-index:1;}
   .giant-head.right{text-align:right;padding-left:0;padding-right:14px;}
 
@@ -148,23 +314,63 @@
   section{padding:110px 24px;position:relative;}
   .section-inner{max-width:1120px;margin:0 auto;position:relative;}
 
-  /* ============ ヒーロー ============ */
-  /* v18: ヒーロー画像にかかっていた青みがかった演出(filter:grayscale+contrastの
-     モノクロ化フィルタ、および.hero-tintの黒グラデーション)を完全に削除。
-     写真本来の色味をそのまま表示し、テキストの可読性はtext-shadowのみで確保する
-     （画像全体を覆うオーバーレイ演出は使わない）*/
-  /* ============ v31: boy-inc.com寄せでファーストビューを整理
-     見づらさの原因＝(1)ヘッダーの「HAIR SARON 02」と直下eyebrowの「Hair Saron 02 /
-     Hatoyama, Saitama」が重複表示 (2)英文キャッチが3行＋和文キャッチ2行＋sub文2行の
-     計7〜9行が縦積みで情報過多 (3)写真の明るい部分（窓・棚）に白文字が沈む箇所がある。
-     対策＝重複eyebrowを削除・コピーを4行程度に圧縮・写真全体ではなく左側だけに
-     ローカルなグラデーション帯を敷いて可読性を確保（写真全体を覆う濃いオーバーレイは使わない）。 ============ */
-  .hero{position:relative;height:640px;margin-top:calc(-1 * var(--header-h));background-size:cover;background-position:center;overflow:hidden;}
-  .hero::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(100deg, rgba(10,10,10,.42) 0%, rgba(10,10,10,.18) 42%, rgba(10,10,10,0) 62%);}
-  .hero-copy{position:relative;z-index:1;height:100%;max-width:1120px;margin:0 auto;left:0;right:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 24px 72px;color:#fff;}
-  .hero-copy .eyebrow-en{font-family:Georgia,"Hiragino Mincho ProN",serif;font-style:italic;font-size:13px;letter-spacing:.12em;opacity:.92;margin:0 0 16px;text-shadow:0 1px 8px rgba(0,0,0,.7);}
-  .hero-copy .catch{font-size:30px;font-weight:800;line-height:1.5;margin:0 0 16px;max-width:600px;text-shadow:0 2px 14px rgba(0,0,0,.7);}
-  .hero-copy .sub{font-size:13px;margin:0;opacity:.95;max-width:480px;text-shadow:0 1px 8px rgba(0,0,0,.7);}
+  /* ============ ファーストビュー（v44：鈴木さん2点指摘への対応）============
+     指示(1)：ヘッダー直下に「Hatoyama, Saitama」＋訴求コピーが独立ブロックとして
+     浮いていた。noir2023.net実サイトはヘッダー直後すぐ白枠写真が始まり、こうした
+     独立テキストブロックは無い。→ .fv-caption を「ヘッダー直下の最初の要素」から
+     「写真＋お知らせバーの下、フレーム下端の白余白内」に移動（HTML側でfv-photo/
+     fv-newsの後ろに配置）。コピー文言は削除せず維持。
+     指示(2)：左右の白余白幅がnoir実サイトと異なっていた。noir2023.net実CSS
+     (style.css .fv)を再取得して実測した結果：
+       .fv { width:90vw; margin-left:auto; margin-right:auto; }
+       （768px以上もheight以外は同じ／1180px以上で max-width:1350px の上限が付くのみ
+       で、幅90vw・中央寄せの考え方自体はブレークポイント共通）
+     → 旧v43は max-width:1400px + 左右clamp(16px,4vw,56px)paddingという独自値で、
+     noirの90vw（＝左右余白5vwずつ）より余白がかなり狭かった。
+     .fv-frameをnoirと同じ「width:90vw・max-width:1350px・margin:0 auto」に修正し、
+     余白を実測値どおり左右5vw（1350px到達後は固定px）に統一。 ============ */
+  /* v47: .fv-caption削除に伴いpadding-bottomを再調整（写真直下の白余白が
+     間延びしないよう縮小） */
+  .fv-frame{position:relative;width:90vw;max-width:1350px;margin:0 auto;padding-bottom:clamp(28px,4vw,52px);}
+  /* v46: 鈴木さん指摘「写真の顔が見切れている」対応。FVコンテナが横長(90vw×560px)
+     に対し元画像が縦長ポートレート(1122x1402、顔は概ねy=130〜610px)のため、
+     background-size:coverが幅基準で拡大され、centerだと頭頂部が、topに寄せると
+     今度は顎から下がフレーム外に出てしまう（560pxの表示窓では顔全体(480px)が
+     ギリギリ収まらない）。高さを560→640pxに拡大して表示窓に余裕を持たせ、
+     position を「center 12%」（顔の中心が窓の中心に来る値を実測して算出）に
+     調整し、頭頂部〜顎まで欠けずに収まるようにする。 */
+  .fv-photo{position:relative;height:640px;overflow:hidden;background-size:cover;background-position:center 12%;}
+  /* v49: 鈴木さんより指示。「右側の回っているやつは、背景のグレーみたいな
+     いらない。もうそのままその画像を回す感じでいい」→ .fv-badge背後の
+     暗色円背景(background:rgba(17,17,17,.42))とbox-shadowを完全削除。
+     透過PNG画像(fv_badge_circle.png)単体がそのまま回転する見た目に変更。 */
+  .fv-badge{position:absolute;top:18px;right:18px;z-index:2;width:92px;height:92px;border-radius:50%;display:flex;align-items:center;justify-content:center;animation:fv-badge-rotate 22s linear infinite;}
+  .fv-badge img{width:88%;height:88%;display:block;}
+  @keyframes fv-badge-rotate{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  /* v47: 影を強化(0 14px 30px→0 18px 38px)し、fv-badgeと同系統のコントラストに揃える。
+     角を2pxの微丸に。 */
+  .fv-news{position:relative;z-index:3;display:flex;align-items:center;gap:14px;background:var(--paper);margin:-30px 0 0 16px;padding:16px 20px;max-width:440px;border-radius:2px;box-shadow:0 18px 38px rgba(17,17,17,.16);}
+  .fv-news .tag{background:var(--teal);color:#fff;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 13px;border-radius:999px;white-space:nowrap;}
+  .fv-news .date{font-size:11px;color:var(--gray);white-space:nowrap;}
+  .fv-news .title{font-size:12.5px;color:var(--ink-soft);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .fv-news .arrow{font-size:15px;color:var(--ink);flex:none;}
+
+  /* ============ 右下フローティング予約ボタン（noir .reserve_btn を電話導線に翻案）============ */
+  /* v47: box-shadowをfv-news/fv-badgeと同系統の強さに微調整し、ヘッダーCONTACT化と
+     合わせて画面内の「浮き」の質感を統一 */
+  /* v48: noir2023.net実サイト.reserve_btnをPlaywrightで実測(PC幅140x130px、
+     background:#04A199、内側白枠はwidth:113% height:93% top:50% left:60%
+     border:1px solid #fff、テキストは「RESERVE」+「ご予約はこちら」)。
+     本サイトはコーナー独立フローティングのため、画面端フラッシュの半円形状
+     ではなく、縦長の両端丸スタジアム型カプセル(width<height、border-radius=
+     width/2)に翻案し、内側に細い白枠線(inset)を実サイトと同系統の比率で追加。 */
+  /* v50: noir2023.net実測(PC1440x900)通り、コンテナはright:0で画面端に
+     完全フラッシュ（はみ出しではなく右端でスパッと切れる）。角丸は左のみ。 */
+  .fv-reserve{position:fixed;right:0;bottom:100px;z-index:80;width:140px;height:130px;overflow:visible;}
+  .fv-reserve-btn{position:relative;display:flex;width:100%;height:100%;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.3;color:#fff;background:var(--teal);border-radius:65px 0 0 65px;box-shadow:0 18px 38px rgba(17,17,17,.16);}
+  .fv-reserve-btn::before{content:'';position:absolute;inset:8px 0 8px 8px;border:1px solid rgba(255,255,255,.6);border-radius:57px 0 0 57px;}
+  .fv-reserve-btn .en{position:relative;font-size:15px;font-weight:800;letter-spacing:.04em;}
+  .fv-reserve-btn .ja{position:relative;font-size:9.5px;letter-spacing:.01em;margin-top:6px;}
 
   /* ============ DISCOVER US セクション（v23：MENU直後・ブログ直前に再配置・背景=店舗外観・リンクはヘッダーナビと同じ実ページへ） ============ */
   .discover-section{position:relative;overflow:hidden;background-image:url('assets/shop_exterior.png');background-size:cover;background-position:center;}
@@ -172,7 +378,9 @@
   /* v40: 左寄せ・一回り小さいサイズに変更（boy-inc.com home_discover_ttl実測：
      font-size:100px固定・左寄せ・opacity.3の白ゴーストのみ、に寄せる） */
   .discover-ghost{position:absolute;z-index:0;left:-8px;top:24px;color:rgba(255,255,255,.13);font-weight:900;letter-spacing:.02em;font-size:clamp(44px,8vw,110px);white-space:nowrap;line-height:1;pointer-events:none;user-select:none;}
-  .discover-copy{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:96px 24px 48px;color:#fff;}
+  /* v51: boy-inc.com .home_discover_sec padding:80px 0 120px実測（下側に
+     より大きい余白を取る非対称構成）に合わせ、下paddingを48px→64pxに拡大 */
+  .discover-copy{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:96px 24px 64px;color:#fff;}
   .discover-copy .eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.8;margin:0 0 18px;}
   .discover-copy .catch-en{font-family:Georgia,"Hiragino Mincho ProN",serif;font-style:italic;font-weight:400;font-size:clamp(16px,2vw,22px);line-height:1.85;max-width:560px;margin:0 0 16px;opacity:.96;}
   .discover-copy .catch-ja{font-size:14px;line-height:2;max-width:520px;opacity:.9;margin:0;}
@@ -185,23 +393,6 @@
   .hero-links-grid h4{color:var(--teal);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px;font-weight:800;}
   .hero-links-grid p{color:#e2e2e0;font-size:12px;margin:0 0 14px;line-height:1.9;}
   .hero-links-grid .more{color:var(--teal);font-size:11px;letter-spacing:.08em;border-bottom:1px solid var(--teal);padding-bottom:2px;}
-
-  /* ============ v15: ニュース欄（ヒーロー直後・boy-inc.com "important notice" バー参考） ============ */
-  .news-bar{background:var(--paper);border-bottom:1px solid var(--line);}
-  .news-bar-inner{max-width:1120px;margin:0 auto;padding:6px 24px;}
-  .news-item{display:flex;align-items:center;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);flex-wrap:wrap;}
-  .news-item:last-child{border-bottom:none;}
-  .news-tag{
-    background:var(--teal);color:#fff;font-size:10px;font-weight:700;
-    letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:999px;
-    white-space:nowrap;
-  }
-  .news-date{font-size:12px;color:var(--gray);white-space:nowrap;letter-spacing:.02em;}
-  .news-title{font-size:13px;color:var(--ink-soft);}
-  .news-note{
-    max-width:1120px;margin:0 auto;padding:0 24px 14px;
-    font-size:10px;color:var(--gray);text-align:right;
-  }
 
   /* ============ ABOUT US ============ */
   .aboutus-head-row{margin-bottom:36px;}
@@ -282,9 +473,11 @@
   .menu-tabs{display:flex;gap:0;border-bottom:1px solid var(--line);margin-bottom:8px;flex-wrap:wrap;}
   .menu-tab{background:none;border:none;font:inherit;cursor:pointer;padding:16px 22px;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--gray);border-bottom:2px solid transparent;margin-bottom:-1px;}
   .menu-tab.active{color:var(--ink);border-bottom-color:var(--teal);}
-  .menu-panel{display:none;padding-top:28px;}
+  /* v51: boy-inc.com .home_menu_box .menu_tab_list margin-bottom:70px実測に
+     合わせ、タブ直下にコンテンツが詰まって見えないようpadding-topを拡大 */
+  .menu-panel{display:none;padding-top:48px;}
   .menu-panel.active{display:block;}
-  .menu-line{display:flex;align-items:baseline;padding:15px 0;border-bottom:1px solid var(--line);}
+  .menu-line{display:flex;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line);}
   .menu-line:first-child{border-top:1px solid var(--line);}
   .menu-line .name{font-size:14px;font-weight:700;white-space:nowrap;}
   .menu-line .note{font-size:11px;color:var(--gray);margin-left:10px;font-weight:400;}
@@ -334,15 +527,40 @@
   .footer-nav a:hover{color:var(--teal);}
   .footer-bottom{text-align:center;font-size:10px;color:#77776f;margin-top:56px;letter-spacing:.05em;}
 
-  @media (max-width:680px){
+  /* v45追記：nav表示を保ったままの帯（681〜900px程度）で、ロゴ2行＋nav6項目＋
+     電話ボタンがheader-inner内で折り返し、固定高さのheaderから上下に
+     オーバーフローしてFV写真の上端に重なる不具合をPlaywright実測で確認
+     （旧680pxブレークポイントの外側で発生）。navを隠す閾値を900pxに拡張し、
+     nav表示中は必ず1行に収まる範囲だけをPC表示にする。 */
+  @media (max-width:900px){
     nav{display:none;}
+  }
+  @media (max-width:680px){
+    /* v45: 電話ボタンは1行に収まる短い要素になったため、680px以下でも
+       header-inner内には残す（消さない）。旧.header-right(2行テキスト)を
+       前提にした非表示ルールだったが、ボタン化に伴い削除。
+       375px幅でロゴ2行＋電話ボタンが並んでも詰まらないよう、左右paddingと
+       ロゴ/ボタンのサイズをやや縮小（Playwright実測で320〜430px確認済み）。 */
+    .header-inner{padding:0 16px;gap:10px;}
+    .logo{font-size:15px;}
+    .logo small{font-size:8.5px;}
+    .header-contact-btn{padding:8px 12px;font-size:11px;}
     .aboutus-grid,.info-grid,.footer-inner,.hero-links-grid,.topics-grid{grid-template-columns:1fr;}
     .aboutus-photos{grid-template-columns:1fr 1fr;}
     .hero-links-grid > div{border-left:none;border-top:1px solid rgba(255,255,255,.16);}
-    .discover-copy{padding:56px 20px 32px;}
+    .discover-copy{padding:56px 20px 40px;}
     .hero-links-grid > div:first-child{border-top:none;}
-    .news-item{gap:8px;}
-    .hero{height:520px;}
+    .fv-frame{padding-bottom:36px;}
+    .fv-photo{height:420px;}
+    .fv-badge{width:70px;height:70px;top:12px;right:12px;}
+    .fv-news{margin:-24px 0 0 8px;padding:12px 14px;max-width:calc(100% - 32px);gap:10px;}
+    .fv-news .title{font-size:11.5px;}
+    .fv-news .date{font-size:10px;}
+    .fv-reserve{width:100px;height:92px;right:0;bottom:60px;}
+    .fv-reserve-btn{border-radius:46px 0 0 46px;}
+    .fv-reserve-btn::before{inset:6px 0 6px 6px;border-radius:40px 0 0 40px;}
+    .fv-reserve-btn .en{font-size:12px;}
+    .fv-reserve-btn .ja{font-size:7.8px;margin-top:4px;}
     .giant-head{font-size:clamp(44px,15vw,120px);}
     .ghost{font-size:clamp(50px,22vw,160px);}
     .ghost-solo{font-size:clamp(38px,14vw,90px);}
@@ -404,13 +622,7 @@
       <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <div class="header-right">
-      <div class="header-hours">駐車場完備／予約なしでもご来店OK</div>
-      <div class="header-tel">
-        お電話でのご予約・お問い合わせ<br>
-        <span class="num">049-292-9695</span>
-      </div>
-    </div>
+    <a class="header-contact-btn" href="contact.html">Contact</a>
   </div>
 </header>
 
@@ -458,30 +670,35 @@
 -->
 
 
-<!-- ============ ヒーロー（v18：青みがかったtint/モノクロフィルタを完全削除、写真本来の色味） ============ -->
-<div class="hero" style="background-image:url('assets/shop_interior.png');">
-  <div class="hero-copy">
-    <p class="eyebrow-en">Hatoyama, Saitama</p>
-    <p class="catch">白髪染め・パーマも、いつもの「入りやすさ」で。</p>
-    <p class="sub">白髪染め・パーマが得意な美容室。<br>入りやすく、安心してお通いいただける理容室感覚のサロンです。</p>
+<!-- ============ ファーストビュー（v44：noir2023.net参考。ヘッダー直後すぐ白枠写真、
+     コピーは写真下の白余白内に格納＋右上回転ロゴバッジ＋写真下部に重なるお知らせバー） ============ -->
+<div class="fv-frame">
+  <div class="fv-photo" style="background-image:url('assets/about_business_man.png');">
+    <div class="fv-badge" aria-hidden="true">
+      <img src="assets/fv_badge_circle.png" alt="" loading="lazy">
+    </div>
   </div>
+
+  <a class="fv-news" href="blog.html">
+    <span class="tag">News</span>
+    <span class="date">2026.09.10</span>
+    <span class="title">秋の白髪染めキャンペーンを開始しました</span>
+    <span class="arrow">&gt;</span>
+  </a>
+
+  <!-- v47: .fv-caption（「Hatoyama, Saitama」＋訴求コピー）を鈴木さん指摘により
+       完全削除。同趣旨の文言はABOUT USセクションに既存のため重複削除として
+       問題なし。 -->
 </div>
 
-<!-- ============ ニュース欄（v15新設・社内確認用ダミー） ============ -->
-<div class="news-bar">
-  <div class="news-bar-inner">
-    <div class="news-item">
-      <span class="news-tag">Notice</span>
-      <span class="news-date">2026.09.25</span>
-      <span class="news-title">【HAIR SARON 02からのお知らせ】ホームページリニューアルのご案内（準備中）</span>
-    </div>
-    <div class="news-item">
-      <span class="news-tag">Notice</span>
-      <span class="news-date">2026.09.01</span>
-      <span class="news-title">営業時間・定休日のご案内（詳細はディレクションで確定予定）</span>
-    </div>
-  </div>
-  <p class="news-note">※お知らせ内容は社内確認用の仮テキストです。実際の内容はディレクション後に差し替えます。</p>
+<!-- v50: noir2023.net .reserve_btn 実測構造に合わせ、外側の固定コンテナ(.fv-reserve)
+     ＋内側の背景・角丸を持つ<a>(.fv-reserve-btn)の二重構造に変更。
+     コンテナはright:0で画面端にフラッシュ、<a>のborder-radiusは左のみ丸め。 -->
+<div class="fv-reserve">
+  <a class="fv-reserve-btn" href="tel:0492929695" aria-label="ご予約はこちら（お電話）">
+    <span class="en">RESERVE</span>
+    <span class="ja">ご予約はこちら</span>
+  </a>
 </div>
 
 <!-- ============ ABOUT US ============ -->
