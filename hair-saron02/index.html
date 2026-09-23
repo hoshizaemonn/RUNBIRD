@@ -16,6 +16,37 @@
 <title>【社内確認用ドラフト】HAIR SARON 02（ヘアーサロン ゼロツー）｜比企郡鳩山町の美容室</title>
 <style>
   /* ============================================================
+     v41: 鈴木さんより2点指示。
+       (1) 「STYLES以外のタイトルをもっと太文字に」→ ttl-center(BLOG)・
+           ttl-left(THE MENU/INFO)のfont-weightを800→900に変更。
+           ghost-solo(ABOUT US)・discover-ghost(DISCOVER US)は元々900で
+           変更不要（boy-inc.comのゴースト系見出しもbold=900相当）。
+       (2) 「BLOGはTOPICSのようにもっと幅広げて」→ boy-inc.com実CSSを
+           再取得し確認したところ、home_topics_ttl(TOPICS)はPC
+           font-size:100px(10rem)固定・モバイルはfont-size:13vw(min50px)。
+           これはhome_salons_ttl/home_menu_ttl/home_discover_ttlと共通の
+           サイズ。現行v40のBLOG見出い(ttl-center)はclamp(36px,6vw,72px)と
+           小さすぎたため、TOPICSと同等のclamp(50px,13vw,100px)に拡大。
+           ※ttl-leftはTHE MENU/INFOと共用のため据え置き（今回の指示対象外）。
+     ============================================================ */
+  /* ============================================================
+     v39: 鈴木さんより「ABOUTとかのタイトル部分も、boy-inc.comの
+     "HAIR & STYLES"「THE MENU」「DISCOVER US」「TOPICS」みたいに
+     タイトルを合わせてほしい」との指示。boy-inc.com実CSSを再取得して
+     確認したところ、home_menu_ttl/home_discover_ttl/home_hairStyles_ttlは
+     いずれも「巨大タイポ＋（一部）自セクション名の淡いゴースト文字」の
+     組み合わせ。v38時点のズレを2点修正：
+       (1) ABOUT USセクションのゴースト文字が誤って「STYLES」のままだった
+           バグを「ABOUT US」（自セクション名）に修正
+           ※THE MENU=ghost「THE MENU」、DISCOVER US=ghost「DISCOVER US」と
+           同じ「見出しテキストをそのままゴーストにする」ルールに統一
+       (2) BLOG・INFORMATIONセクションにはゴースト文字が無く見出しだけ
+           浮いていたため、同じ位置(top:-10px;left:-6px)・同じ.ghostクラスで
+           「BLOG」「INFO」の自セクション名ゴーストを追加
+     STYLES見出し（v38b）はboy-inc実サイトのhairStyles_ttl同様、ゴーストではなく
+     色帯(pink/teal/lavender)で装飾する構成のため変更なし（実サイトの構成と一致）。
+     ============================================================ */
+  /* ============================================================
      v19: 前回(v19以前)の指示は誤解だった。鈴木さんが削除を求めていたのは
      ヒーローのtint(v18で対応済み・維持)ではなく、ABOUT US内にあった
      「店舗外観写真＋白い正方形ロゴバッジ『02』＋店舗名＋下部中央の
@@ -90,6 +121,30 @@
   /* ============ ゴースト背景文字 ============ */
   .ghost{position:absolute;z-index:0;pointer-events:none;user-select:none;font-weight:900;letter-spacing:.02em;color:rgba(17,17,17,.045);font-size:clamp(70px,20vw,280px);white-space:nowrap;line-height:1;}
 
+  /* ============ v40: boy-inc.com実サイトをChrome headlessで実際にスクリーン
+     ショット確認＋実CSS(style.css)を取得して検証した結果、セクションごとに
+     配置・サイズ・ゴースト有無が異なることを確認：
+       - home_salons_ttl（ABOUT US=THE SALONS相当）: color #ddd の
+         ゴーストのみ・中央寄せ・実体の濃い見出しは重ねない
+       - home_topics_ttl（BLOG=TOPICS相当）: ゴースト無し・実体の黒文字・
+         中央寄せ・font-weight:bold
+       - home_menu_ttl（THE MENU）: ゴースト無し・実体の黒文字のみ・
+         左寄せ・font-size:100px(10rem)固定（vwで240px級まで拡大しない）
+       - home_discover_ttl（DISCOVER US）: 白ゴースト(opacity.3)のみ・
+         左寄せ・同じくfont-size:100px(10rem)固定
+     上記を踏まえ、v39までの「全セクション共通ゴースト＋巨大見出し」構成を
+     セクションごとに個別のクラスへ分離する。
+     ============ */
+  /* ABOUT USのみ：ゴースト単体を中央配置（実体の濃い見出しは重ねない） */
+  .ghost-solo{position:relative;z-index:1;text-align:center;font-weight:900;letter-spacing:.02em;color:rgba(17,17,17,.09);font-size:clamp(48px,9vw,130px);line-height:1;margin:0 0 8px;white-space:nowrap;pointer-events:none;user-select:none;}
+  /* BLOGのみ：ゴースト無し・実体の黒文字・中央寄せ
+     v41: boy-inc.com home_topics_ttl実測(PC:font-size:100px固定/太字)に
+     合わせてサイズ拡大＋font-weightを900に強化 */
+  .ttl-center{position:relative;z-index:1;text-align:center;font-weight:900;font-size:clamp(50px,13vw,100px);line-height:1.1;margin:0 0 8px;padding:0;}
+  /* MENU・INFOのみ：ゴースト無し・実体の黒文字・左寄せ・一回り小さいサイズ
+     v41: font-weightを900に強化（サイズは今回の指示対象外のため据え置き） */
+  .ttl-left{position:relative;z-index:1;text-align:left;font-weight:900;font-size:clamp(36px,6vw,72px);line-height:1.1;margin:0 0 8px;padding:0;}
+
   section{padding:110px 24px;position:relative;}
   .section-inner{max-width:1120px;margin:0 auto;position:relative;}
 
@@ -98,17 +153,25 @@
      モノクロ化フィルタ、および.hero-tintの黒グラデーション)を完全に削除。
      写真本来の色味をそのまま表示し、テキストの可読性はtext-shadowのみで確保する
      （画像全体を覆うオーバーレイ演出は使わない）*/
-  .hero{position:relative;height:640px;margin-top:calc(-1 * var(--header-h));background-size:cover;background-position:center;}
-  .hero-copy{position:absolute;inset:0;z-index:1;max-width:1120px;margin:0 auto;left:0;right:0;display:flex;flex-direction:column;justify-content:center;padding:0 24px;color:#fff;}
-  .hero-copy .eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;opacity:.9;margin:0 0 22px;text-shadow:0 1px 6px rgba(0,0,0,.6);}
-  .hero-copy .catch-en{font-family:Georgia,"Hiragino Mincho ProN",serif;font-style:italic;font-weight:400;font-size:clamp(18px,2.4vw,26px);line-height:1.7;max-width:620px;margin:0 0 22px;opacity:.98;text-shadow:0 1px 8px rgba(0,0,0,.65);}
-  .hero-copy .catch{font-size:30px;font-weight:800;line-height:1.5;margin:0 0 20px;max-width:600px;text-shadow:0 1px 10px rgba(0,0,0,.6);}
-  .hero-copy .sub{font-size:13px;margin:0;opacity:.95;max-width:500px;text-shadow:0 1px 6px rgba(0,0,0,.6);}
+  /* ============ v31: boy-inc.com寄せでファーストビューを整理
+     見づらさの原因＝(1)ヘッダーの「HAIR SARON 02」と直下eyebrowの「Hair Saron 02 /
+     Hatoyama, Saitama」が重複表示 (2)英文キャッチが3行＋和文キャッチ2行＋sub文2行の
+     計7〜9行が縦積みで情報過多 (3)写真の明るい部分（窓・棚）に白文字が沈む箇所がある。
+     対策＝重複eyebrowを削除・コピーを4行程度に圧縮・写真全体ではなく左側だけに
+     ローカルなグラデーション帯を敷いて可読性を確保（写真全体を覆う濃いオーバーレイは使わない）。 ============ */
+  .hero{position:relative;height:640px;margin-top:calc(-1 * var(--header-h));background-size:cover;background-position:center;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(100deg, rgba(10,10,10,.42) 0%, rgba(10,10,10,.18) 42%, rgba(10,10,10,0) 62%);}
+  .hero-copy{position:relative;z-index:1;height:100%;max-width:1120px;margin:0 auto;left:0;right:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 24px 72px;color:#fff;}
+  .hero-copy .eyebrow-en{font-family:Georgia,"Hiragino Mincho ProN",serif;font-style:italic;font-size:13px;letter-spacing:.12em;opacity:.92;margin:0 0 16px;text-shadow:0 1px 8px rgba(0,0,0,.7);}
+  .hero-copy .catch{font-size:30px;font-weight:800;line-height:1.5;margin:0 0 16px;max-width:600px;text-shadow:0 2px 14px rgba(0,0,0,.7);}
+  .hero-copy .sub{font-size:13px;margin:0;opacity:.95;max-width:480px;text-shadow:0 1px 8px rgba(0,0,0,.7);}
 
   /* ============ DISCOVER US セクション（v23：MENU直後・ブログ直前に再配置・背景=店舗外観・リンクはヘッダーナビと同じ実ページへ） ============ */
   .discover-section{position:relative;overflow:hidden;background-image:url('assets/shop_exterior.png');background-size:cover;background-position:center;}
   .discover-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.6) 0%,rgba(10,10,10,.82) 100%);z-index:0;}
-  .discover-ghost{position:absolute;z-index:0;left:-8px;top:24px;color:rgba(255,255,255,.09);font-weight:900;letter-spacing:.02em;font-size:clamp(64px,13vw,200px);white-space:nowrap;line-height:1;pointer-events:none;user-select:none;}
+  /* v40: 左寄せ・一回り小さいサイズに変更（boy-inc.com home_discover_ttl実測：
+     font-size:100px固定・左寄せ・opacity.3の白ゴーストのみ、に寄せる） */
+  .discover-ghost{position:absolute;z-index:0;left:-8px;top:24px;color:rgba(255,255,255,.13);font-weight:900;letter-spacing:.02em;font-size:clamp(44px,8vw,110px);white-space:nowrap;line-height:1;pointer-events:none;user-select:none;}
   .discover-copy{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:96px 24px 48px;color:#fff;}
   .discover-copy .eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.8;margin:0 0 18px;}
   .discover-copy .catch-en{font-family:Georgia,"Hiragino Mincho ProN",serif;font-style:italic;font-weight:400;font-size:clamp(16px,2vw,22px);line-height:1.85;max-width:560px;margin:0 0 16px;opacity:.96;}
@@ -152,39 +215,65 @@
   .aboutus-photos .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 18%;}
   .aboutus-photos .ph.up{margin-top:36px;}
 
-  /* ============ スタイル一覧（v13：1カテゴリ1枚＋カテゴリ間で重なり＋カテゴリ間でサイズ可変） ============ */
-  .styles-section{padding-top:0;padding-bottom:0;}
-  .styles-giant-wrap{position:relative;margin:70px 0 8px;overflow:visible;}
-  .styles-giant-pastel{position:absolute;left:0;bottom:-6px;width:46%;height:60%;z-index:0;background:var(--pastel-mint);}
-  .styles-giant{position:relative;z-index:1;font-size:clamp(56px,11vw,150px);font-weight:900;line-height:.86;margin:0;padding:0 0 0 14px;}
+  /* ============ スタイル一覧（v38b：boy-inc.com実サイトのCSS原文
+     （style.css .home_hairStyles_row_* / .hairStyles_line0*）を直接取得して確認。
+     実装方式はFlexbox/Gridではなく、全て position:absolute の座標直書き。
+     セクション全体(.styles-section)を position:relative の基準にし、
+     各カテゴリ行を「top(px) + left:0 or right:0 + width(%)」で個別に配置する。
+     4カテゴリ分、boy-incの実測px/%をそのまま流用：
+       Men's  = short  (top:228px,  right:0, width:65.7%)
+       Women's= bob    (top:835px,  left:0,  width:40.4%)
+       Perm   = medium (top:1110px, right:0, width:40.8%)
+       Color  = long   (top:1875px, left:0,  width:65.7%)
+     この座標のまま実装すると、Men's×Women'sの角が約88×44pxだけ軽く重なり
+     （DOM順で後のWomen'sが手前）、Women's×Perm・Perm×Colorは重ならず隙間ができる
+     ——という実サイトと同じ「一部だけ軽く重なる」挙動が自然に再現される
+     （z-indexを個別調整する必要はない）。
+     見出しブロックは各行の中に position:absolute で入れ、bottom+負のleft/right
+     により「写真と反対側の余白へ意図的にはみ出す」（写真の上に乗せない）。
+     装飾色面（line01/02/03）はopacity:.5の単色ブロックをz-index:900で
+     写真の手前に重ね、写真に色フィルターがかかったように透けて見せる。 ============ */
+  .styles-section{padding-top:0;padding-bottom:0;position:relative;height:2600px;}
 
-  .style-row{position:relative;display:grid;grid-template-columns:1fr 1.9fr;align-items:center;}
-  .style-row.alt{grid-template-columns:1.9fr 1fr;}
-  .style-row.alt .style-text{order:2;}
-  .style-text{display:flex;flex-direction:column;justify-content:center;padding:40px 34px;position:relative;z-index:6;}
-  .style-text h3{font-size:clamp(26px,3vw,36px);margin:0 0 16px;font-weight:400;}
-  .style-text .rule{width:44px;height:1px;background:var(--ink);margin:0 0 16px;}
-  .style-text .see-more{font-size:11px;letter-spacing:.08em;color:var(--teal-dark);border-bottom:1px solid var(--teal-dark);padding-bottom:2px;width:fit-content;display:inline-flex;align-items:center;gap:6px;}
+  .styles-giant-wrap{position:relative;z-index:2;margin:0;padding-top:16px;overflow:visible;}
+  .styles-giant{position:relative;z-index:2;font-size:clamp(56px,11vw,150px);font-weight:900;line-height:.86;margin:0;padding:0 0 0 14px;}
 
-  /* 写真1枚（v14：4枚ともMen's Stylesと同程度の大きめサイズにほぼ揃え、
-     隣接カテゴリとの重なりも控えめ(写真幅の5〜10%程度)に抑える） */
-  .style-photo-wrap{position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.16);}
-  .style-photo-wrap img{filter:grayscale(20%) contrast(1.05);}
+  /* 装飾色面（boy-inc実測：line01=ピンク/line02=ティール/line03=ラベンダー、
+     全てopacity:.5・z-index:900で写真の手前に重ねて色を透けさせる） */
+  .styles-line01{position:absolute;z-index:1;top:80px;left:0;width:48vw;height:300px;background:var(--pastel-pink);opacity:.5;}
+  .styles-line02{position:absolute;z-index:900;top:1577px;right:0;width:40vw;height:300px;background:var(--teal);opacity:.5;}
+  .styles-line03{position:absolute;z-index:900;top:2310px;left:0;width:22vw;height:290px;background:var(--pastel-lavender);opacity:.5;}
 
-  /* ① Men's Styles: 基準サイズ（正方形に近い大きめの写真） */
-  .style-row.sz-1 .style-photo-wrap{aspect-ratio:1/1;width:82%;margin-left:auto;position:relative;z-index:1;}
+  /* ============ 各カテゴリ行（boy-incの.home_hairStyles_row_*を移植） ============ */
+  .styles-row{position:absolute;}
+  .styles-row a{display:block;color:inherit;text-decoration:none;}
 
-  /* ② Women's Styles: ①とほぼ同サイズ。上にごく軽く重ねる（控えめな食い込み） */
-  .style-row.sz-2 .style-photo-wrap{aspect-ratio:4/4.6;width:80%;margin-left:auto;margin-top:-30px;position:relative;z-index:2;}
+  .row-mens{top:228px;right:0;width:65.7%;z-index:2;}
+  .row-womens{top:835px;left:0;width:40.4%;z-index:3;}
+  .row-perm{top:1110px;right:0;width:40.8%;z-index:2;}
+  .row-color{top:1875px;left:0;width:65.7%;z-index:2;}
 
-  /* ③ Perm Styles: ①②とほぼ同サイズ。控えめな食い込み */
-  .style-row.sz-3 .style-photo-wrap{aspect-ratio:4/3.4;width:84%;margin-left:auto;margin-top:-28px;position:relative;z-index:3;}
+  .row-photo{position:relative;overflow:hidden;width:100%;z-index:1;}
+  .row-photo img{display:block;width:100%;filter:grayscale(20%) contrast(1.05);}
+  .row-mens .row-photo{aspect-ratio:946.1/651.2;}
+  .row-womens .row-photo{aspect-ratio:1/1;}
+  .row-perm .row-photo{aspect-ratio:587.5/756.2;}
+  .row-color .row-photo{aspect-ratio:946.1/651;}
 
-  /* ④ Color Styles: ①②③とほぼ同サイズ。控えめな食い込み */
-  .style-row.sz-4 .style-photo-wrap{aspect-ratio:4/4.2;width:80%;margin-left:auto;margin-top:-30px;position:relative;z-index:4;}
+  /* 見出しブロック：写真と反対側の余白へ意図的にはみ出す（bottom＋負のleft/right）。
+     見出し＋細い罫線＋「See all」リンクの構成はサイト既存の.see-moreスタイルを踏襲 */
+  .row-ttl-box{position:absolute;z-index:5;background:var(--paper);padding:4px 10px 10px 0;width:max-content;max-width:280px;}
+  .row-ttl-box h3{font-family:Georgia,"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(24px,2.6vw,32px);margin:0 0 14px;font-weight:700;letter-spacing:.01em;}
+  .row-ttl-box .rule{width:40px;height:1px;background:var(--ink);margin:0 0 12px;}
+  .row-ttl-box .see-more{font-size:11px;letter-spacing:.08em;color:var(--teal-dark);border-bottom:1px solid var(--teal-dark);padding-bottom:2px;width:fit-content;display:inline-flex;align-items:center;gap:5px;}
+  .row-ttl-box .see-more span{font-size:13px;line-height:1;color:var(--teal-dark);}
 
-  /* パステル色面：写真の縁にちらっと覗く独立ブロック（各カテゴリ1枚の縁に配置） */
-  .style-tint{position:absolute;z-index:5;opacity:.6;pointer-events:none;}
+  .row-mens .row-ttl-box{bottom:130px;left:-22%;}
+  .row-womens .row-ttl-box{bottom:66px;right:-42%;text-align:right;}
+  .row-perm .row-ttl-box{bottom:20px;left:-58%;}
+  .row-color .row-ttl-box{bottom:47px;right:-22%;text-align:right;}
+  .row-womens .row-ttl-box .see-more,
+  .row-color .row-ttl-box .see-more{margin-left:auto;}
 
   .style-mobile-text{display:none;}
   .style-pastel-spacer{display:none;}
@@ -256,32 +345,46 @@
     .hero{height:520px;}
     .giant-head{font-size:clamp(44px,15vw,120px);}
     .ghost{font-size:clamp(50px,22vw,160px);}
+    .ghost-solo{font-size:clamp(38px,14vw,90px);}
+    .ttl-left{font-size:clamp(30px,10vw,52px);}
+    .ttl-center{font-size:clamp(38px,13vw,64px);}
+    .discover-ghost{font-size:clamp(34px,13vw,80px);}
     section{padding:70px 20px;}
     .menu-line .name{white-space:normal;}
     :root{--header-h:64px;}
+  }
 
-    /* --- スタイル一覧：モバイルは重なり・可変サイズを解除し、写真1枚フル幅＋見出し直接重ねに統一 --- */
-    .styles-giant-pastel{width:70%;height:50%;}
+  /* --- スタイル一覧（v38b）専用ブレークポイント：boy-incの絶対配置（top/left/
+     right/width固定px・%）は約1440px設計で組んでいるため、768px前後のタブレット幅
+     では列位置と装飾色面がズレる。boy-inc実サイトも767px以下でposition:staticに
+     切り替えて絶対配置の演出を解除しているのと同じ考え方で、900px以下は
+     サイト全体のブレークポイント(680px)より広い範囲でスタイル一覧だけ先に
+     モバイル同様の縦積み（写真が上・見出しが下）へ切り替える。 --- */
+  @media (max-width:900px){
+    .styles-section{height:auto;position:relative;padding-bottom:40px;}
+    .styles-giant-wrap{padding-top:8px;}
     .styles-giant{font-size:clamp(40px,15vw,90px);padding-left:8px;}
-    .style-row, .style-row.alt{grid-template-columns:1fr;}
-    .style-row .style-text{display:none;}
-    .style-tint{display:none;}
-    .style-photo-wrap,
-    .style-row.sz-1 .style-photo-wrap,
-    .style-row.sz-2 .style-photo-wrap,
-    .style-row.sz-3 .style-photo-wrap,
-    .style-row.sz-4 .style-photo-wrap{
-      width:100%;margin:0;aspect-ratio:3/4;box-shadow:none;
+    .styles-line01{top:24px;width:70vw;height:120px;}
+    .styles-line02{display:none;}
+    .styles-line03{display:none;}
+
+    .styles-rows-wrap{display:flex;flex-direction:column;}
+    .styles-row{position:static;width:100% !important;margin-bottom:36px;}
+    .styles-row a{display:flex;flex-direction:column-reverse;}
+    .row-mens{order:1;}
+    .row-womens{order:2;}
+    .row-perm{order:3;}
+    .row-color{order:4;}
+    .styles-row.row-mens .row-photo,
+    .styles-row.row-womens .row-photo,
+    .styles-row.row-perm .row-photo,
+    .styles-row.row-color .row-photo{aspect-ratio:3/4;}
+    .row-ttl-box{
+      position:static !important;width:100%;max-width:none;
+      text-align:center !important;padding:18px 20px 0;background:none;
     }
-    .style-mobile-text{
-      display:flex;position:absolute;inset:0;z-index:3;
-      align-items:center;justify-content:center;text-align:center;
-    }
-    .style-mobile-text .scrim{background:rgba(255,255,255,.78);padding:22px 30px;}
-    .style-mobile-text h3{font-size:26px;font-weight:400;margin:0 0 10px;}
-    .style-mobile-text .rule{width:36px;height:1px;background:var(--ink);margin:0 auto 10px;}
-    .style-mobile-text .see-more{font-size:11px;color:var(--teal-dark);border-bottom:1px solid var(--teal-dark);padding-bottom:2px;}
-    .style-pastel-spacer{display:block;height:34px;}
+    .row-ttl-box .rule{margin:0 auto 10px;}
+    .row-ttl-box .see-more{margin:0 auto !important;}
   }
 </style>
 </head>
@@ -296,6 +399,7 @@
     <nav>
       <a href="about.html">About</a>
       <a href="menu.html">Menu</a>
+      <a href="styles.html">Styles</a>
       <a href="staff.html">Staff</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
@@ -311,20 +415,43 @@
 </header>
 
 <!--
-  ============ v30 デザイン方針メモ ============
-  鈴木さんからhairstudio-onlyone-1058.com（MENU/CONCEPTページ）を参考にした
-  指示。ページヘッダー（写真＋中央タイトル、v29のまま）はそのまま、
-  その下のコンテンツ構成のみクラシックな見せ方に翻案。
-  - about.html: 「HAIR SARON 02について」の導入部を、頭文字だけ大きい明朝体の
-    見出し＋二重罫線を使ったCONCEPT（コンセプト＋写真の横並び）→
-    PROFILE（代表の写真＋項目:値のプロフィール表）→MESSAGE（代表の想いの
-    長文）の3段構成に再編。既存の「選ばれる3つの理由」「ご来店の流れ」
-    「店舗紹介」ギャラリーは維持
-  - menu.html: 各カテゴリ見出しを同じ頭文字大の明朝体＋二重罫線に変更し、
-    白髪染め×パーマ、ヘアメニュー×オプションの2カテゴリを2カラムで
-    並べる構成に再編（既存の点線リーダー価格リストはそのまま活用）
-  配色は白基調＋ティールを維持。about/menu.html以外の下層ページは変更なし。
-  ※トップページ自体のデザインは維持（本ファイルは論理バージョンを上げただけ）
+  ============ v42 対応メモ ============
+  鈴木さんから「ヘッダー下のハンバーガーメニュー（三本線アイコン）を全ページ削除して」との指摘。
+  → v1〜v41および下層ページ(about/menu/staff/blog/contact/privacy.html)を
+    hamburger/toggle/menu-btn/nav-toggle/drawer/☰ 等のキーワードで全文grep確認したが、
+    ハンバーガーメニューに該当するHTML/CSS/JSは一切存在しなかった（header内はロゴ・nav・
+    電話番号バーのみ。モバイル680px以下ではnavがdisplay:noneになるだけで代替アイコンも無し）。
+    参考サイトboy-inc.com側の要素と混同された可能性あり。対象コードが無いため削除作業は
+    発生せず、v42はv41からの変更なし（本コメント追記のみ）。
+-->
+
+<!--
+  ============ v36 デザイン方針メモ ============
+  鈴木さんから「スタイル一覧の大きい写真＋小さい写真の2枚組はいらない。
+  小さい写真は削除。大きい写真は画面の左端か右端にちゃんとくっつくように
+  してほしい」との指摘。
+
+  1. v35で追加した2枚目の重なり写真(.photo-second)を4カテゴリ全てから完全に削除。
+     各カテゴリ大きい写真1枚のみの構成に戻した。
+  2. .style-photo-cluster / .photo-main を width:100% に変更。.style-row は
+     親(.bleed .styles-section)がすでに100vw幅でmax-width制約を受けない
+     ため、width:100%にするだけでグリッド列の端＝画面の左端または右端に
+     余白なしでフルブリードに接する（以前のwidth:80〜84%+margin-left:autoの
+     半端な余白を解消）。
+     - Men's Styles: 画面右端にフルブリード
+     - Women's Styles: 画面左端にフルブリード
+     - Perm Styles: 画面右端にフルブリード
+     - Color Styles: 画面左端にフルブリード
+     （左右交互パターンはv35から維持）
+  3. 見出しテキスト・「See all」リンクは、写真が無い側の余白カラム
+     (.style-text)にそのまま配置（構成は維持）。
+  4. v34のSTYLES見出し色面とMen's Styles写真上端のソフトフェード(mask-image)
+     は.photo-mainに引き継いで維持。モバイルは従来通り1枚構成（変更なし）。
+
+  Chrome headlessでPC幅(1440/1280px)・モバイル幅(375/390/430px)を確認し、
+  小さい写真が完全に消え、大きい写真が画面端に隙間なく接していることを確認済み。
+
+  下層ページ（about/menu/staff/blog/contact/privacy.html）は変更なし。
 
   全体構成（v26から変更なし）:
   ABOUT US → STYLES → MENU → DISCOVER US → BLOG → INFORMATION → CTA → FOOTER
@@ -334,10 +461,9 @@
 <!-- ============ ヒーロー（v18：青みがかったtint/モノクロフィルタを完全削除、写真本来の色味） ============ -->
 <div class="hero" style="background-image:url('assets/shop_interior.png');">
   <div class="hero-copy">
-    <p class="eyebrow">Hair Saron 02 / Hatoyama, Saitama</p>
-    <p class="catch-en">It's always a good feeling to find a place nearby where anyone — young or old — can casually walk in and feel at home.</p>
+    <p class="eyebrow-en">Hatoyama, Saitama</p>
     <p class="catch">白髪染め・パーマも、いつもの「入りやすさ」で。</p>
-    <p class="sub">比企郡鳩山町松ヶ丘、地域のみなさまに寄り添う美容室です。予約なしでもお気軽にどうぞ。</p>
+    <p class="sub">白髪染め・パーマが得意な美容室。<br>入りやすく、安心してお通いいただける理容室感覚のサロンです。</p>
   </div>
 </div>
 
@@ -361,10 +487,10 @@
 <!-- ============ ABOUT US ============ -->
 <section id="aboutus">
   <div class="section-inner">
-    <div class="ghost" style="top:-10px;left:-6px;">STYLES</div>
-    <div class="giant-wrap aboutus-head-row">
-      <h2 class="giant-head">ABOUT US</h2>
-    </div>
+    <!-- v40: 実体の巨大見出しは廃止し、背景のグレースケールのゴースト文字だけを
+         中央配置（boy-inc.com「THE SALONS」＝home_salons_ttl実測に準拠：
+         色#dddのゴーストのみ・中央寄せ・手前に濃い見出しは重ねない） -->
+    <div class="ghost-solo aboutus-head-row">ABOUT US</div>
     <div class="aboutus-grid">
       <div class="aboutus-copy">
         <p style="font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--teal);margin:0 0 18px;font-weight:700;">地域のみなさまへ、そして新しい世代の男性たちへ</p>
@@ -390,107 +516,91 @@
   </div>
 </section>
 
-<!-- ============ スタイル一覧（v13：1カテゴリ1枚＋カテゴリ間で重なり＋カテゴリ間でサイズ可変） ============ -->
+<!-- ============ スタイル一覧（v38b：boy-inc.com実サイトのCSS原文（style.css
+     .home_hairStyles_row_short/bob/medium/long）を直接取得し、その座標をそのまま
+     4カテゴリに移植。Flexbox/Gridではなくposition:absoluteの座標直書きで、
+     Men's=short・Women's=bob・Perm=medium・Color=long のtop/left・right/width値を流用。
+     結果としてMen's×Women'sの角だけ軽く重なり、他は重ならず隙間ができる
+     （実サイトと同じ挙動。z-indexの個別調整は不要）。 ============ -->
 <div class="bleed styles-section" id="styles">
 
   <div class="section-inner styles-giant-wrap">
-    <div class="styles-giant-pastel"></div>
     <h2 class="giant-head styles-giant">STYLES</h2>
   </div>
+  <div class="styles-line01"></div>
+  <div class="styles-line02"></div>
+  <div class="styles-line03"></div>
 
-  <!-- ① Men's Styles：基準サイズ（学生・サラリーマン向け／男性優先） -->
-  <div class="style-row sz-1">
-    <div class="style-text">
-      <h3 class="serif">Men's Styles</h3>
-      <div class="rule"></div>
-      <a class="see-more" href="#menu">See all men's styles <span>›</span></a>
-    </div>
-    <div class="style-photo-wrap">
-      <div class="style-tint" style="background:var(--pastel-mint);left:-6%;top:8%;width:16%;height:50%;"></div>
-      <img src="assets/about_young_man.png" alt="学生風の若い男性のお客様（メンズスタイル）">
-      <div class="style-mobile-text">
-        <div class="scrim">
+  <div class="styles-rows-wrap">
+
+    <!-- ① Men's Styles = boy-inc「Short Styles」の座標を移植 -->
+    <div class="styles-row row-mens">
+      <a href="styles.html#mens">
+        <div class="row-ttl-box">
           <h3 class="serif">Men's Styles</h3>
           <div class="rule"></div>
-          <a class="see-more" href="#menu">See all men's styles ›</a>
+          <span class="see-more">See all men's styles <span>↗</span></span>
         </div>
-      </div>
+        <div class="row-photo">
+          <img src="assets/about_young_man.png" alt="学生風の若い男性のお客様（メンズスタイル）">
+        </div>
+      </a>
     </div>
-  </div>
-  <div class="style-pastel-spacer" style="background:var(--pastel-mint);"></div>
 
-  <!-- ② Women's Styles：①とほぼ同サイズ（軽く重なる） -->
-  <div class="style-row alt sz-2">
-    <div class="style-photo-wrap">
-      <div class="style-tint" style="background:var(--pastel-pink);right:-6%;top:10%;width:16%;height:40%;"></div>
-      <img src="assets/menu_haku.png" alt="白髪染めスタイル">
-      <div class="style-mobile-text">
-        <div class="scrim">
+    <!-- ② Women's Styles = boy-inc「Bob Styles」の座標を移植 -->
+    <div class="styles-row row-womens">
+      <a href="styles.html#womens">
+        <div class="row-ttl-box">
           <h3 class="serif">Women's Styles</h3>
           <div class="rule"></div>
-          <a class="see-more" href="#menu">See all women's styles ›</a>
+          <span class="see-more">See all women's styles <span>↗</span></span>
         </div>
-      </div>
+        <div class="row-photo">
+          <img src="assets/menu_haku.png" alt="白髪染めスタイル">
+        </div>
+      </a>
     </div>
-    <div class="style-text">
-      <h3 class="serif">Women's Styles</h3>
-      <div class="rule"></div>
-      <a class="see-more" href="#menu">See all women's styles <span>›</span></a>
-    </div>
-  </div>
-  <div class="style-pastel-spacer" style="background:var(--pastel-pink);"></div>
 
-  <!-- ③ Perm Styles：①②とほぼ同サイズ（軽く重なる／学生・メンズ中心） -->
-  <div class="style-row sz-3">
-    <div class="style-text">
-      <h3 class="serif">Perm Styles</h3>
-      <div class="rule"></div>
-      <a class="see-more" href="#menu">See all perm styles <span>›</span></a>
-    </div>
-    <div class="style-photo-wrap">
-      <div class="style-tint" style="background:var(--pastel-lavender);left:-6%;top:12%;width:14%;height:44%;"></div>
-      <img src="assets/menu_perm.png" alt="パーマ施術の様子（若い男性のお客様）">
-      <div class="style-mobile-text">
-        <div class="scrim">
+    <!-- ③ Perm Styles = boy-inc「Medium Styles」の座標を移植（ティール色面が写真にかかる） -->
+    <div class="styles-row row-perm">
+      <a href="styles.html#perm">
+        <div class="row-ttl-box">
           <h3 class="serif">Perm Styles</h3>
           <div class="rule"></div>
-          <a class="see-more" href="#menu">See all perm styles ›</a>
+          <span class="see-more">See all perm styles <span>↗</span></span>
         </div>
-      </div>
+        <div class="row-photo">
+          <img src="assets/menu_perm.png" alt="パーマ施術の様子（若い男性のお客様）">
+        </div>
+      </a>
     </div>
-  </div>
-  <div class="style-pastel-spacer" style="background:var(--pastel-lavender);"></div>
 
-  <!-- ④ Color Styles：①②③とほぼ同サイズ（軽く重なる／白髪染め中心） -->
-  <div class="style-row alt sz-4">
-    <div class="style-photo-wrap">
-      <div class="style-tint" style="background:var(--pastel-peach);right:-6%;top:8%;width:16%;height:46%;"></div>
-      <img src="assets/staff_owner.png" alt="代表 小川信浩（イメージ）">
-      <div class="style-mobile-text">
-        <div class="scrim">
+    <!-- ④ Color Styles = boy-inc「Long Styles」の座標を移植（ラベンダー色面が写真にかかる） -->
+    <div class="styles-row row-color">
+      <a href="styles.html#color">
+        <div class="row-ttl-box">
           <h3 class="serif">Color Styles</h3>
           <div class="rule"></div>
-          <a class="see-more" href="#menu">See all color styles ›</a>
+          <span class="see-more">See all color styles <span>↗</span></span>
         </div>
-      </div>
+        <div class="row-photo">
+          <img src="assets/staff_owner.png" alt="代表 小川信浩（イメージ）">
+        </div>
+      </a>
     </div>
-    <div class="style-text">
-      <h3 class="serif">Color Styles</h3>
-      <div class="rule"></div>
-      <a class="see-more" href="#menu">See all color styles <span>›</span></a>
-    </div>
+
   </div>
-  <div class="style-pastel-spacer" style="background:var(--pastel-peach);"></div>
 
 </div>
 
 <!-- ============ MENU（巨大見出し＋タブ切替＋ドットリーダー価格リスト） ============ -->
 <section id="menu">
   <div class="section-inner">
-    <div class="ghost" style="top:0;right:-10px;">THE MENU</div>
-    <div class="giant-wrap">
-      <h2 class="giant-head right">THE MENU</h2>
-    </div>
+    <!-- v40: 左寄せ・一回り小さいサイズに変更。boy-inc.com「THE MENU」
+         （home_menu_ttl）を実際にChrome headlessで確認したところ、ゴーストは
+         無く実体の黒文字のみ・左寄せ・font-size固定(100px相当)だったため、
+         ゴーストは削除しゴースト無しの実体見出しのみに統一 -->
+    <h2 class="ttl-left">THE MENU</h2>
 
     <div class="menu-tabs">
       <button class="menu-tab active" data-target="panel-haku">白髪染め</button>
@@ -565,9 +675,10 @@
 <!-- ============ BLOG（v23：TOPICS→ブログに名称変更。DISCOVER US直後・INFORMATION直前。boy-inc.com「TOPICS」構成のブログプレビュー） ============ -->
 <section id="blog-preview" style="background:var(--paper-soft);">
   <div class="section-inner">
-    <div class="giant-wrap">
-      <h2 class="giant-head">BLOG</h2>
-    </div>
+    <!-- v40: 中央寄せ・ゴースト無し・一回り小さいサイズに変更。boy-inc.com
+         「TOPICS」（home_topics_ttl）実測：ゴースト無し・実体の黒文字bold・
+         中央寄せ・font-size固定(100px相当)に合わせる -->
+    <h2 class="ttl-center">BLOG</h2>
     <div class="topics-grid">
       <div class="topic-card">
         <div class="thumb"><img src="assets/menu_haku.png" alt="記事サムネイル（イメージ）"></div>
@@ -600,9 +711,8 @@
 <!-- ============ INFORMATION（巨大見出し） ============ -->
 <section id="information">
   <div class="section-inner">
-    <div class="giant-wrap">
-      <h2 class="giant-head">INFO</h2>
-    </div>
+    <!-- v40: MENUと同じ考え方＝左寄せ・ゴースト無し・一回り小さいサイズに統一 -->
+    <h2 class="ttl-left">INFO</h2>
     <div class="info-grid">
       <table class="info-table">
         <tr><th>店舗名</th><td>HAIR SARON 02（ヘアーサロン ゼロツー）</td></tr>

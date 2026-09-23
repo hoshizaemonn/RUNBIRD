@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<!--
+  ★社内確認用ドラフトです（本番サイトではありません）
+  HAIR SARON 02様（埼玉県比企郡鳩山町・小川信浩様）のHP制作案件について、
+  RUNBIRD社内（鈴木さん）確認用に作成したデザインたたき台です。
+  写真・人物はすべて生成画像・仮のイメージで実在しません。
+  店舗名・住所・電話番号はヒアリングシート記載の実情報ですが、
+  このページ自体はまだ社内検討段階であり、クライアント納品・一般公開はしていません。
+  検索エンジンにはインデックスさせない設定（robots noindex）にしています。
+-->
+<title>【社内確認用ドラフト】スタイル一覧｜HAIR SARON 02（ヘアーサロン ゼロツー）</title>
+<style>
+  /* ============================================================
+     v2: 方針転換対応（鈴木さん指示 2026-09-23）。
+     参考: https://boy-inc.com/hair_styles/ （タブ切替のカテゴリ別ページではなく、
+     カテゴリを縦に全部並べたインデックスページ）。
+     旧v1はJSタブでカテゴリを1つずつ隠す構成だったが、参考サイトは
+     ヒーロー → カテゴリ見出し(serif) → 写真4列グリッド × カテゴリ数だけ
+     縦に連続して並ぶ構成だったため、その形に合わせて全面書き換え。
+     トーン・ヘッダー/フッターCSSはabout.html/トップページ_たたき台_v42と共通。
+     ============================================================ */
+  :root{
+    --ink:#111111;
+    --ink-soft:#333333;
+    --paper:#ffffff;
+    --paper-soft:#f7f2e6;
+    --line:#dcdcda;
+    --gray:#8a8a86;
+    --teal:#3fb6a8;
+    --teal-dark:#2e8f84;
+    --header-h:84px;
+    --pastel-mint:#bfe8e0;
+  }
+  *{box-sizing:border-box;}
+  html{overflow-x:hidden;}
+  body{
+    margin:0;overflow-x:hidden;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    padding-top:var(--header-h);
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;width:100%;height:100%;object-fit:cover;}
+
+  /* ============ ヘッダー（既存ページと共通） ============ */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;height:var(--header-h);
+    background:transparent;border-bottom:1px solid transparent;
+    transition:background .35s ease, border-color .35s ease;
+  }
+  header.scrolled{background:var(--paper);border-bottom-color:var(--line);}
+  .header-inner{max-width:1120px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+  .logo{font-size:18px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#fff;transition:color .35s ease;}
+  .logo small{display:block;font-size:10px;font-weight:400;color:rgba(255,255,255,.75);letter-spacing:.05em;margin-top:3px;text-transform:none;transition:color .35s ease;}
+  nav{display:flex;gap:26px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;}
+  nav a{color:#fff;transition:color .35s ease;}
+  .header-right{display:flex;align-items:center;gap:20px;}
+  .header-hours{font-size:10px;color:rgba(255,255,255,.75);text-align:right;transition:color .35s ease;}
+  .header-tel{text-align:right;font-size:10px;color:rgba(255,255,255,.75);transition:color .35s ease;}
+  .header-tel .num{font-size:17px;font-weight:700;color:#fff;transition:color .35s ease;}
+  header.scrolled .logo{color:var(--ink);}
+  header.scrolled .logo small{color:var(--gray);}
+  header.scrolled nav a{color:var(--ink);}
+  header.scrolled .header-hours{color:var(--gray);}
+  header.scrolled .header-tel{color:var(--gray);}
+  header.scrolled .header-tel .num{color:var(--ink);}
+  body.subpage header{background:var(--paper);border-bottom-color:var(--line);}
+  body.subpage .logo,body.subpage nav a,body.subpage .header-hours,body.subpage .header-tel{color:var(--gray);}
+  body.subpage .logo{color:var(--ink);}
+  body.subpage .header-tel .num{color:var(--ink);}
+
+  /* ============ ページヒーロー（about.html新デザインと共通トーン・ミント帯＋大見出し） ============ */
+  .hero-lp{padding:56px 24px 8px;position:relative;}
+  .hero-lp .crumb{max-width:1120px;margin:0 auto 30px;font-size:11px;color:var(--gray);letter-spacing:.04em;}
+  .hero-lp .crumb a{color:var(--teal-dark);}
+  .hero-mint-wrap{max-width:1120px;margin:0 auto;position:relative;display:inline-block;}
+  .hero-mint-wrap .mint-band{position:absolute;left:2px;bottom:10px;width:72%;height:40%;background:var(--pastel-mint);z-index:0;}
+  .hero-mint-wrap h1{position:relative;z-index:1;font-weight:900;font-size:clamp(38px,7vw,72px);letter-spacing:.01em;margin:0;color:var(--ink);text-transform:uppercase;line-height:1.05;}
+
+  section{padding:56px 24px;position:relative;}
+  .section-inner{max-width:1120px;margin:0 auto;position:relative;}
+
+  /* ============ カテゴリの絞り込みリンク（アンカー・ページ内ジャンプ） ============ */
+  .style-jump{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--line);}
+  .style-jump a{padding:16px 24px;font-size:12px;font-weight:700;letter-spacing:.05em;color:var(--gray);border-bottom:2px solid transparent;margin-bottom:-1px;text-transform:uppercase;}
+  .style-jump a:hover{color:var(--ink);border-bottom-color:var(--teal);}
+
+  /* ============ カテゴリ見出し（serif） ============ */
+  .cat-block{padding-top:64px;scroll-margin-top:calc(var(--header-h) + 16px);}
+  .cat-block:first-of-type{padding-top:40px;}
+  .cat-head{font-family:Georgia,"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(26px,3.4vw,40px);font-weight:700;margin:0 0 32px;color:var(--ink);text-align:center;}
+
+  /* ============ 写真グリッド（PC 4列） ============ */
+  .style-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .style-grid a{display:block;position:relative;overflow:hidden;background:var(--paper-soft);}
+  .style-grid .ph{aspect-ratio:3/4;overflow:hidden;}
+  .style-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;filter:grayscale(10%) contrast(1.05);}
+  .style-grid a:hover img{transform:scale(1.06);}
+  .style-grid .cap{padding:10px 4px 0;font-size:11px;letter-spacing:.04em;color:var(--ink-soft);}
+
+  /* ============ カテゴリ末尾の黒ボタン（boy-inc.com「SHORT STYLE LIST」参考） ============ */
+  .cat-btn-wrap{text-align:center;margin-top:32px;}
+  .btn-black{display:inline-flex;align-items:center;gap:16px;background:var(--ink);color:#fff;padding:16px 30px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;}
+  .btn-black .arrow{color:var(--teal);font-size:16px;line-height:1;}
+
+  /* ============ フッター（既存ページと共通） ============ */
+  footer{background:var(--ink);color:#fff;padding:64px 24px 36px;}
+  .footer-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;}
+  footer h4{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:0 0 18px;}
+  footer p{font-size:12px;color:#cfcfca;line-height:2.1;}
+  .footer-nav a{display:block;font-size:13px;line-height:2.3;color:#f2f2f0;}
+  .footer-nav a:hover{color:var(--teal);}
+  .footer-bottom{text-align:center;font-size:10px;color:#77776f;margin-top:56px;letter-spacing:.05em;}
+
+  @media (max-width:680px){
+    nav{display:none;}
+    .hero-lp{padding:40px 20px 4px;}
+    .hero-mint-wrap .mint-band{width:60%;height:34%;bottom:6px;}
+    .style-jump{overflow-x:auto;flex-wrap:nowrap;}
+    .style-jump a{padding:14px 16px;font-size:11px;white-space:nowrap;}
+    .style-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+    .cat-block{padding-top:48px;}
+    .footer-inner{grid-template-columns:1fr;}
+    :root{--header-h:64px;}
+  }
+</style>
+</head>
+<body class="subpage">
+
+<header id="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">HAIR SARON 02
+      <small>ヘアーサロン ゼロツー／比企郡鳩山町</small>
+    </a>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="menu.html">Menu</a>
+      <a href="styles.html">Styles</a>
+      <a href="staff.html">Staff</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="header-hours">駐車場完備／予約なしでもご来店OK</div>
+      <div class="header-tel">
+        お電話でのご予約・お問い合わせ<br>
+        <span class="num">049-292-9695</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="hero-lp">
+  <div class="crumb"><a href="index.html">TOP</a> / STYLES</div>
+  <div class="hero-mint-wrap">
+    <span class="mint-band"></span>
+    <h1>HAIR &amp; STYLES</h1>
+  </div>
+</div>
+
+<section style="padding-bottom:0;">
+  <div class="section-inner">
+    <div class="style-jump">
+      <a href="#mens">Men's Style</a>
+      <a href="#womens">Women's Style</a>
+      <a href="#perm">Perm Style</a>
+      <a href="#color">Color Style</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+
+    <!-- ① Men's Style -->
+    <div class="cat-block" id="mens">
+      <h2 class="cat-head">Men's Style</h2>
+      <div class="style-grid">
+        <a href="menu.html"><div class="ph"><img src="assets/styles/mens_style_01.png" alt="メンズカット施術中の若い男性"></div><div class="cap">Men's Cut／カット中</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/mens_style_02.png" alt="仕上がりを確認するビジネスマン"></div><div class="cap">Men's Cut／ビジネス</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/mens_style_03.png" alt="バリカンで刈り上げを整える学生風の男性"></div><div class="cap">Men's Cut／学生</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/mens_style_04.png" alt="カット後の襟足の仕上がり"></div><div class="cap">Men's Cut／襟足仕上げ</div></a>
+      </div>
+      <div class="cat-btn-wrap">
+        <a class="btn-black" href="menu.html">MEN'S STYLE LIST <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ② Women's Style -->
+    <div class="cat-block" id="womens">
+      <h2 class="cat-head">Women's Style</h2>
+      <div class="style-grid">
+        <a href="menu.html"><div class="ph"><img src="assets/styles/womens_style_01.png" alt="カット施術中の女性"></div><div class="cap">Women's Cut／カット中</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/womens_style_02.png" alt="ドライヤーでスタイリング中の女性"></div><div class="cap">Women's Style／ブロー</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/womens_style_03.png" alt="仕上がりを確認する女性"></div><div class="cap">Women's Cut／仕上がり</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/womens_style_04.png" alt="スタイルカウンセリング中の女性"></div><div class="cap">Women's Style／カウンセリング</div></a>
+      </div>
+      <div class="cat-btn-wrap">
+        <a class="btn-black" href="menu.html">WOMEN'S STYLE LIST <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ③ Perm Style -->
+    <div class="cat-block" id="perm">
+      <h2 class="cat-head">Perm Style</h2>
+      <div class="style-grid">
+        <a href="menu.html"><div class="ph"><img src="assets/styles/perm_style_01.png" alt="パーマロッドを巻く施術シーン"></div><div class="cap">Perm／ロッド巻き</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/perm_style_02.png" alt="パーマ薬剤塗布シーン"></div><div class="cap">Perm／薬剤塗布</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/perm_style_03.png" alt="ウェーブヘアの仕上がり確認"></div><div class="cap">Perm／仕上がり</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/perm_style_04.png" alt="メンズパーマ施術シーン"></div><div class="cap">Men's Perm</div></a>
+      </div>
+      <div class="cat-btn-wrap">
+        <a class="btn-black" href="menu.html">PERM STYLE LIST <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- ④ Color Style -->
+    <div class="cat-block" id="color">
+      <h2 class="cat-head">Color Style</h2>
+      <div class="style-grid">
+        <a href="menu.html"><div class="ph"><img src="assets/styles/color_style_01.png" alt="白髪染め薬剤塗布シーン"></div><div class="cap">Color／白髪染め</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/color_style_02.png" alt="カラーリタッチ施術シーン"></div><div class="cap">Color／リタッチ</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/color_style_03.png" alt="カラー仕上がりを確認する女性"></div><div class="cap">Color／仕上がり</div></a>
+        <a href="menu.html"><div class="ph"><img src="assets/styles/color_style_04.png" alt="白髪染め後の笑顔"></div><div class="cap">Color／白髪染め後</div></a>
+      </div>
+      <div class="cat-btn-wrap">
+        <a class="btn-black" href="menu.html">COLOR STYLE LIST <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer id="access">
+  <div class="footer-inner">
+    <div>
+      <h4>Shop Info</h4>
+      <p>
+        HAIR SARON 02（ヘアーサロン ゼロツー）<br>
+        〒350-0332<br>
+        埼玉県比企郡鳩山町松ヶ丘3-2-1 プチプラザE店舗（駐車場完備）<br><br>
+        店舗電話：049-292-9695<br>
+        代表：小川 信浩
+      </p>
+    </div>
+    <div class="footer-nav">
+      <h4>Menu</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="menu.html">Menu</a>
+      <a href="staff.html">Staff</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+    </div>
+    <div id="contact">
+      <h4>Contact</h4>
+      <p>
+        お電話またはお問い合わせフォームより承っております。<br>
+        （LINE・外部予約サイトは現在ご利用いただけません／予約なしでのご来店も歓迎です）<br><br>
+        比企郡鳩山町 美容室／比企郡 美容室／鳩山町 美容室
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; HAIR SARON 02
+  </div>
+</footer>
+
+<script>
+  // ヘッダーの透明⇄白帯 スクロール連動（subpageは常に白帯だが挙動を統一のため残置）
+  (function(){
+    var header = document.getElementById('site-header');
+    var threshold = 40;
+    function onScroll(){
+      if (window.scrollY > threshold) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
