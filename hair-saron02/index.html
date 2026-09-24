@@ -389,7 +389,12 @@
      より大きい余白を取る非対称構成）に合わせ、下paddingを48px→64pxに拡大 */
   .discover-copy{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:96px 24px 64px;color:#fff;}
   .discover-copy .eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.8;margin:0 0 18px;}
-  .discover-copy .catch-en{font-family:Georgia,"Hiragino Mincho ProN",serif;font-style:italic;font-weight:400;font-size:clamp(16px,2vw,22px);line-height:1.85;max-width:560px;margin:0 0 16px;opacity:.96;}
+  /* v56: 鈴木さんがboy-inc.com DISCOVER US実要素をDevToolsで実測共有
+     （p.home_discover_lead.font_canvas=48px／h3.discover_ttl=26px／
+     span"See more"=16px／p.discover_txt=15px）。当該セクションの文字が
+     参考サイトよりかなり小さかったため、実測値に合わせて拡大。
+     catch-enはmax-widthも560px→900pxに拡大（48px化に伴い折り返し幅を確保）。 */
+  .discover-copy .catch-en{font-family:Georgia,"Hiragino Mincho ProN",serif;font-style:italic;font-weight:400;font-size:clamp(24px,3.4vw,48px);line-height:1.4;max-width:900px;margin:0 0 16px;opacity:.96;}
   .discover-copy .catch-ja{font-size:15px;line-height:2;max-width:520px;opacity:.9;margin:0;}
 
   /* 4カラム機能リンク（元hero-links。DISCOVER US内の暗い背景に馴染むダーク配色） */
@@ -397,9 +402,9 @@
   .hero-links-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);}
   .hero-links-grid > div{padding:40px 24px;border-left:1px solid rgba(255,255,255,.16);}
   .hero-links-grid > div:first-child{border-left:none;}
-  .hero-links-grid h4{color:var(--teal);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px;font-weight:800;}
-  .hero-links-grid p{color:#e2e2e0;font-size:13px;margin:0 0 14px;line-height:1.9;}
-  .hero-links-grid .more{color:var(--teal);font-size:11px;letter-spacing:.08em;border-bottom:1px solid var(--teal);padding-bottom:2px;}
+  .hero-links-grid h4{color:var(--teal);font-size:clamp(16px,1.6vw,26px);letter-spacing:.1em;text-transform:uppercase;margin:0 0 12px;font-weight:800;}
+  .hero-links-grid p{color:#e2e2e0;font-size:15px;margin:0 0 14px;line-height:1.9;}
+  .hero-links-grid .more{color:var(--teal);font-size:16px;letter-spacing:.04em;border-bottom:1px solid var(--teal);padding-bottom:2px;}
 
   /* ============ ABOUT US ============ */
   .aboutus-head-row{margin-bottom:52px;}
