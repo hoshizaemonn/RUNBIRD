@@ -465,7 +465,11 @@
 
   /* 見出しブロック：写真と反対側の余白へ意図的にはみ出す（bottom＋負のleft/right）。
      見出し＋細い罫線＋「See all」リンクの構成はサイト既存の.see-moreスタイルを踏襲 */
-  .row-ttl-box{position:absolute;z-index:5;background:var(--paper);padding:4px 10px 10px 0;width:max-content;max-width:280px;}
+  /* v57: 鈴木さん指摘。見出しボックス(.row-ttl-box)の白背景(var(--paper))が
+     実サイト(boy-inc.com)には無く、写真の上に見出しが不透明な白帯として
+     乗ってしまっていた。boy-inc.com実サイトは背景透過（写真や余白がそのまま
+     透けて見える）のため、background指定を削除して透過に統一。 */
+  .row-ttl-box{position:absolute;z-index:5;padding:4px 10px 10px 0;width:max-content;max-width:280px;}
   .row-ttl-box h3{font-family:Georgia,"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(24px,2.6vw,32px);margin:0 0 14px;font-weight:700;letter-spacing:.01em;}
   .row-ttl-box .rule{width:40px;height:1px;background:var(--ink);margin:0 0 12px;}
   .row-ttl-box .see-more{font-size:11px;letter-spacing:.08em;color:var(--teal-dark);border-bottom:1px solid var(--teal-dark);padding-bottom:2px;width:fit-content;display:inline-flex;align-items:center;gap:5px;}
