@@ -404,7 +404,12 @@
   .hero-links-grid > div:first-child{border-left:none;}
   .hero-links-grid h4{color:var(--teal);font-size:clamp(16px,1.6vw,26px);letter-spacing:.1em;text-transform:uppercase;margin:0 0 12px;font-weight:800;}
   .hero-links-grid p{color:#e2e2e0;font-size:15px;margin:0 0 14px;line-height:1.9;}
-  .hero-links-grid .more{color:var(--teal);font-size:16px;letter-spacing:.04em;border-bottom:1px solid var(--teal);padding-bottom:2px;}
+  /* v58: 鈴木さん指摘。boy-inc.com実サイトの「See more」は太字寄り＋矢印付き
+     （本サイトは細字・矢印無しだった）。font-weightを700に強化し、矢印用の
+     spanをHTML側に追加（下線と重ならないよう矢印はborder-bottomの外に出す構成） */
+  .hero-links-grid .more{display:inline-flex;align-items:center;gap:6px;color:var(--teal);font-size:16px;font-weight:700;letter-spacing:.04em;}
+  .hero-links-grid .more > span:first-child{border-bottom:1px solid var(--teal);padding-bottom:2px;}
+  .hero-links-grid .more span:last-child{font-size:15px;line-height:1;}
 
   /* ============ ABOUT US ============ */
   .aboutus-head-row{margin-bottom:52px;}
@@ -874,8 +879,10 @@
 <div class="discover-section">
   <div class="discover-tint"></div>
   <div class="discover-ghost">DISCOVER US</div>
+  <!-- v58: 鈴木さん指摘。boy-inc.com実サイトはゴースト「DISCOVER US」の直下に
+       小さい「Discover Us」ラベル(.eyebrow)を重ねて表示していない（ゴースト文字と
+       白イタリック文の間に余計なラベルが無い）ため、.eyebrow行を削除して実サイトに揃える。 -->
   <div class="discover-copy">
-    <p class="eyebrow">Discover Us</p>
     <p class="catch-en">It's always nice to find something new about one another, like a small discovery inside.</p>
     <p class="catch-ja">学生さんからご年配の方まで、男女どなたでも大歓迎です。HAIR SARON 02のことを、もっと知ってください。</p>
   </div>
@@ -884,27 +891,27 @@
       <div>
         <h4>About</h4>
         <p>事業・店舗紹介はこちらから。</p>
-        <a class="more" href="about.html">See more</a>
+        <a class="more" href="about.html"><span>See more</span> <span>&#8594;</span></a>
       </div>
       <div>
         <h4>Menu</h4>
         <p>白髪染め・パーマを中心としたメニュー一覧。</p>
-        <a class="more" href="menu.html">See all menu</a>
+        <a class="more" href="menu.html"><span>See all menu</span> <span>&#8594;</span></a>
       </div>
       <div>
         <h4>Staff</h4>
         <p>代表・小川信浩ほか、スタッフをご紹介。</p>
-        <a class="more" href="staff.html">See more</a>
+        <a class="more" href="staff.html"><span>See more</span> <span>&#8594;</span></a>
       </div>
       <div>
         <h4>Blog</h4>
         <p>サロンからのお知らせ・コラムはこちら。</p>
-        <a class="more" href="blog.html">See more</a>
+        <a class="more" href="blog.html"><span>See more</span> <span>&#8594;</span></a>
       </div>
       <div>
         <h4>Contact</h4>
         <p>ご予約・お問い合わせはお電話またはフォームから。</p>
-        <a class="more" href="contact.html">See more</a>
+        <a class="more" href="contact.html"><span>See more</span> <span>&#8594;</span></a>
       </div>
     </div>
   </div>
