@@ -313,8 +313,13 @@
      v41: font-weightを900に強化（サイズは今回の指示対象外のため据え置き） */
   .ttl-left{position:relative;z-index:1;text-align:left;font-weight:600;font-size:clamp(36px,6vw,72px);line-height:1.1;margin:0 0 8px;padding:0;}
 
-  section{padding:110px 24px;position:relative;}
-  .section-inner{max-width:1120px;margin:0 auto;position:relative;}
+  /* v55: 鈴木さんより「boy-inc.comのようなゆったりした余白感・メリハリある
+     文字サイズに近づけて」指摘。boy-inc.com実CSS再測（.home_hairStyles_sec
+     margin-bottom:180px PC/90px SP、.container max-width:1280px）に合わせ、
+     セクション上下余白・コンテンツ幅を拡大。フォント・色・写真・構成・
+     コピー・数値は変更しない。 */
+  section{padding:130px 32px;position:relative;}
+  .section-inner{max-width:1200px;margin:0 auto;position:relative;}
 
   /* ============ ファーストビュー（v44：鈴木さん2点指摘への対応）============
      指示(1)：ヘッダー直下に「Hatoyama, Saitama」＋訴求コピーが独立ブロックとして
@@ -382,24 +387,24 @@
   .discover-ghost{position:absolute;z-index:0;left:-8px;top:24px;color:rgba(255,255,255,.13);font-weight:600;letter-spacing:.02em;font-size:clamp(44px,8vw,110px);white-space:nowrap;line-height:1;pointer-events:none;user-select:none;}
   /* v51: boy-inc.com .home_discover_sec padding:80px 0 120px実測（下側に
      より大きい余白を取る非対称構成）に合わせ、下paddingを48px→64pxに拡大 */
-  .discover-copy{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:96px 24px 64px;color:#fff;}
+  .discover-copy{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:96px 24px 64px;color:#fff;}
   .discover-copy .eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;opacity:.8;margin:0 0 18px;}
   .discover-copy .catch-en{font-family:Georgia,"Hiragino Mincho ProN",serif;font-style:italic;font-weight:400;font-size:clamp(16px,2vw,22px);line-height:1.85;max-width:560px;margin:0 0 16px;opacity:.96;}
-  .discover-copy .catch-ja{font-size:14px;line-height:2;max-width:520px;opacity:.9;margin:0;}
+  .discover-copy .catch-ja{font-size:15px;line-height:2;max-width:520px;opacity:.9;margin:0;}
 
   /* 4カラム機能リンク（元hero-links。DISCOVER US内の暗い背景に馴染むダーク配色） */
   .hero-links{position:relative;z-index:2;background:rgba(0,0,0,.32);border-top:1px solid rgba(255,255,255,.16);}
-  .hero-links-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);}
-  .hero-links-grid > div{padding:32px 20px;border-left:1px solid rgba(255,255,255,.16);}
+  .hero-links-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);}
+  .hero-links-grid > div{padding:40px 24px;border-left:1px solid rgba(255,255,255,.16);}
   .hero-links-grid > div:first-child{border-left:none;}
   .hero-links-grid h4{color:var(--teal);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px;font-weight:800;}
-  .hero-links-grid p{color:#e2e2e0;font-size:12px;margin:0 0 14px;line-height:1.9;}
+  .hero-links-grid p{color:#e2e2e0;font-size:13px;margin:0 0 14px;line-height:1.9;}
   .hero-links-grid .more{color:var(--teal);font-size:11px;letter-spacing:.08em;border-bottom:1px solid var(--teal);padding-bottom:2px;}
 
   /* ============ ABOUT US ============ */
-  .aboutus-head-row{margin-bottom:36px;}
-  .aboutus-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:20px;}
-  .aboutus-copy p{font-size:13.5px;line-height:2.1;margin:0 0 18px;color:var(--ink-soft);}
+  .aboutus-head-row{margin-bottom:52px;}
+  .aboutus-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:20px;}
+  .aboutus-copy p{font-size:15px;line-height:2;margin:0 0 20px;color:var(--ink-soft);}
   .aboutus-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   /* v17: 顔・施術シーンが不自然に切れないよう、アスペクト比を元画像(約4:5)に近づけ、
      imgをposition:absoluteで明示配置(aspect-ratio+height:100%の組み合わせに依存しない
@@ -481,28 +486,28 @@
   .menu-panel.active{display:block;}
   .menu-line{display:flex;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line);}
   .menu-line:first-child{border-top:1px solid var(--line);}
-  .menu-line .name{font-size:14px;font-weight:700;white-space:nowrap;}
+  .menu-line .name{font-size:15px;font-weight:700;white-space:nowrap;}
   .menu-line .note{font-size:11px;color:var(--gray);margin-left:10px;font-weight:400;}
   .menu-line .dots{flex:1;border-bottom:1px dotted #b9b9b5;margin:0 12px 5px;}
-  .menu-line .price{font-size:14px;font-weight:800;white-space:nowrap;}
+  .menu-line .price{font-size:15px;font-weight:800;white-space:nowrap;}
 
   /* ============ BLOG（v23：TOPICS→ブログに名称変更。DISCOVER US直後・INFORMATION直前。boy-inc.com「TOPICS」構成のブログプレビュー） ============ */
-  .topics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px;}
+  .topics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;}
   .topic-card .thumb{aspect-ratio:4/3;overflow:hidden;filter:grayscale(20%) contrast(1.05);margin-bottom:0;}
   .topic-card .accent{width:100%;height:3px;background:var(--teal);margin-bottom:18px;}
   .topic-card .meta{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
   .topic-card .cat{color:var(--ink);font-size:10px;font-weight:700;padding:4px 12px;border-radius:3px;letter-spacing:.05em;}
   .topic-card .date{font-size:11px;color:var(--gray);letter-spacing:.02em;}
-  .topic-card h3{font-size:16px;margin:0 0 10px;font-weight:800;line-height:1.6;}
-  .topic-card p{font-size:12.5px;color:var(--ink-soft);margin:0;line-height:1.9;}
-  .topics-more{text-align:center;margin-top:56px;}
+  .topic-card h3{font-size:17px;margin:0 0 10px;font-weight:800;line-height:1.6;}
+  .topic-card p{font-size:13.5px;color:var(--ink-soft);margin:0;line-height:1.85;}
+  .topics-more{text-align:center;margin-top:64px;}
   .topics-more a{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:14px 38px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;}
 
   /* ============ INFORMATION ============ */
-  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:stretch;margin-top:20px;}
-  .info-table{width:100%;border-collapse:collapse;font-size:13.5px;}
-  .info-table th{text-align:left;color:var(--gray);font-weight:600;padding:18px 16px 18px 0;white-space:nowrap;width:120px;vertical-align:top;border-top:1px solid var(--line);font-size:11px;letter-spacing:.1em;text-transform:uppercase;}
-  .info-table td{padding:18px 0;color:var(--ink);border-top:1px solid var(--line);}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:stretch;margin-top:40px;}
+  .info-table{width:100%;border-collapse:collapse;font-size:14.5px;}
+  .info-table th{text-align:left;color:var(--gray);font-weight:600;padding:20px 16px 20px 0;white-space:nowrap;width:120px;vertical-align:top;border-top:1px solid var(--line);font-size:11px;letter-spacing:.1em;text-transform:uppercase;}
+  .info-table td{padding:20px 0;color:var(--ink);border-top:1px solid var(--line);}
   .info-table tr:last-child th, .info-table tr:last-child td{border-bottom:1px solid var(--line);}
   .map-wrap{position:relative;overflow:hidden;background:#efefec;min-height:300px;}
   .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
@@ -511,9 +516,9 @@
   .cta-section{position:relative;overflow:hidden;background-image:url('assets/shop_interior.png');background-size:cover;background-position:center;text-align:center;}
   .cta-tint{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.68) 0%,rgba(10,10,10,.86) 100%);z-index:0;}
   .cta-inner{position:relative;z-index:1;max-width:720px;}
-  .cta-lead{color:#f2f2f0;font-size:15px;line-height:2;margin:0 0 36px;}
+  .cta-lead{color:#f2f2f0;font-size:16px;line-height:2;margin:0 0 36px;}
   .cta-buttons{display:flex;flex-direction:column;align-items:center;gap:18px;}
-  .cta-btn{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;max-width:420px;padding:20px 24px;}
+  .cta-btn{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%;max-width:420px;padding:24px 28px;}
   .cta-btn-tel{background:var(--teal);color:#fff;}
   .cta-btn-label{font-size:11px;letter-spacing:.06em;opacity:.92;}
   .cta-btn-num{font-size:26px;font-weight:800;letter-spacing:.02em;}
@@ -521,11 +526,11 @@
   .cta-note{color:#a9a9a3;font-size:11px;letter-spacing:.04em;margin:32px 0 0;}
 
   /* ============ アクセス・フッター ============ */
-  footer{background:var(--ink);color:#fff;padding:64px 24px 36px;}
-  .footer-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;}
+  footer{background:var(--ink);color:#fff;padding:80px 24px 44px;}
+  .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;}
   footer h4{font-size:11px;margin:0 0 16px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);}
-  footer p{font-size:13px;line-height:2;margin:0;color:#f2f2f0;}
-  .footer-nav a{display:block;font-size:13px;line-height:2.3;color:#f2f2f0;}
+  footer p{font-size:14px;line-height:2;margin:0;color:#f2f2f0;}
+  .footer-nav a{display:block;font-size:14px;line-height:2.2;color:#f2f2f0;}
   .footer-nav a:hover{color:var(--teal);}
   .footer-bottom{text-align:center;font-size:10px;color:#77776f;margin-top:56px;letter-spacing:.05em;}
 
@@ -569,8 +574,13 @@
     .ttl-left{font-size:clamp(30px,10vw,52px);}
     .ttl-center{font-size:clamp(38px,13vw,64px);}
     .discover-ghost{font-size:clamp(34px,13vw,80px);}
-    section{padding:70px 20px;}
+    section{padding:88px 20px;}
     .menu-line .name{white-space:normal;}
+    .aboutus-head-row{margin-bottom:32px;}
+    .aboutus-grid{gap:32px;}
+    .info-grid{margin-top:28px;gap:32px;}
+    .topics-grid{margin-top:36px;}
+    footer{padding:56px 20px 32px;}
     :root{--header-h:64px;}
   }
 
