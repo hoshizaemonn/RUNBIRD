@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lien 動画構成案 v2</title>
+<style>
+:root{--ink:#3b2f26;--sub:#7a6a5c;--line:#e6dccf;--bg:#faf6f0;--card:#fff;
+--gold:#c9a227;--hook:#d98324;--affinity:#8ba888;--solution:#7a94b8;--offer:#c98d8d;
+--narrow:#a98bb0;--action:#6b5b4a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.75;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+header{background:linear-gradient(160deg,#fffdfa,#f3e9da);border-bottom:3px solid var(--gold);
+padding:48px 20px 36px;margin-bottom:44px}
+header .inner{max-width:1080px;margin:0 auto}
+h1{font-size:30px;margin:0 0 6px;letter-spacing:.04em}
+.sub{color:var(--sub);font-size:15px;margin:0 0 20px}
+.specs{display:flex;flex-wrap:wrap;gap:10px}
+.spec{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 15px;font-size:13px}
+.spec b{color:var(--gold)}
+h2{font-size:21px;margin:56px 0 6px;padding-left:13px;border-left:5px solid var(--gold)}
+h2 .en{font-size:11px;color:var(--sub);font-weight:400;letter-spacing:.16em;display:block}
+.lead{color:var(--sub);font-size:14px;margin:0 0 22px}
+.flow{display:flex;border-radius:10px;overflow:hidden;border:1px solid var(--line);
+margin-bottom:10px;font-size:12px;text-align:center;color:#fff}
+.flow div{padding:11px 4px;font-weight:600}
+.f-hook{background:var(--hook)}.f-affinity{background:var(--affinity)}
+.f-solution{background:var(--solution)}.f-offer{background:var(--offer)}
+.f-action{background:var(--action)}
+.flow-note{display:flex;font-size:11.5px;color:var(--sub);margin-bottom:26px}
+.flow-note div{text-align:center;padding:0 4px}
+.cuts{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.cut{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+box-shadow:0 1px 3px rgba(90,70,50,.07);display:flex;flex-direction:column}
+.cut-shot{position:relative;line-height:0;background:#000}
+.cut-shot img{width:100%;height:auto;display:block}
+.cut-id{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.72);color:#fff;
+font-size:12px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.06em}
+.cut-time{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.9);color:#3b2f26;
+font-size:11px;padding:3px 9px;border-radius:4px;font-variant-numeric:tabular-nums}
+.cut-body{padding:14px 16px 16px;flex:1}
+.cut-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tag{font-size:11px;color:#fff;padding:2px 10px;border-radius:999px;font-weight:600}
+.tag-hook{background:var(--hook)}.tag-affinity{background:var(--affinity)}
+.tag-solution{background:var(--solution)}.tag-offer{background:var(--offer)}
+.tag-action{background:var(--action)}
+.src{font-size:11px;color:var(--sub)}
+.line{display:flex;gap:9px;margin-bottom:8px}
+.lbl{flex:0 0 46px;font-size:10.5px;height:19px;line-height:19px;text-align:center;
+border-radius:3px;font-weight:700}
+.lbl-t{background:#3b2f26;color:#fff}
+.telop{margin:0;font-size:15px;font-weight:700;line-height:1.55}
+.refs{display:grid;gap:16px}
+.ref{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+padding:16px;text-decoration:none;color:inherit;transition:.15s;align-items:flex-start}
+.ref:hover{border-color:var(--gold);box-shadow:0 3px 12px rgba(160,130,60,.14)}
+.ref-body{flex:1;min-width:0}
+.ref-badge{display:inline-block;background:#fdf6e3;border:1px solid var(--gold);color:#8a6d12;
+font-size:11px;padding:2px 10px;border-radius:999px;margin-bottom:7px}
+.ref h4{margin:0 0 3px;font-size:15.5px;line-height:1.5}
+.ref-ch{margin:0 0 8px;font-size:12px;color:var(--sub)}
+.ref-why{margin:0 0 8px;font-size:13.5px}
+.ref-url{margin:0;font-size:11.5px;color:#9a8878;word-break:break-all}
+.box{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);
+border-radius:10px;padding:20px 24px;margin-bottom:18px}
+.box.warn{border-left-color:#c0564f;background:#fdf7f6}
+.box h3{margin:0 0 10px;font-size:16px}
+.box p{margin:0 0 10px;font-size:14px}
+.box p:last-child{margin-bottom:0}
+.chk{list-style:none;padding:0}
+.chk li{padding:9px 0 9px 30px;border-bottom:1px dashed var(--line);position:relative;font-size:14px}
+.chk li:before{content:"□";position:absolute;left:6px;color:var(--gold);font-size:17px}
+.chk li:last-child{border-bottom:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);
+font-size:12px;color:var(--sub);text-align:center}
+@media(max-width:640px){
+  header{padding:32px 16px 26px}
+  h1{font-size:20px;line-height:1.5} .sub{font-size:13px}
+  .wrap{padding:0 16px 60px}
+  h2{font-size:18px}
+  .ref{flex-direction:column}
+  .flow{font-size:9.5px} .flow div{padding:9px 2px;min-width:0}
+  .flow-note{display:none}
+  .cuts{grid-template-columns:1fr}
+  .box{padding:16px 18px}
+}
+</style></head><body>
+
+<header><div class="inner">
+  <h1>Lien（リアン）様｜<span style="white-space:nowrap">動画構成案 v2</span></h1>
+  <p class="sub">ベビーマッサージサロン／新潟県長岡市稲保南1丁目244-9</p>
+  <div class="specs">
+    <span class="spec">尺 <b>50秒</b></span>
+    <span class="spec">構成 <b>11カット</b></span>
+    <span class="spec">形式 <b>16:9（横）</b></span>
+    <span class="spec">方式 <b>静止画11枚（AI生成・Ken Burns）</b></span>
+    <span class="spec">作成 <b>2026-09-25</b></span>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+<h2 style="margin-top:0">0. 完成動画<span class="en">MOVIE</span></h2>
+<p class="lead">50秒・11カット・静止画をゆっくり動かしたバージョンです（<b>ナレーション・BGMは未収録</b>）。</p>
+<div style="background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin-bottom:10px">
+  <video src="lien-mockup-v2.mp4" controls playsinline preload="metadata"
+         style="width:100%;height:auto;display:block"></video>
+</div>
+<p style="font-size:12.5px;color:var(--sub);margin-bottom:8px">
+  再生できない場合は <a href="lien-mockup-v2.mp4" style="color:#8a6d12">こちらから直接ダウンロード</a> してください。</p>
+
+<h2>1. 動画全体の流れ<span class="en">STRUCTURE</span></h2>
+<p class="lead">「初めての子育てで不安なママ」と「きょうだいのいる4人家族」の2つの物語を前後半で描き、最後にサロンへご案内する流れです。</p>
+<div class="flow">
+  <div class="f-hook" style="flex:2">フック</div><div class="f-solution" style="flex:3">解決①</div>
+  <div class="f-hook" style="flex:1">フック②</div><div class="f-affinity" style="flex:2">解決②</div>
+  <div class="f-offer" style="flex:2">メニュー紹介</div><div class="f-action" style="flex:1">行動</div>
+</div>
+<div class="flow-note">
+  <div style="flex:2">S01–S02<br>初めての子育ての不安</div>
+  <div style="flex:3">S03–S05<br>来店・施術・安心</div>
+  <div style="flex:1">S06<br>きょうだいの嫉妬</div>
+  <div style="flex:2">S07–S08<br>家族で参加・人形体験</div>
+  <div style="flex:2">S09–S10<br>講師育成・おくるみ</div>
+  <div style="flex:1">S11<br>店舗案内</div>
+</div>
+
+<h2>2. 絵コンテ（全11カット）<span class="en">STORYBOARD</span></h2>
+<p class="lead">画像はGPT Imageで生成した仮の画です。表示されているテロップが、現時点での本番文言案です。</p>
+<div class="cuts">
+    <article class="cut hook">
+      <div class="cut-shot"><img src="lien-images/s01.jpg" alt="S01" loading="lazy">
+        <span class="cut-id">S01</span><span class="cut-time">0:00–0:04</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">フック</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">不安げな表情で赤ちゃんを抱くママ</p>
+        
+      </div>
+    </article>
+    <article class="cut hook">
+      <div class="cut-shot"><img src="lien-images/s02.jpg" alt="S02" loading="lazy">
+        <span class="cut-id">S02</span><span class="cut-time">0:04–0:10</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">フック</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">不安の深掘り</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">夜泣き／発達／不安…ひとりで抱えていませんか？</p></div>
+      </div>
+    </article>
+    <article class="cut affinity">
+      <div class="cut-shot"><img src="lien-images/s03.jpg" alt="S03" loading="lazy">
+        <span class="cut-id">S03</span><span class="cut-time">0:10–0:15</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-affinity">共感</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">来店・カウンセリング</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ベビーマッサージサロン Lien</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="lien-images/s04.jpg" alt="S04" loading="lazy">
+        <span class="cut-id">S04</span><span class="cut-time">0:15–0:20</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">解決</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">施術シーン</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">雨や雪の日も安心。カーポート駐車場</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="lien-images/s05.jpg" alt="S05" loading="lazy">
+        <span class="cut-id">S05</span><span class="cut-time">0:20–0:23</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">解決</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">安堤の表情</p>
+        
+      </div>
+    </article>
+    <article class="cut hook">
+      <div class="cut-shot"><img src="lien-images/s06.jpg" alt="S06" loading="lazy">
+        <span class="cut-id">S06</span><span class="cut-time">0:23–0:27</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">フック（家族）</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">4人家族の朝・きょうだいの嫂妒</p>
+        
+      </div>
+    </article>
+    <article class="cut affinity">
+      <div class="cut-shot"><img src="lien-images/s07.jpg" alt="S07" loading="lazy">
+        <span class="cut-id">S07</span><span class="cut-time">0:27–0:32</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-affinity">共感（家族）</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">家族でLienへ・きょうだい参加</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">兄弟・姉妹も一緒に体験できます</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="lien-images/s08.jpg" alt="S08" loading="lazy">
+        <span class="cut-id">S08</span><span class="cut-time">0:32–0:37</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">解決（家族）</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">お姉ちゃんの笑顔・人形で練習</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">オイル不使用の人形で体験OK</p></div>
+      </div>
+    </article>
+    <article class="cut offer">
+      <div class="cut-shot"><img src="lien-images/s09.jpg" alt="S09" loading="lazy">
+        <span class="cut-id">S09</span><span class="cut-time">0:37–0:43</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-offer">講座</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">講師育成講座・教室シーン</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ベビーマッサージ講師育成講座も開講中</p></div>
+      </div>
+    </article>
+    <article class="cut offer">
+      <div class="cut-shot"><img src="lien-images/s10.jpg" alt="S10" loading="lazy">
+        <span class="cut-id">S10</span><span class="cut-time">0:43–0:47</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-offer">メニュー</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">おくるみタッチケア</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">おくるみタッチケア教室</p></div>
+      </div>
+    </article>
+    <article class="cut action">
+      <div class="cut-shot"><img src="lien-images/s11.jpg" alt="S11" loading="lazy">
+        <span class="cut-id">S11</span><span class="cut-time">0:47–0:50</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-action">行動</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">エンドカード</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">Lien／住所・営業時間・電話番号／QR（暫定）</p></div>
+      </div>
+    </article>
+</div>
+
+<h2>3. この画像について<span class="en">GENERATED</span></h2>
+<div class="box warn">
+  <h3>11カットすべて、AIで生成した「仮の画」です</h3>
+  <p>店舗の外観・内観・代表者様のお写真・講師風景写真・ロゴを、まだいただけていません。
+  そのため今回は<b>参考動画とヒアリング内容だけをもとに、全カットAI生成で構成</b>しました。</p>
+  <p>お写真をいただけましたら、該当するカットだけ実物に近づけて差し替えます
+  （新しく撮影いただく必要はなく、お手元の既存のお写真で大丈夫です）。</p>
+  <p>登場人物（ママ・4人家族・カウンセラー役）は、実在の人物やタレントを模したものではなく、
+  AIが独自に生成した架空の人物です。</p>
+</div>
+
+<h2>4. 参考にした動画<span class="en">REFERENCE</span></h2>
+<p class="lead">業態が近い実在の広告動画を参考に、トーン・構成を組んでいます（生存確認済み）。</p>
+<div class="refs">
+    <a class="ref" href="https://youtu.be/JnQhiHXGa68" target="_blank" rel="noopener">
+      <div class="ref-body">
+        <span class="ref-badge">初めての子育て不安の描き方</span>
+        <h4>ムーニー「moms don't cry」</h4>
+        <p class="ref-ch">ユニ・チャーム</p>
+        <p class="ref-why">初めての育児の不安を静かなトーンで描き、後半で安心に転換する構成の参考にしました。</p>
+        <p class="ref-url">youtu.be/JnQhiHXGa68</p>
+      </div>
+    </a>
+    <a class="ref" href="https://youtu.be/RqovF50ZyCU" target="_blank" rel="noopener">
+      <div class="ref-body">
+        <span class="ref-badge">家族の変化の描き方</span>
+        <h4>AC JAPAN「家族の形が変わっても」</h4>
+        <p class="ref-ch">AC JAPAN</p>
+        <p class="ref-why">きょうだいが増えることで家族の形が変わっていく様子の描写を参考にしました。</p>
+        <p class="ref-url">youtu.be/RqovF50ZyCU</p>
+      </div>
+    </a>
+    <a class="ref" href="https://www.youtube.com/watch?v=nD42PJnPzH4" target="_blank" rel="noopener">
+      <div class="ref-body">
+        <span class="ref-badge">寄り添うトーンの参考</span>
+        <h4>JOHNSON'S Baby「You're Doing OK, Mom」</h4>
+        <p class="ref-ch">Johnson's Baby</p>
+        <p class="ref-why">母親を否定せず寄り添うメッセージの伝え方を、ナレーション方針の参考にしています。</p>
+        <p class="ref-url">youtube.com/watch?v=nD42PJnPzH4</p>
+      </div>
+    </a>
+</div>
+
+<h2>5. ご確認いただきたいこと<span class="en">CHECK</span></h2>
+<div class="box">
+  <h3>今回、業態から推測して仮置きさせていただいた点</h3>
+  <ul class="chk">
+    <li>使用媒体：Instagramリール想定で仮置きしています。他媒体へのご出稿予定があればお知らせください</li>
+    <li>ナレーション：優しいトーンの女性ナレーターを想定していますが、まだ収録していません</li>
+    <li>BGM：オルゴール調の優しいBGMを想定しています</li>
+    <li>ラストのご案内先（CTA）：公式LINEを優先案としていますが、LINE IDが未確定のため、いまはInstagramのアカウントで仮表示しています。LINE準備ができ次第、差し替えます</li>
+    <li>代表・諏訪様のご出演可否（顔出し／後ろ姿・手元のみ／出演なし）と、お写真の有無</li>
+    <li>店舗外観・内装（カーポート駐車場含む）、ロゴ、講師育成講座の指導風景写真・チラシ（個別LINEでお送りいただく予定とのことでした）</li>
+  </ul>
+</div>
+<div class="box">
+  <h3>その他の確認事項</h3>
+  <ul class="chk">
+    <li>全体の構成・流れは、この方向で進めて問題ないでしょうか</li>
+    <li>気になるカット・直したい点は、<b>カット番号（S01〜S11）と一緒に一度にまとめて</b>お知らせください</li>
+    <li>店舗情報（住所・営業時間・電話番号）はいただいた内容のまま反映しています。変更があればお知らせください</li>
+  </ul>
+</div>
+
+<footer>Lien（リアン）様 動画構成案 v2（静止画モックアップ）／2026-09-25 作成<br>
+株式会社ランバード｜AI動画制作</footer>
+</div></body></html>
