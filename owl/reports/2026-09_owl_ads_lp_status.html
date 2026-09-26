@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>OWL福祉事業 広告・LP状況まとめ（2026-09-26時点）</title>
+<style>
+  :root{
+    --teal:#00a0aa; --teal-d:#00838c; --teal-l:#e6f6f7;
+    --orange:#f08300; --orange-d:#d47100; --orange-l:#fff2e2;
+    --green:#7fbe26; --green-l:#f1f9e5;
+    --red:#e0503c; --red-l:#fdecea;
+    --ink:#2b2b2b; --sub:#6b7784; --line:#e6ebef; --white:#fff;
+    --warn-bg:#fff4cc; --warn-line:#e0a800;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+    background:#f5f7f8;color:var(--ink);line-height:1.7;padding:32px 16px 80px}
+  .wrap{max-width:980px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--sub);font-size:13px;margin:0 0 28px}
+  .alert{background:var(--warn-bg);border:2px solid var(--warn-line);border-radius:12px;padding:18px 20px;margin-bottom:28px}
+  .alert h2{font-size:15px;color:#7a5c00;margin:0 0 8px;display:flex;align-items:center;gap:8px}
+  .alert p{margin:0;font-size:14px}
+  .fix{background:#eef2ff;border:2px solid #6366f1;border-radius:12px;padding:18px 20px;margin-bottom:28px}
+  .fix h2{font-size:15px;color:#3730a3;margin:0 0 8px}
+  .fix p{margin:0;font-size:13.5px}
+  .conclusion{background:#fff;border:2px solid var(--teal);border-radius:12px;padding:20px 24px;margin-bottom:24px}
+  .conclusion h2{font-size:14px;color:var(--teal-d);margin:0 0 14px;text-transform:uppercase;letter-spacing:.04em}
+  .conclusion ol{margin:0;padding-left:20px}
+  .conclusion li{font-size:14.5px;line-height:1.75;margin-bottom:6px}
+  .section{background:#fff;border-radius:14px;padding:24px;margin-bottom:24px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  .section h2{font-size:16px;margin:0 0 16px;display:flex;align-items:center;gap:8px}
+  .section h2 .en{font-size:11px;letter-spacing:.12em;color:var(--orange);font-weight:800}
+  .campmap{display:grid;grid-template-columns:120px 1fr 1fr;gap:0;font-size:13px}
+  .campmap .head{font-weight:800;font-size:11px;color:var(--sub);padding:8px 10px;border-bottom:2px solid var(--line)}
+  .campmap .cell{padding:10px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:6px}
+  .campmap .plat{font-weight:800;color:var(--teal-d)}
+  .status{display:inline-block;margin-top:2px;font-size:11px;font-weight:800;padding:2px 8px;border-radius:999px}
+  .status.on{background:var(--green);color:#fff}
+  .status.off{background:#c9ced3;color:#555}
+  .status.blocked{background:var(--red);color:#fff}
+  .lpgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+  .lpcard{border:2px solid var(--line);border-radius:10px;padding:14px 16px}
+  .lpcard.live{border-color:var(--green)}
+  .lpcard.draft{border-color:var(--orange)}
+  .lpcard.local{border-color:var(--sub)}
+  .lpcard h3{font-size:13.5px;margin:0 0 8px;display:flex;align-items:center;justify-content:space-between;gap:6px}
+  .lpcard p{font-size:12.5px;margin:4px 0;color:var(--sub)}
+  .lpcard a{color:var(--teal-d);word-break:break-all}
+  .pill{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:999px}
+  .pill.live{background:var(--green);color:#fff}
+  .pill.draft{background:var(--orange);color:#fff}
+  .pill.local{background:#e2e5e9;color:#555}
+  table.simple{width:100%;border-collapse:collapse;font-size:13px}
+  table.simple th{background:#fafcfd;text-align:left;padding:10px 12px;font-weight:800;border-bottom:2px solid var(--line);font-size:11.5px;color:var(--sub)}
+  table.simple td{padding:10px 12px;border-bottom:1px solid var(--line)}
+  table.simple td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .note{font-size:12px;color:var(--sub);margin-top:10px;line-height:1.7}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px}
+  .stat{background:#fafcfd;border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center}
+  .stat .label{font-size:11px;color:var(--sub);margin-bottom:4px}
+  .stat .value{font-size:19px;font-weight:800;color:var(--ink)}
+  .stat .value.accent{color:var(--teal-d)}
+  svg text{font-family:inherit}
+  .axis-label{font-size:10px;fill:var(--sub)}
+  .gridline{stroke:var(--line);stroke-width:1}
+  .cv-marker{fill:var(--red)}
+  .cv-label{font-size:10px;fill:var(--red);font-weight:700}
+  .timeline{display:flex;flex-direction:column;gap:0;margin-top:4px}
+  .titem{display:flex;gap:14px;padding:10px 0;border-left:2px solid var(--line);margin-left:8px;padding-left:20px;position:relative}
+  .titem::before{content:"";position:absolute;left:-7px;top:14px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:3px solid #fff;box-shadow:0 0 0 2px var(--teal)}
+  .titem .date{font-size:11px;color:var(--sub);font-weight:800;min-width:80px}
+  .titem .desc{font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>OWL福祉事業 広告・LP状況まとめ</h1>
+  <p class="sub">作成日: 2026-09-26（社内確認用・未公開・数値修正版）</p>
+
+  <div class="fix">
+    <h2>🔧 数値修正のお知らせ</h2>
+    <p>初版で集計スクリプトの不具合により、キャンペーン別「合計」行を実キャンペーンとして誤って重複加算していました（1日あたり最大4倍の水増し）。本版で修正済みです。「9/12に配信規模が74%縮小」としていた結論は誤りで、実際は月を通して配信規模はほぼ一定でした。</p>
+  </div>
+
+  <div class="conclusion">
+    <h2>結論</h2>
+    <ol>
+      <li><b>Google広告：9月は配信規模がほぼ一定</b>（1日平均費用¥26,936、期間中¥22,086〜¥31,631のレンジ内で推移。大きな増減なし）。<b>問い合わせ（Gmail実数）は9/1〜24で13件</b>。Google広告自体のネイティブCV計測は2件のみで、実問い合わせを大幅に下回っている＝計測漏れの可能性。</li>
+      <li><b>Yahoo!広告は現在ログイン2段階認証でブロック中・データ未取得</b>（稼働中はTO-OWL-GH-Yahoo-CP01のみ）。Bingは単独アカウントが無くYahoo網に統合済みのため別途取得は不要。</li>
+      <li><b>LPは本番3本＋公開ドラフト4本の計7系統が並走中</b>（うち投資家向け・独立LP動画版2本は既にGitHub Pagesで閲覧可能）。詳細は下記LPセクション参照。</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2><span class="en">STRUCTURE</span> 配信構造（プラットフォーム→キャンペーン→着地LP）</h2>
+    <div class="campmap">
+      <div class="head">媒体</div><div class="head">キャンペーン</div><div class="head">着地LP・状態</div>
+
+      <div class="cell plat">Google</div>
+      <div class="cell">TO-OWL-GH-Google-CP01 <span class="status on">配信中</span></div>
+      <div class="cell"><a href="https://owl-fukushi.net/lp_zero-plan-g_v2/" target="_blank" rel="noopener">lp_zero-plan-g_v2（0円プランLP）</a></div>
+
+      <div class="cell plat">Google</div>
+      <div class="cell">TO-OWL-7月資料請求-CP01<br>TO-OWL-7月資料請求-CP01（300万円）<span class="status on">配信中</span></div>
+      <div class="cell"><a href="https://owl-fukushi.net/202607dokuritsu/" target="_blank" rel="noopener">202607dokuritsu</a> / <a href="https://owl-fukushi.net/202607dokuritsu300/" target="_blank" rel="noopener">202607dokuritsu300</a>（独立LP）</div>
+
+      <div class="cell plat">Yahoo</div>
+      <div class="cell">TO-OWL-GH-Yahoo-CP01 <span class="status on">配信中</span></div>
+      <div class="cell"><a href="https://owl-fukushi.net/lp_zero-plan-g_v2/" target="_blank" rel="noopener">lp_zero-plan-g_v2（0円プランLP・Googleと同一）</a></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2><span class="en">LP STATUS</span> LP一覧（本番3本＋公開ドラフト4本）</h2>
+    <div class="lpgrid">
+      <div class="lpcard live">
+        <h3>0円プランLP <span class="pill live">本番稼働</span></h3>
+        <p>lp_zero-plan-g_v2</p>
+        <p><a href="https://owl-fukushi.net/lp_zero-plan-g_v2/" target="_blank" rel="noopener">owl-fukushi.net/lp_zero-plan-g_v2 ↗</a></p>
+        <p>Google・Yahoo両方の主要着地LP</p>
+      </div>
+      <div class="lpcard live">
+        <h3>独立LP <span class="pill live">本番稼働</span></h3>
+        <p>202607dokuritsu</p>
+        <p><a href="https://owl-fukushi.net/202607dokuritsu/" target="_blank" rel="noopener">owl-fukushi.net/202607dokuritsu ↗</a></p>
+        <p>FAQ拡充・料金説明修正を実施済み（内容は300万円版と共通対応）</p>
+      </div>
+      <div class="lpcard live">
+        <h3>独立LP（300万円版） <span class="pill live">本番稼働</span></h3>
+        <p>202607dokuritsu300</p>
+        <p><a href="https://owl-fukushi.net/202607dokuritsu300/" target="_blank" rel="noopener">owl-fukushi.net/202607dokuritsu300 ↗</a></p>
+        <p>料金説明の誤り（加盟金36回分割→月額ロイヤリティ方式）を修正。<b>PR #112はリポジトリでマージ済み・本番反映は未確認</b></p>
+      </div>
+      <div class="lpcard draft">
+        <h3>独立LP（動画埋め込み版） <span class="pill draft">GitHub Pages公開中</span></h3>
+        <p>lp_dokuritsu_video_v1 / lp_dokuritsu300_video_v1</p>
+        <p><a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_dokuritsu_video_v1/" target="_blank" rel="noopener">通常版 ↗</a> / <a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_dokuritsu300_video_v1/" target="_blank" rel="noopener">300万円版 ↗</a></p>
+        <p>愛知・三重オーナー様インタビュー動画を追加した改訂案。三重は顔出しWeb掲載同意が未確認のため本番反映は保留</p>
+      </div>
+      <div class="lpcard draft">
+        <h3>ライト版（ゼロプラン特化・動画埋め込み） <span class="pill draft">GitHub Pages公開中</span></h3>
+        <p>lp_zero_lite_20260918</p>
+        <p><a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_zero_lite_20260918/" target="_blank" rel="noopener">GitHub Pages ↗</a>（本番ドメインではない）</p>
+        <p>実オーナー様の実写・動画を使用した軽量版。本番反映は未実施</p>
+      </div>
+      <div class="lpcard draft">
+        <h3>不動産投資家向けLP <span class="pill draft">GitHub Pages公開中</span></h3>
+        <p>lp_toshika_20260919（最新版）</p>
+        <p><a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_toshika_20260919/" target="_blank" rel="noopener">GitHub Pages ↗</a></p>
+        <p>不動産投資家層をターゲットにした新規LP案。旧版 <a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_toshika_v1/" target="_blank" rel="noopener">lp_toshika_v1 ↗</a> も参照可</p>
+      </div>
+    </div>
+    <p class="note">「本番稼働」＝owl-fukushi.net上で実際に広告の着地先として使用中。「GitHub Pages公開中」＝閲覧可能だが広告には未接続・本番ドメインではない。</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="en">PERFORMANCE</span> Google広告 日別実績（2026年9月・1〜24日）</h2>
+    <div class="stats">
+      <div class="stat"><div class="label">表示回数</div><div class="value">19,052</div></div>
+      <div class="stat"><div class="label">クリック数</div><div class="value">2,089</div></div>
+      <div class="stat"><div class="label">費用</div><div class="value accent">¥646,460</div></div>
+      <div class="stat"><div class="label">問い合わせ（Gmail実数）</div><div class="value accent">13件</div></div>
+    </div>
+    <div id="chart-cost" style="margin-top:16px"></div>
+    <p class="note">赤丸＝問い合わせ発生日（Gmail通知の実件数。同一人物の同日重複送信は1件に名寄せ済み）。1日平均費用¥26,936・CTR10.96%・CPC¥309・CPA(問い合わせ実数ベース)¥49,728。参考：Google広告自体のネイティブCV計測は2件のみで、実問い合わせ13件を大幅に下回る＝計測漏れの疑い。データ出所：Google広告キャンペーンレポート（日別CSV、費用側）＋Gmail「【OWL LP】お問い合わせ」通知（問い合わせ側）。合計行・重複エクスポート・「合計:」集計行を全て除外し、実キャンペーン行のみ日付ごとに1系統採用（欠測なし）。</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="en">TIMELINE</span> 直近の変更履歴</h2>
+    <div class="timeline">
+      <div class="titem"><div class="date">09-23</div><div class="desc">独立300万円LP：FAQ拡充（6→10問）・個別CTA化</div></div>
+      <div class="titem"><div class="date">09-25</div><div class="desc">独立300万円LP：料金説明の誤り（加盟金36回分割）を契約書原本ベースの文言に修正、PR #112作成</div></div>
+      <div class="titem"><div class="date">09-26</div><div class="desc">PR #112マージ（本番WordPress反映は未確認）</div></div>
+      <div class="titem"><div class="date">09-26</div><div class="desc">Google広告データ 6/18〜9/24の全欠測を解消（99日分）</div></div>
+      <div class="titem"><div class="date">09-26</div><div class="desc">Yahoo広告データ取得試行 → ログイン2段階認証でブロック、未解決</div></div>
+      <div class="titem"><div class="date">09-26</div><div class="desc">9月集計の重複加算バグを発見・修正（「合計」行の誤集計）</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const dates = ["09-01","09-02","09-03","09-04","09-05","09-06","09-07","09-08","09-09","09-10","09-11","09-12","09-13","09-14","09-15","09-16","09-17","09-18","09-19","09-20","09-21","09-22","09-23","09-24"];
+const cost = [28788,29728,29471,28207,25633,23009,24807,30532,31548,29295,24196,24077,29671,29388,30229,31631,28224,22852,24866,24174,22086,25313,23187,25548];
+const conv = [0,1,2,0,1,0,0,0,1,0,1,1,2,0,0,0,1,0,2,0,0,0,0,1];
+
+function drawLineChart(containerId, values, color){
+  const W = 900, H = 220, padL = 54, padR = 16, padT = 24, padB = 28;
+  const innerW = W - padL - padR, innerH = H - padT - padB;
+  const maxV = Math.max(...values) * 1.12;
+  const n = values.length;
+  const x = i => padL + (innerW * i / (n-1));
+  const y = v => padT + innerH - (innerH * v / maxV);
+  let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:100%">`;
+  const steps = 4;
+  for(let s=0; s<=steps; s++){
+    const gy = padT + innerH * s / steps;
+    const val = maxV * (steps - s) / steps;
+    svg += `<line class="gridline" x1="${padL}" y1="${gy}" x2="${W-padR}" y2="${gy}" />`;
+    svg += `<text class="axis-label" x="${padL-8}" y="${gy+3}" text-anchor="end">¥${Math.round(val/1000)}k</text>`;
+  }
+  dates.forEach((d,i)=>{
+    if(i % 3 === 0 || i === n-1){
+      svg += `<text class="axis-label" x="${x(i)}" y="${H-8}" text-anchor="middle">${d}</text>`;
+    }
+  });
+  let path = "";
+  values.forEach((v,i)=>{ path += (i===0 ? "M" : "L") + x(i).toFixed(1) + "," + y(v).toFixed(1) + " "; });
+  svg += `<path d="${path}" fill="none" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />`;
+  values.forEach((v,i)=>{ svg += `<circle cx="${x(i).toFixed(1)}" cy="${y(v).toFixed(1)}" r="2.5" fill="${color}" />`; });
+  conv.forEach((c,i)=>{
+    if(c > 0){
+      svg += `<circle class="cv-marker" cx="${x(i).toFixed(1)}" cy="${(y(values[i])-12).toFixed(1)}" r="3" />`;
+      svg += `<text class="cv-label" x="${x(i).toFixed(1)}" y="${(y(values[i])-18).toFixed(1)}" text-anchor="middle">CV${c}</text>`;
+    }
+  });
+  svg += `</svg>`;
+  document.getElementById(containerId).innerHTML = svg;
+}
+drawLineChart('chart-cost', cost, '#00a0aa');
+</script>
+</body>
+</html>
