@@ -78,19 +78,14 @@
 <body>
 <div class="wrap">
   <h1>OWL福祉事業 広告・LP状況まとめ</h1>
-  <p class="sub">作成日: 2026-09-26（社内確認用・未公開・数値修正版）</p>
-
-  <div class="fix">
-    <h2>🔧 数値修正のお知らせ</h2>
-    <p>初版で集計スクリプトの不具合により、キャンペーン別「合計」行を実キャンペーンとして誤って重複加算していました（1日あたり最大4倍の水増し）。本版で修正済みです。「9/12に配信規模が74%縮小」としていた結論は誤りで、実際は月を通して配信規模はほぼ一定でした。</p>
-  </div>
+  <p class="sub">作成日: 2026-09-26（社内確認用・未公開）</p>
 
   <div class="conclusion">
     <h2>結論</h2>
     <ol>
       <li><b>Google広告：9月は配信規模がほぼ一定</b>（1日平均費用¥26,936、期間中¥22,086〜¥31,631のレンジ内で推移。大きな増減なし）。<b>問い合わせ（Gmail実数）は9/1〜24で13件</b>。Google広告自体のネイティブCV計測は2件のみで、実問い合わせを大幅に下回っている＝計測漏れの可能性。</li>
       <li><b>Yahoo!広告は現在ログイン2段階認証でブロック中・データ未取得</b>（稼働中はTO-OWL-GH-Yahoo-CP01のみ）。Bingは単独アカウントが無くYahoo網に統合済みのため別途取得は不要。</li>
-      <li><b>LPは本番3本＋公開ドラフト4本の計7系統が並走中</b>（うち投資家向け・独立LP動画版2本は既にGitHub Pagesで閲覧可能）。詳細は下記LPセクション参照。</li>
+      <li><b>LPは本番3本＋公開ドラフト3本の計6系統が並走中</b>（独立LP動画版・共同生活援助LP超絶版などGitHub Pagesで閲覧可能）。詳細は下記LPセクション参照。</li>
     </ol>
   </div>
 
@@ -114,7 +109,7 @@
   </div>
 
   <div class="section">
-    <h2><span class="en">LP STATUS</span> LP一覧（本番3本＋公開ドラフト4本）</h2>
+    <h2><span class="en">LP STATUS</span> LP一覧（本番3本＋公開ドラフト3本）</h2>
     <div class="lpgrid">
       <div class="lpcard live">
         <h3>0円プランLP <span class="pill live">本番稼働</span></h3>
@@ -147,13 +142,19 @@
         <p>実オーナー様の実写・動画を使用した軽量版。本番反映は未実施</p>
       </div>
       <div class="lpcard draft">
-        <h3>不動産投資家向けLP <span class="pill draft">GitHub Pages公開中</span></h3>
-        <p>lp_toshika_20260919（最新版）</p>
-        <p><a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_toshika_20260919/" target="_blank" rel="noopener">GitHub Pages ↗</a></p>
-        <p>不動産投資家層をターゲットにした新規LP案。旧版 <a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_toshika_v1/" target="_blank" rel="noopener">lp_toshika_v1 ↗</a> も参照可</p>
+        <h3>共同生活援助LP（超絶版） <span class="pill draft">GitHub Pages公開中</span></h3>
+        <p>lp_kyodoseikatsu_chozetsu_v1 / 詳細版</p>
+        <p><a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_kyodoseikatsu_chozetsu_v1/" target="_blank" rel="noopener">通常版 ↗</a> / <a href="https://hoshizaemonn.github.io/RUNBIRD/owl/lp_kyodoseikatsu_chozetsu_detail_v1/" target="_blank" rel="noopener">詳細版 ↗</a></p>
+        <p>RENOSY等を参照した構造刷新版（色・角丸調整ではなく構造から作り直したデザイン）。本番反映は未実施</p>
       </div>
     </div>
     <p class="note">「本番稼働」＝owl-fukushi.net上で実際に広告の着地先として使用中。「GitHub Pages公開中」＝閲覧可能だが広告には未接続・本番ドメインではない。</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="en">VIDEO</span> YouTube用オーナー様インタビュー動画（下書き）</h2>
+    <video controls style="width:100%;max-width:640px;border-radius:10px;display:block;margin:0 auto 12px" src="assets/owl_interview_v8_20260926.mp4"></video>
+    <p class="note" style="margin-top:0;text-align:center">総集編 v8（1920×1080・64.4秒）。三重・愛知オーナー様インタビュー。<strong>YouTube公開は未実施・社内確認用</strong>。三重は顔出しのため掲載同意の最終確認待ち。</p>
   </div>
 
   <div class="section">
@@ -166,6 +167,84 @@
     </div>
     <div id="chart-cost" style="margin-top:16px"></div>
     <p class="note">赤丸＝問い合わせ発生日（Gmail通知の実件数。同一人物の同日重複送信は1件に名寄せ済み）。1日平均費用¥26,936・CTR10.96%・CPC¥309・CPA(問い合わせ実数ベース)¥49,728。参考：Google広告自体のネイティブCV計測は2件のみで、実問い合わせ13件を大幅に下回る＝計測漏れの疑い。データ出所：Google広告キャンペーンレポート（日別CSV、費用側）＋Gmail「【OWL LP】お問い合わせ」通知（問い合わせ側）。合計行・重複エクスポート・「合計:」集計行を全て除外し、実キャンペーン行のみ日付ごとに1系統採用（欠測なし）。</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="en">INQUIRIES</span> 9月の問い合わせ一覧（Gmail実数・13件）</h2>
+    <table class="simple">
+      <tr><th>日時</th><th>お名前</th><th>着地LP</th><th>希望内容</th></tr>
+      <tr><td>09-02 21:55</td><td>西崎 綾子</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-03 07:11</td><td>福本 光代</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-03 12:39</td><td>ペッシュ 三枝</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-05 22:14</td><td>辻 泰成</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-09 15:46</td><td>花岡 正子</td><td>lp_zero-plan-g_v2</td><td>資料請求・WEB説明会</td></tr>
+      <tr><td>09-11 09:03</td><td>川本 尚美</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-12 22:48</td><td>岩崎 直美</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-13 22:25</td><td>樫山 祐一郎</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-13 23:00</td><td>須崎 由美</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-17 02:19</td><td>飯塚 夕子</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-19 00:24</td><td>坂口 利郎</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-19 08:34</td><td>山下 千秋</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+      <tr><td>09-24 16:02</td><td>石丸 規子</td><td>lp_zero-plan-g_v2</td><td>資料請求</td></tr>
+    </table>
+    <p class="note">出典：Gmail「【OWL LP】お問い合わせ」通知（support@owl-fukushi.net、9/1〜24）。同一人物の同日重複送信（システム再送）は1件に統合。全件が0円プランLP（lp_zero-plan-g_v2）経由で、9月は独立LP経由の問い合わせ通知は確認できず。</p>
+  </div>
+
+  <div class="section">
+    <h2><span class="en">KEYWORDS</span> Google広告 — 現在のキーワード実績</h2>
+    <p class="note" style="margin-top:0">独立LP系（TO-OWL-7月資料請求-CP01）9/1〜24実データ（全期間）。</p>
+    <table class="simple">
+      <tr><th>配信</th><th>キーワード</th><th>マッチタイプ</th><th class="num">imp</th><th class="num">クリック</th><th class="num">費用</th></tr>
+      <tr><td>🟢オン</td><td>福祉 起業</td><td>フレーズ</td><td class="num">2,479</td><td class="num">268</td><td class="num">¥62,770</td></tr>
+      <tr><td>🟢オン</td><td>起業 介護</td><td>フレーズ</td><td class="num">654</td><td class="num">72</td><td class="num">¥17,467</td></tr>
+      <tr><td>🟢オン</td><td>福祉事業 独立</td><td>フレーズ</td><td class="num">313</td><td class="num">32</td><td class="num">¥7,445</td></tr>
+      <tr><td>🟢オン</td><td>起業 福祉</td><td>フレーズ</td><td class="num">227</td><td class="num">20</td><td class="num">¥4,499</td></tr>
+      <tr><td>🟢オン</td><td>介護 起業</td><td>フレーズ</td><td class="num">214</td><td class="num">15</td><td class="num">¥3,529</td></tr>
+      <tr><td>🟢オン</td><td>福祉事業 開業</td><td>フレーズ</td><td class="num">141</td><td class="num">13</td><td class="num">¥3,305</td></tr>
+      <tr><td>🟢オン</td><td>介護事業 独立</td><td>フレーズ</td><td class="num">39</td><td class="num">2</td><td class="num">¥552</td></tr>
+      <tr><td>🟢オン</td><td>不動産 福祉 投資</td><td>フレーズ</td><td class="num">15</td><td class="num">3</td><td class="num">¥698</td></tr>
+      <tr><td>⚪一時停止</td><td>介護 独立</td><td>フレーズ</td><td class="num">0</td><td class="num">0</td><td class="num">¥0</td></tr>
+      <tr><td>⚪一時停止</td><td>脱サラ 介護</td><td>フレーズ</td><td class="num">0</td><td class="num">0</td><td class="num">¥0</td></tr>
+      <tr><td>⚪一時停止</td><td>福祉 独立</td><td>フレーズ</td><td class="num">0</td><td class="num">0</td><td class="num">¥0</td></tr>
+      <tr><td>⚪一時停止</td><td>脱サラ 福祉</td><td>フレーズ</td><td class="num">0</td><td class="num">0</td><td class="num">¥0</td></tr>
+    </table>
+    <p class="note">「福祉 起業」が最大配信・最大費用のドライバー（8日間で費用の6割超）。「不動産 福祉 投資」は既に既存キャンペーンに設定済み・実績あり＝投資家層の一部は既存経路からも流入している。</p>
+
+    <h3 style="font-size:13px;margin:20px 0 10px">参考：GH系（TO-OWL-GH-Google-CP01）9/10単日実績</h3>
+    <p class="note" style="margin-top:0">最新の月間データは未取得のため、直近取得できた単日分を参考掲載。</p>
+    <table class="simple">
+      <tr><th>配信</th><th>キーワード</th><th>マッチタイプ</th><th class="num">imp</th><th class="num">クリック</th><th class="num">費用</th></tr>
+      <tr><td>🟢オン</td><td>障害福祉 独立</td><td>フレーズ</td><td class="num">99</td><td class="num">13</td><td class="num">¥3,762</td></tr>
+      <tr><td>🟢オン</td><td>障害福祉 開業</td><td>フレーズ</td><td class="num">48</td><td class="num">8</td><td class="num">¥2,473</td></tr>
+      <tr><td>🟢オン</td><td>グループホーム 経営</td><td>フレーズ</td><td class="num">24</td><td class="num">2</td><td class="num">¥630</td></tr>
+      <tr><td>🟢オン</td><td>グループホームを作るには</td><td>フレーズ</td><td class="num">28</td><td class="num">4</td><td class="num">¥1,084</td></tr>
+      <tr><td>🟢オン</td><td>グループホーム 利益</td><td>フレーズ</td><td class="num">16</td><td class="num">3</td><td class="num">¥979</td></tr>
+      <tr><td>🟢オン</td><td>[グループホーム 開業]</td><td>完全一致</td><td class="num">10</td><td class="num">3</td><td class="num">¥829</td></tr>
+      <tr><td>🟢オン</td><td>[グループホーム 経営]</td><td>完全一致</td><td class="num">9</td><td class="num">3</td><td class="num">¥840</td></tr>
+      <tr><td>🟢オン</td><td>[共同生活援助 開業]</td><td>完全一致</td><td class="num">11</td><td class="num">4</td><td class="num">¥1,210</td></tr>
+      <tr><td>🟢オン</td><td>障がい者グループホーム 開業</td><td>フレーズ</td><td class="num">8</td><td class="num">1</td><td class="num">¥316</td></tr>
+      <tr><td>🟢オン</td><td>グループホーム 開業</td><td>フレーズ</td><td class="num">6</td><td class="num">1</td><td class="num">¥246</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2><span class="en">PROPOSAL</span> 不動産投資家向けLP：推奨キーワード（提案段階・未反映）</h2>
+    <p class="note" style="margin-top:0">出典：<code>_提案_OWL投資家向けキーワード_20260923.md</code>。着地先は<code>lp_toshika_20260919</code>を想定。既存の開業者向けキャンペーンとは別枠（新規キャンペーン／広告グループ）で、河合さんの重複確認後・星崎さん本人がアカウント反映する前提。<strong>現時点でGoogle/Yahoo広告アカウントへの反映は未実施</strong>。</p>
+    <div class="lpgrid">
+      <div class="lpcard">
+        <h3 style="justify-content:flex-start">✅ 追加候補キーワード</h3>
+        <p style="color:var(--ink)">土地活用 方法 ／ 土地活用 アパート以外 ／ 土地活用 比較 ／ 遊休地 活用 ／ 空き地 活用方法 ／ 実家 土地 活用 ／ 相続 土地 活用方法 ／ 空き家 活用 投資 ／ 空き家 土地活用 ／ 不動産投資 新しい方法 ／ アパート経営 空室リスク ／ アパート経営 デメリット ／ アパート経営 以外の土地活用 ／ 駐車場経営 デメリット ／ グループホーム 投資 ／ グループホーム経営 土地活用 ／ 福祉施設 土地活用</p>
+      </div>
+      <div class="lpcard">
+        <h3 style="justify-content:flex-start">🚫 除外キーワード（新キャンペーン側）</h3>
+        <p style="color:var(--ink)">開業／経営者／独立／起業／脱サラ／フランチャイズ／FC／資格／求人／転職／バイト／パート／未経験</p>
+      </div>
+      <div class="lpcard">
+        <h3 style="justify-content:flex-start">🚫 既存キャンペーン側にも追加すべき除外（カニバり防止）</h3>
+        <p style="color:var(--ink)">土地活用／遊休地／相続／空き家／不動産投資</p>
+      </div>
+    </div>
+    <p class="note">⚠️「障害者グループホーム 投資」等、「障害者」を含む語はGoogleの健康関連ポリシーに抵触する可能性が高いため、「グループホーム」「福祉施設」への言い換えを優先。Yahooは同ポリシーが緩いが未検証。反映は河合さんの重複確認完了後。</p>
   </div>
 
   <div class="section">
@@ -213,7 +292,7 @@ function drawLineChart(containerId, values, color){
   conv.forEach((c,i)=>{
     if(c > 0){
       svg += `<circle class="cv-marker" cx="${x(i).toFixed(1)}" cy="${(y(values[i])-12).toFixed(1)}" r="3" />`;
-      svg += `<text class="cv-label" x="${x(i).toFixed(1)}" y="${(y(values[i])-18).toFixed(1)}" text-anchor="middle">CV${c}</text>`;
+      svg += `<text class="cv-label" x="${x(i).toFixed(1)}" y="${(y(values[i])-18).toFixed(1)}" text-anchor="middle">問${c}件</text>`;
     }
   });
   svg += `</svg>`;
