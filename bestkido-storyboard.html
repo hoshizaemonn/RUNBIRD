@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ベストキッド 動画構成案 v1</title>
+<style>
+:root{--ink:#3b2f26;--sub:#7a6a5c;--line:#e6dccf;--bg:#faf6f0;--card:#fff;
+--gold:#c9a227;--hook:#d98324;--affinity:#8ba888;--solution:#7a94b8;--offer:#c98d8d;
+--narrow:#a98bb0;--action:#6b5b4a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.75;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+header{background:linear-gradient(160deg,#fffdfa,#f3e9da);border-bottom:3px solid var(--gold);
+padding:48px 20px 36px;margin-bottom:44px}
+header .inner{max-width:1080px;margin:0 auto}
+h1{font-size:30px;margin:0 0 6px;letter-spacing:.04em}
+.sub{color:var(--sub);font-size:15px;margin:0 0 20px}
+.specs{display:flex;flex-wrap:wrap;gap:10px}
+.spec{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 15px;font-size:13px}
+.spec b{color:var(--gold)}
+h2{font-size:21px;margin:56px 0 6px;padding-left:13px;border-left:5px solid var(--gold)}
+h2 .en{font-size:11px;color:var(--sub);font-weight:400;letter-spacing:.16em;display:block}
+.lead{color:var(--sub);font-size:14px;margin:0 0 22px}
+.flow{display:flex;border-radius:10px;overflow:hidden;border:1px solid var(--line);
+margin-bottom:10px;font-size:12px;text-align:center;color:#fff}
+.flow div{padding:11px 4px;font-weight:600}
+.f-hook{background:var(--hook)}.f-affinity{background:var(--affinity)}
+.f-solution{background:var(--solution)}.f-offer{background:var(--offer)}
+.f-action{background:var(--action)}
+.flow-note{display:flex;font-size:11.5px;color:var(--sub);margin-bottom:26px}
+.flow-note div{text-align:center;padding:0 4px}
+.cuts{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.cut{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+box-shadow:0 1px 3px rgba(90,70,50,.07);display:flex;flex-direction:column}
+.cut-shot{position:relative;line-height:0;background:#000}
+.cut-shot img{width:100%;height:auto;display:block}
+.cut-id{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.72);color:#fff;
+font-size:12px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.06em}
+.cut-time{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.9);color:#3b2f26;
+font-size:11px;padding:3px 9px;border-radius:4px;font-variant-numeric:tabular-nums}
+.cut-body{padding:14px 16px 16px;flex:1}
+.cut-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tag{font-size:11px;color:#fff;padding:2px 10px;border-radius:999px;font-weight:600}
+.tag-hook{background:var(--hook)}.tag-affinity{background:var(--affinity)}
+.tag-solution{background:var(--solution)}.tag-offer{background:var(--offer)}
+.tag-action{background:var(--action)}
+.src{font-size:11px;color:var(--sub)}
+.line{display:flex;gap:9px;margin-bottom:8px}
+.lbl{flex:0 0 46px;font-size:10.5px;height:19px;line-height:19px;text-align:center;
+border-radius:3px;font-weight:700}
+.lbl-n{background:#7a94b8;color:#fff}
+.lbl-t{background:#3b2f26;color:#fff}
+.narr{margin:0;font-size:13.5px;color:var(--ink)}
+.telop{margin:0;font-size:15px;font-weight:700;line-height:1.55}
+.refs{display:grid;gap:16px}
+.ref{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+padding:16px;text-decoration:none;color:inherit;transition:.15s;align-items:flex-start}
+.ref:hover{border-color:var(--gold);box-shadow:0 3px 12px rgba(160,130,60,.14)}
+.ref-body{flex:1;min-width:0}
+.ref-badge{display:inline-block;background:#fdf6e3;border:1px solid var(--gold);color:#8a6d12;
+font-size:11px;padding:2px 10px;border-radius:999px;margin-bottom:7px}
+.ref h4{margin:0 0 3px;font-size:15.5px;line-height:1.5}
+.ref-ch{margin:0 0 8px;font-size:12px;color:var(--sub)}
+.ref-why{margin:0 0 8px;font-size:13.5px}
+.ref-url{margin:0;font-size:11.5px;color:#9a8878;word-break:break-all}
+.box{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);
+border-radius:10px;padding:20px 24px;margin-bottom:18px}
+.box.warn{border-left-color:#c0564f;background:#fdf7f6}
+.box h3{margin:0 0 10px;font-size:16px}
+.box p{margin:0 0 10px;font-size:14px}
+.box p:last-child{margin-bottom:0}
+.chk{list-style:none;padding:0}
+.chk li{padding:9px 0 9px 30px;border-bottom:1px dashed var(--line);position:relative;font-size:14px}
+.chk li:before{content:"\25a1";position:absolute;left:6px;color:var(--gold);font-size:17px}
+.chk li:last-child{border-bottom:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);
+font-size:12px;color:var(--sub);text-align:center}
+@media(max-width:640px){
+  header{padding:32px 16px 26px}
+  h1{font-size:20px;line-height:1.5} .sub{font-size:13px}
+  .wrap{padding:0 16px 60px}
+  h2{font-size:18px}
+  .ref{flex-direction:column}
+  .flow{font-size:9.5px} .flow div{padding:9px 2px;min-width:0}
+  .flow-note{display:none}
+  .cuts{grid-template-columns:1fr}
+  .box{padding:16px 18px}
+}
+</style></head><body>
+
+<header><div class="inner">
+  <h1>ベストキッド様｜<span style="white-space:nowrap">動画構成案 v1（静止画モックアップ）</span></h1>
+  <p class="sub">パーソナルストレッチジム／熊本県八代市本町1丁目6-23 DUCKWALK 2F</p>
+  <div class="specs">
+    <span class="spec">尺 <b>45秒（仮置き）</b></span>
+    <span class="spec">構成 <b>10カット</b></span>
+    <span class="spec">形式 <b>16:9（横）</b></span>
+    <span class="spec">方式 <b>静止画10枚（AI生成・Lovart投入前のたたき台）</b></span>
+    <span class="spec">作成 <b>2026-09-27</b></span>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+<h2 style="margin-top:0">0. このモックアップの位置づけ<span class="en">STATUS</span></h2>
+<div class="box warn">
+  <h3>ディレクションMTG（2026/9/30(水)13:00）前の先出したたき台です</h3>
+  <p>Lovartでの動画化・費用発生は9/30の確定後に行います。今回はまず「どんな絵のトーンで、どんな流れになるか」を
+  静止画でご確認いただくためのモックアップです。</p>
+  <p>代表（木戸様）のご出演可否が未確定のため、人物カットはすべて<b>後ろ姿・手元・シルエット中心</b>で仮置きしています。
+  ビルオーナー所有物・建物の映り込みを気にされていた点についても、<b>店内カット(S09)を含めすべて完全にAI生成の
+  オリジナル内装</b>とし、実店舗の特定できる要素は一切含めていません。</p>
+</div>
+
+<h2>1. 動画全体の流れ<span class="en">STRUCTURE（PASONA）</span></h2>
+<p class="lead">「マシンなしで本当に良くなるの？」という悩みの直撃から始まり、マシン不使用という差別化ポイントを言葉と画の両方で証明し、
+最後にプライベート感・幅広い年代対応を見せてCTAへつなぐ流れです。</p>
+<div class="flow">
+  <div class="f-hook" style="flex:2">フック・悩み</div><div class="f-solution" style="flex:3">差別化・施術</div>
+  <div class="f-affinity" style="flex:2">体感・人柄</div><div class="f-offer" style="flex:3">プライベート感・幅広さ・店内</div>
+  <div class="f-action" style="flex:1">CTA</div>
+</div>
+<div class="flow-note">
+  <div style="flex:2">S01-S02<br>マシンが苦手・悩みの提示</div>
+  <div style="flex:3">S03-S05<br>マシン不使用を明言・施術・体感</div>
+  <div style="flex:2">S06-S07<br>代表の人柄・個室のプライベート感</div>
+  <div style="flex:3">S08-S09<br>幅広い年代・店内の雰囲気</div>
+  <div style="flex:1">S10<br>CTA・連絡先</div>
+</div>
+
+<h2>2. 絵コンテ（全10カット）<span class="en">STORYBOARD</span></h2>
+<p class="lead">画像はGPT Imageで生成した仮の画です。表示されているナレーション・テロップが、現時点での本番文言案です。</p>
+<div class="cuts">
+    <article class="cut hook">
+      <div class="cut-shot"><img src="bestkido-images/s01.jpg" alt="S01" loading="lazy">
+        <span class="cut-id">S01</span><span class="cut-time">0:00-0:03</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">フック</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">首・肩に手を当てる人物の後ろ姿</p>
+        <div class="line"><span class="lbl lbl-n">ナレ</span><p class="narr">首、肩、腰……その痛み、マシンなしで良くなるの？</p></div>
+      </div>
+    </article>
+    <article class="cut hook">
+      <div class="cut-shot"><img src="bestkido-images/s02.jpg" alt="S02" loading="lazy">
+        <span class="cut-id">S02</span><span class="cut-time">0:03-0:08</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">悩みの深掘り</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">悩ましげに座る人物のシルエット</p>
+        <div class="line"><span class="lbl lbl-n">ナレ</span><p class="narr">マシンは苦手。運動も続かない。そんなあなたへ。</p></div>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">マシンが苦手でも、運動が苦手でも</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="bestkido-images/s03.jpg" alt="S03" loading="lazy">
+        <span class="cut-id">S03</span><span class="cut-time">0:08-0:13</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">差別化</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">インストラクターが手技の準備をする手元アップ</p>
+        <div class="line"><span class="lbl lbl-n">ナレ</span><p class="narr">トレーニングマシーンを、一切使わないパーソナルストレッチ。</p></div>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">〈USP①〉マシン不使用のパーソナルストレッチ</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="bestkido-images/s04.jpg" alt="S04" loading="lazy">
+        <span class="cut-id">S04</span><span class="cut-time">0:13-0:18</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">施術</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ストレッチ施術(脚を伸ばす手技)のクローズアップ</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">手技だけで、伸ばして整える</p></div>
+      </div>
+    </article>
+    <article class="cut affinity">
+      <div class="cut-shot"><img src="bestkido-images/s05.jpg" alt="S05" loading="lazy">
+        <span class="cut-id">S05</span><span class="cut-time">0:18-0:23</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-affinity">体感</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">施術後、肩を回して軽さを感じる仕草</p>
+        <div class="line"><span class="lbl lbl-n">ナレ</span><p class="narr">たった10分で、体がふっと軽くなる。</p></div>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">〈体感〉たった10分で軽さを実感</p></div>
+      </div>
+    </article>
+    <article class="cut affinity">
+      <div class="cut-shot"><img src="bestkido-images/s06.jpg" alt="S06" loading="lazy">
+        <span class="cut-id">S06</span><span class="cut-time">0:23-0:28</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-affinity">代表の人柄</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">代表役インストラクターの後ろ姿・横顔・手元</p>
+        <div class="line"><span class="lbl lbl-n">ナレ</span><p class="narr">話しやすくて、元気なトレーナーがそばにいる。</p></div>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ベストキッド 代表 木戸</p></div>
+      </div>
+    </article>
+    <article class="cut offer">
+      <div class="cut-shot"><img src="bestkido-images/s07.jpg" alt="S07" loading="lazy">
+        <span class="cut-id">S07</span><span class="cut-time">0:28-0:33</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-offer">プライベート感</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">個室風の落ち着いたスペースで施術する引きの画</p>
+        <div class="line"><span class="lbl lbl-n">ナレ</span><p class="narr">完全プライベートだから、まわりを気にせず通える。</p></div>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">〈USP②〉一対一のプライベート空間</p></div>
+      </div>
+    </article>
+    <article class="cut offer">
+      <div class="cut-shot"><img src="bestkido-images/s08.jpg" alt="S08" loading="lazy">
+        <span class="cut-id">S08</span><span class="cut-time">0:33-0:38</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-offer">ターゲットの具体化</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">異なる年代・性別の人物が並ぶ／入れ替わるカット</p>
+        <div class="line"><span class="lbl lbl-n">ナレ</span><p class="narr">10代から、シニアまで。誰でも、はじめられる。</p></div>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">幅広い年代の男女に対応</p></div>
+      </div>
+    </article>
+    <article class="cut offer">
+      <div class="cut-shot"><img src="bestkido-images/s09.jpg" alt="S09" loading="lazy">
+        <span class="cut-id">S09</span><span class="cut-time">0:38-0:41</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-offer">店の雰囲気</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">落ち着いた店内の雰囲気カット(完全AI生成の内装)</p>
+        
+      </div>
+    </article>
+    <article class="cut action">
+      <div class="cut-shot"><img src="bestkido-images/s10.jpg" alt="S10" loading="lazy">
+        <span class="cut-id">S10</span><span class="cut-time">0:41-0:45</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-action">CTA</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">明るい室内→ロゴ＋連絡先テロップ</p>
+        <div class="line"><span class="lbl lbl-n">ナレ</span><p class="narr">ベストキッド — マシンいらずのパーソナルストレッチ。</p></div>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ベストキッド／熊本県八代市本町1丁目6-23 DUCKWALK 2F／080-3956-0248／Instagram QR</p></div>
+      </div>
+    </article>
+</div>
+
+<h2>3. この画像について<span class="en">GENERATED</span></h2>
+<div class="box warn">
+  <h3>10カットすべて、AIで生成した「仮の画」です</h3>
+  <p>代表（木戸様）のご出演可否・モデルの要否・店内撮影素材の使い方はディレクションMTG（9/30）で確定するため、
+  今回は<b>受注シート・ヒアリング内容・参考動画リサーチだけをもとに、全カットAI生成で構成</b>しました。</p>
+  <p>ビルオーナー所有物・建物外観の映り込みを懸念されていた点についても、<b>実写撮影に頼らずAI生成のみで
+  完結できる作り方</b>があることをこのモックアップでご確認いただけます。</p>
+  <p>登場人物（インストラクター役・クライアント役）は、実在の人物やタレントを模したものではなく、
+  AIが独自に生成した架空の人物です（代表ご本人のお写真は使用していません）。</p>
+</div>
+
+<h2>4. 参考にした動画<span class="en">REFERENCE</span></h2>
+<p class="lead">業態が近い実在の広告動画を参考に、トーン・構成を組んでいます（詳細は参考動画リサーチ_20260927.md参照）。</p>
+<div class="refs">
+    <a class="ref" href="https://www.youtube.com/watch?v=8OwYAfUHqls" target="_blank" rel="noopener">
+      <div class="ref-body">
+        <span class="ref-badge">マシンレス施術の見せ方</span>
+        <h4>【1分でわかる！】Dr.stretchのパーソナルストレッチとは？</h4>
+        <p class="ref-ch">Dr.stretch公式</p>
+        <p class="ref-why">マシンを使わない手技のみの施術を、画としてどう見せるかの参考にしました。</p>
+        <p class="ref-url">youtube.com/watch?v=8OwYAfUHqls</p>
+      </div>
+    </a>
+    <a class="ref" href="https://www.youtube.com/watch?v=uX-PMkC1IJM" target="_blank" rel="noopener">
+      <div class="ref-body">
+        <span class="ref-badge">悩み直結の訴求構造</span>
+        <h4>ゴルフ×Dr.stretch 始動</h4>
+        <p class="ref-ch">Dr.stretch公式</p>
+        <p class="ref-why">特定の悩みからストレッチでの解決へ一直線に進む構成の参考にしました。</p>
+        <p class="ref-url">youtube.com/watch?v=uX-PMkC1IJM</p>
+      </div>
+    </a>
+    <a class="ref" href="https://www.youtube.com/watch?v=geCZ2uAEoBY" target="_blank" rel="noopener">
+      <div class="ref-body">
+        <span class="ref-badge">差別化の対照（演出は真似ない）</span>
+        <h4>ゲンキープストレッチCM</h4>
+        <p class="ref-ch">ゲンキープ</p>
+        <p class="ref-why">マシンを使うストレッチの対照事例として、差別化ポイントの言語化材料にしました。</p>
+        <p class="ref-url">youtube.com/watch?v=geCZ2uAEoBY</p>
+      </div>
+    </a>
+</div>
+
+<h2>5. ご確認いただきたいこと<span class="en">CHECK</span></h2>
+<div class="box">
+  <h3>9/30ディレクションMTGで確定させていただきたい点（現時点は仮置き）</h3>
+  <ul class="chk">
+    <li>尺：45秒で仮置きしています（受注シートに尺の指定なし）</li>
+    <li>代表（木戸様）のご出演可否：後ろ姿・手元・横顔中心で仮置きしています。顔出しOKであれば正面カットに差し替え可能です</li>
+    <li>モデルの要否：モデルなし（代表本人のみ登場）で仮置きしています</li>
+    <li>ビルオーナー所有物・建物映り込みの回避方針：フルAI生成の店内で回避する設計にしています。このモックアップがその一例です</li>
+    <li>料金体系（コース・価格）の動画への反映有無：今回は反映なしで仮置きしています</li>
+    <li>BGM：明るく前向きなポップトーンを想定しています（未収録）</li>
+    <li>CTA優先度：店名・電話番号・住所・Instagramを並列表示で仮置きしています</li>
+  </ul>
+</div>
+<div class="box">
+  <h3>その他の確認事項</h3>
+  <ul class="chk">
+    <li>全体の構成・流れは、この方向で進めて問題ないでしょうか</li>
+    <li>気になるカット・直したい点は、<b>カット番号（S01〜S10）と一緒に一度にまとめて</b>お知らせください</li>
+    <li>店舗情報（住所・電話番号）はいただいた内容のまま反映しています。変更があればお知らせください</li>
+  </ul>
+</div>
+
+<footer>ベストキッド様 動画構成案 v1（静止画モックアップ）／2026-09-27 作成<br>
+株式会社ランバード｜AI動画制作</footer>
+</div></body></html>
