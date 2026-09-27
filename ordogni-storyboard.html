@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ORDOgni 静止画ストーリーボード v6</title>
+<title>ORDOgni 静止画ストーリーボード v7</title>
 <style>
-:root{--ink:#2b2420;--sub:#7a6a5c;--line:#e6dccf;--bg:#faf6f0;--card:#fff;
---gold:#b8895a;--ki:#c98d55;--sho:#8ba888;--ten:#c9748d;--ketsu:#6b5b4a;}
+:root{--ink:#3b2f26;--sub:#7a6a5c;--line:#e6dccf;--bg:#faf6f0;--card:#fff;
+--gold:#c9a227;--hook:#d98324;--affinity:#8ba888;--solution:#7a94b8;--offer:#c98d8d;--action:#6b5b4a;}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);
 font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.75;
@@ -24,8 +24,9 @@ h2 .en{font-size:11px;color:var(--sub);font-weight:400;letter-spacing:.16em;disp
 .flow{display:flex;border-radius:10px;overflow:hidden;border:1px solid var(--line);
 margin-bottom:10px;font-size:12px;text-align:center;color:#fff}
 .flow div{padding:11px 4px;font-weight:600}
-.f-ki{background:var(--ki)}.f-sho{background:var(--sho)}
-.f-ten{background:var(--ten)}.f-ketsu{background:var(--ketsu)}
+.f-hook{background:var(--hook)}.f-affinity{background:var(--affinity)}
+.f-solution{background:var(--solution)}.f-offer{background:var(--offer)}
+.f-action{background:var(--action)}
 .flow-note{display:flex;font-size:11.5px;color:var(--sub);margin-bottom:26px}
 .flow-note div{text-align:center;padding:0 4px}
 .cuts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
@@ -35,238 +36,222 @@ box-shadow:0 1px 3px rgba(90,70,50,.07);display:flex;flex-direction:column}
 .cut-shot img{width:100%;height:auto;display:block}
 .cut-id{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.72);color:#fff;
 font-size:12px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.06em}
-.cut-src{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.9);color:#2b2420;
-font-size:11px;padding:3px 9px;border-radius:4px}
+.cut-time{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.9);color:#3b2f26;
+font-size:11px;padding:3px 9px;border-radius:4px;font-variant-numeric:tabular-nums}
 .cut-body{padding:14px 16px 16px;flex:1}
 .cut-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
 .tag{font-size:11px;color:#fff;padding:2px 10px;border-radius:999px;font-weight:600}
-.tag-ki{background:var(--ki)}.tag-sho{background:var(--sho)}
-.tag-ten{background:var(--ten)}.tag-ketsu{background:var(--ketsu)}
-.line{display:flex;gap:9px;margin-bottom:8px;align-items:flex-start}
+.tag-hook{background:var(--hook)}.tag-affinity{background:var(--affinity)}
+.tag-solution{background:var(--solution)}.tag-offer{background:var(--offer)}
+.tag-action{background:var(--action)}
+.src{font-size:11px;color:var(--sub)}
+.line{display:flex;gap:9px;margin-bottom:8px}
 .lbl{flex:0 0 46px;font-size:10.5px;height:19px;line-height:19px;text-align:center;
 border-radius:3px;font-weight:700}
-.lbl-t{background:#2b2420;color:#fff}
-.lbl-a{background:#eadfce;color:#5a4a3a}
+.lbl-t{background:#3b2f26;color:#fff}
 .telop{margin:0;font-size:15px;font-weight:700;line-height:1.55}
-.note{margin:0;font-size:13px;color:var(--sub)}
-.angle{font-size:12.5px;color:var(--sub);margin:0 0 8px;padding:8px 10px;background:#faf6f0;
-border-radius:6px;border:1px dashed var(--line)}
-.why{font-size:12.5px;color:#6b5b4a;margin:0 0 0;padding:8px 10px;background:#fbf4e9;
-border-radius:6px;border:1px dashed var(--gold)}
+.refs{display:grid;gap:16px}
+.ref{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+padding:16px;text-decoration:none;color:inherit;transition:.15s;align-items:flex-start}
+.ref:hover{border-color:var(--gold);box-shadow:0 3px 12px rgba(160,130,60,.14)}
+.ref-body{flex:1;min-width:0}
+.ref-badge{display:inline-block;background:#fdf6e3;border:1px solid var(--gold);color:#8a6d12;
+font-size:11px;padding:2px 10px;border-radius:999px;margin-bottom:7px}
+.ref h4{margin:0 0 3px;font-size:15.5px;line-height:1.5}
+.ref-ch{margin:0 0 8px;font-size:12px;color:var(--sub)}
+.ref-why{margin:0 0 8px;font-size:13.5px}
+.ref-url{margin:0;font-size:11.5px;color:#9a8878;word-break:break-all}
 .box{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);
 border-radius:10px;padding:20px 24px;margin-bottom:18px}
 .box.warn{border-left-color:#c0564f;background:#fdf7f6}
-.box.axis{border-left-color:var(--ten);background:linear-gradient(160deg,#fff,#fdf3f5)}
 .box h3{margin:0 0 10px;font-size:16px}
 .box p{margin:0 0 10px;font-size:14px}
 .box p:last-child{margin-bottom:0}
-.axis-word{display:inline-block;font-size:26px;font-weight:800;color:var(--ten);
-background:#fff;border:2px solid var(--ten);border-radius:10px;padding:6px 22px;margin:2px 0 14px}
 .chk{list-style:none;padding:0}
 .chk li{padding:9px 0 9px 30px;border-bottom:1px dashed var(--line);position:relative;font-size:14px}
 .chk li:before{content:"□";position:absolute;left:6px;color:var(--gold);font-size:17px}
 .chk li:last-child{border-bottom:none}
-table.ref{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:20px}
-table.ref th,table.ref td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-table.ref th{background:#f3e9da}
 footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);
 font-size:12px;color:var(--sub);text-align:center}
 @media(max-width:640px){
   header{padding:32px 16px 26px}
-  h1{font-size:19px;line-height:1.5} .sub{font-size:13px}
+  h1{font-size:20px;line-height:1.5} .sub{font-size:13px}
   .wrap{padding:0 16px 60px}
   h2{font-size:18px}
+  .ref{flex-direction:column}
   .flow{font-size:9.5px} .flow div{padding:9px 2px;min-width:0}
   .flow-note{display:none}
   .cuts{grid-template-columns:1fr}
   .box{padding:16px 18px}
-  table.ref{font-size:12px}
 }
 </style></head><body>
 
 <header><div class="inner">
-  <h1>ORDOgni（オルドーニ）様｜<span style="white-space:nowrap">静止画ストーリーボード v6</span></h1>
-  <p class="sub">ネイルサロン × パーソナルジムの複合施設／東京都多摩市豊ヶ丘1-3-18</p>
+  <h1>ORDOgni（オルドーニ）様｜<span style="white-space:nowrap">動画構成案 v7</span></h1>
+  <p class="sub">ネイルサロン×パーソナルジム／東京都多摩市豊ヶ丘1-3-18</p>
   <div class="specs">
-    <span class="spec">構成 <b>8カット（起承転結）</b></span>
-    <span class="spec">想定尺 <b>20〜25秒</b></span>
-    <span class="spec">方式 <b>静止画のみ（動画化は未着手）</b></span>
-    <span class="spec">素材 <b>実物写真7点（v5から追加なし）</b></span>
-    <span class="spec">作成 <b>2026-09-27（v5からの作り直し）</b></span>
+    <span class="spec">尺 <b>38秒</b></span>
+    <span class="spec">構成 <b>9カット</b></span>
+    <span class="spec">形式 <b>16:9（横）</b></span>
+    <span class="spec">方式 <b>静止画9枚（実写7枚・一部再使用・Ken Burns想定）</b></span>
+    <span class="spec">作成 <b>2026-09-27</b></span>
   </div>
 </div></header>
 
 <div class="wrap">
 
-<div class="box warn">
-  <h3>⚠️ スコープ注意（重要）</h3>
-  <p>本ページは<b>静止画ベースの構成案</b>までです。動画化（Higgsfield / Seedance 等での実際のAI動画生成＝費用が発生する工程）は<b>まだ着手していません</b>。このストーリーボードのご確認・ご承認後、動画化に進むかどうかは別途あらためて確認します。</p>
-</div>
-
-<div class="box axis">
-  <h3>この動画の「物語の軸」</h3>
-  <span class="axis-word">同居</span>
-  <p><b>性格も、事業も、正反対の二人。だけど、同じ屋根の下で、うまく"同居"している。</b></p>
-  <p>v5は「外観→ネイル→ジム→夫婦→締め」という<b>カテゴリを順番に見せるだけの紹介</b>になっていました（鈴木さんご指摘：「ただ画像を繋げただけ」）。v6では、次の2つの事実だけを使って1本の軸を立て、全カットをこの軸に沿って再設計しています。</p>
-  <ul class="chk">
-    <li><b>①物理的な事実：</b>外観写真（新素材5・7）を見ると、壁の仕切りなく<b>1つの部屋の中に</b>ネイルデスクとダンベルラック・施術ベッドが同時に写り込んでいます。「複合施設」ではなく「同居」という言葉がそのまま当てはまる空間です。</li>
-    <li><b>②人物像の事実：</b>受注シート原文「奥さん＝明るく直感的だが意外に細かい」「旦那さん＝細かく慎重なマッチョマン」。方向性が逆に見える二人が、それぞれ相手側の要素も持っている——という対比。</li>
-  </ul>
-  <p style="margin-top:10px">来店客のエピソード等の創作は一切していません。受注シートの原文と、写真そのものが写している内容の範囲内で組み立てています。</p>
-</div>
-
-<h2 style="margin-top:0">0. 参考動画リサーチ<span class="en">REFERENCE</span></h2>
-<p class="lead">対象：<a href="https://youtu.be/dbl4vxwPLws" target="_blank" rel="noopener">youtu.be/dbl4vxwPLws</a>（フィットイージー「やりたいこと全部ここで」篇と推定）</p>
-<div class="box">
-  <p><b>正直な限界の申告：</b>YouTube動画本体のフレームは直接確認できておらず、タイトル・コンセプト・広告ジャンルの定石から演出パターンを推定したものです。コマ単位の実測ではありません。</p>
-</div>
-<table class="ref">
-  <tr><th>要素</th><th>参考動画のパターン</th><th>ORDOgniへの転用（v6）</th></tr>
-  <tr><td>コンセプト</td><td>「1つの場所に複数の『やりたいこと』が揃っている」発見・驚き</td><td>「発見」を1回で終わらせず、違和感（C1）→言語化（C2）の2段構成にして軸「同居」に直結させる</td></tr>
-  <tr><td>導入</td><td>外観・入口からの期待を煽るカット</td><td>外観カット（新素材5・7）は同じだが、テロップは説明でなく「問いかけ」から入る</td></tr>
-  <tr><td>展開</td><td>次々に機能ゾーンが現れる「発見のカット割り」</td><td>単なる交互紹介ではなく、奥さん(静)と旦那さん(動)を<b>対比のペア</b>として直接ぶつける</td></tr>
-  <tr><td>人物</td><td>自然な笑顔で「来たくなる」感情を作る</td><td>夫婦カットを「もう一つの紹介」ではなく<b>軸の答え合わせ</b>の瞬間として設計</td></tr>
-  <tr><td>締め</td><td>ロゴ・キャッチコピーで着地</td><td>軸の言葉（正反対だから、うまくいく）を店の姿勢として言い換えて回収</td></tr>
-</table>
-
-<h2>1. 全体の流れ<span class="en">STRUCTURE</span></h2>
-<p class="lead">起承転結で構成。「違和感のフック→事実の言語化」→「対比のペア（奥さん/旦那さん）を提示」→「対比を1枚で回収（軸の答え）」→「軸の言葉で着地」。</p>
+<h2 style="margin-top:0">1. 動画全体の流れ<span class="en">STRUCTURE</span></h2>
+<p class="lead">「指先を後回しにしている女性（ネイル客）」と「始めたいのに続かない男女（ジム客）」の2つのペインを前半で並行して描き、後半で「実は同じ場所にある」という1つの解決策に合流させる構成です。</p>
 <div class="flow">
-  <div class="f-ki" style="flex:2">起（違和感→同居の事実）</div>
-  <div class="f-sho" style="flex:4">承（対比のペア）</div>
-  <div class="f-ten" style="flex:1">転（軸の回収）</div>
-  <div class="f-ketsu" style="flex:1">結（着地）</div>
+  <div class="f-hook" style="flex:1">フック①</div><div class="f-affinity" style="flex:1">共感①</div>
+  <div class="f-hook" style="flex:1">フック②</div><div class="f-affinity" style="flex:1">共感②</div>
+  <div class="f-solution" style="flex:3">解決（合流）</div>
+  <div class="f-offer" style="flex:1">オファー</div><div class="f-action" style="flex:1">行動</div>
 </div>
 <div class="flow-note">
-  <div style="flex:2">C1–C2<br>「あれ？」の違和感→「壁の仕切りなし」の事実</div>
-  <div style="flex:4">C3–C6<br>奥さんの城(静)⇄旦那さんの城(動)→奥さんの細かさ→間</div>
-  <div style="flex:1">C7<br>正反対なのに息が合う</div>
-  <div style="flex:1">C8<br>軸の言葉で着地</div>
+  <div style="flex:1">C1<br>ネイル客の悩み</div>
+  <div style="flex:1">C2<br>共感の深掘り</div>
+  <div style="flex:1">C3<br>ジム客の悩み</div>
+  <div style="flex:1">C4<br>共感の深掘り</div>
+  <div style="flex:3">C5–C7<br>実は同じ場所・詳細</div>
+  <div style="flex:1">C8<br>夫婦紹介</div>
+  <div style="flex:1">C9<br>店名・CTA</div>
 </div>
 
-<h2>2. 絵コンテ（全8カット）<span class="en">STORYBOARD</span></h2>
-<p class="lead">画像はすべて受領済みの実物写真です（AI生成の作り直しはしていません／v5から素材の変更なし）。<span class="why">水色の枠は「v5からの変更点・なぜこの並びにしたか」です。</span></p>
+<h2>2. 絵コンテ（全9カット）<span class="en">STORYBOARD</span></h2>
+<p class="lead">画像はすべてクライアント様からお預かりした実写7枚です（無改変・新規生成なし）。顧客ご本人は映さず、対象物のカットに「語りかけ」テロップを乗せることで悩み・欲求を表現しています。表示されているテロップが、現時点での本番文言案です。</p>
 <div class="cuts">
-
-  <article class="cut">
-    <div class="cut-shot"><img src="ordogni-images/s07.jpg" alt="カット1" loading="lazy">
-      <span class="cut-id">C1・起</span><span class="cut-src">実物写真</span></div>
-    <div class="cut-body">
-      <div class="cut-meta"><span class="tag tag-ki">起・違和感のフック</span></div>
-      <p class="angle">画角：v5と同じ実物写真をそのまま使用。ガラス扉越しに、白いネイルデスクと黒い施術ベッド・ダンベルラックが同時に見える構図</p>
-      <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ここ、ネイルサロン……ですよね？</p></div>
-      <div class="line"><span class="lbl lbl-a">ナレ案</span><p class="note">「──あれ、奥に見えるの、ダンベル？」</p></div>
-      <p class="why">v5では「多摩市 豊ヶ丘にこんな場所ができました」と<b>説明</b>から入っていた。v6では説明せず、視聴者に「あれ？」という違和感だけを渡す。答えは言わない。</p>
-    </div>
-  </article>
-
-  <article class="cut">
-    <div class="cut-shot"><img src="ordogni-images/s05.jpg" alt="カット2" loading="lazy">
-      <span class="cut-id">C2・起→承</span><span class="cut-src">実物写真</span></div>
-    <div class="cut-body">
-      <div class="cut-meta"><span class="tag tag-ki">起・事実の言語化</span></div>
-      <p class="angle">画角：v5と同じ。別角度の外観。同じ1室に両方の設備が写り込む構図</p>
-      <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">壁の仕切りなし。1つの部屋に、ネイルサロンとパーソナルジムが同居しています。</p></div>
-      <div class="line"><span class="lbl lbl-a">ナレ案</span><p class="note">「1つの部屋の中に、ネイルサロンと、パーソナルジムが同居しています。」</p></div>
-      <p class="why">C1の違和感への答え合わせ。「複合施設」という一般的な言葉ではなく、「同居」という<b>写真が語っている事実</b>をそのまま言い切り、ここで軸の言葉を初めて出す。</p>
-    </div>
-  </article>
-
-  <article class="cut">
-    <div class="cut-shot"><img src="ordogni-images/s06.jpg" alt="カット3" loading="lazy">
-      <span class="cut-id">C3・承</span><span class="cut-src">実物写真</span></div>
-    <div class="cut-body">
-      <div class="cut-meta"><span class="tag tag-sho">承・対比①奥さんの城</span></div>
-      <p class="angle">画角：v5と同じ。斜め引きでデスク・椅子・照明アームのレイヤーを見せる</p>
-      <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">明るくて、直感を大事にする奥さんの城。</p></div>
-      <p class="why">受注シート原文「姉さん女房、明るくて直感を大事にする人」に基づく。次カット（旦那さんの城）と<b>対で見せるための前フリ</b>として配置。</p>
-    </div>
-  </article>
-
-  <article class="cut">
-    <div class="cut-shot"><img src="ordogni-images/s03.jpg" alt="カット4" loading="lazy">
-      <span class="cut-id">C4・承</span><span class="cut-src">実物写真</span></div>
-    <div class="cut-body">
-      <div class="cut-meta"><span class="tag tag-sho">承・対比②旦那さんの城</span></div>
-      <p class="angle">画角：v5と同じ。床に近い低い位置からの見上げアングル</p>
-      <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">細かくて慎重な、旦那さんの城。</p></div>
-      <p class="why"><b>v5との最大の違い。</b>v5は「ネイル空間→ネイル作品→ジム機材→ベッド」とカテゴリ内で完結してから次に移る"羅列"だった。v6は奥さん（静）→旦那さん（動）を直接ぶつけて対比として体感させる。受注シート原文「細かくて慎重なマッチョマン」に対応。</p>
-    </div>
-  </article>
-
-  <article class="cut">
-    <div class="cut-shot"><img src="ordogni-images/s04.jpg" alt="カット5" loading="lazy">
-      <span class="cut-id">C5・承</span><span class="cut-src">実物写真</span></div>
-    <div class="cut-body">
-      <div class="cut-meta"><span class="tag tag-sho">承・奥さんの二面性</span></div>
-      <p class="angle">画角：v5と同じ。真上〜斜め上からのマクロ物撮り</p>
-      <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">実は、ものすごく細かい。</p></div>
-      <p class="why">受注シート原文「意外にメモをとったりして細かい部分もある人」に対応。「明るい＝雑」ではないという奥さんの二面性を、ネイルの作り込みで裏付ける。</p>
-    </div>
-  </article>
-
-  <article class="cut">
-    <div class="cut-shot"><img src="ordogni-images/s01.jpg" alt="カット6" loading="lazy">
-      <span class="cut-id">C6・承→転</span><span class="cut-src">実物写真</span></div>
-    <div class="cut-body">
-      <div class="cut-meta"><span class="tag tag-sho">承・対比のまとめ／間</span></div>
-      <p class="angle">画角：v5と同じ。ベッド全体が入る引きの構図</p>
-      <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">性格も、得意なことも、正反対。</p></div>
-      <p class="why">対比の応酬（C3〜C5）を一度言葉でまとめ、次カットの「なのに」が効くための「間」を作る。</p>
-    </div>
-  </article>
-
-  <article class="cut" style="border-color:var(--ten)">
-    <div class="cut-shot"><img src="ordogni-images/s02.jpg" alt="カット7" loading="lazy">
-      <span class="cut-id">C7・転</span><span class="cut-src">実物写真（要確認）</span></div>
-    <div class="cut-body">
-      <div class="cut-meta"><span class="tag tag-ten">転・軸の回収（クライマックス）</span></div>
-      <p class="angle">画角：v5と同じ。バストアップの自然な笑顔の会話ショット。背景左にネイルカラー棚とデスク、右奥にダンベルラック・ベッドが同時に写り込む構図をそのまま活用</p>
-      <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">正反対なのに、なぜか息が合う。だから、この場所もうまくいっている。</p></div>
-      <div class="line"><span class="lbl lbl-a">ナレ案</span><p class="note">「明るい奥さんと、慎重な旦那さん。正反対の二人が、同じ場所で、うまく"同居"しています。」</p></div>
-      <p class="why">ここまで積み上げた対比を、1枚の写真の中で回収する。性格が違う2人が、まさに"同居"する空間の中で笑い合っている——このカット1枚が軸の答え。v5では「もう一つの紹介カット」で終わっていた箇所を、v6では物語の山として設計し直した。</p>
-    </div>
-  </article>
-
-  <article class="cut">
-    <div class="cut-shot"><img src="ordogni-images/s01.jpg" alt="カット8" loading="lazy">
-      <span class="cut-id">C8・結</span><span class="cut-src">実物写真</span></div>
-    <div class="cut-body">
-      <div class="cut-meta"><span class="tag tag-ketsu">結・軸の回収で着地</span></div>
-      <p class="angle">画角：v5と同じ。C6と同系。ロゴ・住所テロップを乗せる余白（画面下1/3）を確保</p>
-      <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">正反対だから、うまくいく。／ORDOgni（オルドーニ）／東京都多摩市豊ヶ丘1-3-18／ネイル × パーソナルジム</p></div>
-      <p class="why">軸の言葉「同居」を、最後にもう一度お店の姿勢として言い換えて着地。店名・住所・CTAで行動喚起する。</p>
-    </div>
-  </article>
-
+    <article class="cut hook">
+      <div class="cut-shot"><img src="ordogni-images/s04.jpg" alt="C1" loading="lazy">
+        <span class="cut-id">C1</span><span class="cut-time">0:00–0:04</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">フック（ネイル）</span><span class="src">素材 実写</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ネイルアートのマクロ</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">気になっているのに、後回しにしている指先。</p></div>
+      </div>
+    </article>
+    <article class="cut affinity">
+      <div class="cut-shot"><img src="ordogni-images/s01.jpg" alt="C2" loading="lazy">
+        <span class="cut-id">C2</span><span class="cut-time">0:04–0:08</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-affinity">共感（ネイル）</span><span class="src">素材 実写</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">施術ベッド（引き・自然光）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">特別な予定がなくても、整えていい。</p></div>
+      </div>
+    </article>
+    <article class="cut hook">
+      <div class="cut-shot"><img src="ordogni-images/s03.jpg" alt="C3" loading="lazy">
+        <span class="cut-id">C3</span><span class="cut-time">0:08–0:12</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">フック（ジム）</span><span class="src">素材 実写</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ダンベル低アングル（動的）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">始めたい、と思ったまま何ヶ月。</p></div>
+      </div>
+    </article>
+    <article class="cut affinity">
+      <div class="cut-shot"><img src="ordogni-images/s03.jpg" alt="C4" loading="lazy">
+        <span class="cut-id">C4</span><span class="cut-time">0:12–0:16</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-affinity">共感（ジム）</span><span class="src">素材 実写（C3と同一・再使用）</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ダンベル低アングル（動的・別クロップ想定）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">一人だと続かない、が一番の壁。</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="ordogni-images/s05.jpg" alt="C5" loading="lazy">
+        <span class="cut-id">C5</span><span class="cut-time">0:16–0:20</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">解決（合流①）</span><span class="src">素材 実写</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">外観①（ドア越しにデスク＋ダンベルラック）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">実はこの2つ、同じ場所にあります。</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="ordogni-images/s07.jpg" alt="C6" loading="lazy">
+        <span class="cut-id">C6</span><span class="cut-time">0:20–0:24</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">解決（合流②）</span><span class="src">素材 実写</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">外観②（ドア越しにベッド＋ダンベルラック）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ネイルサロンと、パーソナルジムが同居する店。</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="ordogni-images/s06.jpg" alt="C7" loading="lazy">
+        <span class="cut-id">C7</span><span class="cut-time">0:24–0:29</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">解決（ネイル詳細）</span><span class="src">素材 実写</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ネイルデスクワイド</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">近所に、ちゃんとしたネイルサロンがある。</p></div>
+      </div>
+    </article>
+    <article class="cut offer">
+      <div class="cut-shot"><img src="ordogni-images/s02.jpg" alt="C8" loading="lazy">
+        <span class="cut-id">C8</span><span class="cut-time">0:29–0:34</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-offer">オファー（夫婦紹介）</span><span class="src">要確認：実写／参考素材</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">夫婦ツーショット</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">営むのは、性格も得意なことも正反対な夫婦。</p></div>
+      </div>
+    </article>
+    <article class="cut action">
+      <div class="cut-shot"><img src="ordogni-images/s07.jpg" alt="C9" loading="lazy">
+        <span class="cut-id">C9</span><span class="cut-time">0:34–0:38</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-action">行動</span><span class="src">素材 実写（C6と同一・再使用）</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">エンドカード（外観再使用）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ORDOgni（オルドーニ）／東京都多摩市豊ヶ丘1-3-18／ネイル×パーソナルジム／ご来店・お問い合わせ（CTA仮）</p></div>
+      </div>
+    </article>
 </div>
 
-<h2>3. 要確認事項<span class="en">要確認</span></h2>
-<div class="box warn">
-  <h3>①カット7（夫婦ツーショット）の素材確認をお願いします（v5から継続・未解決）</h3>
-  <p>この写真は背景にネイルカラー棚とダンベルラックが両方写り込んでおり、店内で撮影された本物の写真である可能性が高いと判断しています。</p>
-  <ul class="chk">
-    <li>代表・高橋綾子様ご夫妻ご本人の実物写真 → 無改変でそのまま使用</li>
-    <li>Instagram等から拾った雰囲気参考用の別人の写真 → 広告にそのまま使うのはNGのため差し替えが必要</li>
-  </ul>
-  <p style="margin-top:10px">上記1点をご確認いただいてから最終素材として確定します。</p>
-</div>
-<div class="box warn">
-  <h3>②予約経路（CTAリンク先）の確認をお願いします</h3>
-  <p>受注シートに「予約経路（どのリンクを広告に載せるか）を確認してあげて欲しい」との記載があります。Instagram DM／電話／外部予約システム等、CTAで案内するリンク先が現時点で未確定です。ディレクションMTGまでにご確認をお願いします。</p>
-</div>
-
-<h2>4. 次のアクション</h2>
+<h2>3. この画像について<span class="en">MATERIAL</span></h2>
 <div class="box">
+  <h3>9カットすべて、クライアント様からお預かりした実写7枚を使用（新規生成なし）</h3>
+  <p>今回は<b>新規のAI画像生成は行わず</b>、お預かりしている店舗の実写素材7枚のみで構成しています。
+  ダンベル低アングル（C3/C4）と外観②（C6/C9）はそれぞれ同じ写真を2カットで再使用しています。</p>
+  <p>顧客を演じる人物カットは今回入れていません。ネイル・ジムそれぞれの悩みは、対象物のカット＋テロップの語りかけで表現しています。</p>
+</div>
+
+<h2>4. 参考にした動画<span class="en">REFERENCE</span></h2>
+<p class="lead">鈴木さんより共有いただいた実在の広告動画です（生存確認済み）。<b>構成をこの動画にべったり寄せたものではなく、あくまで着想のきっかけ・軽い参考</b>としての位置づけです。</p>
+<div class="refs">
+    <a class="ref" href="https://www.youtube.com/watch?v=dbl4vxwPLws" target="_blank" rel="noopener">
+      <div class="ref-body">
+        <span class="ref-badge">着想のきっかけ（軽い参考）</span>
+        <h4>FIT-EASY（フィットイージー）CM「やりたいこと全部ここで」篇 30秒</h4>
+        <p class="ref-ch">FIT-EASY Official（鈴木さんより共有）</p>
+        <p class="ref-why">複数の目的（この動画の場合は「やりたいこと全部」）が1つの場所で叶うという打ち出し方の着想として参考にしました。この動画の構成をそのままなぞったわけではなく、あくまで軽い参考程度の位置づけです。動画本体のフレーム単位の内容までは確認できていません。</p>
+        <p class="ref-url">youtube.com/watch?v=dbl4vxwPLws</p>
+      </div>
+    </a>
+</div>
+
+<h2>5. ご確認いただきたいこと<span class="en">CHECK</span></h2>
+<div class="box">
+  <h3>今回、業態から推測して仮置きさせていただいた点</h3>
   <ul class="chk">
-    <li>本ストーリーボード（v6・軸「同居」）の内容でよいか、まずここをご確認ください（最優先）</li>
-    <li>カット7の実写／参考素材の区別確認</li>
-    <li>予約経路（CTAリンク先）の確認</li>
-    <li>このストーリーボードを9/29(火)10:00のディレクションで提示するか、事前にもう一段仕上げるかの判断</li>
-    <li>承認後、動画化（AI動画生成・費用発生）に進むかどうかは別途あらためて確認</li>
+    <li>使用媒体：Instagramリール想定で仮置きしています。他媒体へのご出稿予定があればお知らせください</li>
+    <li>ナレーション：優しいトーンの女性ナレーターを想定していますが、まだ収録していません</li>
+    <li>BGM：未収録です</li>
+    <li>ラストのご案内先（CTA）：予約経路が未確定のため「ご来店・お問い合わせ」で仮表示しています。Instagram DM／電話／外部予約システム等、確定次第差し替えます</li>
+  </ul>
+</div>
+<div class="box warn">
+  <h3>未解決の確認事項（v5・v6から継続）</h3>
+  <ul class="chk">
+    <li>カット8（夫婦ツーショット）が代表・高橋綾子様ご夫妻ご本人の実写か、参考素材かのご確認</li>
+    <li><b>予約経路（広告に載せるCTAリンク：Instagram DM／電話／外部予約システム等）のご確認</b>（受注内容共有シートに記載あり、まだ確認できていません）</li>
+  </ul>
+</div>
+<div class="box">
+  <h3>その他の確認事項</h3>
+  <ul class="chk">
+    <li>全体の構成・流れは、この方向で進めて問題ないでしょうか</li>
+    <li>気になるカット・直したい点は、<b>カット番号（C1〜C9）と一緒に一度にまとめて</b>お知らせください</li>
+    <li>店舗情報（住所）はいただいた内容のまま反映しています。変更があればお知らせください</li>
   </ul>
 </div>
 
-<footer>ORDOgni様 静止画ストーリーボード v6（物語軸「同居」で作り直し） ／ 2026-09-27作成 ／ 株式会社ランバード</footer>
-</div>
-</body></html>
+<footer>ORDOgni（オルドーニ）様 動画構成案 v7（静止画モックアップ・客目線ペイン起点版）／2026-09-27 作成<br>
+株式会社ランバード｜AI動画制作</footer>
+</div></body></html>
