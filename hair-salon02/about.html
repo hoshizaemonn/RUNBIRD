@@ -6,21 +6,21 @@
 <meta name="robots" content="noindex, nofollow">
 <!--
   ★社内確認用ドラフトです（本番サイトではありません）
-  HAIR SARON 02様（埼玉県比企郡鳩山町・小川信浩様）のHP制作案件について、
+  HAIR SALON 02様（埼玉県比企郡鳩山町・小川信浩様）のHP制作案件について、
   RUNBIRD社内（鈴木さん）確認用に作成したデザインたたき台です。
   写真・人物はすべて生成画像・仮のイメージで実在しません。
   店舗名・住所・電話番号はヒアリングシート記載の実情報ですが、
   このページ自体はまだ社内検討段階であり、クライアント納品・一般公開はしていません。
   検索エンジンにはインデックスさせない設定（robots noindex）にしています。
 -->
-<title>【社内確認用ドラフト】ブログ・お知らせ｜HAIR SARON 02（ヘアーサロン ゼロツー）</title>
+<title>【社内確認用ドラフト】事業・店舗紹介｜HAIR SALON 02（ヘアーサロン ゼロツー）</title>
 <style>
 
   :root{
     --ink:#111111;
     --ink-soft:#333333;
     --paper:#ffffff;
-    --paper-soft:#f7f7f5;
+    --paper-soft:#f7f2e6;
     --line:#dcdcda;
     --gray:#8a8a86;
     --teal:#3fb6a8;
@@ -30,6 +30,8 @@
     --pastel-pink:#f6c9d4;
     --pastel-lavender:#d8cdee;
     --pastel-peach:#f3d3ad;
+    --cream:#f8f3e7;
+    --wood-line:rgba(150,110,58,.08);
   }
   *{box-sizing:border-box;}
   html{overflow-x:hidden;}
@@ -90,15 +92,46 @@
   .crumb-bar-inner{max-width:1120px;margin:0 auto;padding:16px 24px;font-size:11px;color:var(--gray);}
   .crumb-bar-inner a{color:var(--teal-dark);}
 
-
   section{padding:72px 24px;position:relative;}
   .section-inner{max-width:1120px;margin:0 auto;position:relative;}
 
-  /* ============ イントロ（バナー直後のリード文） ============ */
-  .intro-block{padding:48px 24px 8px;}
-  .intro-block .inner{max-width:1120px;margin:0 auto;}
-  .intro-block .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin:0 0 12px;font-weight:700;}
-  .intro-block p.lead{font-size:13.5px;color:var(--ink-soft);margin:0;max-width:680px;line-height:2;}
+  /* ============ v44: セクション見出し（英字見出し＋ミント短冊＋全幅の罫線） ============ */
+  .sec-head{margin-bottom:44px;}
+  .sec-head h2{font-size:clamp(22px,3vw,30px);font-weight:900;letter-spacing:.03em;margin:0 0 10px;color:var(--ink);}
+  .sec-head .accent{width:110px;height:9px;background:var(--pastel-mint);margin-bottom:14px;}
+  .sec-head .rule{width:100%;height:1px;background:var(--line);}
+
+  /* ============ v44: CONCEPT（本文左・写真右＋ミントの縁取り） ============ */
+  .concept-row2{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;}
+  .concept-row2 .concept-text h3{font-size:16px;font-weight:800;margin:0 0 20px;line-height:1.8;}
+  .concept-row2 .concept-text p{margin:0 0 20px;}
+  .concept-row2 .photo-wrap{position:relative;}
+  .concept-row2 .photo-wrap::after{content:'';position:absolute;right:-16px;bottom:-16px;width:58%;height:42%;background:var(--pastel-mint);z-index:0;}
+  .concept-row2 .photo-wrap img{position:relative;z-index:1;aspect-ratio:4/3;object-fit:cover;filter:grayscale(10%) contrast(1.03);}
+
+  .btn-black{display:inline-flex;align-items:center;gap:16px;background:var(--ink);color:#fff;padding:16px 30px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-top:6px;}
+  .btn-black .arrow{color:var(--teal);font-size:16px;line-height:1;}
+
+  /* ============ v44: フォトギャラリー（4枚横並び） ============ */
+  .gallery4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:64px;}
+  .gallery4 .ph{aspect-ratio:1;overflow:hidden;filter:grayscale(10%) contrast(1.03);}
+
+  /* ============ v44: FOUNDER 引用文 ============ */
+  .founder-quote{max-width:760px;margin:0 auto 56px;text-align:center;}
+  .founder-quote .q{font-size:clamp(16px,2vw,20px);font-weight:800;color:var(--ink);margin:0 0 24px;letter-spacing:.02em;}
+  .founder-quote p{font-size:12.5px;color:var(--ink-soft);line-height:2.1;margin:0;}
+
+  /* ============ v44: FOUNDER カード（写真左・情報右＋ミントのゴースト番号） ============ */
+  .founder-card{display:grid;grid-template-columns:300px 1fr;gap:48px;align-items:start;position:relative;}
+  .founder-card .photo{aspect-ratio:3/4;overflow:hidden;filter:grayscale(10%) contrast(1.03);}
+  .founder-card .info{position:relative;padding-top:36px;}
+  .founder-label{position:absolute;top:-14px;right:0;display:flex;align-items:baseline;gap:8px;}
+  .founder-label .word{font-family:Georgia,"Hiragino Mincho ProN",serif;font-style:italic;font-weight:700;color:var(--teal-dark);font-size:16px;}
+  .founder-label .num{font-family:Georgia,serif;font-weight:900;font-size:56px;color:var(--pastel-mint);line-height:1;}
+  .founder-card h3{font-size:21px;margin:0 0 4px;}
+  .founder-card h3 .romaji{font-size:12.5px;color:var(--teal-dark);font-weight:700;margin-left:12px;letter-spacing:.03em;}
+  .founder-card .role{font-size:11.5px;color:var(--gray);margin-bottom:16px;letter-spacing:.04em;}
+  .founder-card p{font-size:12.5px;}
 
   p{font-size:13.5px;color:var(--ink-soft);line-height:2.1;}
   h2.section-title{font-size:20px;font-weight:800;margin:0 0 26px;}
@@ -210,7 +243,14 @@
 
   @media (max-width:680px){
     nav{display:none;}
-    .footer-inner,.photo-grid-2,.staff-grid,.contact-layout,.feature-grid,.stagger-grid,.greeting-bleed,.topics-grid,.form-row,.menu-cat-row{grid-template-columns:1fr;}
+    .footer-inner,.photo-grid-2,.staff-grid,.contact-layout,.feature-grid,.stagger-grid,.greeting-bleed,.topics-grid,.form-row,.menu-cat-row,.profile-row,.concept-row2,.founder-card{grid-template-columns:1fr;}
+    .concept-row2{gap:32px;}
+    .concept-row2 .photo-wrap{order:-1;}
+    .concept-row2 .photo-wrap::after{right:-8px;bottom:-8px;width:46%;height:34%;}
+    .gallery4{grid-template-columns:repeat(2,1fr);}
+    .founder-card{gap:24px;}
+    .founder-card .info{padding-top:56px;}
+    .founder-label{top:-2px;right:auto;left:0;}
     .flow-step{grid-template-columns:1fr;text-align:left;gap:12px;}
     .flow-step .step-photo{order:-1;}
     .stagger-grid .ph.up{margin-top:0;}
@@ -229,7 +269,7 @@
 
 <header id="site-header">
   <div class="header-inner">
-    <a class="logo" href="index.html">HAIR SARON 02
+    <a class="logo" href="index.html">HAIR SALON 02
       <small>ヘアーサロン ゼロツー／比企郡鳩山町</small>
     </a>
     <nav>
@@ -250,86 +290,92 @@
   </div>
 </header>
 
-<div class="hero-banner" style="background-image:url('assets/shop_interior.png');">
+<div class="hero-banner" style="background-image:url('assets/shop_exterior.png');">
   <div class="tint"></div>
   <div class="banner-copy">
-    <p class="en">BLOG</p>
-    <p class="ja">ブログ・お知らせ</p>
+    <p class="en">ABOUT</p>
+    <p class="ja">事業・店舗紹介</p>
   </div>
 </div>
 <div class="crumb-bar">
-  <div class="crumb-bar-inner"><a href="index.html">Home</a> &gt; Blog</div>
-</div>
-<div class="intro-block">
-  <div class="inner">
-    <p class="eyebrow">Blog</p>
-    <p class="lead">サロンからのお知らせや、ヘアケアに関する豆知識などを発信していきます。</p>
-  </div>
+  <div class="crumb-bar-inner"><a href="index.html">Home</a> &gt; About</div>
 </div>
 
 <section>
   <div class="section-inner">
-    <div class="topics-grid">
-
-      <div class="topic-card">
-        <div class="thumb"><img src="assets/menu_haku.png" alt="記事サムネイル（イメージ）"></div>
-        <div class="accent"></div>
-        <div class="meta"><span class="cat" style="background:var(--pastel-lavender);">お知らせ</span><span class="date">2026.09.10</span></div>
-        <h3>秋の白髪染めキャンペーンを開始しました</h3>
-        <p>低刺激カラー剤を使用した白髪染めメニューについて、期間限定のご案内です。詳しくは店頭またはお電話にてお問い合わせください。</p>
+    <div class="sec-head">
+      <h2>CONCEPT</h2>
+      <div class="accent"></div>
+      <div class="rule"></div>
+    </div>
+    <div class="concept-row2">
+      <div class="concept-text">
+        <h3>HAIR SALON 02の美容師として、私たちがいつも大切にしていることー</h3>
+        <p>
+          それは、お客様が新しい髪型でお店を出たあと、鏡を見るたびに気分が上がり、
+          「また頑張ろう」と思っていただけるような、そんなきっかけをつくり出す存在でいたいということです。
+        </p>
+        <p>
+          HAIR SALON 02（ヘアーサロン ゼロツー）は、埼玉県比企郡鳩山町松ヶ丘のプチプラザE店舗で、
+          白髪染めやパーマを中心に地元のお客様に長くご愛顧いただいてきました。これからは、学生さんやお仕事帰りのサラリーマンの方など、
+          若い男性のお客様にも、理容室感覚でふらっと立ち寄っていただきたいと考えています。男女・年代を問わず、
+          どなたでも安心してお任せいただけるサロンでありたいと思っています。
+        </p>
+        <a class="btn-black" href="menu.html">メニューを見る <span class="arrow">→</span></a>
       </div>
-
-      <div class="topic-card">
-        <div class="thumb"><img src="assets/menu_perm.png" alt="記事サムネイル（イメージ）"></div>
-        <div class="accent"></div>
-        <div class="meta"><span class="cat" style="background:var(--pastel-mint);">コラム</span><span class="date">2026.08.22</span></div>
-        <h3>学生さん・お仕事帰りの方にもおすすめのパーマスタイル</h3>
-        <p>理容室感覚で気軽に立ち寄れる、若い男性のお客様にも人気のパーマスタイルをご紹介します。</p>
+      <div class="photo-wrap">
+        <img src="assets/shop_exterior.png" alt="HAIR SALON 02 店舗外観">
       </div>
+    </div>
 
-      <div class="topic-card">
-        <div class="thumb"><img src="assets/shop_interior.png" alt="記事サムネイル（イメージ）"></div>
-        <div class="accent"></div>
-        <div class="meta"><span class="cat" style="background:var(--pastel-pink);">お知らせ</span><span class="date">2026.07.15</span></div>
-        <h3>営業時間・定休日についてのご案内</h3>
-        <p>現在の営業時間・定休日について、詳細をまとめました。ご来店前にぜひご確認ください。</p>
-      </div>
-
-      <div class="topic-card">
-        <div class="thumb"><img src="assets/about_business_man.png" alt="記事サムネイル（イメージ）"></div>
-        <div class="accent"></div>
-        <div class="meta"><span class="cat" style="background:var(--pastel-peach);">コラム</span><span class="date">2026.06.28</span></div>
-        <h3>お仕事帰りに立ち寄りやすい、平日夜のご案内</h3>
-        <p>サラリーマンの方から「仕事帰りに寄れますか」というお問い合わせを多くいただきます。当店の営業時間の活用方法をご紹介します。</p>
-      </div>
-
-      <div class="topic-card">
-        <div class="thumb"><img src="assets/shop_exterior.png" alt="記事サムネイル（イメージ）"></div>
-        <div class="accent"></div>
-        <div class="meta"><span class="cat" style="background:var(--pastel-lavender);">お知らせ</span><span class="date">2026.05.12</span></div>
-        <h3>駐車場のご案内（プチプラザ敷地内）</h3>
-        <p>お車でお越しのお客様のために、プチプラザ敷地内に駐車スペースをご用意しております。停め方のご案内です。</p>
-      </div>
-
-      <div class="topic-card">
-        <div class="thumb"><img src="assets/staff_owner.png" alt="記事サムネイル（イメージ）"></div>
-        <div class="accent"></div>
-        <div class="meta"><span class="cat" style="background:var(--pastel-mint);">コラム</span><span class="date">2026.04.03</span></div>
-        <h3>白髪染めの色持ちを良くするお手入れ方法</h3>
-        <p>ご自宅でのシャンプー・トリートメントの選び方など、白髪染めの色持ちを良くするコツをスタッフがご紹介します。</p>
-      </div>
-
+    <div class="gallery4">
+      <div class="ph"><img src="assets/shop_interior.png" alt="店内の様子"></div>
+      <div class="ph"><img src="assets/menu_perm.png" alt="施術の様子"></div>
+      <div class="ph"><img src="assets/about_kid_cut.png" alt="ファミリーでのご来店"></div>
+      <div class="ph"><img src="assets/menu_haku.png" alt="白髪染めの様子"></div>
     </div>
   </div>
 </section>
 
+<section style="background:var(--paper-soft);">
+  <div class="section-inner">
+    <div class="sec-head">
+      <h2>FOUNDER</h2>
+      <div class="accent"></div>
+      <div class="rule"></div>
+    </div>
+
+    <div class="founder-quote">
+      <p class="q">「地域に、いつまでも通いたいと思われるサロンを。」</p>
+      <p>
+        埼玉県比企郡鳩山町松ヶ丘で長年、白髪染め・パーマを中心に地域のお客様と向き合ってきたHAIR SALON 02。
+        理容室感覚でふらっと立ち寄れる気軽さを大切にしながら、代表の小川信浩を中心に、
+        男女・年代を問わずどなたでも安心して任せられるサロンを目指し、日々技術を磨いています。
+      </p>
+    </div>
+
+    <div class="founder-card">
+      <div class="photo"><img src="assets/staff_owner.png" alt="代表 小川信浩（イメージ）"></div>
+      <div class="info">
+        <div class="founder-label"><span class="word">Founder</span><span class="num">#1</span></div>
+        <h3>小川 信浩 <span class="romaji">N. Ogawa</span></h3>
+        <p class="role">HAIR SALON 02 代表</p>
+        <p>
+          地元・比企郡鳩山町で長年美容師として活動し、白髪染めやパーマなど幅広い年代のお客様の髪の悩みに寄り添う技術に定評がある。
+          近年は、学生さんやお仕事帰りのサラリーマンなど、若い男性のお客様にも気軽に立ち寄ってもらえるサロンづくりに力を入れている。
+          趣味は庭いじり。「地域の皆さまに、いつまでも通いたいと思っていただけるサロンでありたい」が信条。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer id="access">
   <div class="footer-inner">
     <div>
       <h4>Shop Info</h4>
       <p>
-        HAIR SARON 02（ヘアーサロン ゼロツー）<br>
+        HAIR SALON 02（ヘアーサロン ゼロツー）<br>
         〒350-0332<br>
         埼玉県比企郡鳩山町松ヶ丘3-2-1 プチプラザE店舗（駐車場完備）<br><br>
         店舗電話：049-292-9695<br>
@@ -356,7 +402,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    &copy; HAIR SARON 02
+    &copy; HAIR SALON 02
   </div>
 </footer>
 
