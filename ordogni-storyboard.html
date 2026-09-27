@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ORDOgni 静止画ストーリーボード v7</title>
+<title>ORDOgni 静止画ストーリーボード v8</title>
 <style>
 :root{--ink:#3b2f26;--sub:#7a6a5c;--line:#e6dccf;--bg:#faf6f0;--card:#fff;
 --gold:#c9a227;--hook:#d98324;--affinity:#8ba888;--solution:#7a94b8;--offer:#c98d8d;--action:#6b5b4a;}
@@ -45,6 +45,9 @@ font-size:11px;padding:3px 9px;border-radius:4px;font-variant-numeric:tabular-nu
 .tag-solution{background:var(--solution)}.tag-offer{background:var(--offer)}
 .tag-action{background:var(--action)}
 .src{font-size:11px;color:var(--sub)}
+.src-badge{display:inline-block;font-size:10.5px;padding:1px 8px;border-radius:999px;font-weight:600;margin-left:4px}
+.src-badge.real{background:#eef3ea;color:#5c7a52;border:1px solid #b9d1ac}
+.src-badge.ai{background:#f3ecfb;color:#6b4fa0;border:1px solid #d6c2f0}
 .line{display:flex;gap:9px;margin-bottom:8px}
 .lbl{flex:0 0 46px;font-size:10.5px;height:19px;line-height:19px;text-align:center;
 border-radius:3px;font-weight:700}
@@ -87,13 +90,13 @@ font-size:12px;color:var(--sub);text-align:center}
 </style></head><body>
 
 <header><div class="inner">
-  <h1>ORDOgni（オルドーニ）様｜<span style="white-space:nowrap">動画構成案 v7</span></h1>
+  <h1>ORDOgni（オルドーニ）様｜<span style="white-space:nowrap">動画構成案 v8</span></h1>
   <p class="sub">ネイルサロン×パーソナルジム／東京都多摩市豊ヶ丘1-3-18</p>
   <div class="specs">
-    <span class="spec">尺 <b>38秒</b></span>
-    <span class="spec">構成 <b>9カット</b></span>
+    <span class="spec">尺 <b>46秒</b></span>
+    <span class="spec">構成 <b>11カット</b></span>
     <span class="spec">形式 <b>16:9（横）</b></span>
-    <span class="spec">方式 <b>静止画9枚（実写7枚・一部再使用・Ken Burns想定）</b></span>
+    <span class="spec">方式 <b>静止画9枚（実写7枚＋AI生成ペルソナ2枚・一部再使用・Ken Burns想定）</b></span>
     <span class="spec">作成 <b>2026-09-27</b></span>
   </div>
 </div></header>
@@ -101,92 +104,110 @@ font-size:12px;color:var(--sub);text-align:center}
 <div class="wrap">
 
 <h2 style="margin-top:0">1. 動画全体の流れ<span class="en">STRUCTURE</span></h2>
-<p class="lead">「指先を後回しにしている女性（ネイル客）」と「始めたいのに続かない男女（ジム客）」の2つのペインを前半で並行して描き、後半で「実は同じ場所にある」という1つの解決策に合流させる構成です。</p>
+<p class="lead">v8では「指先を後回しにしている女性（ネイル客）」「始めたいのに踏み出せていない男性（ジム客）」それぞれの<b>ペルソナ本人カット</b>を新規生成し、対象物カットの直前に追加しました。「誰の話か」を先に見せてから悩みを具体化することで、v7よりストーリー性を強めています。後半は「実は同じ場所にある」という1つの解決策に合流させる構成は維持しています。</p>
 <div class="flow">
-  <div class="f-hook" style="flex:1">フック①</div><div class="f-affinity" style="flex:1">共感①</div>
-  <div class="f-hook" style="flex:1">フック②</div><div class="f-affinity" style="flex:1">共感②</div>
+  <div class="f-hook" style="flex:2">フック①（ペルソナ→対象物）</div><div class="f-affinity" style="flex:1">共感①</div>
+  <div class="f-hook" style="flex:2">フック②（ペルソナ→対象物）</div><div class="f-affinity" style="flex:1">共感②</div>
   <div class="f-solution" style="flex:3">解決（合流）</div>
   <div class="f-offer" style="flex:1">オファー</div><div class="f-action" style="flex:1">行動</div>
 </div>
 <div class="flow-note">
-  <div style="flex:1">C1<br>ネイル客の悩み</div>
-  <div style="flex:1">C2<br>共感の深掘り</div>
-  <div style="flex:1">C3<br>ジム客の悩み</div>
-  <div style="flex:1">C4<br>共感の深掘り</div>
-  <div style="flex:3">C5–C7<br>実は同じ場所・詳細</div>
-  <div style="flex:1">C8<br>夫婦紹介</div>
-  <div style="flex:1">C9<br>店名・CTA</div>
+  <div style="flex:2">C1–C2<br>ネイル客本人→悩み</div>
+  <div style="flex:1">C3<br>共感の深掘り</div>
+  <div style="flex:2">C4–C5<br>ジム客本人→悩み</div>
+  <div style="flex:1">C6<br>共感の深掘り</div>
+  <div style="flex:3">C7–C9<br>実は同じ場所・詳細</div>
+  <div style="flex:1">C10<br>夫婦紹介</div>
+  <div style="flex:1">C11<br>店名・CTA</div>
 </div>
 
-<h2>2. 絵コンテ（全9カット）<span class="en">STORYBOARD</span></h2>
-<p class="lead">画像はすべてクライアント様からお預かりした実写7枚です（無改変・新規生成なし）。顧客ご本人は映さず、対象物のカットに「語りかけ」テロップを乗せることで悩み・欲求を表現しています。表示されているテロップが、現時点での本番文言案です。</p>
+<h2>2. 絵コンテ（全11カット）<span class="en">STORYBOARD</span></h2>
+<p class="lead">実写7枚はクライアント様からお預かりした素材（無改変）、ペルソナ2枚（C1・C4）は今回新規にGPT Imageで生成した<b>架空の人物</b>です。実在の人物・タレントを模したものではありません。表示されているテロップが、現時点での本番文言案です。</p>
 <div class="cuts">
     <article class="cut hook">
-      <div class="cut-shot"><img src="ordogni-images/s04.jpg" alt="C1" loading="lazy">
+      <div class="cut-shot"><img src="ordogni-images/s08.jpg" alt="C1" loading="lazy">
         <span class="cut-id">C1</span><span class="cut-time">0:00–0:04</span></div>
       <div class="cut-body">
-        <div class="cut-meta"><span class="tag tag-hook">フック（ネイル）</span><span class="src">素材 実写</span></div>
-        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ネイルアートのマクロ</p>
+        <div class="cut-meta"><span class="tag tag-hook">ペルソナ（ネイル）</span><span class="src">素材 <span class="src-badge ai">AI生成の架空人物</span></span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">指先を気にしている女性（新規生成）</p>
         <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">気になっているのに、後回しにしている指先。</p></div>
       </div>
     </article>
-    <article class="cut affinity">
-      <div class="cut-shot"><img src="ordogni-images/s01.jpg" alt="C2" loading="lazy">
+    <article class="cut hook">
+      <div class="cut-shot"><img src="ordogni-images/s04.jpg" alt="C2" loading="lazy">
         <span class="cut-id">C2</span><span class="cut-time">0:04–0:08</span></div>
       <div class="cut-body">
-        <div class="cut-meta"><span class="tag tag-affinity">共感（ネイル）</span><span class="src">素材 実写</span></div>
-        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">施術ベッド（引き・自然光）</p>
+        <div class="cut-meta"><span class="tag tag-hook">フック（ネイル・対象物）</span><span class="src">素材 <span class="src-badge real">実物写真</span></span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ネイルアートのマクロ</p>
         <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">特別な予定がなくても、整えていい。</p></div>
       </div>
     </article>
-    <article class="cut hook">
-      <div class="cut-shot"><img src="ordogni-images/s03.jpg" alt="C3" loading="lazy">
+    <article class="cut affinity">
+      <div class="cut-shot"><img src="ordogni-images/s01.jpg" alt="C3" loading="lazy">
         <span class="cut-id">C3</span><span class="cut-time">0:08–0:12</span></div>
       <div class="cut-body">
-        <div class="cut-meta"><span class="tag tag-hook">フック（ジム）</span><span class="src">素材 実写</span></div>
-        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ダンベル低アングル（動的）</p>
+        <div class="cut-meta"><span class="tag tag-affinity">共感（ネイル）</span><span class="src">素材 <span class="src-badge real">実物写真</span></span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">施術ベッド（引き・自然光）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">近所で、ちゃんとしたネイルサロンを探している。</p></div>
+      </div>
+    </article>
+    <article class="cut hook">
+      <div class="cut-shot"><img src="ordogni-images/s09.jpg" alt="C4" loading="lazy">
+        <span class="cut-id">C4</span><span class="cut-time">0:12–0:16</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">ペルソナ（ジム）</span><span class="src">素材 <span class="src-badge ai">AI生成の架空人物</span></span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">トレーニングウェアを手に踏み出せない男性（新規生成）</p>
         <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">始めたい、と思ったまま何ヶ月。</p></div>
       </div>
     </article>
-    <article class="cut affinity">
-      <div class="cut-shot"><img src="ordogni-images/s03.jpg" alt="C4" loading="lazy">
-        <span class="cut-id">C4</span><span class="cut-time">0:12–0:16</span></div>
+    <article class="cut hook">
+      <div class="cut-shot"><img src="ordogni-images/s03.jpg" alt="C5" loading="lazy">
+        <span class="cut-id">C5</span><span class="cut-time">0:16–0:20</span></div>
       <div class="cut-body">
-        <div class="cut-meta"><span class="tag tag-affinity">共感（ジム）</span><span class="src">素材 実写（C3と同一・再使用）</span></div>
-        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ダンベル低アングル（動的・別クロップ想定）</p>
+        <div class="cut-meta"><span class="tag tag-hook">フック（ジム・対象物）</span><span class="src">素材 <span class="src-badge real">実物写真</span></span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ダンベル低アングル（動的）</p>
         <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">一人だと続かない、が一番の壁。</p></div>
       </div>
     </article>
-    <article class="cut solution">
-      <div class="cut-shot"><img src="ordogni-images/s05.jpg" alt="C5" loading="lazy">
-        <span class="cut-id">C5</span><span class="cut-time">0:16–0:20</span></div>
+    <article class="cut affinity">
+      <div class="cut-shot"><img src="ordogni-images/s03.jpg" alt="C6" loading="lazy">
+        <span class="cut-id">C6</span><span class="cut-time">0:20–0:24</span></div>
       <div class="cut-body">
-        <div class="cut-meta"><span class="tag tag-solution">解決（合流①）</span><span class="src">素材 実写</span></div>
+        <div class="cut-meta"><span class="tag tag-affinity">共感（ジム）</span><span class="src">素材 <span class="src-badge real">実物写真</span>（C5と同一・再使用）</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ダンベル低アングル（動的・別クロップ想定）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">誰かと一緒なら、続けられるかもしれない。</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="ordogni-images/s05.jpg" alt="C7" loading="lazy">
+        <span class="cut-id">C7</span><span class="cut-time">0:24–0:28</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">解決（合流①）</span><span class="src">素材 <span class="src-badge real">実物写真</span></span></div>
         <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">外観①（ドア越しにデスク＋ダンベルラック）</p>
         <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">実はこの2つ、同じ場所にあります。</p></div>
       </div>
     </article>
     <article class="cut solution">
-      <div class="cut-shot"><img src="ordogni-images/s07.jpg" alt="C6" loading="lazy">
-        <span class="cut-id">C6</span><span class="cut-time">0:20–0:24</span></div>
+      <div class="cut-shot"><img src="ordogni-images/s07.jpg" alt="C8" loading="lazy">
+        <span class="cut-id">C8</span><span class="cut-time">0:28–0:32</span></div>
       <div class="cut-body">
-        <div class="cut-meta"><span class="tag tag-solution">解決（合流②）</span><span class="src">素材 実写</span></div>
+        <div class="cut-meta"><span class="tag tag-solution">解決（合流②）</span><span class="src">素材 <span class="src-badge real">実物写真</span></span></div>
         <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">外観②（ドア越しにベッド＋ダンベルラック）</p>
         <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ネイルサロンと、パーソナルジムが同居する店。</p></div>
       </div>
     </article>
     <article class="cut solution">
-      <div class="cut-shot"><img src="ordogni-images/s06.jpg" alt="C7" loading="lazy">
-        <span class="cut-id">C7</span><span class="cut-time">0:24–0:29</span></div>
+      <div class="cut-shot"><img src="ordogni-images/s06.jpg" alt="C9" loading="lazy">
+        <span class="cut-id">C9</span><span class="cut-time">0:32–0:37</span></div>
       <div class="cut-body">
-        <div class="cut-meta"><span class="tag tag-solution">解決（ネイル詳細）</span><span class="src">素材 実写</span></div>
+        <div class="cut-meta"><span class="tag tag-solution">解決（ネイル詳細）</span><span class="src">素材 <span class="src-badge real">実物写真</span></span></div>
         <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">ネイルデスクワイド</p>
         <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">近所に、ちゃんとしたネイルサロンがある。</p></div>
       </div>
     </article>
     <article class="cut offer">
-      <div class="cut-shot"><img src="ordogni-images/s02.jpg" alt="C8" loading="lazy">
-        <span class="cut-id">C8</span><span class="cut-time">0:29–0:34</span></div>
+      <div class="cut-shot"><img src="ordogni-images/s02.jpg" alt="C10" loading="lazy">
+        <span class="cut-id">C10</span><span class="cut-time">0:37–0:42</span></div>
       <div class="cut-body">
         <div class="cut-meta"><span class="tag tag-offer">オファー（夫婦紹介）</span><span class="src">要確認：実写／参考素材</span></div>
         <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">夫婦ツーショット</p>
@@ -194,10 +215,10 @@ font-size:12px;color:var(--sub);text-align:center}
       </div>
     </article>
     <article class="cut action">
-      <div class="cut-shot"><img src="ordogni-images/s07.jpg" alt="C9" loading="lazy">
-        <span class="cut-id">C9</span><span class="cut-time">0:34–0:38</span></div>
+      <div class="cut-shot"><img src="ordogni-images/s07.jpg" alt="C11" loading="lazy">
+        <span class="cut-id">C11</span><span class="cut-time">0:42–0:46</span></div>
       <div class="cut-body">
-        <div class="cut-meta"><span class="tag tag-action">行動</span><span class="src">素材 実写（C6と同一・再使用）</span></div>
+        <div class="cut-meta"><span class="tag tag-action">行動</span><span class="src">素材 <span class="src-badge real">実物写真</span>（C8と同一・再使用）</span></div>
         <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">エンドカード（外観再使用）</p>
         <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ORDOgni（オルドーニ）／東京都多摩市豊ヶ丘1-3-18／ネイル×パーソナルジム／ご来店・お問い合わせ（CTA仮）</p></div>
       </div>
@@ -206,10 +227,10 @@ font-size:12px;color:var(--sub);text-align:center}
 
 <h2>3. この画像について<span class="en">MATERIAL</span></h2>
 <div class="box">
-  <h3>9カットすべて、クライアント様からお預かりした実写7枚を使用（新規生成なし）</h3>
-  <p>今回は<b>新規のAI画像生成は行わず</b>、お預かりしている店舗の実写素材7枚のみで構成しています。
-  ダンベル低アングル（C3/C4）と外観②（C6/C9）はそれぞれ同じ写真を2カットで再使用しています。</p>
-  <p>顧客を演じる人物カットは今回入れていません。ネイル・ジムそれぞれの悩みは、対象物のカット＋テロップの語りかけで表現しています。</p>
+  <h3>実写7枚＋今回新規生成したAIペルソナ2枚（C1・C4）で構成</h3>
+  <p>実写7枚はクライアント様からお預かりした店舗素材で、無改変で使用しています。ダンベル低アングル（C5/C6）と外観②（C8/C11）はそれぞれ同じ写真を2カットで再使用しています。</p>
+  <p><b>C1（ネイル客ペルソナ）・C4（ジム客ペルソナ）は今回新規にGPT Imageで生成した画像です。</b>実在の人物・タレントを模したものではなく、<b>AIが独自に生成した架空の人物</b>です。文字・ロゴは焼き込んでおらず、既存の実写7枚と同じ自然光・白/木目基調のトーンに合わせています。</p>
+  <p>v7までは顧客ご本人を映さず対象物カットのみで悩みを表現していましたが、v8では「誰の話か」を先に見せてから対象物で悩みを具体化する2段構成にし、ストーリー性を強めています。</p>
 </div>
 
 <h2>4. 参考にした動画<span class="en">REFERENCE</span></h2>
@@ -234,24 +255,25 @@ font-size:12px;color:var(--sub);text-align:center}
     <li>ナレーション：優しいトーンの女性ナレーターを想定していますが、まだ収録していません</li>
     <li>BGM：未収録です</li>
     <li>ラストのご案内先（CTA）：予約経路が未確定のため「ご来店・お問い合わせ」で仮表示しています。Instagram DM／電話／外部予約システム等、確定次第差し替えます</li>
+    <li><b>新規追加した2名のペルソナ（ネイル客・ジム客）の年齢層・雰囲気がターゲット層（10代〜50代男女）とズレていないか</b>、20〜30代を中心に生成しています</li>
   </ul>
 </div>
 <div class="box warn">
   <h3>未解決の確認事項（v5・v6から継続）</h3>
   <ul class="chk">
-    <li>カット8（夫婦ツーショット）が代表・高橋綾子様ご夫妻ご本人の実写か、参考素材かのご確認</li>
+    <li>カット10（夫婦ツーショット）が代表・高橋綾子様ご夫妻ご本人の実写か、参考素材かのご確認</li>
     <li><b>予約経路（広告に載せるCTAリンク：Instagram DM／電話／外部予約システム等）のご確認</b>（受注内容共有シートに記載あり、まだ確認できていません）</li>
   </ul>
 </div>
 <div class="box">
   <h3>その他の確認事項</h3>
   <ul class="chk">
-    <li>全体の構成・流れは、この方向で進めて問題ないでしょうか</li>
-    <li>気になるカット・直したい点は、<b>カット番号（C1〜C9）と一緒に一度にまとめて</b>お知らせください</li>
+    <li>全体の構成・流れ（特にペルソナ追加によるストーリー性強化）は、この方向で進めて問題ないでしょうか</li>
+    <li>気になるカット・直したい点は、<b>カット番号（C1〜C11）と一緒に一度にまとめて</b>お知らせください</li>
     <li>店舗情報（住所）はいただいた内容のまま反映しています。変更があればお知らせください</li>
   </ul>
 </div>
 
-<footer>ORDOgni（オルドーニ）様 動画構成案 v7（静止画モックアップ・客目線ペイン起点版）／2026-09-27 作成<br>
+<footer>ORDOgni（オルドーニ）様 動画構成案 v8（静止画モックアップ・ペルソナ追加版）／2026-09-27 作成<br>
 株式会社ランバード｜AI動画制作</footer>
 </div></body></html>
