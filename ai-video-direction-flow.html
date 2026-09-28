@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ディレクションありAI動画 制作フロー v1</title>
+<style>
+  :root{--ink:#1f2933;--sub:#5b6673;--line:#dfe3e8;--bg:#f7f7f5;--card:#fff;--a:#2f6f5e;--b:#b8860b;--c:#3b6ea5;--d:#8a4b6b}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;line-height:1.65}
+  .wrap{max-width:1040px;margin:0 auto;padding:32px 16px 72px}
+  h1{font-size:22px;margin:0 0 4px}
+  .meta{color:var(--sub);font-size:13px;margin-bottom:22px}
+  h2{font-size:17px;margin:34px 0 12px;padding-left:10px;border-left:4px solid var(--a)}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .pillar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;border-top:5px solid var(--a)}
+  .pillar.b{border-top-color:var(--b)} .pillar.c{border-top-color:var(--c)}
+  .pillar h3{margin:0 0 6px;font-size:15px}
+  .pillar p{margin:0;font-size:13.5px;color:var(--sub)}
+  .pillar .from{font-size:12px;margin-top:8px;color:var(--ink)}
+  .flow{display:flex;flex-direction:column;gap:0}
+  .step{display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:start}
+  .num{width:44px;height:44px;border-radius:50%;background:var(--a);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:16px;margin-top:6px}
+  .num.dir{background:var(--b)} .num.gen{background:var(--c)} .num.qa{background:var(--d)}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+  .box h3{margin:0 0 4px;font-size:15px}
+  .box .who{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;background:#eef2f5;color:var(--sub);margin-left:6px;vertical-align:middle}
+  .box ul{margin:6px 0 0;padding-left:18px;font-size:13.5px}
+  .box li{margin:2px 0}
+  .box .tool{font-size:12px;color:var(--sub);margin-top:6px}
+  .box .tool code{background:#f0f2f4;padding:0 4px;border-radius:3px;font-size:11.5px}
+  .real{font-size:12.5px;margin-top:6px;padding:6px 10px;border-radius:6px;background:#eef6f2;color:var(--a);border:1px dashed var(--a)}
+  .arrow{height:26px;position:relative;margin-left:22px}
+  .arrow:before{content:"";position:absolute;left:0;top:0;bottom:0;border-left:2px solid #b9c2cb}
+  .arrow:after{content:"";position:absolute;left:-4px;bottom:0;border:5px solid transparent;border-top:7px solid #b9c2cb}
+  .loop{margin:10px 0 0 56px;font-size:12.5px;color:var(--sub)}
+  table{width:100%;border-collapse:collapse;background:var(--card);font-size:13px}
+  th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+  th{background:#f0f2f4}
+  .footer{margin-top:40px;color:var(--sub);font-size:12px;border-top:1px solid var(--line);padding-top:12px}
+  @media (max-width:640px){.pillars{grid-template-columns:1fr}.step{grid-template-columns:44px 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>ディレクションありAI動画　制作フロー v1</h1>
+  <div class="meta">RUNBIRD AI動画事業 ／ 2026-09-28 ／ 目的: 撮影していなくても「撮影したように見える」動画をテロップ込みで作る（ORDOgni案件で検証）</div>
+
+  <h2>リアル感を出す3本柱（何で「AIっぽさ」を消すか）</h2>
+  <div class="pillars">
+    <div class="pillar">
+      <h3>① 画角</h3>
+      <p>RUNBIRDが過去に撮影した実写PR動画のカットを機械計測し、「業態 × シーン」ごとのアングル・サイズ・カメラ動作・尺の分布から、1カットずつ画角を決める。</p>
+      <div class="from">根拠: 実写12本・138カット（ショットカタログ）。例: サロン施術の手元＝俯瞰と水平を交互、固定72%・3〜4カットに1回だけ3〜9%のプッシュ</div>
+    </div>
+    <div class="pillar b">
+      <h3>② テロップ</h3>
+      <p>実写77コマの目視＋OCR計測で起こした仕様（書体・文字高％・位置・フチ・影・帯）どおりに後処理で焼く。生成AIに文字は描かせない。</p>
+      <div class="from">根拠: 上質系（白明朝・フチなし・ソフト影・3.4〜4%）／強調系（極太ゴシック＋白フチ or 帯・5〜6.5%）／エンドは検索窓。1本の中で役割ごとに使い分ける</div>
+    </div>
+    <div class="pillar c">
+      <h3>③ 実写ハイブリッド</h3>
+      <p>お客様から受け取った写真・動画を「そのまま使うカット」と「AIで補うカット」に分け、AIカットは受領写真を必ず添付して同じ店・同じ光に寄せる。</p>
+      <div class="from">根拠: 受領写真なしの生成は汎用スパ風になる（Le,Ciel 11版空転）。綺麗に撮れている実写は加工せずそのまま</div>
+    </div>
+  </div>
+
+  <h2>依頼 → ディレクション → 完成まで</h2>
+  <div class="flow">
+
+    <div class="step"><div class="num">1</div><div class="box">
+      <h3>依頼受付<span class="who">星崎</span></h3>
+      <ul><li>受注内容共有シート（PDF）・メールから <b>hearing.json</b> と <b>facts.json（正本: 屋号・代表者・電話・URL）</b> を作る。住所など表記が揺れるものは「未確定」に入れて焼き込まない</li>
+          <li>フォローアップ管理シートに行を追加</li></ul>
+      <div class="tool">道具: <code>tools/fact_check.py init</code> ／ <code>followup_sheet_update.py</code></div>
+    </div></div>
+    <div class="arrow"></div>
+
+    <div class="step"><div class="num dir">2</div><div class="box">
+      <h3>ディレクション準備<span class="who">星崎</span></h3>
+      <ul><li><b>構成案・台本 v1</b>（参考動画の生存確認つき）</li>
+          <li><b>撮影シート「もし撮影いただけるなら」</b>: 10カット分の高さ・向き・距離・秒数を、同業種の実写PR動画のコマを見本にして提示（他業種は混ぜない）</li>
+          <li>受領済み素材があれば <b>ショットプラン → 画角参照フレーム → 仮プレビュー</b> まで作って当日見せる</li></ul>
+      <div class="tool">道具: <code>make_shot_plan.py --case</code> ／ <code>expand_case_refs.py</code> ／ Pages <code>ordogni/shooting-request.html</code></div>
+      <div class="real">ここで「撮影素材があると本当にこの店の動画になる」と伝え、撮影を引き出す。仕上がりイメージは見せない（それでいい、になるため）</div>
+    </div></div>
+    <div class="arrow"></div>
+
+    <div class="step"><div class="num dir">3</div><div class="box">
+      <h3>ディレクション当日<span class="who">鈴木・星崎</span></h3>
+      <ul><li>決めること: 撮影の可否と担当、素材の送り方、色・雰囲気（ブランド色1色）、CTA（予約経路）、住所などの正式表記、NG表現</li>
+          <li>仮プレビューを見せて「画角・テロップの方向」を先に合意する</li></ul>
+    </div></div>
+    <div class="arrow"></div>
+
+    <div class="step"><div class="num">4</div><div class="box">
+      <h3>素材の仕分け<span class="who">星崎</span></h3>
+      <ul><li>受領素材を <b>そのまま使う</b>（綺麗に撮れている・記録性のあるもの）／<b>AIで補う</b>（人の動き、撮れなかった画角）に分ける</li>
+          <li>受領写真は無改変で保持。AIカットの色（彩度・キー）は実写側に合わせる</li></ul>
+      <div class="real">③実写ハイブリッド</div>
+    </div></div>
+    <div class="arrow"></div>
+
+    <div class="step"><div class="num gen">5</div><div class="box">
+      <h3>画角を決める<span class="who">星崎</span></h3>
+      <ul><li>ショットカタログ（業態×シーン×実カット）から案件用 <b>ショットプラン</b> を抽選: 1カットごとにサイズ・アングル・カメラ動作（量と尺）・尺・参照フレーム</li>
+          <li>各カットに <b>画角参照フレーム</b> を4〜9枚（主参照 <code>01_</code> ＋別アングル）。同業種を優先</li></ul>
+      <div class="tool">道具: <code>ショットカタログ_v1.md</code> ／ <code>make_shot_plan.py</code> ／ <code>_画角参照/_INDEX.md</code></div>
+      <div class="real">①画角</div>
+    </div></div>
+    <div class="arrow"></div>
+
+    <div class="step"><div class="num gen">6</div><div class="box">
+      <h3>画像生成（GPT Image 2.5・手動）<span class="who">鈴木</span></h3>
+      <ul><li>ChatGPTで1カットずつ。添付は <b>受領写真1枚＋主参照01_＋別アングル1〜2枚</b>（合計3〜4枚）。「01_に合わせる、他は幅の参考。写っている店や人は真似しない」と書き分ける</li>
+          <li>プロンプトはHiggsfield 7技法で: 測れる光の言葉（single-direction soft window light…）、意図的な不完全さ（skin pores, grain）、NO 3D render/CGI、手は2本まで・指の本数</li>
+          <li><b>16:9で生成</b>。Codex（gpt-6-astra）は仮置き専用（質感が一段落ちる）</li></ul>
+      <div class="tool">道具: <code>_GPTImage25_手動生成用プロンプト_v2_ショット指定.md</code>（クリップボードに渡す）</div>
+    </div></div>
+    <div class="arrow"></div>
+
+    <div class="step"><div class="num gen">7</div><div class="box">
+      <h3>動画化<span class="who">星崎</span></h3>
+      <ul><li>静止画は <b>固定が基本</b>（ごく僅かな寄り）、3〜4カットに1回だけ3〜9%のプッシュ／プル。1カットに動きは1つ</li>
+          <li>実写クリップはそのまま（同じ尺・同じ切り出し）。次段: 実写クリップを Kling Motion Control の動き参照に使って「固定〜微動」の質感を転写</li></ul>
+      <div class="tool">道具: <code>build_preview_v6.py</code>（ffmpeg zoompan＋concat）</div>
+    </div></div>
+    <div class="arrow"></div>
+
+    <div class="step"><div class="num gen">8</div><div class="box">
+      <h3>テロップ焼き込み<span class="who">星崎</span></h3>
+      <ul><li>カットの役割で型を使い分け: キャッチ（大きめ明朝・中央）／字幕（白明朝・下中央）／転換点（ブランド色極太＋白フチ）／情報（丸ゴ＋ブランド色帯）／小見出しラベル（白細枠）／エンド（検索窓）</li>
+          <li>白ハイキー背景は下端を暗く落として白文字（BLISS型）。画像と一緒にズームさせない（後乗せ）</li></ul>
+      <div class="tool">道具: <code>render_telop.py</code>（計測仕様のプリセット）</div>
+      <div class="real">②テロップ</div>
+    </div></div>
+    <div class="arrow"></div>
+
+    <div class="step"><div class="num qa">9</div><div class="box">
+      <h3>チェック（三重）<span class="who">機械 → 別AI → 鈴木</span></h3>
+      <ul><li><code>/fact-check</code>（台本を正本と照合）→ <code>/telop-check</code>（被り・セーフエリア・表示時間・コントラスト）→ 別AIの目視（画角が参照に合っているか・指や顔の破綻・実写に見える度）→ 鈴木さん</li>
+          <li>OCRの誤検知（フチ文字の二重読み・背景模様）は原寸フレームで決着</li></ul>
+    </div></div>
+    <div class="arrow"></div>
+
+    <div class="step"><div class="num qa">10</div><div class="box">
+      <h3>プレビュー公開 → お客様確認 → 完成<span class="who">星崎 → 鈴木 → お客様</span></h3>
+      <ul><li>GitHub Pages（noindex・同URL上書き・版は残す）で見せる。Sanity Pause 3問 → 鈴木さん明示承認 → 公開</li>
+          <li>お客様の指摘はカット番号で受けて、該当カットだけ再生成／再撮影。撮影素材が届いたら「そのまま使う」に差し替えて版を上げる</li>
+          <li>納品後も誤字・誤情報はこちらから申告して無償修正</li></ul>
+    </div></div>
+
+    <div class="loop">↺ 素材が増える・構成が変わるたびに 4 → 8 を回す。画角と計測値は変えず、素材と構成だけ差し替える</div>
+  </div>
+
+  <h2>道具と根拠の一覧</h2>
+  <table>
+    <tr><th>工程</th><th>道具</th><th>根拠・元データ</th><th>場所</th></tr>
+    <tr><td>画角</td><td>ショットカタログ／ショットプラン／画角参照フレーム</td><td>実写12本・138カット（phase correlation でカメラ動作を計測、目視でサイズ・アングル・被写体・光）</td><td><code>AI動画事業/_撮影スタイル正本_20260928/</code></td></tr>
+    <tr><td>テロップ</td><td>render_telop.py（7プリセット＋ラベル＋エンドカード）</td><td>実写77コマの目視所見＋OCR文字高（上質系3.4〜4%／強調系5〜6.5%）</td><td>同上 <code>_telop_typography_findings.md</code></td></tr>
+    <tr><td>画像生成</td><td>GPT Image 2.5（ChatGPT手動）＋ プロンプト表</td><td>Higgsfield Hell Grind 7技法／受領写真必須添付</td><td><code>案件/&lt;案件&gt;/_GPTImage25_手動生成用プロンプト_*.md</code></td></tr>
+    <tr><td>撮影依頼</td><td>撮影シート（同業種の実写見本つき）</td><td>ショットプランの値をスマホ撮影の言葉に翻訳</td><td>Pages <code>ordogni/shooting-request.html</code></td></tr>
+    <tr><td>動画化</td><td>build_preview_v6.py</td><td>固定基本・3〜4カットに1回のプッシュ（実写分布）</td><td><code>案件/&lt;案件&gt;/_動画プレビュー/</code></td></tr>
+    <tr><td>QA</td><td>fact_check.py／telop_check.py／別AI目視</td><td>三重ゲート（作った場所で見ない）</td><td><code>tools/</code></td></tr>
+  </table>
+
+  <h2>まだ弱いところ（次にやること）</h2>
+  <ul>
+    <li>実写の計測が12本のみ。ネイル・ジムなど同業種の本数を増やして、業態ごとの参照を同業種だけで組めるようにする（残り107本）</li>
+    <li>動きの質感: Ken Burns の静止画ズームから、実写クリップの動きを転写する方式（Kling Motion Control）へ</li>
+    <li>構成台本の型: 画角・テロップが整った分、構成の弱さが目立つ。実写PR動画の「ショット順」（カタログ末尾）から構成の型を起こす</li>
+    <li>ブランド色・住所などディレクションで確定する項目を、当日のチェックリストに固定する</li>
+  </ul>
+
+  <div class="footer">ディレクションありAI動画 制作フロー v1 ／ 2026-09-28 ／ 株式会社ランバード AI動画事業（内部資料・noindex）</div>
+</div>
+</body>
+</html>
