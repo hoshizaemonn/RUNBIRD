@@ -49,7 +49,7 @@ p{margin:0 0 1em}
 /* ===== もっと読む アコーディオン（ストーリー圧縮） ===== */
 .story-summary{font-size:15px;color:var(--ink);margin:0 0 14px;line-height:1.85}
 .more-details{border:1px dashed var(--line);border-radius:12px;background:#fff;margin-top:4px}
-.more-details>summary{cursor:pointer;list-style:none;padding:13px 44px 13px 18px;font-weight:800;
+.more-details>summary{cursor:pointer;list-style:none;padding:13px 124px 13px 18px;font-weight:800;
   color:var(--teal-d);font-size:13.5px;position:relative}
 .more-details>summary::-webkit-details-marker{display:none}
 .more-details>summary::after{content:"続きを読む ＋";position:absolute;right:16px;top:13px;color:var(--orange);font-size:12.5px;font-weight:900}
@@ -145,7 +145,7 @@ header{position:sticky;top:var(--internal-h,65px);z-index:900;background:rgba(25
 .fv{position:relative;color:#fff;padding:0;overflow:hidden;background:var(--teal-d)}
 @media (min-width:861px){
   .fv{background:linear-gradient(100deg,rgba(0,88,95,.94) 0%,rgba(0,110,118,.80) 52%,rgba(0,120,128,.35) 100%),
-    url("assets/gh_exterior_1.webp") center/cover no-repeat}
+    url("assets/real_yokkaichi_exterior.webp") center/cover no-repeat}
 }
 .fv-inner{display:grid;grid-template-columns:1.12fr .88fr;gap:28px;align-items:center;
   padding:64px 0 68px;position:relative;z-index:2}
@@ -247,12 +247,12 @@ table.cmp thead th.other-h{background:#f2f4f6;color:var(--sub)}
 .ph-card{margin:0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.09)}
 .ph-card img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .ph-card.wide{grid-column:1/-1}
-.ph-card.wide img{aspect-ratio:21/9}
+.ph-card.wide img{aspect-ratio:3/2;object-position:center top}
 .ph-card figcaption{padding:12px 16px;font-size:13.5px;color:var(--sub);font-weight:700;line-height:1.6}
 .support-photo{max-width:760px;margin:0 auto 28px}
 .support-photo img{aspect-ratio:16/7}
 .support-photo figcaption{background:rgba(255,255,255,.12);color:#dff2f4}
-@media (max-width:860px){ .place-grid{grid-template-columns:1fr 1fr} .ph-card.wide img{aspect-ratio:16/9} }
+@media (max-width:860px){ .place-grid{grid-template-columns:1fr 1fr} .ph-card.wide img{aspect-ratio:4/3} }
 @media (max-width:520px){ .place-grid{grid-template-columns:1fr} }
 
 /* ===== 収支 ===== */
@@ -265,6 +265,13 @@ table.pl th{background:#fafcfd;text-align:left;font-weight:700;width:54%}
 table.pl td{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700}
 table.pl tr.total th,table.pl tr.total td{background:var(--orange);color:#fff;border-bottom:none;
   font-size:clamp(19px,3.2vw,26px);font-weight:900}
+@media (max-width:520px){
+  table.pl{min-width:0}
+  table.pl caption{padding:16px 14px 10px;font-size:14px}
+  table.pl th,table.pl td{padding:12px 12px;font-size:13px}
+  table.pl th{width:auto}
+  table.pl tr.total th,table.pl tr.total td{font-size:18px}
+}
 .pl-note{font-size:13px;color:var(--sub);margin:0 0 44px;line-height:1.75}
 .pl-note strong{color:var(--ink)}
 
@@ -729,7 +736,7 @@ table.cmp thead th{position:static !important}
       <p class="fv-note">※ 収益・期間の数値はいずれも一定の前提を置いたモデルケースです。実際の結果を保証するものではありません。</p>
     </div>
     <div class="fv-right">
-      <div class="fv-photo"><img src="assets/gh_exterior_1.webp" alt="住宅街にある戸建てタイプのグループホームの外観イメージ"></div>
+      <div class="fv-photo"><img src="assets/real_yokkaichi_exterior.webp" alt="実際に運営中の障がい者グループホームの外観（三重県四日市市）"></div>
       <img class="fv-owl" src="assets/owl_normal.webp" alt="OWLのマスコットキャラクター アウル君">
     </div>
   </div>
@@ -901,16 +908,16 @@ table.cmp thead th{position:static !important}
     <h2 class="center">障がい者グループホームは、<span class="mark">ふつうの家</span>です</h2>
     <p class="lead center">大きな施設を建てる必要はありません。地域にある戸建てやアパートを活かして始められます。</p>
     <div class="place-grid">
-      <figure class="ph-card wide"><img src="assets/gh_exterior_2.webp" alt="住宅地にある2階建ての戸建てタイプのグループホームの外観イメージ">
+      <figure class="ph-card wide"><img src="assets/real_yokkaichi_exterior.webp" alt="実際に運営中の障がい者グループホームの外観（三重県四日市市）">
         <figcaption>外観 — 看板もなく、近所の一軒家と変わりません</figcaption></figure>
-      <figure class="ph-card"><img src="assets/gh_living.webp" alt="グループホームの共用リビング・ダイニングのイメージ">
+      <figure class="ph-card"><img src="assets/real_yokkaichi_living.webp" alt="実際に運営中の障がい者グループホームの共用リビング・キッチン（三重県四日市市）">
         <figcaption>共用リビング — みんなで食事をする場所</figcaption></figure>
-      <figure class="ph-card"><img src="assets/gh_room.webp" alt="グループホームの個室のイメージ">
+      <figure class="ph-card"><img src="assets/real_yokkaichi_room2.webp" alt="実際に運営中の障がい者グループホームの個室（三重県四日市市）">
         <figcaption>個室 — ひとりの時間を過ごす自分の部屋</figcaption></figure>
-      <figure class="ph-card"><img src="assets/gh_kitchen.webp" alt="グループホームの家庭的なキッチンのイメージ">
-        <figcaption>キッチン — 家庭と同じ台所です</figcaption></figure>
+      <figure class="ph-card"><img src="assets/real_yokkaichi_room3.webp" alt="実際に運営中の障がい者グループホームの館内（三重県四日市市）">
+        <figcaption>館内 — 季節の飾り付けも自由にできます</figcaption></figure>
     </div>
-    <p class="pl-note center" style="margin-top:18px">※ 写真はすべてイメージです。実際の物件ではありません。</p>
+    <p class="pl-note center" style="margin-top:18px">※ 写真はすべて、実際に運営中の施設の実写真です（三重県四日市市・掲載許諾済み）。</p>
   </div>
 </section>
 
@@ -1047,10 +1054,10 @@ table.cmp thead th{position:static !important}
 
     <div class="case-card">
       <div class="case-photos">
-        <div class="ph main"><img src="assets/case2_exterior.webp" alt="事例2の物件外観"></div>
+        <div class="ph main"><img src="assets/real_yokkaichi_exterior.webp" alt="Y様が運営する障がい者グループホームの外観（三重県四日市市）"></div>
         <div style="display:grid;gap:3px">
-          <div class="ph side"><img src="assets/case2_living.webp" alt="事例2の共用部"></div>
-          <div class="ph side"><img src="assets/case2_room.webp" alt="事例2の居室"></div>
+          <div class="ph side"><img src="assets/real_yokkaichi_living.webp" alt="Y様のグループホームの共用リビング・キッチン"></div>
+          <div class="ph side"><img src="assets/real_yokkaichi_room.webp" alt="Y様のグループホームの居室"></div>
         </div>
       </div>
       <div class="case-body">
@@ -1500,7 +1507,7 @@ table.cmp thead th{position:static !important}
     <p class="lead center">「開業ストーリー」「運営ストーリー」でご紹介したお二人の言葉から、一部を抜粋しています。</p>
     <div class="vgrid">
       <div class="vcard">
-        <div class="vface"><span class="nophoto kari">顔写真</span></div>
+        <div class="vface"><img src="assets/voice_aichi.webp" alt="愛知県オーナー様" loading="lazy"></div>
         <div class="vbody">
           <span class="vband b">愛知県・2棟運営</span>
           <span class="vplace">S様ご夫妻</span>
@@ -1508,7 +1515,7 @@ table.cmp thead th{position:static !important}
         </div>
       </div>
       <div class="vcard">
-        <div class="vface"><span class="nophoto kari">顔写真</span></div>
+        <div class="vface"><img src="assets/yamanaka_portrait.webp" alt="三重県オーナー様（Y様）" loading="lazy"></div>
         <div class="vbody">
           <span class="vband g">三重県・2棟＋サテライト2</span>
           <span class="vplace">Y様・元・小学校教員</span>
@@ -1516,7 +1523,7 @@ table.cmp thead th{position:static !important}
         </div>
       </div>
       <div class="vcard">
-        <div class="vface"><span class="nophoto kari">顔写真</span></div>
+        <div class="vface"><img src="assets/yamanaka_portrait.webp" alt="三重県オーナー様（Y様）" loading="lazy"></div>
         <div class="vbody">
           <span class="vband o">三重県</span>
           <span class="vplace">Y様・当事者のご家族</span>
@@ -1524,7 +1531,7 @@ table.cmp thead th{position:static !important}
         </div>
       </div>
     </div>
-    <p class="pl-note center" style="margin-top:22px">※ 2026年8月29〜30日のインタビューでご本人が話された内容からの抜粋です。掲載内容自体はご本人同意を確認済み（2026-09-12時点）ですが、<span class="kari">顔写真の掲載可否は別途最終確認</span>が必要です。動画本編は「開業ストーリー」「運営ストーリー」でご覧いただけます。</p>
+    <p class="pl-note center" style="margin-top:22px">※ 2026年8月29〜30日のインタビューでご本人が話された内容からの抜粋です。掲載内容・写真はご本人同意を確認済みです（0円プランLPと同じ写真を使用）。動画本編は「開業ストーリー」「運営ストーリー」でご覧いただけます。</p>
   </div>
 </section>
 
