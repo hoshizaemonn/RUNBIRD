@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>礼和 構成台本 v5</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf8f4; --card:#ffffff; --ink:#1f2a44; --sub:#5d6475; --line:#e6e0d8;
+  --aqua:#e3f2f5; --aqua-d:#3b8fa6; --pink:#fbe9ec; --pink-d:#c4607a;
+  --ok:#2e8b57; --warn:#c98a12; --ng:#c2410c;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16181d; --card:#1f2229; --ink:#eef0f4; --sub:#a9afbd; --line:#333845;
+    --aqua:#1d3a42; --aqua-d:#7cc6d9; --pink:#3d2329; --pink-d:#f0a0b4;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP","Hiragino Sans",sans-serif;line-height:1.75;font-size:15px}
+.wrap{max-width:1120px;margin:0 auto;padding:32px 16px 64px}
+h1,h2,h3{font-family:"Zen Maru Gothic","Noto Sans JP",sans-serif;line-height:1.4;word-break:auto-phrase;text-wrap:balance;margin:0}
+h1{font-size:clamp(24px,4vw,34px)}
+h2{font-size:clamp(19px,2.6vw,24px);margin:44px 0 14px;padding-left:12px;border-left:5px solid var(--aqua-d)}
+.lead{color:var(--sub);margin:10px 0 0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{background:var(--aqua);color:var(--aqua-d);border-radius:999px;padding:2px 12px;font-size:13px;font-weight:700}
+.chip.p{background:var(--pink);color:var(--pink-d)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:860px){.grid3{grid-template-columns:1fr}}
+.op h3{font-size:18px;margin-bottom:6px}
+.op .tag{display:inline-block;font-size:12px;font-weight:700;padding:1px 10px;border-radius:6px;margin-bottom:8px}
+.tag.good{background:var(--aqua);color:var(--aqua-d)}
+.tag.pain{background:var(--pink);color:var(--pink-d)}
+.line{background:var(--bg);border-radius:10px;padding:10px 12px;margin:8px 0;font-size:14px}
+.line b{color:var(--pink-d)}
+.small{font-size:13px;color:var(--sub)}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left;font-size:14px}
+th{background:var(--aqua);color:var(--ink);font-weight:700;white-space:nowrap}
+td.t{white-space:nowrap;font-weight:700;color:var(--aqua-d)}
+.telop{font-family:"Zen Maru Gothic",sans-serif;font-weight:700;color:var(--ink);background:linear-gradient(transparent 62%,var(--pink) 62%)}
+.ok{color:var(--ok);font-weight:700}.warn{color:var(--warn);font-weight:700}.ng{color:var(--ng);font-weight:700}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:640px){
+  table.cuts,table.cuts tbody,table.cuts tr,table.cuts td{display:block;width:100%}
+  table.cuts thead{display:none}
+  table.cuts tr{border-bottom:2px solid var(--line);padding:6px 0}
+  table.cuts td{border:none;padding:4px 12px}
+  table.cuts td::before{content:attr(data-h);display:block;font-size:11px;color:var(--sub);font-weight:700}
+  table.map th{white-space:normal}
+}
+ul{margin:6px 0;padding-left:20px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px}
+.flow span{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:4px 10px}
+.flow i{color:var(--aqua-d);font-style:normal}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="small">合同会社 礼和｜水素温浴器 動画広告</p>
+  <h1>構成台本 v5（アニメ）── 冒頭3パターン＋共通の後半</h1>
+  <p class="lead">家族が、お母さん（50代）の変化に気づくところから始める。冒頭6秒だけを差し替えた3本を作り、広告でどれが反応するかを比べられる形。後半は「自分のため」から「家族みんなで」へつなぐ。</p>
+  <div class="meta">
+    <span class="chip">30秒・16:9（縦型は派生で作成）</span>
+    <span class="chip">主役：50代のお母さん</span>
+    <span class="chip p">自分用 ＋ 家族</span>
+    <span class="chip">2026-10-13 提案・未確定</span>
+  </div>
+</header>
+
+<h2>結論</h2>
+<div class="box">
+<ol style="margin:0;padding-left:20px">
+  <li><strong>冒頭は「家族がお母さんの変化に気づく」</strong>で始める。①機嫌いいね ②お風呂長くない？（いいね型）③ため息多くない？（悩み型）の3本。</li>
+  <li><strong>後半は共通</strong>：脱衣所の本体 → スイッチを押すだけ → ぽかぽか → 家族みんなで → 相談の案内。</li>
+  <li><strong>チラシの効果効能は体感の言葉に置き換え</strong>。「疲労回復・免疫・美肌・アンチエイジング・病気の予防」は使わない。</li>
+</ol>
+</div>
+
+<h2>全体の流れ</h2>
+<div class="flow">
+  <span>0–6秒 家族が気づく<br><span class="small">（A/B/C差し替え）</span></span><i>→</i>
+  <span>6–13秒 種明かし・使い方</span><i>→</i>
+  <span>13–20秒 入浴〜湯上がり</span><i>→</i>
+  <span>20–27秒 家族みんなで</span><i>→</i>
+  <span>27–30秒 相談の案内</span>
+</div>
+
+<h2>冒頭3パターン（0〜6秒）</h2>
+<div class="grid3">
+  <div class="box op">
+    <span class="tag good">① いいね型</span>
+    <h3>A｜「最近、機嫌いいね？」</h3>
+    <p class="small">夜のリビング。湯上がりの母が鼻歌まじりに麦茶をつぐ。ソファの娘が顔を上げる。</p>
+    <div class="line"><b>娘</b>「お母さん、最近 機嫌いいね？」</div>
+    <div class="line"><b>母</b>（振り返って、にっこり）「ふふ、わかる？」</div>
+    <p class="small">ねらい：家族の反応で「何かいいことがある」と思わせる。雪印「CHECK-2cm」の“家族が気づく”冒頭を、ポジティブ側に置き換えた型。</p>
+  </div>
+  <div class="box op">
+    <span class="tag good">② いいね型</span>
+    <h3>B｜「最近、お風呂長くない？」</h3>
+    <p class="small">脱衣所の前。待っている娘が、ちょっとあきれ顔で声をかける。母はタオルを首に、満足そうに出てくる。</p>
+    <div class="line"><b>娘</b>「お母さん、最近 お風呂長くない？」</div>
+    <div class="line"><b>母</b>「だって、楽しみなんだもん。」</div>
+    <p class="small">ねらい：最初の3秒で「お風呂の話」だと分かる。お風呂が楽しみになっている理由が知りたくなる。</p>
+  </div>
+  <div class="box op">
+    <span class="tag pain">③ 悩み型</span>
+    <h3>C｜「最近、ため息多くない？」</h3>
+    <p class="small">夕方の台所。家事の合間に、母が小さくため息。シャワーだけで済ませる日が続いている。娘が気づく。</p>
+    <div class="line"><b>娘</b>「お母さん、最近 ため息多くない？」</div>
+    <div class="line"><b>母</b>（少し間があって）「……そう？」</div>
+    <div class="line">テロップ <span class="telop">毎日がんばる、お母さんへ。</span></div>
+    <p class="small">ねらい：参考動画にない「悩み」からの入り。悩みは<strong>症状名ではなく、暮らしの様子</strong>（ため息・シャワーだけで済ませる）で描く。「水素で治る」とはつなげない。</p>
+  </div>
+</div>
+<p class="small" style="margin-top:10px">※ C の後半は、6秒目の母のセリフだけ「だから、お風呂を水素風呂にしてみた。」に変える。ほかは共通。</p>
+
+<h2>共通の後半（6〜30秒）</h2>
+<div class="scroll">
+<table class="cuts">
+<thead><tr><th>秒</th><th>映像</th><th>セリフ・テロップ</th><th>チラシのどこに対応</th></tr></thead>
+<tbody>
+<tr><td class="t" data-h="秒">6–9</td><td data-h="映像">脱衣所。木の台に銀色の本体（青いライン）。母が本体に手を添えて、こちらを見る。</td><td data-h="セリフ・テロップ">母「実はね、お風呂を水素風呂にしたの。」<br><span class="small">（Cのみ「だから、お風呂を水素風呂にしてみた。」）</span><br>テロップ <span class="telop">本体は脱衣所に。</span></td><td data-h="対応">特徴「自宅のお風呂が水素風呂に」</td></tr>
+<tr><td class="t" data-h="秒">9–13</td><td data-h="映像">手元のアップ。専用の電極を浴槽のお湯へ入れ、本体のスイッチを押す。</td><td data-h="セリフ・テロップ">テロップ <span class="telop">お湯に入れて、スイッチを押すだけ。</span></td><td data-h="対応">特徴「簡単操作で毎日の習慣に」</td></tr>
+<tr><td class="t" data-h="秒">13–17</td><td data-h="映像">入浴。湯気、窓からのやわらかい光。母が目を閉じて、肩までつかる（肩から上だけ）。</td><td data-h="セリフ・テロップ">テロップ <span class="telop">ぽかぽか、ほっとする。</span></td><td data-h="対応">「温浴効果でリラックス」を体感の言葉に</td></tr>
+<tr><td class="t" data-h="秒">17–20</td><td data-h="映像">湯上がり。首にタオル、ほおが少し赤い。冷凍庫からアイスを取り出して、ひと口。</td><td data-h="セリフ・テロップ">テロップ <span class="telop">湯上がりまで、ぽかぽか。</span></td><td data-h="対応">「体温アップ」を体感の言葉に（<span class="warn">要確認</span>）</td></tr>
+<tr><td class="t" data-h="秒">20–24</td><td data-h="映像">父、娘が順番にお風呂へ。リビングで3人が湯上がり姿で並び、笑っている。</td><td data-h="セリフ・テロップ">テロップ <span class="telop">家族みんなで、同じお湯。</span></td><td data-h="対応">チラシ「大切なご家族の…」を家族の場面に</td></tr>
+<tr><td class="t" data-h="秒">24–27</td><td data-h="映像">娘がソファで伸びをする。母が得意げに笑う。</td><td data-h="セリフ・テロップ">娘「私も毎日入りたい！」<br>母「でしょ？」<br>テロップ <span class="telop">毎日のお風呂が、待ち遠しくなる。</span></td><td data-h="対応">「毎日の習慣に」</td></tr>
+<tr><td class="t" data-h="秒">27–30</td><td data-h="映像">エンドカード。本体の写真（提供写真）、販売者名、問い合わせ先。</td><td data-h="セリフ・テロップ">テロップ <span class="telop">使い方・料金は、お気軽にご相談ください。</span><br><span class="small">［商品名］［販売者名］［問い合わせ先］は確認中のため空欄</span></td><td data-h="対応">お問い合わせ先</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>テイスト（Instagram のスクショに合わせる）</h2>
+<div class="box">
+<ul>
+  <li><strong>絵柄：</strong>やわらかい日本の手描き風アニメ。暖色の光、ほおの赤み、湯気・光の粒。リタハート公式Instagram（「理子の水素ノート」）と同じ空気感。</li>
+  <li><strong>人物：</strong>スクショの女性は30代に見えるので、母は<strong>50代</strong>に寄せる（目元の小じわ、落ち着いた髪型、カーディガン／パジャマ）。娘は20代後半、父は50代後半。キャラクターは描き起こしで、スクショの人物をそのまま使わない。</li>
+  <li><strong>文字：</strong>手書き風のやさしい明朝〜丸ゴシック、白抜き＋うすい影。画面の下3分の1に1行ずつ。</li>
+  <li><strong>小物：</strong>ピンクのパジャマ、白いタオル、アイス、麦茶、木の台。機器は提供写真の形・青いラインを守る（形を作り変えない）。</li>
+  <li><strong>コピーの借用はしない：</strong>「お風呂、あなどれない。」などリタハートのコピーは使わない（同じ販売元の公式発信なので、使う場合は許可が必要）。</li>
+</ul>
+</div>
+
+<h2>チラシの効果効能を、どう言い換えたか</h2>
+<p class="small">チラシの「期待できる効果」は、そのまま広告に出すと薬機法・景表法に触れるおそれがあり、YouTube・Metaの広告審査でも止まりやすい。言いたいことは、体感と暮らしの言葉に置き換えて残した。</p>
+<div class="scroll">
+<table class="map">
+<thead><tr><th>チラシの表現</th><th>広告での扱い</th><th>台本での言い方</th></tr></thead>
+<tbody>
+<tr><td>温浴効果でリラックス</td><td class="ok">体感として使える</td><td>ぽかぽか、ほっとする。</td></tr>
+<tr><td>血行促進・体温アップ</td><td class="warn">体感だけ（要確認）</td><td>湯上がりまで、ぽかぽか。<br><span class="small">「血行」「体温が上がる」とは言わない</span></td></tr>
+<tr><td>疲労回復・免疫力サポート</td><td class="ng">言えない</td><td>使わない。冒頭Cの「毎日がんばる、お母さんへ。」で気持ちだけ受け止める</td></tr>
+<tr><td>美肌・アンチエイジング</td><td class="ng">言えない</td><td>使わない（「肌がしっとり」も美容の効果と取られやすいので外した）</td></tr>
+<tr><td>健康維持・病気の予防／未来の予防医療</td><td class="ng">言えない</td><td>使わない</td></tr>
+<tr><td>お湯に水素をたっぷり溶け込ませる</td><td class="warn">数値の根拠があれば</td><td>今回は入れていない（濃度を出すなら測定条件の明記が必要）</td></tr>
+</tbody>
+</table>
+</div>
+<p class="small" style="margin-top:8px">機械照合（tools/fact_check.py：facts.json の禁止語・正本照合）は指摘なし。最終の言い回しは薬事に詳しい専門家か県の薬務課で確認する前提。</p>
+
+<h2>決めること・確認すること</h2>
+<div class="box">
+<ul>
+  <li><strong>どの冒頭で出すか：</strong>3本とも作って広告で比べる／1本に絞る</li>
+  <li><strong>エンドカード：</strong>販売者名（合同会社 礼和／スマイルサイクル）、商品名の公式表記（リタライフ）、問い合わせ先（電話・HPフォーム・LINEのどれか1つ）</li>
+  <li><strong>使い方の正しさ：</strong>「本体は脱衣所、電極をお湯へ、スイッチ」で合っているか、実機の写真・動画</li>
+  <li><strong>チラシの扱い：</strong>チラシ自体に「免疫力」「病気の予防」「アンチエイジング」があり、そのまま配ると同じリスクがある。お客様への伝え方は社内で相談</li>
+  <li><strong>リタハートの画風・素材：</strong>販売元の発信ルールで、代理店の広告に似せた画風や商品画像を使ってよいか</li>
+</ul>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>水素風呂 客層調査 図解</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf8f3; --surface:#ffffff; --aqua:#e3f3f3; --aqua-2:#bfe3e3; --aqua-3:#5fb3b3;
+  --navy:#1d3557; --navy-2:#3d5a80; --muted:#6b7a8c; --line:#e6e1d8;
+  --female:#2f8f9d; --male:#a8c5d6; --accent:#e07a5f;
+  --b-jitsu:#2a9d8f; --b-kou:#3d5a80; --b-sui:#d08c1f; --b-mi:#8d99ae;
+  --ok:#2a9d8f; --ok-bg:#e6f4f1; --ng:#c0392b; --ng-bg:#fbeceb; --cond:#d08c1f; --cond-bg:#fdf3e2;
+  --heat0:#f3f7f9;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121a24; --surface:#1a2533; --aqua:#1d3340; --aqua-2:#24505a; --aqua-3:#5fb3b3;
+    --navy:#e8eef5; --navy-2:#b8c7da; --muted:#93a3b5; --line:#2c3a4b;
+    --female:#4fb3bf; --male:#5a7a90; --ok-bg:#1b3330; --ng-bg:#3a2222; --cond-bg:#3a3020; --heat0:#1f2b38;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121a24; --surface:#1a2533; --aqua:#1d3340; --aqua-2:#24505a; --aqua-3:#5fb3b3;
+  --navy:#e8eef5; --navy-2:#b8c7da; --muted:#93a3b5; --line:#2c3a4b;
+  --female:#4fb3bf; --male:#5a7a90; --ok-bg:#1b3330; --ng-bg:#3a2222; --cond-bg:#3a3020; --heat0:#1f2b38;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--navy);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+  font-size:15px;line-height:1.75;overflow-x:hidden}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px 64px}
+h1,h2,h3{line-height:1.4;word-break:auto-phrase;text-wrap:balance;margin:0}
+h2{font-size:1.3rem;margin-bottom:6px}
+h3{font-size:1.05rem}
+p{margin:.4em 0}
+a{color:var(--navy-2);overflow-wrap:anywhere}
+.small{font-size:.82rem;color:var(--muted)}
+section{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin-top:20px}
+.sec-no{display:inline-block;font-size:.75rem;font-weight:700;color:var(--aqua-3);letter-spacing:.08em;margin-bottom:2px}
+.lead{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+.nb{white-space:nowrap}
+
+/* badges */
+.bd{display:inline-block;font-size:.68rem;font-weight:700;line-height:1;padding:4px 6px 3px;border-radius:4px;color:#fff;vertical-align:2px;margin-left:4px;white-space:nowrap}
+.bd.j{background:var(--b-jitsu)} .bd.k{background:var(--b-kou)} .bd.s{background:var(--b-sui)} .bd.m{background:var(--b-mi)}
+
+/* hero */
+.hero{margin-top:20px;background:linear-gradient(135deg,var(--aqua),var(--surface));border:1px solid var(--aqua-2);border-radius:18px;padding:28px 22px}
+.hero .eyebrow{font-size:.8rem;color:var(--muted);letter-spacing:.04em}
+.hero h1{font-size:1.6rem;margin:6px 0 16px}
+.concl{display:grid;gap:10px;grid-template-columns:1fr}
+.concl .c{background:var(--surface);border-radius:12px;padding:12px 14px;border-left:5px solid var(--aqua-3)}
+.concl .c.main{border-left-color:var(--navy)}
+.concl .c.g{border-left-color:var(--b-mi)}
+.concl .lbl{font-size:.75rem;font-weight:700;color:var(--muted)}
+.concl .v{font-size:1.05rem;font-weight:700}
+.fix{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;background:var(--surface);border:1px dashed var(--accent);border-radius:12px;padding:12px 14px}
+.fix .t{font-weight:700;color:var(--accent);font-size:.85rem}
+.fix .old{text-decoration:line-through;color:var(--muted)}
+.fix .new{font-weight:700}
+@media(min-width:760px){.concl{grid-template-columns:1.3fr 1fr 1fr}.hero h1{font-size:2rem}}
+
+/* stacked bars */
+.stack-row{margin:14px 0 6px}
+.stack-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:.88rem}
+.stack-head b{font-size:1rem}
+.stack{display:flex;height:34px;border-radius:8px;overflow:hidden;margin-top:6px;background:var(--heat0)}
+.stack span{display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden}
+.a20{background:#cfe8ea;color:#1d3557!important}.a30{background:#8fcfd3;color:#1d3557!important}.a40{background:#4aa9b3}.a50{background:#1d3557}.a60{background:#3d5a80}.a70{background:#8d99ae}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.78rem;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+
+/* age detail bars */
+.two{display:grid;gap:18px;grid-template-columns:1fr;margin-top:18px}
+@media(min-width:760px){.two{grid-template-columns:1fr 1fr}}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px}
+.hbar{display:grid;grid-template-columns:42px 1fr 44px;gap:8px;align-items:center;margin:6px 0;font-size:.82rem}
+.hbar .track{height:18px;background:var(--heat0);border-radius:4px;display:flex;overflow:hidden}
+.hbar .f{background:var(--female)} .hbar .m{background:var(--male)}
+.hbar .pct{text-align:right;font-weight:700}
+.hbar.top .pct,.hbar.top .age{color:var(--accent)}
+.hbar .cnt{grid-column:2 / 4;font-size:.72rem;color:var(--muted);margin-top:-6px}
+.kpi{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.kpi div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:.8rem}
+.kpi b{font-size:1.1rem;color:var(--navy)}
+
+/* purpose */
+.pbar{display:grid;grid-template-columns:7em 1fr 3.8em;gap:8px;align-items:center;margin:7px 0;font-size:.85rem}
+.pbar .track{height:16px;background:var(--heat0);border-radius:4px;overflow:hidden}
+.pbar .fill{height:100%;background:var(--aqua-3);border-radius:4px}
+.pbar.hl .fill{background:var(--accent)}
+.pbar.hl{font-weight:700}
+.pbar .pct{text-align:right;font-weight:700;white-space:nowrap}
+.big{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin-top:10px}
+.big > div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center}
+.big .n{font-size:1.9rem;font-weight:700;line-height:1.2;color:var(--navy)}
+.big .n.hot{color:var(--accent)}
+.big .d{font-size:.78rem;color:var(--muted)}
+.donut-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:8px}
+.donut{width:120px;height:120px;border-radius:50%;flex:none;
+  background:conic-gradient(var(--navy) 0 87.7%, var(--aqua-2) 87.7% 98.4%, var(--accent) 98.4% 100%);position:relative}
+.donut::after{content:"";position:absolute;inset:22px;border-radius:50%;background:var(--bg)}
+.donut-legend{font-size:.82rem;flex:1;min-width:180px}
+
+/* heatmap */
+.heat{width:100%;border-collapse:separate;border-spacing:4px;font-size:.9rem}
+.heat th{font-weight:500;color:var(--muted);font-size:.8rem;padding:4px}
+.heat td{text-align:center;border-radius:8px;padding:10px 4px;font-weight:700}
+.heat td.top{outline:3px solid var(--accent);outline-offset:-3px}
+
+/* targets */
+.tgrid{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:900px){.tgrid{grid-template-columns:repeat(3,1fr)}}
+.tcard{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--bg);display:flex;flex-direction:column;gap:8px}
+.tcard .pri{display:inline-block;font-size:.75rem;font-weight:700;color:#fff;background:var(--navy);border-radius:999px;padding:2px 10px;align-self:flex-start}
+.tcard.s1 .pri{background:var(--navy-2)} .tcard.s2 .pri{background:var(--b-mi)}
+.tcard .who{font-size:1.1rem;font-weight:700;line-height:1.45}
+.tcard dl{margin:0;font-size:.85rem}
+.tcard dt{font-size:.72rem;color:var(--muted);font-weight:700;margin-top:6px}
+.tcard dd{margin:0}
+.hook{margin-top:auto;background:var(--surface);border-left:4px solid var(--aqua-3);border-radius:8px;padding:10px 12px;font-weight:700}
+.hook small{display:block;font-weight:400;color:var(--muted);font-size:.72rem}
+.meter{display:flex;gap:3px;margin-top:2px}
+.meter i{width:22px;height:6px;border-radius:3px;background:var(--line)}
+.meter i.on{background:var(--aqua-3)}
+
+/* ok/ng */
+.okng{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:760px){.okng{grid-template-columns:1fr 1fr}}
+.col{border-radius:12px;padding:14px}
+.col.ok{background:var(--ok-bg)} .col.ng{background:var(--ng-bg)}
+.col h3{margin-bottom:8px}
+.col.ok h3{color:var(--ok)} .col.ng h3{color:var(--ng)}
+.col ul{list-style:none;margin:0;padding:0}
+.col li{padding:8px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:.88rem}
+.col li:last-child{border-bottom:0}
+.col li .q{font-weight:700}
+.col li .r{display:block;font-size:.76rem;color:var(--muted)}
+.tag{display:inline-block;font-size:.68rem;font-weight:700;border-radius:4px;padding:2px 6px;margin-right:4px;vertical-align:1px;white-space:nowrap}
+.tag.ok{background:var(--ok);color:#fff} .tag.cond{background:var(--cond);color:#fff} .tag.ngy{background:#e08a7f;color:#fff} .tag.ng{background:var(--ng);color:#fff}
+.note{margin-top:14px;background:var(--bg);border:1px solid var(--line);border-left:5px solid var(--ng);border-radius:10px;padding:12px 14px;font-size:.86rem}
+
+/* evidence meter */
+.ev{display:grid;gap:8px}
+.evr{display:grid;grid-template-columns:1fr;gap:4px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+@media(min-width:760px){.evr{grid-template-columns:1fr 150px}}
+.evr .claim{font-size:.88rem}
+.strength{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--muted)}
+.strength .bar{flex:1;height:8px;border-radius:4px;background:var(--line);overflow:hidden;max-width:110px}
+.strength .bar b{display:block;height:100%}
+.steps{counter-reset:s;list-style:none;padding:0;margin:14px 0 0;display:grid;gap:10px}
+.steps li{position:relative;padding:12px 12px 12px 48px;border-radius:10px;background:var(--aqua);font-size:.86rem}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:12px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--bg);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.steps li b{display:block;font-size:.95rem}
+
+/* sources */
+.src{columns:1;font-size:.8rem;padding-left:1.2em;margin:0}
+@media(min-width:900px){.src{columns:2;column-gap:28px}}
+.src li{break-inside:avoid;margin-bottom:6px}
+footer{text-align:center;font-size:.75rem;color:var(--muted);margin-top:28px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- 1. HERO -->
+<header class="hero">
+  <div class="eyebrow">合同会社礼和 30秒広告用｜水素風呂の客層 根拠追加調査（2026-10-13）｜社内確認用</div>
+  <h1>水素風呂の財布を握るのは<span class="nb">50代女性</span></h1>
+  <div class="concl">
+    <div class="c main"><div class="lbl">主ターゲット</div><div class="v">45〜59歳女性<br>「自分と家族のため」</div></div>
+    <div class="c"><div class="lbl">副ターゲット</div><div class="v">60代女性本人</div></div>
+    <div class="c g"><div class="lbl">娘→母ギフト</div><div class="v">母の日の入浴剤ギフトに限定</div></div>
+  </div>
+  <div class="fix">
+    <span class="t">前回からの訂正</span>
+    <span class="old">40代が最多（2014〜2016年中心の63件）</span>
+    <span aria-hidden="true">→</span>
+    <span class="new">2020年以降は50代が首位（1,398件）<span class="bd j">実測</span></span>
+  </div>
+  <p class="small" style="margin-top:12px">確度タグ：<span class="bd j">実測</span> 一次データを自分で取得・集計／一次資料の表を確認　<span class="bd k">公式</span> 発表元・事業者・行政の記載　<span class="bd s">推測</span> 数値からの推論　<span class="bd m">未確認</span> 抜粋のみ・取得不可</p>
+</header>
+
+<!-- 2. AGE -->
+<section>
+  <div class="sec-no">01｜誰が買っているか</div>
+  <h2>楽天レビュー 2020年以降の年代構成</h2>
+  <p class="lead">年代・性別の両方が表示されたレビューのみ集計。40〜50代女性だけで入浴剤の約56%<span class="bd j">実測</span></p>
+
+  <div class="stack-row">
+    <div class="stack-head"><span><b>水素入浴剤</b>　n=1,332件</span><span>女性 <b>78%</b>（1,044件）</span></div>
+    <div class="stack" role="img" aria-label="入浴剤 20代1% 30代10% 40代30% 50代38% 60代15% 70代5%">
+      <span class="a20" style="flex:1"></span><span class="a30" style="flex:10">10%</span><span class="a40" style="flex:30">40代 30%</span><span class="a50" style="flex:38">50代 38%</span><span class="a60" style="flex:15">15%</span><span class="a70" style="flex:5"></span>
+    </div>
+    <div class="small">投稿日 2020/01/07〜2026/10/12</div>
+  </div>
+  <div class="stack-row">
+    <div class="stack-head"><span><b>水素風呂の機器</b>　n=66件</span><span>女性 <b>70%</b>（46件）</span></div>
+    <div class="stack" role="img" aria-label="機器 30代20% 40代26% 50代39% 60代12% 70代3%">
+      <span class="a30" style="flex:20">20%</span><span class="a40" style="flex:26">40代 26%</span><span class="a50" style="flex:39">50代 39%</span><span class="a60" style="flex:12">12%</span><span class="a70" style="flex:3"></span>
+    </div>
+    <div class="small">投稿日 2020/01/26〜2026/08/02</div>
+  </div>
+  <div class="legend">
+    <span><i class="a20"></i>20代</span><span><i class="a30"></i>30代</span><span><i class="a40"></i>40代</span><span><i class="a50"></i>50代</span><span><i class="a60"></i>60代</span><span><i class="a70"></i>70代</span>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h3>入浴剤：年代×男女（件数）</h3>
+      <div class="legend" style="margin-top:4px"><span><i style="background:var(--female)"></i>女性</span><span><i style="background:var(--male)"></i>男性</span></div>
+      <!-- widths: count / 508 (max) -->
+      <div class="hbar"><span class="age">20代</span><span class="track"><span class="f" style="width:3.1%"></span></span><span class="pct">1%</span><span class="cnt">女16・男0</span></div>
+      <div class="hbar"><span class="age">30代</span><span class="track"><span class="f" style="width:23.8%"></span><span class="m" style="width:2.4%"></span></span><span class="pct">10%</span><span class="cnt">女121・男12</span></div>
+      <div class="hbar"><span class="age">40代</span><span class="track"><span class="f" style="width:66.1%"></span><span class="m" style="width:12.8%"></span></span><span class="pct">30%</span><span class="cnt">女336・男65</span></div>
+      <div class="hbar top"><span class="age">50代</span><span class="track"><span class="f" style="width:80.1%"></span><span class="m" style="width:19.9%"></span></span><span class="pct">38%</span><span class="cnt">女407・男101（最多＝50代女性）</span></div>
+      <div class="hbar"><span class="age">60代</span><span class="track"><span class="f" style="width:28.1%"></span><span class="m" style="width:12.2%"></span></span><span class="pct">15%</span><span class="cnt">女143・男62</span></div>
+      <div class="hbar"><span class="age">70代</span><span class="track"><span class="f" style="width:4.1%"></span><span class="m" style="width:9.4%"></span></span><span class="pct">5%</span><span class="cnt">女21・男48（男性の多さは1人17件のリピーターによる偏り）</span></div>
+    </div>
+    <div class="card">
+      <h3>機器：年代×男女（件数）</h3>
+      <div class="legend" style="margin-top:4px"><span><i style="background:var(--female)"></i>女性</span><span><i style="background:var(--male)"></i>男性</span></div>
+      <!-- widths: count / 26 (max) -->
+      <div class="hbar"><span class="age">20代</span><span class="track"></span><span class="pct">0%</span><span class="cnt">女0・男0</span></div>
+      <div class="hbar"><span class="age">30代</span><span class="track"><span class="f" style="width:38.5%"></span><span class="m" style="width:11.5%"></span></span><span class="pct">20%</span><span class="cnt">女10・男3</span></div>
+      <div class="hbar"><span class="age">40代</span><span class="track"><span class="f" style="width:42.3%"></span><span class="m" style="width:23.1%"></span></span><span class="pct">26%</span><span class="cnt">女11・男6</span></div>
+      <div class="hbar top"><span class="age">50代</span><span class="track"><span class="f" style="width:73.1%"></span><span class="m" style="width:26.9%"></span></span><span class="pct">39%</span><span class="cnt">女19・男7（最多＝50代女性）</span></div>
+      <div class="hbar"><span class="age">60代</span><span class="track"><span class="f" style="width:19.2%"></span><span class="m" style="width:11.5%"></span></span><span class="pct">12%</span><span class="cnt">女5・男3</span></div>
+      <div class="hbar"><span class="age">70代</span><span class="track"><span class="f" style="width:3.8%"></span><span class="m" style="width:3.8%"></span></span><span class="pct">3%</span><span class="cnt">女1・男1</span></div>
+      <p class="small">機器は66件と薄く、中心は携帯型生成器（マルーン）。浴槽専用の据え置き機とは一致しない可能性<span class="bd s">推測</span></p>
+    </div>
+  </div>
+
+  <div class="kpi" style="margin-top:16px">
+    <div>重複投稿を除外（入浴剤1,041人）：女性<b>81%</b>・50代37%・40代31%</div>
+    <div>H&を除外：女性<b>76%</b>・50代39%</div>
+    <div>年別（2020〜2026）：女性比69〜83%／40〜50代比61〜74%で安定</div>
+  </div>
+  <p class="small">読んだレビュー計2,937件 → 2020年以降2,460件 → 年代・性別ありで1,398件。属性の表示率は約55%。訪販・レンタル・対面などEC外の購入者は含まれないため、<b>60代以上の実際の比率はこの数字（入浴剤15%＋5%・機器12%＋3%）より高い</b>と見るべき<span class="bd s">推測</span>。見て試す層は30〜40代女性（@cosme 45件は30代31件・中央値35歳）<span class="bd j">実測</span>、お金を払って継続購入する層は40〜50代女性<span class="bd s">推測</span>。</p>
+</section>
+
+<!-- 3. PURPOSE -->
+<section>
+  <div class="sec-no">02｜誰のために買うか</div>
+  <h2>「娘が母に贈る」は実在するが<span class="nb">1〜2%台</span></h2>
+  <p class="lead">楽天の用途タグ（任意・複数選択可）と本文判定、補聴器・敬老の日の比較データ</p>
+
+  <div class="two" style="margin-top:6px">
+    <div class="card">
+      <h3>入浴剤の用途タグ<span class="bd j">実測</span></h3>
+      <p class="small">2020年以降・タグ付き1,194件</p>
+      <div class="pbar"><span>自分用</span><span class="track"><span class="fill" style="width:65%;display:block"></span></span><span class="pct">65%</span></div>
+      <div class="pbar"><span>家族へ</span><span class="track"><span class="fill" style="width:27%;display:block"></span></span><span class="pct">27%</span></div>
+      <div class="pbar"><span>ギフト系 計</span><span class="track"><span class="fill" style="width:16%;display:block"></span></span><span class="pct">約16%</span></div>
+      <div class="pbar hl"><span>親への贈答</span><span class="track"><span class="fill" style="width:1.4%;display:block;min-width:4px"></span></span><span class="pct">1.4%</span></div>
+      <p class="small">親への贈答は本文判定で34件/2,353件（下限値）<span class="bd j">実測（キーワード判定）</span>。ギフトの中心は職場の退職・転勤の挨拶で配るプチギフト。「リピート」タグ581件で、軸は自分用の継続購入。</p>
+    </div>
+    <div class="card">
+      <h3>機器の用途タグ<span class="bd j">実測</span></h3>
+      <p class="small">2020年以降・タグ付き57件</p>
+      <div class="pbar"><span>自分用</span><span class="track"><span class="fill" style="width:70%;display:block"></span></span><span class="pct">70%</span></div>
+      <div class="pbar"><span>家族へ</span><span class="track"><span class="fill" style="width:28%;display:block"></span></span><span class="pct">28%</span></div>
+      <div class="pbar"><span>ギフト</span><span class="track"><span class="fill" style="width:0%;display:block"></span></span><span class="pct">ほぼ0</span></div>
+      <div class="pbar hl"><span>親への贈答</span><span class="track"><span class="fill" style="width:1.9%;display:block;min-width:4px"></span></span><span class="pct">2件</span></div>
+      <p class="small">機器はギフトがほぼなく、軸は自分用と家族での共用。</p>
+    </div>
+  </div>
+  <p class="small" style="margin-top:12px">親に贈ったと読めるレビューの投稿者は<b>40代女性10・50代女性4・30代女性4</b><span class="bd j">実測</span>。流れは「入浴剤のお試しを贈る→母が気に入る→娘が母の分を買い続ける」。想定どおりの導線だが主流ではなく少数派。</p>
+
+  <h3 style="margin-top:22px">高額健康機器の比較：補聴器 JapanTrak 2022<span class="bd j">実測</span></h3>
+  <p class="small">所有者n=430、片耳10万〜30万円が中心。グラフ読み取りのため±1pt程度の誤差</p>
+  <div class="big">
+    <div><div class="n">12%</div><div class="d">子が購入に影響<br>（配偶者は19%）</div></div>
+    <div><div class="n">5%</div><div class="d">子が最終的な決め手<br>（配偶者は8%）</div></div>
+    <div><div class="n hot">2%</div><div class="d">入手経路が「贈り物」<br>（安価な集音器では18%）</div></div>
+  </div>
+  <p class="small">高額品ほど本人が決めて本人が払い、贈答は低価格帯に集まる。60代女性の購入に影響する他者は子より配偶者の方が大きい<span class="bd s">推測</span></p>
+
+  <h3 style="margin-top:22px">敬老の日に贈る相手の年代<span class="bd j">実測（n=359）</span></h3>
+  <div class="big" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+    <div><div class="n">87.7%</div><div class="d">80代以上<br>（80代49.0%・90代以上38.7%）</div></div>
+    <div><div class="n hot">2.8%</div><div class="d">60代</div></div>
+  </div>
+  <div style="margin-top:10px">
+    <div class="pbar"><span>90代以上</span><span class="track"><span class="fill" style="width:38.7%;display:block"></span></span><span class="pct">38.7%</span></div>
+    <div class="pbar"><span>80代</span><span class="track"><span class="fill" style="width:49%;display:block"></span></span><span class="pct">49.0%</span></div>
+    <div class="pbar"><span>70代</span><span class="track"><span class="fill" style="width:17.3%;display:block"></span></span><span class="pct">17.3%</span></div>
+    <div class="pbar hl"><span>60代</span><span class="track"><span class="fill" style="width:2.8%;display:block"></span></span><span class="pct">2.8%</span></div>
+    <div class="pbar"><span>50代</span><span class="track"><span class="fill" style="width:1.1%;display:block;min-width:3px"></span></span><span class="pct">1.1%</span></div>
+    <p class="small">70代・50代の値は調査ノートより。合計109.2%（複数回答とみられるが記事に注記なし）。</p>
+  </div>
+  <p class="small">→ 敬老の日は60代の母を狙う窓にならない。母の日は「贈りたい家電ジャンル」1位が健康家電36.5%（意向）だが、予算の中心は2,000〜5,000円帯<span class="bd j">実測</span>。機器（スパーレ実売86,240円<span class="bd k">公式</span>）は1桁上。</p>
+</section>
+
+<!-- 4. HEATMAP -->
+<section>
+  <div class="sec-no">03｜悩みの強さ</div>
+  <h2>冷え性の自覚は女性40代が最も高い</h2>
+  <p class="lead">リンナイ2024調査（n=2,350、20〜60代男女）「自分は冷え性だと思う」<span class="bd j">実測</span></p>
+  <table class="heat">
+    <thead><tr><th></th><th>20代</th><th>30代</th><th>40代</th><th>50代</th><th>60代</th></tr></thead>
+    <tbody>
+      <tr><th>女性</th>
+        <td style="background:#3f9aa5;color:#fff">68%</td>
+        <td style="background:#4aa1ab;color:#fff">66%</td>
+        <td class="top" style="background:#1f7f8c;color:#fff">76%</td>
+        <td style="background:#6db6bd;color:#fff">59%</td>
+        <td style="background:#82c0c6;color:#1d3557">55%</td></tr>
+      <tr><th>男性</th>
+        <td style="background:#bfe0e3;color:#1d3557">41%</td>
+        <td style="background:#c9e5e7;color:#1d3557">38%</td>
+        <td style="background:#c5e3e5;color:#1d3557">39%</td>
+        <td style="background:#cce6e8;color:#1d3557">37%</td>
+        <td style="background:#e2f0f1;color:#1d3557">27%</td></tr>
+    </tbody>
+  </table>
+  <p class="small">男性の年代別数値は調査ノート（表4-1：図の読み取り）より。冷えに悩む人の43%が「冷えで眠れない」、対策の悩み1位は「効果が一時的」52%。湯船につかる理由は1位リラックス57%・2位冷えをとる43%<span class="bd j">実測</span>。一方、毎日入浴は20代以下約35%→60代以上約73%<span class="bd k">公式</span>。<b>悩みは40代、習慣と財布は50〜60代、その重なる50代女性がレビュー首位</b><span class="bd s">推測</span></p>
+</section>
+
+<!-- 5. TARGETS -->
+<section>
+  <div class="sec-no">04｜推奨ターゲット</div>
+  <h2>通年は45〜59歳女性、60代は本人向けに別の型で</h2>
+  <p class="lead">冒頭フックは下の「OK」表現の範囲で作成（体験・気分のみ。身体への作用は言わない）</p>
+  <div class="tgrid">
+    <div class="tcard">
+      <span class="pri">主</span>
+      <div class="who">45〜59歳女性<br><span class="small">家族と同居／購入者＝利用者、家族も使う</span></div>
+      <dl>
+        <dt>根拠</dt><dd>レビュー1,398件の首位帯（50代38%・40代30%）、冷え・習慣・財布が重なる。用途「家族へ」27〜28%<span class="bd j">実測</span></dd>
+        <dt>根拠の強さ</dt><dd><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i></span>強</dd>
+        <dt>媒体</dt><dd>Meta（Instagram＋Facebook）、検索。Instagram利用率 40代67.1%・50代54.4%<span class="bd j">実測</span></dd>
+      </dl>
+      <div class="hook">「家のお風呂が、自分のスパ時間に。家族みんなで使える」<small>見せ方：50代女性が自分で準備して家族とも使う実演<span class="bd s">推測</span></small></div>
+    </div>
+    <div class="tcard s1">
+      <span class="pri">副1</span>
+      <div class="who">60〜69歳女性本人<br><span class="small">夫婦世帯／購入者＝利用者</span></div>
+      <dl>
+        <dt>根拠</dt><dd>入浴習慣・健康支出は厚い（50〜79歳女性の健康年額 平均138,569円）<span class="bd k">公式</span>。ECレビューでは15%、EC外ではもっと多い可能性<span class="bd s">推測</span></dd>
+        <dt>根拠の強さ</dt><dd><span class="meter"><i class="on"></i><i class="on"></i><i></i></span>中</dd>
+        <dt>媒体</dt><dd>YouTube（長めの実演）、LINE、Facebook。60代はLINE92.0%・YouTube72.6%、Instagram36.1%<span class="bd j">実測</span></dd>
+      </dl>
+      <div class="hook">「水素風呂、いいよ。毎晩のお風呂が待ち遠しくなるから」<small>見せ方：同世代の出演者による実演。年寄り扱いに見せない（40〜60代の43.8%が「シニア向け商品に魅力を感じない」<span class="bd j">実測</span>）</small></div>
+    </div>
+    <div class="tcard s2">
+      <span class="pri">副2（母の日）</span>
+      <div class="who">30〜50代女性の「娘」役<br><span class="small">贈る人・勧める人（低単価）</span></div>
+      <dl>
+        <dt>根拠</dt><dd>実在するが規模は1〜2%台（入浴剤1.4%・機器2件）<span class="bd j">実測</span>。補聴器で贈り物2%<span class="bd j">実測</span></dd>
+        <dt>根拠の強さ</dt><dd><span class="meter"><i class="on"></i><i></i><i></i></span>弱〜中</dd>
+        <dt>媒体</dt><dd>Meta（Instagram）、4月下旬〜5月上旬</dd>
+      </dl>
+      <div class="hook">「母のお風呂時間を、毎日の楽しみに。まずはお試しを」<small>入口は低単価の水素入浴剤のお試し→母の分を定期購入→本体へ<span class="bd s">推測</span></small></div>
+    </div>
+  </div>
+  <p class="small" style="margin-top:12px">補助：50代男性（夫婦の健康のための購入・入浴剤50代男性101件）は根拠弱。訴求「夫婦で使える・工事不要」、媒体は検索・YouTube。TVに出ていないことを「シニア需要がない」根拠にしない<span class="bd s">推測</span>。</p>
+</section>
+
+<!-- 6. OK/NG -->
+<section>
+  <div class="sec-no">05｜冒頭の言い方</div>
+  <h2>「水素風呂がいい」は体験に限れば言える</h2>
+  <p class="lead">家庭用の水素風呂生成器は医療機器の承認・認証を受けていない雑品<span class="bd k">公式</span>。身体への作用につなげた瞬間にNG。</p>
+  <div class="okng">
+    <div class="col ok">
+      <h3>言える（OK・条件付き）</h3>
+      <ul>
+        <li><span class="tag ok">OK</span><span class="q">「水素風呂、いいよ。毎晩のお風呂が待ち遠しくなるから」「家のお風呂が自分のスパ時間に」</span><span class="r">体験・気分の描写で、身体への作用を言っていない<span class="bd s">推測</span></span></li>
+        <li><span class="tag ok">OK</span><span class="q">「浴槽に入れてスイッチを押すだけ」「工事不要」「家族みんなで使える」</span><span class="r">仕様と使い方の事実。水素濃度を書くなら自社の測定値と測定条件を明記<span class="bd s">推測</span></span></li>
+        <li><span class="tag cond">条件付き</span><span class="q">「話題の水素風呂を自宅で」</span><span class="r">販売数・検索数などの裏付けがある場合に限る<span class="bd s">推測</span></span></li>
+        <li><span class="tag cond">条件付き</span><span class="q">「ポカポカ」「温まる」</span><span class="r">入浴一般の体感ならOK寄り。「水素で冷めにくい」と水素の作用として断定するとNG寄り<span class="bd s">推測</span></span></li>
+        <li><span class="tag ok">構成</span><span class="q">悩みは状況描写で置く（「冬の夜、お風呂上がりが寒くて」）→答えは体験の言葉（「毎晩お風呂に入るのが楽しみになった」）</span><span class="r">「冷え・眠れない」を水素の効能として言うことはできない<span class="bd s">推測</span></span></li>
+      </ul>
+    </div>
+    <div class="col ng">
+      <h3>言えない（NG）</h3>
+      <ul>
+        <li><span class="tag ngy">NG寄り</span><span class="q">「ぐっすり眠れる」「自律神経を整える」「リラックス効果」</span><span class="r">身体の機能への影響と受け取られる<span class="bd s">推測</span></span></li>
+        <li><span class="tag ng">NG</span><span class="q">「疲労回復」「冷え症に」「血行促進」「肩こり・腰痛」</span><span class="r">医薬部外品の浴用剤の効能領域で、雑品の機器では言えない<span class="bd s">推測</span></span></li>
+        <li><span class="tag ng">NG（機器）</span><span class="q">「美肌」「肌がしっとり」</span><span class="r">化粧品・医薬部外品の効能領域。体験談として言わせても同じ<span class="bd s">推測</span></span></li>
+        <li><span class="tag ng">NG</span><span class="q">「抗酸化」「活性酸素を除去」「水素は体にさまざまな効果」</span><span class="r">2021年の措置命令で問題とされた表示そのもの<span class="bd j">実測</span></span></li>
+        <li><span class="tag ng">NG（最重度）</span><span class="q">「アトピーに」「生活習慣病予防」</span><span class="r">疾病の予防・治療の標ぼう<span class="bd k">公式</span></span></li>
+        <li><span class="tag ng">NG</span><span class="q">レビューの身体変化の声（「肌が痒くなくなった」等）の広告転用</span><span class="r">モニター・インフルエンサー投稿には「広告」「PR」明示が必要（ステマ告示）<span class="bd k">公式</span></span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="note"><b>2021年3月 措置命令</b>：消費者庁が水素水生成器の販売・レンタル4社に景表法の措置命令<span class="bd k">公式</span>。対象のナックのお詫び文では「水素には健康面でさまざまな効果がある」「抗酸化作用…『活性酵素』を除去する働き」などが、合理的根拠のない老化防止・疾病予防の効果の表示と認定<span class="bd j">実測</span>。2024年10月からは優良誤認・有利誤認に100万円以下の罰金（直罰規定）<span class="bd k">公式</span>。薬機法66条（虚偽・誇大広告の禁止）は「何人も」が対象<span class="bd k">公式</span>。<br><b>最終文言は薬事に詳しい専門家か、所轄の都道府県薬務課に確認する。</b></div>
+</section>
+
+<!-- 7. EVIDENCE -->
+<section>
+  <div class="sec-no">06｜根拠の強さ</div>
+  <h2>何が実測で、何がまだ推測か</h2>
+  <div class="ev" style="margin-top:10px">
+    <div class="evr"><span class="claim">EC購入者の中心は50代女性＞40代女性（楽天1,398件）<span class="bd j">実測</span>　<span class="small">選択バイアスあり</span></span><span class="strength"><span class="bar"><b style="width:90%;background:var(--b-jitsu)"></b></span>強</span></div>
+    <div class="evr"><span class="claim">用途は自分用・家族が中心、親への贈答は入浴剤1.4%・機器2件<span class="bd j">実測</span></span><span class="strength"><span class="bar"><b style="width:80%;background:var(--b-jitsu)"></b></span>強</span></div>
+    <div class="evr"><span class="claim">高額健康機器は本人が決める（補聴器の比較データ）<span class="bd j">実測</span>→水素風呂にも当てはまる<span class="bd s">推測</span></span><span class="strength"><span class="bar"><b style="width:60%;background:var(--b-sui)"></b></span>中</span></div>
+    <div class="evr"><span class="claim">EC外（訪販・レンタル・催事）では60代以上の比率がECより高い可能性<span class="bd s">推測</span></span><span class="strength"><span class="bar"><b style="width:35%;background:var(--b-sui)"></b></span>弱</span></div>
+    <div class="evr"><span class="claim">見て試す層＝30〜40代女性、継続購入する層＝40〜50代女性<span class="bd s">推測</span></span><span class="strength"><span class="bar"><b style="width:50%;background:var(--b-sui)"></b></span>中</span></div>
+    <div class="evr"><span class="claim">水素風呂そのものの認知・利用を性年代別に集計した公開調査<span class="bd m">未確認</span>　<span class="small">1件も見つからず</span></span><span class="strength"><span class="bar"><b style="width:5%;background:var(--b-mi)"></b></span>空白</span></div>
+    <div class="evr"><span class="claim">競合が出し続けている広告の中身（Meta広告ライブラリ／Google広告透明性センター）<span class="bd m">未確認</span></span><span class="strength"><span class="bar"><b style="width:5%;background:var(--b-mi)"></b></span>空白</span></div>
+    <div class="evr"><span class="claim">「実際に健康機器を贈った比率」の実績データ<span class="bd m">未確認</span></span><span class="strength"><span class="bar"><b style="width:5%;background:var(--b-mi)"></b></span>空白</span></div>
+  </div>
+
+  <h3 style="margin-top:22px">次の検証（公開データでは埋まらない穴を実測で潰す）</h3>
+  <ol class="steps">
+    <li><b>年代別Meta配信テスト（最重要）</b>女性35〜44／45〜59／60〜74の3広告セットを同予算・同クリエイティブで並べ、年齢の自動拡張オフ。2〜3週間、各セットCV30件程度目安。<b style="display:inline;font-size:inherit">CTRではなくCPAとCVR</b>で比較。45〜59が最安なら主ターゲット確定、60〜74が同等以下なら副1を格上げ。</li>
+    <li><b>自社の購入者アンケート</b>購入完了画面と同梱物で「年代」「誰が使うか」「誰に勧められたか（配偶者／子／友人／広告）」「誰が支払ったか」を聞く。「子が支払った」「子に勧められた」の比率が補聴器の水準（贈り物2%、子の影響12%）より高いかを見る。</li>
+    <li><b>Meta広告ライブラリの目視（約30分）</b>ログインしたブラウザで「水素風呂」「水素温浴」「水素入浴剤」「水素吸入」「リタライフ」「リタハート」などを検索。配信開始日・出演者の年代・ギフト訴求の有無を記録し、90日以上配信が続く広告の出演者年代を数える。</li>
+  </ol>
+  <p class="small" style="margin-top:10px">ほか：母の日の別テスト（4月下旬〜）、外部パネル調査（n=1,000程度）、e-Statの家計調査追加取得。</p>
+</section>
+
+<!-- 8. SOURCES -->
+<section>
+  <div class="sec-no">07｜出典</div>
+  <h2>出典一覧</h2>
+  <ul class="src" style="margin-top:10px">
+    <li>楽天レビュー <a href="https://review.rakuten.co.jp/item/1/352601_10000001/1.1/sort6/">H& 750g</a> ／ <a href="https://review.rakuten.co.jp/item/1/335783_10000136/1.1/sort6/">ハリープラス</a> ／ <a href="https://review.rakuten.co.jp/item/1/331593_10000003/1.1/sort6/">水素気分プラス</a> ／ <a href="https://review.rakuten.co.jp/item/1/335783_10000049/1.1/sort6/">FLAXマルーン</a></li>
+    <li>楽天レビュー <a href="https://review.rakuten.co.jp/item/1/286780_10000122/1.1/">スパーレ</a> ／ <a href="https://review.rakuten.co.jp/item/1/231044_10002600/1.1/sort6/">グリーニングスパ</a> ／ <a href="https://review.rakuten.co.jp/item/1/220619_10038568/1.1/sort6/">バスリエ furoyou</a> ／ <a href="https://review.rakuten.co.jp/item/1/220619_10036335/1.1/sort6/">バスリエH2</a></li>
+    <li>健康産業新聞 <a href="https://www.this.ne.jp/news/22600/">https://www.this.ne.jp/news/22600/</a></li>
+    <li>@cosme <a href="https://www.cosme.net/products/10211321/review/">https://www.cosme.net/products/10211321/review/</a></li>
+    <li>coetas <a href="https://coetas.jp/fp/suiso-spa/voice/5686631">5686631</a> ／ <a href="https://coetas.jp/fp/suiso-spa/voice/5738310">5738310</a></li>
+    <li>UCC <a href="https://www.ucc.co.jp/company/news/2023/rel231025a.html">https://www.ucc.co.jp/company/news/2023/rel231025a.html</a></li>
+    <li>リンナイ PDF <a href="https://www.rinnai.co.jp/releases/2024/1120/images/releases20241120.pdf">https://www.rinnai.co.jp/releases/2024/1120/images/releases20241120.pdf</a></li>
+    <li>PR TIMES（バスリエ） <a href="https://prtimes.jp/main/html/rd/p/000000309.000050030.html">https://prtimes.jp/main/html/rd/p/000000309.000050030.html</a></li>
+    <li>ハルメク <a href="https://www.halmek-holdings.co.jp/news/insights/2025/zdae6rb2mbvq/">https://www.halmek-holdings.co.jp/news/insights/2025/zdae6rb2mbvq/</a></li>
+    <li>クロス・マーケティング <a href="https://www.cross-m.co.jp/report/trend-eye/20240124bath">https://www.cross-m.co.jp/report/trend-eye/20240124bath</a></li>
+    <li>JapanTrak 2022 PDF <a href="https://www.ehima.com/wp-content/uploads/2023/02/JapanTrak_2022.pdf">https://www.ehima.com/wp-content/uploads/2023/02/JapanTrak_2022.pdf</a></li>
+    <li>Panasonic マッサージチェア <a href="https://panasonic.jp/massage/voice.html">https://panasonic.jp/massage/voice.html</a></li>
+    <li>commercepick／敬老の日.jp 2025 <a href="https://www.commercepick.com/?p=71166">?p=71166</a> ／ <a href="https://www.commercepick.com/?p=72643">?p=72643</a> ／ 母の日予算 <a href="https://www.commercepick.com/?p=65132">?p=65132</a></li>
+    <li>Panasonic 母の日 <a href="https://panasonic.jp/life/housework/100095.html">https://panasonic.jp/life/housework/100095.html</a></li>
+    <li>ビックカメラ（スパーレ） <a href="https://www.biccamera.com/bc/item/1649690/">https://www.biccamera.com/bc/item/1649690/</a></li>
+    <li>総務省 概要PDF <a href="https://www.soumu.go.jp/main_content/001079136.pdf">https://www.soumu.go.jp/main_content/001079136.pdf</a></li>
+    <li>東京都 商談会資料 PDF <a href="https://media-tokyo.metro.tokyo.lg.jp/doc/mono_buyer2024.pdf">https://media-tokyo.metro.tokyo.lg.jp/doc/mono_buyer2024.pdf</a></li>
+    <li>MarkeZine <a href="https://markezine.jp/news/detail/23563">https://markezine.jp/news/detail/23563</a></li>
+    <li>e-Gov 薬機法 <a href="https://laws.e-gov.go.jp/law/335AC0000000145">https://laws.e-gov.go.jp/law/335AC0000000145</a></li>
+    <li>東京都健康安全研究センター <a href="https://www.tmiph.metro.tokyo.lg.jp/files/webkousyuukai/other/53b1a235e015bd1c5b60c434529a53921.pdf">PDF</a></li>
+    <li>消費者庁 措置命令 <a href="https://www.caa.go.jp/notice/entry/023608/">https://www.caa.go.jp/notice/entry/023608/</a></li>
+    <li>ナック お詫び文 <a href="https://www.nacoo.com/Portals/0/images/main/pdf/release_nac_20210316.pdf">PDF</a></li>
+    <li>ニッセイ基礎研究所 <a href="https://www.nli-research.co.jp/files/topics/80097_ext_18_0.pdf?site=nli">PDF</a></li>
+    <li>FLAX スパーレ <a href="https://www.flax.co.jp/products/spahare/">https://www.flax.co.jp/products/spahare/</a></li>
+    <li>北海道新聞 <a href="https://www.hokkaido-np.co.jp/article/1339927/">https://www.hokkaido-np.co.jp/article/1339927/</a></li>
+    <li>国民生活センター <a href="https://www.kokusen.go.jp/news/data/n-20161215_2.html">https://www.kokusen.go.jp/news/data/n-20161215_2.html</a></li>
+    <li>消費者庁 ステマ告示 <a href="https://www.caa.go.jp/policies/policy/representation/fair_labeling/stealth_marketing/">https://www.caa.go.jp/policies/policy/representation/fair_labeling/stealth_marketing/</a></li>
+    <li>Meta広告ライブラリ <a href="https://www.facebook.com/ads/library/?active_status=active&amp;ad_type=all&amp;country=JP&amp;q=%E6%B0%B4%E7%B4%A0%E9%A2%A8%E5%91%82&amp;search_type=keyword_unordered">検索URL</a> ／ <a href="https://adstransparency.google.com/?region=JP&amp;domain=litaheart.com">Google広告透明性センター</a></li>
+  </ul>
+</section>
+
+<footer>社内確認用（非公開）｜元資料：水素風呂の客層 根拠追加調査.md（2026-10-13）</footer>
+</div>
+</body>
+</html>
