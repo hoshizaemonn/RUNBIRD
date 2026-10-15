@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Lien 動画構成案 v4</title>
+<style>
+:root{--ink:#3b2f26;--sub:#7a6a5c;--line:#e6dccf;--bg:#faf6f0;--card:#fff;
+--gold:#c9a227;--hook:#d98324;--affinity:#8ba888;--solution:#7a94b8;--offer:#c98d8d;
+--narrow:#a98bb0;--action:#6b5b4a;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;line-height:1.75;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+header{background:linear-gradient(160deg,#fffdfa,#f3e9da);border-bottom:3px solid var(--gold);
+padding:48px 20px 36px;margin-bottom:44px}
+header .inner{max-width:1080px;margin:0 auto}
+h1{font-size:30px;margin:0 0 6px;letter-spacing:.04em}
+.sub{color:var(--sub);font-size:15px;margin:0 0 20px}
+.specs{display:flex;flex-wrap:wrap;gap:10px}
+.spec{background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 15px;font-size:13px}
+.spec b{color:var(--gold)}
+h2{font-size:21px;margin:56px 0 6px;padding-left:13px;border-left:5px solid var(--gold)}
+h2 .en{font-size:11px;color:var(--sub);font-weight:400;letter-spacing:.16em;display:block}
+.lead{color:var(--sub);font-size:14px;margin:0 0 22px}
+.flow{display:flex;border-radius:10px;overflow:hidden;border:1px solid var(--line);
+margin-bottom:10px;font-size:12px;text-align:center;color:#fff}
+.flow div{padding:11px 4px;font-weight:600}
+.f-hook{background:var(--hook)}.f-affinity{background:var(--affinity)}
+.f-solution{background:var(--solution)}.f-offer{background:var(--offer)}
+.f-action{background:var(--action)}
+.flow-note{display:flex;font-size:11.5px;color:var(--sub);margin-bottom:26px}
+.flow-note div{text-align:center;padding:0 4px}
+.cuts{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.cut{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;
+box-shadow:0 1px 3px rgba(90,70,50,.07);display:flex;flex-direction:column}
+.cut-shot{position:relative;line-height:0;background:#000}
+.cut-shot img{width:100%;height:auto;display:block}
+.cut-id{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.72);color:#fff;
+font-size:12px;font-weight:700;padding:3px 10px;border-radius:4px;letter-spacing:.06em}
+.cut-time{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.9);color:#3b2f26;
+font-size:11px;padding:3px 9px;border-radius:4px;font-variant-numeric:tabular-nums}
+.cut-body{padding:14px 16px 16px;flex:1}
+.cut-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.tag{font-size:11px;color:#fff;padding:2px 10px;border-radius:999px;font-weight:600}
+.tag-hook{background:var(--hook)}.tag-affinity{background:var(--affinity)}
+.tag-solution{background:var(--solution)}.tag-offer{background:var(--offer)}
+.tag-action{background:var(--action)}
+.src{font-size:11px;color:var(--sub)}
+.line{display:flex;gap:9px;margin-bottom:8px}
+.lbl{flex:0 0 46px;font-size:10.5px;height:19px;line-height:19px;text-align:center;
+border-radius:3px;font-weight:700}
+.lbl-t{background:#3b2f26;color:#fff}
+.telop{margin:0;font-size:15px;font-weight:700;line-height:1.55}
+.refs{display:grid;gap:16px}
+.ref{display:flex;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:12px;
+padding:16px;text-decoration:none;color:inherit;transition:.15s;align-items:flex-start}
+.ref:hover{border-color:var(--gold);box-shadow:0 3px 12px rgba(160,130,60,.14)}
+.ref-body{flex:1;min-width:0}
+.ref-badge{display:inline-block;background:#fdf6e3;border:1px solid var(--gold);color:#8a6d12;
+font-size:11px;padding:2px 10px;border-radius:999px;margin-bottom:7px}
+.ref h4{margin:0 0 3px;font-size:15.5px;line-height:1.5}
+.ref-ch{margin:0 0 8px;font-size:12px;color:var(--sub)}
+.ref-why{margin:0 0 8px;font-size:13.5px}
+.ref-url{margin:0;font-size:11.5px;color:#9a8878;word-break:break-all}
+.box{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);
+border-radius:10px;padding:20px 24px;margin-bottom:18px}
+.box.warn{border-left-color:#c0564f;background:#fdf7f6}
+.box h3{margin:0 0 10px;font-size:16px}
+.box p{margin:0 0 10px;font-size:14px}
+.box p:last-child{margin-bottom:0}
+.chk{list-style:none;padding:0}
+.chk li{padding:9px 0 9px 30px;border-bottom:1px dashed var(--line);position:relative;font-size:14px}
+.chk li:before{content:"□";position:absolute;left:6px;color:var(--gold);font-size:17px}
+.chk li:last-child{border-bottom:none}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);
+font-size:12px;color:var(--sub);text-align:center}
+@media(max-width:640px){
+  header{padding:32px 16px 26px}
+  h1{font-size:20px;line-height:1.5} .sub{font-size:13px}
+  .wrap{padding:0 16px 60px}
+  h2{font-size:18px}
+  .ref{flex-direction:column}
+  .flow{font-size:9.5px} .flow div{padding:9px 2px;min-width:0}
+  .flow-note{display:none}
+  .cuts{grid-template-columns:1fr}
+  .box{padding:16px 18px}
+}
+</style></head><body>
+
+<header><div class="inner">
+  <h1>Lien（リアン）様｜<span style="white-space:nowrap">動画構成案 v4</span></h1>
+  <p class="sub">ベビーマッサージサロン／新潟県長岡市稲保南1丁目244-9　<a href="lien-storyboard.html" style="color:#8a6d12">前回（v3・50秒版）のページはこちら</a></p>
+  <div class="specs">
+    <span class="spec">尺 <b>61秒</b></span>
+    <span class="spec">構成 <b>13カット</b></span>
+    <span class="spec">形式 <b>16:9（横）</b></span>
+    <span class="spec">方式 <b>全カット動画・ナレーション／BGM収録済み</b></span>
+    <span class="spec">作成 <b>2026-10-15</b></span>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+<h2 style="margin-top:0">0. 完成動画<span class="en">MOVIE</span></h2>
+<p class="lead">61秒・13カット。前回版に <b>S10b・S10c（おくるみタッチケアの説明）</b> を追加し、最後のご案内を <b>公式LINEのQRコード</b> に変更しました。</p>
+<div style="background:#000;border-radius:12px;overflow:hidden;border:1px solid var(--line);margin-bottom:10px">
+  <video src="lien-mockup-v4.mp4" controls playsinline preload="metadata"
+         style="width:100%;height:auto;display:block"></video>
+</div>
+<p style="font-size:12.5px;color:var(--sub);margin-bottom:8px">
+  再生できない場合は <a href="lien-mockup-v4.mp4" style="color:#8a6d12">こちらから直接ダウンロード</a> してください。</p>
+
+<h2>1. 今回の変更点<span class="en">CHANGES</span></h2>
+<div class="box">
+  <ul class="chk">
+    <li><b>S10b（新規）</b>「おくるみの巻き方や、新生児期の接し方」— 先生が基本巻きの手順（手前の布を胸の上へかけ、脇へ折り込む）を実演</li>
+    <li><b>S10c（新規）</b>「産まれてすぐ役立つ方法を、妊娠中から学べます」— 妊婦さんが人形で練習（下の角を持ち上げて肩まで）、先生が手を添えて指導</li>
+    <li><b>S11（変更）</b>「ご予約・ご相談は 公式LINEから」— お送りいただいた公式LINEのQRコードを掲載。Instagramも併記</li>
+    <li><b>ナレーション</b> 上記2カット分の2行を追加（既存と同じ声）。尺は50秒→61秒</li>
+  </ul>
+</div>
+
+<h2>2. 絵コンテ（全13カット）<span class="en">STORYBOARD</span></h2>
+<p class="lead">各カットの代表フレームです（テロップは本番文言）。S10b・S10cは、おくるみ基本巻きの解説動画の手順を参考に動きを作っています。</p>
+<div class="cuts">
+    <article class="cut hook">
+      <div class="cut-shot"><img src="lien-images-v4/s01.jpg" alt="S01">
+        <span class="cut-id">S01</span><span class="cut-time">0:00–0:04</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">フック</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">不安げな表情で赤ちゃんを抱くママ（動画）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">夜泣き、発育… これで いいのかな？</p></div>
+      </div>
+    </article>
+    <article class="cut hook">
+      <div class="cut-shot"><img src="lien-images-v4/s02.jpg" alt="S02">
+        <span class="cut-id">S02</span><span class="cut-time">0:04–0:10</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">フック</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">不安の深掘り（動画）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">はじめての子育ては、わからないことばかり。</p></div>
+      </div>
+    </article>
+    <article class="cut affinity">
+      <div class="cut-shot"><img src="lien-images-v4/s03.jpg" alt="S03">
+        <span class="cut-id">S03</span><span class="cut-time">0:10–0:15</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-affinity">共感</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">来店・カウンセリング（諏訪様のお写真を参考に生成・動画）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ベビーマッサージサロン Lien</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="lien-images-v4/s04.jpg" alt="S04">
+        <span class="cut-id">S04</span><span class="cut-time">0:15–0:20</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">解決</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">和室での施術シーン（先生は諏訪様のお写真を参考に生成・動画）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ご夫婦で、ふれあい時間</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="lien-images-v4/s05.jpg" alt="S05">
+        <span class="cut-id">S05</span><span class="cut-time">0:20–0:23</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">解決</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">安堵の表情（動画）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">話を聞いてもらえる 安心感。</p></div>
+      </div>
+    </article>
+    <article class="cut hook">
+      <div class="cut-shot"><img src="lien-images-v4/s06.jpg" alt="S06">
+        <span class="cut-id">S06</span><span class="cut-time">0:23–0:27</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-hook">フック（家族）</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">4人家族の朝・きょうだいの嫉妬（動画）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">きょうだいが、寂しくなる日も。</p></div>
+      </div>
+    </article>
+    <article class="cut affinity">
+      <div class="cut-shot"><img src="lien-images-v4/s07.jpg" alt="S07">
+        <span class="cut-id">S07</span><span class="cut-time">0:27–0:32</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-affinity">共感（家族）</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">家族でLienへ・きょうだい参加（動画）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">きょうだいも 一緒に！</p></div>
+      </div>
+    </article>
+    <article class="cut solution">
+      <div class="cut-shot"><img src="lien-images-v4/s08.jpg" alt="S08">
+        <span class="cut-id">S08</span><span class="cut-time">0:32–0:37</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-solution">解決（家族）</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">お姉ちゃんの笑顔・人形で練習（動画）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">お人形で お世話体験！</p></div>
+      </div>
+    </article>
+    <article class="cut offer">
+      <div class="cut-shot"><img src="lien-images-v4/s09.jpg" alt="S09">
+        <span class="cut-id">S09</span><span class="cut-time">0:37–0:43</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-offer">講座</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">講師2名による実技指導（諏訪様のお写真を参考に生成・動画）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">講師育成講座 開講中！</p></div>
+      </div>
+    </article>
+    <article class="cut offer">
+      <div class="cut-shot"><img src="lien-images-v4/s10.jpg" alt="S10">
+        <span class="cut-id">S10</span><span class="cut-time">0:43–0:47</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-offer">メニュー</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">おくるみタッチケア（動画）</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">おくるみ タッチケア教室</p></div>
+      </div>
+    </article>
+    <article class="cut offer">
+      <div class="cut-shot"><img src="lien-images-v4/s10b.jpg" alt="S10b">
+        <span class="cut-id">S10b</span><span class="cut-time">0:47–0:52</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-offer">メニュー【追加】</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">先生がおくるみの基本巻きを実演（手前の布を胸へかけて脇へ折り込む）。先生は諏訪様のお写真を参考に生成・動画</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">おくるみの巻き方や 新生児期の接し方</p></div>
+      </div>
+    </article>
+    <article class="cut offer">
+      <div class="cut-shot"><img src="lien-images-v4/s10c.jpg" alt="S10c">
+        <span class="cut-id">S10c</span><span class="cut-time">0:52–0:57</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-offer">メニュー【追加】</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">妊婦さんが人形で巻き方を練習（下の角を肩まで持ち上げる）。先生が手を添えて指導・動画</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">産まれてすぐ役立つ方法を 妊娠中から学べます</p></div>
+      </div>
+    </article>
+    <article class="cut action">
+      <div class="cut-shot"><img src="lien-images-v4/s11.jpg" alt="S11">
+        <span class="cut-id">S11</span><span class="cut-time">0:57–1:01</span></div>
+      <div class="cut-body">
+        <div class="cut-meta"><span class="tag tag-action">行動</span><span class="src">素材 AI生成</span></div>
+        <p style="margin:0 0 12px;font-size:13px;color:var(--sub)">エンドカード：店舗情報＋公式LINE QR＋Instagram QR</p>
+        <div class="line"><span class="lbl lbl-t">テロップ</span><p class="telop">ご予約・ご相談は 公式LINEから</p></div>
+      </div>
+    </article>
+</div>
+
+<h2>3. この画像について<span class="en">GENERATED</span></h2>
+<div class="box warn">
+  <h3>すべてAIで生成した映像です</h3>
+  <p>講師役は諏訪様ご本人のお写真を参考に、諏訪様らしさが伝わるよう生成しています。
+  生徒様・ご家族・妊婦さんはオリジナルの人物として生成しており、実在の方の顔はそのまま描いていません。</p>
+</div>
+
+<h2>4. ご確認いただきたいこと<span class="en">CHECK</span></h2>
+<div class="box">
+  <ul class="chk">
+    <li>S10b・S10cのおくるみの手順・見せ方（「ここはこう見せたい」があればカット番号と一緒にお知らせください）</li>
+    <li>S11のご案内文「ご予約・ご相談は 公式LINEから」と、LINE／Instagramの並びはこの形でよいか</li>
+    <li>尺が61秒になっています。掲載先の都合で60秒以内が必要な場合はお知らせください</li>
+  </ul>
+</div>
+
+<footer>Lien（リアン）様 動画構成案 v4（おくるみ説明追加・公式LINE案内版）／2026-10-15 作成<br>
+株式会社ランバード｜AI動画制作</footer>
+</div></body></html>
