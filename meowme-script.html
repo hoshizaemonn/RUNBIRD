@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Meow&amp;me 構成台本</title>
+<style>
+:root{
+  --bg:#faf7f2; --panel:#ffffff; --ink:#2b2622; --muted:#6f655c;
+  --line:#e7dfd4; --accent:#b0662f; --accent-soft:#f6eadf;
+  --warn:#a8442f; --warn-soft:#fbece7;
+  --real:#a8442f; --real-soft:#fbece7; --mix:#7a5a12; --mix-soft:#f8f0d8; --ai:#2f6f55; --ai-soft:#e3f2ea;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1a1714; --panel:#24201c; --ink:#efe8e1; --muted:#b3a89c;
+    --line:#3a332c; --accent:#e9a46c; --accent-soft:#3a2c20;
+    --warn:#ef9a86; --warn-soft:#3a2420;
+    --real:#ef9a86; --real-soft:#3a2420; --mix:#e7c96a; --mix-soft:#3a3120; --ai:#7fd1ad; --ai-soft:#1f3329;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1a1714; --panel:#24201c; --ink:#efe8e1; --muted:#b3a89c;
+  --line:#3a332c; --accent:#e9a46c; --accent-soft:#3a2c20;
+  --warn:#ef9a86; --warn-soft:#3a2420;
+  --real:#ef9a86; --real-soft:#3a2420; --mix:#e7c96a; --mix-soft:#3a3120; --ai:#7fd1ad; --ai-soft:#1f3329;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+  line-height:1.75; -webkit-font-smoothing:antialiased; overflow-wrap:break-word; line-break:strict}
+p,li,dd,td,.tab span{text-wrap:pretty}
+.wrap{max-width:1040px; margin:0 auto; padding:0 16px 80px}
+header{padding:48px 0 28px; border-bottom:1px solid var(--line); margin-bottom:28px}
+.eyebrow{font-size:.8rem; letter-spacing:.14em; color:var(--accent); font-weight:700; margin:0 0 10px}
+h1{font-size:clamp(1.45rem,4.6vw,2.2rem); margin:0 0 12px; line-height:1.4}
+.nb{display:inline-block}
+.meta{color:var(--muted); font-size:.9rem; margin:0}
+.badge{display:inline-block; background:var(--warn-soft); color:var(--warn); border:1px solid currentColor;
+  border-radius:999px; padding:4px 13px; font-size:.78rem; font-weight:700; margin-top:14px}
+h2{font-size:1.2rem; margin:44px 0 12px; padding-bottom:8px; border-bottom:2px solid var(--accent-soft)}
+p{margin:0 0 14px}
+a{color:var(--accent)}
+.lead{font-size:1rem}
+.meta2{color:var(--muted); font-size:.88rem; margin:-4px 0 10px}
+.pill{display:inline-block; font-size:.72rem; font-weight:700; vertical-align:middle; margin-left:6px;
+  background:var(--accent); color:var(--bg); border-radius:999px; padding:2px 10px}
+.note{background:var(--panel); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; padding:14px 16px; margin:0 0 18px}
+.note.warn{border-left-color:var(--warn); background:var(--warn-soft)}
+.note p:last-child,.note ul:last-child,.note ol:last-child{margin-bottom:0}
+.note ul,.note ol{margin:0; padding-left:1.3em}
+.tablewrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 0 18px; max-width:100%}
+table{border-collapse:collapse; width:100%; font-size:.88rem; background:var(--panel)}
+th,td{border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top}
+thead th{background:var(--accent-soft); white-space:nowrap}
+tbody th{background:var(--accent-soft); white-space:nowrap}
+table.cmp{min-width:640px}
+table.ov td.no{color:var(--muted); text-align:right; width:2.4em}
+table.ov td.sec{white-space:nowrap; color:var(--muted); font-variant-numeric:tabular-nums}
+table.ask{min-width:600px}
+table.ov{min-width:620px}
+table.ask td:first-child,table.ask th:first-child,table.ov td.no{white-space:nowrap; width:2.6em}
+.hint{display:none; font-size:.78rem; color:var(--muted); margin:0 0 6px; text-align:right}
+@media (max-width:700px){ .hint{display:block} }
+.nb2{white-space:nowrap}
+.mat{display:inline-block; font-size:.74rem; font-weight:700; border-radius:5px; padding:1px 8px; white-space:nowrap}
+.m-real{background:var(--real-soft); color:var(--real)}
+.m-mix{background:var(--mix-soft); color:var(--mix)}
+.m-ai{background:var(--ai-soft); color:var(--ai)}
+.tabs{position:sticky; top:0; z-index:5; background:var(--bg); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px; padding:10px 0; margin-top:36px; border-bottom:1px solid var(--line)}
+.tab{font:inherit; font-weight:700; font-size:.95rem; color:var(--ink); background:var(--panel); border:1px solid var(--line);
+  border-radius:10px; padding:8px 6px; cursor:pointer; line-height:1.35; min-width:0}
+.tab span{display:block; font-weight:400; font-size:.74rem; color:var(--muted)}
+.tab[aria-selected="true"]{background:var(--accent); color:var(--bg); border-color:var(--accent)}
+.tab[aria-selected="true"] span{color:var(--bg)}
+.js .plan[hidden]{display:none}
+.cuts{display:grid; gap:16px}
+.cut{background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+  display:grid; grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){ .cut{grid-template-columns:minmax(0,400px) minmax(0,1fr)} }
+.cut figure{margin:0; position:relative; align-self:start}
+.cut img{display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover}
+.cut figcaption{position:absolute; left:8px; top:8px; font-size:.7rem; background:rgba(0,0,0,.6); color:#fff; padding:1px 8px; border-radius:4px}
+.info{padding:12px 14px 14px; min-width:0}
+.cid{font-weight:700; color:var(--accent); margin:0 0 6px; display:flex; flex-wrap:wrap; gap:4px 10px; align-items:center}
+.sec2{color:var(--muted); font-weight:400; font-size:.86rem; font-variant-numeric:tabular-nums}
+dl{margin:0; display:grid; grid-template-columns:6.2em minmax(0,1fr); gap:4px 10px; font-size:.88rem}
+dt{color:var(--muted)}
+dd{margin:0}
+dd.tl{font-weight:700}
+ol.why{padding-left:1.3em; margin:0 0 14px}
+footer{margin-top:56px; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:.84rem}
+
+.cut.txt{grid-template-columns:minmax(0,1fr) !important}
+.refs{display:grid; gap:14px; margin:0 0 18px}
+.ref{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 16px}
+.ref h3{font-size:.98rem; margin:0 0 6px}
+.ref ul{margin:0 0 6px; padding-left:1.3em; font-size:.9rem}
+.ref .lbl{font-size:.78rem; font-weight:700; color:var(--muted); margin:6px 0 2px}
+table.mat2{min-width:620px}
+
+.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="eyebrow">RUNBIRD ／ AI動画事業</p>
+  <h1><span class="nb">Meow&amp;me 唐津店</span> <span class="nb">1本目 構成台本</span> <span class="nb">2パターン</span></h1>
+  <p class="meta">実写ベースのハイブリッド型・店舗紹介・40〜55秒・16:9・Googleマップ／HP埋め込み用。メインは猫カフェ、プラスで「となりで食事ができる」</p>
+  <p class="badge">構成台本 v1（2026-10-16）</p>
+</header>
+
+<div class="note warn"><p>この台本は、公式HP（meowme.jp）とInstagram（@meow.me0827）から読み取った内容で作っています。猫の名前・営業時間・店名の表記は、鬼塚様に確認してから確定します。</p></div>
+
+<h2>2パターンの違い</h2>
+<p class="hint">表は横にスクロールできます →</p><div class="tablewrap"><table class="cmp">
+<thead><tr><th></th><th>パターン1　唐津の街から、店内へ</th><th>パターン2　いきなり店内の猫から</th></tr></thead>
+<tbody>
+<tr><th scope="row">尺・カット</th><td>約50秒・15カット</td><td>約46秒・14カット</td></tr>
+<tr><th scope="row">猫が出る秒数</th><td>3.0秒目（道路から見える小窓の猫）</td><td>0.0秒目</td></tr>
+<tr><th scope="row">冒頭</th><td>唐津の街 → 車で到着（3秒）→ 小窓の猫</td><td>店内の猫3匹 → 小窓の猫 → お客さんが入店</td></tr>
+<tr><th scope="row">伝わること</th><td>場所・行き方（バイパス沿い・駐車場）→ 猫カフェ → ごはん</td><td>猫カフェの楽しさ → 入り方 → ごはん</td></tr>
+<tr><th scope="row">強み</th><td>Googleマップで比べている人に「どこにあって、どう行くか」が伝わる。小窓の猫が目印になる</td><td>最初の3秒で離脱されにくい。猫好きにまっすぐ届く</td></tr>
+<tr><th scope="row">弱み・リスク</th><td>街・到着の撮影が増える。猫まで3秒かかる</td><td>場所・行き方の情報が少ない（エンドカード頼み）</td></tr>
+</tbody></table></div>
+
+<h2>参考3件から借りるところ</h2>
+<div class="refs">
+<div class="ref"><h3><a href="https://www.youtube.com/watch?v=by4mtZccTuY" target="_blank" rel="noopener">猫カフェMOCHA「猫と一緒に幸せなひと時を過ごしませんか？」（約115万回）</a></h3><p class="lbl">借りる</p><ul><li>2秒目で猫。入店の手順を1秒ずつのカット＋「#セルフ入場」「#スリッパ」のような短いラベルで見せる</li><li>部屋に入った瞬間の笑顔（18〜23秒）→ ごはんタイムで猫が並ぶ → 猫のアップ → ロゴで終わる</li><li>「〜しませんか？」「〜かも？」の押しつけない言い方</li></ul><p class="lbl">借りない・注意</p><ul><li>場所の情報が無い（Googleマップ・HP用には店名と「唐津」を最初と最後に出す）</li></ul></div>
+<div class="ref"><h3><a href="https://cotanchi.com/" target="_blank" rel="noopener">参考サイト cotanchi.com</a></h3><p class="lbl">借りる</p><ul><li>アクセスは「植田駅 徒歩3分」の文字＋地図だけで済ませている（駅から店までの写真の並びは無い）</li></ul><p class="lbl">借りない・注意</p><ul><li>トップ動画（109秒・テロップなし）は猫が49秒目まで出てこない。冒頭が遅すぎる</li><li>→ パターン1の「駅から店内へ」は、この店の実際の行き方（バイパス沿い・車）に合わせて作り直した</li></ul></div>
+<div class="ref"><h3><a href="https://www.instagram.com/reel/DeW0aNrh5pa/" target="_blank" rel="noopener">Instagramリール（@cat_stellata 横浜・43秒・縦）</a></h3><p class="lbl">借りる</p><ul><li>0〜1.4秒で駅の改札、1.4秒目で足元に猫が集まる真上からの画。街パートを2秒以内に収めている</li><li>顔を映さず手元だけで、あごをなでるアップを続ける</li><li>入店の順番（マット → 手洗い → おもちゃ → なでる → 膝 → まったり）を短く並べる</li></ul><p class="lbl">借りない・注意</p><ul><li>縦9:16の大きなテロップ、確認できない言い切り、店名が最後の2秒だけ、抱っこOKの見せ方</li></ul></div>
+</div>
+
+<h2>最寄り駅と行き方</h2>
+<div class="note"><ul><li>最寄りの駅は和多田駅（約1.24km・徒歩約16分）と唐津駅（約1.34km・徒歩約17分、駅前通り・アルピノ経由）。距離は地図データから計算したもの（実測・公式記載ではない）</li><li>HP・Instagram・食べログのどこにも「○○駅から徒歩○分」の記載は無い</li><li>お店は唐津バイパス（国道204号）沿いで、隣に駐車場がある＝車で来る店</li><li>そのため、パターン1は駅から歩く映像にせず「唐津の街 → 車で到着 → 小窓の猫」にした。駅名・徒歩分は動画に出さない</li></ul></div>
+
+<h2>HP・Instagramから分かったこと</h2>
+<div class="note"><ul><li>店名：HPの表記は「Meow&amp;me（ミャオ＆ミー）」。「猫カフェ&amp;カフェレスト」はInstagramの表示名だけ → テロップは「<span class="nb">Meow&amp;me 唐津店</span>」、前置きの言い方は要確認</li><li>お店の言葉：「<span class="nb">猫も人も、</span><span class="nb">心地よく。</span>」「ネコとヒトをつなぐカフェ」（HP）→ エンドカードの一言に使える</li><li>店の造り：カフェ側と猫スペースは分かれていて、食事をしながらガラス越しに猫を見られる（IG）</li><li>小窓：道路側の小窓に毎日猫が座る「本日の小窓猫ちゃん」（IG）→ この店だけの目印</li><li>猫：IGに ぐり（看板）・しま・ママタ（推定6歳）・チロ、HPに アサ・はな・いふ・にこ・ナトル・つむぎ・キジオ・ゆい → 今いる子を要確認</li><li>メニュー例（HP）：塩から揚げタルタル、ねばねばうどん満腹セット、海苔クリームパスタ、たまごサンド、ビーフシチューオムライス（夜限定）、ワッフル／フレンチトースト。テイクアウト可</li><li>猫カフェ特典（HP）：料理かデザートを頼むと猫カフェ料金が500円引き → 入れるなら要確認</li><li>営業時間：10/14のIG告知（月水・日・金土の夜カフェ／火木定休）とHPが違う → 動画に入れるなら本人確認</li><li>夜：月水日の19時以降は里親希望の方の予約制（IG）。今回の2パターンは昼の場面だけで作った（夜の猫は1歳以上のみ、の法規に触れないため）</li></ul></div>
+
+<div class="tabs" role="tablist" aria-label="パターンの切り替え" hidden>
+<button type="button" role="tab" class="tab" data-target="plan-p1" aria-selected="true">パターン1<span>唐津の街から、店内へ</span></button>
+<button type="button" role="tab" class="tab" data-target="plan-p2" aria-selected="false">パターン2<span>いきなり店内の猫から</span></button>
+</div>
+
+<section class="plan" id="plan-p1" aria-labelledby="h-p1">
+<h2 id="h-p1">パターン1　唐津の街から、店内へ</h2>
+<p class="meta2">15カット ／ 約50秒 ／ 16:9 ／ 猫が出るのは3.0秒</p>
+<p class="lead">唐津の街 → バイパス沿いに車で到着 → 道路から見える小窓の猫 → 入口 → カフェ側でドリンク → ガラスの向こうの猫たち → 最後に「となりのカフェで、ごはんも」。来店までの道のりを見せて、初めての人が迷わず来られるようにする。</p>
+<div class="note"><p>街と到着の部分は3秒（2カット）、入口まで含めて8秒以内。猫が出るのは3.0秒目（小窓の猫）。</p></div>
+<div class="note warn"><p>別案（参考）：文字どおり「唐津駅から歩いて店内へ」にもできる。ただし徒歩16〜17分の道のりを数秒に縮めると「駅から近い」と受け取られ、実際の行き方とずれる。猫が出るまでも長くなる（駅・道・交差点で5〜8秒）。おすすめしない。やるなら「唐津駅から車で約○分」と鬼塚様に確認した数字を出す</p></div>
+<p class="hint">表は横にスクロールできます →</p><div class="tablewrap"><table class="ov"><thead><tr><th>No</th><th>秒</th><th>映像</th><th>テロップ</th></tr></thead><tbody>
+<tr><td class="no">1</td><td class="sec">0.0–1.5</td><td>唐津の街（唐津城・駅前通り・曳山など唐津らしい景色を1カット）</td><td>佐賀・唐津</td></tr>
+<tr><td class="no">2</td><td class="sec">1.5–3.0</td><td>バイパス沿いの店の前に車で着く。隣の駐車場に止める（車の外観だけ、人の顔は映さない）</td><td>バイパス沿い・駐車場あり</td></tr>
+<tr><td class="no">3</td><td class="sec">3.0–6.0</td><td>道路側の小窓に座っている猫を、外から寄って撮る（3.0秒目で猫が出る）</td><td>本日の小窓猫ちゃん／<span class="nb">唐津の保護猫カフェ</span>　<span class="nb">Meow&amp;me 唐津店</span></td></tr>
+<tr><td class="no">4</td><td class="sec">6.0–8.0</td><td>入口の扉を開ける手元</td><td>—</td></tr>
+<tr><td class="no">5</td><td class="sec">8.0–10.5</td><td>カフェ側のカウンターで<span class="nb">ドリンクを</span>注文・受け取る手元</td><td>① まずはカフェ側で<span class="nb">ドリンクを</span></td></tr>
+<tr><td class="no">6</td><td class="sec">10.5–13.5</td><td>ガラス越しに猫スペースが見える → ガラス扉を開ける</td><td>② ガラスの向こうへ</td></tr>
+<tr><td class="no">7</td><td class="sec">13.5–17.0</td><td>床の上の猫たちが足元に集まってくる（真上から）</td><td>—</td></tr>
+<tr><td class="no">8</td><td class="sec">17.0–21.0</td><td>看板猫のアップ（例：ぐり）</td><td>看板猫 ぐり｜（性格）</td></tr>
+<tr><td class="no">9</td><td class="sec">21.0–24.5</td><td>2匹目のアップ（例：ママタ）</td><td>ママタ｜（性格）</td></tr>
+<tr><td class="no">10</td><td class="sec">24.5–28.5</td><td>しゃがんで猫のあごをなでる手元（顔は映さない）</td><td>ゆっくり、まったり。</td></tr>
+<tr><td class="no">11</td><td class="sec">28.5–32.0</td><td>トンネルで遊ぶ灰色長毛の猫</td><td>—</td></tr>
+<tr><td class="no">12</td><td class="sec">32.0–36.5</td><td>カフェ側のテーブルに料理（例：塩から揚げタルタル／ビーフシチューオムライス）</td><td>となりのカフェで、<span class="nb">ごはんも。</span></td></tr>
+<tr><td class="no">13</td><td class="sec">36.5–39.5</td><td>カフェ席からガラスの向こうの猫を眺める（テーブルは空 or 飲み物だけ）</td><td>ガラス越しに、猫を<span class="nb">ながめながら</span></td></tr>
+<tr><td class="no">14</td><td class="sec">39.5–42.0</td><td>テイクアウトの包み</td><td><span class="nb">テイクアウトも</span>OK</td></tr>
+<tr><td class="no">15</td><td class="sec">42.0–50.0</td><td>エンドカード（昼の外観＋文字）</td><td><span class="nb">Meow&amp;me 唐津店</span>／<span class="nb">猫も人も、</span><span class="nb">心地よく。</span>／佐賀県<span class="nb">唐津市町田</span>／Instagram @meow.me0827／Googleマップで「Meow&amp;me 唐津」</td></tr>
+</tbody></table></div><div class="cuts">
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-1<span class="sec2">0.0–1.5秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>唐津の街（唐津城・駅前通り・曳山など唐津らしい景色を1カット）</dd>
+      <dt>テロップ</dt><dd class="tl">佐賀・唐津</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要（またはライセンス済みの写真・映像）</dd>
+      <dt>注意</dt><dd>実在の名所はAIで作らない。曳山を使うなら写真の権利を確認</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-2<span class="sec2">1.5–3.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>バイパス沿いの店の前に車で着く。隣の駐車場に止める（車の外観だけ、人の顔は映さない）</dd>
+      <dt>テロップ</dt><dd class="tl">バイパス沿い・駐車場あり</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要／IGリール DeV_BFDguLr／Deif3LcglTc／DeYNxYEg0OD（外観・縦9:16）は構図の参考</dd>
+      <dt>注意</dt><dd>駐車台数（HP「最大6台」）は確認してから入れるか決める</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-3<span class="sec2">3.0–6.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>道路側の小窓に座っている猫を、外から寄って撮る（3.0秒目で猫が出る）</dd>
+      <dt>テロップ</dt><dd class="tl">本日の小窓猫ちゃん／<span class="nb">唐津の保護猫カフェ</span>　<span class="nb">Meow&amp;me 唐津店</span></dd>
+      <dt>ナレーション</dt><dd>（任意）<span class="nb">唐津の保護猫カフェ</span>、Meow&amp;me</dd>
+      <dt>素材</dt><dd>IGリール DeYNxYEg0OD の6〜11秒／Deif3LcglTc の11〜16秒（小窓の猫・縦9:16）（縦なので横で撮り直すのが理想）</dd>
+      <dt>注意</dt><dd>この店ならではの「小窓の猫」を街パートの終わりに置き、ここから猫が主役。3.0秒目で猫・店名・場所がそろう</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-4<span class="sec2">6.0–8.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>入口の扉を開ける手元</dd>
+      <dt>テロップ</dt><dd class="tl">—</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>街〜入口までで8秒以内に収める</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-5<span class="sec2">8.0–10.5秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>カフェ側のカウンターで<span class="nb">ドリンクを</span>注文・受け取る手元</dd>
+      <dt>テロップ</dt><dd class="tl">① まずはカフェ側で<span class="nb">ドリンクを</span></dd>
+      <dt>ナレーション</dt><dd>（任意）まずはカフェ側で、<span class="nb">ドリンクを</span></dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>スタッフの顔は映さない（加工も可）</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-6<span class="sec2">10.5–13.5秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>ガラス越しに猫スペースが見える → ガラス扉を開ける</dd>
+      <dt>テロップ</dt><dd class="tl">② ガラスの向こうへ</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>ガラス仕切りはこの店の造りそのもの。AIで作ると実物と違う</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-7<span class="sec2">13.5–17.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>床の上の猫たちが足元に集まってくる（真上から）</dd>
+      <dt>テロップ</dt><dd class="tl">—</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>参考リールの「足元に集まる俯瞰」を借りる</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-8<span class="sec2">17.0–21.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>看板猫のアップ（例：ぐり）</dd>
+      <dt>テロップ</dt><dd class="tl">看板猫 ぐり｜（性格）</dd>
+      <dt>ナレーション</dt><dd>（任意）看板猫のぐり</dd>
+      <dt>素材</dt><dd>新規撮影が必要（IGの猫写真は参考）</dd>
+      <dt>注意</dt><dd>名前は在籍を確認してから（IGとHPで猫の名前が違う）。譲渡が近い子は避ける。子猫のアップを続けない</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-9<span class="sec2">21.0–24.5秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>2匹目のアップ（例：ママタ）</dd>
+      <dt>テロップ</dt><dd class="tl">ママタ｜（性格）</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>名前は在籍を確認してから（IGとHPで猫の名前が違う）。譲渡が近い子は避ける。子猫のアップを続けない</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-10<span class="sec2">24.5–28.5秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>しゃがんで猫のあごをなでる手元（顔は映さない）</dd>
+      <dt>テロップ</dt><dd class="tl">ゆっくり、まったり。</dd>
+      <dt>ナレーション</dt><dd>（任意）ゆっくり、まったり</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>抱っこはしない（店のルール：無理な抱っこ禁止）</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-11<span class="sec2">28.5–32.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>トンネルで遊ぶ灰色長毛の猫</dd>
+      <dt>テロップ</dt><dd class="tl">—</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>HPトップ動画（kv_pc.mp4・横1920×1080・約14秒：青いトンネルの灰色長毛猫）（そのまま使える横の実写）</dd>
+      <dt>注意</dt><dd>在籍しているかを確認</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-12<span class="sec2">32.0–36.5秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>カフェ側のテーブルに料理（例：塩から揚げタルタル／ビーフシチューオムライス）</dd>
+      <dt>テロップ</dt><dd class="tl">となりのカフェで、<span class="nb">ごはんも。</span></dd>
+      <dt>ナレーション</dt><dd>（任意）となりのカフェで、ごはんも</dd>
+      <dt>素材</dt><dd>新規撮影が必要（料理の実写）＋AI補完（湯気・寄りの動き）</dd>
+      <dt>注意</dt><dd>猫と料理を同じ画に入れない（カフェ側だけで撮る）。オムライスは夜限定なので昼の流れに入れるなら別メニューに</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-13<span class="sec2">36.5–39.5秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>カフェ席からガラスの向こうの猫を眺める（テーブルは空 or 飲み物だけ）</dd>
+      <dt>テロップ</dt><dd class="tl">ガラス越しに、猫を<span class="nb">ながめながら</span></dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>テーブルに料理を置かない。猫は奥に小さく</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-14<span class="sec2">39.5–42.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>テイクアウトの包み</dd>
+      <dt>テロップ</dt><dd class="tl"><span class="nb">テイクアウトも</span>OK</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要＋AI補完（背景を整える）</dd>
+      <dt>注意</dt><dd>HPの /takeout/ ページは別の店のテンプレートの残り。使わない</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン1-15<span class="sec2">42.0–50.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>エンドカード（昼の外観＋文字）</dd>
+      <dt>テロップ</dt><dd class="tl"><span class="nb">Meow&amp;me 唐津店</span>／<span class="nb">猫も人も、</span><span class="nb">心地よく。</span>／佐賀県<span class="nb">唐津市町田</span>／Instagram @meow.me0827／Googleマップで「Meow&amp;me 唐津」</dd>
+      <dt>ナレーション</dt><dd>（任意）<span class="nb">唐津の保護猫カフェ</span>、Meow&amp;me</dd>
+      <dt>素材</dt><dd>新規撮影が必要＋AI補完（背景を整える）</dd>
+      <dt>注意</dt><dd>ロゴは先方支給データをそのまま使う。営業時間・料金は確認後に入れるか決める。下部に動物取扱業の登録表示枠（登録証確認後に記入）。電話・番地は入れない</dd>
+    </dl>
+  </div>
+</article>
+</div></section>
+<section class="plan" id="plan-p2" aria-labelledby="h-p2">
+<h2 id="h-p2">パターン2　いきなり店内の猫から</h2>
+<p class="meta2">14カット ／ 約46秒 ／ 16:9 ／ 猫が出るのは0.0秒</p>
+<p class="lead">0秒目から店内の猫たち → 小窓の猫 → お客さんが入ってくる（カフェ側でドリンク → ガラスの向こうへ）→ 猫と遊ぶ・まったりする → 最後に「となりのカフェで、ごはんも」。</p>
+<div class="note"><p>猫が出るのは0.0秒目。入店の手順は1カット2秒でテンポよく見せる。</p></div>
+<p class="hint">表は横にスクロールできます →</p><div class="tablewrap"><table class="ov"><thead><tr><th>No</th><th>秒</th><th>映像</th><th>テロップ</th></tr></thead><tbody>
+<tr><td class="no">1</td><td class="sec">0.0–2.0</td><td>トンネルから顔を出す灰色長毛の猫（0秒目から猫）</td><td><span class="nb">唐津の保護猫カフェ</span>　<span class="nb">Meow&amp;me 唐津店</span>（0.3秒〜）</td></tr>
+<tr><td class="no">2</td><td class="sec">2.0–4.5</td><td>看板猫のアップ（例：ぐり）</td><td>看板猫 ぐり｜（性格）</td></tr>
+<tr><td class="no">3</td><td class="sec">4.5–7.0</td><td>2匹目のアップ（例：ママタ）</td><td>ママタ｜（性格）</td></tr>
+<tr><td class="no">4</td><td class="sec">7.0–9.0</td><td>道路側の小窓に座る猫（中から外を見ている）</td><td>本日の小窓猫ちゃん</td></tr>
+<tr><td class="no">5</td><td class="sec">9.0–11.0</td><td>お客さんが入口の扉を開けて入ってくる（足元・手元）</td><td>ご来店は、カフェ側から</td></tr>
+<tr><td class="no">6</td><td class="sec">11.0–13.0</td><td>カフェ側カウンターで<span class="nb">ドリンクを</span>注文</td><td>① <span class="nb">ドリンクを</span>注文</td></tr>
+<tr><td class="no">7</td><td class="sec">13.0–15.0</td><td>ガラス扉の前で手を消毒 → 扉を開ける</td><td>② ガラスの向こうの<span class="nb">猫スペースへ</span></td></tr>
+<tr><td class="no">8</td><td class="sec">15.0–19.0</td><td>扉を開けた瞬間、猫が足元に寄ってくる。思わず笑顔（後ろ姿か顔加工）</td><td>—</td></tr>
+<tr><td class="no">9</td><td class="sec">19.0–23.0</td><td>猫じゃらしで遊ぶ</td><td>あそんだり、</td></tr>
+<tr><td class="no">10</td><td class="sec">23.0–27.0</td><td>床に座って、隣に来た猫をなでる（抱っこはしない）</td><td>まったりしたり。</td></tr>
+<tr><td class="no">11</td><td class="sec">27.0–30.0</td><td>窓辺で寝ている猫</td><td>—</td></tr>
+<tr><td class="no">12</td><td class="sec">30.0–35.0</td><td>カフェ側のテーブルに料理（例：ねばねばうどん満腹セット／塩から揚げタルタル）</td><td>となりのカフェで、<span class="nb">ごはんも。</span></td></tr>
+<tr><td class="no">13</td><td class="sec">35.0–38.0</td><td>テイクアウトの包み</td><td><span class="nb">テイクアウトも</span>OK</td></tr>
+<tr><td class="no">14</td><td class="sec">38.0–46.0</td><td>エンドカード（昼の外観＋文字）</td><td><span class="nb">Meow&amp;me 唐津店</span>／<span class="nb">猫も人も、</span><span class="nb">心地よく。</span>／佐賀県<span class="nb">唐津市町田</span>／Instagram @meow.me0827／Googleマップで「Meow&amp;me 唐津」</td></tr>
+</tbody></table></div><div class="cuts">
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-1<span class="sec2">0.0–2.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>トンネルから顔を出す灰色長毛の猫（0秒目から猫）</dd>
+      <dt>テロップ</dt><dd class="tl"><span class="nb">唐津の保護猫カフェ</span>　<span class="nb">Meow&amp;me 唐津店</span>（0.3秒〜）</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>HPトップ動画（kv_pc.mp4・横1920×1080・約14秒：青いトンネルの灰色長毛猫）</dd>
+      <dt>注意</dt><dd>2秒目までに店名と「唐津」を出す</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-2<span class="sec2">2.0–4.5秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>看板猫のアップ（例：ぐり）</dd>
+      <dt>テロップ</dt><dd class="tl">看板猫 ぐり｜（性格）</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>名前は在籍を確認してから（IGとHPで猫の名前が違う）。譲渡が近い子は避ける。子猫のアップを続けない</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-3<span class="sec2">4.5–7.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>2匹目のアップ（例：ママタ）</dd>
+      <dt>テロップ</dt><dd class="tl">ママタ｜（性格）</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>名前は在籍を確認してから（IGとHPで猫の名前が違う）。譲渡が近い子は避ける。子猫のアップを続けない</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-4<span class="sec2">7.0–9.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>道路側の小窓に座る猫（中から外を見ている）</dd>
+      <dt>テロップ</dt><dd class="tl">本日の小窓猫ちゃん</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>IGリール DeYNxYEg0OD の6〜11秒／Deif3LcglTc の11〜16秒（小窓の猫・縦9:16）（縦なので横で撮り直すのが理想）</dd>
+      <dt>注意</dt><dd>この店ならではの場面</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-5<span class="sec2">9.0–11.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>お客さんが入口の扉を開けて入ってくる（足元・手元）</dd>
+      <dt>テロップ</dt><dd class="tl">ご来店は、カフェ側から</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>ここから「人が入る」パート。顔は映さないか加工</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-6<span class="sec2">11.0–13.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>カフェ側カウンターで<span class="nb">ドリンクを</span>注文</dd>
+      <dt>テロップ</dt><dd class="tl">① <span class="nb">ドリンクを</span>注文</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>MOCHAの「1秒ずつの入店手順」を借りる</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-7<span class="sec2">13.0–15.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>ガラス扉の前で手を消毒 → 扉を開ける</dd>
+      <dt>テロップ</dt><dd class="tl">② ガラスの向こうの<span class="nb">猫スペースへ</span></dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>手洗い・消毒の手順が実際にあるか確認</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-8<span class="sec2">15.0–19.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>扉を開けた瞬間、猫が足元に寄ってくる。思わず笑顔（後ろ姿か顔加工）</dd>
+      <dt>テロップ</dt><dd class="tl">—</dd>
+      <dt>ナレーション</dt><dd>（任意）わぁ…</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>MOCHAの「入った瞬間の笑顔」と参考リールの「足元に集まる俯瞰」を借りる</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-9<span class="sec2">19.0–23.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>猫じゃらしで遊ぶ</dd>
+      <dt>テロップ</dt><dd class="tl">あそんだり、</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>—</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-10<span class="sec2">23.0–27.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>床に座って、隣に来た猫をなでる（抱っこはしない）</dd>
+      <dt>テロップ</dt><dd class="tl">まったりしたり。</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>抱っこはしない（店のルール：無理な抱っこ禁止）</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-11<span class="sec2">27.0–30.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>窓辺で寝ている猫</dd>
+      <dt>テロップ</dt><dd class="tl">—</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要</dd>
+      <dt>注意</dt><dd>名前は在籍を確認してから（IGとHPで猫の名前が違う）。譲渡が近い子は避ける。子猫のアップを続けない</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-12<span class="sec2">30.0–35.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>カフェ側のテーブルに料理（例：ねばねばうどん満腹セット／塩から揚げタルタル）</dd>
+      <dt>テロップ</dt><dd class="tl">となりのカフェで、<span class="nb">ごはんも。</span></dd>
+      <dt>ナレーション</dt><dd>（任意）となりのカフェで、ごはんも</dd>
+      <dt>素材</dt><dd>新規撮影が必要（料理の実写）＋AI補完（湯気・寄りの動き）</dd>
+      <dt>注意</dt><dd>猫と料理を同じ画に入れない（カフェ側だけで撮る）</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-13<span class="sec2">35.0–38.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>テイクアウトの包み</dd>
+      <dt>テロップ</dt><dd class="tl"><span class="nb">テイクアウトも</span>OK</dd>
+      <dt>ナレーション</dt><dd>—</dd>
+      <dt>素材</dt><dd>新規撮影が必要＋AI補完（背景を整える）</dd>
+      <dt>注意</dt><dd>HPの /takeout/ ページは別の店のテンプレートの残り。使わない</dd>
+    </dl>
+  </div>
+</article>
+<article class="cut txt">
+  <div class="info">
+    <p class="cid">パターン2-14<span class="sec2">38.0–46.0秒</span></p>
+    <dl>
+      <dt>映像</dt><dd>エンドカード（昼の外観＋文字）</dd>
+      <dt>テロップ</dt><dd class="tl"><span class="nb">Meow&amp;me 唐津店</span>／<span class="nb">猫も人も、</span><span class="nb">心地よく。</span>／佐賀県<span class="nb">唐津市町田</span>／Instagram @meow.me0827／Googleマップで「Meow&amp;me 唐津」</dd>
+      <dt>ナレーション</dt><dd>（任意）<span class="nb">唐津の保護猫カフェ</span>、Meow&amp;me</dd>
+      <dt>素材</dt><dd>新規撮影が必要＋AI補完（背景を整える）</dd>
+      <dt>注意</dt><dd>ロゴは先方支給データをそのまま使う。営業時間・料金は確認後に入れるか決める。下部に動物取扱業の登録表示枠（登録証確認後に記入）。電話・番地は入れない</dd>
+    </dl>
+  </div>
+</article>
+</div></section>
+
+<h2>HP・Instagramで使えそうな素材</h2>
+<p class="hint">表は横にスクロールできます →</p><div class="tablewrap"><table class="mat2">
+<thead><tr><th>度合い</th><th>素材</th><th>中身</th><th>使い方</th></tr></thead>
+<tbody>
+<tr><td class="no">◎</td><td>HPトップ動画 kv_pc.mp4</td><td>横1920×1080・約14秒。青いトンネルの灰色長毛猫</td><td>パターン1-11／パターン2-1にそのまま使える唯一の横の実写</td></tr>
+<tr><td class="no">○</td><td>IGリール DeYNxYEg0OD（6〜11秒）・Deif3LcglTc（11〜16秒）</td><td>小窓に座る猫</td><td>縦9:16・文字入り。構図の参考。横で撮り直すのが理想</td></tr>
+<tr><td class="no">△</td><td>IGリール DeV_BFDguLr／Deif3LcglTc／DeYNxYEg0OD</td><td>外観</td><td>縦・文字入り。外観の参考</td></tr>
+<tr><td class="no">△</td><td>IGリール DeY0pJPg-ny（0〜2秒）</td><td>店内</td><td>縦・文字入り。参考</td></tr>
+<tr><td class="no">△</td><td>IG投稿 Dedcdk6gB-2</td><td>営業時間・料金のお知らせ</td><td>事実確認用（映像には使わない）</td></tr>
+<tr><td class="no">×</td><td>料理・夜の店内・ガラス仕切り</td><td>IG・HPに使える映像が無い</td><td>新規撮影が必要</td></tr>
+</tbody></table></div>
+<p>Instagramのリールは縦（9:16）で文字が入っているため、横の動画にそのまま使うのは難しく、主に構図の参考にします。</p>
+
+<h2>全パターン共通の注意（法規・表現）</h2>
+<div class="note warn"><ul><li>夜（20〜22時）の場面には1歳以上の猫だけ（動物愛護管理法施行規則 第3条第2項第10号）。今回の2パターンは昼の場面だけで作っている</li><li>子猫の可愛さ・飼いやすさを過度に強調しない（基準省令 第2条第7号ケ(2)）</li><li>譲渡を「販売」に見せない。「お値段」「購入」は使わない</li><li>店にいない猫をAIで作って本番に使わない。AI補完は料理の湯気・背景の整えなどに限る</li><li>料理と猫を同じ画に入れない（カフェ側と猫側は分けて撮る）</li><li>エンドカードに動物取扱業の登録表示（氏名又は名称・事業所の名称と所在地・業の種別・登録番号・登録年月日と有効期間の末日・動物取扱責任者の氏名）の枠。登録証確認後に記入</li></ul></div>
+
+<h2>鬼塚様に追加でお願いする素材</h2>
+<p>撮影はスマホを<strong>横向き</strong>でお願いしたい（動画は16:9。縦の動画を横にすると上下が大きく切れる）。共有フォルダ（01〜06）に入れていただく想定です。</p>
+<p class="hint">表は横にスクロールできます →</p><div class="tablewrap"><table class="ask">
+<thead><tr><th>#</th><th>素材</th><th>使うカット</th><th>メモ</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>道路側の小窓に座る猫を、外から横向きで（5〜10秒）</td><td>両パターン（パターン1は3秒目）</td><td>いちばん大事な素材</td></tr>
+<tr><td>2</td><td>店の前・駐車場に車で着くところ（横向き）</td><td>パターン1-2</td><td>人の顔・ナンバーは映さない</td></tr>
+<tr><td>3</td><td>入口の扉を開けて入るところ（足元・手元）</td><td>両パターン</td><td></td></tr>
+<tr><td>4</td><td>カフェ側カウンターで<span class="nb">ドリンクを</span>注文・受け取る手元</td><td>両パターン</td><td>スタッフの顔は映さなくてOK</td></tr>
+<tr><td>5</td><td>ガラス越しの猫スペースと、ガラス扉を開けるところ</td><td>両パターン</td><td>手洗い・消毒の手順があればそれも</td></tr>
+<tr><td>6</td><td>扉を開けた瞬間、猫が足元に集まってくる画（できれば真上から）</td><td>両パターン</td><td>毎日の動画にあればそれで</td></tr>
+<tr><td>7</td><td>今いる猫の名前・年齢・性格の一覧と、1匹ずつのアップ（各5〜10秒）</td><td>両パターンの猫紹介</td><td>動画に出してよい子を3匹ほど。譲渡が近い子は避ける</td></tr>
+<tr><td>8</td><td>お客さん（またはスタッフ・ご協力者）が猫と遊ぶ・なでる場面</td><td>両パターン</td><td>顔は映さないか加工。お客様なら掲載の同意</td></tr>
+<tr><td>9</td><td>料理（塩から揚げタルタル等）とテイクアウトの包み</td><td>両パターン</td><td>猫が映らないカフェ側で</td></tr>
+<tr><td>10</td><td>昼の外観（看板が分かる画）</td><td>エンドカード</td><td></td></tr>
+<tr><td>11</td><td>HPトップ動画 kv_pc.mp4 の元データと、映っている猫の名前・在籍</td><td>両パターン</td><td>使ってよいかも確認</td></tr>
+<tr><td>12</td><td>唐津の街の写真・映像（唐津城・曳山など）を使うか</td><td>パターン1-1</td><td>権利の確認。こちらで撮影する案も</td></tr>
+<tr><td>13</td><td>ロゴデータ・動物取扱業の登録証の写し</td><td>エンドカード</td><td>ロゴは手を加えずに使います</td></tr>
+<tr><td>14</td><td>店名の表記（「猫カフェ&amp;カフェレスト」を付けるか）・営業時間・駐車台数・料金</td><td>テロップ・エンドカード</td><td>HP・IGで違いがあるため</td></tr>
+</tbody></table></div>
+
+<footer>
+  <p>作成：2026-10-16（構成台本 v1）。出典：公式HP meowme.jp／Instagram @meow.me0827／議事録 2026-10-13。絵コンテ（画像つき）は別ページ。</p>
+</footer>
+</div>
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var tabs = document.querySelectorAll('.tab');
+  var list = document.querySelector('.tabs');
+  list.hidden = false;
+  function show(id){
+    tabs.forEach(function(t){ t.setAttribute('aria-selected', t.dataset.target === id ? 'true' : 'false'); });
+    document.querySelectorAll('.plan').forEach(function(s){ s.hidden = s.id !== id; });
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){
+    show(t.dataset.target);
+    var y = list.getBoundingClientRect().top + window.scrollY;
+    if (window.scrollY > y) window.scrollTo(0, y);
+  }); });
+  var h = location.hash.replace('#','');
+  show(/^plan-p[12]$/.test(h) ? h : 'plan-p1');
+})();
+</script>
+</body>
+</html>
