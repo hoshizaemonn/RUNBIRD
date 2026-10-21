@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>OWL福祉 公式LINE リスト構築 図解</title>
+<style>
+:root{
+  --teal:#1aa5a0; --teal-l:#e6f6f5; --orange:#f08a1c; --orange-l:#fff3e3;
+  --navy:#14213d; --ink:#222; --muted:#64748b; --line:#e2e8f0; --bg:#faf6ef; --card:#fff;
+  --green:#27ae60; --green-l:#e9f8ef; --yellow:#d9a400; --yellow-l:#fff8d6; --red:#dc2626; --red-l:#fde8e8;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"Hiragino Kaku Gothic ProN","Hiragino Sans",sans-serif;line-height:1.75;color:var(--ink);background:var(--bg);padding:24px 16px 80px}
+.wrap{max-width:1040px;margin:0 auto}
+header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+header img{height:34px;width:auto}
+h1{font-size:22px;margin:0;color:var(--navy);line-height:1.4}
+.sub{color:var(--muted);font-size:13px;margin:4px 0 24px}
+h2{font-size:18px;color:var(--navy);border-left:6px solid var(--orange);padding-left:12px;margin:48px 0 14px}
+h3{font-size:15px;margin:18px 0 8px;color:var(--navy)}
+p{margin:6px 0}
+.lead{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:15px}
+.lead strong{color:var(--orange)}
+.note{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;vertical-align:middle;margin-left:6px}
+.ok{background:var(--green-l);color:var(--green)}
+.make{background:var(--yellow-l);color:#9a7400}
+.ask{background:var(--red-l);color:var(--red)}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:14px 0 6px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 10px;position:relative;text-align:center}
+.step .n{display:inline-block;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-weight:900;font-size:13px;line-height:26px;margin-bottom:6px}
+.step .t{font-weight:800;font-size:14px;color:var(--navy);line-height:1.35}
+.step .d{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5}
+.step.hot{border:2px solid var(--orange);background:var(--orange-l)}
+.step:not(:last-child)::after{content:"▶";position:absolute;right:-13px;top:50%;transform:translateY(-50%);color:var(--orange);font-size:14px}
+.stock{margin-top:14px;background:var(--navy);color:#fff;border-radius:12px;padding:14px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.stock .big{font-size:18px;font-weight:900}
+.stock .s{font-size:13px;opacity:.9}
+
+/* two-tier */
+.tier{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tier>div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.tier h3{margin-top:0}
+.tier ul{margin:6px 0 0;padding-left:18px;font-size:14px}
+
+/* gift cards */
+.gifts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gift{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:6px}
+.gift .num{font-size:12px;font-weight:900;color:var(--orange);letter-spacing:.08em}
+.gift .name{font-weight:800;font-size:15px;color:var(--navy);line-height:1.4}
+.gift .what{font-size:13px}
+.gift .src{font-size:12px;color:var(--muted);border-top:1px dashed var(--line);padding-top:6px;margin-top:auto}
+.gift.when{border-top:4px solid var(--teal)}
+.gift.menu{border-top:4px solid var(--orange)}
+.legend{font-size:12px;color:var(--muted);margin:8px 0 0}
+
+/* phone mocks */
+.phones{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.phone{background:#111;border-radius:28px;padding:12px;max-width:360px;margin:0 auto;width:100%}
+.screen{background:#fff;border-radius:18px;overflow:hidden;font-size:12.5px;line-height:1.55}
+.yt-video{background:#000;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+.yt-title{padding:10px 12px 4px;font-weight:800;font-size:14px;line-height:1.4}
+.yt-meta{padding:0 12px;color:#666;font-size:11px}
+.yt-desc{margin:8px 12px 12px;background:#f2f2f2;border-radius:10px;padding:10px 12px;white-space:pre-wrap;font-size:12px}
+.yt-desc .hl{background:#fff2cc;border-radius:3px}
+.yt-desc .more{color:#555;font-weight:700;margin-top:4px}
+.yt-pin{margin:0 12px 12px;border:1px solid #ddd;border-radius:10px;padding:8px 10px;font-size:11.5px}
+.yt-pin .lbl{color:#777;font-size:10px}
+.ln-head{background:#2a3a4a;color:#fff;padding:10px 12px;font-weight:700;font-size:13px}
+.ln-body{background:#8caed6;padding:12px 10px;display:flex;flex-direction:column;gap:8px;min-height:360px}
+.bub{background:#fff;border-radius:14px;padding:8px 11px;max-width:88%;font-size:12px;white-space:pre-wrap}
+.bub .lnk{color:#1a73e8;text-decoration:underline}
+.rich{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:#fff;padding:6px}
+.rich div{background:var(--teal-l);border:1px solid var(--teal);color:var(--navy);border-radius:8px;text-align:center;font-size:11px;font-weight:700;padding:14px 4px;line-height:1.3}
+.rich div.o{background:var(--orange-l);border-color:var(--orange)}
+.caption{text-align:center;font-size:13px;color:var(--muted);margin-top:8px}
+
+/* step mail */
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.day{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 8px;font-size:12px}
+.day b{display:block;color:var(--orange);font-size:12px;margin-bottom:4px}
+.day .cta{display:inline-block;margin-top:6px;background:var(--teal-l);color:var(--teal);font-weight:700;border-radius:6px;padding:1px 6px;font-size:11px}
+.day.last{border:2px solid var(--orange)}
+
+/* list growth */
+.grow{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+.grow>div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px}
+.grow ul{padding-left:18px;margin:6px 0}
+.bar{display:flex;align-items:flex-end;gap:6px;height:120px;margin-top:10px}
+.bar div{flex:1;background:var(--teal);border-radius:4px 4px 0 0;position:relative}
+.bar div span{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-size:10px;color:var(--muted)}
+.rules{font-size:14px}
+.rules li{margin:4px 0}
+
+/* decide */
+table{width:100%;border-collapse:collapse;background:var(--card);font-size:13.5px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#f1f5f9;color:var(--navy)}
+
+@media (max-width:860px){
+  .flow{grid-template-columns:repeat(3,1fr)}
+  .step:nth-child(3)::after{display:none}
+  .gifts{grid-template-columns:1fr 1fr}
+  .days{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:600px){
+  body{padding:16px 16px 60px}
+  h1{font-size:19px}
+  .flow{grid-template-columns:1fr 1fr}
+  .step::after{display:none}
+  .tier,.gifts,.phones,.grow{grid-template-columns:1fr}
+  .days{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <img src="../fv_20260829/owl_logo.webp" alt="OWL福祉事業">
+  <h1>YouTube → 公式LINE → プレゼント → 資料請求<br><span style="font-size:15px;color:var(--muted);font-weight:600">「プレゼントで友だちを増やし、リストを溜める」仕組みの図解</span></h1>
+</header>
+<p class="sub">2026-10-21 たたき（鈴木さん・河合さん確認用）｜数字は入れていません（正本未確定のため）｜このページは検索に出ない設定です</p>
+
+<div class="lead">
+  ひとことで言うと、<strong>YouTubeを見た人に「LINE登録するとプレゼントがもらえる」と伝えて、公式LINEの友だち＝見込み客のリストを溜めていく</strong>仕組みです。
+  動画を1本出すたびに同じ導線が動くので、動画が増えるほどリストが増えます。溜まったリストには、こちらのタイミングで資料請求・説明会・面談を案内できます（広告のように止まりません）。
+</div>
+
+<!-- 1 -->
+<h2>1. 全体の流れ</h2>
+<div class="flow">
+  <div class="step"><div class="n">1</div><div class="t">YouTube動画</div><div class="d">オーナー様インタビュー／対談／ノウハウ動画</div></div>
+  <div class="step"><div class="n">2</div><div class="t">概要欄・固定コメント</div><div class="d">先頭3行で「プレゼント＋LINE登録」</div></div>
+  <div class="step hot"><div class="n">3</div><div class="t">公式LINE 友だち追加</div><div class="d">ここで「リスト」が1人増える</div></div>
+  <div class="step"><div class="n">4</div><div class="t">プレゼント配布</div><div class="d">登録直後に2つ／メニューから4つ</div></div>
+  <div class="step"><div class="n">5</div><div class="t">ステップ配信 7通</div><div class="d">開業の不安を順番にほどく</div></div>
+  <div class="step"><div class="n">6</div><div class="t">資料請求 → 面談</div><div class="d">既存の資料請求フォーム → SV面談 → 加盟</div></div>
+</div>
+<div class="stock">
+  <div class="big">③で溜まった友だちは「資産」</div>
+  <div class="s">面談に進まなかった人も、新しい動画・説明会・事例が出るたびに案内できる。YouTubeは1本1本が入口、LINEは1つの受け皿。</div>
+</div>
+
+<!-- 2 -->
+<h2>2. なぜ「プレゼント」で登録してもらうのか</h2>
+<div class="tier">
+  <div>
+    <h3>プレゼントの役割</h3>
+    <p style="font-size:14px">「LINE登録」という手間を払ってでも欲しいものを置いて、<b>行動してもらう</b>ためのきっかけです。<br>中身は「開業を考えている人が、次の一歩で実際に使うもの」に絞ります。読んだだけで満足して終わるものは置きません。</p>
+    <p class="note">参考: イングリッシュおさるの概要欄は、特典15個のうち10個を登録直後、5個を「リッチメニュー限定」に分けている。</p>
+  </div>
+  <div>
+    <h3>2段に分けて渡す</h3>
+    <ul>
+      <li><b>登録直後（あいさつメッセージ）</b>に2つ即渡し → 「登録してよかった」を最初の5秒で作る</li>
+      <li><b>リッチメニュー限定</b>で4つ → 画面下のメニューを触ってもらい、資料請求・面談のボタンにも目が行く</li>
+      <li>全部を最初に渡さない。渡し切るとメニューを開く理由がなくなる</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 3 -->
+<h2>3. プレゼントの中身（既存の素材だけで組んでいます）</h2>
+<div class="gifts">
+  <div class="gift when"><div class="num">登録直後 ①</div><div class="name">収支シミュレーション 3パターン</div><div class="what">自己資金・棟数別に、収支がどう組み上がるかの見本</div><div class="src">社内テンプレをPDF化 <span class="tag make">要作成</span><span class="tag ask">数字の見せ方は要確認</span></div></div>
+  <div class="gift when"><div class="num">登録直後 ③</div><div class="name">福祉事業の基礎 動画（5分）</div><div class="what">SV初回面談 第1章。グループホーム事業の基礎をまず5分で</div><div class="src">初回面談動画 第1章（完成済み） <span class="tag ok">素材あり</span><span class="tag ask">サブスク商品の一部を無料に出す判断</span></div></div>
+  <div class="gift menu"><div class="num">メニュー限定 ②</div><div class="name">融資が通った事業計画書の「構成」</div><div class="what">実際に融資が通った計画書の章立てと、審査で見られたポイントの解説</div><div class="src">実物は出さず要約版を新規作成 <span class="tag make">要作成</span><span class="tag ask">開示範囲は要確認</span></div></div>
+  <div class="gift menu"><div class="num">メニュー限定 ④</div><div class="name">開設までの流れ チェックリスト</div><div class="what">物件 → 消防 → 人員 → 指定申請 → 開所の順番が1枚で分かる</div><div class="src">SV用の開設フロー雛型を1枚に簡略化 <span class="tag make">要作成</span><span class="tag ask">前田さん・河合さん確認</span></div></div>
+  <div class="gift menu"><div class="num">メニュー限定 ⑤</div><div class="name">加盟オーナー様インタビュー 完全版</div><div class="what">三重・愛知のオーナー様。「未経験からの開業」の実例</div><div class="src">納品済み動画 <span class="tag ok">三重＝公開OK済み</span><span class="tag ask">愛知＝同意確認</span></div></div>
+  <div class="gift menu"><div class="num">メニュー限定 ⑥</div><div class="name">開業前のよくある質問 動画集</div><div class="what">自分にできるのか／サビ管は／地域は、など不安ごとの短い回答</div><div class="src">IG FAQシリーズを1ページにまとめる <span class="tag ok">素材あり</span></div></div>
+</div>
+<p class="legend">色の意味: <span class="tag ok">素材あり</span>そのまま使える ／ <span class="tag make">要作成</span>既存素材から1枚ものにする ／ <span class="tag ask">要確認</span>出してよいか判断が要る</p>
+<p class="note">入れないもの: 法定研修動画・説明会シリーズ・初回面談の第2章以降（サブスク商品そのもの）、月商・利益の実数（正本が確定するまで）。</p>
+
+<!-- 4 -->
+<h2>4. 画面イメージ（YouTube概要欄 → LINEトーク）</h2>
+<div class="phones">
+  <div>
+    <div class="phone"><div class="screen">
+      <div class="yt-video">▶ オーナー様インタビュー（三重）</div>
+      <div class="yt-title">【未経験から開業】元教員が障がい者グループホームを始めた理由｜OWL福祉事業</div>
+      <div class="yt-meta">OWL福祉事業</div>
+      <div class="yt-desc"><span class="hl">🏠⬇︎障がい者グループホーム開業 無料プレゼント⬇︎🏠
+https://lin.ee/＊＊＊＊＊
+（「アプリで開く」を押してください）</span>
+
+✅LINE登録で無料プレゼント
+①収支シミュレーション3パターン
+②融資が通った事業計画書の構成
+③福祉事業の基礎 動画（5分）
+④開設までの流れ チェックリスト
+⑤加盟オーナー様インタビュー 完全版
+<div class="more">…もっと見る</div></div>
+      <div class="yt-pin"><div class="lbl">📌 固定コメント（OWL福祉事業）</div>🏠無料プレゼントはLINE登録で受け取れます👇<br><span style="color:#1a73e8">https://lin.ee/＊＊＊＊＊</span></div>
+    </div></div>
+    <p class="caption">折りたたまれる前の3行に「プレゼント＋URL」。固定コメントにも同じものを置く。</p>
+  </div>
+  <div>
+    <div class="phone"><div class="screen">
+      <div class="ln-head">OWL福祉事業｜グループホーム開業サポート</div>
+      <div class="ln-body">
+        <div class="bub">友だち追加ありがとうございます。
+OWL福祉事業（株式会社ランバード）です。
+
+障がい者グループホームの開業について、開業の流れ・資金・融資・入居までを順番にお届けします。</div>
+        <div class="bub">まずはプレゼントを2つお渡しします。
+
+①収支シミュレーション3パターン
+<span class="lnk">https://owl-fukushi.net/＊＊＊.pdf</span>
+
+③福祉事業の基礎 動画（5分）
+<span class="lnk">https://youtu.be/＊＊＊</span></div>
+        <div class="bub">残りのプレゼント（事業計画書の構成／開設チェックリスト／オーナー様インタビュー完全版）は、画面下のメニューから受け取れます。
+
+ご質問はこのトークにそのまま送ってください。</div>
+      </div>
+      <div class="rich">
+        <div>🎁<br>プレゼント一覧</div><div class="o">📩<br>資料請求</div><div>🎥<br>オーナー様の声</div>
+        <div>🗂<br>開業の流れ</div><div>❓<br>よくある質問</div><div class="o">💬<br>質問する</div>
+      </div>
+    </div></div>
+    <p class="caption">登録直後に2つ即渡し。残りはリッチメニュー（画面下の6枠）から。オレンジの2枠が「次の行動」。</p>
+  </div>
+</div>
+
+<!-- 5 -->
+<h2>5. 登録後のステップ配信（7日間・1日1通）</h2>
+<p class="note">登録した人の不安を、順番にひとつずつほどいていく。煽らない。「稼ぐ」「儲かる」は使わない。7通で終わり、その後は新着動画の案内だけ（月1〜2通）。</p>
+<div class="days">
+  <div class="day"><b>1日目</b>未経験でも始められるのか<br><span class="cta">愛知版を見る</span></div>
+  <div class="day"><b>2日目</b>自己資金はいくら要るのか<br><span class="cta">収支シミュを見返す</span></div>
+  <div class="day"><b>3日目</b>融資はどう通すのか<br><span class="cta">計画書の構成を開く</span></div>
+  <div class="day"><b>4日目</b>物件・消防・人員の順番<br><span class="cta">チェックリストを開く</span></div>
+  <div class="day"><b>5日目</b>入居はどう決まるのか<br><span class="cta">三重版を見る</span></div>
+  <div class="day"><b>6日目</b>SVは何をしてくれるのか<br><span class="cta">資料請求</span></div>
+  <div class="day last"><b>7日目</b>面談でお互いに確認すること<br><span class="cta">面談を申し込む</span></div>
+</div>
+
+<!-- 6 -->
+<h2>6. リストが「溜まっていく」理由</h2>
+<div class="grow">
+  <div>
+    <h3 style="margin-top:0">動画が増えるほど入口が増える</h3>
+    <ul>
+      <li>概要欄は全動画で同じ型。動画ごとに差し替えるのは「この動画について」と目次だけ</li>
+      <li>インタビュー・対談・ノウハウ動画・ショート、どれも受け皿は同じ1本のLINE</li>
+      <li>Instagramのプロフィールや投稿からも同じLINEへ（YouTube用・IG用でURLを分けて、どこから来たか分かるようにする）</li>
+      <li>広告と違って止めても減らない。面談に至らなかった人にも、次の事例・説明会を案内できる</li>
+    </ul>
+    <h3>月に1回だけ見る数字</h3>
+    <ul>
+      <li>友だち追加数（YouTube経由／IG経由）</li>
+      <li>資料請求のうち「LINE」経由の件数（フォームの流入元に「LINE」を足す）</li>
+      <li>ブロック率（高ければ配信内容を見直す）</li>
+    </ul>
+  </div>
+  <div>
+    <h3 style="margin-top:0">イメージ（友だち数の積み上がり）</h3>
+    <div class="bar">
+      <div style="height:15%"><span>動画1本</span></div>
+      <div style="height:28%"><span>2本</span></div>
+      <div style="height:38%"><span>3本</span></div>
+      <div style="height:52%"><span>4本</span></div>
+      <div style="height:63%"><span>5本</span></div>
+      <div style="height:78%"><span>6本</span></div>
+      <div style="height:95%"><span>7本</span></div>
+    </div>
+    <p class="note" style="margin-top:28px">※数字ではなく形のイメージです。動画が溜まるほど、過去動画からも登録が続きます。</p>
+    <h3>既存の公式LINEとは分ける</h3>
+    <p style="font-size:13.5px">サブスク加盟店向けの「フクロウ先生」LINEとは別アカウントにします。「加盟済み」と「これから開業」では届けたい内容が真逆のため。</p>
+  </div>
+</div>
+
+<!-- 7 -->
+<h2>7. 決めてほしいこと</h2>
+<table>
+  <tr><th style="width:36%">決めること</th><th>こちらの案</th><th style="width:16%">誰が</th></tr>
+  <tr><td>公式LINEを新規で1本作る（開業検討者向け）</td><td>河合さんに作成と管理者招待を依頼 → 中身は星崎が組む</td><td>河合さん</td></tr>
+  <tr><td>プレゼント①②④の出し方</td><td>①テンプレをPDF化／②実物は出さず構成の要約版／④SV用雛型を1枚に簡略化</td><td>鈴木さん・河合さん</td></tr>
+  <tr><td>初回面談 第1章（5分）を無料に出してよいか</td><td>第1章のみ。第2章以降はサブスクに残す</td><td>河合さん</td></tr>
+  <tr><td>愛知オーナー様インタビューの掲載同意</td><td>三重はOK済み。愛知は確認してから特典⑤・1日目配信に使う</td><td>河合さん</td></tr>
+  <tr><td>「全員には加盟をお勧めしていません」の一文</td><td>概要欄と7日目に入れる（面談制のOWLには合う）。不要なら外す</td><td>鈴木さん</td></tr>
+</table>
+
+<p class="note" style="margin-top:32px">文面の全文（概要欄・あいさつ・自動応答・ステップ配信）は社内の叩きファイルにあります。このページは仕組みの図解のみです。</p>
+
+</div>
+</body>
+</html>
