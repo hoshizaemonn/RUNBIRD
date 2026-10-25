@@ -145,13 +145,19 @@ header{position:sticky;top:33px;z-index:900;background:rgba(255,255,255,.97);
 /* ===== 収支 ===== */
 .pl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 14px;
   border-radius:var(--r);box-shadow:0 3px 14px rgba(0,0,0,.06)}
-table.pl{width:100%;min-width:440px;border-collapse:collapse;background:#fff}
+table.pl{width:100%;border-collapse:collapse;background:#fff}
 table.pl caption{text-align:left;font-weight:800;color:var(--teal-d);padding:20px 22px 12px;font-size:16px;background:#fff}
 table.pl th,table.pl td{border-bottom:1px solid var(--line);padding:16px 22px;font-size:15px}
 table.pl th{background:#fafcfd;text-align:left;font-weight:700;width:54%}
 table.pl td{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700}
 table.pl tr.total th,table.pl tr.total td{background:var(--orange);color:#fff;border-bottom:none;
   font-size:clamp(19px,3.2vw,26px);font-weight:900}
+@media (max-width:560px){
+  .pl-wrap table.pl th{width:42%;padding:13px 10px 13px 14px;font-size:14px;line-height:1.5}
+  .pl-wrap table.pl td{padding:13px 14px 13px 6px;font-size:14px}
+  .pl-wrap table.pl tr.total td{font-size:17px}
+  .pl-wrap table.pl caption{padding:16px 14px 10px;font-size:15px}
+}
 .pl-note{font-size:13px;color:var(--sub);margin:0 0 44px;line-height:1.75}
 .pl-note strong{color:var(--ink)}
 
