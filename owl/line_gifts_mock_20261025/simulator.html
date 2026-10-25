@@ -1,0 +1,48 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>開業シミュレーター（仮モック）</title><link rel="stylesheet" href="common.css"></head><body><div class="wrap">
+<header><img src="../line_tokuten_mock_20261023/img/logo_yoko.webp" alt="OWL福祉事業"><span class="badge">仮モック・数字はサンプル</span></header>
+<h1>開業シミュレーター</h1><p class="lead">定員・自己資金などを入れると、初期費用・借入の目安・月の収支・返済の見通しが出ます。</p>
+<div class="card"><h2>あなたの条件を入れてください</h2>
+<label>1棟あたりの定員</label><select id="cap"><option>4</option><option selected>5</option><option>6</option></select>
+<label>棟数</label><select id="bld"><option selected>1</option><option>2</option></select>
+<label>自己資金（万円）</label><input type="number" id="own" value="300" min="0" step="50" inputmode="numeric">
+<label>管理者</label><select id="mgr"><option value="0" selected>代表者が兼務する</option><option value="300000">外部の方を雇う（月30万円）</option></select>
+<label>物件の家賃（1棟・月・円）<span class="note">　※仮の値です</span></label><input type="number" id="rent" value="150000" min="0" step="10000" inputmode="numeric">
+<label>加盟金（万円）<span class="note">　※プラン確認中。仮に0円</span></label><input type="number" id="fee" value="0" min="0" step="10" inputmode="numeric">
+</div>
+<div class="card"><h2>① 初期費用の目安と、借入が必要な額</h2><div id="init"></div></div>
+<div class="card"><h2>② 満室になったときの月の収支（3パターン）</h2><div id="pl"></div>
+<p class="note">パターンは入居者の障害支援区分の構成の違いです。ゆっくり＝区分2・3が半々／標準＝区分3／順調＝区分3・4が半々。</p></div>
+<div class="card"><h2>③ 返済の見通し</h2><div id="rep"></div></div>
+<div class="card"><h2>④ 実績ケースとの比べ方</h2><table><tr><th>ケース</th><th class="r">規模</th><th class="r">自己資金</th><th class="r">借入（計画書上）</th></tr>
+<tr><td>実績ケースA（三重）</td><td class="r">2棟10名</td><td class="r">300万円</td><td class="r">1,200万円</td></tr>
+<tr><td>実績ケースB（大阪）</td><td class="r">2棟8名</td><td class="r">300万円</td><td class="r">1,500万円</td></tr>
+<tr><td id="mine">あなたの条件</td><td class="r" id="m1"></td><td class="r" id="m2"></td><td class="r" id="m3"></td></tr></table>
+<p class="note">実績ケースは、事業計画書に書かれた借入予定額です（実際の融資実行額ではありません）。</p></div>
+<details class="card"><summary><b>計算の前提を見る</b></summary><table>
+<tr><td>報酬（月額・1名）</td><td>区分2：148,778円／区分3：210,581円／区分4：257,093円（夜間支援加算Ⅰ・処遇改善込み・福岡県の地域単価。令和8年度改定は未反映）</td></tr>
+<tr><td>利用者負担（1名・月）</td><td>家賃19,000円＋食費27,000円＋日用品5,000円＋通信1,000円</td></tr>
+<tr><td>人件費（月）</td><td>世話人17.6万円、生活支援員17.6万円、夜間支援員22万円、サービス管理責任者6万円（非常勤）、法定福利費16%</td></tr>
+<tr><td>固定経費（月）</td><td>税理士2万円、システム1万円、通信0.5万円、消耗品1万円、保険0.8万円、サポート費5,500円/室、水道光熱費（定員により変動）、食費・日用品3.2万円/名</td></tr>
+<tr><td>初期費用</td><td>内装31万円、消防設備50万円、家具・家電70万円（各1棟あたり）、物件初期費用＝家賃4か月分、運転資金＝月の経費の3か月分</td></tr>
+<tr><td>融資条件</td><td>金利3.0%、返済7年（元利均等・据置なし）</td></tr></table></details>
+<div class="cta"><img src="../line_tokuten_mock_20261023/img/owl/26_headset.webp" alt=""><div><p>結果をもとに、個別にご相談できます（無料・オンライン可）。</p><a class="btn" href="https://owl-fukushi.net/lp_zero_lite_20260918/#form" style="margin:0">資料請求・WEB面談を申し込む ▶</a></div></div>
+<p class="foot">※ 本ページは確認用の仮モックです。数字・内容は社内資料をもとにしたサンプルで、収益や融資の可否を保証するものではありません。融資の可否は金融機関の審査によります。<br><a href="index.html">← 特典モックの一覧へ</a></p>
+</div><script>
+const R={2:148778,3:210581,4:257093},pats={slow:["ゆっくり",(R[2]+R[3])/2],std:["標準",R[3]],good:["順調",(R[3]+R[4])/2]};
+const yen=v=>Math.round(v).toLocaleString()+"円",man=v=>(Math.round(v/1000)/10).toLocaleString()+"万円";
+function costs(n,b,mgr,rent){const w=176000+176000+220000+mgr,fuku=w*0.16,sabi=60000;
+ const per=sabi+w+fuku+8000+5000+10000+5500*n+(25000+6250*(n-1))+rent+32000*n;return per*b+30000;}
+function calc(){const n=+cap.value,b=+bld.value,own=+$("own").value*10000,mgr=+$("mgr").value,rent=+$("rent").value,fee=+$("fee").value*10000;
+ const cost=costs(n,b,mgr,rent);
+ const init={"加盟金":fee,"内装工事":310000*b,"消防設備工事":500000*b,"家具・家電・備品":700000*b,"物件初期費用（家賃4か月分）":rent*4*b,"運転資金（月の経費の3か月分）":cost*3};
+ const tot=Object.values(init).reduce((a,c)=>a+c,0),loan=Math.max(0,tot-own);
+ $("init").innerHTML="<table>"+Object.entries(init).map(([k,v])=>`<tr><td>${k}</td><td class=r>${man(v)}</td></tr>`).join("")+`<tr><th>初期費用の合計</th><th class=r>${man(tot)}</th></tr><tr><th>自己資金</th><th class=r>${man(own)}</th></tr></table><p>借入が必要な額の目安<br><span class=big>${man(loan)}</span></p>`;
+ const r=0.03/12,pay=loan>0?loan*r/(1-Math.pow(1+r,-84)):0;
+ let h="<table><tr><th>パターン</th><th class=r>月の売上</th><th class=r>月の経費</th><th class=r>月の収支</th><th class=r>返済後</th></tr>";
+ for(const k in pats){const rev=(pats[k][1]+52000)*n*b,pr=rev-cost;h+=`<tr><td>${pats[k][0]}</td><td class=r>${man(rev)}</td><td class=r>${man(cost)}</td><td class=r>${man(pr)}</td><td class=r style="color:${pr-pay<0?'#d64545':'#178a4a'};font-weight:800">${man(pr-pay)}</td></tr>`}
+ $("pl").innerHTML=h+"</table>";
+ const stdPer=pats.std[1]+52000;let k=0;for(let i=1;i<=n*b;i++){const rev=stdPer*i;const c=costs(n,b,mgr,rent)-32000*(n*b-i);if(rev-c>=0){k=i;break}}
+ $("rep").innerHTML=`<p>毎月の返済額の目安（金利3%・7年）<br><span class=big>${loan>0?yen(pay):"借入なし"}</span></p><p>標準パターンで、月の収支が黒字になる入居人数の目安：<b>${k?k+"名（定員"+n*b+"名のうち）":"定員いっぱいでも赤字（条件を見直しましょう）"}</b></p>`;
+ $("m1").textContent=b+"棟"+n*b+"名";$("m2").textContent=man(own);$("m3").textContent=man(loan);}
+function $(i){return document.getElementById(i)}
+["cap","bld","own","mgr","rent","fee"].forEach(i=>$(i).addEventListener("input",calc));calc();</script></body></html>
