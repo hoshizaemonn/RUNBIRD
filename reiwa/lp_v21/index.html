@@ -777,7 +777,7 @@ footer.company2{background:#2e2576;color:#fff;padding:clamp(40px,5vw,64px) 0 cla
 .spec-result{border-top:1px solid #c7b2bd;border-bottom:1px solid #c7b2bd;padding:16px 4px;margin:18px 0 22px;display:grid;grid-template-columns:auto 1fr;gap:6px 20px;align-items:start}
 .spec-result>b{color:#b54a7e;font-size:15px;letter-spacing:.06em;white-space:nowrap}
 .spec-result ul{list-style:none;margin:0;padding:0}
-.spec-result li{display:grid;grid-template-columns:7em 1fr;gap:8px;font-size:14px;line-height:1.9;color:#3e3a39;position:relative;padding-left:16px}
+.spec-result li{display:grid;grid-template-columns:7.8em 1fr;gap:8px;font-size:14px;line-height:1.9;color:#3e3a39;position:relative;padding-left:16px}
 .spec-result li:before{content:'';position:absolute;left:0;top:11px;width:7px;height:7px;border-radius:50%;background:#e39ab8}
 .spec-result li span{color:#6a5d66;white-space:nowrap}
 .spec-result li span:after{content:'：'}
@@ -787,17 +787,15 @@ footer.company2{background:#2e2576;color:#fff;padding:clamp(40px,5vw,64px) 0 cla
 .spec-others .sheet img{height:130px}
 .spec-panel .emin-note{text-align:center;margin-top:24px}
 @media(max-width:900px){.spec-intro{grid-template-columns:1fr;gap:24px}.spec-polaroid{transform:rotate(-3deg);width:min(300px,86%)}.spec-main{grid-template-columns:1fr;gap:26px}.spec-others{grid-template-columns:1fr}}
-@media(max-width:700px){.spec-bubble{border-radius:30px;padding:16px 18px;font-size:19px}.spec-panel{padding:26px 14px}.spec-result{grid-template-columns:1fr;gap:8px}.spec-result li{grid-template-columns:6.5em 1fr;font-size:13px}.spec-btn{width:100%;padding:15px 12px}.sheet{padding:14px 12px}.sheet th{width:5em}}
+@media(max-width:700px){.spec-bubble{border-radius:30px;padding:16px 18px;font-size:19px}.spec-panel{padding:26px 14px}.spec-result{grid-template-columns:1fr;gap:8px}.spec-result li{grid-template-columns:7.8em 1fr;font-size:13px}.spec-btn{width:100%;padding:15px 12px}.sheet{padding:14px 12px}.sheet th{width:5em}}
 </style>
-<section class="spec-x" id="spec"><div class="wrap">
-<div class="spec-bubble"><span class="nw">水素温浴器って、</span><b class="nw">どんな機器？</b></div>
-<div class="spec-intro">
-<figure class="spec-polaroid"><span class="pola-tag">本体は脱衣所、<br/>電極板だけ浴槽へ</span><img alt="水素温浴器の写真（資料より）" loading="lazy" src="img/pdf_bath.png"/><figcaption>Hydrogen Bath（水素温浴器）</figcaption></figure>
-<div class="spec-copy"><h3><span class="nw">水素温浴器の<span class="mk">しくみ</span>と</span><br class="only-mobile"/><span class="nw">大きさについて</span></h3>
-<p>水素温浴器は、<span class="mk">直流電気分解方式</span>で浴槽のお湯に直接水素を生成する機器です。本体は<span class="mk">幅185mm・高さ304mm</span>、重さ<span class="mk">約2.05kg</span>のコンパクトな円柱形で、脱衣所に置いて使います。</p>
-<p>浴槽に入れるのは<span class="mk">電極パーツだけ</span>。コードは3mあり、取り付け工事は不要です。水素（H₂）は<span class="mk">地球上でいちばん小さな物質</span>だから、お湯にも水にも溶け込ませることができます。</p></div>
-</div>
-<div class="spec-arrow"></div>
+<style>
+/* v23: one block per machine (bubble → photo+copy → pink spec panel), comparison table last */
+.spec-block{margin-bottom:clamp(44px,6vw,80px)}.spec-block:last-child{margin-bottom:0}
+.spec-intro.rev{grid-template-columns:1.1fr .9fr}.spec-intro.rev .spec-polaroid{order:2;transform:rotate(4deg)}
+.spec-copy{padding-right:clamp(12px,3vw,40px)}.spec-intro.rev .spec-copy{padding-left:clamp(12px,3vw,40px);padding-right:6px}.spec-copy .mk{white-space:nowrap}.spec-detail .big{display:inline;width:auto;padding:0 3px;-webkit-box-decoration-break:clone;box-decoration-break:clone;line-height:1.9}.spec-detail .big+.spec-result{margin-top:22px}.spec-detail .big{margin-bottom:0}.spec-copy p .nw .nw{display:inline}.spec-ill{display:block;width:100%;max-width:380px;aspect-ratio:3/2;object-fit:cover;border-radius:10px;margin:0 0 16px;box-shadow:0 4px 12px #5a3a4e1a;background:#fff}
+@media(max-width:900px){.spec-intro.rev{grid-template-columns:1fr}.spec-intro.rev .spec-polaroid{order:0;transform:rotate(3deg)}.spec-ill{max-width:100%}}
+</style>
 <style>
 /* v22b: PDF illustrations (ways to take in hydrogen) + EMINERS-style comparison table */
 .ways3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 0 34px}
@@ -821,20 +819,46 @@ footer.company2{background:#2e2576;color:#fff;padding:clamp(40px,5vw,64px) 0 cla
 .cmp-note{font-size:12px;color:#6a5d66;line-height:1.8;margin:10px 4px 0}
 @media(max-width:860px){.ways3{grid-template-columns:1fr;gap:12px}.way3{display:grid;grid-template-columns:120px 1fr;text-align:left;padding:0}.way3 img{height:100%;min-height:110px;object-fit:contain;background:#fff}.way3 b{margin:12px 12px 2px;font-size:15px}.way3 p{margin:0 12px 12px;font-size:13px}.cmp-hint{display:block}.cmp-wrap:after{content:"";position:absolute;right:0;top:0;bottom:0;width:28px;background:linear-gradient(90deg,transparent,#f8e7ef);pointer-events:none}.cmp{font-size:12.5px;min-width:860px}.cmp th,.cmp td{padding:8px 8px;word-break:keep-all;overflow-wrap:normal}.cmp tbody th img{width:48px;height:58px}}
 </style>
-<div class="spec-panel"><h2><small>3 WAYS / 3 MACHINES</small><span class="nw">水素を取り入れる</span><span class="nw">3つの方法と、</span><br class="only-mobile"/><span class="nw">3つの機器の違い。</span></h2>
-<div class="ways3">
-<article class="way3"><img alt="ソファで水素を吸入する女性のイラスト（資料より）" loading="lazy" src="img/pdf_way_inhale.png"/><b><i>1</i>水素吸入</b><p>水素ガスを直接吸入する方法。鼻用チューブを付けて、座ったまま取り入れます。</p></article>
-<article class="way3"><img alt="水素水を飲む2人のイラスト（資料より）" loading="lazy" src="img/pdf_way_tea.png"/><b><i>2</i>水素水の飲用</b><p>水素を溶かした水を飲む方法。水分補給といっしょに、手軽に続けられます。</p></article>
-<article class="way3"><img alt="水素のお湯に入浴する女性のイラスト（資料より）" loading="lazy" src="img/pdf_way_bath.png"/><b><i>3</i>水素水の入浴</b><p>水素を溶かしたお湯に入浴する方法。全身で、お風呂の時間に取り入れます。</p></article>
-</div>
-<p class="cmp-hint">→ 横にスワイプして見られます</p><div class="cmp-wrap"><table class="cmp"><thead><tr><th></th><th>使い方</th><th>本体の大きさ</th><th>重さ</th><th class="nw">電源・<br/>消費電力</th><th>方式</th><th class="nw">付属品</th></tr></thead><tbody>
-<tr class="hi"><th><img alt="水素温浴器" loading="lazy" src="img/pdf_bath.png"/>水素温浴器<small>HYDROGEN BATH</small></th><td>入浴・足湯<br/><span class="nw">（電極板を浴槽へ）</span></td><td class="nw">幅185 × 高さ304mm</td><td class="nw">約2.05kg</td><td>AC100〜240V<br/>72W</td><td>直流電気分解方式</td><td>電極パーツ（3m）<br/>電源コード（1.8m）</td></tr>
-<tr><th><img alt="水素ガス生成器" loading="lazy" src="img/pdf_gas.png"/>水素ガス生成器<small>HYDROGEN GAS GENERATOR</small></th><td>吸入<br/><span class="nw">（鼻用チューブ）</span></td><td class="nw">幅185 × 高さ280mm</td><td class="nw">約2.7kg</td><td>AC100〜240V<br/>最大約120W</td><td>PEM式電解法<br/><span class="nw">100ml/分・約3%</span></td><td>鼻用チューブ（2.1m）<br/>電源コード（1.8m）<br/>注水ロート</td></tr>
-<tr><th><img alt="水素飲水器" loading="lazy" src="img/pdf_water.png"/>水素飲水器<small>HYDROGEN WATER GENERATOR</small></th><td>飲用<br/><span class="nw">（水に溶かす）</span></td><td class="nw">幅212 × 高さ385mm</td><td class="nw">約2.3kg</td><td>AC100V<br/>25W</td><td>直流電気分解方式</td><td>電源コード（1.2m）</td></tr>
-</tbody></table></div>
-<p class="cmp-note">※仕様・デザインは変更になる可能性があります。※ご家庭で水素を楽しむための機器であり、医療機器ではありません。ご使用は各機種の取扱説明書に沿ってください。</p>
-<div style="text-align:center;margin-top:26px"><a class="spec-btn" href="#contact">どの機器が合うか相談する ↗</a></div>
-</div></section>
+<style>
+/* v24: "資料より" figure strip per machine */
+.spec-doc{margin-top:34px;background:#fff;border-radius:10px;padding:22px clamp(14px,3vw,30px) 18px;box-shadow:0 6px 16px #5a3a4e14}
+.spec-doc h4{margin:0 0 16px;text-align:center;font-size:15px;color:#9c4d7a;letter-spacing:.14em}
+.spec-doc h4 span{display:inline-block;padding:0 14px;position:relative}
+.spec-doc h4 span:before,.spec-doc h4 span:after{content:'';position:absolute;top:50%;width:34px;height:1px;background:#d9b8c9}
+.spec-doc h4 span:before{right:100%}.spec-doc h4 span:after{left:100%}
+.spec-doc-grid{display:grid;gap:18px;align-items:end}
+.spec-doc-grid.g3{grid-template-columns:.8fr .65fr 1.55fr}.spec-doc-grid.g1{grid-template-columns:1fr;max-width:540px;margin:0 auto}.spec-doc figure a{display:block}
+.spec-doc figure{margin:0;text-align:center}
+.spec-doc img{width:100%;height:auto;display:block;border:1px solid #e3d7dd;background:#fff}
+@media(max-width:700px){.spec-doc figcaption:after{content:" （タップで拡大）";font-size:11px;color:#9a8aa6}}.spec-doc figcaption{font-size:12.5px;color:#5c4e6a;line-height:1.7;margin-top:8px;text-wrap:balance}
+.spec-doc-note{font-size:12px;color:#6a5d66;line-height:1.8;margin:14px 0 0;text-align:center;text-wrap:pretty}
+@media(max-width:700px){.spec-doc-grid.g3{grid-template-columns:1fr 1fr}.spec-doc-grid.g3 figure:nth-child(3){grid-column:1/-1}}
+</style>
+<section class="spec-x" id="spec"><div class="wrap"><div class="spec-block" id="spec-bath"><div class="spec-bubble"><span class="nw">水素温浴器って、</span><b class="nw">どんな機器？</b></div>
+<div class="spec-intro"><figure class="spec-polaroid"><span class="pola-tag">本体は脱衣所、<br/>電極板だけ浴槽へ</span><img alt="水素温浴器の写真（資料より）" loading="lazy" src="img/pdf_bath.png"/><figcaption>Hydrogen Bath（水素温浴器）</figcaption></figure>
+<div class="spec-copy"><h3><span class="nw">水素温浴器の<span class="mk">しくみ</span>と</span><br class="only-mobile"/><span class="nw">大きさについて</span></h3><p>水素温浴器は、<span class="mk">直流電気分解方式</span>で浴槽のお湯に直接水素を生成する機器です。本体は<span class="mk"><span class="nw">幅185mm</span>・<span class="nw">高さ304mm</span></span>、重さ<span class="mk"><span class="nw">約2.05kg</span></span>のコンパクトな円柱形で、脱衣所に置いて使います。</p><p>浴槽に入れるのは<span class="mk">電極パーツだけ</span>。コードは<span class="nw">3m</span>あり、取り付け工事は不要です。水素（H₂）は<span class="mk">地球上でいちばん小さな物質</span><span class="nw">だから、</span>お湯にも水にも溶け込ませることができます。</p></div></div>
+<div class="spec-arrow"></div>
+<div class="spec-panel"><h2><small>HYDROGEN BATH</small>水素温浴器の特徴</h2>
+<div class="spec-main"><div class="sheet"><div class="sheet-head"><b>水素温浴器</b><small>HYDROGEN BATH</small></div><img alt="水素温浴器の写真" loading="lazy" src="img/pdf_bath.png"/><table><tr><th>名称</th><td>水素温浴器</td></tr><tr><th>寸法</th><td>本体：W185mm × H304mm<br/>電極パーツ：3m／電源コード：1.8m</td></tr><tr><th>重量</th><td><span class="nw">本体：約2.05kg</span>／<span class="nw">電極パーツ：305g</span></td></tr><tr><th>電源</th><td>AC100〜240V 50/60Hz<br/>消費電力 72W</td></tr><tr><th>方式</th><td>直流電気分解方式</td></tr><tr><th>商品内容</th><td>本体・電極パーツ・電源コード</td></tr></table><p class="sheet-foot">※ご家庭で水素風呂を楽しむための商品で、医療機器ではありません。<br/>※仕様・デザインは変更になる可能性があります。</p></div>
+<div class="spec-detail"><img class="spec-ill" alt="水素のお湯に入浴のイメージイラスト" loading="lazy" src="img/ill_bath.jpg"/><h3>水素温浴器の特徴は、3つ。</h3><p><span class="nw">①お湯を、直接電気分解。</span><span class="nw">浴槽のお湯に水素を生成します。</span></p><p><span class="nw">②本体は脱衣所、</span><span class="nw">浴槽に入れるのは電極パーツだけ。</span></p><p><span class="nw">③コードは3m。</span><span class="nw">取り付け工事は不要です。</span></p><span class="big">消費電力は 72W、電源は AC100〜240V</span>
+<div class="spec-result"><b>【商品内容】</b><ul><li><span>本体</span>幅185mm × 高さ304mm・約2.05kg</li><li><span>電極パーツ</span>コード3m・305g</li><li><span>電源コード</span>1.8m</li><li><span>還元方式</span>直流電気分解方式</li></ul></div>
+<a class="spec-btn" href="#contact">置き場所・使い方を相談する ↗</a></div></div><div class="spec-doc"><h4><span>資料より</span></h4><div class="spec-doc-grid g3"><figure><a href="img/pdf_thermo_body.png" target="_blank" rel="noopener"><img alt="サーモグラフィの画像（資料より）" loading="lazy" src="img/pdf_thermo_body.png"/></a><figcaption>入浴前〜入浴後の<span class="nw">サーモグラフィ</span>（全身・一例）</figcaption></figure><figure><a href="img/pdf_thermo_arm.png" target="_blank" rel="noopener"><img alt="サーモグラフィの画像・腕（資料より）" loading="lazy" src="img/pdf_thermo_arm.png"/></a><figcaption>同・左腕の一例</figcaption></figure><figure><a href="img/pdf_thermo_avg.png" target="_blank" rel="noopener"><img alt="平均皮膚温の図（資料より）" loading="lazy" src="img/pdf_thermo_avg.png"/></a><figcaption>平均皮膚温の測定例<span class="nw">（50代男性・女性）</span></figcaption></figure></div><p class="spec-doc-note"><span class="nw">※資料に載っている測定例の一部です。</span><span class="nw">試験の条件・詳しい内容は、</span><span class="nw">面談で資料をご覧いただけます。</span></p></div></div></div><div class="spec-block" id="spec-gas"><div class="spec-bubble"><span class="nw">水素ガス生成器って、</span><b class="nw">どんな機器？</b></div>
+<div class="spec-intro rev"><figure class="spec-polaroid"><span class="pola-tag">鼻用チューブで<br/>吸入するタイプ</span><img alt="水素ガス生成器の写真（資料より）" loading="lazy" src="img/pdf_gas.png"/><figcaption>Hydrogen Gas Generator（水素ガス生成器）</figcaption></figure>
+<div class="spec-copy"><h3><span class="nw">水素ガス生成器の<span class="mk">しくみ</span>と</span><br class="only-mobile"/><span class="nw">性能について</span></h3><p>水素ガス生成器は、<span class="mk">PEM式電解法</span>で水素ガスを生成する機器です。水素発生量は<span class="mk"><span class="nw">100m</span>l/分</span>、水素濃度は<span class="mk"><span class="nw">約3%±0.5%</span></span>。</p><p>本体は<span class="mk"><span class="nw">幅185mm</span>・<span class="nw">高さ280mm</span></span>、重さ<span class="mk"><span class="nw">約2.7kg</span></span>。付属の<span class="mk">鼻用チューブ（<span class="nw">2.1m</span>）</span>で吸入します。水を入れる注水ロートも付いています。</p></div></div>
+<div class="spec-arrow"></div>
+<div class="spec-panel"><h2><small>HYDROGEN GAS GENERATOR</small>水素ガス生成器の特徴</h2>
+<div class="spec-main"><div class="sheet"><div class="sheet-head"><b>水素ガス生成器</b><small>HYDROGEN GAS GENERATOR</small></div><img alt="水素ガス生成器の写真" loading="lazy" src="img/pdf_gas.png"/><table><tr><th>寸法</th><td>本体：W185mm × H280mm<br/>電源コード：1.8m／鼻用吸入チューブ：2.1m</td></tr><tr><th>重量</th><td>本体：約2.7kg</td></tr><tr><th>電源</th><td>AC100〜240V 50/60Hz<br/>消費電力 最大約120W</td></tr><tr><th>水素発生量</th><td><span class="nw">100ml/min</span><span class="nw">（濃度 約3%±0.5%）</span></td></tr><tr><th>方式</th><td>PEM式電解法</td></tr><tr><th>商品内容</th><td>本体・電源コード・水素ガス用チューブ（鼻用）・<span class="nw">注水ロート</span></td></tr></table><p class="sheet-foot">※仕様・デザインは変更になる可能性があります。</p></div>
+<div class="spec-detail"><img class="spec-ill" alt="吸入のイメージイラスト" loading="lazy" src="img/ill_gas.jpg"/><h3>水素ガス生成器の特徴は、3つ。</h3><p><span class="nw">①PEM式電解法で、</span><span class="nw">水素ガスを生成します。</span></p><p><span class="nw">②水素発生量は100ml/分、</span><span class="nw">濃度は約3%±0.5%。</span></p><p><span class="nw">③鼻用チューブで、</span><span class="nw">座ったまま吸入できます。</span></p><span class="big"><span class="nw">水素発生量 100ml/分、</span><span class="nw">濃度 約3%±0.5%</span></span>
+<div class="spec-result"><b>【商品内容】</b><ul><li><span>本体</span>幅185mm × 高さ280mm・約2.7kg</li><li><span>鼻用チューブ</span>2.1m</li><li><span>電源コード</span>1.8m</li><li><span>付属</span>注水ロート</li></ul></div>
+<a class="spec-btn" href="#contact">置き場所・使い方を相談する ↗</a></div></div><div class="spec-doc"><h4><span>資料より</span></h4><div class="spec-doc-grid g1"><figure><a href="img/pdf_inhale_diagram.png" target="_blank" rel="noopener"><img alt="水素ガスを吸入するしくみの図（資料より）" loading="lazy" src="img/pdf_inhale_diagram.png"/></a><figcaption>水素ガスを吸入するしくみ（資料より）</figcaption></figure></div><p class="spec-doc-note">※資料に載っている図です。詳しい資料は、面談でご覧いただけます。</p></div></div></div><div class="spec-block" id="spec-water"><div class="spec-bubble"><span class="nw">水素飲水器って、</span><b class="nw">どんな機器？</b></div>
+<div class="spec-intro"><figure class="spec-polaroid"><span class="pola-tag">飲む水に、<br/>水素を溶かす</span><img alt="水素飲水器の写真（資料より）" loading="lazy" src="img/pdf_water.png"/><figcaption>Hydrogen Water Generator（水素飲水器）</figcaption></figure>
+<div class="spec-copy"><h3><span class="nw">水素飲水器の<span class="mk">しくみ</span>と</span><br class="only-mobile"/><span class="nw">大きさについて</span></h3><p>水素飲水器は、<span class="mk">直流電気分解方式</span>で飲む水に水素を溶け込ませる機器です。ガラスのポット型で、キッチンやリビングに置いて使えます。</p><p>本体は<span class="mk"><span class="nw">幅212mm</span>・<span class="nw">高さ385mm</span></span>、重さ<span class="mk"><span class="nw">約2.3kg</span></span>、消費電力は<span class="mk"><span class="nw">25W</span></span>。電源コードは<span class="nw">1.2m</span>です。</p></div></div>
+<div class="spec-arrow"></div>
+<div class="spec-panel"><h2><small>HYDROGEN WATER GENERATOR</small>水素飲水器の特徴</h2>
+<div class="spec-main"><div class="sheet"><div class="sheet-head"><b>水素飲水器</b><small>HYDROGEN WATER GENERATOR</small></div><img alt="水素飲水器の写真" loading="lazy" src="img/pdf_water.png"/><table><tr><th>寸法</th><td>本体：幅212mm × 高さ385mm<br/>電源コード：1.2m</td></tr><tr><th>重量</th><td>本体：約2.3kg</td></tr><tr><th>電源</th><td>AC100V 50/60Hz<br/>消費電力 25W</td></tr><tr><th>方式</th><td>直流電気分解方式</td></tr><tr><th>商品内容</th><td>本体・電源コード</td></tr></table><p class="sheet-foot">※仕様・デザインは変更になる可能性があります。</p></div>
+<div class="spec-detail"><img class="spec-ill" alt="飲用のイメージイラスト" loading="lazy" src="img/ill_water.jpg"/><h3>水素飲水器の特徴は、3つ。</h3><p><span class="nw">①直流電気分解方式で、</span><span class="nw">飲む水に水素を溶かします。</span></p><p><span class="nw">②ガラスのポット型。</span><span class="nw">キッチンやリビングに置けます。</span></p><p><span class="nw">③消費電力は25W。</span><span class="nw">毎日の水に取り入れられます。</span></p><span class="big">消費電力は 25W、電源は AC100V</span>
+<div class="spec-result"><b>【商品内容】</b><ul><li><span>本体</span>幅212mm × 高さ385mm・約2.3kg</li><li><span>電源コード</span>1.2m</li></ul></div>
+<a class="spec-btn" href="#contact">置き場所・使い方を相談する ↗</a></div></div><div class="spec-doc"><h4><span>資料より</span></h4><div class="spec-doc-grid g1"><figure><a href="img/pdf_platinum.png" target="_blank" rel="noopener"><img alt="水素と白金の関係図（資料より）" loading="lazy" src="img/pdf_platinum.png"/></a><figcaption>水素と白金の図（資料より）</figcaption></figure></div><p class="spec-doc-note">※資料に載っている図です。詳しい資料は、面談でご覧いただけます。</p></div></div></div></div></section>
 <section class="purchase-v5 compact offer-x offer-y" id="offer-mid"><div class="oa-wrap"><div class="oa"><img class="oa-bg pc" src="img/offer_frame_pc2.png" alt="" width="1433" height="555"/><img class="oa-bg sp" src="img/offer_frame_sp.png" alt="" width="854" height="1065"/><p class="oa-rib">購入・契約・レンタルのご相談、受付中</p><p class="oa-seal"><i>本体</i><b>価格</b><i>（税込）</i></p><p class="oa-tab"><b>工事不要</b><i>設置のご相談OK</i></p><div class="oa-copy"><p class="oa-lead"><span>自宅の浴槽で使う、</span><span>家庭用の水素風呂</span></p><p class="oa-name"><small>水素温浴器</small><strong>Hydrogen</strong></p><div class="oa-price"><span class="tag">本体価格</span><div class="num"><strong data-price="purchase">299,200</strong><span>円</span><small>（税込）</small></div></div><a class="action oa-btn" href="#contact"><b class="bt">電話・Zoom・対面でご相談</b><i aria-hidden="true">▶</i></a></div><img class="oa-prod" src="img/product_cut.png" alt="水素温浴器の本体写真" width="319" height="568" loading="lazy"/></div><p class="offer-notes">価格は変更になる場合があります。購入のほか、ご契約（代理店）・レンタルもご相談いただけます。本体写真は参考イメージです。</p></div></section><section class="emin-concerns" id="worries">
 <div class="emin-wrap">
 <div class="worry-bubble">
@@ -906,16 +930,17 @@ footer.company2{background:#2e2576;color:#fff;padding:clamp(40px,5vw,64px) 0 cla
 <article class="way"><h3>レンタル</h3><p class="way-price"><strong data-price="rental">ご相談</strong></p><p class="way-for">まずは試してみたい方に</p><p>期間・料金はお問い合わせください。ご自宅での使い心地を確かめてから、購入を考えることもできます。</p><div class="way-btn"><a href="#contact">レンタルについて相談する</a></div></article>
 <article class="way"><h3>契約（代理店）</h3><p class="way-price"><strong data-price="agency">ご相談</strong></p><p class="way-for">お店・サロンに取り入れたい方に</p><p>施術メニューや待ち時間に取り入れたいお店向けの契約プランです。条件は面談でご説明します。</p><div class="way-btn"><a href="#contact">契約について相談する</a></div></article>
 </div><p class="fine text-center">価格・条件は変更になる場合があります。</p></div></section>
+<style>.c-cta{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:760px;margin:24px auto 0}.c-cta .action{margin:0;max-width:none;width:100%;flex-wrap:wrap;gap:4px 10px;text-align:center}.c-cta .action.tel{background:linear-gradient(#ea9cc0,#d87aa6);border-color:#d87aa6;box-shadow:0 4px 0 #b65b88}.c-cta .action.tel b{font-size:1.1em;letter-spacing:.04em}.c-tel{font-weight:900;color:#9c4d7a;text-decoration:none;font-size:1.05em;white-space:nowrap}@media(max-width:700px){.c-cta{grid-template-columns:1fr}}</style>
 <section class="section contact contact-v22" id="contact"><div class="narrow"><p class="eyebrow text-center">CONTACT</p><h2>まずは、お気軽に<br class="only-mobile"/>ご相談ください。</h2><p class="c-lead">水素温浴器は、見て・聞いて納得してから決めていただきたい機器です。<br/>電話・Zoom・対面の中から、ご都合のよい方法でご案内します。</p>
 <div class="c-ways">
-<div class="c-way"><div class="ic">☎</div><b>お電話で</b><p>設置場所や使い方など、気になることをそのままお聞きください。</p></div>
+<div class="c-way"><div class="ic">☎</div><b>お電話で</b><p>設置場所や使い方など、気になることをそのままお聞きください。<br/><a class="c-tel" href="tel:09074401406">090-7440-1406</a></p></div>
 <div class="c-way"><div class="ic">▶</div><b>Zoomで</b><p>ご自宅からオンラインで。画面を見ながら機器の使い方をご説明します。</p></div>
 <div class="c-way"><div class="ic">⌂</div><b>対面・実機で</b><p>実際の機器を見ながらご説明します。お店への導入のご相談もこちらで。</p></div>
 </div>
 <ul class="c-assure"><li>ご相談は無料です</li><li>購入・レンタル・契約の比較だけでも歓迎</li><li>実機を見てから決めていただけます</li></ul>
-<a class="action" href="https://ukihanisseki.com/form/" rel="noopener" target="_blank">お問い合わせフォームへ<span>→</span></a>
-<p class="c-sub">フォームに「電話」「Zoom」「対面」のご希望と、購入・レンタル・契約のどれをお考えかをご記入ください。折り返しご連絡します。</p>
+<div class="c-cta"><a class="action tel" href="tel:09074401406">お電話で相談する<b class="nw">090-7440-1406</b></a><a class="action" href="https://ukihanisseki.com/form/" rel="noopener" target="_blank">お問い合わせフォームへ<span>→</span></a></div>
+<p class="c-sub">フォームには「電話」「Zoom」「対面」のご希望と、購入・レンタル・契約のどれをお考えかをご記入ください。折り返しご連絡します。</p>
 <p class="c-push"><span class="nw">情報収集のためのご相談だけでも、</span><span class="nw">歓迎です。</span></p>
-</div></section></main><footer class="company2"><div class="ft-in"><div class="ft-left"><b>合同会社 礼和</b><p>福岡県うきは市浮羽町朝田593-1</p><ul><li>会社概要</li><li>プライバシーポリシー</li><li>特定商取引法に基づく表示</li></ul></div><div class="ft-box"><p class="ft-h">＜購入・レンタルのご相談＞</p><p>お問い合わせフォーム<br/>ukihanisseki.com/form</p><p class="ft-s">設置・商品・購入条件を直接ご案内します。</p></div></div><p class="ft-copy">© 2026 合同会社 礼和</p></footer><script>document.getElementById('play').addEventListener('click',()=>{document.querySelector('.movie-poster').innerHTML='<div class="video"><iframe title="水素温浴器 紹介動画" src="https://www.youtube.com/embed/eHgvkf-JTGA?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>';});</script><script>/* 価格設定：ここだけ書き換えれば、ページ内の全ての価格表示に反映されます */
+</div></section></main><footer class="company2"><div class="ft-in"><div class="ft-left"><b>合同会社 礼和</b><p>福岡県うきは市浮羽町朝田593-1</p><ul><li>会社概要</li><li>プライバシーポリシー</li><li>特定商取引法に基づく表示</li></ul></div><div class="ft-box"><p class="ft-h">＜購入・レンタルのご相談＞</p><p>お電話<br/><a href="tel:09074401406" style="color:inherit">090-7440-1406</a></p><p>お問い合わせフォーム<br/>ukihanisseki.com/form</p><p class="ft-s">設置・商品・購入条件を直接ご案内します。</p></div></div><p class="ft-copy">© 2026 合同会社 礼和</p></footer><script>document.getElementById('play').addEventListener('click',()=>{document.querySelector('.movie-poster').innerHTML='<div class="video"><iframe title="水素温浴器 紹介動画" src="https://www.youtube.com/embed/eHgvkf-JTGA?autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>';});</script><script>/* 価格設定：ここだけ書き換えれば、ページ内の全ての価格表示に反映されます */
 var PRICES={purchase:"299,200",agency:"ご相談",rental:"ご相談"};
 document.querySelectorAll("[data-price]").forEach(function(e){var v=PRICES[e.getAttribute("data-price")];if(v)e.textContent=v;});</script></body></html>
