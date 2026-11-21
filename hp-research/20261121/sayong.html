@@ -1,0 +1,202 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Sayongピアノ教室 HP制作前調査</title><style>
+:root{--ink:#111827;--dim:#6b7280;--line:#d1d5db;--soft:#f3f4f6;--ha:#e11d48;--ha-bg:#fff1f2;--to:#1d4ed8;--to-bg:#eff6ff;--ya:#047857;--ya-bg:#ecfdf5;--gold:#b45309;--gold-bg:#fffbeb;--gray:#9ca3af;--gray-bg:#f3f4f6}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;color:var(--ink);background:#e5e7eb;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--to)}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.92em;background:var(--soft);padding:1px 5px;border-radius:4px}
+pre{background:#111827;color:#e5e7eb;border-radius:10px;padding:12px 14px;font-size:12.5px;overflow:auto;white-space:pre-wrap;word-break:break-all}
+pre code{background:none;color:inherit;padding:0}
+strong{font-weight:800}
+.wrap{max-width:1123px;margin:0 auto;padding:18px 12px 60px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;color:var(--dim);padding:0 6px 10px;flex-wrap:wrap}
+.topbar a{text-decoration:none;font-weight:700}
+.warn{background:var(--gold-bg);border:1px solid var(--gold);color:var(--gold);border-radius:10px;padding:8px 12px;font-size:12.5px;margin:0 0 12px}
+.page{background:#fff;border-radius:18px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:34px 44px 44px;margin:0 0 18px;position:relative;overflow:hidden;min-width:0}
+.page.cover{background:linear-gradient(135deg,#fff 0%,var(--to-bg) 100%)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--dim);margin-bottom:6px}
+h1{font-size:30px;font-weight:900;line-height:1.3;margin:4px 0 12px;overflow-wrap:anywhere}
+h2{font-size:24px;font-weight:900;line-height:1.3;margin:0 0 12px;overflow-wrap:anywhere}
+h3.sub{font-size:17px;font-weight:900;margin:18px 0 8px;padding-left:10px;border-left:4px solid var(--to);line-height:1.3}
+h4.sub{font-size:15px;font-weight:800;margin:14px 0 6px;color:#374151}
+.meta{font-size:12.5px;color:var(--dim);display:flex;flex-wrap:wrap;gap:4px 18px;margin-bottom:14px}
+.lead{font-size:15px;color:#374151;margin:0 0 16px;overflow-wrap:anywhere}
+.lead b,.lead strong{color:var(--ink)}
+.page>p,.page .body2>p{font-size:14px;color:#374151;margin:0 0 10px;overflow-wrap:anywhere}
+.body2{columns:2;column-gap:36px}
+.body2>*{break-inside:avoid}
+.foot{position:absolute;right:20px;bottom:12px;font-size:11px;color:var(--gray);font-weight:700}
+.page>*+*{margin-top:14px}
+.page>h2+*{margin-top:0}
+/* コールアウト */
+.callout{border-left:5px solid var(--gold);background:var(--gold-bg);border-radius:0 12px 12px 0;padding:12px 16px;font-size:14px;color:#374151}
+.callout b{display:block;color:var(--gold);font-size:13px;letter-spacing:.06em;margin-bottom:4px}
+.callout p+p{margin-top:4px}
+/* KPI タイル */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.kpi{border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff;min-width:0}
+.kpi .k{font-size:12px;font-weight:800;color:var(--dim);letter-spacing:.04em;margin-bottom:4px}
+.kpi .v{font-size:20px;font-weight:900;line-height:1.25;overflow-wrap:anywhere}
+.kpi .n{font-size:12px;color:var(--dim);margin-top:4px}
+.a-ya{border-color:var(--ya)!important}.a-ya .v,.a-ya h4,.a-ya>b,.a-ya .num,.a-ya .no,.a-ya h3{color:var(--ya)}
+.a-to{border-color:var(--to)!important}.a-to .v,.a-to h4,.a-to>b,.a-to .num,.a-to .no,.a-to h3{color:var(--to)}
+.a-gold{border-color:var(--gold)!important}.a-gold .v,.a-gold h4,.a-gold>b,.a-gold .num,.a-gold .no,.a-gold h3{color:var(--gold)}
+.a-ha{border-color:var(--ha)!important}.a-ha .v,.a-ha h4,.a-ha>b,.a-ha .num,.a-ha .no,.a-ha h3{color:var(--ha)}
+.a-gray{border-color:var(--gray)!important}.a-gray .v,.a-gray h4,.a-gray>b,.a-gray .num,.a-gray .no,.a-gray h3{color:#4b5563}
+/* 項目:値 の表 */
+dl.kv{display:grid;grid-template-columns:minmax(120px,220px) 1fr;border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:13.5px}
+dl.kv dt{font-weight:800;background:var(--soft);padding:10px 14px;border-top:1px solid var(--line);color:#374151}
+dl.kv dd{padding:10px 14px;border-top:1px solid var(--line);color:#374151;overflow-wrap:anywhere;min-width:0}
+dl.kv dt:first-of-type,dl.kv dd:first-of-type{border-top:0}
+/* 表 */
+.tblwrap{overflow-x:auto;max-width:100%}
+table.tbl{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px}
+.tbl th{font-size:12.5px;font-weight:900;padding:9px 12px;text-align:left;background:var(--soft);color:#374151;border-bottom:2px solid var(--line)}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:#374151;overflow-wrap:anywhere}
+.tbl td.k{font-weight:800;color:var(--ink)}
+/* 比較表 */
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;font-size:13.5px}
+.cmp th{font-size:14px;font-weight:900;padding:10px 14px;text-align:left}
+.cmp th.k{background:var(--soft)}.cmp th.old{background:var(--soft);color:var(--dim)}
+.cmp th.ya{background:var(--ya);color:#fff;border-radius:12px 12px 0 0}
+.cmp td{padding:10px 14px;border-top:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}
+.cmp td.k{font-weight:800;width:22%;color:#374151}
+.cmp td.old{color:#6b7280;width:34%}
+.cmp td.ya{background:var(--ya-bg);font-weight:700}
+.cmp td.ya::before{content:"✔ ";color:var(--ya)}
+/* 年表 */
+.tl{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));grid-template-rows:auto 56px auto;position:relative;gap:0 8px;margin-top:6px}
+.tl .bar{grid-row:2;grid-column:1/-1;align-self:center;height:6px;background:var(--line);border-radius:3px;z-index:0}
+.tl .ev{display:contents}
+.tl .ev .dot{grid-row:2;grid-column:calc(var(--i) + 1);align-self:center;justify-self:center;width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--to);z-index:1}
+.tl .ev .date{grid-row:2;grid-column:calc(var(--i) + 1);align-self:end;justify-self:center;font-size:12.5px;font-weight:900;white-space:nowrap;transform:translateY(-2px);z-index:1;background:#fff;padding:0 4px;border-radius:4px;line-height:1.1}
+.tl .ev .box{grid-column:calc(var(--i) + 1);border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12px;background:#fff;min-width:0;overflow-wrap:anywhere}
+.tl .ev .box b{display:block;font-size:13px;margin-bottom:2px;line-height:1.35}
+.tl .ev .box span{color:var(--dim)}
+.tl .ev.up .box{grid-row:1;align-self:end;margin-bottom:6px}
+.tl .ev.dn .box{grid-row:3;align-self:start;margin-top:6px}
+.tl .ev.ha .dot{border-color:var(--ha)}.tl .ev.ha .box{border-color:var(--ha);background:var(--ha-bg)}
+.tl .ev.ya .dot{border-color:var(--ya)}.tl .ev.ya .box{border-color:var(--ya);background:var(--ya-bg)}
+.tl .ev.gold .dot{border-color:var(--gold)}.tl .ev.gold .box{border-color:var(--gold);background:var(--gold-bg)}
+.tl .ev.to .box{border-color:var(--to);background:var(--to-bg)}
+/* 階段 */
+.stairs{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:14px;align-items:end;border-bottom:3px solid var(--ink);padding-bottom:0}
+.step{min-height:var(--h);border-radius:16px 16px 0 0;padding:16px 18px 14px;border:2px solid var(--line);border-bottom:0;background:var(--soft);display:flex;flex-direction:column;min-width:0}
+.step.a-ya{background:var(--ya-bg)}.step.a-to{background:var(--to-bg)}.step.a-gold{background:var(--gold-bg)}.step.a-ha{background:var(--ha-bg)}
+.step .no{font-size:12px;font-weight:800;letter-spacing:.1em}
+.step h3{font-size:18px;font-weight:900;line-height:1.25;margin:2px 0 8px;overflow-wrap:anywhere}
+.step p{font-size:13px;color:#374151;flex:1;overflow-wrap:anywhere}
+.step .when{margin-top:8px;border-top:1px dashed var(--line);padding-top:6px;font-size:13px;font-weight:800;overflow-wrap:anywhere}
+.step .when small{display:block;font-size:11px;color:var(--dim);font-weight:700}
+/* 価格カード */
+.prices{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:16px}
+.pc{border:2px solid var(--line);border-radius:16px;padding:16px 18px;background:#fff;min-width:0}
+.pc h3{font-size:16px;font-weight:900;margin-bottom:8px;overflow-wrap:anywhere}
+.pc .l{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13px;flex-wrap:wrap}
+.pc .l:first-of-type{border-top:0}
+.pc .lab{color:#374151;flex:1 1 120px;min-width:0;overflow-wrap:anywhere}
+.pc .v{font-size:20px;font-weight:900;white-space:nowrap}
+.pc .v.s{font-size:14px;white-space:normal;overflow-wrap:anywhere}
+.pc .sub{display:block;width:100%;font-size:11.5px;color:var(--dim);font-weight:600;text-align:right}
+.pc.hl{border-color:var(--ya);background:var(--ya-bg)}.pc.hl .v,.pc.hl h3{color:var(--ya)}
+.pc.old{background:var(--soft)}.pc.old .v{color:#6b7280}
+/* ステップ */
+.steps.h{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:10px;align-items:stretch;position:relative}
+.steps.h .arr{display:none}
+.steps.h .stp{border:1.5px solid var(--line);border-radius:14px;padding:14px 14px 12px;background:#fff;min-width:0;position:relative}
+.steps.h .stp:not(:last-of-type)::after{content:"▶";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:var(--gray);font-size:12px;z-index:1}
+.steps.v{display:grid;grid-template-columns:1fr;gap:8px}
+.steps.v .stp{display:flex;gap:14px;align-items:flex-start;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff;min-width:0}
+.stp .num{width:34px;height:34px;border-radius:50%;background:var(--to);color:#fff;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;flex:none;margin-bottom:8px}
+.steps.v .stp .num{margin-bottom:0}
+.stp .body{min-width:0;flex:1}
+.stp h4{font-size:14.5px;font-weight:900;margin-bottom:4px;overflow-wrap:anywhere;line-height:1.35}
+.stp p{font-size:13px;color:#374151;overflow-wrap:anywhere}
+.stp ul{margin:6px 0 0 16px;font-size:12.5px;color:#374151}
+/* カードグリッド */
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card{border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff;font-size:13.5px;color:#374151;min-width:0}
+.card>b{display:block;font-size:15px;font-weight:900;margin-bottom:4px;color:var(--ink);overflow-wrap:anywhere;line-height:1.35}
+.card p{overflow-wrap:anywhere}
+.card ul{margin:6px 0 0 16px;font-size:12.5px}
+/* 箇条書き */
+ul.bul{list-style:none;font-size:14px;color:#374151}
+ul.bul>li{padding-left:18px;position:relative;margin:4px 0;overflow-wrap:anywhere}
+ul.bul>li::before{content:"";position:absolute;left:2px;top:10px;width:8px;height:8px;border-radius:50%;background:var(--to);opacity:.7}
+ul.bul ul{list-style:none;margin:2px 0 0 4px;font-size:13px}
+ul.bul ul li{padding-left:14px;position:relative}
+ul.bul ul li::before{content:"・";position:absolute;left:0;color:var(--dim)}
+/* フロー */
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px}
+.fbox{border:2px solid var(--line);border-radius:12px;padding:8px 14px;font-size:14px;font-weight:800;background:#fff;max-width:100%;overflow-wrap:anywhere}
+.fbox.a-ya{background:var(--ya-bg)}.fbox.a-to{background:var(--to-bg)}.fbox.a-gold{background:var(--gold-bg)}.fbox.a-ha{background:var(--ha-bg)}
+.farr{color:var(--gray);font-size:18px;padding:0 4px}
+/* 三者関係図 */
+.tri{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto auto;gap:10px 14px;position:relative;align-items:start}
+.tnode{border:2px solid;border-radius:16px;padding:14px 16px;background:#fff;z-index:1;min-width:0}
+.tnode h3{font-size:17px;font-weight:900;margin-bottom:4px;overflow-wrap:anywhere}
+.tnode .role{font-size:13px;color:#374151;overflow-wrap:anywhere}
+.tnode.na{grid-column:1;grid-row:1;border-color:var(--ha)}.tnode.na h3{color:var(--ha)}
+.tnode.nb{grid-column:3;grid-row:1;border-color:var(--to)}.tnode.nb h3{color:var(--to)}
+.tnode.nc{grid-column:2;grid-row:3;border-color:var(--ya);background:var(--ya-bg)}.tnode.nc h3{color:var(--ya)}
+.tedge{font-size:12.5px;font-weight:700;color:#374151;background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 10px;text-align:center;z-index:1;align-self:center;justify-self:center;max-width:100%;overflow-wrap:anywhere}
+.tedge.eab{grid-column:2;grid-row:1}
+.tedge.eac{grid-column:1;grid-row:2}
+.tedge.ebc{grid-column:3;grid-row:2}
+.tri svg.tlines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.tri svg line{stroke:var(--line);stroke-width:2;vector-effect:non-scaling-stroke}
+/* 左右対比 */
+.two{display:grid;grid-template-columns:1fr 56px 1fr;gap:0;align-items:stretch}
+.two .col{border:2px solid;border-radius:16px;padding:16px 18px;min-width:0}
+.two .col h3{font-size:18px;font-weight:900;margin-bottom:8px;overflow-wrap:anywhere}
+.two .row{display:flex;gap:12px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--line)}
+.two .row:first-of-type{border-top:0}
+.two .big{font-size:21px;font-weight:900;min-width:96px;line-height:1.1;flex:none}
+.two .big small{display:block;font-size:11px;font-weight:700;color:var(--dim)}
+.two .d{font-size:13px;color:#374151;min-width:0;overflow-wrap:anywhere}
+.two .c-get{border-color:var(--ya);background:var(--ya-bg)}.two .c-get h3,.two .c-get .big{color:var(--ya)}
+.two .c-give{border-color:var(--ha);background:var(--ha-bg)}.two .c-give h3,.two .c-give .big{color:var(--ha)}
+.two .swap{display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--gray)}
+/* レスポンシブ */
+@media (max-width:1000px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .wrap{padding:10px 8px 40px}
+  .page{padding:22px 16px 36px;border-radius:14px}
+  h1{font-size:22px}h2{font-size:19px}
+  .body2{columns:1}
+  .cards,.steps.h,.prices,.stairs,.tri,.two{grid-template-columns:1fr}
+  .steps.h .stp::after{display:none}
+  .stairs{align-items:stretch;border-bottom:0}
+  .step{min-height:0;border-radius:14px;border-bottom:2px solid var(--line)}
+  .tri .tedge{grid-column:1!important;grid-row:auto!important}
+  .tri .tnode{grid-column:1!important;grid-row:auto!important}
+  .tri svg.tlines{display:none}
+  .two{grid-template-columns:1fr}.two .swap{height:40px;transform:rotate(90deg)}
+  dl.kv{grid-template-columns:1fr}dl.kv dt{border-top:1px solid var(--line)}dl.kv dd{border-top:0}
+  dl.kv dt:first-of-type{border-top:0}
+  .tl{display:block;border-left:3px solid var(--line);margin-left:9px;padding-left:18px}
+  .tl .bar{display:none}
+  .tl .ev{display:block;position:relative;margin:0 0 12px}
+  .tl .ev .dot{position:absolute;left:-29px;top:4px;width:16px;height:16px;border-width:3px}
+  .tl .ev .date{display:block;transform:none;background:none;padding:0;margin-bottom:2px;text-align:left;font-size:13px}
+  .tl .ev .box{margin:0!important}
+  .kpi .v{font-size:18px}
+  .pc .v{white-space:normal}
+  table.cmp,table.tbl{font-size:12.5px}
+  .cmp td.k{width:auto}.cmp td.old{width:auto}
+  .pc .sub{text-align:left}
+}
+/* 印刷 */
+@page{size:A4 landscape;margin:10mm}
+@media print{
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  .topbar,.warn{display:none}
+  .page{box-shadow:none;border-radius:0;page-break-after:always;break-after:page;margin:0;padding:18px 20px 30px;min-height:0}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  .page.cover{background:#fff}
+  .foot{bottom:6px;right:8px}
+}
+</style></head><body><div class="wrap"><div class="topbar"><span>図解ビューア ／ 2026-11-21 16:17 ／ RUNBIRD</span><span></span></div><section class="page cover"><div class="kicker">RUNBIRD</div><h1>Sayongピアノ教室 HP制作前調査</h1><p><strong>教室はまだ特定できていない。</strong> Web検索で「Sayong／サヨン／さよん／Sayon」とピアノ・教室・SNSを組み合わせて調べたが、該当する教室・先生・SNSは1件も出てこなかった。所在地・先生の氏名・料金はすべて<strong>取得不可</strong>。名前が近い別の教室は出てきたが、名前の一致がなく、本件と判断する根拠はない（下表）。 社内の手がかりは1件だけ。社内の営業記録に「11-16 商談：Sayongピアノ教室/HP/GET」とある。<strong>11月16日に営業担当が商談し、HP受注（GET）した</strong>と読める。 営業共有シートは無い（2026-11-21確認）。いちばん早いのは、<strong>11/16の商談録音を聞くか、営業担当に直接聞くこと</strong>。</p><p class="lead">調査日 2026年11月21日。WebSearch／WebFetchとHTML取得（curl）のみで調べた。ブラウザは使っていない。そのため参考サイトの<strong>配色はHTMLのカラーコードから拾った値で、画面の目視はしていない</strong>。写真の印象・スマホ表示・FVの見え方は「要ブラウザ確認」とした。</p><div class="kicker" style="margin-top:18px">目次</div><ol class="toc" style="font-size:13.5px;color:#374151;margin:0;padding:0;list-style:none;columns:2;column-gap:30px"><li style="display:flex;gap:6px;break-inside:avoid;margin:2px 0"><span style="min-width:1.6em;text-align:right;color:#6b7280">1.</span><span>作業1　教室の特定</span></li><li style="display:flex;gap:6px;break-inside:avoid;margin:2px 0"><span style="min-width:1.6em;text-align:right;color:#6b7280">2.</span><span>作業2　競合の価格帯と訴求</span></li><li style="display:flex;gap:6px;break-inside:avoid;margin:2px 0"><span style="min-width:1.6em;text-align:right;color:#6b7280">3.</span><span>作業3　デザインの参考サイト（開いて確かめた6件）</span></li><li style="display:flex;gap:6px;break-inside:avoid;margin:2px 0"><span style="min-width:1.6em;text-align:right;color:#6b7280">4.</span><span>作業4　ピアノ教室HPに必要なページ・パーツ</span></li><li style="display:flex;gap:6px;break-inside:avoid;margin:2px 0"><span style="min-width:1.6em;text-align:right;color:#6b7280">5.</span><span>作業5　ヒアリングで聞くこと（優先順）</span></li><li style="display:flex;gap:6px;break-inside:avoid;margin:2px 0"><span style="min-width:1.6em;text-align:right;color:#6b7280">6.</span><span>次の1手</span></li></ol><div class="foot">1 / 7</div></section><section class="page"><h2>作業1　教室の特定</h2><h3 class="sub">1．社内資料の確認結果</h3><div class="kpis"><div class="kpi a-ya"><div class="k">RUNBIRD案件フォルダ全体を「Sayong」「サヨン」「さよん」「ソヨン」で検索</div><div class="v">一致は上の営業記録1件だけ（無関係な文字列一致4件を除く）</div></div><div class="kpi a-to"><div class="k">同フォルダの「ピアノ」</div><div class="v">HP制作では<a href="%5B20260805%5D_黒﨑豊子/01_制作前/参考サイト候補_20260808.md">黒﨑豊子様の参考サイト候補</a>・<a href="../_クライアント台帳/株式会社花庄/projects.json">花庄の台帳</a>に一般語として出るだけで、本件とは無関係</div></div><div class="kpi a-gold"><div class="k"><code>_クライアント台帳/</code></div><div class="v">Sayong・ピアノ教室のフォルダなし</div></div><div class="kpi a-ha"><div class="k">録音の振り分け記録</div><div class="v">11/16の商談の記録なし。文字起こしの本文は無い</div></div><div class="kpi a-ya"><div class="k">リポジトリ全体（.md/.json/.txt）・Google Drive全文検索</div><div class="v">該当なし</div></div></div><p>参考: 文字起こし前の商談録音が未処理のまま残っており、11/16の商談録音がそこに入っている可能性がある。</p><h3 class="sub">2．Webでの検索結果</h3><p class="lead">試した表記: <code>Sayongピアノ教室</code> ／ <code>"Sayong" ピアノ</code> ／ <code>サヨン ピアノ教室</code> ／ <code>さよんピアノ</code> ／ <code>sayongpiano</code> <code>sayong_piano</code> <code>sayong.piano</code> ／ <code>Sayon ピアノ教室</code> ／ <code>"Sayong" 教室</code> ／ 韓国語表記 <code>사용 피아노</code>。Instagram・アメブロ・lit.link・LINE公式・ピティナの教室紹介に絞った検索もした。<strong>いずれも該当なし。</strong></p><p>「Sayong」という語自体は、マレーシア・ペラ州の陶器の村の名前（<a href="https://en.wikipedia.org/wiki/Sayong">Wikipedia</a>）と、韓国語の「사용（使用）」として出てくる。教室名の由来は<strong>取得不可</strong>。先生の名前・愛称（「さよ」など）、韓国語の名前、地名のどれから来ているかはヒアリングで確認する。</p><h3 class="sub">3．名前が近い別の教室（本件ではないと考える）</h3><div class="tblwrap"><table class="tbl"><thead><tr><th>教室</th><th>所在地</th><th>本件ではないと考える理由</th><th>確度</th></tr></thead><tbody><tr><td class="k"><a href="https://saonpiano.crayonsite.com/">さおんピアノ教室</a></td><td>愛知県豊橋市</td><td>「さおん」で綴りが違う。検索結果の要約では「各コースとも満席」とあり、新規でHPを作る動機と合わない</td><td>本件の可能性は低い</td></tr><tr><td class="k"><a href="https://web.lesson-time.com/sayapianostudio">Saya Piano Studio</a>（<a href="https://teacher.piano.or.jp/565721">ピティナ掲載</a>）</td><td>千葉県柏市</td><td>「Saya」で、「ong」が付かない。既に自前の掲載ページがある</td><td>低い</td></tr><tr><td class="k"><a href="https://saya-piano.com/">さやかピアノ教室 札幌＊西野</a></td><td>札幌市西区</td><td>講師名は河口さやかさん。既存HP（グーペ）あり</td><td>低い</td></tr><tr><td class="k"><a href="https://sayapiano.com/">清音ピアノ教室</a></td><td>埼玉県新座市</td><td>「清音（せいおん）」。名前の読みが違う</td><td>低い</td></tr><tr><td class="k">さやか音感ピアノ教室・SAYAKAピアノ教室・さやかピアノ音楽教室 ほか</td><td>横浜・福井・松山など</td><td>いずれも「さやか」</td><td>低い</td></tr></tbody></table></div><div class="callout"><b>結論: 断定できない。</b><p>上の候補は名前が一致しないため、どれも本件として扱わない。教室名の綴りが「Sayong」で正しいかどうかも、録音か営業担当で確認する。</p></div><h3 class="sub">4．頼まれた項目の現状</h3><div class="kpis"><div class="kpi a-ya"><div class="k">所在地</div><div class="v">取得不可</div></div><div class="kpi a-to"><div class="k">先生の氏名・経歴（音大・コンクール・指導歴）</div><div class="v">取得不可</div></div><div class="kpi a-gold"><div class="k">対象（幼児／子ども／大人）</div><div class="v">取得不可</div></div><div class="kpi a-ha"><div class="k">レッスン形態（個人／グループ／オンライン／出張）</div><div class="v">取得不可</div></div><div class="kpi a-ya"><div class="k">月謝・入会金</div><div class="v">取得不可</div></div><div class="kpi a-to"><div class="k">使用ピアノ</div><div class="v">取得不可</div></div><div class="kpi a-gold"><div class="k">発表会</div><div class="v">取得不可</div></div><div class="kpi a-ha"><div class="k">SNS（Instagram／ブログ／ピティナ）</div><div class="v">検索では見つからず。Instagramはログインしないと検索できないため、<code>https://www.instagram.com/explore/search/keyword/?q=sayong</code> で<strong>要ブラウザ確認</strong>。ピティナの<a href="https://teacher.piano.or.jp/">ピアノ教室紹介</a>も教室名検索を<strong>要ブラウザ確認</strong></div></div><div class="kpi a-ya"><div class="k">既存HPの有無</div><div class="v">検索では見つからず。「既存HPなし」の可能性は高いが断定しない</div></div></div><div class="foot">2 / 7</div></section><section class="page"><h2>作業2　競合の価格帯と訴求</h2><p class="lead"><strong>地域の競合は取得不可。</strong> 所在地が分からないため、比べる地域を決められない。代わりに、全国の目安と、今回開いて確かめた個人教室の実際の料金を並べる。所在地が分かったら、同じ市区町村で4〜5教室を取り直す。</p><h3 class="sub">1．全国の目安</h3><ul class="bul"><li>月謝の相場は<strong>個人教室7,000〜15,000円</strong>、大手5,000〜8,000円、中規模8,000〜20,000円（FP監修記事の整理。元はユアビーの相場情報）。<a href="https://financial-field.com/living/entry-431391">ファイナンシャルフィールド</a></li><li>大手の例: 島村楽器のピアノコースは入会金13,200円、運営管理費は月2,200円〜。<a href="https://www.shimamura.co.jp/lesson/course/piano/">島村楽器</a></li><li>個人教室の入会金の相場は、記事に具体的な数字が無く取得不可。下の実例では3,000〜5,000円、記載なしもある。</li></ul><h3 class="sub">2．開いて確かめた個人教室の料金</h3><div class="tblwrap"><table class="tbl"><thead><tr><th>教室（所在地）</th><th>月謝</th><th>入会金・体験料・その他</th><th>訴求（トップのコピー・推し）</th></tr></thead><tbody><tr><td class="k"><a href="https://kumapiano.com/">KUMAピアノ教室</a>（大阪府寝屋川市）</td><td>幼児・小学生30分×年40回 7,000円／40分 9,000円。大人は150分・2か月有効のチケット18,000円</td><td>体験2,000円。施設費5,000円／半年、教材費・発表会費は別。入会金の記載なし</td><td>「3歳から楽しく続く」「『できた！』が自信になる」。音大院修了の講師、アナリーゼ（楽曲分析）、オンライン対応、受賞歴</td></tr><tr><td class="k"><a href="https://www.natural-piano-room.net/">ていねいでやさしい子供向け個人ピアノ教室</a>（東京都府中市）</td><td>初級8,000円・中級9,000円・幼児8,000円（年38回）</td><td>入会金5,000円、体験2,000円（紹介は無料）、振替あり</td><td>「一人一人のペースを大切にした ていねいでたのしい個人音楽教室」。国立音大卒・指導歴22年、コンクール入賞・音大合格の実績</td></tr><tr><td class="k"><a href="https://www.n-piano-music-school.com/">N piano music school</a>（栃木県小山市）</td><td>トップに記載なし</td><td>入会金3,000円、体験30分1,000円（入会すると初月から1,000円引き）、入会後6か月は月500円引き</td><td>「趣味のピアノからコンクール挑戦まで、一人ひとりに寄り添う」「育脳×思考力ピアノ」</td></tr><tr><td class="k"><a href="https://shinohara-piano.com/children/">リベルテ音楽教室</a>（鹿児島市）</td><td>未就学児30分 7,000円／小学生以上30分 7,500円／45分 9,000円。60分 14,000円〜のコースもあり</td><td>入会金3,000円（体験から入会すると無料）、体験30分×2回 3,000円。休会費・振替の注意書きあり</td><td>「音楽を一生楽しめるものになるよう、お子様の成長を、芸術を通してサポートいたします♪」。目的別に4コース</td></tr><tr><td class="k"><a href="https://www.sasajima-piano.com/">ささじまピアノ教室</a>（富山県高岡市）</td><td>記載なし</td><td>体験1,000円（入会すると初回から割引）、面談10分は無料</td><td>「昔弾いたことがあるけどまた弾きたくありませんか？」。大人の再開と「弾きたい曲」</td></tr></tbody></table></div><p><strong>読み取れること。</strong> 子ども30分の月謝は7,000〜8,000円に集まる。体験料は1,000〜3,000円で、「入会したら差し引く／無料」がよく使われる。訴求は、(a) 講師の学歴・実績、(b) 「楽しく続く」「一人ひとりのペース」、(c) 「育脳」「コンクール対応」などの専門性、(d) 大人の再開、の4つに分かれる。</p><h3 class="sub">3．差別化の切り口（ヒアリングで当てはまるか確かめる仮説）</h3><div class="steps h" style="--n:4"><div class="stp"><div class="num">1</div><div class="body"><h4>教室名の由来を物語にする。</h4><p>「Sayong」は珍しい名前で、検索で他の教室と競合しない。先生の名前や背景（韓国語・海外とのつながりなど）が由来なら、プロフィールの最初に置ける。指名で検索されたときに確実に1位を取りやすい。</p></div></div><div class="arr">→</div><div class="stp"><div class="num">2</div><div class="body"><h4>料金をすべて見せる。</h4><p>比べた5教室のうち2教室はトップに月謝が無かった。施設費・教材費・発表会費まで1つの表にまとめるだけで、保護者から見て一歩抜け出せる。</p></div></div><div class="arr">→</div><div class="stp"><div class="num">3</div><div class="body"><h4>対象を絞って言い切る。</h4><p>「幼児の導入」「コンクール」「大人の再開」のどれを中心にするかで、FVのコピーと写真が決まる。全部を並べると、どの教室とも同じに見える。</p></div></div><div class="arr">→</div><div class="stp"><div class="num">4</div><div class="body"><h4>体験の不安を先に消す。</h4><p>体験料・所要時間・親の同席・持ち物・当日の流れを1ページにまとめる（下の参考サイトでも詳しく書いている教室は少ない）。</p></div></div></div><div class="foot">3 / 7</div></section><section class="page"><h2>作業3　デザインの参考サイト（開いて確かめた6件）</h2><p class="lead">確かめ方: WebFetchで本文・メニュー・料金・申込導線を読み、curlでHTMLを取得して制作ツール（テーマ）と多く使われているカラーコードを抽出した。<strong>画面の目視はしていない</strong>ため、写真の雰囲気・スマホ表示は要ブラウザ確認。</p><div class="tblwrap"><table class="tbl"><thead><tr><th>#</th><th>サイト</th><th>制作ツール・主な色（HTMLから抽出）</th><th>どこを真似るか（1行）</th></tr></thead><tbody><tr><td class="k">1</td><td><a href="https://kumapiano.com/">KUMAピアノ教室</a></td><td><strong>WordPress Lightning</strong>／くすみローズ <code>#C4848C</code>、こげ茶 <code>#2A2620</code>、金 <code>#B8974A</code>、ベージュ <code>#E8E0D8</code></td><td><strong>全体の第一参考。</strong> RUNBIRDの標準（Lightning＋VK）と同じテーマで再現しやすい。くすみローズ×金×ベージュの配色、学年別の料金表（回数・時間・別途費用）、「生徒様・保護者様の声」と「過去の演奏会」のページ分け</td></tr><tr><td class="k">2</td><td><a href="https://www.n-piano-music-school.com/">N piano music school</a></td><td>WordPress Cocoon／紺 <code>#19448e</code>、黄 <code>#ffd900</code>、淡い桃 <code>#fef4f4</code></td><td><strong>体験レッスン導線。</strong> 「体験レッスンを予約する」ボタンをくり返し置き、体験料は入会で初月から差し引き。住所は体験申込後に案内（自宅教室のプライバシー対策）</td></tr><tr><td class="k">3</td><td><a href="https://www.natural-piano-room.net/">ていねいでやさしい子供向け個人ピアノ教室</a></td><td>Wix／ブラウン <code>#7C5146</code>、青 <code>#2b5672</code></td><td><strong>講師紹介と実績。</strong> 学歴・指導歴・受賞歴を短く並べた「指導者紹介」と、コンクール入賞・合格の「生徒さんの実績」。料金は全コースを1つの表に</td></tr><tr><td class="k">4</td><td><a href="https://shinohara-piano.com/children/">リベルテ音楽教室</a></td><td>WordPress（TCDテーマ）／緑 <code>#238C00</code></td><td><strong>料金表と注意事項。</strong> コースごとの年齢・時間・月謝の表に、入会金・実費・欠席振替・休会費の注意書きを添える。保護者の質問を先回りできる</td></tr><tr><td class="k">5</td><td><a href="https://www.sasajima-piano.com/">ささじまピアノ教室</a></td><td>Wix／グレー基調、淡いピーチ <code>#F2D6C8</code></td><td><strong>申込の窓口を3つ用意する。</strong> 公式LINE・フォーム・電話。体験1,000円＋無料面談10分の分け方、大人向けの問いかけのコピー</td></tr><tr><td class="k">6</td><td><a href="https://saya-piano.com/">さやかピアノ教室 札幌＊西野</a></td><td>グーペ（色の抽出は不可）</td><td><strong>保護者向けページ。</strong> 「はじめてピアノを始めるお子様のご両親様へ」という専用ページ、「指導への思い」「フォトアルバム」「レッスン稼働日時」を分けたメニュー構成</td></tr></tbody></table></div><p><strong>上位3つ:</strong> ①KUMA（配色・全体構成、Lightningで再現できる）、②N piano（体験導線と住所の出し方）、③府中の教室（講師紹介・実績の見せ方）。</p><p>参考（未採用）: <a href="https://imitsu.jp/list/hp-design/piano/">いい見積</a>の記事が、ピアノ教室の事例として<a href="https://www.rs-music.com/">柴田音楽教室</a>・<a href="https://yurimusiccampus.com/">ユリミュージックキャンパス</a>・<a href="https://tsubaki-musicschool.com/">椿音楽教室</a>を挙げている。いずれも複数講師の音楽教室で、個人教室の参考としては規模が違うため開いていない。</p><div class="foot">4 / 7</div></section><section class="page"><h2>作業4　ピアノ教室HPに必要なページ・パーツ</h2><p class="lead">前提: サイトを見る人の多くは小さな子どもの保護者。防音の部屋でレッスンの様子が外から見えにくいため、写真・動画・声で「安心・安全・親近感」を伝えることが大事。教室の雰囲気はブログで伝え続ける。<a href="https://imitsu.jp/list/hp-design/piano/">いい見積</a></p><p>ライトホームページプランの標準構成（6〜8ページ＋ブログ）に当てはめた案。<a href="_ライトホームページプラン/プラン仕様書.md">プラン仕様書</a></p><div class="tblwrap"><table class="tbl"><thead><tr><th>ページ</th><th>入れる中身</th><th>参考</th></tr></thead><tbody><tr><td class="k">トップ</td><td>対象を言い切るコピー、先生の写真、体験レッスンのボタン、料金の要約、教室の雰囲気の写真</td><td>KUMA・N piano</td></tr><tr><td class="k">講師紹介</td><td>写真、学歴（音大・専攻）、指導歴の年数、コンクール・演奏歴、教室名の由来、指導への思い</td><td>府中・札幌</td></tr><tr><td class="k">レッスン・コース</td><td>対象年齢、時間、回数／年、教材、オンライン・大人の可否</td><td>リベルテ・KUMA</td></tr><tr><td class="k">料金</td><td>月謝表（年何回）、入会金、施設費・教材費・発表会費、振替・休会・退会のルール</td><td>リベルテ・府中</td></tr><tr><td class="k">体験レッスン（はじめての方へ）</td><td>体験料と入会時の扱い、所要時間、当日の流れ、親の同席、持ち物、申込後の連絡</td><td>N piano・ささじま</td></tr><tr><td class="k">生徒・保護者の声／実績</td><td>声（掲載の許可を得たもの）、コンクール・検定の実績</td><td>KUMA・府中</td></tr><tr><td class="k">発表会・イベント</td><td>発表会の写真（顔の掲載許可）、季節のイベント</td><td>KUMA・札幌</td></tr><tr><td class="k">よくある質問</td><td>何歳から？／家にピアノが無くても大丈夫？／電子ピアノでもいい？／振替は？／駐車場は？</td><td>N piano</td></tr><tr><td class="k">アクセス・お問い合わせ</td><td>最寄り駅・駐車場、詳しい住所の出し方（自宅教室なら申込後に案内も選べる）、LINE・フォーム・電話</td><td>N piano・ささじま</td></tr><tr><td class="k">ブログ・お知らせ</td><td>空き枠、発表会の報告、レッスンの様子</td><td>いい見積</td></tr></tbody></table></div><div class="foot">5 / 7</div></section><section class="page"><h2>作業5　ヒアリングで聞くこと（優先順）</h2><div class="steps v" style="--n:14"><div class="stp"><div class="num">1</div><div class="body"><p>教室名の正しい綴りと読み方は？ 「Sayong」の由来は？（先生のお名前・愛称・ルーツなど）</p></div></div><div class="stp"><div class="num">2</div><div class="body"><p>先生のお名前（漢字・ふりがな）と、HPに顔写真を載せてよいか。</p></div></div><div class="stp"><div class="num">3</div><div class="body"><p>教室の住所・最寄り駅・駐車場。自宅教室か貸しスタジオか。詳しい住所をHPに載せるか、申込後に伝えるか。</p></div></div><div class="stp"><div class="num">4</div><div class="body"><p>経歴: 出身の音楽大学・専攻、指導歴（何年から）、コンクール・演奏歴、ピティナ・ヤマハ・カワイなどの指導者資格。</p></div></div><div class="stp"><div class="num">5</div><div class="body"><p>対象と、いちばん来てほしい生徒: 幼児の導入／小学生／コンクール志望／大人の再開。最低年齢は？</p></div></div><div class="stp"><div class="num">6</div><div class="body"><p>レッスン形態: 個人・グループ・オンライン・出張のどれに対応するか。曜日・時間帯、空き枠の数。</p></div></div><div class="stp"><div class="num">7</div><div class="body"><p>料金: 月謝（コース別・年何回）、入会金、施設費・教材費・発表会費、振替・休会・退会のルール。</p></div></div><div class="stp"><div class="num">8</div><div class="body"><p>体験レッスン: 料金、所要時間、当日の流れ、保護者の同席、入会時の割引の有無。</p></div></div><div class="stp"><div class="num">9</div><div class="body"><p>使用ピアノ（グランド／アップライト／メーカー）、防音、教室の写真を撮れるか。</p></div></div><div class="stp"><div class="num">10</div><div class="body"><p>発表会・イベントの頻度と会場。写真の掲載許可（生徒の顔）。</p></div></div><div class="stp"><div class="num">11</div><div class="body"><h4>生徒・保護者の声をもらえるか。コンクール・検定の実績。</h4></div></div><div class="stp"><div class="num">12</div><div class="body"><p>申込の窓口: 公式LINE・フォーム・電話のうち何を使うか。返信の目安。</p></div></div><div class="stp"><div class="num">13</div><div class="body"><p>今のSNS（Instagram・ブログ・ピティナの掲載）とアカウント名。既存のHP・ドメインはあるか。</p></div></div><div class="stp"><div class="num">14</div><div class="body"><p>好きな雰囲気・色、近くて意識している教室、HPを作ろうと思ったきっかけ。</p></div></div></div><div class="foot">6 / 7</div></section><section class="page"><h2>次の1手</h2><ul class="bul"><li><strong>営業担当に11/16の商談内容を聞く</strong>（教室名の綴り・先生のお名前・地域・受注内容）。または11/16の録音を文字起こしして読む。</li><li>所在地が分かったら、Instagram・ピティナ・Googleマップをブラウザで確認し、同じ地域の競合4〜5教室で作業2を取り直す。</li><li>参考サイト上位3つの画面（PC・375px）をブラウザで目視し、配色と写真の印象を確かめる。</li></ul><div class="foot">7 / 7</div></section></div></body></html>
