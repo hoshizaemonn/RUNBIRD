@@ -12,3 +12,11 @@ document.querySelector('[data-map]')?.addEventListener('click', event => {
   frame.src = event.currentTarget.dataset.map;
   event.currentTarget.replaceWith(frame);
 });
+
+const homeScroll = document.querySelector('.page-index .scroll');
+if (homeScroll) {
+  const header = document.querySelector('header');
+  const updateHeader = () => header.classList.toggle('on-paper', homeScroll.scrollTop > 0);
+  homeScroll.addEventListener('scroll', updateHeader, {passive:true});
+  updateHeader();
+}

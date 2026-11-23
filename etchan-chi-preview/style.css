@@ -38,3 +38,27 @@ h1,h2,h3{font-weight:400}.section h2{letter-spacing:.055em}.cards img{border-rad
 .hero-copy{left:auto;right:7%;top:37%}.hero-copy h1,.hero-copy .location{color:white;text-shadow:0 2px 8px #19182099}.hero:after{background:linear-gradient(90deg,transparent 28%,#19172339 65%,#16121a52)}.signature,.signature small{color:white;text-shadow:0 2px 8px #201421}.hero picture img{object-position:50% 55%}
 .section figure.treatment-photo,.steps figure.treatment-photo{margin:18px 0 0;max-width:178px}.section figure.treatment-photo img,.steps figure.treatment-photo img{width:auto;max-width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:6px}
 @media(max-width:700px){.hero-copy{left:7%;right:auto;top:9%}.hero:after{background:linear-gradient(180deg,#1c171965,transparent 64%,#1c171956)}.hero picture img{object-position:50% 50%}}
+
+/* 店内写真と余白を生かしたページ別の構成 */
+:root{--mulberry:#815b75;--blush:#faf6f2}
+.page-index{--bar:70px;--scene:clamp(480px,82vh,750px)}
+.page-index header{height:var(--bar);isolation:isolate}
+.page-index header::before{content:"";position:absolute;inset:0 0 auto;height:calc(var(--bar) + var(--scene));background:linear-gradient(90deg,transparent 28%,#19172339 65%,#16121a52),url(img/room-day.jpg) center 55%/cover;clip-path:inset(0 0 calc(100% - var(--bar)) 0);z-index:-1;pointer-events:none}
+.page-index header:not(.on-paper) .brand,.page-index header:not(.on-paper) .dm{color:#fff;text-shadow:0 1px 5px #312626}
+.page-index header:not(.on-paper) .mobile summary span{background:white}
+.page-index header.on-paper::before{display:none}
+.page-index .hero picture img{height:calc(100% + var(--bar));transform:translateY(calc(-1 * var(--bar)))}
+.page-index .hero-copy{top:24%;right:6%}.page-index .hero h1{font-size:clamp(25px,2.6vw,43px);line-height:1.8}
+.quick{width:min(100%,1090px);margin:auto;gap:0;justify-content:space-evenly;padding:32px 16px}.quick a{padding:3px 12px;text-align:center}.quick small{display:block;font:italic 13px Georgia;color:var(--mulberry);letter-spacing:.06em;margin-bottom:7px}
+.welcome{padding:58px 6vw 24px}.room-link{margin-top:25px}.page-index .section.tint{background:var(--blush);border-radius:46% 54% 0 0 / 28px 35px 0 0}
+.service-intro,.price-intro,.tour-title{padding:58px max(6vw,calc((100% - 1100px)/2)) 0}
+.service-intro em,.price-intro em,.tour-title em{font:italic 15px Georgia;color:var(--mulberry);letter-spacing:.1em}.service-intro h1,.price-intro h1,.tour-title h1{font-size:clamp(28px,3.1vw,44px);line-height:1.5;margin:12px 0 36px;letter-spacing:.06em}
+.service-intro{padding-inline:0}.service-intro>em,.service-intro>h1{margin-inline:6vw}.service-intro figure img{height:clamp(280px,46vw,575px);object-position:50% 55%;border-radius:0 0 50% 45% / 0 0 4% 3%}
+.jump-links{display:flex;gap:12px 30px;flex-wrap:wrap;align-items:center;padding:22px 0}.jump-links a{text-decoration:none;color:#604b59;border-bottom:1px solid #d9cfd5;font-size:16px}.service-intro+.jump-links{justify-content:center;padding-inline:6vw}
+.price-intro{padding-bottom:28px}.price-intro h1{margin-bottom:5px}.prices-layout{max-width:1200px;padding:24px 5% 90px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(210px,30%);align-items:start;gap:6%}
+.prices-column .section{padding:38px 0;background:white}.prices-column .section+.section{border-top:1px solid var(--line)}.prices-column .deal{display:block;background:var(--blush)}.prices-column .deal strong{font-size:clamp(30px,3.5vw,45px)}
+.reservation-note{border:1px solid #ded3d7;border-radius:95px 95px 12px 12px;padding:16px 16px 28px;text-align:center}.reservation-note img{border-radius:85px 85px 6px 6px;aspect-ratio:1.5}.reservation-note h2{font-size:22px;margin:22px 0 12px}.reservation-note>a:last-child{display:block;margin-top:16px;font-size:15px}
+.tour-title{text-align:center}.tour-title p{margin:0 auto 35px}.tour-cover{max-width:1250px;margin:auto}.tour-cover img{height:clamp(250px,43vw,540px);object-position:50% 56%;border-radius:0 0 50% 50% / 0 0 4% 4%}
+.tour-pair{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:8%;width:min(88%,960px);margin:clamp(60px,9vw,120px) auto}.tour-pair img{height:clamp(230px,30vw,390px);border-radius:44% 44% 8px 8px / 35% 35% 8px 8px}.tour-pair.reverse img{grid-area:1/1;border-radius:10px 10px 30% 30%}.tour-end{background:var(--blush)}.tour-end a{margin:0 8px 10px 0}
+@media(max-width:700px){.page-index{--bar:58px;--scene:clamp(400px,62dvh,555px)}.page-index header::before{background:linear-gradient(#1c171973,transparent),url(img/room-front.jpg) center/cover}.page-index .hero-copy{top:auto;bottom:9%;left:7%;right:auto}.page-index .signature{top:37%;bottom:auto;left:0;right:0;font-size:26px}.page-index .hero:after{background:linear-gradient(180deg,#1c171940,transparent 25%,#24191d24 52%,#1c1719af)}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 0;padding:24px 5vw}.quick a{font-size:14px;padding:4px 2px}.quick small{margin-bottom:4px}.welcome{padding:35px 6vw 20px}.service-intro,.price-intro,.tour-title{padding-top:35px}.service-intro h1{margin-bottom:22px}.service-intro figure img{height:clamp(260px,72vw,390px)}.prices-layout{display:block;padding:0 6vw 50px}.reservation-note{margin:22px auto 0;max-width:340px}.tour-pair{display:flex;flex-direction:column;align-items:stretch;gap:15px}.tour-pair img{height:290px}}
