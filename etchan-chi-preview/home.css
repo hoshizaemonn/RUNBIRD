@@ -200,3 +200,94 @@
   .course:last-child .course-title { margin-bottom: 1rem; }
   .course:last-child .rates { margin: .75rem 0; }
 }
+
+/* Keep the treatment choices within reach on the opening photograph. */
+.home header { gap: clamp(10px, 1.8vw, 30px); padding-block: .7rem; }
+.home header .chapter-nav { padding: 0; border: 0; align-items: center; flex-wrap: nowrap; }
+.home header .chapter-nav a { padding: 0 .8rem; font-size: .95rem; }
+.home header .chapter-nav small { font-size: .78rem; margin: 0; }
+.mobile-course { display: none; }
+.cover {
+  display: flex; align-items: flex-start; justify-content: flex-start;
+  min-height: clamp(480px, calc(96svh - 72px), 900px);
+  border-radius: 0 0 50% 46% / 0 0 4% 3%;
+  background: #f7f3eb;
+}
+.cover::before {
+  content: ""; position: absolute; inset: 0; z-index: -2;
+  background: linear-gradient(100deg,#faf7f2ee 0%,#f5f1ebbf 44%,transparent 82%),url("img/room-day.jpg") left 52% / cover;
+}
+.cover picture {
+  inset: 0 0 0 27%; height: 100%; margin: 0; position: absolute; border-radius: 0;
+  mask-image: linear-gradient(to right, transparent 0%, #000 42%);
+}
+.cover img { object-position: center 31%; }
+.cover-copy { position: relative; width: auto; max-width: 47%; margin: clamp(45px, 9vh, 130px) 0 7rem var(--pad); }
+.cover h1 { font-size: clamp(1.9rem, 2.8vw, 3.4rem); color: #563e54; margin: .55em 0 .7em; }
+.cover-sub { font-size: 1rem; line-height: 1.95; margin-bottom: 1.4rem; }
+.film-link { display: inline-flex; gap: .65em; align-items: center; font-size: .9rem; color: #583b50; text-decoration-thickness: 1px; }
+.film-link::before { content: '▶'; font: .65rem/2 Georgia; width: 1.5rem; height: 1.5rem; text-align: center; border: 1px solid; border-radius: 50%; }
+.cover-services {
+  position: absolute; bottom: 6.5%; left: var(--pad); display: flex; flex-wrap: wrap;
+  background: #fffaf5f5; padding: .35rem .6rem; border-radius: 2rem; border: 1px solid #e3d9d6;
+}
+.cover-services a { padding: .4rem .9rem; font-size: .92rem; text-decoration: none; color: #533d50; }
+.cover-services a + a { border-left: 1px solid var(--edge); }
+.features { position: relative; padding: 0; }
+.feature-stage { background: var(--wash); padding-block: clamp(25px, 5vh, 65px); }
+.features.pinned .feature-stage { position: sticky; top: var(--feature-head); }
+.point-marker { position: absolute; left: 0; pointer-events: none; scroll-margin-top: var(--feature-head); }
+.features.pinned .point-stack { display: grid; }
+.features.pinned .point { grid-area: 1/1; visibility: hidden; opacity: 0; align-self: center; width: 100%; }
+.features.pinned .point.current { visibility: visible; opacity: 1; }
+.point img { height: min(48svh, 450px); width: 100%; aspect-ratio: auto; }
+.point-nav a[aria-current]::before { content: "● "; font-size: .65em; vertical-align: middle; }
+.point figure:has(img[src*="fascia"]) img { object-position: 50% 33%; }
+.features:not(.pinned) .point + .point { border-top: 1px solid var(--edge); }
+@media (prefers-reduced-motion: no-preference) {
+  .pinned .point.current { animation: point-arrival .32s ease-out; }
+  @keyframes point-arrival { from { opacity: .15; transform: translateY(5px); } }
+}
+@media (max-width: 1020px) {
+  .home header .chapter-nav { display: none; }
+  .mobile-course { display: inline-block; text-decoration: none; color: var(--plum); }
+}
+@media (max-width: 700px) {
+  .home header { padding-inline: 4%; gap: .55rem; }
+  .home header .brand { font-size: 1.12rem; letter-spacing: .06em; }
+  .mobile-course { font-size: .84rem; }
+  .home header .book { font-size: .85rem; padding: .55rem .7rem; }
+  .cover { display: block; min-height: clamp(500px, calc(94svh - 60px), 760px); }
+  .cover::before { background-position: left top; }
+  .cover picture { inset: 0; mask-image: linear-gradient(150deg, #0002 0%, #0003 22%, #000e 49%, #000 65%); }
+  .cover img { object-position: 50% 29%; }
+  .cover-copy { margin: 0; padding: 1.6rem 6% 1.9rem; max-width: 100%; width: 100%; background: linear-gradient(151deg,#faf7f3ed 0%,#faf7f3df 34%,transparent 76%); }
+  .cover h1 { margin: .45em 0; font-size: clamp(1.5rem, 5.8vw, 2rem); }
+  .cover-sub { margin-bottom: .65rem; }
+  .cover-services { bottom: 5%; left: 4%; right: 4%; justify-content: center; border-radius: 1rem; padding: .55rem .25rem; }
+  .cover-services a { padding: .22rem .55rem; font-size: .86rem; }
+  .point-nav { gap: 0 .7rem; }
+  .feature-stage { padding-block: 1rem; }
+  .feature-heading h2 { font-size: 1.55rem; margin: .1em 0 .35em; }
+  .points { gap: .7rem; }
+  .point { padding-block: .35rem; gap: .8rem; }
+  .point figure { width: min(53%, 220px); }
+  .point img { height: clamp(105px, 23svh, 210px); }
+  .point h3 { margin: 0 0 .35em; font-size: 1.25rem; }
+  .point p { margin-bottom: .35em; }
+}
+@media (max-width: 359px) {
+  .home header { gap: .3rem; }
+  .home header .mobile summary { width: 30px; }
+}
+@media (max-width: 700px) and (max-height: 720px) {
+  .feature-stage { padding-block: .65rem; }
+  .feature-heading .kicker { display: none; }
+  .feature-heading h2 { font-size: 1.35rem; }
+  .point-nav a { padding: .22rem 0; }
+  .points { gap: .35rem; }
+  .point { gap: .6rem; }
+  .point figure { width: 55%; }
+  .point img { height: clamp(82px, 17svh, 115px); }
+  .point h3 { line-height: 1.6; }
+}
