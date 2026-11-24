@@ -84,17 +84,6 @@
 .salon-story figcaption { margin-top: .5rem; }
 .salon-story h2 { color: var(--plum); }
 .features, .first { background: var(--wash); padding-block: clamp(64px, 7.5vw, 120px); }
-.feature-heading { text-align: center; }
-.points { display: grid; grid-template-columns: minmax(140px, .57fr) minmax(0, 2.4fr); align-items: center; gap: 5%; }
-.point-nav { display: grid; border-top: 1px solid var(--edge); }
-.point-nav a { text-decoration: none; padding: .85rem .15rem; border-bottom: 1px solid var(--edge); }
-.point-nav a[aria-current] { color: var(--plum); font-weight: 650; border-bottom-color: var(--plum); }
-.point { display: grid; grid-template-columns: .95fr 1fr; align-items: center; gap: 12%; padding-block: 1rem; }
-.point[hidden] { display: none; }
-.point figure { position: relative; isolation: isolate; }
-.point figure::before { content: ""; position: absolute; inset: -1% -3% 5% 4%; border-radius: 47% 46% 30% 37%; border: 1px solid #c3a8b5; transform: rotate(3deg); z-index: -1; }
-.point img { aspect-ratio: 3 / 4; border-radius: 49% 46% 29% 33% / 31% 35% 18% 20%; }
-.point h3 { color: var(--plum); font-size: clamp(1.25rem, 2vw, 2rem); line-height: 1.8; margin-bottom: .85em; }
 .menu { padding-block: clamp(64px, 8vw, 128px); }
 .menu > .kicker, .menu > h2 { text-align: center; }
 .wishes { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 12px; max-width: 52rem; margin: 0 auto 3rem; padding: 0; }
@@ -116,16 +105,8 @@
 .first li::before { content: counter(steps, decimal-leading-zero); position: absolute; top: 1.1rem; left: 0; font: italic 1.55rem/1.7 Georgia; color: var(--rose); }
 .first h3 { font-size: 1.2rem; margin-bottom: .4rem; }
 .first li p { margin: 0; }
-.visit { width: min(94%, 1440px); margin: clamp(64px, 7vw, 112px) auto; display: grid; grid-template-columns: 64% 1fr; align-items: center; }
-.visit figure { height: clamp(380px, 42vw, 600px); overflow: hidden; border-radius: 0 7% 20% 2%; }
-.visit img { height: 100%; object-position: 50% 52%; }
-.visit-card { position: relative; background: #fff; border: 1px solid var(--edge); border-radius: 5rem 5rem 1.5rem 1.5rem; margin-left: -10%; padding: clamp(30px, 4vw, 75px); }
-.visit-card hr { border: 0; border-top: 1px solid var(--edge); margin: 1.4rem 0; }
 .reserve { display: inline-block; }
 @media (max-width: 960px) {
-  .points { grid-template-columns: 1fr; gap: 1.5rem; }
-  .point-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .25rem 1.25rem; border-top: 0; }
-  .point { max-width: 730px; margin: auto; }
   .courses { gap: 1.25rem; }
   .course-title { flex-direction: column; align-items: flex-start; }
   .salon-story { grid-template-columns: .65fr 1.3fr .85fr; gap: 2%; }
@@ -153,12 +134,6 @@
   .salon-story .flower { margin: 0 0 .8rem; }
   .salon-story .bed { margin-top: 1.5rem; }
   .desktop { display: none; }
-  .point-nav { display: grid; grid-template-columns: 1fr 1fr; gap: .2rem .7rem; text-align: center; }
-  .point-nav a { padding: .45rem 0; }
-  .point { display: flex; flex-direction: column; align-items: stretch; gap: 1.5rem; }
-  .point figure { width: min(68%, 250px); align-self: center; }
-  .point img { aspect-ratio: 5 / 5.7; }
-  .point h3 { font-size: 1.45rem; }
   .courses { grid-template-columns: 1fr; gap: 2rem; }
   .course-title { flex-direction: row; align-items: center; min-height: auto; }
   .course-title img { width: 78px; }
@@ -168,9 +143,6 @@
   .offer h3 { margin-bottom: .8rem; }
   .offer-rates { gap: .2rem 1rem; }
   .first ol { margin-top: 1.5rem; }
-  .visit { display: block; }
-  .visit figure { height: 300px; }
-  .visit-card { width: 89%; margin: -3rem auto 0; border-radius: 2.8rem 2.8rem 1rem 1rem; padding: 1.75rem; }
 }
 .news > div { padding-top: 0; }
 .notice-row { display: grid; grid-template-columns: 7rem 1fr; align-items: baseline; gap: 1rem; padding: .9rem 0; border-bottom: 1px solid var(--edge); }
@@ -233,21 +205,7 @@
 }
 .cover-services a { padding: .4rem .9rem; font-size: .92rem; text-decoration: none; color: #533d50; }
 .cover-services a + a { border-left: 1px solid var(--edge); }
-.features { position: relative; padding: 0; }
-.feature-stage { background: var(--wash); padding-block: clamp(25px, 5vh, 65px); }
-.features.pinned .feature-stage { position: sticky; top: var(--feature-head); }
-.point-marker { position: absolute; left: 0; pointer-events: none; scroll-margin-top: var(--feature-head); }
-.features.pinned .point-stack { display: grid; }
-.features.pinned .point { grid-area: 1/1; visibility: hidden; opacity: 0; align-self: center; width: 100%; }
-.features.pinned .point.current { visibility: visible; opacity: 1; }
-.point img { height: min(48svh, 450px); width: 100%; aspect-ratio: auto; }
-.point-nav a[aria-current]::before { content: "● "; font-size: .65em; vertical-align: middle; }
-.point figure:has(img[src*="fascia"]) img { object-position: 50% 33%; }
-.features:not(.pinned) .point + .point { border-top: 1px solid var(--edge); }
-@media (prefers-reduced-motion: no-preference) {
-  .pinned .point.current { animation: point-arrival .32s ease-out; }
-  @keyframes point-arrival { from { opacity: .15; transform: translateY(5px); } }
-}
+
 @media (max-width: 1020px) {
   .home header .chapter-nav { display: none; }
   .mobile-course { display: inline-block; text-decoration: none; color: var(--plum); }
@@ -266,28 +224,93 @@
   .cover-sub { margin-bottom: .65rem; }
   .cover-services { bottom: 5%; left: 4%; right: 4%; justify-content: center; border-radius: 1rem; padding: .55rem .25rem; }
   .cover-services a { padding: .22rem .55rem; font-size: .86rem; }
-  .point-nav { gap: 0 .7rem; }
-  .feature-stage { padding-block: 1rem; }
-  .feature-heading h2 { font-size: 1.55rem; margin: .1em 0 .35em; }
-  .points { gap: .7rem; }
-  .point { padding-block: .35rem; gap: .8rem; }
-  .point figure { width: min(53%, 220px); }
-  .point img { height: clamp(105px, 23svh, 210px); }
-  .point h3 { margin: 0 0 .35em; font-size: 1.25rem; }
-  .point p { margin-bottom: .35em; }
 }
 @media (max-width: 359px) {
   .home header { gap: .3rem; }
   .home header .mobile summary { width: 30px; }
 }
 @media (max-width: 700px) and (max-height: 720px) {
-  .feature-stage { padding-block: .65rem; }
+}
+
+/* Each scene shares one central picture position. The text has a lane on either side. */
+.features { position: relative; padding: 0; background: var(--wash); }
+.feature-stage { background: var(--wash); padding-block: clamp(1rem, 4vh, 3.75rem); }
+.feature-stage .wrap { width: min(88%, 1360px); }
+.feature-heading { text-align: center; }
+.feature-heading h2 { margin: .15em 0 .75em; font-size: clamp(1.5rem, 2vw, 2.25rem); }
+.point {
+  display: grid; grid-template-columns: 1fr min(28vw, 37svh, 410px) 1fr;
+  column-gap: clamp(1.5rem, 5vw, 6rem); align-items: center;
+  padding-block: .75rem;
+}
+.point figure { grid-area: 1 / 2; }
+.point img {
+  width: 100%; aspect-ratio: 2 / 3; object-fit: cover;
+  border-radius: 45% 40% 32% 28% / 25% 30% 17% 18%;
+}
+.point:first-child img { object-position: center 35%; }
+.point > div { grid-area: 1 / 1; max-width: 23rem; justify-self: end; }
+.point:nth-child(even) > div { grid-column: 3; justify-self: start; }
+.point h3 { color: var(--night); font-size: clamp(1.16rem, 1.65vw, 1.8rem); line-height: 1.7; margin: 0 0 .7em; }
+.point h3 span {
+  display: inline; padding: .08em .24em; color: #fffaf7;
+  background: linear-gradient(100deg, #805d72, #52586e); border-radius: .12em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.point p { margin: 0 0 .75em; }
+.point-nav { display: flex; justify-content: center; gap: .4rem 1.35rem; flex-wrap: wrap; margin: .65rem auto 0; }
+.point-nav a { padding: .25rem 0; color: #746773; border-bottom: 1px solid transparent; font-size: .88rem; text-decoration: none; }
+.point-nav a[aria-current] { color: var(--plum); border-color: var(--plum); }
+.features.pinned .feature-stage { position: sticky; top: var(--feature-head); overflow: clip; }
+.point-marker { position: absolute; left: 0; pointer-events: none; scroll-margin-top: var(--feature-head); }
+.pinned .point-stack { display: grid; }
+.pinned .point { grid-area: 1/1; visibility: hidden; pointer-events: none; }
+.pinned .point.in-scene { visibility: visible; }
+.pinned .point.current > div { pointer-events: auto; }
+.pinned .point figure { opacity: var(--photo-opacity, 1); }
+.pinned .point > div { opacity: var(--copy-opacity, 1); transform: translateY(var(--rise, 0px)); }
+.features:not(.pinned) .point + .point { border-top: 1px solid var(--edge); }
+
+.visit {
+  width: 100%; margin: clamp(60px, 7vw, 120px) auto;
+  display: grid; grid-template-columns: 1fr; align-items: center; isolation: isolate;
+}
+.visit figure {
+  grid-area: 1/1; width: 86%; height: clamp(460px, 52vw, 850px);
+  border-radius: 0 5% 7% 0 / 0 19% 24% 0; overflow: hidden;
+}
+.visit img { width: 100%; height: 100%; object-position: center 56%; }
+.visit-card {
+  position: relative; grid-area: 1/1; justify-self: end; margin: 0 4.8% 0 0;
+  width: clamp(285px, 25vw, 405px); background: white; border: 1px solid var(--edge);
+  padding: clamp(2.7rem, 4.4vw, 5rem) clamp(1.6rem, 3vw, 3.5rem);
+  border-radius: 38% 39% 31% 28% / 19% 20% 17% 14%;
+}
+.visit-card h2 { color: var(--plum); font-size: clamp(1.65rem, 2vw, 2.3rem); margin: .25rem 0 1.25rem; }
+.visit-card p { margin: 0 0 .6rem; }
+.visit-card hr { border: 0; border-top: 1px solid var(--edge); margin: 1.2rem 0; }
+.visit-card .reserve { margin-top: .5rem; }
+@media (max-width: 800px) {
+  .feature-stage { padding-block: 1rem; }
+  .point { grid-template-columns: 1fr; gap: .7rem; padding-block: .4rem; }
+  .point figure { grid-area: 1/1; justify-self: center; width: min(56%, 220px); }
+  .point img { height: clamp(110px, 24svh, 245px); aspect-ratio: auto; }
+  .point > div, .point:nth-child(even) > div { grid-area: 2/1; width: 88%; justify-self: start; }
+  .point:nth-child(even) > div { justify-self: end; }
+  .point h3 { font-size: 1.2rem; margin-bottom: .35rem; }
+  .point p { margin-bottom: .25rem; }
+  .point-nav { gap: .2rem .75rem; }
+  .visit { margin-block: 3.75rem; }
+  .visit figure { width: 94%; height: clamp(280px, 75vw, 430px); }
+  .visit-card { grid-area: auto; width: min(83%, 400px); margin: -3rem 5% 0 0; padding: 2rem 2.25rem; border-radius: 3.5rem 4rem 2.5rem 2rem; }
+}
+@media (max-width: 800px) and (max-height: 720px) {
+  .feature-stage { padding-block: .55rem; }
   .feature-heading .kicker { display: none; }
-  .feature-heading h2 { font-size: 1.35rem; }
-  .point-nav a { padding: .22rem 0; }
-  .points { gap: .35rem; }
-  .point { gap: .6rem; }
-  .point figure { width: 55%; }
-  .point img { height: clamp(82px, 17svh, 115px); }
-  .point h3 { line-height: 1.6; }
+  .feature-heading h2 { font-size: 1.35rem; margin-bottom: .4rem; }
+  .point img { height: clamp(88px, 16svh, 115px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pinned .point.in-scene:not(.current) { visibility: hidden; }
+  .pinned .point.current > div, .pinned .point.current figure { opacity: 1; transform: none; }
 }

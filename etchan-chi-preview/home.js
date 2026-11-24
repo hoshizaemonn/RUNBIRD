@@ -32,7 +32,22 @@ function sync() {
   let index = 0;
   if (pinned) {
     const distance = header.offsetHeight - features.getBoundingClientRect().top;
-    index = Math.max(0, Math.min(panels.length - 1, Math.floor(distance / stride + 0.28)));
+    const progress = Math.max(0, Math.min(panels.length - 1, distance / stride));
+    const from = Math.floor(progress);
+    // Leave a reading pause on either side of the crossfade.
+    const blend = Math.max(0, Math.min(1, (progress - from - 0.20) / 0.60));
+    index = blend < 0.5 ? from : from + 1;
+    const travel = Math.min(180, window.innerHeight * 0.22);
+    panels.forEach((panel, i) => {
+      const incoming = i === from + 1 && blend > 0;
+      const outgoing = i === from && blend < 1;
+      panel.classList.toggle('in-scene', incoming || outgoing);
+      if (!incoming && !outgoing) return;
+      const opacity = incoming ? blend : 1 - blend;
+      panel.style.setProperty('--photo-opacity', incoming ? blend : 1);
+      panel.style.setProperty('--copy-opacity', Math.max(0, 2 * opacity - 1));
+      panel.style.setProperty('--rise', ((incoming ? 1 - blend : -blend) * travel) + 'px');
+    });
   } else {
     panels.forEach((panel, i) => {
       if (panel.getBoundingClientRect().top < window.innerHeight * 0.55) index = i;
