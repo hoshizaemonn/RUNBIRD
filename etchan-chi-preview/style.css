@@ -62,3 +62,66 @@ h1,h2,h3{font-weight:400}.section h2{letter-spacing:.055em}.cards img{border-rad
 .tour-pair{display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:8%;width:min(88%,960px);margin:clamp(60px,9vw,120px) auto}.tour-pair img{height:clamp(230px,30vw,390px);border-radius:44% 44% 8px 8px / 35% 35% 8px 8px}.tour-pair.reverse img{grid-area:1/1;border-radius:10px 10px 30% 30%}.tour-end{background:var(--blush)}.tour-end a{margin:0 8px 10px 0}
 @media(max-width:700px){.page-index{--bar:58px;--scene:clamp(400px,62dvh,555px)}.page-index header::before{background:linear-gradient(#1c171973,transparent),url(img/room-front.jpg) center/cover}.page-index .hero-copy{top:auto;bottom:9%;left:7%;right:auto}.page-index .signature{top:37%;bottom:auto;left:0;right:0;font-size:26px}.page-index .hero:after{background:linear-gradient(180deg,#1c171940,transparent 25%,#24191d24 52%,#1c1719af)}
 .quick{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 0;padding:24px 5vw}.quick a{font-size:14px;padding:4px 2px}.quick small{margin-bottom:4px}.welcome{padding:35px 6vw 20px}.service-intro,.price-intro,.tour-title{padding-top:35px}.service-intro h1{margin-bottom:22px}.service-intro figure img{height:clamp(260px,72vw,390px)}.prices-layout{display:block;padding:0 6vw 50px}.reservation-note{margin:22px auto 0;max-width:340px}.tour-pair{display:flex;flex-direction:column;align-items:stretch;gap:15px}.tour-pair img{height:290px}}
+
+:root {
+  --letter-ink: linear-gradient(108deg, #715483 0%, #974774 24%, #594465 49%, #7b5688 70%, #a53c71 100%);
+}
+.salon-footer {
+  scroll-margin-top: 75px;
+  padding: 0 max(6vw, calc((100% - 1200px) / 2));
+  background: #f9f7f8;
+  color: #59525b;
+  font: 400 1rem/1.8 "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --rule: #ded8da;
+}
+.footer-inner { padding-block: clamp(36px, 5.2vw, 85px); }
+.footer-nav {
+  display: grid; grid-template-columns: repeat(7, auto); justify-content: space-between;
+  gap: 1rem; margin: 0; padding: 0 0 clamp(32px, 4vw, 64px);
+}
+.footer-nav a { font: 400 clamp(.88rem, 1.15vw, 1.12rem)/1.6 var(--serif); }
+.footer-nav small { display: block; width: fit-content; font: 400 .78rem/1.8 Georgia, serif; letter-spacing: .1em; }
+.footer-info {
+  display: grid; grid-template-columns: .95fr 1.05fr; align-items: start; gap: 7%;
+  padding-block: clamp(32px, 4.6vw, 72px); border-block: 1px solid var(--rule);
+}
+.footer-name { display: inline-block; font: 400 clamp(1.55rem, 2vw, 2.15rem)/1.45 var(--serif); letter-spacing: .15em; text-decoration: none; }
+.footer-specialty { font-size: .8rem; letter-spacing: .05em; margin: .35rem 0 1.45rem; }
+.footer-info address { font-style: normal; margin: 0 0 1.25rem; }
+.footer-book { text-underline-offset: .35em; text-decoration-color: #ae92a8; }
+.footer-times { width: 100%; margin: 0; font-size: .95rem; line-height: 1.6; }
+.footer-times thead { background: transparent; }
+.footer-times th, .footer-times td { padding: .8rem 0; border-bottom: 1px solid var(--rule); font-weight: 400; }
+.footer-times thead th { padding-top: .1rem; font-size: .84rem; color: #65596a; }
+.footer-times :is(td,th):last-child { text-align: right; white-space: nowrap; }
+.footer-times tbody th { padding-right: 1rem; }
+.footer-times a, .footer-credits a { text-decoration: none; }
+.footer-credits { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-top: clamp(24px, 3.5vw, 54px); }
+.footer-credits a { display: inline-flex; align-items: center; gap: .65em; letter-spacing: .075em; }
+.footer-credits small { font-size: .75rem; letter-spacing: .09em; }
+.ig-icon { position: relative; width: 1.15em; height: 1.15em; border: 1.5px solid #954a75; border-radius: 30%; }
+.ig-icon::before { content: ""; position: absolute; inset: 22%; border: 1.5px solid #954a75; border-radius: 50%; }
+.ig-icon::after { content: ""; position: absolute; width: 2px; height: 2px; top: 13%; right: 14%; background: #954a75; border-radius: 50%; }
+.salon-footer a:hover { text-decoration: underline; text-underline-offset: .3em; }
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  @media screen and (forced-colors: none) {
+    .footer-name, .footer-nav small, .footer-credits a span:last-child,
+    header .brand, .intro h1, .service-intro h1, .tour-title h1, .price-intro h1,
+    .home .cover h1, .home .chapter-nav small, .home .book span, .home .kicker,
+    .home .visit-card h2, .home .news h2 {
+      background-image: var(--letter-ink);
+      -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    }
+  }
+}
+@media (max-width: 760px) {
+  .footer-nav { grid-template-columns: repeat(3, 1fr); gap: 1.1rem .5rem; }
+  .footer-info { grid-template-columns: minmax(0,1fr); gap: 2.25rem; }
+}
+@media (max-width: 400px) {
+  .footer-nav { grid-template-columns: repeat(2, 1fr); }
+  .footer-times { font-size: .84rem; }
+}
+@media (max-width: 359px) {
+  body:not(.home) header { padding-inline: 3%; gap: 6px; }
+}
