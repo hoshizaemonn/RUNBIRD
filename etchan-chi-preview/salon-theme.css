@@ -1,0 +1,119 @@
+/* Colours come from the leaves, timber and apricot figure in the printed salon mark. */
+:root, .home, .price-guide, .contact-guide, .salon-cta {
+  --leaf: #43603e;
+  --plum: var(--leaf);
+  --rose: #816335;
+  --night: #3f3729;
+  --wash: #f8f5e9;
+  --edge: #d9d6be;
+  --mulberry: var(--leaf);
+  --letter-ink: linear-gradient(110deg,#425e38 12%,#526939 47%,#81512f 96%);
+  --blush: #f6f3e6;
+  color: #463e33;
+}
+header, .home header { background: #fffef9; border-bottom: 1px solid #ddd9c8; }
+header .brand, .footer-name {
+  display: inline-flex; align-items: center; gap: .38em; letter-spacing: .055em;
+  color: #473222; -webkit-text-fill-color: currentColor; background: none; font-weight: 600;
+}
+.brand img { width: clamp(32px,3.15vw,50px); height: auto; mix-blend-mode: multiply; }
+.footer-name img { width: 1.75em; height: auto; mix-blend-mode: multiply; }
+header .book, .home header .book, .reserve, .form-action,
+.salon-cta .guide-button:first-of-type {
+  background: var(--leaf); color: #fff; border: 1px solid var(--leaf);
+}
+.home header .book span { background: none; -webkit-text-fill-color: currentColor; }
+header .book:hover,.home header .book:hover,.home .reserve:hover,.salon-cta .guide-button:first-of-type:hover { background: #32492e; color: white; }
+.home header .chapter-nav a { display: flex; flex-direction: column-reverse; align-items: center; color: #443c2c; }
+.chapter-nav small,.kicker,.eyeline { font-family: Georgia,serif; font-style: normal; color: var(--leaf); }
+.home .cover {
+  display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.25fr);
+  align-items: center; gap: 0 5%; min-height: 0; padding: clamp(35px,4vw,68px) 5% 0;
+  background: #fcfaef; border-radius: 0;
+}
+.cover::before {
+  content: ''; position: absolute; top: 0; left: 0; width: clamp(95px,10vw,165px); aspect-ratio: 1.21;
+  background: url(img/leaf-sprig.webp) left top / contain no-repeat; mix-blend-mode: multiply; pointer-events: none;
+}
+.home .cover-copy { grid-area: 1/1; max-width: none; padding: 3.5rem 0 4rem 5%; }
+.home .place { color: var(--leaf); font-weight: 600; font-size: .87rem; letter-spacing: .17em; }
+.home .cover h1 { font-size: clamp(1.75rem,3.05vw,3.75rem); line-height: 1.65; letter-spacing: .04em; margin: .44em 0 .55em; }
+.home .cover-sub { color: #554d40; margin: 0 0 1.25rem; font-size: clamp(.94rem,1.1vw,1.16rem); }
+.cover-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .55rem 1.2rem; }
+.cover-actions .guide-button { background: var(--leaf); border-color: var(--leaf); color: #fff; }
+.home .film-link { color: var(--leaf); }
+.cover-visual { grid-area: 1/2; position: relative; margin: 0; }
+.home .cover-visual picture { position: static; display: block; mask-image: none; }
+.home .cover-visual picture img {
+  display: block; width: 100%; height: clamp(350px,38vw,605px); border-radius: 46% 47% 16% 19% / 30% 24% 13% 18%;
+  object-position: 50% 53%; filter: none;
+}
+.cover-profile {
+  display: flex; align-items: center; gap: .6rem; position: absolute; left: -5%; bottom: 2%;
+  padding: .35rem 1.05rem .35rem .35rem; background: #fffef8; color: var(--leaf);
+  border: 1px solid var(--edge); border-radius: 3rem; text-decoration: none; font-size: .86rem;
+}
+.home .cover-profile img { width: 3.55rem; height: 3.55rem; border-radius: 50%; object-position: 62% 14%; filter: none; }
+.home .cover-services {
+  grid-column: 1/-1; display: flex; justify-content: center; gap: 0; align-self: stretch;
+  padding: 1.2rem 0; margin: clamp(1.75rem,3vw,3rem) 0 0; border-top: 1px solid var(--edge); border-radius: 0; background: transparent;
+}
+.home .cover-services a { flex: 1 1 0; text-align: center; padding: .42rem .4rem; border: 0; color: #494a33; background: none; font-family: inherit; }
+.home .cover-services a + a { border-left: 1px solid var(--edge); }
+.home .cover-services a::after { content: '　↗'; color: #777e51; }
+.home .news { padding-block: clamp(45px,5vw,78px); }
+.home .salon-story { background: #fffef8; padding-top: clamp(50px,5vw,80px); }
+.salon-story .flower img,.salon-message img { object-position: 55% 26%; }
+.home .salon-story .flower::before { border-color: #bfbd94; }
+.home .point h3 span { background: linear-gradient(100deg,#52714c,#6f643b); }
+.home .offer,.offer-panel,.section.tint,.salon-room,.contact-sheet { background: var(--wash); }
+.home .offer,.offer-panel,.guide-button,.visit-card { border-color: var(--edge); }
+.home .text-link,.salon-link,.opening-intro nav a, .guide-button,.dm { color: var(--leaf); text-decoration-color: #8c996f; }
+.home .cover-actions .guide-button { color: white; }
+.eyeline,.section em,.service-intro em,.intro em { color: #60704e; }
+body:not(.home) .intro,.salon-opening,.guide-intro { background-color: #fbf9ef; }
+.salon-opening,.guide-intro { box-shadow: 0 0 0 100vmax #fbf9ef; clip-path: inset(0 -100vmax); }
+.profile-opening { display: grid; grid-template-columns: minmax(0,1fr) minmax(220px,355px); align-items: center; gap: 9%; padding: clamp(52px,7vw,115px) max(7vw,calc((100% - 1050px) / 2)); background: #fbf9ef; }
+.profile-opening h1 { margin: .3em 0 .5em; font: 500 clamp(2rem,3.3vw,3.45rem)/1.45 var(--serif); }
+.profile-opening blockquote { margin: 0; font: 400 clamp(1.1rem,1.6vw,1.6rem)/1.85 var(--serif); }
+.profile-opening img { width: 100%; height: auto; border-radius: 46% 46% 10px 10px / 27% 27% 10px 10px; }
+.profile-opening figcaption { margin-top: .65rem; color: #625d50; font-size: .84rem; text-align: center; }
+.salon-cta { background: #f2f2e2; }
+.salon-footer { background: #f8f6ec; color: #504c3b; --rule: #d5d6c3; border-top: 1px solid var(--rule); }
+@media (max-width: 700px) {
+  header .brand img { width: 32px; }
+  .home .cover { grid-template-columns: minmax(0,1fr); gap: 1rem; padding: 1rem 6% 0; }
+  .home .cover-copy { grid-area: auto; padding: .6rem 0 0; }
+  .cover::before { left: auto; right: -8px; width: 82px; transform: scaleX(-1); }
+  .home .cover h1 { font-size: clamp(1.8rem,6.8vw,2.7rem); line-height: 1.5; margin: .36em 0; }
+  .home .cover-sub { margin: 0 0 .7rem; line-height: 1.75; }
+  .home .cover-sub br { display: none; }
+  .cover-actions { gap: .25rem .85rem; }
+  .cover-actions .guide-button { font-size: .83rem; padding: .6rem .9rem; }
+  .home .film-link { font-size: .76rem; }
+  .cover-visual { grid-area: auto; }
+  .home .cover-visual picture img { height: clamp(185px,54vw,330px); border-radius: 4rem 2rem 4.5rem .6rem; }
+  .cover-profile { bottom: .5rem; left: .5rem; font-size: .76rem; }
+  .home .cover-profile img { width: 2.4rem; height: 2.4rem; }
+  .home .cover-services { margin: 0; padding-block: .65rem; }
+  .home .cover-services a { display: block; align-content: center; font-size: .78rem; }
+  .home .cover-services a::after { content: none; }
+  .profile-opening { grid-template-columns: 1fr; gap: 1.5rem; padding: 2.2rem 7% 2.5rem; }
+  .profile-opening figure { width: min(76%,290px); margin-inline: auto; }
+  .salon-message img { aspect-ratio: 4/4.6; object-position: 50% 25%; }
+}
+@media (max-width: 390px) {
+  .home header { gap: .48rem; padding-inline: 3.5%; }
+  .home .brand { font-size: 1.02rem; }
+  .home .brand img { width: 26px; }
+  .home header .book { font-size: .82rem; padding: .5rem .7rem; }
+}
+.cover-actions .guide-button {
+  display: inline-flex; align-items: center; gap: 1.05em; padding: .78rem 1.35rem;
+  border-radius: 2rem; text-decoration: none; font-weight: 500; font-size: .94rem;
+}
+.cover-actions .guide-button:hover { background: #314b2d; }
+@media (max-width: 420px) {
+  .home header .mobile-course { display: none; }
+  .cover-actions .guide-button { padding: .65rem 1rem; font-size: .85rem; }
+}
