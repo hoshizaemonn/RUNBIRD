@@ -1,6 +1,5 @@
 /* The inside pages share the white navigation bar used on the home page. */
 .subpage {
-  --wine: #a8655a;
   --nav-height: clamp(76px, 6.8vw, 106px);
   --nav-inset: clamp(10px, 1.4vw, 20px);
 }
@@ -20,14 +19,14 @@
 .subpage .identity { width: clamp(145px, 15vw, 224px); }
 .subpage .primary { gap: clamp(14px, 2.8vw, 48px); padding: 0; }
 .subpage .primary a {
-  font: 500 clamp(14px, 1.05vw, 17px)/1.6 "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  font: 500 clamp(14px, 1.05vw, 17px)/1.6 var(--sans);
 }
-.subpage .primary small { margin-top: 5px; color: #896d64; }
-.subpage .mast [aria-current="page"], .subpage .primary .in-section { color: #93584e; }
+.subpage .primary small { margin-top: 5px; color: var(--muted); }
+.subpage .mast [aria-current="page"], .subpage .primary .in-section { color: var(--wine); }
 .subpage .primary [aria-current="page"] small, .subpage .primary .in-section small {
   text-decoration: underline;
   text-underline-offset: 5px;
-  text-decoration-color: #ceaaa1;
+  text-decoration-color: var(--rule);
 }
 .subpage main { min-width: 0; }
 .subpage :where(main [id], #footer) {
@@ -37,11 +36,11 @@
   top: auto;
   bottom: 9%;
   padding: 20px 13px;
-  background: #975b53;
+  background: var(--leaf);
   border-radius: 10px 0 0 10px;
   color: white;
 }
-.subpage .book-tab:hover { background: #764941; }
+.subpage .book-tab:hover { background: var(--leaf-dark); }
 
 .subpage .sub-banner {
   display: grid;
@@ -55,7 +54,7 @@
   padding-left: 8%;
   overflow: visible;
   clip-path: none;
-  background: radial-gradient(ellipse at 3% 78%, #f5e7e266, transparent 64%);
+  background: radial-gradient(ellipse at 3% 78%, var(--linen), transparent 64%);
 }
 .subpage .sub-banner::after { content: none; }
 .subpage .sub-banner > img {
@@ -80,15 +79,15 @@
   align-items: center;
   gap: 13px;
   margin: 0 0 1rem;
-  color: #986358;
-  font: 500 clamp(13px, 1.1vw, 17px)/1.6 Georgia, serif;
+  color: var(--wine);
+  font: 500 clamp(13px, 1.1vw, 17px)/1.6 var(--latin);
   letter-spacing: .16em;
 }
 .subpage .sub-banner p:not(.banner-lead)::before {
   content: "";
   width: 32px;
   height: 1px;
-  background: #ce9c90;
+  background: var(--rule);
 }
 .subpage .sub-banner h1 {
   font-size: clamp(30px, 3.2vw, 55px);
@@ -105,8 +104,8 @@
 }
 .subpage .foot-book .action:first-of-type {
   color: #fff;
-  background: #955c54;
-  border: 3px solid #eedbd6;
+  background: var(--leaf);
+  border: 3px solid var(--rule);
 }
 .subpage .foot-book .action:first-of-type i { color: #fff; }
 

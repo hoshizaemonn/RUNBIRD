@@ -1,0 +1,122 @@
+@font-face {
+  font-family: "Shippori Mincho";
+  src: url("fonts/shippori-mincho-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Shippori Mincho";
+  src: url("fonts/shippori-mincho-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Sans JP";
+  src: url("fonts/noto-sans-jp.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --sans: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --latin: "Shippori Mincho", "Times New Roman", serif;
+  --ink: #30332f;
+  --text: #45453e;
+  --muted: #68665a;
+  --paper: #faf9f5;
+  --surface: #fffefa;
+  --linen: #f2efe6;
+  --rule: #d8d5c8;
+  --sand: #e6ded0;
+  --brass: #927647;
+  --wine: #825a4b;
+  --leaf: #405549;
+  --leaf-dark: #2e4036;
+}
+body { font-family: var(--sans); font-weight: 400; letter-spacing: .025em; }
+h1, h2, h3 { color: var(--ink); font-family: var(--serif); font-weight: 500; letter-spacing: .035em; }
+p { line-break: strict; }
+::selection { background: #dadfd4; color: #223128; }
+
+.primary a, .mobile nav a, .subpage .primary a {
+  font-family: var(--sans);
+  font-weight: 400;
+  letter-spacing: .055em;
+}
+.primary small, .mobile nav small, .floating .primary small, .subpage .primary small {
+  font-family: var(--latin);
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: var(--muted);
+}
+.front .mast.floating, .subpage .mast {
+  box-shadow: 0 6px 28px #36352b10;
+}
+.front .pan-photo::after {
+  background: linear-gradient(0deg, #2e29224f, transparent 35%),
+              radial-gradient(ellipse 75% 58% at 6% 94%, #30261bb0, transparent 80%);
+}
+.front .pan-copy h1 {
+  color: #fffef7;
+  font-family: var(--serif);
+  font-size: clamp(40px, 3.8vw, 69px);
+  font-weight: 500;
+  letter-spacing: .055em;
+  line-height: 1.48;
+  text-shadow: 0 1px 5px #211b1536;
+}
+.front .pan-copy p { margin-top: 1.35em; }
+.front .pan-copy p span {
+  display: inline-block;
+  max-width: 100%;
+  padding: .65em 0 0;
+  border-top: 1px solid #fffdf6a8;
+  background: transparent;
+  color: #fffef7;
+  font: 400 clamp(13px, 1.05vw, 17px)/1.7 var(--sans);
+  letter-spacing: .07em;
+  text-shadow: 0 1px 3px #211b1566;
+}
+.front .hero-location, .front .hero-location strong { color: #4f5045; }
+.front .tate { line-height: 1.85; letter-spacing: .1em; }
+.front .about-words p, .home-profile p { letter-spacing: .045em; }
+.front main em { color: #795445; }
+.front .english, .story-spine, .vertical { font-weight: 500; color: var(--wine); }
+
+.scene-button, .story-button, .cg-button, .subpage .foot-book .action:first-of-type {
+  border: 1px solid transparent;
+  color: #fff;
+  background: var(--leaf);
+  font-family: var(--sans);
+  font-weight: 450;
+  letter-spacing: .04em;
+  padding: .68em 1.65em;
+}
+.scene-button:hover, .story-button:hover, .cg-button:hover, .subpage .foot-book .action:first-of-type:hover { background: var(--leaf-dark); color: white; }
+.front .book-tab, .subpage .book-tab { background: var(--leaf); font-weight: 500; }
+.front .book-tab:hover, .subpage .book-tab:hover { background: var(--leaf-dark); }
+.front .station-content { box-shadow: none; border-radius: 12px; }
+.front .home-space ul { border: 1px solid var(--rule); }
+.cg-option-end>span { color: var(--ink); }
+.cg table { background: var(--surface); }
+.cg td, .cg tbody th { font-family: var(--sans); font-weight: 450; font-variant-numeric: tabular-nums; }
+.cg thead th { color: var(--muted); background: #e9e6dc; }
+.cg-next section { border-top: 1px solid var(--rule); }
+
+@media (max-width: 850px) {
+  .front .pan-copy h1 { font-size: clamp(29px, 6.4vw, 46px); line-height: 1.55; }
+  .front .pan-copy p { margin-top: .7em; }
+  .front .pan-copy p span { font-size: 12px; }
+  .front .pan-photo::after { background: linear-gradient(0deg,#29221b98,transparent 39%); }
+}
+
+@media (min-width: 1050px) {
+  .primary a, .subpage .primary a { font-size: clamp(15px, 1.11vw, 18px); letter-spacing: .075em; }
+  .front .primary { gap: clamp(26px, 3.05vw, 54px); }
+  .primary small { margin-top: .4rem; }
+}
+.cg-rate h3, .story-gallery figcaption strong { font-weight: 600; }

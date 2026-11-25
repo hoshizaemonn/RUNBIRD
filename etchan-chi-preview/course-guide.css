@@ -1,6 +1,6 @@
 .cg {
-  --blush: #f6ebe8;
-  --accent: #975e55;
+  --blush: var(--linen);
+  --accent: var(--wine);
   padding-bottom: clamp(56px, 7vw, 110px);
 }
 .cg-wrap {
@@ -15,7 +15,7 @@
 .cg p {line-height: 2.1}
 .cg .cg-kicker {
   color: var(--accent);
-  font: 500 .77rem/1.6 Georgia, "Yu Mincho", serif;
+  font: 500 .77rem/1.6 var(--latin);
   letter-spacing: .13em;
   margin: 0 0 .8em;
 }
@@ -44,14 +44,14 @@
   gap: 1.5em;
   max-width: 100%;
   margin-top: .8rem;
-  border: 4px solid #eddbd6;
+  border: 4px solid var(--rule);
   border-radius: 3rem;
-  background: #9c6158;
+  background: var(--leaf);
   color: white;
   text-decoration: none;
   padding: .48em 1.6em;
 }
-.cg-button:hover {color: white; background: #784b46}
+.cg-button:hover {color: white; background: var(--leaf-dark)}
 .cg-guide, .cg-flow, .cg-treatment, .cg-combination {padding-block: clamp(46px, 6.2vw, 96px)}
 .cg-heading {max-width: 43em; margin-bottom: 2.3rem}
 .cg-option {
@@ -78,11 +78,11 @@
 }
 .cg-rate+.cg-rate {margin-top: 2.5rem}
 .cg-rate h3 {margin: 0 0 .7rem}
-.cg table {background: #fffdfd; width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums}
+.cg table {background: var(--surface); width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums}
 .cg :is(td,th) {padding: .72rem .9rem; text-align: left; border-bottom: 1px solid var(--rule)}
-.cg thead th {font-size: .86rem; color: #754f48; font-weight: 500; background: #f1ddda}
+.cg thead th {font-size: .86rem; color: var(--ink); font-weight: 500; background: var(--linen)}
 .cg tbody th {font-weight: 500}
-.cg .cg-note {font-size: .85rem; color: #6c5651; line-height: 1.85}
+.cg .cg-note {font-size: .85rem; color: var(--muted); line-height: 1.85}
 .cg-treatment,.cg-combination {display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1fr); align-items: center; gap: clamp(32px, 8vw, 120px)}
 .cg-treatment-photo {position: relative; padding: 0 7% 6% 0}
 .cg-treatment-photo img:first-child {aspect-ratio: 1.08; border-radius: 10px}
@@ -91,11 +91,11 @@
 .cg-flow {border-top: 1px solid var(--rule)}
 .cg-steps {counter-reset: step; list-style: none; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(20px, 3.5vw, 58px); padding: 0; margin: 2.2rem 0 0}
 .cg-steps li {counter-increment: step; border-top: 1px solid var(--rule); padding-top: 1.35em}
-.cg-steps li:before {content: counter(step,decimal-leading-zero); display: block; color: var(--accent); font: 500 1.6em/1.25 Georgia, serif; margin-bottom: .45em}
+.cg-steps li:before {content: counter(step,decimal-leading-zero); display: block; color: var(--accent); font: 500 1.6em/1.25 var(--latin); margin-bottom: .45em}
 .cg-next {display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(24px, 4vw, 60px)}
-.cg-next section {padding: clamp(22px, 3.2vw, 44px); border-top: 2px solid #d2a197; background: white}
+.cg-next section {padding: clamp(22px, 3.2vw, 44px); border-top: 2px solid var(--rule); background: white}
 .cg-next h2 {font-size: clamp(21px, 1.75vw, 28px)}
-.cg-next blockquote {font-size: .94rem; background: #fbf4f2; padding: .85em 1.15em}
+.cg-next blockquote {font-size: .94rem; background: var(--surface); padding: .85em 1.15em}
 @media(max-width: 800px) {
   .cg-wrap {width: 88%}
   .cg-option {grid-template-columns: minmax(90px,20%) 1fr; gap: 8px 22px}
