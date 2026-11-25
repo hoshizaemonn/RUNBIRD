@@ -1,6 +1,9 @@
+const menu = document.querySelector('.mobile');
+menu?.addEventListener('click', event => {
+  if (event.target.closest('nav a')) menu.open = false;
+});
 document.addEventListener('keydown', event => {
-  const menu = document.querySelector('.mobile');
-  if (event.key === 'Escape' && menu.open) {
+  if (event.key === 'Escape' && menu?.open) {
     menu.open = false;
     menu.querySelector('summary').focus();
   }

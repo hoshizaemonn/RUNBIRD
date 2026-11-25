@@ -1,0 +1,122 @@
+.cg {
+  --blush: #f6ebe8;
+  --accent: #975e55;
+  padding-bottom: clamp(56px, 7vw, 110px);
+}
+.cg-wrap {
+  width: min(85%, 1180px);
+  margin-inline: auto;
+}
+.cg section[id], .cg article[id] {
+  scroll-margin-top: clamp(85px, 11vw, 165px);
+}
+.cg h2 {font-size: clamp(25px, 2.5vw, 40px)}
+.cg h3 {font-size: clamp(19px, 1.6vw, 26px)}
+.cg p {line-height: 2.1}
+.cg .cg-kicker {
+  color: var(--accent);
+  font: 500 .77rem/1.6 Georgia, "Yu Mincho", serif;
+  letter-spacing: .13em;
+  margin: 0 0 .8em;
+}
+.cg-jumps {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .2em 2rem;
+  padding: 1.3rem 5%;
+  background: white;
+  border-bottom: 1px solid var(--rule);
+}
+.cg-jumps a, .cg-textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: .75em;
+  color: var(--accent);
+  padding-block: .35em;
+  text-decoration: none;
+}
+.cg-jumps a:hover,.cg-textlink:hover,.cg-option a:hover {text-decoration: underline}
+.cg-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5em;
+  max-width: 100%;
+  margin-top: .8rem;
+  border: 4px solid #eddbd6;
+  border-radius: 3rem;
+  background: #9c6158;
+  color: white;
+  text-decoration: none;
+  padding: .48em 1.6em;
+}
+.cg-button:hover {color: white; background: #784b46}
+.cg-guide, .cg-flow, .cg-treatment, .cg-combination {padding-block: clamp(46px, 6.2vw, 96px)}
+.cg-heading {max-width: 43em; margin-bottom: 2.3rem}
+.cg-option {
+  display: grid;
+  grid-template-columns: minmax(115px, 16%) minmax(0, 1fr) minmax(148px, 18%);
+  gap: clamp(20px, 3.6vw, 60px);
+  align-items: center;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--rule);
+}
+.cg-option:last-child {border-bottom: 1px solid var(--rule)}
+.cg-option>img {aspect-ratio: 1.3; border-radius: 7px}
+.cg-option .cg-kicker {margin-bottom: .25rem}
+.cg-option h3 a {text-decoration: none}
+.cg-option p:last-child {margin-bottom: 0}
+.cg-option-end {display: grid; gap: .5rem}
+.cg-option-end>span {font: 500 1.06rem/1.8 var(--serif)}
+.cg-prices {background: var(--blush); padding-block: clamp(44px, 5.5vw, 85px)}
+.cg-price-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .75fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 6.5vw, 100px);
+  align-items: start;
+}
+.cg-rate+.cg-rate {margin-top: 2.5rem}
+.cg-rate h3 {margin: 0 0 .7rem}
+.cg table {background: #fffdfd; width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums}
+.cg :is(td,th) {padding: .72rem .9rem; text-align: left; border-bottom: 1px solid var(--rule)}
+.cg thead th {font-size: .86rem; color: #754f48; font-weight: 500; background: #f1ddda}
+.cg tbody th {font-weight: 500}
+.cg .cg-note {font-size: .85rem; color: #6c5651; line-height: 1.85}
+.cg-treatment,.cg-combination {display: grid; grid-template-columns: minmax(0,.85fr) minmax(0,1fr); align-items: center; gap: clamp(32px, 8vw, 120px)}
+.cg-treatment-photo {position: relative; padding: 0 7% 6% 0}
+.cg-treatment-photo img:first-child {aspect-ratio: 1.08; border-radius: 10px}
+.cg-treatment-photo img+img {position: absolute; width: min(38%,160px); bottom: 0; right: 0; aspect-ratio: 1; border-radius: 50%; border: 5px solid var(--paper)}
+.cg-combination img {aspect-ratio: 1.25; border-radius: 8px}
+.cg-flow {border-top: 1px solid var(--rule)}
+.cg-steps {counter-reset: step; list-style: none; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(20px, 3.5vw, 58px); padding: 0; margin: 2.2rem 0 0}
+.cg-steps li {counter-increment: step; border-top: 1px solid var(--rule); padding-top: 1.35em}
+.cg-steps li:before {content: counter(step,decimal-leading-zero); display: block; color: var(--accent); font: 500 1.6em/1.25 Georgia, serif; margin-bottom: .45em}
+.cg-next {display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(24px, 4vw, 60px)}
+.cg-next section {padding: clamp(22px, 3.2vw, 44px); border-top: 2px solid #d2a197; background: white}
+.cg-next h2 {font-size: clamp(21px, 1.75vw, 28px)}
+.cg-next blockquote {font-size: .94rem; background: #fbf4f2; padding: .85em 1.15em}
+@media(max-width: 800px) {
+  .cg-wrap {width: 88%}
+  .cg-option {grid-template-columns: minmax(90px,20%) 1fr; gap: 8px 22px}
+  .cg-option>img {grid-row: span 2}
+  .cg-option-end {grid-column: 2; display: flex; align-items: center; flex-wrap: wrap; gap: 0 1.2rem}
+  .cg-steps {gap: 1.4rem}
+}
+@media(max-width: 640px) {
+  .cg-jumps {font-size: .85rem; gap: .1em 1.1em; padding: .75rem 4%}
+  .cg-price-grid,.cg-treatment,.cg-combination,.cg-next,.cg-steps {grid-template-columns: minmax(0,1fr)}
+  .cg-option {grid-template-columns: 70px minmax(0,1fr); column-gap: 15px; align-items: start}
+  .cg-option>img {aspect-ratio: 1; border-radius: 50%}
+  .cg-option-end>span {font-size: .93rem}
+  .cg-rate+.cg-rate {margin-top: 2rem}
+  .cg :is(td,th) {padding: .62rem .52rem}
+  .cg-prices thead th {font-size: .77rem}
+  .cg-treatment-photo {width: 94%; margin-inline: auto}
+  .cg-treatment-photo img:first-child {aspect-ratio: 1.5}
+  .cg-combination img {aspect-ratio: 1.7}
+  .cg-steps {margin-top: 1.25rem; gap: 0}
+  .cg-steps li {position: relative; padding-left: 2.8em}
+  .cg-steps li:before {position: absolute; top: .85em; left: 0; font-size: 1.4rem}
+  .cg .cg-button {font-size: .91rem}
+}

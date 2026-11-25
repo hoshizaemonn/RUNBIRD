@@ -1,0 +1,94 @@
+.visit-content {
+  width: min(86%, 1190px);
+  margin: 0 auto;
+  padding: clamp(58px, 8vw, 120px) 0;
+}
+.visit-content h2 { font-size: clamp(24px, 2.3vw, 36px); line-height: 1.55; }
+.visit-content h3 { font-size: clamp(19px, 1.65vw, 26px); }
+.visit-content p { line-height: 2; }
+.visit-split, .visit-address, .visit-booking {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.25fr);
+  gap: clamp(40px, 7vw, 106px);
+  align-items: start;
+}
+.visit-content section + section { margin-top: clamp(66px, 9vw, 138px); }
+.visit-side > img {
+  margin-top: 2.3rem;
+  aspect-ratio: 1.45;
+  border-radius: 7px 7px 34px 7px;
+}
+.visitor-link, .visit-journal article a {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.1em;
+  color: #8b544d;
+  font-size: .92rem;
+  text-decoration-color: #d0aca3;
+  text-underline-offset: .34em;
+}
+.visitor-link:hover, .visit-journal article a:hover { text-decoration-color: currentColor; }
+.visit-steps { list-style: none; counter-reset: visit; padding: 0; margin: 0; }
+.visit-steps li {
+  position: relative;
+  padding: 0 0 1.65rem clamp(48px, 4.7vw, 72px);
+  counter-increment: visit;
+  border-bottom: 1px solid var(--rule);
+}
+.visit-steps li + li { padding-top: 1.65rem; }
+.visit-steps li::before {
+  content: counter(visit, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  color: #a8655a;
+  font: 400 clamp(30px, 2.8vw, 44px)/1.2 Georgia, serif;
+}
+.visit-faq { border-top: 1px solid var(--rule); padding-top: clamp(38px, 5vw, 72px); }
+.visit-answers details:first-child { border-top: 1px solid var(--rule); }
+.visit-answers summary, .visit-form summary { cursor: pointer; line-height: 1.7; color: #65534f; }
+.visit-answers p { margin: .8em 0 0 1.1em; }
+.visit-journal h2 { margin-bottom: 1.5em; }
+.visit-entry {
+  display: grid;
+  grid-template-columns: minmax(0, .75fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(30px, 5vw, 76px);
+  border-top: 1px solid var(--rule);
+  padding: clamp(25px, 3.5vw, 52px) 0;
+}
+.visit-entry img { aspect-ratio: 1.7; border-radius: 7px; }
+.visit-entry time { font: italic 1rem Georgia, serif; letter-spacing: .05em; color: #916056; }
+.visit-entry h3 { margin-top: .3em; }
+.visit-entry a { margin: .25em 1.15em .25em 0; }
+.visit-address address { font: 500 clamp(18px, 1.5vw, 23px)/1.9 var(--serif); margin: 1em 0; }
+.visit-map {
+  min-height: 175px;
+  display: grid;
+  place-items: center;
+  background: #f5eae7;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.visit-map button { margin: 1.3rem; }
+.visit-map iframe { display: block; }
+.visit-arrival .detail-list div:first-child { padding-top: 0; border-top: 0; }
+.visit-arrival dt, .visit-form dt { color: #79554e; margin-bottom: .4em; }
+.visit-booking .dm-direct { margin-top: 1.75rem; }
+.visit-booking .guide-button { gap: 1em; }
+.visit-booking .dm-direct .guide-button { background: #986058; color: white; border-color: #986058; }
+.visit-booking .dm-direct p, .visit-form .form-tip { font-size: .91rem; }
+.visit-form { padding: clamp(22px, 3.5vw, 55px); background: #fff; border-radius: 12px; }
+.visit-form .dm-examples { margin-bottom: .75rem; }
+.visit-form .form-action, .visit-form .draft-box .guide-button { color: #fff; background: #91594f; border: none; }
+.visit-form label small { margin-left: .4em; font-size: .72em; }
+.visit-form .draft-box { margin-top: 1.5em; }
+.visit-form .draft-box textarea { margin: .5em 0; }
+@media (max-width: 760px) {
+  .visit-content { width: 86%; padding: 48px 0 66px; }
+  .visit-split, .visit-address, .visit-booking { grid-template-columns: 1fr; gap: 25px; }
+  .visit-side > img { margin-top: 1.25rem; aspect-ratio: 1.9; }
+  .visit-entry { grid-template-columns: 1fr; gap: 18px; }
+  .visit-entry img { aspect-ratio: 1.9; }
+  .visit-map { min-height: 120px; }
+  .visit-form { padding: 22px 6%; }
+}
